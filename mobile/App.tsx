@@ -95,6 +95,7 @@ function TrainingApp() {
   const [exercise, setExercise] = useState<Exercise | null>(null);
   const [historyItem, setHistoryItem] = useState<Workout | null>(null);
   const [confirm, setConfirm] = useState<Confirmation | null>(null);
+  const [checkin, setCheckin] = useState<{ symptom: string; effort: string } | null>(null);
   const [changePreview, setChangePreview] = useState<Proposal | null>(null);
   const [moveDate, setMoveDate] = useState(day());
   const [linkError, setLinkError] = useState('');
@@ -147,14 +148,29 @@ function TrainingApp() {
 
   const requestFinish = () => {
     if (!active) return;
+    setCheckin({ symptom: '', effort: '' });
+  };
+  const saveCheckin = () => {
+    if (!checkin || !checkin.symptom || !active) return;
     const done = active.sets.filter(x => x.done).length;
-    const unknown = unknownLoads(active,state.custom);
-    setConfirm({ title: done < active.sets.length ? 'Save a partial workout?' : 'Finish this workout?', message: `${done} of ${active.sets.length} sets logged. Only logged sets count toward your record.${unknown ? ` ${unknown} loaded sets have unknown weight; this can block later progression.` : ''}`, label: 'Save workout', action: () => { if(modify(finishWorkout)) modify(s=>({...s,restTimer:null})); } });
+    const concern = checkin.symptom === 'yes' || checkin.symptom === 'unsure';
+    if (!concern && done === 0) { setError('Log at least one completed set, or discard this workout.'); return; }
+    const ok = modify(s0 => {
+      if (!s0.active) return s0;
+      const withCheck: State = { ...s0, active: { ...s0.active, symptom: checkin.symptom, effort: checkin.effort || undefined } };
+      if (!concern) return withCheck;
+      const held = changed({ ...withCheck, hold: true }, 'Automated recommendations held after a symptom report.');
+      return done === 0 ? changed({ ...held, active: null }, 'Concern saved. No completed sets were added.') : held;
+    });
+    if (!ok) return;
+    setCheckin(null);
+    if (concern && done === 0) return;
+    if (modify(finishWorkout)) modify(s0 => ({ ...s0, restTimer: null }));
   };
   const updateSet = (index:number,patch:Partial<SetLog>)=>modify(s=>changeWorkoutSet(s,index,patch));
   const todayView = <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.content}>
     <Heading eyebrow={niceDate(day()).toUpperCase()} title={active ? 'Make every set count.' : 'Your next good session.'} detail="See your next workout, record your sets and review your progress." />
-    {state.hold&&<Card><Text style={styles.sectionTitle}>Recommendations are on hold</Text><Text style={styles.body}>You reported pain or an uncertain concern. Stop the affected activity and seek appropriate guidance. Your recorded work is kept.</Text><Button secondary label="Reset simulated concern hold" onPress={()=>setConfirm({title:'Reset the demo hold?',message:'This resets a prototype flag for interface testing. It does not diagnose a concern or clear you to resume training.',label:'Reset simulated hold',action:()=>{modify(s=>changed({...s,hold:false},'Explicitly reset simulated concern hold for interface testing.'));}})}/></Card>}
+    {state.hold&&<Card><Text style={styles.sectionTitle}>Recommendations are on hold</Text><Text style={styles.body}>You reported pain or an uncertain concern. Stop the affected activity and seek appropriate guidance. Your recorded work is kept.</Text></Card>}
     {state.plan?.profile.mode==='app'&&!active&&!state.hold&&<Card><Text style={styles.sectionTitle}>Review progression</Text><Text style={styles.body}>Load changes need your approval. Enter available increments in an exercise guide. Equipment limits may offer a wider rep range for eligible muscle-focused work.</Text><Button secondary label="Preview a load or rep-range change" onPress={()=>{const r=makeLoadProposal(stateRef.current!);if(r.proposal)stageChange(r.proposal);else setError(r.error||'No change is ready.');}}/></Card>}
     {!state.plan && <><Card dark><Text style={styles.darkEyebrow}>START HERE</Text><Text style={styles.darkTitle}>Build your first plan.</Text><Text style={styles.darkBody}>Choose your goal, time and equipment. Review your own plan before starting.</Text><Button label="Build my plan" onPress={() => setPersonalSetup(true)} secondary /></Card><Text style={styles.body}>Personal plans are saved on this device. Real sign-in and website sync are not connected yet.</Text></>}
     {[...state.history].filter(w=>w.finishedAt).sort((a,b)=>(b.finishedAt||0)-(a.finishedAt||0)).slice(0,1).map(w=>{const r=reviewWorkout(state,w.id);return r?<Card key={w.id}><Text style={styles.eyebrow}>WORKOUT SUMMARY</Text><Text style={styles.sectionTitle}>{r.summary}</Text>{r.facts.map(f=><Text style={styles.body} key={f.id}>{f.text}</Text>)}<Text style={styles.body}>Next step: {r.next}</Text><Text style={styles.small}>This summary uses your saved workout and the app’s training rules. No AI model is connected and nothing is sent to an AI service.</Text></Card>:null})}
@@ -230,6 +246,16 @@ function TrainingApp() {
     </ModalFrame>
     <ModalFrame visible={!!substitution} close={()=>setSubstitution(null)} title="Choose a substitute">
       {substitution&&<><Text style={styles.sectionTitle}>{exFor(substitution.from,state.custom).name}</Text>{!substitution.to?<><Text style={styles.body}>Choose available equipment. These are practical alternatives; loads and results stay separate.</Text><ScrollView horizontal contentContainerStyle={styles.pills}>{['All',...new Set(substitutionOptions(substitution.from).map(e=>e.equipment))].map(eq=><Pill key={eq} label={eq} selected={subEquipment===eq} onPress={()=>setSubEquipment(eq)}/>)}</ScrollView>{substitutionOptions(substitution.from).filter(e=>subEquipment==='All'||e.equipment===subEquipment).map(e=><Button key={e.id} secondary label={e.name+' · '+e.equipment} onPress={()=>{setError('');setSubstitution({...substitution,to:e.id,setup:'',acknowledgeSpecificity:false,allowLonger:false});}}/>)}</>:<><Text style={styles.sectionTitle}>Proposed: {exFor(substitution.to,state.custom).name}</Text><Text style={styles.body}>Record: {exFor(substitution.to,state.custom).loadConvention}</Text>{substitutionPreview?.changes.map(c=><Text style={styles.body} key={c.sessionId}>{niceDate(c.date)} · {c.item.sets} × {targetText(c.item)} reps · {c.item.rest}s rest · {c.before} to {c.after} minutes</Text>)}{exFor(substitution.to,state.custom).requiresSetup&&<TextInput style={styles.input} accessibilityLabel="Substitute machine setup" placeholder="Machine, attachment and settings" maxLength={200} value={substitution.setup} onChangeText={setup=>setSubstitution({...substitution,setup})}/>}<Button secondary label={substitution.all?'Scope: future repeats of this workout':'Scope: this workout only'} onPress={()=>setSubstitution({...substitution,all:!substitution.all})}/>{substitutionPreview?.warnings.map(w=><Text key={w} style={styles.body}>{w}</Text>)}{substitutionPreview?.specificity&&<Button secondary label={substitution.acknowledgeSpecificity?'Confirmed: competition practice is replaced':'Confirm competition practice is replaced'} onPress={()=>setSubstitution({...substitution,acknowledgeSpecificity:!substitution.acknowledgeSpecificity})}/>}<Button secondary label={substitution.allowLonger?'Extra time allowed':'Allow extra session time if needed'} onPress={()=>setSubstitution({...substitution,allowLonger:!substitution.allowLonger})}/>{error&&<Text accessibilityRole="alert" style={styles.errorText}>{error}</Text>}<Button label="Accept substitute" onPress={()=>{if(modify(s=>{const r=applySubstitution(s,substitution);if(r.error)throw new Error(r.error);return r.state;}))setSubstitution(null);}}/><Button secondary label="Choose another" onPress={()=>{setError('');setSubstitution({...substitution,to:''});}}/></>}</>}
+    </ModalFrame>
+    <ModalFrame visible={!!checkin} close={() => setCheckin(null)} title="Quick check-in">
+      <Text style={styles.body}>Before saving, tell us how you feel. Your answer decides whether automated recommendations stay on.</Text>
+      <Text style={styles.sectionTitle}>Any pain or concerning symptoms? (required)</Text>
+      {([['no', 'No'], ['yes', 'Yes'], ['unsure', 'Not sure']] as const).map(([value, label]) => <Button key={value} label={(checkin?.symptom === value ? '✓ ' : '') + label} secondary={checkin?.symptom !== value} onPress={() => setCheckin(c => c && { ...c, symptom: value })} />)}
+      {(checkin?.symptom === 'yes' || checkin?.symptom === 'unsure') && <Text style={styles.body}>Automated recommendations will be held. Stop the affected activity and seek qualified guidance. Your logged work is kept.</Text>}
+      <Text style={styles.sectionTitle}>How did the effort feel? (optional)</Text>
+      {([['easier', 'Easier than expected'], ['right', 'About right'], ['harder', 'Harder than expected'], ['', 'Skip']] as const).map(([value, label]) => <Button key={label} label={(checkin?.effort === value && value !== '' ? '✓ ' : '') + label} secondary={checkin?.effort !== value} onPress={() => setCheckin(c => c && { ...c, effort: value })} />)}
+      <Button label="Save workout" disabled={!checkin?.symptom} onPress={saveCheckin} />
+      <Button label="Keep editing" secondary onPress={() => setCheckin(null)} />
     </ModalFrame>
     <ModalFrame visible={!!confirm} close={() => setConfirm(null)} title={confirm?.title ?? ''}><Text style={styles.body}>{confirm?.message}</Text><Button label={confirm?.label ?? 'Continue'} onPress={() => { const action = confirm?.action; setConfirm(null); action?.(); }} /><Button label="Keep editing" secondary onPress={() => setConfirm(null)} /></ModalFrame>
   </SafeAreaView>;
