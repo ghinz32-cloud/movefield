@@ -7,7 +7,6 @@ export const metadata: Metadata = {
   title: `${brand.name} | Your training, day by day`,
   description: brand.description,
   other: {
-    "codex-preview": "development",
   },
   icons: {
     icon: "/favicon.svg",
