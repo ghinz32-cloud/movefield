@@ -1,0 +1,38 @@
+{
+  "revision": 12,
+  "date": "2026-10-07",
+  "groups": 5,
+  "checks": [
+    "All 71 plans retain dates, exercises, targets, durations, stored titles, roles and dependencies",
+    "Every original slot has a display name; altered workouts avoid misleading lift names",
+    "Creator credit survives source tracking and saved workout display",
+    "Guide provenance and exercise behavior fields remain unchanged",
+    "Saved-note rendering leaves stored machine markers untouched"
+  ],
+  "plansCompared": 71,
+  "guidesCompared": 989,
+  "baseline": "5b1d116",
+  "physicalDeviceTested": false,
+  "browserWalkthrough": false,
+  "webTypecheck": "passed",
+  "mobileTypecheck": "passed",
+  "webBuild": "passed",
+  "nativeExports": [
+    "ios",
+    "android"
+  ],
+  "nativeChoices": 74,
+  "nativeStartWeekdays": 7,
+  "guideFieldsChanged": 2448,
+  "guidesChanged": 943,
+  "builtWorker": {
+    "status": 200,
+    "scripts": 20,
+    "nonceMatched": true,
+    "nonceRotates": true,
+    "writeRouteClosed": true,
+    "internalRouteClosed": true,
+    "cache": "private, no-store",
+    "nativeStarterAvailable": true
+  }
+}

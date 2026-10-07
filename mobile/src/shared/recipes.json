@@ -1,0 +1,1036 @@
+{
+  "adult": [
+    {
+      "id": "AT01",
+      "name": "Adult foundation and general fitness",
+      "eligible": "Healthy adult beginner, or a person choosing a modest resistance-training base; apply return modifier when appropriate.",
+      "source_ids": [
+        "SC01",
+        "SC02",
+        "SC05"
+      ],
+      "default_weeks": 6,
+      "default_sessions_per_week": 2,
+      "example_days": [
+        "Monday",
+        "Thursday"
+      ],
+      "session_minutes_estimate": [
+        40,
+        55
+      ],
+      "numeric_status": "Published ranges inform the template; exact six-week layout, selected exercises, and repetition schedule are prototype defaults.",
+      "sessions": [
+        {
+          "id": "A",
+          "slots": [
+            {
+              "role": "knee dominant",
+              "example": "Leg press or supported squat",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            },
+            {
+              "role": "hip dominant",
+              "example": "Light dumbbell Romanian deadlift or hip bridge",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            },
+            {
+              "role": "horizontal push",
+              "example": "Machine chest press or elevated push-up",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            },
+            {
+              "role": "pull",
+              "example": "Seated cable or band row",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            },
+            {
+              "role": "shoulder press",
+              "example": "Seated dumbbell or machine press",
+              "sets": 1,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 90
+            },
+            {
+              "role": "calf",
+              "example": "Supported calf raise",
+              "sets": 1,
+              "reps": [
+                10,
+                15
+              ],
+              "rest_seconds": 90
+            },
+            {
+              "role": "trunk",
+              "example": "Dead bug",
+              "sets": 1,
+              "reps": [
+                6,
+                10
+              ],
+              "per_side": true,
+              "rest_seconds": 60
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "slots": [
+            {
+              "role": "knee dominant",
+              "example": "Same selected squat or leg press",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            },
+            {
+              "role": "hip dominant",
+              "example": "Same selected hinge or bridge",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            },
+            {
+              "role": "horizontal push",
+              "example": "Same selected press or elevated push-up",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            },
+            {
+              "role": "pull",
+              "example": "Lat pulldown or row",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            },
+            {
+              "role": "shoulder press",
+              "example": "Same selected seated dumbbell or machine press",
+              "sets": 1,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 90
+            },
+            {
+              "role": "calf",
+              "example": "Supported calf raise",
+              "sets": 1,
+              "reps": [
+                10,
+                15
+              ],
+              "rest_seconds": 90
+            },
+            {
+              "role": "trunk",
+              "example": "Dead bug",
+              "sets": 1,
+              "reps": [
+                6,
+                10
+              ],
+              "per_side": true,
+              "rest_seconds": 60
+            }
+          ]
+        }
+      ],
+      "accepted_block_example": {
+        "week_1": "One working set per slot, target lower end of range, familiarization effort.",
+        "week_2": "Use the listed sets; keep lower-end repetition target.",
+        "weeks_3_to_6": "Accepted target for 8\u201312 slots advances to 9, 10, 11, then 12 at the confirmed working load. Calf and trunk targets may remain fixed until reviewed.",
+        "important": "The calendar does not establish readiness. If feedback conflicts with the scheduled increase, display a hold/reduction proposal before the affected exercise. Do not require all repetitions or punish a smaller completed training amount."
+      },
+      "progression_rule_ids": [
+        "AR01",
+        "AR02",
+        "AR03",
+        "AR04",
+        "AR05"
+      ],
+      "exit_options": [
+        "Repeat at confirmed loads",
+        "Accept a modest load-increase proposal",
+        "Maintenance",
+        "Select hypertrophy or strength emphasis"
+      ],
+      "minimum_time_variant": "If the user's actual available time is insufficient, propose a shorter full-body session with one set per main slot and retained rest; display the resulting training amount before acceptance."
+    },
+    {
+      "id": "AT02",
+      "name": "Adult hypertrophy and bodybuilding foundation",
+      "eligible": "Healthy adult with consistent lifting experience who can accommodate four sessions and tolerate the selected volume; beginners enter through AT01.",
+      "source_ids": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC05"
+      ],
+      "default_weeks": 6,
+      "default_sessions_per_week": 4,
+      "example_days": [
+        "Monday upper A",
+        "Tuesday lower A",
+        "Thursday upper B",
+        "Friday lower B"
+      ],
+      "session_minutes_estimate": [
+        55,
+        75
+      ],
+      "numeric_status": "The split, exercises, set distribution, rest timers, and block length are prototype defaults. The general higher-volume direction is supported.",
+      "sessions": [
+        {
+          "id": "Upper A",
+          "slots": [
+            {
+              "example": "Bench or machine chest press",
+              "sets": 3,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 150,
+              "primary": "chest"
+            },
+            {
+              "example": "Chest-supported row",
+              "sets": 3,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 150,
+              "primary": "back"
+            },
+            {
+              "example": "Incline dumbbell press",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120,
+              "primary": "chest"
+            },
+            {
+              "example": "Lat pulldown",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120,
+              "primary": "back"
+            },
+            {
+              "example": "Lateral raise",
+              "sets": 2,
+              "reps": [
+                10,
+                15
+              ],
+              "rest_seconds": 90,
+              "primary": "deltoids"
+            },
+            {
+              "example": "Curl",
+              "sets": 2,
+              "reps": [
+                10,
+                15
+              ],
+              "rest_seconds": 90,
+              "primary": "biceps"
+            },
+            {
+              "example": "Triceps extension",
+              "sets": 2,
+              "reps": [
+                10,
+                15
+              ],
+              "rest_seconds": 90,
+              "primary": "triceps"
+            }
+          ]
+        },
+        {
+          "id": "Lower A",
+          "slots": [
+            {
+              "example": "Squat or leg press",
+              "sets": 3,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 180,
+              "primary": "quadriceps"
+            },
+            {
+              "example": "Romanian deadlift",
+              "sets": 3,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 180,
+              "primary": "hamstrings"
+            },
+            {
+              "example": "Leg extension",
+              "sets": 2,
+              "reps": [
+                10,
+                15
+              ],
+              "rest_seconds": 90,
+              "primary": "quadriceps"
+            },
+            {
+              "example": "Leg curl",
+              "sets": 2,
+              "reps": [
+                10,
+                15
+              ],
+              "rest_seconds": 90,
+              "primary": "hamstrings"
+            },
+            {
+              "example": "Calf raise",
+              "sets": 3,
+              "reps": [
+                10,
+                15
+              ],
+              "rest_seconds": 90,
+              "primary": "calves"
+            },
+            {
+              "example": "Selected trunk exercise",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 60,
+              "primary": "trunk"
+            }
+          ]
+        },
+        {
+          "id": "Upper B",
+          "template_reference": "Upper A",
+          "modification": "Swap which confirmed chest and back exercise receives the first 3-set slot; retain the same selected variants. The two later chest/back slots each receive 2 sets."
+        },
+        {
+          "id": "Lower B",
+          "template_reference": "Lower A",
+          "modification": "Keep the same training amount; use a confirmed leg-press or squat alternative for the first slot if variety was selected in the accepted plan."
+        }
+      ],
+      "weekly_direct_role_sets": {
+        "chest": 10,
+        "back": 10,
+        "quadriceps": 10,
+        "hamstrings": 10,
+        "deltoids": 4,
+        "biceps": 4,
+        "triceps": 4,
+        "calves": 6,
+        "trunk": 4
+      },
+      "accounting_limit": "This role-based accounting is a transparent planning convention. Presses and pulls also load arms/shoulders; secondary involvement is displayed separately. Do not invent validated fractional set credits or claim every muscle gets the same biological training amount.",
+      "accepted_block_example": "Keep weekly set counts stable. For 8\u201312 slots, schedule 8, 9, 10, 11, 12, 12 across weeks 1\u20136 at confirmed loads; for 10\u201315 slots schedule 10, 11, 12, 13, 14, 15. New feedback-driven load or set changes require a proposal. The sixth week is review, not an obligatory deload.",
+      "progression_rule_ids": [
+        "AR01",
+        "AR02",
+        "AR03",
+        "AR04",
+        "AR05",
+        "AR06"
+      ],
+      "time_or_recovery_constraint": "Offer lower set counts or AT01/AT03 before acceptance when time or history does not support this training amount; do not declare fewer than ten sets ineffective."
+    },
+    {
+      "id": "AT03",
+      "name": "Adult strength with optional powerbuilding emphasis",
+      "eligible": "Healthy adult with stable experience in the selected main lifts; competition-lift versions require familiarity with those lifts and appropriate equipment.",
+      "source_ids": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC05"
+      ],
+      "default_weeks": 6,
+      "default_sessions_per_week": 3,
+      "example_days": [
+        "Monday",
+        "Wednesday",
+        "Friday"
+      ],
+      "session_minutes_estimate": [
+        50,
+        75
+      ],
+      "numeric_status": "Specific main-lift frequency, accessories, six-week progression, and hybrid balance are prototype defaults; no independently validated powerbuilding protocol is claimed.",
+      "sessions": [
+        {
+          "id": "A",
+          "slots": [
+            {
+              "example": "Selected squat",
+              "sets": 3,
+              "reps": [
+                3,
+                5
+              ],
+              "rest_seconds": 180,
+              "role": "priority strength"
+            },
+            {
+              "example": "Selected bench press",
+              "sets": 3,
+              "reps": [
+                3,
+                5
+              ],
+              "rest_seconds": 180,
+              "role": "priority strength"
+            },
+            {
+              "example": "Row",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            },
+            {
+              "example": "Leg curl",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "slots": [
+            {
+              "example": "Selected deadlift",
+              "sets": 2,
+              "reps": [
+                3,
+                5
+              ],
+              "rest_seconds": 240,
+              "role": "priority strength"
+            },
+            {
+              "example": "Selected overhead or bench press",
+              "sets": 3,
+              "reps": [
+                5,
+                8
+              ],
+              "rest_seconds": 180,
+              "role": "secondary strength"
+            },
+            {
+              "example": "Lat pulldown",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            },
+            {
+              "example": "Split squat or leg press",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "slots": [
+            {
+              "example": "Selected squat",
+              "sets": 2,
+              "reps": [
+                5,
+                8
+              ],
+              "rest_seconds": 180,
+              "role": "secondary strength"
+            },
+            {
+              "example": "Selected bench press",
+              "sets": 3,
+              "reps": [
+                5,
+                8
+              ],
+              "rest_seconds": 180,
+              "role": "secondary strength"
+            },
+            {
+              "example": "Romanian deadlift or hip hinge",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 150
+            },
+            {
+              "example": "Row",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            }
+          ]
+        }
+      ],
+      "main_load": "For experienced main-lift work, a supported recent 1RM can inform approximately 80% as an initial reference; actual capacity, selected repetitions, equipment, and the 2\u20133 RIR target take precedence. Without a supported maximum, use recent comparable sets instead of claiming a precise percentage.",
+      "accepted_block_example": "Main 3\u20135 slots use 3, 4, 5, 3, 4, 5 repetitions by week. Weeks 4\u20136 may use a small precomputed available increment only if that actual load was shown and accepted initially; otherwise keep the confirmed load and propose any increase. Secondary 5\u20138 slots use 5, 6, 7, 8, 8, 8.",
+      "powerbuilding_option": "Add two 10\u201315-repetition sets of one chosen upper-body accessory on A and one chosen lower-body accessory on B, with 90-second rest, only when this fits the accepted time budget. Alternatively choose AT02 when hypertrophy is clearly primary. This option does not promise hypertrophy-optimal volume for every muscle.",
+      "competition_stability": "Preserve squat, bench, and deadlift competition variants if the goal is powerlifting. An alternative is tracked as an alternative; its results do not silently replace the competition lift's history. This is an ordinary training block, not a meet-peaking plan.",
+      "progression_rule_ids": [
+        "AR01",
+        "AR02",
+        "AR03",
+        "AR04",
+        "AR05",
+        "AR07"
+      ],
+      "rest_extension": "Allow 3\u20135 minutes for demanding main work without lowering a completion score."
+    },
+    {
+      "id": "AT04",
+      "name": "Adult home resistance and basic calisthenics",
+      "eligible": "Healthy adult seeking scalable bodyweight/band training; excludes unsupported advanced skills and apparatus-dependent maneuvers.",
+      "source_ids": [
+        "SC01",
+        "SC02",
+        "SC05",
+        "SC06"
+      ],
+      "default_weeks": 6,
+      "default_sessions_per_week": 2,
+      "example_days": [
+        "Tuesday",
+        "Friday"
+      ],
+      "session_minutes_estimate": [
+        30,
+        50
+      ],
+      "numeric_status": "Full-body selection, exact training amount, six-week layout, and variant ladder are prototype defaults; SC06 directly supports only the studied push-up comparison.",
+      "sessions": [
+        {
+          "id": "Home A",
+          "slots": [
+            {
+              "example": "Supported squat or sit-to-stand",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            },
+            {
+              "example": "Hip bridge or band hinge",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            },
+            {
+              "example": "Wall/elevated/floor push-up at selected level",
+              "sets": 2,
+              "reps": [
+                6,
+                12
+              ],
+              "rest_seconds": 120
+            },
+            {
+              "example": "Band row using suitable anchor",
+              "sets": 2,
+              "reps": [
+                8,
+                12
+              ],
+              "rest_seconds": 120
+            },
+            {
+              "example": "Supported calf raise",
+              "sets": 1,
+              "reps": [
+                10,
+                15
+              ],
+              "rest_seconds": 90
+            },
+            {
+              "example": "Dead bug",
+              "sets": 1,
+              "reps": [
+                6,
+                10
+              ],
+              "per_side": true,
+              "rest_seconds": 60
+            }
+          ]
+        },
+        {
+          "id": "Home B",
+          "template_reference": "Home A",
+          "modification": "Repeat confirmed variants; a user-selected supported split squat may replace the squat with its own baseline."
+        }
+      ],
+      "accepted_block_example": "Week 1 has one working set per slot; week 2 uses listed sets. Rep targets then increase within each range in the accepted calendar. Keep the same assistance, support height, band, and setup until a variant-change proposal is accepted.",
+      "progression": "Advance repetitions first; then offer a measured support-height change, lower assistance, a different resistance band, or external load. Exact variant changes are selected options, not equivalent percentage-load increments.",
+      "measurement_fields": [
+        "support_height_cm",
+        "band_id",
+        "band_setup",
+        "assistance_setting",
+        "body_mass_optional",
+        "external_load",
+        "repetitions",
+        "self_reported_RIR"
+      ],
+      "equipment_gap": "If there is no suitable pulling equipment or anchor, show incomplete pulling coverage and propose an equipment-supported alternative. Do not improvise an unsafe household anchor or claim an unresisted movement supplies the same stimulus.",
+      "excluded_skills": [
+        "Handstand push-up progression",
+        "Muscle-up unlocks",
+        "Planche/lever unlocks",
+        "Unsupervised acrobatics"
+      ],
+      "progression_rule_ids": [
+        "AR01",
+        "AR02",
+        "AR03",
+        "AR04",
+        "AR05",
+        "AR08"
+      ],
+      "accepted_numeric_repetition_schedule": {
+        "8_to_12_slots": [
+          8,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "push_up_6_to_12_slot": [
+          6,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "calf_10_to_15_slot": [
+          10,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "trunk_per_side": [
+          6,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "label": "Prototype targets in the accepted six-week plan; feedback-driven deviations remain proposals."
+      }
+    }
+  ],
+  "youth": {
+    "id": "YOUTH_FOUNDATION_14_17_V0",
+    "design_status": "All choices below are prototype policy inside consensus envelopes, not trial-validated app rules.",
+    "eligibility": {
+      "age_min": 14,
+      "age_max": 17,
+      "mode": "app-directed general foundation or coach-agreed offseason foundation",
+      "required": [
+        "User reports a qualified adult youth resistance-training supervisor will be present for this session.",
+        "Appropriate equipment and environment confirmed by the responsible adult.",
+        "No unresolved symptom/injury/illness restriction that prevents this planned activity.",
+        "Existing team, PE, club and other exercise commitments entered or explicitly marked unknown."
+      ],
+      "external_supervision_definition": "Qualified means relevant youth resistance-training knowledge and practical experience, not merely any adult or a parent account. An attestation is reported availability, not verification by the app.",
+      "supervisor_unavailable": "Allow educational content, plan preview and manual activity logging. Do not launch this guided loaded-youth template or generate load progressions. Show how to arrange qualified instruction. Do not mislabel videos as supervision.",
+      "coached_in_season": "Tracking mode by default; no app-added strength prescription. A coach-agreed complementary program requires an explicit authority switch and a reviewed total schedule."
+    },
+    "schedule": {
+      "sessions_per_week": 2,
+      "spacing_hours_min": 48,
+      "block_calendar_weeks": 8,
+      "block_length_basis": "8 weeks is a product planning horizon; no guarantee of adaptation or mandatory automatic advancement.",
+      "calendar_slot_minutes": 40,
+      "slot_budget": {
+        "dynamic_warmup_minutes": 8,
+        "instruction_and_foundation_minutes": 27,
+        "cooldown_and_log_minutes": 5
+      },
+      "time_conflict": "Shorten the exercise menu with review or offer a different confirmed slot; do not remove recovery or rush technique to fit."
+    },
+    "exercise_selection": {
+      "basis": "Six simple slots cover lower body, upper push/pull and trunk; exact count and selections are product choices. The supervisor selects equipment, range and regression individually.",
+      "order": "Warm-up, movement instruction/practice, larger/simple multijoint patterns, other work, trunk, cooldown.",
+      "session_A": [
+        {
+          "slot": "knee_dominant",
+          "preferred": "chair/box squat",
+          "alternatives": [
+            "supported squat"
+          ],
+          "load": "individually selected assistance or light resistance"
+        },
+        {
+          "slot": "hip_dominant",
+          "preferred": "dowel hip-hinge practice",
+          "alternatives": [
+            "glute bridge"
+          ],
+          "load": "practice without added load initially; no forced repetitions if still learning"
+        },
+        {
+          "slot": "upper_push",
+          "preferred": "incline push-up",
+          "alternatives": [
+            "appropriate machine chest press"
+          ],
+          "load": "incline or machine setting selected by supervisor; body weight is not assumed easy"
+        },
+        {
+          "slot": "upper_pull",
+          "preferred": "seated cable row",
+          "alternatives": [
+            "seated band row"
+          ],
+          "load": "appropriate light resistance"
+        },
+        {
+          "slot": "single_leg",
+          "preferred": "low supported step-up",
+          "alternatives": [
+            "supported split-squat pattern"
+          ],
+          "load": "height/support individualized"
+        },
+        {
+          "slot": "trunk",
+          "preferred": "dead bug",
+          "alternatives": [
+            "bird dog"
+          ],
+          "load": "supervisor selects manageable version"
+        }
+      ],
+      "session_B": [
+        {
+          "slot": "knee_dominant",
+          "preferred": "chair/box squat",
+          "alternatives": [
+            "light goblet squat after external instruction"
+          ],
+          "load": "keep the chosen core movement stable"
+        },
+        {
+          "slot": "hip_dominant",
+          "preferred": "glute bridge",
+          "alternatives": [
+            "instructed light dumbbell hip hinge"
+          ],
+          "load": "individualized"
+        },
+        {
+          "slot": "upper_push",
+          "preferred": "incline push-up",
+          "alternatives": [
+            "appropriate machine chest press"
+          ],
+          "load": "same familiar choice as A where practical"
+        },
+        {
+          "slot": "upper_pull",
+          "preferred": "neutral-grip lat pulldown",
+          "alternatives": [
+            "seated cable or band row"
+          ],
+          "load": "equipment must fit the youth"
+        },
+        {
+          "slot": "lower_leg",
+          "preferred": "supported calf raise",
+          "alternatives": [
+            "familiar low supported step-up"
+          ],
+          "load": "support and resistance individualized"
+        },
+        {
+          "slot": "trunk",
+          "preferred": "bird dog",
+          "alternatives": [
+            "dead bug"
+          ],
+          "load": "individualized"
+        }
+      ],
+      "exclusions_from_default": [
+        "Olympic lifting derivatives",
+        "maximal strength testing",
+        "sets to failure",
+        "loaded jumping or depth jumps",
+        "unfamiliar ballistic lifts",
+        "sport contact/collision drills",
+        "unreviewed custom exercises for automated progression"
+      ],
+      "limitations": "This is a general foundation, not a claim of an optimal football-quarterback, basketball-center or baseball-pitcher program. Familiarization can replace working sets rather than adding work."
+    },
+    "starting_dose": {
+      "familiarization": "Instruction and individually chosen low/no-load practice before exercise becomes eligible for working-set progression. Complex movement practice may be 1\u20133 repetitions with external feedback; do not force 8\u201312 while learning.",
+      "working_sets": 1,
+      "repetitions": 8,
+      "rep_range": [
+        8,
+        12
+      ],
+      "rest_seconds": 90,
+      "rest_basis": "90 seconds is a conservative product timer, not an AAP exact target; user/supervisor may extend. Do not require starting the next set when not ready.",
+      "unilateral_reps": "Display per side and log per side; no hidden doubling of prescribed count.",
+      "starting_load_kg": null,
+      "starting_load_label": "Choose appropriate light resistance with your supervisor",
+      "load_calculation": "No age-, sex-, body-weight- or position-based load guess; no novice e1RM computation. A standard empty bar can be excessive. Track band/setup/assistance explicitly.",
+      "effort": "Comfortable controlled practice, without undue fatigue; do not chase failure. Optional RPE informs discussion and history but cannot certify load or technique.",
+      "percent_1RM_policy": "Retain \u226460% as source metadata and professional context. Do not claim the user is below it without a credible assessment; no forced testing to populate it."
+    },
+    "progression": {
+      "kind": "pre-disclosed conditional scheduled progression",
+      "accepted_with_plan": true,
+      "eligibility_count": 2,
+      "eligibility_count_basis": "Two comparable successful supervised exposures is an auditable product rule, not a validated biological threshold.",
+      "comparable": "Same exercise/version, equipment, units, assistance, rep definition and relevant load basis.",
+      "required_each_exposure": [
+        "Planned working reps completed and actuals logged.",
+        "User reports supervisor found the selected exercise/load appropriate; the app makes no technique assessment.",
+        "No reported pain, illness or unresolved restrictions affecting the work.",
+        "No new schedule/recovery concern calling for a deviation.",
+        "No uncertainty requiring another familiarization exposure."
+      ],
+      "sequence": [
+        "Keep one working set while establishing exercise familiarity.",
+        "After two eligible exposures at the current prescription, add one repetition per working set, up to 12.",
+        "Once one set of 12 is achieved on two eligible exposures, the disclosed plan may add a second set at 8 repetitions; change no external load that day.",
+        "Stagger new second sets: at most one exercise gains a set in a session, and only if session time and total sport load permit. This is product policy; do not apply to a crowded in-season week.",
+        "With two sets established, build repetitions toward 12 using the same two-exposure rule.",
+        "After two eligible exposures of two sets of 12, increase external resistance by the smallest practical increment no greater than 5%, then return to two sets of 8.",
+        "If no increment at or below 5% exists, keep the current load; do not round upward. Seek smaller equipment increments or a separately accepted revised variation.",
+        "Never add load and sets simultaneously. Never progress merely because a calendar week elapsed."
+      ],
+      "load_cap_basis": "Up to 5% is a conservative prototype ceiling at the low end of the published 5\u201310% recommendation; smaller increments are product choices, not a separate proven optimum.",
+      "non_numeric_resistance": "No percentage calculation for zero added load, body-weight assistance, bands or changed lever/ROM. A new progression variation needs external selection and a separate proposal, with a new baseline.",
+      "max_default_working_sets": 2,
+      "max_default_working_reps": 12,
+      "progress_to_advanced": "Do not silently move to heavier/advanced templates. Propose a separately accepted next block; carry history and supervision context.",
+      "feedback_changes": "Any feedback-based alteration outside the accepted conditional schedule is shown as a proposal with accept/decline. Day moves always require confirmation. A symptom-related hold must not continue to display an affirmative recommendation to push through."
+    }
+  },
+  "running": {
+    "weeks": 9,
+    "runs_per_week": 3,
+    "walk_before_seconds": 300,
+    "walk_after_seconds": 300,
+    "recovery_day_between_runs": true,
+    "patterns": {
+      "w1": {
+        "repeat": 7,
+        "pair_seconds": [
+          60,
+          -90
+        ],
+        "final_run_seconds": 60
+      },
+      "w2": {
+        "repeat": 5,
+        "pair_seconds": [
+          90,
+          -120
+        ],
+        "final_run_seconds": 90
+      },
+      "w3": [
+        90,
+        -90,
+        180,
+        -180,
+        90,
+        -90,
+        180
+      ],
+      "w4": [
+        180,
+        -90,
+        300,
+        -150,
+        180,
+        -90,
+        300
+      ],
+      "w5a": [
+        300,
+        -180,
+        300,
+        -180,
+        300
+      ],
+      "w5b": [
+        480,
+        -300,
+        480
+      ],
+      "w5c": [
+        1200
+      ],
+      "w6a": [
+        300,
+        -180,
+        480,
+        -180,
+        300
+      ],
+      "w6b": [
+        600,
+        -180,
+        600
+      ],
+      "w6c": [
+        1500
+      ],
+      "w7": [
+        1500
+      ],
+      "w8": [
+        1680
+      ],
+      "w9": [
+        1800
+      ]
+    },
+    "weeks_pattern_ids": [
+      [
+        "w1",
+        "w1",
+        "w1"
+      ],
+      [
+        "w2",
+        "w2",
+        "w2"
+      ],
+      [
+        "w3",
+        "w3",
+        "w3"
+      ],
+      [
+        "w4",
+        "w4",
+        "w4"
+      ],
+      [
+        "w5a",
+        "w5b",
+        "w5c"
+      ],
+      [
+        "w6a",
+        "w6b",
+        "w6c"
+      ],
+      [
+        "w7",
+        "w7",
+        "w7"
+      ],
+      [
+        "w8",
+        "w8",
+        "w8"
+      ],
+      [
+        "w9",
+        "w9",
+        "w9"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "sourceRepository": "https://github.com/yuhonas/free-exercise-db",
+  "sourceAsset": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json",
+  "license": "Unlicense",
+  "licenseURL": "https://github.com/yuhonas/free-exercise-db/blob/main/LICENSE.md",
+  "retrievedUTC": "2026-10-07T03:47:38.506154+00:00",
+  "sourceSHA256": "5bb747e3fc658f095a60dcbf6d53c96627acdcc6ffb6fffde86f7e26995d40bf",
+  "sourceBytes": 1005327,
+  "exerciseCount": 876,
+  "imagesIncludedInTextAsset": false,
+  "reviewStatus": "All catalog entries have authored movement-specific guides, logging conventions and source notes. Source and schema checks are complete; independent professional certification is not claimed.",
+  "equipmentCounts": {
+    "body only": 111,
+    "machine": 67,
+    "other": 122,
+    "foam roll": 11,
+    "None": 77,
+    "kettlebells": 56,
+    "dumbbell": 123,
+    "cable": 81,
+    "barbell": 170,
+    "bands": 20,
+    "medicine ball": 17,
+    "exercise ball": 12,
+    "e-z curl bar": 9
+  },
+  "categoryCounts": {
+    "strength": 584,
+    "stretching": 123,
+    "plyometrics": 61,
+    "strongman": 21,
+    "powerlifting": 38,
+    "cardio": 14,
+    "olympic weightlifting": 35
+  },
+  "completionManifest": "exercise-library-completion.json"
+}

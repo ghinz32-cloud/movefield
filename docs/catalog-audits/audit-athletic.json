@@ -1,0 +1,47 @@
+{
+  "coverage": 163,
+  "exactOriginalCueMatches": 163,
+  "quickCueCount": 3,
+  "wordCountsExcludingSourcesAndTerms": {
+    "min": 205,
+    "max": 405,
+    "mean": 306
+  },
+  "metrics": {
+    "reps": 128,
+    "seconds": 22,
+    "minutes": 13
+  },
+  "missingIDs": [],
+  "supplementarySources": [
+    "https://catalystathletics.com/exercise/58/Snatch/",
+    "https://support.lifefitness.com/hc/en-us/articles/42814055083031-Life-Fitness-Atmos-Treadmill-How-to-Use-the-Emergency-Stop-and-Prevent-Child-Use",
+    "https://support.lifefitness.com/hc/en-us/articles/42862231037335-How-to-Adjust-the-Seat-on-Your-Life-Fitness-Atmos-Upright-Bike",
+    "https://support.lifefitness.com/hc/en-us/articles/42862239184279-How-to-Adjust-the-Seat-on-Your-Life-Fitness-Atmos-Recumbent-Bike",
+    "https://www.catalystathletics.com/exercise/59/Clean/",
+    "https://www.catalystathletics.com/exercise/87/Push-Press/",
+    "https://www.concept2.com/training/rowing-technique",
+    "https://www.nhtsa.gov/road-safety/bicycle-safety",
+    "https://www.nsca.com/education/articles/kinetic-select/agility-and-quickness-test-box-step-off-landing-assessment/",
+    "https://www.roguefitness.com/theindex/movement/how-to-lift-an-atlas-stone",
+    "https://www.roguefitness.com/theindex/video/how-to-train-farmers-carry"
+  ],
+  "sourceCorrections": [
+    "Push Press source record has empty instructions; exact Catalyst push-press page supplies method.",
+    "Hang Clean source omits the catch; elbow turnover and front-rack receive restored.",
+    "Incline Push-Up Depth Jump source setup is feet elevated, and guide states this.",
+    "Bench Jump goes OVER bench; Front Box Jump goes ONTO box; both preserved.",
+    "Band Good Morning records put band at neck; editorial guide moves pressure onto upper-back muscles.",
+    "Deadlift records prescribe back arch and leaning back; guide uses firm trunk and upright finish.",
+    "Original maximum-effort, failure-time, fixed calorie and bodyweight prescriptions removed.",
+    "Loaded jumps and drop/rebound variations retained with specific landing setup and easier drills."
+  ],
+  "loggingNotes": [
+    "22 timed drills use seconds; 13 cardio exercises use minutes. Distance field in meters referenced for traveling drills per root implementation plan.",
+    "Bar/axle/frame/log/yoke loads use total implement plus plates. Farmer carry and dumbbell crucifix are per-hand equal pairs, multiplier 2. Circus bell uses per-arm reps completed on both sides, multiplier 2. Two-hand one-dumbbell jumps and swings use multiplier 1.",
+    "Car-deadlift and Conan wheel lever loads are note-only; vehicle or plate mass is not falsely treated as handle force.",
+    "Band force and changing chain contribution kept separate from total bar-and-plate entry; progression off.",
+    "No automatic ordinary load progression for plyometric, strongman, Olympic or cardio records."
+  ],
+  "reviewScope": "Editorial source-based exercise guides. Exact imported original cues matched the local verified upstream dataset for every assigned ID; no independent expert certification or technique assessment is claimed."
+}

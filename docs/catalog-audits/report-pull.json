@@ -1,0 +1,54 @@
+{
+  "count": 181,
+  "strength": 143,
+  "stretching": 38,
+  "sourceCuesVerifiedAgainstUpstream": 181,
+  "sourceCueMismatches": [],
+  "wordCounts": {
+    "min": 194,
+    "max": 337,
+    "median": 283
+  },
+  "sources": [
+    "https://kb.cybexintl.com/Owners_Manuals/Strength/Hammer_Strength_Plate_Loaded_Owners_Manual.pdf",
+    "https://library.crossfit.com/free/pdf/CFJ_English_Level1_TrainingGuide.pdf",
+    "https://orthoinfo.aaos.org/globalassets/pdfs/2024-rotator-cuff-and-shoulder-conditioning-program.pdf",
+    "https://www.acefitness.org/resources/everyone/exercise-library/12/bent-over-row/",
+    "https://www.acefitness.org/resources/everyone/exercise-library/158/seated-lat-pulldown/",
+    "https://www.acefitness.org/resources/everyone/exercise-library/44/seated-biceps-curl/",
+    "https://www.acefitness.org/resources/pros/expert-articles/5389/5-exercises-trainers-should-never-do/",
+    "https://www.mayoclinic.org/healthy-lifestyle/fitness/basics/stretching-and-flexibility/hlv-20049447",
+    "https://www.nasm.org/resource-center/blog/recovery/foam-rolling-and-self-myofascial-release-the-trainer-application-guide",
+    "https://www.strongfirst.com/the-bottoms-up-experiment/",
+    "https://www.trxtraining.com/blogs/news/7-basic-movements",
+    "https://www.trxtraining.com/pages/product-safety"
+  ],
+  "exactRecordURLs": 181,
+  "loadTracked": 118,
+  "automaticProgression": 105,
+  "unknownMachineIDs": [
+    "ref-Calf-Machine_Shoulder_Shrug",
+    "ref-Lying_T-Bar_Row",
+    "ref-Machine_Bicep_Curl",
+    "ref-Machine_Preacher_Curls"
+  ],
+  "notableSourceConflicts": [
+    "ref-Barbell_Curls_Lying_Against_An_Incline",
+    "ref-Bent_Over_Two-Arm_Long_Bar_Row",
+    "ref-Cable_Incline_Pushdown",
+    "ref-Dumbbell_Lying_Pronation",
+    "ref-Dumbbell_Lying_Supination",
+    "ref-Elevated_Cable_Rows",
+    "ref-Flexor_Incline_Dumbbell_Curls",
+    "ref-Incline_Bench_Pull",
+    "ref-London_Bridges",
+    "ref-One_Arm_Chin-Up",
+    "ref-Rocky_Pull-Ups_Pulldowns",
+    "ref-Suspended_Row",
+    "ref-Chin_To_Chest_Stretch",
+    "ref-Frog_Hops",
+    "ref-Groiners",
+    "ref-Hug_A_Ball",
+    "ref-IT_Band_and_Glute_Stretch"
+  ]
+}

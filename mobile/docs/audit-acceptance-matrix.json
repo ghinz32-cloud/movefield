@@ -1,0 +1,450 @@
+[
+  {
+    "id": "ONB-01",
+    "area": "Onboarding",
+    "scenario": "Enter an age below 14, then 14, 17 and 18.",
+    "expected": "Enforce the launch age floor; route minors to youth rules and adults to adult rules.",
+    "gate": "Before real accounts"
+  },
+  {
+    "id": "ONB-02",
+    "area": "Onboarding",
+    "scenario": "Change age after selecting adult add-ons or an adult plan.",
+    "expected": "Recheck eligibility; show incompatible choices and require a valid plan review.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "ONB-03",
+    "area": "Onboarding",
+    "scenario": "A youth account reaches age 18.",
+    "expected": "Recheck age-dependent consent, sharing and coaching choices without silently exposing records.",
+    "gate": "Before real accounts"
+  },
+  {
+    "id": "ONB-04",
+    "area": "Onboarding",
+    "scenario": "Decline optional sex, body measurements or health-device access.",
+    "expected": "Explain any unavailable calculation; preserve useful training and never infer missing attributes.",
+    "gate": "Before real accounts"
+  },
+  {
+    "id": "ONB-05",
+    "area": "Onboarding",
+    "scenario": "Select first-time lifting, advanced lifting, or imported history without comparable loads.",
+    "expected": "Keep experience separate from verified performance; use a suitable calibration path and no invented starting weight.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "ONB-06",
+    "area": "Onboarding",
+    "scenario": "Choose coach-directed in-season training, then enter an offseason date.",
+    "expected": "Track the coach plan without automatic additions; preview any switch of training authority and preserve history.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "ONB-07",
+    "area": "Onboarding",
+    "scenario": "Request strength, muscle and endurance goals with too little weekly time.",
+    "expected": "Ask for priority or offer changed time/timeline; do not promise all goals or silently exceed availability.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "ONB-08",
+    "area": "Onboarding",
+    "scenario": "Select core, jumping, supersets and weight-management support with different ages and main goals.",
+    "expected": "Apply reviewed compatibility and total-work limits; explain unsupported combinations and offer relevant alternatives.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "SCH-01",
+    "area": "Plans and scheduling",
+    "scenario": "Accept a new plan while another block exists; repeat the accept action.",
+    "expected": "Replace all future active-plan views once, archive the old block and retain completed history.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "SCH-02",
+    "area": "Plans and scheduling",
+    "scenario": "Attempt a plan replacement while a workout is active.",
+    "expected": "Require a clear finish, save-partial or discard choice before replacement; preserve the active record.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "SCH-03",
+    "area": "Plans and scheduling",
+    "scenario": "Move one workout onto an occupied day; choose a cascade instead.",
+    "expected": "Show every changed date, preserve required gaps and reject the entire conflicting proposal without partial changes.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "SCH-04",
+    "area": "Plans and scheduling",
+    "scenario": "Create a vacation spanning several sessions, then edit or remove one day.",
+    "expected": "Show affected sessions and the scope of the edit; retain fixed dates and provide undo or confirmation.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "SCH-05",
+    "area": "Plans and scheduling",
+    "scenario": "Add a competition after the block and an adaptation proposal already exist.",
+    "expected": "Recheck nearby work and invalidate stale proposals; no automatic move or obsolete load change.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "SCH-06",
+    "area": "Plans and scheduling",
+    "scenario": "Schedule two games in a week with different priorities and overlapping practices.",
+    "expected": "Account for all sport commitments; avoid treating lower-priority games as free recovery days.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "SCH-07",
+    "area": "Plans and scheduling",
+    "scenario": "A season starts or ends midweek, or seasons from two sports overlap.",
+    "expected": "Preview phase and authority changes with combined workload; no duplicated training or silent plan replacement.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "SCH-08",
+    "area": "Plans and scheduling",
+    "scenario": "Set different available hours by day, including a short session window.",
+    "expected": "Include warm-up, rests, transitions and added work in the fit; never hide an overrun.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "SCH-09",
+    "area": "Plans and scheduling",
+    "scenario": "Travel across time zones or encounter daylight-saving and year boundaries.",
+    "expected": "Keep date-only commitments and intended local training times consistent; explain any time-zone change.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "SCH-10",
+    "area": "Plans and scheduling",
+    "scenario": "Leave multiple workouts overdue, skip the last workout, or save the final workout as partial.",
+    "expected": "Offer a recovery path without catch-up overload; distinguish scheduled work exhausted from every session completed.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "SCH-11",
+    "area": "Plans and scheduling",
+    "scenario": "Finish a block and choose maintenance, new goals or the same goal.",
+    "expected": "Carry comparable history forward and preview the next block, dates, progression and changed assumptions.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "SCH-12",
+    "area": "Plans and scheduling",
+    "scenario": "Pause training, return after a long absence, or report illness/injury during the break.",
+    "expected": "Separate maintained activity from absence; offer reviewed return options and never claim medical clearance.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "LOG-01",
+    "area": "Workout records",
+    "scenario": "Start a workout and try to mark all sets done without actual amounts.",
+    "expected": "Keep targets separate; require actual completed reps or time and preserve unknown loads.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "LOG-02",
+    "area": "Workout records",
+    "scenario": "Enter blank, zero, fractional reps, negative, huge or pasted malformed amounts.",
+    "expected": "Show a field-specific error; count metrics use valid whole counts and decimals remain available where appropriate.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "LOG-03",
+    "area": "Workout records",
+    "scenario": "Change lb/kg units around an active workout and round-trip historical records.",
+    "expected": "Preserve canonical values, unit labels and practical precision; never convert an already converted value twice.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "LOG-04",
+    "area": "Workout records",
+    "scenario": "Log paired dumbbells, one-arm rows, alternating curls and per-leg split squats.",
+    "expected": "State whether load is per hand or total and whether reps are per side; volume uses the exact convention once.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "LOG-05",
+    "area": "Workout records",
+    "scenario": "Log only one side or unequal loads/reps on the two sides.",
+    "expected": "Retain separate side records; do not invent the other side or reuse incompatible progression history.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "LOG-06",
+    "area": "Workout records",
+    "scenario": "Change cable ratio, machine model, seat setting or assistance amount.",
+    "expected": "Record setup and assistance separately; do not compare incompatible loads or rank them as equivalent work.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "LOG-07",
+    "area": "Workout records",
+    "scenario": "Record bodyweight, added load, assistance, bands, jumps, timed drills and running intervals.",
+    "expected": "Show appropriate primary and optional metrics; do not apply ordinary loaded-rep progression to every modality.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "LOG-08",
+    "area": "Workout records",
+    "scenario": "Create a custom movement, add it across a block, then change its logging convention.",
+    "expected": "Review time and affected sessions; preserve old meaning in history and require eligibility before automatic progression.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "LOG-09",
+    "area": "Workout records",
+    "scenario": "Run a superset, pause rest, leave the app, reopen, or complete another set.",
+    "expected": "Maintain understandable rest timing and order; never mark work complete from a timer alone.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "LOG-10",
+    "area": "Workout records",
+    "scenario": "Save partial work, resume or repeat it, correct a past entry, or tap Finish twice.",
+    "expected": "Save each actual exposure once, preserve revisions and distinguish the repeat from the original partial work.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "COA-01",
+    "area": "Automated coaching",
+    "scenario": "Reach the top of a rep range with easy RIR across the required comparable exposures.",
+    "expected": "Use the reviewed progression rule and available increment; clearly distinguish accepted scheduled progression from a new feedback change.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "COA-02",
+    "area": "Automated coaching",
+    "scenario": "Report easy effort but incomplete reps, unknown load, changed setup or old history.",
+    "expected": "Do not infer readiness from one favorable signal; explain why calibration or more comparable work is needed.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "COA-03",
+    "area": "Automated coaching",
+    "scenario": "Available plates or dumbbells force a larger increase than the reviewed limit.",
+    "expected": "Keep the present load or offer a reviewed alternative; never recommend an unavailable or excessive increment.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "COA-04",
+    "area": "Automated coaching",
+    "scenario": "Report pain, uncertain symptoms, severe soreness or unexpectedly reduced performance.",
+    "expected": "Separate symptoms from ordinary effort; hold affected automated advice and provide an appropriate non-diagnostic path.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "COA-05",
+    "area": "Automated coaching",
+    "scenario": "Accept, decline, queue, reopen or reaccept a suggestion after records or dates change.",
+    "expected": "Apply only a current proposal once; show the full change and leave the accepted plan intact when declined.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "COA-06",
+    "area": "Automated coaching",
+    "scenario": "Choose low exercise enjoyment while performance is improving.",
+    "expected": "Treat preference as preference; show substitutions that preserve purpose without silently discarding a stable main lift.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "COA-07",
+    "area": "Automated coaching",
+    "scenario": "Choose true powerlifting, bodybuilding, powerbuilding, running or a specific sport/position.",
+    "expected": "Provide a genuinely supported reviewed program; label foundations and unsupported position-specific coverage honestly.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "COA-08",
+    "area": "Automated coaching",
+    "scenario": "Review estimated 1RM, session volume and the personal score with partial or sparse history.",
+    "expected": "Use eligible data and visible methods; missing values are not zero, youth exclusions work and the score is not a validated ability rank.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "ACC-01",
+    "area": "Accounts and privacy",
+    "scenario": "Cancel Google login, link an existing identity, or switch accounts on a shared device.",
+    "expected": "Return safely and show only the authenticated account data; linking requires verified ownership.",
+    "gate": "Before real accounts"
+  },
+  {
+    "id": "ACC-02",
+    "area": "Accounts and privacy",
+    "scenario": "Lose a passkey/device, change biometrics, exhaust MFA attempts or reuse a recovery code.",
+    "expected": "Provide verified recovery without bypassing protection; revoke or consume credentials correctly and never collect biometrics.",
+    "gate": "Before real accounts"
+  },
+  {
+    "id": "ACC-03",
+    "area": "Accounts and privacy",
+    "scenario": "Two users request the same record, photo, export or coach endpoint using changed IDs.",
+    "expected": "Server authorization blocks cross-account access for every operation, including signed media links.",
+    "gate": "Before real accounts"
+  },
+  {
+    "id": "ACC-04",
+    "area": "Accounts and privacy",
+    "scenario": "A youth shares selected dates/categories with a parent or coach, then revokes access.",
+    "expected": "Enforce the actual scope and read/edit distinction; revoke future access without claiming downloaded copies can be recalled.",
+    "gate": "Before real accounts"
+  },
+  {
+    "id": "ACC-05",
+    "area": "Accounts and privacy",
+    "scenario": "Install on a second device and edit the same workout offline on both.",
+    "expected": "Use record versions and idempotency; surface conflicts and preserve both actual inputs until resolved.",
+    "gate": "Before real accounts"
+  },
+  {
+    "id": "ACC-06",
+    "area": "Accounts and privacy",
+    "scenario": "Local storage is full, corrupt or unavailable during logging, followed by app termination.",
+    "expected": "Report unsaved changes immediately; preserve recoverable data and offer tested export/retry/recovery.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "ACC-07",
+    "area": "Accounts and privacy",
+    "scenario": "Log out, delete an account, restore a backup or reinstall on a shared phone.",
+    "expected": "Handle local caches, server records, backups and credentials according to explicit retention rules with clear user outcomes.",
+    "gate": "Before real accounts"
+  },
+  {
+    "id": "ACC-08",
+    "area": "Accounts and privacy",
+    "scenario": "Deny camera access, choose limited photos, upload a very large file, or delete a progress photo.",
+    "expected": "Keep training usable; validate uploads, remove unnecessary location metadata and enforce private access/deletion behavior.",
+    "gate": "Before real accounts"
+  },
+  {
+    "id": "ACC-09",
+    "area": "Accounts and privacy",
+    "scenario": "Export or import malformed, huge, duplicate or instruction-bearing AI plan/history data.",
+    "expected": "Validate a bounded schema, preview changes and provenance, reject executable instructions and avoid duplicate history.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "ACC-10",
+    "area": "Accounts and privacy",
+    "scenario": "An expired session or revoked sharing token is used while the phone reconnects.",
+    "expected": "Reauthorize queued actions before applying them; never upload or reveal data under a different identity.",
+    "gate": "Before real accounts"
+  },
+  {
+    "id": "UX-01",
+    "area": "Accessibility and content",
+    "scenario": "Complete setup, logging and adaptation review with keyboard and screen readers.",
+    "expected": "Labels, focus order, states and errors are understandable; all core actions remain operable.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "UX-02",
+    "area": "Accessibility and content",
+    "scenario": "Close a guide/dialog with Escape, Android Back, VoiceOver escape or an iOS dismissal gesture.",
+    "expected": "Preserve the draft and restore context/focus; keep modal errors visible within the active surface.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "UX-03",
+    "area": "Accessibility and content",
+    "scenario": "Use the largest native text and web zoom on small phones, landscape and split-screen.",
+    "expected": "Keep content and actions readable without clipping or obscured focus; respect safe areas and the keyboard.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "UX-04",
+    "area": "Accessibility and content",
+    "scenario": "Tap Done, close, delete, retry and equipment filters one-handed during a workout.",
+    "expected": "Meet the chosen touch-target sizes with no overlapping targets; important actions have clear labels and recovery.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "UX-05",
+    "area": "Accessibility and content",
+    "scenario": "Search an unfamiliar name, equipment subtype or muscle and receive no results.",
+    "expected": "Offer clear filters/search recovery and custom creation; keep machine, cable, barbell, dumbbell and kettlebell variants distinct.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "UX-06",
+    "area": "Accessibility and content",
+    "scenario": "Open every published exercise guide, including a custom exercise and unavailable media.",
+    "expected": "Show accurate self-setup, execution, finish and load rules; label missing instructions/videos and provide useful fallbacks.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "UX-07",
+    "area": "Accessibility and content",
+    "scenario": "A beginner follows written cues or watches an exercise demonstration without sound.",
+    "expected": "Use plain language while retaining exercise terms; captions and exact-variant visuals explain the movement without claiming form assessment.",
+    "gate": "Before automated coaching"
+  },
+  {
+    "id": "UX-08",
+    "area": "Accessibility and content",
+    "scenario": "Read charts, status colors, alerts and animations with assistive technology or reduced motion enabled.",
+    "expected": "Provide equivalent data tables and text status; maintain contrast and honor reduced motion without losing meaning.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "OPS-01",
+    "area": "Integrations and operations",
+    "scenario": "Grant only some HealthKit/Health Connect permissions, later revoke them, or reconnect a provider.",
+    "expected": "Respect per-type consent; show what is unavailable and keep core tracking functional without repeated coercive prompts.",
+    "gate": "Before integration launch"
+  },
+  {
+    "id": "OPS-02",
+    "area": "Integrations and operations",
+    "scenario": "Receive the same session from a watch, Strava and manual entry, including late corrections.",
+    "expected": "Reconcile source IDs, timestamps and provenance without duplicate volume or overwrite of deliberate manual corrections.",
+    "gate": "Before integration launch"
+  },
+  {
+    "id": "OPS-03",
+    "area": "Integrations and operations",
+    "scenario": "Receive absent, stale or implausible heart-rate, distance or readiness data from a device.",
+    "expected": "Display quality/time context and exclude unreliable inputs from automated decisions; absence is not a zero value.",
+    "gate": "Before integration launch"
+  },
+  {
+    "id": "OPS-04",
+    "area": "Integrations and operations",
+    "scenario": "A partner API is unavailable, rate-limited or removes required access.",
+    "expected": "Use bounded retries and visible last-sync state; disable unsupported claims and preserve user data.",
+    "gate": "Before integration launch"
+  },
+  {
+    "id": "OPS-05",
+    "area": "Integrations and operations",
+    "scenario": "Use a public API token with wrong scope, revoked status or a repeated import request.",
+    "expected": "Enforce authentication, least-privilege scopes, rate limits and idempotency; provide auditable import outcomes.",
+    "gate": "Before integration launch"
+  },
+  {
+    "id": "OPS-06",
+    "area": "Integrations and operations",
+    "scenario": "Deploy a bad app/backend version or restore a production backup during an outage.",
+    "expected": "Exercise rollback and restore procedures; retain valid records and compatibility with supported clients.",
+    "gate": "Before public beta"
+  },
+  {
+    "id": "OPS-07",
+    "area": "Integrations and operations",
+    "scenario": "Inspect logs, crash reports, notifications and analytics after sensitive actions.",
+    "expected": "Exclude secrets and unnecessary health details; ensure approved diagnostics still reveal failures and account-safe support context.",
+    "gate": "Before real accounts"
+  },
+  {
+    "id": "OPS-08",
+    "area": "Integrations and operations",
+    "scenario": "A content source changes, a video license expires, or a coaching rule is withdrawn.",
+    "expected": "Trace affected entries/plans, stop new unsupported recommendations and deliver reviewed replacements without rewriting actual history.",
+    "gate": "Before automated coaching"
+  }
+]
