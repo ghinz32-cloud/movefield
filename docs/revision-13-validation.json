@@ -163,5 +163,17 @@
     "Contrast calculations cover design tokens, not every rendered pixel.",
     "Browser keyboard/reflow/screen-reader and physical-device notification tests are still required.",
     "No model inference or performance benchmarks have been run."
-  ]
+  ],
+  "completedChecks": [
+    "web TypeScript",
+    "native TypeScript",
+    "web production build",
+    "iOS Metro export",
+    "Android Metro export",
+    "11 training regression checks",
+    "native storage regression checks",
+    "native stale-permission race regression",
+    "production Worker: HTTP 200, 22 matching nonces, nonce rotation, write/internal route rejection, fonts/logos/mobile ZIP served"
+  ],
+  "publication": "Blocked by automatic approval review; explicit source-upload and Cloudflare publication approval required."
 }
