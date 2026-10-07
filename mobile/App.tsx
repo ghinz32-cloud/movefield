@@ -14,7 +14,7 @@ import {readSavedState} from './src/shared/saved-data';
 import {sessionGuide} from './src/shared/session-guide';
 import {reviewWorkout} from './src/shared/workout-review';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { AccessibilityInfo, ActivityIndicator, FlatList, KeyboardAvoidingView, Linking, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { AccessibilityInfo, ActivityIndicator, FlatList, KeyboardAvoidingView, Linking, Modal, Platform, Pressable, ScrollView, Share, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { setEquipmentLimit, loadSuggestion, makeLoadProposal, changed, applyProposal, makeProposal, makeMoveProposal, matchesExercise, day, displayLoad, eligibility, exFor, exercises, isLoadTracked, niceDate, nextSession, targetText, toKg, weekdays, goals, type Exercise, type Plan, type Proposal, type SetLog, type SetMetrics, type State, type Workout } from './src/shared/training';
@@ -102,6 +102,19 @@ function TrainingApp() {
   const [resetting, setResetting] = useState(false);
   const stateRef = useRef<State | null>(null);
   const resettingRef = useRef(false);
+  // Backup: share the saved data as text (save it to Files, Notes or email). Restore: paste it back, validated first.
+  const exportBackup = async (): Promise<string> => {
+    if (!stateRef.current) return 'Nothing to back up yet.';
+    try { await Share.share({ title: 'Movefield backup', message: JSON.stringify(stateRef.current, null, 2) }); return ''; }
+    catch { return 'The backup could not be shared. Try again.'; }
+  };
+  const restoreBackup = (raw: string): string => {
+    let parsed: State;
+    try { parsed = readSavedState(raw.trim()) as State; }
+    catch { return 'That text is not a valid Movefield backup. Paste the whole backup exactly as it was saved.'; }
+    setConfirm({ title: 'Replace data on this phone?', message: 'This replaces your current plan, history and settings on this phone with the backup. Export first if you want to keep what is here now.', label: 'Restore backup', action: () => { modify(() => parsed); } });
+    return '';
+  };
   const commit = (next: State) => { const checked=normalizeWorkoutRest(next);readSavedState(JSON.stringify(checked));stateRef.current = checked; setState(checked); };
   const [personalSetup,setPersonalSetup]=useState(false);
   const [trackingSession,setTrackingSession]=useState('');
@@ -220,7 +233,7 @@ function TrainingApp() {
 
   return <SafeAreaView style={styles.safe} edges={['top', 'bottom']}><StatusBar style={appearance.dark?"light":"dark"} /><View style={styles.brandBar}><View><Text style={styles.brand}>{brand.name}</Text><Text style={styles.brandSub}>{brand.tagline}</Text></View><View style={styles.demoBadge}><Text style={styles.demoText}>LOCAL DEMO</Text></View></View>
     {error ? <Pressable accessibilityRole="button" onPress={() => setError('')} style={styles.error}><Text style={styles.errorText}>{error}</Text><Text style={styles.small}>Tap to dismiss</Text></Pressable> : null}
-    {resetting&&<Text accessibilityLiveRegion="polite" style={styles.body}>Resetting local data…</Text>}<KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>{tab === 'Today' ? todayView : tab === 'Plan' ? planView : tab === 'Library' ? libraryView : tab === 'Settings' ? <NativeSettings reminderMessage={workoutReminderMessage}/> : historyView}</KeyboardAvoidingView>
+    {resetting&&<Text accessibilityLiveRegion="polite" style={styles.body}>Resetting local data…</Text>}<KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>{tab === 'Today' ? todayView : tab === 'Plan' ? planView : tab === 'Library' ? libraryView : tab === 'Settings' ? <NativeSettings reminderMessage={workoutReminderMessage} onExport={exportBackup} onRestore={restoreBackup}/> : historyView}</KeyboardAvoidingView>
     <Pressable disabled={!saveStatus.startsWith('Save failed')} accessibilityRole="button" accessibilityLabel="Retry saving on this device" onPress={() => modify(s=>({...s}))}><Text accessibilityLiveRegion="polite" style={styles.saveStatus}>{saveStatus}</Text></Pressable>
     <View style={styles.tabs}>{(['Today', 'Plan', 'Library', 'History', 'Settings'] as const).map((label, i) => <Pressable accessibilityRole="tab" accessibilityLabel={label} accessibilityState={{ selected: tab === label }} key={label} onPress={() => { setTab(label); setError(''); }} style={[styles.tab, tab === label && styles.activeTab]}><Text style={[styles.tabIcon, tab === label && { color: COLORS.green }]}>{['◉', '▤', '⌕', '◷', '⚙'][i]}</Text><Text style={[styles.tabLabel, tab === label && { color: COLORS.green, fontWeight: '800' }]}>{label}</Text></Pressable>)}</View>
 
