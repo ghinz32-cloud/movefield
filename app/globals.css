@@ -159,6 +159,10 @@ button:focus-visible,a:focus-visible,summary:focus-visible {outline:3px solid va
 /* Theme roles shared by the workspace, setup flow and portaled dialogs. */
 @font-face{font-family:Inter;src:url('/fonts/inter-variable.ttf') format('truetype');font-weight:100 900;font-display:swap}
 @font-face{font-family:'Barlow Condensed';src:url('/fonts/barlow-condensed-semibold.ttf') format('truetype');font-weight:600;font-display:swap}
+@font-face{font-family:'Atkinson Hyperlegible';src:url('/fonts/atkinson-hyperlegible-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Atkinson Hyperlegible';src:url('/fonts/atkinson-hyperlegible-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:Oswald;src:url('/fonts/oswald-latin-600-normal.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:Oswald;src:url('/fonts/oswald-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap}
 :root{--brand-from:#c4f275;--brand-to:#56dfae;--brand-deep:#226345;--accent-strong:var(--brand-deep);--background:#f4f6f7;--foreground:#192b30;--card:#ffffff;--card-foreground:var(--foreground);--popover:var(--card);--popover-foreground:var(--foreground);--primary:var(--brand-deep);--primary-foreground:#ffffff;--secondary:#e8edef;--secondary-foreground:var(--foreground);--muted:#edf1f3;--muted-foreground:#4c616a;--accent:#e8edef;--accent-foreground:var(--foreground);--border:#cbd5da;--input:#71858e;--ring:var(--brand-deep);--lime:var(--brand-from);--blue:var(--accent-strong);--chart-1:var(--accent-strong);--sidebar-primary:var(--brand-from);--sidebar-ring:var(--brand-from);--soft-accent:color-mix(in srgb,var(--brand-from) 18%,var(--card));--warning-bg:#fff0dc;--warning-text:#6e3b08;--line:var(--border);--destructive:#b62d3b;--font-sans:Inter,Arial,Helvetica,sans-serif}
 :root[data-palette=ocean]{--brand-from:#9bdfff;--brand-to:#92a9ff;--brand-deep:#2458a0}
 :root[data-palette=violet]{--brand-from:#dcbaff;--brand-to:#b4a1ff;--brand-deep:#6842a1}
@@ -170,6 +174,11 @@ button:focus-visible,a:focus-visible,summary:focus-visible {outline:3px solid va
 :root.dark[data-contrast=true]{--muted-foreground:#e4eef3;--border:#a4bbc6;--input:#cfdee5;--ring:#ffffff}
 body{font-family:Inter,Arial,Helvetica,sans-serif;font-size:1rem;line-height:1.6}
 h1,h2,.brand-wordmark{font-family:'Barlow Condensed',Inter,Arial,sans-serif;font-weight:600;letter-spacing:.005em;line-height:1.12}
+/* Font choices (Settings → Font). Default is "athletic". */
+html[data-font="bold"] h1,html[data-font="bold"] h2,html[data-font="bold"] .brand-wordmark{font-family:Oswald,'Barlow Condensed',Inter,Arial,sans-serif;font-weight:600;letter-spacing:.01em}
+html[data-font="easy"] body{font-family:'Atkinson Hyperlegible',Arial,Helvetica,sans-serif;letter-spacing:.01em}
+html[data-font="easy"] h1,html[data-font="easy"] h2,html[data-font="easy"] .brand-wordmark{font-family:'Atkinson Hyperlegible',Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:.01em}
+html[data-font="classic"] h1,html[data-font="classic"] h2,html[data-font="classic"] .brand-wordmark{font-family:Inter,Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:-.01em}
 h1{font-size:clamp(2.6rem,4vw,3.5rem)}h2{font-size:1.9rem}h3{font-family:Inter,Arial,sans-serif;letter-spacing:-.015em;line-height:1.4}
 .brand-wordmark{font-size:1.85rem}.flow-brand .brand-wordmark{font-size:2rem}.brand-wordmark small{font-family:Inter,Arial,sans-serif;font-size:.75rem;letter-spacing:0;line-height:1.5}
 .card,.entry-card,.plan-option{box-shadow:0 4px 24px #071b2510}.session-feature{background:linear-gradient(125deg,var(--brand-from),var(--brand-to));color:#132325}.session-feature h2{font-size:2.55rem}.session-feature .muted{color:#263e40}.session-feature button{color:#132325;border-color:#466359}.session-feature [data-slot=button][data-variant=default]{background:#132325;color:#ffffff}

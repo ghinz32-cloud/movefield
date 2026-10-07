@@ -7,15 +7,22 @@ export const palettes = [
   {id:'teal',name:'Glacier teal',from:'#afece7',to:'#79d8dd',strong:'#176568'},
 ] as const;
 export type PaletteId=typeof palettes[number]['id'];
+export const fontOptions=[
+  ['athletic','Athletic','Condensed headings with Inter text. The default.'],
+  ['bold','Bold athletic','Heavier Oswald headings for a stronger, poster-style look.'],
+  ['easy','Easy to read','Atkinson Hyperlegible for all text. Letter shapes are designed to be easier to tell apart.'],
+  ['classic','Classic','Inter for all text, without condensed headings.'],
+] as const;
+export type FontId=typeof fontOptions[number][0];
 export type ModelChoice='auto'|'off'|'0.6b'|'1.7b'|'4b';
-export type AppPreferences={mode:'system'|'light'|'dark';palette:PaletteId;textSize:100|115|130;contrast:boolean;reduceMotion:boolean;underlineLinks:boolean;reminders:boolean;reminderTime:string;model:ModelChoice};
-export const defaultPreferences:AppPreferences={mode:'system',palette:'green',textSize:100,contrast:false,reduceMotion:false,underlineLinks:false,reminders:false,reminderTime:'18:00',model:'auto'};
+export type AppPreferences={mode:'system'|'light'|'dark';palette:PaletteId;font:FontId;textSize:100|115|130;contrast:boolean;reduceMotion:boolean;underlineLinks:boolean;reminders:boolean;reminderTime:string;model:ModelChoice};
+export const defaultPreferences:AppPreferences={mode:'system',palette:'green',font:'athletic',textSize:100,contrast:false,reduceMotion:false,underlineLinks:false,reminders:false,reminderTime:'18:00',model:'auto'};
 export const preferenceKey='training-studio:preferences:v1';
 export function readPreferences(raw:string|null):AppPreferences {
   if(!raw)return {...defaultPreferences};
   try{
     const p=JSON.parse(raw);if(!p||typeof p!=='object'||Array.isArray(p))return {...defaultPreferences};
-    return {mode:['system','light','dark'].includes(p.mode)?p.mode:'system',palette:palettes.some(x=>x.id===p.palette)?p.palette:'green',textSize:[100,115,130].includes(p.textSize)?p.textSize:100,contrast:p.contrast===true,reduceMotion:p.reduceMotion===true,underlineLinks:p.underlineLinks===true,reminders:p.reminders===true,reminderTime:typeof p.reminderTime==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(p.reminderTime)?p.reminderTime:'18:00',model:['auto','off','0.6b','1.7b','4b'].includes(p.model)?p.model:'auto'};
+    return {mode:['system','light','dark'].includes(p.mode)?p.mode:'system',palette:palettes.some(x=>x.id===p.palette)?p.palette:'green',font:fontOptions.some(x=>x[0]===p.font)?p.font:'athletic',textSize:[100,115,130].includes(p.textSize)?p.textSize:100,contrast:p.contrast===true,reduceMotion:p.reduceMotion===true,underlineLinks:p.underlineLinks===true,reminders:p.reminders===true,reminderTime:typeof p.reminderTime==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(p.reminderTime)?p.reminderTime:'18:00',model:['auto','off','0.6b','1.7b','4b'].includes(p.model)?p.model:'auto'};
   }catch{return {...defaultPreferences};}
 }
 export const modelChoices:[ModelChoice,string,string][]=[['auto','Automatic','Use the largest model that passes testing on this phone.'],['0.6b','Qwen3 0.6B','Light download · about 0.5 GB'],['1.7b','Qwen3 1.7B','Balanced option · about 1.2 GB'],['4b','Qwen3 4B','Larger option · about 2.5 GB'],['off','Off','Use plans and tracking without a language model.']];
