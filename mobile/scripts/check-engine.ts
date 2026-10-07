@@ -6,6 +6,8 @@ import { addDays, day, exercises, type State } from '../src/shared/training';
 import { guides, safeWebUrl } from '../src/content';
 
 import {applySubstitution} from '../src/shared/substitutions';
+import { randomBytes } from 'node:crypto';
+import { isSealed, keyFromHex, LocalDataError, newKeyHex, openText, sealText } from '../src/local-crypto';
 
 assert.equal(previewPlan('missing-program').plan,null);
 const choices = [FOUNDATION, RUN_WALK, SPORT_FOUNDATION, ...programCatalog.map(x => x.id)];
@@ -72,3 +74,31 @@ assert.equal(adoptPlan(many,previewPlan(FOUNDATION).plan!).saved.length,26);
 assert.throws(()=>adoptPlan({...many,saved:Array.from({length:100},(_,i)=>({...replaced.plan!,id:'full-'+i}))},previewPlan(FOUNDATION).plan!),/100 archived/);
 let machine=adoptPlan(emptyDemo(),previewPlan(FOUNDATION).plan!);machine=startWorkout(machine,machine.plan!.sessions[0].id);machine={...machine,active:{...machine.active!,loadContext:{pulldown:'machine-A'}}};machine=editSet(machine,0,{reps:8,kg:10,done:true});machine=finishWorkout(machine);assert.equal(machine.loadContext!.pulldown,'machine-A');assert.equal(machine.restTimer,null);
 console.log('PASS: native plan archives are retained and guarded; saved machine context carries forward without changing history.');
+
+// Local encryption: sealed records must hide content, bind to their storage slot, and reject tampering.
+{
+  const random = (n: number) => new Uint8Array(randomBytes(n));
+  const isLocalError = (code: string) => (e: unknown) => e instanceof LocalDataError && e.code === code;
+  const key = keyFromHex(newKeyHex(random));
+  const slot = 'training-studio:mobile-local-demo:v1';
+  const plain = JSON.stringify({ note: 'Heavy squat day, ünïcode ✓', n: 1 });
+  const sealed = sealText(plain, key, slot, random);
+  assert.deepEqual(Object.keys(JSON.parse(sealed)), ['v', 'alg', 'nonce', 'data']);
+  assert.equal(isSealed(sealed), true);
+  assert.equal(isSealed(plain), false, 'legacy plaintext is not treated as sealed');
+  assert.ok(!sealed.includes('squat'), 'ciphertext must not contain plaintext');
+  assert.equal(openText(sealed, key, slot), plain);
+  assert.notEqual(sealText(plain, key, slot, random), sealed, 'each write uses a fresh nonce');
+  assert.throws(() => openText(sealed, key, 'training-studio:mobile-setup:v1'), isLocalError('decrypt-failed'), 'a record cannot be moved to another slot');
+  assert.throws(() => openText(sealed, keyFromHex(newKeyHex(random)), slot), isLocalError('decrypt-failed'), 'wrong key is rejected');
+  const flipped = JSON.parse(sealed) as { data: string };
+  flipped.data = (flipped.data[0] === '0' ? '1' : '0') + flipped.data.slice(1);
+  assert.throws(() => openText(JSON.stringify(flipped), key, slot), isLocalError('decrypt-failed'), 'tampered ciphertext is rejected');
+  assert.throws(() => openText(JSON.stringify({ ...JSON.parse(sealed), alg: 'aes-gcm' }), key, slot), isLocalError('unknown-format'));
+  assert.throws(() => openText('{"v":1,"alg":"xchacha20poly1305","nonce":"zz","data":"00"}', key, slot), isLocalError('decrypt-failed'));
+  assert.throws(() => keyFromHex('abc'), isLocalError('key-unavailable'), 'damaged key text is never replaced silently');
+  assert.throws(() => sealText(plain, new Uint8Array(16), slot, random), isLocalError('key-unavailable'));
+  assert.throws(() => sealText(plain, key, slot, () => new Uint8Array(8)), isLocalError('key-unavailable'));
+  assert.throws(() => newKeyHex(() => new Uint8Array(5)), isLocalError('key-unavailable'));
+  console.log('PASS: local records are sealed with XChaCha20-Poly1305, bound to their storage slot, and reject tampering or wrong keys.');
+}

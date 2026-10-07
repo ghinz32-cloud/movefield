@@ -23,6 +23,7 @@ import {substitutionOptions,previewSubstitution,applySubstitution,type Substitut
 import { guides, media, safeWebUrl } from './src/content';
 import { adoptPlan, editSet, emptyDemo, finishWorkout, FOUNDATION, RUN_WALK, SPORT_FOUNDATION, previewPlan, startWorkout, unknownLoads } from './src/mobile-engine';
 import { readLocalState, resetLocalState, saveLocalState } from './src/storage';
+import { LocalDataError } from './src/local-crypto';
 
 type Tab = 'Today' | 'Plan' | 'Library' | 'History' | 'Settings';
 type Confirmation = { title: string; message: string; label: string; action: () => void };
@@ -88,7 +89,7 @@ function NativeEquipmentLimit({state,exercise,onSave}:{state:State;exercise?:Exe
 function TrainingApp() {
  const styles=useThemedStyles(baseStyles),appearance=useNativeAppearance(),COLORS=appearance.colors;
   const [state, setState] = useState<State | null>(null);
-  const [readError, setReadError] = useState(false);
+  const [readError, setReadError] = useState<string | null>(null);
   const [saveStatus, setSaveStatus] = useState('Loading local data…');
   const [error, setError] = useState('');
   const [tab, setTab] = useState<Tab>('Today');
@@ -128,7 +129,7 @@ function TrainingApp() {
   const [now, setNow] = useState(Date.now());
   const writeVersion = useRef(0);
 
-  useEffect(() => { let mounted = true; readLocalState().then(s => { if (mounted) commit(s ?? emptyDemo()); }).catch(() => { if (mounted) setReadError(true); }); return () => { mounted = false; }; }, []);
+  useEffect(() => { let mounted = true; readLocalState().then(s => { if (mounted) commit(s ?? emptyDemo()); }).catch(e => { if (mounted) setReadError(e instanceof LocalDataError ? e.message : 'We could not open your saved training. It has not been replaced.'); }); return () => { mounted = false; }; }, []);
   useEffect(() => {
     if (!state) return;
     const version = ++writeVersion.current; setSaveStatus('Saving on this device…');
@@ -147,9 +148,9 @@ function TrainingApp() {
   const openUrl = async (candidate?: string | null) => { const url = safeWebUrl(candidate); setLinkError(''); if (!url) { setLinkError('This reference is not an available web link.'); return; } try { await Linking.openURL(url); } catch { setLinkError('Could not open the link. Check your connection and try again.'); } };
   const openSubstitute=(sessionId:string,from:string)=>{const s=stateRef.current!;setError('');setSubEquipment('All');setSubstitution({sessionId,from,to:'',all:false,setup:'',allowLonger:false,acknowledgeSpecificity:false,planId:s.plan!.id,version:s.plan!.version,historyCount:s.history.length});};
   const openPreview = (id: string) => { const result = previewPlan(id); if (result.plan) setPreview(result.plan); else setError(result.errors.join(' ')); };
-  const reset = async () => { if(resettingRef.current)return;resettingRef.current=true;setResetting(true); try { await resetLocalState(); setReadError(false); commit(emptyDemo()); modify(s=>({...s,restTimer:null})); setError(''); setTab('Today'); } catch { setError('Local storage could not be reset.'); } finally {resettingRef.current=false;setResetting(false);} };
+  const reset = async () => { if(resettingRef.current)return;resettingRef.current=true;setResetting(true); try { await resetLocalState(); setReadError(null); commit(emptyDemo()); modify(s=>({...s,restTimer:null})); setError(''); setTab('Today'); } catch { setError('Local storage could not be reset.'); } finally {resettingRef.current=false;setResetting(false);} };
 
-  if (!state) return <SafeAreaView style={styles.safe}><View style={styles.content}><Heading eyebrow={brand.name.toUpperCase()} title={readError ? 'Saved data needs attention' : 'Opening your training'} detail={readError ? 'We could not open your saved training. It has not been replaced.' : undefined} />{readError ? <><Text style={styles.body}>Try reopening the app first. Reset removes only this mobile demo’s local data.</Text>{error&&<Text accessibilityRole="alert" style={styles.errorText}>{error}</Text>}<Button label={resetting?'Resetting…':'Reset this demo'} disabled={resetting} onPress={() => setConfirm({ title: 'Reset local data?', message: 'This deletes the mobile demo’s saved plan and workouts from this device.', label: 'Delete local demo data', action: () => { void reset(); } })} /></> : <ActivityIndicator color={COLORS.green} />}<ModalFrame visible={!!confirm} close={() => setConfirm(null)} title={confirm?.title ?? ''}><Text style={styles.body}>{confirm?.message}</Text><Button label={confirm?.label ?? 'Continue'} onPress={() => { const action = confirm?.action; setConfirm(null); action?.(); }} /></ModalFrame></View></SafeAreaView>;
+  if (!state) return <SafeAreaView style={styles.safe}><View style={styles.content}><Heading eyebrow={brand.name.toUpperCase()} title={readError ? 'Saved data needs attention' : 'Opening your training'} />{readError ? <><Text style={styles.body}>{readError}</Text><Text style={styles.body}>Try reopening the app first. Reset removes only this mobile demo’s local data.</Text>{error&&<Text accessibilityRole="alert" style={styles.errorText}>{error}</Text>}<Button label={resetting?'Resetting…':'Reset this demo'} disabled={resetting} onPress={() => setConfirm({ title: 'Reset local data?', message: 'This deletes the mobile demo’s saved plan and workouts from this device.', label: 'Delete local demo data', action: () => { void reset(); } })} /></> : <ActivityIndicator color={COLORS.green} />}<ModalFrame visible={!!confirm} close={() => setConfirm(null)} title={confirm?.title ?? ''}><Text style={styles.body}>{confirm?.message}</Text><Button label={confirm?.label ?? 'Continue'} onPress={() => { const action = confirm?.action; setConfirm(null); action?.(); }} /></ModalFrame></View></SafeAreaView>;
 
   const next = nextSession(state);
   const blocked = next ? eligibility(state, next) : null;
