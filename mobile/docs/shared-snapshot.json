@@ -4,7 +4,7 @@
     {
       "source": "lib/app-preferences.ts",
       "target": "src/shared/app-preferences.ts",
-      "sha256": "8805192c1d3b3fc02eb431a1aa49398a0df62ae309059fc62752142305b112b8"
+      "sha256": "d818ff721a772b15e232ab5a7a0116c1dc9fa67374c0a1539bf32724bf2d45c3"
     },
     {
       "source": "lib/workout-reminders.ts",
@@ -45,6 +45,11 @@
       "source": "lib/training.ts",
       "target": "src/shared/training.ts",
       "sha256": "fc4cd15c7e1e4a06995443bdd6372be66cf006873e087e946804beb937b13532"
+    },
+    {
+      "source": "lib/training-tools.ts",
+      "target": "src/shared/training-tools.ts",
+      "sha256": "634f6d7f7b7ef57e1e8fa8f20e90b3773415df66228c8a11876693dcde542e96"
     },
     {
       "source": "lib/training-focus.ts",

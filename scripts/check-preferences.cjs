@@ -9,5 +9,17 @@ test('Reminder schedule deduplicates days and respects plan and workout state',(
 test('Calendar export contains timed reminders and no workout or personal details',()=>{const r=R.workoutReminders(state,prefs,now),ics=R.reminderCalendar(r,'Movefield',now);check((ics.match(/BEGIN:VEVENT/g)||[]).length===2,'one event per day');check(ics.includes('TRIGGER:PT0S'),'alarm at selected time');check(ics.includes('END:VCALENDAR\r\n'),'valid ending');check(!ics.includes('undefined')&&!ics.includes('test-plan'),'no private plan details');check(ics.includes('DTSTART:'+new Date(r[0].at).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z')),'UTC explicit timezone instant')});
 function rgb(c){return c.slice(1).match(/../g).map(x=>parseInt(x,16))}function lum(c){return rgb(c).map(x=>{const v=x/255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0)}function ratio(a,b){let x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)}
 const contrast=[];
-test('Six light and dark palette roles pass required text and control contrast',()=>{for(const p of P.palettes){for(const [name,fg,bg,min] of [['light button','#ffffff',p.strong,4.5],['light accent',p.strong,'#ffffff',4.5],['dark accent',p.from,'#19262c',4.5],['gradient start','#132325',p.from,4.5],['gradient end','#132325',p.to,4.5]]){const result=ratio(fg,bg);check(result>=min,`${p.id} ${name} ${result}`);contrast.push({palette:p.id,role:name,ratio:+result.toFixed(2)})}}for(const [a,b,min]of[['#4c616a','#ffffff',4.5],['#b4c7cf','#19262c',4.5],['#71858e','#ffffff',3],['#7d949e','#19262c',3],['#6e3b08','#fff0dc',4.5],['#ffd199','#392c1d',4.5]])check(ratio(a,b)>=min,`base role ${a} / ${b}`)});
+test('Every palette passes light and dark text and control contrast',()=>{for(const p of P.palettes){for(const [name,fg,bg,min] of [['light button','#ffffff',p.strong,4.5],['light accent',p.strong,'#ffffff',4.5],['dark accent',p.from,'#19262c',4.5],['gradient start','#132325',p.from,4.5],['gradient end','#132325',p.to,4.5]]){const result=ratio(fg,bg);check(result>=min,`${p.id} ${name} ${result}`);contrast.push({palette:p.id,role:name,ratio:+result.toFixed(2)})}}for(const [a,b,min]of[['#4c616a','#ffffff',4.5],['#b4c7cf','#19262c',4.5],['#71858e','#ffffff',3],['#7d949e','#19262c',3],['#6e3b08','#fff0dc',4.5],['#ffd199','#392c1d',4.5]])check(ratio(a,b)>=min,`base role ${a} / ${b}`)});
+test('Smallest and smaller text, spacing density and the added palettes are accepted; unknown values fall back',()=>{
+ const read=x=>P.readPreferences(JSON.stringify(x));
+ assert.equal(read({textSize:85,density:'compact'}).textSize,85);
+ assert.equal(read({textSize:85,density:'compact'}).density,'compact');
+ assert.equal(read({textSize:92}).textSize,92);
+ assert.equal(read({density:'roomy'}).density,'roomy');
+ assert.equal(read({density:'huge'}).density,'comfortable');
+ assert.equal(read({textSize:88}).textSize,100);
+ for(const id of ['ember','crimson','red','amber','graphite'])assert.equal(read({palette:id}).palette,id);
+ assert.equal(read({palette:'mauve'}).palette,'green');
+ checks+=11;
+});
 const report={groups,checks,contrast,limits:['Contrast calculations cover design tokens, not every rendered pixel.','Browser keyboard/reflow/screen-reader and physical-device notification tests are still required.','No model inference or performance benchmarks have been run.']};fs.writeFileSync('docs/revision-13-validation.json',JSON.stringify(report,null,2)+'\n');console.log(`${groups.length} groups, ${checks} checks passed.`);

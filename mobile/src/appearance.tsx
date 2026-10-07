@@ -7,7 +7,7 @@ const Context=createContext({p:defaultPreferences,ready:false,update:(_patch:Par
 export function NativeAppearanceProvider({children}:{children:React.ReactNode}){
  const [p,setP]=useState(defaultPreferences),[ready,setReady]=useState(false),[error,setError]=useState(''),[systemReduce,setSystemReduce]=useState(false);
  const current=useRef(p),writes=useRef(Promise.resolve()),scheme=useColorScheme();
- const [fonts]=useFonts({Inter:require('../assets/fonts/inter-variable.ttf'),'Barlow Condensed':require('../assets/fonts/barlow-condensed-semibold.ttf'),'Oswald':require('../assets/fonts/Oswald_600SemiBold.ttf'),'Oswald Bold':require('../assets/fonts/Oswald_700Bold.ttf'),'Atkinson Hyperlegible':require('../assets/fonts/AtkinsonHyperlegible_400Regular.ttf'),'Atkinson Hyperlegible Bold':require('../assets/fonts/AtkinsonHyperlegible_700Bold.ttf')});
+ const [fonts]=useFonts({Inter:require('../assets/fonts/inter-variable.ttf'),'Barlow Condensed':require('../assets/fonts/barlow-condensed-semibold.ttf'),'Oswald':require('../assets/fonts/Oswald_600SemiBold.ttf'),'Oswald Bold':require('../assets/fonts/Oswald_700Bold.ttf'),'Atkinson Hyperlegible':require('../assets/fonts/AtkinsonHyperlegible_400Regular.ttf'),'Atkinson Hyperlegible Bold':require('../assets/fonts/AtkinsonHyperlegible_700Bold.ttf'),Saira:require('../assets/fonts/Saira_400Regular.ttf'),'Saira Bold':require('../assets/fonts/Saira_700Bold.ttf'),Lexend:require('../assets/fonts/Lexend_400Regular.ttf'),'Lexend Bold':require('../assets/fonts/Lexend_700Bold.ttf'),Nunito:require('../assets/fonts/Nunito_400Regular.ttf'),'Nunito Bold':require('../assets/fonts/Nunito_700Bold.ttf')});
  useEffect(()=>{let live=true;AsyncStorage.getItem(preferenceKey).then(raw=>{if(live){current.current=readPreferences(raw);setP(current.current)}}).catch(()=>{if(live)setError('Your preferences could not be opened. Try reopening the app.')}).finally(()=>{if(live)setReady(true)});AccessibilityInfo.isReduceMotionEnabled().then(v=>{if(live)setSystemReduce(v)});const listener=AccessibilityInfo.addEventListener('reduceMotionChanged',setSystemReduce);return()=>{live=false;listener.remove()}},[]);
  const update=(patch:Partial<AppPreferences>)=>{const next=readPreferences(JSON.stringify({...current.current,...patch}));current.current=next;setP(next);writes.current=writes.current.catch(()=>{}).then(()=>AsyncStorage.setItem(preferenceKey,JSON.stringify(next))).then(()=>setError('')).catch(()=>setError('Preferences apply now but could not be saved.'))};
  return <Context.Provider value={{p,ready,error,update,dark:p.mode==='dark'||p.mode==='system'&&scheme==='dark',reduceMotion:p.reduceMotion||systemReduce,fonts}}>{children}</Context.Provider>;
@@ -23,7 +23,12 @@ export const families:Record<string,{heading:string;body:string}>={
  bold:{heading:'Oswald',body:'Inter'},
  easy:{heading:'Atkinson Hyperlegible',body:'Atkinson Hyperlegible'},
  classic:{heading:'Inter',body:'Inter'},
+ saira:{heading:'Saira Bold',body:'Inter'},
+ lexend:{heading:'Lexend Bold',body:'Lexend'},
+ nunito:{heading:'Nunito Bold',body:'Nunito'},
 };
+// Compact tightens spacing but never drops a control below the 44pt touch minimum. Roomy adds space and height.
+const densityScale:Record<string,number>={compact:0.82,comfortable:1,roomy:1.2};
 export function useThemedStyles<T extends Record<string,any>>(base:T):T{
  const {p,dark,fonts,colors:c}=useNativeAppearance();
  return useMemo(()=>{
@@ -36,9 +41,14 @@ export function useThemedStyles<T extends Record<string,any>>(base:T):T{
    }
    if(style.fontSize){style.fontSize=Math.max(14,style.fontSize)*(p.textSize/100);if(fonts)style.fontFamily=['title','darkTitle','brandSub'].includes(key)?families[p.font].heading:families[p.font].body;}
    if(style.lineHeight)style.lineHeight*=p.textSize/100;
+   const scale=densityScale[p.density]??1;
+   if(scale!==1)for(const [prop,v] of Object.entries(style))if(typeof v==='number'){
+    if(/^(padding|margin|gap)/.test(prop))style[prop]=v*scale;
+    else if(prop==='minHeight')style[prop]=scale<1?Math.max(44,v*scale):v*scale;
+   }
    if(key==='input'&&!style.color)style.color=c.ink;
    result[key]=style;
   }
   return result as T;
- },[base,p.textSize,p.palette,p.contrast,dark,fonts,p.font]);
+ },[base,p.textSize,p.palette,p.contrast,dark,fonts,p.font,p.density]);
 }

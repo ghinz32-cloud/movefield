@@ -7,7 +7,7 @@ import { createHash } from 'node:crypto';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const site = process.argv[2] && resolve(process.argv[2]);
 if (!site) throw new Error('Provide the website folder: npm run sync:shared -- C:\\path\\to\\training-studio');
-const files = ['app-preferences.ts', 'workout-reminders.ts', 'brand.ts', 'presentation.ts', 'tracking.ts', 'workout-log.ts', 'onboarding.ts', 'rest-timer.ts', 'training.ts', 'training-focus.ts', 'program-catalog.ts', 'substitutions.ts', 'session-guide.ts', 'workout-review.ts', 'saved-data.ts', 'progress.ts', 'exercise-library.json', 'recipes.json'].map(name => [`lib/${name}`, `src/shared/${name}`]);
+const files = ['app-preferences.ts', 'workout-reminders.ts', 'brand.ts', 'presentation.ts', 'tracking.ts', 'workout-log.ts', 'onboarding.ts', 'rest-timer.ts', 'training.ts', 'training-tools.ts', 'training-focus.ts', 'program-catalog.ts', 'substitutions.ts', 'session-guide.ts', 'workout-review.ts', 'saved-data.ts', 'progress.ts', 'exercise-library.json', 'recipes.json'].map(name => [`lib/${name}`, `src/shared/${name}`]);
 files.push(['public/exercise-guides.json', 'assets/content/exercise-guides.json'], ['public/exercise-content.json', 'assets/content/exercise-content.json'], ['docs/exercise-library-LICENSE.txt', 'docs/exercise-library-LICENSE.txt'], ['docs/exercise-library-provenance.json', 'docs/exercise-library-provenance.json'], ['docs/product-requirements.md', 'docs/product-requirements.md'], ['docs/exercise-library-completion.json', 'docs/exercise-library-completion.json']);
 const records = [];
 for (const [from, to] of files) {

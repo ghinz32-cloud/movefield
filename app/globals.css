@@ -163,12 +163,23 @@ button:focus-visible,a:focus-visible,summary:focus-visible {outline:3px solid va
 @font-face{font-family:'Atkinson Hyperlegible';src:url('/fonts/atkinson-hyperlegible-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap}
 @font-face{font-family:Oswald;src:url('/fonts/oswald-latin-600-normal.woff2') format('woff2');font-weight:600;font-display:swap}
 @font-face{font-family:Oswald;src:url('/fonts/oswald-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:Saira;src:url('/fonts/saira-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Saira;src:url('/fonts/saira-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:Lexend;src:url('/fonts/lexend-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Lexend;src:url('/fonts/lexend-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:Nunito;src:url('/fonts/nunito-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Nunito;src:url('/fonts/nunito-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap}
 :root{--brand-from:#c4f275;--brand-to:#56dfae;--brand-deep:#226345;--accent-strong:var(--brand-deep);--background:#f4f6f7;--foreground:#192b30;--card:#ffffff;--card-foreground:var(--foreground);--popover:var(--card);--popover-foreground:var(--foreground);--primary:var(--brand-deep);--primary-foreground:#ffffff;--secondary:#e8edef;--secondary-foreground:var(--foreground);--muted:#edf1f3;--muted-foreground:#4c616a;--accent:#e8edef;--accent-foreground:var(--foreground);--border:#cbd5da;--input:#71858e;--ring:var(--brand-deep);--lime:var(--brand-from);--blue:var(--accent-strong);--chart-1:var(--accent-strong);--sidebar-primary:var(--brand-from);--sidebar-ring:var(--brand-from);--soft-accent:color-mix(in srgb,var(--brand-from) 18%,var(--card));--warning-bg:#fff0dc;--warning-text:#6e3b08;--line:var(--border);--destructive:#b62d3b;--font-sans:Inter,Arial,Helvetica,sans-serif}
 :root[data-palette=ocean]{--brand-from:#9bdfff;--brand-to:#92a9ff;--brand-deep:#2458a0}
 :root[data-palette=violet]{--brand-from:#dcbaff;--brand-to:#b4a1ff;--brand-deep:#6842a1}
 :root[data-palette=sunset]{--brand-from:#ffd49b;--brand-to:#ffa6b3;--brand-deep:#97430c}
 :root[data-palette=rose]{--brand-from:#ffbbdb;--brand-to:#ddaaff;--brand-deep:#973968}
 :root[data-palette=teal]{--brand-from:#afece7;--brand-to:#79d8dd;--brand-deep:#176568}
+:root[data-palette=ember]{--brand-from:#ffb29c;--brand-to:#ff8570;--brand-deep:#9e2a14}
+:root[data-palette=crimson]{--brand-from:#ffb8c4;--brand-to:#ff8096;--brand-deep:#a0153a}
+:root[data-palette=red]{--brand-from:#ffb3ae;--brand-to:#ff7a7a;--brand-deep:#a0151d}
+:root[data-palette=amber]{--brand-from:#ffe59a;--brand-to:#ffc247;--brand-deep:#7a4a00}
+:root[data-palette=graphite]{--brand-from:#d9e0e3;--brand-to:#a9b7bd;--brand-deep:#33434a}
 :root.dark{--background:#10191d;--foreground:#edf3f5;--card:#19262c;--card-foreground:var(--foreground);--popover:var(--card);--popover-foreground:var(--foreground);--primary:var(--brand-from);--primary-foreground:#132325;--secondary:#293c44;--secondary-foreground:var(--foreground);--muted:#213139;--muted-foreground:#b4c7cf;--accent:#30424b;--accent-foreground:var(--foreground);--border:#405660;--input:#7d949e;--ring:var(--brand-from);--accent-strong:var(--brand-from);--soft-accent:color-mix(in srgb,var(--brand-from) 10%,var(--card));--warning-bg:#392c1d;--warning-text:#ffd199;--destructive:#ffadb6}
 :root[data-contrast=true]{--muted-foreground:#253b44;--border:#637982;--input:#304c58;--soft-accent:var(--card);--ring:#111111}
 :root.dark[data-contrast=true]{--muted-foreground:#e4eef3;--border:#a4bbc6;--input:#cfdee5;--ring:#ffffff}
@@ -179,6 +190,11 @@ html[data-font="bold"] h1,html[data-font="bold"] h2,html[data-font="bold"] .bran
 html[data-font="easy"] body{font-family:'Atkinson Hyperlegible',Arial,Helvetica,sans-serif;letter-spacing:.01em}
 html[data-font="easy"] h1,html[data-font="easy"] h2,html[data-font="easy"] .brand-wordmark{font-family:'Atkinson Hyperlegible',Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:.01em}
 html[data-font="classic"] h1,html[data-font="classic"] h2,html[data-font="classic"] .brand-wordmark{font-family:Inter,Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:-.01em}
+html[data-font="saira"] h1,html[data-font="saira"] h2,html[data-font="saira"] .brand-wordmark{font-family:Saira,'Barlow Condensed',Inter,Arial,sans-serif;font-weight:700;letter-spacing:.005em}
+html[data-font="lexend"] body{font-family:Lexend,Arial,Helvetica,sans-serif;letter-spacing:.01em}
+html[data-font="lexend"] h1,html[data-font="lexend"] h2,html[data-font="lexend"] .brand-wordmark{font-family:Lexend,Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:-.005em}
+html[data-font="nunito"] body{font-family:Nunito,Arial,Helvetica,sans-serif}
+html[data-font="nunito"] h1,html[data-font="nunito"] h2,html[data-font="nunito"] .brand-wordmark{font-family:Nunito,Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:-.01em}
 h1{font-size:clamp(2.6rem,4vw,3.5rem)}h2{font-size:1.9rem}h3{font-family:Inter,Arial,sans-serif;letter-spacing:-.015em;line-height:1.4}
 .brand-wordmark{font-size:1.85rem}.flow-brand .brand-wordmark{font-size:2rem}.brand-wordmark small{font-family:Inter,Arial,sans-serif;font-size:.75rem;letter-spacing:0;line-height:1.5}
 .card,.entry-card,.plan-option{box-shadow:0 4px 24px #071b2510}.session-feature{background:linear-gradient(125deg,var(--brand-from),var(--brand-to));color:#132325}.session-feature h2{font-size:2.55rem}.session-feature .muted{color:#263e40}.session-feature button{color:#132325;border-color:#466359}.session-feature [data-slot=button][data-variant=default]{background:#132325;color:#ffffff}
@@ -209,7 +225,7 @@ input,textarea,select,[data-slot=select-trigger]{color:var(--foreground);border-
   .mobile-tabbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px;padding:6px 6px calc(6px + env(safe-area-inset-bottom));background:var(--card,#fff);border-top:1px solid var(--border,#dce3e7);box-shadow:0 -6px 20px rgba(19,35,37,.08)}
   .mobile-tabbar button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:56px;border:0;border-radius:12px;background:transparent;color:var(--muted-foreground,#4c616a);font-size:.72rem;font-weight:600}
   .mobile-tabbar button svg{width:22px;height:22px}
-  .mobile-tabbar button[aria-current=page]{color:#226345;background:#eef6dc}
+  .mobile-tabbar button[aria-current=page]{color:var(--accent-strong,#226345);background:var(--soft-accent,#eef6dc)}
   .mobile-tabbar .nav-count{position:absolute;top:6px;right:18%;min-width:18px;padding:0 4px;border-radius:999px;font-size:.7rem}
   #main-content{padding-bottom:104px}
 }
@@ -220,3 +236,39 @@ input,textarea,select,[data-slot=select-trigger]{color:var(--foreground);border-
 .font-picker button span:first-child{font-size:1.5rem;line-height:1}
 .font-picker button svg{position:absolute;top:10px;right:10px}
 .font-picker button{position:relative}
+
+/* Spacing density. Compact keeps buttons at least 32px tall (WCAG 2.2 minimum is 24px). Roomy adds larger targets and space. */
+html[data-density=compact] [data-slot=button]{height:2rem;padding-top:0;padding-bottom:0}
+html[data-density=compact] [data-slot=card]{padding-block:1rem;gap:1rem}
+html[data-density=compact] .card{padding:1rem}
+html[data-density=compact] .field{margin:.75rem 0}
+html[data-density=compact] .page-heading{margin-bottom:1.25rem}
+html[data-density=compact] .section-heading{margin:1.25rem 0 .75rem}
+html[data-density=compact] .switch-row{padding:.75rem 0}
+html[data-density=compact] [data-slot=sidebar-menu-button]{height:2.5rem}
+html[data-density=compact] .set-row{padding-block:.5rem}
+html[data-density=compact] .exercise-card{gap:.9rem;padding:1rem}
+html[data-density=compact] .session-list>button{padding-block:.7rem}
+html[data-density=roomy] [data-slot=button]{min-height:3rem;height:auto;padding-block:.6rem}
+html[data-density=roomy] [data-slot=card]{padding-block:2rem;gap:1.5rem}
+html[data-density=roomy] .card{padding:2rem}
+html[data-density=roomy] .field{margin:1.5rem 0}
+html[data-density=roomy] .page-heading{margin-bottom:2.5rem}
+html[data-density=roomy] .switch-row{padding:1.4rem 0}
+html[data-density=roomy] [data-slot=sidebar-menu-button]{height:3rem}
+html[data-density=roomy] .set-row{padding-block:1rem}
+html[data-density=roomy] .exercise-card{gap:1.6rem;padding:1.75rem}
+html[data-density=roomy] .session-list>button{padding:1.4rem 1.5rem}
+
+/* Training tools and weekly review */
+.training-tools .field-grid,.weekly-review .mini-stats{margin-top:.25rem}
+.tools-subheading{margin-top:1.75rem}
+.plate-result{margin-top:1rem;font-size:.95rem}
+.plate-result p{margin:.35rem 0}
+.tool-rows{margin-top:1rem}
+.tool-rows>div{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.25rem 1rem;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.92rem}
+.tool-rows .small-copy{margin:0 0 0 .35rem;font-size:.8rem}
+.weekly-review{margin-bottom:1.5rem}
+.weekly-review .mini-stats strong{font-size:1.5rem}
+html[data-density=compact] .weekly-review{margin-bottom:1rem}
+html[data-density=roomy] .weekly-review{margin-bottom:2rem}
