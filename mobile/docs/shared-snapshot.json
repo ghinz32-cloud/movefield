@@ -1,0 +1,125 @@
+{
+  "source": "Training Studio website domain modules; paths relative to its root",
+  "files": [
+    {
+      "source": "lib/app-preferences.ts",
+      "target": "src/shared/app-preferences.ts",
+      "sha256": "4bf28146c0345869ed642bd9e111ab17956f9c2e8552dacbc22712940f402286"
+    },
+    {
+      "source": "lib/workout-reminders.ts",
+      "target": "src/shared/workout-reminders.ts",
+      "sha256": "50e9fe8d123c8778165bc5547747ad02cf249a28eca7d2e20f508f6be8d2276e"
+    },
+    {
+      "source": "lib/brand.ts",
+      "target": "src/shared/brand.ts",
+      "sha256": "bd01748eddce662edd225d141f40e055f996297eac92d52f9a0987f5e85efaed"
+    },
+    {
+      "source": "lib/presentation.ts",
+      "target": "src/shared/presentation.ts",
+      "sha256": "e9096d46f2c54f9ee537987c0d0c8ef31f0827d896fd3888281d3e99c01edde2"
+    },
+    {
+      "source": "lib/tracking.ts",
+      "target": "src/shared/tracking.ts",
+      "sha256": "3b97a02e0ae41ed3f581030bc58c26127237269cac5ed49bc3cacdf5fb09d2f6"
+    },
+    {
+      "source": "lib/workout-log.ts",
+      "target": "src/shared/workout-log.ts",
+      "sha256": "72d85ced641624c11a2581d8d4e946ed75397ee63904d3722a9791960b0745cb"
+    },
+    {
+      "source": "lib/onboarding.ts",
+      "target": "src/shared/onboarding.ts",
+      "sha256": "3436ae7fb3408a84cf5260f7cbb9471a0ef796853ab7e49cac65e3fd1df6f8c4"
+    },
+    {
+      "source": "lib/rest-timer.ts",
+      "target": "src/shared/rest-timer.ts",
+      "sha256": "36538cc608229d05c2d31cdad444842bea930701422482f15e48feea68862170"
+    },
+    {
+      "source": "lib/training.ts",
+      "target": "src/shared/training.ts",
+      "sha256": "fc4cd15c7e1e4a06995443bdd6372be66cf006873e087e946804beb937b13532"
+    },
+    {
+      "source": "lib/training-focus.ts",
+      "target": "src/shared/training-focus.ts",
+      "sha256": "78a4a6d58462071d033c612c3a8aa23786a23531e6d4dbccde7730e1289c60ec"
+    },
+    {
+      "source": "lib/program-catalog.ts",
+      "target": "src/shared/program-catalog.ts",
+      "sha256": "3082b0a2c2c94f4736e6804c53f532937bbe92bfca36b845e6eb51566c9f4e2f"
+    },
+    {
+      "source": "lib/substitutions.ts",
+      "target": "src/shared/substitutions.ts",
+      "sha256": "53d62684f6b526c2ced77e2eef87c483c38c5f6c743001bde6c5859d86a1ebbd"
+    },
+    {
+      "source": "lib/session-guide.ts",
+      "target": "src/shared/session-guide.ts",
+      "sha256": "58565be1537fd0d7620f7b2c75767a7f27d0510801fc7bec6c1121d5b151df20"
+    },
+    {
+      "source": "lib/workout-review.ts",
+      "target": "src/shared/workout-review.ts",
+      "sha256": "ed43d92fa3daeb7602264ae632047c5ff046e98aeb0519c73837c48d7a00eb4f"
+    },
+    {
+      "source": "lib/saved-data.ts",
+      "target": "src/shared/saved-data.ts",
+      "sha256": "ed4e6ef972c4df9882870d14a9bbaaeb1f853c632c5004c9e85047a3bc6b7ccb"
+    },
+    {
+      "source": "lib/progress.ts",
+      "target": "src/shared/progress.ts",
+      "sha256": "9495f8db6077f0b4b0506646ff9c330b12589fb647e7de5ea089bcdf4a9cd65a"
+    },
+    {
+      "source": "lib/exercise-library.json",
+      "target": "src/shared/exercise-library.json",
+      "sha256": "255e51c2dad783a487d37ea4bbe3eb6942f6d7dfde497b7a432ec3bd54620040"
+    },
+    {
+      "source": "lib/recipes.json",
+      "target": "src/shared/recipes.json",
+      "sha256": "667a3b8678ffc458d725a50ae9bd5372f8dcc3b4f6f7dfb1f4f7148ac17dde8d"
+    },
+    {
+      "source": "public/exercise-guides.json",
+      "target": "assets/content/exercise-guides.json",
+      "sha256": "62fa1d71ee08312f6e8809ce60e17e7df7e8a3a8d79f49bed15731592d0f7a38"
+    },
+    {
+      "source": "public/exercise-content.json",
+      "target": "assets/content/exercise-content.json",
+      "sha256": "9a17a1c905fe80e7210803a7b1b466c0a207a40b702386f6e75fb891585b68bb"
+    },
+    {
+      "source": "docs/exercise-library-LICENSE.txt",
+      "target": "docs/exercise-library-LICENSE.txt",
+      "sha256": "6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e"
+    },
+    {
+      "source": "docs/exercise-library-provenance.json",
+      "target": "docs/exercise-library-provenance.json",
+      "sha256": "434ce7e5af124b5ec34595e37b0d4489fed7f4019bc817e0cc2710d7337b5aa7"
+    },
+    {
+      "source": "docs/product-requirements.md",
+      "target": "docs/product-requirements.md",
+      "sha256": "39dd4fe703b6f21b651aa3d480df5cb0846aa86a374f16f7ab3f8c3743850866"
+    },
+    {
+      "source": "docs/exercise-library-completion.json",
+      "target": "docs/exercise-library-completion.json",
+      "sha256": "8676a4a76423f5876a4044ee10073b230add7f63041b8b5f52bd62f53852899b"
+    }
+  ]
+}
