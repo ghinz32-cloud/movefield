@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-07T18:51:30.633Z",
+  "matrixSetups": 1701,
+  "matched": 1433,
+  "unmatched": 268,
+  "unmatchedReasons": {
+    "Powerbuilding requires a loadable strength anchor; choose a home strength/muscle goal": 63,
+    "Two combined strength + walk/jog sessions exceed the selected time window": 36,
+    "Dumbbell-assisted calisthenics is available only with a longer session window": 27,
+    "Competition barbell equipment or sufficient session time required": 142
+  },
+  "limits": "This cross-product is adult app-led selections with three equipment profiles, seven time windows and three availability patterns. Separate revision-11 tests cover standing-only setups, age/sex, equipment caps and explicit unsupported youth cases. A tracking calendar is not counted as a matched app plan."
+}

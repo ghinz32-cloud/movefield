@@ -1,0 +1,34 @@
+{
+  "coverage": 176,
+  "sourceRecordsChecked": 176,
+  "minimumCoreWords": 185,
+  "maximumCoreWords": 336,
+  "meanCoreWords": 237.2,
+  "timedExercises": [
+    "ref-Balance_Board",
+    "ref-Downward_Facing_Balance",
+    "ref-Battling_Ropes"
+  ],
+  "loadTrackedCount": 107,
+  "progressionEnabledCount": 57,
+  "sources": [
+    "https://shop.lifefitness.com/products/hammer-strength-select-seated-leg-curl",
+    "https://support.lifefitness.com/hc/en-us/articles/38587673062295-Life-Fitness-SSM-Signature-Smith-Machine-Owner-s-Manual",
+    "https://www.acefitness.org/resources/everyone/exercise-library/11/back-squat/",
+    "https://www.acefitness.org/resources/everyone/exercise-library/236/barbell-jammers/",
+    "https://www.acefitness.org/resources/everyone/exercise-library/394/halo/",
+    "https://www.acefitness.org/resources/everyone/exercise-library/54/front-raise/",
+    "https://www.strongfirst.com/3-cleans-relationship-form-function/",
+    "https://www.strongfirst.com/taming-the-arc-in-kettlebell-lifts/"
+  ],
+  "notableSourceIssues": [
+    "Band Hip Adductions source describes outward abduction; guide states discrepancy.",
+    "Iron Cross has empty cues; both exact-record photos inspected, showing squat with arms forward and standing cross.",
+    "One-Arm Kettlebell Swings has empty cues; named swing reconstructed with official StrongFirst family guidance.",
+    "Weighted Sissy Squat says toes raised despite knee-forward leaning pattern; guide explicitly explains heel-raised interpretation.",
+    "Single-Leg High Box Squat source is a supported step-up pattern.",
+    "Flutter Kicks source is prone on bench, not supine abdominal flutter kicks.",
+    "Chair Squat source uses Smith bar with feet forward, no chair."
+  ],
+  "validation": "All IDs, required fields, arrays, three quick cues, metric enums, metadata types, load convention agreement, nonzero tracked multipliers, and upstream record membership passed."
+}

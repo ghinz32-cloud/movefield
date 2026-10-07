@@ -1,0 +1,179 @@
+{
+  "groups": [
+    "Damaged and unsafe preferences fall back without changing training records",
+    "Model selection requires measured qualification and falls back without downloads",
+    "Reminder schedule deduplicates days and respects plan and workout state",
+    "Calendar export contains timed reminders and no workout or personal details",
+    "Six light and dark palette roles pass required text and control contrast"
+  ],
+  "checks": 62,
+  "contrast": [
+    {
+      "palette": "green",
+      "role": "light button",
+      "ratio": 7.15
+    },
+    {
+      "palette": "green",
+      "role": "light accent",
+      "ratio": 7.15
+    },
+    {
+      "palette": "green",
+      "role": "dark accent",
+      "ratio": 12.03
+    },
+    {
+      "palette": "green",
+      "role": "gradient start",
+      "ratio": 12.59
+    },
+    {
+      "palette": "green",
+      "role": "gradient end",
+      "ratio": 9.7
+    },
+    {
+      "palette": "ocean",
+      "role": "light button",
+      "ratio": 7.05
+    },
+    {
+      "palette": "ocean",
+      "role": "light accent",
+      "ratio": 7.05
+    },
+    {
+      "palette": "ocean",
+      "role": "dark accent",
+      "ratio": 10.62
+    },
+    {
+      "palette": "ocean",
+      "role": "gradient start",
+      "ratio": 11.12
+    },
+    {
+      "palette": "ocean",
+      "role": "gradient end",
+      "ratio": 7.21
+    },
+    {
+      "palette": "violet",
+      "role": "light button",
+      "ratio": 7.29
+    },
+    {
+      "palette": "violet",
+      "role": "light accent",
+      "ratio": 7.29
+    },
+    {
+      "palette": "violet",
+      "role": "dark accent",
+      "ratio": 9.23
+    },
+    {
+      "palette": "violet",
+      "role": "gradient start",
+      "ratio": 9.66
+    },
+    {
+      "palette": "violet",
+      "role": "gradient end",
+      "ratio": 7.32
+    },
+    {
+      "palette": "sunset",
+      "role": "light button",
+      "ratio": 6.72
+    },
+    {
+      "palette": "sunset",
+      "role": "light accent",
+      "ratio": 6.72
+    },
+    {
+      "palette": "sunset",
+      "role": "dark accent",
+      "ratio": 11.18
+    },
+    {
+      "palette": "sunset",
+      "role": "gradient start",
+      "ratio": 11.69
+    },
+    {
+      "palette": "sunset",
+      "role": "gradient end",
+      "ratio": 8.77
+    },
+    {
+      "palette": "rose",
+      "role": "light button",
+      "ratio": 6.77
+    },
+    {
+      "palette": "rose",
+      "role": "light accent",
+      "ratio": 6.77
+    },
+    {
+      "palette": "rose",
+      "role": "dark accent",
+      "ratio": 9.88
+    },
+    {
+      "palette": "rose",
+      "role": "gradient start",
+      "ratio": 10.34
+    },
+    {
+      "palette": "rose",
+      "role": "gradient end",
+      "ratio": 8.7
+    },
+    {
+      "palette": "teal",
+      "role": "light button",
+      "ratio": 6.78
+    },
+    {
+      "palette": "teal",
+      "role": "light accent",
+      "ratio": 6.78
+    },
+    {
+      "palette": "teal",
+      "role": "dark accent",
+      "ratio": 11.79
+    },
+    {
+      "palette": "teal",
+      "role": "gradient start",
+      "ratio": 12.34
+    },
+    {
+      "palette": "teal",
+      "role": "gradient end",
+      "ratio": 9.79
+    }
+  ],
+  "limits": [
+    "Contrast calculations cover design tokens, not every rendered pixel.",
+    "Browser keyboard/reflow/screen-reader and physical-device notification tests are still required.",
+    "No model inference or performance benchmarks have been run."
+  ],
+  "completedChecks": [
+    "web TypeScript",
+    "native TypeScript",
+    "web production build",
+    "iOS Metro export",
+    "Android Metro export",
+    "11 training regression checks",
+    "native storage regression checks",
+    "native stale-permission race regression",
+    "production Worker: HTTP 200, 22 matching nonces, nonce rotation, write/internal route rejection, fonts/logos/mobile ZIP served"
+  ],
+  "publication": "Blocked by automatic approval review; explicit source-upload and Cloudflare publication approval required."
+}
