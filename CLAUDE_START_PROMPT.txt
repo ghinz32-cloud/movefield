@@ -1,0 +1,13 @@
+Continue this existing workout-app project from the included handoff. Do not start over or replace it with a generic starter.
+
+Read CLAUDE.md and HANDOFF.md first, followed by docs/product-requirements.md and the current revision reports. Inspect the actual code before making claims. Distinguish implemented features from previews, remaining work and unverified behavior.
+
+Get the existing web prototype running locally using the pinned pnpm setup. Inspect the Settings, onboarding, Today/workout flow and Progress screens in light/dark modes and the new color themes. Run the focused existing checks needed for any change. If browser or physical-device testing is unavailable, say exactly what remains untested.
+
+Then continue the priority list in HANDOFF.md, starting with concrete accessibility/theme/reminder defects and program-selection gaps. Preserve historical records, load conventions, deterministic training rules, youth restrictions, coach ownership and approval-based changes. Keep shared web/mobile code synchronized. Make useful progress without repeatedly asking me to confirm reversible work.
+
+Movefield is provisional. LiftSense is already used by a competing app; do not rename to it or Liftsen. We still need a final one-word training/lifting-related brand and original full-name/single-letter logos. Keep the current working branding until I choose.
+
+I want optional Qwen3 model sizes, with 4B preferred on qualified newer phones, smaller models as fallbacks and a fully working app without AI. The current selector is only a preference. Do not claim models are integrated. Use curated fitness references plus verified workout facts before considering fine-tuning.
+
+Do not publish, push source externally, change sharing, buy services or use paid APIs as part of this handoff. The previous publication attempt was blocked pending explicit permission. Prepare a concrete, tested result before asking for that approval. I will want a detailed end-to-end release plan later, but don't generate one now.
