@@ -12,20 +12,26 @@ export function setupErrors(p:Profile,step:number):string[]{
  return [];
 }
 export type PlanOption={id:string;title:string;description:string;profile:Profile;plan:Plan|null;errors:string[];recommended:boolean;notes?:string[];startHere?:boolean};
+// Use the entire generated block, including later higher-set weeks, rather than catalog marketing times.
+function draftMinutes(id:string,p:Profile,plan?:Plan|null):number|null{
+ const draft=plan===undefined?buildPlan({...p,programId:id}).plan:plan;
+ return draft?.sessions.length?Math.max(...draft.sessions.map(s=>s.minutes)):null;
+}
 // Plain fit notes for one catalogue program against the person's chosen days and session length.
-export function fitNotes(id:string,p:Profile):string[]{
+export function fitNotes(id:string,p:Profile,plan?:Plan|null):string[]{
  const d=programCatalog.find(x=>x.id===id);
  if(!d)return id==='RUN-WALK'?['Three separated run days, with walk breaks that get shorter over the weeks','Built for a first run; no lifting experience needed']:[];
  const notes=[d.days===p.days.length?`Uses all ${d.days} of your chosen days`:d.days<p.days.length?`Uses ${d.days} of your ${p.days.length} chosen days, which leaves rest days between sessions`:`Needs ${d.days} training days; you chose ${p.days.length}`];
- notes.push(d.minutes<=p.minutes?`Fits your ${p.minutes}-minute session window`:`About ${d.minutes} minutes per session, longer than your ${p.minutes}-minute window`);
- notes.push(d.experience==='all'?'Suitable from your first session':'Assumes some lifting experience');
+ const minutes=draftMinutes(id,p,plan);
+ notes.push(minutes===null?'This setup needs a change; review the plan errors':minutes<=p.minutes?`Fits your ${p.minutes}-minute session window · up to ${minutes} minutes in this block`:`About ${minutes} minutes per session, longer than your ${p.minutes}-minute window`);
+ notes.push(d.experience==='all'?'Suitable from your first session':d.experience==='advanced'?'Needs established technique and consistent recent training':'Assumes some lifting experience');
  return notes;
 }
 // Higher is a better fit. Days matter most, then session length, then experience. Used to pick the recommended and starting plans.
-export function fitScore(id:string,p:Profile):number{
+export function fitScore(id:string,p:Profile,plan?:Plan|null):number{
  const d=programCatalog.find(x=>x.id===id);
  if(!d)return id==='RUN-WALK'&&p.experience==='First time'?6:0;
- return (d.days===p.days.length?3:d.days<p.days.length?1:-5)+(d.minutes<=p.minutes?2:-2)+(d.experience==='all'?2:0);
+ return (d.days===p.days.length?3:d.days<p.days.length?1:-5)+(draftMinutes(id,p,plan)!==null?2:-2)+(d.experience==='all'?2:0);
 }
 export function planOptions(p:Profile,events:Event[]):PlanOption[]{
  const specialized=p.mode==='app'&&programCatalog.some(d=>d.goal===p.goal);
@@ -36,10 +42,10 @@ export function planOptions(p:Profile,events:Event[]):PlanOption[]{
  const built=variants.map(v=>({...v,...buildPlan(v.profile,events),recommended:false}));
  // The best-fitting plan for this goal is recommended. For a first-time lifter it is also the starting suggestion.
  const eligible=built.filter(v=>v.plan&&v.profile.mode===p.mode&&v.profile.goal===p.goal);
- const best=eligible.reduce<(typeof eligible)[number]|null>((a,b)=>!a||fitScore(b.id,p)>fitScore(a.id,p)?b:a,null);
+ const best=eligible.reduce<(typeof eligible)[number]|null>((a,b)=>!a||fitScore(b.id,p,b.plan)>fitScore(a.id,p,a.plan)?b:a,null);
  if(best)best.recommended=true;
  if(best&&p.experience==='First time'&&p.mode==='app')best.startHere=true;
- return built.map(v=>({...v,notes:v.plan?fitNotes(v.id,p):undefined})).sort((a,b)=>Number(!!b.plan)-Number(!!a.plan)||Number(b.recommended)-Number(a.recommended));
+ return built.map(v=>({...v,notes:v.plan?fitNotes(v.id,p,v.plan):undefined})).sort((a,b)=>Number(!!b.plan)-Number(!!a.plan)||Number(b.recommended)-Number(a.recommended));
 }
 export function acceptSetup(s:State,p:Profile,plan:Plan,events:Event[],expectedEvents=JSON.stringify(s.events)):{state:State;error?:string}{
  if(s.plan&&s.saved.length>=100)return {state:s,error:'This local demo holds 100 archived or saved plans. Export your records before starting another block.'};

@@ -1,6 +1,14 @@
 # Current continuation — 8 October 2026
 
-## Latest milestone — U03 workout foundation evidence audit
+## Latest milestone — U04a generated plan fit
+
+Parent `95571a5ecf2cd4d5a5fab3dbf8c60924452f7cf2` is pushed/verified. Exact checkpoint: `git log -1 --format=%H -- docs/plan-fit-repair-2026-10-08.md`, then compare remote/status. Changed canonical/native onboarding fit helpers and native snapshot, plus two regression cases. PLU3's actual 50-minute draft now fits a 75-minute window instead of displaying stale 80-minute catalog text. Ranking uses the generated block, including later weeks.
+
+14 onboarding checks, 31 shared-file checks, web/native types, lint, native engine and Android/iOS Metro exports pass. Actual browser recheck was interrupted by a development preview reload; no new rendered acceptance or phone test claimed. Report `docs/plan-fit-repair-2026-10-08.md` records limitations. No merge/deployment.
+
+Next short prompt: “Resume Movefield on `audit/2026-10-08-quality`. Read AGENTS/TASKS/HANDOFF, verify refs and changes. Complete U04b: add verified 2019 frequency and 2026 volume evidence to current plans, remove superseded ACSM 2009 from current mapping while retaining history. Sync native, test source mapping/parity and types, checkpoint/verify; then U05 storage and Qwen milestones. No merge or deploy.”
+
+## Previous milestone — U03 workout foundation evidence audit
 
 Parent `243dfaa5ca697c293644f6b556fc6f22dd05e241` is pushed/verified. This audit checkpoint contains `docs/workout-evidence-audit-2026-10-08.md`; resolve exact SHA with `git log -1 --format=%H -- docs/workout-evidence-audit-2026-10-08.md` and verify remote/status. Saved inventory: `docs/workout-coverage-2026-10-08.json`; canonical generator `scripts/audit-workout-coverage.cjs`.
 
@@ -8,7 +16,7 @@ Completed: ten primary-source ledger entries with retrieval limits, 75 matching-
 
 Next short prompt: “Resume Movefield on `audit/2026-10-08-quality`. Read AGENTS/TASKS/HANDOFF and the U03 evidence audit; verify refs/changes. Complete U04a: calculate fit notes/ranking from the generated draft, not stale catalog times. Test PLU3 time mismatch, preserve generator budget guards and sync native canonical code. Checkpoint/verify, then U04b evidence mapping, U05 storage and U06–U09 Qwen. No merge or deploy.”
 
-## Latest milestone — U02b native controls
+## Previous milestone — U02b native controls
 
 Parent `acd95cb4e1d93f52b699324232980f81be98c214` is pushed/verified. This source checkpoint contains `docs/ux-native-controls-2026-10-08.md`; resolve the exact SHA with `git log -1 --format=%H -- docs/ux-native-controls-2026-10-08.md`, then verify remote head and existing changes. Code: `mobile/App.tsx`.
 
@@ -16,7 +24,7 @@ Completed: labeled wrapping numeric field groups, full-width Log controls, persi
 
 Next short prompt: “Resume Movefield on `audit/2026-10-08-quality`. Read AGENTS/TASKS/HANDOFF and verify refs/changes. Complete U03: primary-source workout evidence ledger and generated weekly-day/dose/progression coverage; separate product heuristics from studied prescriptions and identify the highest bounded gap. Save/verify GitHub checkpoint, update handoff and continue U04, then storage/Qwen milestones. No merge or deploy.”
 
-## Latest milestone — U02a web controls
+## Previous milestone — U02a web controls
 
 Parent `701c8b8a7a77c19e1be6ce17effd702917fbe3ff` is pushed/verified. This application checkpoint contains `docs/ux-web-controls-2026-10-08.md`; resolve its exact SHA with `git log -1 --format=%H -- docs/ux-web-controls-2026-10-08.md`, compare remote head, and check existing changes. Code: `app/page.tsx`, `app/globals.css`. Evidence: `docs/qa/u02a-workout-after.jpg`.
 
@@ -24,7 +32,7 @@ Completed: collapsed optional calculators/guidance, sticky finish/rest actions, 
 
 Next short prompt: “Resume Movefield on `audit/2026-10-08-quality`. Read AGENTS/TASKS/HANDOFF, verify refs and changes. Complete U02b: native labeled set-entry groups, full-width log action and persistent finish/rest controls; preserve existing finish confirmation and deterministic training behavior. Run native types/engine/export and product lint, checkpoint/verify GitHub and update handoff. Then continue U03 evidence audit. No merge or deploy.”
 
-## Latest milestone — U01 UX baseline
+## Previous milestone — U01 UX baseline
 
 Parent checkpoint: `c9679d50c161a4407c3e4ca8dd70bc5d89d277e6`, pushed and verified. Application source remains `9d7c13ed6352e74c0a7766bd2d80fb524a5b709f`. The U01 documentation/evidence checkpoint is the commit containing `docs/ux-baseline-2026-10-08.md`; resolve `git log -1 --format=%H -- docs/ux-baseline-2026-10-08.md`, then verify remote head.
 
