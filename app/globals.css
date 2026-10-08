@@ -272,3 +272,7 @@ html[data-density=roomy] .session-list>button{padding:1.4rem 1.5rem}
 .weekly-review .mini-stats strong{font-size:1.5rem}
 html[data-density=compact] .weekly-review{margin-bottom:1rem}
 html[data-density=roomy] .weekly-review{margin-bottom:2rem}
+.fit-notes{margin:12px 0 0;padding-left:1.15rem;font-size:.9rem;color:var(--muted-foreground);line-height:1.6;display:grid;gap:4px}
+.goal-reader{margin:6px 0 22px;display:grid;gap:12px}.goal-reader .field small{display:block;margin-top:6px;font-size:.875rem}
+.demo-list{display:grid;gap:12px;margin:16px 0;padding:0;list-style:none}.demo-list li{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.review-disclaimer{margin:4px 0 12px;padding:10px 12px;border-left:3px solid var(--accent-strong);background:var(--soft-accent);border-radius:6px}

@@ -9,6 +9,8 @@ import {applySubstitution} from '../src/shared/substitutions';
 import { randomBytes } from 'node:crypto';
 import { isSealed, keyFromHex, LocalDataError, newKeyHex, openText, sealText } from '../src/local-crypto';
 import { createTransferFile, isTransferFile, openTransferFile, TransferError } from '../src/shared/transfer-bundle';
+import { planOptions } from '../src/shared/onboarding';
+import { blankProfile } from '../src/shared/training';
 
 assert.equal(previewPlan('missing-program').plan,null);
 const choices = [FOUNDATION, RUN_WALK, SPORT_FOUNDATION, ...programCatalog.map(x => x.id)];
@@ -115,4 +117,14 @@ void (async () => {
   assert.equal(await openTransferFile(file, transferPassword), transferPlain);
   await assert.rejects(openTransferFile(file, 'quiet river lantern 43'), (e: unknown) => e instanceof TransferError && e.code === 'wrong-password');
   console.log('PASS: phone transfer files round-trip, reject a wrong password, and keep the header authenticated.');
+  // Starting suggestion: a first-time lifter gets one starting plan whose days match the choice; experienced users get none.
+  const firstTime = { ...blankProfile, name: 'Check', age: 28, goal: 'hypertrophy', experience: 'First time', mode: 'app' as const, days: [1, 3, 5], minutes: 60, weeks: 8, equipment: 'Full gym', start: day() };
+  const starts = planOptions(firstTime, []).filter(o => o.startHere);
+  assert.equal(starts.length, 1, 'exactly one starting plan for a first-time lifter');
+  assert.ok(starts[0].plan, 'the starting plan is buildable');
+  const startProgram = programCatalog.find(d => d.id === starts[0].id);
+  assert.equal(startProgram?.days, 3, 'a three-day choice starts with a three-day program');
+  assert.ok((starts[0].notes ?? []).length >= 2, 'the starting plan explains its fit');
+  assert.equal(planOptions({ ...firstTime, experience: 'Some experience' }, []).some(o => o.startHere), false, 'experienced users get no starting label');
+  console.log('PASS: first-time lifters get one starting plan that matches their days; fit notes are shown.');
 })().catch(error => { console.error(error); process.exit(1); });

@@ -14,7 +14,7 @@ import {readSavedState} from './src/shared/saved-data';
 import {sessionGuide} from './src/shared/session-guide';
 import {reviewWorkout} from './src/shared/workout-review';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { AccessibilityInfo, ActivityIndicator, FlatList, KeyboardAvoidingView, Linking, Modal, Platform, Pressable, ScrollView, Share, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, AccessibilityInfo, ActivityIndicator, FlatList, KeyboardAvoidingView, Linking, Modal, Platform, Pressable, ScrollView, Share, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { setEquipmentLimit, loadSuggestion, makeLoadProposal, changed, applyProposal, makeProposal, makeMoveProposal, matchesExercise, day, displayLoad, eligibility, exFor, exercises, isLoadTracked, niceDate, nextSession, targetText, toKg, weekdays, goals, type Exercise, type Plan, type Proposal, type SetLog, type SetMetrics, type State, type Workout } from './src/shared/training';
@@ -28,6 +28,8 @@ import { NativeTransferMake, NativeTransferOpen } from './src/transfer';
 import { createTransferFile, isTransferFile, openTransferFile, TransferError } from './src/shared/transfer-bundle';
 import { getRandomBytes } from 'expo-crypto';
 import { NativeTrainingTools, NativeWeeklyReview } from './src/tools';
+import { demoLink, firstTimeExerciseIds } from './src/shared/exercise-video';
+import { AI_DISCLAIMER, SEEK_CARE_TEXT } from './src/shared/safety-copy';
 
 type Tab = 'Today' | 'Plan' | 'Library' | 'History' | 'Settings';
 type Confirmation = { title: string; message: string; label: string; action: () => void };
@@ -93,6 +95,24 @@ function NativeEquipmentLimit({state,exercise,onSave}:{state:State;exercise?:Exe
 function TrainingApp() {
  const styles=useThemedStyles(baseStyles),appearance=useNativeAppearance(),COLORS=appearance.colors;
   const [state, setState] = useState<State | null>(null);
+  // Asked once per exercise in a workout, before its first set, and only for exercises never logged on this phone.
+  const [askedDemo, setAskedDemo] = useState<string[]>([]);
+  useEffect(() => {
+    const w = state?.active;
+    if (!state || !w) return;
+    const planSession = state.plan?.sessions.find(x => x.id === w.sessionId);
+    const ids = firstTimeExerciseIds(state.history, (w.targets || planSession?.items || []).map(i => i.exerciseId), state.videoPromptsAnswered)
+      .filter(id => demoLink(id, media) && !askedDemo.includes(`${w.id}:${id}`));
+    const id = ids[0];
+    if (!id) return;
+    const link = demoLink(id, media);
+    const mark = () => setAskedDemo(v => [...v, `${w.id}:${id}`]);
+    const buttons: { text: string; style?: 'cancel'; onPress?: () => void }[] = [];
+    if (link) buttons.push({ text: link.kind === 'video' ? 'Watch a demonstration' : 'Open the source page', onPress: () => { mark(); Linking.openURL(link.url).catch(() => undefined); } });
+    buttons.push({ text: 'Not now', style: 'cancel', onPress: mark });
+    buttons.push({ text: 'Don’t ask about this one', onPress: () => { mark(); setState(v => v ? { ...v, videoPromptsAnswered: [...new Set([...(v.videoPromptsAnswered || []), id])] } : v); } });
+    Alert.alert(`New exercise: ${exFor(id, state.custom).name}`, 'Would you like to see a demonstration before your first set? Links open in your browser. Movefield does not play video itself.', buttons);
+  }, [state?.active?.id, askedDemo]);
   const [readError, setReadError] = useState<string | null>(null);
   const [saveStatus, setSaveStatus] = useState('Loading local data…');
   const [error, setError] = useState('');
@@ -208,10 +228,10 @@ function TrainingApp() {
   const updateSet = (index:number,patch:Partial<SetLog>)=>modify(s=>changeWorkoutSet(s,index,patch));
   const todayView = <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.content}>
     <Heading eyebrow={niceDate(day()).toUpperCase()} title={active ? 'Make every set count.' : 'Your next good session.'} detail="See your next workout, record your sets and review your progress." />
-    {state.hold&&<Card><Text style={styles.sectionTitle}>Recommendations are on hold</Text><Text style={styles.body}>You reported pain or an uncertain concern. Stop the affected activity and seek appropriate guidance. Your recorded work is kept.</Text></Card>}
+    {state.hold&&<Card><Text style={styles.sectionTitle}>Recommendations are on hold</Text><Text style={styles.body}>You reported pain or an uncertain concern. Stop the affected activity and seek appropriate guidance. Your recorded work is kept.</Text><Text style={[styles.body, { fontWeight: '700' }]}>{SEEK_CARE_TEXT}</Text></Card>}
     {state.plan?.profile.mode==='app'&&!active&&!state.hold&&<Card><Text style={styles.sectionTitle}>Review progression</Text><Text style={styles.body}>Load changes need your approval. Enter available increments in an exercise guide. Equipment limits may offer a wider rep range for eligible muscle-focused work.</Text><Button secondary label="Preview a load or rep-range change" onPress={()=>{const r=makeLoadProposal(stateRef.current!);if(r.proposal)stageChange(r.proposal);else setError(r.error||'No change is ready.');}}/></Card>}
     {!state.plan && <><Card dark><Text style={styles.darkEyebrow}>START HERE</Text><Text style={styles.darkTitle}>Build your first plan.</Text><Text style={styles.darkBody}>Choose your goal, time and equipment. Review your own plan before starting.</Text><Button label="Build my plan" onPress={() => setPersonalSetup(true)} secondary /></Card><Text style={styles.body}>Personal plans are saved on this device. Real sign-in and website sync are not connected yet.</Text></>}
-    {[...state.history].filter(w=>w.finishedAt).sort((a,b)=>(b.finishedAt||0)-(a.finishedAt||0)).slice(0,1).map(w=>{const r=reviewWorkout(state,w.id);return r?<Card key={w.id}><Text style={styles.eyebrow}>WORKOUT SUMMARY</Text><Text style={styles.sectionTitle}>{r.summary}</Text>{r.facts.map(f=><Text style={styles.body} key={f.id}>{f.text}</Text>)}<Text style={styles.body}>Next step: {r.next}</Text><Text style={styles.small}>This summary uses your saved workout and the app’s training rules. No AI model is connected and nothing is sent to an AI service.</Text></Card>:null})}
+    {[...state.history].filter(w=>w.finishedAt).sort((a,b)=>(b.finishedAt||0)-(a.finishedAt||0)).slice(0,1).map(w=>{const r=reviewWorkout(state,w.id);return r?<Card key={w.id}><Text style={styles.eyebrow}>WORKOUT SUMMARY</Text><Text style={styles.sectionTitle}>{r.summary}</Text><Text style={styles.small}>{AI_DISCLAIMER}</Text>{r.facts.map(f=><Text style={styles.body} key={f.id}>{f.text}</Text>)}<Text style={styles.body}>Next step: {r.next}</Text><Text style={styles.small}>This summary uses your saved workout and the app’s training rules. No AI model is connected and nothing is sent to an AI service.</Text></Card>:null})}
     {state.plan && !active && <><Card dark><Text style={styles.darkEyebrow}>{next ? (next.date === day() ? 'TODAY’S SESSION' : 'NEXT SESSION') : 'SCHEDULE FINISHED'}</Text><Text style={styles.darkTitle}>{next?sessionName(next,state.plan):'Review this block.'}</Text><Text style={styles.darkBody}>{next ? `${niceDate(next.date)} · ${next.minutes} min · Week ${next.week}` : `${state.plan.sessions.filter(x=>x.status==='completed').length} completed · ${state.plan.sessions.filter(x=>x.status==='partial').length} partial · ${state.plan.sessions.filter(x=>x.status==='missed').length} skipped. Your history is kept.`}</Text>{next && <><Text style={styles.darkBody}>{next.items.length} exercises · {next.items.reduce((n, x) => n + x.sets, 0)} working sets</Text><Button label={next.date > day() ? `Scheduled ${niceDate(next.date)}` : 'Start workout →'} disabled={!!blocked || next.date > day()} secondary onPress={() => modify(s => startWorkout(s, next.id))} /></>}</Card>{blocked && <Card><Text style={styles.sectionTitle}>Review before continuing</Text><Text style={styles.body}>{blocked}</Text><Text style={styles.small}>Review a shorter remaining block with the same dates. This does not provide medical return-to-training clearance.</Text><Button label="Review a shorter return block" secondary disabled={state.hold||state.plan.paused} onPress={()=>{const p=makeProposal(stateRef.current!,'return');if(p)stageChange(p);else setError('No recovery change is available.');}} /></Card>}{next && <Card><Text style={styles.sectionTitle}>Change a workout date</Text><Text style={styles.body}>Move this and later unstarted workouts together. Review every date before accepting.</Text><TextInput accessibilityLabel="New workout date YYYY-MM-DD" style={styles.input} value={moveDate} onChangeText={setMoveDate} placeholder="YYYY-MM-DD" autoCapitalize="none" maxLength={10}/><Button label="Preview date changes" secondary onPress={()=>{const r=makeMoveProposal(stateRef.current!,next.id,moveDate,true);if(r.proposal)stageChange(r.proposal);else setError(r.error||'This move is unavailable.');}} /></Card>}{next&&<Card><Text style={styles.sectionTitle}>Warm-up, effort & finish</Text>{sessionGuide(state.plan,next).warmup.map((line,i)=><Text style={styles.body} key={i}>{i+1}. {line}</Text>)}<Text style={styles.body}>{sessionGuide(state.plan,next).effort}</Text><Text style={styles.small}>{sessionGuide(state.plan,next).finish}</Text></Card>}{next?.items.map(i => { const e = exFor(i.exerciseId,state.custom); return <View key={i.exerciseId}><Pressable accessibilityRole="button" onPress={() => setExercise(e)} style={styles.exerciseRow}><View style={styles.flex}><Text style={styles.rowTitle}>{e.name}</Text><Text style={styles.small}>{i.sets} × {targetText(i)} {e.metric} · {i.rest}s rest</Text></View><Text style={styles.link}>Guide</Text></Pressable>{substitutionOptions(e.id).length>0&&<Button label="Choose a substitute" secondary onPress={()=>openSubstitute(next.id,e.id)}/>}</View>; })}{!next && <Button label="Choose another block" onPress={() => setTab('Plan')} />}</>}
     {next&&state.plan?.profile.mode!=='app'&&!active&&<Card><Text style={styles.sectionTitle}>Your workout targets</Text><Text style={styles.body}>Enter or edit your coach’s or your own exercises before starting. No app-written progression is added.</Text><Button label={next.items.length?'Edit workout targets':'Add workout targets'} onPress={()=>setTrackingSession(next.id)}/></Card>}
     {active && <>
@@ -291,6 +311,7 @@ function TrainingApp() {
       <Text style={styles.sectionTitle}>Any pain or concerning symptoms? (required)</Text>
       {([['no', 'No'], ['yes', 'Yes'], ['unsure', 'Not sure']] as const).map(([value, label]) => <Button key={value} label={(checkin?.symptom === value ? '✓ ' : '') + label} secondary={checkin?.symptom !== value} onPress={() => setCheckin(c => c && { ...c, symptom: value })} />)}
       {(checkin?.symptom === 'yes' || checkin?.symptom === 'unsure') && <Text style={styles.body}>Automated recommendations will be held. Stop the affected activity and seek qualified guidance. Your logged work is kept.</Text>}
+      {(checkin?.symptom === 'yes' || checkin?.symptom === 'unsure') && <Text style={[styles.body, { fontWeight: '700' }]}>{SEEK_CARE_TEXT}</Text>}
       <Text style={styles.sectionTitle}>How did the effort feel? (optional)</Text>
       {([['easier', 'Easier than expected'], ['right', 'About right'], ['harder', 'Harder than expected'], ['', 'Skip']] as const).map(([value, label]) => <Button key={label} label={(checkin?.effort === value && value !== '' ? '✓ ' : '') + label} secondary={checkin?.effort !== value} onPress={() => setCheckin(c => c && { ...c, effort: value })} />)}
       <Button label="Save workout" disabled={!checkin?.symptom} onPress={saveCheckin} />

@@ -34,7 +34,7 @@
     {
       "source": "lib/onboarding.ts",
       "target": "src/shared/onboarding.ts",
-      "sha256": "3436ae7fb3408a84cf5260f7cbb9471a0ef796853ab7e49cac65e3fd1df6f8c4"
+      "sha256": "9677b534e5f653768873b00f2feaf195f0dd2479aedcfdf8a368366be87678f5"
     },
     {
       "source": "lib/rest-timer.ts",
@@ -44,7 +44,7 @@
     {
       "source": "lib/training.ts",
       "target": "src/shared/training.ts",
-      "sha256": "fc4cd15c7e1e4a06995443bdd6372be66cf006873e087e946804beb937b13532"
+      "sha256": "c6398fbd06fd324c7bd01e1ec0759c47fc72ded4c0d31fe4428f6289e0979914"
     },
     {
       "source": "lib/training-tools.ts",
@@ -59,7 +59,7 @@
     {
       "source": "lib/program-catalog.ts",
       "target": "src/shared/program-catalog.ts",
-      "sha256": "3082b0a2c2c94f4736e6804c53f532937bbe92bfca36b845e6eb51566c9f4e2f"
+      "sha256": "65b619f74864c0f9beb00e6bb66fc5e4bcd8f5f4ca2e7deb22e40b69a4c71c95"
     },
     {
       "source": "lib/substitutions.ts",
@@ -74,12 +74,27 @@
     {
       "source": "lib/workout-review.ts",
       "target": "src/shared/workout-review.ts",
-      "sha256": "ed43d92fa3daeb7602264ae632047c5ff046e98aeb0519c73837c48d7a00eb4f"
+      "sha256": "794f31132d05b55bda7d62243631df1c30149d8ea6927f242342399621a1e932"
+    },
+    {
+      "source": "lib/safety-copy.ts",
+      "target": "src/shared/safety-copy.ts",
+      "sha256": "b5e6e3145abbabce1a659d61f09356b8e73c9aa52087fe83e1d9ea02d80cdf8f"
+    },
+    {
+      "source": "lib/exercise-video.ts",
+      "target": "src/shared/exercise-video.ts",
+      "sha256": "fe8b0e22196436a4eca4fe379b5aba782f82f69dcc45f2c6726dd1c78fa3bac4"
+    },
+    {
+      "source": "lib/program-evidence.ts",
+      "target": "src/shared/program-evidence.ts",
+      "sha256": "11347637d7b0e7ac55b34bfea47d0161646b6154fffd592fa98f5abeb09c0bbc"
     },
     {
       "source": "lib/saved-data.ts",
       "target": "src/shared/saved-data.ts",
-      "sha256": "ed4e6ef972c4df9882870d14a9bbaaeb1f853c632c5004c9e85047a3bc6b7ccb"
+      "sha256": "5e437541eefed1b3efcd8833ee57f2623d318ff026c581946ef5bfdf47ad739d"
     },
     {
       "source": "lib/transfer-bundle.ts",
