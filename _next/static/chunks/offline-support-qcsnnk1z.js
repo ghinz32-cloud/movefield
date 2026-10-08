@@ -1,0 +1,1 @@
+import{r as e}from"./rolldown-runtime-QTnfLwEv.js";import{i as t}from"./framework-JGc2HF7T.js";var n=e(t(),1);function r(){return(0,n.useEffect)(()=>{`serviceWorker`in navigator&&navigator.serviceWorker.register(`/movefield/sw.js`,{scope:`/`}).catch(()=>void 0)},[]),null}export{r as OfflineSupport};

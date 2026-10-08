@@ -1,0 +1,93 @@
+{
+  "_framework-JGc2HF7T.js": {
+    "file": "movefield/_next/static/chunks/framework-JGc2HF7T.js",
+    "name": "framework",
+    "imports": [
+      "_rolldown-runtime-QTnfLwEv.js"
+    ]
+  },
+  "_rolldown-runtime-QTnfLwEv.js": {
+    "file": "movefield/_next/static/chunks/rolldown-runtime-QTnfLwEv.js",
+    "name": "rolldown-runtime"
+  },
+  "app/page.tsx": {
+    "file": "movefield/_next/static/chunks/page-CXZhi0F1.js",
+    "name": "page",
+    "src": "app/page.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-QTnfLwEv.js",
+      "components/app-preferences.tsx",
+      "_framework-JGc2HF7T.js"
+    ]
+  },
+  "components/app-preferences.tsx": {
+    "file": "movefield/_next/static/chunks/app-preferences-Dqepzl_h.js",
+    "name": "app-preferences",
+    "src": "components/app-preferences.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-QTnfLwEv.js",
+      "_framework-JGc2HF7T.js"
+    ]
+  },
+  "components/offline-support.tsx": {
+    "file": "movefield/_next/static/chunks/offline-support-qcsnnk1z.js",
+    "name": "offline-support",
+    "src": "components/offline-support.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-QTnfLwEv.js",
+      "_framework-JGc2HF7T.js"
+    ]
+  },
+  "node_modules/.pnpm/vinext@1.0.0-beta.5_@vitejs+plugin-react@6.0.2_vite@8.0.16_@types+node@22.19.19_esbuild_dd2db97d3821c8cab812b6deb28740e1/node_modules/vinext/dist/shims/internal/app-route-prefetch-policy.js": {
+    "file": "movefield/_next/static/chunks/app-route-prefetch-policy-Dt-hPjFT.js",
+    "name": "app-route-prefetch-policy",
+    "src": "node_modules/.pnpm/vinext@1.0.0-beta.5_@vitejs+plugin-react@6.0.2_vite@8.0.16_@types+node@22.19.19_esbuild_dd2db97d3821c8cab812b6deb28740e1/node_modules/vinext/dist/shims/internal/app-route-prefetch-policy.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "virtual:vinext-app-browser-entry"
+    ]
+  },
+  "node_modules/.pnpm/vinext@1.0.0-beta.5_@vitejs+plugin-react@6.0.2_vite@8.0.16_@types+node@22.19.19_esbuild_dd2db97d3821c8cab812b6deb28740e1/node_modules/vinext/dist/shims/layout-segment-context.js": {
+    "file": "movefield/_next/static/chunks/layout-segment-context-BfN9lpDf.js",
+    "name": "layout-segment-context",
+    "src": "node_modules/.pnpm/vinext@1.0.0-beta.5_@vitejs+plugin-react@6.0.2_vite@8.0.16_@types+node@22.19.19_esbuild_dd2db97d3821c8cab812b6deb28740e1/node_modules/vinext/dist/shims/layout-segment-context.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-QTnfLwEv.js",
+      "virtual:vinext-app-browser-entry",
+      "_framework-JGc2HF7T.js"
+    ]
+  },
+  "node_modules/.pnpm/vinext@1.0.0-beta.5_@vitejs+plugin-react@6.0.2_vite@8.0.16_@types+node@22.19.19_esbuild_dd2db97d3821c8cab812b6deb28740e1/node_modules/vinext/dist/shims/streamed-icons.js": {
+    "file": "movefield/_next/static/chunks/streamed-icons-BfkstFTP.js",
+    "name": "streamed-icons",
+    "src": "node_modules/.pnpm/vinext@1.0.0-beta.5_@vitejs+plugin-react@6.0.2_vite@8.0.16_@types+node@22.19.19_esbuild_dd2db97d3821c8cab812b6deb28740e1/node_modules/vinext/dist/shims/streamed-icons.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-QTnfLwEv.js",
+      "_framework-JGc2HF7T.js"
+    ]
+  },
+  "virtual:vinext-app-browser-entry": {
+    "file": "movefield/_next/static/chunks/index-CL6ycBtR.js",
+    "name": "index",
+    "src": "virtual:vinext-app-browser-entry",
+    "isEntry": true,
+    "imports": [
+      "_rolldown-runtime-QTnfLwEv.js",
+      "_framework-JGc2HF7T.js"
+    ],
+    "dynamicImports": [
+      "node_modules/.pnpm/vinext@1.0.0-beta.5_@vitejs+plugin-react@6.0.2_vite@8.0.16_@types+node@22.19.19_esbuild_dd2db97d3821c8cab812b6deb28740e1/node_modules/vinext/dist/shims/internal/app-route-prefetch-policy.js",
+      "node_modules/.pnpm/vinext@1.0.0-beta.5_@vitejs+plugin-react@6.0.2_vite@8.0.16_@types+node@22.19.19_esbuild_dd2db97d3821c8cab812b6deb28740e1/node_modules/vinext/dist/shims/streamed-icons.js",
+      "virtual:vinext-app-browser-entry",
+      "node_modules/.pnpm/vinext@1.0.0-beta.5_@vitejs+plugin-react@6.0.2_vite@8.0.16_@types+node@22.19.19_esbuild_dd2db97d3821c8cab812b6deb28740e1/node_modules/vinext/dist/shims/layout-segment-context.js",
+      "app/page.tsx",
+      "components/app-preferences.tsx",
+      "components/offline-support.tsx"
+    ]
+  }
+}
