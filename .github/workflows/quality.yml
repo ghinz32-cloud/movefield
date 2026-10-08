@@ -21,6 +21,9 @@ jobs:
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: "24"
+          package-manager-cache: false
+      - name: Install the pinned package manager
+        run: npm install --global pnpm@11.25.0 --ignore-scripts --no-audit --no-fund
       - name: Install the locked web dependencies
         run: npm run install:ci
       - name: Web type and lint checks
@@ -51,5 +54,6 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: quality-results
-          path: .sites-runtime/*checks.json
+          path: .sites-runtime/*check*.json
+          include-hidden-files: true
           if-no-files-found: ignore
