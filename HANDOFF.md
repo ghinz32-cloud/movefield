@@ -1,5 +1,13 @@
 # Current continuation — 8 October 2026
 
+## Latest milestone — U02a web controls
+
+Parent `701c8b8a7a77c19e1be6ce17effd702917fbe3ff` is pushed/verified. This application checkpoint contains `docs/ux-web-controls-2026-10-08.md`; resolve its exact SHA with `git log -1 --format=%H -- docs/ux-web-controls-2026-10-08.md`, compare remote head, and check existing changes. Code: `app/page.tsx`, `app/globals.css`. Evidence: `docs/qa/u02a-workout-after.jpg`.
+
+Completed: collapsed optional calculators/guidance, sticky finish/rest actions, floating Appearance removed from the workout surface. Browser verifies log/undo/partial-save, paused rest and sticky position while scrolled; first Log moves up ≈870px. Tests: web types, lint, 29 training checks and 7 revision-11 groups/428582 assertions pass. Historical validation JSON retained. No fresh production-build claim; no physical-phone or real-profile persistence acceptance. See the report for the initial nonexistent script attempt and remaining layout limits.
+
+Next short prompt: “Resume Movefield on `audit/2026-10-08-quality`. Read AGENTS/TASKS/HANDOFF, verify refs and changes. Complete U02b: native labeled set-entry groups, full-width log action and persistent finish/rest controls; preserve existing finish confirmation and deterministic training behavior. Run native types/engine/export and product lint, checkpoint/verify GitHub and update handoff. Then continue U03 evidence audit. No merge or deploy.”
+
 ## Latest milestone — U01 UX baseline
 
 Parent checkpoint: `c9679d50c161a4407c3e4ca8dd70bc5d89d277e6`, pushed and verified. Application source remains `9d7c13ed6352e74c0a7766bd2d80fb524a5b709f`. The U01 documentation/evidence checkpoint is the commit containing `docs/ux-baseline-2026-10-08.md`; resolve `git log -1 --format=%H -- docs/ux-baseline-2026-10-08.md`, then verify remote head.

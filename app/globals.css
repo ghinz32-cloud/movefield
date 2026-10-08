@@ -300,3 +300,14 @@ html[data-density=roomy] .weekly-review{margin-bottom:2rem}
 .sidebar-plan>*{grid-column:1/-1}
 .sidebar-plan>span:last-of-type{grid-column:1;margin-top:2px}
 .sidebar-plan>button{grid-column:2;margin-top:2px;white-space:nowrap}
+
+/* Keep the current workout actions with the log, including enlarged text. */
+.workout-actionbar{position:sticky;top:0;z-index:30;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;box-shadow:0 3px 12px #13232522}
+.workout-actions-main{display:flex;align-items:center;justify-content:space-between;flex:1;gap:1rem;flex-wrap:wrap;font-size:1rem;font-weight:600}
+.workout-actionbar .rest-status{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;position:static;margin:0;padding:0;background:transparent;color:var(--foreground);box-shadow:none;border-radius:0}
+.workout-actionbar .rest-status>div{display:flex;align-items:center;gap:.5rem}
+.workout-actionbar .rest-status strong{font-variant-numeric:tabular-nums;font-size:1.2rem;min-width:3.5rem}
+.workout-tools{margin-bottom:1rem}.workout-tools>summary,.load-guidance>summary{cursor:pointer;min-height:44px;padding:.65rem 0;font-size:1rem;font-weight:600}
+.workout-tools .training-tools{margin-top:.75rem}.exercise-log .load-guidance{margin-top:.75rem}.exercise-log .load-guidance[open]{padding-bottom:.75rem}
+body:has(.workout-actionbar) .appearance-shortcut{display:none}
+@media(max-width:600px){.workout-actionbar{padding:.65rem}.workout-actionbar .rest-status{width:100%;justify-content:space-between}.workout-actionbar button{min-height:44px}.exercise-log .split{gap:.75rem}}
