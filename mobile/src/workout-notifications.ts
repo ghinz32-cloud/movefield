@@ -38,6 +38,8 @@ export function useNativeWorkoutReminders(state:State|null,p:AppPreferences,read
   });serial=task;
   void task.catch(()=>{if(live)setMessage('Some reminders could not be updated. Check phone notification settings and reopen the app. Older alerts may remain scheduled.')});
   return()=>{live=false};
+ // signature covers every schedule input; set edits and appearance must not reschedule OS alerts.
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  },[signature,ready,wake]);
  return message;
 }

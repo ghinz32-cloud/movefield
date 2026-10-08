@@ -4,7 +4,11 @@ This is a working React Native + Expo **source-code starter** for iPhone and And
 
 It is a local demo: there is no Movefield sign-in, shared account, website sync, cloud backup, subscription, or production backend. The existing website and this mobile app keep separate local records. This download is not an APK, an IPA, or an app-store release.
 
-## Revision 13
+## Revision 14
+
+Settings now includes reviewed backup import/export for manual transfer with the website. Backups include profile and workout notes; keep them private. Restoring replaces this device’s records after review, preserves actual history, cancels old timers and makes old queued suggestions stale. It never merges by position. The starter also includes all optional set measurements and avoids refreshing the entire app every half second.
+
+## Appearance and reminders
 
 Open **Settings** for six color themes, System/Light/Dark mode, text size, contrast, reduced motion and optional workout-day notifications. Local reminders schedule the next 30 workout days and refresh when the app opens or the schedule changes. Reopen after time-zone changes. Delivery depends on phone notification settings and has not been verified on a physical phone in this revision.
 

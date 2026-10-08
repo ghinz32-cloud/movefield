@@ -1,0 +1,55 @@
+name: Web and mobile quality
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      WRANGLER_SEND_METRICS: "false"
+      CI: "true"
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: "24"
+      - name: Install the locked web dependencies
+        run: npm run install:ci
+      - name: Web type and lint checks
+        run: |
+          npm run check
+          npm run lint
+      - name: Shared domain, storage and regression checks
+        run: npm run test:regression
+      - name: Install the locked native dependencies
+        working-directory: mobile
+        run: npm ci --no-audit --no-fund
+      - name: Native type and training checks
+        working-directory: mobile
+        run: |
+          npm run check
+          npm run test:engine
+      - name: Web production build and security checks
+        run: |
+          npm run build
+          npm run test:production
+      - name: Android and iOS bundle export
+        working-directory: mobile
+        run: npm run export:mobile
+      - name: Dependency advisories
+        run: node scripts/check-dependencies.mjs
+      - name: Keep test results for review
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: quality-results
+          path: .sites-runtime/*checks.json
+          if-no-files-found: ignore

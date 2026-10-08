@@ -1,5 +1,5 @@
 import {useNativeAppearance,useThemedStyles} from './appearance';
-import {planName,sessionName,workoutName,trainingCopy} from './shared/presentation';
+import {planName,sessionName,trainingCopy} from './shared/presentation';
 import React,{useEffect,useMemo,useRef,useState} from 'react';
 import {Pressable,Text,TextInput,View,StyleSheet} from 'react-native';
 import {type Profile,type Plan,type State,type Event,goals,weekdays,day,toKg,targetText,exFor,niceDate} from './shared/training';
@@ -9,11 +9,13 @@ import {focusChoices} from './shared/training-focus';
 const c={ink:'#19362D',green:'#214D3A',line:'#DCE1D7'};
 const baseStyles=StyleSheet.create({body:{fontSize:16,lineHeight:24,color:c.ink},title:{fontSize:24,fontWeight:'700',color:c.ink},row:{flexDirection:'row',flexWrap:'wrap',gap:8},input:{fontSize:16,minHeight:48,borderWidth:1,borderColor:c.line,borderRadius:8,padding:12},button:{minHeight:48,padding:12,borderWidth:1,borderColor:c.green,borderRadius:8,justifyContent:'center'},card:{borderWidth:1,borderColor:c.line,borderRadius:12,padding:16,gap:12}});
 function Choice({label,selected,onPress}:{label:string;selected?:boolean;onPress:()=>void}){ const styles=useThemedStyles(baseStyles),{colors:c}=useNativeAppearance();return <Pressable accessibilityRole="button" accessibilityState={{selected}} onPress={onPress} style={[styles.button,selected&&{backgroundColor:c.green}]}><Text style={[styles.body,selected&&{color:c.onAccent}]}>{label}</Text></Pressable>}
-function Field({label,value,onChange,numeric=false}:{label:string;value:string;onChange:(v:string)=>void;numeric?:boolean}){ const styles=useThemedStyles(baseStyles),{colors:c}=useNativeAppearance();return <View style={{gap:6}}><Text style={styles.body}>{label}</Text><TextInput accessibilityLabel={label} value={value} onChangeText={onChange} maxLength={100} keyboardType={numeric?'decimal-pad':'default'} style={styles.input}/></View>}
+function Field({label,value,onChange,numeric=false}:{label:string;value:string;onChange:(v:string)=>void;numeric?:boolean}){ const styles=useThemedStyles(baseStyles);return <View style={{gap:6}}><Text style={styles.body}>{label}</Text><TextInput accessibilityLabel={label} value={value} onChangeText={onChange} maxLength={100} keyboardType={numeric?'decimal-pad':'default'} style={styles.input}/></View>}
 export function PlanSetup({state,onAccept}:{state:State;onAccept:(profile:Profile,plan:Plan,events:Event[])=>string|undefined}){ const styles=useThemedStyles(baseStyles),{colors:c}=useNativeAppearance();
  const [p,setP]=useState<Profile>({...state.profile,start:day(),programId:undefined,name:state.profile.name==='Local demo'?'':state.profile.name}),[step,setStep]=useState(0),[selected,setSelected]=useState<PlanOption|null>(null),[error,setError]=useState(''),[showAll,setShowAll]=useState(false);
  const [loaded,setLoaded]=useState(false),[saveNote,setSaveNote]=useState('Opening saved setup…');
  const accepted=useRef(false),write=useRef(0);
+ // Read the external setup once; accepting the plan validates the current calendar.
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(()=>{let live=true;readLocalSetup().then(d=>{if(!live)return;if(d&&d.basePlanId===(state.plan?.id||null)){setP(d.profile);setStep(d.baseEvents===JSON.stringify(state.events)?Math.min(3,d.step):1);setSaveNote('Your saved setup is ready. Review your choices before accepting.')}else setSaveNote('Your setup will be saved on this device.');}).catch(()=>{if(live)setSaveNote('The previous setup could not be opened. Your accepted plan and workouts are unchanged.')}).finally(()=>{if(live)setLoaded(true)});return()=>{live=false}},[]);
  useEffect(()=>{if(!loaded||accepted.current)return;const version=++write.current;let live=true;Promise.resolve().then(()=>saveLocalSetup({schema:1,basePlanId:state.plan?.id||null,baseEvents:JSON.stringify(state.events),profile:p,events:state.events,step})).then(()=>{if(live&&version===write.current)setSaveNote('Setup saved on this device. You can close and continue later.')}).catch(()=>{if(live&&version===write.current)setSaveNote('Setup could not be saved. Keep it open to finish, or try again.')});return()=>{live=false}},[p,step,loaded,state.plan?.id,state.events]);
  const options=useMemo(()=>step===3?planOptions(p,state.events):[],[step,p,state.events]);

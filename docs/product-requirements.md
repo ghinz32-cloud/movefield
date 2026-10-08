@@ -1,6 +1,6 @@
 # Training Studio — full product requirements
 
-This is the continuing product contract from Garret's requests, not a reduced MVP definition. Completing the library or the Expo starter does not complete the whole product. Status describes implemented behavior, not the presence of a screen. Updated 7 October 2026. Revision 11 status is recorded below. Revision 7 adds a deep audit and 64 future acceptance scenarios; see deep-audit-2026-10-07.md and audit-acceptance-matrix.json.
+This is the continuing product contract from Garret's requests, not a reduced MVP definition. Completing the library or the Expo starter does not complete the whole product. Status describes implemented behavior, not the presence of a screen. Updated 8 October 2026. Revision 11 status is recorded below. Revision 7 adds a deep audit and 64 future acceptance scenarios; see deep-audit-2026-10-07.md and audit-acceptance-matrix.json.
 
 ## Decisions that stay in force
 
@@ -24,10 +24,10 @@ This is the continuing product contract from Garret's requests, not a reduced MV
 | LIB-01 | Search an expansive exercise library by name, muscles/movement and equipment | Web implementation; native starter search/filter | All shipped entries resolve to a guide; clear empty results; large-text and screen-reader checks |
 | LIB-02 | Separate barbell, dumbbell, kettlebell, cable, plate-loaded and selectorized variations | Catalog and filters; exact source distinctions | Distinct IDs and logging rules; unknown machine model never silently maps to a different drive type |
 | LIB-03 | Detailed self-setup, movement, exit, breathing, cues, mistakes and load convention | Expanded guide content | Every shipped entry has each required section, provenance and specific movement details |
-| LIB-04 | Accurate visual examples for each movement | Source photos and selected demo links; universal video coverage is unfinished | Exact-variation video manifest, rights/permission records, human matching review, captions and broken-link fallback |
+| LIB-04 | Accurate visual examples for each movement | Selected external demo links; imported photos withheld because source rights are unresolved; universal video coverage is unfinished | Exact-variation video manifest, rights/permission records, human matching review, captions and broken-link fallback |
 | LIB-05 | Custom movements with every useful tracking metric | Local custom entries; optional web set metrics added | User-defined fields/units, consistent conversions, imported/exported values, history and chart support without invented values |
 | PLAN-01 | Beginner through experienced training | Local engine templates and preview | Calibration from history or light familiarization; no assumed personal starting weight; decline unsupported input clearly |
-| PLAN-02 | True powerlifting, bodybuilding, powerbuilding and hybrid options | 63 app-original catalog variants in ten goal families plus existing foundation paths | Independent program/content review, distinct goals/volume/progression, no forced running in powerlifting |
+| PLAN-02 | True powerlifting, bodybuilding, powerbuilding and hybrid options | 71 app-original catalog variants in ten goal families plus existing foundation paths | Independent program/content review, distinct goals/volume/progression, no forced running in powerlifting |
 | PLAN-03 | Running: sprint, speed, distance and race plans | Beginner run/walk and hybrid base only | Separate event-specific progressions, timing/distance surfaces, race dates and return rules |
 | PLAN-04 | Calisthenics, jumping, agility and other disciplines | Library/tracking and limited templates | Discipline-specific prerequisites, dose, progression and regressions, including skill limits |
 | PLAN-05 | All common American high-school sports, in detail | Sport selection exists; detailed position programs are not complete | Reviewed catalog for football/flag football, basketball, baseball/softball, soccer, volleyball, track and field, cross-country, swimming/diving, wrestling, lacrosse, field/ice hockey, tennis, golf, cheer/dance, gymnastics and bowling; audit state/regional gaps |
@@ -49,7 +49,7 @@ This is the continuing product contract from Garret's requests, not a reduced MV
 | COACH-04 | Coach-directed youth/athlete mode | Local tracking distinction | Lock coaching authority boundaries, imported coach plans, off-season switch and no conflicting added dose |
 | COACH-05 | Evidence-based recommendations | Sources and app-default disclosure | Versioned evidence ledger, qualified review by discipline, conflicting evidence, expiry and documented updates |
 | LOG-01 | Sets, reps, load, rest and individual history | Local web and native starter | Partial sets persist, interrupted sessions recover, actuals differ from targets, no duplicate completion |
-| LOG-02 | All tracking metrics | Web optional set details: distance/time/height/heart rate/cadence/power/speed/incline/level/assistance/tempo/side/notes | Planned targets, custom units, per-side asymmetry and charts across disciplines; native controls to match web |
+| LOG-02 | All tracking metrics | Web and native optional set details: distance/time/height/heart rate/cadence/power/speed/incline/level/assistance/tempo/side/notes | Planned targets, custom units, per-side asymmetry and charts across disciplines; native controls now match web; physical keyboard/device checks remain |
 | LOG-03 | Suggested loads and rep ranges | Local bounded adult resistance rules | Exact variation, same machine/setup/range, two comparable exposures, feedback and available increments; no youth autonomous maxima |
 | LOG-04 | Import or enter historical performance | Exercise JSON import only; full workout-history import unfinished | Validated preview, date/unit/exercise mapping, duplicates, rollback, RPE/RIR and provenance |
 | PROG-01 | Exercise chart, volume per session, estimated 1RM | Local web implementation | Valid comparison units; distinguish unknown from zero, assistance and one-sided records; exclude unsupported estimates |
@@ -59,7 +59,7 @@ This is the continuing product contract from Garret's requests, not a reduced MV
 | AUTH-02 | Google login, biometrics, optional 2FA | Web previews only | Real OAuth/PKCE; server-verified passkeys; local Face ID/fingerprint unlock distinguished; TOTP/recovery codes; lost-device flow |
 | AUTH-03 | Parent sharing | Not implemented | Explicit categories/date ranges, revocation, view vs edit, consent rules and audit; no default access |
 | DATA-01 | Web/mobile sync and offline recovery | Separate local prototypes | Local queue, unique operation IDs, version conflict review, encryption and two-device testing; no false 'synced' status |
-| DATA-02 | Export, backup and deletion | Local JSON export; unreadable-file recovery | Account export/deletion, retention, backup restore, deletion of photos and sessions, local/cloud separation |
+| DATA-02 | Export, backup and deletion | Validated local JSON export and previewed replace/restore on web and native; unreadable-file recovery | Account export/deletion, retention, encrypted backup, deletion of photos and sessions, local/cloud separation |
 | DATA-03 | Public API and AI plan import | No public API; limited exercise JSON | Scoped/revocable tokens, plan schema, preview and validation, rate limits, no instruction text treated as authority |
 | INT-01 | Apple, Google, Samsung and other device data | Not connected | Evaluate current HealthKit/Health Connect/vendor capabilities, permission scopes, provenance, duplicates and revoked access |
 | INT-02 | MyFitnessPal, Strava, Garmin Connect and peers | Not connected | Vendor approval/API access, minimal scopes, signed callbacks, retries and missing-data handling; no promised access before verification |
@@ -99,3 +99,8 @@ The catalog now has 71 variants. Standing dumbbell and two-day combined strength
 Native setup drafts resume after reopening. Saved set and Undo are separate actions, custom timed actuals use their own metric, web machine context is available in the active workout, and check-in drafts survive refresh. Rest starts after Log set, not while entering numbers. The native app schedules local sound notifications after permission; browser and physical-phone delivery guarantees remain unverified. “Dose” is not user-facing vocabulary.
 
 Reviewed return-to-training changes now repair the remaining dependency chain while preserving dates and history. Coarse load increments can offer explicitly reviewed rep increases for eligible muscle-focused work. Real accounts, sync and native device acceptance are the next implementation stage; a model remains a subsequent optional explanation experiment. See revision-11-ux-audit.md, revision-11-validation.json and revision-11-coverage.json for exact scope and evidence.
+
+
+## Revision 14 quality checkpoint
+
+See quality-audit-2026-10-08.md for the GitHub packaging repair, storage locations, fixes and release gaps. Validated manual backup transfer is implemented; it does not provide accounts or automatic sync. Source-photo files are withheld pending a rights record. Optional native measurements now match web fields. Chart and guide payloads are deferred and idle rest-timer redraws removed. Production readiness and physical-device acceptance are still incomplete.

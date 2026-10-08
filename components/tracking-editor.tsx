@@ -1,5 +1,5 @@
 "use client";
-import {planName,sessionName,workoutName} from '@/lib/presentation';
+import {sessionName} from '@/lib/presentation';
 
 import {useState} from 'react';
 import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription} from '@/components/ui/dialog';

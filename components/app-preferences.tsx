@@ -16,9 +16,10 @@ type PreferencesContext={p:AppPreferences;update:(patch:Partial<AppPreferences>)
 const Context=createContext<PreferencesContext>({p:defaultPreferences,update:()=>{},ready:false,saveError:''});
 export const useAppPreferences=()=>useContext(Context);
 export function AppPreferencesProvider({children}:{children:ReactNode}){
- const [p,setP]=useState(defaultPreferences),[ready,setReady]=useState(false),[saveError,setSaveError]=useState('');
- useEffect(()=>{try{setP(readPreferences(localStorage.getItem(preferenceKey)))}catch{setSaveError('Appearance changes can’t be saved in this browser.')}setReady(true);const listener=(e:StorageEvent)=>{if(e.key===preferenceKey)setP(readPreferences(e.newValue))};window.addEventListener('storage',listener);return()=>window.removeEventListener('storage',listener)},[]);
- const update=(patch:Partial<AppPreferences>)=>setP(previous=>{const next=readPreferences(JSON.stringify({...previous,...patch}));try{localStorage.setItem(preferenceKey,JSON.stringify(next));setSaveError('')}catch{setSaveError('Your changes apply here but could not be saved.')}return next});
+ const [p,setP]=useState(defaultPreferences),[ready,setReady]=useState(false),[saveError,setSaveError]=useState(''),current=useRef(defaultPreferences);
+ // Browser storage is available after hydration; this synchronizes an external store once.
+ useEffect(()=>{try{current.current=readPreferences(localStorage.getItem(preferenceKey));setP(current.current)}catch{setSaveError('Appearance changes can’t be saved in this browser.')}setReady(true);const listener=(e:StorageEvent)=>{if(e.key===preferenceKey){current.current=readPreferences(e.newValue);setP(current.current)}};window.addEventListener('storage',listener);return()=>window.removeEventListener('storage',listener)},[]);
+ const update=(patch:Partial<AppPreferences>)=>{if(!ready)return;const next=readPreferences(JSON.stringify({...current.current,...patch}));current.current=next;setP(next);try{localStorage.setItem(preferenceKey,JSON.stringify(next));setSaveError('')}catch{setSaveError('Your changes apply here but could not be saved.')}};
  useEffect(()=>{if(!ready)return;const media=matchMedia('(prefers-color-scheme: dark)');const apply=()=>{const root=document.documentElement;const dark=p.mode==='dark'||p.mode==='system'&&media.matches;root.classList.toggle('dark',dark);root.dataset.mode=dark?'dark':'light';root.dataset.palette=p.palette;root.dataset.contrast=String(p.contrast);root.dataset.reduceMotion=String(p.reduceMotion);root.dataset.underlineLinks=String(p.underlineLinks);root.style.fontSize=p.textSize+'%';root.style.colorScheme=dark?'dark':'light'};apply();media.addEventListener('change',apply);return()=>media.removeEventListener('change',apply)},[p,ready]);
  return <Context.Provider value={{p,update,ready,saveError}}>{children}</Context.Provider>;
 }
@@ -36,13 +37,11 @@ export function WorkoutReminderSettings({state,disabled=false}:{state:State;disa
  return <section className="card"><h2>Workout reminders</h2><p className="muted">One reminder on each scheduled workout day. Rest days, skipped workouts and completed sessions are left out.</p><label className="field"><span>Reminder time · this device’s time zone</span><Input type="time" aria-label="Workout reminder time" value={p.reminderTime} disabled={disabled} onChange={e=>{if(e.target.value)update({reminderTime:e.target.value})}}/></label><div className="button-row"><Button variant="outline" disabled={disabled} onClick={()=>void enable()}>{p.reminders?'Turn off browser reminders':'Enable browser reminders'}</Button><Button variant="outline" disabled={disabled||!reminders.length} onClick={calendar}>Add next {reminders.length||''} workout days to calendar</Button></div><p className="small-copy">Web alerts require this page to stay open and may be delayed or missed in the background. Calendar alerts can work when it’s closed, depending on your calendar settings. Imported calendar entries won’t follow later plan edits; remove the old entries before importing again.</p>{!reminders.length&&<p className="small-copy">No upcoming workout reminders. Add or resume a plan to see them here.</p>}{disabled&&<p className="small-copy">Return to your own profile to set reminders.</p>}{message&&<p role="status" className="small-copy">{message}</p>}</section>;
 }
 export function useWorkoutReminders(state:State,enabled:boolean){
- const {p,ready}=useAppPreferences();const latest=useRef({state,p,enabled});latest.current={state,p,enabled};
+ const {p,ready}=useAppPreferences();
  useEffect(()=>{
-  if(!ready)return;
+  if(!ready||!enabled||!p.reminders)return;
   const show=()=>{
-   const {state:s,p:pref,enabled:on}=latest.current;
-   if(!on||!pref.reminders)return;
-   const now=Date.now(),due=workoutReminders(s,pref,now-60000,1)[0];
+   const now=Date.now(),due=workoutReminders(state,p,now-60000,1)[0];
    if(!due||due.at>now)return;
    const key='training-studio:reminder-sent:'+due.date;
    try{if(localStorage.getItem(key))return}catch{return}
@@ -54,5 +53,5 @@ export function useWorkoutReminders(state:State,enabled:boolean){
   };
   const tick=()=>{if(navigator.locks)void navigator.locks.request('training-workout-reminder',show).catch(()=>{});else show()};
   tick();const timer=setInterval(tick,15000);return()=>clearInterval(timer);
- },[ready]);
+ },[ready,enabled,state,p]);
 }

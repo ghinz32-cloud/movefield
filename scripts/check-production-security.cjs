@@ -1,4 +1,23 @@
-const {createRequire}=require('node:module'),path=require('node:path'),assert=require('node:assert/strict');
+const {createRequire}=require('node:module'),path=require('node:path'),assert=require('node:assert/strict'),fs=require('node:fs');
 const r=createRequire(path.resolve('package.json')),w=createRequire(r.resolve('wrangler/package.json')),{Miniflare}=w('miniflare');
-const fs=require('node:fs');const root=path.resolve('dist/server');const files=fs.readdirSync(root,{recursive:true}).filter(x=>/\.m?js$/.test(x)).sort((a,b)=>a==='index.js'?-1:b==='index.js'?1:a.localeCompare(b));
-(async()=>{const mf=new Miniflare({modules:files.map(x=>({type:'ESModule',path:path.join(root,x),contents:fs.readFileSync(path.join(root,x),'utf8')})),modulesRoot:root,compatibilityDate:'2026-05-15',compatibilityFlags:['nodejs_compat'],assets:{directory:path.resolve('dist/client'),routerConfig:{has_user_worker:true}},port:0});try{const res=await mf.dispatchFetch('https://example.test/'),body=await res.text(),csp=res.headers.get('Content-Security-Policy'),nonce=csp?.match(/'nonce-([^']+)'/)?.[1];assert.equal(res.status,200);assert.ok(nonce);const scripts=[...body.matchAll(/<script\b([^>]*)>/g)];assert.ok(scripts.length);for(const s of scripts)assert.ok(s[1].includes('nonce="'+nonce+'"'),'script missing nonce: '+s[1]);const next=await mf.dispatchFetch('https://example.test/');assert.notEqual(next.headers.get('Content-Security-Policy'),csp);assert.equal((await mf.dispatchFetch('https://example.test/',{method:'POST'})).status,405);assert.equal((await mf.dispatchFetch('https://example.test/__vinext/cache')).status,404);const starter=await mf.dispatchFetch('https://example.test/downloads/movefield-mobile-r13.zip'),starterBytes=new Uint8Array(await starter.arrayBuffer());assert.equal(starter.status,200);assert.equal(starterBytes[0],80);assert.equal(starterBytes[1],75);assert.ok(starterBytes.length>1000);for(const asset of ['/fonts/inter-variable.ttf','/fonts/barlow-condensed-semibold.ttf','/brand/movefield-mark.svg'])assert.equal((await mf.dispatchFetch('https://example.test'+asset)).status,200);console.log(JSON.stringify({brandAssetsAvailable:true,nativeStarterAvailable:true,status:res.status,scripts:scripts.length,nonceMatched:true,nonceRotates:true,writeRouteClosed:true,internalRouteClosed:true,cache:res.headers.get('Cache-Control')}));}finally{await mf.dispose()}})().catch(e=>{console.error(e);process.exitCode=1});
+const root=path.resolve('dist/server');
+const files=fs.readdirSync(root,{recursive:true}).filter(x=>/\.m?js$/.test(x)).sort((a,b)=>a==='index.js'?-1:b==='index.js'?1:a.localeCompare(b));
+async function main(){
+ const mf=new Miniflare({modules:files.map(x=>({type:'ESModule',path:path.join(root,x),contents:fs.readFileSync(path.join(root,x),'utf8')})),modulesRoot:root,compatibilityDate:'2026-05-15',compatibilityFlags:['nodejs_compat'],assets:{directory:path.resolve('dist/client'),routerConfig:{has_user_worker:true}},port:0});
+ // Consume every response; abandoned SSR streams keep the worker alive at cleanup.
+ const request=async(path='/',options)=>{const response=await mf.dispatchFetch('https://example.test'+path,options);return {response,bytes:new Uint8Array(await response.arrayBuffer())}};
+ try{
+  const {response:res,bytes}=await request(),body=new TextDecoder().decode(bytes),csp=res.headers.get('Content-Security-Policy'),nonce=csp?.match(/'nonce-([^']+)'/)?.[1];
+  assert.equal(res.status,200);assert.ok(nonce);
+  const scripts=[...body.matchAll(/<script\b([^>]*)>/g)];assert.ok(scripts.length);
+  for(const s of scripts)assert.ok(s[1].includes('nonce="'+nonce+'"'),'script missing nonce: '+s[1]);
+  assert.notEqual((await request()).response.headers.get('Content-Security-Policy'),csp);
+  assert.equal((await request('/',{method:'POST'})).response.status,405);
+  for(const route of ['/__vinext/cache','/qa-preview','/exercise-photos/Air_Bike/0.jpg'])assert.equal((await request(route)).response.status,404,route);
+  const starter=await request('/downloads/movefield-mobile-r14.zip');
+  assert.equal(starter.response.status,200);assert.equal(starter.bytes[0],80);assert.equal(starter.bytes[1],75);assert.ok(starter.bytes.length>1000);
+  for(const asset of ['/fonts/inter-variable.ttf','/fonts/barlow-condensed-semibold.ttf','/brand/movefield-mark.svg'])assert.equal((await request(asset)).response.status,200,asset);
+  console.log(JSON.stringify({brandAssetsAvailable:true,nativeStarterAvailable:true,status:res.status,scripts:scripts.length,nonceMatched:true,nonceRotates:true,writeRouteClosed:true,internalRouteClosed:true,qaRouteAbsent:true,unclearedPhotosAbsent:true,cache:res.headers.get('Cache-Control')}));
+ }finally{await mf.dispose()}
+}
+main().then(()=>process.exit(0),error=>{console.error(error);process.exit(1)});

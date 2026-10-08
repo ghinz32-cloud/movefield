@@ -1,12 +1,12 @@
-import {useNativeAppearance,useThemedStyles} from './appearance';
-import {planName,sessionName,workoutName} from './shared/presentation';
+import {useThemedStyles} from './appearance';
+import {sessionName} from './shared/presentation';
 import React,{useState} from 'react';
 import {View,Text,TextInput,Pressable,StyleSheet} from 'react-native';
 import {type State,type Item,exercises,exFor,matchesExercise,niceDate} from './shared/training';
 import {type TrackingEdit,previewTrackingEdit} from './shared/tracking';
 const baseStyles=StyleSheet.create({body:{fontSize:16,lineHeight:24,color:'#19362D'},input:{fontSize:16,padding:12,minHeight:48,borderWidth:1,borderColor:'#DCE1D7',borderRadius:8},button:{padding:12,minHeight:48,borderRadius:8,backgroundColor:'#E6EDDD',justifyContent:'center'},row:{flexDirection:'row',flexWrap:'wrap',gap:8},card:{gap:8,padding:12,borderWidth:1,borderColor:'#DCE1D7',borderRadius:10}});
-function Button({label,onPress}:{label:string;onPress:()=>void}){ const styles=useThemedStyles(baseStyles),{colors:c}=useNativeAppearance();return <Pressable accessibilityRole="button" style={styles.button} onPress={onPress}><Text style={styles.body}>{label}</Text></Pressable>}
-export function SessionEditor({state,sessionId,onSave}:{state:State;sessionId:string;onSave:(edit:TrackingEdit)=>string|undefined}){ const styles=useThemedStyles(baseStyles),{colors:c}=useNativeAppearance();
+function Button({label,onPress}:{label:string;onPress:()=>void}){ const styles=useThemedStyles(baseStyles);return <Pressable accessibilityRole="button" style={styles.button} onPress={onPress}><Text style={styles.body}>{label}</Text></Pressable>}
+export function SessionEditor({state,sessionId,onSave}:{state:State;sessionId:string;onSave:(edit:TrackingEdit)=>string|undefined}){ const styles=useThemedStyles(baseStyles);
  const session=state.plan!.sessions.find(x=>x.id===sessionId)!;
  const [base]=useState({planId:state.plan!.id,version:state.plan!.version,sessionId});
  const [items,setItems]=useState<Item[]>(session.items.map(i=>({...i}))),[search,setSearch]=useState(''),[exercise,setExercise]=useState(''),[sets,setSets]=useState('2'),[amount,setAmount]=useState('8'),[rest,setRest]=useState('90'),[editIndex,setEditIndex]=useState<number|null>(null),[repeatWeekday,setRepeatWeekday]=useState(false),[allowLonger,setAllowLonger]=useState(false),[message,setMessage]=useState('');

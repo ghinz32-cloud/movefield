@@ -35,3 +35,5 @@ export function saveLocalSetup(draft:ReturnType<typeof readSetupDraft>):Promise<
 export function clearLocalSetup():Promise<void>{
  const next=writes.catch(()=>undefined).then(()=>AsyncStorage.removeItem(SETUP_KEY));writes=next;return next;
 }
+
+export async function readLocalRaw():Promise<string|null>{await writes.catch(()=>undefined);return AsyncStorage.getItem(KEY);}

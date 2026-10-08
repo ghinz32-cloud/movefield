@@ -25,6 +25,6 @@ export function useNativeRestAlerts(timer:RestTimer|null|undefined,workoutId:str
  useEffect(()=>{if(!ready||Platform.OS==='web')return;let live=true;void queue.replace(null).catch(()=>{if(live)setMessage('Could not cancel an old rest alert. Check phone notification settings.')});const current=validRest(timer,workoutId);currentId=enabled&&current?.endAt&&current.endAt>Date.now()&&!current.alerted?'rest-'+current.id+'-'+current.endAt:null;
  void (async()=>{try{const permission=enabled?await Notifications.getPermissionsAsync():null;if(!live)return;await channel();if(!live)return;await queue.replace(enabled&&permission&&hasNotificationPermission(permission)?current:null);if(live)setMessage(enabled&&permission&&!hasNotificationPermission(permission)?'Rest alerts are off in phone settings. The timer still works here.':'')}catch{if(live)setMessage('The phone alert could not be scheduled. Keep the app open and check notification settings.')}})();
  return()=>{live=false;currentId=null;void queue.replace(null).catch(()=>{})};
- },[timer?.id,timer?.endAt,timer?.pausedSeconds,workoutId,enabled,ready,wake]);
+ },[timer,workoutId,enabled,ready,wake]);
  return message;
 }

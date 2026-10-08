@@ -2,6 +2,16 @@
   "source": "Training Studio website domain modules; paths relative to its root",
   "files": [
     {
+      "source": "lib/local-backup.ts",
+      "target": "src/shared/local-backup.ts",
+      "sha256": "7e1e9ae66aef7e8e5f861235ddb79cd8eebc215531d8bbb6578f19ac2ec45dc0"
+    },
+    {
+      "source": "lib/set-metrics.ts",
+      "target": "src/shared/set-metrics.ts",
+      "sha256": "0efe2451baba1794e96c6672e41e1df0c7b2c748a9a2b1bac6be9564d8c65558"
+    },
+    {
       "source": "lib/app-preferences.ts",
       "target": "src/shared/app-preferences.ts",
       "sha256": "4bf28146c0345869ed642bd9e111ab17956f9c2e8552dacbc22712940f402286"
@@ -34,7 +44,7 @@
     {
       "source": "lib/onboarding.ts",
       "target": "src/shared/onboarding.ts",
-      "sha256": "3436ae7fb3408a84cf5260f7cbb9471a0ef796853ab7e49cac65e3fd1df6f8c4"
+      "sha256": "77b5808d778b22b583b3c5140c22d90ed98df84ce5f05ce64c0c60c69db359b5"
     },
     {
       "source": "lib/rest-timer.ts",
@@ -44,7 +54,7 @@
     {
       "source": "lib/training.ts",
       "target": "src/shared/training.ts",
-      "sha256": "fc4cd15c7e1e4a06995443bdd6372be66cf006873e087e946804beb937b13532"
+      "sha256": "7ac5eaa710b8606e8f6609af12e678b354473f8b25903afafc83dcebc4ee20c2"
     },
     {
       "source": "lib/training-focus.ts",
@@ -69,7 +79,7 @@
     {
       "source": "lib/workout-review.ts",
       "target": "src/shared/workout-review.ts",
-      "sha256": "ed43d92fa3daeb7602264ae632047c5ff046e98aeb0519c73837c48d7a00eb4f"
+      "sha256": "e7ff48cab085b7ecb3fcca3f6e03f1faacd8b254ff01622d9d9e01b0fd35ac65"
     },
     {
       "source": "lib/saved-data.ts",
@@ -109,12 +119,12 @@
     {
       "source": "docs/exercise-library-provenance.json",
       "target": "docs/exercise-library-provenance.json",
-      "sha256": "434ce7e5af124b5ec34595e37b0d4489fed7f4019bc817e0cc2710d7337b5aa7"
+      "sha256": "8471e9b317ad7296e6add7a4de215505c93130c70052ec3692d7ec08649d596e"
     },
     {
       "source": "docs/product-requirements.md",
       "target": "docs/product-requirements.md",
-      "sha256": "39dd4fe703b6f21b651aa3d480df5cb0846aa86a374f16f7ab3f8c3743850866"
+      "sha256": "d9023d91adacd6343e2a8a87996efbe83cf361b277b816c337b624c038c891b3"
     },
     {
       "source": "docs/exercise-library-completion.json",
