@@ -2,7 +2,7 @@
 
 ## Start here
 
-Read `docs/branch-integration-2026-10-08.md` and `HANDOFF.md`, then `docs/product-requirements.md` and the revision 11–13 reports named in the handoff. This is an existing working product, not a request to scaffold a replacement.
+Read `AGENTS.md`, `TASKS.md`, the current `HANDOFF.md` section and `docs/branch-integration-2026-10-08.md`, then `docs/product-requirements.md` and the revision 11–13 reports named in the handoff. Follow the user's one-milestone-at-a-time checkpoint workflow. This is an existing working product, not a request to scaffold a replacement.
 
 The detailed requirements remain the contract. Newer explicit user decisions take precedence over historical documents. `HANDOFF.md` identifies superseded AI and branding recommendations. The handoff is a state summary, not a complete verbatim chat export.
 

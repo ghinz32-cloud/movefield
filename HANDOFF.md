@@ -1,5 +1,41 @@
 # Current continuation — 8 October 2026
 
+## Required milestone workflow
+
+Read `AGENTS.md` and `TASKS.md`. The user requires small, independently testable milestones, one at a time, with verified recoverable checkpoints and this handoff updated after each. Continue approved work without asking the user to invent prompts. Do not merge or deploy without permission.
+
+## Verified application checkpoint
+
+- Repository: `ghinz32-cloud/movefield`, remote `https://github.com/ghinz32-cloud/movefield.git`.
+- Pushed application commit: `9d7c13ed6352e74c0a7766bd2d80fb524a5b709f`.
+- GitHub branch: `audit/2026-10-08-quality`; draft PR `https://github.com/ghinz32-cloud/movefield/pull/1`, base `main`.
+- Local worktree: `/workspace/scratch/37008205acde/movefield-integration`, local branch `audit/2026-10-08-integration`, tracking `origin/audit/2026-10-08-quality`. This scratch path is transient; use the GitHub checkpoint in a new environment.
+- Existing changes were checked before this documentation milestone: the application checkout was clean and matched the pushed commit.
+- Integration parents: audit `cc36ff73715eec1d0e278668d2f81f11c5ba19f8` and feature `667a3e381035b16cb1aa611c85cdf9d143b7b835`. M01 reconciliation is complete. `review-fixes` and `main` are preserved.
+
+## Completed milestones and tests
+
+- **M01 application integration:** retained feature updates and audit repairs, added stale/active restore guards, isolated offline caching and corrected the current mobile download link. Local web/native types, lint, all 23 regression suites, both production suites and iOS/Android exports passed. GitHub Actions quality run **4**, ID **37846922697**, succeeded for the application commit above.
+- **M00 workflow documentation:** added `AGENTS.md`, `TASKS.md`, and this current handoff section. Relevant checks are documentation structure, exact checkpoint references, a whitespace diff check and remote content readback. No new application behavior is introduced; M01's application tests must not be presented as a fresh test run for this documentation commit.
+
+## Checkpoint locations and status
+
+The recoverable application checkpoint is pushed to the GitHub review branch above, with its reports under `docs/branch-integration-2026-10-08.md` and `docs/branch-integration-validation-2026-10-08.json`. Local-only build/test logs from M01 are under `/workspace/scratch/1e916c3f78bc/integration-*.log`; they are transient and are not uploaded deliverables. GitHub's successful quality run is independent saved evidence.
+
+The workflow documentation checkpoint is the commit containing this section, `AGENTS.md` and `TASKS.md`. Resolve its full SHA with `git log -1 --format=%H -- AGENTS.md TASKS.md HANDOFF.md`, then compare the current remote head and inspect existing changes. The exact documentation commit is recorded in the PR description and completion message only after push/readback verification. A document cannot embed its own eventual Git commit hash; this lookup is deliberate, not a guessed checkpoint ID.
+
+Do not infer that later commits were tested from an earlier passing run. At every milestone, record the application commit actually tested and distinguish local-only changes, pushed commits, merges and deployments. No merge into `main` or deployment was performed.
+
+## Unresolved problems
+
+The latest user request expands work to a full web/native UX and workout audit, practical large-Qwen integration, exercise-science grounding, storage selection and website/Android release readiness. Start U01 (the inspectable UX baseline) next. Interruption recovery between encryption-key replacement and ciphertext persistence remains a high-priority repair. Web/native crash recovery, native history capacity, two dependency advisory roots, offline/browser restore UI and physical-device acceptance remain open; see the individually testable milestones in `TASKS.md`. The dependency exceptions expire 8 November 2026. Accounts/sync, broader planning features and model inference remain unfinished. No direct connection to bro is available; GitHub branch verification is documented instead.
+
+## Exact short prompt for the next task
+
+> Resume Movefield from `ghinz32-cloud/movefield` on `audit/2026-10-08-quality`. Read `AGENTS.md`, `TASKS.md` and the current `HANDOFF.md`. Verify remote refs, HEAD, upstream and existing changes. M01 reconciliation is complete at `9d7c13ed6352e74c0a7766bd2d80fb524a5b709f`. Complete U01: establish an inspectable web/native UX baseline for onboarding, logging, navigation, history and settings, with prioritized defects and honest browser/device limits. Save and verify a checkpoint, update the task list/handoff and generate the next short prompt. Then continue approved milestones one at a time. Do not merge or deploy without permission.
+
+If a fresh conversation is needed, the user may need to paste that prompt or provide repository access. Generating it does not automatically open or authorize a replacement chat. If blocked, record the exact blocker and the next safe step before stopping.
+
 Use `audit/2026-10-08-quality` and draft PR #1 as the combined review branch targeting `main`. The integration reconciles the earlier quality repairs with the `review-fixes` feature line. Read `docs/branch-integration-2026-10-08.md` before using the historical handoff below.
 
 The current code includes encrypted local web/native storage and password-protected manual transfer files. It still has no real app accounts, shared cloud history or automatic device sync. Model inference remains unimplemented. The older data-storage and revision statements below are historical and are superseded by the integration report. `review-fixes` is preserved, `restructure` is the export baseline, and `gh-pages` is an older generated test build. No live deployment or merge into `main` is authorized by this handoff.
