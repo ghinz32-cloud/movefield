@@ -1,4 +1,5 @@
 "use client";
+import {getVault} from '@/lib/browser-vault';
 import {useEffect,useState} from 'react';
 import {Fingerprint,ShieldCheck,KeyRound,Check,Smartphone} from 'lucide-react';
 import {Button} from '@/components/ui/button';
@@ -9,8 +10,8 @@ type Preferences={passkey:boolean;mfa:boolean};
 const EMPTY:Preferences={passkey:false,mfa:false};
 export function AccountSecurity({compact=false,onContinue,storageKey='training-studio-security-preview-v1'}:{compact?:boolean;onContinue?:()=>void;storageKey?:string}){
  const [preferences,setPreferences]=useState<Preferences>(EMPTY),[loaded,setLoaded]=useState(false),[open,setOpen]=useState(false),[flow,setFlow]=useState(''),[stage,setStage]=useState(''),[code,setCode]=useState(''),[error,setError]=useState(''),[unavailable,setUnavailable]=useState(false),[expired,setExpired]=useState(false),[attempts,setAttempts]=useState(0);
- useEffect(()=>{try{const p=JSON.parse(localStorage.getItem(storageKey)||'null');if(p)setPreferences({passkey:p.passkey===true,mfa:p.mfa===true})}catch{}setLoaded(true)},[storageKey]);
- const save=(p:Preferences)=>{setPreferences(p);try{localStorage.setItem(storageKey,JSON.stringify(p))}catch{}};
+ useEffect(()=>{let alive=true;(async()=>{try{const raw=await getVault()?.read(storageKey);const p=JSON.parse(raw||'null');if(p&&alive)setPreferences({passkey:p.passkey===true,mfa:p.mfa===true})}catch{}if(alive)setLoaded(true)})();return()=>{alive=false}},[storageKey]);
+ const save=(p:Preferences)=>{setPreferences(p);void getVault()?.write(storageKey,JSON.stringify(p)).catch(()=>{})};
  const start=(kind:string)=>{setFlow(kind);setStage(kind==='google'?'provider':kind==='passkey'?'device':kind==='enroll-passkey'?'register':kind==='enroll-mfa'?'enroll':kind==='remove-mfa'?'remove':'recovery');setError('');setCode('');setAttempts(0);setUnavailable(false);setExpired(false);setOpen(true)};
  const signedIn=()=>{if(preferences.mfa){setStage('challenge');setCode('')}else setStage('success')};
  const verify=()=>{if(expired){setError('This sample code has expired. Generate a new sample challenge.');return}if(attempts>=3){setError('Sample retry limit reached. Generate a new challenge to continue.');return}if(code!=='123456'){setAttempts(v=>v+1);setError('Incorrect sample code. Use 123456 for this preview.');return}if(flow==='enroll-mfa')save({...preferences,mfa:true});if(flow==='remove-mfa')save({...preferences,mfa:false});setStage('success');setError('')};
