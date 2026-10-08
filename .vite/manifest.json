@@ -11,7 +11,7 @@
     "name": "rolldown-runtime"
   },
   "app/page.tsx": {
-    "file": "movefield/_next/static/chunks/page-BsKIgi-6.js",
+    "file": "movefield/_next/static/chunks/page-DXlgpDTQ.js",
     "name": "page",
     "src": "app/page.tsx",
     "isDynamicEntry": true,
@@ -42,7 +42,7 @@
     ]
   },
   "node_modules/.pnpm/vinext@1.0.0-beta.5_@vitejs+plugin-react@6.0.2_vite@8.0.16_@types+node@22.19.19_esbuild_dd2db97d3821c8cab812b6deb28740e1/node_modules/vinext/dist/shims/internal/app-route-prefetch-policy.js": {
-    "file": "movefield/_next/static/chunks/app-route-prefetch-policy-LsSXQiiI.js",
+    "file": "movefield/_next/static/chunks/app-route-prefetch-policy-CDrDArpI.js",
     "name": "app-route-prefetch-policy",
     "src": "node_modules/.pnpm/vinext@1.0.0-beta.5_@vitejs+plugin-react@6.0.2_vite@8.0.16_@types+node@22.19.19_esbuild_dd2db97d3821c8cab812b6deb28740e1/node_modules/vinext/dist/shims/internal/app-route-prefetch-policy.js",
     "isDynamicEntry": true,
@@ -51,7 +51,7 @@
     ]
   },
   "node_modules/.pnpm/vinext@1.0.0-beta.5_@vitejs+plugin-react@6.0.2_vite@8.0.16_@types+node@22.19.19_esbuild_dd2db97d3821c8cab812b6deb28740e1/node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "movefield/_next/static/chunks/layout-segment-context-CzWQCK5y.js",
+    "file": "movefield/_next/static/chunks/layout-segment-context-BoRiOOYt.js",
     "name": "layout-segment-context",
     "src": "node_modules/.pnpm/vinext@1.0.0-beta.5_@vitejs+plugin-react@6.0.2_vite@8.0.16_@types+node@22.19.19_esbuild_dd2db97d3821c8cab812b6deb28740e1/node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
@@ -72,7 +72,7 @@
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "movefield/_next/static/chunks/index-DYhiygsc.js",
+    "file": "movefield/_next/static/chunks/index-o5GPmbut.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
