@@ -374,7 +374,7 @@ function catalogDays(p:Profile,d:ProgramDefinition,events:Event[]=[]):number[]{
  for(const combo of combos){
   const assigned=combo.slice().sort((a,b)=>(a-startDay+7)%7-(b-startDay+7)%7);
   const groups=d.slots.map(x=>x.group);
-  const fits=groups.every((g,i)=>groups.every((h,j)=>i===j||(d.id==='RNBASE4'&&g==='run'&&h==='run')||g!==h||!['full','upper','lower','run'].includes(g)||![1,6].includes(Math.abs(assigned[i]-assigned[j]))))&&(d.id!=='RNBASE4'||adjacentPairs(combo)<=Math.max(0,d.days-3));
+  const fits=groups.every((g,i)=>groups.every((h,j)=>i===j||(d.id==='RNBASE4'&&g==='run'&&h==='run')||g!==h||!['full','upper','lower','run','push','pull','legs','chestback','shouldersarms'].includes(g)||![1,6].includes(Math.abs(assigned[i]-assigned[j]))))&&(d.id!=='RNBASE4'||adjacentPairs(combo)<=Math.max(0,d.days-3));
   if(fits&&!Array.from({length:p.weeks*7},(_,n)=>addDays(p.start,n)).some(date=>assigned.includes(new Date(date+'T12:00:00').getDay())&&eventDates.has(date)))return assigned;
  }return [];
 }
