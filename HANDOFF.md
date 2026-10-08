@@ -1,5 +1,13 @@
 # Current continuation — 8 October 2026
 
+## Latest milestone — U03 workout foundation evidence audit
+
+Parent `243dfaa5ca697c293644f6b556fc6f22dd05e241` is pushed/verified. This audit checkpoint contains `docs/workout-evidence-audit-2026-10-08.md`; resolve exact SHA with `git log -1 --format=%H -- docs/workout-evidence-audit-2026-10-08.md` and verify remote/status. Saved inventory: `docs/workout-coverage-2026-10-08.json`; canonical generator `scripts/audit-workout-coverage.cjs`.
+
+Completed: ten primary-source ledger entries with retrieval limits, 75 matching-profile builds and 3150 availability/time inventory builds, weekly frequency mapping, product-vs-research progression/recovery review. Existing 75-program structural audit passes with explicit low-dose/anatomy allowances. No application prescription changed; no clinical validation or AI training claimed. Observed gaps: nominal times differ from generated maximum in 62 programs; newer volume/frequency evidence not mapped; anatomy, one-day/five-day choices, guides/sport/endurance/special-population and model evaluations still need work.
+
+Next short prompt: “Resume Movefield on `audit/2026-10-08-quality`. Read AGENTS/TASKS/HANDOFF and the U03 evidence audit; verify refs/changes. Complete U04a: calculate fit notes/ranking from the generated draft, not stale catalog times. Test PLU3 time mismatch, preserve generator budget guards and sync native canonical code. Checkpoint/verify, then U04b evidence mapping, U05 storage and U06–U09 Qwen. No merge or deploy.”
+
 ## Latest milestone — U02b native controls
 
 Parent `acd95cb4e1d93f52b699324232980f81be98c214` is pushed/verified. This source checkpoint contains `docs/ux-native-controls-2026-10-08.md`; resolve the exact SHA with `git log -1 --format=%H -- docs/ux-native-controls-2026-10-08.md`, then verify remote head and existing changes. Code: `mobile/App.tsx`.
