@@ -29,7 +29,7 @@
     {
       "source": "lib/workout-log.ts",
       "target": "src/shared/workout-log.ts",
-      "sha256": "23192e3457163b70dd57e3f9fd68bf1aa096336e7bf5227d8cfa1d272016dfd4"
+      "sha256": "0e5e1a8c078f211a5c05d476421b89dda44ce69a6bd5e672637ab78571597d2b"
     },
     {
       "source": "lib/onboarding.ts",

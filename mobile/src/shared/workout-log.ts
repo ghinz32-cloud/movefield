@@ -23,7 +23,7 @@ export const RIR_MAX=5;
 // Reps in reserve for one set: a whole number from 0 to 5, or empty (not recorded).
 export function rirError(rir:number|null|undefined):string|null{return rir===undefined||rir===null||Number.isInteger(rir)&&rir>=0&&rir<=RIR_MAX?null:'Enter RIR as a whole number from 0 to 5.'}
 export function setExerciseNotes(s:State,exerciseId:string,notes:string):State{
- if(!s.active)throw Error('That workout is no longer open.');
+ if(!s.active)return s;
  const details={...s.active.details};
  const clean=notes.slice(0,1000);
  if(clean==='')delete details[exerciseId];else details[exerciseId]={...details[exerciseId],notes:clean};
@@ -32,5 +32,5 @@ export function setExerciseNotes(s:State,exerciseId:string,notes:string):State{
 // Blank sets for a new workout. Load-tracked exercises start at the accepted load suggestion, if one exists.
 // Reps stay 0 (empty) until the person enters them, and nothing is logged until they tap Log set.
 export function startingSets(s:State,items:Item[]):SetLog[]{
- return items.flatMap(i=>{const ex=exFor(i.exerciseId,s.custom);const kg=isLoadTracked(ex)?loadSuggestion(s,i).kg:null;return Array.from({length:i.sets},(_,j)=>({exerciseId:i.exerciseId,set:j+1,reps:0,kg:kg??null,done:false}))});
+ return items.flatMap(i=>{const ex=exFor(i.exerciseId,s.custom);const suggested=isLoadTracked(ex)?loadSuggestion(s,i).kg:null;const kg=suggested!==null&&suggested>0?suggested:null;return Array.from({length:i.sets},(_,j)=>({exerciseId:i.exerciseId,set:j+1,reps:0,kg,done:false}))});
 }
