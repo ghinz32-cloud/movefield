@@ -22,7 +22,7 @@ import { programCatalog,programReferences,programEquipment } from './src/shared/
 import {substitutionOptions,previewSubstitution,applySubstitution,type Substitution} from './src/shared/substitutions';
 import { guides, media, safeWebUrl } from './src/content';
 import { adoptPlan, editSet, emptyDemo, finishWorkout, FOUNDATION, RUN_WALK, SPORT_FOUNDATION, previewPlan, startWorkout, unknownLoads } from './src/mobile-engine';
-import { readLocalState, resetLocalState, saveLocalState } from './src/storage';
+import { readLocalState, replaceLocalState, resetLocalState, saveLocalState } from './src/storage';
 import { LocalDataError } from './src/local-crypto';
 import { NativeTransferMake, NativeTransferOpen } from './src/transfer';
 import { createTransferFile, isTransferFile, openTransferFile, TransferError } from './src/shared/transfer-bundle';
@@ -149,16 +149,24 @@ function TrainingApp() {
     let parsed: State;
     try { parsed = readSavedState(plain.trim()) as State; }
     catch { return 'That is not a valid Movefield transfer file or backup. Nothing was replaced.'; }
-    setConfirm({ title: 'Replace data on this phone?', message: 'This replaces the plan, history and settings saved on this phone with the file. Make a transfer file first if you want to keep what is here now.', label: 'Replace with this file', action: () => { void replaceWith(parsed); } });
+    const here = stateRef.current;
+    const plural = (n: number) => `${n} recorded workout${n === 1 ? '' : 's'}`;
+    setConfirm({ title: 'Replace data on this phone?', message: `This phone has ${plural(here?.history.length ?? 0)}${here?.plan ? ' and a current plan' : ''}. The file has ${plural(parsed.history.length)}${parsed.plan ? ' and a plan' : ''}. Replacing saves the file and removes what is here now. Make a transfer file first if you want to keep it.`, label: 'Replace with this file', action: () => { void replaceWith(parsed); } });
     return '';
   };
-  // Clears the old sealed record and key, then writes the opened data under this phone's new key.
+  // Writes the opened data under a new key. The old record is replaced only after the new key and record are in place.
   const replaceWith = async (parsed: State) => {
+    // Check the state that will be shown before anything is stored, so a later failure cannot be mistaken for a failed save.
+    let checked: State;
     try {
-      await resetLocalState();
-      setReadError(null); setError('');
-      commit(parsed);
-    } catch { setError('The file opened, but this phone could not save it. Nothing was replaced.'); }
+      checked = normalizeWorkoutRest(parsed);
+      readSavedState(JSON.stringify(checked));
+    } catch { setError('This file opened, but its data cannot be used in this version of the app. Nothing was replaced.'); return; }
+    try {
+      await replaceLocalState(checked);
+    } catch (e) { setError(e instanceof LocalDataError ? e.message : 'The file opened, but this phone could not save it. Nothing was replaced.'); return; }
+    setReadError(null); setError('');
+    commit(checked);
   };
   const commit = (next: State) => { const checked=normalizeWorkoutRest(next);readSavedState(JSON.stringify(checked));stateRef.current = checked; setState(checked); };
   const [personalSetup,setPersonalSetup]=useState(false);

@@ -111,5 +111,38 @@ const rejects=async(promise,code,msg)=>{try{await promise}catch(e){same(e instan
  await scopeVault.reset();
  same(scopeStorage.map.get('training-studio:preferences:v1'),'{"palette":"ocean"}','preferences are not sealed and survive a reset');
 
+ // 11. Replace seals under a new key, and clears the other training slots only after the new record is stored.
+ const repStorage=memoryStorage(),repKeys=memoryKeys(),repVault=makeVault(repStorage,repKeys,[SLOT,SETUP]);
+ await repVault.write(SLOT,'old plan');
+ await repVault.write(SETUP,'old draft');
+ const oldKey=repKeys.peek();
+ await repVault.replace(SLOT,'restored plan');
+ same(await repVault.read(SLOT),'restored plan','replace stores the new text');
+ same(repStorage.map.has(SETUP),false,'replace clears the other training slots');
+ ok(repKeys.peek()!==oldKey,'replace uses a new key');
+
+ // 12. If the new record cannot be stored, the previous key comes back and the old record still opens.
+ const failStorage=memoryStorage(),failKeys=memoryKeys(),failVault=makeVault(failStorage,failKeys,[SLOT,SETUP]);
+ await failVault.write(SLOT,'keep me');
+ const before=failKeys.peek();
+ const realSet=failStorage.setItem;
+ failStorage.setItem=(k,v)=>{if(k===SLOT)throw new Error('quota');realSet(k,v)};
+ let rejected=false;try{await failVault.replace(SLOT,'new text')}catch(error){rejected=error instanceof V.VaultError}
+ failStorage.setItem=realSet;
+ ok(rejected,'a failed replace rejects with a vault error');
+ ok(failKeys.peek()===before,'the previous key is restored after a failed replace');
+ same(await failVault.read(SLOT),'keep me','the previous record still opens after a failed replace');
+
+ // 13. A failure while clearing other slots happens after the restore is stored, so it must not undo the restore.
+ const cleanStorage=memoryStorage(),cleanKeys=memoryKeys(),cleanVault=makeVault(cleanStorage,cleanKeys,[SLOT,SETUP]);
+ await cleanVault.write(SLOT,'old plan');
+ await cleanVault.write(SETUP,'old draft');
+ const realRemove=cleanStorage.removeItem;
+ cleanStorage.removeItem=k=>{if(k===SETUP)throw new Error('cleanup failed');return realRemove(k)};
+ let replaced=true;try{await cleanVault.replace(SLOT,'restored plan')}catch{replaced=false}
+ cleanStorage.removeItem=realRemove;
+ ok(replaced,'a failed clean-up does not reject a stored restore');
+ same(await cleanVault.read(SLOT),'restored plan','the restored record opens after a failed clean-up');
+
  console.log(`PASS browser vault: ${checks} checks`);
 })().catch(error=>{console.error(error);process.exit(1)});

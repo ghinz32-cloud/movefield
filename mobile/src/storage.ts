@@ -17,7 +17,7 @@ const SETUP_KEY = 'training-studio:mobile-setup:v1';
 const DATA_KEY_NAME = 'movefield.dataKey.v1';
 const SECURE_OPTIONS = { keychainAccessible: SecureStore.AFTER_FIRST_UNLOCK_THIS_DEVICE_ONLY };
 
-export const KEY_MISSING_MESSAGE = 'Your saved training is encrypted with a key that is not on this device. This usually happens after restoring the app to a different phone. Nothing was replaced. To continue, restore a transfer file below, or reset this demo.';
+export const KEY_MISSING_MESSAGE = 'Your saved training is encrypted with a key that is not on this device. This usually happens after moving to a different phone. Nothing was replaced. To keep your training, restore your transfer file or backup below. Reset erases the saved training on this phone, so use it only if you have no file.';
 
 // Every read and write goes through one chain, so a read never sees a half-written record.
 // The chain itself never rejects; each caller still receives its own result.
@@ -104,6 +104,43 @@ export async function resetLocalState(): Promise<void> {
     await AsyncStorage.multiRemove([KEY, SETUP_KEY]);
     cachedKey = null;
     await SecureStore.deleteItemAsync(DATA_KEY_NAME, SECURE_OPTIONS);
+  });
+}
+
+// Replaces everything saved on this phone with the given state, under a new data key.
+// Nothing is deleted before the new record exists. If any step fails, the previous key is put back, so the
+// previous record still opens, or the caller is told that nothing was replaced.
+export async function replaceLocalState(state: State): Promise<void> {
+  const json = JSON.stringify(state);
+  readSavedState(json); // Reject invalid state before anything changes.
+  return enqueue(async () => {
+    // A read error is not the same as "no key": if the previous key cannot be read, nothing is changed.
+    let previousHex: string | null;
+    try {
+      previousHex = await SecureStore.getItemAsync(DATA_KEY_NAME, SECURE_OPTIONS);
+    } catch {
+      throw new LocalDataError('key-unavailable', 'This phone could not read its data key. Nothing was replaced.');
+    }
+    const hex = newKeyHex(getRandomBytes);
+    const sealed = sealText(json, keyFromHex(hex), KEY, getRandomBytes);
+    try {
+      await SecureStore.setItemAsync(DATA_KEY_NAME, hex, SECURE_OPTIONS);
+    } catch {
+      throw new LocalDataError('key-unavailable', 'This phone could not create a new data key. Nothing was replaced.');
+    }
+    try {
+      await AsyncStorage.setItem(KEY, sealed);
+    } catch {
+      // The stored record was not written, so it is still sealed with the previous key, which goes back.
+      if (previousHex) await SecureStore.setItemAsync(DATA_KEY_NAME, previousHex, SECURE_OPTIONS).catch(() => undefined);
+      else await SecureStore.deleteItemAsync(DATA_KEY_NAME, SECURE_OPTIONS).catch(() => undefined);
+      cachedKey = previousHex ? keyFromHex(previousHex) : null;
+      throw new LocalDataError('key-unavailable', 'This phone could not save the restored data. Nothing was replaced.');
+    }
+    // The new record is stored, so the restore has happened. Removing the setup draft (tied to the old data) is
+    // cleanup: if it fails, the restore still stands and the draft is ignored on the next read.
+    await AsyncStorage.removeItem(SETUP_KEY).catch(() => undefined);
+    cachedKey = keyFromHex(hex);
   });
 }
 

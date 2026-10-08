@@ -12,7 +12,7 @@ export const TRANSFER_VERSION = 1;
 export const TRANSFER_MIN_PASSWORD = 12;
 // OWASP's Argon2id minimum: 19 MiB memory, two passes, one lane.
 export const TRANSFER_KDF = {name: 'argon2id', m: 19456, t: 2, p: 1} as const;
-const LIMITS = {maxFileChars: 30_000_000, maxPasswordChars: 1024, mMax: 65536, tMax: 6};
+const LIMITS = {maxFileChars: 30_000_000, maxPasswordChars: 1024};
 const COMMON = ['password1234', 'passwordpassword', '123456789012', 'qwertyuiop12', 'letmeinplease', 'iloveyou1234', 'correct horse'];
 
 export type TransferErrorCode = 'short-password' | 'long-password' | 'common-password' | 'bad-format' | 'unsupported-version' | 'wrong-password' | 'too-large';
@@ -91,8 +91,9 @@ function parseEnvelope(raw: string): Envelope {
   if (!value || typeof value !== 'object' || value.format !== TRANSFER_FORMAT) throw new TransferError('bad-format', 'This is not a Movefield transfer file.');
   if (value.version !== TRANSFER_VERSION) throw new TransferError('unsupported-version', 'This transfer file was made by a newer version of Movefield. Update the app, then try again.');
   const kdf = value.kdf;
-  const kdfOk = kdf && kdf.name === TRANSFER_KDF.name && Number.isInteger(kdf.m) && kdf.m >= TRANSFER_KDF.m && kdf.m <= LIMITS.mMax
-    && Number.isInteger(kdf.t) && kdf.t >= TRANSFER_KDF.t && kdf.t <= LIMITS.tMax && kdf.p === TRANSFER_KDF.p && hexOf(kdf.salt, 16);
+  // This app writes only TRANSFER_KDF. Opening anything else would let a file choose its own cost, so a stronger
+  // setting needs a new format version. Version 1 files use exactly these values.
+  const kdfOk = kdf && kdf.name === TRANSFER_KDF.name && kdf.m === TRANSFER_KDF.m && kdf.t === TRANSFER_KDF.t && kdf.p === TRANSFER_KDF.p && hexOf(kdf.salt, 16);
   const shapeOk = value.cipher === 'xchacha20poly1305' && hexOf(value.nonce, 24) && typeof value.data === 'string' && /^(?:[0-9a-f]{2}){17,}$/.test(value.data)
     && (value.source === 'web' || value.source === 'phone') && typeof value.createdAt === 'string';
   if (!kdfOk || !shapeOk) throw new TransferError('bad-format', 'This transfer file is damaged or incomplete.');

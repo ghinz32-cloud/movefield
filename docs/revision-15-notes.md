@@ -57,6 +57,10 @@ Status: local work on `review-fixes`. Not deployed, not published, not shared. P
 - Phone: `npm run check`, `npm run test:engine` (includes a starting-plan test), `npm run export:mobile` (iOS and Android bundles exported to `dist-mobile`).
 - Generated reports rewritten by the checks were reviewed. `docs/program-depth-validation.json` changed only in timestamp, assertion count and coverage counts, and is kept. `docs/revision-13-validation.json` and `tsconfig.tsbuildinfo` were restored and not committed.
 - Browser, headless Chromium on the dev server: typed goal reader; plan step with START HERE and fit notes; first workout prompt (shown only when a link exists; the plan used had none, so the prompt correctly stayed closed).
+- Second pass (same branch): `check-focus` (its module list was missing `program-evidence`, now fixed), `check-transfer` (a changed Argon2 setting is now refused before the password is used), `check-browser-vault` (43 checks, including a failed restore that keeps the previous key and a failed clean-up that does not undo a stored restore), `check-native-storage` (the same two cases for the phone), `check-training` (29 tests). All check scripts exit 0.
+- Offline shell, rebuilt app on a restarted local server, headless Chromium: online load fills the shell cache; with the network off the page reloads with no failed requests, no page errors, and the bundles served from cache.
+- Phone type check and engine tests pass after the restore change.
+- Reports the checks rewrote (`docs/revision-10-validation.json`, `docs/revision-11-validation.json`, `docs/revision-13-validation.json`, `docs/program-depth-validation.json`) were restored to their committed versions. The revision 11 rewrite had removed the `deliveryChecks` record with `published: false`. The revision 13 rewrite shows 98 checks where the committed report shows 62; the committed report is kept and not updated.
 
 ## Not verified
 
@@ -65,6 +69,9 @@ Status: local work on `review-fixes`. Not deployed, not published, not shared. P
 - Node 22 was used in this environment. CLAUDE.md names Node 24 as the target.
 - Argon2id timing on the phone (not measured).
 - Accessibility with VoiceOver or TalkBack, and lock-screen rest alerts.
+- A full restore in a browser (choose a file, enter the password, confirm, see the data change). The vault paths are covered by unit checks only.
+- The phone restore on a device: the new-key order is covered by the native storage check against an in-memory store, not by a real secure store.
+- Android storage size. The phone seals data as hex, which roughly doubles its size; the Android AsyncStorage limit is near 6 MB, so this is a known ceiling for long histories. Not fixed.
 
 ## Gaps from the complaint map still open
 
@@ -72,7 +79,7 @@ Status: local work on `review-fixes`. Not deployed, not published, not shared. P
 - Progression reasons: the sessions used are not listed in the UI, and there is no override record.
 - Equipment families cannot be excluded across exercises (only per-exercise limits).
 - Guides and videos have no "report this" control.
-- Web offline use: no service worker.
+- Web offline use: the app shell works offline in Chromium (automated check). Not tested in Safari or on a phone. Old bundles are not removed until the cache name changes.
 - Minors: parent consent is not built. Supervision is a self-declared statement.
 - A symptom check-in does not yet ask where the pain is.
 

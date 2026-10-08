@@ -42,7 +42,7 @@ const failsWith=async(promise,code,msg)=>{try{await promise}catch(e){same(e inst
  await failsWith(T.openTransferFile(JSON.stringify(flipped),PASSWORD),'wrong-password','a changed ciphertext byte fails');
  await failsWith(T.openTransferFile(JSON.stringify({...parsed,createdAt:'2026-01-01T00:00:00.000Z'}),PASSWORD),'wrong-password','a changed creation time fails (header is authenticated)');
  await failsWith(T.openTransferFile(JSON.stringify({...parsed,source:'phone'}),PASSWORD),'wrong-password','a changed source fails (header is authenticated)');
- await failsWith(T.openTransferFile(JSON.stringify({...parsed,kdf:{...parsed.kdf,m:parsed.kdf.m+1}}),PASSWORD),'wrong-password','changed Argon2 memory fails (cannot be downgraded silently)');
+ await failsWith(T.openTransferFile(JSON.stringify({...parsed,kdf:{...parsed.kdf,m:parsed.kdf.m+1}}),PASSWORD),'bad-format','a different Argon2 memory setting is refused before the password is used');
 
  // 4. Bad or unsupported files are refused before the password is used.
  await failsWith(T.openTransferFile('not json',PASSWORD),'bad-format','non-JSON input is refused');

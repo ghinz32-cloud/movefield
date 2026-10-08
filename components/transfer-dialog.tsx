@@ -62,7 +62,9 @@ export function RestoreTransferDialog({open,onOpenChange,onRestore}:{open:boolea
       const text=await file.text();
       setRaw(text);setName(file.name);
       if(isTransferFile(text)){setStep('password')}
-      else{setPlain(text);setStep('confirm')}
+      else{
+        try{readSavedState(text)}catch{setError('That is not a valid Movefield backup. Nothing was replaced.');return}
+        setPlain(text);setStep('confirm')}
     }catch{setError('That file could not be read.')}
   }
   async function unlock(){

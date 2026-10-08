@@ -14,7 +14,7 @@ Checked 8 October 2026 against primary pages where they could be read. The full 
 | Jump practice (focus) | Markovič 2007 (partly checked); Stojanović et al. 2017 | Plyometric training improves vertical jump in meta-analyses | Once-weekly jump practice (gap noted in the research) |
 | Running and hybrid | NHS Couch to 5K; Schumann et al. 2022 (concurrent training review) | Staged run/walk progression; combining strength and endurance does not block hypertrophy or maximal strength on average | A run/walk trial beyond the NHS plan |
 | Calisthenics and general | WHO 2020; ACSM 2026 (public summary, partly checked) | Adult guidance: moderate activity 150–300 minutes a week, plus strength work on two or more days | Calisthenics-specific trials |
-| Youth | AAP 2020; NSCA youth statement; IOC consensus; NSCA long-term athletic development (partly checked) | Individualised, supervised progression; no maximal testing in the app | Youth dose-response (Lesinski 2016 was not confirmed and is excluded) |
+| Youth | AAP 2020; NSCA youth statement; NSCA long-term athletic development (partly checked); IOC consensus (background only) | Individualised, supervised progression; no maximal testing in the app. The IOC consensus is not cited for maximal lifts, testing or supervision | Youth dose-response (Lesinski 2016 was not confirmed and is excluded) |
 
 Sources are published research or public-health guidance unless marked "expert", which means a commercial coach's program page. Expert pages describe program design; they are not trials.
 
@@ -128,7 +128,7 @@ Result at this revision: 71 programs, 0 rule failures, with the designed allowan
 
 | Rule | What it requires | Basis |
 |---|---|---|
-| R1 | At least 10 weighted sets a week for each major group (chest, back, quads, hamstrings, shoulders, biceps, triceps) in full-length muscle-building and powerbuilding programs of 45 minutes or more that are not brief | Volume-growth review (Schoenfeld, Ogborn and Krieger 2017). The 10-set figure is the app's target. The full paper was not readable, so the exact wording is unverified (see below) |
+| R1 | At least 10 weighted sets a week for each major group (chest, back, quads, hamstrings, shoulders, biceps, triceps) in full-length muscle-building and powerbuilding programs of 45 minutes or more that are not brief | An app design target, not a published threshold. Schoenfeld, Ogborn and Krieger 2017 reports a graded dose-response between weekly volume and muscle growth. The 10-set figure is often quoted from it, but comes from a trend the authors called non-significant (P = 0.074), so the app labels 10 as its own planning choice (see below) |
 | R2 | Each major group is trained in at least two sessions a week | Schoenfeld, Ogborn and Krieger 2016: in volume-matched comparisons, twice a week gave more hypertrophy than once a week (checked from the abstract record) |
 | R3 | Muscle-building sets with a top of more than six reps use a low of at least five and a top of at most 20 | App rule. Sets with a top of six or fewer are heavy work and are exempt from this range |
 | R4 | Powerlifting gym programs include squat, bench and deadlift every week | App design rule for a competition-lift block |
@@ -136,7 +136,7 @@ Result at this revision: 71 programs, 0 rule failures, with the designed allowan
 | R6 | Heavy sets rest at least 120 seconds; every rest is between 60 and 300 seconds | Schoenfeld et al. 2016 (8 weeks, 21 men): three-minute rests gave greater squat and bench gains than one-minute rests. Two minutes is the app's minimum for heavy sets and was not tested on its own |
 | R7 | Walk-run and beginner run sessions have a rest day between them (NHS Couch to 5K). An easy-only run base may pair days, up to runs minus three in a calendar week; four runs in seven days always contain at least one such pair | NHS Couch to 5K; the week arithmetic is exact |
 | R8 | Hybrid programs of three or more days keep running and lifting in separate sessions. A two-day combined session ends with a run of 20 minutes or less | App rule, from the concurrent-training review (Schumann et al. 2022) |
-| R9 | Youth programs have no near-maximal sets (top of fewer than six reps) | AAP 2020; NSCA youth statement; IOC consensus |
+| R9 | Youth programs have no near-maximal sets (top of fewer than six reps) | AAP 2020; NSCA youth statement. The IOC consensus is not cited for this rule, because it does not address maximal lifts, testing or supervision |
 | R10 | Brief muscle-building or powerbuilding programs say that they carry less work | App rule for honest descriptions |
 | R11 | The computed session length is no more than five minutes over the stated length | App rule |
 
@@ -152,7 +152,7 @@ A set counts 1 toward a primary muscle and 0.5 toward a secondary one. This is a
 
 ### Known gaps (printed, not hidden)
 
-Two sessions a week cannot give each major group 10 weighted sets at this session length. These programs are BB2, BBDBST2, PBDBST2 and PBSTART2. Their descriptions now say that each muscle group gets less weekly work than in a three- or four-day plan.
+Two sessions a week cannot reach the app's 10-set target for each major group at this session length. These programs are BB2, BBDBST2, PBDBST2 and PBSTART2. Their descriptions now say that each muscle group gets less weekly work than in a three- or four-day plan.
 
 ### What the audit does not check
 
@@ -163,6 +163,26 @@ Two sessions a week cannot give each major group 10 weighted sets at this sessio
 
 ### Sources only partly verified
 
-- **Schoenfeld, Ogborn and Krieger 2017.** The app's 10-set target is often quoted from this review. The record in `docs/workout-evidence.json` was verified through a Europe PMC record with the abstract wording "graded dose-response". The "at least 10 weekly sets" wording comes from a secondary summary and is not confirmed in the full paper. The DOI page returned 403.
-- **ACSM 2026**, **NSCA youth** and **IOC** material: public summaries, partly checked.
+- **Schoenfeld, Ogborn and Krieger 2017 (volume).** The full text was not readable; the DOI page returned 403. The "graded dose-response" wording comes from an abstract record. The 10-set figure is attributed in secondary summaries to a non-significant trend (P = 0.074), which the authors' sensitivity analysis did not keep. The app therefore treats 10 as its own planning target.
+- **Plotkin et al. 2022 (PeerJ 14142, repetition versus load progression).** The DOI page returned 403 and PubMed rate-limited further requests. The title ("Progressive overload without progressing load?") and the claim that repetition progression is one route were checked from a search summary. Study length and results were not read, so the app's summary avoids quoting them.
+- **Iversen et al. 2021 (time-efficient training).** A narrative review, identified from search results; the publisher page was rate-limited. It reviews the literature and is not a trial of the 15-minute plans.
+- **Schoenfeld, Grgic, Ogborn and Krieger 2017 (low versus high load).** The abstract page returned 402 (paywall). The 60% 1RM figure was removed from the app's summary because it was not confirmed. Lopez et al. 2021 supports the direction of the load claim; it is not yet in the app's Sources list and needs its own check before it is added.
+- **NSCA long-term athletic development (Lloyd et al. 2016).** Read through a paywall stub. "Viewed as athletes" and "fitness behaviours they can keep later in life" were found on the page. "Treated as athletes" and "lifelong habits" were not, so the summary uses only the wording found.
+- **ACSM 2026**, **NSCA youth 2009** and **IOC** material: public summaries, partly checked. The IOC consensus is kept as background only; the app does not cite it for maximal lifts, testing or supervision.
 - **Barbell Medicine** and **PB-EXPERT**: commercial coaching pages. They describe program design, not trials. The PB-EXPERT hybrid claim is unconfirmed.
+
+## 6. Corrections made 8 October 2026
+
+These changed the words users see on the Sources page and the source mapping. Catalog IDs, display names, stored workout titles and history keys did not change.
+
+- **TIME-EFFICIENT** is now named as a narrative review. It is cited for brief strength and muscle-building sessions (the QPL3 and brief-series programs), not for run or walk-run starts.
+- **Run and hybrid starts** (QR3, QR2, QHY4, QHY3) now cite the NHS Couch to 5K plan (running) or the concurrent-training review (hybrid). QR2 and QHY3 inherit this because they are built from QR3 and QHY4.
+- **GFNONE2**, a youth-suitable no-equipment start, cites WHO 2020 instead of TIME-EFFICIENT.
+- **IOC-YOUTH** is no longer mapped to youth plans or to rule R9. Its entry remains as background with a narrower summary.
+- **REP-PROGRESSION** links the PeerJ DOI. The summary no longer says "eight-week".
+- **SCHOENFELD-2017-LOAD** no longer gives a 60% 1RM threshold.
+- **LLOYD-2016-LTAD** uses only the wording found on the NSCA page.
+- **R1** is described as an app target, not a published threshold.
+- `docs/workout-evidence.json` is the research record as it stood on 8 October. It is not rewritten, so it still lists TIME-EFFICIENT and IOC-YOUTH as reused keys. This document supersedes it where they differ.
+
+Still open: the program design items (chest work once a week in ST2 and GF2, which needs a second press or a stated gap), the Schumann same-session note for HYDB2 and HYHOME2, the Lopez 2021 citation for load claims, and the 1×8 starting-week label for new plans. These are program or engine changes and are tracked separately.

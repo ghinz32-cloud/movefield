@@ -11,11 +11,12 @@ export const disciplineEvidence: Record<string, {label: string; keys: string[]}>
   calisthenics: {label: 'Calisthenics', keys: ['ACSM-2026', 'REP-PROGRESSION', 'WHO-2020']},
   general: {label: 'General fitness', keys: ['WHO-2020', 'ACSM-2026']},
   jumping: {label: 'Jump practice', keys: ['MARKOVIC-2007', 'STOJANOVIC-2017']},
-  youth: {label: 'Youth training', keys: ['AAP-2020', 'NSCA-YOUTH', 'IOC-YOUTH', 'LLOYD-2016-LTAD']},
+  // IOC-YOUTH is not mapped here: it does not address maximal lifts, testing or supervision, which these plans rely on.
+  youth: {label: 'Youth training', keys: ['AAP-2020', 'NSCA-YOUTH', 'LLOYD-2016-LTAD']},
 };
 
 export function planEvidence(input: {goal: string; run: boolean; youth: boolean; jumping: boolean}): string[] {
-  const base = input.run ? ['NHS-C25K'] : input.youth ? ['AAP-2020', 'NSCA-YOUTH', 'IOC-YOUTH'] : ['ACSM-2026', 'ACSM-2009'];
+  const base = input.run ? ['NHS-C25K'] : input.youth ? ['AAP-2020', 'NSCA-YOUTH'] : ['ACSM-2026', 'ACSM-2009'];
   const goal = disciplineEvidence[input.goal]?.keys ?? [];
   const extra = [...(input.youth ? disciplineEvidence.youth.keys : []), ...(input.jumping ? disciplineEvidence.jumping.keys : [])];
   return [...new Set([...base, ...goal, ...extra])];

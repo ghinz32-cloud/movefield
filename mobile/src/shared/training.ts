@@ -203,7 +203,10 @@ export function eligibility(s:State,target:Session):string|null{
 }
 export function initialState():State{const p={...blankProfile,goal:'strength',programId:undefined};const today=new Date().getDay();p.days=[today,(today+2)%7,(today+4)%7].sort();const plan=buildPlan(p).plan!;plan.acceptedAt=new Date().toISOString();return{schema:2,profile:p,plan,history:[],active:null,proposals:[],events:[],custom:[],ratings:{},audit:[],saved:[],checkins:true,soreness:false,hold:false,simulatedOffline:false}}
 export function nextSession(s:State){return s.plan?.sessions.filter(x=>x.status==='scheduled').sort((a,b)=>a.date.localeCompare(b.date))[0]}
-export function changed(s:State,message:string){return {...s,audit:[{at:new Date().toISOString(),message},...s.audit].slice(0,150)}}
+// Keeps every open proposal and the 50 newest resolved ones. Proposals are stored newest first.
+// Without this, resolved proposals accumulate until the saved-state schema rejects every save.
+export function pruneProposals(list:State['proposals']):State['proposals']{let resolved=0;return list.filter(p=>p.status==='pending'||p.status==='queued'||resolved++<50)}
+export function changed(s:State,message:string){return {...s,audit:[{at:new Date().toISOString(),message},...s.audit].slice(0,150),proposals:pruneProposals(s.proposals)}}
 export function makeProposal(s:State,type:Proposal['type'],input?:string):Proposal|null{
  const plan=s.plan,session=nextSession(s);if(!plan||!session||plan.profile.mode!=='app'||s.hold||plan.paused)return null;
  if(type==='capacity')return makeCapacityProposal(s);

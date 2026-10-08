@@ -102,6 +102,12 @@ export function createVault(deps: VaultDeps) {
     }
   }
 
+  async function sealRecord(key: CryptoKey, slot: string, text: string): Promise<string> {
+    const iv = deps.random(12);
+    const sealed = new Uint8Array(await deps.subtle.encrypt({name: 'AES-GCM', iv, additionalData: associated(slot), tagLength: 128}, key, encoder.encode(text)));
+    return `${PREFIX},"iv":"${toBase64(iv)}","data":"${toBase64(sealed)}"}`;
+  }
+
   // Keys are created only when no sealed record exists. A missing key with sealed records is reported, never replaced.
   async function sealAndStore(slot: string, text: string): Promise<string> {
     let key = await loadKey();
@@ -109,9 +115,7 @@ export function createVault(deps: VaultDeps) {
       if (anySealed()) throw new VaultError('key-missing', KEY_MISSING_MESSAGE);
       key = await createKey();
     }
-    const iv = deps.random(12);
-    const sealed = new Uint8Array(await deps.subtle.encrypt({name: 'AES-GCM', iv, additionalData: associated(slot), tagLength: 128}, key, encoder.encode(text)));
-    const raw = `${PREFIX},"iv":"${toBase64(iv)}","data":"${toBase64(sealed)}"}`;
+    const raw = await sealRecord(key, slot, text);
     deps.storage.setItem(slot, raw);
     return raw;
   }
@@ -143,6 +147,47 @@ export function createVault(deps: VaultDeps) {
         } catch {
           throw new VaultError('decrypt-failed', DECRYPT_MESSAGE);
         }
+      });
+    },
+    // Replaces the record in one slot under a new key, for a restore the person has confirmed. The previous key is
+    // kept until the new record is stored. If storing fails, the previous key is put back, so records sealed with it
+    // still open. Other slots are cleared only after the new record is stored, because they were sealed with the old key.
+    replace(slot: string, text: string): Promise<string> {
+      return enqueue(async () => {
+        let previous: CryptoKey | null;
+        try {
+          previous = (await deps.keys.get()) ?? null;
+        } catch {
+          throw new VaultError('key-unavailable', KEY_UNAVAILABLE_MESSAGE);
+        }
+        const next = await deps.subtle.generateKey({name: 'AES-GCM', length: 256}, false, ['encrypt', 'decrypt']) as CryptoKey;
+        let raw: string;
+        try {
+          await deps.keys.put(next);
+          raw = await sealRecord(next, slot, text);
+          deps.storage.setItem(slot, raw);
+        } catch {
+          // Failure before or during the store: the slot still holds the previous record, so the previous key goes back.
+          cached = previous;
+          try {
+            if (previous) await deps.keys.put(previous);
+            else await deps.keys.remove();
+          } catch {
+            // The previous record is still in place; the caller reports that nothing was replaced.
+          }
+          throw new VaultError('key-unavailable', 'Your saved training could not be replaced. Nothing was changed.');
+        }
+        // The new record is stored, so the restore has happened. Clearing other slots is cleanup and cannot undo it.
+        cached = next;
+        for (const other of slots) {
+          if (other === slot) continue;
+          try {
+            deps.storage.removeItem(other);
+          } catch {
+            // Clearing another slot is cleanup. If it fails, the restored record in this slot is unaffected.
+          }
+        }
+        return raw;
       });
     },
     // Removes every training record and the key. Only call after the person has confirmed a reset.

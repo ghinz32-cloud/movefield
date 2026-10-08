@@ -44,7 +44,7 @@
     {
       "source": "lib/training.ts",
       "target": "src/shared/training.ts",
-      "sha256": "0481a5250f2f43588495390f02ebd6490889de285fc28344c1076e6e56b6fcba"
+      "sha256": "42fd67f01ebe4fc14c57cdbb883d09e84c51002cb6e188e1f15e543abf9336bb"
     },
     {
       "source": "lib/training-tools.ts",
@@ -59,7 +59,7 @@
     {
       "source": "lib/program-catalog.ts",
       "target": "src/shared/program-catalog.ts",
-      "sha256": "67725a3b54fbbb15c0a35c94a61fd5172232f936bd5c760359b1f9dca273b09e"
+      "sha256": "8d3e25e8136de9ba56e7138a9c027fe82e3a6fcae6cec3cdf4306f3d1b4d57e1"
     },
     {
       "source": "lib/substitutions.ts",
@@ -89,7 +89,7 @@
     {
       "source": "lib/program-evidence.ts",
       "target": "src/shared/program-evidence.ts",
-      "sha256": "11347637d7b0e7ac55b34bfea47d0161646b6154fffd592fa98f5abeb09c0bbc"
+      "sha256": "34273ba6078bfdb7aba31eac6d4607e2f82c8ebcd95a72795731009b72404590"
     },
     {
       "source": "lib/saved-data.ts",
@@ -99,7 +99,7 @@
     {
       "source": "lib/transfer-bundle.ts",
       "target": "src/shared/transfer-bundle.ts",
-      "sha256": "bb8fc1300279435484b184b418b76d16e9c4ca5d2a5c031b0fc83dce90db638a"
+      "sha256": "668acefcfaeda5ea9ea32931b2068db0f8507a36bc7d91c914774c81887b55f7"
     },
     {
       "source": "lib/progress.ts",

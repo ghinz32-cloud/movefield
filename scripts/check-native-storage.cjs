@@ -58,6 +58,22 @@ const storage=load('mobile/src/storage.ts'),T=load('mobile/src/shared/training.t
  assert.equal((await storage.readLocalState()).profile.name,'Private name marker','the original key still opens the record');
  await storage.resetLocalState();assert.equal(secure.has(DATA_KEY),false);
 
+ // Restore under a new key. A failed record write puts the previous key back and keeps the previous record readable.
+ // A failed cleanup of the setup draft happens after the restore is stored, so it must not undo the restore.
+ const before={...s,profile:{...s.profile,name:'Before restore'}},restored={...s,profile:{...s.profile,name:'Restored name'}};
+ await storage.saveLocalState(before);
+ const beforeKey=secure.get(DATA_KEY),beforeRecord=values.get(STATE_KEY);
+ const realSet=disk.setItem,realRemove=disk.removeItem;
+ disk.setItem=async()=>{throw new Error('disk full')};
+ try{await assert.rejects(storage.replaceLocalState(restored),e=>e.code==='key-unavailable','a failed record write is reported')}finally{disk.setItem=realSet}
+ assert.equal(secure.get(DATA_KEY),beforeKey,'a failed restore puts the previous key back');
+ assert.equal(values.get(STATE_KEY),beforeRecord,'a failed restore leaves the previous record in place');
+ assert.equal((await storage.readLocalState()).profile.name,'Before restore','the previous data still opens after a failed restore');
+ disk.removeItem=async key=>{if(key===SETUP_KEY)throw new Error('cleanup failed');return realRemove(key)};
+ try{await storage.replaceLocalState(restored)}finally{disk.removeItem=realRemove}
+ assert.equal((await storage.readLocalState()).profile.name,'Restored name','a restore stands when removing the setup draft fails');
+ assert.notEqual(secure.get(DATA_KEY),beforeKey,'a successful restore uses a new key');
+
  const custom={id:'custom-load',name:'Custom timed loaded work',equipment:'Custom',pattern:'Custom',metric:'seconds',cues:[],custom:true,loadTracked:true};const w={id:'w',sessionId:'s',title:'Timed',date:T.day(),startedAt:1,sets:[{exerciseId:custom.id,set:1,reps:1200.5,kg:null,done:true}]};assert.equal(engine.unknownLoads(w,[custom]),1);assert.doesNotThrow(()=>engine.editSet({...s,custom:[custom],active:w},0,{}));
  console.log('PASS native setup/state write ordering, latest-draft recovery, reset cleanup, encrypted-at-rest storage with key-loss protection, and custom timed/load conventions');
 })().catch(e=>{console.error(e);process.exit(1)});
