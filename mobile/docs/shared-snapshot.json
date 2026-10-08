@@ -82,6 +82,11 @@
       "sha256": "ed4e6ef972c4df9882870d14a9bbaaeb1f853c632c5004c9e85047a3bc6b7ccb"
     },
     {
+      "source": "lib/transfer-bundle.ts",
+      "target": "src/shared/transfer-bundle.ts",
+      "sha256": "bb8fc1300279435484b184b418b76d16e9c4ca5d2a5c031b0fc83dce90db638a"
+    },
+    {
       "source": "lib/progress.ts",
       "target": "src/shared/progress.ts",
       "sha256": "9495f8db6077f0b4b0506646ff9c330b12589fb647e7de5ea089bcdf4a9cd65a"

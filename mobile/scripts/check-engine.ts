@@ -8,6 +8,7 @@ import { guides, safeWebUrl } from '../src/content';
 import {applySubstitution} from '../src/shared/substitutions';
 import { randomBytes } from 'node:crypto';
 import { isSealed, keyFromHex, LocalDataError, newKeyHex, openText, sealText } from '../src/local-crypto';
+import { createTransferFile, isTransferFile, openTransferFile, TransferError } from '../src/shared/transfer-bundle';
 
 assert.equal(previewPlan('missing-program').plan,null);
 const choices = [FOUNDATION, RUN_WALK, SPORT_FOUNDATION, ...programCatalog.map(x => x.id)];
@@ -102,3 +103,16 @@ console.log('PASS: native plan archives are retained and guarded; saved machine 
   assert.throws(() => newKeyHex(() => new Uint8Array(5)), isLocalError('key-unavailable'));
   console.log('PASS: local records are sealed with XChaCha20-Poly1305, bound to their storage slot, and reject tampering or wrong keys.');
 }
+
+// Transfer files: the phone writes and reads the same format as the web app. Argon2id runs here, so this is slow but real.
+const transferPassword = 'quiet river lantern 42';
+const transferRandom = (n: number) => new Uint8Array(randomBytes(n));
+const transferPlain = JSON.stringify(emptyDemo(), null, 2);
+void (async () => {
+  const file = await createTransferFile(transferPlain, transferPassword, { source: 'phone', random: transferRandom });
+  assert.equal(isTransferFile(file), true);
+  assert.equal(file.includes('Movefield'), false, 'the file must not contain plaintext marker text');
+  assert.equal(await openTransferFile(file, transferPassword), transferPlain);
+  await assert.rejects(openTransferFile(file, 'quiet river lantern 43'), (e: unknown) => e instanceof TransferError && e.code === 'wrong-password');
+  console.log('PASS: phone transfer files round-trip, reject a wrong password, and keep the header authenticated.');
+})().catch(error => { console.error(error); process.exit(1); });

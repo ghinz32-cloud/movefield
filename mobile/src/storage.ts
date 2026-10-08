@@ -17,7 +17,7 @@ const SETUP_KEY = 'training-studio:mobile-setup:v1';
 const DATA_KEY_NAME = 'movefield.dataKey.v1';
 const SECURE_OPTIONS = { keychainAccessible: SecureStore.AFTER_FIRST_UNLOCK_THIS_DEVICE_ONLY };
 
-export const KEY_MISSING_MESSAGE = 'Your saved training is encrypted with a key that is not on this device. This usually happens after restoring the app to a different phone. Nothing was replaced. To continue, reset this demo, then restore an exported backup in Settings.';
+export const KEY_MISSING_MESSAGE = 'Your saved training is encrypted with a key that is not on this device. This usually happens after restoring the app to a different phone. Nothing was replaced. To continue, restore a transfer file below, or reset this demo.';
 
 // Every read and write goes through one chain, so a read never sees a half-written record.
 // The chain itself never rejects; each caller still receives its own result.

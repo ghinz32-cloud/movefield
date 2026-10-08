@@ -24,6 +24,9 @@ import { guides, media, safeWebUrl } from './src/content';
 import { adoptPlan, editSet, emptyDemo, finishWorkout, FOUNDATION, RUN_WALK, SPORT_FOUNDATION, previewPlan, startWorkout, unknownLoads } from './src/mobile-engine';
 import { readLocalState, resetLocalState, saveLocalState } from './src/storage';
 import { LocalDataError } from './src/local-crypto';
+import { NativeTransferMake, NativeTransferOpen } from './src/transfer';
+import { createTransferFile, isTransferFile, openTransferFile, TransferError } from './src/shared/transfer-bundle';
+import { getRandomBytes } from 'expo-crypto';
 import { NativeTrainingTools, NativeWeeklyReview } from './src/tools';
 
 type Tab = 'Today' | 'Plan' | 'Library' | 'History' | 'Settings';
@@ -110,12 +113,32 @@ function TrainingApp() {
     try { await Share.share({ title: 'Movefield backup', message: JSON.stringify(stateRef.current, null, 2) }); return ''; }
     catch { return 'The backup could not be shared. Try again.'; }
   };
-  const restoreBackup = (raw: string): string => {
+  // Transfer files: one password seals the data for a new phone. Opening one asks for confirmation before anything changes.
+  const makeTransfer = async (password: string): Promise<string> => {
+    if (!stateRef.current) return 'Nothing to protect yet.';
+    try {
+      const file = await createTransferFile(JSON.stringify(stateRef.current, null, 2), password, { source: 'phone', random: getRandomBytes });
+      await Share.share({ title: 'Movefield transfer file', message: file });
+      return '';
+    } catch (e) { return e instanceof TransferError ? e.message : 'The transfer file could not be made. Your data is unchanged.'; }
+  };
+  const openTransfer = async (raw: string, password: string): Promise<string> => {
+    let plain: string;
+    try { plain = isTransferFile(raw) ? await openTransferFile(raw, password) : raw; }
+    catch (e) { return e instanceof TransferError ? e.message : 'That file could not be opened. Nothing was replaced.'; }
     let parsed: State;
-    try { parsed = readSavedState(raw.trim()) as State; }
-    catch { return 'That text is not a valid Movefield backup. Paste the whole backup exactly as it was saved.'; }
-    setConfirm({ title: 'Replace data on this phone?', message: 'This replaces your current plan, history and settings on this phone with the backup. Export first if you want to keep what is here now.', label: 'Restore backup', action: () => { modify(() => parsed); } });
+    try { parsed = readSavedState(plain.trim()) as State; }
+    catch { return 'That is not a valid Movefield transfer file or backup. Nothing was replaced.'; }
+    setConfirm({ title: 'Replace data on this phone?', message: 'This replaces the plan, history and settings saved on this phone with the file. Make a transfer file first if you want to keep what is here now.', label: 'Replace with this file', action: () => { void replaceWith(parsed); } });
     return '';
+  };
+  // Clears the old sealed record and key, then writes the opened data under this phone's new key.
+  const replaceWith = async (parsed: State) => {
+    try {
+      await resetLocalState();
+      setReadError(null); setError('');
+      commit(parsed);
+    } catch { setError('The file opened, but this phone could not save it. Nothing was replaced.'); }
   };
   const commit = (next: State) => { const checked=normalizeWorkoutRest(next);readSavedState(JSON.stringify(checked));stateRef.current = checked; setState(checked); };
   const [personalSetup,setPersonalSetup]=useState(false);
@@ -151,7 +174,7 @@ function TrainingApp() {
   const openPreview = (id: string) => { const result = previewPlan(id); if (result.plan) setPreview(result.plan); else setError(result.errors.join(' ')); };
   const reset = async () => { if(resettingRef.current)return;resettingRef.current=true;setResetting(true); try { await resetLocalState(); setReadError(null); commit(emptyDemo()); modify(s=>({...s,restTimer:null})); setError(''); setTab('Today'); } catch { setError('Local storage could not be reset.'); } finally {resettingRef.current=false;setResetting(false);} };
 
-  if (!state) return <SafeAreaView style={styles.safe}><View style={styles.content}><Heading eyebrow={brand.name.toUpperCase()} title={readError ? 'Saved data needs attention' : 'Opening your training'} />{readError ? <><Text style={styles.body}>{readError}</Text><Text style={styles.body}>Try reopening the app first. Reset removes only this mobile demo’s local data.</Text>{error&&<Text accessibilityRole="alert" style={styles.errorText}>{error}</Text>}<Button label={resetting?'Resetting…':'Reset this demo'} disabled={resetting} onPress={() => setConfirm({ title: 'Reset local data?', message: 'This deletes the mobile demo’s saved plan and workouts from this device.', label: 'Delete local demo data', action: () => { void reset(); } })} /></> : <ActivityIndicator color={COLORS.green} />}<ModalFrame visible={!!confirm} close={() => setConfirm(null)} title={confirm?.title ?? ''}><Text style={styles.body}>{confirm?.message}</Text><Button label={confirm?.label ?? 'Continue'} onPress={() => { const action = confirm?.action; setConfirm(null); action?.(); }} /></ModalFrame></View></SafeAreaView>;
+  if (!state) return <SafeAreaView style={styles.safe}><View style={styles.content}><Heading eyebrow={brand.name.toUpperCase()} title={readError ? 'Saved data needs attention' : 'Opening your training'} />{readError ? <><Text style={styles.body}>{readError}</Text><Text style={styles.body}>Try reopening the app first. Reset removes only this mobile demo’s local data.</Text><NativeTransferOpen onOpen={openTransfer}/>{error&&<Text accessibilityRole="alert" style={styles.errorText}>{error}</Text>}<Button label={resetting?'Resetting…':'Reset this demo'} disabled={resetting} onPress={() => setConfirm({ title: 'Reset local data?', message: 'This deletes the mobile demo’s saved plan and workouts from this device.', label: 'Delete local demo data', action: () => { void reset(); } })} /></> : <ActivityIndicator color={COLORS.green} />}<ModalFrame visible={!!confirm} close={() => setConfirm(null)} title={confirm?.title ?? ''}><Text style={styles.body}>{confirm?.message}</Text><Button label={confirm?.label ?? 'Continue'} onPress={() => { const action = confirm?.action; setConfirm(null); action?.(); }} /></ModalFrame></View></SafeAreaView>;
 
   const next = nextSession(state);
   const blocked = next ? eligibility(state, next) : null;
@@ -236,7 +259,7 @@ function TrainingApp() {
 
   return <SafeAreaView style={styles.safe} edges={['top', 'bottom']}><StatusBar style={appearance.dark?"light":"dark"} /><View style={styles.brandBar}><View><Text style={styles.brand}>{brand.name}</Text><Text style={styles.brandSub}>{brand.tagline}</Text></View><View style={styles.demoBadge}><Text style={styles.demoText}>LOCAL DEMO</Text></View></View>
     {error ? <Pressable accessibilityRole="button" onPress={() => setError('')} style={styles.error}><Text style={styles.errorText}>{error}</Text><Text style={styles.small}>Tap to dismiss</Text></Pressable> : null}
-    {resetting&&<Text accessibilityLiveRegion="polite" style={styles.body}>Resetting local data…</Text>}<KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>{tab === 'Today' ? todayView : tab === 'Plan' ? planView : tab === 'Library' ? libraryView : tab === 'Settings' ? <NativeSettings reminderMessage={workoutReminderMessage} onExport={exportBackup} onRestore={restoreBackup}/> : historyView}</KeyboardAvoidingView>
+    {resetting&&<Text accessibilityLiveRegion="polite" style={styles.body}>Resetting local data…</Text>}<KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>{tab === 'Today' ? todayView : tab === 'Plan' ? planView : tab === 'Library' ? libraryView : tab === 'Settings' ? <NativeSettings reminderMessage={workoutReminderMessage} onExport={exportBackup} onMakeTransfer={makeTransfer} onOpenTransfer={openTransfer}/> : historyView}</KeyboardAvoidingView>
     <Pressable disabled={!saveStatus.startsWith('Save failed')} accessibilityRole="button" accessibilityLabel="Retry saving on this device" onPress={() => modify(s=>({...s}))}><Text accessibilityLiveRegion="polite" style={styles.saveStatus}>{saveStatus}</Text></Pressable>
     <View style={styles.tabs}>{(['Today', 'Plan', 'Library', 'History', 'Settings'] as const).map((label, i) => <Pressable accessibilityRole="tab" accessibilityLabel={label} accessibilityState={{ selected: tab === label }} key={label} onPress={() => { setTab(label); setError(''); }} style={[styles.tab, tab === label && styles.activeTab]}><Text style={[styles.tabIcon, tab === label && { color: COLORS.green }]}>{['◉', '▤', '⌕', '◷', '⚙'][i]}</Text><Text style={[styles.tabLabel, tab === label && { color: COLORS.green, fontWeight: '800' }]}>{label}</Text></Pressable>)}</View>
 
