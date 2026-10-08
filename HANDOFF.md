@@ -1,5 +1,13 @@
 # Current continuation — 8 October 2026
 
+## Latest milestone — U02b native controls
+
+Parent `acd95cb4e1d93f52b699324232980f81be98c214` is pushed/verified. This source checkpoint contains `docs/ux-native-controls-2026-10-08.md`; resolve the exact SHA with `git log -1 --format=%H -- docs/ux-native-controls-2026-10-08.md`, then verify remote head and existing changes. Code: `mobile/App.tsx`.
+
+Completed: labeled wrapping numeric field groups, full-width Log controls, persistent finish/count/rest controls outside the scroll list, collapsed rest-alert options, active training before historical summary. Native types, engine, Android/iOS Metro exports and root lint pass. Generated `mobile/dist-mobile` and `public/downloads/movefield-mobile-r14.zip` are local-only ignored outputs, reproducible from saved source. They are not signed Android/iOS binaries. Physical-device/keyboard/font-scale/TalkBack acceptance remains pending; the report records the initial wrong-directory patch and post-edit rerun accurately.
+
+Next short prompt: “Resume Movefield on `audit/2026-10-08-quality`. Read AGENTS/TASKS/HANDOFF and verify refs/changes. Complete U03: primary-source workout evidence ledger and generated weekly-day/dose/progression coverage; separate product heuristics from studied prescriptions and identify the highest bounded gap. Save/verify GitHub checkpoint, update handoff and continue U04, then storage/Qwen milestones. No merge or deploy.”
+
 ## Latest milestone — U02a web controls
 
 Parent `701c8b8a7a77c19e1be6ce17effd702917fbe3ff` is pushed/verified. This application checkpoint contains `docs/ux-web-controls-2026-10-08.md`; resolve its exact SHA with `git log -1 --format=%H -- docs/ux-web-controls-2026-10-08.md`, compare remote head, and check existing changes. Code: `app/page.tsx`, `app/globals.css`. Evidence: `docs/qa/u02a-workout-after.jpg`.
