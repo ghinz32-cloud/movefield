@@ -77,7 +77,8 @@ npx.cmd expo start --go --clear
 - Personal plan setup uses the same TypeScript engine as the website. The catalog has 71 variants, with three additional legacy preview choices. Your goal, equipment, training days, time and readiness determine which choices fit. You can review all workouts before accepting.
 - All 989 exercises have bundled detailed text guides, with exact equipment-tag filters and multiword search. The website’s 1,726 source photos are not bundled in this native starter. Source and reference-video links open externally when available; no video is represented as hosted by this app.
 - Actual reps/time and load, completed sets, optional machine setup, per-set distance in meters, duration in seconds and notes, partial workouts, rest timer, history and pounds/kilograms. Optional extra measurements are stored as entered and do not change progression targets. Unknown weight remains unknown; the app does not invent starting loads.
-- Local persistence using AsyncStorage. Reads and writes use the shared Zod schema, size checks and unsafe-key rejection. A failed read does not silently overwrite the saved record; reset asks for confirmation. Writes are queued to preserve edit order.
+- Local persistence using AsyncStorage, with saved training and setup drafts encrypted before they are written (XChaCha20-Poly1305, one random nonce per write, bound to their storage slot). The 256-bit key is kept in the device’s secure store and is never written to AsyncStorage. Reads and writes use the shared Zod schema, size checks and unsafe-key rejection. A failed read or a missing key does not overwrite the saved record; reset asks for confirmation and deletes the key. Writes are queued to preserve edit order.
+- Plate calculator and warm-up ladder (adults only) on the Library tab, and a weekly review on History. They calculate from entered or logged numbers only and never change the saved log. Estimated bests use rated sets and are approximate.
 - Shared plan eligibility checks. Incomplete prerequisites can block a later session. The starter does not bypass them. Reviewed date changes and a shorter-session option are available. They do not silently rewrite the full block.
 
 The sample-plan preview openly shows its assumptions: age 28, equipment, lifting experience and, where applicable, an existing running base. These samples are demonstration configurations, separate from personal plan setup; they are not assessments of readiness. A new plan retains existing workout history and cannot replace an active workout.
@@ -90,7 +91,7 @@ Tap **Enable rest alerts** to request notification permission. The app schedules
 
 ## Data and account boundaries
 
-The storage key is `training-studio:mobile-local-demo:v1`, separate from the website. AsyncStorage is unencrypted local app storage. Only the local demo’s training data is stored; there are no passwords, credentials or tokens. Removing app data or uninstalling can remove these records. There is no backup or import/export screen yet.
+The storage key is `training-studio:mobile-local-demo:v1`, separate from the website. The stored value is ciphertext. Its key is `movefield.dataKey.v1` in the device’s secure store, set to stay on this device and not move in device backups, so a copy of the app data restored to another phone shows a “key not on this device” message instead of being replaced. Only the local demo’s training data is stored; there are no passwords, credentials or tokens. Removing app data or uninstalling can remove these records. Settings can export a backup as plain JSON and restore it by paste; that exported file is not encrypted, so share it only deliberately. Encryption has been checked in Node and by a bundle build, not yet on a physical iPhone or Android phone.
 
 A shared website/mobile account requires a real backend: identity, authenticated API, per-user authorization, database, sync/conflict handling, backup and account deletion. `src/storage.ts` is the small storage boundary to replace or complement when that service exists. Future credentials belong in an appropriate secure credential store, not this file. No backend endpoint or secret is hidden in the starter.
 
@@ -142,7 +143,8 @@ Checked 7 October 2026. Created using the official `expo-template-blank-typescri
 - [Official create-expo-app templates](https://docs.expo.dev/more/create-expo/) — `blank-typescript` is the minimal TypeScript template used here.
 - [Expo environment setup](https://docs.expo.dev/get-started/set-up-your-environment/) — physical devices and Expo Go.
 - [Expo Start developing](https://docs.expo.dev/get-started/start-developing/) — physical iPhone CLI/Expo Go same-account sign-in requirement.
-- [AsyncStorage in Expo](https://docs.expo.dev/versions/latest/sdk/async-storage/) — local unencrypted storage.
+- [AsyncStorage in Expo](https://docs.expo.dev/versions/latest/sdk/async-storage/) — local storage that holds only ciphertext here.
+- [SecureStore in Expo](https://docs.expo.dev/versions/latest/sdk/securestore/) — holds the data key.
 - [Development builds](https://docs.expo.dev/develop/development-builds/introduction/) — native toolchain and platform distinctions.
 - [Node.js release status](https://nodejs.org/en/about/previous-releases) — Node 24 LTS recommendation.
 

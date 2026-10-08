@@ -1,15 +1,25 @@
+import extraFont11 from '../assets/fonts/Nunito_700Bold.ttf';
+import extraFont10 from '../assets/fonts/Nunito_400Regular.ttf';
+import extraFont9 from '../assets/fonts/Lexend_700Bold.ttf';
+import extraFont8 from '../assets/fonts/Lexend_400Regular.ttf';
+import extraFont7 from '../assets/fonts/Saira_700Bold.ttf';
+import extraFont6 from '../assets/fonts/Saira_400Regular.ttf';
+import extraFont5 from '../assets/fonts/AtkinsonHyperlegible_700Bold.ttf';
+import extraFont4 from '../assets/fonts/AtkinsonHyperlegible_400Regular.ttf';
+import extraFont3 from '../assets/fonts/Oswald_700Bold.ttf';
+import extraFont2 from '../assets/fonts/Oswald_600SemiBold.ttf';
+import extraFont1 from '../assets/fonts/barlow-condensed-semibold.ttf';
+import extraFont0 from '../assets/fonts/inter-variable.ttf';
 import React,{createContext,useContext,useEffect,useMemo,useRef,useState} from 'react';
 import {AccessibilityInfo,useColorScheme} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useFonts} from 'expo-font';
-import interFont from '../assets/fonts/inter-variable.ttf';
-import headingFont from '../assets/fonts/barlow-condensed-semibold.ttf';
 import {defaultPreferences,palettes,preferenceKey,readPreferences,type AppPreferences} from './shared/app-preferences';
 const Context=createContext({p:defaultPreferences,ready:false,update:(_patch:Partial<AppPreferences>)=>{void _patch},error:'',dark:false,reduceMotion:false,fonts:false});
 export function NativeAppearanceProvider({children}:{children:React.ReactNode}){
  const [p,setP]=useState(defaultPreferences),[ready,setReady]=useState(false),[error,setError]=useState(''),[systemReduce,setSystemReduce]=useState(false);
  const current=useRef(p),writes=useRef(Promise.resolve()),scheme=useColorScheme();
- const [fonts]=useFonts({Inter:interFont,'Barlow Condensed':headingFont});
+ const [fonts]=useFonts({Inter:extraFont0,'Barlow Condensed':extraFont1,'Oswald':extraFont2,'Oswald Bold':extraFont3,'Atkinson Hyperlegible':extraFont4,'Atkinson Hyperlegible Bold':extraFont5,Saira:extraFont6,'Saira Bold':extraFont7,Lexend:extraFont8,'Lexend Bold':extraFont9,Nunito:extraFont10,'Nunito Bold':extraFont11});
  useEffect(()=>{let live=true;AsyncStorage.getItem(preferenceKey).then(raw=>{if(live){current.current=readPreferences(raw);setP(current.current)}}).catch(()=>{if(live)setError('Your preferences could not be opened. Try reopening the app.')}).finally(()=>{if(live)setReady(true)});AccessibilityInfo.isReduceMotionEnabled().then(v=>{if(live)setSystemReduce(v)}).catch(()=>{});const listener=AccessibilityInfo.addEventListener('reduceMotionChanged',setSystemReduce);return()=>{live=false;listener.remove()}},[]);
  const update=(patch:Partial<AppPreferences>)=>{if(!ready)return;const next=readPreferences(JSON.stringify({...current.current,...patch}));current.current=next;setP(next);writes.current=writes.current.catch(()=>{}).then(()=>AsyncStorage.setItem(preferenceKey,JSON.stringify(next))).then(()=>setError('')).catch(()=>setError('Preferences apply now but could not be saved.'))};
  return <Context.Provider value={{p,ready,error,update,dark:p.mode==='dark'||p.mode==='system'&&scheme==='dark',reduceMotion:p.reduceMotion||systemReduce,fonts}}>{children}</Context.Provider>;
@@ -19,6 +29,17 @@ export function useNativeAppearance(){
  const colors=useMemo(()=>{const palette=palettes.find(x=>x.id===p.palette)!;return {bg:dark?'#10191d':'#f4f6f7',ink:dark?'#edf3f5':'#192b30',muted:p.contrast?(dark?'#e4eef3':'#253b44'):(dark?'#b4c7cf':'#4c616a'),green:dark?palette.from:palette.strong,line:p.contrast?(dark?'#a4bbc6':'#637982'):(dark?'#7d949e':'#71858e'),pale:dark?'#293c44':'#e8edef',white:dark?'#19262c':'#ffffff',danger:dark?'#ffadb6':'#b62d3b',onAccent:dark?'#132325':'#ffffff',from:palette.from,to:palette.to};},[dark,p.palette,p.contrast]);
  return {...context,colors};
 }
+export const families:Record<string,{heading:string;body:string}>={
+ athletic:{heading:'Barlow Condensed',body:'Inter'},
+ bold:{heading:'Oswald',body:'Inter'},
+ easy:{heading:'Atkinson Hyperlegible',body:'Atkinson Hyperlegible'},
+ classic:{heading:'Inter',body:'Inter'},
+ saira:{heading:'Saira Bold',body:'Inter'},
+ lexend:{heading:'Lexend Bold',body:'Lexend'},
+ nunito:{heading:'Nunito Bold',body:'Nunito'},
+};
+// Compact tightens spacing but never drops a control below the 44pt touch minimum. Roomy adds space and height.
+const densityScale:Record<string,number>={compact:0.82,comfortable:1,roomy:1.2};
 export function useThemedStyles<T extends Record<string,object>>(base:T):T{
  const {p,dark,fonts,colors:c}=useNativeAppearance();
  return useMemo(()=>{
@@ -29,11 +50,16 @@ export function useThemedStyles<T extends Record<string,object>>(base:T):T{
    for(const [prop,v] of Object.entries(style))if(typeof v==='string'){
     const lower=v.toLowerCase();if(lower==='#ffffff')style[prop]=prop==='color'?c.onAccent:c.white;else if(lower==='#d4e3c6'||lower==='#e5ecdc')style[prop]=c.onAccent;else if(mapping[lower])style[prop]=mapping[lower];
    }
-   if(typeof style.fontSize==='number'){style.fontSize=Math.max(14,style.fontSize)*(p.textSize/100);if(fonts)style.fontFamily=['title','darkTitle','brandSub'].includes(key)?'Barlow Condensed':'Inter';}
+   if(typeof style.fontSize==='number'){style.fontSize=Math.max(14,style.fontSize)*(p.textSize/100);if(fonts)style.fontFamily=['title','darkTitle','brandSub'].includes(key)?families[p.font].heading:families[p.font].body;}
    if(typeof style.lineHeight==='number')style.lineHeight=Math.max(style.lineHeight*(p.textSize/100),typeof style.fontSize==='number'?style.fontSize:0);
+   const scale=densityScale[p.density]??1;
+   if(scale!==1)for(const [prop,v] of Object.entries(style))if(typeof v==='number'){
+    if(/^(padding|margin|gap)/.test(prop))style[prop]=v*scale;
+    else if(prop==='minHeight')style[prop]=scale<1?Math.max(44,v*scale):v*scale;
+   }
    if(key==='input'&&!style.color)style.color=c.ink;
    result[key]=style;
   }
   return result as unknown as T;
- },[base,p.textSize,dark,fonts,c]);
+ },[base,p.textSize,dark,fonts,p.font,p.density,c]);
 }

@@ -1,4 +1,4 @@
-import {changed,day,exFor,requiresSetup,type Exercise,type Item,type State} from './training';
+import {changed,day,exFor,loadSuggestion,requiresSetup,type Exercise,type Item,type State} from './training';
 
 // Curated movement roles. Broad labels such as Push or Arm are not sufficient.
 const families:string[][]=[
@@ -30,7 +30,9 @@ export function previewSubstitution(s:State,q:Substitution){
  if(s.simulatedOffline)errors.push('Reconnect before changing the workout.');
  if(s.hold||s.plan?.paused)errors.push('Resume the plan or review the reported concern before changing exercises. Equipment substitutions are not injury advice.');
  if(s.active&&s.active.sessionId!==q.sessionId)errors.push('Finish the active workout before changing another session.');
- if(s.active?.sessionId===q.sessionId&&(s.active.sets.some(x=>x.exerciseId===q.from&&(x.done||x.reps>0||x.kg!==null||Object.values(x.metrics||{}).some(v=>v!==undefined&&v!==null&&v!=='')))||s.active.rir?.[q.from]!=null||(!!s.active.loadContext?.[q.from]&&s.active.loadContext[q.from]!==s.loadContext?.[q.from])))errors.push('This exercise already has entered reps, weight, measurements, notes or setup. Keep that record and finish or save a partial workout before changing later sessions.');
+ // A weight equal to the suggestion it was started from is not entered work; any other weight is.
+ const suggestedKg=(exerciseId:string)=>{const t=s.active?.targets?.find(i=>i.exerciseId===exerciseId);return t?loadSuggestion(s,t).kg:null};
+ if(s.active?.sessionId===q.sessionId&&(s.active.sets.some(x=>x.exerciseId===q.from&&(x.done||x.reps>0||x.rir!=null||(x.kg!==null&&x.kg!==suggestedKg(x.exerciseId))||Object.values(x.metrics||{}).some(v=>v!==undefined&&v!==null&&v!=='')))||s.active.rir?.[q.from]!=null||!!s.active.details?.[q.from]?.notes||(!!s.active.loadContext?.[q.from]&&s.active.loadContext[q.from]!==s.loadContext?.[q.from])))errors.push('This exercise already has entered reps, weight, measurements, notes or setup. Keep that record and finish or save a partial workout before changing later sessions.');
  if(q.setup.length>200)errors.push('Keep the setup label within 200 characters.');
  if(requiresSetup(replacement)&&!q.setup.trim())errors.push('Add the machine, attachment and setup so this load has its own baseline.');
  const specificity=s.plan?.profile.goal==='powerlifting'&&['bar-squat','bench','deadlift'].includes(q.from);
@@ -54,7 +56,8 @@ export function applySubstitution(s:State,q:Substitution):{state:State;error?:st
   const targets=(active.targets||s.plan!.sessions.find(x=>x.id===q.sessionId)!.items).map(i=>i.exerciseId===q.from?c.item:i);
   const loadContext={...active.loadContext};delete loadContext[q.from];delete loadContext[q.to];if(requiresSetup(preview.replacement))loadContext[q.to]=q.setup.trim();
   const rir={...active.rir};delete rir[q.from];delete rir[q.to];
-  active={...active,targets,sets:targets.flatMap(i=>i.exerciseId===q.to?Array.from({length:i.sets},(_,n)=>({exerciseId:q.to,set:n+1,reps:0,kg:null,done:false})):active!.sets.filter(x=>x.exerciseId===i.exerciseId)),loadContext,rir};
+  const details={...active.details};delete details[q.from];delete details[q.to];
+  active={...active,targets,sets:targets.flatMap(i=>i.exerciseId===q.to?Array.from({length:i.sets},(_,n)=>({exerciseId:q.to,set:n+1,reps:0,kg:null,done:false})):active!.sets.filter(x=>x.exerciseId===i.exerciseId)),loadContext,rir,details};
  }
  return {state:changed({...s,active,plan:{...s.plan!,sessions,version:s.plan!.version+1},loadContext:requiresSetup(preview.replacement)?{...s.loadContext,[q.to]:q.setup.trim()}:s.loadContext,proposals:s.proposals.map(p=>['pending','queued'].includes(p.status)?{...p,status:'stale'}:p)},`Replaced ${exFor(q.from).name} with ${preview.replacement.name} in ${preview.changes.length} workout(s); load reset and separate history retained.`)};
 }

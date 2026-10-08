@@ -186,7 +186,7 @@ export function sessionName(session: Session, plan?: Plan | null): string {
     const originalMainExercisesRemain = slot.items.slice(0, 2).every(([id]) => session.items.some(item => item.exerciseId === id));
     // A replacement exercise can make a lift-specific title inaccurate.
     const title = !slot.kind && !originalMainExercisesRemain
-      ? `${slot.group === 'upper' ? 'Upper body' : slot.group === 'lower' ? 'Lower body' : 'Full body'} · Workout ${slotIndex + 1}`
+      ? `${['upper','push','pull','chestback','shouldersarms'].includes(slot.group) ? 'Upper body' : ['lower','legs'].includes(slot.group) ? 'Lower body' : 'Full body'} · Workout ${slotIndex + 1}`
       : workoutDisplayNames[base] ?? base;
     return title + (session.title.endsWith(' · review week') ? ' · lighter week' : '');
   }

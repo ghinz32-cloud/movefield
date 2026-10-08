@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Movefield",
-    "slug": "garret-hinz-training-studio",
+    "slug": "bigcheese3232",
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,6 +10,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.ghinz32.movefield",
       "adaptiveIcon": {
         "backgroundColor": "#132325",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -23,6 +24,11 @@
     },
     "plugins": [
       "expo-notifications"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "63e0c947-aa0a-41b2-be84-4b38e7ab9085"
+      }
+    }
   }
 }

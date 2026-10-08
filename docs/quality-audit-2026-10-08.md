@@ -1,5 +1,7 @@
 # Movefield quality audit — 8 October 2026
 
+**Historical audit snapshot:** `cc36ff7`. The combined branch also contains the newer `review-fixes` features, including encrypted local stores. See [the continuation report](branch-integration-2026-10-08.md) for current branch roles, data storage and verification. The plaintext storage descriptions and scope counts below describe the earlier snapshot.
+
 The web and Expo clients are substantially functional local prototypes. They are **not yet production-ready apps with shared accounts and history**. This patch repairs the uploaded repository, fixes identified reliability and performance issues, and preserves the broader product scope.
 
 Audit base: `ghinz32-cloud/movefield`, commit `80e6ea26437f0aeaa1d8f816ace464da81fe0a81`. Requirements were checked against `docs/product-requirements.md`, the previous handoff and recovered project decisions. A complete original conversation transcript was unavailable; this is not a claim to have reviewed every original message.

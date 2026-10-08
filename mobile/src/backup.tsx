@@ -13,6 +13,17 @@ export async function shareBackup(raw:string){
  try{file.create();file.write(raw);await Sharing.shareAsync(file.uri,{mimeType:'application/json',UTI:'public.json',dialogTitle:'Save a private training backup'});}
  finally{try{if(file.exists)file.delete()}catch{/* The OS may still hold the temporary file; its cache can reclaim it. */}}
 }
+export async function pickBackupText():Promise<string|null>{
+ const result=await DocumentPicker.getDocumentAsync({type:['application/json','text/plain'],copyToCacheDirectory:true,multiple:false});
+ if(result.canceled)return null;
+ const asset=result.assets[0],file=new File(asset.uri);
+ try{
+  if((asset.size??file.size)>30_000_000)throw Error('This backup is too large to open here.');
+  return await file.text();
+ }finally{
+  try{const prefix=Paths.cache.uri.replace(/\/?$/,'/');if(file.uri.startsWith(prefix)&&file.exists)file.delete()}catch{/* The OS can reclaim this import cache. */}
+ }
+}
 type Preview=ReturnType<typeof previewBackup> & {expected:string};
 export function NativeBackup({state,onRestore}:{state:State;onRestore:(incoming:State,expected:string)=>string|undefined}){
  const {colors:c,p,fonts}=useNativeAppearance(),[preview,setPreview]=useState<Preview|null>(null),[busy,setBusy]=useState(false),[message,setMessage]=useState(''),[error,setError]=useState('');

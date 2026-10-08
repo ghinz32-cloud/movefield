@@ -1,0 +1,212 @@
+{
+  "checkedDate": "2026-10-08",
+  "note": "Facts only, taken from primary public pages with WebFetch on 2026-10-08. Any value that could not be confirmed is marked unverified. Author prose is not copied. Status: verified = facts confirmed on the primary page; partly verified = facts from a mirror, a free excerpt, or a page with unresolved conflicts; not found = no usable free primary source.",
+  "programmes": [
+    {
+      "id": "NHS-C25K",
+      "name": "Couch to 5K (NHS running plan)",
+      "creator": "NHS (nhs.uk)",
+      "url": "https://www.nhs.uk/better-health/get-active/get-running-with-couch-to-5k/couch-to-5k-running-plan/",
+      "checked": "2026-10-08",
+      "status": "verified",
+      "daysPerWeek": 3,
+      "sessionMinutes": "25-40 including a 5-minute warm-up walk and a 5-minute cool-down walk (derived by adding the stated intervals; the page does not state this total)",
+      "goal": "running",
+      "experience": "unverified",
+      "equipment": "unverified",
+      "sessionStructure": [
+        "Weeks 1-9, three sessions per week. Weeks 1-4 have three identical sessions.",
+        "Week 1: run 1 min, walk 1 min 30 s, repeat 7 times, then a final run of 1 min.",
+        "Week 2: run 1 min 30 s, walk 2 min, repeat 5 times, then a final run of 1 min 30 s.",
+        "Week 3: run 1 min 30 s, walk 1 min 30 s, run 3 min, walk 3 min, run 1 min 30 s, walk 1 min 30 s, final run 3 min.",
+        "Week 4: run 3 min, walk 1 min 30 s, run 5 min, walk 2 min 30 s, run 3 min, walk 1 min 30 s, final run 5 min.",
+        "Week 5, run 1: run 5 min, walk 3 min, run 5 min, walk 3 min, final run 5 min. Run 2: run 8 min, walk 5 min, final run 8 min. Run 3: one continuous 20-minute run.",
+        "Week 6, run 1: run 5 min, walk 3 min, run 8 min, walk 3 min, final run 5 min. Run 2: run 10 min, walk 3 min, final run 10 min. Run 3: one continuous 25-minute run.",
+        "Week 7: three continuous 25-minute runs.",
+        "Week 8: three continuous 28-minute runs.",
+        "Week 9: three continuous 30-minute runs."
+      ],
+      "progression": "Running time increases week to week as tabled. Weeks 5 and 6 differ between sessions. No load or percentage rule applies.",
+      "resetRules": "No failure count is stated. The page says a week can be repeated when not ready, allows any run or week to be repeated (week 5), and allows slowing down or a walk when needed (week 7). Stop if something does not feel right.",
+      "restDays": "Aim for a rest day between each run.",
+      "terms": {
+        "pageFooter": "Footer shows a Crown copyright notice and links to Terms and conditions. The linked terms text was not included in the page fetch.",
+        "siteTerms": "NHS website terms (https://www.nhs.uk/our-policies/terms-and-conditions/, section 3): copyright and database rights are released free of charge under the Open Government Licence v3.0. Excluded: logos, images, trademarks, design styles, third-party material and medical devices.",
+        "attributionIfReused": "Unchanged copies: 'Information from the NHS website' plus 'Information from the NHS website is licensed under the Open Government Licence v3.0'. Adapted content: 'Contains public sector information licensed under the Open Government Licence v3.0', and do not attribute the adapted content to the NHS website."
+      },
+      "verification": "Interval values checked on two separate WebFetch passes for weeks 1-4 and weeks 5-9, and the stated totals were arithmetic-checked. The 5-minute warm-up and cool-down walks and the repeat rules came from the first pass only. Experience and equipment were not extracted.",
+      "unverified": ["experience", "equipment", "sessionMinutes stated total"]
+    },
+    {
+      "id": "SL-5X5",
+      "name": "StrongLifts 5x5",
+      "creator": "Mehdi Hadim (StrongLifts)",
+      "url": "https://stronglifts.com/stronglifts-5x5/workout-program/",
+      "resetUrl": "https://stronglifts.com/stronglifts-5x5/failure/",
+      "checked": "2026-10-08",
+      "status": "verified",
+      "daysPerWeek": 3,
+      "sessionMinutes": "unverified (the page calls the workouts short and gives a warm-up estimate of about 5 minutes, but no total)",
+      "goal": "strength",
+      "experience": "New or returning lifters (the page's stated audience), with separate starting-weight guidance for no experience and for prior lifters",
+      "equipment": "Olympic barbell (45 lb / 20 kg bar), plates, squat rack or power rack, bench. Dumbbells optional for bench and overhead press. Small-plate substitutes named (chains, washers, ankle weights).",
+      "sessionStructure": [
+        "Workout A: Squat 5x5, Bench Press 5x5, Barbell Row 5x5, plus assistance work (sets and reps not stated).",
+        "Workout B: Squat 5x5, Overhead Press 5x5, Deadlift 1x5, plus assistance work (sets and reps not stated).",
+        "Alternate A and B each session. Three workouts per week, with at least one day off between workouts. Two per week is described as acceptable.",
+        "Rest: about 3 min between work sets; 1-2 min for easy sets such as warm-ups; 5 min for hard sets where 5 reps were a struggle. Deadlift: rest after the last warm-up set, then about 3 min before the working set."
+      ],
+      "progression": "Add weight when all sets of that lift reach 5 reps. Default increment 5 lb (one 2.5 lb plate per side). Squat and deadlift 5-10 lb (2.5-5 kg); bench, overhead press and row 2.5-5 lb (1.25-2.5 kg). Avoid 10 lb on squat. Use 2.5 lb (1.25 lb per side) once progress slows. Men may use 10 lb on deadlift for a few weeks, then 5 lb. Increase every workout or every 2-3 workouts. Each lift progresses separately.",
+      "resetRules": "If any set falls short of 5 reps, do not add weight; repeat the same weight next time. If the lift still fails after the weight has been repeated three times, reduce it by about 10% and work back up. The reset applies to the lift that failed. Rounding is not stated. After a failure, microload by 2.5 lb (1.25 lb per side) or less. No deload after one failed workout. A rep with bad form counts as missed.",
+      "terms": {
+        "pageFooter": "Copyright notice: '© 2007-2026 Stronglifts'.",
+        "reuse": "No reuse or licence statement on the pages fetched. Terms and Privacy pages are linked but were not fetched.",
+        "access": "Free to read without sign-in. The page shows signup and Pro prompts; these are not a paywall."
+      },
+      "verification": "Exercises, sets, reps, progression and reset rules confirmed on the primary pages. Audience and equipment from the program page. Session minutes not stated.",
+      "unverified": ["sessionMinutes", "assistance work exercises and sets", "rounding of reset weight"]
+    },
+    {
+      "id": "GZCLP",
+      "name": "GZCLP",
+      "creator": "Cody Lefever (from the task brief; the wiki text fetched does not name its author)",
+      "url": "https://www.reddit.com/r/gzcl/wiki/GZCLP",
+      "factsSource": "https://reddit.sudovanilla.org/r/gzcl/wiki/GZCLP (third-party mirror of the r/gzcl wiki page; the primary page is blocked from this environment)",
+      "checked": "2026-10-08",
+      "status": "partly verified",
+      "daysPerWeek": "3 to 4 (the page gives 3, 3.5 or 4 sessions per week, with an example Monday/Wednesday/Friday pattern)",
+      "sessionMinutes": "unverified",
+      "goal": "strength",
+      "experience": "unverified",
+      "equipment": "Inferred from the named exercises: barbell, bench, squat rack, lat pulldown machine, dumbbells. The page's own equipment list was not extracted.",
+      "sessionStructure": [
+        "Four workouts cycled in order A1, B1, A2, B2. Each session runs T1, then T2, then T3.",
+        "T1 (5 sets of 3, last set AMRAP): A1 squat, B1 overhead press, A2 bench, B2 deadlift.",
+        "T2 (3 sets of 10, no AMRAP): A1 bench, B1 deadlift, A2 squat, B2 overhead press.",
+        "T3 (3 sets of 15, last set AMRAP): lat pulldown in A1 and A2; dumbbell row in B1 and B2.",
+        "Optional upper/lower split: alternates squat with deadlift and bench with overhead press across days."
+      ],
+      "progression": "T1: after completing all sets and reps, add 5 lb (2.5 kg) for upper-body lifts or 10 lb (5 kg) for lower-body lifts at the next workout of that lift. T2: no increment stated; it cycles 3x10, then 3x8, then 3x6, then restarts. T3: no progression rule stated (unverified).",
+      "resetRules": "T1 stage changes: after failing 5x3, switch to 6 sets of 2 (last set AMRAP). After failing 6x2, switch to 10 sets of singles, starting at the weight failed on 6x2. After failing 10x1, retest the 5RM and restart at 5x3. T2 and T3 failure rules: not stated.",
+      "terms": {
+        "pageStatement": "The fetched wiki text makes no statement about free availability, copyright, reuse or licence.",
+        "authorSite": "Cody Lefever's P-Zero post (https://gzcl.substack.com/p/p-zero) is paywalled and is not GZCLP-specific. Its footer reads '© 2026 Cody Lefever'."
+      },
+      "verification": "Tiers, exercises, sets, reps and progression facts come from the mirror of the r/gzcl wiki. The primary Reddit page could not be fetched, so these facts are not checked against the primary source. Session minutes and experience were not stated.",
+      "unverified": ["sessionMinutes", "experience", "equipment (not stated on page)", "T3 progression", "primary-source confirmation"]
+    },
+    {
+      "id": "531-BEG",
+      "name": "5/3/1 for Beginners",
+      "creator": "Jim Wendler (JimWendler.com)",
+      "url": "https://www.jimwendler.com/blogs/jimwendler-com/5-3-1-for-beginners",
+      "checked": "2026-10-08",
+      "status": "partly verified (free page only; the full programme is sold as a paperback or eBook)",
+      "daysPerWeek": 3,
+      "sessionMinutes": "unverified",
+      "goal": "strength",
+      "experience": "Beginners (page title, 'The 5/3/1 Philosophy for Beginners'); experience criteria not extracted",
+      "equipment": "unverified",
+      "sessionStructure": [
+        "Monday: squat and bench, each with 5/3/1 sets and reps, then 5x5 at FSL, plus assistance work.",
+        "Wednesday: deadlift and press, each with 5/3/1 sets and reps, then 5x5 at FSL, plus assistance work.",
+        "Friday: bench and squat, each with 5/3/1 sets and reps, then 5x5 at FSL, plus assistance work.",
+        "Assistance: one exercise from each category per day. The page asks for 50-100 total reps per assistance exercise.",
+        "Conditioning on the other days, using the page's 50% rule.",
+        "The free page gives no week-by-week percentage table and does not define FSL."
+      ],
+      "trainingMax": "The page says to start at 80-85% of your max and work up slowly, and to err too light if unsure of your training max.",
+      "progression": "The page says you must earn the right to add weight to the bar. No increment or cycle length is stated on the free page (unverified).",
+      "resetRules": "If any rep fails the page's standards during a training cycle, do not increase the training max. No deload rule is stated.",
+      "terms": {
+        "pageFooter": "Copyright notice: 'Copyright © 2026 JimWendler.com.'",
+        "reuse": "No reuse or licence statement on the page.",
+        "access": "The full programme and explanation, including variations, are sold as paperback or eBook (links to the shop). The complete programme is paid."
+      },
+      "verification": "Free beginner schedule checked on two WebFetch passes. Percentages and week-by-week sets live in the paid book and were not verified.",
+      "unverified": ["sessionMinutes", "equipment", "week-by-week percentages and reps", "increment size", "cycle length"]
+    },
+    {
+      "id": "SS-BASIC",
+      "name": "Starting Strength (Basic Barbell Training)",
+      "creator": "Mark Rippetoe (book co-authored with Lon Kilgore)",
+      "url": "https://startingstrength.com/",
+      "checked": "2026-10-08",
+      "status": "not found (no free public programme summary identified)",
+      "daysPerWeek": "unverified",
+      "sessionMinutes": "unverified",
+      "goal": "strength",
+      "experience": "unverified",
+      "equipment": "unverified",
+      "sessionStructure": "unverified (no free page with exercises, sets or reps was found)",
+      "progression": "unverified",
+      "resetRules": "unverified",
+      "terms": {
+        "access": "The programme is published as a paid book, Starting Strength: Basic Barbell Training. Retailers list it; the publisher's store page was not fetched.",
+        "pageStatement": "The homepage fetch showed a Store link and no reuse or copyright statement."
+      },
+      "verification": "The homepage and a search for free summaries were checked. Retailer listings are not primary sources.",
+      "unverified": ["all programme facts"]
+    },
+    {
+      "id": "BE-JUMP-4W",
+      "name": "Athletic Development Programme (Jump Higher), 4 weeks",
+      "creator": "Not stated in the document; hosted on basketballengland.co.uk (Basketball England)",
+      "url": "https://www.basketballengland.co.uk/media/13544/jump-higher.pdf",
+      "alternateUrl": "https://basketballengland.co.uk/files/athletic-development-programme---jump-higher-workout-280825122016.pdf",
+      "checked": "2026-10-08",
+      "status": "partly verified (the two copies disagree on the schedule, and the conflict was not resolved)",
+      "daysPerWeek": "unverified (one copy says each of three sessions once a week; the jump session is labelled 2x a week; the alternate copy labels 2x and 1x schedules)",
+      "sessionMinutes": "unverified",
+      "goal": "jump",
+      "experience": "unverified (aimed at basketball players)",
+      "equipment": "Optional jump rope; a half court and a line to hop over; a wall for calf raises; optional medicine ball, dumbbell or rucksack for lunges. Demonstration videos are linked on YouTube.",
+      "sessionStructure": [
+        "Warm-up: jump-rope circuit with double-leg, side-to-side, split, out-and-in and hip-twist jumps, 20 s each; single-leg jumps, 20 s per leg.",
+        "Jump session (labelled 2x a week): A-skip 2 x 15 m, walking back between sets, 60 s rest; extensive ankle jumps forward 1 x 15 m; backwards 1 x 15 m; single-leg lateral hops 2 x 10 per leg, 60 s; big skips for height 2 x 3 per leg, 60 s; vertical jumps with arm drive 2 x 4, 120 s; lateral bounds 2 x 4 per leg (rest not stated).",
+        "Strength session (labelled twice a week): alternating reverse lunge 3 x 8 per leg, 60 s; inclined arrow-head push-up 3 x 10-15 in weeks 1-2 and 3 x 15-20 in weeks 3-4, 60 s; side-ups 3 x 10 per side in weeks 1-2 and 3 x 15 per side in weeks 3-4, 60 s; Nordic hamstring extensions 3 x 6, 90 s; single-leg calf raise with knee bent 3 x 25 per leg in weeks 1-2 and 4 x 25 per leg in weeks 3-4, 60 s.",
+        "Third session (labelled once a week): video links only; sets and reps not in the text."
+      ],
+      "progression": "Weeks 3-4 increase push-up reps, side-up reps and calf-raise sets (3 to 4). Lunges and Nordic extensions are unchanged. The jump session does not change across weeks.",
+      "resetRules": "None stated. The Nordic instruction to resist for as long as possible is an execution cue, not a failure rule.",
+      "terms": {
+        "statement": "No copyright, licence or reuse statement in either copy. The document does not name an author or publisher."
+      },
+      "verification": "Both copies were fetched with WebFetch. The exercise tables agree in outline, but the schedule text conflicts. Author and session length were not stated.",
+      "unverified": ["daysPerWeek", "sessionMinutes", "experience", "author and publisher", "third session contents"]
+    }
+  ],
+  "notFound": [
+    {
+      "slot": "Beginner 2-3 day gym programme (free, official)",
+      "result": "not found",
+      "detail": "Searches returned commercial PDFs, paid app plans and product pages, none from an official body. StrongLifts 5x5 is free but is creator-run, and it is already covered as item SL-5X5. 5/3/1 for Beginners is paid for its full programme. Starting Strength is a paid book."
+    },
+    {
+      "slot": "Starting Strength free programme summary",
+      "result": "not found",
+      "detail": "No free public page with exercises, sets, reps or progression was found on startingstrength.com. See SS-BASIC."
+    }
+  ],
+  "accessLog": [
+    {"url": "https://www.nhs.uk/better-health/get-active/couch-to-5k/", "result": "404 (guessed URL)"},
+    {"url": "https://www.nhs.uk/better-health/get-active/get-running-with-couch-to-5k/couch-to-5k-running-plan/", "result": "fetched; weeks 1-9 facts confirmed on two passes"},
+    {"url": "https://www.nhs.uk/terms-and-conditions/", "result": "404 (guessed URL)"},
+    {"url": "https://www.nhs.uk/our-policies/terms-and-conditions/", "result": "fetched; section 3 reuse terms"},
+    {"url": "https://stronglifts.com/5x5/", "result": "landing page only; no programme detail"},
+    {"url": "https://stronglifts.com/stronglifts-5x5/workout-program/", "result": "fetched; exercises, sets, reps, progression and rest"},
+    {"url": "https://stronglifts.com/stronglifts-5x5/failure/", "result": "fetched; reset rule"},
+    {"url": "https://stronglifts.com/pro/", "result": "fetched; no reset rule on this page"},
+    {"url": "https://www.jimwendler.com/blogs/jimwendlercom-1/updated-training-max-calculator", "result": "404 (guessed URL)"},
+    {"url": "https://www.jimwendler.com/", "result": "fetched; links to paid book pages only; no programme structure"},
+    {"url": "https://www.jimwendler.com/blogs/jimwendler-com/5-3-1-for-beginners", "result": "fetched twice; free beginner schedule; full programme paid"},
+    {"url": "https://gzcl.substack.com/", "result": "429 rate limit (twice)"},
+    {"url": "https://gzcl.substack.com/p/p-zero", "result": "fetched; paywalled and not GZCLP"},
+    {"url": "https://www.reddit.com/r/gzcl/wiki/index", "result": "site blocked"},
+    {"url": "https://www.reddit.com/r/gzcl/wiki/GZCLP", "result": "not fetched (primary Reddit page blocked via the search index); mirror used"},
+    {"url": "https://reddit.sudovanilla.org/r/gzcl/wiki/GZCLP", "result": "fetched; third-party mirror, facts used with partly verified status"},
+    {"url": "https://startingstrength.com/", "result": "fetched; no free programme summary"},
+    {"url": "https://www.basketballengland.co.uk/media/13544/jump-higher.pdf", "result": "fetched; jump programme"},
+    {"url": "https://basketballengland.co.uk/files/athletic-development-programme---jump-higher-workout-280825122016.pdf", "result": "fetched; schedule text conflicts with first copy"}
+  ]
+}

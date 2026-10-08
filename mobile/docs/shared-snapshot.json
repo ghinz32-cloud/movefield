@@ -14,7 +14,7 @@
     {
       "source": "lib/app-preferences.ts",
       "target": "src/shared/app-preferences.ts",
-      "sha256": "4bf28146c0345869ed642bd9e111ab17956f9c2e8552dacbc22712940f402286"
+      "sha256": "b9791bcfdebc2b35f301ed160fd6c623cb3a8173bdc3aadcdf755cbd380a73e0"
     },
     {
       "source": "lib/workout-reminders.ts",
@@ -29,7 +29,7 @@
     {
       "source": "lib/presentation.ts",
       "target": "src/shared/presentation.ts",
-      "sha256": "e9096d46f2c54f9ee537987c0d0c8ef31f0827d896fd3888281d3e99c01edde2"
+      "sha256": "5472d6017fdee991cec0d8748ed3c518696092c52193f3f828480693c8b96fd2"
     },
     {
       "source": "lib/tracking.ts",
@@ -39,12 +39,12 @@
     {
       "source": "lib/workout-log.ts",
       "target": "src/shared/workout-log.ts",
-      "sha256": "72d85ced641624c11a2581d8d4e946ed75397ee63904d3722a9791960b0745cb"
+      "sha256": "0e5e1a8c078f211a5c05d476421b89dda44ce69a6bd5e672637ab78571597d2b"
     },
     {
       "source": "lib/onboarding.ts",
       "target": "src/shared/onboarding.ts",
-      "sha256": "77b5808d778b22b583b3c5140c22d90ed98df84ce5f05ce64c0c60c69db359b5"
+      "sha256": "5b4f1cf2076b1aa67c50c32b7a123d3a80e0e447d73d51e96851ba6ba723d23b"
     },
     {
       "source": "lib/rest-timer.ts",
@@ -54,7 +54,12 @@
     {
       "source": "lib/training.ts",
       "target": "src/shared/training.ts",
-      "sha256": "7ac5eaa710b8606e8f6609af12e678b354473f8b25903afafc83dcebc4ee20c2"
+      "sha256": "221a4f83d608f47f8f60b88255b0f6a017a0c058b40351f11803dbd828b38491"
+    },
+    {
+      "source": "lib/training-tools.ts",
+      "target": "src/shared/training-tools.ts",
+      "sha256": "634f6d7f7b7ef57e1e8fa8f20e90b3773415df66228c8a11876693dcde542e96"
     },
     {
       "source": "lib/training-focus.ts",
@@ -64,12 +69,12 @@
     {
       "source": "lib/program-catalog.ts",
       "target": "src/shared/program-catalog.ts",
-      "sha256": "3082b0a2c2c94f4736e6804c53f532937bbe92bfca36b845e6eb51566c9f4e2f"
+      "sha256": "2d8aebb17dfbad23ad72881cd6dca501c4dcc386c4a4c342698578c8bfc98dae"
     },
     {
       "source": "lib/substitutions.ts",
       "target": "src/shared/substitutions.ts",
-      "sha256": "53d62684f6b526c2ced77e2eef87c483c38c5f6c743001bde6c5859d86a1ebbd"
+      "sha256": "61bbd629d87ab56963ff3ddd788d14f430f8638a87b280aaf04ff573e7b6926b"
     },
     {
       "source": "lib/session-guide.ts",
@@ -79,17 +84,37 @@
     {
       "source": "lib/workout-review.ts",
       "target": "src/shared/workout-review.ts",
-      "sha256": "e7ff48cab085b7ecb3fcca3f6e03f1faacd8b254ff01622d9d9e01b0fd35ac65"
+      "sha256": "ea8eabf95466f827114b1a8684a8bcebc2d6cda1119cf03cf376313097a8e21f"
+    },
+    {
+      "source": "lib/safety-copy.ts",
+      "target": "src/shared/safety-copy.ts",
+      "sha256": "dc5e7c7a733753d217328d95a76e8184ce73b0bccd35a6c5f9560793bdb18fef"
+    },
+    {
+      "source": "lib/exercise-video.ts",
+      "target": "src/shared/exercise-video.ts",
+      "sha256": "fe8b0e22196436a4eca4fe379b5aba782f82f69dcc45f2c6726dd1c78fa3bac4"
+    },
+    {
+      "source": "lib/program-evidence.ts",
+      "target": "src/shared/program-evidence.ts",
+      "sha256": "34273ba6078bfdb7aba31eac6d4607e2f82c8ebcd95a72795731009b72404590"
     },
     {
       "source": "lib/saved-data.ts",
       "target": "src/shared/saved-data.ts",
-      "sha256": "ed4e6ef972c4df9882870d14a9bbaaeb1f853c632c5004c9e85047a3bc6b7ccb"
+      "sha256": "2e3b8a044e5f08ab71d01286cfb06c164c2ab2542738eda1a0a8a8d2c1219b37"
+    },
+    {
+      "source": "lib/transfer-bundle.ts",
+      "target": "src/shared/transfer-bundle.ts",
+      "sha256": "149d5689c95598c35a6eb455e67f04d2392d164584dc78edf88ea33f8f1091ed"
     },
     {
       "source": "lib/progress.ts",
       "target": "src/shared/progress.ts",
-      "sha256": "9495f8db6077f0b4b0506646ff9c330b12589fb647e7de5ea089bcdf4a9cd65a"
+      "sha256": "e4c1c26753ab0c575b6466195cfa803a6373d69338583564b8fbacdd5ca81314"
     },
     {
       "source": "lib/exercise-library.json",

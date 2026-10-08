@@ -1,3 +1,9 @@
+# Current continuation — 8 October 2026
+
+Use `audit/2026-10-08-quality` and draft PR #1 as the combined review branch targeting `main`. The integration reconciles the earlier quality repairs with the `review-fixes` feature line. Read `docs/branch-integration-2026-10-08.md` before using the historical handoff below.
+
+The current code includes encrypted local web/native storage and password-protected manual transfer files. It still has no real app accounts, shared cloud history or automatic device sync. Model inference remains unimplemented. The older data-storage and revision statements below are historical and are superseded by the integration report. `review-fixes` is preserved, `restructure` is the export baseline, and `gh-pages` is an older generated test build. No live deployment or merge into `main` is authorized by this handoff.
+
 # Movefield / Training Studio — Claude Code handoff
 
 Prepared 7 October 2026. Movefield is a **working name**. This package transfers the existing project; continue it rather than creating another starter.
@@ -233,7 +239,7 @@ Items above are priorities, not a claim that the app is near production readines
 
 ## 10. Hosting, privacy and export boundaries
 
-Existing project metadata points to Sites project `appgprj_6ac5a7c96d9481919df913f42a4a4353`. The existing private URL is `https://training-studio-prototype.bigcheese3232.chatgpt.site`. It can be older than this source. The last observed hosted version number was 10; hosted version numbering and development revision numbering are different.
+The checkout includes the existing non-secret hosting configuration needed by the build. Private hosting URLs and project identifiers are omitted from this public handoff. Read authorized project settings locally when preparing a deployment. The hosted build may be older than this source; hosting versions and development revisions are different.
 
 Automatic approval review rejected the attempted latest upload/publication because explicit user permission to transmit source and deploy to Cloudflare was missing. **There was no successful r13 publication.** Do not treat transfer to Claude Code as permission to publish, push externally, change access, or bypass that rejection. Finish a concrete local result before asking for publication approval.
 
