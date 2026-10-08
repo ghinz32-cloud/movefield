@@ -288,3 +288,15 @@ html[data-density=roomy] .weekly-review{margin-bottom:2rem}
 .exercise-log .set-extra{padding:2px 0}
 .exercise-log .metric-note{margin-top:8px}
 .exercise-log .field.exercise-notes{margin:10px 0 0}
+
+/* Sidebar current plan: compact, one-line plan name with the full name in a tooltip, so the whole card shows. */
+.sidebar-plan{flex-shrink:0;margin:2px 16px 4px;padding:7px 12px;font-size:.8rem;line-height:1.25}
+.sidebar-plan .eyebrow{margin:0;font-size:.66rem;line-height:1.2}
+.sidebar-plan b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
+.sidebar-plan span{margin-top:0;font-size:.74rem;line-height:1.25}
+.sidebar-plan button{margin-top:6px;line-height:1.2}
+/* Weeks and the plan link share one row so the card fits without scrolling. */
+.sidebar-plan{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:8px}
+.sidebar-plan>*{grid-column:1/-1}
+.sidebar-plan>span:last-of-type{grid-column:1;margin-top:2px}
+.sidebar-plan>button{grid-column:2;margin-top:2px;white-space:nowrap}
