@@ -1,5 +1,15 @@
 # Current continuation — 8 October 2026
 
+## Latest milestone — U01 UX baseline
+
+Parent checkpoint: `c9679d50c161a4407c3e4ca8dd70bc5d89d277e6`, pushed and verified. Application source remains `9d7c13ed6352e74c0a7766bd2d80fb524a5b709f`. The U01 documentation/evidence checkpoint is the commit containing `docs/ux-baseline-2026-10-08.md`; resolve `git log -1 --format=%H -- docs/ux-baseline-2026-10-08.md`, then verify remote head.
+
+Completed: actual supervised browser sample navigation/start/log/undo/partial-save/setup/settings observations, prioritized web/native source findings, and saved synthetic sample screenshot `docs/qa/u01-workout-before.jpg`. Checks: preview ready, observed 0→1→0 set count, partial save preserves only completed work, document/screenshot existence, whitespace diff, fresh remote refs. No new application code or fresh application test claim. Native source inspection is not phone acceptance.
+
+Limits: HTTP internal preview lacks Web Crypto, so saved-profile/reload/restore acceptance remains blocked. No physical phone UI surface; small-screen/keyboard/TalkBack remain pending. First web log action is below expanded calculators at y≈1987px; floating Appearance crowds rest controls; native finish follows the entire long log and rows risk wrapping. See the baseline report for evidence and additional copy defects.
+
+Next short prompt: “Resume Movefield on `audit/2026-10-08-quality`. Read AGENTS/TASKS/HANDOFF and `docs/ux-baseline-2026-10-08.md`; verify refs and existing changes. Complete U02 in small slices: prioritize set logging, collapse optional calculators, make finish/rest controls reachable and improve native set rows. Run relevant UI/type/regression checks, checkpoint and verify GitHub, update handoff, then continue U03. Do not merge or deploy.”
+
 ## Required milestone workflow
 
 Read `AGENTS.md` and `TASKS.md`. The user requires small, independently testable milestones, one at a time, with verified recoverable checkpoints and this handoff updated after each. Continue approved work without asking the user to invent prompts. Do not merge or deploy without permission.
@@ -28,11 +38,11 @@ Do not infer that later commits were tested from an earlier passing run. At ever
 
 ## Unresolved problems
 
-The latest user request expands work to a full web/native UX and workout audit, practical large-Qwen integration, exercise-science grounding, storage selection and website/Android release readiness. Start U01 (the inspectable UX baseline) next. Interruption recovery between encryption-key replacement and ciphertext persistence remains a high-priority repair. Web/native crash recovery, native history capacity, two dependency advisory roots, offline/browser restore UI and physical-device acceptance remain open; see the individually testable milestones in `TASKS.md`. The dependency exceptions expire 8 November 2026. Accounts/sync, broader planning features and model inference remain unfinished. No direct connection to bro is available; GitHub branch verification is documented instead.
+The latest user request expands work to a full web/native UX and workout audit, practical large-Qwen integration, exercise-science grounding, storage selection and website/Android release readiness. U01 is recorded above; start U02 next. Interruption recovery between encryption-key replacement and ciphertext persistence remains a high-priority repair. Web/native crash recovery, native history capacity, two dependency advisory roots, offline/browser restore UI and physical-device acceptance remain open; see the individually testable milestones in `TASKS.md`. The dependency exceptions expire 8 November 2026. Accounts/sync, broader planning features and model inference remain unfinished. No direct connection to bro is available; GitHub branch verification is documented instead.
 
 ## Exact short prompt for the next task
 
-> Resume Movefield from `ghinz32-cloud/movefield` on `audit/2026-10-08-quality`. Read `AGENTS.md`, `TASKS.md` and the current `HANDOFF.md`. Verify remote refs, HEAD, upstream and existing changes. M01 reconciliation is complete at `9d7c13ed6352e74c0a7766bd2d80fb524a5b709f`. Complete U01: establish an inspectable web/native UX baseline for onboarding, logging, navigation, history and settings, with prioritized defects and honest browser/device limits. Save and verify a checkpoint, update the task list/handoff and generate the next short prompt. Then continue approved milestones one at a time. Do not merge or deploy without permission.
+> Resume Movefield from `ghinz32-cloud/movefield` on `audit/2026-10-08-quality`. Read `AGENTS.md`, `TASKS.md` and the current `HANDOFF.md`. Verify remote refs, HEAD, upstream and existing changes. M01 reconciliation is complete at `9d7c13ed6352e74c0a7766bd2d80fb524a5b709f`. Complete U02: repair the primary workout controls from `docs/ux-baseline-2026-10-08.md` in independently testable slices, with honest browser/device limits. Save and verify a checkpoint, update the task list/handoff and generate the next short prompt. Then continue approved milestones one at a time. Do not merge or deploy without permission.
 
 If a fresh conversation is needed, the user may need to paste that prompt or provide repository access. Generating it does not automatically open or authorize a replacement chat. If blocked, record the exact blocker and the next safe step before stopping.
 

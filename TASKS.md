@@ -6,7 +6,7 @@ Repository: `https://github.com/ghinz32-cloud/movefield.git`.
 GitHub review branch: `audit/2026-10-08-quality`; draft PR #1 targets `main`.
 Application checkpoint: `9d7c13ed6352e74c0a7766bd2d80fb524a5b709f`, pushed and verified. The local worktree branch is `audit/2026-10-08-integration`, tracking that GitHub review branch.
 
-No application milestone is currently in progress. The latest request expands the audit to full web/native usability, workout evidence and variety, practical Qwen integration, durable storage selection and website/Android release readiness. Start U01 after this documentation checkpoint and rechecking refs and changes. If a milestone is blocked, record the blocker and checkpoint before selecting another independent task.
+No application milestone is currently in progress. The latest request expands the audit to full web/native usability, workout evidence and variety, practical Qwen integration, durable storage selection and website/Android release readiness. Repository refs and the clean documentation checkpoint were reverified before starting U01. If a milestone is blocked, record the blocker and checkpoint before selecting another independent task.
 
 | ID | State | Independently testable milestone | Completion evidence |
 | --- | --- | --- | --- |
@@ -30,8 +30,8 @@ These are ordered delivery milestones, not claims that all are implemented. Keep
 
 | ID | State | Milestone | Acceptance |
 | --- | --- | --- | --- |
-| U01 | Queued — next | Establish current web/native UX baseline and prioritized defects | Verify repository/refs/changes; recover an authorized inspectable preview; exercise onboarding, workout logging, navigation, history and settings; record screenshots/observations or exact browser/device blockers |
-| U02 | Queued | Repair primary workout controls and responsive placement | Reachable start/log/undo/finish actions, clear separation of destructive actions, no overlaps/clipping with keyboard/large text; relevant regression and observed UI checks on each available platform |
+| U01 | Complete with browser/device limits | Establish current web/native UX baseline and prioritized defects | Verify repository/refs/changes; recover an authorized inspectable preview; exercise onboarding, workout logging, navigation, history and settings; record screenshots/observations or exact browser/device blockers |
+| U02 | Queued — next | Repair primary workout controls and responsive placement | Reachable start/log/undo/finish actions, clear separation of destructive actions, no overlaps/clipping with keyboard/large text; relevant regression and observed UI checks on each available platform |
 | U03 | Queued | Independently audit workout evidence and schedule/progression coverage | Primary-source ledger with applicability and limits; enumerate supported weekly-day/time/equipment combinations and dose/progression/recovery rules; identify concrete gaps without calling template counts scientific validation |
 | U04 | Queued | Correct the highest-priority workout gap | A bounded recipe/progression fix, comparative before/after cases, time/equipment/youth/coach constraints retained, canonical/native parity and targeted engine checks |
 | U05 | Queued | Choose storage architecture and define one recoverable data flow | Compare justified options for account ownership, offline saves, sync/conflicts, export/deletion, cost and vendor constraints; record selected design and split its implementation into independently tested tasks |
@@ -50,7 +50,7 @@ Accounts and cloud sync, complete reusable block editing, sport/event/season pro
 
 - GHSA-vfj7-8cjw-p6xm and GHSA-86w9-cpqp-85rv remain release blockers; temporary CI exceptions expire 8 November 2026.
 - Restore interruption recovery is unverified in both storage backends; M02/M03 address it.
-- Fresh visual checks were blocked by the available browser's inability to reach the workspace server. No physical-phone acceptance is claimed.
+- Supervised preview now works for in-memory sample UI; its HTTP origin blocks Web Crypto and real saved-profile flows. No physical-phone acceptance is claimed.
 - No direct messaging connection to bro is exposed. Branches were verified through GitHub instead.
 - No merge into `main` or live deployment has occurred.
 
