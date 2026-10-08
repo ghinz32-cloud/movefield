@@ -120,10 +120,10 @@ body{font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.5}button,a,input
 .workout-guide,.option-workouts{border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin:14px 0;background:var(--muted);line-height:1.65;font-size:.94rem}.workout-guide summary,.option-workouts summary,.workout-review summary{font-weight:650;cursor:pointer;min-height:28px}.workout-guide ol,.option-workouts ul,.workout-review ul{padding-left:22px}.workout-guide li,.option-workouts li,.workout-review li{margin:8px 0}.option-workouts>div+div{border-top:1px solid var(--border);margin-top:18px;padding-top:12px}.workout-review{margin:24px 0}.workout-review details{font-size:.9rem;color:var(--muted-foreground)}.review-next{padding:14px;background:var(--soft-accent);border-radius:10px}.running-baseline{margin:24px 0}.session-dialog .workout-guide{flex-shrink:0;max-height:280px;overflow:auto}
 
 /* Gym controls stay easy to read and tap. */
-.set-head,.set-row{grid-template-columns:2rem minmax(0,1fr) minmax(0,1fr) 5.5rem}
+.set-head,.set-row{grid-template-columns:2rem minmax(0,1fr) minmax(0,1fr) 4.25rem 5.5rem}
 .set-row input{font-size:1rem;min-height:44px}.log-set-button{min-height:44px;padding:0 .5rem;font-size:.875rem}
 .rest-card .button-row{flex-wrap:wrap}.rest-card .button-row button{min-height:44px}.rest-card .check-line{margin:1rem 0}
-@media(max-width:480px){.set-head,.set-row{gap:.4rem;grid-template-columns:1.4rem minmax(0,1fr) minmax(0,1fr) 4.8rem}.exercise-log{padding:1rem}.set-row input{padding:.5rem}.log-set-button{font-size:.8rem}}
+@media(max-width:480px){.set-head,.set-row{gap:.4rem;grid-template-columns:1.4rem minmax(0,1fr) minmax(0,1fr) 3.6rem 4.8rem}.exercise-log{padding:1rem}.set-row input{padding:.5rem}.log-set-button{font-size:.8rem}}
 
 /* Revision 11: readable training controls and a timer that stays within reach. */
 .small-copy,.metric-note,.field>span,.field>small,.exercise-card small,.chart-controls label,
@@ -148,7 +148,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible {outline:3px solid va
  .entry-card {padding:1.5rem}
  .entry-card>h2 {margin-top:1rem}
  .page-heading,.split {flex-wrap:wrap}
- .set-head,.set-row {grid-template-columns:1.4rem minmax(0,1fr) minmax(0,1fr) 5rem}
+ .set-head,.set-row {grid-template-columns:1.4rem minmax(0,1fr) minmax(0,1fr) 3.6rem 5rem}
  .set-head {font-size:.875rem}
  .log-set-button {font-size:.875rem}
 }

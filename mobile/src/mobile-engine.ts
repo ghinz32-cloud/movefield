@@ -1,6 +1,7 @@
 import { setMetricsSchema } from './shared/saved-data';
 import { blankProfile, buildPlan, day, eligibility, exFor, initialState, isLoadTracked, uid, type Exercise, type Plan, type Profile, type SetLog, type State, type Workout } from './shared/training';
 import { focusScheduleConflict } from './shared/training-focus';
+import { rirError, startingSets } from './shared/workout-log';
 import { programCatalog, programEquipment } from './shared/program-catalog';
 export const FOUNDATION = 'foundation';
 export const RUN_WALK = 'run-walk';
@@ -35,7 +36,7 @@ export function startWorkout(state: State, sessionId: string): State {
   if (session.date !== day()) throw new Error('Review moving this workout to today before starting.');
   const active: Workout = { id: uid('workout'), sessionId, title: session.title, date: day(), startedAt: Date.now(), demo: true,
     targets: session.items.map(x => ({ ...x })),
-    sets: session.items.flatMap(x => Array.from({ length: x.sets }, (_, i) => ({ exerciseId: x.exerciseId, set: i + 1, reps: 0, kg: null, done: false }))), loadContext: {...state.loadContext} };
+    sets: startingSets(state, session.items), loadContext: {...state.loadContext} };
   return { ...state, active };
 }
 export function editSet(state: State, index: number, patch: Partial<SetLog>): State {
@@ -45,6 +46,7 @@ export function editSet(state: State, index: number, patch: Partial<SetLog>): St
   if(exFor(updated.exerciseId,state.custom).metric==='reps'&&!Number.isInteger(updated.reps)) throw new Error('Enter whole-number reps.');
   if (updated.kg !== null && (!Number.isFinite(updated.kg) || updated.kg < 0 || updated.kg > 1500)) throw new Error('Enter a valid load.');
   if (updated.metrics && !setMetricsSchema.safeParse(updated.metrics).success) throw new Error('Optional measurements are outside the supported range.');
+  const rirProblem = rirError(updated.rir); if (rirProblem) throw new Error(rirProblem);
   if (updated.done && updated.reps <= 0) throw new Error('Enter the actual reps or time before marking the set done.');
   const sets = state.active.sets.map((x, i) => i === index ? updated : x);
   return { ...state, active: { ...state.active, sets } };
