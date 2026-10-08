@@ -4,7 +4,7 @@
     {
       "source": "lib/app-preferences.ts",
       "target": "src/shared/app-preferences.ts",
-      "sha256": "d818ff721a772b15e232ab5a7a0116c1dc9fa67374c0a1539bf32724bf2d45c3"
+      "sha256": "b9791bcfdebc2b35f301ed160fd6c623cb3a8173bdc3aadcdf755cbd380a73e0"
     },
     {
       "source": "lib/workout-reminders.ts",
@@ -44,7 +44,7 @@
     {
       "source": "lib/training.ts",
       "target": "src/shared/training.ts",
-      "sha256": "c6398fbd06fd324c7bd01e1ec0759c47fc72ded4c0d31fe4428f6289e0979914"
+      "sha256": "0481a5250f2f43588495390f02ebd6490889de285fc28344c1076e6e56b6fcba"
     },
     {
       "source": "lib/training-tools.ts",
@@ -59,7 +59,7 @@
     {
       "source": "lib/program-catalog.ts",
       "target": "src/shared/program-catalog.ts",
-      "sha256": "65b619f74864c0f9beb00e6bb66fc5e4bcd8f5f4ca2e7deb22e40b69a4c71c95"
+      "sha256": "67725a3b54fbbb15c0a35c94a61fd5172232f936bd5c760359b1f9dca273b09e"
     },
     {
       "source": "lib/substitutions.ts",
@@ -74,12 +74,12 @@
     {
       "source": "lib/workout-review.ts",
       "target": "src/shared/workout-review.ts",
-      "sha256": "794f31132d05b55bda7d62243631df1c30149d8ea6927f242342399621a1e932"
+      "sha256": "156f4eec3e42dd350c380a1cb260a54527c3fdc1d712ccb9b7d83b3448f93164"
     },
     {
       "source": "lib/safety-copy.ts",
       "target": "src/shared/safety-copy.ts",
-      "sha256": "b5e6e3145abbabce1a659d61f09356b8e73c9aa52087fe83e1d9ea02d80cdf8f"
+      "sha256": "dc5e7c7a733753d217328d95a76e8184ce73b0bccd35a6c5f9560793bdb18fef"
     },
     {
       "source": "lib/exercise-video.ts",

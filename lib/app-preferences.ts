@@ -38,10 +38,12 @@ export function readPreferences(raw:string|null):AppPreferences {
   if(!raw)return {...defaultPreferences};
   try{
     const p=JSON.parse(raw);if(!p||typeof p!=='object'||Array.isArray(p))return {...defaultPreferences};
-    return {mode:['system','light','dark'].includes(p.mode)?p.mode:'system',palette:palettes.some(x=>x.id===p.palette)?p.palette:'green',font:fontOptions.some(x=>x[0]===p.font)?p.font:'athletic',textSize:textSizeOptions.some(x=>x[0]===p.textSize)?p.textSize:100,density:densityOptions.some(x=>x[0]===p.density)?p.density:'comfortable',contrast:p.contrast===true,reduceMotion:p.reduceMotion===true,underlineLinks:p.underlineLinks===true,reminders:p.reminders===true,reminderTime:typeof p.reminderTime==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(p.reminderTime)?p.reminderTime:'18:00',model:['auto','off','0.6b','1.7b','4b'].includes(p.model)?p.model:'auto'};
+    return {mode:['system','light','dark'].includes(p.mode)?p.mode:'system',palette:palettes.some(x=>x.id===p.palette)?p.palette:'green',font:fontOptions.some(x=>x[0]===p.font)?p.font:'athletic',textSize:textSizeOptions.some(x=>x[0]===p.textSize)?p.textSize:100,density:densityOptions.some(x=>x[0]===p.density)?p.density:'comfortable',contrast:p.contrast===true,reduceMotion:p.reduceMotion===true,underlineLinks:p.underlineLinks===true,reminders:p.reminders===true,reminderTime:typeof p.reminderTime==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(p.reminderTime)?p.reminderTime:'18:00',model:['auto','off','0.6b'].includes(p.model)?p.model:'auto'};
   }catch{return {...defaultPreferences};}
 }
-export const modelChoices:[ModelChoice,string,string][]=[['auto','Automatic','Use the largest model that passes testing on this phone.'],['0.6b','Qwen3 0.6B','Light download · about 0.5 GB'],['1.7b','Qwen3 1.7B','Balanced option · about 1.2 GB'],['4b','Qwen3 4B','Larger option · about 2.5 GB'],['off','Off','Use plans and tracking without a language model.']];
+// Only Qwen3 0.6B is offered for now: the smallest Qwen3 model with a confirmed React Native ExecuTorch export.
+// Qwen3 1.7B and 4B stay in the type and qualifiedModel below for later, and are shown only after device tests pass.
+export const modelChoices:[ModelChoice,string,string][]=[['auto','Automatic','Uses the largest Qwen3 model that passes testing on your phone. No model has passed yet, so none runs.'],['0.6b','Qwen3 0.6B','First planned model. About 0.5 GB to download, and you confirm before anything downloads. Needs a native phone build.'],['off','Off','Use plans and tracking without a language model.']];
 
 // Eligibility must come from testing the exact OS/backend/model build. Total
 // device RAM or a recent release date alone cannot establish an app's budget.

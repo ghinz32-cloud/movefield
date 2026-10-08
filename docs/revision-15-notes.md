@@ -27,11 +27,24 @@ Status: local work on `review-fixes`. Not deployed, not published, not shared. P
 
 **Safety and AI wording**
 - Pain and symptom answers now show clear instructions to seek medical care, not only "stop and seek guidance" (`lib/safety-copy.ts`). Shown on web and phone, and in the workout review.
-- The workout review says plainly that no AI is used and what would change if one were added (`AI_DISCLAIMER`).
+- The workout review says it does not use an AI model, and what would change if one were added (`AI_DISCLAIMER`). The review code has a draft contract for a future model (`REVIEW_PROMPT`, `aiReviewSchema`, `validateAiReview`). No code path calls it.
 - Design and training plan for the optional on-device feedback model: `docs/ai-feedback-plan.md`. Nothing is installed.
 
 **Run and host**
 - `docs/RUN-AND-HOST.md`: desktop and phone steps, the checks to run, hosting options, and what still needs a real phone.
+- `mobile/eas.json`: development, preview and production build profiles. `expo-dev-client` and `npm run start:dev` for a development build. Nothing has been built.
+
+**Model and account**
+- Qwen3 0.6B is the only model offered, as the first planned model. Nothing is installed or tested. The old 1.7B and 4B choices are no longer offered; a saved 1.7B or 4B preference now reads as Automatic.
+- No username or password. Account and two-factor screens are previews and describe recovery by verified email or a second factor.
+
+**Program design audit**
+- `scripts/check-program-design.cjs` checks all 71 catalog programs against the rules in `docs/program-evidence.md`, section 5: weekly sets and frequency for major muscle groups, rep ranges, heavy-set rest, competition-lift coverage, run spacing, hybrid session structure, youth limits and session length.
+- Changes made to meet the rules: Bodybuilding 3, Bodybuilding 4 upper days, Powerbuilding 3 and 4, the powerbuilding variants, Dumbbell Bodybuilding 3 and Powerbuilding 3, Machine Bodybuilding 3, and Home Bodybuilding 3 (explicit exercise lists instead of shared helpers). Two-day and brief descriptions now say that each muscle group gets less weekly work.
+- Run-only Easy base 4 now runs Saturday, Sunday, Tuesday and Thursday instead of four days in a row. Four runs in seven days must include one back-to-back pair; the engine keeps it to one.
+- Two allowances are printed by the check, not hidden: Home Bodybuilding 3 biceps (no bodyweight or band curl in the library) and Easy base 4 run spacing. One known gap is printed: the two-day programs (Bodybuilding 2, Powerbuilding Foundation 2, and the two dumbbell two-day programs).
+- Result: 71 programs, 0 rule failures.
+- Four check scripts copied a fixed list of `lib` modules that left out `program-evidence`, so they failed before any test ran. Three checks still expected old values (the saved model name, a plan name and a powerlifting name prefix). The scripts were updated; the app was not changed for them.
 
 **Research records (not app code)**
 - `docs/complaint-solution-map.md`: gym-app complaints mapped to Movefield status and fixes.
@@ -40,8 +53,9 @@ Status: local work on `review-fixes`. Not deployed, not published, not shared. P
 
 ## Checks run
 
-- Web: `pnpm exec tsc --noEmit`, `pnpm build`, `check-preferences` (98), `check-audit` (11), `check-native-storage`, `check-tools` (33), `check-transfer` (45), `check-browser-vault` (35), `check-goals` (94).
-- Phone: `npm run check`, `npm run test:engine` (now includes a starting-plan test).
+- Web: `pnpm exec tsc --noEmit`, `pnpm build`, `check-preferences`, `check-audit`, `check-native-storage`, `check-tools`, `check-goals`, `check-transfer`, `check-browser-vault`, `check-program-depth`, `check-catalog`, `check-training`, `check-program-selection`, `check-onboarding`, `check-program-design` (all exit 0).
+- Phone: `npm run check`, `npm run test:engine` (includes a starting-plan test), `npm run export:mobile` (iOS and Android bundles exported to `dist-mobile`).
+- Generated reports rewritten by the checks were reviewed. `docs/program-depth-validation.json` changed only in timestamp, assertion count and coverage counts, and is kept. `docs/revision-13-validation.json` and `tsconfig.tsbuildinfo` were restored and not committed.
 - Browser, headless Chromium on the dev server: typed goal reader; plan step with START HERE and fit notes; first workout prompt (shown only when a link exists; the plan used had none, so the prompt correctly stayed closed).
 
 ## Not verified
@@ -64,9 +78,9 @@ Status: local work on `review-fixes`. Not deployed, not published, not shared. P
 
 ## Decisions for you
 
-1. **Model family.** Start with Qwen3 1.7B, which has React Native ExecuTorch exports, or commit to Qwen3.5 2B, which has no confirmed mobile runtime yet. The research favours Qwen3 1.7B for a first test.
-2. **App lock.** A password on every app open is not built. It would mean that a forgotten password makes local data unrecoverable, so it needs your decision on recovery before it is added.
-3. **Phone build route.** EAS Build (Expo's hosted service) or another route. Nothing is configured yet.
-4. **Publication.** Nothing is deployed or shared. Ask before any change to the live site.
+1. **Model family. Decided: Qwen3 0.6B first.** It is the smallest Qwen3 model with a confirmed React Native ExecuTorch export. Qwen3 1.7B and 4B stay as later options, offered only after device tests pass. Qwen3.5 is not chosen, because no runtime for it is confirmed.
+2. **Username and password. Decided: none for now.** Nothing asks for a username or password, and the app does not lock with a password (no app lock). Future accounts will recover through a verified email address or another second factor. The account and two-factor screens remain previews and say so.
+3. **Phone build route.** EAS Build (Expo's hosted service), configured in `mobile/eas.json`. Building needs your Expo account (`eas login`), a project ID from `eas init`, and an iOS bundle identifier and Android package name that you choose. None has been created here. Store releases also need Apple and Google developer accounts.
+4. **Publication. Not deployed.** You asked for a deploy. No credentialed route was available in this session: the Cloudflare Developer Platform connector is not installed or connected, and no Cloudflare token or account is set in this environment. Nothing was published, shared or pushed to a live endpoint. To deploy, connect the Cloudflare connector in claude.ai (or give a deploy credential for the Sites project in `.openai/hosting.json`), then confirm. The current build (`pnpm build`) passes.
 5. **Program names.** The new names are proposals. Change any you do not like in `programDisplayNames`.
 6. **Official programs.** Facts are recorded, but none is added to the catalog yet, because several are only partly verified.

@@ -117,3 +117,52 @@ None of these is added to the catalog yet. Adding one means storing its set and 
 - The youth dose-response paper (Lesinski et al. 2016) could not be confirmed and is excluded.
 
 PubMed pages returned a bot check during the research, so some records were confirmed through Europe PMC or the publisher's DOI page, which the research notes record.
+
+## 5. Program design audit
+
+`scripts/check-program-design.cjs` builds every catalog program (71) with the engine for an established lifter: seven training days, 120 minutes, three weeks, Experienced, and for run bases four running days and 100 easy running minutes a week. It then checks each week against the rules below. It checks each program against its own stated goal. It does not check whether a particular user's goal suits a program; that is `lib/goal-match.ts`, which this audit does not cover.
+
+Result at this revision: 71 programs, 0 rule failures, with the designed allowances, known gaps and exemption listed below printed by the check.
+
+### Rules
+
+| Rule | What it requires | Basis |
+|---|---|---|
+| R1 | At least 10 weighted sets a week for each major group (chest, back, quads, hamstrings, shoulders, biceps, triceps) in full-length muscle-building and powerbuilding programs of 45 minutes or more that are not brief | Volume-growth review (Schoenfeld, Ogborn and Krieger 2017). The 10-set figure is the app's target. The full paper was not readable, so the exact wording is unverified (see below) |
+| R2 | Each major group is trained in at least two sessions a week | Schoenfeld, Ogborn and Krieger 2016: in volume-matched comparisons, twice a week gave more hypertrophy than once a week (checked from the abstract record) |
+| R3 | Muscle-building sets with a top of more than six reps use a low of at least five and a top of at most 20 | App rule. Sets with a top of six or fewer are heavy work and are exempt from this range |
+| R4 | Powerlifting gym programs include squat, bench and deadlift every week | App design rule for a competition-lift block |
+| R5 | Each competition lift has at least one heavy set (top of six or fewer reps) a week | App design rule; the exempt learning block is listed below |
+| R6 | Heavy sets rest at least 120 seconds; every rest is between 60 and 300 seconds | Schoenfeld et al. 2016 (8 weeks, 21 men): three-minute rests gave greater squat and bench gains than one-minute rests. Two minutes is the app's minimum for heavy sets and was not tested on its own |
+| R7 | Walk-run and beginner run sessions have a rest day between them (NHS Couch to 5K). An easy-only run base may pair days, up to runs minus three in a calendar week; four runs in seven days always contain at least one such pair | NHS Couch to 5K; the week arithmetic is exact |
+| R8 | Hybrid programs of three or more days keep running and lifting in separate sessions. A two-day combined session ends with a run of 20 minutes or less | App rule, from the concurrent-training review (Schumann et al. 2022) |
+| R9 | Youth programs have no near-maximal sets (top of fewer than six reps) | AAP 2020; NSCA youth statement; IOC consensus |
+| R10 | Brief muscle-building or powerbuilding programs say that they carry less work | App rule for honest descriptions |
+| R11 | The computed session length is no more than five minutes over the stated length | App rule |
+
+### Weighting
+
+A set counts 1 toward a primary muscle and 0.5 toward a secondary one. This is an app convention for indirect work. It is not a figure from a named trial. Exercises without muscle data in the app are mapped in the script's `NAMED` table from the exercise name and standard anatomy. Library exercises use their first-listed muscle as primary.
+
+### Allowances and exemptions (printed by the check)
+
+- **BBHOME3, biceps.** The exercise library has no curl that needs only bodyweight or bands, so biceps get indirect pulling work (about five weighted sets a week). The description tells the user to add a dumbbell or band curl.
+- **RNBASE4, R7.** The easy-only base may pair back-to-back easy days, at most one pair a week.
+- **PLSTART3, R5.** A learning block: one competition lift a day, started light while the setup is learned. Heavy work belongs in the build blocks.
+
+### Known gaps (printed, not hidden)
+
+Two sessions a week cannot give each major group 10 weighted sets at this session length. These programs are BB2, BBDBST2, PBDBST2 and PBSTART2. Their descriptions now say that each muscle group gets less weekly work than in a three- or four-day plan.
+
+### What the audit does not check
+
+- Deload weeks, and the first-time reduction to two sets in weeks one and two. The audit uses the Experienced profile.
+- Whether a user can recover from or complete a plan, or what their progress will be. Outcomes are not measured here.
+- Exercise technique, equipment set-up in a specific gym, and session time on a real phone.
+- Whether any program produces the outcome its goal names. No trial of the Movefield programs has been run.
+
+### Sources only partly verified
+
+- **Schoenfeld, Ogborn and Krieger 2017.** The app's 10-set target is often quoted from this review. The record in `docs/workout-evidence.json` was verified through a Europe PMC record with the abstract wording "graded dose-response". The "at least 10 weekly sets" wording comes from a secondary summary and is not confirmed in the full paper. The DOI page returned 403.
+- **ACSM 2026**, **NSCA youth** and **IOC** material: public summaries, partly checked.
+- **Barbell Medicine** and **PB-EXPERT**: commercial coaching pages. They describe program design, not trials. The PB-EXPERT hybrid claim is unconfirmed.

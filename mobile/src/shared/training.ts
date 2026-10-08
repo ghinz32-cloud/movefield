@@ -358,16 +358,20 @@ export function makeMoveProposal(s:State,sessionId:string,date:string,cascade:bo
 }
 export function changeSessionStatus(s:State,id:string,status:'scheduled'|'missed'):{state:State;error?:string}{const x=s.plan?.sessions.find(x=>x.id===id);if(!x||s.active?.sessionId===id||s.history.some(w=>w.sessionId===id&&w.finishedAt))return{state:s,error:'An active or recorded workout cannot be changed this way.'};if(s.simulatedOffline)return{state:s,error:'Reconnect before changing the schedule.'};if(status==='scheduled'){const restored={...s,plan:{...s.plan!,sessions:s.plan!.sessions.map(y=>y.id===id?{...y,status}:y)}};const issue=checkSchedule(restored,[{sessionId:id,patch:{date:x.date}}]);if(issue)return{state:s,error:issue};}return{state:changed({...s,plan:{...s.plan!,version:s.plan!.version+1,sessions:s.plan!.sessions.map(x=>x.id===id?{...x,status}:x)},proposals:s.proposals.map(p=>p.status==='pending'||p.status==='queued'?{...p,status:'stale'}:p)},status==='missed'?'Skipped a session. You can restore it.':'Restored a skipped session.')}};
 
+// Days that follow each other in the week (Saturday to Sunday counts). Used to space the run-only base.
+const adjacentPairs=(days:number[])=>{let n=0;for(let i=0;i<days.length;i++)for(let j=i+1;j<days.length;j++){const k=Math.abs(days[i]-days[j]);if(k===1||k===6)n++}return n};
 function catalogDays(p:Profile,d:ProgramDefinition,events:Event[]=[]):number[]{
  const eventDates=new Set(events.map(e=>e.date));
  const available=[...new Set(p.days)].sort((a,b)=>a-b),combos:number[][]=[];
  function collect(i:number,a:number[]){if(a.length===d.days){combos.push(a);return}for(let j=i;j<available.length;j++)collect(j+1,[...a,available[j]])}collect(0,[]);
  const startDay=new Date(p.start+'T12:00:00').getDay();
  combos.sort((a,b)=>Math.min(...a.map(d=>(d-startDay+7)%7))-Math.min(...b.map(d=>(d-startDay+7)%7)));
+ // Run-only base: prefer the fewest back-to-back days. Four runs in seven days must include at least one such pair.
+ if(d.id==='RNBASE4')combos.sort((a,b)=>adjacentPairs(a)-adjacentPairs(b));
  for(const combo of combos){
   const assigned=combo.slice().sort((a,b)=>(a-startDay+7)%7-(b-startDay+7)%7);
   const groups=d.slots.map(x=>x.group);
-  const fits=groups.every((g,i)=>groups.every((h,j)=>i===j||(d.id==='RNBASE4'&&g==='run'&&h==='run')||g!==h||!['full','upper','lower','run'].includes(g)||![1,6].includes(Math.abs(assigned[i]-assigned[j]))));
+  const fits=groups.every((g,i)=>groups.every((h,j)=>i===j||(d.id==='RNBASE4'&&g==='run'&&h==='run')||g!==h||!['full','upper','lower','run'].includes(g)||![1,6].includes(Math.abs(assigned[i]-assigned[j]))))&&(d.id!=='RNBASE4'||adjacentPairs(combo)<=Math.max(0,d.days-3));
   if(fits&&!Array.from({length:p.weeks*7},(_,n)=>addDays(p.start,n)).some(date=>assigned.includes(new Date(date+'T12:00:00').getDay())&&eventDates.has(date)))return assigned;
  }return [];
 }

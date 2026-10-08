@@ -83,7 +83,7 @@ Outside ChatGPT Work, do not copy the old `.sites-runtime/execution-profile.json
 
 ## Model direction
 
-Current preference: Qwen3 0.6B / 1.7B / 4B / Automatic / Off. Prefer 4B only on benchmark-qualified hardware/runtime combinations. No model is currently installed or tested. Download sizes are not RAM requirements. Keep deterministic summaries and tracking fully usable without AI.
+Current preference: Qwen3 0.6B first (owner decision, October 2026), because it is the smallest Qwen3 model with a confirmed React Native ExecuTorch export. Qwen3 1.7B and 4B stay as later options and are offered only after device tests pass. Automatic uses the largest tested model; Off. Prefer 4B only on benchmark-qualified hardware/runtime combinations. No model is currently installed or tested. Download sizes are not RAM requirements. Keep deterministic summaries and tracking fully usable without AI.
 
 Use curated, licensed local reference snippets plus verified workout facts first. Fine-tuning is optional later. Do not train from scratch or upload user records without explicit authorization. Do not silently fall back to cloud inference. See `docs/on-device-models.md`.
 

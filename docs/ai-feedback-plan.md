@@ -6,7 +6,7 @@ Status: design only. No model is installed, downloaded or tested in the app. The
 
 After you finish the sets of one exercise, an optional on-device language model could write one or two plain sentences about that exercise: a form cue to check, or a note about effort or pacing. It does not change a plan, a load, a date or a hold.
 
-Off by default. Settings controls it (Automatic, Qwen3 0.6B, Qwen3 1.7B, Qwen3 4B, or Off). Plans, tracking and the fixed review work fully without it.
+Settings controls it (Automatic, Qwen3 0.6B, or Off). No model runs until one is installed and passes the tests in section 5. Plans, tracking and the fixed review work fully without it.
 
 ## 2. Authority: rules first, model second
 
@@ -27,7 +27,9 @@ Source: `docs/model-verification-2026-10.md`.
 - **4B** only on hardware and runtime combinations that pass our benchmark (CLAUDE.md, "Model direction").
 - **No model card mentions medical advice, hallucination limits or refusals.** We must add those tests ourselves (section 5).
 
-Decision needed from you: whether to start with Qwen3 1.7B (recommended for the first test), or to commit to Qwen3.5 2B and accept that it needs a runtime we have not yet confirmed.
+**Decision (owner, October 2026): start with Qwen3 0.6B.** It is the smallest Qwen3 model with a confirmed React Native ExecuTorch export. Qwen3 1.7B and 4B stay as later options, shown only after section 5, step 6 passes on target phones. Qwen3.5 is not chosen, because no runtime for it has been confirmed.
+
+The 0.6B download is about 0.5 GB for the 4-bit XNNPACK build (482 MB in the export README, 506 MB in the folder listing). That is a download size, not a memory figure. Memory use on each phone is still to be measured.
 
 ## 4. Output contract and checks
 
@@ -91,7 +93,8 @@ Expo Go cannot run an on-device model. The feature needs a native development bu
 
 ## 8. What is not done
 
-- No model is downloaded, bundled or tested on a phone.
+- No model is downloaded, bundled or tested on a phone. Qwen3 0.6B is the planned first model only.
+- The React Native ExecuTorch package is not added to the phone app. Adding it needs the model files, a native build and a device test first.
 - No evaluation set has been written.
 - The output contract and the banned-word list are proposals.
 - Model text is not shown anywhere in the app yet. The disclosure copy is stored in this document, not in the UI.

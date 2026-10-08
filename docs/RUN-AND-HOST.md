@@ -52,7 +52,22 @@ npm start              # starts the development server and shows a QR code
 2. Put the phone and the computer on the same Wi-Fi network.
 3. Scan the QR code from `npm start` with the phone camera (iPhone) or with Expo Go (Android).
 
-Expo Go runs the current starter app. It does not run the on-device language model described in `docs/ai-feedback-plan.md`. Model features need a **native development build**, which is created with Expo's own tooling (`npx expo run:ios` on a Mac with Xcode, or `npx expo run:android` with Android Studio). That build is not configured in this repository yet. Ask before choosing a build service.
+Expo Go runs the current starter app. It does not run an on-device language model. The first planned model is Qwen3 0.6B (`docs/ai-feedback-plan.md`, section 3). Model features need a **native development build**, which the project is set up for with EAS Build (Expo's hosted build service). The profiles are in `mobile/eas.json`:
+
+- `development`: a debug build with the development client, for your own phone. Start it with `npm run start:dev`.
+- `preview`: an internal build for testers.
+- `production`: a store build. It increments the build number.
+
+Nothing has been built yet. The first build needs your Expo account, which this repository does not contain:
+
+```sh
+cd mobile
+npx eas-cli@latest login                                              # your Expo account
+npx eas-cli@latest init                                               # creates the project ID and writes it to app.json
+npx eas-cli@latest build --profile development --platform android    # or --platform ios
+```
+
+Before the first build, EAS asks for an iOS bundle identifier and an Android package name. Choose them yourself. They identify the app in stores and should not change after release. They are not set in this repository. Building for an iPhone needs an Apple developer account.
 
 `mobile/START-HERE.md` has the phone-specific notes, including what to check on a real device.
 
@@ -75,7 +90,7 @@ Before any public release, read `docs/security-review.md` and `docs/deep-audit-2
 - the privacy statement matches what the app stores (on this device, encrypted, nothing sent out);
 - the AI disclaimer appears wherever generated text appears.
 
-**Phone version.** Store distribution needs an Expo account and a build service (EAS Build is Expo's hosted option). Neither is configured in this repository: there is no `eas.json` and no Expo project ID in `mobile/app.json`. Apple and Google developer accounts are also needed for store listings. Decide the route before the phone build is prepared.
+**Phone version.** Store distribution needs an Expo account and EAS Build. The build profiles are in `mobile/eas.json`. The Expo project ID is not in `mobile/app.json` yet, because `eas init` creates it with your account. Apple and Google developer accounts are needed for store listings.
 
 ## 4. Moving your data to a new phone
 

@@ -1,5 +1,5 @@
 // Wording shown when a person reports pain or an uncertain symptom. Plain, specific, and never a clearance to train.
 export const SEEK_CARE_TEXT = 'Get medical care now, without waiting for your next session, if you have chest pain or pressure, fainting, a racing or irregular heartbeat, unusual shortness of breath, dizziness, numbness or weakness, pain that is severe, sharp or getting worse, or a swollen, hot or painful calf. In an emergency, call your local emergency number.';
 export const HOLD_TEXT = 'You reported pain or an uncertain symptom. Stop the affected activity and seek appropriate qualified guidance. Logs remain available; the app cannot diagnose or clear return to play.';
-// Shown wherever a review or suggestion is written. There is no language model in this version.
-export const AI_DISCLAIMER = 'Movefield does not use AI in this review. It applies fixed training rules to what you entered, on this device. If a language model is added later, this screen will say so, it will only explain your saved records, and it cannot change your plan, loads or holds.';
+// Shown wherever a review or suggestion is written. No language model runs in this version.
+export const AI_DISCLAIMER = 'This review does not use an AI model. It applies fixed training rules to what you entered, on this device. If a model is added later, this screen will say so before any model text appears. A model could only explain your saved records. It could not change your plan, loads or holds.';
