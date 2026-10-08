@@ -10,7 +10,7 @@ export const isWorkoutNotificationAllowed=(id:string)=>allowedIds.has(id);
 let serial:Promise<unknown>=Promise.resolve();
 let generation=0;
 export const hasNotificationPermission=(p:Notifications.NotificationPermissionsStatus)=>p.granted||p.ios?.status===Notifications.IosAuthorizationStatus.PROVISIONAL;
-async function channel(){if(Platform.OS==='android')await Notifications.setNotificationChannelAsync(workoutReminderKind,{name:'Workout reminders',importance:Notifications.AndroidImportance.DEFAULT,sound:'default',lockscreenVisibility:Notifications.AndroidNotificationVisibility.PRIVATE})}
+async function channel(){if(Platform.OS==='android')await Notifications.setNotificationChannelAsync(workoutReminderKind,{name:'Workout reminders',importance:Notifications.AndroidImportance.DEFAULT,lockscreenVisibility:Notifications.AndroidNotificationVisibility.PRIVATE})}
 export async function enableWorkoutReminders(){
  if(Platform.OS==='web')return {enabled:false,message:'Phone notifications are available in the iOS or Android app.'};
  try{await channel();let permission=await Notifications.getPermissionsAsync();if(!hasNotificationPermission(permission))permission=await Notifications.requestPermissionsAsync({ios:{allowAlert:true,allowSound:true,allowBadge:false}});return {enabled:hasNotificationPermission(permission),message:hasNotificationPermission(permission)?'Permission enabled. Scheduling status appears below.':'Notifications are off in phone settings.'}}catch{return {enabled:false,message:'Notifications could not be enabled. Try phone settings.'}}
