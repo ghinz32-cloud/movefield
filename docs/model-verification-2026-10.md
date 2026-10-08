@@ -198,3 +198,28 @@ Observations, all unverified:
 - **Whether any small Qwen3.6, 3.7 or 3.8 model is announced** outside pages I could read.
 - **Qwen3-0.6B and 1.7B 2507 instruct variants,** which the partial organisation listing did not show.
 - **Trademark or naming questions** are out of scope for this check.
+
+## 8. Runtime requirements and the device gate (added 8 October 2026)
+
+Taken from the React Native ExecuTorch README and package peers, and from a browser-runtime pass. These are documentation and package-page facts. Nothing here was run on a phone or in a browser by us, and no RAM or speed figure below is a measurement.
+
+**Native route (react-native-executorch 0.10.5, MIT):**
+- Requires the New Architecture, iOS 17 or later, and Android 13 or later according to its README. The runtime's native build needs Android minSdk 26. `mobile/app.json` does not set it yet.
+- Needs a development build. Expo Go cannot load it.
+- Peer dependencies: `react-native-worklets` >=0.10.0 <0.13.0 (the current SDK 57 bundle uses 0.10.1; the newest 0.13.0 is outside the range) and `react-native-blob-util` ^0.24.0.
+- Qwen3 0.6B XNNPACK 8da4w: about 482 MB, with a context of 2048 in its config. 1.7B is about 1.2 GB and 4B about 2.5 GB. These are file sizes, not RAM requirements.
+
+**Browser route (Qwen3 in the website, for comparison):**
+- transformers.js 4.3.1 has WebGPU support, marked experimental.
+- WebLLM 0.2.85 lists Qwen3 q4f16 GPU memory estimates of about 1,403 MB (0.6B), 2,037 MB (1.7B) and 3,432 MB (4B). These are the library's estimates, not measurements on any device.
+- ONNX downloads: about 570 MB (0.6B), 1.43 GB (1.7B) and 2.8 GB (4B).
+- WebGPU needs Safari 26 or later on Apple devices, or Chrome 121 or later on Android 12 or later with a Qualcomm or ARM GPU. Some ONNX and MLC repositories show no licence, so the licence must be checked per file before any download is offered.
+
+**Recommended order (owner decision still needed for each step):**
+1. Browser WebLLM with Qwen3 0.6B on the owner's Android Chrome, as an opt-in download of about 570 MB with a new dependency (`@mlc-ai/web-llm`).
+2. Native react-native-executorch with Qwen3 0.6B 8da4w after the first Android development build.
+3. Hold 1.7B and 4B until at least two phones in different RAM classes pass the test below.
+
+**Device gate before any larger model is offered:** 20 test responses per phone, measuring time to first token, prefill and decode tokens per second, peak RAM, load time, battery use, and temperature over 10 to 15 minutes of use. Record the phone model, OS, runtime version and model revision with each result. A device that fails the gate is not offered the larger model, and the app keeps the deterministic summaries.
+
+**Still open:** no device has been tested; no phone RAM figure in the README; no benchmark for our prompts; the accuracy of the model's explanations for health and exercise questions has not been evaluated.
