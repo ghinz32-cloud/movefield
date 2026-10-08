@@ -278,3 +278,13 @@ html[data-density=roomy] .weekly-review{margin-bottom:2rem}
 .goal-reader{margin:6px 0 22px;display:grid;gap:12px}.goal-reader .field small{display:block;margin-top:6px;font-size:.875rem}
 .demo-list{display:grid;gap:12px;margin:16px 0;padding:0;list-style:none}.demo-list li{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .review-disclaimer{margin:4px 0 12px;padding:10px 12px;border-left:3px solid var(--accent-strong);background:var(--soft-accent);border-radius:6px}
+
+/* Workout logging: tighter default vertical spacing. Text sizes and 44px touch targets are unchanged; density modes still apply. */
+.exercise-log{margin-bottom:12px;padding:16px}
+.exercise-log .load-guidance{margin-top:10px}
+.exercise-log .notice{margin:10px 0}
+.exercise-log .set-table{margin-top:10px}
+.exercise-log .set-head,.exercise-log .set-row{padding-block:8px}
+.exercise-log .set-extra{padding:2px 0}
+.exercise-log .metric-note{margin-top:8px}
+.exercise-log .field.exercise-notes{margin:10px 0 0}
