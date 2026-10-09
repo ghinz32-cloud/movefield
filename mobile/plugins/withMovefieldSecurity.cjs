@@ -35,6 +35,14 @@ module.exports = function withMovefieldSecurity(config) {
     // The development template's debug overlay deliberately overrides this for
     // local Metro. Release builds must retain the main manifest's denial.
     app.$['android:usesCleartextTraffic'] = 'false';
+    // Lint reads this merger-removal marker as a camera request. Annotate only
+    // that source-node diagnostic; CAMERA must still be absent from the APK.
+    for (const permission of mod.modResults.manifest['uses-permission'] ?? []) {
+      if (permission.$['android:name'] === 'android.permission.CAMERA'
+        && permission.$['tools:node'] === 'remove') {
+        permission.$['tools:ignore'] = 'PermissionImpliesUnsupportedChromeOsHardware';
+      }
+    }
     return mod;
   });
   config = withDangerousMod(config, ['android', async mod => {

@@ -1,4 +1,12 @@
-# Current continuation — 9 October 2026, SCI1 workout science and actual SEC2 compilation
+# Current continuation — 9 October 2026, NATIVE1 scoped Android lint repair
+
+SCI1 published and verified at `5af4582fe4bc78e60a07952a3b0bf0eca3592c8f`, exact tree `4efd7bd8d72f503e47c26e451e8c5e5395635699`; local source `10e09d3bdaba84831fd0046017bbe9189d1e8d45`, history merge `84c256381944c4ec753df65c66d97c94afbe251c`, complete bundle verified. Actual SCI1 quality run37969466143/job113952080952 succeeds. Downloaded artifact11634479768 matches official digest38e41c3f8822b4b35d7c6588f4d44ee117a0ec0d7da7d32e8888c83cc7679276; regression53/53 andproduction3/3 pass, tested integration commit34139e95d07d37e8f4eacc98971a2df2a9dacd2a/tree exactly matches SCI1 tree. Evidence under SCI1 QA/ci-sci1. This independently resolves the prior local combined-suite qualification.
+
+NATIVE1 implemented: only the CAMERA manifest merger-removal marker has the ChromeOS lint diagnostic annotation. Fresh twice-generated real Expo prebuild114 assertions and54 artifact fixtures pass; recursive manifest-wide check forbids any unrelated suppression. No camera grant or feature added; actual APK denial remains mandatory. Independent diff review clean. Evidence `docs/qa/native-compilation-2026-10-09/native1-source-validation.json`, source report `mobile/docs/native-compilation-2026-10-09.md`. Actual updated native compile/lint/decoded APK inspection remains pending.
+
+Next: publish NATIVE1 with expected remote5af4582, verify exact tree/report and complete checkpoint bundle. Then implement PAGE1 dedicated static Vite SPA/base helper/allowlisted assets/project-scoped integrity cache/early meta CSP, preserving existing Vinext checks. Qwen sample must wait for exact activated project controller, registration scope and restrictive policy/version handshake; raw Pages worker response has no worker CSP. Root independently tests actual output/HTTP/SW VM, publishes complete generated gh-pages tree preserving history, verifies live byte hashes and writes owner update instructions. Browser/physical device/store qualification remains unavailable; strict release dependency gate remains blocked. New actual native CI can run while this next milestone proceeds, recorded honestly. Main merge/store submission not authorized.
+
+# Previous continuation — SCI1 workout science and actual SEC2 compilation
 
 SEC2 is published and exact-tree verified at `c9b6471f916f4a70e4b828cf54c6ad93040962f7`, tree `2e58e02cffe74f7af6d7a42f47f0a24c1c251958`; both histories retained in local merge `0e43ddf47730bdb264be45326884646b17a25ade` and verified complete SEC2 bundle. Standing authorization includes source/audit commits and actual existing GitHub Pages publication.
 

@@ -1,6 +1,6 @@
 # Movefield cross-platform security audit — 9 October 2026
 
-Scope: the published source at `587438a8a2ba21cf88c943f857348dd7190eb078`, browser application and optional model workers, Expo Android/iOS application, imports/exports, encrypted storage, notifications, build inputs, downloadable source and GitHub workflows. This is a source/configuration and automated-test audit. It is not an independent penetration test, a store approval, or a physical-device certification. The requested GitHub Pages prototype publication is separate from a production mobile release.
+Scope: the baseline published source at `587438a8a2ba21cf88c943f857348dd7190eb078` and subsequent SEC1, SEC2 and SCI1 checkpoints, browser application and optional model workers, Expo Android/iOS application, imports/exports, encrypted storage, notifications, build inputs, downloadable source and GitHub workflows. This is a source/configuration and automated-test audit. It is not an independent penetration test, a store approval, or a physical-device certification. The requested GitHub Pages prototype publication is separate from a production mobile release.
 
 ## Findings and repairs
 
@@ -15,9 +15,9 @@ Scope: the published source at `587438a8a2ba21cf88c943f857348dd7190eb078`, brows
 | Transfer-file password/header/output limits differed between opening and creating | Bounds checked before KDF; malformed large/odd ciphertext rejected; RNG lengths verified | 62 transfer checks with real Argon2id/XChaCha20-Poly1305 |
 | Transfer operations retained owned secret byte buffers | Password byte arrays, derived keys and plaintext byte arrays cleared in `finally` | Reference-observing wrappers around real crypto, including authentication failure |
 | CI checkout retained a write-capable credential in Git configuration | `persist-credentials: false`; read-only workflow permissions retained | Workflow source inspection |
-| JavaScript export was the only platform build gate | Android release compile/lint and unsigned iOS Release simulator jobs added, with final artifact inspectors | First iOS Release simulator compilation succeeded at SEC1; first Android run failed during SDK setup before compilation. The explicit SDK-manager path is repaired for the next run |
+| JavaScript export was the only platform build gate | Android release compile/lint and unsigned iOS Release simulator jobs added, with final artifact inspectors | SEC2 iOS Release simulator compile and stronger metadata inspection succeeded. SEC2 Android assembled but one camera-removal-marker lint diagnostic blocked final inspection; NATIVE1 annotates only that removal node |
 | Legacy cleanup failure could silently leave older plaintext | Persistent exact-copy receipts, restart-visible status and authenticated safe retry; changed or unknown copies preserved | 22 actual SQLite scenarios and 25 compiled UI scenarios / 77 assertions; `mobile/docs/native-privacy-cleanup-2026-10-09.md` |
-| Final compiled security metadata needed stronger checks | APK resource links and all nine backup domains checked; iOS ATS and SDK privacy metadata fail on unreviewed shapes | 54 inspector regression tests; actual new-commit compilation still required |
+| Final compiled security metadata needed stronger checks | APK resource links and all nine backup domains checked; iOS ATS and SDK privacy metadata fail on unreviewed shapes | 54 inspector regression tests; SEC2 assembled iOS root and 11 SDK privacy manifests inspected successfully. Android same-APK checks remain pending until fresh NATIVE1 CI |
 
 JavaScript strings and runtime/crypto-library internal copies cannot be reliably erased. Buffer clearing reduces retention of owned arrays; it is not a claim of complete memory sanitization. The existing transfer format and Argon2id parameters remain compatible (19MiB, two passes, one lane); this is an offline encrypted backup, not account authentication.
 
@@ -58,3 +58,14 @@ The prototype is for ages14+. Youth require qualified supervision and do not rec
 - [Braces advisory](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm) and [forge advisory](https://github.com/advisories/GHSA-86w9-cpqp-85rv).
 
 Fresh verification results and exact source fingerprints are retained under `docs/qa/cross-platform-security-2026-10-09/`. Report publication details are separate from application validation.
+
+## Checkpoint and actual compilation coverage
+
+| Checkpoint | Published source / tree | Observed acceptance |
+| --- | --- | --- |
+| SEC1 platform/crypto/packaging | `e3dc78907c611ba064943d8512a0e8d121db078e` / `55df2e914a280482a491e18e2b593dfc8aaea183` | 50 source regressions, 3 production checks, 104 generated native assertions; first iOS simulator Release compile succeeded; Android SDK setup failed. |
+| SEC2 persistent cleanup / stronger inspectors | `c9b6471f916f4a70e4b828cf54c6ad93040962f7` / `2e58e02cffe74f7af6d7a42f47f0a24c1c251958` | 52 source regressions, 3 production checks, real SQLite/UI privacy tests, 54 inspector fixtures; actual CI quality and unsigned iOS simulator Release/metadata succeed. Android assembles but camera-removal-marker lint fails; unit-test task has NO-SOURCE. |
+| SCI1 evidence / schedule / time | `5af4582fe4bc78e60a07952a3b0bf0eca3592c8f` / `4efd7bd8d72f503e47c26e451e8c5e5395635699` | 53 effective local suites across full attempt plus two repaired reruns; actual SCI1 GitHub quality run37969466143 has a verified53/53 regression artifact and3/3 production artifact on the exact published tree; peer schedule/focus invariants and native parity pass. Separate all-template science report retains precise limits. |
+| NATIVE1 narrowly scoped lint repair | Resolve this report's next source checkpoint in Git history | Fresh repeated real prebuild 114 assertions and 54 inspector fixtures pass. Actual updated compile/lint/APK metadata is still an asynchronous CI gate. |
+
+The exact SEC2 metadata artifact digests, decoded iOS plists, source-tree confirmation and failed Android lint evidence are retained in `docs/qa/native-compilation-2026-10-09/`. A metadata inspector verifies declared fields and resource links; it does not prove every SDK's machine-code use of a reason API. The iOS simulator and Android public-debug-signed test build do not constitute production signing or physical-device acceptance.

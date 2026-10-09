@@ -42,6 +42,21 @@ async function inspect(dir) {
     equal(matches.length, 1, `${name} must have one explicit manifest merger removal`);
     equal(matches[0].$['tools:node'], 'remove', `${name} must not survive library manifest merging`);
   }
+  equal(permissions.find(p => p.$['android:name'] === 'android.permission.CAMERA').$['tools:ignore'],
+    'PermissionImpliesUnsupportedChromeOsHardware', 'Only the camera-removal lint false positive may be annotated');
+  equal(permissions.filter(p => p.$['tools:ignore'] !== undefined).map(p => p.$),
+    [{'android:name':'android.permission.CAMERA', 'tools:node':'remove',
+      'tools:ignore':'PermissionImpliesUnsupportedChromeOsHardware'}],
+    'The annotation must never apply to a granted permission or another removal marker');
+  equal(manifest.$['tools:ignore'], undefined, 'Manifest-wide lint suppression is forbidden');
+  equal(app['tools:ignore'], undefined, 'Application-wide lint suppression is forbidden');
+  const annotations = value => value && typeof value === 'object' ? [
+    ...(value.$?.['tools:ignore'] !== undefined ? [value.$] : []),
+    ...Object.values(value).flatMap(annotations),
+  ] : [];
+  equal(annotations(manifest), [{'android:name':'android.permission.CAMERA', 'tools:node':'remove',
+    'tools:ignore':'PermissionImpliesUnsupportedChromeOsHardware'}],
+    'No other manifest XML element may inherit or introduce lint suppression');
   equal(permissions.filter(p => p.$['tools:node'] !== 'remove').map(p => p.$['android:name']).sort(),
     ['android.permission.INTERNET', 'android.permission.VIBRATE'], 'Main permissions must remain bounded');
   const legacyText = read(dir, 'android/app/src/main/res/xml/movefield_backup_rules.xml');
