@@ -9,6 +9,19 @@ const {AndroidConfig, withAndroidManifest, withDangerousMod, withGradlePropertie
 // storage, rather than relying only on allowBackup (some OEM D2D ignores it).
 const DOMAINS = ['root', 'file', 'database', 'sharedpref', 'external',
   'device_root', 'device_file', 'device_database', 'device_sharedpref'];
+// The actual NATIVE3 lint report treats these eight intentional removal markers
+// as class registrations. Suppress only that source-node diagnostic. The ninth
+// removal (ExpoFirebaseMessagingService) had no error and stays unannotated.
+const MISSING_CLASS_REMOVALS = new Set([
+  'com.google.firebase.messaging.FirebaseMessagingService',
+  'com.google.firebase.components.ComponentDiscoveryService',
+  'com.google.android.datatransport.runtime.backends.TransportBackendDiscovery',
+  'com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService',
+  'com.google.firebase.iid.FirebaseInstanceIdReceiver',
+  'com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver',
+  'com.google.android.gms.common.api.GoogleApiActivity',
+  'com.google.firebase.provider.FirebaseInitProvider',
+]);
 const exclusions = (indent) => DOMAINS.map(domain => `${indent}<exclude domain="${domain}" path="."/>`).join('\n');
 const legacyRules = `<?xml version="1.0" encoding="utf-8"?>
 <full-backup-content>
@@ -51,7 +64,9 @@ module.exports = function withMovefieldSecurity(config) {
       app[tag] ??= [];
       for (const name of names) {
         app[tag] = app[tag].filter(node => node.$['android:name'] !== name);
-        app[tag].push({$: {'android:name': name, 'tools:node': 'remove'}});
+        const marker = {'android:name': name, 'tools:node': 'remove'};
+        if (MISSING_CLASS_REMOVALS.has(name)) marker['tools:ignore'] = 'MissingClass';
+        app[tag].push({$: marker});
       }
     }
     for (const name of ['firebase_messaging_auto_init_enabled', 'firebase_analytics_collection_enabled']) {

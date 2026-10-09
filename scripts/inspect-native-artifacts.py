@@ -17,6 +17,22 @@ PACKAGE = 'com.ghinz32.movefield'
 DOMAINS = {'root', 'file', 'database', 'sharedpref', 'external',
            'device_root', 'device_file', 'device_database', 'device_sharedpref'}
 RULE_NAMES = ('movefield_backup_rules', 'movefield_data_extraction_rules')
+NOTIFICATION_RECEIVER = 'expo.modules.notifications.service.NotificationsService'
+NOTIFICATION_FORWARDER = 'expo.modules.notifications.service.NotificationForwarderActivity'
+NOTIFICATION_ACTIONS = {
+    'expo.modules.notifications.NOTIFICATION_EVENT',
+    'android.intent.action.BOOT_COMPLETED', 'android.intent.action.REBOOT',
+    'android.intent.action.QUICKBOOT_POWERON', 'com.htc.intent.action.QUICKBOOT_POWERON',
+    'android.intent.action.MY_PACKAGE_REPLACED',
+}
+STARTUP_PROVIDER = 'androidx.startup.InitializationProvider'
+# Reviewed installed initializers from the exact-source NATIVE2 APK receipt.
+# This bounds their manifest registration, not their binary implementation.
+STARTUP_INITIALIZERS = {
+    'androidx.emoji2.text.EmojiCompatInitializer',
+    'androidx.lifecycle.ProcessLifecycleInitializer',
+    'androidx.profileinstaller.ProfileInstallerInitializer',
+}
 
 
 def check(condition, message):
@@ -127,6 +143,19 @@ def backup_rules(backup, extraction):
         exclusions(node)
 
 
+def intent_entries(container, ns, label):
+    """Read the reviewed action/category topology without duplicate aliases."""
+    entries = set()
+    for node in container:
+        check(node.tag in {'action', 'category'} and set(node.attrib) == {ns + 'name'} and
+              not list(node) and not (node.text or '').strip(),
+              'Unexpected intent entry in ' + label)
+        entry = (node.tag, node.get(ns + 'name'))
+        check(entry[1] and entry not in entries, 'Missing or duplicate intent entry in ' + label)
+        entries.add(entry)
+    return entries
+
+
 def android(path, backup, extraction, resources):
     root = xml(path)
     ns = '{http://schemas.android.com/apk/res/android}'
@@ -135,6 +164,7 @@ def android(path, backup, extraction, resources):
     check(len(applications) == 1, 'APK must have exactly one application manifest')
     app = applications[0]
     check(app.get(ns + 'debuggable', 'false') == 'false', 'Release APK must not be debuggable')
+    check(app.get(ns + 'enabled', 'true') == 'true', 'Application must be enabled')
     for attribute in ('allowBackup', 'usesCleartextTraffic'):
         check(app.get(ns + attribute) == 'false', 'APK must deny ' + attribute)
     check(ns + 'networkSecurityConfig' not in app.attrib,
@@ -156,19 +186,19 @@ def android(path, backup, extraction, resources):
         PACKAGE + '.MainActivity': 'activity',
         'expo.modules.filesystem.FileSystemFileProvider': 'provider',
         'expo.modules.sharing.SharingFileProvider': 'provider',
-        'expo.modules.notifications.service.NotificationsService': 'receiver',
-        'expo.modules.notifications.service.NotificationForwarderActivity': 'activity',
-        'androidx.startup.InitializationProvider': 'provider',
+        NOTIFICATION_RECEIVER: 'receiver',
+        NOTIFICATION_FORWARDER: 'activity',
+        STARTUP_PROVIDER: 'provider',
         'androidx.profileinstaller.ProfileInstallReceiver': 'receiver',
     }
-    names_seen = set()
+    components = {}
     for node in app:
         if node.tag not in {'activity', 'activity-alias', 'service', 'receiver', 'provider'}:
             continue
         name = node.get(ns + 'name')
-        check(name in allowed_components and allowed_components[name] == node.tag and name not in names_seen,
+        check(name in allowed_components and allowed_components[name] == node.tag and name not in components,
               'Unreviewed or duplicate APK component: ' + str(name))
-        names_seen.add(name)
+        components[name] = node
         exported = node.get(ns + 'exported')
         if name == PACKAGE + '.MainActivity':
             check(exported == 'true', 'Launcher must have its explicit exported boundary')
@@ -177,7 +207,39 @@ def android(path, backup, extraction, resources):
                   'Profile tooling receiver requires the system DUMP permission')
         else:
             check(exported == 'false', 'Internal components must not be exported: ' + str(name))
-    check(PACKAGE + '.MainActivity' in names_seen, 'Expected reviewed launcher activity')
+    for name in (PACKAGE + '.MainActivity', NOTIFICATION_RECEIVER, NOTIFICATION_FORWARDER):
+        check(name in components, 'Required launcher/reminder component absent: ' + name)
+        check(components[name].get(ns + 'enabled', 'true') == 'true',
+              'Required launcher/reminder component must be enabled: ' + name)
+    launcher = components[PACKAGE + '.MainActivity']
+    launcher_filters = [node for node in launcher.findall('intent-filter') if any(
+        (entry.tag == 'action' and entry.get(ns + 'name') == 'android.intent.action.MAIN') or
+        (entry.tag == 'category' and entry.get(ns + 'name') == 'android.intent.category.LAUNCHER')
+        for entry in node)]
+    check(len(launcher_filters) == 1, 'Launcher must have one MAIN/LAUNCHER intent filter')
+    check(intent_entries(launcher_filters[0], ns, 'launcher') == {
+        ('action', 'android.intent.action.MAIN'), ('category', 'android.intent.category.LAUNCHER')},
+        'Launcher must retain its MAIN/LAUNCHER intent topology')
+    reminder_filters = components[NOTIFICATION_RECEIVER].findall('intent-filter')
+    check(len(reminder_filters) == 1, 'Local reminder receiver must have one reviewed intent filter')
+    check(intent_entries(reminder_filters[0], ns, 'local reminders') == {
+        ('action', name) for name in NOTIFICATION_ACTIONS},
+        'Local reminder receiver must retain notification/boot/update intent topology')
+    check(not components[NOTIFICATION_FORWARDER].findall('intent-filter'),
+          'Internal notification forwarder must not gain intent filters')
+    initializers = set()
+    if STARTUP_PROVIDER in components:
+        provider = components[STARTUP_PROVIDER]
+        check(provider.get(ns + 'authorities') == PACKAGE + '.androidx-startup',
+              'Unexpected AndroidX startup provider authority')
+        for node in provider:
+            name = node.get(ns + 'name')
+            check(node.tag == 'meta-data' and set(node.attrib) == {ns + 'name', ns + 'value'} and
+                  name in STARTUP_INITIALIZERS and node.get(ns + 'value') == 'androidx.startup' and
+                  not list(node) and not (node.text or '').strip(),
+                  'Unreviewed AndroidX startup initializer declaration')
+            check(name not in initializers, 'Duplicate AndroidX startup initializer declaration')
+            initializers.add(name)
     for name in ('firebase_messaging_auto_init_enabled', 'firebase_analytics_collection_enabled'):
         declarations = [node for node in app.findall('meta-data') if node.get(ns + 'name') == name]
         check(len(declarations) == 1 and declarations[0].get(ns + 'value') == 'false' and
@@ -197,7 +259,8 @@ def android(path, backup, extraction, resources):
     allowed = {'android.permission.INTERNET', 'android.permission.VIBRATE',
                'android.permission.POST_NOTIFICATIONS', 'android.permission.RECEIVE_BOOT_COMPLETED',
                PACKAGE + '.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'}
-    required = {'android.permission.INTERNET', 'android.permission.VIBRATE', 'android.permission.POST_NOTIFICATIONS'}
+    required = {'android.permission.INTERNET', 'android.permission.VIBRATE',
+                'android.permission.POST_NOTIFICATIONS', 'android.permission.RECEIVE_BOOT_COMPLETED'}
     check(set(permissions).issubset(allowed), 'Unexpected merged APK permissions: ' + str(set(permissions) - allowed))
     check(required.issubset(permissions), 'Required model/reminder permissions are absent from the APK')
     for node in rows:
@@ -211,7 +274,10 @@ def android(path, backup, extraction, resources):
             'manifestSHA256': sha(path), 'backupRulesLinked': True, 'backupDomainsExcluded': sorted(DOMAINS),
             'cloudBackupAndDeviceTransferExcluded': True, 'backupRulesSHA256': sha(backup),
             'extractionRulesSHA256': sha(extraction), 'resourceTableSHA256': sha(resources),
-            'cleartextDenied': True, 'remoteSdkStartupDisabled': True, 'componentBoundariesChecked': True, 'signing': 'uninspected; inspect the APK certificate separately',
+            'cleartextDenied': True, 'remoteSdkStartupDisabled': True, 'componentBoundariesChecked': True,
+            'localReminderDeclarationsChecked': True, 'reviewedStartupInitializers': sorted(initializers),
+            'reminderInspectionScope': 'manifest components/intent topology/permissions; native delivery and lifecycle not verified',
+            'signing': 'uninspected; inspect the APK certificate separately',
             'physicalDeviceTested': False, 'storeAccepted': False}
 
 
@@ -295,6 +361,9 @@ def ios(app):
     info = plist(app / 'Info.plist')
     check(info.get('CFBundleIdentifier') == PACKAGE, 'Unexpected iOS bundle identity')
     check(info.get('MinimumOSVersion') == '16.4', 'Unexpected iOS deployment floor')
+    check('NSFaceIDUsageDescription' not in info, 'Unimplemented biometric usage declaration must be absent')
+    for key in ('UIFileSharingEnabled', 'LSSupportsOpeningDocumentsInPlace'):
+        check(not boolean(info, key), 'Built app must deny direct Documents exposure: ' + key)
     ats = transport(info)
     services, description = info.get('NSBonjourServices', []), info.get('NSLocalNetworkUsageDescription', '')
     check(isinstance(services, list) and not services and isinstance(description, str) and not description,
@@ -315,6 +384,8 @@ def ios(app):
     return {'platform': 'ios', 'bundleIdentifier': info['CFBundleIdentifier'],
             'infoSHA256': sha(app / 'Info.plist'), 'transport': ats, 'privacyManifests': manifests,
             'privacyInspectionScope': 'required app reasons present; no SDK-declared collection/tracking; native API reachability not verified',
+            'sourceCapabilityDeclarationsChecked': True,
+            'capabilityInspectionScope': 'biometric description absent and direct Documents exposure denied; native API reachability not verified',
             'signing': 'uninspected; CI configuration builds an unsigned simulator application',
             'physicalDeviceTested': False, 'storeAccepted': False}
 

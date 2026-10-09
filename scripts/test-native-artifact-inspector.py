@@ -26,14 +26,34 @@ BACKUP = '<full-backup-content>' + EXCLUDES + '</full-backup-content>'
 EXTRACTION = ('<data-extraction-rules><cloud-backup>' + EXCLUDES +
               '</cloud-backup><device-transfer>' + EXCLUDES +
               '</device-transfer></data-extraction-rules>')
+LAUNCHER = """<activity android:name="com.ghinz32.movefield.MainActivity" android:exported="true">
+<intent-filter><action android:name="android.intent.action.MAIN"/>
+<category android:name="android.intent.category.LAUNCHER"/></intent-filter>
+</activity>"""
+REMINDER_RECEIVER = """<receiver android:name="expo.modules.notifications.service.NotificationsService" android:enabled="true" android:exported="false">
+<intent-filter android:priority="-1">
+<action android:name="expo.modules.notifications.NOTIFICATION_EVENT"/>
+<action android:name="android.intent.action.BOOT_COMPLETED"/>
+<action android:name="android.intent.action.REBOOT"/>
+<action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+<action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>
+<action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+</intent-filter></receiver>"""
+REMINDER_FORWARDER = '<activity android:name="expo.modules.notifications.service.NotificationForwarderActivity" android:exported="false"/>'
+STARTUP = """<provider android:name="androidx.startup.InitializationProvider" android:exported="false" android:authorities="com.ghinz32.movefield.androidx-startup">
+<meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
+<meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>
+<meta-data android:name="androidx.profileinstaller.ProfileInstallerInitializer" android:value="androidx.startup"/>
+</provider>"""
 MANIFEST = """<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.ghinz32.movefield">
 <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="36"/>
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.VIBRATE"/>
 <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 <application android:debuggable="false" android:allowBackup="false" android:usesCleartextTraffic="false"
  android:fullBackupContent="@ref/0x7f130001" android:dataExtractionRules="@ref/0x7f130002">
-<activity android:name="com.ghinz32.movefield.MainActivity" android:exported="true"/>
+""" + LAUNCHER + REMINDER_RECEIVER + REMINDER_FORWARDER + """
 <meta-data android:name="firebase_messaging_auto_init_enabled" android:value="false"/>
 <meta-data android:name="firebase_analytics_collection_enabled" android:value="false"/>
 </application>
@@ -113,6 +133,149 @@ class Fixtures(unittest.TestCase):
         self.assertEqual(result['resourceTableSHA256'], INSPECTOR.sha(self.paths[3]))
         self.assertIn('uninspected', result['signing'])
         self.assertFalse(result['physicalDeviceTested'])
+        self.assertTrue(result['localReminderDeclarationsChecked'])
+        self.assertEqual(result['reviewedStartupInitializers'], [])
+        self.assertIn('not verified', result['reminderInspectionScope'])
+
+    def test_required_launcher_and_reminder_components_absent_refused(self):
+        for component in (LAUNCHER, REMINDER_RECEIVER, REMINDER_FORWARDER):
+            with self.subTest(component=component.split('>', 1)[0]):
+                self.paths[0].write_text(MANIFEST.replace(component, ''))
+                self.rejects_android('component absent')
+
+    def test_required_components_disabled_or_unresolved_refused(self):
+        for component in (LAUNCHER, REMINDER_RECEIVER, REMINDER_FORWARDER):
+            for enabled in ('false', '@bool/unknown', '1'):
+                with self.subTest(component=component.split('>', 1)[0], enabled=enabled):
+                    altered = component.replace(' android:enabled="true"', '')
+                    altered = altered.replace(' android:exported=', ' android:enabled="' + enabled + '" android:exported=', 1)
+                    self.paths[0].write_text(MANIFEST.replace(component, altered))
+                    self.rejects_android('component must be enabled')
+
+    def test_required_components_default_enabled_accepted(self):
+        self.change(0, ' android:enabled="true"', '')
+        self.assertTrue(self.android()['localReminderDeclarationsChecked'])
+
+    def test_disabled_or_unresolved_application_refused(self):
+        for enabled in ('false', '@bool/unknown', '1'):
+            with self.subTest(enabled=enabled):
+                self.paths[0].write_text(MANIFEST.replace('<application ', '<application android:enabled="' + enabled + '" '))
+                self.rejects_android('Application must be enabled')
+
+    def test_explicitly_enabled_application_accepted(self):
+        self.change(0, '<application ', '<application android:enabled="true" ')
+        self.assertTrue(self.android()['localReminderDeclarationsChecked'])
+
+    def test_launcher_incomplete_or_split_intents_refused(self):
+        for launcher in (
+            LAUNCHER.replace('<action android:name="android.intent.action.MAIN"/>', ''),
+            LAUNCHER.replace('<category android:name="android.intent.category.LAUNCHER"/>', ''),
+            LAUNCHER.replace('\n<category ', '</intent-filter><intent-filter><category '),
+        ):
+            with self.subTest(launcher=launcher):
+                self.paths[0].write_text(MANIFEST.replace(LAUNCHER, launcher))
+                self.rejects_android('MAIN/LAUNCHER')
+
+    def test_launcher_data_restriction_or_duplicate_entry_refused(self):
+        for addition in ('<data android:scheme="unexpected"/>',
+                         '<action android:name="android.intent.action.MAIN"/>'):
+            with self.subTest(addition=addition):
+                launcher = LAUNCHER.replace('</intent-filter>', addition + '</intent-filter>')
+                self.paths[0].write_text(MANIFEST.replace(LAUNCHER, launcher))
+                self.rejects_android('Unexpected intent entry|duplicate intent entry')
+
+    def test_launcher_duplicate_filter_refused(self):
+        launcher = LAUNCHER.replace('</activity>', '<intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter></activity>')
+        self.change(0, LAUNCHER, launcher)
+        self.rejects_android('one MAIN/LAUNCHER')
+
+    def test_unrelated_launcher_deep_link_filter_accepted(self):
+        launcher = LAUNCHER.replace('</activity>', '<intent-filter><action android:name="android.intent.action.VIEW"/><category android:name="android.intent.category.DEFAULT"/><category android:name="android.intent.category.BROWSABLE"/><data android:scheme="exp+bigcheese3232"/></intent-filter></activity>')
+        self.change(0, LAUNCHER, launcher)
+        self.assertTrue(self.android()['localReminderDeclarationsChecked'])
+
+    def test_each_required_reminder_action_absent_refused(self):
+        for action in ('expo.modules.notifications.NOTIFICATION_EVENT', 'android.intent.action.BOOT_COMPLETED',
+                       'android.intent.action.REBOOT', 'android.intent.action.QUICKBOOT_POWERON',
+                       'com.htc.intent.action.QUICKBOOT_POWERON', 'android.intent.action.MY_PACKAGE_REPLACED'):
+            with self.subTest(action=action):
+                self.paths[0].write_text(MANIFEST.replace('<action android:name="' + action + '"/>', ''))
+                self.rejects_android('notification/boot/update intent topology')
+
+    def test_reminder_restricting_or_unreviewed_intent_entries_refused(self):
+        for addition in ('<category android:name="android.intent.category.DEFAULT"/>',
+                         '<data android:scheme="unexpected"/>',
+                         '<action android:name="unexpected.ACTION"/>',
+                         '<action android:name="android.intent.action.BOOT_COMPLETED"/>',
+                         '<action android:name="extra.ACTION" android:resource="@string/unknown"/>'):
+            with self.subTest(addition=addition):
+                receiver = REMINDER_RECEIVER.replace('</intent-filter>', addition + '</intent-filter>')
+                self.paths[0].write_text(MANIFEST.replace(REMINDER_RECEIVER, receiver))
+                self.rejects_android('intent entry|intent topology')
+
+    def test_multiple_or_missing_reminder_filters_refused(self):
+        for receiver in (REMINDER_RECEIVER.replace('</receiver>', '<intent-filter/></receiver>'),
+                         REMINDER_RECEIVER.split('<intent-filter', 1)[0] + '</receiver>'):
+            with self.subTest(receiver=receiver):
+                self.paths[0].write_text(MANIFEST.replace(REMINDER_RECEIVER, receiver))
+                self.rejects_android('one reviewed intent filter')
+
+    def test_notification_forwarder_intent_filter_refused(self):
+        self.change(0, REMINDER_FORWARDER, REMINDER_FORWARDER[:-2] + '><intent-filter/></activity>')
+        self.rejects_android('forwarder must not gain intent filters')
+
+    def test_boot_permission_absent_or_expired_refused(self):
+        for permission in ('', '<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" android:maxSdkVersion="35"/>'):
+            with self.subTest(permission=permission):
+                self.paths[0].write_text(MANIFEST.replace('<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>', permission))
+                self.rejects_android('permissions are absent|expires')
+
+    def test_boot_permission_sdk_coverage_and_variant_accepted(self):
+        for permission in ('<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" android:maxSdkVersion="36"/>',
+                           '<uses-permission-sdk-23 android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>'):
+            with self.subTest(permission=permission):
+                self.paths[0].write_text(MANIFEST.replace('<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>', permission))
+                self.assertIn('android.permission.RECEIVE_BOOT_COMPLETED', self.android()['permissions'])
+
+    def test_reviewed_startup_initializers_accepted(self):
+        self.change(0, '</application>', STARTUP + '</application>')
+        self.assertEqual(self.android()['reviewedStartupInitializers'], [
+            'androidx.emoji2.text.EmojiCompatInitializer',
+            'androidx.lifecycle.ProcessLifecycleInitializer',
+            'androidx.profileinstaller.ProfileInstallerInitializer'])
+
+    def test_optional_startup_provider_or_initializer_absence_accepted(self):
+        self.assertEqual(self.android()['reviewedStartupInitializers'], [])
+        self.change(0, '</application>', STARTUP.replace('<meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>', '') + '</application>')
+        self.assertEqual(len(self.android()['reviewedStartupInitializers']), 2)
+
+    def test_startup_wrong_authority_refused(self):
+        self.change(0, '</application>', STARTUP.replace('com.ghinz32.movefield.androidx-startup', 'other.startup') + '</application>')
+        self.rejects_android('startup provider authority')
+
+    def test_startup_unknown_or_indirected_initializer_refused(self):
+        for startup in (
+            STARTUP.replace('androidx.emoji2.text.EmojiCompatInitializer', 'example.NewSdkInitializer'),
+            STARTUP.replace('android:value="androidx.startup"', 'android:value="unknown"', 1),
+            STARTUP.replace('android:value="androidx.startup"', 'android:resource="@string/unknown"', 1),
+            STARTUP.replace('android:value="androidx.startup"', 'android:value="androidx.startup" android:resource="@string/unknown"', 1),
+        ):
+            with self.subTest(startup=startup):
+                self.paths[0].write_text(MANIFEST.replace('</application>', startup + '</application>'))
+                self.rejects_android('Unreviewed AndroidX startup')
+
+    def test_duplicate_startup_initializer_refused(self):
+        self.change(0, '</application>', STARTUP.replace('</provider>', '<meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/></provider>') + '</application>')
+        self.rejects_android('Duplicate AndroidX startup')
+
+    def test_startup_unexpected_or_nested_child_refused(self):
+        for startup in (
+            STARTUP.replace('</provider>', '<intent-filter/></provider>'),
+            STARTUP.replace('android:value="androidx.startup"/>', 'android:value="androidx.startup"><meta-data/></meta-data>', 1),
+        ):
+            with self.subTest(startup=startup):
+                self.paths[0].write_text(MANIFEST.replace('</application>', startup + '</application>'))
+                self.rejects_android('Unreviewed AndroidX startup')
 
     def test_named_and_package_qualified_links(self):
         self.change(0, '@ref/0x7f130001', '@xml/movefield_backup_rules')
@@ -309,6 +472,33 @@ class Fixtures(unittest.TestCase):
         self.assertIn('reachability not verified', result['privacyInspectionScope'])
         self.assertIn('uninspected', result['signing'])
         self.assertFalse(result['storeAccepted'])
+        self.assertTrue(result['sourceCapabilityDeclarationsChecked'])
+        self.assertIn('reachability not verified', result['capabilityInspectionScope'])
+
+    def test_unimplemented_faceid_declaration_refused_including_empty(self):
+        for value in ('Enable face authentication', '', False):
+            with self.subTest(value=value):
+                self.info['NSFaceIDUsageDescription'] = value
+                self.rejects_ios('biometric usage declaration')
+
+    def test_direct_documents_exposure_true_refused(self):
+        for key in ('UIFileSharingEnabled', 'LSSupportsOpeningDocumentsInPlace'):
+            with self.subTest(key=key):
+                self.info = copy.deepcopy(INFO)
+                self.info[key] = True
+                self.rejects_ios('deny direct Documents exposure')
+
+    def test_direct_documents_exposure_malformed_flags_refused(self):
+        for key in ('UIFileSharingEnabled', 'LSSupportsOpeningDocumentsInPlace'):
+            for value in ('false', 0, 1, [], {}):
+                with self.subTest(key=key, value=value):
+                    self.info = copy.deepcopy(INFO)
+                    self.info[key] = value
+                    self.rejects_ios('Malformed boolean')
+
+    def test_direct_documents_exposure_false_accepted(self):
+        self.info.update({'UIFileSharingEnabled': False, 'LSSupportsOpeningDocumentsInPlace': False})
+        self.assertTrue(self.ios()['sourceCapabilityDeclarationsChecked'])
 
     def test_secure_domain_exception_and_xml_sdk_accepted(self):
         self.info['NSAppTransportSecurity']['NSExceptionDomains'] = {

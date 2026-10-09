@@ -1,26 +1,46 @@
 name: Native release compilation
 on:
   pull_request:
-    paths:
-      - "mobile/**"
-      - "!mobile/docs/**"
-      - "!mobile/*.md"
-      - "scripts/inspect-native-artifacts.py"
-      - "scripts/test-native-artifact-inspector.py"
-      - "scripts/extract-apk-rules.py"
-      - "scripts/test-apk-rule-extractor.py"
-      - ".github/workflows/native-builds.yml"
+    types: [opened, reopened, synchronize]
+    # Cumulative PR paths and GitHub's file-list cap cannot establish whether
+    # this synchronize update changed native inputs. Decide in native_changes.
   workflow_dispatch:
 permissions:
   contents: read
-concurrency:
-  group: native-builds-${{ github.ref }}
-  cancel-in-progress: true
+# Preserve every required compilation, including queued builds. A branch-scoped
+# concurrency group can cancel a needed run before the per-event gate executes.
 env:
   CI: "1"
   EXPO_NO_TELEMETRY: "1"
 jobs:
+  native_changes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      compile: ${{ steps.gate.outputs.compile }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Decide from the exact synchronize source range
+        id: gate
+        env:
+          NATIVE_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          mkdir -p native-evidence/gate
+          python3 scripts/native-change-gate.py > native-evidence/gate/decision.json
+      - name: Retain native input decision
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: native-input-decision
+          path: native-evidence/gate
+          if-no-files-found: warn
   android:
+    needs: native_changes
+    if: ${{ !cancelled() && (needs.native_changes.result != 'success' || needs.native_changes.outputs.compile != 'false') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
@@ -70,6 +90,8 @@ jobs:
             mobile/android/app/build/reports
           if-no-files-found: warn
   ios:
+    needs: native_changes
+    if: ${{ !cancelled() && (needs.native_changes.result != 'success' || needs.native_changes.outputs.compile != 'false') }}
     runs-on: macos-26
     timeout-minutes: 60
     env:

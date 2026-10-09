@@ -42,6 +42,7 @@ jobs:
           npm run test:regression
           python3 scripts/test-native-artifact-inspector.py
           python3 scripts/test-apk-rule-extractor.py
+          python3 scripts/test-native-change-gate.py
       - name: Native type and training checks
         working-directory: mobile
         run: |

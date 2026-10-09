@@ -22,6 +22,49 @@ const expectedReasons = {
   NSPrivacyAccessedAPICategoryUserDefaults: ['CA92.1'],
   NSPrivacyAccessedAPICategorySystemBootTime: ['35F9.1'],
 };
+const removedSdkComponents = {
+  service: ['expo.modules.notifications.service.ExpoFirebaseMessagingService',
+    'com.google.firebase.messaging.FirebaseMessagingService',
+    'com.google.firebase.components.ComponentDiscoveryService',
+    'com.google.android.datatransport.runtime.backends.TransportBackendDiscovery',
+    'com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService'],
+  receiver: ['com.google.firebase.iid.FirebaseInstanceIdReceiver',
+    'com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver'],
+  activity: ['com.google.android.gms.common.api.GoogleApiActivity'],
+  provider: ['com.google.firebase.provider.FirebaseInitProvider'],
+};
+// Independent expected set: exactly the eight errors in the retained actual
+// NATIVE3 lint report, never every removed or registered SDK component.
+const missingClassRemovals = new Set([
+  'com.google.firebase.messaging.FirebaseMessagingService',
+  'com.google.firebase.components.ComponentDiscoveryService',
+  'com.google.android.datatransport.runtime.backends.TransportBackendDiscovery',
+  'com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService',
+  'com.google.firebase.iid.FirebaseInstanceIdReceiver',
+  'com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver',
+  'com.google.android.gms.common.api.GoogleApiActivity',
+  'com.google.firebase.provider.FirebaseInitProvider',
+]);
+const removalMarker = name => ({'android:name': name, 'tools:node': 'remove',
+  ...(missingClassRemovals.has(name) ? {'tools:ignore': 'MissingClass'} : {})});
+const cameraAnnotation = {'android:name': 'android.permission.CAMERA', 'tools:node': 'remove',
+  'tools:ignore': 'PermissionImpliesUnsupportedChromeOsHardware'};
+const annotationOrder = (a, b) => `${a.tag}:${a.attributes['android:name']}`.localeCompare(`${b.tag}:${b.attributes['android:name']}`);
+const expectedAnnotations = [
+  {tag: 'uses-permission', attributes: cameraAnnotation},
+  ...Object.entries(removedSdkComponents).flatMap(([tag, names]) => names
+    .filter(name => missingClassRemovals.has(name)).map(name => ({tag, attributes: removalMarker(name)}))),
+].sort(annotationOrder);
+const annotations = (value, tag = 'manifest') => {
+  if (Array.isArray(value)) return value.flatMap(item => annotations(item, tag));
+  if (!value || typeof value !== 'object') return [];
+  return [
+    ...(value.$?.['tools:ignore'] !== undefined ? [{tag, attributes: value.$}] : []),
+    ...Object.entries(value).filter(([key]) => key !== '$').flatMap(([key, child]) => annotations(child, key)),
+  ];
+};
+const verifyAnnotations = manifest => assert.deepEqual(annotations(manifest).sort(annotationOrder), expectedAnnotations,
+  'Only the exact camera and eight class-removal nodes may carry their scoped diagnostic');
 let checks = 0;
 const equal = (actual, expected, reason) => {assert.deepEqual(actual, expected, reason); checks++;};
 const read = (dir, relative) => fs.readFileSync(path.join(dir, relative), 'utf8');
@@ -45,23 +88,53 @@ async function inspect(dir) {
   equal(permissions.find(p => p.$['android:name'] === 'android.permission.CAMERA').$['tools:ignore'],
     'PermissionImpliesUnsupportedChromeOsHardware', 'Only the camera-removal lint false positive may be annotated');
   equal(permissions.filter(p => p.$['tools:ignore'] !== undefined).map(p => p.$),
-    [{'android:name':'android.permission.CAMERA', 'tools:node':'remove',
-      'tools:ignore':'PermissionImpliesUnsupportedChromeOsHardware'}],
+    [cameraAnnotation],
     'The annotation must never apply to a granted permission or another removal marker');
   equal(manifest.$['tools:ignore'], undefined, 'Manifest-wide lint suppression is forbidden');
-  for (const [tag,names] of Object.entries({service:['expo.modules.notifications.service.ExpoFirebaseMessagingService','com.google.firebase.messaging.FirebaseMessagingService','com.google.firebase.components.ComponentDiscoveryService','com.google.android.datatransport.runtime.backends.TransportBackendDiscovery','com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService'],receiver:['com.google.firebase.iid.FirebaseInstanceIdReceiver','com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver'],activity:['com.google.android.gms.common.api.GoogleApiActivity'],provider:['com.google.firebase.provider.FirebaseInitProvider']})) {
-    for (const name of names) equal(manifest.application[0][tag]?.filter(node=>node.$['android:name']===name).map(node=>node.$),[{'android:name':name,'tools:node':'remove'}],'Remove automatic remote SDK component '+name);
+  for (const [tag, names] of Object.entries(removedSdkComponents)) {
+    for (const name of names) equal(manifest.application[0][tag]?.filter(node => node.$['android:name'] === name).map(node => node.$),
+      [removalMarker(name)], 'Remove automatic remote SDK component with only its observed diagnostic ' + name);
   }
   for (const name of ['firebase_messaging_auto_init_enabled','firebase_analytics_collection_enabled']) equal(manifest.application[0]['meta-data']?.filter(node=>node.$['android:name']===name).map(node=>node.$['android:value']),['false'],'Remote SDK auto initialization disabled '+name);
 
   equal(app['tools:ignore'], undefined, 'Application-wide lint suppression is forbidden');
-  const annotations = value => value && typeof value === 'object' ? [
-    ...(value.$?.['tools:ignore'] !== undefined ? [value.$] : []),
-    ...Object.values(value).flatMap(annotations),
-  ] : [];
-  equal(annotations(manifest), [{'android:name':'android.permission.CAMERA', 'tools:node':'remove',
-    'tools:ignore':'PermissionImpliesUnsupportedChromeOsHardware'}],
-    'No other manifest XML element may inherit or introduce lint suppression');
+  verifyAnnotations(manifest); checks++;
+  const refuseAnnotationMutation = (mutate, reason) => {
+    const changed = structuredClone(manifest);
+    mutate(changed);
+    assert.throws(() => verifyAnnotations(changed), assert.AssertionError, reason); checks++;
+  };
+  refuseAnnotationMutation(value => { value.$['tools:ignore'] = 'MissingClass'; }, 'Reject manifest-wide class suppression');
+  refuseAnnotationMutation(value => { value.application[0].$['tools:ignore'] = 'MissingClass'; }, 'Reject application-wide class suppression');
+  refuseAnnotationMutation(value => {
+    value.application[0].service.find(node => node.$['android:name'] === 'expo.modules.notifications.service.ExpoFirebaseMessagingService').$['tools:ignore'] = 'MissingClass';
+  }, 'Reject suppression on the ninth, undiagnosed SDK removal');
+  refuseAnnotationMutation(value => {
+    value.application[0].service.find(node => node.$['android:name'] === 'com.google.firebase.messaging.FirebaseMessagingService').$['tools:node'] = 'merge';
+  }, 'Reject class suppression when the component is registered instead of removed');
+  refuseAnnotationMutation(value => {
+    value.application[0].service.find(node => node.$['android:name'] === 'com.google.firebase.messaging.FirebaseMessagingService').$['tools:ignore'] = 'MissingClass,UnusedAttribute';
+  }, 'Reject adding an unobserved diagnostic to a reviewed removal');
+  refuseAnnotationMutation(value => {
+    delete value.application[0].service.find(node => node.$['android:name'] === 'com.google.firebase.messaging.FirebaseMessagingService').$['tools:ignore'];
+  }, 'Reject losing a required exact diagnostic on a demonstrated removal');
+  refuseAnnotationMutation(value => {
+    value.application[0].activity.find(node => node.$['android:name'] === '.MainActivity').$['tools:ignore'] = 'MissingClass';
+  }, 'Reject class suppression on the actual launcher');
+  refuseAnnotationMutation(value => {
+    value['uses-permission'].find(node => node.$['android:name'] === 'android.permission.CAMERA').$['tools:node'] = 'merge';
+  }, 'Reject camera suppression when its removal instruction is lost');
+  refuseAnnotationMutation(value => {
+    value.application[0].service.push({$: removalMarker('com.google.firebase.messaging.FirebaseMessagingService')});
+  }, 'Reject duplicate annotated removal markers');
+  refuseAnnotationMutation(value => {
+    const services = value.application[0].service;
+    const index = services.findIndex(node => node.$['android:name'] === 'com.google.firebase.messaging.FirebaseMessagingService');
+    value.application[0].receiver.push(...services.splice(index, 1));
+  }, 'Reject moving an otherwise matching suppression to the wrong component type');
+  refuseAnnotationMutation(value => {
+    value.application[0]['meta-data'].push({$: {'android:name': 'unreviewed.Metadata', 'tools:ignore': 'MissingClass'}});
+  }, 'Reject suppression on unrelated nested metadata');
   equal(permissions.filter(p => p.$['tools:node'] !== 'remove').map(p => p.$['android:name']).sort(),
     ['android.permission.INTERNET', 'android.permission.VIBRATE'], 'Main permissions must remain bounded');
   const legacyText = read(dir, 'android/app/src/main/res/xml/movefield_backup_rules.xml');
