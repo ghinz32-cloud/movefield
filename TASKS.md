@@ -5,7 +5,9 @@
 - [x] Minimized saved-context coaching, explicit consent/automatic local review, encrypted results and secure durable backend routing.
 - [x] Integrate pinned experimental Qwen3.5 4B/9B, same-origin worker policy and verified Pages service-worker gate.
 - [x] 75/75 regression, types/lint,47 shared hashes, native engine/Hermes and zero-warning production build with3/3 production checks.
-- [ ] Publish/read back final combined source checkpoint; deploy both existing hosts and verify native testing builds for that exact source.
+- [x] Publish/read back integrated sourcec0aab491; preserve active official native compilation.
+- [x] Bind each cloud consent to the exact context and consume it;29/29 UI scenarios168assertions pass.
+- [ ] Publish/read back final consent correction; deploy both existing hosts and verify native testing builds for that exact source.
 - [ ] Real GPU/device coaching acceptance and owner-supplied cloud provider key; native inference/authentication and Apple distribution remain unavailable.
 
 # Current Claude pipeline checkpoint — 9 October 2026

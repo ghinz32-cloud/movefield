@@ -1,3 +1,9 @@
+# Final cloud-consent scope correction — 9 October 2026
+
+Integrated coaching sourcec0aab491/tree8821849a was pushed/read back and its quality37999301455/native37999301260 are running. A final concrete UI issue was then found: a cloud consent checkbox could carry across changed context or be reused through a retained callback. The corrected component binds a live consent ref to the exact digest, consumes it synchronously before transport and refuses stale checkbox changes.29/29 compiled UI scenarios/168 assertions, TypeScript and zero-warning focused lint pass. Native/library inputs are unchanged by this correction. Both deployment agents paused before web activation and preserve earlier prepared blobs/source. Resolve corrected checkpoint via git log -1 --format=%H -- components/workout-coach.tsx; push/readback and fresh production build precede resuming deployment. No running native job was cancelled.
+
+Next: publish the corrected checkpoint, resume exact-source Pages/Sites deployments, verify live hashes/header/new table and retain official quality/native receipts. Provider keys, real GPU/device and native-auth/inference limitations remain unchanged.
+
 # Current personalized-coaching checkpoint — 9 October 2026
 
 Calendar UI checkpoint81840879/tree34a68f47 is pushed/read back; quality37996257648 and native37996257659 succeed. Combined coaching source is locally integrated on audit/2026-10-09-claude in repository https://github.com/ghinz32-cloud/movefield.git. Resolve final code checkpoint with git log -1 --format=%H -- components/workout-coach.tsx; publication/readback is the next step. Report and full changed-file inventory: docs/calendar-and-coaching-2026-10-09.md.

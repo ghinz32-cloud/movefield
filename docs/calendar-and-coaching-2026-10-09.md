@@ -12,13 +12,15 @@ Secure optional cloud coaching uses a same-origin authenticated backend and the 
 
 ## Verification
 
-Integrated application source passed75/75 regression suites, web/native TypeScript, product ESLint without warnings,47 canonical shared-file hashes, the78-plan native engine and both iOS/Android Hermes exports. Production build has zero warnings;3/3 production suites pass. New focused evidence includes12 context groups/160 assertions,27 UI scenarios/114 assertions,6 calendar callback scenarios/51 assertions,12 encrypted-result scenarios/95 assertions,21 D1 backend groups,15 client lifecycle groups,102 runtime checks,709 worker-policy checks and608 generated Pages checks (the final Pages build is separately verified at deployment).
+Integrated application source passed75/75 regression suites, web/native TypeScript, product ESLint without warnings,47 canonical shared-file hashes, the78-plan native engine and both iOS/Android Hermes exports. Production build has zero warnings;3/3 production suites pass. New focused evidence includes12 context groups/160 assertions,29 UI scenarios/168 assertions,6 calendar callback scenarios/51 assertions,12 encrypted-result scenarios/95 assertions,21 D1 backend groups,15 client lifecycle groups,102 runtime checks,709 worker-policy checks and608 generated Pages checks (the final Pages build is separately verified at deployment).
 
 An initial production security test exceeded Node's default16KiB HTTP response-header parser because the CSP enumerates exact pinned assets. The test now uses the hosting128KiB parser boundary while retaining a stricter100KiB CSP ceiling, every exact asset source, nonce and worker restrictions. It passed after correction. Three mistyped/mislocated shared-check invocations failed before the correct root check passed. Browser interaction, real phone acceptance, authenticated live cloud inference, physical-iPhone distribution and clean release-dependency qualification remain unverified. Existing release advisories are not waived by passing CI.
 
+Cloud upload consent is bound to the exact current context and consumed synchronously by each request. Retained checkbox/button callbacks cannot reuse it after workout, lift, recorded metric, profile or attendance changes. This final targeted correction passed29/29 compiled UI scenarios/168 assertions, TypeScript and zero-warning focused lint. Earlier75-suite coverage remains scoped to the integrated milestone; the changed UI is separately rechecked.
+
 ## Publication checkpoint
 
-The UI checkpoint81840879 is already pushed and independently read back. Quality37996257648 and native37996257659 succeeded for that earlier UI tree. Their binaries do not qualify the new AI source. The combined source checkpoint is being prepared on the existing audit branch; final web rollout and exact-source native build receipts follow in a separate deployment checkpoint. PR1 remains draft and main is unchanged.
+The UI checkpoint81840879 is already pushed and independently read back. Quality37996257648 and native37996257659 succeeded for that earlier UI tree. Their binaries do not qualify the new AI source. The combined sourcec0aab491/tree8821849a is pushed and read back on the existing audit branch. The subsequent consent-scope correction is being published; final web rollout and exact-source native build receipts follow in a separate deployment checkpoint. PR1 remains draft and main is unchanged.
 
 ## Modified files
 
