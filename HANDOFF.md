@@ -1,5 +1,13 @@
 # Current continuation — 9 October 2026
 
+## Latest milestone — U14 named programs
+
+Independent checkout `/workspace/scratch/855d6d943ad0/movefield-continuation`, local branch `audit/2026-10-09-continuation`, baseline `aba25b02cde3d8717de1eda36a365684dd96625c`; publish to existing remote `audit/2026-10-08-quality` with expected-head guard. The original checkout gained overlapping edits; all were copied to this isolated clone and reviewed without overwriting its files. Root dependencies copied into the clone to restore supervised preview; native dependency link retained. Standing push permission applies.
+
+U14: 20 source entries, 8 prefilled manual variants, 12 source calendars. Three initial choices/search/details, native duplicate picker removed; rolling cycles, equipment/time/recovery constraints and source-role edits checked. Reports `docs/named-programs-2026-10-09.md`/`.json`. Passed 3,582 named assertions; initial regression 29/31, both failed suites corrected/passed on targeted rerun; web/native types/lint, 38 shared hashes, native engine, build/production 2/2 (391,201 gzip bytes), Android/iOS 4.3 MB exports. Browser sample search/review/accept/Today observed. Protected profile preserved; no phone/secure-account acceptance. Logs `.sites-runtime/u14-*`. Recoverable checkpoint after commit `.sites-runtime/checkpoints/u14-complete.bundle`. Verify remote tree/head/report readback before reporting pushed.
+
+Next short prompt: Resume Movefield in this isolated checkout. Verify refs and preserve concurrent remote work. Implement U08b optional Qwen demo with the strict default prompt, verified cache-only asset consumption, real runtime cancellation and evaluation/training work. Keep training and actual inference/device qualification distinct. No main merge, deployment or account service provisioning has occurred.
+
 ## Latest milestone — U13 evidence archive and forum feedback
 
 Baseline `8da26f2fd8dc859947b0c29195ac8b3d5fc69501`; same checkout and audit branch. Added 855 deduplicated PubMed-indexed records, 718 first published in 2025–2026, 18 exact query/fingerprint ledger entries, web/native local search, 7 original reviewed notes (fitness corpus v2), updated plan evidence mappings and 10-thread original feedback ledger. Selected abstracts are distinct from unreviewed search records; the metadata index is not model context/training. No full-text/paid-program copying or automatic scientific validation of templates. Reports: `docs/research-archive-2026-10-09.md`/`.json`, `docs/research-reviewed-2026-10-09.json`, `docs/forum-feedback-2026-10-09.json`.

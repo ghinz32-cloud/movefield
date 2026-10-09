@@ -2,7 +2,7 @@ import {type RestTimer} from './rest-timer';
 import expandedLibrary from './exercise-library.json';
 import recipes from './recipes.json';
 import {applyTrainingFocus,focusScheduleConflict} from './training-focus';
-import {programCatalog,programReferences,equipmentRequirements,type ProgramDefinition} from './program-catalog';
+import {programCatalog,programReferences,referenceMatchesGoal,equipmentRequirements,type ProgramDefinition} from './program-catalog';
 import {planEvidence} from './program-evidence';
 export type Mode = 'app'|'coach'|'manual';
 export type Profile={noFloor?:boolean;age:number;goal:string;experience:string;mode:Mode;minutes:number;days:number[];weeks:number;start:string;equipment:string;sport:string;position:string;season:string;supervision:boolean;units:'kg'|'lb';name:string;sex?:'female'|'male'|'intersex'|'unspecified';dumbbellMaxKg?:number;programId?:string;runBase?:boolean;runDays?:number;runMinutes?:number;establishedTraining?:boolean;focuses?:('core'|'jumping'|'supersets'|'activity')[];jumpReady?:boolean};
@@ -117,18 +117,38 @@ export function buildPlan(p:Profile,events:Event[]=[]):{plan:Plan|null;errors:st
 function buildBasePlan(p:Profile,events:Event[]=[]):{plan:Plan|null;errors:string[]}{
  const errors=validateProfile(p);if(errors.length)return{plan:null,errors};
  if(p.programId?.startsWith('ref-')){
-  const ref=programReferences.find(x=>x.id===p.programId&&x.goal===p.goal);
-  if(!ref||p.mode!=='manual')return {plan:null,errors:['Choose a matching official program in user-entered tracking mode.']};
+  const ref=programReferences.find(x=>x.id===p.programId&&referenceMatchesGoal(x,p.goal));
+  if(!ref||p.mode!=='manual')return {plan:null,errors:['Choose a matching named program in manual tracking mode.']};
   if(p.age<18)return {plan:null,errors:['These adult program references are not youth prescriptions. Review training with your coach and choose coach-directed tracking.']};
   if(p.days.length<ref.days)return {plan:null,errors:[`${ref.name} uses ${ref.days} days per week. Add availability before creating its tracking schedule.`]};
   if(ref.weeks&&p.weeks>ref.weeks)return {plan:null,errors:[`${ref.name} lasts ${ref.weeks} weeks. Choose that length or a shorter tracking segment.`]};
-  const offsets=ref.days===5?[0,1,3,4,5]:[0,1,3,4],startDay=new Date(p.start+'T12:00:00').getDay();
-  const arranged=Array.from({length:7},(_,n)=>offsets.map(o=>(startDay+n+o)%7)).find(ds=>ds.every(d=>p.days.includes(d)));
-  if(!arranged)return {plan:null,errors:['This tracking calendar needs training days with recovery gaps. Add availability for two training days, a rest day, then two training days (three for PHAT). Review the original schedule before using it.']};
-  const days=arranged.slice().sort((a,b)=>a-b);
-  const result=buildBasePlan({...p,programId:undefined,days},events);if(!result.plan)return result;
-  const plan=result.plan;plan.name=ref.name+' by '+ref.author+' · user-entered tracking';plan.phases=[{name:'Track the original',weeks:`1–${p.weeks}`,description:'Enter the author’s targets and progression. No app-written phases replace the source program.'}];plan.profile={...plan.profile,programId:ref.id};plan.notes=[`Official program by ${ref.author}: ${ref.url}`,`This is an empty ${p.weeks}-week tracking schedule, not a preloaded or automated copy of ${ref.name}. Enter the author’s exercises, loads and progression yourself.`,`The calendar leaves a recovery gap between training groups. Confirm the dates, phase and session order against your original copy.`,...(ref.weeks&&p.weeks<ref.weeks?[`The original lasts ${ref.weeks} weeks. This schedule covers only the first ${p.weeks} weeks.`]:[]),...plan.notes];plan.sessions=plan.sessions.map((x,i)=>({...x,title:ref.name+' by '+ref.author+' · Day '+(i%ref.days+1)}));return result;
+  if(ref.workouts){
+   const compatible=ref.equipment==='dumbbells'?['Dumbbells','Full gym']:ref.equipment==='bodyweight'?['Bodyweight + band','Full gym']:['Full gym'];
+   if(!compatible.includes(p.equipment))return {plan:null,errors:[`${ref.name} needs ${compatible.join(' or ')} plus the listed supports. The app will not replace source exercises silently.`]};
+   if(p.experience==='First time'&&ref.experience!=='Beginner')return {plan:null,errors:['This prefilled selection assumes experience with its listed movements. Choose a beginner routine or enter reviewed variations in your own tracking plan.']};
+   if(p.noFloor&&!ref.noFloor)return {plan:null,errors:['This source template has no verified no-floor version. Use your own tracking schedule with suitable exercises.']};
+   if(ref.equipment==='dumbbells'&&p.dumbbellMaxKg===0)return {plan:null,errors:['This source routine requires dumbbells; your available maximum is zero. Update equipment or choose another plan.']};
+  }
+  const patterns=ref.offsets||(ref.days===5?[[0,1,3,4,5]]:[[0,1,3,4]]),startDay=new Date(p.start+'T12:00:00').getDay();
+  const arranged=Array.from({length:7},(_,delay)=>patterns.map(offsets=>({delay,offsets,days:offsets.map(o=>(startDay+delay+o)%7)}))).flat().find(x=>x.days.length===ref.days&&x.days.every(d=>p.days.includes(d)));
+  if(!arranged)return {plan:null,errors:['This named routine needs its source recovery gaps. Add suitable availability, or use a separate custom tracking schedule.']};
+  const days=arranged.days.slice().sort((a,b)=>a-b),effectiveStart=addDays(p.start,arranged.delay),id=uid('plan'),sessions:Session[]=[];
+  for(let week=1;week<=p.weeks;week++)for(const offset of arranged.offsets){
+   const index=sessions.length,slot=index%(ref.workouts?.length||ref.days),source=ref.workouts?.[slot],roleId=ref.id+'-'+slot;
+   const date=addDays(effectiveStart,(week-1)*7+offset);
+   if(events.some(e=>e.date===date))return {plan:null,errors:['A source workout falls on a commitment. Review a shifted draft.']};
+   const items:Item[]=source?.items.map(([exerciseId,sets,repMin,repMax,rest,note])=>({exerciseId,sets,reps:repMin,repMin,repMax,rest,kg:null,loadRole:roleId,note}))||[];
+   const minutes=items.length?Math.max(ref.minMinutes||0,estimateSessionMinutes(items)):p.minutes;
+   if(minutes>p.minutes)return {plan:null,errors:[`${ref.name} · ${source?.title} needs about ${minutes} minutes including work, rest and setup, beyond your ${p.minutes}-minute window. Choose more time or another routine.`]};
+   sessions.push({id:uid('session'),date,week,title:ref.name+' · '+(source?.title||'Day '+(slot+1)),kind:'Manual strength',minutes,items,roleId,dependsOn:index?[sessions[index-1].id]:[],progressionStep:ref.progression,status:'scheduled'});
+  }
+  const plan:Plan={id,name:ref.name+' by '+ref.author+' · manual tracking',version:1,profile:{...p,days},acceptedAt:null,sessions,
+   phases:[{name:ref.workouts?'Source template':'Track the original',weeks:`1–${p.weeks}`,description:'Review the author’s targets, chosen variations and progression. Loads and future target edits stay user directed.'}],evidence:[],
+   notes:[`Published program by ${ref.author}: ${ref.url}`,ref.workouts?'Prefilled workout facts with the variations below. Loads, later phases, AMRAP and failure-stage rules require your review.':'Empty tracking calendar. Enter source exercises, loads and progression from your own copy.',...(ref.requirements||[]).map(r=>'Required: '+r),...(ref.scope||[]),...(arranged.delay?[`The first source workout starts ${niceDate(effectiveStart)}, after your selected start date, to preserve its weekly recovery pattern.`]:[]),...(ref.weeks&&p.weeks<ref.weeks?[`The original lasts ${ref.weeks} weeks. This schedule covers only the first ${p.weeks} weeks.`]:[])],
+   progression:ref.progression||'Enter and review targets from the original program. Source-specific loads and progression are not automated.',template:'TRACK',paused:false};
+  return {plan,errors:[]};
  }
+
  if(p.mode==='app'&&(p.programId||((p.noFloor||p.equipment==='No equipment'||p.age>=18)&&p.goal!=='running'&&programCatalog.some(d=>d.goal===p.goal))))return buildCatalogPlan(p,events);
  const youth=p.age<18,run=p.goal==='running',tracking=p.mode!=='app',gym=p.equipment==='Full gym',db=!p.equipment.startsWith('Bodyweight');
  if(!tracking&&!run&&db&&p.dumbbellMaxKg===0)return {plan:null,errors:['This foundation uses dumbbells but your available maximum is zero. Choose bodyweight/band training or update your equipment.']};
@@ -272,7 +292,7 @@ export const RANGE_PROGRESSION='Stay within the listed rep range and finish most
 export function validDay(v:string){if(typeof v!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(v))return false;const [y,m,d]=v.split('-').map(Number);const x=new Date(Date.UTC(y,m-1,d));return y>=1900&&y<=2200&&x.getUTCFullYear()===y&&x.getUTCMonth()===m-1&&x.getUTCDate()===d;}
 export function dayDistance(a:string,b:string){if(!validDay(a)||!validDay(b))return NaN;const parse=(x:string)=>{const [y,m,d]=x.split('-').map(Number);return Date.UTC(y,m-1,d)};return (parse(b)-parse(a))/86400000;}
 export function rangeItem(i:Item,template:string,title=''):Item{if(exFor(i.exerciseId).metric!=='reps')return{...i};let lo=i.repMin,hi=i.repMax;if(lo===undefined||hi===undefined){if(template==='AT03'&&['bar-squat','bench','deadlift','ohp'].includes(i.exerciseId)&&i.reps<=8){const main=(title==='Strength A'&&['bar-squat','bench'].includes(i.exerciseId))||(title==='Strength B'&&i.exerciseId==='deadlift');[lo,hi]=main?[3,5]:[5,8];}else if(template==='AT03')[lo,hi]=[8,12];else if((template==='AT02'&&['calf','lateral','curl','triceps','leg-curl','leg-extension'].includes(i.exerciseId))||i.exerciseId==='calf')[lo,hi]=[10,15];else if(i.exerciseId==='deadbug')[lo,hi]=template==='AT02'?[8,12]:[6,10];else if(template==='AT04'&&i.exerciseId==='pushup')[lo,hi]=[6,12];else[lo,hi]=[8,12];}return{...i,repMin:lo,repMax:hi,reps:lo!};}
-export function targetText(i:Item){return i.repMin!==undefined&&i.repMax!==undefined?`${i.repMin}–${i.repMax}`:String(i.reps)}
+export function targetText(i:Item){const base=i.repMin!==undefined&&i.repMax!==undefined?(i.repMin===i.repMax?String(i.repMin):`${i.repMin}–${i.repMax}`):String(i.reps);return base+(i.note?.includes('[AMRAP]')?` · last set ${i.reps}+`:'')}
 export function loadConvention(id:string,custom:Exercise[]=[]){return exFor(id,custom).loadConvention||'Not configured. Choose a logging convention before enabling progression.'}
 export function exerciseRecords(s:State,id:string){return s.history.filter(w=>w.finishedAt&&Array.isArray(w.sets)&&w.sets.some(x=>x.exerciseId===id&&x.done)).sort((a,b)=>b.date.localeCompare(a.date)||(b.finishedAt||0)-(a.finishedAt||0));}
 export function comparableSet(x:SetLog){return !['Left','Right','Alternating'].includes(x.metrics?.side||'')&&!(x.metrics?.assistanceKg&&x.metrics.assistanceKg>0)}
@@ -303,6 +323,7 @@ export function loadSuggestion(s:State,i:Item):{kg:number|null;nextKg?:number;da
  if(limit!==undefined&&i.kg!==null&&i.kg>limit+1e-6)return{kg:null,reason:'The accepted weight exceeds your equipment limit. Choose a manageable weight from the equipment available.'};
  if(i.kg!==null&&requiresSetup(ex)&&(!i.loadContext||i.loadContext!==s.loadContext?.[i.exerciseId]))return{kg:null,reason:'This weight was chosen for a different or unrecorded machine setup. Start light and check a suitable weight for this setup.'};
  if(i.kg!==null&&Number.isFinite(i.kg))return{kg:i.kg,reason:'Accepted load for this session. Reassess during your warm-up.'};
+ if(s.plan?.profile.programId?.startsWith('ref-'))return{kg:null,reason:'Choose this load using the linked program’s rules. Source-specific progression is manual; history does not assign a weight.'};
  const records=exerciseRecords(s,i.exerciseId).filter(r=>{const t=r.targets?.find(t=>t.exerciseId===i.exerciseId);return t&&(t.loadRole||'')===(i.loadRole||'')&&(t.repMin??t.reps)===(i.repMin??i.reps)&&t.repMax===i.repMax&&(!requiresSetup(ex)||r.loadContext?.[i.exerciseId]===s.loadContext?.[i.exerciseId]);}),w=records[0];const machine=requiresSetup(ex);if(machine&&!s.loadContext?.[i.exerciseId])return{kg:null,reason:'Add the machine and setup label above the set log, then record work with that setup before reusing its load.'};if(!w)return{kg:null,reason:'No comparable history for this range and setup yet. Start with a controllable light resistance, then record the actual load.'};
  const log=w.sets.filter(x=>x.exerciseId===i.exerciseId&&x.done),kg=log[0]?.kg,lo=i.repMin??i.reps;
  if(w.partial||['yes','unsure'].includes(w.symptom||'')||w.effort==='harder'||log.length<i.sets||kg===null||kg===undefined||kg<=0||log.some(x=>x.kg!==kg||x.reps<lo||!comparableSet(x)))return{kg:null,date:w.date,reason:'Your recent sets do not give us a reliable starting weight for this target. Check your history, then start light and adjust during the warm-up.'};
@@ -354,6 +375,8 @@ export function checkSchedule(s:State,changes:NonNullable<Proposal['changes']>):
   if(all.some(y=>y.id!==x.id&&y.status!=='missed'&&y.date===x.date))return `${niceDate(x.date)} already has a workout. Select “Shift this and later workouts” or another date.`;
  }
  for(const x of all){if(x.dependsOn?.some(id=>{const y=all.find(z=>z.id===id);return y&&(ids.has(x.id)||ids.has(y.id))&&y.date>=x.date}))return 'This move would reverse progression order. Shift later workouts together or choose another date.';}
+ const reference=programReferences.find(r=>r.id===s.plan!.profile.programId);
+ if(reference?.nonconsecutive)for(const x of all.filter(x=>ids.has(x.id)))for(const y of all.filter(y=>y.id!==x.id&&y.status!=='missed')){const actual=(s.active?.sessionId===y.id?s.active.date:undefined)||latestSessionRecord(s,y.id)?.date||y.date;if(Math.abs(dayDistance(x.date,actual))<2)return 'This source routine requires a recovery day between workouts. Choose a more separated date.';}
  const requiresRest=s.plan.profile.mode==='app';if(requiresRest)for(const x of all.filter(x=>ids.has(x.id)))for(const y of all.filter(y=>y.id!==x.id&&y.status!=='missed')){const full=!x.recoveryGroup&&!y.recoveryGroup&&s.plan.template!=='AT02',sameRegion=x.recoveryGroup&&y.recoveryGroup?x.recoveryGroup===y.recoveryGroup:x.title.split(' ')[0]===y.title.split(' ')[0];const actual=(s.active?.sessionId===y.id?s.active.date:undefined)||latestSessionRecord(s,y.id)?.date||y.date;if(!(s.plan.template==='RNBASE4'&&x.recoveryGroup==='run'&&y.recoveryGroup==='run')&&(full||sameRegion)&&Math.abs(dayDistance(x.date,actual))<2)return 'The move would remove the recovery day between comparable sessions. Shift later workouts together or choose a more separated date.';}
  for(const x of all.filter(x=>x.status==='scheduled')){const issue=focusScheduleConflict({...s.plan,sessions:all},s.events,x);if(issue)return issue;}
  return null;

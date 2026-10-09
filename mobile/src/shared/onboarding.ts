@@ -1,5 +1,5 @@
 import {focusSetupErrors} from './training-focus';
-import {programCatalog,programReferences} from './program-catalog';
+import {programCatalog,programReferences,referenceMatchesGoal} from './program-catalog';
 import {type Profile,type Plan,type Event,type State,blankProfile,initialState,buildPlan,day,validDay,changed} from './training';
 
 export const setupSteps=['You','Goal','Coaching','Schedule','Equipment','Commitments','Choose a plan','Review'];
@@ -60,4 +60,4 @@ export function acceptSetup(s:State,p:Profile,plan:Plan,events:Event[],expectedE
  return {state:changed({...s,profile:{...p},plan:accepted,events,saved:s.plan?[s.plan,...s.saved]:s.saved,proposals:s.proposals.map(q=>q.status==='pending'||q.status==='queued'?{...q,status:'stale'}:q)},'Accepted plan '+accepted.name)};
 }
 
-export function referenceOption(p:Profile,events:Event[],id:string):PlanOption{const ref=programReferences.find(x=>x.id===id&&x.goal===p.goal);const profile={...p,programId:id,mode:'manual' as const};return {id,title:ref?.name||'Unknown program',description:'User-entered tracking for the official program. Original workouts are not preloaded.',profile,recommended:false,...buildPlan(profile,events)};}
+export function referenceOption(p:Profile,events:Event[],id:string):PlanOption{const ref=programReferences.find(x=>x.id===id&&referenceMatchesGoal(x,p.goal));const profile={...p,programId:id,mode:'manual' as const};return {id,title:ref?.name||'Unknown program',description:ref?.workouts?'Prefilled source template with manual loads and progression. Review all variations before accepting.':'Empty tracking calendar for targets from your own source copy.',profile,recommended:false,...buildPlan(profile,events)};}

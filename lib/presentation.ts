@@ -4,7 +4,7 @@ import type {Plan, Session, State, Workout} from './training';
 // Display names never replace stored titles, load roles or progression keys.
 export function planName(plan: Plan): string {
   const source = programReferences.find(p => p.id === plan.profile.programId);
-  if (source) return `${source.name} by ${source.author} · tracking copy`;
+  if (source) return `${source.name} by ${source.author} · ${source.workouts?'manual template':'tracking calendar'}`;
   if (plan.profile.mode !== 'app') return plan.name;
   if (plan.template === 'RUN-WALK') return 'NHS Couch to 5K · run/walk plan';
   return programCatalog.find(p => p.id === plan.template)?.name ?? plan.name;
