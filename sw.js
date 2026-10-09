@@ -1,65 +1,35 @@
-// Movefield offline shell. It keeps the app's own files so the page opens without a connection.
-// Training data is not cached here: it stays in this browser's encrypted storage, and no request is sent for it.
-const CACHE = 'movefield-shell-v1';
-const SHELL = ['/'];
-const STATIC = /\.(?:js|css|woff2?|ttf|otf|png|jpe?g|webp|svg|json)$/;
-
-self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)).then(() => self.skipWaiting()));
-});
-
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))
-      .then(() => self.clients.claim())
-  );
-});
-
-// Only ordinary same-origin successes are stored. Redirects, errors and responses with cookies are not.
-function storable(response) {
-  return response.ok && response.type === 'basic' && !response.headers.get('set-cookie');
+'use strict';
+// This worker only caches pinned public artifacts within this project scope.
+const MANIFEST={"schema":1,"base":"/movefield/","version":"af738aded18d01acf52bee81443e3fb5f6100ab0853ed13b645f6e0ffc57fae2","assets":{"/movefield/.nojekyll":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","/movefield/assets/button-BZyDGPNM.js":"5901fcc142fcc2cbab3e3a832b727516580f2b4e73163d99ca5b4f9eede97a99","/movefield/assets/index-BDPBdBWE.css":"0c8128532c4656611db848ca5c09ced7668d512bd38749660ca7e0c098f8abb2","/movefield/assets/index-Z0XLUexP.js":"ed572ce3c11324e45ea53032437a2a3c3f7fe1acb5600559825d7a31ba294bd8","/movefield/assets/jsx-runtime-DUAcabCT.js":"afa9863e5c6f7611685a66c3ed93ea9226a1af161256ae0e9339e1524204ee53","/movefield/assets/progress-dashboard-DUgATROE.js":"9da3aad9b55cf37d528fecbffa172ead059acdbb61abcfe5821dd574673e72eb","/movefield/assets/qwen-unavailable-IXSK3HSm.js":"3bd10437f03a9d63f02e37884b3e4a0b05c83c8d0da90aefea4c019d5d9bafe6","/movefield/assets/research-library-BbYm70mN.js":"9dd6a7f36877822b31ab571a99f81e9bb0e2461468edbe7b4aacce5415e9b42d","/movefield/assets/transfer-dialog-BebAyM2P.js":"0b0abec896ac146e7d03bda3bd079fa2cf755b0545c315306a6e11bd3d71f8ab","/movefield/downloads/movefield-mobile-r14.zip":"9495c6195d471c625bb5f2897becf643137cc38cdb8d2d25b2ed0e74ca255bfc","/movefield/exercise-content.json":"9a17a1c905fe80e7210803a7b1b466c0a207a40b702386f6e75fb891585b68bb","/movefield/exercise-guides.json":"62fa1d71ee08312f6e8809ce60e17e7df7e8a3a8d79f49bed15731592d0f7a38","/movefield/favicon.svg":"e60a09d8fe6ca9311ab14f0f9f05a5ed92cb2f74b3a41fc3680bde30f3a0b11e","/movefield/fitness-research.json":"437f2724162639849949aed8f6b47b0f8ab1eac88da1e0d4535920d2eebaa757","/movefield/fonts/Atkinson-Hyperlegible-OFL.txt":"e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18","/movefield/fonts/Barlow-Condensed-OFL.txt":"186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f","/movefield/fonts/Inter-OFL.txt":"5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57","/movefield/fonts/Lexend-OFL.txt":"5da8505887d0fa7fe963445fd58852707fda34adfeb65af25c99d152bab285bd","/movefield/fonts/Nunito-OFL.txt":"580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65","/movefield/fonts/Oswald-OFL.txt":"23916cdee678823c3c517c699cb2e043088de0d46c959eeaa168b54bb84534df","/movefield/fonts/Saira-OFL.txt":"f2665d4718b452b3818a877191355ac884a6b9b419d35408fe7ee487e9e8f30f","/movefield/fonts/atkinson-hyperlegible-latin-400-normal.woff2":"d64ba838ef5472bba248620ec4fd8b5aa7cf0db2908e0bb230600caf279ba7bc","/movefield/fonts/atkinson-hyperlegible-latin-700-normal.woff2":"140e2bd25a7315c8a062508391426b0d8c3297400c947b8d847be28f73a199f0","/movefield/fonts/barlow-condensed-semibold.ttf":"7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9","/movefield/fonts/inter-variable.ttf":"29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031","/movefield/fonts/lexend-latin-400-normal.woff2":"0601e0a909219a542cdd581e3f8f1ff8fb208978cbc9bca1c90df02fd8062bb1","/movefield/fonts/lexend-latin-700-normal.woff2":"52dcdaa127bac4a5ea4c39ee17a3f454ceacc18d9f2a45cc453eeab68d378588","/movefield/fonts/nunito-latin-400-normal.woff2":"a5906e15ceb68f73d3b2c2076b4057c3f6ed401186d56283b45ce12944ca0735","/movefield/fonts/nunito-latin-700-normal.woff2":"fa89300b9bbb3bd0f60d6991aa055965d98e2ccca27bf8688fe0c39cdc796846","/movefield/fonts/oswald-latin-600-normal.woff2":"f6cb541f4d9794b86145c9c3e7d778ffb78c92f8180c577e245238991503da6f","/movefield/fonts/oswald-latin-700-normal.woff2":"aae665c75af89ea7cb7d8ccc8b0911ea72267442ebcd84f6e3efa041ad3b3c16","/movefield/fonts/saira-latin-400-normal.woff2":"f477825b1d839c775bda7708f78e933bd246c582e7186769e9a25e9b1a59b350","/movefield/fonts/saira-latin-700-normal.woff2":"07eb78fecb9cbc519e08a727d438389b2983a140a4d8651d000141ec55b8bacf","/movefield/index.html":"98e1c33ebd8c10a4d43d45289fe6a797ad043855308c1fc802bf603bd4ba797e","/movefield/privacy.html":"6b36d090f43764f911d02547e09ca873c1763d523365be1f4e9c77fd71f952a0"}};
+const PREFIX='movefield-pages-v1-',CACHE=PREFIX+MANIFEST.version;
+const entries=MANIFEST.assets;
+async function verified(url){
+ const response=await fetch(url,{cache:'no-store',credentials:'omit',redirect:'error',referrerPolicy:'no-referrer'});
+ if(!response.ok||response.type==='opaque')throw Error('Asset unavailable');
+ const bytes=await response.arrayBuffer();
+ const digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),x=>x.toString(16).padStart(2,'0')).join('');
+ if(digest!==entries[url])throw Error('Asset integrity mismatch');
+ return new Response(bytes,{status:response.status,headers:response.headers});
 }
-
-// The copy is made before the response goes to the page. Cloning later fails once the page has read the body.
-function remember(key, response) {
-  if (storable(response)) {
-    const copy = response.clone();
-    void caches.open(CACHE).then(cache => cache.put(key, copy));
-  }
-  return response;
-}
-
-self.addEventListener('fetch', event => {
-  const request = event.request;
-  if (request.method !== 'GET') return;
-  const url = new URL(request.url);
-  if (url.origin !== self.location.origin) return;
-
-  // Pages: try the network first so a new version is used, and fall back to the saved shell when offline.
-  if (request.mode === 'navigate') {
-    event.respondWith(
-      fetch(request)
-        .then(response => remember('/', response))
-        .catch(() => caches.match('/').then(cached => cached || Response.error()))
-    );
-    return;
-  }
-
-  // Built bundles are named by content, so a cached copy is always the right one.
-  if (url.pathname.startsWith('/movefield/_next/static/')) {
-    event.respondWith(
-      caches.match(request).then(cached => cached || fetch(request).then(response => remember(request, response)))
-    );
-    return;
-  }
-
-  // Other static files (guide data, photos, fonts) can change at the same address. Use the network when it works.
-  if (STATIC.test(url.pathname)) {
-    event.respondWith(
-      fetch(request)
-        .then(response => remember(request, response))
-        .catch(() => caches.match(request).then(cached => cached || Response.error()))
-    );
-  }
+self.addEventListener('install',event=>event.waitUntil((async()=>{
+ const cache=await caches.open(CACHE);
+ try{for(const url of Object.keys(entries).filter(x=>!x.includes('/downloads/')))await cache.put(url,await verified(url));}
+ catch(error){await caches.delete(CACHE);throw error;}
+ // Never activate over an open workout. The browser activates after old clients close.
+})()));
+self.addEventListener('activate',event=>event.waitUntil((async()=>{
+ for(const key of await caches.keys())if(key.startsWith(PREFIX)&&key!==CACHE)await caches.delete(key);
+ await self.clients.claim();
+})()));
+self.addEventListener('fetch',event=>{
+ const request=event.request,url=new URL(request.url);
+ if(request.method!=='GET'||url.origin!==self.location.origin||!url.pathname.startsWith(MANIFEST.base)||url.search)return;
+ let key=url.pathname;
+ if(request.mode==='navigate'&&(key===MANIFEST.base||key===MANIFEST.base+'index.html'))key=MANIFEST.base+'index.html';
+ if(!Object.hasOwn(entries,key))return;
+ event.respondWith((async()=>{
+ const cache=await caches.open(CACHE),cached=await cache.match(key);
+ if(cached)return cached;
+ const response=await verified(key);await cache.put(key,response.clone());return response;
+})());
 });
