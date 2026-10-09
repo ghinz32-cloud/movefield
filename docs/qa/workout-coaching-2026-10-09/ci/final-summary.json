@@ -1,0 +1,184 @@
+{
+  "observed_at": "2026-10-09T22:50:35.999Z",
+  "final_source": {
+    "sha": "96496ffd4e94b32becccb5db61667fb4fea4ce01",
+    "tree": "20397284f4c07cf0b8b5a1edc554b04d39ea0976"
+  },
+  "final_quality": {
+    "id": 37999781041,
+    "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/37999781041",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "96496ffd4e94b32becccb5db61667fb4fea4ce01",
+    "integration_sha": "7a7f97c36535df75468335cf7d44d6830aea523f",
+    "integration_tree": "20397284f4c07cf0b8b5a1edc554b04d39ea0976",
+    "integration_tree_matches_source": true,
+    "regression_suites": "75/75",
+    "coaching_ui_scenarios": "29/29",
+    "coaching_ui_assertions": 168,
+    "coaching_store_scenarios": 12,
+    "coaching_store_checks": 95,
+    "production_suites": "3/3",
+    "initial_bundle_gzip_bytes": 399870,
+    "initial_bundle_gzip_limit": 400000,
+    "count_source": "Official decoded final quality log",
+    "count_proof": {
+      "regression_suites": true,
+      "coaching_ui": true,
+      "coaching_store": true,
+      "production": true,
+      "initial_bundle": true
+    }
+  },
+  "native_qualification": {
+    "source_sha": "c0aab491084f2b1a7d2829925e4bba434d6d6148",
+    "source_tree": "8821849ac436d6df39aa91c0b7cfce151cbff946",
+    "run_id": 37999301260,
+    "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/37999301260",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 114053187443,
+        "name": "native_changes",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-09T22:27:22Z",
+        "completed_at": "2026-10-09T22:27:31Z"
+      },
+      {
+        "id": 114053245286,
+        "name": "ios",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-09T22:27:37Z",
+        "completed_at": "2026-10-09T22:32:59Z",
+        "compile": {
+          "name": "Compile unsigned iOS Release simulator application",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-09T22:28:39Z",
+          "completed_at": "2026-10-09T22:32:37Z"
+        }
+      },
+      {
+        "id": 114053245360,
+        "name": "android",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-09T22:27:34Z",
+        "completed_at": "2026-10-09T22:34:36Z",
+        "compile": {
+          "name": "Compile and lint release test APK",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-09T22:28:13Z",
+          "completed_at": "2026-10-09T22:34:13Z"
+        }
+      }
+    ],
+    "compile_overlap_seconds": 238,
+    "artifacts": [
+      {
+        "id": 11648024239,
+        "name": "android-arm64-preview-test-only",
+        "size_in_bytes": 18814590,
+        "digest": "sha256:07213023a09000a168ae58d2f702bd0b0ec9fb23e042d24cdf2e979538efcc98",
+        "expires_at": "2026-11-08T22:34:31Z",
+        "head_sha": "c0aab491084f2b1a7d2829925e4bba434d6d6148",
+        "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/37999301260/artifacts/11648024239"
+      },
+      {
+        "id": 11647994491,
+        "name": "android-release-compilation-test-only",
+        "size_in_bytes": 344395,
+        "digest": "sha256:9fd69692ab7b06e24b77384d4ee8464fa340a64b0545327bc54bd6b8b420f4e8",
+        "expires_at": "2027-01-07T22:27:19Z",
+        "head_sha": "c0aab491084f2b1a7d2829925e4bba434d6d6148",
+        "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/37999301260/artifacts/11647994491"
+      },
+      {
+        "id": 11647749231,
+        "name": "ios-release-simulator-compilation",
+        "size_in_bytes": 23248,
+        "digest": "sha256:5b53488a2eab31623dad8d68af4bacb43e263c47dbfc6ddc622483ed5b5d3afc",
+        "expires_at": "2027-01-07T22:27:19Z",
+        "head_sha": "c0aab491084f2b1a7d2829925e4bba434d6d6148",
+        "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/37999301260/artifacts/11647749231"
+      },
+      {
+        "id": 11647668877,
+        "name": "native-input-decision",
+        "size_in_bytes": 558,
+        "digest": "sha256:1b4d446cae29e9b3f3369090e57eedf88b3dafd80ed7d192808c07ad814d10ee",
+        "expires_at": "2027-01-07T22:27:19Z",
+        "head_sha": "c0aab491084f2b1a7d2829925e4bba434d6d6148",
+        "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/37999301260/artifacts/11647668877"
+      },
+      {
+        "id": 11647554837,
+        "name": "ios-simulator-preview-test-only",
+        "size_in_bytes": 18577957,
+        "digest": "sha256:5bac5f273e34430f1ffe7ca9efa90b7ff201d6dcd15003456c342dd2582277a4",
+        "expires_at": "2026-11-08T22:32:50Z",
+        "head_sha": "c0aab491084f2b1a7d2829925e4bba434d6d6148",
+        "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/37999301260/artifacts/11647554837"
+      }
+    ]
+  },
+  "final_native_input_gate": {
+    "run_id": 37999781136,
+    "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/37999781136",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "96496ffd4e94b32becccb5db61667fb4fea4ce01",
+    "jobs": [
+      {
+        "name": "native_changes",
+        "status": "completed",
+        "conclusion": "success",
+        "id": 114054754463
+      },
+      {
+        "name": "android",
+        "status": "completed",
+        "conclusion": "skipped",
+        "id": 114054812848
+      },
+      {
+        "name": "ios",
+        "status": "completed",
+        "conclusion": "skipped",
+        "id": 114054813197
+      }
+    ],
+    "unchanged_native_inputs": true,
+    "evidence": "Official commit parent c0aab491 and exact five-file diff in corrected-source.json, plus successful native input gate with both platforms skipped.",
+    "changed_files": [
+      "HANDOFF.md",
+      "TASKS.md",
+      "components/workout-coach.tsx",
+      "docs/calendar-and-coaching-2026-10-09.md",
+      "scripts/check-workout-coaching-ui.cjs"
+    ]
+  },
+  "superseded_quality": {
+    "run_id": 37999301455,
+    "source_sha": "c0aab491084f2b1a7d2829925e4bba434d6d6148",
+    "conclusion": "cancelled",
+    "scope": "Superseded by the corrected-source quality workflow through configured concurrency; monitor issued no cancellation."
+  },
+  "limits": {
+    "ios_decoded_log": "Unavailable: Transport closed, one attempt, status recorded.",
+    "binary_bytes": "Both exact-current binary materialization attempts returned HTTP 403, one attempt each. No independent ZIP digest/content/signature replay or installation is claimed.",
+    "native_artifacts": "Android arm64 test APK and unsigned iOS Release simulator application; no IPA/TestFlight/EAS/store deployment claim.",
+    "android_unit_tests": "testReleaseUnitTest was NO-SOURCE.",
+    "quality_scope": "Coaching UI/runtime/transport tests use controlled adapters; no browser GPU, actual inference, paid backend deployment or physical-device acceptance claim.",
+    "dependency_gate": "Known release-blocking exceptions remain: web braces, mobile braces and node-forge.",
+    "warnings": "CI actions/native toolchain emit deprecation warnings; blanket zero-warning CI claim is unsupported."
+  },
+  "evidence_phase": "historical-pre-service-worker-repair",
+  "qualification_boundary": "This collection qualifies final coaching source 96496ffd and unchanged native inputs compiled at c0aab491. It does not qualify subsequent service-worker repair or its later CI runs."
+}

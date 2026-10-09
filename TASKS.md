@@ -7,7 +7,10 @@
 - [x] 75/75 regression, types/lint,47 shared hashes, native engine/Hermes and zero-warning production build with3/3 production checks.
 - [x] Publish/read back integrated sourcec0aab491; preserve active official native compilation.
 - [x] Bind each cloud consent to the exact context and consume it;29/29 UI scenarios168assertions pass.
-- [ ] Publish/read back final consent correction; deploy both existing hosts and verify native testing builds for that exact source.
+- [x] Publish/read back final consent correction96496ffd; both hosts deployed its tree, quality75/75+3/3 and native input gate succeeded.
+- [x] Verify actual concurrent Android/iOS compilation at c0aab491 and unchanged compiled inputs at96496ffd; retain official receipts and artifact retrieval limits.
+- [x] Repair private-host worker policy delivery through current-build hash-verified service worker;34/34 offline scenarios,745 policy and102 runtime assertions pass.
+- [ ] Build/publish/read back worker correction, redeploy both existing hosts, verify live delivery prerequisites and fresh conservative native CI.
 - [ ] Real GPU/device coaching acceptance and owner-supplied cloud provider key; native inference/authentication and Apple distribution remain unavailable.
 
 # Current Claude pipeline checkpoint — 9 October 2026

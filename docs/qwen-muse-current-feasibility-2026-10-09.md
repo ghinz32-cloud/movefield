@@ -1,6 +1,8 @@
-# Current Qwen / Muse coaching feasibility
+# Qwen / Muse research snapshot before coaching integration
 
-Research date: 2026-10-09. Read-only inspection of `movefield-recovery` and current primary documentation. No source changes, runtime installation, weights download, provider requests, account setup, billing changes, or credentials access.
+Research date: 2026-10-09. This is the preserved pre-implementation research snapshot. The separate Qwen3.5 coaching flow and secure backend described as necessary below have since been implemented; see [current implementation and verification](calendar-and-coaching-2026-10-09.md). Real GPU inference, cloud credentials and native inference remain unverified/unavailable.
+
+Read-only inspection of `movefield-recovery` and current primary documentation. No source changes, runtime installation, weights download, provider requests, account setup, billing changes, or credentials access.
 
 ## Decision for the current repository
 
@@ -31,7 +33,7 @@ Official sources:
 - https://huggingface.co/mlc-ai/Qwen3.5-9B-q4f16_1-MLC
 - https://webllm.mlc.ai/docs/user/basic_usage.html
 
-## Current application gaps
+## Application gaps observed before implementation
 
 `components/qwen-demo.tsx` and the live worker built from `lib/qwen-runtime.worker.ts` implement a fictional evidence-selection demonstration. That worker hardcodes Qwen3-0.6B and uses a **2,048-token context / 256-token output reserve** from the legacy contract. The separate older `lib/qwen-worker.ts` also hardcodes 0.6B but uses **1,024 / 192** and a single-message policy; it is not the current worker build entry. Neither custom WebLLM config copies the Qwen3.5 `max_history_size:1` prebuilt override. The UI promises that real workout records are not sent to the model; preserve that fictional sample and use a distinct real-data coaching consent/contract before personalized inference.
 
@@ -83,9 +85,3 @@ Official sources:
 - https://ollama.com/library/qwen3.5
 - https://docs.ollama.com/api/openai-compatibility
 - https://developers.cloudflare.com/workers/platform/limits/
-
-## Citation references opened by this reviewer
-
-Qwen cards `turn24view0`, `turn24view1`; MLC cards `turn29view0`, `turn29view1`; WebLLM usage `turn28view4`; Glimmer overview `turn25view0`, downloads `turn28view0`, quantization `turn28view1`; Spark overview `turn25view1`, pricing `turn25view2`, release `turn25view3`; Groq limits `turn26view0`, models `turn26view1`, compatibility `turn26view2`; Cloudflare pricing `turn26view3`, model cards `turn27view1` and `turn28view3`; HF pricing `turn28view2`; Ollama model catalog `turn24view2`, compatibility `turn28view6`; Worker limits `turn28view5`.
-
-Parent must open cited sources independently before using child refs in a user-facing response. Runtime versions, pinned totals, prebuilt VRAM/overrides and application gaps come from local inspection, not a claim of measured inference.

@@ -1,0 +1,45 @@
+{
+  "scope": "Locally tested six-file hosted worker policy correction",
+  "webTypeScript": {
+    "command": "node node_modules/typescript/bin/tsc --noEmit",
+    "exitCode": 0
+  },
+  "focusedLint": {
+    "command": "node node_modules/eslint/bin/eslint.js lib/workout-coaching-worker-security.ts --max-warnings 0",
+    "exitCode": 0,
+    "warnings": 0
+  },
+  "sharedSnapshot": {
+    "files": 47,
+    "result": "pass"
+  },
+  "productionBuild": {
+    "exitCode": 0,
+    "warningLines": 0,
+    "proxyVariablesRemovedForBuild": true
+  },
+  "productionSuites": {
+    "passed": 3,
+    "total": 3
+  },
+  "offlineScenarios": {
+    "passed": 34,
+    "total": 34
+  },
+  "workerPolicyAssertions": 745,
+  "runtimeAssertions": 102,
+  "initialGzipBytes": 399884,
+  "initialGzipLimit": 400000,
+  "builtOffline": {
+    "version": "57f870c9185a2d448cc212b5bf14df8781e67558ad06e12348b6a893a317d66f",
+    "assets": 82,
+    "bytes": 19966146,
+    "policy": {
+      "path": "runtime/workout-coaching-worker.js",
+      "csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    }
+  },
+  "realBrowserExecuted": false,
+  "inferenceExecuted": false,
+  "providerKeyConfigured": false
+}

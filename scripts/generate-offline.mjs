@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const assetPath=relative=>'/'+relative.split(path.sep).join('/');
-export function generateOffline(clientDirectory,templateFile){
+export function generateOffline(clientDirectory,templateFile,policyFile=fileURLToPath(new URL('../lib/workout-coaching-worker-policy.json',import.meta.url))){
  const root=path.resolve(clientDirectory),assets=[];
  function append(relative){
   const file=path.join(root,relative),stat=fs.lstatSync(file);
@@ -34,7 +34,10 @@ export function generateOffline(clientDirectory,templateFile){
  if(assets.length>2000||assets.some(a=>a.bytes>64*1024*1024)||assets.reduce((sum,a)=>sum+a.bytes,0)>128*1024*1024)throw Error('Offline asset budget exceeded; review the build before increasing the budget.');
  const template=fs.readFileSync(templateFile,'utf8'),marker=/^const OFFLINE = .*; \/\/ __OFFLINE_BUILD__$/m;
  if(!marker.test(template))throw Error('Offline worker build marker is absent.');
- const build={schema:1,version:sha(JSON.stringify(assets)+'\n'+template),assets};
+ const coachingWorker=JSON.parse(fs.readFileSync(policyFile,'utf8'));
+ if(coachingWorker.path!=='runtime/workout-coaching-worker.js'||typeof coachingWorker.csp!=='string'||!coachingWorker.csp||/[\r\n]/.test(coachingWorker.csp)||coachingWorker.csp.length>1024||
+  !assets.some(asset=>asset.path==='/'+coachingWorker.path)||!assets.some(asset=>asset.path==='/runtime/qwen-worker.js'))throw Error('The complete pinned model worker build and security policy are required.');
+ const build={schema:1,version:sha(JSON.stringify({assets,coachingWorker})+'\n'+template),coachingWorker,assets};
  const output=template.replace(marker,'const OFFLINE = '+JSON.stringify(build)+'; // __OFFLINE_BUILD__');
  fs.writeFileSync(path.join(root,'sw.js'),output);
  // A framework may have compressed the unbuilt public template. Never leave
