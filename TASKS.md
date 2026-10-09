@@ -5,13 +5,13 @@ Standing owner authorization includes delegated technical/destination choices, G
 | ID | State | Milestone | Evidence / next acceptance |
 | --- | --- | --- | --- |
 | A01–A05 | Complete and published | Full web/native application audit repairs | Exact published/local tree and audit/training report readback; 40 regression/3 production suites in retained audit reports |
-| S01 | Implementation complete — real browser acceptance pending | Transactional encrypted browser snapshots and verified legacy import | 43 regression/3 production suites; 76 backend + 163 vault + 133 legacy assertions and 8 compiled Home callback scenarios; types/lint/build; `docs/browser-storage-2026-10-09.md` |
+| S01 | Published and verified — real browser acceptance pending | Transactional encrypted browser snapshots and verified legacy import | 43 regression/3 production suites; 76 backend + 163 vault + 133 legacy assertions and 8 compiled Home callback scenarios; types/lint/build; `docs/browser-storage-2026-10-09.md` |
 | S02a | Queued — decompose before edits | Design/version incremental native entity schema and recoverable import | Preserve existing encrypted SQLite snapshot/history/key; idempotent import/readback/rollback and explicit guards |
 | S02b | Queued after S02a | Connect native entity mutations without rewriting whole history | Atomic active/completed revisions; stale edit/delete and multi-year capacity/failure tests; physical acceptance separate |
 | M07–M10 | Pending actual browser/device access | Secure-origin offline/restore/reflow and phone interruption acceptance | Record actual browser/device/build observations; harness or Hermes export alone is insufficient |
 | S03–S05 / U09–U11 | Pending bounded work | Sync/account contract, qualified native AI and website/Android release | Existing durable storage, exact model/evaluation provenance and dependency blockers retained; no clean-release claim |
 
-Current local implementation commit is resolved with `git log -1 --format=%H -- docs/browser-storage-2026-10-09.md`; verify GitHub head/tree/readback and `.sites-runtime/checkpoints/s01-browser-storage.bundle` after publication. Maintain one active milestone. No main merge or live deployment occurred.
+Published implementation: `ea437ccb8a3383db0230006b453de90b867dbb4f`, exact tree/readback verified; `docs/qa/browser-storage-2026-10-09/publication.json` records provenance. Current local implementation commit is resolved with `git log -1 --format=%H -- docs/browser-storage-2026-10-09.md`; verify GitHub head/tree/readback and `.sites-runtime/checkpoints/s01-browser-storage.bundle` after publication. Maintain one active milestone. No main merge or live deployment occurred.
 
 # Historical task states and evidence
 
