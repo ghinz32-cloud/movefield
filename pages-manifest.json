@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "base": "/movefield/",
-  "version": "26b641628dc88e99625d2422fb5d63c0ac74273ce465718e6f47e593fef01b10",
+  "version": "f6c58a4e6449e490ce4bf2da6b78c7ed1ad728579e8531311b5092b58a7eb4e4",
   "workerTemplateSha256": "fee548f52250d007e6ada60a0d8a0b7e2ae26fc5796e18d9f60b2f4e77f48fd7",
   "assets": {
     "/movefield/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -13,7 +13,7 @@
     "/movefield/assets/qwen-unavailable-IXSK3HSm.js": "3bd10437f03a9d63f02e37884b3e4a0b05c83c8d0da90aefea4c019d5d9bafe6",
     "/movefield/assets/research-library-dG25azH1.js": "81d224d77f67869af2f4466d4a27f354ab6515d37895af384a78faa86bda0fbe",
     "/movefield/assets/transfer-dialog-bz8GaSkU.js": "ff6be6d028a8d97ad8b2155681640dc107d8f60dcf9a62bbd3b64f4d581ced87",
-    "/movefield/downloads/movefield-mobile-r14.zip": "fb088ac46eaab4f654a4778a2cfa5aa3043b064e9d672692b541d02a395f6979",
+    "/movefield/downloads/movefield-mobile-r14.zip": "2b2192c9ae265340888c686302d1b249afe82aa23eeeee70428160e28a1a18f0",
     "/movefield/exercise-content.json": "9a17a1c905fe80e7210803a7b1b466c0a207a40b702386f6e75fb891585b68bb",
     "/movefield/exercise-guides.json": "62fa1d71ee08312f6e8809ce60e17e7df7e8a3a8d79f49bed15731592d0f7a38",
     "/movefield/favicon.svg": "e60a09d8fe6ca9311ab14f0f9f05a5ed92cb2f74b3a41fc3680bde30f3a0b11e",
