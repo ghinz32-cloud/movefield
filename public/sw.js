@@ -1,7 +1,7 @@
 // Movefield offline shell. It keeps the app's own files so the page opens without a connection.
 // Training data is not cached here: it stays in this browser's encrypted storage, and no request is sent for it.
 const CACHE_PREFIX = 'movefield-shell-';
-const CACHE = `${CACHE_PREFIX}v2`;
+const CACHE = `${CACHE_PREFIX}v3`;
 const CONTENT = new Set(['/exercise-guides.json', '/exercise-content.json', '/favicon.svg']);
 const STATIC = /\.(?:css|woff2?|ttf|otf|png|jpe?g|webp|svg)$/;
 
@@ -66,7 +66,7 @@ self.addEventListener('fetch', event => {
   }
 
   // Other static files (guide data, photos, fonts) can change at the same address. Use the network when it works.
-  if (CONTENT.has(url.pathname) || ((url.pathname.startsWith('/fonts/') || url.pathname.startsWith('/brand/')) && STATIC.test(url.pathname))) {
+  if (CONTENT.has(url.pathname) || /^\/runtime\/[A-Za-z0-9_.-]+\.js$/.test(url.pathname) || ((url.pathname.startsWith('/fonts/') || url.pathname.startsWith('/brand/')) && STATIC.test(url.pathname))) {
     event.respondWith(
       fetch(request)
         .then(response => remember(event, request, response))

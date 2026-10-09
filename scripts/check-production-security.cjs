@@ -12,7 +12,10 @@ async function main(){
   const modelPolicy=JSON.parse(fs.readFileSync('lib/qwen-network-policy.json','utf8'));
   const modelSources=[...new Set(modelPolicy.assets.flatMap(a=>[a.url,a.finalUrl]))];
   assert.equal(csp.split('; ').find(s=>s.startsWith('connect-src ')),`connect-src 'self' ${modelSources.join(' ')}`);
-  assert.ok(!csp.includes('wasm-unsafe-eval')&&!csp.includes('unsafe-eval'),'download-only milestone cannot execute an inference runtime');
+  assert.ok(csp.includes("worker-src 'self'")&&!csp.includes("'wasm-unsafe-eval'")&&!csp.includes("'unsafe-eval'"),'page permits same-origin workers without permitting page WASM or JavaScript eval');
+  const runtime=await request('/runtime/qwen-worker.js'),workerPolicy=runtime.response.headers.get('Content-Security-Policy');
+  assert.equal(runtime.response.status,200);assert.ok(runtime.bytes.length>10000);
+  assert.equal(workerPolicy,"default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'",'worker permits bundled scripts/WASM only, with all network requests and child workers refused');
   const scripts=[...body.matchAll(/<script\b([^>]*)>/g)];assert.ok(scripts.length);
   for(const s of scripts)assert.ok(s[1].includes('nonce="'+nonce+'"'),'script missing nonce: '+s[1]);
   assert.notEqual((await request()).response.headers.get('Content-Security-Policy'),csp);

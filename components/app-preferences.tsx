@@ -39,9 +39,9 @@ export function AppearanceShortcut(){const [open,setOpen]=useState(false);return
 export function ModelSettings(){
  const {p,update,ready}=useAppPreferences(),[open,setOpen]=useState(false);
  return <section className="card model-settings"><p className="eyebrow">OPTIONAL · THIS DEVICE</p><h2>Local assistant</h2>
-  <p className="muted">Prepare model files for this browser. No assistant is running yet; it needs testing before it can explain workouts.</p>
+  <p className="muted">Manage local model files. Coaching includes an optional Qwen sample review; automatic workout explanations still require device testing.</p>
   <label className="field"><span>Assistant preference</span><Select disabled={!ready} value={p.model} onValueChange={model=>update({model:model as AppPreferences['model']})}><SelectTrigger aria-label="Assistant preference"><SelectValue/></SelectTrigger><SelectContent>{modelChoices.map(([value,label])=><SelectItem value={value} key={value}>{label}</SelectItem>)}</SelectContent></Select></label>
-  <p className="small-copy">{p.model==='off'?'Assistant is off. Changing this preference never starts a download.':p.model==='auto'?'Automatic will use the largest tested model. No model has passed yet, so none runs.':'Qwen3 0.6B is the first planned model. Choose Review download below to see the exact browser file size.'}</p>
+  <p className="small-copy">{p.model==='off'?'Assistant is off. Changing this preference never starts a download.':p.model==='auto'?'Automatic explanations need a tested model. You can try the sample explicitly in Coaching.':'Qwen3 0.6B can run the experimental browser sample after you download its files. Choose Review download for the exact size.'}</p>
   <Button variant="outline" disabled={!ready} aria-expanded={open} aria-controls="browser-model-files" onClick={()=>setOpen(v=>!v)}>{open?'Close model file controls':'Manage browser model files'}</Button>
   {open&&<div id="browser-model-files"><ModelFilesBoundary><Suspense fallback={<p role="status" className="small-copy">Opening model file controls…</p>}><QwenModelFiles/></Suspense></ModelFilesBoundary></div>}
   <p className="small-copy">Plans and workout records work without a language model. Phone model files are managed separately in the phone app.</p>

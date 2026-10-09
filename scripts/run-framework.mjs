@@ -4,6 +4,13 @@ import { readExecutionProfile } from "./execution-profile.mjs";
 
 const [command, ...args] = process.argv.slice(2);
 if (!["dev", "build"].includes(command)) throw new Error("Expected dev or build.");
+// Reproducible browser-only worker assets, including on a fresh checkout.
+const modelWorker = spawnSync(process.execPath, [
+  fileURLToPath(new URL("../node_modules/vite/bin/vite.js", import.meta.url)),
+  "build", "--config", fileURLToPath(new URL("../build/qwen-worker.config.mjs", import.meta.url)),
+], {stdio: "inherit"});
+if (modelWorker.error) throw modelWorker.error;
+if (modelWorker.status !== 0) throw new Error("The optional Qwen worker could not be built.");
 // The downloadable starter must match the current native source, not an old ZIP.
 const starter = spawnSync("python3", [fileURLToPath(new URL("./package-mobile.py", import.meta.url))], {stdio: "inherit"});
 if (starter.error) throw starter.error;

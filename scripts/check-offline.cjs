@@ -39,7 +39,7 @@ async function get(path, options = {}) {
 (async () => {
   network = async () => response('shell', {headers: new Headers({'content-type':'text/html', 'cache-control':'private, no-store'})});
   await lifecycle('install'); ok(skipped, 'valid generic shell installs');
-  const current = 'movefield-shell-v2';
+  const current = 'movefield-shell-v3';
   equal(stores.get(current).get(key('/')).body, 'shell', 'only the known shell has an offline no-store exception');
   stores.set('movefield-shell-v1', new Map()); stores.set('another-feature', new Map());
   await lifecycle('activate'); ok(claimed, 'worker claims clients');
@@ -60,6 +60,13 @@ async function get(path, options = {}) {
   await get('/_next/static/chunks/test.js'); const calls = requests.length;
   equal((await get('/_next/static/chunks/test.js')).result.body, 'bundle', 'hashed bundles are cache-first');
   equal(requests.length, calls, 'cached bundle does not fetch');
+  network = async () => response('worker-v1', {headers:new Headers({'content-type':'text/javascript'})});
+  equal((await get('/runtime/qwen-worker.js')).result.body, 'worker-v1', 'runtime entry loads on request');
+  network = async () => response('worker-v2', {headers:new Headers({'content-type':'text/javascript'})});
+  equal((await get('/runtime/qwen-worker.js')).result.body, 'worker-v2', 'runtime code updates from the network');
+  network = async () => {throw Error('offline');};
+  equal((await get('/runtime/qwen-worker.js')).result.body, 'worker-v2', 'visited model runtime opens offline');
+  equal((await get('/runtime/private.json')).intercepted, false, 'runtime route does not cache arbitrary data');
   for (const override of [{redirected:true}, {ok:false}, {headers:new Headers({'cache-control':'private'})},
     {headers:new Headers({'cache-control':'no-store'})}, {headers:new Headers({'set-cookie':'session=sample'})}]) {
     network = async () => response('must not cache', override);

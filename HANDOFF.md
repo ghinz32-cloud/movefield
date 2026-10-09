@@ -1,5 +1,17 @@
 # Current continuation — 9 October 2026
 
+## Latest milestone — U08b optional Qwen demo and real CPU training
+
+Independent checkout `/workspace/scratch/855d6d943ad0/movefield-continuation`, branch `audit/2026-10-09-continuation`, baseline/pushed U14 `026ac627a67bbba6feeffcf0b1c1097e43b2b0a4` (tree `1690356c556b13ed479b2c03b9a8d5a49c70b5bf`), tracking remote `audit/2026-10-08-quality`. Standing push authorization applies; preserve the original overlapping checkout.
+
+U08b: collapsed Coaching sample, strict default prompt/source-ID output, cache-only verified worker, real tokenizer limits, Off/close/delete/cancel/timeouts. Pinned WebLLM 0.2.85/tokenizers 0.1.6; fixed upstream UMD export and worker-without-window storage defects. Separate browser-only build before dev/build; scoped worker CSP permits WASM with no fetch/child workers or page eval. Chrome controls/question selection/blocker observed after concrete build-wrapper restart; saved profile and 130% preference retained. No actual secure browser downloads or GPU inference.
+
+Actual isolated CPU LoRA pilot: original 132-train/34-validation dataset, 16 updates/16 unique cases, 1,146,880 trainable parameters, pinned verified HF base, 4.6 MB adapter. Unchanged 22-case held-out suite in three fresh generation sessions: 39 actual generations and 27 gated non-invocations, all 66 automated results passed. Raw reports, environment, timing/tokens and source fingerprints are in `docs/evals/qwen-cpu-pilot-2026-10-09-*.json`; user artifact `movefield-qwen3-evidence-pilot.zip` saved separately. CPU greedy results do not qualify the different WebGPU artifact or the demo's sampling. The demo still uses the publisher model.
+
+Checks: 33/33 regression before last worker/selector repairs; focused 91 runtime/520 training assertions/38 shared hashes and relevant types/lint/build/production rerun. 182 real WASM-tokenizer prompts (max 501 tokens), actual browser-target initialization/tokenizer inspected with standard API fixtures. Final build and production 2/2 pass below 400,000 gzip bytes. Logs `.sites-runtime/u08b-*`; full reports `docs/qwen-demo-2026-10-09.md`/`.json`; recoverable full-history checkpoint `.sites-runtime/checkpoints/u08b-complete.bundle`. Verify final remote head/tree and report readback before saying pushed.
+
+Next short prompt: Resume Movefield here, verify live refs/changes and preserve concurrent work. U12/U13/U14 are pushed; U08b implementation plus actual CPU training/evaluation are checked. Finish trained-adapter merge/MLC conversion/new pinned manifest, final artifact and secure-WebGPU device qualification, then native runtime and physical-phone usability/storage acceptance. Keep held-out questions/answers out of training, retain strict source-ID and deterministic training authority, and distinguish the publisher demo from the CPU adapter. No main merge, deployment or account service provisioning has occurred.
+
 ## Latest milestone — U14 named programs
 
 Independent checkout `/workspace/scratch/855d6d943ad0/movefield-continuation`, local branch `audit/2026-10-09-continuation`, baseline `aba25b02cde3d8717de1eda36a365684dd96625c`; publish to existing remote `audit/2026-10-08-quality` with expected-head guard. The original checkout gained overlapping edits; all were copied to this isolated clone and reviewed without overwriting its files. Root dependencies copied into the clone to restore supervised preview; native dependency link retained. Standing push permission applies.

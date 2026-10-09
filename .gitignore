@@ -59,3 +59,6 @@ next-env.d.ts
 /public/exercise-photos/
 # Generated from the current native tree during dev/build.
 /public/downloads/movefield-mobile-r14.zip
+# Rebuilt from pinned packages by scripts/run-framework.mjs.
+/public/runtime/
+__pycache__/

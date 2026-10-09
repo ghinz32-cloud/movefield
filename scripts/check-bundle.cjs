@@ -5,6 +5,9 @@ const imports=new Set();
 function visit(key){if(imports.has(key))return;assert.ok(manifest[key],'Missing import: '+key);imports.add(key);for(const dependency of manifest[key].imports||[])visit(dependency)}
 visit('app/page.tsx');assert.ok(!imports.has('components/progress-dashboard.tsx'),'Charts must load when Progress is opened');
 assert.ok(page.dynamicImports?.includes('components/progress-dashboard.tsx'),'Chart loading boundary missing');
+assert.ok(!imports.has('components/qwen-demo.tsx'),'Qwen demo must not enter the initial workout graph');
+assert.ok(page.dynamicImports?.includes('components/qwen-demo.tsx'),'Demo loading boundary missing');
+for(const key of imports)assert.ok(!/web-llm|web-tokenizers|qwen-runtime\.worker/.test(key),'Model runtime entered initial graph');
 assert.ok(!imports.has('components/qwen-model-files.tsx'),'Optional model controls must load on request');
 assert.ok([...imports].some(key=>manifest[key].dynamicImports?.includes('components/qwen-model-files.tsx')),'Model controls loading boundary missing');
 for(const key of imports){const text=fs.readFileSync('dist/client/'+manifest[key].file,'utf8');assert.ok(!text.includes('movefield-qwen-assets-v1'),'Model cache entered the initial workout graph');assert.ok(!text.includes('8c14ce481d4c692769976ad52afea453a102df19'),'Model artifact catalog entered the initial workout graph')}
