@@ -167,6 +167,11 @@
       "sha256": "bc40f5aa1d96622c412222dd94bd265ddddd897c6e3a27c164d1109abe5b01cb"
     },
     {
+      "source": "lib/qwen-native-files.ts",
+      "target": "src/shared/qwen-native-files.ts",
+      "sha256": "a9694f3e98b67e4a2f4ca276934f937aff62eca1ddc7ba250f37a495c0bc7e47"
+    },
+    {
       "source": "lib/fitness-reference.json",
       "target": "src/shared/fitness-reference.json",
       "sha256": "4b802db8ac033ac6b1256376f9aa4ddf80ff049734a5583f0581e2bb03ed1c04"

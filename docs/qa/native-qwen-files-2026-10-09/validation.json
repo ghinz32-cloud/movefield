@@ -1,0 +1,148 @@
+{
+  "milestone": "U09a verified native model files, inference disconnected",
+  "recordedAt": "2026-10-09T15:59:53.552572+00:00",
+  "baselineGitHub": "22b74b7ca53c173cf442f4303209478a2da6a6c7",
+  "source": [
+    {
+      "path": "lib/qwen-native-files.ts",
+      "bytes": 19748,
+      "sha256": "a9694f3e98b67e4a2f4ca276934f937aff62eca1ddc7ba250f37a495c0bc7e47"
+    },
+    {
+      "path": "mobile/src/shared/qwen-native-files.ts",
+      "bytes": 19748,
+      "sha256": "a9694f3e98b67e4a2f4ca276934f937aff62eca1ddc7ba250f37a495c0bc7e47"
+    },
+    {
+      "path": "mobile/src/qwen-file-cache.ts",
+      "bytes": 19118,
+      "sha256": "3a7538ac28edf0bf8366a8061f36ec567c0e964692197cc7b772f71944c89f32"
+    },
+    {
+      "path": "mobile/src/model-files.tsx",
+      "bytes": 10077,
+      "sha256": "c00acc8750f4475584acbbb0c0a41bad084865530af7dfd36b15fb86fbc4eca0"
+    },
+    {
+      "path": "mobile/src/settings.tsx",
+      "bytes": 7599,
+      "sha256": "95933bb097ac56a6c45b1ab96b449c2d63e5ead750a734fc4be4861695d9123d"
+    },
+    {
+      "path": "mobile/scripts/sync-shared.mjs",
+      "bytes": 2796,
+      "sha256": "f5c4a7d3f7abd9ab6c0985bf1d6483a86383f7532e63569839c456adb16c8a0a"
+    },
+    {
+      "path": "mobile/docs/shared-snapshot.json",
+      "bytes": 7376,
+      "sha256": "9a2ae238dd0c7c990d60547ce617fcc2a63ed6b4821056e6fb4b95eadbcd8c76"
+    },
+    {
+      "path": "scripts/check-native-qwen-files.cjs",
+      "bytes": 29891,
+      "sha256": "2a8dcb4c2d213a21c443274cd87fba2fc6caed45b722c4e2ec9f48bc1f1b1d43"
+    },
+    {
+      "path": "scripts/check-native-qwen-ui.cjs",
+      "bytes": 21014,
+      "sha256": "6ec2ce7fd2608ef11b9920f72b31f85fc849f88c0f7c8651806cc8cd56dfef8c"
+    }
+  ],
+  "logs": [
+    {
+      "path": ".sites-runtime/u09a-files.log",
+      "bytes": 1579,
+      "sha256": "64d64b4be69c015c77bccf4446c64145099c5477751dce00e8482fd6fbc5854a"
+    },
+    {
+      "path": ".sites-runtime/u09a-ui.log",
+      "bytes": 1881,
+      "sha256": "1030491e71aac5d24fbe306bb43542e5a0bab98f66ec7f9a5800c98e93e14a2c"
+    },
+    {
+      "path": ".sites-runtime/u09a-shared.log",
+      "bytes": 63,
+      "sha256": "785ce0714fd57492b556b9776e138435b04c51795de95864b00ad0713bb3ba20"
+    },
+    {
+      "path": ".sites-runtime/u09a-regression.log",
+      "bytes": 1553,
+      "sha256": "bbc2c471f7d02a74169928ee7e5b83c2a8ed38591e5fb003f51be9800ffaf3e9"
+    },
+    {
+      "path": ".sites-runtime/u09a-lint.log",
+      "bytes": 270,
+      "sha256": "5ba06a102cfaab767a3f313fba3e41c2800ec846ff0ef6364d6b943b2bf80f1a"
+    },
+    {
+      "path": ".sites-runtime/u09a-web-types.log",
+      "bytes": 158,
+      "sha256": "41d39cff24a2767fb623a40788a74db6700d2427f22215a1734981e58231bc25"
+    },
+    {
+      "path": ".sites-runtime/u09a-native-types.log",
+      "bytes": 99,
+      "sha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f"
+    },
+    {
+      "path": ".sites-runtime/u09a-native-engine.log",
+      "bytes": 713,
+      "sha256": "095a989b178a573314ea8bec11259cb13cc772d183156c0f5dbf3dadf21a6691"
+    },
+    {
+      "path": ".sites-runtime/u09a-build.log",
+      "bytes": 3272,
+      "sha256": "4f6907fa0cf7beb55182d26563130404a2da58331f62fc07b0e026168b1ed141"
+    },
+    {
+      "path": ".sites-runtime/u09a-production.log",
+      "bytes": 1677,
+      "sha256": "0f5ea00bac755b38b49b741ab6040066b288ec1d17d7630c36e01f346e7f9311"
+    },
+    {
+      "path": ".sites-runtime/u09a-mobile-export.log",
+      "bytes": 2035,
+      "sha256": "20d6aa789c937360a968e748684f36313b37724114d3c7f81d2d1337348e8c0d"
+    }
+  ],
+  "regressionSuites": 48,
+  "productionSuites": 3,
+  "canonicalFiles": 39,
+  "fileScenarios": 22,
+  "fileAssertions": 1058,
+  "uiScenarios": 21,
+  "uiAssertions": 96,
+  "actualWeightDownloads": 0,
+  "nativeInferenceRuns": 0,
+  "physicalDevicesQualified": 0,
+  "mobileHermesArtifacts": [
+    {
+      "platform": "android",
+      "path": ".sites-runtime/u09a-published-mobile-export/_expo/static/js/android/index-5bc519b8f67a12b469605a8e4f07bacb.hbc",
+      "bytes": 4638752,
+      "sha256": "1d995d2e6b6aa88169c5bef22a3df37c721d72f0db94371939464c9e30c6457a"
+    },
+    {
+      "platform": "ios",
+      "path": ".sites-runtime/u09a-published-mobile-export/_expo/static/js/ios/index-1a6fc92a667f9b3edb0c68fee8129463.hbc",
+      "bytes": 4628842,
+      "sha256": "33074d9f6097617bf6d6bbe5520804fb36947d834d792069330df699098676aa"
+    }
+  ],
+  "offlineManifest": {
+    "path": "dist/client/offline-build.json",
+    "bytes": 11761,
+    "sha256": "d9f199c233580637c3f9f9703f0fde28815990dc2d0ea7fe6b15df4c3718504e"
+  },
+  "stdoutNote": "Full check-all stdout stopped after early suites; separately written fresh regression-checks.json independently records all48completed spawn statuses. Focused file/UI logs are complete.",
+  "limits": [
+    "Real SQLite and hashes; filesystem/network/device/native hooks mocked",
+    "Private model cache is OS-evictable; status size checks, full rehash before reuse/load",
+    "Hung native cancellation promise can require app restart; no background kill/resume claim",
+    "Same JS runtime only, separate processes/JS engines unsupported",
+    "Hermes bundle exports are not installable APK/IPA",
+    "No cloud account, native runtime, main merge or deployment; strict dependency release remains blocked"
+  ],
+  "formattingNote": "Trailing whitespace only cleaned after the full48suite pass; actual UI checks, lint, production build/checks and phone exports rerun on the final file."
+}
