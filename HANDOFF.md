@@ -1,4 +1,12 @@
-# Current continuation — 8 October 2026
+# Current continuation — 9 October 2026
+
+## Latest milestone — U13 evidence archive and forum feedback
+
+Baseline `8da26f2fd8dc859947b0c29195ac8b3d5fc69501`; same checkout and audit branch. Added 855 deduplicated PubMed-indexed records, 718 first published in 2025–2026, 18 exact query/fingerprint ledger entries, web/native local search, 7 original reviewed notes (fitness corpus v2), updated plan evidence mappings and 10-thread original feedback ledger. Selected abstracts are distinct from unreviewed search records; the metadata index is not model context/training. No full-text/paid-program copying or automatic scientific validation of templates. Reports: `docs/research-archive-2026-10-09.md`/`.json`, `docs/research-reviewed-2026-10-09.json`, `docs/forum-feedback-2026-10-09.json`.
+
+Passed web/native types, lint, metadata/search checks, 645 goal/evidence, 256 grounding, 21 synthetic grading, 38 shared hashes, native engine, production build/both production suites (386010 gzip bytes initial graph), Android/iOS 4.3 MB Hermes exports. Browser sample Sources/PMID/recent filter and resumable workout observed. Screenshot inspected, saved and attached-file availability verified. Tests use synthetic responses; no actual model accuracy, training, device or real-account acceptance. Exact source fingerprints and limits are in the report. Recoverable checkpoint after commit: `.sites-runtime/checkpoints/u13-complete.bundle`; resolve exact commit with Git history and independently verify remote head/tree/readback after the standing-authorized push.
+
+Next short prompt: Resume Movefield here. Verify refs and changes, then implement U14 source-attributed public named-program schedules and honest manual progression, web/native parity and relevant tests. Checkpoint/push before U08b. Preserve Today-first compact UI, recovery boundaries, held-out model evaluation separation and existing release/device limits. No merge/deploy or account-service provisioning has occurred.
 
 ## Latest milestone — U12 Today and compact UI
 
@@ -10,9 +18,9 @@ Next: U13 recent evidence/archive search and source-screening ledger, then U14 p
 
 User explicitly grants full standing permission to **always push the work**. Do not re-request push permission. Recovered audit/U08a2 source is on GitHub at `3681258a6095d977e67b0f1d8c6fadfd135fbff1`, identical tree `9a2e68b95222f7bd5be082bed95b8c60e1d3d0f4` to former local `861cd78`. Git CLI push failed for absent login; connected GitHub create-tree/commit/ref succeeded, remote head and report readback verified. Original local three commits are retained under `backup/u08a2-local-861cd78` and the verified bundle. Current continuation branch now follows the connector checkpoint with identical files.
 
-New scope: reduce oversized/cluttered web and phone UI, open on Today, improve setup/account entry/workout selection, research hundreds of recent papers and exercise archives, expand attributed named plans, inspect forum complaints, and make Qwen work in the demo with a default prompt and real training work. U12 is active first; U13/U14/U08b follow as independent checked/pushed milestones. Do not claim training or inference from corpus/prompt construction. App accounts/sync and physical-phone acceptance remain unavailable; release blockers and separate main merge/deployment boundary remain.
+New scope: reduce oversized/cluttered web and phone UI, open on Today, improve setup/account entry/workout selection, research hundreds of recent papers and exercise archives, expand attributed named plans, inspect forum complaints, and make Qwen work in the demo with a default prompt and real training work. U12 and U13 are complete; U14/U08b follow as independent checked/pushed milestones. Do not claim training or inference from corpus/prompt construction. App accounts/sync and physical-phone acceptance remain unavailable; release blockers and separate main merge/deployment boundary remain.
 
-Next: finish U12 on current checkout/branch, verify focused web/native flow/appearance checks, checkpoint and push with standing authorization, update this handoff, then U13.
+The earlier U12 continuation below is historical. Use the current milestone at the top.
 
 ## Previous milestone — U08a2 browser file controls and source recovery
 

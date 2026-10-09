@@ -1,5 +1,6 @@
 import {NativeAppearanceProvider,useNativeAppearance,useThemedStyles} from './src/appearance';
 import {NativeSettings} from './src/settings';
+import {NativeResearchLibrary} from './src/research-library';
 import {shareBackup} from './src/backup';
 import {restoreBackup,serializeBackup} from './src/shared/local-backup';
 import {metricFields,metricSummary} from './src/shared/set-metrics';
@@ -110,6 +111,7 @@ function TrainingApp() {
   const [saveFailure, setSaveFailure] = useState<NativeSaveFailure | null>(null);
   const [error, setError] = useState('');
   const [tab, setTab] = useState<Tab>('Today');
+  const [researchOpen,setResearchOpen]=useState(false);
   const [showRestOptions,setShowRestOptions]=useState(false),[workoutExerciseIndex,setWorkoutExerciseIndex]=useState(0);
   const [exercise, setExercise] = useState<Exercise | null>(null);
   const [historyItem, setHistoryItem] = useState<Workout | null>(null);
@@ -304,7 +306,7 @@ function TrainingApp() {
 
   </ScrollView>;
 
-  const libraryView = <View style={styles.flex}><View style={[styles.content, { paddingBottom: 0 }]}><Heading eyebrow="EXERCISE LIBRARY" title="Exercise library." detail="Search by name, movement or muscle. Equipment filters match the listed equipment." /><TextInput accessibilityLabel="Search exercise library" style={styles.input} placeholder="Search exercises…" placeholderTextColor={COLORS.muted} value={search} onChangeText={setSearch} autoCapitalize="none" autoCorrect={false} clearButtonMode="while-editing" /><ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.pills}>{equipmentOptions.map(e => <Pill key={e} label={e} selected={equipment === e} onPress={() => setEquipment(e)} />)}</ScrollView><Text style={styles.small}>{filtered.length} of {exercises.length} exercises · {Object.keys(guides).length} detailed guides</Text></View>
+  const libraryView = <View style={styles.flex}><View style={[styles.content, { paddingBottom: 0 }]}><Heading eyebrow="EXERCISE LIBRARY" title="Exercise library." detail="Search by name, movement or muscle. Equipment filters match the listed equipment." /><TextInput accessibilityLabel="Search exercise library" style={styles.input} placeholder="Search exercises…" placeholderTextColor={COLORS.muted} value={search} onChangeText={setSearch} autoCapitalize="none" autoCorrect={false} clearButtonMode="while-editing" /><ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.pills}>{equipmentOptions.map(e => <Pill key={e} label={e} selected={equipment === e} onPress={() => setEquipment(e)} />)}</ScrollView><Button label="Search research papers" secondary onPress={()=>setResearchOpen(true)}/><Text style={styles.small}>{filtered.length} of {exercises.length} exercises · {Object.keys(guides).length} detailed guides</Text></View>
     <FlatList data={filtered} keyExtractor={x => x.id} contentContainerStyle={[styles.content, { paddingTop: 4 }]} keyboardShouldPersistTaps="handled" ListHeaderComponent={<View style={{ marginBottom: 16 }}><NativeTrainingTools units={state.profile.units} adult={state.profile.age >= 18} /></View>} initialNumToRender={15} ListEmptyComponent={<Card><Text style={styles.sectionTitle}>No matches yet.</Text><Text style={styles.body}>Try a shorter name or choose All equipment.</Text><Button label="Clear filters" secondary onPress={() => { setSearch(''); setEquipment('All'); }} /></Card>} renderItem={({ item }) => <Pressable accessibilityRole="button" accessibilityLabel={`Open ${item.name} guide`} onPress={() => setExercise(item)} style={styles.exerciseRow}><View style={styles.flex}><Text style={styles.rowTitle}>{item.name}</Text><Text style={styles.small}>{item.equipment} · {item.pattern}</Text><Text style={styles.guideLabel}>{guides[item.id] ? 'STEP-BY-STEP GUIDE' : 'QUICK CUES'}</Text></View><Text style={styles.arrow}>↗</Text></Pressable>} />
   </View>;
 
@@ -331,7 +333,7 @@ function TrainingApp() {
         <Button label="Export current records" secondary onPress={()=>{setTab('Settings');setError('');}}/>
       </View>
     </View>:<Text accessibilityLiveRegion="polite" style={styles.saveStatus}>{saveStatus}</Text>}
-    <View style={styles.tabs}>{(['Today', 'Plan', 'Library', 'History', 'Settings'] as const).map((label, i) => <Pressable accessibilityRole="tab" accessibilityLabel={label} accessibilityState={{ selected: tab === label }} key={label} onPress={() => { setTab(label); setError(''); }} style={[styles.tab, tab === label && styles.activeTab]}><Text style={[styles.tabIcon, tab === label && { color: COLORS.green }]}>{['◉', '▤', '⌕', '◷', '⚙'][i]}</Text><Text style={[styles.tabLabel, tab === label && { color: COLORS.green, fontWeight: '800' }]}>{label}</Text></Pressable>)}</View>
+    <NativeResearchLibrary visible={researchOpen} close={()=>setResearchOpen(false)}/><View style={styles.tabs}>{(['Today', 'Plan', 'Library', 'History', 'Settings'] as const).map((label, i) => <Pressable accessibilityRole="tab" accessibilityLabel={label} accessibilityState={{ selected: tab === label }} key={label} onPress={() => { setTab(label); setError(''); }} style={[styles.tab, tab === label && styles.activeTab]}><Text style={[styles.tabIcon, tab === label && { color: COLORS.green }]}>{['◉', '▤', '⌕', '◷', '⚙'][i]}</Text><Text style={[styles.tabLabel, tab === label && { color: COLORS.green, fontWeight: '800' }]}>{label}</Text></Pressable>)}</View>
 
     <ModalFrame visible={!!trackingSession} close={()=>setTrackingSession('')} title="Workout targets">{trackingSession&&state.plan?.sessions.some(x=>x.id===trackingSession)&&<SessionEditor key={trackingSession} state={state} sessionId={trackingSession} onSave={edit=>{const r=applyTrackingEdit(stateRef.current!,edit);if(r.error)return r.error;if(modify(()=>r.state)){setTrackingSession('');return}return 'This workout could not be saved.';}}/>}</ModalFrame>
     <ModalFrame visible={personalSetup} close={()=>setPersonalSetup(false)} title="Your plan setup">{personalSetup&&<PlanSetup state={state} onAccept={(profile,plan,events)=>{const r=acceptSetup(stateRef.current!,profile,plan,events);if(r.error)return r.error;if(modify(()=>r.state)){setPersonalSetup(false);setTab('Today');return}return 'This plan could not be saved. Check your entries.';}}/>}</ModalFrame>

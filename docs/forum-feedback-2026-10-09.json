@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "checkedOn": "2026-10-09",
+  "method": "Targeted public forum searches and selected original threads/comments. Convenience sample, not representative sentiment, verified current competitor defects or a prevalence estimate. No personal identifiers, verbatim comments or user records stored.",
+  "threads": [
+    {
+      "id": "F01",
+      "app": "Fitbod",
+      "title": "Too many taps to pick muscle groups",
+      "url": "https://www.reddit.com/r/fitbod/comments/1w07cz2/too_many_taps_to_pick_muscle_groups/",
+      "originalSummary": "Users describe formerly direct controls becoming several taps away; one comment says AI features displaced practical controls.",
+      "movefieldResponse": "Keep Today and Start direct. Keep research and AI optional.",
+      "status": "U12 implemented; broader small-screen acceptance pending."
+    },
+    {
+      "id": "F02",
+      "app": "Fitbod",
+      "title": "STOP messing around with screens layout",
+      "url": "https://www.reddit.com/r/fitbod/comments/1wa43tp/fitbod_stop_messing_around_with_screens_layout/",
+      "originalSummary": "Users report repeatedly having to find controls after layout changes and request access to frequently used setup actions.",
+      "movefieldResponse": "Stable main navigation; move and check-in remain direct on Today.",
+      "status": "U12 implemented; native hardware acceptance pending."
+    },
+    {
+      "id": "F03",
+      "app": "Fitbod",
+      "title": "Why does the app recommend excluded exercises?",
+      "url": "https://www.reddit.com/r/fitbod/comments/11zz71m/why_does_the_app_recommend_excluded_exercises/",
+      "originalSummary": "Complaints concern ignored exercise exclusions, unavailable machines and load increments. Another commenter notes that adjustable dumbbells vary.",
+      "movefieldResponse": "Honor actual equipment and exercise exclusions; never assume all gyms share weight increments.",
+      "status": "Existing eligibility/substitution/equipment-cap checks retained; real-gym acceptance pending."
+    },
+    {
+      "id": "F04",
+      "app": "Hevy",
+      "title": "Feature Request: Set-Specific Rest Timers",
+      "url": "https://www.reddit.com/r/Hevy/comments/1v1tuiv/feature_request_setspecific_rest_timers/",
+      "originalSummary": "Users want warm-up rests and working-set rests to differ within one exercise.",
+      "movefieldResponse": "Keep timer actions reachable and editable; add set-specific rest as a future slice.",
+      "status": "Timer controls implemented earlier; configurable per-set defaults are a remaining feature."
+    },
+    {
+      "id": "F05",
+      "app": "Hevy",
+      "title": "Rest Time Between Exercises",
+      "url": "https://www.reddit.com/r/Hevy/comments/1pb4v08/rest_time_between_exercises/",
+      "originalSummary": "A user cannot find a separate between-exercise timer; replies offer existing defaults or manual extension.",
+      "movefieldResponse": "Show timer state and Extend/Skip directly instead of hiding the running timer.",
+      "status": "Existing rest dock retained; automatic between-exercise customization pending."
+    },
+    {
+      "id": "F06",
+      "app": "Hevy",
+      "title": "Didn’t like MacroFactor Workouts; sticking with Hevy",
+      "url": "https://www.reddit.com/r/Hevy/comments/1qh8zca/didnt_like_macrofactor_workouts_sticking_with/",
+      "originalSummary": "One release-era user reports progression/volume bugs and missing exercises; another values a simple routine tracker and web editing.",
+      "movefieldResponse": "Test progression and dose summaries; provide authored exercise guides and manual tracking.",
+      "status": "989 exercise guides and existing regression coverage retained; no comparative product-quality claim."
+    },
+    {
+      "id": "F07",
+      "app": "Hevy",
+      "title": "Functionality",
+      "url": "https://www.reddit.com/r/Hevy/comments/1rli37r/functionality/",
+      "originalSummary": "A user requests weekly reporting and progression in ordinary custom routines.",
+      "movefieldResponse": "Explain what manual plans record and which progression is automated.",
+      "status": "Named-program tracking must clearly identify manual progression in U14."
+    },
+    {
+      "id": "F08",
+      "app": "Fitbod",
+      "title": "Single click to add another app-selected exercise",
+      "url": "https://www.reddit.com/r/fitbod/comments/1ay56c6/single_click_to_add_another_appselected_exercise/",
+      "originalSummary": "A comment complains about all-time reporting and kg-only export. An app response points to all exercise history, illustrating that discoverability and report scope differ.",
+      "movefieldResponse": "Make backups visible, units explicit, and history scope clear.",
+      "status": "Backup/restore and units remain visible; date-filtered exports are future work."
+    },
+    {
+      "id": "F09",
+      "app": "Strong",
+      "title": "Exporting historical workout data: units",
+      "url": "https://www.reddit.com/r/strongapp/comments/1rpmgqy/exporting_historical_workout_data_how_do_i/",
+      "originalSummary": "A user reports mixed lb/kg exercise data becoming ambiguous during CSV export/import.",
+      "movefieldResponse": "Preserve original units and logging conventions through transfer; do not infer units from a bare number.",
+      "status": "Movefield transfer retains profile units and kg-normalized values; external CSV import is not implemented."
+    },
+    {
+      "id": "F10",
+      "app": "Strong",
+      "title": "Feature request: Export Workouts options",
+      "url": "https://www.reddit.com/r/strongapp/comments/1qxxs09/feature_request_export_workouts_options/",
+      "originalSummary": "A user wants recent-only exports; a reply points to an existing advanced history-start setting that the author did not know about.",
+      "movefieldResponse": "Treat discoverability as a problem even when a feature technically exists.",
+      "status": "Settings backup first and collapsed appearance options; date-filtered export remains future work."
+    }
+  ],
+  "triangulation": [
+    {
+      "url": "https://help.strongapp.io/article/235-export-workout-data",
+      "finding": "Official help confirms CSV export and states exported files cannot be imported back into Strong. Page says updated 27 April 2021; it does not validate every contemporary forum claim."
+    },
+    {
+      "url": "https://help.hevyapp.com/hc/en-us/articles/36011518408983",
+      "finding": "Official library help describes configurable exercise variables, including replacing/reordering exercises and rest timers; this does not settle all reported per-set behavior."
+    }
+  ]
+}

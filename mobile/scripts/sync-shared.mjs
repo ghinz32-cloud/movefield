@@ -11,6 +11,7 @@ const files = ['local-backup.ts', 'set-metrics.ts', 'app-preferences.ts', 'worko
 files.push(['public/exercise-guides.json', 'assets/content/exercise-guides.json'], ['public/exercise-content.json', 'assets/content/exercise-content.json'], ['docs/exercise-library-LICENSE.txt', 'docs/exercise-library-LICENSE.txt'], ['docs/exercise-library-provenance.json', 'docs/exercise-library-provenance.json'], ['docs/product-requirements.md', 'docs/product-requirements.md'], ['docs/exercise-library-completion.json', 'docs/exercise-library-completion.json']);
 files.push(['lib/qwen-assets.json', 'src/shared/qwen-assets.json'], ['lib/qwen-catalog.ts', 'src/shared/qwen-catalog.ts']);
 files.push(['lib/fitness-reference.json', 'src/shared/fitness-reference.json'], ['lib/fitness-grounding.ts', 'src/shared/fitness-grounding.ts'], ['lib/qwen-evaluation-lock.json', 'src/shared/qwen-evaluation-lock.json']);
+files.push(['lib/research-library.ts','src/shared/research-library.ts'],['public/fitness-research.json','assets/content/fitness-research.json']);
 const records = [];
 for (const [from, to] of files) {
   const source = resolve(site, from), target = resolve(root, to);

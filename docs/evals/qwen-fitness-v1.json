@@ -1,7 +1,7 @@
 {
   "version": "movefield-fitness-eval-v1",
   "policy": "workout-evidence-selection-v1",
-  "corpusVersion": "fitness-reference-v1",
+  "corpusVersion": "fitness-reference-v2",
   "status": "not-run-on-models",
   "scope": "Held-out synthetic evidence-selection, workflow and instruction-attack cases. No personal records. This does not evaluate free-form coaching, diagnosis, exercise technique or program generation.",
   "protocol": {

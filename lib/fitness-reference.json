@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "version": "fitness-reference-v1",
-  "checkedOn": "2026-10-08",
+  "version": "fitness-reference-v2",
+  "checkedOn": "2026-10-09",
   "contentPolicy": "Original short summaries and bibliographic facts. Linked works retain their own rights. No copied papers, paid programs, personal records, training examples or fine-tuning dataset are included.",
   "notes": [
     {
@@ -10,13 +10,28 @@
       "title": "ACSM 2026 resistance training guidance",
       "url": "https://acsm.org/resistance-training-guidelines-update-2026/",
       "doi": "10.1249/MSS.0000000000003897",
-      "audiences": ["adult"],
+      "audiences": [
+        "adult"
+      ],
       "population": "Healthy adults; an overview of resistance-training reviews.",
-      "keywords": ["consistency", "progressive resistance", "regular practice", "bodyweight", "elastic bands"],
+      "keywords": [
+        "consistency",
+        "progressive resistance",
+        "regular practice",
+        "bodyweight",
+        "elastic bands"
+      ],
       "summary": "Regular resistance training benefits healthy adults. Programs can use weights, bands or bodyweight. Strength, muscle growth and power have different priorities; training to failure is not a universal requirement.",
       "limits": "This guidance does not validate an app's exact progression thresholds, assess technique or establish readiness after a symptom. Youth and clinical prescriptions need separate guidance.",
-      "review": {"status": "official-summary-and-abstract", "checkedOn": "2026-10-08", "note": "Official ACSM interpretation and position-stand abstract reviewed; not a complete trial-by-trial audit."},
-      "rights": {"content": "original-summary", "sourceTextRedistributed": false},
+      "review": {
+        "status": "official-summary-and-abstract",
+        "checkedOn": "2026-10-08",
+        "note": "Official ACSM interpretation and position-stand abstract reviewed; not a complete trial-by-trial audit."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false
+      },
       "enabled": true
     },
     {
@@ -25,13 +40,28 @@
       "title": "Schoenfeld, Grgic and Krieger 2019 training frequency",
       "url": "https://pubmed.ncbi.nlm.nih.gov/30558493/",
       "doi": "10.1080/02640414.2018.1555906",
-      "audiences": ["adult"],
+      "audiences": [
+        "adult"
+      ],
       "population": "Adults in 25 resistance-training studies with muscle-growth outcomes.",
-      "keywords": ["frequency", "times per week", "split routine", "volume equated", "same weekly work"],
+      "keywords": [
+        "frequency",
+        "times per week",
+        "split routine",
+        "volume equated",
+        "same weekly work"
+      ],
       "summary": "When weekly volume was matched, higher training frequency did not meaningfully improve muscle growth in this review. Frequency can help distribute weekly work across a manageable schedule.",
       "limits": "This finding concerns hypertrophy, not every strength or sport outcome. It does not prove that one schedule suits everyone or that recovery is unnecessary.",
-      "review": {"status": "abstract-reviewed", "checkedOn": "2026-10-08", "note": "Abstract checked during U04b; later retrieval returned an incomplete page. Full paper not reviewed."},
-      "rights": {"content": "original-summary", "sourceTextRedistributed": false},
+      "review": {
+        "status": "abstract-reviewed",
+        "checkedOn": "2026-10-08",
+        "note": "Abstract checked during U04b; later retrieval returned an incomplete page. Full paper not reviewed."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false
+      },
       "enabled": true
     },
     {
@@ -40,13 +70,28 @@
       "title": "Pelland and colleagues 2026 weekly volume and frequency",
       "url": "https://link.springer.com/article/10.1007/s40279-025-02344-w",
       "doi": "10.1007/s40279-025-02344-w",
-      "audiences": ["adult"],
+      "audiences": [
+        "adult"
+      ],
       "population": "67 studies; participants were predominantly young men.",
-      "keywords": ["weekly sets", "volume", "dose response", "diminishing returns", "indirect sets"],
+      "keywords": [
+        "weekly sets",
+        "volume",
+        "dose response",
+        "diminishing returns",
+        "indirect sets"
+      ],
       "summary": "Higher weekly volume was associated with greater strength and muscle gains, with diminishing returns. Fractional accounting of indirect work fit these analyses better than counting every indirect set fully or ignoring it.",
       "limits": "These group-level models do not identify an individual's best set count, justify unlimited volume, or validate the app's particular muscle weights. Abstract review only.",
-      "review": {"status": "abstract-reviewed", "checkedOn": "2026-10-08", "note": "Publisher abstract reviewed; subscription full text not accessed."},
-      "rights": {"content": "original-summary", "sourceTextRedistributed": false},
+      "review": {
+        "status": "abstract-reviewed",
+        "checkedOn": "2026-10-08",
+        "note": "Publisher abstract reviewed; subscription full text not accessed."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false
+      },
       "enabled": true
     },
     {
@@ -55,13 +100,28 @@
       "title": "Robinson and colleagues 2024 proximity to failure",
       "url": "https://pubmed.ncbi.nlm.nih.gov/38970765/",
       "doi": "10.1007/s40279-024-02069-2",
-      "audiences": ["adult"],
+      "audiences": [
+        "adult"
+      ],
       "population": "Resistance-training studies analyzed using estimated repetitions in reserve.",
-      "keywords": ["rir", "reps left", "repetitions in reserve", "failure", "effort"],
+      "keywords": [
+        "rir",
+        "reps left",
+        "repetitions in reserve",
+        "failure",
+        "effort"
+      ],
       "summary": "Muscle growth was associated with sets ending closer to failure, while strength gains showed little relationship to estimated repetitions in reserve in these analyses.",
       "limits": "The analyses were exploratory, used estimated RIR and had modest fit. They do not establish an exact ideal RIR or require every set to reach failure. RIR cannot establish medical readiness.",
-      "review": {"status": "abstract-reviewed", "checkedOn": "2026-10-08", "note": "PubMed abstract reviewed; full paper not reviewed."},
-      "rights": {"content": "original-summary", "sourceTextRedistributed": false},
+      "review": {
+        "status": "abstract-reviewed",
+        "checkedOn": "2026-10-08",
+        "note": "PubMed abstract reviewed; full paper not reviewed."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false
+      },
       "enabled": true
     },
     {
@@ -70,13 +130,30 @@
       "title": "Iversen and colleagues 2021 time-efficient training",
       "url": "https://link.springer.com/article/10.1007/s40279-021-01490-1",
       "doi": "10.1007/s40279-021-01490-1",
-      "audiences": ["adult"],
+      "audiences": [
+        "adult"
+      ],
       "population": "Narrative review for time-limited adults; much of the cited research used untrained or recreationally active participants.",
-      "keywords": ["limited time", "short sessions", "time efficient", "push pull", "time budget"],
+      "keywords": [
+        "limited time",
+        "short sessions",
+        "time efficient",
+        "push pull",
+        "time budget"
+      ],
       "summary": "When time is limited, this review prioritizes major lower-body, pushing and pulling movements. Lower-volume training can be useful, while maximizing gains may require more work and time.",
       "limits": "A narrative synthesis does not validate these app templates or guarantee the same results from a brief starter and a longer program. Do not remove necessary rest or technique practice to fit a timer.",
-      "review": {"status": "abstract-and-selected-sections", "checkedOn": "2026-10-08", "note": "Publisher abstract, scope and rights sections reviewed; not every cited trial."},
-      "rights": {"content": "original-summary", "sourceTextRedistributed": false, "sourceLicense": "CC-BY-4.0", "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"},
+      "review": {
+        "status": "abstract-and-selected-sections",
+        "checkedOn": "2026-10-08",
+        "note": "Publisher abstract, scope and rights sections reviewed; not every cited trial."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false,
+        "sourceLicense": "CC-BY-4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+      },
       "enabled": true
     },
     {
@@ -85,13 +162,28 @@
       "title": "Schumann and colleagues 2022 concurrent training",
       "url": "https://pubmed.ncbi.nlm.nih.gov/34757594/",
       "doi": "10.1007/s40279-021-01587-7",
-      "audiences": ["adult"],
+      "audiences": [
+        "adult"
+      ],
       "population": "Healthy adults in 43 studies of supervised concurrent aerobic and resistance training.",
-      "keywords": ["concurrent", "aerobic and strength", "explosive strength", "interference", "hybrid"],
+      "keywords": [
+        "concurrent",
+        "aerobic and strength",
+        "explosive strength",
+        "interference",
+        "hybrid"
+      ],
       "summary": "Combining aerobic and strength training generally retained maximal-strength and muscle-size gains. Explosive-strength gains could be reduced, particularly when both modes occurred in one session.",
       "limits": "The results are not a guarantee for every athlete, workload or event. They do not prove that the app's hybrid schedule optimizes sport performance.",
-      "review": {"status": "abstract-reviewed", "checkedOn": "2026-10-08", "note": "PubMed abstract reviewed; full paper not reviewed in this milestone."},
-      "rights": {"content": "original-summary", "sourceTextRedistributed": false},
+      "review": {
+        "status": "abstract-reviewed",
+        "checkedOn": "2026-10-08",
+        "note": "PubMed abstract reviewed; full paper not reviewed in this milestone."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false
+      },
       "enabled": true
     },
     {
@@ -100,13 +192,29 @@
       "title": "AAP 2020 youth resistance-training guidance",
       "url": "https://www.healthychildren.org/English/news/Pages/Guidance-on-Resistance-Training-for-Children.aspx",
       "doi": "10.1542/peds.2020-1011",
-      "audiences": ["youth"],
+      "audiences": [
+        "youth"
+      ],
       "population": "Children and adolescents; developmentally appropriate training.",
-      "keywords": ["youth", "children", "adolescent", "supervision", "technique", "training age"],
+      "keywords": [
+        "youth",
+        "children",
+        "adolescent",
+        "supervision",
+        "technique",
+        "training age"
+      ],
       "summary": "Youth resistance training requires appropriate technique and supervision. Experience and demonstrated competence matter alongside chronological age; a completed log cannot show whether technique was sound.",
       "limits": "The official AAP summary was reviewed because the journal page failed retrieval. This note cannot replace qualified supervision or authorize automatic youth load progression.",
-      "review": {"status": "official-summary", "checkedOn": "2026-10-08", "note": "AAP HealthyChildren summary reviewed; journal page unavailable this pass."},
-      "rights": {"content": "original-summary", "sourceTextRedistributed": false},
+      "review": {
+        "status": "official-summary",
+        "checkedOn": "2026-10-08",
+        "note": "AAP HealthyChildren summary reviewed; journal page unavailable this pass."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false
+      },
       "enabled": true
     },
     {
@@ -114,13 +222,28 @@
       "evidenceId": "NHS-C25K",
       "title": "NHS Couch to 5K running plan",
       "url": "https://www.nhs.uk/better-health/get-active/get-running-with-couch-to-5k/couch-to-5k-running-plan/",
-      "audiences": ["adult"],
+      "audiences": [
+        "adult"
+      ],
       "population": "A public beginner run/walk schedule; not a trial of Movefield's templates.",
-      "keywords": ["run walk", "couch to 5k", "beginner running", "rest days", "30 minutes"],
+      "keywords": [
+        "run walk",
+        "couch to 5k",
+        "beginner running",
+        "rest days",
+        "30 minutes"
+      ],
       "summary": "The NHS sequence uses three weekly runs over nine weeks, with a rest day between runs. Its final running target is thirty minutes; the title does not guarantee a particular distance.",
       "limits": "The app's other run/walk and hybrid templates are not automatically the NHS sequence. A past log does not justify faster stages, catch-up distance or training through symptoms.",
-      "review": {"status": "official-schedule", "checkedOn": "2026-10-08", "note": "Official current schedule and final-week target reviewed."},
-      "rights": {"content": "original-summary", "sourceTextRedistributed": false},
+      "review": {
+        "status": "official-schedule",
+        "checkedOn": "2026-10-08",
+        "note": "Official current schedule and final-week target reviewed."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false
+      },
       "enabled": true
     },
     {
@@ -128,13 +251,28 @@
       "evidenceId": "WHO-2020",
       "title": "WHO adult physical-activity guidance",
       "url": "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
-      "audiences": ["adult"],
+      "audiences": [
+        "adult"
+      ],
       "population": "This note summarizes adult health guidance; older adults need additional balance and functional work.",
-      "keywords": ["health activity", "aerobic activity", "physical activity", "whole week", "health guidelines"],
+      "keywords": [
+        "health activity",
+        "aerobic activity",
+        "physical activity",
+        "whole week",
+        "health guidelines"
+      ],
       "summary": "Adult health guidance combines aerobic activity with muscle-strengthening activity. A resistance-only workout or brief movement starter may cover only part of the recommended weekly activity.",
       "limits": "A single workout cannot establish compliance with a whole week's guidance. This short note does not cover youth, pregnancy, disability adaptations or an individual's clinical needs.",
-      "review": {"status": "official-guidance", "checkedOn": "2026-10-08", "note": "WHO current age-group summary reviewed; only adult scope summarized here."},
-      "rights": {"content": "original-summary", "sourceTextRedistributed": false},
+      "review": {
+        "status": "official-guidance",
+        "checkedOn": "2026-10-08",
+        "note": "WHO current age-group summary reviewed; only adult scope summarized here."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false
+      },
       "enabled": true
     },
     {
@@ -143,14 +281,226 @@
       "title": "Plotkin and colleagues 2022 load or repetition progression",
       "url": "https://peerj.com/articles/14142/",
       "doi": "10.7717/peerj.14142",
-      "audiences": ["adult"],
+      "audiences": [
+        "adult"
+      ],
       "population": "Population details await successful primary-text review.",
-      "keywords": ["repetition progression", "fixed load", "progressive overload"],
+      "keywords": [
+        "repetition progression",
+        "fixed load",
+        "progressive overload"
+      ],
       "summary": "",
       "limits": "Do not use this entry to assert indefinite progress at fixed load or equivalence across all populations and outcomes.",
-      "review": {"status": "bibliography-only", "checkedOn": "2026-10-08", "note": "Publisher returned 403; PubMed returned an incomplete page and PMC a browser-check page. No safeguard bypassed. Disabled until usable primary content is reviewed."},
-      "rights": {"content": "bibliographic-facts-only", "sourceTextRedistributed": false},
+      "review": {
+        "status": "bibliography-only",
+        "checkedOn": "2026-10-08",
+        "note": "Publisher returned 403; PubMed returned an incomplete page and PMC a browser-check page. No safeguard bypassed. Disabled until usable primary content is reviewed."
+      },
+      "rights": {
+        "content": "bibliographic-facts-only",
+        "sourceTextRedistributed": false
+      },
       "enabled": false
+    },
+    {
+      "id": "load-goal",
+      "evidenceId": "CURRIER-2023",
+      "title": "Currier and colleagues 2023 resistance-training prescriptions",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37414459/",
+      "doi": "10.1136/bjsports-2023-106807",
+      "audiences": [
+        "adult"
+      ],
+      "population": "Healthy adults: strength network 178 studies and 5,097 participants; hypertrophy network 119 studies and 3,364 participants.",
+      "keywords": [
+        "heavy loads",
+        "one repetition maximum",
+        "multiset",
+        "load specificity"
+      ],
+      "summary": "All studied resistance-training prescriptions improved strength and muscle size compared with no exercise. Higher loads favored maximal-strength outcomes; multiple sets featured in the highest-ranked muscle-growth prescriptions.",
+      "limits": "Network rankings compare groups and include indirect comparisons. They do not require a novice to test a maximum, prove one app plan is best, or establish an individual starting load.",
+      "enabled": true,
+      "review": {
+        "status": "abstract-reviewed",
+        "checkedOn": "2026-10-09",
+        "note": "Primary bibliographic record and abstract reviewed via PubMed/Europe PMC; not a full-text or trial-by-trial critical appraisal."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false
+      }
+    },
+    {
+      "id": "rest-intervals",
+      "evidenceId": "SINGER-2024-REST",
+      "title": "Singer and colleagues 2024 rest-interval review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39205815/",
+      "doi": "10.3389/fspor.2024.1429789",
+      "audiences": [
+        "adult"
+      ],
+      "population": "Nine randomized studies in healthy adults, with 19 muscle-size measurements.",
+      "keywords": [
+        "rest intervals",
+        "inter-set",
+        "short rest",
+        "longer rest"
+      ],
+      "summary": "The analysis suggested a small muscle-growth advantage for rests longer than sixty seconds, with substantial uncertainty and overlapping estimates. It did not detect appreciable added hypertrophy differences beyond ninety seconds.",
+      "limits": "This is not a universal rest cap. Heavy strength work, breathlessness, technique and preserving repetitions may require more rest. The analysis does not justify rushing sets to fit a timer.",
+      "enabled": true,
+      "review": {
+        "status": "abstract-reviewed",
+        "checkedOn": "2026-10-09",
+        "note": "Primary bibliographic record and abstract reviewed via PubMed/Europe PMC; not a full-text or trial-by-trial critical appraisal."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false
+      }
+    },
+    {
+      "id": "superset-tradeoffs",
+      "evidenceId": "ZHANG-2025-SUPERSET",
+      "title": "Zhang and colleagues 2025 superset review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39903375/",
+      "doi": "10.1007/s40279-025-02176-8",
+      "audiences": [
+        "adult"
+      ],
+      "population": "Nineteen studies involving 313 participants; pooled acute and chronic outcomes.",
+      "keywords": [
+        "supersets",
+        "paired exercises",
+        "agonist antagonist",
+        "time efficiency"
+      ],
+      "summary": "Supersets shortened sessions and generally produced similar pooled strength and muscle-growth outcomes, while perceived effort increased. Pairing opposing muscle groups preserved work better than pairing similar movements.",
+      "limits": "The chronic evidence is limited and not every pairing is equivalent. No automatic superset conversion is implied; preserve equipment access, technique and recovery, especially for demanding lifts.",
+      "enabled": true,
+      "review": {
+        "status": "abstract-reviewed",
+        "checkedOn": "2026-10-09",
+        "note": "Primary bibliographic record and abstract reviewed via PubMed/Europe PMC; not a full-text or trial-by-trial critical appraisal."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false
+      }
+    },
+    {
+      "id": "regional-length",
+      "evidenceId": "VAROVIC-2025-LENGTH",
+      "title": "Varovic and colleagues 2025 muscle-length and regional-growth review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40570881/",
+      "doi": "10.1055/a-2615-4935",
+      "audiences": [
+        "adult"
+      ],
+      "population": "Twelve studies in young adults; regional muscle-growth measures.",
+      "keywords": [
+        "muscle length",
+        "regional hypertrophy",
+        "stretched position"
+      ],
+      "summary": "Longer and shorter average muscle-length conditions produced broadly similar pooled regional growth, with small estimated differences. The modest separation between compared muscle lengths limits interpretation.",
+      "limits": "This does not settle all exercise choices or prove that stretching farther is better. It does not assess painful ranges, injury rehabilitation, every muscle, or an individual technique.",
+      "enabled": true,
+      "review": {
+        "status": "abstract-reviewed",
+        "checkedOn": "2026-10-09",
+        "note": "Primary bibliographic record and abstract reviewed via PubMed/Europe PMC; not a full-text or trial-by-trial critical appraisal."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false
+      }
+    },
+    {
+      "id": "lengthened-partials",
+      "evidenceId": "WOLF-2025-PARTIAL",
+      "title": "2025 lengthened-partial and full-range trial",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39959841/",
+      "doi": "10.7717/peerj.18904",
+      "audiences": [
+        "adult"
+      ],
+      "population": "Thirty healthy resistance-trained participants; eight-week within-person upper-body comparison.",
+      "keywords": [
+        "lengthened partials",
+        "full range",
+        "range of motion"
+      ],
+      "summary": "Lengthened partial and full-range repetitions produced similar elbow-muscle thickness and lat-pulldown strength-endurance changes in this trial. Both conditions included work in the lengthened position.",
+      "limits": "The result is specific to this small, short upper-body trial. It does not validate all shortened-range movements, lower-body prescriptions, rehabilitation, or automatic changes to accepted exercise technique.",
+      "enabled": true,
+      "review": {
+        "status": "abstract-reviewed",
+        "checkedOn": "2026-10-09",
+        "note": "Primary bibliographic record and abstract reviewed via PubMed/Europe PMC; not a full-text or trial-by-trial critical appraisal."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false
+      }
+    },
+    {
+      "id": "periodization-context",
+      "evidenceId": "MOESGAARD-2022-PERIOD",
+      "title": "Moesgaard and colleagues 2022 volume-matched periodization",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35044672/",
+      "doi": "10.1007/s40279-021-01636-1",
+      "audiences": [
+        "adult"
+      ],
+      "population": "Thirty-five resistance-training studies comparing volume-matched periodization models.",
+      "keywords": [
+        "periodization",
+        "undulating",
+        "linear periodization"
+      ],
+      "summary": "Periodized training favored maximal strength over non-periodized training, without a clear muscle-growth difference. Undulating models favored strength mainly among trained participants in subgroup analyses.",
+      "limits": "These small pooled differences do not mean that complexity is required for beginners or that one named routine is superior. The 2026 linear-versus-undulating synthesis reports similar pooled athletic outcomes; populations and outcomes differ.",
+      "enabled": true,
+      "review": {
+        "status": "abstract-reviewed",
+        "checkedOn": "2026-10-09",
+        "note": "Primary bibliographic record and abstract reviewed via PubMed/Europe PMC; not a full-text or trial-by-trial critical appraisal."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false
+      }
+    },
+    {
+      "id": "women-response",
+      "evidenceId": "MOLINARI-2024-WOMEN",
+      "title": "Molinari and colleagues 2024 training in healthy young women",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38090747/",
+      "doi": "10.1519/jsc.0000000000004666",
+      "audiences": [
+        "adult"
+      ],
+      "population": "Forty articles involving 1,312 healthy women aged eighteen to thirty-five.",
+      "keywords": [
+        "women",
+        "female",
+        "healthy young women"
+      ],
+      "summary": "Resistance training improved strength and muscle-size outcomes in healthy young women. The review associated more training sessions with muscle-size changes; prescription moderators do not establish an individual optimum.",
+      "limits": "The search ended in May 2022. Findings do not set sex-specific starting loads, justify automatic workload increases, or cover pregnancy, older women and clinical populations.",
+      "enabled": true,
+      "review": {
+        "status": "abstract-reviewed",
+        "checkedOn": "2026-10-09",
+        "note": "Primary bibliographic record and abstract reviewed via PubMed/Europe PMC; not a full-text or trial-by-trial critical appraisal."
+      },
+      "rights": {
+        "content": "original-summary",
+        "sourceTextRedistributed": false
+      }
     }
   ]
 }

@@ -99,7 +99,7 @@
     {
       "source": "lib/program-evidence.ts",
       "target": "src/shared/program-evidence.ts",
-      "sha256": "770c094b04fbabac17972958133a6c362bb43d412b5e288fbee952544329c1f4"
+      "sha256": "164ca01cc460922089a9ddf0d681edd59a3aa8a9c69c210da9291687f9318860"
     },
     {
       "source": "lib/saved-data.ts",
@@ -169,7 +169,7 @@
     {
       "source": "lib/fitness-reference.json",
       "target": "src/shared/fitness-reference.json",
-      "sha256": "00914a7a9a417ae0ef20cc45bc8eeffe258f2d5f79ce23f5cd369ae853dc91cd"
+      "sha256": "4b802db8ac033ac6b1256376f9aa4ddf80ff049734a5583f0581e2bb03ed1c04"
     },
     {
       "source": "lib/fitness-grounding.ts",
@@ -179,7 +179,17 @@
     {
       "source": "lib/qwen-evaluation-lock.json",
       "target": "src/shared/qwen-evaluation-lock.json",
-      "sha256": "114932e96feb85d49b4a914e87ed1ccd741bbfc8a631f6d94d4a3532159d220f"
+      "sha256": "f704870ed1cc19799abdf7f30cc2d67950e66224d054835380f1f6ee418881fc"
+    },
+    {
+      "source": "lib/research-library.ts",
+      "target": "src/shared/research-library.ts",
+      "sha256": "fac5dbc8a09fb4c4ba80cf147b535cd9f003b0d968b202ec4bf230722b770d32"
+    },
+    {
+      "source": "public/fitness-research.json",
+      "target": "assets/content/fitness-research.json",
+      "sha256": "437f2724162639849949aed8f6b47b0f8ab1eac88da1e0d4535920d2eebaa757"
     }
   ]
 }

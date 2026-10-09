@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "evaluationVersion": "movefield-fitness-eval-v1",
-  "corpusVersion": "fitness-reference-v1",
+  "corpusVersion": "fitness-reference-v2",
   "policy": "workout-evidence-selection-v1",
-  "corpusSha256": "00914a7a9a417ae0ef20cc45bc8eeffe258f2d5f79ce23f5cd369ae853dc91cd",
+  "corpusSha256": "4b802db8ac033ac6b1256376f9aa4ddf80ff049734a5583f0581e2bb03ed1c04",
   "contractSha256": "544d6ab38b7da08cd903e22591e18268d1eb2425222d49705fb5e76e191cddd3",
-  "suiteSha256": "2570de4fb05fb34c94a8f6dc6dbe383196cf2603513acf2605d21b8c979f9939"
+  "suiteSha256": "87c2e9b67cec2e41c14512347ada07de42a500446bf1c18bda1cdb24fc56ba0d"
 }

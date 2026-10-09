@@ -1,12 +1,12 @@
 # Movefield saved task list
 
-Last updated: 8 October 2026. Read `AGENTS.md` and the current `HANDOFF.md` section first. This list sequences the approved audit and repairs; it does not remove requirements from `docs/product-requirements.md`.
+Last updated: 9 October 2026. Read `AGENTS.md` and the current `HANDOFF.md` section first. This list sequences the approved audit and repairs; it does not remove requirements from `docs/product-requirements.md`.
 
 Repository: `https://github.com/ghinz32-cloud/movefield.git`.
 GitHub review branch: `audit/2026-10-08-quality`; draft PR #1 targets `main`.
-Last verified GitHub checkpoint: `8cd39e42f2178b807d63af2042b70481041b028b`. Integration baseline: `9d7c13ed6352e74c0a7766bd2d80fb524a5b709f`. Current independent checkout `/workspace/scratch/855d6d943ad0/movefield` on `audit/2026-10-08-continue`, tracking the GitHub review branch. Cleanup removed the older worktrees’ base Git metadata; preserved source matched all 11 U08a1 fingerprints and was checkpointed at `5c117e4fb3ea490326cb92be8a8bb377f564c409`. Current U08a2 application is `65232aae0fab994f00ca725497caf39886e5d027`. Original local commit/staging state is unavailable; older source directories were not modified. Recovered source is now pushed at `3681258a6095d977e67b0f1d8c6fadfd135fbff1`; standing push permission supersedes the earlier rejection.
+Last verified GitHub checkpoint before U13: `8da26f2fd8dc859947b0c29195ac8b3d5fc69501`. Integration baseline: `9d7c13ed6352e74c0a7766bd2d80fb524a5b709f`. Current independent checkout `/workspace/scratch/855d6d943ad0/movefield` on `audit/2026-10-08-continue`, tracking the GitHub review branch. Cleanup removed the older worktrees’ base Git metadata; preserved source matched all 11 U08a1 fingerprints and was checkpointed at `5c117e4fb3ea490326cb92be8a8bb377f564c409`. Current U08a2 application is `65232aae0fab994f00ca725497caf39886e5d027`. Original local commit/staging state is unavailable; older source directories were not modified. Recovered source is now pushed at `3681258a6095d977e67b0f1d8c6fadfd135fbff1`; standing push permission supersedes the earlier rejection.
 
-U13 is next/current after the checked U12 UI checkpoint. The latest request expands the audit to full web/native usability, workout evidence and variety, practical Qwen integration, durable storage selection and website/Android release readiness. Repository refs and the clean documentation checkpoint were reverified before starting U01. If a milestone is blocked, record the blocker and checkpoint before selecting another independent task.
+U13 is checked in this checkpoint; U14 is next. The latest request expands the audit to full web/native usability, workout evidence and variety, practical Qwen integration, durable storage selection and website/Android release readiness. Repository refs and the clean documentation checkpoint were reverified before starting U01. If a milestone is blocked, record the blocker and checkpoint before selecting another independent task.
 
 | ID | State | Independently testable milestone | Completion evidence |
 | --- | --- | --- | --- |
@@ -29,7 +29,7 @@ Standing authorization: **always push completed work**. The recovered source was
 | ID | State | Milestone | Acceptance |
 | --- | --- | --- | --- |
 | U12 | Implementation complete — phone acceptance pending | Calm web/phone UI; Today first; setup/account-entry and workout selection | Smaller default visual density without shrinking touch targets; secondary content disclosed; sample recovery fixed; real authentication limits clear; focused flow tests, web/native types/lint, visual web review |
-| U13 | In progress | Search and curate hundreds of recent exercise-science papers and forum feedback | Deduplicated primary-source metadata/abstract screening with queries/dates/limits, selected original evidence notes mapped to plans; actual review levels distinct; forum themes sourced, not prevalence claims |
+| U13 | Complete — critical appraisal remains scoped | Search and curate hundreds of recent exercise-science papers and forum feedback | Deduplicated primary-source metadata/abstract screening with queries/dates/limits, selected original evidence notes mapped to plans; actual review levels distinct; forum themes sourced, not prevalence claims |
 | U14 | Queued | Expand public named-program library | Source-attributed factual program structures with original app wording; scheduling/progression/equipment and adult/youth constraints tested; no paid books or copied commercial instructions |
 | U08b | Queued after UI/evidence | Working Qwen demo and default prompt | Verified cached-asset runtime loading, grounded task contract, cancellation/errors, real execution evidence where supported; training dataset/tooling and completed weight training distinct |
 
@@ -74,11 +74,11 @@ Accounts and cloud sync, complete reusable block editing, sport/event/season pro
 
 ## Current limitations
 
-- Automatic approval review rejected the U04b GitHub push. Last independently verified remote is `8cd39e42f2178b807d63af2042b70481041b028b`; U04b is local `8229f76f45fa47518e5f201bb34139db991250b0`. Do not claim local checkpoints were pushed or retry by another route. Request explicit push approval for the completed concrete commit range.
+- Historical U04b push rejection was superseded by explicit standing user permission. Recovered work and U12 were pushed and independently verified; continue publishing checked milestones to the audit branch.
 - GHSA-vfj7-8cjw-p6xm and GHSA-86w9-cpqp-85rv remain release blockers; temporary CI exceptions expire 8 November 2026.
 - M02/M03 interrupted-restore recovery passes injected fresh-instance persistence tests; actual browser/phone storage and OS-interruption acceptance remains unverified.
 - U06 pins seven Qwen candidates; U07 adds the reference/strict selection/evaluation foundation; U08a1 adds the tested browser cache/download service. U08a2 now wires explicit opt-in/file controls and the exact network policy. No weights were downloaded and no model runs in either app. Secure-browser download acceptance, U08b actual worker inference/measurements and U09 native integration remain required.
-- Supervised preview works for sample UI; U08a2 Settings/Off/keyboard-close and existing dark/130% text were observed. Its HTTP origin blocks Web Crypto/model downloads and real saved-profile flows. Existing sample entry shows an inherited save-paused notice to review. No physical-phone, 200% zoom or secure download acceptance is claimed.
+- Supervised preview works for sample UI; U08a2 Settings/Off/keyboard-close and existing dark/130% text were observed. Its HTTP origin blocks Web Crypto/model downloads and real saved-profile flows. U12 corrected the sample-entry save-paused notice. No physical-phone, 200% zoom or secure download acceptance is claimed.
 - No direct messaging connection to bro is exposed. Branches were verified through GitHub instead.
 - No merge into `main` or live deployment has occurred.
 

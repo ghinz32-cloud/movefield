@@ -3,13 +3,13 @@
 export const disciplineEvidence: Record<string, {label: string; keys: string[]}> = {
   powerlifting: {label: 'Powerlifting', keys: ['SCHOENFELD-2017-LOAD', 'PETERSON-2004', 'SUCHOMEL-2018-STRENGTH', 'WILLIAMS-2017-PERIODIZED', 'PELLAND-2026-DOSE', 'GRGIC-2018-FREQ-STRENGTH', 'PL-EXPERT']},
   powerbuilding: {label: 'Powerbuilding', keys: ['SCHOENFELD-2017-LOAD', 'WILLIAMS-2017-PERIODIZED', 'PELLAND-2026-DOSE', 'SCHOENFELD-2019-FREQ', 'SCHOENFELD-2017-VOLUME', 'REFALO-2023-FAILURE', 'PB-EXPERT']},
-  hypertrophy: {label: 'Bodybuilding and muscle building', keys: ['PELLAND-2026-DOSE', 'SCHOENFELD-2019-FREQ', 'SCHOENFELD-2017-VOLUME', 'REFALO-2023-FAILURE', 'SCHOENFELD-2016-REST', 'GRGIC-2017-REST', 'REP-PROGRESSION', 'ACSM-2026']},
-  strength: {label: 'Strength', keys: ['SCHOENFELD-2017-LOAD', 'SUCHOMEL-2018-STRENGTH', 'WILLIAMS-2017-PERIODIZED', 'PELLAND-2026-DOSE', 'ACSM-2026']},
+  hypertrophy: {label: 'Bodybuilding and muscle building', keys: ['PELLAND-2026-DOSE', 'SCHOENFELD-2019-FREQ', 'SCHOENFELD-2017-VOLUME', 'REFALO-2023-FAILURE', 'ZHANG-2025-SUPERSET', 'VAROVIC-2025-LENGTH', 'WOLF-2025-PARTIAL', 'MOLINARI-2024-WOMEN', 'SCHOENFELD-2016-REST', 'GRGIC-2017-REST', 'REP-PROGRESSION', 'ACSM-2026', 'CURRIER-2023', 'SINGER-2024-REST', 'MOESGAARD-2022-PERIOD']},
+  strength: {label: 'Strength', keys: ['SCHOENFELD-2017-LOAD', 'SUCHOMEL-2018-STRENGTH', 'WILLIAMS-2017-PERIODIZED', 'PELLAND-2026-DOSE', 'ACSM-2026', 'CURRIER-2023', 'SINGER-2024-REST', 'MOESGAARD-2022-PERIOD']},
   sport: {label: 'Sport performance', keys: ['WISLOFF-2004', 'SUCHOMEL-2018-STRENGTH', 'STOJANOVIC-2017', 'MARKOVIC-2007']},
   running: {label: 'Running', keys: ['NHS-C25K', 'CONCURRENT']},
   hybrid: {label: 'Hybrid strength and running', keys: ['CONCURRENT', 'SCHOENFELD-2019-FREQ', 'WHO-2020']},
   calisthenics: {label: 'Calisthenics', keys: ['ACSM-2026', 'REP-PROGRESSION', 'WHO-2020']},
-  general: {label: 'General fitness', keys: ['WHO-2020', 'ACSM-2026']},
+  general: {label: 'General fitness', keys: ['WHO-2020', 'ACSM-2026', 'CURRIER-2023', 'SINGER-2024-REST', 'MOESGAARD-2022-PERIOD']},
   jumping: {label: 'Jump practice', keys: ['MARKOVIC-2007', 'STOJANOVIC-2017']},
   // IOC-YOUTH is not mapped here: it does not address maximal lifts, testing or supervision, which these plans rely on.
   youth: {label: 'Youth training', keys: ['AAP-2020', 'NSCA-YOUTH', 'LLOYD-2016-LTAD']},
