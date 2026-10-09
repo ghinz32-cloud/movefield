@@ -1,5 +1,6 @@
 import type { BackendEnvironment } from "./auth";
 import { ApiError, dailyFeedbackSchema, digestJson, jsonResponse, MAX_FEEDBACK_BYTES, readJson, type DailyFeedbackRequest } from "./contracts";
+import { AI_CAPACITY_SQL, aiCapacityBindings, expireAbandonedAiJobs } from "./ai-quota";
 
 export const PROVIDER_TIMEOUT_MS = 8_000;
 const LEASE_MS = 25_000;
@@ -15,7 +16,7 @@ export function providerAvailable(environment: BackendEnvironment): boolean {
   return providerConfiguration(environment) !== null;
 }
 
-function providerConfiguration(environment: BackendEnvironment): { endpoint: string; secret: string; model: string } | null {
+export function providerConfiguration(environment: BackendEnvironment): { endpoint: string; secret: string; model: string } | null {
   if (!environment.MOVEFIELD_AI_API_KEY || !environment.MOVEFIELD_AI_MODEL || environment.MOVEFIELD_AI_MODEL.length > 150) return null;
   try {
     const url = new URL(environment.MOVEFIELD_AI_BASE_URL ?? "");
@@ -52,16 +53,12 @@ export async function requestFeedback(request: Request, db: D1DatabaseSession, o
   }
   if (!providerAvailable(environment)) throw new ApiError(503, "feedback_provider_unavailable");
   const now = Date.now();
-  // Abandoned jobs must not permanently consume every outstanding slot.
-  await db.prepare(`UPDATE daily_ai_feedback SET status = 'failed', metrics_json = '[]', error_code = 'feedback_request_expired',
-    lease_token = NULL, lease_until = 0, updated_at = ? WHERE owner_id = ? AND status IN ('pending', 'processing')
-    AND created_at < ? AND lease_until <= ?`).bind(now, owner, now - 86_400_000, now).run();
+  await expireAbandonedAiJobs(db, owner, now);
   await db.prepare(`INSERT INTO daily_ai_feedback(owner_id, request_id, workout_id, digest, metrics_json, completed_at, status, created_at, updated_at)
     SELECT ?, ?, ?, ?, ?, ?, 'pending', ?, ?
-    WHERE (SELECT COUNT(*) FROM daily_ai_feedback WHERE owner_id = ? AND created_at >= ?) < 12
-    AND (SELECT COUNT(*) FROM daily_ai_feedback WHERE owner_id = ? AND status IN ('pending', 'processing')) < 4
+    WHERE ${AI_CAPACITY_SQL}
     ON CONFLICT(owner_id, request_id) DO NOTHING`)
-    .bind(owner, payload.requestId, payload.workoutId, digest, JSON.stringify(payload.metrics), payload.completedAt, now, now, owner, now - 86_400_000, owner).run();
+    .bind(owner, payload.requestId, payload.workoutId, digest, JSON.stringify(payload.metrics), payload.completedAt, now, now, ...aiCapacityBindings(owner, now)).run();
   const saved = await getFeedback(db, owner, payload.requestId);
   if (!saved) throw new ApiError(429, "feedback_rate_limit");
   if (saved.digest !== digest) throw new ApiError(409, "idempotency_conflict");

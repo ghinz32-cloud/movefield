@@ -9,8 +9,12 @@ function load(file) {
   const full = path.resolve(file);
   if (cache.has(full)) return cache.get(full).exports;
   const module = { exports: {} }; cache.set(full, module);
-  const code = ts.transpileModule(fs.readFileSync(full, 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText;
-  new Function('require', 'module', 'exports', code)(name => name.startsWith('.') ? load(path.resolve(path.dirname(full), name + '.ts')) : require(name), module, module.exports);
+  const code = ts.transpileModule(fs.readFileSync(full, 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, esModuleInterop: true } }).outputText;
+  new Function('require', 'module', 'exports', code)(name => {
+    if (!name.startsWith('.')) return require(name);
+    const file = path.resolve(path.dirname(full), path.extname(name) ? name : name + '.ts');
+    return file.endsWith('.json') ? JSON.parse(fs.readFileSync(file, 'utf8')) : load(file);
+  }, module, module.exports);
   return module.exports;
 }
 const { handleBackendRequest } = load('server/api.ts');
@@ -36,7 +40,7 @@ function providerReply(text = 'You recorded your completed sets. Keep referring 
   const actualNow = Date.now;
   try {
     const DB = await mf.getD1Database('DB');
-    await DB.exec(fs.readFileSync('drizzle/0000_account_sync.sql', 'utf8').replace(/--> statement-breakpoint/g, '').replace(/\n/g, ' '));
+    for (const file of fs.readdirSync('drizzle').filter(name => /^\d{4}_.+\.sql$/.test(name)).sort()) await DB.exec(fs.readFileSync(path.join('drizzle', file), 'utf8').replace(/--> statement-breakpoint/g, '').replace(/\n/g, ' '));
     const environment = { DB, MOVEFIELD_TRUST_SITES_AUTH: '1' };
     const tasks = [];
     const invoke = (req, env = environment) => handleBackendRequest(req, env, promise => tasks.push(promise));

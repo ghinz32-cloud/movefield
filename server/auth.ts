@@ -9,7 +9,7 @@ export function requireOwner(request: Request, environment: BackendEnvironment):
   if (request.method !== "GET" && origin !== url.origin) throw new ApiError(403, "same_origin_required");
   const owner = request.headers.get("oai-authenticated-user-id"); const email = request.headers.get("oai-authenticated-user-email");
   if (!owner || owner.length > 256 || /[\s\u0000-\u001f\u007f]/u.test(owner) || !email || email.length > 320) throw new ApiError(401, "sign_in_required");
-  if (["GET", "POST"].includes(request.method) && ["/api/sync", "/api/daily-feedback"].includes(url.pathname)) {
+  if (["GET", "POST"].includes(request.method) && ["/api/sync", "/api/daily-feedback", "/api/workout-coaching"].includes(url.pathname)) {
     const expected = request.headers.get("x-movefield-expected-account");
     if (!expected) throw new ApiError(403, "account_binding_required");
     // This precondition only rejects a changed signed-in account. The trusted

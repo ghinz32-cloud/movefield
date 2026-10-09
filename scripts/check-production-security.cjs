@@ -1,4 +1,12 @@
 const {createRequire}=require('node:module'),path=require('node:path'),assert=require('node:assert/strict'),fs=require('node:fs');
+// The exact pinned download CSP exceeds Node's default16KiB response parser.
+// Exercise the deployed Workers128KiB boundary; the assertions below still
+// enforce a stricter100KiB CSP ceiling and validate every allowed asset URL.
+if(require('node:http').maxHeaderSize<128*1024){
+ const child=require('node:child_process').spawnSync(process.execPath,['--max-http-header-size=131072',__filename],{stdio:'inherit'});
+ if(child.error)throw child.error;
+ process.exit(child.status??1);
+}
 const r=createRequire(path.resolve('package.json')),w=createRequire(r.resolve('wrangler/package.json')),{Miniflare}=w('miniflare');
 const root=path.resolve('dist/server');
 const files=fs.readdirSync(root,{recursive:true}).filter(x=>/\.m?js$/.test(x)).sort((a,b)=>a==='index.js'?-1:b==='index.js'?1:a.localeCompare(b));
@@ -10,12 +18,16 @@ async function main(){
   const {response:res,bytes}=await request(),body=new TextDecoder().decode(bytes),csp=res.headers.get('Content-Security-Policy'),nonce=csp?.match(/'nonce-([^']+)'/)?.[1];
   assert.equal(res.status,200);assert.ok(nonce);
   const modelPolicy=JSON.parse(fs.readFileSync('lib/qwen-network-policy.json','utf8'));
-  const modelSources=[...new Set(modelPolicy.assets.flatMap(a=>[a.url,a.finalUrl]))];
+  const modelSources=[...new Set([modelPolicy,...modelPolicy.models].flatMap(model=>model.assets.flatMap(a=>[a.url,a.finalUrl])))];
   assert.equal(csp.split('; ').find(s=>s.startsWith('connect-src ')),`connect-src 'self' ${modelSources.join(' ')}`);
   assert.ok(csp.includes("worker-src 'self'")&&!csp.includes("'wasm-unsafe-eval'")&&!csp.includes("'unsafe-eval'"),'page permits same-origin workers without permitting page WASM or JavaScript eval');
+  assert.ok(Buffer.byteLength(csp)<100*1024,'exact CSP remains below documented Workers128KB total-header budget with headroom');
   const runtime=await request('/runtime/qwen-worker.js'),workerPolicy=runtime.response.headers.get('Content-Security-Policy');
   assert.equal(runtime.response.status,200);assert.ok(runtime.bytes.length>10000);
   assert.equal(workerPolicy,"default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'",'worker permits bundled scripts/WASM only, with all network requests and child workers refused');
+  const coaching=await request('/runtime/workout-coaching-worker.js');
+  assert.equal(coaching.response.status,200);assert.ok(coaching.bytes.length>10000);
+  assert.equal(coaching.response.headers.get('Content-Security-Policy'),workerPolicy,'coaching worker shares restrictive transport/WASM policy');
   const scripts=[...body.matchAll(/<script\b([^>]*)>/g)];assert.ok(scripts.length);
   for(const s of scripts)assert.ok(s[1].includes('nonce="'+nonce+'"'),'script missing nonce: '+s[1]);
   assert.notEqual((await request()).response.headers.get('Content-Security-Policy'),csp);

@@ -1,6 +1,6 @@
 import {QwenDownloadError, type QwenAssetFetch} from './qwen-download';
 import {qwenAssetRequestAllowed, qwenAssetResponseAllowed} from './qwen-network-policy';
-export {QWEN_BROWSER_MODEL_ID} from './qwen-network-policy';
+export {QWEN_BROWSER_MODEL_ID,QWEN_BROWSER_MODEL_IDS} from './qwen-network-policy';
 
 // The downloader supplies only a pinned public URL and cancellation signal.
 // Construct the request here rather than forwarding arbitrary payload/options.

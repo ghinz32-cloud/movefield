@@ -1,6 +1,6 @@
 "use client";
 import {createContext,useContext,useEffect,useState,useRef,lazy,Suspense,Component,type ReactNode} from 'react';
-import {defaultPreferences,readPreferences,preferenceKey,type AppPreferences,palettes,fontOptions,modelChoices,textSizeOptions,densityOptions} from '@/lib/app-preferences';
+import {defaultPreferences,readPreferences,preferenceKey,type AppPreferences,palettes,fontOptions,browserModelChoices,browserModelId,textSizeOptions,densityOptions} from '@/lib/app-preferences';
 import {workoutReminders,reminderCalendar} from '@/lib/workout-reminders';
 import type {State} from '@/lib/training';
 import {brand} from '@/lib/brand';
@@ -36,13 +36,12 @@ export function AppearanceSettings(){
 }
 export function ModelSettings(){
  const {p,update,ready}=useAppPreferences(),[open,setOpen]=useState(false);
- if(typeof __MOVEFIELD_PAGES__!=='undefined'&&__MOVEFIELD_PAGES__)return <section className="card"><h2>Local assistant</h2><p className="muted">Qwen downloads and inference are unavailable on this GitHub Pages prototype while worker security and browser compatibility are being verified. Training works without a model.</p></section>;
  return <section className="card model-settings"><p className="eyebrow">OPTIONAL · THIS DEVICE</p><h2>Local assistant</h2>
-  <p className="muted">Manage local model files. Coaching includes an optional Qwen sample review; automatic workout explanations still require device testing.</p>
-  <label className="field"><span>Assistant preference</span><Select disabled={!ready} value={p.model} onValueChange={model=>update({model:model as AppPreferences['model']})}><SelectTrigger aria-label="Assistant preference"><SelectValue/></SelectTrigger><SelectContent>{modelChoices.map(([value,label])=><SelectItem value={value} key={value}>{label}</SelectItem>)}</SelectContent></Select></label>
-  <p className="small-copy">{p.model==='off'?'Assistant is off. Changing this preference never starts a download.':p.model==='auto'?'Automatic explanations need a tested model. You can try the sample explicitly in Coaching.':'Qwen3 0.6B can run the experimental browser sample after you download its files. Choose Review download for the exact size.'}</p>
+  <p className="muted">Choose an optional local model for an explicit review. Qwen3.5 coaching uses recorded performance, attendance and your training profile on this browser. Downloads and use of those records have separate confirmation.</p>
+  <label className="field"><span>Assistant preference</span><Select disabled={!ready} value={p.model} onValueChange={model=>update({model:model as AppPreferences['model']})}><SelectTrigger aria-label="Assistant preference"><SelectValue/></SelectTrigger><SelectContent>{browserModelChoices.map(([value,label])=><SelectItem value={value} key={value}>{label}</SelectItem>)}</SelectContent></Select></label>
+  <p className="small-copy">{browserModelChoices.find(([value])=>value===p.model)?.[2]}</p>
   <Button variant="outline" disabled={!ready} aria-expanded={open} aria-controls="browser-model-files" onClick={()=>setOpen(v=>!v)}>{open?'Close model file controls':'Manage browser model files'}</Button>
-  {open&&<div id="browser-model-files"><ModelFilesBoundary><Suspense fallback={<p role="status" className="small-copy">Opening model file controls…</p>}><QwenModelFiles/></Suspense></ModelFilesBoundary></div>}
+  {open&&<div id="browser-model-files"><ModelFilesBoundary><Suspense fallback={<p role="status" className="small-copy">Opening model file controls…</p>}><QwenModelFiles modelId={browserModelId(p.model)??undefined}/></Suspense></ModelFilesBoundary></div>}
   <p className="small-copy">Plans and workout records work without a language model. Phone model files are managed separately in the phone app.</p>
  </section>;
 }

@@ -17,6 +17,7 @@ export const VAULT_SLOTS = [
   'training-studio-sample-setup',
   'training-studio-security-preview-v1',
   'training-studio-sample-security',
+  'training-studio-workout-coaching-v1',
 ] as const;
 
 export const KEY_MISSING_MESSAGE = 'Your saved training is encrypted with a key that is not in this browser. Nothing was replaced. Restore a transfer file to continue, or start a fresh profile.';

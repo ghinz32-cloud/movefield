@@ -1,14 +1,16 @@
 import policy from './qwen-network-policy.json';
 
 export const QWEN_BROWSER_MODEL_ID = policy.modelId;
+export const QWEN_BROWSER_MODEL_IDS=Object.freeze([policy.modelId,...policy.models.map(model=>model.modelId)]);
+const assets=Object.freeze([policy,...policy.models].flatMap(model=>model.assets));
 // Exact versioned publisher files plus the CDN paths observed with HEAD.
 // No wildcard host, remote API, account endpoint, or WASM execution allowance.
-export const QWEN_CONNECT_SOURCES = Object.freeze([...new Set(policy.assets.flatMap(a => [a.url, a.finalUrl]))]);
+export const QWEN_CONNECT_SOURCES = Object.freeze([...new Set(assets.flatMap(a => [a.url, a.finalUrl]))]);
 export function qwenAssetRequestAllowed(url: string): boolean {
-  return policy.assets.some(asset => asset.url === url);
+  return assets.some(asset => asset.url === url);
 }
 export function qwenAssetResponseAllowed(requestUrl: string, responseUrl: string): boolean {
-  const asset = policy.assets.find(file => file.url === requestUrl);
+  const asset = assets.find(file => file.url === requestUrl);
   if (!asset) return false;
   try {
     const final = new URL(responseUrl);

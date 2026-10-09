@@ -10,20 +10,28 @@ async function rejects(fn,pattern,message){await assert.rejects(fn,pattern,messa
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const templateBytes=await readFile('static-web/sw-template.js'),template=templateBytes.toString('utf8');
 equal(manifest.workerTemplateSha256,hash(templateBytes),'manifest pins original worker-template bytes');
-equal(manifest.version,hash(JSON.stringify({workerTemplateSha256:manifest.workerTemplateSha256,assets:manifest.assets})),'cache version includes worker template and pinned assets');
+equal(manifest.version,hash(JSON.stringify({workerTemplateSha256:manifest.workerTemplateSha256,coachingWorker:manifest.coachingWorker,assets:manifest.assets})),'cache version includes worker template, coaching policy and pinned assets');
 equal(sw,template.replace('__MANIFEST__',JSON.stringify(manifest)),'tests exercise exact generated worker');
 ok(manifest.base==='/movefield/','project base');
 ok(html.indexOf('Content-Security-Policy')<html.indexOf('<script'),'CSP precedes script');
 ok(!html.includes('nonce-')&&!html.includes('unsafe-eval')&&!html.includes('unsafe-inline\'; worker'),'no fixed nonce or unsafe script policy');
 for(const path of Object.keys(manifest.assets)){
- ok(/^\/movefield\/(?:assets\/[\w.-]+\.(?:js|css)|fonts\/[\w.-]+\.(?:ttf|woff2|txt)|(?:index|privacy)\.html|favicon\.svg|(?:exercise-content|exercise-guides|fitness-research)\.json|downloads\/movefield-mobile-r14\.zip|\.nojekyll)$/.test(path),'allowlist '+path);
+ ok(/^\/movefield\/(?:assets\/[\w.-]+\.(?:js|css)|runtime\/[\w.-]+\.js|fonts\/[\w.-]+\.(?:ttf|woff2|txt)|(?:index|privacy)\.html|favicon\.svg|(?:exercise-content|exercise-guides|fitness-research)\.json|downloads\/movefield-mobile-r14\.zip|\.nojekyll)$/.test(path),'allowlist '+path);
  const bytes=await readFile(out+'/'+path.slice(manifest.base.length));ok(createHash('sha256').update(bytes).digest('hex')===manifest.assets[path],'hash '+path);
 }
 async function files(dir){let list=[];for(const n of await readdir(dir)){const p=dir+'/'+n,stat=await lstat(p);ok(!stat.isSymbolicLink(),'no symlinks');list.push(...(stat.isDirectory()?await files(p):[p]));}return list;}
 for(const file of await files(out))ok(Object.hasOwn(manifest.assets,manifest.base+file.slice(out.length+1))||['sw.js','pages-manifest.json'].includes(file.slice(out.length+1)),'no extra asset '+file);
 const scripts=(await Promise.all((await files(out+'/assets')).filter(x=>x.endsWith('.js')).map(x=>readFile(x,'utf8')))).join('\n');
-ok(!scripts.includes('/runtime/qwen-worker.js')&&!scripts.includes('cdn-lfs')&&!scripts.includes('huggingface.co'),'Qwen network/runtime absent');
-ok(scripts.includes('Qwen is unavailable')&&scripts.includes('worker security'),'Qwen limitation visible');
+ok(!scripts.includes('/runtime/qwen-worker.js'),'legacy fictional worker remains disabled on Pages');
+ok(scripts.includes('experimental desktop')&&scripts.includes('Qwen3.5'),'larger model controls visible');
+const policy=JSON.parse(await readFile('lib/qwen-network-policy.json','utf8'));
+const sources=[...new Set([policy,...policy.models].flatMap(model=>model.assets.flatMap(asset=>[asset.url,asset.finalUrl])))];
+ok(html.includes("connect-src 'self' "+sources.join(' ')+';'),'document pins exact model source and redirect paths');
+ok(!html.includes('wasm-unsafe-eval')&&!html.includes('blob:'),'document cannot execute WASM or blob workers');
+ok(new TextEncoder().encode(html.match(/connect-src [^;]+/)?.[0]??'').length<100*1024,'model policy remains below documented response-header budget');
+equal(manifest.coachingWorker,JSON.parse(await readFile('lib/workout-coaching-worker-policy.json','utf8')),'Pages worker policy matches canonical source');
+const coachingKey=manifest.base+manifest.coachingWorker.path;
+ok(Object.hasOwn(manifest.assets,coachingKey),'coaching worker is hash-pinned');
 const css=(await Promise.all((await files(out+'/assets')).filter(x=>x.endsWith('.css')).map(x=>readFile(x,'utf8')))).join('\n');
 ok(!css.includes("url('/fonts/")&&!css.includes('url(/fonts/'),'font paths scoped');
 // Shared origin stores allow multiple generated worker versions to run independently.
@@ -50,7 +58,7 @@ function makeWorker(source,label){
   self:{location:{origin},clients:{async claim(){lifecycleCalls.push({worker:label,action:'claim'});}},
    skipWaiting(){lifecycleCalls.push({worker:label,action:'skipWaiting'});},
    addEventListener(name,fn){handlers[name]=fn;}},
-  caches,crypto:webcrypto,URL,Response,
+  caches,crypto:webcrypto,URL,Response,Headers,
   fetch:async (key,options)=>{
    calls.push({key,options});
    if(offline)throw Error('Offline');
@@ -91,6 +99,14 @@ equal([...stores.get(current).keys()],eager,'all pinned eager entries installed'
 ok(!calls.some(call=>call.key.includes('/downloads/')),'ZIP not eagerly cached');
 equal(lifecycleCalls,[],'install neither forces activation nor claims clients');
 const rows=stores.get(current);
+const coachingResponse=await worker.request(coachingKey);
+equal(coachingResponse.headers.get('Content-Security-Policy'),manifest.coachingWorker.csp,'hash-checked worker carries its restrictive CSP');
+equal(coachingResponse.headers.get('X-Movefield-Pages-Version'),manifest.version,'worker header binds current manifest version');
+equal(coachingResponse.headers.get('X-Movefield-Asset-SHA256'),manifest.assets[coachingKey],'worker header binds checked bytes');
+await matches(coachingResponse,coachingKey,'coaching worker bytes');
+const manifestResponse=await worker.request(manifest.base+'pages-manifest.json');
+equal(manifestResponse.headers.get('X-Movefield-Pages-Version'),manifest.version,'controller manifest carries worker version');
+equal(await manifestResponse.json(),manifest,'controller returns its own exact manifest');
 for(const key of [shell,mainJs]){
  const before=calls.length;
  await matches(await worker.request(key===shell?manifest.base:key,key===shell?{mode:'navigate'}:{}),key,'valid cached '+key);

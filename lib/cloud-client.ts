@@ -3,7 +3,7 @@
 export class CloudError extends Error {
   constructor(public status: number, public code: string, message: string) { super(message); this.name = 'CloudError'; }
 }
-export type CloudAccount = {userId: string; syncAvailable: boolean; feedbackAvailable: boolean; nativeAuthAvailable: boolean; revision: number};
+export type CloudAccount = {userId: string; syncAvailable: boolean; feedbackAvailable: boolean; coachingAvailable?: boolean; nativeAuthAvailable: boolean; revision: number};
 const MAX_RESPONSE_BYTES = 1_200_000;
 async function responseObject(response: Response): Promise<Record<string, unknown>> {
   const declared = response.headers.get('content-length');
@@ -29,8 +29,8 @@ async function responseObject(response: Response): Promise<Record<string, unknow
   return value as Record<string, unknown>;
 }
 export async function cloudRequest<T>(path: string, body?: unknown, signal?: AbortSignal, expectedAccountId?: string): Promise<T> {
-  if (!/^\/api\/(account|sync|daily-feedback)(\?|$)/.test(path)) throw new Error('Unsupported account route.');
-  const bound = /^\/api\/(sync|daily-feedback)(\?|$)/.test(path);
+  if (!/^\/api\/(account|sync|daily-feedback|workout-coaching)(\?|$)/.test(path)) throw new Error('Unsupported account route.');
+  const bound = /^\/api\/(sync|daily-feedback|workout-coaching)(\?|$)/.test(path);
   if (bound && (!expectedAccountId || !/^[A-Za-z0-9_-]{1,128}$/.test(expectedAccountId))) throw new Error('An authenticated account is required for this request.');
   const controller = new AbortController(), stop = () => controller.abort();
   signal?.addEventListener('abort', stop, {once: true}); if (signal?.aborted) controller.abort();
@@ -50,6 +50,7 @@ export async function cloudAccount(signal?: AbortSignal): Promise<CloudAccount> 
   const value = await cloudRequest<CloudAccount>('/api/account', undefined, signal);
   if (!value || typeof value.userId !== 'string' || !/^[A-Za-z0-9_-]{1,128}$/.test(value.userId)
     || typeof value.syncAvailable !== 'boolean' || typeof value.feedbackAvailable !== 'boolean' || typeof value.nativeAuthAvailable !== 'boolean'
+    || (value.coachingAvailable !== undefined && typeof value.coachingAvailable !== 'boolean')
     || !Number.isSafeInteger(value.revision) || value.revision < 0) throw new CloudError(502, 'bad_account', 'The account response was incomplete.');
   return value;
 }

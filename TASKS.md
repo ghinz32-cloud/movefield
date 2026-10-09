@@ -1,10 +1,12 @@
 # Active calendar and coaching request — 9 October 2026
 
-- [x] UI: bounded Plans tabs, Settings-only appearance, web/native calendar day history and truthful Day off.
-- [x] Relevant UI checks, native shared snapshot, production build and 3/3 production suites.
-- [ ] Publish/read back UI recoverable checkpoint on the existing audit branch.
-- [ ] Personalized local Qwen3.5 coaching and consented secure backend routing.
-- [ ] Integrated verification, both existing web deployments and new native testing builds.
+- [x] Bounded Plans tabs, Settings-only appearance, web/native calendar history and truthful Day off.
+- [x] Publish/read back UI checkpoint81840879; official quality and native UI builds succeed.
+- [x] Minimized saved-context coaching, explicit consent/automatic local review, encrypted results and secure durable backend routing.
+- [x] Integrate pinned experimental Qwen3.5 4B/9B, same-origin worker policy and verified Pages service-worker gate.
+- [x] 75/75 regression, types/lint,47 shared hashes, native engine/Hermes and zero-warning production build with3/3 production checks.
+- [ ] Publish/read back final combined source checkpoint; deploy both existing hosts and verify native testing builds for that exact source.
+- [ ] Real GPU/device coaching acceptance and owner-supplied cloud provider key; native inference/authentication and Apple distribution remain unavailable.
 
 # Current Claude pipeline checkpoint — 9 October 2026
 

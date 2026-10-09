@@ -10,7 +10,7 @@ const SYNC = 'sync-outbox-v1';
 export const BROWSER_HISTORY_PREFIX = 'training-studio:browser-history:v1:';
 export const isBrowserHistorySlot = (slot: unknown): slot is string => typeof slot === 'string' && /^training-studio:browser-history:v1:[0-9a-f]{64}$/.test(slot);
 const LEGACY_CIPHERTEXT_PREFIX = '{"v":1,"alg":"aes-256-gcm"';
-const DEFAULT_SLOTS = ['training-studio-v2', 'training-studio-setup-v1', 'training-studio-sample-setup', 'training-studio-security-preview-v1', 'training-studio-sample-security'] as const;
+const DEFAULT_SLOTS = ['training-studio-v2', 'training-studio-setup-v1', 'training-studio-sample-setup', 'training-studio-security-preview-v1', 'training-studio-sample-security', 'training-studio-workout-coaching-v1'] as const;
 
 type RecordRow = {version: 1; ciphertext: string | null};
 type StoreState = {version: 2; revision: number; keyRevision: number; migrated: boolean; legacyHashes: Record<string, string | null>};

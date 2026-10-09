@@ -6,17 +6,20 @@ type Open = (path: string) => AsyncIterable<Uint8Array>;
 // Used only inside the dedicated worker, while withCachedModel owns the model
 // lock. There is deliberately no network implementation or secondary cache.
 // Every Response is created AFTER the downloader's iterator verifies its hash.
-export function createQwenRuntimeCache(offer: QwenDownloadOffer, open: Open) {
+export function createQwenRuntimeCache(offer: QwenDownloadOffer, open: Open, options:{maxFileBytes?:number}={}) {
+  const maxFileBytes=options.maxFileBytes??QWEN_RUNTIME_FILE_LIMIT;
+  if(!Number.isSafeInteger(maxFileBytes)||maxFileBytes<1||maxFileBytes>512*1024*1024)throw new QwenDownloadError('manifest','Invalid local runtime file budget.');
   const denied = () => new QwenDownloadError('manifest', 'The assistant requested a file outside its verified local model.');
   const urlOf = (input: RequestInfo | URL) => input instanceof Request ? input.url : String(input);
   async function fetchLocal(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
     const url = urlOf(input), asset = offer.assets.find(file => file.url === url);
     const method = init?.method ?? (input instanceof Request ? input.method : 'GET');
     if (!asset || method !== 'GET' || init?.body != null || init?.headers != null ||
+        (input instanceof Request&&input.body!==null)||
         (input instanceof Request && [...input.headers].length > 0)) throw denied();
     const signal = init?.signal ?? (input instanceof Request ? input.signal : null);
     if (signal?.aborted) throw new QwenDownloadError('cancelled', 'Assistant stopped.');
-    if (asset.bytes > QWEN_RUNTIME_FILE_LIMIT) throw new QwenDownloadError('unsupported', 'This model file exceeds the assistant’s loading limit.');
+    if (asset.bytes > maxFileBytes) throw new QwenDownloadError('unsupported', 'This model file exceeds the assistant’s loading limit.');
     const bytes = new Uint8Array(asset.bytes);
     let offset = 0;
     for await (const piece of open(asset.path)) {
@@ -28,7 +31,7 @@ export function createQwenRuntimeCache(offer: QwenDownloadOffer, open: Open) {
     }
     if (offset !== asset.bytes) throw new QwenDownloadError('integrity', 'A local model file is incomplete.');
     return new Response(bytes.buffer, {headers: {'Content-Length': String(bytes.length),
-      'Content-Type': asset.path.endsWith('.json') ? 'application/json' : 'application/octet-stream'}});
+      'Content-Type': asset.path.endsWith('.wasm')?'application/wasm':asset.path.endsWith('.json') ? 'application/json' : 'application/octet-stream'}});
   }
   const cache = {
     // WebLLM's Cache API adapter calls match/add/match. match resolves directly
