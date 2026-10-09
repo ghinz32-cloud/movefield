@@ -300,3 +300,6 @@ html[data-density=roomy] .weekly-review{margin-bottom:2rem}
 .sidebar-plan>*{grid-column:1/-1}
 .sidebar-plan>span:last-of-type{grid-column:1;margin-top:2px}
 .sidebar-plan>button{grid-column:2;margin-top:2px;white-space:nowrap}
+
+/* Touch screens: buttons, inputs and selects are at least 44px tall. Desktop keeps its denser sizes. */
+@media (pointer:coarse){[data-slot=button],[data-slot=input],[data-slot=select-trigger]{min-height:44px}}

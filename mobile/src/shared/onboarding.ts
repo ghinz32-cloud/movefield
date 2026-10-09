@@ -4,8 +4,16 @@ import {type Profile,type Plan,type Event,type State,blankProfile,initialState,b
 
 export const setupSteps=['You','Goal','Coaching','Schedule','Equipment','Commitments','Choose a plan','Review'];
 export function freshState():State{return {...initialState(),profile:{...blankProfile,name:'',goal:'general',experience:'First time',start:day()},plan:null};}
+// Names that come from sample data. A new setup must not inherit them, because the person did not enter them.
+export const SAMPLE_NAMES=['Demo athlete','Local demo'];
+// A new setup starts from the person's own details. If the name is only sample data, the age saved with it is
+// cleared too, so no invented age is left in the form. Age 0 means "not entered yet".
+export function setupStartProfile(p:Profile,today:string):Profile{
+ const sample=!p.name.trim()||SAMPLE_NAMES.includes(p.name.trim());
+ return {...p,start:today,programId:undefined,name:sample?'':p.name,age:sample?0:p.age};
+}
 export function setupErrors(p:Profile,step:number):string[]{
- if(step===0)return [...(!p.name.trim()?['Enter a name for this device’s profile.']:[]),...(!Number.isInteger(p.age)||p.age<14||p.age>100?['This prototype supports ages 14–100.']:[])];
+ if(step===0)return [...(!p.name.trim()?['Enter a name or nickname for this profile.']:[]),...(!p.age?['Enter your age (14–100).']:!Number.isInteger(p.age)||p.age<14||p.age>100?['Ages 14–100 are supported in this prototype.']:[])];
  if(step===2){if(p.age<18&&p.mode==='app'&&p.season==='In-season'&&p.goal==='sport')return ['Choose coach-directed tracking during the school sport season.'];if(p.age<18&&p.mode==='app'&&!p.supervision)return ['Qualified supervision is needed for the youth foundation. Confirm availability or choose tracking.'];if(p.age<18&&p.mode==='app'&&p.goal==='running')return ['The current run/walk program is for adults. Choose coach tracking for youth running.'];}
  if(step===4)return [...focusSetupErrors(p),...(p.dumbbellMaxKg!==undefined&&(!Number.isFinite(p.dumbbellMaxKg)||p.dumbbellMaxKg<0||p.dumbbellMaxKg>500)?['Enter a valid weight for one dumbbell, or leave it blank.']:[])];
  if(step===3)return [...(!validDay(p.start)||p.start<day()?['Choose today or a future start date.']:[]),...(!Number.isInteger(p.weeks)||p.weeks<2||p.weeks>12?['Choose 2–12 weeks.']:[]),...(!Number.isInteger(p.minutes)||p.minutes<15||p.minutes>120?['Choose 15–120 minutes per session.']:[]),...(!p.days.length?['Choose at least one available day.']:[])];
