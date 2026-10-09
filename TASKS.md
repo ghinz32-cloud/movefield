@@ -1,3 +1,20 @@
+# Active checkpoint — S01 browser transaction migration, 9 October 2026
+
+Standing owner authorization includes delegated technical/destination choices, GitHub commit creation and publication of this app's source/audit evidence to `ghinz32-cloud/movefield`. Use existing review branch `audit/2026-10-08-quality`; no further routine push confirmation is needed. Prior audit `07e540dcfe8bcd9339651db868f9a07184b4d49a` is pushed and independently verified against local audit tree; prior automatic-review blockers below are historical and resolved.
+
+| ID | State | Milestone | Evidence / next acceptance |
+| --- | --- | --- | --- |
+| A01–A05 | Complete and published | Full web/native application audit repairs | Exact published/local tree and audit/training report readback; 40 regression/3 production suites in retained audit reports |
+| S01 | Implementation complete — real browser acceptance pending | Transactional encrypted browser snapshots and verified legacy import | 43 regression/3 production suites; 76 backend + 163 vault + 133 legacy assertions and 8 compiled Home callback scenarios; types/lint/build; `docs/browser-storage-2026-10-09.md` |
+| S02a | Queued — decompose before edits | Design/version incremental native entity schema and recoverable import | Preserve existing encrypted SQLite snapshot/history/key; idempotent import/readback/rollback and explicit guards |
+| S02b | Queued after S02a | Connect native entity mutations without rewriting whole history | Atomic active/completed revisions; stale edit/delete and multi-year capacity/failure tests; physical acceptance separate |
+| M07–M10 | Pending actual browser/device access | Secure-origin offline/restore/reflow and phone interruption acceptance | Record actual browser/device/build observations; harness or Hermes export alone is insufficient |
+| S03–S05 / U09–U11 | Pending bounded work | Sync/account contract, qualified native AI and website/Android release | Existing durable storage, exact model/evaluation provenance and dependency blockers retained; no clean-release claim |
+
+Current local implementation commit is resolved with `git log -1 --format=%H -- docs/browser-storage-2026-10-09.md`; verify GitHub head/tree/readback and `.sites-runtime/checkpoints/s01-browser-storage.bundle` after publication. Maintain one active milestone. No main merge or live deployment occurred.
+
+# Historical task states and evidence
+
 # Full application audit — 9 October 2026 UTC
 
 Current owner request: audit and improve the complete web/native application, user-data durability, tools, workout progression and daily/weekly load. The user grants implementation and commit autonomy. Root owns all application edits; parallel agents perform bounded read-only audits. Preserve current runtime and histories. Local baseline `a53f0e9295cbdd6c6f9311a10b2a1154a7399ae7`; remote audit baseline `c390b1208869a746417cd35655f1d0ce3e2a268b`; main unchanged. Publication was rejected again by automatic approval review because broad audit approval was not accepted for the recovered payload and exact destination. Do not bypass that rejection; finish local milestones and save bundles.

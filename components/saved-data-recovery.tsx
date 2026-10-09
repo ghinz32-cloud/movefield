@@ -5,10 +5,15 @@ import {AlertDialog,AlertDialogContent,AlertDialogHeader,AlertDialogTitle,AlertD
 
 // Shown instead of the workspace when saved data cannot be opened in this browser. Nothing is replaced from here
 // unless the person confirms it.
-export function SavedDataRecovery({keyMissing,detail,onExport,onRestore,onReset,onSample}:{keyMissing:boolean;detail?:string;onExport:()=>void;onRestore:()=>void;onReset:()=>void;onSample:()=>void}){
+export function SavedDataRecovery({keyMissing,unavailable=false,detail,onExport,onRestore,onReset,onSample}:{keyMissing:boolean;unavailable?:boolean;detail?:string;onExport?:()=>void;onRestore:()=>void;onReset:()=>void;onSample:()=>void}){
   const [confirm,setConfirm]=useState(false);
   return <main className="recovery-page"><section className="card">
-    {keyMissing?<>
+    {unavailable?<>
+      <p className="eyebrow">SAVED STORAGE IS UNAVAILABLE</p>
+      <h1>We could not check your saved training.</h1>
+      <p>Nothing has been replaced. Close older tabs and reopen the app to retry. You can explore sample training while saving is unavailable.</p>
+      <p>Keep a transfer file before replacing a profile. A saved copy may still be in this browser even when it cannot be opened.</p>
+    </>:keyMissing?<>
       <p className="eyebrow">THIS SAVED TRAINING IS ON ANOTHER DEVICE</p>
       <h1>This browser does not have the key for your saved training.</h1>
       <p>Your training was saved here, but the key that opens it is not in this browser. This happens after a new phone, a new browser or cleared site data. Nothing has been replaced.</p>
@@ -22,7 +27,7 @@ export function SavedDataRecovery({keyMissing,detail,onExport,onRestore,onReset,
     {detail&&!keyMissing&&<p role="alert" className="notice warning">{detail}</p>}
     <div className="button-row">
       <Button onClick={onRestore}>Restore a transfer file</Button>
-      {!keyMissing&&<Button variant="outline" onClick={onExport}>Keep a copy of the locked file</Button>}
+      {!keyMissing&&onExport&&<Button variant="outline" onClick={onExport}>Keep a copy of the locked file</Button>}
       <Button variant="outline" onClick={onSample}>Explore sample training</Button>
       <Button variant="ghost" onClick={()=>setConfirm(true)}>Start a fresh profile</Button>
     </div>

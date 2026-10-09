@@ -1,4 +1,6 @@
-// Encrypts this browser's saved training data before it reaches localStorage.
+import {createBrowserRecordStore, BrowserRecordStoreError, type BrowserRecordSnapshot} from './browser-record-store';
+
+// Encrypts this browser's saved training data before it reaches persistent storage.
 // Each record is sealed with AES-256-GCM. The data key is non-extractable and kept in IndexedDB,
 // so page code can use it to open records but cannot read its bytes or copy it out.
 // The slot name is the associated data, so a sealed record copied into another slot will not open.
@@ -195,6 +197,8 @@ export function createVault(deps: VaultDeps) {
   }
 
   return {
+    // Used by the transactional store to finish the old cross-store journal before import.
+    recover(): Promise<void> { return enqueue(async () => undefined, 'read'); },
     // Seals text into a slot. Returns the stored record so the caller can detect changes made in another tab.
     write(slot: string, text: string, expected?:string): Promise<string> {
       return enqueue(() => sealAndStore(slot, text, expected));
@@ -301,24 +305,176 @@ function parseRecord(raw: string): {iv: Uint8Array<ArrayBuffer>; data: Uint8Arra
   return {iv, data: fromBase64(value.data)};
 }
 
-let instance: ReturnType<typeof createVault> | null | undefined;
+export type TransactionalVaultDeps = {
+  idb: IDBFactory;
+  legacy: VaultStorage;
+  subtle: SubtleCrypto;
+  random: (n: number) => Uint8Array<ArrayBuffer>;
+  slots?: readonly string[];
+  lock?: <T>(job: () => Promise<T>) => Promise<T>;
+  restoreSafe: boolean;
+  writerId?: string;
+  notify?: () => void;
+};
+
+// The current browser backend commits ciphertext, key and deletion markers in
+// one transaction. The legacy vault is retained only for journal recovery/import.
+export function createTransactionalVault(deps: TransactionalVaultDeps) {
+  const slots = deps.slots ?? VAULT_SLOTS;
+  const keys = indexedDbKeyStore(deps.idb);
+  const store = createBrowserRecordStore({idb: deps.idb, legacy: deps.legacy, slots});
+  const legacy = createVault({storage: deps.legacy, keys, subtle: deps.subtle, random: deps.random, slots, restoreSafe: deps.restoreSafe});
+  const encoder = new TextEncoder(), decoder = new TextDecoder('utf-8', {fatal: true});
+  let queue: Promise<unknown> = Promise.resolve();
+  const associated = (slot: string) => encoder.encode(`movefield-vault:${VAULT_VERSION}:${slot}`);
+  const announce = () => { try { deps.notify?.(); } catch {} };
+  const legacyRecords = () => Object.fromEntries(slots.map(slot => [slot, deps.legacy.getItem(slot)]));
+  const currentRaw = (snapshot: BrowserRecordSnapshot, slot: string) => snapshot.migrated ? snapshot.records[slot] ?? null : deps.legacy.getItem(slot);
+  const expectedRaw = (raw: string | null, expected?: string) => {
+    if (expected !== undefined && (raw ?? '') !== expected) throw new VaultError('conflict', 'Your saved profile changed in another tab. Export this window and reload before editing.');
+  };
+  async function seal(key: CryptoKey, slot: string, text: string) {
+    const iv = deps.random(12);
+    const data = new Uint8Array(await deps.subtle.encrypt({name: 'AES-GCM', iv, additionalData: associated(slot), tagLength: 128}, key, encoder.encode(text)));
+    return `${PREFIX},"iv":"${toBase64(iv)}","data":"${toBase64(data)}"}`;
+  }
+  async function decrypt(snapshot: BrowserRecordSnapshot, slot: string, raw: string | null) {
+    if (raw === null) return null;
+    if (!isSealed(raw)) throw new VaultError('unknown-format', 'Saved encrypted records have an unexpected format. Nothing was replaced.');
+    const parsed = parseRecord(raw);
+    if (!snapshot.key) throw new VaultError('key-missing', KEY_MISSING_MESSAGE);
+    try {return decoder.decode(await deps.subtle.decrypt({name: 'AES-GCM', iv: parsed.iv, additionalData: associated(slot), tagLength: 128}, snapshot.key, parsed.data));}
+    catch {throw new VaultError('decrypt-failed', DECRYPT_MESSAGE);}
+  }
+  async function prepare() {
+    let snapshot = await store.snapshot();
+    if (!snapshot.migrated && snapshot.transition) {
+      await legacy.recover();
+      snapshot = await store.snapshot();
+    }
+    return snapshot;
+  }
+  async function importRecords(snapshot: BrowserRecordSnapshot) {
+    // A prior restore with denied legacy cleanup remains readable through its
+    // journal. Do not hide those restored records behind a migration failure.
+    if (snapshot.migrated || snapshot.transition || !deps.restoreSafe) return snapshot;
+    const before = legacyRecords();
+    const sealedExists = Object.values(before).some(isSealed);
+    const plaintextExists = Object.values(before).some(raw => raw !== null && !isSealed(raw));
+    if (!snapshot.key && sealedExists && plaintextExists) throw new VaultError('key-missing', KEY_MISSING_MESSAGE);
+    const nextKey = !snapshot.key && plaintextExists ? await deps.subtle.generateKey({name: 'AES-GCM', length: 256}, false, ['encrypt', 'decrypt']) as CryptoKey : undefined;
+    const key = snapshot.key ?? nextKey;
+    const records: Record<string, string | null> = {};
+    for (const slot of slots) {
+      const raw = before[slot];
+      records[slot] = raw === null || isSealed(raw) ? raw : await seal(key!, slot, raw);
+    }
+    const imported = await store.importLegacy({expected: snapshot, legacy: before, records, key: nextKey});
+    await store.cleanupLegacy(imported);
+    announce();
+    return imported;
+  }
+  async function cleanupRetiredLegacy(before: Record<string, string | null>) {
+    // This is best-effort cleanup after a committed replacement/reset. Durable
+    // migrated/tombstone state makes any retained legacy bytes non-authoritative.
+    for (const slot of slots) try {if (before[slot] !== null && deps.legacy.getItem(slot) === before[slot]) deps.legacy.removeItem(slot);} catch {}
+  }
+  function retiredLegacy(snapshot: BrowserRecordSnapshot) {
+    if (!snapshot.migrated) return legacyRecords();
+    try {return legacyRecords();} catch {return Object.fromEntries(slots.map(slot => [slot, null]));}
+  }
+  function enqueue<T>(job: () => Promise<T>, mutation = false): Promise<T> {
+    const run = async () => {
+      if (mutation && !deps.restoreSafe) throw new VaultError('key-unavailable', LOCK_UNAVAILABLE_MESSAGE);
+      try {return await job();}
+      catch (error) {
+        if (error instanceof BrowserRecordStoreError) throw new VaultError(error.code === 'conflict' ? 'conflict' : error.code === 'unknown-format' ? 'unknown-format' : 'key-unavailable', error.message);
+        throw error;
+      }
+    };
+    const result = queue.then(() => deps.lock ? deps.lock(run) : run());
+    queue = result.catch(() => undefined);
+    return result;
+  }
+  const readSnapshot = (slot: string) => enqueue(async () => {
+    const snapshot = await importRecords(await prepare());
+    if (!snapshot.migrated) return {raw: deps.legacy.getItem(slot), text: await legacy.read(slot)};
+    const raw = snapshot.records[slot] ?? null;
+    return {raw, text: await decrypt(snapshot, slot, raw)};
+  });
+  return {
+    writerId: deps.writerId,
+    readSnapshot,
+    raw: (slot: string) => enqueue(async () => currentRaw(await store.snapshot(), slot)),
+    read: async (slot: string) => (await readSnapshot(slot)).text,
+    write: (slot: string, text: string, expected?: string) => enqueue(async () => {
+      // Compare the caller's legacy bytes before importing, then compare the
+      // committed database snapshot again within the final write transaction.
+      let snapshot = await prepare();
+      expectedRaw(currentRaw(snapshot, slot), expected);
+      snapshot = await importRecords(snapshot);
+      let nextKey: CryptoKey | undefined;
+      if (!snapshot.key) {
+        if (Object.values(snapshot.records).some(isSealed)) throw new VaultError('key-missing', KEY_MISSING_MESSAGE);
+        nextKey = await deps.subtle.generateKey({name: 'AES-GCM', length: 256}, false, ['encrypt', 'decrypt']) as CryptoKey;
+      }
+      const raw = await seal(snapshot.key ?? nextKey!, slot, text);
+      await store.write(snapshot, slot, raw, nextKey);
+      announce();
+      return raw;
+    }, true),
+    replace: (slot: string, text: string, expected?: string) => enqueue(async () => {
+      const snapshot = await prepare();
+      expectedRaw(currentRaw(snapshot, slot), expected);
+      const before = retiredLegacy(snapshot);
+      const next = await deps.subtle.generateKey({name: 'AES-GCM', length: 256}, false, ['encrypt', 'decrypt']) as CryptoKey;
+      const raw = await seal(next, slot, text);
+      if (!snapshot.migrated) expectedRaw(deps.legacy.getItem(slot), expected);
+      await store.replace(snapshot, slot, raw, next);
+      await cleanupRetiredLegacy(before);
+      announce();
+      return raw;
+    }, true),
+    reset: () => enqueue(async () => {
+      const snapshot = await store.snapshot(), before = retiredLegacy(snapshot);
+      await store.reset(snapshot);
+      await cleanupRetiredLegacy(before);
+      announce();
+    }, true),
+    discard: (slot: string) => enqueue(async () => {
+      const snapshot = await importRecords(await prepare());
+      await store.discard(snapshot, slot);
+      announce();
+    }, true),
+    hasKey: () => enqueue(async () => Boolean((await store.snapshot()).key)),
+    hasSealedRecords: () => enqueue(async () => {
+      const snapshot = await store.snapshot();
+      return Object.values(snapshot.migrated ? snapshot.records : legacyRecords()).some(isSealed);
+    }),
+  };
+}
+
+let instance: ReturnType<typeof createTransactionalVault> | null | undefined;
 // The shared browser instance, created on first use. Call it from effects and handlers, not during render.
-export function getVault(): ReturnType<typeof createVault> | null {
+export function getVault(): ReturnType<typeof createTransactionalVault> | null {
   if (instance === undefined) instance = browserVault();
   return instance;
 }
 
 // The browser instance. Returns null when this browser has no IndexedDB or Web Crypto, so the app can say so.
-export function browserVault(): ReturnType<typeof createVault> | null {
+export function browserVault(): ReturnType<typeof createTransactionalVault> | null {
   try {
     if (typeof window === 'undefined' || !window.indexedDB || !globalThis.crypto?.subtle) return null;
-    return createVault({
-      storage: window.localStorage,
-      keys: indexedDbKeyStore(window.indexedDB),
+    const writerId = toBase64(globalThis.crypto.getRandomValues(new Uint8Array(16)));
+    return createTransactionalVault({
+      idb: window.indexedDB,
+      legacy: window.localStorage,
       subtle: globalThis.crypto.subtle,
       random: n => globalThis.crypto.getRandomValues(new Uint8Array(new ArrayBuffer(n))),
       lock: window.navigator.locks ? async job => await window.navigator.locks.request('movefield-vault', job) : undefined,
       restoreSafe: Boolean(window.navigator.locks),
+      writerId,
+      notify: () => { try { const channel = new BroadcastChannel('movefield-records'); channel.postMessage({type: 'changed', writerId}); channel.close(); } catch {} },
     });
   } catch {
     return null;
@@ -328,9 +484,11 @@ export function browserVault(): ReturnType<typeof createVault> | null {
 export function indexedDbKeyStore(idb: IDBFactory): KeyStore {
   const DB = 'movefield-vault', STORE = 'keys', ID = 'data-key-v1', JOURNAL = 'restore-transition-v1';
   const open = () => new Promise<IDBDatabase>((resolve, reject) => {
-    const request = idb.open(DB, 1);
-    request.onupgradeneeded = () => request.result.createObjectStore(STORE);
-    request.onsuccess = () => resolve(request.result);
+    const request = idb.open(DB, 2);
+    let blocked = false;
+    request.onupgradeneeded = () => {for (const name of [STORE, 'records', 'metadata']) if (!request.result.objectStoreNames.contains(name)) request.result.createObjectStore(name);};
+    request.onblocked = () => {blocked = true; reject(new Error('Close older tabs before opening saved storage.'));};
+    request.onsuccess = () => {request.result.onversionchange = () => request.result.close(); if (blocked) request.result.close(); else resolve(request.result);};
     request.onerror = () => reject(request.error);
   });
   async function run<T>(mode: IDBTransactionMode, make: (store: IDBObjectStore) => IDBRequest<T>): Promise<T> {
