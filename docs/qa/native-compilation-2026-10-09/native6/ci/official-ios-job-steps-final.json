@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1
+  },
+  {
+    "name": "Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2
+  },
+  {
+    "name": "Record exact iOS source commit and tree",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3
+  },
+  {
+    "name": "Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4
+  },
+  {
+    "name": "Install locked native source without dependency lifecycle scripts",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5
+  },
+  {
+    "name": "Generate iOS project and resolve Pods",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6
+  },
+  {
+    "name": "Compile unsigned iOS Release simulator application",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7
+  },
+  {
+    "name": "Inspect built iOS privacy and transport settings",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8
+  },
+  {
+    "name": "Retain native compilation evidence",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9
+  },
+  {
+    "name": "Post Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 17
+  },
+  {
+    "name": "Post Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 18
+  },
+  {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 19
+  }
+]

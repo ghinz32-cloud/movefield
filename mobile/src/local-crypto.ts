@@ -10,7 +10,7 @@ const KEY_BYTES = 32;
 const NONCE_BYTES = 24;
 const TAG_BYTES = 16;
 
-export type LocalDataErrorCode = 'key-missing' | 'key-unavailable' | 'decrypt-failed' | 'unknown-format' | 'storage-capacity';
+export type LocalDataErrorCode = 'key-missing' | 'key-unavailable' | 'decrypt-failed' | 'unknown-format' | 'storage-capacity' | 'storage-unavailable';
 
 export class LocalDataError extends Error {
   readonly code: LocalDataErrorCode;

@@ -1,0 +1,273 @@
+{
+  "verifiedAt": "2026-10-09T19:21:38.317940+00:00",
+  "runId": 37978371785,
+  "jobId": 113982397674,
+  "jobConclusion": "success",
+  "actualCompiledSource": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf",
+  "actualCompiledTree": "eec113576e18fc18d4976ceaa03b7e7ca464a930",
+  "sourceMatchesExpected": true,
+  "inspectorSourceCommit": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf",
+  "inspectorSHA256": "db33ac39abc5b1e49f37fc0802f4ff60555f42c0696e61fb66774a81e6caf0dc",
+  "officialArchiveDigestMatches": true,
+  "actualCIInspectionPassed": true,
+  "actualCIPrivacyManifestCount": 11,
+  "independentRetainedRootMetadataReplayPassed": true,
+  "independentRetainedRootMetadataMatchesCI": true,
+  "rootMetadataOnly": true,
+  "retainedInputs": [
+    "Info.plist",
+    "PrivacyInfo.xcprivacy"
+  ],
+  "SDKManifestFilesAvailableForIndependentReplay": false,
+  "fullAppAvailableForIndependentReplay": false,
+  "replayPrivacyManifestCount": 1,
+  "buildMetadata": {
+    "CFBundleIdentifier": "com.ghinz32.movefield",
+    "MinimumOSVersion": "16.4",
+    "DTPlatformName": "iphonesimulator",
+    "DTPlatformVersion": "26.5",
+    "DTSDKName": "iphonesimulator26.5",
+    "DTXcode": "2660",
+    "DTXcodeBuild": "17F113",
+    "CFBundleSupportedPlatforms": [
+      "iPhoneSimulator"
+    ]
+  },
+  "signing": "Unsigned Release simulator build configured with CODE_SIGNING_ALLOWED=NO; code-signature material not retained.",
+  "scope": "Actual CI successfully compiled and inspected the complete unsigned simulator app. Independent exact-source replay checks retained built Info/root privacy bytes only and compares them against the official complete CI inspection; ten SDK manifest files and app binary were not retained. No fabricated SDK files or full compiled app reconstructed.",
+  "physicalDeviceTested": false,
+  "storeAccepted": false,
+  "rootMetadataReplayResult": {
+    "platform": "ios",
+    "bundleIdentifier": "com.ghinz32.movefield",
+    "infoSHA256": "9f7d264fde03eb71e168a5d20ee366258c59e2abbadcb3c4b7a609d9346237e1",
+    "transport": {
+      "arbitraryInternetMediaAndWebLoadsDenied": true,
+      "localNetworkingAllowed": true,
+      "reviewedSecureExceptionDomains": [],
+      "scope": "ATS plist declarations; local networking is explicit, not blanket cleartext denial"
+    },
+    "privacyManifests": [
+      {
+        "path": "PrivacyInfo.xcprivacy",
+        "sha256": "ab8e9be3d1713701eef605d660a79483ebfab512bc726a28b67c82663382b1fa",
+        "accessedAPIs": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "C617.1",
+              "3B52.1"
+            ]
+          },
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "CA92.1"
+            ]
+          },
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategorySystemBootTime",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "35F9.1"
+            ]
+          },
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryDiskSpace",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "E174.1"
+            ]
+          }
+        ]
+      }
+    ],
+    "privacyInspectionScope": "required app reasons present; no SDK-declared collection/tracking; native API reachability not verified",
+    "sourceCapabilityDeclarationsChecked": true,
+    "capabilityInspectionScope": "biometric description absent and direct Documents exposure denied; native API reachability not verified",
+    "signing": "uninspected; CI configuration builds an unsigned simulator application",
+    "physicalDeviceTested": false,
+    "storeAccepted": false
+  },
+  "officialCIInspection": {
+    "passed": true,
+    "platform": "ios",
+    "bundleIdentifier": "com.ghinz32.movefield",
+    "infoSHA256": "9f7d264fde03eb71e168a5d20ee366258c59e2abbadcb3c4b7a609d9346237e1",
+    "transport": {
+      "arbitraryInternetMediaAndWebLoadsDenied": true,
+      "localNetworkingAllowed": true,
+      "reviewedSecureExceptionDomains": [],
+      "scope": "ATS plist declarations; local networking is explicit, not blanket cleartext denial"
+    },
+    "privacyManifests": [
+      {
+        "path": "ExpoApplication_privacy.bundle/PrivacyInfo.xcprivacy",
+        "sha256": "b48763ffd29cbad815125ae56e1073273e418ae086103fc7dff7efbec1675aaa",
+        "accessedAPIs": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "C617.1"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "ExpoConstants_privacy.bundle/PrivacyInfo.xcprivacy",
+        "sha256": "2b2d8edb71d51c5b1f1ace4cdb28a94baf22fdde9bbf2e2bfc17d187ff7b5f47",
+        "accessedAPIs": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "CA92.1"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "ExpoNotifications_privacy.bundle/PrivacyInfo.xcprivacy",
+        "sha256": "2b2d8edb71d51c5b1f1ace4cdb28a94baf22fdde9bbf2e2bfc17d187ff7b5f47",
+        "accessedAPIs": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "CA92.1"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/PrivacyInfo.xcprivacy",
+        "sha256": "d3559c988dff940d4f758f37a0ba1863208304e33ab0b97c0e3dd5d3762f5f1d",
+        "accessedAPIs": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "C617.1"
+            ]
+          },
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategorySystemBootTime",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "35F9.1"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/PrivacyInfo.xcprivacy",
+        "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335",
+        "accessedAPIs": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "C617.1"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/PrivacyInfo.xcprivacy",
+        "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335",
+        "accessedAPIs": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "C617.1"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "PrivacyInfo.xcprivacy",
+        "sha256": "ab8e9be3d1713701eef605d660a79483ebfab512bc726a28b67c82663382b1fa",
+        "accessedAPIs": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "C617.1",
+              "3B52.1"
+            ]
+          },
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "CA92.1"
+            ]
+          },
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategorySystemBootTime",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "35F9.1"
+            ]
+          },
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryDiskSpace",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "E174.1"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "RNCAsyncStorage_resources.bundle/PrivacyInfo.xcprivacy",
+        "sha256": "0b1287d0e686cf867d38d97cca5dc694b3029f27c4fe4270dd4bd2fd5458a2f0",
+        "accessedAPIs": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "C617.1"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "React-Core_privacy.bundle/PrivacyInfo.xcprivacy",
+        "sha256": "7c08969e459621a6ecec043ccdb9012651f185811945f75517c623dae2e11627",
+        "accessedAPIs": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "C617.1"
+            ]
+          },
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "CA92.1"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "React-cxxreact_privacy.bundle/PrivacyInfo.xcprivacy",
+        "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335",
+        "accessedAPIs": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "C617.1"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "React-timing_privacy.bundle/PrivacyInfo.xcprivacy",
+        "sha256": "23ddfa062a6d4392e65882d151fdececbd29904a227ad8918c0144ebc777ee61",
+        "accessedAPIs": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategorySystemBootTime",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "35F9.1"
+            ]
+          }
+        ]
+      }
+    ],
+    "privacyInspectionScope": "required app reasons present; no SDK-declared collection/tracking; native API reachability not verified",
+    "sourceCapabilityDeclarationsChecked": true,
+    "capabilityInspectionScope": "biometric description absent and direct Documents exposure denied; native API reachability not verified",
+    "signing": "uninspected; CI configuration builds an unsigned simulator application",
+    "physicalDeviceTested": false,
+    "storeAccepted": false
+  }
+}

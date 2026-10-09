@@ -1,6 +1,7 @@
 import { sha256 } from '@noble/hashes/sha2.js';
 import { bytesToHex, utf8ToBytes } from '@noble/ciphers/utils.js';
 import { LocalDataError, isSealed } from './local-crypto';
+import { assertNativeSqliteModes, prepareNativeSqlite } from './native-sqlite-policy';
 
 // The encryption boundary lives in storage.ts. Only authenticated envelopes and
 // their encrypted restore journal enter this database; keys stay in SecureStore.
@@ -50,6 +51,7 @@ export type NativeRecordCommit = {
 };
 const digest = (text: string) => bytesToHex(sha256(utf8ToBytes(text)));
 const damaged = () => new LocalDataError('decrypt-failed', 'Saved training is incomplete or damaged. Nothing was replaced. Restore your transfer file or keep a copy before resetting.');
+const storageUnavailable = () => new LocalDataError('storage-unavailable', 'Safe training storage is unavailable. Saved records were preserved. Reopen the app or install a current Movefield app build before editing.');
 
 function assertSlot(slot: string) {
   if (!(NATIVE_RECORD_SLOTS as readonly string[]).includes(slot) && !isHistorySlot(slot)) throw new LocalDataError('unknown-format', 'Unexpected training storage slot.');
@@ -87,8 +89,8 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
   let database: Promise<NativeRecordDb> | undefined;
   let queue: Promise<unknown> = Promise.resolve();
   const open = () => database ??= deps.open().then(async db => {
-    await db.execAsync(`PRAGMA journal_mode = WAL; PRAGMA synchronous = FULL;
-      CREATE TABLE IF NOT EXISTS training_records (slot TEXT PRIMARY KEY NOT NULL, deleted INTEGER NOT NULL, chars INTEGER NOT NULL, chunks INTEGER NOT NULL, hash TEXT NOT NULL);
+    await prepareNativeSqlite(db, storageUnavailable);
+    await db.execAsync(`CREATE TABLE IF NOT EXISTS training_records (slot TEXT PRIMARY KEY NOT NULL, deleted INTEGER NOT NULL, chars INTEGER NOT NULL, chunks INTEGER NOT NULL, hash TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS training_chunks (slot TEXT NOT NULL, ordinal INTEGER NOT NULL, value TEXT NOT NULL, hash TEXT NOT NULL, PRIMARY KEY (slot, ordinal));
       CREATE TABLE IF NOT EXISTS training_record_metadata (id TEXT PRIMARY KEY NOT NULL, revision INTEGER NOT NULL);
       CREATE TABLE IF NOT EXISTS training_legacy_cleanup (slot TEXT PRIMARY KEY NOT NULL, expected_hash TEXT, chars INTEGER);`);
@@ -121,7 +123,10 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
   }
   async function snapshot(slot: string) {
     const db = await open(); let result!: Awaited<ReturnType<typeof read>>;
-    await db.withExclusiveTransactionAsync(async tx => { result = await read(tx, slot); });
+    await db.withExclusiveTransactionAsync(async tx => {
+      await assertNativeSqliteModes(tx, storageUnavailable);
+      result = await read(tx, slot);
+    });
     return result;
   }
   async function revision(db: NativeRecordSql): Promise<number> {
@@ -160,7 +165,10 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
   }
   async function batchSnapshot(requested: readonly string[], allowLegacy = true) {
     const db = await open(); let result!: NativeRecordSnapshot;
-    await db.withExclusiveTransactionAsync(async tx => {result = await readBatch(tx, requested, allowLegacy);});
+    await db.withExclusiveTransactionAsync(async tx => {
+      await assertNativeSqliteModes(tx, storageUnavailable);
+      result = await readBatch(tx, requested, allowLegacy);
+    });
     return result;
   }
   async function writeRecord(tx: NativeRecordSql, slot: string, value: string | null) {
@@ -282,6 +290,7 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
       return enqueue(async () => {
         const db = await open(), before = await capturedLegacy(slot);
         await db.withExclusiveTransactionAsync(async tx => {
+          await assertNativeSqliteModes(tx, storageUnavailable);
           await queueLegacyCleanup(tx, slot, before);
           await writeRecord(tx, slot, value);
           if ((await read(tx, slot)).value !== value) throw damaged();
@@ -299,6 +308,7 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
       return enqueue(async () => {
         const db = await open(), before = Object.fromEntries(await Promise.all(slots.map(async slot => [slot, await capturedLegacy(slot)])));
         await db.withExclusiveTransactionAsync(async tx => {
+          await assertNativeSqliteModes(tx, storageUnavailable);
           for (const slot of slots) {
             await queueLegacyCleanup(tx, slot, before[slot]);
             await writeRecord(tx, slot, null);
@@ -313,7 +323,14 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
       const slots = checkedSlots(requested); return enqueue(() => batchSnapshot(slots));
     },
     listHistorySlots(): Promise<string[]> {
-      return enqueue(async () => {const db = await open(); let result!: string[]; await db.withExclusiveTransactionAsync(async tx => {result = await historySlots(tx);}); return result;});
+      return enqueue(async () => {
+        const db = await open(); let result!: string[];
+        await db.withExclusiveTransactionAsync(async tx => {
+          await assertNativeSqliteModes(tx, storageUnavailable);
+          result = await historySlots(tx);
+        });
+        return result;
+      });
     },
     legacyCleanupStatus(): Promise<NativePrivacyStatus> { return enqueue(privacyStatus); },
     retryLegacyCleanup(verified: Record<string, string | null>): Promise<NativePrivacyStatus> {
@@ -335,6 +352,7 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
         const db = await open(); let written!: NativeRecordSnapshot;
         const before = Object.fromEntries(await Promise.all(patchSlots.map(async slot => [slot, await capturedLegacy(slot)])));
         await db.withExclusiveTransactionAsync(async tx => {
+          await assertNativeSqliteModes(tx, storageUnavailable);
           const current = await readBatch(tx, expectedSlots, true);
           if (expectedRevision !== undefined && current.revision !== expectedRevision || expectedSlots.some(slot => current.records[slot] !== expected[slot])) throw conflict();
           const patch = {...records};

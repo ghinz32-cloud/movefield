@@ -1,5 +1,6 @@
 import { getRandomBytes } from 'expo-crypto';
 import { Platform } from 'react-native';
+import { assertNativeSqliteModes, prepareNativeSqlite } from './native-sqlite-policy';
 import { qwenCandidates, type QwenCandidate } from './shared/qwen-catalog';
 import { createNativeQwenFiles, nativeQwenReceiptMatches, NativeQwenFilesError,
   type NativeQwenCachedAsset, type NativeQwenFilesClient, type NativeQwenOffer, type NativeQwenReceipt,
@@ -20,6 +21,7 @@ type PointerRow = { epoch: number; deleted: number; attempt: string | null; rece
 type AttemptRow = { id: string; model_id: string; epoch: number; offer: string; seals: string; complete: number };
 type CheckedAttempt = AttemptRow & { descriptor: NativeQwenOffer; verified: (NativeQwenCachedAsset | null)[] };
 const damaged = () => new NativeQwenFilesError('storage', 'Saved model-file metadata is damaged. It was preserved; delete this model explicitly or keep using ordinary training.');
+const storageUnavailable = () => new NativeQwenFilesError('storage', 'Safe model-file storage is unavailable. Existing metadata and files were preserved. Install a current Movefield app build before changing model files.');
 const cleanupError = () => new NativeQwenFilesError('cleanup', 'Some incomplete model files are still isolated or could not be removed. Check files retries cleanup after the transfer stops.');
 const attemptId = (id: string) => /^[0-9a-f]{32}$/.test(id);
 const parse = (raw: string): unknown => {
@@ -75,8 +77,8 @@ export function createExpoQwenFileAdapter(deps: {
   }
   async function open() {
     database ??= deps.open().then(async db => {
-      await db.execAsync(`PRAGMA journal_mode = WAL; PRAGMA synchronous = FULL;
-        CREATE TABLE IF NOT EXISTS qwen_file_models (model_id TEXT PRIMARY KEY NOT NULL, epoch INTEGER NOT NULL, deleted INTEGER NOT NULL, attempt TEXT, receipt TEXT);
+      await prepareNativeSqlite(db, storageUnavailable);
+      await db.execAsync(`CREATE TABLE IF NOT EXISTS qwen_file_models (model_id TEXT PRIMARY KEY NOT NULL, epoch INTEGER NOT NULL, deleted INTEGER NOT NULL, attempt TEXT, receipt TEXT);
         CREATE TABLE IF NOT EXISTS qwen_file_attempts (id TEXT PRIMARY KEY NOT NULL, model_id TEXT NOT NULL, epoch INTEGER NOT NULL, offer TEXT NOT NULL, seals TEXT NOT NULL, complete INTEGER NOT NULL);`);
       return db;
     }).catch(error => { database = undefined; throw error; });
@@ -122,6 +124,7 @@ export function createExpoQwenFileAdapter(deps: {
   }
   async function deleteAttempt(db: QwenFileDb, id: string, attempt: string) {
     await db.withExclusiveTransactionAsync(async tx => {
+      await assertNativeSqliteModes(tx, storageUnavailable);
       const pointer = await readPointer(tx, id);
       if (pointer.receipt?.attempt === attempt) return;
       const raw = await tx.getFirstAsync<AttemptRow>('SELECT id, model_id, epoch, offer, seals, complete FROM qwen_file_attempts WHERE id = ?', attempt);
@@ -167,6 +170,7 @@ export function createExpoQwenFileAdapter(deps: {
       if (folder.exists) throw new NativeQwenFilesError('storage', 'A model-file attempt already exists. Check files before retrying.');
       folder.create({ intermediates: true }); const db = await open();
       await db.withExclusiveTransactionAsync(async tx => {
+        await assertNativeSqliteModes(tx, storageUnavailable);
         const pointer = await readPointer(tx, offer.modelId);
         const pending = await tx.getAllAsync<{ id: string }>('SELECT id FROM qwen_file_attempts WHERE model_id = ? LIMIT 33', offer.modelId);
         if (pending.length >= 32) throw cleanupError();
@@ -188,6 +192,7 @@ export function createExpoQwenFileAdapter(deps: {
       if (!attemptId(attempt) || !Number.isInteger(index) || index < 0 || index > 2) throw damaged();
       const db = await open();
       await db.withExclusiveTransactionAsync(async tx => {
+        await assertNativeSqliteModes(tx, storageUnavailable);
         const raw = await tx.getFirstAsync<AttemptRow>('SELECT id, model_id, epoch, offer, seals, complete FROM qwen_file_attempts WHERE id = ?', attempt);
         if (!raw) throw damaged(); const row = checkedAttempt(raw), asset = row.descriptor.assets[index];
         if (row.complete !== 0 || row.verified[index] !== null || record.path !== asset.path || record.bytes !== asset.bytes ||
@@ -199,6 +204,7 @@ export function createExpoQwenFileAdapter(deps: {
     async commit(attempt) {
       const db = await open(); let result!: NativeQwenReceipt;
       await db.withExclusiveTransactionAsync(async tx => {
+        await assertNativeSqliteModes(tx, storageUnavailable);
         const raw = await tx.getFirstAsync<AttemptRow>('SELECT id, model_id, epoch, offer, seals, complete FROM qwen_file_attempts WHERE id = ?', attempt);
         if (!raw) throw damaged(); const row = checkedAttempt(raw), pointer = await readPointer(tx, row.model_id);
         if (row.complete !== 0 || row.verified.some(asset => asset === null) || pointer.epoch !== row.epoch || !Number.isSafeInteger(pointer.epoch + 1)) throw damaged();
@@ -219,6 +225,7 @@ export function createExpoQwenFileAdapter(deps: {
       // Explicit delete can retire damaged metadata without parsing its receipt.
       // It advances the epoch before reclaiming files, so late commits fail CAS.
       await db.withExclusiveTransactionAsync(async tx => {
+        await assertNativeSqliteModes(tx, storageUnavailable);
         const row = await tx.getFirstAsync<PointerRow>('SELECT epoch, deleted, attempt, receipt FROM qwen_file_models WHERE model_id = ?', id);
         if (row && (!Number.isSafeInteger(row.epoch) || row.epoch < 1)) throw damaged();
         const epoch = (row?.epoch ?? 0) + 1; if (!Number.isSafeInteger(epoch)) throw damaged();
@@ -236,6 +243,7 @@ export function createExpoQwenFileAdapter(deps: {
       const rows = await db.getAllAsync<{ id: string; model_id: string }>('SELECT id, model_id FROM qwen_file_attempts WHERE model_id = ? LIMIT 4097', id);
       if (rows.length > 4096 || rows.some(row => row.model_id !== id || typeof row.id !== 'string' || row.id.length > 200)) throw damaged();
       await db.withExclusiveTransactionAsync(async tx => {
+        await assertNativeSqliteModes(tx, storageUnavailable);
         for (const row of rows) if (!protectedAttempts.includes(row.id)) {
           await tx.runAsync('DELETE FROM qwen_file_attempts WHERE id = ? AND model_id = ?', row.id, id);
         }

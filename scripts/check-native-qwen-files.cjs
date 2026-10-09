@@ -3,6 +3,9 @@ const { createHash, randomBytes } = require('node:crypto'), ts = require('typesc
 const { createSqliteHarness } = require('./lib/native-sqlite.cjs');
 process.chdir(path.resolve(__dirname, '..'));
 let checks = 0, scenarios = 0, kitNumber = 0;
+// A pending async fixture without a live native/timer handle must never let
+// Node exit0 before the final scenario/result. Bound the suite explicitly.
+const suiteDeadline = setTimeout(() => {console.error('Native Qwen file suite did not finish'); process.exit(1);}, 120_000);
 const same = (a, b, message) => { assert.deepEqual(a, b, message); checks++; };
 const ok = (value, message) => { assert.ok(value, message); checks++; };
 const hash = value => createHash('sha256').update(value).digest('hex');
@@ -307,6 +310,54 @@ async function scenario(name, run) { await run(); scenarios++; console.log('PASS
     ok(k.env.nodes.has('file:///unrelated-training'), 'unrelated training sentinel preserved');
     same(k.env.stats.network.length, 0, 'status/delete never fetch model weights');
   });
+  await scenario('existing WAL model metadata migrates without receipt or file rewrite', async () => {
+    const k = kit(), saved = await k.manager.download(k.consent, {signal: k.signal()});
+    const before = {pointer: pointer(k), attempts: attempts(k), files: await readHashes(k)};
+    k.h.native.exec('PRAGMA journal_mode=WAL');
+    same(k.h.native.prepare('PRAGMA journal_mode').get().journal_mode, 'wal', 'representative previous journal');
+    const fresh = kit(k.f, k);
+    same((await fresh.manager.status(k.f.model.id)).attempt, saved.receipt.attempt, 'receipt survives checked migration');
+    same(k.h.native.prepare('PRAGMA journal_mode').get().journal_mode, 'delete', 'actual outcome is DELETE');
+    same(k.h.native.prepare('PRAGMA synchronous').get().synchronous, 3, 'base connection is EXTRA');
+    same({pointer: pointer(k), attempts: attempts(k), files: await readHashes(fresh)}, before, 'metadata and file hashes unchanged');
+  });
+  await scenario('unqualified fresh model transaction refuses before pointer or existing file deletion', async () => {
+    const k = kit(), saved = await k.manager.download(k.consent, {signal: k.signal()});
+    const before = {pointer: pointer(k), attempts: attempts(k), paths: [...k.env.nodes.keys()].sort()};
+    k.h.controller.calls = []; k.h.controller.transactionSynchronous = null;
+    await rejects(k.manager.remove(k.f.model.id), 'storage', 'real host default2 refuses delete');
+    same({pointer: pointer(k), attempts: attempts(k), paths: [...k.env.nodes.keys()].sort()}, before, 'refusal preserves current receipt and files');
+    same(k.h.controller.calls.filter(call => call.scope === 'transaction').map(call => call.sql),
+      ['BEGIN EXCLUSIVE', 'PRAGMA journal_mode', 'PRAGMA synchronous'], 'no application callback SQL occurs');
+    k.h.controller.transactionSynchronous = 3;
+    same((await kit(k.f, k).manager.status(k.f.model.id)).attempt, saved.receipt.attempt, 'restart still reads previous model');
+    same(await k.manager.remove(k.f.model.id), {cleanupPending: false}, 'qualified retry succeeds');
+  });
+  await scenario('different model jobs preserve generations through rollback-journal contention and qualified retry', async () => {
+    const a = kit(fixture('native-concurrent-a')), b = kit(fixture('native-concurrent-b'), a);
+    const results = await Promise.allSettled([a.manager.download(a.consent, {signal: a.signal()}), b.manager.download(b.consent, {signal: b.signal()})]);
+    for (const [index, result] of results.entries()) {
+      if (result.status === 'rejected') {
+        ok(result.reason instanceof Q.NativeQwenFilesError && ['storage', 'cleanup'].includes(result.reason.code), 'contention is surfaced without accepting a save');
+        const k = index === 0 ? a : b, installed = pointer(k);
+        // Existing postcommit acknowledgement semantics allow a complete
+        // pointer despite a reported readback failure. It must stay valid;
+        // a failed operation cannot publish an incomplete generation.
+        if (installed) {
+          ok(Q.nativeQwenReceiptMatches(JSON.parse(installed.receipt), k.consent), 'ambiguous committed pointer remains complete');
+          same(await readHashes(k), k.f.bytes.map(hash), 'any installed generation still has verified files');
+        }
+      }
+    }
+    const one = results[0].status === 'fulfilled' ? results[0].value : await a.manager.download(a.consent, {signal: a.signal()});
+    const two = results[1].status === 'fulfilled' ? results[1].value : await b.manager.download(b.consent, {signal: b.signal()});
+    same(pointer(a).attempt, one.receipt.attempt, 'first model commit survives');
+    same(pointer(b).attempt, two.receipt.attempt, 'second model commit survives');
+    same(await readHashes(a), a.f.bytes.map(hash), 'first files verified after interleaved jobs');
+    same(await readHashes(b), b.f.bytes.map(hash), 'second files verified after interleaved jobs');
+    same(a.h.native.prepare('PRAGMA journal_mode').get().journal_mode, 'delete', 'shared metadata uses rollback journal');
+    ok(a.h.controller.calls.filter(call => call.scope === 'transaction').every(call => !/PRAGMA.*=/.test(call.sql)), 'transaction mode guards never set PRAGMAs');
+  });
   console.log(JSON.stringify({ status: 'passed', scenarios, assertions: checks, actualModelDownloads: 0,
     inferenceRuns: 0, physicalDevicesQualified: 0, adapter: 'actual compiled Expo adapter + mock filesystem/transport + real node:sqlite + real SHA-256' }));
-})().catch(error => { console.error(error); process.exitCode = 1; }).finally(() => { for (const h of harnesses) h.close(); });
+})().catch(error => { console.error(error); process.exitCode = 1; }).finally(() => { clearTimeout(suiteDeadline); for (const h of harnesses) h.close(); });

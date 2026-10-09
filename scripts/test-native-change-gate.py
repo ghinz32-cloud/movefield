@@ -94,7 +94,7 @@ class Histories(unittest.TestCase):
                 self.assert_compile(self.decision(self.event(before)), True)
 
     def test_inspection_and_gate_policy_changes_compile(self):
-        for path in ["scripts/inspect-native-artifacts.py", "scripts/test-native-artifact-inspector.py", "scripts/extract-apk-rules.py", "scripts/test-apk-rule-extractor.py", "scripts/native-change-gate.py", "scripts/test-native-change-gate.py", ".github/workflows/native-builds.yml"]:
+        for path in ["scripts/inspect-native-artifacts.py", "scripts/test-native-artifact-inspector.py", "scripts/extract-apk-rules.py", "scripts/test-apk-rule-extractor.py", "scripts/native-change-gate.py", "scripts/test-native-change-gate.py", "scripts/collect-native-build-evidence.py", "scripts/test-native-build-evidence.py", "scripts/check-native-build-evidence.cjs", ".github/workflows/native-builds.yml"]:
             with self.subTest(path=path):
                 before = self.git("rev-parse", "HEAD")
                 self.write(path)

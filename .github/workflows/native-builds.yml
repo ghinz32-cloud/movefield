@@ -80,6 +80,12 @@ jobs:
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --print-certs mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/signing.txt
           python3 scripts/inspect-native-artifacts.py android native-evidence/android/manifest.xml native-evidence/android/backup.xml native-evidence/android/extraction.xml native-evidence/android/resources.txt > native-evidence/android/inspection.json
           sha256sum mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/apk.sha256
+      - name: Retain resolved Android dependencies and actual SQLite C build route
+        working-directory: mobile/android
+        run: |
+          mkdir -p build
+          ./gradlew :app:dependencies --configuration releaseRuntimeClasspath --console=plain --no-daemon > build/release-runtime-classpath.raw.txt
+          python3 ../../scripts/collect-native-build-evidence.py android ../.. ../../native-evidence/android
       - name: Retain native compilation evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -127,6 +133,8 @@ jobs:
           cp mobile/ios/Podfile.lock native-evidence/ios/Podfile.lock
           cp mobile/ios/build/Build/Products/Release-iphonesimulator/Movefield.app/Info.plist native-evidence/ios/Info.plist
           cp mobile/ios/build/Build/Products/Release-iphonesimulator/Movefield.app/PrivacyInfo.xcprivacy native-evidence/ios/PrivacyInfo.xcprivacy
+      - name: Retain SQLite Release flags and complete built privacy replay
+        run: python3 scripts/collect-native-build-evidence.py ios . native-evidence/ios
       - name: Retain native compilation evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

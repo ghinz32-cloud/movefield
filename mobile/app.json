@@ -94,6 +94,12 @@
     "plugins": [
       "expo-notifications",
       [
+        "expo-sqlite",
+        {
+          "customBuildFlags": "-DSQLITE_DEFAULT_SYNCHRONOUS=3"
+        }
+      ],
+      [
         "expo-secure-store",
         {
           "configureAndroidBackup": false,

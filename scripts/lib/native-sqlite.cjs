@@ -1,10 +1,13 @@
 const {DatabaseSync}=require('node:sqlite');
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path');
-function createSqliteHarness(){
+function createSqliteHarness(options={}){
  const directory=fs.mkdtempSync(path.join(os.tmpdir(),'movefield-sqlite-audit-'));
  const filename=path.join(directory,'records.sqlite');
  const native=new DatabaseSync(filename);native.exec('PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON;');
- const controller={calls:[],fail:null,mutateRead:null};let transactionQueue=Promise.resolve();
+ // Model the qualified native compile default on each fresh connection. Node's
+ // host SQLite is separate from the vendored native build; policy tests also
+ // exercise its real unmodified default to prove refusal.
+ const controller={calls:[],fail:null,mutateRead:null,transactionSynchronous:options.transactionSynchronous??3};let transactionQueue=Promise.resolve();
  const bindings=args=>args.length===1&&Array.isArray(args[0])?args[0]:args;
  async function before(scope,method,sql,args){
   const call={index:controller.calls.length+1,scope,method,sql,args};controller.calls.push(call);
@@ -22,6 +25,7 @@ function createSqliteHarness(){
  db.withExclusiveTransactionAsync=job=>{
   const next=transactionQueue.then(async()=>{
    const connection=new DatabaseSync(filename);connection.exec('PRAGMA foreign_keys=ON;');
+   if(controller.transactionSynchronous!==null)connection.exec('PRAGMA synchronous='+Number(controller.transactionSynchronous));
    try{
     await before('transaction','begin','BEGIN EXCLUSIVE',[]);connection.exec('BEGIN EXCLUSIVE');
     await job(adapter(connection,'transaction'));

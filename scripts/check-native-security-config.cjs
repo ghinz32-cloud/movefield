@@ -154,6 +154,9 @@ async function inspect(dir) {
   // Cross-platform transfer requires a real Apple team identity. Never invent it.
   equal(extraction['cross-platform-transfer'], undefined, 'Cross-platform OS transfer must remain unconfigured');
   const gradle = read(dir, 'android/gradle.properties');
+  equal(gradle.split('\n').filter(line => line.startsWith('expo.sqlite.customBuildFlags=')),
+    ['expo.sqlite.customBuildFlags=-DSQLITE_DEFAULT_SYNCHRONOUS=3'],
+    'Fresh Android SQLite transaction connections must default to EXTRA');
   for (const [key,value] of [['minSdkVersion','24'], ['compileSdkVersion','36'], ['targetSdkVersion','36']]) {
     equal(gradle.split('\n').filter(line => line.startsWith(`android.${key}=`)),
       [`android.${key}=${value}`], 'Pin installed Expo/RN Android requirements without duplicate properties');
@@ -180,6 +183,8 @@ async function inspect(dir) {
   equal(Object.fromEntries(privacy.NSPrivacyAccessedAPITypes.map(p => [p.NSPrivacyAccessedAPIType,p.NSPrivacyAccessedAPITypeReasons])),
     expectedReasons, 'Declare scoped file/picker, preflight disk, local preferences and RN timing reasons');
   const podProps = JSON.parse(read(dir, 'ios/Podfile.properties.json'));
+  equal(podProps['expo.sqlite.customBuildFlags'], '-DSQLITE_DEFAULT_SYNCHRONOUS=3',
+    'Fresh iOS SQLite transaction connections must default to EXTRA');
   equal(podProps['ios.deploymentTarget'], '16.4', 'Pin installed Expo iOS deployment floor');
   const xcode = read(dir, 'ios/Movefield.xcodeproj/project.pbxproj');
   const targets = [...xcode.matchAll(/IPHONEOS_DEPLOYMENT_TARGET = ([^;]+);/g)].map(match => match[1]);
@@ -188,7 +193,10 @@ async function inspect(dir) {
     ['com.ghinz32.movefield', 'com.ghinz32.movefield'], 'Debug/release target identity must match source');
   equal(xcode.includes('[Expo Dev Launcher] Strip Local Network Keys for Release'), true,
     'Installed Dev Launcher must retain its production local-network permission stripping phase');
-  return {manifest: hash(manifestText), legacyBackup: hash(legacyText), extraction: hash(extractionText), privacy: hash(privacyText)};
+  return {manifest: hash(manifestText), legacyBackup: hash(legacyText), extraction: hash(extractionText), privacy: hash(privacyText),
+    sqlite: {androidCustomBuildFlags: gradle.split('\n').find(line => line.startsWith('expo.sqlite.customBuildFlags=')),
+      iosCustomBuildFlags: podProps['expo.sqlite.customBuildFlags'],
+      gradlePropertiesSha256: hash(gradle), podPropertiesSha256: hash(JSON.stringify(podProps))}};
 }
 
 async function main() {
@@ -201,6 +209,9 @@ async function main() {
   equal(localScheduler.includes('WakeLock'),false,'Installed local scheduler does not require the remote messaging wake-lock path');
 
   const secure = config.plugins.find(p => Array.isArray(p) && p[0] === 'expo-secure-store');
+  const sqlite = config.plugins.filter(p => Array.isArray(p) && p[0] === 'expo-sqlite');
+  equal(sqlite, [['expo-sqlite', {customBuildFlags: '-DSQLITE_DEFAULT_SYNCHRONOUS=3'}]],
+    'Use the installed official string-valued cross-platform SQLite plugin, with no competing override');
   equal(secure?.[1], {configureAndroidBackup: false, faceIDPermission: false}, 'Custom backup policy owns rules; no biometric permission requested');
   const eas = json('eas.json');
   for (const profile of ['development','preview','production']) {

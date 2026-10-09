@@ -22,6 +22,9 @@ EXACT_INPUTS = {
     b"scripts/test-apk-rule-extractor.py",
     b"scripts/native-change-gate.py",
     b"scripts/test-native-change-gate.py",
+    b"scripts/collect-native-build-evidence.py",
+    b"scripts/test-native-build-evidence.py",
+    b"scripts/check-native-build-evidence.cjs",
     b".github/workflows/native-builds.yml",
 }
 

@@ -1,0 +1,13 @@
+{
+  "sourcePublished": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf",
+  "sourceParent": "d740c61084f44505273e900f7672ac92bae1a218",
+  "localSource": "b81107896f510fe2a13cab548ef1557a09a36a14",
+  "tree": "eec113576e18fc18d4976ceaa03b7e7ca464a930",
+  "independentRemoteHeadAndFetchTreeVerified": true,
+  "sourceReportReadbackExact": true,
+  "retainedBothHistoriesAt": "8ee8319a143ec1e3001c7b9b011f1d0a9cc1db60",
+  "nativeRun": 37978371785,
+  "qualityRun": 37978371782,
+  "nativeQualification": "pending actual platform builds; hosted gate compile=true and quality success independently recorded in ci receipts",
+  "nextNecessaryRepair": "NATIVE7 SQLite WAL mitigation owned by original root isolated implementation worktree; these source changes remain a verified prerequisite baseline"
+}

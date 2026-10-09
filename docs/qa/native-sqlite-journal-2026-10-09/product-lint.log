@@ -1,0 +1,4 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> site-creator-vinext-starter@0.1.0 lint
+> eslint app components lib hooks db vite.config.ts next.config.ts mobile/App.tsx mobile/src --ignore-pattern mobile/src/shared
