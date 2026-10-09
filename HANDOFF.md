@@ -1,6 +1,20 @@
 # Current continuation — 8 October 2026
 
-## Latest milestone — U08a2 browser file controls and source recovery
+## Latest milestone — U12 Today and compact UI
+
+Current checkout/branch unchanged. Baseline `3681258a6095d977e67b0f1d8c6fadfd135fbff1`; U12 source/observations/results are in `docs/ux-today-entry-2026-10-08.md` and `.json`. Web/native types/lint, onboarding/security/shared checks, native engine, production build/both production suites and iOS/Android exports pass. Browser sample Today, set navigation retention, partial finish and profile/setup entry observed. Screenshot inspected but local shared-file sync failed. No physical-phone or secure-storage/account acceptance. Resolve the checkpoint from this report's Git history, and verify remote/tree/readback; standing push permission applies.
+
+Next: U13 recent evidence/archive search and source-screening ledger, then U14 public attributed named-plan data and U08b Qwen runtime/training work. One independently checked/pushed milestone at a time. No fine-tuning or actual inference is complete yet; preserve safety/qualification gates and exact data provenance.
+
+## Latest authorization and publication — 8 October 2026
+
+User explicitly grants full standing permission to **always push the work**. Do not re-request push permission. Recovered audit/U08a2 source is on GitHub at `3681258a6095d977e67b0f1d8c6fadfd135fbff1`, identical tree `9a2e68b95222f7bd5be082bed95b8c60e1d3d0f4` to former local `861cd78`. Git CLI push failed for absent login; connected GitHub create-tree/commit/ref succeeded, remote head and report readback verified. Original local three commits are retained under `backup/u08a2-local-861cd78` and the verified bundle. Current continuation branch now follows the connector checkpoint with identical files.
+
+New scope: reduce oversized/cluttered web and phone UI, open on Today, improve setup/account entry/workout selection, research hundreds of recent papers and exercise archives, expand attributed named plans, inspect forum complaints, and make Qwen work in the demo with a default prompt and real training work. U12 is active first; U13/U14/U08b follow as independent checked/pushed milestones. Do not claim training or inference from corpus/prompt construction. App accounts/sync and physical-phone acceptance remain unavailable; release blockers and separate main merge/deployment boundary remain.
+
+Next: finish U12 on current checkout/branch, verify focused web/native flow/appearance checks, checkpoint and push with standing authorization, update this handoff, then U13.
+
+## Previous milestone — U08a2 browser file controls and source recovery
 
 Current independent checkout `/workspace/scratch/855d6d943ad0/movefield`, branch `audit/2026-10-08-continue`, tracking `origin/audit/2026-10-08-quality`. Application checkpoint `65232aae0fab994f00ca725497caf39886e5d027`; recovered baseline `5c117e4fb3ea490326cb92be8a8bb377f564c409`. Last verified remote head remains `8cd39e42f2178b807d63af2042b70481041b028b`; draft PR #1 targets `main` at `80e6ea26437f0aeaa1d8f816ace464da81fe0a81`; review-fixes remains `667a3e381035b16cb1aa611c85cdf9d143b7b835`. Original local metadata disappeared with the deleted base checkout. Preserved source matched all 11 U08a1 fingerprints and was recovered on the live remote baseline without modifying the older worktrees. Original local commit/staging state is not recoverable. This checkout owns its Git metadata, rather than pointing to another scratch directory.
 
