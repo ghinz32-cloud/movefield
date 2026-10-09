@@ -43,7 +43,7 @@ async function mount(state, componentName = 'TrainingApp', input = {}) {
     './src/rest-alerts':{enableRestAlerts:async()=>({enabled:false,message:'Disabled'}), useNativeRestAlerts:()=>''},
     './src/workout-notifications':{useNativeWorkoutReminders:()=>''},
     './src/storage':{readLocalState:async()=>structuredClone(state), readLocalRaw:async()=>JSON.stringify(state), saveLocalState:async next=>saved.push(structuredClone(next)), replaceLocalState:async()=>{}, resetLocalState:async()=>{}},
-    './src/content':{guides:{},media,safeWebUrl:value=>value || null},
+    './src/content':{guides:{},media,safeWebUrl:value=>value || null,loadNativeContent:async()=>{}},
     './src/tools':{NativeTrainingTools:'NativeTrainingTools', NativeWeeklyReview:'NativeWeeklyReview'},
     'expo-crypto':{getRandomBytes:n=>new Uint8Array(n)},
   };

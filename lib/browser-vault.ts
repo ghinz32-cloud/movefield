@@ -1,4 +1,7 @@
 import {createBrowserRecordStore, BrowserRecordStoreError, type BrowserRecordSnapshot} from './browser-record-store';
+import {assembleBrowserHistory, browserStateCandidate, parseBrowserHistoryHead, splitBrowserHistory, type BrowserHistoryHead} from './browser-history';
+import {assertStoredTextCapacity, MAX_SAVED_STATE_BYTES, MAX_SAVED_STATE_CHARS, SavedStateCapacityError, utf8TextBytes} from './storage-capacity';
+import type {SyncEnqueue, SyncClaimInput, SyncAckInput, SyncFailInput, SyncOutboxState} from './sync-outbox';
 
 // Encrypts this browser's saved training data before it reaches persistent storage.
 // Each record is sealed with AES-256-GCM. The data key is non-extractable and kept in IndexedDB,
@@ -328,6 +331,8 @@ export function createTransactionalVault(deps: TransactionalVaultDeps) {
   let queue: Promise<unknown> = Promise.resolve();
   const associated = (slot: string) => encoder.encode(`movefield-vault:${VAULT_VERSION}:${slot}`);
   const announce = () => { try { deps.notify?.(); } catch {} };
+  const profileSlot = 'training-studio-v2';
+  let historyCache: {raw: string; revision: number; keyRevision: number; text: string; head: BrowserHistoryHead} | undefined;
   const legacyRecords = () => Object.fromEntries(slots.map(slot => [slot, deps.legacy.getItem(slot)]));
   const currentRaw = (snapshot: BrowserRecordSnapshot, slot: string) => snapshot.migrated ? snapshot.records[slot] ?? null : deps.legacy.getItem(slot);
   const expectedRaw = (raw: string | null, expected?: string) => {
@@ -396,18 +401,88 @@ export function createTransactionalVault(deps: TransactionalVaultDeps) {
     queue = result.catch(() => undefined);
     return result;
   }
+  async function sameGeneration(before: BrowserRecordSnapshot, after: BrowserRecordSnapshot, slot: string) {
+    if (before.revision !== after.revision || before.keyRevision !== after.keyRevision || before.records[slot] !== after.records[slot])
+      throw new VaultError('conflict', 'Your saved profile changed in another tab. Nothing was replaced.');
+    // A fresh key read must still open the authenticated head, including after
+    // an unsupported same-shaped key change outside the transaction facade.
+    await decrypt(after, slot, after.records[slot] ?? null);
+  }
+  async function openProfile(snapshot: BrowserRecordSnapshot, slot: string): Promise<{snapshot: BrowserRecordSnapshot; text: string | null; head: BrowserHistoryHead | null}> {
+    const raw = snapshot.records[slot] ?? null, text = await decrypt(snapshot, slot, raw);
+    if (slot !== profileSlot || text === null) return {snapshot, text, head: null};
+    let head: BrowserHistoryHead | null;
+    try {head = parseBrowserHistoryHead(text);} catch (error) {
+      if (error instanceof SavedStateCapacityError) throw error;
+      throw new VaultError('decrypt-failed', DECRYPT_MESSAGE);
+    }
+    if (!head) {
+      browserStateCandidate(text);
+      return {snapshot, text, head};
+    }
+    if (historyCache && historyCache.raw === raw && historyCache.revision === snapshot.revision && historyCache.keyRevision === snapshot.keyRevision)
+      return {snapshot, text: historyCache.text, head: historyCache.head};
+    const entities = await store.snapshot(head.entries.map(entry => entry.slot));
+    await sameGeneration(snapshot, entities, slot);
+    const records = new Map<string, string>(), base = JSON.stringify({...head.state, history: []});
+    let bytes = utf8TextBytes(base), chars = base.length;
+    for (const entry of head.entries) {
+      const value = await decrypt(entities, entry.slot, entities.records[entry.slot] ?? null);
+      if (value === null) throw new VaultError('decrypt-failed', DECRYPT_MESSAGE);
+      bytes += utf8TextBytes(value, MAX_SAVED_STATE_BYTES) + 1; chars += value.length + 1;
+      if (bytes > MAX_SAVED_STATE_BYTES + 1 || chars > MAX_SAVED_STATE_CHARS + 1) throw new SavedStateCapacityError();
+      records.set(entry.slot, value);
+    }
+    let assembled: string;
+    try {assembled = JSON.stringify(assembleBrowserHistory(head, records));} catch (error) {
+      if (error instanceof SavedStateCapacityError) throw error;
+      throw new VaultError('decrypt-failed', DECRYPT_MESSAGE);
+    }
+    historyCache = {raw: raw!, revision: snapshot.revision, keyRevision: snapshot.keyRevision, text: assembled, head};
+    return {snapshot, text: assembled, head};
+  }
+  async function commitProfile(snapshot: BrowserRecordSnapshot, slot: string, text: string, nextKey?: CryptoKey, sync?: SyncEnqueue, existingHead?: BrowserHistoryHead | null) {
+    assertStoredTextCapacity(text);
+    const state = slot === profileSlot ? browserStateCandidate(text) : null;
+    const split = state ? splitBrowserHistory(state) : null;
+    const oldHead = existingHead === undefined && slot === profileSlot ? (await openProfile(snapshot, slot)).head : existingHead;
+    const old = new Map((oldHead?.entries ?? []).map(entry => [entry.slot, entry.digest]));
+    const changed = split?.head.entries.filter(entry => old.get(entry.slot) !== entry.digest) ?? [];
+    const retired = [...old.keys()].filter(oldSlot => !split?.workouts.has(oldSlot));
+    const requested = [...changed.map(entry => entry.slot), ...retired];
+    let expected = snapshot;
+    if (requested.length) {
+      expected = await store.snapshot(requested);
+      await sameGeneration(snapshot, expected, slot);
+    }
+    const key = snapshot.key ?? nextKey!;
+    const raw = await seal(key, slot, split ? JSON.stringify(split.head) : text);
+    const records: Record<string, string | null> = {[slot]: raw};
+    for (const entry of changed) records[entry.slot] = await seal(key, entry.slot, split!.workouts.get(entry.slot)!);
+    for (const oldSlot of retired) records[oldSlot] = null;
+    const committed = await store.compareAndCommit({expected, records, key: nextKey, sync});
+    historyCache = split ? {raw, revision: committed.revision, keyRevision: committed.keyRevision, text: JSON.stringify(state), head: split.head} : undefined;
+    return raw;
+  }
   const readSnapshot = (slot: string) => enqueue(async () => {
     const snapshot = await importRecords(await prepare());
     if (!snapshot.migrated) return {raw: deps.legacy.getItem(slot), text: await legacy.read(slot)};
-    const raw = snapshot.records[slot] ?? null;
-    return {raw, text: await decrypt(snapshot, slot, raw)};
+    const opened = await openProfile(snapshot, slot);
+    let raw = snapshot.records[slot] ?? null;
+    // Existing whole records remain authoritative until the complete encrypted
+    // entity generation commits. A refusal/abort cannot remove the old source.
+    if (slot === profileSlot && opened.text !== null && !opened.head && deps.restoreSafe && browserStateCandidate(opened.text)) {
+      raw = await commitProfile(snapshot, slot, opened.text, undefined, undefined, null);
+      announce();
+    }
+    return {raw, text: opened.text};
   });
   return {
     writerId: deps.writerId,
     readSnapshot,
     raw: (slot: string) => enqueue(async () => currentRaw(await store.snapshot(), slot)),
     read: async (slot: string) => (await readSnapshot(slot)).text,
-    write: (slot: string, text: string, expected?: string) => enqueue(async () => {
+    write: (slot: string, text: string, expected?: string, sync?: SyncEnqueue) => enqueue(async () => {
       // Compare the caller's legacy bytes before importing, then compare the
       // committed database snapshot again within the final write transaction.
       let snapshot = await prepare();
@@ -418,8 +493,7 @@ export function createTransactionalVault(deps: TransactionalVaultDeps) {
         if (Object.values(snapshot.records).some(isSealed)) throw new VaultError('key-missing', KEY_MISSING_MESSAGE);
         nextKey = await deps.subtle.generateKey({name: 'AES-GCM', length: 256}, false, ['encrypt', 'decrypt']) as CryptoKey;
       }
-      const raw = await seal(snapshot.key ?? nextKey!, slot, text);
-      await store.write(snapshot, slot, raw, nextKey);
+      const raw = await commitProfile(snapshot, slot, text, nextKey, sync);
       announce();
       return raw;
     }, true),
@@ -428,9 +502,14 @@ export function createTransactionalVault(deps: TransactionalVaultDeps) {
       expectedRaw(currentRaw(snapshot, slot), expected);
       const before = retiredLegacy(snapshot);
       const next = await deps.subtle.generateKey({name: 'AES-GCM', length: 256}, false, ['encrypt', 'decrypt']) as CryptoKey;
-      const raw = await seal(next, slot, text);
+      assertStoredTextCapacity(text);
+      const state = slot === profileSlot ? browserStateCandidate(text) : null, split = state ? splitBrowserHistory(state) : null;
+      const raw = await seal(next, slot, split ? JSON.stringify(split.head) : text);
+      const records: Record<string, string | null> = Object.fromEntries(slots.map(other => [other, other === slot ? raw : null]));
+      if (split) for (const [historySlot, workout] of split.workouts) records[historySlot] = await seal(next, historySlot, workout);
       if (!snapshot.migrated) expectedRaw(deps.legacy.getItem(slot), expected);
-      await store.replace(snapshot, slot, raw, next);
+      const committed = await store.compareAndCommit({expected: snapshot, records, key: next, clearHistory: true, clearTransition: true, migrated: true});
+      historyCache = split ? {raw, revision: committed.revision, keyRevision: committed.keyRevision, text: JSON.stringify(state), head: split.head} : undefined;
       await cleanupRetiredLegacy(before);
       announce();
       return raw;
@@ -438,19 +517,44 @@ export function createTransactionalVault(deps: TransactionalVaultDeps) {
     reset: () => enqueue(async () => {
       const snapshot = await store.snapshot(), before = retiredLegacy(snapshot);
       await store.reset(snapshot);
+      historyCache = undefined;
       await cleanupRetiredLegacy(before);
       announce();
     }, true),
     discard: (slot: string) => enqueue(async () => {
       const snapshot = await importRecords(await prepare());
-      await store.discard(snapshot, slot);
+      if (slot === profileSlot) {
+        await store.compareAndCommit({expected: snapshot, records: {[slot]: null}, clearHistory: true});
+        historyCache = undefined;
+      } else await store.discard(snapshot, slot);
       announce();
     }, true),
     hasKey: () => enqueue(async () => Boolean((await store.snapshot()).key)),
     hasSealedRecords: () => enqueue(async () => {
       const snapshot = await store.snapshot();
-      return Object.values(snapshot.migrated ? snapshot.records : legacyRecords()).some(isSealed);
+      return Object.values(snapshot.migrated ? snapshot.records : legacyRecords()).some(isSealed) || (await store.listHistorySlots()).length > 0;
     }),
+    // A damaged/missing-key head alone cannot recover individually sealed rows.
+    // Include all owned history ciphertext without opening records or key bytes.
+    recoveryCopy: () => enqueue(async () => {
+      const snapshot = await store.snapshot(), historySlots = await store.listHistorySlots();
+      const records = {...(snapshot.migrated ? snapshot.records : legacyRecords())};
+      for (let start = 0; start < historySlots.length; start += 5000) {
+        const part = await store.snapshot(historySlots.slice(start, start + 5000));
+        if (part.revision !== snapshot.revision || part.keyRevision !== snapshot.keyRevision || part.records[profileSlot] !== snapshot.records[profileSlot])
+          throw new VaultError('conflict', 'Saved records changed while preparing the recovery copy. Retry before resetting.');
+        for (const slot of historySlots.slice(start, start + 5000)) if (part.records[slot] !== null) records[slot] = part.records[slot];
+      }
+      return JSON.stringify({format: 'movefield-browser-recovery-v1', revision: snapshot.revision, keyRevision: snapshot.keyRevision, records});
+    }),
+    syncSnapshot: () => enqueue(() => store.syncSnapshot()),
+    claimSync: (input: SyncClaimInput) => enqueue(() => store.claimSync(input), true),
+    acknowledgeSync: (input: SyncAckInput) => enqueue(() => store.acknowledgeSync(input), true),
+    failSync: (input: SyncFailInput) => enqueue(() => store.failSync(input), true),
+    setSyncRevision: (input: {accountId: string; revision: number; expectedRevision: number}) => enqueue(() => store.setSyncRevision(input), true),
+    reconcileSync: (input: {accountId: string; revision: number; expected: SyncOutboxState}) => enqueue(() => store.reconcileSync(input), true),
+    clearSync: (accountId?: string) => enqueue(() => store.clearSync(accountId), true),
+    resumeSyncAuth: (accountId: string) => enqueue(() => store.resumeSyncAuth(accountId), true),
   };
 }
 

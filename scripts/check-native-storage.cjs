@@ -70,6 +70,21 @@ const storage=load('mobile/src/storage.ts'),T=load('mobile/src/shared/training.t
  assert.equal((await storage.readLocalState()).profile.name,'Private name marker');
  assert.equal(JSON.parse(values.get(STATE_KEY)).alg,'xchacha20poly1305','legacy plaintext is sealed on first read');
 
+ // Newer saved fields must refuse opening and saving without rewriting ciphertext or secure keys.
+ const compatibleCiphertext=values.get(STATE_KEY),recordCrypto=load('mobile/src/local-crypto.ts');
+ for(const future of [{...secret,futureFeature:{retain:'unknown data'}},{...secret,schema:3}]){
+  const incompatible=recordCrypto.sealText(JSON.stringify(future),recordCrypto.keyFromHex(secure.get(DATA_KEY)),STATE_KEY,expoCrypto.getRandomBytes);
+  values.set(STATE_KEY,incompatible);
+  const beforeRecords=[...values],beforeKeys=[...secure];
+  await assert.rejects(storage.readLocalState(),/cannot preserve|version is not supported/);
+  assert.deepEqual([...values],beforeRecords,'incompatible read retains every ciphertext');
+  assert.deepEqual([...secure],beforeKeys,'incompatible read retains every secure key');
+  await assert.rejects(storage.saveLocalState(secret),/cannot preserve|version is not supported/);
+  assert.deepEqual([...values],beforeRecords,'older writer cannot overwrite incompatible saved state');
+  assert.deepEqual([...secure],beforeKeys,'refused older save retains every secure key');
+ }
+ values.set(STATE_KEY,compatibleCiphertext);
+
  // Tampering fails loudly and leaves the stored record untouched.
  const good=values.get(STATE_KEY),bad=JSON.parse(good);bad.data=(bad.data[0]==='0'?'1':'0')+bad.data.slice(1);
  const tampered=JSON.stringify(bad);values.set(STATE_KEY,tampered);

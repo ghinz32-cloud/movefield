@@ -1,4 +1,5 @@
 import {type State,type Item,exFor,day,changed,estimateSessionMinutes} from './training';
+import {userTargetError} from './customize';
 
 export type TrackingEdit={planId:string;version:number;sessionId:string;items:Item[];allowLonger:boolean;repeatWeekday?:boolean};
 /** Whole-session edits are user prescriptions. They never provide app progression or alter dates/history. */
@@ -13,11 +14,10 @@ export function previewTrackingEdit(s:State,edit:TrackingEdit){
  for(const i of edit.items){
   const ex=exFor(i.exerciseId,s.custom);
   if(ex.name==='Archived exercise')errors.push('Choose an exercise from your library.');
-  if(!Number.isInteger(i.sets)||i.sets<1||i.sets>20||!Number.isFinite(i.reps)||i.reps<=0||i.reps>999||ex.metric==='reps'&&!Number.isInteger(i.reps)||!Number.isFinite(i.rest)||i.rest<0||i.rest>3600)errors.push('Use 1–20 sets and targets up to 999 reps, seconds or minutes, as shown for the exercise. Rest can be 0–3,600 seconds. Enter whole numbers for reps.');
+  const problem=userTargetError(i,ex.metric,'tracking');if(problem)errors.push(problem);
  }
  const source=plan?.profile.programId?.startsWith('ref-');
- if(source)for(const i of edit.items)if((i.repMin!==undefined||i.repMax!==undefined)&&(!Number.isInteger(i.repMin)||!Number.isInteger(i.repMax)||i.repMin!<1||i.repMax!>999||i.repMin!>i.reps||i.repMax!<i.reps))errors.push('Keep the rep target inside a valid whole-number range, or edit it as a fixed target.');
- const items:Item[]=edit.items.map(i=>{const prior=session?.items.find(x=>x.exerciseId===i.exerciseId);return {exerciseId:i.exerciseId,sets:i.sets,reps:i.reps,rest:i.rest,kg:null,...(source?{repMin:i.repMin,repMax:i.repMax,note:i.note===prior?.note?i.note:undefined,loadRole:prior?.loadRole}:{})};});
+ const items:Item[]=edit.items.map(i=>{const prior=session?.items.find(x=>x.exerciseId===i.exerciseId);return {exerciseId:i.exerciseId,sets:i.sets,reps:i.reps,rest:i.rest,kg:null,...(exFor(i.exerciseId,s.custom).metric==='reps'&&i.repMin!==undefined&&i.repMax!==undefined?{repMin:i.repMin,repMax:i.repMax}:{}),...(source?{note:i.note===prior?.note?i.note:undefined,loadRole:prior?.loadRole}:{})};});
  const minutes=items.length?estimateSessionMinutes(items,false,s.custom):0;
  if(minutes>1440)errors.push('This session is too long. Reduce the target work.');
  if(plan&&minutes>plan.profile.minutes&&!edit.allowLonger)errors.push(`This work needs about ${minutes} minutes, beyond your ${plan.profile.minutes}-minute window. Review extra time or reduce the work.`);

@@ -1,4 +1,5 @@
 import {type RestTimer} from './rest-timer';
+import {recordUuid} from './record-identity';
 import expandedLibrary from './exercise-library.json';
 import recipes from './recipes.json';
 import {applyTrainingFocus,focusScheduleConflict} from './training-focus';
@@ -7,13 +8,13 @@ import {planEvidence} from './program-evidence';
 export type Mode = 'app'|'coach'|'manual';
 export type Profile={noFloor?:boolean;age:number;goal:string;experience:string;mode:Mode;minutes:number;days:number[];weeks:number;start:string;equipment:string;sport:string;position:string;season:string;supervision:boolean;units:'kg'|'lb';name:string;sex?:'female'|'male'|'intersex'|'unspecified';dumbbellMaxKg?:number;programId?:string;runBase?:boolean;runDays?:number;runMinutes?:number;establishedTraining?:boolean;focuses?:('core'|'jumping'|'supersets'|'activity')[];jumpReady?:boolean};
 export type Exercise={id:string;name:string;pattern:string;equipment:string;metric:'reps'|'seconds'|'minutes';cues:string[];source?:string;video?:string;videoNote?:string;custom?:boolean;loadConvention?:string;loadMultiplier?:number;loadTracked?:boolean;requiresSetup?:boolean;primaryMuscles?:string[];instructionStatus?:string;progressionEnabled?:boolean;category?:string};
-export type Item={exerciseId:string;sets:number;reps:number;repMin?:number;repMax?:number;rest:number;kg:number|null;loadContext?:string;loadRole?:string;note?:string};
+export type Item={exerciseId:string;sets:number;reps:number;repMin?:number;repMax?:number;rest:number;kg:number|null;loadContext?:string;loadRole?:string;note?:string;supersetGroup?:string;supersetPosition?:1|2};
 export type Session={id:string;date:string;week:number;title:string;kind:string;minutes:number;items:Item[];dependsOn?:string[];progressionStep?:string;needsReview?:boolean;status:'scheduled'|'completed'|'partial'|'missed';recoveryGroup?:string;roleId?:string;timeProfile?:'brief';runSteps?:{label:string;seconds:number}[]};
 export type Plan={id:string;name:string;version:number;progressionModel?:'ranges';scheduleEnd?:string;profile:Profile;acceptedAt:string|null;sessions:Session[];phases:{name:string;weeks:string;description:string}[];evidence:string[];notes:string[];progression:string;template:string;paused:boolean};
 export type SetMetrics={distanceM?:number;durationSeconds?:number;heightCm?:number;heartRate?:number;cadence?:number;powerWatts?:number;speedKph?:number;inclinePercent?:number;level?:number;assistanceKg?:number;tempo?:string;side?:string;notes?:string};
 export type SetLog={exerciseId:string;set:number;reps:number;kg:number|null;done:boolean;metrics?:SetMetrics;rir?:number|null};
 export type ExerciseNotes={notes?:string};
-export type Workout={id:string;sessionId:string;title:string;date:string;startedAt:number;finishedAt?:number;sets:SetLog[];targets?:Item[];loadContext?:Record<string,string>;rir?:Record<string,number|null>;details?:Record<string,ExerciseNotes>;effort?:string;symptom?:string;rating?:number;partial?:boolean;supervisorConfirmed?:boolean;demo?:boolean};
+export type Workout={id:string;sessionId:string;title:string;date:string;startedAt:number;finishedAt?:number;timeZone?:string;startedAtUtc?:string;finishedAtUtc?:string;sets:SetLog[];targets?:Item[];loadContext?:Record<string,string>;rir?:Record<string,number|null>;details?:Record<string,ExerciseNotes>;effort?:string;symptom?:string;rating?:number;partial?:boolean;supervisorConfirmed?:boolean;demo?:boolean};
 export type Proposal={id:string;title:string;reason:string;type:'sets'|'move'|'return'|'load'|'substitute'|'ranges'|'capacity'|'review';changes?:{sessionId:string;beforeDate?:string;patch:Partial<Session>}[];warnings?:string[];eventSignature?:string;historyCount?:number;planId:string;baseVersion:number;sessionId:string;before:string;after:string;status:'pending'|'accepted'|'declined'|'stale'|'queued';patch:Partial<Session>;source:string;createdAt:string};
 export type Event={id:string;name:string;date:string;kind:string;priority:string;minutes:number;provisional:boolean};
 export type State={restTimer?:RestTimer|null;restAlerts?:boolean;restSound?:boolean;videoPromptsAnswered?:string[];schema:2;profile:Profile;plan:Plan|null;history:Workout[];active:Workout|null;proposals:Proposal[];events:Event[];custom:Exercise[];ratings:Record<string,number>;audit:{at:string;message:string}[];saved:Plan[];checkins:boolean;soreness:boolean;hold:boolean;simulatedOffline:boolean;equipmentCaps?:{exerciseId:string;setup:string;maxKg:number}[];incrementKg?:Record<string,number>;loadContext?:Record<string,string>};
@@ -21,7 +22,7 @@ export const weekdays=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 export function day(d=new Date()){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
 export function addDays(date:string,n:number){const d=new Date(date+'T12:00:00');d.setDate(d.getDate()+n);return day(d)}
 export function niceDate(date:string){return new Date(date+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}
-export function uid(prefix='id'){return prefix+'-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7)}
+export function uid(prefix='id'){void prefix;return recordUuid()}
 const foundationExercises:Exercise[]=[
 {id:'squat',name:'Goblet squat',pattern:'Squat',equipment:'Dumbbells',metric:'reps',cues:['Hold one weight close to your chest.','Sit between your hips through a comfortable range.','Keep the whole foot grounded and stand smoothly.']},
 {id:'bench',name:'Barbell bench press',pattern:'Push',equipment:'Full gym',metric:'reps',cues:['Set a stable position with feet supported.','Lower the bar under control to a comfortable chest position.','Press smoothly; use appropriate safeties or a qualified spotter.']},

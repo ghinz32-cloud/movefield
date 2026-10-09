@@ -21,6 +21,19 @@ const PREFIX='[Focus]';
 const daysApart=(a:string,b:string)=>Math.abs(Date.parse(a+'T12:00:00Z')-Date.parse(b+'T12:00:00Z'))/86400000;
 const addNote=(item:Item,note:string)=>{item.note=[item.note,note].filter(Boolean).join(' ')};
 export function selectedFocuses(p:Profile):TrainingFocus[]{return [...new Set(p.focuses??[])].filter((f):f is TrainingFocus=>focusChoices.some(x=>x.id===f));}
+export function supersetFieldsError(items:readonly Item[]):string|null{
+ const groups=new Map<string,Item[]>();
+ for(const item of items){
+  if((item.supersetGroup===undefined)!==(item.supersetPosition===undefined))return 'A superset needs both a group and an exercise position.';
+  if(item.supersetGroup===undefined)continue;
+  if(!/^[A-Za-z][A-Za-z0-9_-]{0,19}$/.test(item.supersetGroup)||![1,2].includes(item.supersetPosition!))return 'Invalid superset metadata.';
+  groups.set(item.supersetGroup,[...(groups.get(item.supersetGroup)||[]),item]);
+ }
+ for(const pair of groups.values()){
+  if(pair.length!==2||pair[0].supersetPosition!==1||pair[1].supersetPosition!==2||items.indexOf(pair[1])!==items.indexOf(pair[0])+1||pair[0].sets!==pair[1].sets||pair[0].rest!==0||pair[1].rest<=0)return 'A superset needs two adjacent exercises in order, matching set counts, and rest after the second exercise.';
+ }
+ return null;
+}
 /** Recheck existing jump work whenever dates, events or starting context change. */
 export function focusScheduleConflict(plan:Plan,events:Event[],target:Session):string|null{
  if(plan.profile.mode!=='app'||!target.items.some(i=>i.exerciseId==='lib-small-jump-reset'))return null;
@@ -91,6 +104,7 @@ export function applyTrainingFocus(input:Plan,events:Event[]=[]):{plan:Plan|null
     if(!pair)continue;const [ai,bi]=pair,[a,b]=[s.items[ai],s.items[bi]],roundRest=Math.max(120,a.rest+b.rest);
     // Same total between-round recovery budget; never use primary lifts or assume time saved.
     a.rest=0;b.rest=roundRest;
+    a.supersetGroup='A';a.supersetPosition=1;b.supersetGroup='A';b.supersetPosition=2;
     const instruction=`${PREFIX} Assistance superset A: do one A1 set, then one A2 set; rest ${roundRest} seconds after A2 before repeating. Log the matching set on each exercise. Take extra rest if technique changes. Main lifts stay as straight sets.`;
     addNote(a,'A1. '+instruction);addNote(b,'A2. '+instruction);
     const later=Math.max(ai,bi);s.items=s.items.filter((_,i)=>i!==ai&&i!==bi);s.items.splice(Math.min(later-1,s.items.length),0,a,b);pairs++;totals.supersets++;

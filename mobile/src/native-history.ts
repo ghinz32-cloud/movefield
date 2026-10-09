@@ -1,7 +1,7 @@
 import {sha256} from '@noble/hashes/sha2.js';
 import {bytesToHex, utf8ToBytes} from '@noble/ciphers/utils.js';
 import type {State, Workout} from './shared/training';
-import {readSavedState} from './shared/saved-data';
+import {readStoredSavedState, assertHistoryHeadCapacity} from './shared/storage-capacity';
 import {LocalDataError} from './local-crypto';
 import {nativeHistorySlot} from './native-record-store';
 
@@ -14,7 +14,7 @@ const damaged = () => new LocalDataError('decrypt-failed', 'Saved workout histor
 // IDs, ordering, workout fingerprints and the current profile/active session
 // stay inside the encrypted head. SQLite sees only hashed slot names/ciphertext.
 export function splitNativeHistory(state: State): {head: NativeHistoryHead; workouts: Map<string, string>} {
-  readSavedState(JSON.stringify(state));
+  readStoredSavedState(JSON.stringify(state));
   const {history, ...base} = state;
   const workouts = new Map<string, string>();
   const entries = history.map(workout => {
@@ -23,11 +23,14 @@ export function splitNativeHistory(state: State): {head: NativeHistoryHead; work
     workouts.set(slot, text);
     return {slot, digest: historyDigest(text)};
   });
-  return {head: {format: NATIVE_HISTORY_FORMAT, state: base, entries}, workouts};
+  const head = {format: NATIVE_HISTORY_FORMAT, state: base, entries} as const;
+  assertHistoryHeadCapacity(JSON.stringify(head));
+  return {head, workouts};
 }
 
 export function parseNativeHistoryHead(text: string): NativeHistoryHead | null {
   let value: unknown;
+  assertHistoryHeadCapacity(text);
   try {value = JSON.parse(text);} catch {throw new LocalDataError('unknown-format', 'Saved training has an unexpected format. Nothing was replaced.');}
   if (!value || typeof value !== 'object' || !('format' in value)) return null;
   const head = value as NativeHistoryHead;
@@ -37,7 +40,7 @@ export function parseNativeHistoryHead(text: string): NativeHistoryHead | null {
       || typeof entry.slot !== 'string' || !/^training-studio:mobile-history:v2:[0-9a-f]{64}$/.test(entry.slot)
       || typeof entry.digest !== 'string' || !/^[0-9a-f]{64}$/.test(entry.digest))
     || new Set(head.entries.map(entry => entry.slot)).size !== head.entries.length) throw damaged();
-  readSavedState(JSON.stringify({...head.state, history: []}));
+  readStoredSavedState(JSON.stringify({...head.state, history: []}));
   return head;
 }
 
@@ -50,5 +53,5 @@ export function assembleNativeHistory(head: NativeHistoryHead, records: Map<stri
     if (!workout || typeof workout.id !== 'string' || nativeHistorySlot(workout.id) !== entry.slot) throw damaged();
     return workout;
   });
-  return readSavedState(JSON.stringify({...head.state, history}));
+  return readStoredSavedState(JSON.stringify({...head.state, history}));
 }

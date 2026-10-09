@@ -18,8 +18,8 @@ export type Substitution={sessionId:string;from:string;to:string;all:boolean;set
 function replacementItem(item:Item,to:string):Item{
  const isolation=['curl','lib-cable-curl','lib-db-hammer-curl','triceps','lib-cable-overhead-triceps','lib-db-overhead-triceps','lib-cable-single-arm-pushdown','leg-curl','lib-stack-seated-leg-curl'].includes(to);
  const lo=isolation?10:8,hi=isolation?15:12;
- const pair=item.note?.match(/A[12]\. \[Focus\] Assistance superset A:.*$/)?.[0];
- return {exerciseId:to,sets:pair?item.sets:Math.min(item.sets,3),reps:lo,repMin:lo,repMax:hi,rest:pair?item.rest:isolation?90:150,kg:null,note:'Choose a starting weight for this exercise and rep range. Do not carry over the weight from the exercise it replaces.'+(pair?' '+pair:'')};
+ const paired=!!item.supersetGroup&&item.supersetPosition!==undefined;
+ return {exerciseId:to,sets:paired?item.sets:Math.min(item.sets,3),reps:lo,repMin:lo,repMax:hi,rest:paired?item.rest:isolation?90:150,kg:null,...(paired?{supersetGroup:item.supersetGroup,supersetPosition:item.supersetPosition}:{}),note:'Choose a starting weight for this exercise and rep range. Do not carry over the weight from the exercise it replaces.'+(paired?` Superset ${item.supersetGroup}, exercise ${item.supersetPosition}: keep the reviewed pair order and rest.`:'')};
 }
 export function previewSubstitution(s:State,q:Substitution){
  const errors:string[]=[];const base=s.plan?.sessions.find(x=>x.id===q.sessionId),old=base?.items.find(x=>x.exerciseId===q.from),replacement=exFor(q.to);
@@ -43,7 +43,7 @@ export function previewSubstitution(s:State,q:Substitution){
  const max=Math.max(0,...changes.map(x=>x.after));
  if(max>1440)errors.push('This change exceeds the supported session length.');
  if(changes.some(x=>x.after>Math.max(x.before,s.plan?.profile.minutes||0))&&!q.allowLonger)errors.push(`Review and allow the extra time. The longest affected session is ${max} minutes.`);
- const warnings=[...(old?.note?.includes('Assistance superset A:')?['This stays in its A1/A2 superset. The number of sets and rest after the pair are kept.']:[]),...(specificity?['Competition-lift practice is being replaced. This variation keeps a separate history and does not count as a competition lift.']:[]),...(['deadlift','lib-db-floor-press','band-row'].includes(q.from)||['rdl','lib-bar-rdl','lib-kb-double-rdl','lib-db-floor-press','band-row'].includes(q.to)?['Range of motion, resistance or emphasis may differ. This is a practical alternative, not an identical exercise.']:[]),...(s.plan?.profile.mode==='coach'?['This changes your tracking copy. Check the substitute with your coach.']:[]),'Your dates and completed workouts stay the same. Find a suitable starting weight for the replacement exercise; weights from the previous exercise are kept separate.'];
+ const warnings=[...(old?.supersetGroup?['This stays in its reviewed superset. The number of sets and rest after the pair are kept.']:[]),...(specificity?['Competition-lift practice is being replaced. This variation keeps a separate history and does not count as a competition lift.']:[]),...(['deadlift','lib-db-floor-press','band-row'].includes(q.from)||['rdl','lib-bar-rdl','lib-kb-double-rdl','lib-db-floor-press','band-row'].includes(q.to)?['Range of motion, resistance or emphasis may differ. This is a practical alternative, not an identical exercise.']:[]),...(s.plan?.profile.mode==='coach'?['This changes your tracking copy. Check the substitute with your coach.']:[]),'Your dates and completed workouts stay the same. Find a suitable starting weight for the replacement exercise; weights from the previous exercise are kept separate.'];
  return {errors,changes,max,old,replacement,specificity,warnings};
 }
 export function applySubstitution(s:State,q:Substitution):{state:State;error?:string}{

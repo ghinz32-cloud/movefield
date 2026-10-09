@@ -42,9 +42,9 @@ export function useRestAlarm(timer:RestTimer|null|undefined,sound:boolean,alerts
   const fire=()=>{
    if(Date.now()<endAt||fired.current===key)return;
    fired.current=key;onTimer({...timer,alerted:true});
-   if(Date.now()-endAt>10000)return;
-   if(sound)chime();
-   if(alerts&&document.hidden&&'Notification'in window&&Notification.permission==='granted')try{const n=new Notification('Rest is over',{body:'Start your next set when you’re ready.',tag:'training-rest'});setTimeout(()=>n.close(),10000)}catch{}
+   const late=Date.now()-endAt>10000;
+   if(sound&&!late)chime();
+   if(alerts&&(document.hidden||late)&&'Notification'in window&&Notification.permission==='granted')try{const n=new Notification('Rest is over',{body:'Start your next set when you’re ready.',tag:'training-rest'});setTimeout(()=>n.close(),10000)}catch{}
   };
   const timeout=setTimeout(fire,Math.max(0,endAt-Date.now()));
   document.addEventListener('visibilitychange',fire);

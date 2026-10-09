@@ -1,3 +1,4 @@
+import {workoutTimeMetadata,workoutFinishedAtUtc} from './shared/record-identity';
 import { setMetricsSchema } from './shared/saved-data';
 import { blankProfile, buildPlan, changed, day, eligibility, exFor, initialState, isLoadTracked, uid, type Exercise, type Plan, type Profile, type SetLog, type State, type Workout } from './shared/training';
 import { focusScheduleConflict } from './shared/training-focus';
@@ -34,7 +35,8 @@ export function startWorkout(state: State, sessionId: string): State {
   const blocked = eligibility(state, session);
   if (blocked) throw new Error(blocked);
   if (session.date !== day()) throw new Error('Review moving this workout to today before starting.');
-  const active: Workout = { id: uid('workout'), sessionId, title: session.title, date: day(), startedAt: Date.now(), demo: true,
+  const startedAt=Date.now();
+  const active: Workout = { id: uid('workout'), sessionId, title: session.title, date: day(), startedAt,...workoutTimeMetadata(startedAt),
     targets: session.items.map(x => ({ ...x })),
     sets: startingSets(state, session.items), loadContext: {...state.loadContext} };
   return { ...state, active };
@@ -59,7 +61,8 @@ export function finishWorkout(state: State): State {
   const done = w.sets.filter(x => x.done);
   if (!done.length) throw new Error('Log at least one completed set, or discard this workout.');
   const partial = done.length < w.sets.length;
-  const recorded = { ...w, finishedAt: Date.now(), partial };
+  const finishedAt=Date.now();
+  const recorded = { ...w, finishedAt,...workoutFinishedAtUtc(finishedAt), partial };
   return { ...state, active: null, history: [...state.history, recorded], loadContext:{...state.loadContext,...w.loadContext}, restTimer:null, plan: { ...state.plan, version: state.plan.version + 1,
     sessions: state.plan.sessions.map(x => x.id === w.sessionId ? { ...x, status: partial ? 'partial' : 'completed' } : x) } };
 }

@@ -1,0 +1,17 @@
+{
+  "baseline": "8abfca45f1f910155011516eabffbebdf070821b",
+  "reviewHead": "a7c36d7ef95560df9c5f3ea2b84fd63396a73fad",
+  "reviewSource": "9840be6f542a0815dd647e6503b9d6470ad4e022",
+  "checks": {
+    "webTypes": "pass",
+    "nativeTypes": "pass",
+    "focusedProductLint": "zero warnings",
+    "onboarding": 14,
+    "setupHydration": 10,
+    "browserStorageUI": 8,
+    "canonicalSharedHashes": 39,
+    "replacementCallbacks": "web/native confirm; native cancel; repeated stale accept; single cleanup pass",
+    "nativeEngine": "78-plan check pass"
+  },
+  "scope": "Current source + compiled TSX hook/storage harness; no physical device, React DOM or deployment acceptance."
+}

@@ -9,11 +9,12 @@ const {IDBFactory, IDBObjectStore} = require('fake-indexeddb');
 // IndexedDB transactions and AES-GCM. No application implementation is mocked.
 const modules = new Map();
 function load(name) {
+  if (name.endsWith('.json')) return JSON.parse(fs.readFileSync(path.join('lib', name), 'utf8'));
   if (modules.has(name)) return modules.get(name).exports;
   const module = {exports: {}};
   modules.set(name, module);
   const source = ts.transpileModule(fs.readFileSync(path.join('lib', name + '.ts'), 'utf8'), {
-    compilerOptions: {module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022},
+    compilerOptions: {module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, esModuleInterop: true},
   }).outputText;
   new Function('require', 'module', 'exports', source)(
     dependency => dependency.startsWith('./') ? load(dependency.slice(2)) : require(dependency),

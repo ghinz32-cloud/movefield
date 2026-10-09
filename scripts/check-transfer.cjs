@@ -23,7 +23,7 @@ const failsWith=async(promise,code,msg)=>{try{await promise}catch(e){same(e inst
  same(T.passwordProblem(PASSWORD),null,'a four-word phrase is accepted');
  same(T.passwordProblem('x'.repeat(1025))?.code,'long-password','an absurdly long password is refused');
  await failsWith(T.createTransferFile(PLAIN,'short',{source:'web',random}),'short-password','create refuses a short password');
- await failsWith(T.createTransferFile('x'.repeat(5_000_001),PASSWORD,{source:'web',random}),'too-large','create bounds backup before KDF and byte allocation');
+ await failsWith(T.createTransferFile('x'.repeat(24_000_001),PASSWORD,{source:'web',random}),'too-large','create bounds backup before KDF and byte allocation');
  await failsWith(T.createTransferFile(PLAIN,PASSWORD,{source:'web',random:()=>new Uint8Array(1)}),'bad-format','bad random byte counts cannot produce a file');
 
  // 2. Round trip. The file never contains the plaintext.
@@ -58,7 +58,7 @@ const failsWith=async(promise,code,msg)=>{try{await promise}catch(e){same(e inst
  await failsWith(T.openTransferFile(JSON.stringify({...parsed,kdf:{...parsed.kdf,t:500}}),PASSWORD),'bad-format','huge pass counts are refused (memory-use guard)');
  await failsWith(T.openTransferFile(JSON.stringify({...parsed,nonce:'00'}),PASSWORD),'bad-format','a short nonce is refused');
  await failsWith(T.openTransferFile(JSON.stringify({...parsed,data:'zz'}),PASSWORD),'bad-format','non-hex ciphertext is refused');
- await failsWith(T.openTransferFile('x'.repeat(30_000_001),PASSWORD),'too-large','an oversized file is refused');
+ await failsWith(T.openTransferFile('x'.repeat(96_000_001),PASSWORD),'too-large','an oversized file is refused');
  same(T.isTransferFile('{"schema":2}'),false,'a plain backup is not a transfer file');
  same(T.transferSource('nope'),null,'an unreadable file has no source');
 
@@ -78,7 +78,7 @@ const failsWith=async(promise,code,msg)=>{try{await promise}catch(e){same(e inst
  new Function('require','module','exports',compiled)(s=>{
   if(s==='@noble/hashes/argon2.js')return {...require(s),argon2idAsync:async(...args)=>{passwordBytes.push(args[0]);const key=await require(s).argon2idAsync(...args);keys.push(key);return key}};
   if(s==='@noble/ciphers/chacha.js')return {...require(s),xchacha20poly1305:(...args)=>{const cipher=require(s).xchacha20poly1305(...args);return {encrypt:plain=>{plaintextBytes.push(plain);return cipher.encrypt(plain)},decrypt:data=>{const plain=cipher.decrypt(data);plaintextBytes.push(plain);return plain}}}};
-  return require(s);
+  return s.startsWith('./') ? load(s.slice(2)) : require(s);
  },observed,observed.exports);
  const protectedFile=await observed.exports.createTransferFile(PLAIN,PASSWORD,{source:'web',random});
  same(await observed.exports.openTransferFile(protectedFile,PASSWORD),PLAIN,'cleanup preserves real cryptographic round trip');

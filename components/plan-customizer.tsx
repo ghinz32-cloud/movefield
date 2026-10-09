@@ -1,5 +1,5 @@
 "use client";
-import {useState,useMemo} from 'react';
+import {useRef,useState,useMemo} from 'react';
 import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription} from '@/components/ui/dialog';
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
@@ -8,8 +8,9 @@ import {type State,type Exercise,exercises,uid,requiresSetup,niceDate,matchesExe
 import {type Addition,previewAddition,applyAddition} from '@/lib/customize';
 const conventions=[{id:'total',name:'Total load · repetitions total',multiplier:1},{id:'pair',name:'Per hand · both arms together',multiplier:2},{id:'onearm',name:'One hand · repetitions per side, both sides',multiplier:2},{id:'one',name:'One implement · repetitions total',multiplier:1},{id:'pairlegs',name:'Two dumbbells · reps per leg, both legs',multiplier:4},{id:'none',name:'Bodyweight / timed / unquantified resistance',multiplier:0}];
 const equipment=['Barbell','Dumbbell','Kettlebell','Cable','Plate-loaded machine','Selectorized machine','Bodyweight','Resistance band','Other / unspecified'];
-export function PlanCustomizer({state:s,sessionId,onClose,onApply}:{state:State;sessionId:string;onClose:()=>void;onApply:(s:State)=>void}){
+export function PlanCustomizer({state:s,sessionId,onClose,onApply}:{state:State;sessionId:string;onClose:()=>void;onApply:(s:State)=>boolean}){
  const [version]=useState(s.plan?.version||0),[planId]=useState(s.plan?.id||''),[q,setQ]=useState(''),[eq,setEq]=useState('All'),[selected,setSelected]=useState<Exercise|null>(null),[sets,setSets]=useState(2),[lo,setLo]=useState(8),[hi,setHi]=useState(12),[rest,setRest]=useState(90),[all,setAll]=useState(true),[allowLonger,setAllowLonger]=useState(false),[setup,setSetup]=useState(''),[convention,setConvention]=useState(''),[exactEquipment,setExactEquipment]=useState('Dumbbell'),[metric,setMetric]=useState<'reps'|'seconds'|'minutes'>('reps'),[progress,setProgress]=useState(false),[review,setReview]=useState(false),[error,setError]=useState(''),[newId]=useState(()=>uid('variant'));
+ const accepted=useRef(false);
  const needsConfig=selected?.instructionStatus==='imported-reference'||(selected?.custom&&!selected.loadConvention);
  const chosen=useMemo(()=>{if(!selected)return null;if(!needsConfig)return selected;const c=conventions.find(x=>x.id===convention);return{...selected,id:newId,name:selected.name+' · my '+exactEquipment.toLowerCase()+' variation',equipment:exactEquipment,metric,custom:true,instructionStatus:selected.instructionStatus,loadTracked:!!c?.multiplier,loadMultiplier:c?.multiplier||0,requiresSetup:['Cable','Plate-loaded machine','Selectorized machine'].includes(exactEquipment),loadConvention:(c?.name||'Not configured')+'. '+(['Cable','Plate-loaded machine','Selectorized machine'].includes(exactEquipment)?'Record displayed stack or total added plates, and the exact machine/settings. Loads are not comparable across machines.':'For bars include the bar. Keep the same range and technique.'),progressionEnabled:progress&&!!c?.multiplier&&metric==='reps'} as Exercise},[selected,needsConfig,convention,newId,exactEquipment,metric,progress]);
  const base=s.plan?.sessions.find(x=>x.id===sessionId);
@@ -30,7 +31,7 @@ export function PlanCustomizer({state:s,sessionId,onClose,onApply}:{state:State;
  {s.plan?.profile.mode==='coach'&&<p className="notice warning">This edits your tracking copy of a coach’s plan. Confirm the added work with your coach.</p>}
  {review&&preview&&<div className="customize-results review-dates">{preview.changes.map(c=><p key={c.sessionId}>{niceDate(s.plan!.sessions.find(x=>x.id===c.sessionId)!.date)} · {c.item.sets} × {metric==='reps'?`${lo}–${hi}`:lo} {metric} · {c.before} → {c.after} min</p>)}</div>}
  {error&&<p role="alert" className="notice warning">{error}</p>}
- <div className="dialog-actions"><Button variant="outline" onClick={onClose}>Cancel</Button><Button onClick={()=>{if(!a)return;if(needsConfig&&!convention){setError('Choose how weight is recorded first.');return}if(preview?.errors.length){setError(preview.errors.join(' '));return}setError('');if(!review){setReview(true);return}const r=applyAddition(s,a);if(r.error)setError(r.error);else onApply(r.state)}}>{review?'Accept addition to plan':'Review addition'}</Button></div>
+ <div className="dialog-actions"><Button variant="outline" onClick={onClose}>Cancel</Button><Button onClick={()=>{if(!a||accepted.current)return;if(needsConfig&&!convention){setError('Choose how weight is recorded first.');return}if(preview?.errors.length){setError(preview.errors.join(' '));return}setError('');if(!review){setReview(true);return}const r=applyAddition(s,a);if(r.error)setError(r.error);else{accepted.current=true;try{if(!onApply(r.state)){accepted.current=false;setError('The addition could not be saved. Your review stays open.')}}catch(error){accepted.current=false;setError(error instanceof Error?error.message:'The addition could not be saved. Your review stays open.')}}}}>{review?'Accept addition to plan':'Review addition'}</Button></div>
  </>}
  </DialogContent></Dialog>
 }

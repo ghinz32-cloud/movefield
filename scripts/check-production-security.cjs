@@ -26,8 +26,14 @@ async function main(){
   assert.equal(starterPath,'downloads/movefield-mobile-r14.zip');
   const starter=await request('/'+starterPath);
   assert.equal(starter.response.status,200);assert.equal(starter.bytes[0],80);assert.equal(starter.bytes[1],75);assert.ok(starter.bytes.length>1000);
+  const privacy=await request('/privacy.html'),privacyText=new TextDecoder().decode(privacy.bytes);
+  assert.equal(privacy.response.status,200);
+  assert.deepEqual(privacy.bytes,new Uint8Array(fs.readFileSync('public/privacy.html')),'Hosted privacy notice matches the current source exactly');
+  assert.ok(!/<(?:script|form)\b/i.test(privacyText),'Privacy notice has no scripts or data-entry form');
+  const privacyPolicy=privacyText.match(/<meta\s+http-equiv="Content-Security-Policy"\s+content="([^"]+)"/i)?.[1];
+  assert.ok(privacyPolicy?.includes("script-src 'none'")&&privacyPolicy.includes("connect-src 'none'")&&privacyPolicy.includes("form-action 'none'"),'Static privacy notice refuses script, network and form execution');
   for(const asset of ['/fonts/inter-variable.ttf','/fonts/barlow-condensed-semibold.ttf','/brand/movefield-mark.svg'])assert.equal((await request(asset)).response.status,200,asset);
-  console.log(JSON.stringify({brandAssetsAvailable:true,nativeStarterAvailable:true,status:res.status,scripts:scripts.length,nonceMatched:true,nonceRotates:true,writeRouteClosed:true,internalRouteClosed:true,qaRouteAbsent:true,unclearedPhotosAbsent:true,cache:res.headers.get('Cache-Control')}));
+  console.log(JSON.stringify({brandAssetsAvailable:true,nativeStarterAvailable:true,privacyNoticeMatchesSource:true,privacyNoticeStaticPolicy:true,status:res.status,scripts:scripts.length,nonceMatched:true,nonceRotates:true,writeRouteClosed:true,internalRouteClosed:true,qaRouteAbsent:true,unclearedPhotosAbsent:true,cache:res.headers.get('Cache-Control')}));
  }finally{await mf.dispose()}
 }
 main().then(()=>process.exit(0),error=>{console.error(error);process.exit(1)});

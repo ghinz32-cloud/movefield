@@ -2,9 +2,29 @@
   "source": "Training Studio website domain modules; paths relative to its root",
   "files": [
     {
+      "source": "lib/sync-outbox.ts",
+      "target": "src/shared/sync-outbox.ts",
+      "sha256": "81df726d2a10fdf3b2e36dace735ffc01c886806cd496cb3b63a7c2412c204eb"
+    },
+    {
+      "source": "lib/record-capacity.ts",
+      "target": "src/shared/record-capacity.ts",
+      "sha256": "dc14ed9ba1e8ee45092456c5d73a513374628e66b1861852538ada94a1b76181"
+    },
+    {
+      "source": "lib/storage-capacity.ts",
+      "target": "src/shared/storage-capacity.ts",
+      "sha256": "bbf650e4ced79ffe0df04177d76f09a6efb591c7e3921c3217817a1f23d2538d"
+    },
+    {
+      "source": "lib/record-identity.ts",
+      "target": "src/shared/record-identity.ts",
+      "sha256": "1fd7f66d1e30e330ee405a7a58d689669a85240bc3c1213b606993f189278eca"
+    },
+    {
       "source": "lib/local-backup.ts",
       "target": "src/shared/local-backup.ts",
-      "sha256": "7e1e9ae66aef7e8e5f861235ddb79cd8eebc215531d8bbb6578f19ac2ec45dc0"
+      "sha256": "597d4f2a1a1214e0ace44480722e5ae4c5957ce3ef9ca39841ac753d233d0d24"
     },
     {
       "source": "lib/set-metrics.ts",
@@ -34,27 +54,32 @@
     {
       "source": "lib/tracking.ts",
       "target": "src/shared/tracking.ts",
-      "sha256": "2fa8186de1fa6e189dd50d354adf7688d3a0de506818faaa843f9187a7829b83"
+      "sha256": "632d3158fee25f7f524856b8f68c974601527c7adaf41bec23c8c2c6fac1bf7e"
+    },
+    {
+      "source": "lib/customize.ts",
+      "target": "src/shared/customize.ts",
+      "sha256": "35b0273cc9c6ada9ebf4bb212db986da3168abf6d3c037c9ce01b82a60be63da"
     },
     {
       "source": "lib/workout-log.ts",
       "target": "src/shared/workout-log.ts",
-      "sha256": "0e5e1a8c078f211a5c05d476421b89dda44ce69a6bd5e672637ab78571597d2b"
+      "sha256": "250b6c5e933a0d54c864bcb7376ece3158b4eec875316a295b79462c56ec19ed"
     },
     {
       "source": "lib/onboarding.ts",
       "target": "src/shared/onboarding.ts",
-      "sha256": "eda6111409d23a9c54f334adb20e0a4b999755016ab10fc5a4b75325e48dcecc"
+      "sha256": "8c55a8b2d593acfd8ced023bca7c2a001ba68f6c840f5aa4a5bafa653f36521a"
     },
     {
       "source": "lib/rest-timer.ts",
       "target": "src/shared/rest-timer.ts",
-      "sha256": "36538cc608229d05c2d31cdad444842bea930701422482f15e48feea68862170"
+      "sha256": "d58c1a694c20e4153f839ce69483720f2b767915161866cdc28977f6360795f7"
     },
     {
       "source": "lib/training.ts",
       "target": "src/shared/training.ts",
-      "sha256": "be27eb1bc30c2823df371d7712309264f109516f85f07e43ec5d1ad432b251d5"
+      "sha256": "1b9dbf4232567f9cc00a54c1e1042b87fd257024c1afbf2afe5a6860d94de54b"
     },
     {
       "source": "lib/training-tools.ts",
@@ -64,7 +89,7 @@
     {
       "source": "lib/training-focus.ts",
       "target": "src/shared/training-focus.ts",
-      "sha256": "3e4a94e9a6a4ec4056e195e244edcf6dd6f365dbbb432e17d35f8e3f3babba39"
+      "sha256": "25c005d5940eacab1adfe599801b83aa545d22743b7ff87cce2e218827bfce7e"
     },
     {
       "source": "lib/program-catalog.ts",
@@ -74,7 +99,7 @@
     {
       "source": "lib/substitutions.ts",
       "target": "src/shared/substitutions.ts",
-      "sha256": "3084b97eae49727d828787491efe67f921bafd56ea205a91fc249872e8e3efb6"
+      "sha256": "70b6076bcb5750709283b8cbf25fbb6d8f317869f7cab544032cac3acb852cc3"
     },
     {
       "source": "lib/session-guide.ts",
@@ -104,12 +129,12 @@
     {
       "source": "lib/saved-data.ts",
       "target": "src/shared/saved-data.ts",
-      "sha256": "f9700820986ae884b77d8450b93e42e87437d93ff5270ac45e7f5241e8766119"
+      "sha256": "763e484f8718d6c81d84ebaba8f24b89d5aede34e2260c0b03afb9a07c33aa20"
     },
     {
       "source": "lib/transfer-bundle.ts",
       "target": "src/shared/transfer-bundle.ts",
-      "sha256": "dd7a200b62c627b205d059e78713d4c0c6bbbd2db5bc15414c77e271b16b4b75"
+      "sha256": "951a37df48006dcca696dd34a361d1a84984c3856c9f389435c693f25bdac4f1"
     },
     {
       "source": "lib/progress.ts",

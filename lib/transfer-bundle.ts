@@ -6,13 +6,15 @@
 import {argon2idAsync} from '@noble/hashes/argon2.js';
 import {xchacha20poly1305} from '@noble/ciphers/chacha.js';
 import {bytesToHex, bytesToUtf8, hexToBytes, utf8ToBytes} from '@noble/ciphers/utils.js';
+import {assertStoredTextCapacity, MAX_SAVED_STATE_BYTES, MAX_TRANSFER_FILE_BYTES} from './record-capacity';
 
 export const TRANSFER_FORMAT = 'movefield-transfer';
 export const TRANSFER_VERSION = 1;
 export const TRANSFER_MIN_PASSWORD = 12;
 // OWASP's Argon2id minimum: 19 MiB memory, two passes, one lane.
 export const TRANSFER_KDF = {name: 'argon2id', m: 19456, t: 2, p: 1} as const;
-const LIMITS = {maxFileChars: 30_000_000, maxPasswordChars: 1024};
+export const TRANSFER_MAX_FILE_BYTES = MAX_TRANSFER_FILE_BYTES;
+const LIMITS = {maxFileChars: TRANSFER_MAX_FILE_BYTES, maxPasswordChars: 1024};
 const COMMON = ['password1234', 'passwordpassword', '123456789012', 'qwertyuiop12', 'letmeinplease', 'iloveyou1234', 'correct horse'];
 
 export type TransferErrorCode = 'short-password' | 'long-password' | 'common-password' | 'bad-format' | 'unsupported-version' | 'wrong-password' | 'too-large';
@@ -63,8 +65,9 @@ export async function createTransferFile(plaintext: string, password: string, op
   boundedPassword(password);
   const problem = passwordProblem(password);
   if (problem) throw problem;
-  // Match the shared saved-state parser before allocating bytes or running Argon2.
-  if (!plaintext || plaintext.length > 5_000_000) throw new TransferError('too-large', 'This backup is too large to protect here.');
+  // Bound UTF-8 before allocating plaintext bytes or running Argon2.
+  try {if (!plaintext) throw Error(); assertStoredTextCapacity(plaintext);}
+  catch {throw new TransferError('too-large', 'This backup is too large to protect here.');}
   const salt = options.random(16);
   const nonce = options.random(24);
   if (salt.length !== 16 || nonce.length !== 24) throw new TransferError('bad-format', 'Secure randomness is unavailable. Nothing was exported.');
@@ -110,6 +113,8 @@ function parseEnvelope(raw: string): Envelope {
   }
   if (!value || typeof value !== 'object' || value.format !== TRANSFER_FORMAT) throw new TransferError('bad-format', 'This is not a Movefield transfer file.');
   if (value.version !== TRANSFER_VERSION) throw new TransferError('unsupported-version', 'This transfer file was made by a newer version of Movefield. Update the app, then try again.');
+  if (typeof value.data === 'string' && value.data.length > (MAX_SAVED_STATE_BYTES + 16) * 2)
+    throw new TransferError('too-large', 'That file contains more backup data than this app can open.');
   const kdf = value.kdf&&typeof value.kdf==='object'&&!Array.isArray(value.kdf)?value.kdf as Record<string,unknown>:undefined;
   // This app writes only TRANSFER_KDF. Opening anything else would let a file choose its own cost, so a stronger
   // setting needs a new format version. Version 1 files use exactly these values.

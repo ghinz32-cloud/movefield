@@ -1,3 +1,54 @@
+# Current Claude pipeline checkpoint — 9 October 2026
+
+- [x] Reconcile current GitHub audit/review/native collector histories and raw Claude audit.
+- [x] Repair creator state, target ranges, supersets, stable set identity, finalization, retries and rest notices.
+- [x] Implement bounded individually encrypted browser/native histories and complete recovery exports.
+- [x] Implement transactional ciphertext outboxes and authenticated browser sync with reviewed replacement.
+- [x] Implement persisted async feedback backend/UI, account preconditions and cancel/stale-result protection.
+- [x] Remove obsolete wrappers; verify shared platform boundaries; disable implicit mock authentication.
+- [x]66 regression,3 production suites; types/product lint; native engine/Hermes; Pages generation/hash checks.
+- [ ] Publish exact source and both existing web hosts; preserve private Site audience.
+- [ ] Verify fresh Android/iOS compilation and retained test-package evidence.
+- [ ] Obtain real provider/native-auth/Apple distribution credentials before live AI or physical-iPhone distribution.
+
+# Claude audit — bounded history capacity
+
+| ID | State | Milestone | Acceptance |
+| --- | --- | --- | --- |
+| CAPACITY1 | Native/transfer local source complete; root integrates | Explicit24M character+UTF-8 byte/5000history stored contract and consistent backups | 30 capacity checks,62 transfer,3 cancellation,27 native-history/192 assertions, types/lint; report `docs/history-capacity-2026-10-09.md` |
+| CAPACITY2 | Local source complete; root integrates/publishes | Browser encrypted history entities and migration | 7scenarios53checks; changed-only writes, atomic head/outbox, CAS/key-loss/reset/restore/orphan/reconcile and recovery export; web/native types/scoped lint; physical-device performance remains unmeasured |
+
+# Current continuation — NATIVE8 hosted collector validation
+
+The source7 Android APK compiles and passes strict metadata inspection, but native run37981546336 fails its CMake-cache build-route collector. iOS and55/55+3/3 quality succeed. The next milestone is a scoped collector repair on an isolated draft validation branch, followed by exact-source hosted31-fixture/full-quality/native evidence verification before advancing the existing audit branch. The execution environment is disconnected; proposed fixes have static peer review, no local execution claim. PAGE4 remains live and its mobile source is unchanged by the collector-only repair.
+# Claude audit — encrypted local sync queue foundation
+
+| ID | State | Milestone | Acceptance |
+| --- | --- | --- | --- |
+| SYNC1 | Local source complete; root integrates/publishes | Atomic browser ciphertext plus opaque account outbox, idempotent lease receipts and offline retries | 9 focused scenarios / 67 assertions, existing record76 and vault163 checks, web types and scoped lint; native adapter follows independently |
+
+Report: `docs/sync-outbox-2026-10-09.md`. Isolated branch `audit/2026-10-09-outbox` from verified `8abfca45f1f910155011516eabffbebdf070821b`; no remote write or deployment. Root owns cloud/vault integration and dynamic browser history reconciliation.
+
+# Active latest review-fixes reconciliation — 9 October 2026
+
+Reconciled latest `9840be6`/`a7c36d7` against current `8abfca4` in isolated `audit/2026-10-09-review`. Both histories retained; current data/security/keyboard/named-template source preserved. Web/native types, focused lint zero warnings, 14 onboarding, 10 hydration, 8 browser-storage callbacks, 39 shared hashes, replacement/stale-repeat callbacks and native 78-plan engine pass. Report `docs/review-fixes-reconciliation-2026-10-09.md`; source commit is resolved by its latest Git history. No publish/deploy in this worktree. Root integrates before editing overlapping app/onboarding handlers, then completes Claude residual repairs and exact-source verification.
+
+# Claude audit — encrypted local sync queue foundation
+
+| ID | State | Milestone | Acceptance |
+| --- | --- | --- | --- |
+| SYNC1 | Local source complete; root integrates/publishes | Atomic browser ciphertext plus opaque account outbox, idempotent lease receipts and offline retries | 9 focused scenarios / 68 assertions, existing record76 and vault163 checks, web types and scoped lint; 6 native sync scenarios / 54 assertions and retained SQLite/history/cleanup groups pass; root regenerates shared manifest |
+
+Report: `docs/sync-outbox-2026-10-09.md`. Isolated branch `audit/2026-10-09-outbox` from verified `8abfca45f1f910155011516eabffbebdf070821b`; no remote write or deployment. Root owns cloud/vault integration and dynamic browser history reconciliation.
+
+# Active creator milestone — isolated source ready for root integration
+
+| ID | State | Milestone | Acceptance |
+| --- | --- | --- | --- |
+| CLAUDE-C5/C6/C8 | Source verified locally; root integration pending | Preserve ranges; use structured superset authority and stable workout/set references; repair nested creator state and repeated button actions | 16 new compiled component/domain groups plus existing focused engine/regressions; native types and narrow lint pass; root must convert actual product callers and finish integrated web type check |
+| CLAUDE-C7 | Root-owned integration | Finish from latest state and atomically preserve current workout edits | Current-control suite and web/native source checks after root merge |
+
+Report/evidence: `docs/creator-state-2026-10-09.md`, `docs/qa/creator-state-2026-10-09/validation.json`. Local branch `audit/2026-10-09-creator` based on verified `8abfca4`; no independent push/deployment. Continue with root integrated callers and schema snapshot reconciliation.
 # Final documentation verification milestone — 9 October 2026
 
 Completed: independently reviewed the final report/readiness/Pages guidance, corrected the release-versus-CI exception wording, and verified the prior final documentation checkpoint0a24091/tree3ec8c01 against hosted quality37986239637 (31 reader fixtures,55/55+3/3) and identical integration81bfb3a. Native37986239620's gate succeeded with Android/iOS skipped for unchanged inputs; sourcee85a1ad's actual passing native37984196327 remains the binary-build qualification. Preserved the additional active native rerun and unchanged main/gh-pages refs.
@@ -165,3 +216,9 @@ Accounts and cloud sync, complete reusable block editing, sport/event/season pro
 Application evidence: `docs/branch-integration-2026-10-08.md`, `docs/branch-integration-validation-2026-10-08.json`, and GitHub quality run 4 for the full application SHA above.
 
 This documentation checkpoint is the Git commit containing these task-list and handoff updates. Resolve its full SHA with `git log -1 --format=%H -- AGENTS.md TASKS.md HANDOFF.md`; inspect `git status` and the live remote head before treating it as the newest checkpoint. Its SHA is also recorded in the checkpoint's PR description and completion message after verification. Do not put a guessed self-referential SHA into these files.
+
+## CLAUDE-SCHEMA — isolated compatibility milestone, 9 October 2026
+
+- Implemented strict unknown-field/version refusal, preserved legacy identity/time metadata, optional canonical UTC/zone fields, secure new UUIDs and native secure-random bootstrap. Legacy simulatedOffline imports normalize to false. Schema2 is retained; full v3 migration remains separate.
+- Checks and final results: `docs/schema-compatibility-2026-10-09.md` and `docs/qa/schema-compatibility-2026-10-09/validation.json`. Parent task owns metadata flow integration, merged shared snapshot and deployment.
+- Checkout `/workspace/scratch/a905d1d2368a/movefield-schema`, branch `audit/2026-10-09-schema`, baseline `8abfca45f1f910155011516eabffbebdf070821b`; resolve checkpoint with `git log -1 --format=%H -- lib/record-identity.ts`. No publication by this subtask.

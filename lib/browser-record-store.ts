@@ -1,10 +1,14 @@
 // Transactional ciphertext storage. Encryption and legacy restore recovery are
 // performed by browser-vault before entering these short IndexedDB transactions.
 import type {VaultStorage, VaultTransition} from './browser-vault';
+import {SyncOutboxError, validateSyncOutbox, validateSyncEnqueue, enqueueSync, invalidateSyncPending, claimSync, acknowledgeSync, failSync, setSyncRevision, resumeSyncAuth, type SyncOutboxState, type SyncEnqueue, type SyncClaimInput, type SyncAckInput, type SyncFailInput} from './sync-outbox';
 
 const DB = 'movefield-vault', VERSION = 2;
 const KEYS = 'keys', RECORDS = 'records', META = 'metadata';
 const KEY = 'data-key-v1', JOURNAL = 'restore-transition-v1', STATE = 'record-state-v2';
+const SYNC = 'sync-outbox-v1';
+export const BROWSER_HISTORY_PREFIX = 'training-studio:browser-history:v1:';
+export const isBrowserHistorySlot = (slot: unknown): slot is string => typeof slot === 'string' && /^training-studio:browser-history:v1:[0-9a-f]{64}$/.test(slot);
 const LEGACY_CIPHERTEXT_PREFIX = '{"v":1,"alg":"aes-256-gcm"';
 const DEFAULT_SLOTS = ['training-studio-v2', 'training-studio-setup-v1', 'training-studio-sample-setup', 'training-studio-security-preview-v1', 'training-studio-sample-security'] as const;
 
@@ -19,6 +23,9 @@ export type BrowserRecordSnapshot = {
   keyRevision: number;
   migrated: boolean;
   legacyHashes: Record<string, string | null>;
+  sync: SyncOutboxState;
+  // Discovered only for explicit retirement/key changes, never all entity rows.
+  historySlots: string[];
 };
 
 export class BrowserRecordStoreError extends Error {
@@ -33,6 +40,9 @@ export type BrowserRecordCommit = {
   key?: CryptoKey | null;
   clearTransition?: boolean;
   migrated?: boolean;
+  // Sealed outside IndexedDB; the network never substitutes for a local commit.
+  sync?: SyncEnqueue;
+  clearHistory?: boolean;
 };
 export type BrowserLegacyImport = {
   expected: BrowserRecordSnapshot;
@@ -98,13 +108,16 @@ export function createBrowserRecordStore(deps: Deps) {
 
   // All reads for the comparison and all puts/deletes occur in this one
   // transaction. No Web Crypto or other promise is awaited while it is active.
-  async function run(mutate?: (snapshot: BrowserRecordSnapshot, tx: IDBTransaction) => BrowserRecordSnapshot): Promise<BrowserRecordSnapshot> {
+  async function run(mutate?: (snapshot: BrowserRecordSnapshot, tx: IDBTransaction) => BrowserRecordSnapshot, requested: readonly string[] = [], discoverHistory = false): Promise<BrowserRecordSnapshot> {
+    if (requested.length > 10005 || requested.some(slot => !slots.includes(slot) && !isBrowserHistorySlot(slot))) throw new BrowserRecordStoreError('unknown-format', 'Saved history has invalid record identities. Nothing was replaced.');
+    const readSlots = [...new Set([...slots, ...requested])];
     const db = await open();
     try {
       return await new Promise((resolve, reject) => {
         let result: BrowserRecordSnapshot | undefined, failure: unknown;
         const tx = db.transaction([KEYS, RECORDS, META], mutate ? 'readwrite' : 'readonly');
-        const requests: IDBRequest[] = [tx.objectStore(KEYS).get(KEY), tx.objectStore(KEYS).get(JOURNAL), tx.objectStore(META).get(STATE), ...slots.map(slot => tx.objectStore(RECORDS).get(slot))];
+        const requests: IDBRequest[] = [tx.objectStore(KEYS).get(KEY), tx.objectStore(KEYS).get(JOURNAL), tx.objectStore(META).get(STATE), ...readSlots.map(slot => tx.objectStore(RECORDS).get(slot)), tx.objectStore(META).get(SYNC)];
+        if (discoverHistory) requests.push(tx.objectStore(RECORDS).getAllKeys());
         let pending = requests.length;
         tx.oncomplete = () => result ? resolve(result) : reject(new BrowserRecordStoreError('unavailable', 'Saved storage did not return a complete record.'));
         tx.onabort = () => reject(failure ?? new BrowserRecordStoreError('unavailable', 'Your changes could not be saved. Your previous records are unchanged.'));
@@ -115,20 +128,20 @@ export function createBrowserRecordStore(deps: Deps) {
             try {
               const state = validateState(requests[2].result);
               const records: Record<string, string | null> = {}, tombstones: string[] = [];
-              slots.forEach((slot, index) => {
+              readSlots.forEach((slot, index) => {
                 const row = requests[index + 3].result as RecordRow | undefined;
                 if (row !== undefined && (!row || row.version !== 1 || (row.ciphertext !== null && typeof row.ciphertext !== 'string'))) throw new BrowserRecordStoreError('unknown-format', 'Saved encrypted records have an unexpected format. Nothing was replaced.');
                 records[slot] = row?.ciphertext ?? null;
                 if (row?.ciphertext === null) tombstones.push(slot);
               });
-              const snapshot: BrowserRecordSnapshot = {records, tombstones, key: requests[0].result, transition: requests[1].result, ...state};
+              const snapshot: BrowserRecordSnapshot = {records, tombstones, key: requests[0].result, transition: requests[1].result, ...state, sync: validateSyncOutbox(requests[readSlots.length + 3].result), historySlots: discoverHistory ? (requests[readSlots.length + 4].result as IDBValidKey[]).filter(isBrowserHistorySlot) : []};
               result = mutate ? mutate(snapshot, tx) : snapshot;
             } catch (error) { failure = error; tx.abort(); }
           };
         }
       });
     } catch (error) {
-      if (error instanceof BrowserRecordStoreError) throw error;
+      if (error instanceof BrowserRecordStoreError || error instanceof SyncOutboxError) throw error;
       throw new BrowserRecordStoreError('unavailable', 'Your saved storage is unavailable. Nothing was replaced.');
     } finally { db.close(); }
   }
@@ -139,7 +152,7 @@ export function createBrowserRecordStore(deps: Deps) {
     // deletion, but does not prove cryptographic equality after an unmanaged,
     // same-shaped key swap. Ciphertext and cleanup-hash checks also protect old
     // snapshots if metadata is removed or altered independently.
-    if (current.revision !== expected.revision || current.keyRevision !== expected.keyRevision || current.migrated !== expected.migrated || keyShape(current.key) !== keyShape(expected.key) || transitionShape(current.transition) !== transitionShape(expected.transition) || slots.some(slot => current.records[slot] !== expected.records[slot] || current.tombstones.includes(slot) !== expected.tombstones.includes(slot) || current.legacyHashes[slot] !== expected.legacyHashes[slot])) throw conflict();
+    if (current.revision !== expected.revision || current.keyRevision !== expected.keyRevision || current.migrated !== expected.migrated || keyShape(current.key) !== keyShape(expected.key) || transitionShape(current.transition) !== transitionShape(expected.transition) || Object.keys(expected.records).some(slot => current.records[slot] !== expected.records[slot] || current.tombstones.includes(slot) !== expected.tombstones.includes(slot) || current.legacyHashes[slot] !== expected.legacyHashes[slot])) throw conflict();
   }
   function checkPatch(records: Record<string, string | null>, preservedLegacy?: Record<string, string | null>) {
     for (const [slot, raw] of Object.entries(records)) {
@@ -147,21 +160,27 @@ export function createBrowserRecordStore(deps: Deps) {
       // migrating. Only import may preserve those exact opaque bytes; every new
       // write still requires the complete ciphertext envelope.
       const retained = raw !== null && preservedLegacy?.[slot] === raw && isLegacyCiphertext(raw);
-      if (!slots.includes(slot) || (raw !== null && !isCiphertext(raw) && !retained)) throw new BrowserRecordStoreError('unknown-format', 'Only encrypted training records can be stored. Nothing was replaced.');
+      if ((!slots.includes(slot) && !isBrowserHistorySlot(slot)) || (raw !== null && !isCiphertext(raw) && !retained)) throw new BrowserRecordStoreError('unknown-format', 'Only encrypted training records can be stored. Nothing was replaced.');
     }
   }
   function apply(current: BrowserRecordSnapshot, tx: IDBTransaction, input: BrowserRecordCommit, legacyHashes = current.legacyHashes, allowKeylessImport = false, preservedLegacy?: Record<string, string | null>): BrowserRecordSnapshot {
     guard(current, input.expected);
     const patch = input.records ?? {};
     checkPatch(patch, preservedLegacy);
+    if (!input.clearHistory && Object.keys(patch).some(slot => isBrowserHistorySlot(slot) && !Object.prototype.hasOwnProperty.call(input.expected.records, slot))) throw conflict();
     if (input.key && (input.key.extractable || input.key.type !== 'secret' || input.key.algorithm.name !== 'AES-GCM' || (input.key.algorithm as AesKeyAlgorithm).length !== 256 || !input.key.usages.includes('encrypt') || !input.key.usages.includes('decrypt'))) throw new BrowserRecordStoreError('unknown-format', 'The encryption key has an unexpected format. Nothing was replaced.');
     const key = input.key === undefined ? current.key : input.key ?? undefined;
     const records = {...current.records, ...patch};
+    if (input.clearHistory) for (const slot of Object.keys(records)) if (isBrowserHistorySlot(slot) && !Object.prototype.hasOwnProperty.call(patch, slot)) delete records[slot];
+    if (input.key !== undefined && current.historySlots.length && !input.clearHistory) throw new BrowserRecordStoreError('unknown-format', 'Replacing the encryption key must retire all previous workout history. Nothing was replaced.');
     if (!key && Object.values(records).some(raw => raw !== null) && !allowKeylessImport) throw new BrowserRecordStoreError('unknown-format', 'Encrypted records cannot be saved without their encryption key. Nothing was replaced.');
     if (input.key !== undefined && current.key && slots.some(slot => current.records[slot] !== null && !Object.prototype.hasOwnProperty.call(patch, slot))) throw new BrowserRecordStoreError('unknown-format', 'Replacing the encryption key must replace or retire every encrypted record. Nothing was replaced.');
-    const tombstones = slots.filter(slot => Object.prototype.hasOwnProperty.call(patch, slot) ? patch[slot] === null : current.tombstones.includes(slot));
+    const tombstones = Object.keys(records).filter(slot => Object.prototype.hasOwnProperty.call(patch, slot) ? patch[slot] === null : current.tombstones.includes(slot));
     const state: StoreState = {version: 2, revision: current.revision + 1, keyRevision: current.keyRevision + (input.key === undefined ? 0 : 1), migrated: input.migrated ?? current.migrated, legacyHashes};
+    let sync = input.key === undefined && !input.clearHistory ? current.sync : invalidateSyncPending(current.sync);
+    if (input.sync) sync = enqueueSync(sync, input.sync);
     if (!Number.isSafeInteger(state.revision) || !Number.isSafeInteger(state.keyRevision)) throw new BrowserRecordStoreError('unavailable', 'Saved storage needs recovery before another change. Nothing was replaced.');
+    if (input.clearHistory) for (const slot of current.historySlots) tx.objectStore(RECORDS).delete(slot);
     for (const [slot, ciphertext] of Object.entries(patch)) tx.objectStore(RECORDS).put({version: 1, ciphertext} satisfies RecordRow, slot);
     if (input.key !== undefined) {
       if (input.key) tx.objectStore(KEYS).put(input.key, KEY);
@@ -169,14 +188,27 @@ export function createBrowserRecordStore(deps: Deps) {
     }
     if (input.clearTransition) tx.objectStore(KEYS).delete(JOURNAL);
     tx.objectStore(META).put(state, STATE);
-    return {records, tombstones, key, transition: input.clearTransition ? undefined : current.transition, ...state};
+    if (input.sync || input.key !== undefined || input.clearHistory) tx.objectStore(META).put(sync, SYNC);
+    return {records, tombstones, key, transition: input.clearTransition ? undefined : current.transition, ...state, sync, historySlots: input.clearHistory ? Object.keys(patch).filter(slot => isBrowserHistorySlot(slot) && patch[slot] !== null) : current.historySlots};
   }
 
-  const snapshot = () => run();
-  const compareAndCommit = (input: BrowserRecordCommit) => run((current, tx) => {
-    if (current.transition && !input.clearTransition) throw new BrowserRecordStoreError('legacy-pending', 'Finish the previous restore recovery before saving. Your records are unchanged.');
-    return apply(current, tx, input);
-  });
+  const snapshot = (requested: readonly string[] = []) => run(undefined, requested);
+  const compareAndCommit = (input: BrowserRecordCommit) => {
+    const detached = {...input, records: input.records ? {...input.records} : undefined, sync: input.sync ? validateSyncEnqueue(input.sync) : undefined};
+    return run((current, tx) => {
+      if (current.transition && !detached.clearTransition) throw new BrowserRecordStoreError('legacy-pending', 'Finish the previous restore recovery before saving. Your records are unchanged.');
+      return apply(current, tx, detached);
+    }, [...new Set([...Object.keys(detached.expected.records), ...Object.keys(detached.records ?? {})])], Boolean(detached.clearHistory || detached.key !== undefined));
+  };
+  async function updateSync<T>(change: (state: SyncOutboxState) => {state: SyncOutboxState; value: T}): Promise<T> {
+    let value!: T;
+    await run((current, tx) => {
+      const next = change(current.sync); value = next.value;
+      tx.objectStore(META).put(next.state, SYNC);
+      return {...current, sync: next.state};
+    });
+    return value;
+  }
 
   async function importLegacy(input: BrowserLegacyImport): Promise<BrowserRecordSnapshot> {
     checkPatch(input.records, input.legacy);
@@ -200,7 +232,7 @@ export function createBrowserRecordStore(deps: Deps) {
       const keyless = !current.key && !input.key;
       if (keyless && slots.some(slot => input.legacy[slot] !== input.records[slot])) throw new BrowserRecordStoreError('unknown-format', 'Key-lost legacy records must be retained unchanged. Nothing was replaced.');
       return apply(current, tx, {...input, migrated: true}, legacyHashes, keyless, input.legacy);
-    });
+    }, [], true);
     // A fresh transaction verifies the installed ciphertext and metadata before
     // the caller is allowed to remove any migration input.
     const verified = await snapshot(); guard(verified, imported);
@@ -227,12 +259,28 @@ export function createBrowserRecordStore(deps: Deps) {
 
   return {
     snapshot, compareAndCommit, importLegacy, cleanupLegacy,
-    write: (expected: BrowserRecordSnapshot, slot: string, ciphertext: string, key?: CryptoKey) => compareAndCommit({expected, records: {[slot]: ciphertext}, key}),
+    listHistorySlots: async () => (await run(undefined, [], true)).historySlots,
+    syncSnapshot: async () => (await snapshot()).sync,
+    claimSync: (input: SyncClaimInput) => {const detached = {...input}; return updateSync(state => {const next = claimSync(state, detached); return {state: next.state, value: next.claim};});},
+    acknowledgeSync: (input: SyncAckInput) => {const detached = {...input}; return updateSync(state => {const next = acknowledgeSync(state, detached); return {state: next.state, value: next.accepted};});},
+    failSync: (input: SyncFailInput) => {const detached = {...input}; return updateSync(state => ({state: failSync(state, detached), value: undefined}));},
+    setSyncRevision: (input: {accountId: string; revision: number; expectedRevision: number}) => {const detached = {...input}; return updateSync(state => ({state: setSyncRevision(state, detached), value: undefined}));},
+    reconcileSync: (input: {accountId: string; revision: number; expected: SyncOutboxState}) => {
+      const expected = JSON.stringify(validateSyncOutbox(input.expected)), accountId = input.accountId, revision = input.revision;
+      return updateSync(state => {
+        if (JSON.stringify(state) !== expected) throw conflict();
+        const cleared = invalidateSyncPending(state, accountId);
+        return {state: setSyncRevision(cleared, {accountId, revision, expectedRevision: cleared.accounts[accountId]?.revision ?? 0}), value: undefined};
+      });
+    },
+    clearSync: (accountId?: string) => updateSync(state => ({state: invalidateSyncPending(state, accountId), value: undefined})),
+    resumeSyncAuth: (accountId: string) => updateSync(state => ({state: resumeSyncAuth(state, accountId), value: undefined})),
+    write: (expected: BrowserRecordSnapshot, slot: string, ciphertext: string, key?: CryptoKey, sync?: SyncEnqueue) => compareAndCommit({expected, records: {[slot]: ciphertext}, key, sync}),
     replace: async (expected: BrowserRecordSnapshot, slot: string, ciphertext: string, key: CryptoKey) => {
       checkPatch({[slot]: ciphertext});
-      return compareAndCommit({expected, records: Object.fromEntries(slots.map(other => [other, other === slot ? ciphertext : null])), key, clearTransition: true, migrated: true});
+      return compareAndCommit({expected, records: Object.fromEntries(slots.map(other => [other, other === slot ? ciphertext : null])), key, clearHistory: true, clearTransition: true, migrated: true});
     },
     discard: (expected: BrowserRecordSnapshot, slot: string) => compareAndCommit({expected, records: {[slot]: null}}),
-    reset: (expected: BrowserRecordSnapshot) => compareAndCommit({expected, records: Object.fromEntries(slots.map(slot => [slot, null])), key: null, clearTransition: true, migrated: true}),
+    reset: (expected: BrowserRecordSnapshot) => compareAndCommit({expected, records: Object.fromEntries(slots.map(slot => [slot, null])), key: null, clearHistory: true, clearTransition: true, migrated: true}),
   };
 }

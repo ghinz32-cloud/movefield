@@ -3,6 +3,7 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
 // Node has Web Crypto, so the real AES-GCM path runs. IndexedDB is replaced by an in-memory key store.
 const cache=new Map();
 function load(name){
+  if (name.endsWith('.json')) return JSON.parse(fs.readFileSync(path.join('lib', name), 'utf8'));
  if(cache.has(name))return cache.get(name).exports;
  const m={exports:{}};cache.set(name,m);
  const src=ts.transpileModule(fs.readFileSync(path.join('lib',name+'.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText;

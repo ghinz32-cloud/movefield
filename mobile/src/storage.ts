@@ -3,7 +3,8 @@ import * as SecureStore from 'expo-secure-store';
 import { getRandomBytes } from 'expo-crypto';
 import { sha256 } from '@noble/hashes/sha2.js';
 import { bytesToHex, utf8ToBytes } from '@noble/ciphers/utils.js';
-import { readSavedState, readSetupDraft } from './shared/saved-data';
+import { readSetupDraft } from './shared/saved-data';
+import {readStoredSavedState, utf8TextBytes, MAX_SAVED_STATE_BYTES, MAX_SAVED_STATE_CHARS, SavedStateCapacityError} from './shared/storage-capacity';
 import { type State } from './shared/training';
 import { LocalDataError, isSealed, keyFromHex, newKeyHex, openText, sealText } from './local-crypto';
 import { assertNativeRecordCapacity } from './storage-capacity';
@@ -184,14 +185,22 @@ async function readStateSnapshot(): Promise<{snapshot: NativeRecordSnapshot; sta
     return {snapshot: first, state: authenticatedState.state, head: authenticatedState.head};
   }
   const text = key ? openText(raw, key, KEY) : raw, head = parseNativeHistoryHead(text);
-  if (!head) return {snapshot: first, state: readSavedState(text), head: null};
+  if (!head) return {snapshot: first, state: readStoredSavedState(text), head: null};
   const snapshot = await AsyncStorage.snapshotRecords([KEY, ...head.entries.map(entry => entry.slot)]);
   if (snapshot.revision !== first.revision || snapshot.records[KEY] !== raw) throw changed();
   const workouts = new Map<string, string>();
+  // Refuse an oversized generation while opening its entities, before building
+  // another full-history string or loading thousands of excessive records.
+  const baseText = JSON.stringify({...head.state, history: []});
+  let bytes = utf8TextBytes(baseText) - 2, chars = baseText.length - 2;
   for (const entry of head.entries) {
     const record = snapshot.records[entry.slot];
     if (record === null || !isSealed(record)) throw new LocalDataError('decrypt-failed', 'A saved workout is missing or damaged. Nothing was replaced. Export a recovery copy if available, or restore a transfer file.');
-    workouts.set(entry.slot, openText(record, key!, entry.slot));
+    const text = openText(record, key!, entry.slot);
+    bytes += utf8TextBytes(text, MAX_SAVED_STATE_BYTES) + (workouts.size ? 1 : 0);
+    chars += text.length + (workouts.size ? 1 : 0);
+    if (bytes > MAX_SAVED_STATE_BYTES || chars > MAX_SAVED_STATE_CHARS) throw new SavedStateCapacityError();
+    workouts.set(entry.slot, text);
   }
   const state = assembleNativeHistory(head, workouts);
   authenticatedState = {raw, revision: snapshot.revision, key: keyDigest, state, head};
@@ -220,7 +229,7 @@ async function installState(state: State, current: Awaited<ReturnType<typeof rea
   const committed = await AsyncStorage.commitRecords({expected, records, expectedRevision: snapshot.revision});
   rememberState(committed);
   authenticatedState = state.history.length || current.head ? {raw: committed.records[KEY]!, revision: committed.revision,
-    key: bytesToHex(sha256(key)), state: readSavedState(JSON.stringify(state)), head} : undefined;
+    key: bytesToHex(sha256(key)), state: readStoredSavedState(JSON.stringify(state)), head} : undefined;
 }
 
 export async function readLocalState(): Promise<State | null> {
@@ -228,20 +237,18 @@ export async function readLocalState(): Promise<State | null> {
     const current = await readStateSnapshot();
     rememberState(current.snapshot);
     if (current.state && (!current.snapshot.present[KEY] || !isSealed(current.snapshot.records[KEY] ?? '') || !current.head && current.state.history.length > 0)) {
-      assertNativeRecordCapacity(JSON.stringify(current.state));
       await installState(current.state, current, await keyForWrite());
     }
     // Resume only receipted cleanup after authenticating the complete generation.
     // The record store rechecks this exact head before touching a legacy copy.
     if (current.snapshot.present[KEY]) await AsyncStorage.retryLegacyCleanup({[KEY]: current.snapshot.records[KEY]});
-    return current.state ? readSavedState(JSON.stringify(current.state)) : null;
+    return current.state ? readStoredSavedState(JSON.stringify(current.state)) : null;
   }, 'read');
 }
 
 export async function saveLocalState(state: State): Promise<void> {
   const json = JSON.stringify(state);
-  readSavedState(json); // Reject invalid state before writing, as well as on read.
-  assertNativeRecordCapacity(json); // Before creating a key or writing unreadable ciphertext.
+  readStoredSavedState(json); // Reject invalid state before writing, as well as on read.
   return enqueue(async () => {
     const current = await readStateSnapshot();
     assertStateToken(current.snapshot);
@@ -268,8 +275,7 @@ export async function resetLocalState(): Promise<NativePrivacyStatus> {
 // A durable encrypted journal lets a newly opened process finish or roll back the restore.
 export async function replaceLocalState(state: State): Promise<void> {
   const json = JSON.stringify(state);
-  readSavedState(json); // Reject invalid state before anything changes.
-  assertNativeRecordCapacity(json); // Before changing keys, journals or the previous record.
+  readStoredSavedState(json); // Reject invalid state before anything changes.
   return enqueue(async () => {
     const initial = await AsyncStorage.snapshotRecords([KEY]);
     assertStateToken(initial);

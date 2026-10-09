@@ -3,13 +3,12 @@ import {useEffect,useRef,useState} from 'react';
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import {Dialog,DialogContent,DialogDescription,DialogFooter,DialogHeader,DialogTitle} from '@/components/ui/dialog';
-import {createTransferFile,isTransferFile,openTransferFile,passwordProblem,TransferError,TRANSFER_MIN_PASSWORD} from '@/lib/transfer-bundle';
-import {readSavedState} from '@/lib/saved-data';
+import {createTransferFile,isTransferFile,openTransferFile,passwordProblem,TransferError,TRANSFER_MIN_PASSWORD,TRANSFER_MAX_FILE_BYTES} from '@/lib/transfer-bundle';
+import {readStoredSavedState} from '@/lib/storage-capacity';
 import {previewBackup} from '@/lib/local-backup';
 
 const randomBytes=(n:number)=>globalThis.crypto.getRandomValues(new Uint8Array(n));
 const fileName=()=>`movefield-transfer-${new Date().toISOString().slice(0,10)}.json`;
-const MAX_FILE_CHARS=30_000_000;
 
 export function downloadText(name:string,text:string){
   const url=URL.createObjectURL(new Blob([text],{type:'application/json'}));
@@ -66,7 +65,7 @@ export function RestoreTransferDialog({open,onOpenChange,onRestore,snapshot}:{op
   async function choose(file:File){
     const version=++operation.current;expected.current=snapshot();
     setError('');
-    if(file.size>MAX_FILE_CHARS){setError('That file is too large to open here.');return}
+    if(file.size>TRANSFER_MAX_FILE_BYTES){setError('That file is too large to open here.');return}
     setBusy(true);
     try{
       const text=await file.text();
@@ -74,7 +73,7 @@ export function RestoreTransferDialog({open,onOpenChange,onRestore,snapshot}:{op
       setRaw(text);setName(file.name);
       if(isTransferFile(text)){setStep('password')}
       else{
-        try{readSavedState(text)}catch{setError('That is not a valid Movefield backup. Nothing was replaced.');return}
+        try{readStoredSavedState(text)}catch{setError('That is not a valid Movefield backup. Nothing was replaced.');return}
         setPlain(text);setStep('confirm')}
     }catch{setError('That file could not be read.')}finally{if(version===operation.current)setBusy(false)}
   }
@@ -83,7 +82,7 @@ export function RestoreTransferDialog({open,onOpenChange,onRestore,snapshot}:{op
     setBusy(true);setError('');
     try{
       const text=await openTransferFile(raw,password);
-      readSavedState(text);
+      readStoredSavedState(text);
       setPlain(text);setPassword('');setStep('confirm');
     }catch(e){
       setError(e instanceof TransferError?e.message:'That file is not a valid Movefield backup. Nothing was replaced.');

@@ -2,6 +2,7 @@ import { sha256 } from '@noble/hashes/sha2.js';
 import { bytesToHex, utf8ToBytes } from '@noble/ciphers/utils.js';
 import { LocalDataError, isSealed } from './local-crypto';
 import { assertNativeSqliteModes, prepareNativeSqlite } from './native-sqlite-policy';
+import { SYNC_OUTBOX_MAX_CHARS, validateSyncOutbox, validateSyncEnqueue, enqueueSync, invalidateSyncPending, claimSync, acknowledgeSync, failSync, setSyncRevision, resumeSyncAuth, type SyncOutboxState, type SyncEnqueue, type SyncClaimInput, type SyncAckInput, type SyncFailInput } from './shared/sync-outbox';
 
 // The encryption boundary lives in storage.ts. Only authenticated envelopes and
 // their encrypted restore journal enter this database; keys stay in SecureStore.
@@ -48,6 +49,8 @@ export type NativeRecordCommit = {
   // Reserved for approved restore/reset. Unchanged retired history is tombstoned
   // atomically with the new main head; no dynamic legacy fallback is possible.
   clearHistory?: boolean;
+  sync?: SyncEnqueue;
+  clearSync?: boolean;
 };
 const digest = (text: string) => bytesToHex(sha256(utf8ToBytes(text)));
 const damaged = () => new LocalDataError('decrypt-failed', 'Saved training is incomplete or damaged. Nothing was replaced. Restore your transfer file or keep a copy before resetting.');
@@ -93,12 +96,51 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
     await db.execAsync(`CREATE TABLE IF NOT EXISTS training_records (slot TEXT PRIMARY KEY NOT NULL, deleted INTEGER NOT NULL, chars INTEGER NOT NULL, chunks INTEGER NOT NULL, hash TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS training_chunks (slot TEXT NOT NULL, ordinal INTEGER NOT NULL, value TEXT NOT NULL, hash TEXT NOT NULL, PRIMARY KEY (slot, ordinal));
       CREATE TABLE IF NOT EXISTS training_record_metadata (id TEXT PRIMARY KEY NOT NULL, revision INTEGER NOT NULL);
-      CREATE TABLE IF NOT EXISTS training_legacy_cleanup (slot TEXT PRIMARY KEY NOT NULL, expected_hash TEXT, chars INTEGER);`);
+      CREATE TABLE IF NOT EXISTS training_legacy_cleanup (slot TEXT PRIMARY KEY NOT NULL, expected_hash TEXT, chars INTEGER);
+      CREATE TABLE IF NOT EXISTS training_sync_outbox (id TEXT PRIMARY KEY NOT NULL, chars INTEGER NOT NULL, chunks INTEGER NOT NULL, hash TEXT NOT NULL);
+      CREATE TABLE IF NOT EXISTS training_sync_outbox_chunks (id TEXT NOT NULL, ordinal INTEGER NOT NULL, value TEXT NOT NULL, hash TEXT NOT NULL, PRIMARY KEY (id, ordinal));`);
     return db;
   }).catch(error => { database = undefined; throw error; });
   const enqueue = <T>(job: () => Promise<T>): Promise<T> => {
     const next = queue.then(job); queue = next.catch(() => undefined); return next;
   };
+  async function readSync(tx: NativeRecordSql): Promise<SyncOutboxState> {
+    const manifest = await tx.getFirstAsync<Omit<Manifest, 'deleted'>>('SELECT chars, chunks, hash FROM training_sync_outbox WHERE id = ?', 'state-v1');
+    if (!manifest) {
+      if (await tx.getFirstAsync<{ordinal: number}>('SELECT ordinal FROM training_sync_outbox_chunks WHERE id = ? LIMIT 1', 'state-v1')) throw damaged();
+      return validateSyncOutbox(undefined);
+    }
+    if (!Number.isSafeInteger(manifest.chars) || manifest.chars < 1 || manifest.chars > SYNC_OUTBOX_MAX_CHARS
+      || !Number.isSafeInteger(manifest.chunks) || manifest.chunks !== Math.ceil(manifest.chars / NATIVE_RECORD_CHUNK_CHARS)
+      || !/^[0-9a-f]{64}$/.test(manifest.hash)) throw damaged();
+    const chunks = await tx.getAllAsync<Chunk>('SELECT ordinal, value, hash FROM training_sync_outbox_chunks WHERE id = ? ORDER BY ordinal', 'state-v1');
+    if (chunks.length !== manifest.chunks || chunks.some((row, index) => row.ordinal !== index || typeof row.value !== 'string'
+      || row.value.length < 1 || row.value.length > NATIVE_RECORD_CHUNK_CHARS || digest(row.value) !== row.hash)) throw damaged();
+    const value = chunks.map(row => row.value).join('');
+    if (value.length !== manifest.chars || digest(value) !== manifest.hash) throw damaged();
+    try {return validateSyncOutbox(JSON.parse(value));} catch {throw damaged();}
+  }
+  async function writeSync(tx: NativeRecordSql, state: SyncOutboxState): Promise<void> {
+    const raw = JSON.stringify(validateSyncOutbox(state)), count = Math.ceil(raw.length / NATIVE_RECORD_CHUNK_CHARS);
+    await tx.runAsync('DELETE FROM training_sync_outbox_chunks WHERE id = ?', 'state-v1');
+    for (let index = 0; index < count; index++) {
+      const value = raw.slice(index * NATIVE_RECORD_CHUNK_CHARS, (index + 1) * NATIVE_RECORD_CHUNK_CHARS);
+      await tx.runAsync('INSERT INTO training_sync_outbox_chunks (id, ordinal, value, hash) VALUES (?, ?, ?, ?)', 'state-v1', index, value, digest(value));
+    }
+    await tx.runAsync('INSERT OR REPLACE INTO training_sync_outbox (id, chars, chunks, hash) VALUES (?, ?, ?, ?)', 'state-v1', raw.length, count, digest(raw));
+  }
+  function syncUpdate<T>(change: (state: SyncOutboxState) => {state: SyncOutboxState; value: T}): Promise<T> {
+    return enqueue(async () => {
+      const db = await open(); let value!: T;
+      await db.withExclusiveTransactionAsync(async tx => {
+        await assertNativeSqliteModes(tx, storageUnavailable);
+        const next = change(await readSync(tx)); value = next.value;
+        await writeSync(tx, next.state);
+        if (JSON.stringify(await readSync(tx)) !== JSON.stringify(next.state)) throw damaged();
+      });
+      return value;
+    });
+  }
   async function read(db: NativeRecordSql, slot: string): Promise<{ present: boolean; value: string | null }> {
     const manifest = await db.getFirstAsync<Manifest>('SELECT deleted, chars, chunks, hash FROM training_records WHERE slot = ?', slot);
     if (!manifest) {
@@ -313,6 +355,7 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
             await queueLegacyCleanup(tx, slot, before[slot]);
             await writeRecord(tx, slot, null);
           }
+          if (slots.includes(NATIVE_RECORD_SLOTS[0])) await writeSync(tx, invalidateSyncPending(await readSync(tx)));
           await advance(tx);
         });
         for (const slot of slots) if ((await snapshot(slot)).value !== null) throw damaged();
@@ -338,10 +381,27 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
       Object.keys(detached).forEach(slot => {if (!ownedLegacy(slot)) throw new LocalDataError('unknown-format', 'Unexpected legacy cleanup slot.');});
       return enqueue(async () => {await retireLegacy(detached); return privacyStatus();});
     },
+    syncSnapshot(): Promise<SyncOutboxState> {
+      return enqueue(async () => {
+        const db = await open(); let state!: SyncOutboxState;
+        await db.withExclusiveTransactionAsync(async tx => {
+          await assertNativeSqliteModes(tx, storageUnavailable);
+          state = await readSync(tx);
+        });
+        return state;
+      });
+    },
+    claimSync(input: SyncClaimInput) {const detached = {...input}; return syncUpdate(state => {const next = claimSync(state, detached); return {state: next.state, value: next.claim};});},
+    acknowledgeSync(input: SyncAckInput) {const detached = {...input}; return syncUpdate(state => {const next = acknowledgeSync(state, detached); return {state: next.state, value: next.accepted};});},
+    failSync(input: SyncFailInput) {const detached = {...input}; return syncUpdate(state => ({state: failSync(state, detached), value: undefined}));},
+    setSyncRevision(input: {accountId: string; revision: number; expectedRevision: number}) {const detached = {...input}; return syncUpdate(state => ({state: setSyncRevision(state, detached), value: undefined}));},
+    clearSync(accountId?: string) {return syncUpdate(state => ({state: invalidateSyncPending(state, accountId), value: undefined}));},
+    resumeSyncAuth(accountId: string) {return syncUpdate(state => ({state: resumeSyncAuth(state, accountId), value: undefined}));},
     commitRecords(input: NativeRecordCommit): Promise<NativeRecordSnapshot> {
       // Detach validated arguments before enqueueing. A caller changing its
       // mutable map later cannot bypass encryption checks or change a CAS guard.
       const records = {...input.records}, expected = {...input.expected}, expectedRevision = input.expectedRevision, clearHistory = input.clearHistory;
+      const sync = input.sync ? validateSyncEnqueue(input.sync) : undefined, clearSync = input.clearSync;
       const patchSlots = checkedSlots(Object.keys(records)), expectedSlots = checkedSlots(Object.keys(expected));
       if (expectedRevision !== undefined && (!Number.isSafeInteger(expectedRevision) || expectedRevision < 0)) throw new LocalDataError('unknown-format', 'Unexpected saved-record revision.');
       if (clearHistory && (!Object.prototype.hasOwnProperty.call(records, NATIVE_RECORD_SLOTS[0]) || expectedRevision === undefined && !Object.prototype.hasOwnProperty.call(expected, NATIVE_RECORD_SLOTS[0]))) throw new LocalDataError('unknown-format', 'Clearing history requires an expected main profile or saved-record revision.');
@@ -363,6 +423,13 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
           for (const [slot, value] of Object.entries(patch)) {
             await queueLegacyCleanup(tx, slot, before[slot]);
             await writeRecord(tx, slot, value);
+          }
+          if (sync || clearSync || clearHistory) {
+            let state = await readSync(tx);
+            if (clearSync || clearHistory) state = invalidateSyncPending(state);
+            if (sync) state = enqueueSync(state, sync);
+            await writeSync(tx, state);
+            if (JSON.stringify(await readSync(tx)) !== JSON.stringify(state)) throw damaged();
           }
           for (const slot of expectedSlots) if (!current.present[slot] && !isHistorySlot(slot) && await deps.legacy.getItem(slot) !== expected[slot]) throw conflict();
           await advance(tx);

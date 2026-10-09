@@ -1,10 +1,11 @@
 import {QWEN_CONNECT_SOURCES} from './qwen-network-policy';
 
-// The app has no public write API. Revisit this boundary when real accounts and
-// server-side saves are added; do not replace it with a blanket POST allowance.
+// Only these account routes accept POST. They independently authenticate the
+// trusted ingress identity, enforce same-origin requests and validate bodies.
 export function blockedRequest(request:Request):Response|null {
   const path=new URL(request.url).pathname;
   if(path==='/_next/image'||path.startsWith('/__vinext/'))return new Response('Not found',{status:404});
+  if(request.method==='POST'&&['/api/sync','/api/daily-feedback'].includes(path))return null;
   if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405,headers:{Allow:'GET, HEAD'}});
   return null;
 }

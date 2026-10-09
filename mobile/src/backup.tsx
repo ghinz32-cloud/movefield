@@ -6,6 +6,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import {useNativeAppearance} from './appearance';
 import {maxBackupBytes,previewBackup,serializeBackup} from './shared/local-backup';
 import type {State} from './shared/training';
+import {TRANSFER_MAX_FILE_BYTES} from './shared/transfer-bundle';
 
 export async function shareBackup(raw:string){
  if(!await Sharing.isAvailableAsync())throw Error('File sharing is not available on this device.');
@@ -18,7 +19,7 @@ export async function pickBackupText():Promise<string|null>{
  if(result.canceled)return null;
  const asset=result.assets[0],file=new File(asset.uri);
  try{
-  if((asset.size??file.size)>30_000_000)throw Error('This backup is too large to open here.');
+  if((asset.size??file.size)>TRANSFER_MAX_FILE_BYTES)throw Error('This backup is too large to open here.');
   return await file.text();
  }finally{
   try{const prefix=Paths.cache.uri.replace(/\/?$/,'/');if(file.uri.startsWith(prefix)&&file.exists)file.delete()}catch{/* The OS can reclaim this import cache. */}

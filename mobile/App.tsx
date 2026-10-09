@@ -7,14 +7,14 @@ import {metricFields,metricSummary} from './src/shared/set-metrics';
 import {useNativeWorkoutReminders} from './src/workout-notifications';
 import {planName,sessionName,workoutName,trainingCopy} from './src/shared/presentation';
 import {brand} from './src/shared/brand';
-import {normalizeWorkoutRest,changeWorkoutSet,logWorkoutSet,setExerciseNotes} from './src/shared/workout-log';
+import {normalizeWorkoutRest,changeWorkoutSet,logWorkoutSet,workoutSetReference,type WorkoutSetReference,setExerciseNotes} from './src/shared/workout-log';
 import {PlanSetup} from './src/plan-setup';
 import {SessionEditor} from './src/session-editor';
 import {applyTrackingEdit} from './src/shared/tracking';
 import {acceptSetup} from './src/shared/onboarding';
 import {enableRestAlerts,useNativeRestAlerts} from './src/rest-alerts';
 import {restSeconds,pauseRest,resumeRest,extendRest,completedSetError,type RestTimer} from './src/shared/rest-timer';
-import {readSavedState} from './src/shared/saved-data';
+import {readStoredSavedState} from './src/shared/storage-capacity';
 import {sessionGuide} from './src/shared/session-guide';
 import {reviewWorkout} from './src/shared/workout-review';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
@@ -24,7 +24,7 @@ import { StatusBar } from 'expo-status-bar';
 import { setEquipmentLimit, loadSuggestion, makeLoadProposal, applyProposal, makeProposal, makeContinuationReview, makeMoveProposal, matchesExercise, day, displayLoad, eligibility, exFor, exercises, isLoadTracked, niceDate, sortWorkoutHistory, nextSession, targetText, toKg, weekdays, goals, type Exercise, type Plan, type Proposal, type SetLog, type SetMetrics, type State, type Workout } from './src/shared/training';
 import { programCatalog,programReferences,programEquipment,referenceMatchesGoal,referenceEquipment } from './src/shared/program-catalog';
 import {substitutionOptions,previewSubstitution,applySubstitution,type Substitution} from './src/shared/substitutions';
-import { guides, media, safeWebUrl } from './src/content';
+import { guides, media, safeWebUrl, loadNativeContent } from './src/content';
 import { adoptPlan, emptyDemo, RUN_WALK, SPORT_FOUNDATION, previewPlan, startWorkout, setPlanPaused, workoutCheckin, completeWorkoutCheckin, type WorkoutCheckin } from './src/mobile-engine';
 import { readLocalPrivacyStatus, readLocalRaw, readLocalState, replaceLocalState, resetLocalState, retryLocalPrivacyCleanup, saveLocalState, type NativePrivacyStatus } from './src/storage';
 import { LocalDataError } from './src/local-crypto';
@@ -82,8 +82,8 @@ function NativeRestClock({timer,compact=false}:{timer:RestTimer|null|undefined;c
  const left=timer?restSeconds(timer,now):null;
  return <Text style={compact?styles.small:styles.sectionTitle}>{left===null?'Rest timer':left===0?'Rest is over. Start when ready.':`Rest ${timer?.pausedSeconds!==null?'paused · ':''}${Math.floor(left/60)}:${String(left%60).padStart(2,'0')}`}</Text>;
 }
-function ModalFrame({ visible, close, title, children }: { visible: boolean; close: () => void; title: string; children: React.ReactNode }) { const styles=useThemedStyles(baseStyles),{reduceMotion}=useNativeAppearance();
-  return <Modal visible={visible} animationType={reduceMotion?"none":"slide"} onRequestClose={close} presentationStyle="pageSheet"><SafeAreaView style={styles.safe}><View style={styles.modalHeader}><Text style={styles.modalTitle}>{title}</Text><Pressable accessibilityRole="button" accessibilityLabel={`Close ${title}`} onPress={close} style={styles.inlineAction}><Text style={styles.link}>Close</Text></Pressable></View><KeyboardAvoidingView style={styles.flex} behavior={Platform.OS==='ios'?'padding':undefined}><ScrollView keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag" contentContainerStyle={styles.content}>{children}</ScrollView></KeyboardAvoidingView></SafeAreaView></Modal>;
+function ModalFrame({ visible, close, title, children, scrollRef }: { visible: boolean; close: () => void; title: string; children: React.ReactNode; scrollRef?:React.RefObject<ScrollView|null> }) { const styles=useThemedStyles(baseStyles),{reduceMotion}=useNativeAppearance();
+  return <Modal visible={visible} animationType={reduceMotion?"none":"slide"} onRequestClose={close} presentationStyle="pageSheet"><SafeAreaView style={styles.safe}><View style={styles.modalHeader}><Text style={styles.modalTitle}>{title}</Text><Pressable accessibilityRole="button" accessibilityLabel={`Close ${title}`} onPress={close} style={styles.inlineAction}><Text style={styles.link}>Close</Text></Pressable></View><KeyboardAvoidingView style={styles.flex} behavior={Platform.OS==='ios'?'padding':undefined}><ScrollView ref={scrollRef} keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag" contentContainerStyle={styles.content}>{children}</ScrollView></KeyboardAvoidingView></SafeAreaView></Modal>;
 }
 function NativeEquipmentLimit({state,exercise,onSave}:{state:State;exercise?:Exercise;onSave:(f:(s:State)=>State)=>boolean}){ const styles=useThemedStyles(baseStyles);
  const setup=exercise?.requiresSetup?state.loadContext?.[exercise.id]||'':'';
@@ -104,6 +104,7 @@ function NativeEquipmentLimit({state,exercise,onSave}:{state:State;exercise?:Exe
 function TrainingApp() {
  const styles=useThemedStyles(baseStyles),appearance=useNativeAppearance(),COLORS=appearance.colors;
   const [state, setState] = useState<State | null>(null);
+  const [nativeContentReady,setNativeContentReady]=useState(false);
   // Asked once per exercise in a workout, before its first set, and only for exercises never logged on this phone.
   const [askedDemo, setAskedDemo] = useState<string[]>([]);
 
@@ -175,7 +176,7 @@ function TrainingApp() {
     try { plain = isTransferFile(raw) ? await openTransferFile(raw, password) : raw; }
     catch (e) { return e instanceof TransferError ? e.message : 'That file could not be opened. Nothing was replaced.'; }
     let parsed: State;
-    try { parsed = readSavedState(plain.trim()) as State; }
+    try { parsed = readStoredSavedState(plain.trim()) as State; }
     catch { return 'That is not a valid Movefield transfer file or backup. Nothing was replaced.'; }
     const here = stateRef.current;
     const plural = (n: number) => `${n} recorded workout${n === 1 ? '' : 's'}`;
@@ -194,7 +195,7 @@ function TrainingApp() {
       const here=stateRef.current;
       if(expected===null&&here)throw Error('Your records changed after this preview. Choose the backup again.');
       checked=here?restoreBackup(here,parsed,expected!):{...parsed,restTimer:null,restAlerts:false,simulatedOffline:false,proposals:parsed.proposals.map(p=>p.status==='pending'||p.status==='queued'?{...p,status:'stale'}:p)};
-      readSavedState(JSON.stringify(checked));
+      readStoredSavedState(JSON.stringify(checked));
     } catch(e) { setError(e instanceof Error?e.message:'This backup could not be restored. Nothing was replaced.');return; }
     try {
       await replaceLocalState(checked);
@@ -206,21 +207,29 @@ function TrainingApp() {
   };
   const commit = (next: State) => {
     if(!mountedRef.current)return;
-    const checked=normalizeWorkoutRest(next);readSavedState(JSON.stringify(checked));
+    const checked=normalizeWorkoutRest(next);readStoredSavedState(JSON.stringify(checked));
     stateRef.current=checked;setState(checked);const version=++writeVersion.current;
     privacyGeneration.current++;
     setSaveStatus('Saving on this device…');
-    void saveLocalState(checked).then(()=>{
-      if(mountedRef.current&&version===writeVersion.current){setSaveFailure(null);setSaveStatus('Saved on this device');void refreshPrivacyStatus()}
-    }).catch(error=>{
-      if(mountedRef.current&&version===writeVersion.current){setSaveFailure(nativeSaveFailure(error));setSaveStatus('Save failed · latest changes are still open');void refreshPrivacyStatus()}
-    });
+    const attempt=(n:number):void=>{
+      if(!mountedRef.current||version!==writeVersion.current)return;
+      void saveLocalState(checked).then(()=>{
+        if(mountedRef.current&&version===writeVersion.current){setSaveFailure(null);setSaveStatus('Saved on this device');void refreshPrivacyStatus()}
+      }).catch(error=>{
+        if(!mountedRef.current||version!==writeVersion.current)return;
+        const failure=nativeSaveFailure(error);
+        if(failure.kind==='save'&&n<3){setSaveStatus('Retrying local save…');setTimeout(()=>attempt(n+1),n*1000);return;}
+        setSaveFailure(failure);setSaveStatus('Save failed · export before closing or retry in Settings');void refreshPrivacyStatus();
+      });
+    };
+    attempt(1);
   };
   const [personalSetup,setPersonalSetup]=useState(false),[setupProgramId,setSetupProgramId]=useState<string|undefined>();
   const [trackingSession,setTrackingSession]=useState('');
   const [preview, setPreview] = useState<Plan | null>(null);
   const [planGoal,setPlanGoal]=useState('powerlifting');
   const [selectedPlan,setSelectedPlan]=useState<string|null>(null);
+  const planScroll=useRef<ScrollView>(null),trainingStyleY=useRef(0),planCardY=useRef<Record<string,number>>({}),setupScroll=useRef<ScrollView>(null);
   const [substitution,setSubstitution]=useState<Substitution|null>(null);
   const [subEquipment,setSubEquipment]=useState('All');
   const [search, setSearch] = useState('');
@@ -282,6 +291,7 @@ function TrainingApp() {
     }finally{resettingRef.current=false;if(mountedRef.current)setResetting(false)}
   };
 
+  useEffect(()=>{if(!exercise&&tab!=='Library')return;let alive=true;void loadNativeContent().then(()=>{if(alive)setNativeContentReady(true)}).catch(()=>{if(alive)setError('The detailed exercise guide could not load. Your workout is kept. Try opening it again.')});return()=>{alive=false}},[exercise,tab]);
   if (!state) return <SafeAreaView style={styles.safe}><View style={styles.content}><Heading eyebrow={brand.name.toUpperCase()} title={readError ? 'Saved data needs attention' : 'Opening your training'} />{readError ? <><Text style={styles.body}>{readError}</Text><Text style={styles.body}>Try reopening the app first. Reset retires this mobile demo’s current saved records. Older local copies may remain if safe removal cannot be confirmed.</Text><NativePrivacyNotice status={privacyStatus} busy={privacyBusy} onRetry={retryPrivacyCleanup}/><NativeTransferOpen onOpen={openTransfer}/><Text style={styles.small}>A recovery copy keeps available records in their current format. Older records may be unencrypted; keep this copy private. Use a transfer file to restore training.</Text><Button label="Export recovery copy" secondary onPress={()=>{void readLocalRaw().then(raw=>{if(raw===null)throw Error("No saved file was found.");return shareBackup(raw)}).catch(e=>setError(e instanceof Error?e.message:"The saved file could not be exported."))}}/>{error&&<Text accessibilityRole="alert" style={styles.errorText}>{error}</Text>}<Button label={resetting?'Resetting…':'Reset this demo'} disabled={resetting} onPress={() => setConfirm({ title: 'Reset local data?', message: 'This retires the mobile demo’s current saved plan and workouts. Older local copies may remain when safe removal cannot be confirmed. Export a recovery copy first if you need those records.', label: 'Reset current saved records', action: () => { void reset(); } })} /></> : <ActivityIndicator color={COLORS.green} />}<ModalFrame visible={!!confirm} close={() => setConfirm(null)} title={confirm?.title ?? ''}><Text style={styles.body}>{confirm?.message}</Text><Button label={confirm?.label ?? 'Continue'} onPress={() => { const action = confirm?.action; setConfirm(null); action?.(); }} /></ModalFrame></View></SafeAreaView>;
 
   const next = nextSession(state);
@@ -299,7 +309,7 @@ function TrainingApp() {
     if (!checkin || !checkin.symptom) return;
     if (modify(current => completeWorkoutCheckin(current, checkin))) setCheckin(null);
   };
-  const updateSet = (index:number,patch:Partial<SetLog>)=>modify(s=>changeWorkoutSet(s,index,patch));
+  const updateSet = (index:WorkoutSetReference,patch:Partial<SetLog>)=>modify(s=>changeWorkoutSet(s,index,patch));
   const todayView = <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.content}>
     {!active&&<Heading eyebrow={niceDate(day()).toUpperCase()} title="Today" />}
     {state.hold&&<Card><Text style={styles.sectionTitle}>Recommendations are on hold</Text><Text style={styles.body}>You reported pain or an uncertain concern. Stop the affected activity and seek appropriate guidance. Your recorded work is kept.</Text><Text style={[styles.body, { fontWeight: '700' }]}>{SEEK_CARE_TEXT}</Text></Card>}
@@ -320,7 +330,7 @@ function TrainingApp() {
           <Text style={styles.small}>Record each completed set. Reps left (RIR) is optional: 0 means none left with good form.</Text>
           {active.sets.map((set,index)=>set.exerciseId===e.id&&<View key={`${active.id}-${index}`} style={styles.setBlock}>
           <Text style={styles.rowTitle}>Set {set.set}</Text><View style={styles.setFields}>
-          <View style={styles.setField}><Text style={styles.small}>Actual {e.metric}</Text><NumericField label={`${e.name} set ${set.set} actual ${e.metric}`} value={set.reps} max={9999} placeholder={e.metric === 'reps' ? targetText(target) : undefined} onChange={n => updateSet(index, { reps: n ?? 0, done: false })} /></View>{tracked && <View style={styles.setField}><Text style={styles.small}>Load ({state.profile.units})</Text><NumericField label={`${e.name} set ${set.set} actual load ${state.profile.units}`} nullable value={set.kg === null ? null : set.kg * (state.profile.units === 'lb' ? 2.2046226218 : 1)} max={state.profile.units === 'lb' ? 3306 : 1500} onChange={n => updateSet(index, { kg: n === null ? null : toKg(n, state.profile.units), done: false })} /></View>}<View style={styles.setField}><Text style={styles.small}>Reps left · 0–5</Text><NumericField label={`${e.name} set ${set.set} reps left, RIR 0 to 5`} nullable integer max={5} value={set.rir ?? null} placeholder="RIR" onChange={n => updateSet(index, { rir: n ?? undefined })} /></View></View><Pressable accessibilityRole="button" disabled={set.done} accessibilityState={{disabled:set.done}} accessibilityLabel={`${set.done?'Saved':'Log'} ${e.name} set ${set.set}`} onPress={()=>{if(set.done)return;const error=completedSetError(set.reps,set.kg,e.metric);if(error){setError(error);return}modify(s=>logWorkoutSet(s,index,target.rest));}} style={[styles.check,styles.setLogAction,set.done&&styles.checkDone]}><Text style={{color:set.done?COLORS.onAccent:COLORS.green,fontSize:14,fontWeight:'700'}}>{set.done?`Set ${set.set} saved`:`Log set ${set.set}`}</Text></Pressable>{set.done&&<Button secondary label={`Undo saved set ${set.set}`} onPress={()=>updateSet(index,{done:false})}/>}<OptionalSetDetails set={set} name={e.name} metric={e.metric} onChange={metrics => updateSet(index, { metrics })} /></View>)}
+          <View style={styles.setField}><Text style={styles.small}>Actual {e.metric}</Text><NumericField label={`${e.name} set ${set.set} actual ${e.metric}`} value={set.reps} max={9999} placeholder={e.metric === 'reps' ? targetText(target) : undefined} onChange={n => updateSet(workoutSetReference(active,set), { reps: n ?? 0, done: false })} /></View>{tracked && <View style={styles.setField}><Text style={styles.small}>Load ({state.profile.units})</Text><NumericField label={`${e.name} set ${set.set} actual load ${state.profile.units}`} nullable value={set.kg === null ? null : set.kg * (state.profile.units === 'lb' ? 2.2046226218 : 1)} max={state.profile.units === 'lb' ? 3306 : 1500} onChange={n => updateSet(workoutSetReference(active,set), { kg: n === null ? null : toKg(n, state.profile.units), done: false })} /></View>}<View style={styles.setField}><Text style={styles.small}>Reps left · 0–5</Text><NumericField label={`${e.name} set ${set.set} reps left, RIR 0 to 5`} nullable integer max={5} value={set.rir ?? null} placeholder="RIR" onChange={n => updateSet(workoutSetReference(active,set), { rir: n ?? undefined })} /></View></View><Pressable accessibilityRole="button" disabled={set.done} accessibilityState={{disabled:set.done}} accessibilityLabel={`${set.done?'Saved':'Log'} ${e.name} set ${set.set}`} onPress={()=>{if(set.done)return;const error=completedSetError(set.reps,set.kg,e.metric);if(error){setError(error);return}modify(s=>logWorkoutSet(s,workoutSetReference(active,set),target.rest));}} style={[styles.check,styles.setLogAction,set.done&&styles.checkDone]}><Text style={{color:set.done?COLORS.onAccent:COLORS.green,fontSize:14,fontWeight:'700'}}>{set.done?`Set ${set.set} saved`:`Log set ${set.set}`}</Text></Pressable>{set.done&&<Button secondary label={`Undo saved set ${set.set}`} onPress={()=>updateSet(workoutSetReference(active,set),{done:false})}/>}<OptionalSetDetails set={set} name={e.name} metric={e.metric} onChange={metrics => updateSet(workoutSetReference(active,set), { metrics })} /></View>)}
           <View style={{ gap: 6 }}><Text style={styles.small}>Notes for {e.name}</Text><TextInput accessibilityLabel={`${e.name} notes`} style={[styles.input, { minHeight: 64, textAlignVertical: 'top' }]} placeholder="Setup, how it felt, or anything to check next time" placeholderTextColor={COLORS.muted} multiline maxLength={1000} value={active.details?.[e.id]?.notes ?? ''} onChangeText={notes => modify(s => setExerciseNotes(s, e.id, notes))} /></View>
           {target.note && <Text style={styles.small}>{trainingCopy(target.note)}</Text>}{substitutionOptions(e.id).length>0&&<Button label="Choose a substitute" secondary onPress={()=>openSubstitute(active.sessionId,e.id)}/>}
         </Card>;
@@ -331,19 +341,19 @@ function TrainingApp() {
     <Text style={styles.footnote}>Local demo · No account or website sync. Data stays in this app’s local storage.</Text>
   </ScrollView>;
 
-  const planView = <ScrollView contentContainerStyle={styles.content}><Heading eyebrow="FIND YOUR FOCUS" title="Find your next plan." detail="See the workouts, equipment and experience needed before choosing a plan." />
+  const planView = <ScrollView ref={planScroll} contentContainerStyle={styles.content}><Heading eyebrow="FIND YOUR FOCUS" title="Find your next plan." detail="See the workouts, equipment and experience needed before choosing a plan." />
     {state.plan && <Card><Text style={styles.eyebrow}>YOUR CURRENT BLOCK</Text><Text style={styles.sectionTitle}>{planName(state.plan)}</Text><Text style={styles.body}>{state.plan.profile.days.map(x => weekdays[x]).join(' · ')} · {state.plan.sessions.length} sessions</Text><Text style={styles.small}>{trainingCopy(state.plan.progression)}</Text><Button label={state.plan.paused?'Resume plan':'Pause plan'} secondary disabled={!!active} onPress={()=>modify(current=>setPlanPaused(current,state.plan!.id,state.plan!.version,!state.plan!.paused))}/><Text style={styles.small}>Pausing keeps your dates and history. After resuming, review moving any overdue workout before starting.</Text>{active&&<Text style={styles.small}>Finish or discard your active workout before pausing.</Text>}</Card>}
     <Button label="Build a plan for my goals" onPress={()=>setPersonalSetup(true)}/><Text style={styles.body}>Below are four-week adult sample plans, not a personalized prescription. Experience, equipment, and running readiness shown below are assumptions to review.</Text>
-    <Text style={styles.sectionTitle}>Training style</Text><ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.pills}>{goals.map(([id,label])=><Pill key={id} label={label} selected={planGoal===id} onPress={()=>{setPlanGoal(id);setSelectedPlan(null);setPreview(null);setError('');}}/>)}</ScrollView>
+    <Text onLayout={e=>{trainingStyleY.current=e.nativeEvent.layout.y}} style={styles.sectionTitle}>Training style</Text><ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.pills}>{goals.map(([id,label])=><Pill key={id} label={label} selected={planGoal===id} onPress={()=>{setPlanGoal(id);setSelectedPlan(null);setPreview(null);setError('');planScroll.current?.scrollTo({y:Math.max(0,trainingStyleY.current-8),animated:false});}}/>)}</ScrollView>
     {planGoal==='running'&&<Card><Text style={styles.sectionTitle}>NHS Couch to 5K · run/walk plan</Text><Text style={styles.body}>Start with the NHS run/walk sequence. Three separated days. This preview covers its first four weeks.</Text><Button label="Preview beginner run/walk" secondary onPress={()=>openPreview(RUN_WALK)}/></Card>}
     {planGoal==='sport'&&<Card><Text style={styles.sectionTitle}>Sport · General strength foundation</Text><Text style={styles.body}>General strength only. Position-specific drills and sport-specific competition plans are not available in this starter.</Text><Button label="Preview general sport foundation" secondary onPress={()=>openPreview(SPORT_FOUNDATION)}/></Card>}
-    {programCatalog.filter(p=>p.goal===planGoal).map(p => <Pressable key={p.id} accessibilityRole="radio" accessibilityState={{ selected: selectedPlan === p.id }} accessibilityLabel={`${p.name}. ${p.days} days.`} onPress={() => setSelectedPlan(p.id)} style={selectedPlan === p.id ? { borderWidth: 2, borderColor: COLORS.green, borderRadius: 18 } : undefined}><Card><Text style={styles.sectionTitle}>{p.name}</Text><Text style={styles.small}>{p.days} days · up to {Math.max(...(previewPlan(p.id).plan?.sessions.map(x=>x.minutes)||[p.minutes]))} min · {p.goal==='running'?'Run route':p.equipment==='flexible'?'Gym or dumbbells':programEquipment(p)} · {p.experience==='all'?'Beginner-friendly':p.experience==='some'?'Some experience':'Advanced'}</Text>{selectedPlan === p.id && <Text style={[styles.small, { color: COLORS.green, fontWeight: '700' }]}>Selected</Text>}</Card></Pressable>)}
-    {(() => { const chosen = programCatalog.find(p => p.id === selectedPlan); return chosen ? <Button label={`Confirm ${chosen.name}`} onPress={() => openPreview(chosen.id)} /> : <Text style={styles.small}>Choose a plan above to see it and confirm.</Text>; })()}
+    {programCatalog.filter(p=>p.goal===planGoal).map(p => { const isSel = selectedPlan === p.id; return <View key={p.id} style={{ gap: 8 }} onLayout={e => { planCardY.current[p.id] = e.nativeEvent.layout.y; }}><Pressable accessibilityRole="radio" accessibilityState={{ selected: isSel }} accessibilityLabel={`${p.name}. ${p.days} days.`} onPress={() => { setSelectedPlan(p.id); planScroll.current?.scrollTo({ y: Math.max(0, (planCardY.current[p.id] ?? 0) - 8), animated: false }); }} style={isSel ? { borderWidth: 2, borderColor: COLORS.green, borderRadius: 18 } : undefined}><Card><Text style={styles.sectionTitle}>{p.name}</Text><Text style={styles.small}>{p.days} days · up to {Math.max(...(previewPlan(p.id).plan?.sessions.map(x=>x.minutes)||[p.minutes]))} min · {p.goal==='running'?'Run route':p.equipment==='flexible'?'Gym or dumbbells':programEquipment(p)} · {p.experience==='all'?'Beginner-friendly':p.experience==='some'?'Some experience':'Advanced'}</Text>{isSel && <Text style={[styles.small, { color: COLORS.green, fontWeight: '700' }]}>Selected</Text>}</Card></Pressable>{isSel && <Button label={`Review and confirm ${p.name}`} onPress={() => openPreview(p.id)} />}</View>; })}
+    {!selectedPlan && programCatalog.some(p => p.goal === planGoal) && <Text style={styles.small}>Choose a plan to see its workouts and confirm it.</Text>}
     {programReferences.some(p=>p.goal===planGoal)&&<Disclosure label="Programs from their authors"><Text style={styles.sectionTitle}>Named routines from their authors</Text><Text style={styles.body}>Prefilled routines use manual loads and progression. Other sources open an empty tracking calendar. Review required supports and any variations.</Text>{programReferences.filter(p=>referenceMatchesGoal(p,planGoal)).sort((a,b)=>Number(!!b.workouts)-Number(!!a.workouts)).map(p=><Card key={p.id}><Text style={styles.sectionTitle}>{p.name}</Text><Text style={styles.body}>{p.author} · {p.days} days/week · {p.weeks?p.weeks+' weeks':'ongoing'}</Text><Text style={styles.body}>{p.description}</Text><Text style={styles.small}>{p.experience} · {referenceEquipment(p)} · source checked {p.checked}</Text><Button label="View original program" secondary onPress={()=>{void openUrl(p.url);}}/><Button label={p.workouts?"Review source template":"Track my copy"} onPress={()=>{setSetupProgramId(p.id);setPersonalSetup(true)}}/></Card>)}</Disclosure>}{linkError&&<Text accessibilityRole="alert" style={styles.errorText}>{linkError}</Text>}
 
   </ScrollView>;
 
-  const libraryView = <View style={styles.flex}><View style={[styles.content, { paddingBottom: 0 }]}><Heading eyebrow="EXERCISE LIBRARY" title="Exercise library." detail="Search by name, movement or muscle. Equipment filters match the listed equipment." /><TextInput accessibilityLabel="Search exercise library" style={styles.input} placeholder="Search exercises…" placeholderTextColor={COLORS.muted} value={search} onChangeText={setSearch} autoCapitalize="none" autoCorrect={false} clearButtonMode="while-editing" /><ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.pills}>{equipmentOptions.map(e => <Pill key={e} label={e} selected={equipment === e} onPress={() => setEquipment(e)} />)}</ScrollView><Button label="Search research papers" secondary onPress={()=>setResearchOpen(true)}/><Text style={styles.small}>{filtered.length} of {library.length} exercises · {Object.keys(guides).length} detailed guides</Text></View>
+  const libraryView = <View style={styles.flex}><View style={[styles.content, { paddingBottom: 0 }]}><Heading eyebrow="EXERCISE LIBRARY" title="Exercise library." detail="Search by name, movement or muscle. Equipment filters match the listed equipment." /><TextInput accessibilityLabel="Search exercise library" style={styles.input} placeholder="Search exercises…" placeholderTextColor={COLORS.muted} value={search} onChangeText={setSearch} autoCapitalize="none" autoCorrect={false} clearButtonMode="while-editing" /><ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.pills}>{equipmentOptions.map(e => <Pill key={e} label={e} selected={equipment === e} onPress={() => setEquipment(e)} />)}</ScrollView><Button label="Search research papers" secondary onPress={()=>setResearchOpen(true)}/><Text style={styles.small}>{filtered.length} of {library.length} exercises · {nativeContentReady?Object.keys(guides).length:'On-demand'} detailed guides</Text></View>
     <FlatList data={filtered} keyExtractor={x => x.id} contentContainerStyle={[styles.content, { paddingTop: 4 }]} keyboardShouldPersistTaps="handled" ListHeaderComponent={<View style={{ marginBottom: 16 }}><Disclosure label="Plate calculator & warm-up loads"><NativeTrainingTools units={state.profile.units} adult={state.profile.age >= 18} /></Disclosure></View>} initialNumToRender={15} ListEmptyComponent={<Card><Text style={styles.sectionTitle}>No matches yet.</Text><Text style={styles.body}>Try a shorter name or choose All equipment.</Text><Button label="Clear filters" secondary onPress={() => { setSearch(''); setEquipment('All'); }} /></Card>} renderItem={({ item }) => <Pressable accessibilityRole="button" accessibilityLabel={`Open ${item.name} guide`} onPress={() => setExercise(item)} style={styles.exerciseRow}><View style={styles.flex}><Text style={styles.rowTitle}>{item.name}</Text><Text style={styles.small}>{item.equipment} · {item.pattern}</Text><Text style={styles.guideLabel}>{guides[item.id] ? 'STEP-BY-STEP GUIDE' : 'QUICK CUES'}</Text></View><Text style={styles.arrow}>↗</Text></Pressable>} />
   </View>;
 
@@ -374,7 +384,7 @@ function TrainingApp() {
     <NativeResearchLibrary visible={researchOpen} close={()=>setResearchOpen(false)}/><View style={styles.tabs}>{(['Today', 'Plan', 'Library', 'History', 'Settings'] as const).map((label, i) => <Pressable accessibilityRole="tab" accessibilityLabel={label} accessibilityState={{ selected: tab === label }} key={label} onPress={() => { setTab(label); setError(''); }} style={[styles.tab, tab === label && styles.activeTab]}><Text style={[styles.tabIcon, tab === label && { color: COLORS.green }]}>{['◉', '▤', '⌕', '◷', '⚙'][i]}</Text><Text style={[styles.tabLabel, tab === label && { color: COLORS.green, fontWeight: '800' }]}>{label}</Text></Pressable>)}</View>
 
     <ModalFrame visible={!!trackingSession} close={()=>setTrackingSession('')} title="Workout targets">{trackingSession&&state.plan?.sessions.some(x=>x.id===trackingSession)&&<SessionEditor key={trackingSession} state={state} sessionId={trackingSession} onSave={edit=>{const r=applyTrackingEdit(stateRef.current!,edit);if(r.error)return r.error;if(modify(()=>r.state)){setTrackingSession('');return}return 'This workout could not be saved.';}}/>}</ModalFrame>
-    <ModalFrame visible={personalSetup} close={()=>{setPersonalSetup(false);setSetupProgramId(undefined)}} title="Your plan setup">{personalSetup&&<PlanSetup state={state} initialProgramId={setupProgramId} onAccept={(profile,plan,events)=>{const r=acceptSetup(stateRef.current!,profile,plan,events);if(r.error)return r.error;if(modify(()=>r.state)){setPersonalSetup(false);setSetupProgramId(undefined);setTab('Today');return}return 'This plan could not be saved. Check your entries.';}}/>}</ModalFrame>
+    <ModalFrame visible={personalSetup} close={()=>{setPersonalSetup(false);setSetupProgramId(undefined)}} title="Your plan setup" scrollRef={setupScroll}>{personalSetup&&<PlanSetup state={state} scrollRef={setupScroll} initialProgramId={setupProgramId} onAccept={(profile,plan,events)=>{const r=acceptSetup(stateRef.current!,profile,plan,events);if(r.error)return r.error;if(modify(()=>r.state)){setPersonalSetup(false);setSetupProgramId(undefined);setTab('Today');return}return 'This plan could not be saved. Check your entries.';}}/>}</ModalFrame>
     <ModalFrame visible={!!exercise} close={() => setExercise(null)} title="Exercise guide">
       {linkError&&<Text accessibilityRole="alert" style={styles.errorText}>{linkError}</Text>}{exercise && <><Text style={styles.eyebrow}>{exercise.equipment} · {exercise.pattern}</Text><Text style={styles.title}>{exercise.name}</Text><Text style={styles.body}>{guide?.summary ?? 'A full guide is not available yet. These are the saved movement cues.'}</Text><Card><Text style={styles.sectionTitle}>{guide ? 'Quick cues' : 'Movement cues'}</Text>{(guide?.quickCues ?? exercise.cues).map((cue, i) => <Text key={i} style={styles.body}>• {cue}</Text>)}</Card>
         {exercise&&isLoadTracked(exercise)&&<NativeEquipmentLimit state={state} exercise={exercise} onSave={modify}/>} {guide && <>{[['Equipment', guide.equipment], ['Set up', guide.setup], ['Perform the movement', guide.execution], ['Finish safely', guide.finish], ['Breathing', guide.breathing], ['Common errors & fixes', guide.commonErrors]].map(([title, lines]) => <Card key={title as string}><Text style={styles.sectionTitle}>{title as string}</Text>{(lines as string[]).map((line, i) => <Text key={i} style={styles.body}>{i + 1}. {line}</Text>)}</Card>)}<Card><Text style={styles.sectionTitle}>Make it easier</Text><Text style={styles.body}>{guide.easierOption}</Text><Text style={styles.sectionTitle}>Safety</Text><Text style={styles.body}>{guide.safety}</Text></Card>{!!guide.terms?.length && <Card><Text style={styles.sectionTitle}>Workout terms</Text>{guide.terms.map(t => <Text key={t.term} style={styles.body}><Text style={{ fontWeight: '700' }}>{t.term}: </Text>{t.meaning}</Text>)}</Card>}</>}

@@ -1,9 +1,9 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),ts=require('typescript');
 const {webcrypto}=require('node:crypto');
 const {IDBFactory,IDBObjectStore}=require('fake-indexeddb');
-const moduleValue={exports:{}};
-const source=ts.transpileModule(fs.readFileSync(path.join('lib','browser-record-store.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
-new Function('require','module','exports',source)(require,moduleValue,moduleValue.exports);
+const modules=new Map();
+function load(name){if(modules.has(name))return modules.get(name).exports;const moduleValue={exports:{}};modules.set(name,moduleValue);const source=ts.transpileModule(fs.readFileSync(path.join('lib',name+'.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;new Function('require','module','exports',source)(dependency=>dependency.startsWith('./')?load(dependency.slice(2)):require(dependency),moduleValue,moduleValue.exports);return moduleValue.exports;}
+const moduleValue={exports:load('browser-record-store')};
 const {createBrowserRecordStore,BrowserRecordStoreError}=moduleValue.exports;
 const S='training-studio-v2',D='training-studio-setup-v1',slots=[S,D];
 const SECRET='private workout marker 1AEF';

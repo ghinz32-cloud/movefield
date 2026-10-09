@@ -19,22 +19,25 @@ const helper=createTsxLoader(repo),initial=helper.load(path.join(repo,'mobile/sr
 const backup=helper.load(path.join(repo,'mobile/src/shared/local-backup.ts'));
 const normalize=helper.load(path.join(repo,'mobile/src/shared/workout-log.ts')).normalizeWorkoutRest;
 const saved=helper.load(path.join(repo,'mobile/src/shared/saved-data.ts')).readSavedState;
-const appSource=fs.readFileSync(appFile,'utf8').replace('  if (!state) return','  return {state,readError,saveStatus,saveFailure,privacyStatus,privacyBusy,localNotice,error,commit,replaceWith,reset,retryPrivacyCleanup,refreshPrivacyStatus};\n  if (!state) return')+'\nexport {TrainingApp};\n';
+const stored=helper.load(path.join(repo,'mobile/src/shared/storage-capacity.ts'));
+const localCrypto=helper.load(path.join(repo,'mobile/src/local-crypto.ts'));
+const capacity=helper.load(path.join(repo,'mobile/src/storage-capacity.ts'));
+const appSource="const __testSaveClock = require('native-privacy-test-clock');\n"+fs.readFileSync(appFile,'utf8').replace('setTimeout(()=>attempt(n+1),n*1000)','__testSaveClock.setTimeout(()=>attempt(n+1),n*1000)').replace('  if (!state) return','  return {state,readError,saveStatus,saveFailure,privacyStatus,privacyBusy,localNotice,error,commit,replaceWith,reset,retryPrivacyCleanup,refreshPrivacyStatus};\n  if (!state) return')+'\nexport {TrainingApp};\n';
 async function mountApp(options={}){
- const h=createHookHarness(),calls=[],writes=[],replaces=[];let privacy=status('clear');
+ const h=createHookHarness(),calls=[],writes=[],replaces=[],saveRetries=[],retryDelays=[];let privacy=status('clear');
  const store={
   readLocalState:async()=>{calls.push('read');if(options.readError)throw Error('Injected unreadable training');return options.readTask?options.readTask.promise:structuredClone(initial)},
   readLocalPrivacyStatus:async()=>{calls.push('privacy');if(options.privacyError)throw Error('Injected denied privacy read');return options.privacyRead?options.privacyRead(calls.filter(x=>x==='privacy').length):privacy},
   retryLocalPrivacyCleanup:async()=>{calls.push('retry');if(options.retryError)throw Error('Injected denied cleanup');return options.retryTask?options.retryTask.promise:status('clear')},
-  saveLocalState:async s=>{writes.push(structuredClone(s));calls.push('save');if(options.saveError)throw Error('Injected save failure');return options.saveTask?options.saveTask.promise:undefined},
+  saveLocalState:async s=>{writes.push(structuredClone(s));calls.push('save');if(options.saveError)throw options.saveError instanceof Error?options.saveError:Error('Injected save failure');return options.saveTask?options.saveTask.promise:undefined},
   replaceLocalState:async s=>{replaces.push(structuredClone(s));calls.push('replace');if(options.replaceError)throw Error('Injected restore failure');return options.replaceTask?options.replaceTask.promise:undefined},
   resetLocalState:async()=>{calls.push('reset');if(options.resetError)throw Error('Injected reset failure');privacy=options.resetStatus||status('clear');return options.resetTask?options.resetTask.promise:privacy},
  };
  const empty=new Proxy({}, {get:(_,name)=>name});
- const overrides={react:h.react,'react/jsx-runtime':h.runtime,'react-native':{StyleSheet:{create:value=>value},AccessibilityInfo:{announceForAccessibility:()=>{}}},'react-native-safe-area-context':empty,'expo-status-bar':empty,'expo-crypto':{getRandomBytes:n=>new Uint8Array(n)},'./src/appearance':{useThemedStyles:()=>({}),useNativeAppearance:()=>appearance},'./src/brand':{brand:{name:'Movefield'}},'./src/shared/brand':{brand:{name:'Movefield'}},'./src/storage':store,'./src/local-crypto':{LocalDataError:class LocalDataError extends Error{}},'./src/storage-capacity':{nativeSaveFailure:()=>({kind:'storage',message:'The latest open changes could not be saved.'})},'./src/shared/training':{day:()=>'2026-10-09',exercises:[],matchesExercise:()=>true},'./src/mobile-engine':{emptyDemo:()=>structuredClone(initial)},'./src/shared/workout-log':{normalizeWorkoutRest:normalize},'./src/shared/saved-data':{readSavedState:saved},'./src/shared/local-backup':backup,'./src/workout-notifications':{useNativeWorkoutReminders:()=>''},'./src/rest-alerts':{useNativeRestAlerts:()=>''},'./src/content':{guides:{},media:{}},'./src/shared/exercise-video':{firstTimeExerciseIds:()=>[]}};
+ const overrides={react:h.react,'react/jsx-runtime':h.runtime,'react-native':{StyleSheet:{create:value=>value},AccessibilityInfo:{announceForAccessibility:()=>{}}},'react-native-safe-area-context':empty,'expo-status-bar':empty,'expo-crypto':{getRandomBytes:n=>new Uint8Array(n)},'./src/appearance':{useThemedStyles:()=>({}),useNativeAppearance:()=>appearance},'./src/brand':{brand:{name:'Movefield'}},'./src/shared/brand':{brand:{name:'Movefield'}},'./src/storage':store,'./src/local-crypto':localCrypto,'./src/storage-capacity':capacity,'./src/shared/storage-capacity':stored,'native-privacy-test-clock':{setTimeout:(callback,delay)=>{saveRetries.push(callback);retryDelays.push(delay);return saveRetries.length}},'./src/shared/training':{day:()=>'2026-10-09',exercises:[],matchesExercise:()=>true},'./src/mobile-engine':{emptyDemo:()=>structuredClone(initial)},'./src/shared/workout-log':{normalizeWorkoutRest:normalize},'./src/shared/saved-data':{readSavedState:saved},'./src/shared/local-backup':backup,'./src/workout-notifications':{useNativeWorkoutReminders:()=>''},'./src/rest-alerts':{useNativeRestAlerts:()=>''},'./src/content':{guides:{},media:{}},'./src/shared/exercise-video':{firstTimeExerciseIds:()=>[]}};
  for(const match of appSource.matchAll(/from '([^']+)'/g))if(!(match[1] in overrides))overrides[match[1]]=empty;
  const component=createTsxLoader(repo,overrides,{[appFile]:appSource}).load(appFile).TrainingApp;
- await h.mount(component);return {h,calls,writes,replaces,setPrivacy:value=>{privacy=value}};
+ await h.mount(component);return {h,calls,writes,replaces,retryDelays,setPrivacy:value=>{privacy=value},runSaveRetries:async()=>{for(let n=0;saveRetries.length;n++){if(n>=10)throw Error('Save retry fixture did not terminate');saveRetries.shift()();await h.settle()}}};
 }
 
 (async()=>{
@@ -66,7 +69,7 @@ async function mountApp(options={}){
   const f=await mountApp({privacyError:true});f.h.tree.commit({...f.h.tree.state,profile:{...f.h.tree.state.profile,name:'Saved update'}});await f.h.settle();same(f.writes.length,1,'Actual save callback wrote one state');same(f.h.tree.saveStatus,'Saved on this device','Durable success remains success despite denied privacy read');same(f.h.tree.saveFailure,null,'No false save failure is installed');same(f.h.tree.privacyStatus.state,'unavailable','Separate privacy check reports unavailable');f.h.unmount();
  });
  await scenario('Save failure and privacy attention remain independent',async()=>{
-  const f=await mountApp({saveError:true,privacyRead:async()=>status('attention')});f.h.tree.commit({...f.h.tree.state});await f.h.settle();ok(f.h.tree.saveStatus.startsWith('Save failed'),'Actual storage failure remains a save failure');same(f.h.tree.privacyStatus.state,'attention','Preserved-copy status does not erase save failure');f.h.unmount();
+  const f=await mountApp({saveError:true,privacyRead:async()=>status('attention')});f.h.tree.commit({...f.h.tree.state});await f.h.settle();same(f.h.tree.saveStatus,'Retrying local save…','Transient save failure enters bounded retry');await f.runSaveRetries();same(f.writes.length,3,'Actual retry policy attempts three writes');same(f.retryDelays,[1000,2000],'Actual policy uses bounded one- and two-second retry thresholds');ok(f.h.tree.saveStatus.startsWith('Save failed'),'Actual storage failure remains a save failure');same(f.h.tree.privacyStatus.state,'attention','Preserved-copy status does not erase save failure');f.h.unmount();
  });
  await scenario('Newer privacy status suppresses older pending read after a save',async()=>{
   const old=deferred(),f=await mountApp({privacyRead:async n=>n===1?old.promise:status('attention')});f.h.tree.commit({...f.h.tree.state});await f.h.settle();same(f.h.tree.privacyStatus.state,'attention','Post-save privacy status is installed');old.resolve(status('clear'));await f.h.settle();same(f.h.tree.privacyStatus.state,'attention','Older startup read cannot clear the new warning');f.h.unmount();
@@ -77,7 +80,7 @@ async function mountApp(options={}){
  for(const operation of ['stale restore','failed restore','failed reset'])for(const outcome of ['saved','failed'])await scenario(operation+' preserves a pending save '+outcome+' result',async()=>{
   const save=deferred(),f=await mountApp({saveTask:save,replaceError:operation==='failed restore',resetError:operation==='failed reset'});f.h.tree.commit({...f.h.tree.state});await f.h.settle();
   if(operation==='failed reset')await f.h.tree.reset();else await f.h.tree.replaceWith(structuredClone(initial),operation==='stale restore'?'stale preview':backup.serializeBackup(f.h.tree.state));
-  await f.h.settle();if(outcome==='saved')save.resolve();else save.reject(Error('Pending save rejected'));await f.h.settle();
+  await f.h.settle();if(outcome==='saved')save.resolve();else save.reject(Error('Pending save rejected'));await f.h.settle();if(outcome==='failed')await f.runSaveRetries();
   if(outcome==='saved'){same(f.h.tree.saveStatus,'Saved on this device','Failed replacement/reset cannot hide durable save success');same(f.h.tree.saveFailure,null,'Successful pending save has no failure')}else{ok(f.h.tree.saveStatus.startsWith('Save failed'),'Failed replacement/reset cannot hide a rejected pending save');ok(f.h.tree.saveFailure,'Actual rejected pending save keeps recovery feedback')}f.h.unmount();
  });
  await scenario('Unmount suppresses rejected restore and never refreshes privacy afterward',async()=>{

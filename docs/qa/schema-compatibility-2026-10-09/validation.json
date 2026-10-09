@@ -1,0 +1,46 @@
+{
+  "baseline": "8abfca45f1f910155011516eabffbebdf070821b",
+  "branch": "audit/2026-10-09-schema",
+  "repository": "ghinz32-cloud/movefield",
+  "validation": {
+    "regressionSuites": {
+      "passed": 56,
+      "total": 56
+    },
+    "securityChecks": {
+      "passed": 29,
+      "total": 29
+    },
+    "focusedAssertions": 1087,
+    "webTypes": "passed",
+    "nativeTypes": "passed",
+    "changedSourceLint": "passed with zero warnings",
+    "canonicalSharedFiles": 40,
+    "nativeEncryptedIncompatibleRecordFixtures": 2,
+    "nativeEngine": "passed78plans"
+  },
+  "sourceSha256": {
+    "lib/record-identity.ts": "1fd7f66d1e30e330ee405a7a58d689669a85240bc3c1213b606993f189278eca",
+    "lib/saved-data.ts": "0df31174e85c6133e2a5235785b72dfbb0eeeb5d694cc0dc19bdd4c2789aa2de",
+    "lib/training.ts": "50322e0302d2f1147bd6177bbfa44814b0922913880c00691b016002ceb41f60",
+    "lib/rest-timer.ts": "d58c1a694c20e4153f839ce69483720f2b767915161866cdc28977f6360795f7",
+    "mobile/index.ts": "7683613dc7ee2d226198219212aa3aa91b5cc7338cbc340a204efb05451720d7",
+    "mobile/src/record-platform.ts": "e4e097be85b7c1ecccd389ca055fa139e078825179628cad0c7dc1f497f4913f",
+    "mobile/scripts/sync-shared.mjs": "327b0b08fd18ab3ee9b95048148cce9904dfde7cf92b7b0d924abdf8637c64b8",
+    "mobile/docs/shared-snapshot.json": "f1cf332e11f78bdd67cb96750484f5199d921709871838306c89202fffd5cc89",
+    "scripts/check-native-storage.cjs": "26c0efc203f1ef71eea148559c591acc3f35526585674d63c189831c4003b798",
+    "scripts/check-saved-compatibility.cjs": "1f8cdf6d38bf35f629f79c70691ec953f346de0937d36936bdc64f086e3bdc5e"
+  },
+  "evidenceSha256": {
+    "security-results.json": "c113697bfdd644e6b522c9d83e7a45af3a015329349149271b29c1d777281783",
+    "focused.log": "c6f298247b5ffa74b8fe737badf6d512bed89d79e2c821317b77d21e414a1768",
+    "regression-results.json": "0518132232d4214de8eac2b29dab7d153aca056c573a7844c898c2d3042a6869",
+    "regression.log.gz": "21237be44665ad949815868db8ddc34859727265479b29903f7cd46be61a6158"
+  },
+  "limits": [
+    "Schema version stays2; no fullv3 migration",
+    "Parent task integrates workout start/finish metadata helper calls",
+    "No physical-device, store-signing, service-provisioning or deployment qualification"
+  ],
+  "regressionRawSha256": "e8b94117b167e0b0c8d2cf87a9b931d1ea85aa9704c0904e405a91487589606c"
+}

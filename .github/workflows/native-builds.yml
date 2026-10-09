@@ -86,6 +86,23 @@ jobs:
           mkdir -p build
           ./gradlew :app:dependencies --configuration releaseRuntimeClasspath --console=plain --no-daemon -PreactNativeArchitectures=arm64-v8a -Porg.gradle.jvmargs="-Xmx5g -XX:MaxMetaspaceSize=1g" > build/release-runtime-classpath.raw.txt
           python3 ../../scripts/collect-native-build-evidence.py android ../.. ../../native-evidence/android
+      - name: Package verified Android test APK
+        run: |
+          mkdir -p native-preview/android
+          cp mobile/android/app/build/outputs/apk/release/app-release.apk native-preview/android/Movefield-arm64-test.apk
+          cp native-evidence/android/source.txt native-preview/android/source.txt
+          cp native-evidence/android/signing.txt native-preview/android/signing.txt
+          cp native-evidence/android/inspection.json native-preview/android/inspection.json
+          cp native-evidence/android/build-route-evidence.json native-preview/android/build-route-evidence.json
+          cd native-preview/android
+          sha256sum Movefield-arm64-test.apk > SHA256SUMS
+      - name: Retain verified Android test APK
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: android-arm64-preview-test-only
+          path: native-preview/android
+          if-no-files-found: error
+          retention-days: 30
       - name: Retain native compilation evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -135,6 +152,22 @@ jobs:
           cp mobile/ios/build/Build/Products/Release-iphonesimulator/Movefield.app/PrivacyInfo.xcprivacy native-evidence/ios/PrivacyInfo.xcprivacy
       - name: Retain SQLite Release flags and complete built privacy replay
         run: python3 scripts/collect-native-build-evidence.py ios . native-evidence/ios
+      - name: Package verified iOS simulator application
+        run: |
+          mkdir -p native-preview/ios
+          tar -czf native-preview/ios/Movefield-simulator-test.tar.gz -C mobile/ios/build/Build/Products/Release-iphonesimulator Movefield.app
+          cp native-evidence/ios/source.txt native-preview/ios/source.txt
+          cp native-evidence/ios/inspection.json native-preview/ios/inspection.json
+          cp native-evidence/ios/build-route-evidence.json native-preview/ios/build-route-evidence.json
+          cd native-preview/ios
+          shasum -a 256 Movefield-simulator-test.tar.gz > SHA256SUMS
+      - name: Retain verified iOS simulator application
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: ios-simulator-preview-test-only
+          path: native-preview/ios
+          if-no-files-found: error
+          retention-days: 30
       - name: Retain native compilation evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

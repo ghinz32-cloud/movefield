@@ -3,7 +3,7 @@ import { adoptPlan, editSet, emptyDemo, finishWorkout, FOUNDATION, RUN_WALK, SPO
 import { programCatalog } from '../src/shared/program-catalog';
 import { readSavedState } from '../src/shared/saved-data';
 import { addDays, day, exercises, type State } from '../src/shared/training';
-import { guides, safeWebUrl } from '../src/content';
+import { guides, loadNativeContent, safeWebUrl } from '../src/content';
 
 import {applySubstitution} from '../src/shared/substitutions';
 import { randomBytes } from 'node:crypto';
@@ -24,6 +24,7 @@ for (const id of choices) for (let offset = 0; offset < 7; offset++) {
 }
 let state: State = adoptPlan(emptyDemo(), previewPlan(FOUNDATION).plan!);
 state = startWorkout(state, state.plan!.sessions[0].id);
+assert.notEqual(state.active!.demo,true,'Personal native workouts are eligible as real records after secure account integration');
 assert.equal(state.active!.sets[0].reps, 0, 'Do not prefill actual reps from targets');
 assert.throws(() => editSet(state, 0, { done: true }), /actual/);
 assert.throws(() => editSet(state, 0, { kg: -1 }), /load/);
@@ -44,15 +45,7 @@ assert.equal(safeWebUrl('javascript:alert(1)'), null);
 assert.equal(safeWebUrl('https://user:password@example.com'), null);
 assert.ok(safeWebUrl('https://docs.expo.dev/'));
 assert.equal(new Set(exercises.map(x => x.id)).size, exercises.length, 'Catalog IDs must be unique');
-assert.equal(Object.keys(guides).length, exercises.length, 'Every exercise must have a detailed guide');
-for (const exercise of exercises) assert.ok(guides[exercise.id], `Missing guide ${exercise.id}`);
-for (const [id, guide] of Object.entries(guides)) {
-  assert.ok(exercises.some(x => x.id === id), `Orphan guide ${id}`);
-  for (const key of ['equipment', 'setup', 'execution', 'finish', 'breathing', 'commonErrors'] as const) assert.ok(Array.isArray(guide[key]) && guide[key].length && guide[key].every(x => typeof x === 'string'), `Invalid native-rendered ${key} in ${id}`);
-  for (const key of ['summary', 'easierOption', 'safety', 'loadConvention', 'sourceNote'] as const) assert.equal(typeof guide[key], 'string', `Invalid ${key} in ${id}`);
-  assert.ok(Array.isArray(guide.sourceURLs), `Invalid source URLs in ${id}`);
-}
-console.log(`PASS: ${choices.length} plans across all 7 starting weekdays, workout validation, partial save, optional measurements round-trip, retained history, unsafe read/link rejection, ${exercises.length} exercises and ${Object.keys(guides).length} guides.`);
+assert.equal(Object.keys(guides).length,0,'Native content is deferred until the library or a guide opens');
 
 // Deep-audit regressions: date approval, partial recovery, and immutable boundaries.
 import { makeMoveProposal, makeProposal, applyProposal } from '../src/shared/training';
@@ -111,6 +104,17 @@ const transferPassword = 'quiet river lantern 42';
 const transferRandom = (n: number) => new Uint8Array(randomBytes(n));
 const transferPlain = JSON.stringify(emptyDemo(), null, 2);
 void (async () => {
+  await loadNativeContent();
+assert.equal(Object.keys(guides).length, exercises.length, 'Every exercise must have a detailed guide');
+for (const exercise of exercises) assert.ok(guides[exercise.id], `Missing guide ${exercise.id}`);
+for (const [id, guide] of Object.entries(guides)) {
+  assert.ok(exercises.some(x => x.id === id), `Orphan guide ${id}`);
+  for (const key of ['equipment', 'setup', 'execution', 'finish', 'breathing', 'commonErrors'] as const) assert.ok(Array.isArray(guide[key]) && guide[key].length && guide[key].every(x => typeof x === 'string'), `Invalid native-rendered ${key} in ${id}`);
+  for (const key of ['summary', 'easierOption', 'safety', 'loadConvention', 'sourceNote'] as const) assert.equal(typeof guide[key], 'string', `Invalid ${key} in ${id}`);
+  assert.ok(Array.isArray(guide.sourceURLs), `Invalid source URLs in ${id}`);
+}
+console.log(`PASS: ${choices.length} plans across all 7 starting weekdays, workout validation, partial save, optional measurements round-trip, retained history, unsafe read/link rejection, ${exercises.length} exercises and ${Object.keys(guides).length} guides.`);
+
   const file = await createTransferFile(transferPlain, transferPassword, { source: 'phone', random: transferRandom });
   assert.equal(isTransferFile(file), true);
   assert.equal(file.includes('Movefield'), false, 'the file must not contain plaintext marker text');
