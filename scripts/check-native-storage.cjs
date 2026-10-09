@@ -1,7 +1,33 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),ts=require('typescript');
 const mobileDir=path.resolve(__dirname,'..','mobile');
-const values=new Map();let release,started,gate=null;
-const disk={hasRecord:async()=>true,getItem:async key=>values.get(key)??null,setItem:async(key,value)=>{if(gate){started();await gate;}values.set(key,value)},removeItem:async key=>values.delete(key),multiRemove:async keys=>{keys.forEach(k=>values.delete(k))}};
+const values=new Map();let release,started,gate=null,revision=0,inBatch=false;
+const HISTORY_PREFIX='training-studio:mobile-history:v2:';
+const disk={
+ hasRecord:async()=>true,
+ getItem:async key=>values.get(key)??null,
+ setItem:async(key,value)=>{if(gate){started();await gate;}values.set(key,value);if(!inBatch)revision++},
+ removeItem:async key=>{values.delete(key);if(!inBatch)revision++},
+ multiRemove:async keys=>{keys.forEach(k=>values.delete(k));if(!inBatch)revision++},
+ snapshotRecords:async keys=>({records:Object.fromEntries(keys.map(k=>[k,values.get(k)??null])),present:Object.fromEntries(keys.map(k=>[k,values.has(k)])),revision}),
+ listHistorySlots:async()=>[...values.keys()].filter(key=>key.startsWith(HISTORY_PREFIX)).sort(),
+ commitRecords:async input=>{
+  const failure=()=>new (load('mobile/src/local-crypto.ts').LocalDataError)('unknown-format','Saved records changed in another app session. Nothing was replaced.');
+  if(input.expectedRevision!==undefined&&input.expectedRevision!==revision||Object.entries(input.expected).some(([key,value])=>(values.get(key)??null)!==value))throw failure();
+  const prior=new Map(values),previousRevision=revision,patch={...input.records};
+  if(input.clearHistory)for(const key of values.keys())if(key.startsWith(HISTORY_PREFIX)&&!Object.prototype.hasOwnProperty.call(patch,key))patch[key]=null;
+  // This memory fixture preserves historical failure/capture hooks. Actual
+  // atomic persistence is tested separately through the real SQLite harness.
+  // Install entities first and main last; a failure restores the complete map.
+  inBatch=true;revision=previousRevision+1;
+  try{
+   for(const key of Object.keys(patch).sort((a,b)=>Number(a===STATE_KEY)-Number(b===STATE_KEY))){
+    if(patch[key]===null)await disk.removeItem(key);else await disk.setItem(key,patch[key]);
+   }
+   return await disk.snapshotRecords(Object.keys(patch));
+  }catch(error){values.clear();prior.forEach((value,key)=>values.set(key,value));revision=previousRevision;throw error}
+  finally{inBatch=false}
+ },
+};
 // In-memory stand-ins for the device secure store and secure random source; the real modules need native code.
 const secure=new Map();
 const secureStore={AFTER_FIRST_UNLOCK_THIS_DEVICE_ONLY:'after-first-unlock-this-device',getItemAsync:async key=>secure.get(key)??null,setItemAsync:async(key,value)=>{secure.set(key,value)},deleteItemAsync:async key=>{secure.delete(key)}};
@@ -82,7 +108,7 @@ const storage=load('mobile/src/storage.ts'),T=load('mobile/src/shared/training.t
  await storage.saveLocalState(snapshotBefore);await storage.saveLocalSetup(draft);
  values.set('unrelated-preference','preserve me');
  const snapshots=[];
- function capture(boundary,expected){snapshots.push({boundary,expected,disk:new Map(values),secure:new Map(secure)})}
+ function capture(boundary,expected){snapshots.push({boundary,expected,disk:new Map(values),secure:new Map(secure),revision})}
  capture('before prepare','Before snapshot');
  const snapshotSet=disk.setItem,snapshotRemove=disk.removeItem,keySet=secureStore.setItemAsync,keyDelete=secureStore.deleteItemAsync;
  disk.setItem=async(k,v)=>{await snapshotSet(k,v);if(k===JOURNAL)capture('after encrypted journal','Before snapshot');if(k===STATE_KEY)capture('after restored ciphertext','After snapshot')};
@@ -93,7 +119,7 @@ const storage=load('mobile/src/storage.ts'),T=load('mobile/src/shared/training.t
  disk.setItem=snapshotSet;disk.removeItem=snapshotRemove;secureStore.setItemAsync=keySet;secureStore.deleteItemAsync=keyDelete;
  assert.equal(snapshots.length,8,'eight persistent boundaries are captured');
  function reopen(snapshot){
-  values.clear();snapshot.disk.forEach((v,k)=>values.set(k,v));secure.clear();snapshot.secure.forEach((v,k)=>secure.set(k,v));cache.clear();
+  values.clear();snapshot.disk.forEach((v,k)=>values.set(k,v));secure.clear();snapshot.secure.forEach((v,k)=>secure.set(k,v));revision=snapshot.revision??0;inBatch=false;cache.clear();
   return load('mobile/src/storage.ts');
  }
  for(const snapshot of snapshots){
@@ -151,6 +177,7 @@ const storage=load('mobile/src/storage.ts'),T=load('mobile/src/shared/training.t
 
  // Legacy plaintext is represented by fingerprints, never copied into the journal.
  values.set(STATE_KEY,JSON.stringify(secret));values.set(SETUP_KEY,JSON.stringify(draft));
+ await fresh.readLocalState();
  disk.setItem=async(k,v)=>{if(k===JOURNAL){assert.ok(!v.includes('Private name marker')&&!v.includes('Draft one'),'journal stores no legacy plaintext')}return snapshotSet(k,v)};
  await fresh.replaceLocalState(snapshotAfter);disk.setItem=snapshotSet;
  assert.equal((await fresh.readLocalState()).profile.name,'After snapshot');

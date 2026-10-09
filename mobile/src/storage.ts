@@ -7,6 +7,8 @@ import { readSavedState, readSetupDraft } from './shared/saved-data';
 import { type State } from './shared/training';
 import { LocalDataError, isSealed, keyFromHex, newKeyHex, openText, sealText } from './local-crypto';
 import { assertNativeRecordCapacity } from './storage-capacity';
+import { assembleNativeHistory, parseNativeHistoryHead, splitNativeHistory, type NativeHistoryHead } from './native-history';
+import type { NativeRecordSnapshot } from './native-record-store';
 
 // Saved training is encrypted before it reaches transactional SQLite snapshots:
 // XChaCha20-Poly1305 with a fresh random nonce per write. Legacy AsyncStorage is
@@ -32,15 +34,35 @@ export const KEY_MISSING_MESSAGE = 'Your saved training is encrypted with a key 
 
 // Every read and write goes through one chain, so a read never sees a half-written record.
 // The chain itself never rejects; each caller still receives its own result.
-let writes: Promise<void> = Promise.resolve();
+// Share the whole SecureStore + SQLite lifecycle across module reloads in this
+// JS runtime. SQLite CAS alone cannot serialize first-key creation or the ring
+// preparation window. Separate OS processes/JS runtimes are not supported.
+const lifecycleSymbol = Symbol.for('movefield.native-storage.lifecycle.v2');
+const lifecycle = (globalThis as unknown as {[key: symbol]: {writes: Promise<void>}})[lifecycleSymbol] ??= {writes: Promise.resolve()};
 let cachedKey: Uint8Array | null = null;
+let stateToken: {raw: string | null; present: boolean; revision: number} | undefined;
+let authenticatedState: {raw: string; revision: number; key: string; state: State; head: NativeHistoryHead} | undefined;
+
+const changed = () => new LocalDataError('unknown-format', 'Saved training changed in another session. Nothing was overwritten. Reopen your saved training before editing.');
+function rememberState(snapshot: NativeRecordSnapshot): void {
+  stateToken = {raw: snapshot.records[KEY], present: snapshot.present[KEY], revision: snapshot.revision};
+}
+function assertStateToken(snapshot: NativeRecordSnapshot): void {
+  if (stateToken && (stateToken.raw !== snapshot.records[KEY] || stateToken.present !== snapshot.present[KEY]
+    || stateToken.raw === null && stateToken.revision !== snapshot.revision)) throw changed();
+}
+async function refreshOwnRevision(): Promise<void> {
+  if (!stateToken) return;
+  const snapshot = await AsyncStorage.snapshotRecords([KEY]);
+  if (stateToken.raw === snapshot.records[KEY] && stateToken.present === snapshot.present[KEY]) rememberState(snapshot);
+}
 
 function enqueue<T>(task: () => Promise<T>, mode: 'read' | 'write' | 'reset' = 'write'): Promise<T> {
-  const next = writes.then(async () => {
+  const next = lifecycle.writes.then(async () => {
     if (mode !== 'reset') await recoverRestore(mode === 'read');
     return task();
   });
-  writes = next.then(() => undefined, () => undefined);
+  lifecycle.writes = next.then(() => undefined, () => undefined);
   return next;
 }
 
@@ -95,14 +117,13 @@ async function recoverRestore(allowCleanupPending = false): Promise<void> {
 }
 
 async function readDataKey(): Promise<Uint8Array | null> {
-  if (cachedKey) return cachedKey;
   let stored: string | null;
   try {
     stored = await SecureStore.getItemAsync(DATA_KEY_NAME, SECURE_OPTIONS);
   } catch {
     throw new LocalDataError('key-unavailable', 'This device’s secure storage could not open your data key, so saved training stays unchanged. Reopen the app to try again.');
   }
-  if (stored === null) return null;
+  if (stored === null) {cachedKey = null; return null;}
   cachedKey = keyFromHex(stored);
   return cachedKey;
 }
@@ -144,16 +165,73 @@ function migrateLegacy(slot: string, legacy: string): Promise<void> {
     assertNativeRecordCapacity(plaintext);
     const key = await keyForWrite();
     await AsyncStorage.setItem(slot, sealText(plaintext, key, slot, getRandomBytes));
+    await refreshOwnRevision();
   });
 }
 
+// Read the encrypted head and all its referenced workouts from one committed
+// SQLite generation. The first read discovers slots; the second checks that the
+// head and global revision did not change while those slots were discovered.
+async function readStateSnapshot(): Promise<{snapshot: NativeRecordSnapshot; state: State | null; head: NativeHistoryHead | null}> {
+  const first = await AsyncStorage.snapshotRecords([KEY]);
+  const raw = first.records[KEY];
+  if (raw === null) return {snapshot: first, state: null, head: null};
+  const key = isSealed(raw) ? await readDataKey() : null;
+  if (isSealed(raw) && !key) throw new LocalDataError('key-missing', KEY_MISSING_MESSAGE);
+  const keyDigest = key ? bytesToHex(sha256(key)) : '';
+  if (authenticatedState?.raw === raw && authenticatedState.revision === first.revision && authenticatedState.key === keyDigest) {
+    return {snapshot: first, state: authenticatedState.state, head: authenticatedState.head};
+  }
+  const text = key ? openText(raw, key, KEY) : raw, head = parseNativeHistoryHead(text);
+  if (!head) return {snapshot: first, state: readSavedState(text), head: null};
+  const snapshot = await AsyncStorage.snapshotRecords([KEY, ...head.entries.map(entry => entry.slot)]);
+  if (snapshot.revision !== first.revision || snapshot.records[KEY] !== raw) throw changed();
+  const workouts = new Map<string, string>();
+  for (const entry of head.entries) {
+    const record = snapshot.records[entry.slot];
+    if (record === null || !isSealed(record)) throw new LocalDataError('decrypt-failed', 'A saved workout is missing or damaged. Nothing was replaced. Export a recovery copy if available, or restore a transfer file.');
+    workouts.set(entry.slot, openText(record, key!, entry.slot));
+  }
+  const state = assembleNativeHistory(head, workouts);
+  authenticatedState = {raw, revision: snapshot.revision, key: keyDigest, state, head};
+  return {snapshot, state, head};
+}
+
+async function installState(state: State, current: Awaited<ReturnType<typeof readStateSnapshot>>, key: Uint8Array): Promise<void> {
+  const {head, workouts} = splitNativeHistory(state);
+  const records: Record<string, string | null> = {};
+  const oldEntries = new Map(current.head?.entries.map(entry => [entry.slot, entry.digest]) ?? []);
+  const nextEntries = new Map(head.entries.map(entry => [entry.slot, entry.digest]));
+  const slots = new Set([...workouts.keys()].filter(slot => oldEntries.get(slot) !== nextEntries.get(slot)));
+  for (const slot of oldEntries.keys()) if (!workouts.has(slot)) slots.add(slot);
+  const snapshot = await AsyncStorage.snapshotRecords([KEY, ...slots]);
+  if (snapshot.revision !== current.snapshot.revision || snapshot.records[KEY] !== current.snapshot.records[KEY]) throw changed();
+  const expected: Record<string, string | null> = {[KEY]: snapshot.records[KEY]};
+  for (const [slot, text] of workouts) {
+    // readStateSnapshot authenticated each existing entity before any save.
+    // Reuse its exact ciphertext when content is unchanged under the same key.
+    if (oldEntries.get(slot) !== nextEntries.get(slot)) {expected[slot] = snapshot.records[slot]; records[slot] = sealText(text, key, slot, getRandomBytes);}
+  }
+  for (const slot of oldEntries.keys()) if (!workouts.has(slot)) {expected[slot] = snapshot.records[slot]; records[slot] = null;}
+  const text = state.history.length || current.head ? JSON.stringify(head) : JSON.stringify(state);
+  assertNativeRecordCapacity(text);
+  records[KEY] = sealText(text, key, KEY, getRandomBytes);
+  const committed = await AsyncStorage.commitRecords({expected, records, expectedRevision: snapshot.revision});
+  rememberState(committed);
+  authenticatedState = state.history.length || current.head ? {raw: committed.records[KEY]!, revision: committed.revision,
+    key: bytesToHex(sha256(key)), state: readSavedState(JSON.stringify(state)), head} : undefined;
+}
+
 export async function readLocalState(): Promise<State | null> {
-  const result = await enqueue(async () => {
-    const raw = await AsyncStorage.getItem(KEY);
-    return raw === null ? null : {raw, legacy: !await AsyncStorage.hasRecord(KEY), state: readSavedState(await openRecord(raw, KEY))};
+  return enqueue(async () => {
+    const current = await readStateSnapshot();
+    rememberState(current.snapshot);
+    if (current.state && (!current.snapshot.present[KEY] || !isSealed(current.snapshot.records[KEY] ?? '') || !current.head && current.state.history.length > 0)) {
+      assertNativeRecordCapacity(JSON.stringify(current.state));
+      await installState(current.state, current, await keyForWrite());
+    }
+    return current.state ? readSavedState(JSON.stringify(current.state)) : null;
   }, 'read');
-  if (result && (result.legacy || !isSealed(result.raw))) await migrateLegacy(KEY, result.raw);
-  return result?.state ?? null;
 }
 
 export async function saveLocalState(state: State): Promise<void> {
@@ -161,17 +239,22 @@ export async function saveLocalState(state: State): Promise<void> {
   readSavedState(json); // Reject invalid state before writing, as well as on read.
   assertNativeRecordCapacity(json); // Before creating a key or writing unreadable ciphertext.
   return enqueue(async () => {
+    const current = await readStateSnapshot();
+    assertStateToken(current.snapshot);
     const key = await keyForWrite();
-    await AsyncStorage.setItem(KEY, sealText(json, key, KEY, getRandomBytes));
+    await installState(state, current, key);
   });
 }
 
 export async function resetLocalState(): Promise<void> {
   await enqueue(async () => {
-    await AsyncStorage.multiRemove([KEY, SETUP_KEY, RESTORE_JOURNAL]);
+    const snapshot = await AsyncStorage.snapshotRecords([]);
+    const committed = await AsyncStorage.commitRecords({expected: {}, records: {[KEY]: null, [SETUP_KEY]: null, [RESTORE_JOURNAL]: null}, expectedRevision: snapshot.revision, clearHistory: true});
     cachedKey = null;
-    await SecureStore.deleteItemAsync(DATA_KEY_NAME, SECURE_OPTIONS);
     await SecureStore.deleteItemAsync(RESTORE_KEY_NAME, SECURE_OPTIONS);
+    await SecureStore.deleteItemAsync(DATA_KEY_NAME, SECURE_OPTIONS);
+    rememberState(committed);
+    authenticatedState = undefined;
   }, 'reset');
 }
 
@@ -183,6 +266,8 @@ export async function replaceLocalState(state: State): Promise<void> {
   readSavedState(json); // Reject invalid state before anything changes.
   assertNativeRecordCapacity(json); // Before changing keys, journals or the previous record.
   return enqueue(async () => {
+    const initial = await AsyncStorage.snapshotRecords([KEY]);
+    assertStateToken(initial);
     // A read error is not the same as "no key": if the previous key cannot be read, nothing is changed.
     let previousHex: string | null;
     try {
@@ -191,17 +276,24 @@ export async function replaceLocalState(state: State): Promise<void> {
       throw new LocalDataError('key-unavailable', 'This phone could not read its data key. Nothing was replaced.');
     }
     const hex = newKeyHex(getRandomBytes);
-    const sealed = sealText(json, keyFromHex(hex), KEY, getRandomBytes);
-    const before = await AsyncStorage.getItem(KEY);
+    const nextKey = keyFromHex(hex), {head, workouts} = splitNativeHistory(state);
+    const sealed = sealText(state.history.length ? JSON.stringify(head) : json, nextKey, KEY, getRandomBytes);
+    const records: Record<string, string | null> = {};
+    for (const [slot, text] of workouts) records[slot] = sealText(text, nextKey, slot, getRandomBytes);
+    records[KEY] = sealed;
+    const before = initial.records[KEY];
     const id = newKeyHex(getRandomBytes); // Independent randomness; never expose any key bytes as an ID.
     const recovery: RestoreKeys = {id, previous: previousHex, next: hex};
     const journal: RestoreJournal = {id, beforeHash: fingerprint(before), after: sealed, setupHash: fingerprint(await AsyncStorage.getItem(SETUP_KEY))};
     try {
       await SecureStore.setItemAsync(RESTORE_KEY_NAME, JSON.stringify(recovery), SECURE_OPTIONS);
       await AsyncStorage.setItem(RESTORE_JOURNAL, JSON.stringify(journal));
-      if ((await AsyncStorage.getItem(KEY)) !== before) throw new LocalDataError('unknown-format', 'Saved records changed while preparing the restore. Nothing was overwritten. Reopen the app.');
-      await AsyncStorage.setItem(KEY, sealed);
+      const snapshot = await AsyncStorage.snapshotRecords([KEY]);
+      if (snapshot.records[KEY] !== before || snapshot.present[KEY] !== initial.present[KEY] || snapshot.revision !== initial.revision + 1) throw changed();
+      const committed = await AsyncStorage.commitRecords({expected: {[KEY]: before}, records, expectedRevision: snapshot.revision, clearHistory: true});
       await recoverRestore(true);
+      rememberState(committed);
+      await refreshOwnRevision();
     } catch (error) {
       if ((await AsyncStorage.getItem(KEY)) === before) {
         await recoverRestore().catch(() => undefined);
@@ -232,11 +324,22 @@ export async function saveLocalSetup(draft: ReturnType<typeof readSetupDraft>): 
   return enqueue(async () => {
     const key = await keyForWrite();
     await AsyncStorage.setItem(SETUP_KEY, sealText(json, key, SETUP_KEY, getRandomBytes));
+    await refreshOwnRevision();
   });
 }
 
 export function clearLocalSetup(): Promise<void> {
-  return enqueue(() => AsyncStorage.removeItem(SETUP_KEY));
+  return enqueue(async () => {await AsyncStorage.removeItem(SETUP_KEY); await refreshOwnRevision();});
 }
 
-export async function readLocalRaw():Promise<string|null>{await writes.catch(()=>undefined);return AsyncStorage.getItem(KEY);}
+// A head alone is no longer a complete recovery copy. Preserve all owned raw
+// records without needing SecureStore/decryption; normal transfers still use
+// the validated reconstructed State and retain their existing file format.
+export async function readLocalRaw(): Promise<string | null> {
+  await lifecycle.writes;
+  const first = await AsyncStorage.snapshotRecords([]), slots = await AsyncStorage.listHistorySlots();
+  const snapshot = await AsyncStorage.snapshotRecords([KEY, SETUP_KEY, RESTORE_JOURNAL, ...slots]);
+  if (snapshot.revision !== first.revision) throw changed();
+  if (!slots.length) return snapshot.records[KEY];
+  return JSON.stringify({format: 'movefield-native-recovery-records-v2', revision: snapshot.revision, records: snapshot.records});
+}

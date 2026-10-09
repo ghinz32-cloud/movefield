@@ -1,3 +1,17 @@
+# Current continuation — 9 October 2026, incremental phone history
+
+Repository `https://github.com/ghinz32-cloud/movefield.git`; checkout `/workspace/scratch/30756d258ac2/movefield`; local branch `audit/2026-10-09-approved`, upstream `origin/audit/2026-10-08-quality`. Verified starting local checkpoint `9196735b51d26e6b65d1b5537cf387184103e799`; remote baseline `d4f94890cf0c19c1bfb399d1080d615553e2f70a`. Main `80e6ea26437f0aeaa1d8f816ace464da81fe0a81` and review-fixes `667a3e381035b16cb1aa611c85cdf9d143b7b835` remain unchanged. Standing explicit owner approval covers GitHub commit creation and this source/audit evidence to the existing review branch; historical approval blockers below are resolved.
+
+S02a/b is implemented and checked locally: completed workouts have encrypted hashed SQLite slots, ordered authenticated references in the encrypted profile head, atomic revision/CAS mutations, tombstones, verified legacy migration, complete key-loss recovery bundles, journal-preserving restore and reset. Cached own active edits read/write zero history entities; cache validity requires exact head/revision/key. The shared key lifecycle queue supports module reloads within one JS runtime, not multiple OS processes/JS engines. Failed restore/reset acknowledgment leaves old UI tokens stale. Recovery copies may retain legacy plaintext; corrupted SQLite chunks can prevent copying. Existing 5M-character/5,000-workout bounds remain.
+
+Validation: 45/45 application regressions plus a prepared dependency-policy suite, 3/3 production suites; 27 actual SQLite history scenarios / 192 assertions, 13 batch scenarios, 14 retained snapshot scenarios, eight fresh-module restore captures, web/native types, full product lint, native engine and Android/iOS Hermes exports pass. Exact source/log/artifact hashes and fresh generated reports: `docs/qa/native-history-2026-10-09/`; report `docs/native-history-2026-10-09.md`. Harness SecureStore/crypto/OS stand-ins and Hermes exports do not qualify physical phones.
+
+Resolve source checkpoint via `git log -1 --format=%H -- docs/native-history-2026-10-09.md`. After commit save/verify `.sites-runtime/checkpoints/s02-native-history.bundle` and metadata; publish only to `audit/2026-10-08-quality`, compare exact tree and read report back. Connector commit SHA may differ from the local commit while matching its source tree; preserve both histories.
+
+Next prompt: Resume from the verified S02 source/tree, inspect refs and preserve all concurrent work. Integrate the prepared strict dependency policy into `scripts/check-dependencies.mjs` (`--release` must fail any high/critical, including dated CI exceptions), record fresh audit outcomes, then implement U09a verified native model files using installed Expo FileSystem with bounded hashing/consent/cancellation. No published compatible braces/node-forge fix was found. Physical device/build acceptance, cloud accounts/sync, native inference and trained artifact qualification remain. No main merge, live deployment or new service occurred.
+
+# Previous continuation — transactional browser storage
+
 # Current continuation — 9 October 2026, transactional browser storage
 
 Repository `https://github.com/ghinz32-cloud/movefield.git`; checkout `/workspace/scratch/30756d258ac2/movefield`; local branch `audit/2026-10-09-approved` tracks `origin/audit/2026-10-08-quality`. Main remains `80e6ea26437f0aeaa1d8f816ace464da81fe0a81`; review-fixes `667a3e381035b16cb1aa611c85cdf9d143b7b835` is retained in ancestry.

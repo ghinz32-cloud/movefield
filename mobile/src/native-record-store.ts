@@ -4,10 +4,12 @@ import { LocalDataError, isSealed } from './local-crypto';
 
 // The encryption boundary lives in storage.ts. Only authenticated envelopes and
 // their encrypted restore journal enter this database; keys stay in SecureStore.
-// Splitting ciphertext avoids Android's legacy single-row read window. A complete
-// snapshot and its integrity manifest are committed in one exclusive transaction.
+// Splitting ciphertext avoids Android's legacy single-row read window. Every
+// snapshot/entity batch and its integrity manifests commit in one transaction.
 export const NATIVE_RECORD_CHUNK_CHARS = 128 * 1024;
 export const NATIVE_RECORD_MAX_CHARS = 48_000_000;
+export const NATIVE_HISTORY_PREFIX = 'training-studio:mobile-history:v2:';
+export const NATIVE_HISTORY_MAX_RECORDS = 5000;
 export const NATIVE_RECORD_SLOTS = [
   'training-studio:mobile-local-demo:v1',
   'training-studio:mobile-setup:v1',
@@ -29,11 +31,25 @@ export type LegacyRecordStore = {
 };
 type Manifest = { deleted: number; chars: number; chunks: number; hash: string };
 type Chunk = { ordinal: number; value: string; hash: string };
+export type NativeRecordSnapshot = { records: Record<string, string | null>; present: Record<string, boolean>; revision: number };
+export type NativeRecordCommit = {
+  expected: Record<string, string | null>;
+  records: Record<string, string | null>;
+  expectedRevision?: number;
+  // Reserved for approved restore/reset. Unchanged retired history is tombstoned
+  // atomically with the new main head; no dynamic legacy fallback is possible.
+  clearHistory?: boolean;
+};
 const digest = (text: string) => bytesToHex(sha256(utf8ToBytes(text)));
 const damaged = () => new LocalDataError('decrypt-failed', 'Saved training is incomplete or damaged. Nothing was replaced. Restore your transfer file or keep a copy before resetting.');
 
 function assertSlot(slot: string) {
-  if (!(NATIVE_RECORD_SLOTS as readonly string[]).includes(slot)) throw new LocalDataError('unknown-format', 'Unexpected training storage slot.');
+  if (!(NATIVE_RECORD_SLOTS as readonly string[]).includes(slot) && !isHistorySlot(slot)) throw new LocalDataError('unknown-format', 'Unexpected training storage slot.');
+}
+const isHistorySlot = (slot: string) => slot.startsWith(NATIVE_HISTORY_PREFIX) && /^[0-9a-f]{64}$/.test(slot.slice(NATIVE_HISTORY_PREFIX.length));
+export function nativeHistorySlot(workoutId: string): string {
+  if (typeof workoutId !== 'string' || workoutId.length < 1 || workoutId.length > 150) throw new LocalDataError('unknown-format', 'Unexpected workout record identifier.');
+  return NATIVE_HISTORY_PREFIX + digest(workoutId);
 }
 function assertEncrypted(slot: string, value: string) {
   if (value.length > NATIVE_RECORD_MAX_CHARS) throw new LocalDataError('storage-capacity', 'These records exceed the supported save size. Export your records from Settings before closing.');
@@ -65,7 +81,8 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
   const open = () => database ??= deps.open().then(async db => {
     await db.execAsync(`PRAGMA journal_mode = WAL; PRAGMA synchronous = FULL;
       CREATE TABLE IF NOT EXISTS training_records (slot TEXT PRIMARY KEY NOT NULL, deleted INTEGER NOT NULL, chars INTEGER NOT NULL, chunks INTEGER NOT NULL, hash TEXT NOT NULL);
-      CREATE TABLE IF NOT EXISTS training_chunks (slot TEXT NOT NULL, ordinal INTEGER NOT NULL, value TEXT NOT NULL, hash TEXT NOT NULL, PRIMARY KEY (slot, ordinal));`);
+      CREATE TABLE IF NOT EXISTS training_chunks (slot TEXT NOT NULL, ordinal INTEGER NOT NULL, value TEXT NOT NULL, hash TEXT NOT NULL, PRIMARY KEY (slot, ordinal));
+      CREATE TABLE IF NOT EXISTS training_record_metadata (id TEXT PRIMARY KEY NOT NULL, revision INTEGER NOT NULL);`);
     return db;
   }).catch(error => { database = undefined; throw error; });
   const enqueue = <T>(job: () => Promise<T>): Promise<T> => {
@@ -98,10 +115,67 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
     await db.withExclusiveTransactionAsync(async tx => { result = await read(tx, slot); });
     return result;
   }
-  async function retireLegacy(slot: string) {
+  async function revision(db: NativeRecordSql): Promise<number> {
+    const row = await db.getFirstAsync<{ revision: number }>('SELECT revision FROM training_record_metadata WHERE id = ?', 'generation-v1');
+    if (row && (!Number.isSafeInteger(row.revision) || row.revision < 0)) throw damaged();
+    return row?.revision ?? 0;
+  }
+  async function advance(db: NativeRecordSql) {
+    const next = (await revision(db)) + 1;
+    if (!Number.isSafeInteger(next)) throw damaged();
+    await db.runAsync('INSERT OR REPLACE INTO training_record_metadata (id, revision) VALUES (?, ?)', 'generation-v1', next);
+    return next;
+  }
+  function checkedSlots(requested: readonly string[]) {
+    if (requested.length > NATIVE_HISTORY_MAX_RECORDS * 2 + NATIVE_RECORD_SLOTS.length || new Set(requested).size !== requested.length) throw new LocalDataError('storage-capacity', 'The requested record batch is too large or contains duplicate records.');
+    requested.forEach(assertSlot);
+    return [...requested];
+  }
+  async function historySlots(db: NativeRecordSql): Promise<string[]> {
+    // Existing tombstones need no second retirement. Orphan chunks are included
+    // so an explicit clear cannot leave a damaged prior generation behind.
+    const rows = await db.getAllAsync<{ slot: string }>(`SELECT slot FROM training_records WHERE slot LIKE ? AND deleted != 1
+      UNION SELECT slot FROM training_chunks WHERE slot LIKE ? ORDER BY slot LIMIT ?`, NATIVE_HISTORY_PREFIX + '%', NATIVE_HISTORY_PREFIX + '%', NATIVE_HISTORY_MAX_RECORDS + 1);
+    if (rows.length > NATIVE_HISTORY_MAX_RECORDS) throw new LocalDataError('storage-capacity', 'This device has more history records than this app version can open. Keep a copy before resetting.');
+    rows.forEach(row => {if (!isHistorySlot(row.slot)) throw damaged();});
+    return rows.map(row => row.slot);
+  }
+  async function readBatch(db: NativeRecordSql, requested: readonly string[], allowLegacy: boolean): Promise<NativeRecordSnapshot> {
+    const records: Record<string, string | null> = {}, present: Record<string, boolean> = {};
+    for (const slot of requested) {
+      const record = await read(db, slot);
+      present[slot] = record.present;
+      records[slot] = record.present || isHistorySlot(slot) || !allowLegacy ? record.value : await deps.legacy.getItem(slot);
+    }
+    return {records, present, revision: await revision(db)};
+  }
+  async function batchSnapshot(requested: readonly string[], allowLegacy = true) {
+    const db = await open(); let result!: NativeRecordSnapshot;
+    await db.withExclusiveTransactionAsync(async tx => {result = await readBatch(tx, requested, allowLegacy);});
+    return result;
+  }
+  async function writeRecord(tx: NativeRecordSql, slot: string, value: string | null) {
+    await tx.runAsync('DELETE FROM training_chunks WHERE slot = ?', slot);
+    if (value === null) {
+      await tx.runAsync('INSERT OR REPLACE INTO training_records (slot, deleted, chars, chunks, hash) VALUES (?, 1, 0, 0, ?)', slot, '');
+      return;
+    }
+    const count = Math.ceil(value.length / NATIVE_RECORD_CHUNK_CHARS);
+    for (let i = 0; i < count; i++) {
+      const chunk = value.slice(i * NATIVE_RECORD_CHUNK_CHARS, (i + 1) * NATIVE_RECORD_CHUNK_CHARS);
+      await tx.runAsync('INSERT INTO training_chunks (slot, ordinal, value, hash) VALUES (?, ?, ?, ?)', slot, i, chunk, digest(chunk));
+    }
+    await tx.runAsync('INSERT OR REPLACE INTO training_records (slot, deleted, chars, chunks, hash) VALUES (?, 0, ?, ?, ?)', slot, value.length, count, digest(value));
+  }
+  async function capturedLegacy(slot: string): Promise<string | null | undefined> {
+    if (isHistorySlot(slot)) return undefined;
+    try {return await deps.legacy.getItem(slot);} catch {return undefined;}
+  }
+  async function retireLegacy(slot: string, expected?: string | null) {
     // SQLite is already authoritative. Failed cleanup retains the old encrypted
     // copy, and a tombstone prevents it from ever resurfacing after deletion.
-    await deps.legacy.removeItem(slot).catch(() => undefined);
+    if (expected === undefined || isHistorySlot(slot)) return;
+    try {if (await deps.legacy.getItem(slot) === expected) await deps.legacy.removeItem(slot);} catch { /* Retain denied/changed legacy input. */ }
   }
   return {
     getItem(slot: string): Promise<string | null> {
@@ -110,7 +184,7 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
         const record = await snapshot(slot);
         // Never fall back on corruption/decryption failure. Legacy plaintext is
         // returned untouched so storage.ts can validate and encrypt it first.
-        return record.present ? record.value : deps.legacy.getItem(slot);
+        return record.present || isHistorySlot(slot) ? record.value : deps.legacy.getItem(slot);
       });
     },
     hasRecord(slot: string): Promise<boolean> {
@@ -119,36 +193,70 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
     setItem(slot: string, value: string): Promise<void> {
       assertSlot(slot); assertEncrypted(slot, value);
       return enqueue(async () => {
-        const db = await open(), hash = digest(value);
-        const count = Math.ceil(value.length / NATIVE_RECORD_CHUNK_CHARS);
+        const db = await open(), before = await capturedLegacy(slot);
         await db.withExclusiveTransactionAsync(async tx => {
-          await tx.runAsync('DELETE FROM training_chunks WHERE slot = ?', slot);
-          for (let i = 0; i < count; i++) {
-            const chunk = value.slice(i * NATIVE_RECORD_CHUNK_CHARS, (i + 1) * NATIVE_RECORD_CHUNK_CHARS);
-            await tx.runAsync('INSERT INTO training_chunks (slot, ordinal, value, hash) VALUES (?, ?, ?, ?)', slot, i, chunk, digest(chunk));
-          }
-          await tx.runAsync('INSERT OR REPLACE INTO training_records (slot, deleted, chars, chunks, hash) VALUES (?, 0, ?, ?, ?)', slot, value.length, count, hash);
+          await writeRecord(tx, slot, value);
           if ((await read(tx, slot)).value !== value) throw damaged();
+          await advance(tx);
         });
         // Acknowledge persistence only after a separate committed readback. An
         // ambiguous failure retains the legacy copy and is surfaced to the UI.
         if ((await snapshot(slot)).value !== value) throw damaged();
-        await retireLegacy(slot);
+        await retireLegacy(slot, before);
       });
     },
     removeItem(slot: string): Promise<void> { return this.multiRemove([slot]); },
     multiRemove(slots: string[]): Promise<void> {
       slots.forEach(assertSlot);
       return enqueue(async () => {
-        const db = await open();
+        const db = await open(), before = Object.fromEntries(await Promise.all(slots.map(async slot => [slot, await capturedLegacy(slot)])));
         await db.withExclusiveTransactionAsync(async tx => {
           for (const slot of slots) {
-            await tx.runAsync('DELETE FROM training_chunks WHERE slot = ?', slot);
-            await tx.runAsync('INSERT OR REPLACE INTO training_records (slot, deleted, chars, chunks, hash) VALUES (?, 1, 0, 0, ?)', slot, '');
+            await writeRecord(tx, slot, null);
           }
+          await advance(tx);
         });
         for (const slot of slots) if ((await snapshot(slot)).value !== null) throw damaged();
-        await Promise.all(slots.map(retireLegacy));
+        await Promise.all(slots.map(slot => retireLegacy(slot, before[slot])));
+      });
+    },
+    snapshotRecords(requested: readonly string[]): Promise<NativeRecordSnapshot> {
+      const slots = checkedSlots(requested); return enqueue(() => batchSnapshot(slots));
+    },
+    listHistorySlots(): Promise<string[]> {
+      return enqueue(async () => {const db = await open(); let result!: string[]; await db.withExclusiveTransactionAsync(async tx => {result = await historySlots(tx);}); return result;});
+    },
+    commitRecords(input: NativeRecordCommit): Promise<NativeRecordSnapshot> {
+      // Detach validated arguments before enqueueing. A caller changing its
+      // mutable map later cannot bypass encryption checks or change a CAS guard.
+      const records = {...input.records}, expected = {...input.expected}, expectedRevision = input.expectedRevision, clearHistory = input.clearHistory;
+      const patchSlots = checkedSlots(Object.keys(records)), expectedSlots = checkedSlots(Object.keys(expected));
+      if (expectedRevision !== undefined && (!Number.isSafeInteger(expectedRevision) || expectedRevision < 0)) throw new LocalDataError('unknown-format', 'Unexpected saved-record revision.');
+      if (clearHistory && (!Object.prototype.hasOwnProperty.call(records, NATIVE_RECORD_SLOTS[0]) || expectedRevision === undefined && !Object.prototype.hasOwnProperty.call(expected, NATIVE_RECORD_SLOTS[0]))) throw new LocalDataError('unknown-format', 'Clearing history requires an expected main profile or saved-record revision.');
+      for (const slot of patchSlots) if (records[slot] !== null) assertEncrypted(slot, records[slot]!);
+      for (const slot of expectedSlots) if (expected[slot] !== null && typeof expected[slot] !== 'string') throw new LocalDataError('unknown-format', 'Unexpected saved-record comparison.');
+      const conflict = () => new LocalDataError('unknown-format', 'Saved records changed in another app session. Nothing was replaced. Reopen the saved profile before editing.');
+      return enqueue(async () => {
+        const db = await open(); let written!: NativeRecordSnapshot;
+        const before = Object.fromEntries(await Promise.all(patchSlots.map(async slot => [slot, await capturedLegacy(slot)])));
+        await db.withExclusiveTransactionAsync(async tx => {
+          const current = await readBatch(tx, expectedSlots, true);
+          if (expectedRevision !== undefined && current.revision !== expectedRevision || expectedSlots.some(slot => current.records[slot] !== expected[slot])) throw conflict();
+          const patch = {...records};
+          if (clearHistory) for (const slot of await historySlots(tx)) if (!Object.prototype.hasOwnProperty.call(patch, slot)) patch[slot] = null;
+          // Every new dynamic entity must have an expected state, except a fresh
+          // replacement generation whose global anchor/revision is already held.
+          if (!clearHistory && patchSlots.some(slot => !Object.prototype.hasOwnProperty.call(expected, slot))) throw new LocalDataError('unknown-format', 'A record batch is missing an expected saved value.');
+          for (const [slot, value] of Object.entries(patch)) await writeRecord(tx, slot, value);
+          for (const slot of expectedSlots) if (!current.present[slot] && !isHistorySlot(slot) && await deps.legacy.getItem(slot) !== expected[slot]) throw conflict();
+          await advance(tx);
+          written = await readBatch(tx, Object.keys(patch), false);
+          if (Object.entries(patch).some(([slot, value]) => !written.present[slot] || written.records[slot] !== value)) throw damaged();
+        });
+        const verified = await batchSnapshot(Object.keys(written.records), false);
+        if (verified.revision !== written.revision || Object.keys(written.records).some(slot => !verified.present[slot] || verified.records[slot] !== written.records[slot])) throw damaged();
+        for (const slot of patchSlots) await retireLegacy(slot, before[slot]);
+        return verified;
       });
     },
   };
