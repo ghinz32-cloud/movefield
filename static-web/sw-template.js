@@ -3,13 +3,15 @@
 const MANIFEST=__MANIFEST__;
 const PREFIX='movefield-pages-v1-',CACHE=PREFIX+MANIFEST.version;
 const entries=MANIFEST.assets;
-async function verified(url){
- const response=await fetch(url,{cache:'no-store',credentials:'omit',redirect:'error',referrerPolicy:'no-referrer'});
- if(!response.ok||response.type==='opaque')throw Error('Asset unavailable');
+async function checked(response,key){
+ if(!Object.hasOwn(entries,key)||response.status!==200||response.type==='opaque'||response.type==='opaqueredirect')throw Error('Asset unavailable');
  const bytes=await response.arrayBuffer();
  const digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),x=>x.toString(16).padStart(2,'0')).join('');
- if(digest!==entries[url])throw Error('Asset integrity mismatch');
+ if(digest!==entries[key])throw Error('Asset integrity mismatch');
  return new Response(bytes,{status:response.status,headers:response.headers});
+}
+async function verified(key){
+ return checked(await fetch(key,{cache:'no-store',credentials:'omit',redirect:'error',referrerPolicy:'no-referrer'}),key);
 }
 self.addEventListener('install',event=>event.waitUntil((async()=>{
  const cache=await caches.open(CACHE);
@@ -29,7 +31,11 @@ self.addEventListener('fetch',event=>{
  if(!Object.hasOwn(entries,key))return;
  event.respondWith((async()=>{
  const cache=await caches.open(CACHE),cached=await cache.match(key);
- if(cached)return cached;
+ if(cached){
+  // Origin cache entries can change after installation; verify every hit.
+  try{return await checked(cached,key);}
+  catch{await cache.delete(key);}
+ }
  const response=await verified(key);await cache.put(key,response.clone());return response;
 })());
 });

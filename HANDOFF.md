@@ -1,3 +1,9 @@
+# Current continuation — PAGE2 cache integrity
+
+PAGE2 implements current-cache status/SHA256 checks with pinned repair/fail-closed offline behavior and worker-template-aware version isolation. Actual generated worker421 assertions/35assets pass; root independently reran. Dedicated build and syntax/diff checks pass. Windows owner guide explicitly requires WSL/Linux. Report docs/pages-cache-integrity-2026-10-09.md and evidence docs/qa/github-pages-2026-10-09/page2/. NATIVE3 remote06ca10f/tree41704257 matches localdab3685; original root is monitoring native37975149335 and quality37975149304. Preserve original receipts and avoid duplicate native publication.
+
+Next: reconcile fresh remote docs-only receipts if any; commit/bundle PAGE2, publish exact tree to standing audit branch with current expected-head lease, verify source readback and both histories. Replace complete generated gh-pages tree preserving current47f0f2c parent, verify deployment/all37 live hashes including manifest/worker/empty.nojekyll. Then bounded NATIVE4 inspector hardening, findings /workspace/scratch/a905d1d2368a/native-review-readonly/REVIEW.md. Final-artifact reminder/startup/iOS declaration blind spots are reproduced, not demonstrated runtime leaks. Dependencies, physical devices, accounts/sync, signing/disclosures and native inference remain gates.
+
 # Current continuation — NATIVE3 real-APK capability repairs
 
 NATIVE2 actual native run37972717088: iOS unsigned compile/metadata succeeds; Android assembles/lints, exact-source artifact verified, real optimized rule paths res/r1.xml and res/zk.xml decoded/validated; strict final inspector fails22 unneeded transitive SDK permissions. Downloaded metadata archives independently match official digests and source2fda048/tree65dd410c. Quality37972717133 succeeds53/53 +3/3 with exact integration tree. This justifies the bounded next source milestone, not an allowance waiver.
@@ -666,3 +672,11 @@ Preserve exercise source links and `docs/exercise-library-LICENSE.txt` (the reco
 `START_HERE_CLAUDE.md` is the short human setup guide. `CLAUDE_START_PROMPT.txt` is ready to paste into a new Claude Code session. `CLAUDE.md` is the project instruction file Claude Code reads at startup when opened in this project; it is contextual guidance, not a permissions enforcement mechanism.
 
 Official Claude Code context documentation: https://code.claude.com/docs/en/memory. Installation/use documentation: https://code.claude.com/docs/en/overview. No prior ChatGPT conversation is automatically imported by those files; this handoff and the included project documents provide the transferred context.
+
+## Verified parallel publication and Pages peer finding
+
+NATIVE3 is now published at06ca10f536397bb845dd1fdea08b179818e898b2, exact tree41704257ae0a521e68627400bc40d513ddcfa905 matching localdab3685eb057765f486ee4aa2fcedb491e6f6d8a. Main worktree independently verified remote head/tree/source report and retained both histories in c713410548a893285c054ee61ca7031de88eaf47; complete native3 bundle verified. Do not duplicate or rewrite that publication. PAGE2 may proceed, source-parent/expected lease06ca10f; current generated Pages parent47f0f2c. Independent reviewer reproduced cached-hit hash bypass and worker-template-only cache version collision; plan `.sites-runtime/pages-peer/review-plan.md` in main worktree. Separate root agents are monitoring actual NATIVE3 CI and read-only reviewing PAGE2; avoid duplicate source/build/deploy. Final root will reconcile receipts/native CI/live hashes.
+
+## Preserve actual NATIVE3 compilation before PAGE2 source push
+
+Native run37975149335 (Android113971455991/iOS113971456418), exact head06ca10f, is underway. Workflow concurrency cancels in-progress jobs for the same PR; cumulative PR mobile paths may match even a PAGE2/docs-only push. Finish local PAGE2 validation/checkpoint while waiting, then wait for this run to finish before pushing source to the same audit branch. Independent actual generated-worker review passes120 checks/20scenarios, plus strengthened421 Page assertions, against continuation outputversion26b64162. Reviewer scratch result under main `.sites-runtime/pages-peer/`. Root monitoring agent saves actual native artifacts/receipt; do not duplicate or overclaim cancelled jobs.

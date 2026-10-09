@@ -11,9 +11,11 @@ for(const file of files){const source=path.join(root,'public',file);if(!(await l
 await writeFile(path.join(out,'.nojekyll'),'');
 async function walk(dir){const result=[];for(const name of await readdir(dir)){const file=path.join(dir,name),stat=await lstat(file);if(stat.isSymbolicLink())throw Error('Symlinks forbidden');if(stat.isDirectory())result.push(...await walk(file));else result.push(file);}return result;}
 const assets={};for(const file of await walk(out)){const name=path.relative(out,file).replaceAll(path.sep,'/');assets['/movefield/'+name]=createHash('sha256').update(await readFile(file)).digest('hex');}
-const version=createHash('sha256').update(JSON.stringify(assets)).digest('hex');
-const manifest={schema:1,base:'/movefield/',version,assets};
+const templateBytes=await readFile(path.join(root,'static-web/sw-template.js'));
+const workerTemplateSha256=createHash('sha256').update(templateBytes).digest('hex');
+// Worker-only fixes require an isolated candidate cache and rollback namespace.
+const version=createHash('sha256').update(JSON.stringify({workerTemplateSha256,assets})).digest('hex');
+const manifest={schema:1,base:'/movefield/',version,workerTemplateSha256,assets};
 await writeFile(path.join(out,'pages-manifest.json'),JSON.stringify(manifest,null,2)+'\n');
-const template=await readFile(path.join(root,'static-web/sw-template.js'),'utf8');
-await writeFile(path.join(out,'sw.js'),template.replace('__MANIFEST__',JSON.stringify(manifest)));
+await writeFile(path.join(out,'sw.js'),templateBytes.toString('utf8').replace('__MANIFEST__',JSON.stringify(manifest)));
 console.log(`Pages output: ${Object.keys(assets).length} allowlisted files; version ${version}`);
