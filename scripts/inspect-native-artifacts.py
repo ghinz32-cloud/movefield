@@ -35,8 +35,8 @@ def xml(path):
     return ET.fromstring(text)
 
 
-def resource_rules(path):
-    """Parse aapt2 package/resource/value rows; refuse aliases and variants."""
+def resource_rule_records(path):
+    """Bind stable resource identities to one default original/optimized APK path."""
     package, current = None, None
     records, identities = {}, set()
     expected_names = {'xml/' + name for name in RULE_NAMES}
@@ -67,11 +67,19 @@ def resource_rules(path):
                    if record['package'] == PACKAGE and record['name'] == 'xml/' + name]
         check(len(matches) == 1, 'Missing or ambiguous packaged security resource: ' + name)
         identifier, record = matches[0]
-        expected = r'\(\) \(file\) res/xml/' + re.escape(name) + r'\.xml(?: type=XML)?'
-        check(len(record['values']) == 1 and re.fullmatch(expected, record['values'][0]),
-              'Security resource must have one default file value, without aliases/variants: ' + name)
-        result[name] = identifier
+        expected = (r'\(\) \(file\) (res/(?:xml/' + re.escape(name) +
+                    r'\.xml|[A-Za-z0-9_-]{1,32}\.xml))(?: type=XML)?')
+        match = re.fullmatch(expected, record['values'][0]) if len(record['values']) == 1 else None
+        check(match is not None,
+              'Security resource must have one default original/optimized file value, without aliases/variants: ' + name)
+        result[name] = {'identifier': identifier, 'file': match[1]}
+    check(len({record['file'] for record in result.values()}) == len(RULE_NAMES),
+          'Security resource payload files must be distinct')
     return result
+
+
+def resource_rules(path):
+    return {name: record['identifier'] for name, record in resource_rule_records(path).items()}
 
 
 def linked_rule(value, name, identifiers):

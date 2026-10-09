@@ -164,6 +164,20 @@ class Fixtures(unittest.TestCase):
         self.change(3, 'res/xml/movefield_backup_rules.xml', 'res/xml/unrelated.xml')
         self.rejects_android('one default')
 
+    def test_optimized_resource_paths(self):
+        self.change(3, 'res/xml/movefield_backup_rules.xml', 'res/aB.xml')
+        self.change(3, 'res/xml/movefield_data_extraction_rules.xml', 'res/z_9.xml')
+        self.assertTrue(self.android()['backupRulesLinked'])
+
+    def test_optimized_path_traversal_refused(self):
+        self.change(3, 'res/xml/movefield_backup_rules.xml', 'res/../a.xml')
+        self.rejects_android('one default')
+
+    def test_shared_rule_path_refused(self):
+        self.change(3, 'res/xml/movefield_backup_rules.xml', 'res/a.xml')
+        self.change(3, 'res/xml/movefield_data_extraction_rules.xml', 'res/a.xml')
+        self.rejects_android('must be distinct')
+
     def test_malformed_resource_row(self):
         self.change(3, 'resource 0x7f130001', 'resource invalid-id')
         self.rejects_android('Malformed aapt2')

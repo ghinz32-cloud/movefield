@@ -1,3 +1,17 @@
+# Current continuation — NATIVE2 optimized APK rule extraction
+
+PAGE1 source cc91b88/tree b63a6c1 published and read back; generated gh-pages47f0f2c/tree15ff59a preserving a900521. Pages run37972092909 succeeds; live byte readback in progress. User guide in docs/github-pages-2026-10-09.md. PAGE1 publication receipt/history retained and bundle complete verified.
+
+NATIVE2 fixes actual NATIVE1 Android metadata extraction failure: same-APK aapt resource table binds manifest IDs to safe single original/optimized paths, actual ZIP entry/CRC/size checks, official SDK decoder; no weakened backup/permission/transport/signing gates. 57 inspector fixtures plus9 real-ZIP/mocked-decoder scenarios pass; fresh logs under native2 QA. NATIVE1 actual iOS compile/metadata passes and Android assemble/lint passes; test task NO-SOURCE. NATIVE2 actual source CI is required.
+
+Next: publish NATIVE2 exact tree with expected cc91b88 to standing audit branch, verify report/tree/ref/readback and preserve source histories/full bundle. Inspect fresh Android resource-table/rule-path/signature/manifest artifacts and source hashes from CI; do not claim SDK fixture tests as actual binary acceptance. Verify final Pages live hashes. Strict dependencies, physical-device/storage/reflow/interruption, store identities/signing/disclosures and native AI still pending. No main merge/store submission.
+
+# Verified PAGE1 publication; NATIVE2 next
+
+PAGE1 remote source cc91b88baf59a0b9d6c3b0518da01750c296af50/tree b63a6c1f57daad1fa81beb5a67474d4f81d590eb matches local7824214; remote gh-pages47f0f2c41ca6d7166f521f44a4987c5d42027a7a/tree15ff59a0436525de3ba240fb7103e8c5e0e4be13 preserves parent a900521. Complete generated tree replaces old assets/photos. Source guide and published manifest read back; source histories merged locally. Pages run37972092909 still in progress; initial live manifest404. Preserve generated output until deployment/live SHA256 readback; receipt in QA directory. Complete source bundle verified before publication; regenerate with receipts/history.
+
+NATIVE2 is next active source milestone: Android actual build/lint passes but assumed decoded res/xml filename missing. Resolve actual resource file paths from same-APK aapt2 table, bind manifest numeric references, decode those entries, keep strict nine-domain/permission/content checks. Do not weaken policy to bypass a failed inspector. Actual iOS compile/metadata already passes unsigned simulator; physical/store/dependency gates remain outstanding.
+
 # Current continuation — PAGE1 static build validation
 
 Dedicated static entry/config in static-web and vite.pages.config.ts, base /movefield/, explicit output allowlist, early self-only CSP, SHA256 project cache, no model assets/runtime and honest Qwen unavailability. 185 generated-output/worker VM assertions, 53/53 regression, types/lint, both static and server builds pass. Production bundle/offline pass and focused server security rerun passes after updating starter link assertion. Final result and logs in docs/qa/github-pages-2026-10-09/. Preserve server build and no extra Pages Router source directory. Owner update commands in docs/github-pages-2026-10-09.md.

@@ -46,9 +46,8 @@ jobs:
         run: |
           mkdir -p native-evidence/android
           "$ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer" manifest print mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/manifest.xml
-          "$ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer" resources xml --file res/xml/movefield_backup_rules.xml mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/backup.xml
-          "$ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer" resources xml --file res/xml/movefield_data_extraction_rules.xml mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/extraction.xml
           "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump resources mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/resources.txt
+          python3 scripts/extract-apk-rules.py mobile/android/app/build/outputs/apk/release/app-release.apk native-evidence/android/manifest.xml native-evidence/android/resources.txt "$ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer" native-evidence/android
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --print-certs mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/signing.txt
           python3 scripts/inspect-native-artifacts.py android native-evidence/android/manifest.xml native-evidence/android/backup.xml native-evidence/android/extraction.xml native-evidence/android/resources.txt > native-evidence/android/inspection.json
           sha256sum mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/apk.sha256

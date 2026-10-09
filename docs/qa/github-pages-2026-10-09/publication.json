@@ -1,0 +1,16 @@
+{
+  "sourceCommit": "cc91b88baf59a0b9d6c3b0518da01750c296af50",
+  "sourceTree": "b63a6c1f57daad1fa81beb5a67474d4f81d590eb",
+  "sourceLocalCommit": "78242147047fe2074cf08f2760ca71d84bb8dc2b",
+  "generatedCommit": "47f0f2c41ca6d7166f521f44a4987c5d42027a7a",
+  "generatedTree": "15ff59a0436525de3ba240fb7103e8c5e0e4be13",
+  "generatedParent": "a900521b5d018093f1fa48e52c45165c4df706d3",
+  "remoteHeadAndManifestReadback": true,
+  "run": {
+    "id": 37972092909,
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "liveVerification": "Pending deployment; initial manifest404",
+  "qualifiedDevices": 0
+}
