@@ -1,0 +1,14 @@
+{
+  "repository": "ghinz32-cloud/movefield",
+  "branch": "audit/2026-10-08-quality",
+  "remoteCommit": "e3dc78907c611ba064943d8512a0e8d121db078e",
+  "remoteTree": "55df2e914a280482a491e18e2b593dfc8aaea183",
+  "localSourceCommit": "e79c78855f65f73387d01e2048b8618ad3ae7889",
+  "exactTreeMatched": true,
+  "reportReadback": true,
+  "mainMerged": false,
+  "pagesPublished": false,
+  "nativeWorkflowRun": 37962769855,
+  "nativeWorkflowStatusAtReadback": "queued",
+  "checkpointBundle": ".sites-runtime/checkpoints/sec1-cross-platform-security.bundle"
+}

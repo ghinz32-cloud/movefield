@@ -36,7 +36,9 @@ jobs:
         working-directory: mobile
         run: npm ci --no-audit --no-fund --ignore-scripts
       - name: Shared domain, storage and regression checks
-        run: npm run test:regression
+        run: |
+          npm run test:regression
+          python3 scripts/test-native-artifact-inspector.py
       - name: Native type and training checks
         working-directory: mobile
         run: |

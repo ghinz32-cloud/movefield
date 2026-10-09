@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-09T17:15:03.293033+00:00",
+  "baselinePublished": "e3dc78907c611ba064943d8512a0e8d121db078e",
+  "status": "source and harness checks pass; physical devices and store release remain pending",
+  "checks": {
+    "regressionSuites": 52,
+    "productionSuites": 3,
+    "nativePrivacySqliteScenarios": 22,
+    "nativePrivacyUiScenarios": 25,
+    "nativePrivacyUiAssertions": 77,
+    "nativeArtifactInspectorTests": 54,
+    "webTypes": true,
+    "nativeTypes": true,
+    "productLint": true,
+    "webBuild": true,
+    "androidHermesExport": true,
+    "iosHermesExport": true,
+    "whitespace": true
+  },
+  "sourceSHA256": {
+    ".github/workflows/native-builds.yml": "092eb783b5e0e4689b5160f4ea34601f6d968f2b8ae5a6034737f3433ee3867a",
+    ".github/workflows/quality.yml": "4b3056c5456d7b8d1a0b3e8f9909a55be4cd5c877438027ad8c6d9860235afb7",
+    "app/page.tsx": "01c5b60b65b8aa5eff997467b89c4e5e973954a9f5fc259b911e8cee1d387541",
+    "mobile/App.tsx": "934c7efaef08861b121a8ad1a18d5daf11d659fdccb23358bb6589ae9a28658d",
+    "mobile/src/native-record-store.ts": "4ae1f85d6b05bdb64fb0fae5c86280e9c0a0259afa1c42f572b4c595760a4b33",
+    "mobile/src/storage.ts": "1a5f6c0f4008f394e4229d2a5ee5c90de2894cc31afeaf266197550b5d134d18",
+    "mobile/src/settings.tsx": "c6d4de00a4fb7fa805d195f88938ab702e316985cc556bc7279411aae48a37f2",
+    "mobile/docs/native-privacy-cleanup-2026-10-09.md": "a9f82acf5aa55accce3cf694de5b3eb204b3c8287c3e1880e66f64ee79bfb0d8",
+    "public/privacy.html": "6b36d090f43764f911d02547e09ca873c1763d523365be1f4e9c77fd71f952a0",
+    "scripts/check-native-privacy-cleanup.cjs": "cdf5a7bb8a7dc03e614313a41af0e5d335332479e3e99bc4313acbedb947ff53",
+    "scripts/check-native-privacy-ui.cjs": "556339f7cc8f5485983ea400a67a6633e2df08305b7da3c14f1d31ba7bf21221",
+    "scripts/check-native-storage.cjs": "a5a442fb5321cc6cf2f7c98a083ea64af231d6e8ab1c064ffcb44f3e8849a6f0",
+    "scripts/inspect-native-artifacts.py": "50b56585c8d3402341fee9e8d87fb7e5683e225cc6d8c7dadec6c01cbcc7b70e",
+    "scripts/test-native-artifact-inspector.py": "b07e631bbba62db35a4fa2c0c6d1f4f529b4c86df685f5129153ebb77a92ea37",
+    "docs/security-audit-2026-10-09.md": "1c95880182f9d57f66ad9d47c72cff7737a1346a1c77130acc264ff0a2dc798a"
+  },
+  "artifactSHA256": {
+    "mobile/dist-mobile/_expo/static/js/android/index-7a9e9fd08e2f5704e4ae1dccaa889888.hbc": {
+      "bytes": 4662173,
+      "sha256": "ee325a62dcaf489c678ce796df095b82016281390e528478d6b8028a497aeb31"
+    },
+    "mobile/dist-mobile/_expo/static/js/ios/index-13f0f72ced20e906a2748d433a513bd8.hbc": {
+      "bytes": 4652790,
+      "sha256": "0805573cb26eba681c5fcbe3462b523bb53263fee02dd1f2b422b9d8baa1d6a4"
+    },
+    "dist/client/offline-build.json": {
+      "bytes": 9533,
+      "sha256": "988f1b1cffbed7d1cf1b90a1cc742177587816c8bdc079ba3740b4ce87651e54"
+    },
+    "public/downloads/movefield-mobile-r14.zip": {
+      "bytes": 2068627,
+      "sha256": "5c88bb0ba2edba2a8826188426729f45ebf0b651b6c905040ce22aea54bed5f8"
+    }
+  },
+  "logSHA256": {
+    ".sites-runtime/sec2-build.log": "7d967bd85f08658589694e2caec9eb425c3497d147f64f5ae18035955ed77d82",
+    ".sites-runtime/sec2-mobile-export.log": "ad71f5848289933a8eb1bd147fdda677002d5d115a490f1b7f9e9c867e6d919a",
+    ".sites-runtime/sec2-production.log": "901c4655846ca51bded466c6ab766eb62195f182f928cc8881e2a6211ea48699",
+    ".sites-runtime/sec2-regression.log": "ab48456a5ac41b49fa38c2eaba994c8b226b31b032c3a9710322c12323e1a0ac"
+  },
+  "limits": [
+    "Real SQLite and compiled TSX harness; legacy OS storage, SecureStore and UI bindings are injected.",
+    "No physical Android/iPhone, OS-wide CAS, app-switcher shield or forensic-erasure qualification.",
+    "Changed/untracked legacy shadows remain preserved and are not automatically included by raw authoritative recovery export.",
+    "SEC1 iOS unsigned Release simulator compile passed; SEC1 Android SDK setup failed before compile. New source and stronger inspectors await exact-commit native CI.",
+    "Two high advisory roots remain strict-release blockers."
+  ]
+}

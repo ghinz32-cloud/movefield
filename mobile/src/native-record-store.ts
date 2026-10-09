@@ -32,6 +32,14 @@ export type LegacyRecordStore = {
 type Manifest = { deleted: number; chars: number; chunks: number; hash: string };
 type Chunk = { ordinal: number; value: string; hash: string };
 export type NativeRecordSnapshot = { records: Record<string, string | null>; present: Record<string, boolean>; revision: number };
+export type NativePrivacyStatus = {
+  state: 'clear' | 'pending' | 'attention' | 'unavailable';
+  pending: number;
+  preserved: number;
+  unreadable: number;
+};
+type CleanupRow = {slot: string; expected_hash: string | null; chars: number | null};
+type LegacyCapture = {missing: boolean; hash: string | null; chars: number | null};
 export type NativeRecordCommit = {
   expected: Record<string, string | null>;
   records: Record<string, string | null>;
@@ -82,7 +90,8 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
     await db.execAsync(`PRAGMA journal_mode = WAL; PRAGMA synchronous = FULL;
       CREATE TABLE IF NOT EXISTS training_records (slot TEXT PRIMARY KEY NOT NULL, deleted INTEGER NOT NULL, chars INTEGER NOT NULL, chunks INTEGER NOT NULL, hash TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS training_chunks (slot TEXT NOT NULL, ordinal INTEGER NOT NULL, value TEXT NOT NULL, hash TEXT NOT NULL, PRIMARY KEY (slot, ordinal));
-      CREATE TABLE IF NOT EXISTS training_record_metadata (id TEXT PRIMARY KEY NOT NULL, revision INTEGER NOT NULL);`);
+      CREATE TABLE IF NOT EXISTS training_record_metadata (id TEXT PRIMARY KEY NOT NULL, revision INTEGER NOT NULL);
+      CREATE TABLE IF NOT EXISTS training_legacy_cleanup (slot TEXT PRIMARY KEY NOT NULL, expected_hash TEXT, chars INTEGER);`);
     return db;
   }).catch(error => { database = undefined; throw error; });
   const enqueue = <T>(job: () => Promise<T>): Promise<T> => {
@@ -167,15 +176,93 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
     }
     await tx.runAsync('INSERT OR REPLACE INTO training_records (slot, deleted, chars, chunks, hash) VALUES (?, 0, ?, ?, ?)', slot, value.length, count, digest(value));
   }
-  async function capturedLegacy(slot: string): Promise<string | null | undefined> {
-    if (isHistorySlot(slot)) return undefined;
-    try {return await deps.legacy.getItem(slot);} catch {return undefined;}
+  const ownedLegacy = (slot: string) => (NATIVE_RECORD_SLOTS as readonly string[]).includes(slot);
+  function legacyFingerprint(raw: string): string | null {
+    if (raw.length > NATIVE_RECORD_MAX_CHARS) return null;
+    // Domain-separated, lossless UTF-16 code units: UTF-8 would replace distinct
+    // lone surrogates with the same byte sequence and could match changed text.
+    // Additional hashing memory stays at 256 KiB, including malformed Unicode.
+    const hash = sha256.create();
+    try {
+      hash.update(utf8ToBytes('movefield-legacy-utf16le-v1\0'));
+      for (let start = 0; start < raw.length; start += NATIVE_RECORD_CHUNK_CHARS) {
+        const end = Math.min(start + NATIVE_RECORD_CHUNK_CHARS, raw.length), bytes = new Uint8Array((end - start) * 2);
+        for (let index = start; index < end; index++) {
+          const unit = raw.charCodeAt(index), offset = (index - start) * 2;
+          bytes[offset] = unit & 0xff; bytes[offset + 1] = unit >>> 8;
+        }
+        try {hash.update(bytes);} finally {bytes.fill(0);}
+      }
+      return bytesToHex(hash.digest());
+    } finally { hash.destroy(); }
   }
-  async function retireLegacy(slot: string, expected?: string | null) {
-    // SQLite is already authoritative. Failed cleanup retains the old encrypted
-    // copy, and a tombstone prevents it from ever resurfacing after deletion.
-    if (expected === undefined || isHistorySlot(slot)) return;
-    try {if (await deps.legacy.getItem(slot) === expected) await deps.legacy.removeItem(slot);} catch { /* Retain denied/changed legacy input. */ }
+  async function capturedLegacy(slot: string): Promise<LegacyCapture | undefined> {
+    if (!ownedLegacy(slot)) return undefined;
+    try {
+      const raw = await deps.legacy.getItem(slot);
+      if (raw === null) return {missing: true, hash: null, chars: null};
+      if (typeof raw !== 'string') return {missing: false, hash: null, chars: null};
+      const hash = legacyFingerprint(raw);
+      return {missing: false, hash, chars: hash === null ? null : raw.length};
+    } catch { return {missing: false, hash: null, chars: null}; }
+  }
+  async function queueLegacyCleanup(tx: NativeRecordSql, slot: string, capture: LegacyCapture | undefined) {
+    if (!capture || capture.missing) return;
+    // Never adopt a changed value by overwriting the oldest outstanding receipt.
+    const previous = await tx.getFirstAsync<CleanupRow>('SELECT slot, expected_hash, chars FROM training_legacy_cleanup WHERE slot = ?', slot);
+    if (previous) return;
+    const installed = await tx.getFirstAsync<Manifest>('SELECT deleted, chars, chunks, hash FROM training_records WHERE slot = ?', slot);
+    // A historical SQL generation without a receipt gives no proof that the
+    // legacy value is its validated source. Keep it as untracked (null fields).
+    await tx.runAsync('INSERT INTO training_legacy_cleanup (slot, expected_hash, chars) VALUES (?, ?, ?)',
+      slot, installed ? null : capture.hash, installed ? null : capture.chars);
+  }
+  async function cleanupRows(db: NativeRecordSql): Promise<CleanupRow[]> {
+    const rows = await db.getAllAsync<CleanupRow>('SELECT slot, expected_hash, chars FROM training_legacy_cleanup ORDER BY slot LIMIT 4');
+    if (rows.length > NATIVE_RECORD_SLOTS.length || rows.some(row => !row || !ownedLegacy(row.slot)
+      || !(row.expected_hash === null && row.chars === null || typeof row.expected_hash === 'string'
+        && /^[0-9a-f]{64}$/.test(row.expected_hash) && Number.isSafeInteger(row.chars)
+        && row.chars! >= 0 && row.chars! <= NATIVE_RECORD_MAX_CHARS))) throw Error('Legacy cleanup metadata unavailable');
+    return rows;
+  }
+  async function privacyStatus(): Promise<NativePrivacyStatus> {
+    try {
+      const db = await open(), rows = new Map((await cleanupRows(db)).map(row => [row.slot, row]));
+      let pending = 0, preserved = 0, unreadable = 0;
+      for (const slot of NATIVE_RECORD_SLOTS) {
+        const capture = await capturedLegacy(slot);
+        if (capture?.missing) continue;
+        if (!capture?.hash) {unreadable++; continue;}
+        const row = rows.get(slot);
+        if (row?.expected_hash === capture.hash && row.chars === capture.chars) pending++;
+        else preserved++;
+      }
+      return {state: preserved || unreadable ? 'attention' : pending ? 'pending' : 'clear', pending, preserved, unreadable};
+    } catch { return {state: 'unavailable', pending: 0, preserved: 0, unreadable: 0}; }
+  }
+  async function retireLegacy(verified: Record<string, string | null>): Promise<void> {
+    // The caller supplies the exact SQL values that storage has authenticated or
+    // explicitly retired. Status/DB open/raw recovery never authorize deletion.
+    // The application lifecycle serializes this compare-before-delete; separate
+    // OS processes or unsupported legacy writers are not an atomic CAS protocol.
+    try {
+      const db = await open(), rows = await cleanupRows(db);
+      for (const row of rows) {
+        if (!Object.prototype.hasOwnProperty.call(verified, row.slot)) continue;
+        const installed = await snapshot(row.slot);
+        if (!installed.present || installed.value !== verified[row.slot]) continue;
+        const capture = await capturedLegacy(row.slot);
+        if (!capture) continue;
+        if (!capture.missing) {
+          if (!row.expected_hash || capture.hash !== row.expected_hash || capture.chars !== row.chars) continue;
+          try { await deps.legacy.removeItem(row.slot); } catch { continue; }
+          if (!(await capturedLegacy(row.slot))?.missing) continue;
+        }
+        // Cleanup-only transactions do not invalidate training's revision/CAS.
+        await db.runAsync('DELETE FROM training_legacy_cleanup WHERE slot = ? AND expected_hash IS ? AND chars IS ?',
+          row.slot, row.expected_hash, row.chars);
+      }
+    } catch { /* Durable SQL acknowledgement is separate from privacy cleanup. */ }
   }
   return {
     getItem(slot: string): Promise<string | null> {
@@ -195,6 +282,7 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
       return enqueue(async () => {
         const db = await open(), before = await capturedLegacy(slot);
         await db.withExclusiveTransactionAsync(async tx => {
+          await queueLegacyCleanup(tx, slot, before);
           await writeRecord(tx, slot, value);
           if ((await read(tx, slot)).value !== value) throw damaged();
           await advance(tx);
@@ -202,7 +290,7 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
         // Acknowledge persistence only after a separate committed readback. An
         // ambiguous failure retains the legacy copy and is surfaced to the UI.
         if ((await snapshot(slot)).value !== value) throw damaged();
-        await retireLegacy(slot, before);
+        await retireLegacy({[slot]: value});
       });
     },
     removeItem(slot: string): Promise<void> { return this.multiRemove([slot]); },
@@ -212,12 +300,13 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
         const db = await open(), before = Object.fromEntries(await Promise.all(slots.map(async slot => [slot, await capturedLegacy(slot)])));
         await db.withExclusiveTransactionAsync(async tx => {
           for (const slot of slots) {
+            await queueLegacyCleanup(tx, slot, before[slot]);
             await writeRecord(tx, slot, null);
           }
           await advance(tx);
         });
         for (const slot of slots) if ((await snapshot(slot)).value !== null) throw damaged();
-        await Promise.all(slots.map(slot => retireLegacy(slot, before[slot])));
+        await retireLegacy(Object.fromEntries(slots.map(slot => [slot, null])));
       });
     },
     snapshotRecords(requested: readonly string[]): Promise<NativeRecordSnapshot> {
@@ -225,6 +314,12 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
     },
     listHistorySlots(): Promise<string[]> {
       return enqueue(async () => {const db = await open(); let result!: string[]; await db.withExclusiveTransactionAsync(async tx => {result = await historySlots(tx);}); return result;});
+    },
+    legacyCleanupStatus(): Promise<NativePrivacyStatus> { return enqueue(privacyStatus); },
+    retryLegacyCleanup(verified: Record<string, string | null>): Promise<NativePrivacyStatus> {
+      const detached = {...verified};
+      Object.keys(detached).forEach(slot => {if (!ownedLegacy(slot)) throw new LocalDataError('unknown-format', 'Unexpected legacy cleanup slot.');});
+      return enqueue(async () => {await retireLegacy(detached); return privacyStatus();});
     },
     commitRecords(input: NativeRecordCommit): Promise<NativeRecordSnapshot> {
       // Detach validated arguments before enqueueing. A caller changing its
@@ -247,7 +342,10 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
           // Every new dynamic entity must have an expected state, except a fresh
           // replacement generation whose global anchor/revision is already held.
           if (!clearHistory && patchSlots.some(slot => !Object.prototype.hasOwnProperty.call(expected, slot))) throw new LocalDataError('unknown-format', 'A record batch is missing an expected saved value.');
-          for (const [slot, value] of Object.entries(patch)) await writeRecord(tx, slot, value);
+          for (const [slot, value] of Object.entries(patch)) {
+            await queueLegacyCleanup(tx, slot, before[slot]);
+            await writeRecord(tx, slot, value);
+          }
           for (const slot of expectedSlots) if (!current.present[slot] && !isHistorySlot(slot) && await deps.legacy.getItem(slot) !== expected[slot]) throw conflict();
           await advance(tx);
           written = await readBatch(tx, Object.keys(patch), false);
@@ -255,7 +353,7 @@ export function createNativeRecordStore(deps: { open: () => Promise<NativeRecord
         });
         const verified = await batchSnapshot(Object.keys(written.records), false);
         if (verified.revision !== written.revision || Object.keys(written.records).some(slot => !verified.present[slot] || verified.records[slot] !== written.records[slot])) throw damaged();
-        for (const slot of patchSlots) await retireLegacy(slot, before[slot]);
+        await retireLegacy(verified.records);
         return verified;
       });
     },

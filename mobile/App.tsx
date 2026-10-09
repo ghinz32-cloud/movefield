@@ -1,5 +1,5 @@
 import {NativeAppearanceProvider,useNativeAppearance,useThemedStyles} from './src/appearance';
-import {NativeSettings} from './src/settings';
+import {NativePrivacyNotice,NativeSettings} from './src/settings';
 import {NativeResearchLibrary} from './src/research-library';
 import {shareBackup} from './src/backup';
 import {restoreBackup,serializeBackup} from './src/shared/local-backup';
@@ -26,7 +26,7 @@ import { programCatalog,programReferences,programEquipment,referenceMatchesGoal,
 import {substitutionOptions,previewSubstitution,applySubstitution,type Substitution} from './src/shared/substitutions';
 import { guides, media, safeWebUrl } from './src/content';
 import { adoptPlan, emptyDemo, RUN_WALK, SPORT_FOUNDATION, previewPlan, startWorkout, setPlanPaused, workoutCheckin, completeWorkoutCheckin, type WorkoutCheckin } from './src/mobile-engine';
-import { readLocalRaw, readLocalState, replaceLocalState, resetLocalState, saveLocalState } from './src/storage';
+import { readLocalPrivacyStatus, readLocalRaw, readLocalState, replaceLocalState, resetLocalState, retryLocalPrivacyCleanup, saveLocalState, type NativePrivacyStatus } from './src/storage';
 import { LocalDataError } from './src/local-crypto';
 import { nativeSaveFailure, type NativeSaveFailure } from './src/storage-capacity';
 import { NativeTransferOpen } from './src/transfer';
@@ -110,6 +110,9 @@ function TrainingApp() {
   const [readError, setReadError] = useState<string | null>(null);
   const [saveStatus, setSaveStatus] = useState('Loading local data…');
   const [saveFailure, setSaveFailure] = useState<NativeSaveFailure | null>(null);
+  const [privacyStatus,setPrivacyStatus]=useState<NativePrivacyStatus|null>(null);
+  const [privacyBusy,setPrivacyBusy]=useState(false);
+  const [localNotice,setLocalNotice]=useState('');
   const [error, setError] = useState('');
   const [tab, setTab] = useState<Tab>('Today');
   const [researchOpen,setResearchOpen]=useState(false);
@@ -124,6 +127,31 @@ function TrainingApp() {
   const [resetting, setResetting] = useState(false);
   const stateRef = useRef<State | null>(null);
   const resettingRef = useRef(false),restoringRef=useRef(false),writeVersion=useRef(0);
+  const mountedRef=useRef(true),privacyGeneration=useRef(0),privacyBusyRef=useRef(false);
+  const unavailablePrivacy:NativePrivacyStatus={state:'unavailable',pending:0,preserved:0,unreadable:0};
+  const refreshPrivacyStatus=async()=>{
+    if(!mountedRef.current)return;
+    const generation=++privacyGeneration.current;
+    let status:NativePrivacyStatus;
+    try{status=await readLocalPrivacyStatus()}catch{status=unavailablePrivacy}
+    if(mountedRef.current&&generation===privacyGeneration.current)setPrivacyStatus(status);
+  };
+  const retryPrivacyCleanup=async()=>{
+    if(!mountedRef.current||privacyBusyRef.current||resettingRef.current||restoringRef.current)return;
+    privacyBusyRef.current=true;setPrivacyBusy(true);
+    const generation=++privacyGeneration.current;
+    try{
+      let status:NativePrivacyStatus;
+      try{status=await retryLocalPrivacyCleanup()}catch{status=unavailablePrivacy}
+      if(mountedRef.current&&generation===privacyGeneration.current)setPrivacyStatus(status);
+    }finally{
+      privacyBusyRef.current=false;
+      if(mountedRef.current)setPrivacyBusy(false);
+    }
+  };
+  // Revoke the latest operation tokens at unmount, rather than a token captured at mount.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(()=>{mountedRef.current=true;return()=>{mountedRef.current=false;privacyGeneration.current++;writeVersion.current++}},[]);
   // Backup: share the saved data as text (save it to Files, Notes or email). Restore: paste it back, validated first.
   const exportBackup = async (): Promise<string> => {
     if (!stateRef.current) return 'Nothing to back up yet.';
@@ -156,8 +184,9 @@ function TrainingApp() {
   };
   // Writes the opened data under a new key. The old record is replaced only after the new key and record are in place.
   const replaceWith = async (parsed: State,expected:string|null) => {
-    if(resettingRef.current||restoringRef.current)return;
+    if(!mountedRef.current||resettingRef.current||restoringRef.current)return;
     restoringRef.current=true;
+    privacyGeneration.current++;
     try{
     // Check the state that will be shown before anything is stored, so a later failure cannot be mistaken for a failed save.
     let checked: State;
@@ -169,19 +198,22 @@ function TrainingApp() {
     } catch(e) { setError(e instanceof Error?e.message:'This backup could not be restored. Nothing was replaced.');return; }
     try {
       await replaceLocalState(checked);
-    } catch (e) { setError(e instanceof LocalDataError ? e.message : 'The file opened, but this phone could not save it. Nothing was replaced.'); return; }
-    setReadError(null); setError('');
+    } catch (e) { if(mountedRef.current)setError(e instanceof LocalDataError ? e.message : 'The file opened, but this phone could not save it. Nothing was replaced.'); return; }
+    if(!mountedRef.current)return;
+    setReadError(null); setError('');setLocalNotice('');
     stateRef.current=checked;setState(checked);writeVersion.current++;setSaveFailure(null);setSaveStatus('Saved on this device');setTab('Today');setCheckin(null);setChangePreview(null);
-    }finally{restoringRef.current=false}
+    }finally{restoringRef.current=false;if(mountedRef.current)void refreshPrivacyStatus()}
   };
   const commit = (next: State) => {
+    if(!mountedRef.current)return;
     const checked=normalizeWorkoutRest(next);readSavedState(JSON.stringify(checked));
     stateRef.current=checked;setState(checked);const version=++writeVersion.current;
+    privacyGeneration.current++;
     setSaveStatus('Saving on this device…');
     void saveLocalState(checked).then(()=>{
-      if(version===writeVersion.current){setSaveFailure(null);setSaveStatus('Saved on this device');}
+      if(mountedRef.current&&version===writeVersion.current){setSaveFailure(null);setSaveStatus('Saved on this device');void refreshPrivacyStatus()}
     }).catch(error=>{
-      if(version===writeVersion.current){setSaveFailure(nativeSaveFailure(error));setSaveStatus('Save failed · latest changes are still open');}
+      if(mountedRef.current&&version===writeVersion.current){setSaveFailure(nativeSaveFailure(error));setSaveStatus('Save failed · latest changes are still open');void refreshPrivacyStatus()}
     });
   };
   const [personalSetup,setPersonalSetup]=useState(false),[setupProgramId,setSetupProgramId]=useState<string|undefined>();
@@ -195,11 +227,14 @@ function TrainingApp() {
   const [equipment, setEquipment] = useState('All');
 
 
+  // Startup runs once; storage completion callbacks use refs to suppress stale results.
   useEffect(() => { let mounted = true; readLocalState().then(s => {
     if (!mounted) return;
     if(s){const checked=normalizeWorkoutRest(s);stateRef.current=checked;setState(checked);setSaveStatus('Saved on this device');}
     else commit(emptyDemo());
-  }).catch(e => { if (mounted) setReadError(e instanceof LocalDataError ? e.message : 'We could not open your saved training. It has not been replaced.'); }); return () => { mounted = false; }; }, []);
+  }).catch(e => { if (mounted) setReadError(e instanceof LocalDataError ? e.message : 'We could not open your saved training. It has not been replaced.'); }).finally(()=>{if(mounted)void refreshPrivacyStatus()}); return () => { mounted = false; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const workoutReminderMessage=useNativeWorkoutReminders(state,appearance.p,appearance.ready);
   const restAlertMessage=useNativeRestAlerts(state?.restTimer,state?.active?.id,!!state?.restAlerts,!!state);
   const [alertMessage,setAlertMessage]=useState('');
@@ -234,9 +269,20 @@ function TrainingApp() {
   const openUrl = async (candidate?: string | null) => { const url = safeWebUrl(candidate); setLinkError(''); if (!url) { setLinkError('This reference is not an available web link.'); return; } try { await Linking.openURL(url); } catch { setLinkError('Could not open the link. Check your connection and try again.'); } };
   const openSubstitute=(sessionId:string,from:string)=>{const s=stateRef.current!;setError('');setSubEquipment('All');setSubstitution({sessionId,from,to:'',all:false,setup:'',allowLonger:false,acknowledgeSpecificity:false,planId:s.plan!.id,version:s.plan!.version,historyCount:s.history.length});};
   const openPreview = (id: string) => { const result = previewPlan(id); if (result.plan) setPreview(result.plan); else setError(result.errors.join(' ')); };
-  const reset = async () => { if(resettingRef.current)return;resettingRef.current=true;setResetting(true); try { await resetLocalState(); setReadError(null); commit(emptyDemo()); modify(s=>({...s,restTimer:null})); setError(''); setTab('Today'); } catch { setError('Local storage could not be reset.'); } finally {resettingRef.current=false;setResetting(false);} };
+  const reset = async () => {
+    if(!mountedRef.current||resettingRef.current||restoringRef.current)return;
+    resettingRef.current=true;setResetting(true);privacyGeneration.current++;
+    try{
+      const privacy=await resetLocalState();
+      if(!mountedRef.current)return;
+      setPrivacyStatus(privacy);setReadError(null);setLocalNotice(privacy.state==='clear'?'Current saved records were reset.':'Current saved records were reset. Older local copies may remain.');
+      commit(emptyDemo());setError('');setTab('Today');
+    }catch{
+      if(mountedRef.current){setError('Local storage could not be reset.');void refreshPrivacyStatus()}
+    }finally{resettingRef.current=false;if(mountedRef.current)setResetting(false)}
+  };
 
-  if (!state) return <SafeAreaView style={styles.safe}><View style={styles.content}><Heading eyebrow={brand.name.toUpperCase()} title={readError ? 'Saved data needs attention' : 'Opening your training'} />{readError ? <><Text style={styles.body}>{readError}</Text><Text style={styles.body}>Try reopening the app first. Reset removes only this mobile demo’s local data.</Text><NativeTransferOpen onOpen={openTransfer}/><Text style={styles.small}>A recovery copy keeps available records in their current format. Older records may be unencrypted; keep this copy private. Use a transfer file to restore training.</Text><Button label="Export recovery copy" secondary onPress={()=>{void readLocalRaw().then(raw=>{if(raw===null)throw Error("No saved file was found.");return shareBackup(raw)}).catch(e=>setError(e instanceof Error?e.message:"The saved file could not be exported."))}}/>{error&&<Text accessibilityRole="alert" style={styles.errorText}>{error}</Text>}<Button label={resetting?'Resetting…':'Reset this demo'} disabled={resetting} onPress={() => setConfirm({ title: 'Reset local data?', message: 'This deletes the mobile demo’s saved plan and workouts from this device.', label: 'Delete local demo data', action: () => { void reset(); } })} /></> : <ActivityIndicator color={COLORS.green} />}<ModalFrame visible={!!confirm} close={() => setConfirm(null)} title={confirm?.title ?? ''}><Text style={styles.body}>{confirm?.message}</Text><Button label={confirm?.label ?? 'Continue'} onPress={() => { const action = confirm?.action; setConfirm(null); action?.(); }} /></ModalFrame></View></SafeAreaView>;
+  if (!state) return <SafeAreaView style={styles.safe}><View style={styles.content}><Heading eyebrow={brand.name.toUpperCase()} title={readError ? 'Saved data needs attention' : 'Opening your training'} />{readError ? <><Text style={styles.body}>{readError}</Text><Text style={styles.body}>Try reopening the app first. Reset retires this mobile demo’s current saved records. Older local copies may remain if safe removal cannot be confirmed.</Text><NativePrivacyNotice status={privacyStatus} busy={privacyBusy} onRetry={retryPrivacyCleanup}/><NativeTransferOpen onOpen={openTransfer}/><Text style={styles.small}>A recovery copy keeps available records in their current format. Older records may be unencrypted; keep this copy private. Use a transfer file to restore training.</Text><Button label="Export recovery copy" secondary onPress={()=>{void readLocalRaw().then(raw=>{if(raw===null)throw Error("No saved file was found.");return shareBackup(raw)}).catch(e=>setError(e instanceof Error?e.message:"The saved file could not be exported."))}}/>{error&&<Text accessibilityRole="alert" style={styles.errorText}>{error}</Text>}<Button label={resetting?'Resetting…':'Reset this demo'} disabled={resetting} onPress={() => setConfirm({ title: 'Reset local data?', message: 'This retires the mobile demo’s current saved plan and workouts. Older local copies may remain when safe removal cannot be confirmed. Export a recovery copy first if you need those records.', label: 'Reset current saved records', action: () => { void reset(); } })} /></> : <ActivityIndicator color={COLORS.green} />}<ModalFrame visible={!!confirm} close={() => setConfirm(null)} title={confirm?.title ?? ''}><Text style={styles.body}>{confirm?.message}</Text><Button label={confirm?.label ?? 'Continue'} onPress={() => { const action = confirm?.action; setConfirm(null); action?.(); }} /></ModalFrame></View></SafeAreaView>;
 
   const next = nextSession(state);
   const blocked = next ? eligibility(state, next) : null;
@@ -305,12 +351,12 @@ function TrainingApp() {
     <NativeWeeklyReview state={state} today={day()} units={state.profile.units} />
     {!state.history.length && <Card><Text style={styles.sectionTitle}>Your story starts with one session.</Text><Text style={styles.body}>Choose a plan, enter what you actually do, and save your first workout.</Text><Button label="Back to Today" onPress={() => setTab('Today')} /></Card>}
     {sortWorkoutHistory(state.history).map(w => <Pressable accessibilityRole="button" key={w.id} style={styles.exerciseRow} onPress={() => setHistoryItem(w)}><View style={styles.flex}><Text style={styles.rowTitle}>{workoutName(w,state)}</Text><Text style={styles.small}>{niceDate(w.date)} · {w.sets.filter(x => x.done).length} sets · {w.partial ? 'Partial' : 'Completed'}</Text></View><Text style={styles.link}>View</Text></Pressable>)}
-    <NativeEquipmentLimit state={state} onSave={modify}/><Card><Text style={styles.sectionTitle}>Your local demo</Text><Text style={styles.body}>There is no sign-in or cloud backup in this starter. This phone and the website keep separate data.</Text><Text style={styles.small}>Choose pounds or kilograms. Finish or discard your active workout before changing units.</Text><View style={styles.pills}>{(['lb', 'kg'] as const).map(unit => <Pill key={unit} label={unit} selected={state.profile.units === unit} onPress={() => active ? setError('Finish or discard the workout before changing units.') : modify(s => ({ ...s, profile: { ...s.profile, units: unit } }))} />)}</View><Button label="Reset local demo data" secondary onPress={() => setConfirm({ title: 'Delete this device’s demo data?', message: 'This removes the current plan, workout history and active workout from this app. It cannot be undone. The website is unaffected.', label: 'Delete local demo data', action: () => { void reset(); } })} /></Card>
+    <NativeEquipmentLimit state={state} onSave={modify}/><Card><Text style={styles.sectionTitle}>Your local demo</Text><Text style={styles.body}>There is no sign-in or cloud backup in this starter. This phone and the website keep separate data.</Text><Text style={styles.small}>Choose pounds or kilograms. Finish or discard your active workout before changing units.</Text><View style={styles.pills}>{(['lb', 'kg'] as const).map(unit => <Pill key={unit} label={unit} selected={state.profile.units === unit} onPress={() => active ? setError('Finish or discard the workout before changing units.') : modify(s => ({ ...s, profile: { ...s.profile, units: unit } }))} />)}</View><Button label="Reset local demo data" secondary onPress={() => setConfirm({ title: 'Reset this device’s demo data?', message: 'This retires the current saved plan, workout history and active workout. Older local copies may remain when safe removal cannot be confirmed. Export a recovery copy first if needed. The website is unaffected.', label: 'Reset current saved records', action: () => { void reset(); } })} /></Card>
   </ScrollView>;
 
   return <SafeAreaView style={styles.safe} edges={['top', 'bottom']}><StatusBar style={appearance.dark?"light":"dark"} /><View style={styles.brandBar}><View><Text style={styles.brand}>{brand.name}</Text><Text style={styles.brandSub}>{brand.tagline}</Text></View><View style={styles.demoBadge}><Text style={styles.demoText}>LOCAL DEMO</Text></View></View>
     {error ? <Pressable accessibilityRole="button" onPress={() => setError('')} style={styles.error}><Text style={styles.errorText}>{error}</Text><Text style={styles.small}>Tap to dismiss</Text></Pressable> : null}
-    {resetting&&<Text accessibilityLiveRegion="polite" style={styles.body}>Resetting local data…</Text>}<KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>{tab === 'Today' ? todayView : tab === 'Plan' ? planView : tab === 'Library' ? libraryView : tab === 'Settings' ? <NativeSettings reminderMessage={workoutReminderMessage} recoveryMessage={saveFailure?.message} onExport={exportBackup} onMakeTransfer={makeTransfer} onOpenTransfer={openTransfer}/> : historyView}
+    {resetting&&<Text accessibilityLiveRegion="polite" style={styles.body}>Resetting local data…</Text>}{localNotice&&<Text accessibilityLiveRegion="polite" style={styles.body}>{localNotice}</Text>}<KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>{tab === 'Today' ? todayView : tab === 'Plan' ? planView : tab === 'Library' ? libraryView : tab === 'Settings' ? <NativeSettings reminderMessage={workoutReminderMessage} recoveryMessage={saveFailure?.message} privacyStatus={privacyStatus} privacyBusy={privacyBusy||resetting} onRetryPrivacyCleanup={retryPrivacyCleanup} onExport={exportBackup} onMakeTransfer={makeTransfer} onOpenTransfer={openTransfer}/> : historyView}
     {active&&tab==='Today'&&<View style={styles.workoutBar}>
       <View style={styles.workoutRestRow}><Text style={styles.small}>{active.sets.filter(x=>x.done).length}/{active.sets.length} logged</Text><NativeRestClock timer={state.restTimer} compact/>{state.restTimer&&<><Pill label={state.restTimer.pausedSeconds!==null?'Resume rest':'Pause rest'} selected={false} onPress={()=>modify(s=>({...s,restTimer:s.restTimer?(s.restTimer.pausedSeconds!==null?resumeRest(s.restTimer):pauseRest(s.restTimer)):null}))}/><Pill label="+30 sec" selected={false} onPress={()=>modify(s=>({...s,restTimer:s.restTimer?extendRest(s.restTimer):null}))}/></>}</View>
       <Button label="Finish & save workout" onPress={requestFinish}/>
@@ -324,6 +370,7 @@ function TrainingApp() {
         <Button label="Export current records" secondary onPress={()=>{setTab('Settings');setError('');}}/>
       </View>
     </View>:<Text accessibilityLiveRegion="polite" style={styles.saveStatus}>{saveStatus}</Text>}
+    {tab!=='Settings'&&<NativePrivacyNotice status={privacyStatus} compact/>}
     <NativeResearchLibrary visible={researchOpen} close={()=>setResearchOpen(false)}/><View style={styles.tabs}>{(['Today', 'Plan', 'Library', 'History', 'Settings'] as const).map((label, i) => <Pressable accessibilityRole="tab" accessibilityLabel={label} accessibilityState={{ selected: tab === label }} key={label} onPress={() => { setTab(label); setError(''); }} style={[styles.tab, tab === label && styles.activeTab]}><Text style={[styles.tabIcon, tab === label && { color: COLORS.green }]}>{['◉', '▤', '⌕', '◷', '⚙'][i]}</Text><Text style={[styles.tabLabel, tab === label && { color: COLORS.green, fontWeight: '800' }]}>{label}</Text></Pressable>)}</View>
 
     <ModalFrame visible={!!trackingSession} close={()=>setTrackingSession('')} title="Workout targets">{trackingSession&&state.plan?.sessions.some(x=>x.id===trackingSession)&&<SessionEditor key={trackingSession} state={state} sessionId={trackingSession} onSave={edit=>{const r=applyTrackingEdit(stateRef.current!,edit);if(r.error)return r.error;if(modify(()=>r.state)){setTrackingSession('');return}return 'This workout could not be saved.';}}/>}</ModalFrame>

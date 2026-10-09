@@ -1,0 +1,210 @@
+[
+  {
+    "check": "check-audit.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-backup.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-browser-qwen-cache.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-browser-record-store.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-browser-storage-ui.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-browser-vault.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-catalog.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-dependency-policy.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-equipment-capacity.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-export-cancellation.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-fitness-evaluation.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-fitness-grounding.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-focus.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-goals.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-library.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-mobile-package.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-named-programs.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-native-history.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-native-privacy-cleanup.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-native-privacy-ui.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-native-qwen-files.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-native-qwen-ui.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-native-record-batches.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-native-reminder-cleanup.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-native-security-config.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-native-sqlite.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-native-storage.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-native-workflows.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-offline.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-onboarding.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-preferences.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-program-depth.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-program-design.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-program-selection.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-progression-regressions.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-qwen-assets.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-qwen-controls.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-qwen-download.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-qwen-runtime.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-qwen-training.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-research-library.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-revision-10.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-revision-11.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-security.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-setup-hydration.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-shared.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-tools-boundaries.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-tools.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-training.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-transactional-browser-vault.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-transfer.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-workout-review.cjs",
+    "passed": true
+  }
+]

@@ -8,7 +8,8 @@ import { type State } from './shared/training';
 import { LocalDataError, isSealed, keyFromHex, newKeyHex, openText, sealText } from './local-crypto';
 import { assertNativeRecordCapacity } from './storage-capacity';
 import { assembleNativeHistory, parseNativeHistoryHead, splitNativeHistory, type NativeHistoryHead } from './native-history';
-import type { NativeRecordSnapshot } from './native-record-store';
+import type { NativeRecordSnapshot, NativePrivacyStatus } from './native-record-store';
+export type { NativePrivacyStatus } from './native-record-store';
 
 // Saved training is encrypted before it reaches transactional SQLite snapshots:
 // XChaCha20-Poly1305 with a fresh random nonce per write. Legacy AsyncStorage is
@@ -230,6 +231,9 @@ export async function readLocalState(): Promise<State | null> {
       assertNativeRecordCapacity(JSON.stringify(current.state));
       await installState(current.state, current, await keyForWrite());
     }
+    // Resume only receipted cleanup after authenticating the complete generation.
+    // The record store rechecks this exact head before touching a legacy copy.
+    if (current.snapshot.present[KEY]) await AsyncStorage.retryLegacyCleanup({[KEY]: current.snapshot.records[KEY]});
     return current.state ? readSavedState(JSON.stringify(current.state)) : null;
   }, 'read');
 }
@@ -246,8 +250,8 @@ export async function saveLocalState(state: State): Promise<void> {
   });
 }
 
-export async function resetLocalState(): Promise<void> {
-  await enqueue(async () => {
+export async function resetLocalState(): Promise<NativePrivacyStatus> {
+  return enqueue(async () => {
     const snapshot = await AsyncStorage.snapshotRecords([]);
     const committed = await AsyncStorage.commitRecords({expected: {}, records: {[KEY]: null, [SETUP_KEY]: null, [RESTORE_JOURNAL]: null}, expectedRevision: snapshot.revision, clearHistory: true});
     cachedKey = null;
@@ -255,6 +259,7 @@ export async function resetLocalState(): Promise<void> {
     await SecureStore.deleteItemAsync(DATA_KEY_NAME, SECURE_OPTIONS);
     rememberState(committed);
     authenticatedState = undefined;
+    return AsyncStorage.legacyCleanupStatus();
   }, 'reset');
 }
 
@@ -311,7 +316,9 @@ export async function readLocalSetup(): Promise<ReturnType<typeof readSetupDraft
     if (raw === null) return null;
     const journalRaw = await AsyncStorage.getItem(RESTORE_JOURNAL);
     if (journalRaw && (JSON.parse(journalRaw) as RestoreJournal).setupHash === fingerprint(raw)) return null;
-    return {raw, legacy: !await AsyncStorage.hasRecord(SETUP_KEY), draft: readSetupDraft(await openRecord(raw, SETUP_KEY))};
+    const legacy = !await AsyncStorage.hasRecord(SETUP_KEY), draft = readSetupDraft(await openRecord(raw, SETUP_KEY));
+    if (!legacy) await AsyncStorage.retryLegacyCleanup({[SETUP_KEY]: raw});
+    return {raw, legacy, draft};
   }, 'read');
   if (result && (result.legacy || !isSealed(result.raw))) await migrateLegacy(SETUP_KEY, result.raw);
   return result?.draft ?? null;
@@ -330,6 +337,42 @@ export async function saveLocalSetup(draft: ReturnType<typeof readSetupDraft>): 
 
 export function clearLocalSetup(): Promise<void> {
   return enqueue(async () => {await AsyncStorage.removeItem(SETUP_KEY); await refreshOwnRevision();});
+}
+
+// Privacy checks never authenticate, replace, or delete records. They can run
+// on the recovery screen even when the data key is missing. Failure to inspect
+// old copies must not turn an acknowledged training save into a failed save.
+export function readLocalPrivacyStatus(): Promise<NativePrivacyStatus> {
+  return lifecycle.writes.then(() => AsyncStorage.legacyCleanupStatus());
+}
+
+export function retryLocalPrivacyCleanup(): Promise<NativePrivacyStatus> {
+  return enqueue(async () => {
+    const verified: Record<string, string | null> = {};
+    let cannotVerify = false;
+    try {
+      const state = await readStateSnapshot();
+      if (state.snapshot.present[KEY]) verified[KEY] = state.snapshot.records[KEY];
+    } catch { cannotVerify = true; }
+    try {
+      const setup = await AsyncStorage.snapshotRecords([SETUP_KEY]), raw = setup.records[SETUP_KEY];
+      if (setup.present[SETUP_KEY]) {
+        if (raw !== null) readSetupDraft(await openRecord(raw, SETUP_KEY));
+        verified[SETUP_KEY] = raw;
+      }
+    } catch { cannotVerify = true; }
+    // An active journal must be resolved by key-ring recovery first. A validated
+    // tombstone is safe; raw recovery copies never authorize legacy deletion.
+    try {
+      const journal = await AsyncStorage.snapshotRecords([RESTORE_JOURNAL]);
+      if (journal.present[RESTORE_JOURNAL] && journal.records[RESTORE_JOURNAL] === null) verified[RESTORE_JOURNAL] = null;
+    } catch { cannotVerify = true; }
+    const status = await AsyncStorage.retryLegacyCleanup(verified);
+    return cannotVerify && status.state === 'pending' ? {...status, state: 'attention' as const, unreadable: status.unreadable + 1} : status;
+  }, 'read').catch(async () => {
+    const status = await AsyncStorage.legacyCleanupStatus();
+    return status.state === 'pending' ? {...status, state: 'attention' as const, unreadable: status.unreadable + 1} : status;
+  });
 }
 
 // A head alone is no longer a complete recovery copy. Preserve all owned raw

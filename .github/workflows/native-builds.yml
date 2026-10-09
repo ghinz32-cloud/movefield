@@ -1,8 +1,6 @@
 name: Native release compilation
 on:
   pull_request:
-  push:
-    branches: [audit/2026-10-08-quality]
   workflow_dispatch:
 permissions:
   contents: read
@@ -35,7 +33,7 @@ jobs:
         working-directory: mobile
         run: npx --no-install expo prebuild --platform android --no-install
       - name: Install required Android toolchain
-        run: sdkmanager "platforms;android-36" "build-tools;36.0.0" "ndk;27.1.12297006" "cmake;3.31.5"
+        run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-36" "build-tools;36.0.0" "ndk;27.1.12297006" "cmake;3.30.5" "cmake;3.31.5"'
       - name: Compile and lint release test APK
         working-directory: mobile/android
         run: ./gradlew :app:assembleRelease :app:lintRelease :app:testReleaseUnitTest --no-daemon -PreactNativeArchitectures=arm64-v8a -Porg.gradle.jvmargs="-Xmx5g -XX:MaxMetaspaceSize=1g"
@@ -43,7 +41,11 @@ jobs:
         run: |
           mkdir -p native-evidence/android
           "$ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer" manifest print mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/manifest.xml
-          python3 scripts/inspect-native-artifacts.py android native-evidence/android/manifest.xml > native-evidence/android/inspection.json
+          "$ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer" resources xml --file res/xml/movefield_backup_rules.xml mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/backup.xml
+          "$ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer" resources xml --file res/xml/movefield_data_extraction_rules.xml mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/extraction.xml
+          "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump resources mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/resources.txt
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --print-certs mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/signing.txt
+          python3 scripts/inspect-native-artifacts.py android native-evidence/android/manifest.xml native-evidence/android/backup.xml native-evidence/android/extraction.xml native-evidence/android/resources.txt > native-evidence/android/inspection.json
           sha256sum mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/apk.sha256
       - name: Retain native compilation evidence
         if: always()

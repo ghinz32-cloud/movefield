@@ -10,6 +10,10 @@ const disk={
  multiRemove:async keys=>{keys.forEach(k=>values.delete(k));if(!inBatch)revision++},
  snapshotRecords:async keys=>({records:Object.fromEntries(keys.map(k=>[k,values.get(k)??null])),present:Object.fromEntries(keys.map(k=>[k,values.has(k)])),revision}),
  listHistorySlots:async()=>[...values.keys()].filter(key=>key.startsWith(HISTORY_PREFIX)).sort(),
+ // This older fixture has no separate legacy store. The real SQLite privacy
+ // journal, retained copies and restart faults have their own focused suite.
+ legacyCleanupStatus:async()=>({state:'clear',pending:0,preserved:0,unreadable:0}),
+ retryLegacyCleanup:async()=>({state:'clear',pending:0,preserved:0,unreadable:0}),
  commitRecords:async input=>{
   const failure=()=>new (load('mobile/src/local-crypto.ts').LocalDataError)('unknown-format','Saved records changed in another app session. Nothing was replaced.');
   if(input.expectedRevision!==undefined&&input.expectedRevision!==revision||Object.entries(input.expected).some(([key,value])=>(values.get(key)??null)!==value))throw failure();
