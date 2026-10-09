@@ -1,0 +1,8 @@
+{
+  "attempts": 1,
+  "jobId": 114002024138,
+  "status": "not_collected",
+  "error": "GitHub connector returned isError: Transport closed",
+  "retried": false,
+  "limitation": "Official job/step/artifact metadata retained; source13 iOS raw full job log unavailable through this connector."
+}

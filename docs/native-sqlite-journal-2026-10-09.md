@@ -31,3 +31,19 @@ DELETE rollback journaling can reduce concurrency compared with WAL. A busy oper
 - [Expo SQLite configuration](https://docs.expo.dev/versions/latest/sdk/sqlite/). The installed plugin’s both-platform string option, Android Gradle/CMake route, iOS podspec and native transaction implementation were inspected directly; no SDK upgrade or vendor fork was introduced.
 
 Canonical workout/science files and their native snapshots are unchanged by this mitigation. Publication and final native results are recorded separately after this local source checkpoint; a local commit is not a deployment or store release.
+
+## Current qualification and bounded follow-ups — 9 October 2026
+
+This update leaves the source-checkpoint history above intact. Published source `8abfca45f1f910155011516eabffbebdf070821b` passed iOS unsigned Release simulator compilation and packaged inspection in run 37981546336, job 113993116703. Android job 113993116672 passed compilation and final packaged inspection, then failed SQLite build-route evidence collection because the CMake cache was missing. Collector repair and successful final-source Android route qualification remain pending; the prior NATIVE6 passing binary does not substitute for this evidence.
+
+Two runtime follow-ups remain. Qwen can create new empty cache/model/attempt directories before a later mode qualification rejects an operation; this is a bounded refusal-contract gap. Failed initialization clears its retry promise without closing an already acquired Expo database wrapper, so acquired wrapper references can remain across retries. Focused refusal probes preserve existing records/files. No existing-file loss, SQLite corruption or native memory/OS leak was measured.
+
+Official final NATIVE7 workflow artifacts remain available. Local repository retention of uncommitted validation and peer receipts is being recovered after workspace loss; this update does not claim all such files survived. Final compiler/artifact qualification and physical-device, power-loss, signing/store and complete native-SCA limits remain separate.
+
+## Collector repaired and qualified — NATIVE8
+
+Qualified application source `e85a1ad320ec23db29b337fdee10f41f1dc24962`, tree `890d598d36ee1f09a3ad67268275e2de16309a48`, passed native run37984196327 on Android and unsigned iOS Release simulator, including strict packaged inspection and SQLite build-route collection. Quality37984196434 passed31 reader fixtures,55/55 regression and3/3 production suites; its integration tree is identical.
+
+The Android failure above is retained as source7 history. Aggregate/per-ABI compile databases now bind the exact vendor C entry to its actual working directory, cache and object. Identical validated copies deduplicate; real cache absence, conflicting macros/invocations, wrong ABI, outside inputs/outputs and distinct release objects still fail. Gradle dependency resolution matches assembly architecture/JVM inputs. All mobile/runtime/scientific source is unchanged.
+
+Final source8 qualification is successful hosted execution of the strict collector and inspections. Official source/job/artifact metadata and raw Android/quality logs are retained under `docs/qa/native-compilation-2026-10-09/native8/ci/`. Fresh source8 ZIP bytes were not independently extracted or replayed after the execution interruption; the bounded source7 all11-privacy replay remains historical. No binary instruction, device PRAGMA, power-cut, physical-phone, distribution-signing or store claim follows.

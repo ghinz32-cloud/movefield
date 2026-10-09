@@ -1,0 +1,144 @@
+name: Native release compilation
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    # Cumulative PR paths and GitHub's file-list cap cannot establish whether
+    # this synchronize update changed native inputs. Decide in native_changes.
+  workflow_dispatch:
+permissions:
+  contents: read
+# Preserve every required compilation, including queued builds. A branch-scoped
+# concurrency group can cancel a needed run before the per-event gate executes.
+env:
+  CI: "1"
+  EXPO_NO_TELEMETRY: "1"
+jobs:
+  native_changes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      compile: ${{ steps.gate.outputs.compile }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Decide from the exact synchronize source range
+        id: gate
+        env:
+          NATIVE_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          mkdir -p native-evidence/gate
+          python3 scripts/native-change-gate.py > native-evidence/gate/decision.json
+      - name: Retain native input decision
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: native-input-decision
+          path: native-evidence/gate
+          if-no-files-found: warn
+  android:
+    needs: native_changes
+    if: ${{ !cancelled() && (needs.native_changes.result != 'success' || needs.native_changes.outputs.compile != 'false') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Record exact Android source commit and tree
+        run: |
+          mkdir -p native-evidence/android
+          git rev-parse HEAD HEAD^{tree} > native-evidence/android/source.txt
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: "24.19.0"
+          package-manager-cache: false
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Install locked native source without dependency lifecycle scripts
+        working-directory: mobile
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate Android project
+        working-directory: mobile
+        run: npx --no-install expo prebuild --platform android --no-install
+      - name: Install required Android toolchain
+        run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-36" "build-tools;36.0.0" "ndk;27.1.12297006" "cmake;3.30.5" "cmake;3.31.5"'
+      - name: Compile and lint release test APK
+        working-directory: mobile/android
+        run: ./gradlew :app:assembleRelease :app:lintRelease :app:testReleaseUnitTest --no-daemon -PreactNativeArchitectures=arm64-v8a -Porg.gradle.jvmargs="-Xmx5g -XX:MaxMetaspaceSize=1g"
+      - name: Inspect the actual merged APK manifest
+        run: |
+          mkdir -p native-evidence/android
+          "$ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer" manifest print mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/manifest.xml
+          "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump resources mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/resources.txt
+          python3 scripts/extract-apk-rules.py mobile/android/app/build/outputs/apk/release/app-release.apk native-evidence/android/manifest.xml native-evidence/android/resources.txt "$ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer" native-evidence/android
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --print-certs mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/signing.txt
+          python3 scripts/inspect-native-artifacts.py android native-evidence/android/manifest.xml native-evidence/android/backup.xml native-evidence/android/extraction.xml native-evidence/android/resources.txt > native-evidence/android/inspection.json
+          sha256sum mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/apk.sha256
+      - name: Retain resolved Android dependencies and actual SQLite C build route
+        working-directory: mobile/android
+        run: |
+          mkdir -p build
+          ./gradlew :app:dependencies --configuration releaseRuntimeClasspath --console=plain --no-daemon -PreactNativeArchitectures=arm64-v8a -Porg.gradle.jvmargs="-Xmx5g -XX:MaxMetaspaceSize=1g" > build/release-runtime-classpath.raw.txt
+          python3 ../../scripts/collect-native-build-evidence.py android ../.. ../../native-evidence/android
+      - name: Retain native compilation evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: android-release-compilation-test-only
+          path: |
+            native-evidence/android
+            mobile/android/app/build/reports
+          if-no-files-found: warn
+  ios:
+    needs: native_changes
+    if: ${{ !cancelled() && (needs.native_changes.result != 'success' || needs.native_changes.outputs.compile != 'false') }}
+    runs-on: macos-26
+    timeout-minutes: 60
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.6.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Record exact iOS source commit and tree
+        run: |
+          mkdir -p native-evidence/ios
+          git rev-parse HEAD HEAD^{tree} > native-evidence/ios/source.txt
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: "24.19.0"
+          package-manager-cache: false
+      - name: Install locked native source without dependency lifecycle scripts
+        working-directory: mobile
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate iOS project and resolve Pods
+        working-directory: mobile
+        run: |
+          npx --no-install expo prebuild --platform ios --no-install
+          cd ios
+          pod install
+      - name: Compile unsigned iOS Release simulator application
+        run: xcodebuild -workspace mobile/ios/Movefield.xcworkspace -scheme Movefield -configuration Release -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath mobile/ios/build CODE_SIGNING_ALLOWED=NO build
+      - name: Inspect built iOS privacy and transport settings
+        run: |
+          mkdir -p native-evidence/ios
+          python3 scripts/inspect-native-artifacts.py ios mobile/ios/build/Build/Products/Release-iphonesimulator/Movefield.app > native-evidence/ios/inspection.json
+          cp mobile/ios/Podfile.lock native-evidence/ios/Podfile.lock
+          cp mobile/ios/build/Build/Products/Release-iphonesimulator/Movefield.app/Info.plist native-evidence/ios/Info.plist
+          cp mobile/ios/build/Build/Products/Release-iphonesimulator/Movefield.app/PrivacyInfo.xcprivacy native-evidence/ios/PrivacyInfo.xcprivacy
+      - name: Retain SQLite Release flags and complete built privacy replay
+        run: python3 scripts/collect-native-build-evidence.py ios . native-evidence/ios
+      - name: Retain native compilation evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: ios-release-simulator-compilation
+          path: native-evidence/ios
+          if-no-files-found: warn

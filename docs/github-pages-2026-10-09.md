@@ -1,3 +1,9 @@
+# Current PAGE4 checkpoint — 9 October 2026
+
+Pages `b8fe5ea6b12ff460aba3f35dc7249f18b778dfe1` (tree `f2f84594f0d7f1f3dba578ee20f49c6049be2b70`) deployed successfully in run37981704616. The owner verified all37 HTTPS files; an independent peer checked fresh manifest/worker/ZIP downloads and corroborated all37 expected hashes against the immutable tree. The118-file source ZIP is2,078,044 bytes, SHA-256 `6874de8ada413e6f2dd1c48a676737fc3dcc33955124ab22a34e9a1c7ab8bb7c`; all entries and39 snapshot files match source8abfca45. Manifest version: `5d66719d4ad2048fb3f0d5056bafa862be493e38e3700d1aaa061f433d5165b6`.
+
+The later qualified collector repair at e85a1ad leaves the complete mobile/lib/public trees unchanged, so the live starter remains current. It requires a custom native rebuild with the SQLite default3 flag; Expo Go/default2 storage hosts intentionally refuse writes. This source ZIP is not an installable signed app. Bounded synthetic desktop reload/same-dataset protected restore passed; real offline/phone/accessibility acceptance remains pending. Evidence: `docs/qa/final-audit-2026-10-09/page4-final-peer-reconstructed.json`.
+
 # GitHub Pages prototype and update guide
 
 Target: https://ghinz32-cloud.github.io/movefield/ . Source remains on `audit/2026-10-08-quality`; generated public output alone belongs on `gh-pages`. This does not merge the review branch into main or distribute a phone app.
