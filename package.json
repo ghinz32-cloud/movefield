@@ -17,7 +17,10 @@
     "check:release-dependencies": "node scripts/check-dependencies.mjs --release",
     "test:regression": "node scripts/check-all.cjs",
     "test:production": "node scripts/check-all.cjs --production",
-    "package:mobile": "python3 scripts/package-mobile.py"
+    "package:mobile": "python3 scripts/package-mobile.py",
+    "build:pages": "node scripts/build-pages.mjs",
+    "check:pages": "node scripts/check-pages.mjs",
+    "publish:pages": "node scripts/publish-pages.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

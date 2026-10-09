@@ -1,0 +1,1068 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> site-creator-vinext-starter@0.1.0 test:regression
+> node scripts/check-all.cjs
+
+Checking check-audit.cjs
+PASS New competition blocks an existing jump session before start
+PASS Cascade rejects new competition proximity without moving any dates
+PASS Unchanged jump sessions are rechecked when another workout moves
+PASS Restore cannot create a workout collision
+PASS Restore rejects an existing fixed commitment
+PASS Long machine labels and unbounded timed additions fail before mutation
+PASS Non-finite target ranges are rejected
+PASS Full archive rejects new block without deleting existing plans
+PASS Return preview clears old accepted weights and leaves history intact
+PASS Prerequisites use the latest timestamp regardless of array ordering
+PASS Unknown side values are rejected; alternating data cannot suggest loads
+11 deep-audit regression checks passed
+Checking check-backup.cjs
+PASS Backup preserves exact history, unknown and zero loads, Unicode notes and optional measurements
+PASS Only reviewed known fields can leave a backup
+PASS Restore rejects a stale preview and leaves current records unchanged
+PASS Restore protects an in-progress workout
+PASS Restored proposals need review; concern holds and logged actuals stay intact
+PASS Malformed, prototype-polluting, oversized and invalid-record backups fail before replacement
+PASS Assisted or one-sided sets cannot create an adult strength estimate
+7 backup and measurement checks passed.
+Checking check-browser-qwen-cache.cjs
+PASS browser Qwen IndexedDB transactions: 74 assertions; fake-indexeddb, no browser/OS durability claim.
+Checking check-browser-record-store.cjs
+PASS browser record store: 76 checks (actual fake-indexeddb transactions, real WebCrypto)
+Checking check-browser-storage-ui.cjs
+PASS browser storage UI: 8 real compiled callback scenarios (simulated hooks/DOM and vault, not browser acceptance)
+Checking check-browser-vault.cjs
+PASS browser vault: 133 checks
+Checking check-catalog.cjs
+PASS All catalog program types start at slot A and preserve safe groups during cascade
+PASS Powerlifting includes SBD, contains no endurance, and rejects missing gym
+PASS Catalog IDs unique; equipment subdivisions and core present
+PASS Customization adds recurring sets without changing history; duplicate and stale writes fail
+PASS Added loaded exercise uses its own configured range history for progression
+PASS Heavy bench cannot become practice starting load
+PASS Volume counts per-hand/per-side multipliers, partial actuals and excludes unknowns
+PASS Generated sample gives 34 logs, one partial and nonempty exercise/volume/index charts
+PASS Strength index expires each component against today and youth has none
+9 catalog and progress checks passed
+Checking check-dependency-policy.cjs
+PASS Known findings permit temporary CI work and always block release
+PASS Temporary exception fails exactly at expiry and cannot return after it
+PASS Additional high issue, critical escalation and lookalike identities fail CI
+PASS npm propagated framework entries retain only their exact advisory roots
+PASS Both actual audit formats accept clean reports and preserve moderate threshold
+PASS Audit error, invalid report, broken chain and misleading counts fail closed
+PASS Process failure, unknown mode and invalid clock cannot waive a finding
+7 dependency release-boundary scenarios passed.
+Checking check-equipment-capacity.cjs
+PASS Dumbbell capacity is per hand, independent of the volume multiplier
+PASS Machine capacity needs a label and remains isolated by exact setup and exercise
+PASS Unknown capacity permits a supported next step; zero means unavailable
+PASS Invalid limits and unsupported exercises are rejected without mutating state
+PASS Lower capacity suppresses accepted and historical loads without clamping or deleting records
+PASS Both reaching the maximum and an increment overshooting it suppress nextKg
+PASS Capacity readiness requires two comparable comfortable exposures
+PASS Changing machine setup does not carry comparable load or capacity readiness across
+PASS Canonical kilogram limits survive persistence and display-unit changes
+PASS Changing a limit stales pending and queued previews, including a load increase
+PASS A wider range changes matching future work only and requires explicit acceptance
+PASS Tampered capacity patches and capacity changes after preview are rejected
+PASS Youth, pure powerlifting, general strength and coach-owned plans do not widen ranges
+PASS Wider ranges stop at 20 after new comparable evidence for each accepted range
+PASS Capacity progression respects time throughout a 5-week block
+PASS Capacity progression respects time throughout a 8-week block
+PASS Offline capacity acceptance queues the change without changing targets
+17 equipment-capacity checks passed; 0 failed
+Checking check-export-cancellation.cjs
+{
+  "passed": 3,
+  "total": 3,
+  "results": [
+    {
+      "name": "Cancel before async encryption completes prevents any later download",
+      "pass": true
+    },
+    {
+      "name": "Unmount before async encryption completes prevents any later download",
+      "pass": true
+    },
+    {
+      "name": "An open successful transfer still downloads exactly once",
+      "pass": true
+    }
+  ]
+}
+Checking check-fitness-evaluation.cjs
+PASS evaluation report grading: 21 assertions. All inputs are synthetic; zero actual model evaluations or qualified devices.
+Checking check-fitness-grounding.cjs
+PASS fitness provenance, bounded retrieval, current-context/output gates and 22 held-out fixture checks: 256 assertions (13 prompts, 9 blocked). Model accuracy: NOT MEASURED.
+Checking check-focus.cjs
+PASS All four compatible add-ons preserve dates and fit the hard time window
+PASS The central buildPlan path applies focus choices
+PASS No spare time rejects add-ons without trimming primary work
+PASS Jump dose is small, first after warm-up, and capped once per week
+PASS Nearby practices can make jump selection unavailable; no date is moved
+PASS New jump users need supervision even with self-reported readiness
+PASS Youth jump work has one set and needs supervision
+PASS Youth weight-management and superset selections cannot add adult doses
+PASS Coach and manual tracking remain free of automatic prescriptions
+PASS Supersets preserve primary lift dose and combine only assistance rest
+PASS Powerlifting main lifts are never forced into a superset
+PASS Activity focus does not silently increase a run-only program
+PASS Applied focus plans are idempotent
+13 focus checks passed
+Checking check-goals.cjs
+PASS Empty, unrelated and ignored text suggest nothing
+PASS Lifting words map to the specific weight-training goal
+PASS Running and mixed goals resolve in a fixed order, with alternatives shown
+PASS Sport wins over lifting words and carries a jump hint when jumping is named
+PASS Calisthenics, general and beginner wording map to their goals
+PASS Every suggested goal has a plain label
+PASS Demonstration links: curated video first, then the source page, and only https links
+PASS First-time exercises: not logged in any saved workout and not dismissed
+PASS Every plan evidence key has a Sources entry, and plans cite the right families
+9 groups, 418 checks passed.
+Checking check-library.cjs
+PASS Every shipped catalog entry has a complete movement guide and logging convention
+  1726 candidate photo references withheld
+PASS Unverified photo candidates are withheld; guide and source coverage stays complete
+PASS Multiword and common abbreviation searches work regardless of word order
+PASS Optional measurements survive a validated save and invalid values are rejected
+PASS One-sided and assisted records do not drive load or maximum suggestions
+PASS Unsupported timed and skill movements do not produce estimated 1RM points
+6 full-library and measurement checks passed
+Checking check-mobile-package.cjs
+PASS Current tracked working-tree source ships without requiring a commit
+PASS Untracked source, native output, photos and credentials never enter the public starter
+PASS Repeated packaging is byte-identical
+PASS A referenced local Expo plugin must be tracked and packaged
+PASS Local plugin traversal, absolute paths and untracked references fail closed
+PASS Tracked generated native output and photo directories remain excluded
+PASS Accidentally tracked credential filenames fail closed and preserve the prior archive
+PASS Credential content hidden in a tracked source file fails without replacing the archive
+PASS Tracked source symlinks cannot expose a file outside the starter
+PASS Replacing a tracked source directory with a symlink fails closed
+PASS Missing required tracked source fails and keeps the last usable download
+PASS A source copy without its Git index cannot silently fall back to scanning local files
+12 mobile source packaging security scenarios passed.
+Checking check-named-programs.cjs
+PASS 3582 named-template, cross-week cycle, seven-start-day, duration/equipment/age, saved-state, event and manual-authority assertions.
+Checking check-native-history.cjs
+PASS Whole snapshot migration: plaintext legacy
+PASS Whole snapshot migration: encrypted legacy
+PASS Whole snapshot migration: encrypted SQL snapshot
+PASS Head-only saves preserve exact completed ciphertext; append writes only one new entity
+PASS Two modules serialize first key creation and preserve the final readable history
+PASS Concurrent second-module reads and locked exports wait for a prepared restore
+PASS Completed history edit/delete/reorder update only affected entities
+PASS Full restore rotates secure key and all entities; reset retires complete history
+PASS Locked raw recovery bundle retains the head and every encrypted entity after key loss
+PASS Corrupted history refuses reads/saves: missing entity
+PASS Corrupted history refuses reads/saves: damaged chunk
+PASS Corrupted history refuses reads/saves: authenticated digest mismatch
+PASS Stale module compare-and-commit refuses saves after restore
+PASS Stale module compare-and-commit refuses saves after reset
+PASS Stale replacement refuses before preparing a key ring after other module save
+PASS Stale replacement refuses before preparing a key ring after other module restore
+PASS Stale replacement refuses before preparing a key ring after other module reset
+PASS Repeated current-session edits have bounded persistence work with 3 completed workouts
+PASS Repeated current-session edits have bounded persistence work with 2000 completed workouts
+EVIDENCE cached current-session persistence [{"history":3,"selects":19,"secureReads":3},{"history":3,"selects":19,"secureReads":3},{"history":2000,"selects":19,"secureReads":3},{"history":2000,"selects":19,"secureReads":3}]
+PASS Batch write rollback preserves head, unchanged entities and prior history after SQLITE_FULL
+PASS Postcommit readback ambiguity reports failure but retains a complete reopenable generation
+PASS Ambiguous migration retains the whole encrypted legacy source and reopens committed entities
+PASS Ambiguous restore retains new encrypted entities and both keys until fresh recovery
+PASS Interrupted restore secure-key activation retains all entities and both recoverable keys
+PASS Same module cannot overwrite installed restore with old UI state after failed acknowledgment
+PASS Reset interruption while deleting movefield.restoreKeys.v1 still reopens empty history
+PASS Reset interruption while deleting movefield.dataKey.v1 still reopens empty history
+PASS native history: 27 scenarios, 192 assertions (actual SQLite/storage/history/crypto; injected OS APIs; no physical-device proof)
+Checking check-native-privacy-cleanup.cjs
+PASS Validated plaintext migration acknowledges encrypted persistence while denied cleanup is durably pending after reopen
+PASS Read-only status and raw recovery retain matching copies; authenticated reopened read retires them without changing revision
+PASS Explicit retry authenticates stored records and retires the exact receipted value
+PASS Changed legacy copies are preserved and subsequent saves never replace the oldest cleanup fingerprint
+PASS Different literal lone UTF-16 surrogates in valid legacy JSON never match the captured copy
+PASS Untracked historical copies are reported but never adopted by a later successful save or retry
+PASS Unreadable legacy storage cannot fail a valid SQL read/save or supply a cleanup fingerprint
+PASS Every first-migration SQL write and precommit fault rolls back the cleanup receipt with the generation
+PASS Postcommit readback ambiguity preserves original plaintext and journal until a fresh authenticated read
+PASS Missing keys preserve matching pending copies; raw recovery and explicit retry cannot authorize deletion
+PASS Ciphertext with valid SQL integrity but failed authentication preserves matching legacy plaintext
+PASS Corrupted SQL tombstone is never treated as reset proof and cannot retire a retained copy
+PASS Successful but ineffective legacy removal remains pending across restart
+PASS Failed cleanup-metadata retirement never reverses durable acknowledgement; missing legacy can be pruned on restart
+PASS Malformed cleanup metadata yields unavailable status without blocking encrypted reads or deleting legacy
+PASS Status inspection SQL failure cannot turn an acknowledged training save into a save error
+PASS Bounded lossless fingerprint preserves Unicode code units across chunk boundaries and stores no plaintext
+PASS Oversized old copies are preserved without a hash receipt or deletion, while new encrypted records remain usable
+PASS Exact SQL proof is rechecked before legacy deletion and unowned slots are refused
+PASS Reset retires current encrypted records and keys but honestly reports retained matching copies; retry later removes them
+PASS Reset preserves changed or untracked historical copies and reports attention instead of complete erasure
+PASS Setup migration uses the same durable receipt and explicit retry validates its encrypted draft
+{
+  "checks": 22,
+  "evidence": [
+    "Validated plaintext migration acknowledges encrypted persistence while denied cleanup is durably pending after reopen",
+    "Read-only status and raw recovery retain matching copies; authenticated reopened read retires them without changing revision",
+    "Explicit retry authenticates stored records and retires the exact receipted value",
+    "Changed legacy copies are preserved and subsequent saves never replace the oldest cleanup fingerprint",
+    "Different literal lone UTF-16 surrogates in valid legacy JSON never match the captured copy",
+    "Untracked historical copies are reported but never adopted by a later successful save or retry",
+    "Unreadable legacy storage cannot fail a valid SQL read/save or supply a cleanup fingerprint",
+    "Every first-migration SQL write and precommit fault rolls back the cleanup receipt with the generation",
+    "Postcommit readback ambiguity preserves original plaintext and journal until a fresh authenticated read",
+    "Missing keys preserve matching pending copies; raw recovery and explicit retry cannot authorize deletion",
+    "Ciphertext with valid SQL integrity but failed authentication preserves matching legacy plaintext",
+    "Corrupted SQL tombstone is never treated as reset proof and cannot retire a retained copy",
+    "Successful but ineffective legacy removal remains pending across restart",
+    "Failed cleanup-metadata retirement never reverses durable acknowledgement; missing legacy can be pruned on restart",
+    "Malformed cleanup metadata yields unavailable status without blocking encrypted reads or deleting legacy",
+    "Status inspection SQL failure cannot turn an acknowledged training save into a save error",
+    "Bounded lossless fingerprint preserves Unicode code units across chunk boundaries and stores no plaintext",
+    "Oversized old copies are preserved without a hash receipt or deletion, while new encrypted records remain usable",
+    "Exact SQL proof is rechecked before legacy deletion and unowned slots are refused",
+    "Reset retires current encrypted records and keys but honestly reports retained matching copies; retry later removes them",
+    "Reset preserves changed or untracked historical copies and reports attention instead of complete erasure",
+    "Setup migration uses the same durable receipt and explicit retry validates its encrypted draft"
+  ],
+  "limits": "Actual source modules, real node:sqlite transactions and crypto; injected legacy/SecureStore APIs. No OS/process/device or forensic-erasure qualification."
+}
+Checking check-native-privacy-ui.cjs
+PASS Pending cleanup warning is independent and requires an explicit retry
+PASS clear status describes older copies honestly
+PASS attention status describes older copies honestly
+PASS unavailable status describes older copies honestly
+PASS Busy retry is disabled and guarded even through its retained callback
+PASS Compact global status exposes warnings and keeps clear status quiet
+PASS Settings receives privacy status and links without changing it
+PASS Privacy and support links open only from accessible user actions
+PASS Failed public link is visible, later link supersedes old failure, unmount suppresses results
+PASS Startup reads older-copy status even when saved training cannot open
+PASS Privacy read failure cannot change a durable save to failure
+PASS Save failure and privacy attention remain independent
+PASS Newer privacy status suppresses older pending read after a save
+PASS Successful restore refreshes privacy without turning status failure into restore failure
+PASS stale restore preserves a pending save saved result
+PASS stale restore preserves a pending save failed result
+PASS failed restore preserves a pending save saved result
+PASS failed restore preserves a pending save failed result
+PASS failed reset preserves a pending save saved result
+PASS failed reset preserves a pending save failed result
+PASS Unmount suppresses rejected restore and never refreshes privacy afterward
+PASS Reset preserves a truthful older-copy warning and saves an empty current state
+PASS Denied retry stays a privacy issue and cannot trigger a training save
+PASS Repeated retry clicks make one request and later save invalidates old cleanup status
+PASS Unmount suppresses pending privacy, save and cleanup callbacks
+PASS native privacy UI: 25/25 scenarios, 77 assertions (actual compiled TSX callbacks; mocked storage/native hooks, not physical-device acceptance)
+Checking check-native-qwen-files.cjs
+PASS catalog, frozen exact consent and no automatic network
+PASS actual Expo adapter, bounded hashes, real SQLite commit and reopen
+PASS integrity rejects mutate
+PASS integrity rejects truncate
+PASS integrity rejects extra
+PASS integrity rejects bad-progress
+PASS same-size damage is detected before runtime callback or reuse
+PASS cache eviction reports unavailable and explicit retry repairs it
+PASS free space includes complete new files and platform temporary space
+PASS cancel before start and while hashing never publishes
+PASS hung native cancel, late completion quarantine, bounded retries and delete
+PASS idle timeout isolates a hung native writer and no background resume claim
+PASS atomic replacement rollback preserves old model files
+PASS committed pointer survives failed readback acknowledgement
+PASS Cancel after atomic commit reports actual completed files
+PASS startup cleanup before and after pointer publication
+PASS load lease blocks same-runtime reload, download and deletion
+PASS metadata damage is preserved automatically and explicit Delete repairs it
+PASS bounded native read errors and cleanup failure remain recoverable
+PASS attempt identifier collision never replaces a previous model
+PASS explicit delete tombstone survives disk cleanup failure
+PASS unknown filesystem entries preserved, no model weights fetched by tests
+{"status":"passed","scenarios":22,"assertions":1058,"actualModelDownloads":0,"inferenceRuns":0,"physicalDevicesQualified":0,"adapter":"actual compiled Expo adapter + mock filesystem/transport + real node:sqlite + real SHA-256"}
+Checking check-native-qwen-ui.cjs
+PASS Mount/open/status/review perform no implicit download or profile access
+PASS Review consent is deeply frozen and repeated confirmation starts only one request
+PASS A canceled review invalidates its retained confirmation callback
+PASS A replacement review cannot authorize an older different confirmation tuple
+PASS Completed confirmation cannot restart a download without a new review
+PASS Off blocks review and invalidates an already reviewed confirmation
+PASS Cancel download suppresses late progress/results and supports a new explicit retry
+PASS Close native model files suppresses late progress/results and supports a new explicit retry
+PASS Unmount aborts request and suppresses every late state update
+PASS background aborts an active request without accepting a late successful receipt
+PASS off aborts an active request without accepting a late successful receipt
+PASS Late status after close cannot install a stale receipt
+PASS Explicit status recheck identifies already finished files after cancellation without retrying network
+PASS Download/offer/status errors remain visible and never claim success
+PASS Deleting files requires explicit confirmation, preserves profile isolation and saved status on failure
+PASS Keep model files invalidates a retained stale delete confirmation
+PASS Successful explicit deletion clears only model status and consumes confirmation
+PASS Committed deletion with pending temporary cleanup reports retired files accurately
+PASS Unreadable local model status still permits explicit file-only deletion recovery
+PASS Unmount revokes retained download review confirmation before a request starts
+PASS Unmount revokes retained delete review confirmation before a request starts
+PASS native Qwen UI: 21/21 scenarios, 96 assertions (actual compiled TSX callbacks; mocked file client/native hooks, not physical-device or inference acceptance)
+Checking check-native-record-batches.cjs
+PASS Bounded Unicode workout IDs produce private, fixed-width history slot identities
+PASS Legacy fixed-slot values remain outside SQL until encrypted head and workout batch verifies
+PASS Unknown namespaces, plaintext, invalid revisions and incomplete expected batches mutate no records
+PASS Queued batch detaches validated records and expected guards from mutable caller maps
+PASS Two independent stores enforce ciphertext CAS and revision guards including empty/reset ABA
+PASS Every batch write/precommit failure rolls back head, workouts, revision and legacy cleanup together
+PASS Postcommit verification failure reports ambiguity and retains migration input; fresh reopen sees complete new batch
+PASS Changed or denied legacy cleanup retains input after committed readback
+PASS Changed migration input during the transaction aborts the encrypted install
+PASS Restore/reset tombstones all retired owned entities and orphan chunks atomically
+PASS Corrupted entity integrity never silently falls back or rewrites a committed head
+PASS 2,000 independently encrypted workouts reopen; one active-set head edit rewrites zero historical rows
+PASS Owned history enumeration enforces the supported 5,000-record bound
+{
+  "checks": 13,
+  "evidence": [
+    "Bounded Unicode workout IDs produce private, fixed-width history slot identities",
+    "Legacy fixed-slot values remain outside SQL until encrypted head and workout batch verifies",
+    "Unknown namespaces, plaintext, invalid revisions and incomplete expected batches mutate no records",
+    "Queued batch detaches validated records and expected guards from mutable caller maps",
+    "Two independent stores enforce ciphertext CAS and revision guards including empty/reset ABA",
+    "Every batch write/precommit failure rolls back head, workouts, revision and legacy cleanup together",
+    "Postcommit verification failure reports ambiguity and retains migration input; fresh reopen sees complete new batch",
+    "Changed or denied legacy cleanup retains input after committed readback",
+    "Changed migration input during the transaction aborts the encrypted install",
+    "Restore/reset tombstones all retired owned entities and orphan chunks atomically",
+    "Corrupted entity integrity never silently falls back or rewrites a committed head",
+    {
+      "workouts": 2000,
+      "loggedSets": 24000,
+      "activeEditSqlWrites": 4,
+      "historyRowsRewritten": 0
+    },
+    "2,000 independently encrypted workouts reopen; one active-set head edit rewrites zero historical rows",
+    "Owned history enumeration enforces the supported 5,000-record bound"
+  ],
+  "limits": "Real node:sqlite transactions with injected storage failure; no physical phone, OS-kill or power acceptance."
+}
+Checking check-native-reminder-cleanup.cjs
+{
+  "passed": 4,
+  "total": 4,
+  "results": [
+    {
+      "name": "Off attempts every owned cancellation and dismissal even if the first fails",
+      "pass": true
+    },
+    {
+      "name": "A presented-alert enumeration failure still cancels all known scheduled alerts",
+      "pass": true
+    },
+    {
+      "name": "Failed cleanup does not create additional schedules or foreground authorization",
+      "pass": true
+    },
+    {
+      "name": "Successful cleanup refreshes the selected day and reports true schedule status",
+      "pass": true
+    }
+  ]
+}
+Checking check-native-security-config.cjs
+{"ok":true,"checks":114,"kind":"isolated-expo-prebuild","nativeCompilation":false,"storeAcceptance":false,"physicalDevices":false,"files":{"manifest":"ef3d1230286f03a0775262a13badcc708bba5f37516797f00ff65356f99fa84e","legacyBackup":"b6d25f2b96cdd6b451a701a01ec246934538f89635a534d679e0825dd2f555ee","extraction":"9c0680166f549a448ff3b4acc76af3c08b854ccbb0e9278062fcf8f788504f1b","privacy":"8645807a79663255e71b973dc700b9aa53a471ca7958183bcb8d4107f7ee89b1"}}
+Checking check-native-sqlite.cjs
+PASS Opaque encrypted snapshot is chunked, committed, hashed and readable after fresh store open
+PASS Plaintext and unknown slots are refused before database mutation; legacy plaintext remains outside SQL
+PASS Legacy cleanup failure never resurrects state or journal after transactional tombstones
+PASS Every SQL write/precommit failure rolls back ciphertext and manifest to the previous readable generation
+PASS In-transaction corrupted readback aborts update; old generation and retained legacy remain
+PASS Postcommit readback failure is surfaced and keeps legacy; persisted new snapshot remains reopenable
+PASS Missing, damaged or false-tombstone chunks are rejected without legacy fallback or replacement
+PASS 2,000 workouts with 24,000 logged sets and Unicode notes save, decrypt and reopen through real SQLite
+PASS Validated plaintext legacy migration seals before SQL persistence and is idempotent
+PASS Encrypted legacy without its SecureStore key is retained, never imported or overwritten
+PASS Migration failure retains exact legacy ciphertext and existing key; retry succeeds
+PASS Partial multi-slot deletion failure rolls back every tombstone and ciphertext together
+PASS Interrupted secure-key activation recovers installed SQLite restore from a fresh module
+PASS Protected native restore/reset key lifecycle survives SQLite persistence and tombstones
+{
+  "checks": 14,
+  "evidence": [
+    "Opaque encrypted snapshot is chunked, committed, hashed and readable after fresh store open",
+    "Plaintext and unknown slots are refused before database mutation; legacy plaintext remains outside SQL",
+    "Legacy cleanup failure never resurrects state or journal after transactional tombstones",
+    "Every SQL write/precommit failure rolls back ciphertext and manifest to the previous readable generation",
+    "In-transaction corrupted readback aborts update; old generation and retained legacy remain",
+    "Postcommit readback failure is surfaced and keeps legacy; persisted new snapshot remains reopenable",
+    "Missing, damaged or false-tombstone chunks are rejected without legacy fallback or replacement",
+    {
+      "jsonChars": 2525298,
+      "encryptedBytes": 5083366,
+      "maximumChunkChars": 131072
+    },
+    "2,000 workouts with 24,000 logged sets and Unicode notes save, decrypt and reopen through real SQLite",
+    "Validated plaintext legacy migration seals before SQL persistence and is idempotent",
+    "Encrypted legacy without its SecureStore key is retained, never imported or overwritten",
+    "Migration failure retains exact legacy ciphertext and existing key; retry succeeds",
+    "Partial multi-slot deletion failure rolls back every tombstone and ciphertext together",
+    "Interrupted secure-key activation recovers installed SQLite restore from a fresh module",
+    "Protected native restore/reset key lifecycle survives SQLite persistence and tombstones"
+  ],
+  "limits": "Real node:sqlite persistence; injected SecureStore/crypto APIs. No iOS/Android OS/process/power/device acceptance."
+}
+Checking check-native-storage.cjs
+PASS native storage: eight fresh-module restore boundaries, key-loss/legacy privacy, 312-session capacity (1658824 encrypted bytes), Unicode above legacy capacity/low-storage recovery and custom timed/load conventions. Physical-device capacity: NOT MEASURED.
+Checking check-native-workflows.cjs
+PASS finish uses previously entered feedback and saves partial work once
+PASS finish supports explicitly skipping effort without clearing concern hold
+PASS finish rejects stale workout check-ins and empty non-concern work
+PASS paused imported plan resumes without changing dates/history or lifting holds
+PASS pause invalidates pending proposals and prevents active-workout changes
+PASS only selected new exercise prompts; external link errors remain visible
+PASS library searches imported custom exercises and exposes their equipment
+PASS overdue primary action stages a reviewed date change without starting
+PASS history order is newest first for both imported storage conventions
+PASS backfilled history follows workout dates before import timestamps
+PASS numeric fields accept decimal comma and retain integer/range restrictions
+PASS tools disclosure starts collapsed and responds to its action
+{"scenarios":12,"scope":"Actual compiled native App TSX callbacks and real planning/workout helpers; mocked hook scheduler and device I/O. No physical-device, React Native layout, or OS acceptance claim."}
+Checking check-offline.cjs
+{
+  "passed": 26,
+  "total": 26,
+  "results": [
+    {
+      "name": "Generator is deterministic and contains every lazy public app feature without private files",
+      "pass": true
+    },
+    {
+      "name": "First completed install immediately supports offline root and unopened lazy tools/research",
+      "pass": true
+    },
+    {
+      "name": "An old tab can read an old hashed chunk and unrelated caches remain untouched",
+      "pass": true
+    },
+    {
+      "name": "Changed asset bytes reject activation and preserve the previous working cache",
+      "pass": true
+    },
+    {
+      "name": "Cache quota failure rejects partial installation without deleting the previous build",
+      "pass": true
+    },
+    {
+      "name": "Same-length corruption during cache readback rejects activation",
+      "pass": true
+    },
+    {
+      "name": "A lost staged cache entry rejects activation",
+      "pass": true
+    },
+    {
+      "name": "A replaced staged shell cannot count as a working app shell",
+      "pass": true
+    },
+    {
+      "name": "A corrupt completed marker cannot count as a completed build",
+      "pass": true
+    },
+    {
+      "name": "Activation rechecks staged bytes before claiming clients or deleting previous caches",
+      "pass": true
+    },
+    {
+      "name": "Unsafe redirect asset rejects installation without deleting the old cache",
+      "pass": true
+    },
+    {
+      "name": "Unsafe redirect response after cache eviction is neither returned as trusted code nor cached",
+      "pass": true
+    },
+    {
+      "name": "Unsafe private asset rejects installation without deleting the old cache",
+      "pass": true
+    },
+    {
+      "name": "Unsafe private response after cache eviction is neither returned as trusted code nor cached",
+      "pass": true
+    },
+    {
+      "name": "Unsafe no-store asset rejects installation without deleting the old cache",
+      "pass": true
+    },
+    {
+      "name": "Unsafe no-store response after cache eviction is neither returned as trusted code nor cached",
+      "pass": true
+    },
+    {
+      "name": "Unsafe cookie asset rejects installation without deleting the old cache",
+      "pass": true
+    },
+    {
+      "name": "Unsafe cookie response after cache eviction is neither returned as trusted code nor cached",
+      "pass": true
+    },
+    {
+      "name": "Unsafe error asset rejects installation without deleting the old cache",
+      "pass": true
+    },
+    {
+      "name": "Unsafe error response after cache eviction is neither returned as trusted code nor cached",
+      "pass": true
+    },
+    {
+      "name": "Unsafe opaque asset rejects installation without deleting the old cache",
+      "pass": true
+    },
+    {
+      "name": "Unsafe opaque response after cache eviction is neither returned as trusted code nor cached",
+      "pass": true
+    },
+    {
+      "name": "A root shell from a different deployment is never paired with mismatched chunks",
+      "pass": true
+    },
+    {
+      "name": "Inline RSC references and a generic login page cannot overwrite a usable shell",
+      "pass": true
+    },
+    {
+      "name": "A network navigation into a newer uninstalled build retains the last working offline shell",
+      "pass": true
+    },
+    {
+      "name": "Protected requests, private routes, downloads, arbitrary queries and foreign origins remain uncached",
+      "pass": true
+    }
+  ],
+  "limits": [
+    "VM fixture validates lifecycle/content boundaries, not real-browser worker registration or physical-device behavior."
+  ]
+}
+Checking check-onboarding.cjs
+PASS Fresh journey starts without an accepted or seeded plan
+PASS Choosing a plan does not mutate current plan or history
+PASS Accepting a different block replaces all current plan references and preserves actuals
+PASS Active workout prevents replacement without mutating anything
+PASS Offline acceptance remains blocked
+PASS Changed choices cannot accept a stale preview
+PASS Added commitment is revalidated at acceptance
+PASS Youth in-season app route cannot sneak through final acceptance
+PASS Underage, past and invalid date inputs have explicit errors
+PASS Coach plan remains tracking and accepts without hidden exercise doses
+PASS A schedule that cannot support a template offers a tracking option
+PASS A stale commitment snapshot cannot overwrite newer calendar events
+PASS Generated durations override stale catalog times in fit notes and ranking
+PASS Fit uses the full block and does not claim unavailable drafts fit
+14 onboarding checks passed
+Checking check-preferences.cjs
+PASS Damaged and unsafe preferences fall back without changing training records
+PASS Model selection requires measured qualification and falls back without downloads
+PASS Reminder schedule deduplicates days and respects plan and workout state
+PASS Calendar export contains timed reminders and no workout or personal details
+PASS Every palette passes light and dark text and control contrast
+PASS Smallest and smaller text, spacing density and the added palettes are accepted; unknown values fall back
+6 groups, 98 checks passed.
+Checking check-program-depth.cjs
+75 plan variants; 4437 scenarios; 2572195 assertions passed
+Checking check-program-design.cjs
+ID        goal         days min  major group sets (chest back quads hams glutes shoulders biceps triceps), week 1
+PL3       powerlifting 3    65   9 10 7 6 4.5 3 4.5
+PL4       powerlifting 4    65   7 13 5 9 7.5 6 8.5
+PB3       powerbuilding3    75   10 10 10 10 11 10 10
+PB4       powerbuilding4    70   10 10 10 10 11.5 10 11.5
+BB3       hypertrophy  3    70   10 10 10 10 12 11 10
+BB4       hypertrophy  4    75   10 10 10 10 14 10 11.5
+HY4       hybrid       4    45   2 4 4 2 2 2 2
+HY5       hybrid       5    60   3 6 3 2 4.5 2 3
+BBPPL6    hypertrophy  6    70   16 17 12 12 17 13 15.5
+BBARN6    hypertrophy  6    80   14 16 10 10 21 12.5 16.5
+PLTX3     powerlifting 3    70   6 9 9 3 6 4 4.5
+PLSL3     powerlifting 3    65   10 11 15 1 10 5 7.5
+PLU3      powerlifting 3    80   10 7 7 5 5 1 5
+PBPH4     powerbuilding4    90   10 10 10 10 11.5 10 10.5
+PBT4      powerbuilding4    75   10 10 10 13 11 10.5 11.5
+ST2       strength     2    55   2 4 4 4 2 2 2
+ST3       strength     3    70   6 9 8 7 6 3 4.5
+GF2       general      2    50   2 4 4 4 2 2 2
+GFHOME2   general      2    45   4 4 4 2 0 2 2
+CAL2      calisthenics 2    45   4 4 4 1 0 2 2
+CAL3      calisthenics 3    45   6 6 6 1 0 3 3
+RNEASY3   running      3    40   0 0 0 0 0 0 0
+PL2       powerlifting 2    80   6 9 5 5 3 2 3
+PBSTART2  powerbuilding2    75   6 8 6 4 5 5 3
+PBSTART3  powerbuilding3    70   11 11 10 10 10 10.5 10
+PBDB3     powerbuilding3    75   11 10 10 10 12.5 13 11.5
+BB2       hypertrophy  2    85   6 6 6 5 5 5 5
+BBDB3     hypertrophy  3    75   11 10 10 10 12.5 13 11.5
+BBM3      hypertrophy  3    80   10 10 11 10 11 10 10
+STGYM2    strength     2    65   6 6 6 4 5 3 3
+STDB3     strength     3    75   6 9 8 7 8 6.5 4.5
+GF3       general      3    75   4 6 6 6 6 5 3
+GFM2      general      2    65   6 6 6 4 5 3 3
+CALBUILD3 calisthenics 3    70   9 9 9 4.5 0 4.5 4.5
+CALBUILD2 calisthenics 2    70   6 6 6 3 0 3 3
+HYHOME4   hybrid       4    60   4 4 4 2 0 2 2
+HYDB4     hybrid       4    75   3 6 5 5 4.5 5 3
+RNBASE4   running      4    40   0 0 0 0 0 0 0
+BBHOME3   hypertrophy  3    70   10 10 10 11.5 10 5 11
+BBADV4    hypertrophy  4    100  11 14 14 14 13 13 13
+PLW4      powerlifting 4    90   7 13 5 9 7.5 6 8.5
+PBW4      powerbuilding4    90   10 10 10 10 11.5 10 11.5
+ST4       strength     4    90   7 13 5 9 7.5 6 8.5
+QG2       general      2    30   2 4 2 2 1 2 1
+QG3       general      3    30   2 4 4 2 3 2 2
+QS2       strength     2    30   2 4 2 2 1 2 1
+QM2       hypertrophy  2    30   2 4 2 2 1 2 1
+QC2       calisthenics 2    30   2 4 2 1 0 2 1
+QPB2      powerbuilding2    30   2 4 2 2 3 2 2
+QSP2      sport        2    30   2 4 2 2 1 2 1
+QS3       strength     3    30   2 4 4 2 3 2 2
+QM3       hypertrophy  3    30   2 4 4 2 3 2 2
+QPB3      powerbuilding3    30   4 4 4 2 4 2 3
+QC3       calisthenics 3    30   4 4 4 1 0 2 2
+QSP3      sport        3    30   2 4 4 2 3 2 2
+QPL3      powerlifting 3    30   2 2 2 2 1 0 1
+QHY4      hybrid       4    30   2 4 2 2 3 2 2
+QR3       running      3    15   0 0 0 0 0 0 0
+SP2       sport        2    60   2 4 4 4 3 2 2
+QHY3      hybrid       3    30   2 4 2 2 3 2 2
+HY3       hybrid       3    45   2 4 4 2 2 2 2
+QR2       running      2    15   0 0 0 0 0 0 0
+PLSTART3  powerlifting 3    30   2 4 2 2 1 1 1
+GFSTAND2  general      2    50   4 4 2 2 0 2 2
+STSTAND2  strength     2    50   4 4 2 2 0 2 2
+GFNOGROUND2general      2    50   4 4 4 2 2 2 2
+GFNONE2   general      2    15   4 0 4 0 0 0 2
+STDBST2   strength     2    55   2 4 4 4 2 2 2
+GFDBST2   general      2    55   2 4 4 4 2 2 2
+BBDBST2   hypertrophy  2    55   2 4 4 4 2 2 2
+PBDBST2   powerbuilding2    55   2 4 4 4 2 2 2
+SPDBST2   sport        2    55   2 4 4 4 2 2 2
+CALDB2    calisthenics 2    45   4 4 4 0 0 2 2
+HYDB2     hybrid       2    60   2 4 4 4 2 2 2
+HYHOME2   hybrid       2    60   4 4 4 2 0 2 2
+
+
+Programs checked: 75. Rule failures: 0.
+Known gap BB2: Two sessions a week cannot give each major group 10 weighted sets at this session length. The description says the plan has less volume than a three- or four-day plan.
+Known gap BBDBST2: Two dumbbell sessions cannot give each major group 10 weighted sets at this session length. Use a three-day dumbbell plan for the full guide.
+Known gap PBDBST2: Two dumbbell sessions cannot give each major group 10 weighted sets at this session length. Use a three-day dumbbell plan for the full guide.
+Known gap PBSTART2: Two sessions a week cannot give each major group 10 weighted sets at this session length. The description says each group gets less weekly work than a three- or four-day plan.
+Allowance BBHOME3 biceps: The exercise library has no curl that needs only bodyweight or bands, so biceps get indirect pulling work (band rows, about 5 weighted sets a week). The description tells the user to add a dumbbell or band curl.
+Allowance RNBASE4 R7: an easy-only run base may pair back-to-back easy days, at most runs minus three per week (four runs in seven days force one pair).
+Exemption PLSTART3 R5: Learning block: one competition lift a day, started light while the setup is learned. Heavy sets belong in the build blocks.
+Checking check-program-selection.cjs
+PASS Weight parent tile retains every selected lifting discipline
+PASS Every goal offers only matching app-led plans; recommendations must fit
+PASS Powerlifting and powerbuilding have multiple complete discipline-specific choices
+PASS Unknown or mismatched goals and app program IDs do not fall into other plans
+PASS Unavailable first option is not recommended over a fitting home plan
+PASS Named references keep manual identity, source targets or empty calendars, and partial-block limits
+PASS Accepted powerlifting updates current plan, profile and next workout without changing past logs
+PASS Curated alternatives use exact known movements and same primary metric
+PASS Equipment substitute resets load, uses its own targets and preserves history and dates
+PASS Competition substitutions require explicit specificity acknowledgement
+PASS Unknown, incompatible, duplicate and missing machine setup substitutions are rejected
+PASS Recurring change touches only future repetitions of the chosen workout
+PASS Active substitution preserves other logged exercises, but cannot erase source reps
+PASS Substitution rejects stale history, paused plans, offline writes and saved sessions
+PASS Superset substitution preserves pair labels, set counts and rest
+PASS Active actual measurements, load, effort and new setup cannot be silently discarded
+PASS Active workout can continue across midnight; unstarted overdue workout cannot
+PASS Older generic squat-swap previews cannot bypass reviewed alternatives
+18 program selection and substitution checks passed
+Checking check-progression-regressions.cjs
+PASS RNBASE4 original pattern and seven-day cascade remain valid
+PASS RNBASE4 one bounded adjacent pair is allowed but a three-day run streak is refused
+PASS RNBASE4 direct schedule validation rejects four consecutive runs
+PASS RNBASE4 recovery uses a completed workout actual date instead of only its old planned date
+PASS RNBASE4 recovery includes an active workout actual date
+PASS Bilateral plate load wording does not double exercise execution time
+PASS Substitution preview and committed estimate match canonical time for equal bilateral work
+PASS Plate addition preview agrees with canonical estimate and permits a fitting tight budget
+PASS Substitution preserves separately allocated focus time when changing canonical work time
+PASS Seconds recorded per side include both sides and keep five-minute estimate rounding
+PASS Minutes recorded per side include both sides
+PASS Timed per-side addition matches canonical time and rejects an insufficient budget
+PASS Capacity range progression retains A1 superset instructions and paired rest
+PASS Capacity range progression retains A2 superset instructions and paired rest
+PASS Continuation preview targets only one review flag and preserves displayed targets
+PASS Accepted continuation review clears one flag without changing loads/items/history/dates/dependencies
+PASS Continuation review cannot bypass a still-unfinished later dependency
+PASS Continuation constructor refuses paused state
+PASS Continuation constructor refuses hold state
+PASS Continuation constructor refuses active state
+PASS Continuation refuses missing prerequisite evidence
+PASS Continuation refuses partial prerequisite evidence
+PASS Continuation refuses unfinished prerequisite evidence
+PASS Continuation refuses unknown-load prerequisite evidence
+PASS Continuation refuses an ordinary unflagged or already recorded workout
+PASS Continuation acceptance rejects a stale plan snapshot
+PASS Continuation acceptance rejects a stale history snapshot
+PASS Continuation acceptance rechecks missing prerequisites even when history count stays the same
+PASS Continuation acceptance rejects forged loads/dates/dependencies/status and multiple review targets
+PASS Continuation proposals survive saved-state validation and reopen for review
+30/30 desired-behavior regression cases passed. Report: /workspace/scratch/86ffa076637d/movefield/.sites-runtime/a03-progression-checks.json
+Checking check-qwen-assets.cjs
+PASS Qwen pinned artifact metadata and exact-build qualification: 1675 checks; zero actual devices qualified.
+Checking check-qwen-controls.cjs
+PASS optional Qwen controls/policy: 132 assertions; synthetic jobs/network only.
+Checking check-qwen-download.cjs
+PASS Qwen download/cancel/cache lifecycle: 190 assertions; synthetic assets only, no devices qualified.
+Checking check-qwen-runtime.cjs
+PASS Qwen runtime contracts/cache/loading/cancellation/context gates: 91 assertions. Worker responses are synthetic; no model inference measured.
+Checking check-qwen-training.cjs
+Prepared original Qwen training data: 162 train, 44 validation cases. Training has not run.
+PASS original Qwen dataset/provenance/separation/targets/fingerprints: 650 assertions. No training or model-accuracy claim from these checks.
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.004s
+
+OK
+Checking check-research-library.cjs
+PASS 855 unique bounded metadata records, 18 source queries, review fingerprints and on-device search. No corpus/training approval inferred.
+Checking check-revision-10.cjs
+PASS Blank or fractional reps cannot log a set or start rest
+PASS Valid set starts one timer; a duplicate tap leaves its deadline unchanged
+PASS Optional notes preserve rest and Done; reps, load and Undo cancel their own timer
+PASS Editing a different set preserves current rest
+PASS Last workout set and no-rest superset member do not start an alarm
+PASS Pause, extend, resume and expiration use deadline arithmetic
+PASS Reload retains a valid timer and discards missing or undone source sets
+PASS Malformed/far-future timers are ignored without discarding workouts
+PASS A delayed native schedule is canceled after End rest
+PASS Only the newest queued rest may be scheduled
+PASS A failed OS call does not poison future notification requests
+PASS Reject malformed saved workout/calendar case 1
+PASS Reject malformed saved workout/calendar case 2
+PASS Reject malformed saved workout/calendar case 3
+PASS Reject malformed saved workout/calendar case 4
+PASS Reject malformed saved workout/calendar case 5
+PASS Reject malformed saved workout/calendar case 6
+PASS Reject malformed saved workout/calendar case 7
+PASS New three-day hybrid, two-day running and novice SBD plans are complete
+PASS Powerlifting never changes to powerbuilding to fit equipment
+PASS A week of vacation pauses draft dates, preserves order/targets/gaps and extends finish
+PASS Competition protection remains effective after adding events and moving dates
+PASS No-equipment and floor-free paths do not add floor core work
+PASS Malformed optional rest data clears only the timer and preserves active work
+PASS Failed old-alert cancellation attempts every ID, prevents replacement and recovers
+PASS Pause or extend invalidates a delayed native schedule before it can become current
+PASS Legacy active workout without a target snapshot remains valid and has session targets
+PASS Supervised youth legacy foundation respects unavailable dumbbells
+PASS Run-only eligibility uses recent running readiness independent of lifting experience
+PASS Coach tracking targets enable a complete session without adding automated work or dates
+PASS Tracking target replacement can reorder, edit and remove draft work, without touching other sessions
+PASS Stale, empty, duplicate, fractional and unknown tracking targets reject atomically
+PASS Tracking editor cannot rewrite app-directed, active, completed or offline work
+PASS Long tracking work needs reviewed extra time, and untrusted prescription fields are stripped
+PASS Custom timed tracking exercises contribute their full actual-unit time
+35 revision 10 scenario groups passed
+Checking check-revision-11.cjs
+PASS Standing dumbbell plans match adult goals, experience, sex, starts and full block lengths
+PASS Two-day hybrid keeps full strength plus timed walk/jog and does not duplicate cardio add-ons
+PASS Boundaries stay explicit: no counterfeit SBD, no unsupported youth prescriptions, no invisible fallback
+PASS Same-weekday tracking copies targets atomically without touching dates or completed work
+PASS Reviewed return block resolves the dependency chain without restoring old volume
+PASS Coarse equipment increments offer reviewed reps for muscle work with unchanged rest and sets
+PASS Long custom timed actuals, feedback drafts, machine context and timers survive save/reopen
+7 groups; 428582 assertions passed
+Checking check-security.cjs
+pass initial state round trips without changed data 
+pass fresh state round trips without changed data 
+pass experienced sample state round trips without changed data 
+pass valid active workout and rest timers round trip 
+pass mismatched active session rejected 
+pass active workout without a plan rejected 
+pass unknown root, profile and workout fields stripped 
+pass __proto__ in nested raw JSON rejected 
+pass constructor in nested raw JSON rejected 
+pass prototype in nested raw JSON rejected 
+pass invalid state "" rejected 
+pass invalid state "null" rejected 
+pass invalid state "[]" rejected 
+pass invalid state "{\"schema\":2}" rejected 
+pass invalid state "{\"schema\":2,\"profile\":{\"age\":1e400,\"goal\":\"strength\",\"e" rejected 
+pass oversized raw input rejected before parsing 
+pass too many weekdays rejected 
+pass invalid calendar date rejected 
+pass invalid nested set value rejected 
+pass oversized set count rejected 
+pass normal unfinished setup round trips 
+pass cleared numeric inputs persist in unfinished setup 
+pass negative draft step rejected 
+pass unfinished blank date survives reload 
+pass legacy setup draft forces calendar review 
+pass oversized import does not parse or create exercises 
+pass request nonce cannot be supplied by a client and changes every request 
+pass unused write and internal routes are closed 
+pass response hardening preserves status and prevents nonce caching 
+29/29 security checks passed
+Checking check-setup-hydration.cjs
+PASS web: rejected hydration retains draft through field edits and step changes
+PASS web: empty hydration enables normal saving and later edits
+PASS web: valid hydration restores answers and permits future autosaves
+PASS native: rejected hydration retains draft through field edits and step changes
+PASS native: empty hydration enables normal saving and later edits
+PASS native: valid hydration restores answers and permits future autosaves
+PASS web: validation failure after a successful vault read blocks replacement saves
+PASS web: nonresume entry checks unreadable saved draft and keeps later answers visit-only
+PASS native: source-template entry checks unreadable existing draft and never overwrites it
+PASS native: source-template entry checks readable draft without applying old profile
+{
+  "scenarios": 10,
+  "passed": [
+    "web: rejected hydration retains draft through field edits and step changes",
+    "web: empty hydration enables normal saving and later edits",
+    "web: valid hydration restores answers and permits future autosaves",
+    "native: rejected hydration retains draft through field edits and step changes",
+    "native: empty hydration enables normal saving and later edits",
+    "native: valid hydration restores answers and permits future autosaves",
+    "web: validation failure after a successful vault read blocks replacement saves",
+    "web: nonresume entry checks unreadable saved draft and keeps later answers visit-only",
+    "native: source-template entry checks unreadable existing draft and never overwrites it",
+    "native: source-template entry checks readable draft without applying old profile"
+  ],
+  "scope": "Compiled actual TSX with real training/onboarding/saved-data helpers and actual field/step callbacks; simulated hook scheduler, mocked UI/vault/native I/O. Not React DOM or device acceptance."
+}
+Checking check-shared.cjs
+PASS 39 canonical web/native shared files and snapshot hashes.
+Checking check-tools-boundaries.cjs
+{
+  "passed": 14,
+  "total": 14,
+  "results": [
+    {
+      "name": "Timed loaded movements do not create estimated strength bests",
+      "pass": true
+    },
+    {
+      "name": "Progression-disabled rep movements do not create estimated strength bests",
+      "pass": true
+    },
+    {
+      "name": "Unknown and whitespace-only machine setups do not establish comparability",
+      "pass": true
+    },
+    {
+      "name": "Different known setups do not create a cross-machine estimated best",
+      "pass": true
+    },
+    {
+      "name": "Same known eligible machine setup still reports a new estimated best",
+      "pass": true
+    },
+    {
+      "name": "Eligible free-weight adult comparison still reports a new estimated best",
+      "pass": true
+    },
+    {
+      "name": "Youth still receives no estimated bests",
+      "pass": true
+    },
+    {
+      "name": "Explicit 2.5 lb dumbbell steps remain supported below 37.5 lb",
+      "pass": true
+    },
+    {
+      "name": "A light dumbbell does not produce zero-load or heavier-than-work warm-ups",
+      "pass": true
+    },
+    {
+      "name": "Default light dumbbell calculation contains no zero or excessive loads",
+      "pass": true
+    },
+    {
+      "name": "Barbell grids are relative to the selected bar, including odd bar weights",
+      "pass": true
+    },
+    {
+      "name": "Metric custom increments stay on their grid without exceeding working load",
+      "pass": true
+    },
+    {
+      "name": "Invalid explicit increments do not silently generate misleading loads",
+      "pass": true
+    },
+    {
+      "name": "Unknown input and supervised youth behavior remain unchanged",
+      "pass": true
+    }
+  ]
+}
+Checking check-tools.cjs
+PASS Plates: unknown stays unknown, zero is an error, and totals split into the largest plates per side
+PASS Warm-up ladder: percentages of the working load, rounded to loadable steps, bar floor, adults only
+PASS Personal bests need an earlier rated estimate, are adult-only, and are not awarded for lower results
+PASS Weekly review counts the seven days ending today from the plan; today stays open until it ends
+4 groups, 33 checks passed.
+Checking check-training.cjs
+{
+  "passed": 29,
+  "total": 29,
+  "results": [
+    {
+      "name": "New adult paths show ranges; youth remains supervised fixed progression",
+      "status": "pass"
+    },
+    {
+      "name": "Dates reject nonexistent values and accept leap day",
+      "status": "pass"
+    },
+    {
+      "name": "Calendar arithmetic remains whole days across DST",
+      "status": "pass"
+    },
+    {
+      "name": "Occupied date single move fails gracefully; cascade succeeds atomically",
+      "status": "pass"
+    },
+    {
+      "name": "One-day forward shift preserves every original gap and every target",
+      "status": "pass"
+    },
+    {
+      "name": "Later selected session shifts only its future tail",
+      "status": "pass"
+    },
+    {
+      "name": "Fixed event anywhere in cascade blocks all mutation",
+      "status": "pass"
+    },
+    {
+      "name": "An added commitment makes an existing date proposal stale",
+      "status": "pass"
+    },
+    {
+      "name": "Active target cannot queue or move offline",
+      "status": "pass"
+    },
+    {
+      "name": "Valid offline acceptance queues without changes; reconnect revalidates",
+      "status": "pass"
+    },
+    {
+      "name": "Accepted changes cannot apply twice",
+      "status": "pass"
+    },
+    {
+      "name": "Backward cascade cannot remove recovery or reverse order",
+      "status": "pass"
+    },
+    {
+      "name": "Whole block extension is disclosed; no session dropped",
+      "status": "pass"
+    },
+    {
+      "name": "Coach manual date changes remain possible without dose adaptation",
+      "status": "pass"
+    },
+    {
+      "name": "Exercise history retains partial sets, exact IDs and date ordering",
+      "status": "pass"
+    },
+    {
+      "name": "One comparable exposure suggests repeat load, never automatic increase",
+      "status": "pass"
+    },
+    {
+      "name": "Two top-of-range exposures can propose an available small load increase",
+      "status": "pass"
+    },
+    {
+      "name": "Unknown effort, unknown symptoms and changed rep range do not unlock increase",
+      "status": "pass"
+    },
+    {
+      "name": "Oversized equipment jumps remain unavailable instead of rounding",
+      "status": "pass"
+    },
+    {
+      "name": "Missing loads, partial work, hard feedback and stale history require recalibration",
+      "status": "pass"
+    },
+    {
+      "name": "A different machine/setup cannot inherit the previous load",
+      "status": "pass"
+    },
+    {
+      "name": "Youth and symptom holds cannot produce automatic adult loads",
+      "status": "pass"
+    },
+    {
+      "name": "Legacy rep targets remain unchanged until explicit range approval",
+      "status": "pass"
+    },
+    {
+      "name": "Skipping can be restored and invalidates existing proposals",
+      "status": "pass"
+    },
+    {
+      "name": "Malformed import remains rejected; authority fields stripped",
+      "status": "pass"
+    },
+    {
+      "name": "Strength accessory rep ranges stay stable across the block",
+      "status": "pass"
+    },
+    {
+      "name": "Load commit rejects a changed equipment increment",
+      "status": "pass"
+    },
+    {
+      "name": "An overdue active workout uses today for recovery checks",
+      "status": "pass"
+    },
+    {
+      "name": "Resolved proposals are capped at 50 and every open proposal is kept",
+      "status": "pass"
+    }
+  ]
+}
+Checking check-transactional-browser-vault.cjs
+PASS First save commits non-extractable key and ciphertext together, then notifies
+PASS Legacy plaintext imports, verifies, cleans up and reopens without reimport
+PASS Legacy encrypted records retain their key and exact ciphertext during import
+PASS Legacy restore interruption: before journal
+PASS Legacy restore interruption: after journal
+PASS Legacy restore interruption: after ciphertext
+PASS Legacy restore interruption: after obsolete cleanup
+PASS Legacy restore interruption: before key commit
+PASS Legacy restore interruption: after key and journal commit
+PASS Pending legacy cleanup permits reads, refuses writes and imports after retry
+PASS Lost legacy/current keys preserve raw exports and require explicit replacement
+PASS Unreadable encrypted setup is retained without preventing valid main reads and saves
+PASS Malformed sealed legacy setup never blocks valid main profile recovery
+PASS Stale tab edits and restores refuse conflicts while refreshed tabs use the current key
+PASS In-flight write conflicts with a replacement committed during encryption
+PASS In-flight replace conflicts with a replacement committed during encryption
+PASS First-key quota abort leaves no partial record or orphaned key and sends no save notice
+PASS Abort after request success and restore quota preserve the current profile
+PASS Failed migration preserves every legacy source and remains retryable
+PASS Discard/reset tombstones prevent resurrection when legacy cleanup is denied
+PASS Migrated IndexedDB reads, replacement and reset work with all legacy access denied
+PASS Large ciphertext exceeding five million characters saves and reopens exactly
+PASS Without Web Locks existing reads/exports work and all mutations refuse before saving
+PASS Notification failure does not undo a committed readable save
+PASS transactional browser vault: 24 scenarios, 163 checks (actual transpiled app, fake-indexeddb, real WebCrypto)
+Checking check-transfer.cjs
+  Argon2id round trip took 0.23 s in Node. Phone timing is not measured.
+PASS transfer files: 62 checks
+Checking check-workout-review.cjs
+PASS workout review gate: 25 checks
+Checking check-workout-science.cjs
+PASS HY5 weekday orientation keeps the full block and discloses the delayed first role
+PASS Every start weekday preserves HY5 roles, counts and comparable recovery
+PASS Commitments preserve all HY5 work and prerequisites without occupying protected dates
+PASS Original PLSL3 A/B roles roll across weeks with their actual prior-role prerequisites
+PASS Named StrongLifts stays manual with exact base work and continuous A/B
+PASS All 75 original paths preserve complete blocks and resolve scoped evidence
+PASS All 20 named references remain source/user owned, including 12 empty calendars
+PASS Youth current and catalog paths inherit youth guidance without adult goal efficacy cards
+PASS Healthy older adult strength has older-function context; source scope excludes clinical validation
+PASS App running intervals and base runs do not inherit NHS or adult resistance efficacy citations
+PASS Empty generic coach/manual tracking carries no app-prescription efficacy evidence
+PASS Activity overlay rejects the demonstrated final canonical over-window draft
+PASS Selected focus citations and URL notes follow the actual adult/youth add-ons
+PASS First-time equal-fit ranking prefers a smaller feasible foundation without hiding longer choices
+PASS Adult phase increase stays explicitly preaccepted, rather than silently changing the history gate
+PASS Legacy AT01-AT04 remain executable and recipe aliases/policy drift are explicit
+16 workout-science regression groups passed
+53/53 check suites passed.

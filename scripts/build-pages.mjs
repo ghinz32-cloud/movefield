@@ -1,0 +1,19 @@
+import {build} from 'vite';
+import {mkdir,copyFile,readdir,readFile,writeFile,lstat} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import path from 'node:path';
+const root=process.cwd(),out=path.join(root,'dist-pages');
+await build({configFile:path.join(root,'vite.pages.config.ts')});
+// Explicit public allowlist: never recursively copy public, server output or runtime state.
+const files=['favicon.svg','privacy.html','exercise-content.json','exercise-guides.json','fitness-research.json','downloads/movefield-mobile-r14.zip'];
+for(const entry of await readdir(path.join(root,'public/fonts')))if(/\.(ttf|woff2|txt)$/i.test(entry))files.push('fonts/'+entry);
+for(const file of files){const source=path.join(root,'public',file);if(!(await lstat(source)).isFile())throw Error('Not a regular public asset: '+file);await mkdir(path.dirname(path.join(out,file)),{recursive:true});await copyFile(source,path.join(out,file));}
+await writeFile(path.join(out,'.nojekyll'),'');
+async function walk(dir){const result=[];for(const name of await readdir(dir)){const file=path.join(dir,name),stat=await lstat(file);if(stat.isSymbolicLink())throw Error('Symlinks forbidden');if(stat.isDirectory())result.push(...await walk(file));else result.push(file);}return result;}
+const assets={};for(const file of await walk(out)){const name=path.relative(out,file).replaceAll(path.sep,'/');assets['/movefield/'+name]=createHash('sha256').update(await readFile(file)).digest('hex');}
+const version=createHash('sha256').update(JSON.stringify(assets)).digest('hex');
+const manifest={schema:1,base:'/movefield/',version,assets};
+await writeFile(path.join(out,'pages-manifest.json'),JSON.stringify(manifest,null,2)+'\n');
+const template=await readFile(path.join(root,'static-web/sw-template.js'),'utf8');
+await writeFile(path.join(out,'sw.js'),template.replace('__MANIFEST__',JSON.stringify(manifest)));
+console.log(`Pages output: ${Object.keys(assets).length} allowlisted files; version ${version}`);

@@ -62,3 +62,5 @@ next-env.d.ts
 # Rebuilt from pinned packages by scripts/run-framework.mjs.
 /public/runtime/
 __pycache__/
+
+/dist-pages/

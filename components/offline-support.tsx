@@ -1,4 +1,5 @@
 "use client";
+import {publicPath} from '@/lib/public-path';
 import {useEffect} from 'react';
 
 // Registers the offline shell (public/sw.js) in production builds only. The service worker stores the app's own
@@ -6,7 +7,7 @@ import {useEffect} from 'react';
 export function OfflineSupport(){
  useEffect(()=>{
   if(!import.meta.env.PROD||!('serviceWorker' in navigator))return;
-  void navigator.serviceWorker.register('/sw.js',{scope:'/'}).catch(()=>undefined);
+  void navigator.serviceWorker.register(publicPath('sw.js'),{scope:publicPath('')}).catch(()=>undefined);
  },[]);
  return null;
 }

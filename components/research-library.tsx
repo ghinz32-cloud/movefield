@@ -1,3 +1,4 @@
+import {publicPath} from '@/lib/public-path';
 'use client';
 import {useEffect,useMemo,useState} from 'react';
 import {type ResearchArchive,searchResearch} from '@/lib/research-library';
@@ -6,7 +7,7 @@ import {Input} from '@/components/ui/input';
 export default function ResearchLibrary(){
  const [archive,setArchive]=useState<ResearchArchive|null>(null),[error,setError]=useState(''),[retry,setRetry]=useState(0);
  const [query,setQuery]=useState(''),[topic,setTopic]=useState('All'),[recent,setRecent]=useState(false),[limit,setLimit]=useState(20);
- useEffect(()=>{const abort=new AbortController();fetch('/fitness-research.json',{signal:abort.signal}).then(r=>{if(!r.ok)throw Error('unavailable');return r.json()}).then(value=>{const data=value as ResearchArchive;if(data.schema!==1||!Array.isArray(data.papers)||!Array.isArray(data.queries))throw Error('invalid archive');setArchive(data);setError('')}).catch(()=>{if(!abort.signal.aborted)setError('The research archive could not open. Try again.');});return()=>abort.abort()},[retry]);
+ useEffect(()=>{const abort=new AbortController();fetch(publicPath('fitness-research.json'),{signal:abort.signal}).then(r=>{if(!r.ok)throw Error('unavailable');return r.json()}).then(value=>{const data=value as ResearchArchive;if(data.schema!==1||!Array.isArray(data.papers)||!Array.isArray(data.queries))throw Error('invalid archive');setArchive(data);setError('')}).catch(()=>{if(!abort.signal.aborted)setError('The research archive could not open. Try again.');});return()=>abort.abort()},[retry]);
  const found=useMemo(()=>searchResearch(archive?.papers??[],query,topic,recent),[archive,query,topic,recent]);
  if(error)return <div role="alert" className="notice warning">{error}<Button onClick={()=>setRetry(v=>v+1)}>Retry</Button></div>;
  if(!archive)return <p role="status">Opening the research archive…</p>;

@@ -21,10 +21,10 @@ async function main(){
   assert.notEqual((await request()).response.headers.get('Content-Security-Policy'),csp);
   assert.equal((await request('/',{method:'POST'})).response.status,405);
   for(const route of ['/__vinext/cache','/qa-preview','/exercise-photos/Air_Bike/0.jpg'])assert.equal((await request(route)).response.status,404,route);
-  const starterPath=fs.readFileSync('app/page.tsx','utf8').match(/href="(\/downloads\/movefield-mobile[^\"]+\.zip)"/)?.[1];
+  const starterPath=fs.readFileSync('app/page.tsx','utf8').match(/href=\{publicPath\('((?:downloads\/)movefield-mobile[^']+\.zip)'\)\}/)?.[1];
   assert.ok(starterPath,'Settings must link to the current generated starter');
-  assert.equal(starterPath,'/downloads/movefield-mobile-r14.zip');
-  const starter=await request(starterPath);
+  assert.equal(starterPath,'downloads/movefield-mobile-r14.zip');
+  const starter=await request('/'+starterPath);
   assert.equal(starter.response.status,200);assert.equal(starter.bytes[0],80);assert.equal(starter.bytes[1],75);assert.ok(starter.bytes.length>1000);
   for(const asset of ['/fonts/inter-variable.ttf','/fonts/barlow-condensed-semibold.ttf','/brand/movefield-mark.svg'])assert.equal((await request(asset)).response.status,200,asset);
   console.log(JSON.stringify({brandAssetsAvailable:true,nativeStarterAvailable:true,status:res.status,scripts:scripts.length,nonceMatched:true,nonceRotates:true,writeRouteClosed:true,internalRouteClosed:true,qaRouteAbsent:true,unclearedPhotosAbsent:true,cache:res.headers.get('Cache-Control')}));
