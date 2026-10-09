@@ -1,0 +1,306 @@
+{
+  "source": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf",
+  "files": [
+    {
+      "path": "actual-ci-verification.json",
+      "bytes": 3350,
+      "sha256": "89cdddbeec9818f63a0fb9d773403389be616ffc63ee712e45639ff74c4d4678"
+    },
+    {
+      "path": "android/mobile/android/app/build/reports/lint-results-release.html",
+      "bytes": 136464,
+      "sha256": "1d398650cef8bc3506c3f20a9c01ffba56904421f508373783cd343a710aeaf9"
+    },
+    {
+      "path": "android/mobile/android/app/build/reports/lint-results-release.txt",
+      "bytes": 19786,
+      "sha256": "f3fe5ce7e4c3d65e62ba489ef952d8089708c2449a46d23b312f432fe3a31629"
+    },
+    {
+      "path": "android/mobile/android/app/build/reports/lint-results-release.xml",
+      "bytes": 41661,
+      "sha256": "7532ba4ac9ceb45bb17c8ccb4f3e380d844cebbe911c78f0a58215a23db52288"
+    },
+    {
+      "path": "android/native-evidence/android/apk.sha256",
+      "bytes": 127,
+      "sha256": "f300f6a70fae37bdc848beb2e9d1f10ec027d02bfd4d3928e7d3994b56a6ee38"
+    },
+    {
+      "path": "android/native-evidence/android/backup.xml",
+      "bytes": 640,
+      "sha256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff"
+    },
+    {
+      "path": "android/native-evidence/android/extraction.xml",
+      "bytes": 1502,
+      "sha256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032"
+    },
+    {
+      "path": "android/native-evidence/android/inspection.json",
+      "bytes": 1578,
+      "sha256": "41b88528c2be1e48c8ace6ac1070f192de0bd8cba7b13524bcfa8cc06a3b8cec"
+    },
+    {
+      "path": "android/native-evidence/android/manifest.xml",
+      "bytes": 8851,
+      "sha256": "b3bd4fa452a9ba8053ca8d4d2c2ae0ec24a6a337b96de5b69f33920ee227e73c"
+    },
+    {
+      "path": "android/native-evidence/android/resources.txt",
+      "bytes": 1659611,
+      "sha256": "e82723a42c00388860b2907be6a7ddc25a28f42505b720dec14de220c6898593"
+    },
+    {
+      "path": "android/native-evidence/android/rule-paths.json",
+      "bytes": 773,
+      "sha256": "d1a82f2baeaa88cb89fa202bd36a0d02ee337ea76c9da3758d1981dd3e4cc055"
+    },
+    {
+      "path": "android/native-evidence/android/signing.txt",
+      "bytes": 342,
+      "sha256": "a355997bae3e4812f3506ebb9f734b38d7fa78d5faaaaad4f038ab00c2f76ab6"
+    },
+    {
+      "path": "android/native-evidence/android/source.txt",
+      "bytes": 82,
+      "sha256": "7529c454facfebe260f5212c3bb3d43131ba36d295b3633e0c68f19c66f24d38"
+    },
+    {
+      "path": "android-artifact-verification.json",
+      "bytes": 3367,
+      "sha256": "89908f62a99a843bfa6653aa699a6fe9ae7c9a012b51b130bfdf278709e9d629"
+    },
+    {
+      "path": "android-inspector-replay.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "android-inspector-replay.stdout.json",
+      "bytes": 1578,
+      "sha256": "41b88528c2be1e48c8ace6ac1070f192de0bd8cba7b13524bcfa8cc06a3b8cec"
+    },
+    {
+      "path": "android-job.log",
+      "bytes": 129791,
+      "sha256": "17156aa287f8fa97fef53bb28597707355c5840fbc401bbeb9aa178d3fd5d948"
+    },
+    {
+      "path": "android-verification.json",
+      "bytes": 12527,
+      "sha256": "bcbd2e9121cb952d9bfb3759698e79004515f1f0a1c8d3e9206d39dbd403fc46"
+    },
+    {
+      "path": "archives/android-release-compilation-test-only.zip",
+      "bytes": 334088,
+      "sha256": "6c0b98503cede51471d37129ab0839721fe4cd3b28760f899c880c238d3f8a46"
+    },
+    {
+      "path": "archives/ios-release-simulator-compilation.zip",
+      "bytes": 12009,
+      "sha256": "4015637095006ea5db9a5717f17df01099285e00f5ffa0c9a91490c972253598"
+    },
+    {
+      "path": "archives/native-input-decision.zip",
+      "bytes": 464,
+      "sha256": "0dfd8efd2462fe29193048378ab6c56099d98af3da71f37a7133f6b5f3e4091c"
+    },
+    {
+      "path": "archives/quality-results.zip",
+      "bytes": 7989,
+      "sha256": "bc100aac27c3c617ae57ebbb73f1c0bda14bbb9b3dbec1f1c9480473155bacef"
+    },
+    {
+      "path": "artifacts-initial.json",
+      "bytes": 788,
+      "sha256": "29a1d780de00e2c1fbed21e681f07b93aea0f69fe29eed41bfac2b1297afe83f"
+    },
+    {
+      "path": "collection-status.json",
+      "bytes": 1028,
+      "sha256": "d4599b577ce3982da0d57cbc4903757bd61b8bd2dba71b92c992c27771937538"
+    },
+    {
+      "path": "gate/decision.json",
+      "bytes": 562,
+      "sha256": "2a5a216d9ca43e46c176b7a4d7de56c7b7604ee6a3a24123bddd07df198f84a1"
+    },
+    {
+      "path": "gate-artifact-verification.json",
+      "bytes": 1363,
+      "sha256": "d9e304870b955587a1bc86abef0affbc9c887147a80807bb792918ace76fbadc"
+    },
+    {
+      "path": "gate-job.log",
+      "bytes": 15718,
+      "sha256": "51f50ff79b56f5bee600fa114af0003ad0c406e104eccaf52679f60ffd47679f"
+    },
+    {
+      "path": "gate-verification.json",
+      "bytes": 2612,
+      "sha256": "0b83a87ad510c25cffc5198f55f92ed802b0f3b42dec729a8ad35d0ce4a84c30"
+    },
+    {
+      "path": "ios/Info.plist",
+      "bytes": 3553,
+      "sha256": "9f7d264fde03eb71e168a5d20ee366258c59e2abbadcb3c4b7a609d9346237e1"
+    },
+    {
+      "path": "ios/Podfile.lock",
+      "bytes": 78675,
+      "sha256": "1d6e645a9a1eeb94d3b7a20e7874f38ca195f0fc47d85c61edef1f85cc263fe8"
+    },
+    {
+      "path": "ios/PrivacyInfo.xcprivacy",
+      "bytes": 1274,
+      "sha256": "ab8e9be3d1713701eef605d660a79483ebfab512bc726a28b67c82663382b1fa"
+    },
+    {
+      "path": "ios/inspection.json",
+      "bytes": 6171,
+      "sha256": "32270bd48f36decdddbbcf9b177e9f59014790b0528715cce9f91540bb216c01"
+    },
+    {
+      "path": "ios/source.txt",
+      "bytes": 82,
+      "sha256": "7529c454facfebe260f5212c3bb3d43131ba36d295b3633e0c68f19c66f24d38"
+    },
+    {
+      "path": "ios-artifact-verification.json",
+      "bytes": 2004,
+      "sha256": "ee68ae8eef82c4359f6727a6643f15002e0d25468c6c1d80716f8b325374c8bc"
+    },
+    {
+      "path": "ios-log-retrieval-limitation.json",
+      "bytes": 338,
+      "sha256": "7a1df6586a4dd7b8636b75a52c321ebe304ef88dcb14559b2dd88816e4585e9c"
+    },
+    {
+      "path": "ios-verification.json",
+      "bytes": 10330,
+      "sha256": "8da673ec003cc0fdb522a5d9857e7c3ce3e69b2ca975bda09e960614e3b2b56d"
+    },
+    {
+      "path": "official-ios-job-steps-final.json",
+      "bytes": 1723,
+      "sha256": "730907a233ea766942f6505561ebdc9eb57e1c529e724136a703ba67b001cc83"
+    },
+    {
+      "path": "official-native-jobs-final.json",
+      "bytes": 6009,
+      "sha256": "8e195aa808f4ee258c28ed17798bbbe951ba1dbb835884e23fde92ac4b180397"
+    },
+    {
+      "path": "official-run-metadata-final.json",
+      "bytes": 30455,
+      "sha256": "bf580e8fa83b7512725499fbb03a0f07784661ac87ab6af1b56e1e3889a713a7"
+    },
+    {
+      "path": "quality/.sites-runtime/a03-progression-checks.json",
+      "bytes": 4357,
+      "sha256": "b3f4f74e560f1c17e9322ba3aa6ccd2ec31f3dace65be896c12d7a269a1f0955"
+    },
+    {
+      "path": "quality/.sites-runtime/browser-qwen-cache-checks.json",
+      "bytes": 166,
+      "sha256": "ac66f38e49aa5f977c6bba6a4d744f3e3c119ca0ad82928147db931dfde4c8fb"
+    },
+    {
+      "path": "quality/.sites-runtime/bundle-check.json",
+      "bytes": 1499,
+      "sha256": "de6cf6b3825277ff8b1744c3086477508585a10a77bbd55566cf9d5faf88593a"
+    },
+    {
+      "path": "quality/.sites-runtime/mobile-dependency-checks.json",
+      "bytes": 8512,
+      "sha256": "75646b32a16953564176096f266b5f4d2ea8b5c644f8a64eaaa620f3bfdcca18"
+    },
+    {
+      "path": "quality/.sites-runtime/mobile-package-check-results.json",
+      "bytes": 1525,
+      "sha256": "c2722983dd40433ed5221171bebcfdd583160b385e266cded4c7791e677ff354"
+    },
+    {
+      "path": "quality/.sites-runtime/production-checks.json",
+      "bytes": 211,
+      "sha256": "87a93ad99dd7a7403ecc4f35139b2ed61fcec2b2b9d4c2de6e7abe1c8b38ab00"
+    },
+    {
+      "path": "quality/.sites-runtime/qwen-controls-checks.json",
+      "bytes": 135,
+      "sha256": "70c4ed4fac2de7b99f62546ed05e40236d734db242897f4d5b2179f64476e4c5"
+    },
+    {
+      "path": "quality/.sites-runtime/qwen-download-checks.json",
+      "bytes": 219,
+      "sha256": "0652bd32ae845b640bd25eabdeb5fc9e55017cceb40b02b9d97529db5d51b79b"
+    },
+    {
+      "path": "quality/.sites-runtime/regression-checks.json",
+      "bytes": 3649,
+      "sha256": "7ab1921c0adaaf1e3a4ca32a184bb1d669335232de997628760b450c6afee278"
+    },
+    {
+      "path": "quality/.sites-runtime/security-check-results.json",
+      "bytes": 3358,
+      "sha256": "ce848c99b5d3363efe90bde73f27aab35c64d059a84a60f5285556ae49c729d0"
+    },
+    {
+      "path": "quality/.sites-runtime/web-dependency-checks.json",
+      "bytes": 1127,
+      "sha256": "7b198fbdfb68fa9173a25e366ed5861743c0652e1db36305f526ff11d2ecb256"
+    },
+    {
+      "path": "quality/.sites-runtime-quality-source.txt",
+      "bytes": 82,
+      "sha256": "b1bb7e187a12b543a28b4a4dd7627ae52517e3863f707185c3c3c8b1f0877e58"
+    },
+    {
+      "path": "quality-artifact-verification.json",
+      "bytes": 3264,
+      "sha256": "a1e1ebaab113c5e4747a4971b5e6a5d6de34ae6bd43a12b16882496bc1e1a900"
+    },
+    {
+      "path": "quality-job.log",
+      "bytes": 208233,
+      "sha256": "c72e6a8fd00d326658271af3c715ba8d5a1b827ef4ca81e6daf647c5713a9617"
+    },
+    {
+      "path": "quality-verification.json",
+      "bytes": 3099,
+      "sha256": "5ff46959b829d72ff2236c7684321dfee9c68b13a87906572b99cd45c832f6ba"
+    },
+    {
+      "path": "replay-source/.github/workflows/native-builds.yml",
+      "bytes": 7263,
+      "sha256": "7032c06f0402d88e6072c9263d0be5454f5479e2c8cb0369a34e924c84b082c4"
+    },
+    {
+      "path": "replay-source/.github/workflows/quality.yml",
+      "bytes": 2430,
+      "sha256": "276dbd9d38c64dc2cc975b71543a326cfb0690d56b1cb769e6a9ae3edd310728"
+    },
+    {
+      "path": "replay-source/scripts/inspect-native-artifacts.py",
+      "bytes": 23484,
+      "sha256": "db33ac39abc5b1e49f37fc0802f4ff60555f42c0696e61fb66774a81e6caf0dc"
+    },
+    {
+      "path": "replay-source/scripts/native-change-gate.py",
+      "bytes": 4769,
+      "sha256": "02a4ae880a9f256978f753089df0f82172c27eefe81afe7c372121a0e0c2da06"
+    },
+    {
+      "path": "replay-source/source-verification.json",
+      "bytes": 1091,
+      "sha256": "f5c5f1317a0834e54b22844c5ca675d8a6a2a6b94ff20e0ac2ab4c0105eb9468"
+    },
+    {
+      "path": "run-metadata-initial.json",
+      "bytes": 2551,
+      "sha256": "0cca610e714adc0a60329831c35671d463b9dcc01d4459b249fc5847abaf12f5"
+    }
+  ],
+  "excludesSelf": true
+}

@@ -1,0 +1,21 @@
+{
+  "observedAt": "2026-10-09T19:22:35.608039+00:00",
+  "source": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf",
+  "sourceTree": "eec113576e18fc18d4976ceaa03b7e7ca464a930",
+  "nativeRun": 37978371785,
+  "qualityRun": 37978371782,
+  "status": "complete",
+  "runConclusions": {
+    "native": "success",
+    "quality": "success"
+  },
+  "qualification": "Actual SDK compilation and final packaged metadata inspection passed for exact source. Physical device/emulator interactions, notification lifecycle, biometric behavior, full native API reachability, release signing and store acceptance remain unverified.",
+  "iosFullLogLimitation": {
+    "jobId": 113982397674,
+    "attempts": 2,
+    "tool": "github_fetch_workflow_job_logs",
+    "result": "Transport closed twice; full iOS job log was not obtained.",
+    "remainingOfficialEvidence": "Run and job success, compile/inspection step success, exact-source receipt, digest-verified official archive and CI inspection are retained."
+  },
+  "summary": "actual-ci-verification.json"
+}

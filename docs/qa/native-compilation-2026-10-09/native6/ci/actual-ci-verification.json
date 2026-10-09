@@ -1,0 +1,85 @@
+{
+  "verifiedAt": "2026-10-09T19:22:35.608039+00:00",
+  "source": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf",
+  "sourceTree": "eec113576e18fc18d4976ceaa03b7e7ca464a930",
+  "nativeRun": 37978371785,
+  "qualityRun": 37978371782,
+  "runAttempt": 1,
+  "runConclusions": {
+    "native": "success",
+    "quality": "success"
+  },
+  "gate": {
+    "compile": true,
+    "reason": "native-inputs-changed",
+    "before": "d740c61084f44505273e900f7672ac92bae1a218",
+    "changedPathCount": 26,
+    "nativeChangedPathCount": 6,
+    "officialDecisionAndIndependentDiffVerified": true
+  },
+  "quality": {
+    "regressionPassed": 53,
+    "regressionTotal": 53,
+    "productionPassed": 3,
+    "productionTotal": 3,
+    "testedIntegrationCommit": "61afe097261b44672af81312e5e4f0efec9fb1d7",
+    "integrationTreeMatchesSource": true,
+    "officialGitCommitTreeAndParentsVerified": true
+  },
+  "android": {
+    "jobId": 113982397794,
+    "conclusion": "success",
+    "sourceMatchesExpected": true,
+    "exactSourceDecodedMetadataInspectorReplayMatchesCI": true,
+    "lintErrors": 0,
+    "lintWarnings": 46,
+    "unitTests": "NO-SOURCE",
+    "signing": "Android Debug test certificate in official apksigner receipt",
+    "apkBinaryRetained": false
+  },
+  "ios": {
+    "jobId": 113982397674,
+    "conclusion": "success",
+    "sourceMatchesExpected": true,
+    "actualCICompiledAndInspectedCompleteUnsignedSimulatorApp": true,
+    "actualCIPrivacyManifestCount": 11,
+    "independentReplay": "retained Info.plist and root PrivacyInfo.xcprivacy only; exact-source replay matches corresponding official CI fields",
+    "independentReplayPrivacyManifestCount": 1,
+    "SDKPrivacyFilesRetained": false,
+    "fullAppRetained": false,
+    "signing": "unsigned Release simulator build; CODE_SIGNING_ALLOWED=NO",
+    "fullJobLogObtained": false
+  },
+  "archives": {
+    "gate": {
+      "artifactId": 11639279064,
+      "sha256": "0dfd8efd2462fe29193048378ab6c56099d98af3da71f37a7133f6b5f3e4091c",
+      "bytes": 464
+    },
+    "quality": {
+      "artifactId": 11640500198,
+      "sha256": "bc100aac27c3c617ae57ebbb73f1c0bda14bbb9b3dbec1f1c9480473155bacef",
+      "bytes": 7989
+    },
+    "android": {
+      "artifactId": 11639789893,
+      "sha256": "6c0b98503cede51471d37129ab0839721fe4cd3b28760f899c880c238d3f8a46",
+      "bytes": 334088
+    },
+    "ios": {
+      "artifactId": 11640790804,
+      "sha256": "4015637095006ea5db9a5717f17df01099285e00f5ffa0c9a91490c972253598",
+      "bytes": 12009
+    }
+  },
+  "archiveScope": "All four official evidence ZIPs are complete, SHA256/CRC verified and extracted bytes match. They do not contain a complete APK or simulator app binary.",
+  "qualification": "Actual SDK compilation and final packaged metadata inspection passed for exact source. Physical device/emulator interactions, notification lifecycle, biometric behavior, full native API reachability, release signing and store acceptance remain unverified.",
+  "iosLogRetrieval": {
+    "jobId": 113982397674,
+    "attempts": 2,
+    "tool": "github_fetch_workflow_job_logs",
+    "result": "Transport closed twice; full iOS job log was not obtained.",
+    "remainingOfficialEvidence": "Run and job success, compile/inspection step success, exact-source receipt, digest-verified official archive and CI inspection are retained."
+  },
+  "noPhysicalDeviceOrStoreQualification": true
+}
