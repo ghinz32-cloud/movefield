@@ -1,3 +1,7 @@
+# Current continuation — NATIVE8 hosted collector validation
+
+The source7 Android APK compiles and passes strict metadata inspection, but native run37981546336 fails its CMake-cache build-route collector. iOS and55/55+3/3 quality succeed. The next milestone is a scoped collector repair on an isolated draft validation branch, followed by exact-source hosted31-fixture/full-quality/native evidence verification before advancing the existing audit branch. The execution environment is disconnected; proposed fixes have static peer review, no local execution claim. PAGE4 remains live and its mobile source is unchanged by the collector-only repair.
+
 # Active work — cross-platform security, science and GitHub Pages, 9 October 2026
 
 The owner explicitly requests Android+iOS security/compatibility, an all-template scientific review, and the new website on existing GitHub Pages with instructions. Existing commit/source/audit publication authority persists. Baseline recovered from GitHub `587438a8a2ba21cf88c943f857348dd7190eb078`, exact tree `e394eeda958d94a1cfa7686bc0235024d961d118`. Checkout `/workspace/scratch/86ffa076637d/movefield`, branch/upstream `audit/2026-10-08-quality`. Main/review-fixes unchanged; existing `gh-pages` is `a900521b5d018093f1fa48e52c45165c4df706d3` and its old site returns HTTP200.

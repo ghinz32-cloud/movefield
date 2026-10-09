@@ -1,0 +1,277 @@
+{
+  "schema": 1,
+  "source": {
+    "commit": "8abfca45f1f910155011516eabffbebdf070821b",
+    "tree": "b8a0dc7b9c820a44f98fd13df75b2970984fcc26"
+  },
+  "nativeRun": 37981546336,
+  "jobs": [
+    {
+      "id": 113993045286,
+      "name": "native_changes",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 37981546336,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Decide from the exact synchronize source range",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Retain native input decision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Post Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        }
+      ]
+    },
+    {
+      "id": 113993116672,
+      "name": "android",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_id": 37981546336,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Record exact Android source commit and tree",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Run actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Install locked native source without dependency lifecycle scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Generate Android project",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Install required Android toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Compile and lint release test APK",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Inspect the actual merged APK manifest",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Retain resolved Android dependencies and actual SQLite C build route",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 11
+        },
+        {
+          "name": "Retain native compilation evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Post Run actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22
+        },
+        {
+          "name": "Post Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 23
+        },
+        {
+          "name": "Post Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25
+        }
+      ]
+    },
+    {
+      "id": 113993116703,
+      "name": "ios",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 37981546336,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Record exact iOS source commit and tree",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Install locked native source without dependency lifecycle scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Generate iOS project and resolve Pods",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Compile unsigned iOS Release simulator application",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Inspect built iOS privacy and transport settings",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Retain SQLite Release flags and complete built privacy replay",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Retain native compilation evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Post Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Post Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21
+        }
+      ]
+    }
+  ],
+  "android": {
+    "compileAndLint": "success",
+    "strictAPKInspection": "success",
+    "sqliteBuildRouteCollection": "failure",
+    "error": "ValueError: Missing, empty or symlinked CMake cache",
+    "failingExpression": "cache_values(database.parent / 'CMakeCache.txt')",
+    "artifact": {
+      "id": 11641826071,
+      "size": 334088,
+      "sha256": "9d25fee7dd0d369b2db3e87ae9f1cc0e3ed699d17a58c4528201a62226c0d07b"
+    },
+    "scope": "The artifact preserves packaged metadata/lint; it does not contain passing SQLite build-route qualification."
+  },
+  "quality": {
+    "run": 37981546349,
+    "conclusion": "success",
+    "regressions": 55,
+    "productionSuites": 3,
+    "artifact": {
+      "id": 11641675416,
+      "size": 8003,
+      "sha256": "9dd7b0d7e7268d4961a430d33a215eb5ac5eb451543d614fd97049816e1a90f7"
+    },
+    "integrationCommit": "a32db358ef62af4153838dcd519bcae3a01a931b",
+    "integrationTree": "b8a0dc7b9c820a44f98fd13df75b2970984fcc26"
+  },
+  "next": "Validate the directory-bound collector repair on an isolated hosted draft PR; no new local test claim."
+}

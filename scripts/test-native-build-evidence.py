@@ -239,6 +239,106 @@ class Evidence(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'must be fresh'):
             reader.privacy_tree(self.app, destination)
 
+    def aggregate_database(self, entry=None):
+        database = self.build.parent / 'compile_commands.json'
+        self.write(database, json.dumps([self.entry if entry is None else entry]))
+        return database
+
+    def test_android_aggregate_and_per_abi_copies_bind_one_actual_cache_and_object(self):
+        aggregate = self.aggregate_database()
+        self.assertFalse((aggregate.parent / 'CMakeCache.txt').exists())
+        result = reader.android(self.repo, self.out)
+        row = result['sqliteCompileEntries'][0]
+        self.assertEqual(len(result['sqliteCompileEntries']), 1)
+        self.assertEqual(len(row['compileDatabases']), 2)
+        self.assertEqual(row['cmakeCache'], str((self.build / 'CMakeCache.txt').relative_to(self.module)))
+        self.assertEqual(row['objectSHA256'], reader.digest(self.object))
+
+    def test_android_aggregate_only_binds_actual_entry_directory_cache(self):
+        aggregate = self.aggregate_database()
+        (self.build / 'compile_commands.json').unlink()
+        result = reader.android(self.repo, self.out)
+        row = result['sqliteCompileEntries'][0]
+        self.assertEqual(row['compileDatabase'], str(aggregate.relative_to(self.module)))
+        self.assertEqual(row['entry']['directory'], str(self.build.resolve()))
+        self.assertEqual(row['cmakeCacheSHA256'], reader.digest(self.build / 'CMakeCache.txt'))
+
+    def test_android_identical_repeated_invocation_rows_deduplicate(self):
+        self.write(self.build / 'compile_commands.json', json.dumps([self.entry, copy.deepcopy(self.entry)]))
+        row = reader.android(self.repo, self.out)['sqliteCompileEntries'][0]
+        self.assertEqual(len(row['compileDatabases']), 1)
+        self.assertEqual(row['objectSHA256'], reader.digest(self.object))
+
+    def test_android_conflicting_aggregate_macro_is_not_ignored_or_deduplicated(self):
+        conflicting = {**self.entry, 'command': self.entry['command'].replace(FLAG, '-DSQLITE_DEFAULT_SYNCHRONOUS=2')}
+        self.aggregate_database(conflicting)
+        with self.assertRaisesRegex(ValueError, 'Conflicting SQLite synchronous'):
+            reader.android(self.repo, self.out)
+
+    def test_android_same_object_different_valid_invocations_refused(self):
+        different = {**self.entry, 'command': self.entry['command'].replace(FLAG, FLAG + ' -DUNRELATED_FIXTURE=1')}
+        self.aggregate_database(different)
+        with self.assertRaisesRegex(ValueError, 'Conflicting SQLite compiler invocations'):
+            reader.android(self.repo, self.out)
+
+    def test_android_missing_actual_cache_cannot_use_aggregate_parent_cache(self):
+        aggregate = self.aggregate_database()
+        cache = (self.build / 'CMakeCache.txt').read_text()
+        self.write(aggregate.parent / 'CMakeCache.txt', cache)
+        (self.build / 'CMakeCache.txt').unlink()
+        with self.assertRaisesRegex(ValueError, 'CMake cache'):
+            reader.android(self.repo, self.out)
+
+    def test_android_declared_cache_home_and_cache_directory_bind_exact_module(self):
+        cache = 'CMAKE_BUILD_TYPE:STRING=RelWithDebInfo\nANDROID_ABI:STRING=arm64-v8a\n'
+        self.write(self.build / 'CMakeCache.txt', cache +
+                   f'CMAKE_HOME_DIRECTORY:INTERNAL={self.module / "android"}\n' +
+                   f'CMAKE_CACHEFILE_DIR:INTERNAL={self.build}\n')
+        reader.android(self.repo, self.out)
+        for extra, message in [
+            (f'CMAKE_HOME_DIRECTORY:INTERNAL={self.root / "unrelated-source"}\n', 'cache home'),
+            (f'CMAKE_CACHEFILE_DIR:INTERNAL={self.root / "unrelated-build"}\n', 'cache directory'),
+        ]:
+            self.write(self.build / 'CMakeCache.txt', cache + extra)
+            with self.subTest(extra=extra), self.assertRaisesRegex(ValueError, message):
+                reader.android(self.repo, self.out)
+
+    def test_android_entry_directory_outside_module_staging_refused(self):
+        outside = self.root / 'unrelated-build'
+        output = outside / 'sqlite3.o'
+        self.write(outside / 'CMakeCache.txt', 'CMAKE_BUILD_TYPE:STRING=Release\nANDROID_ABI:STRING=arm64-v8a\n')
+        self.write(output, 'Synthetic unrelated output object')
+        self.aggregate_database({**self.entry, 'directory': str(outside),
+                                 'command': f'clang {FLAG} -o {shlex.quote(str(output))} -c {shlex.quote(str(self.sqlite))}'})
+        with self.assertRaisesRegex(ValueError, 'outside its ExpoSQLite'):
+            reader.android(self.repo, self.out)
+
+    def test_android_aggregate_actual_source_and_output_checks_remain_strict(self):
+        outside = self.root / 'outside.o'
+        self.write(outside, 'Synthetic unrelated object')
+        cases = [
+            (f'clang {FLAG} -o {shlex.quote(str(self.object))} -c other.c', 'source field'),
+            (f'clang {FLAG} -o {shlex.quote(str(outside))} -c {shlex.quote(str(self.sqlite))}', 'outside'),
+        ]
+        for command, message in cases:
+            self.aggregate_database({**self.entry, 'command': command})
+            with self.subTest(command=command), self.assertRaisesRegex(ValueError, message):
+                reader.android(self.repo, self.out)
+
+    def test_android_multiple_distinct_release_objects_in_one_cache_refused(self):
+        other = self.build / 'different-sqlite3.o'
+        self.write(other, 'Synthetic distinct release object')
+        second = {**self.entry, 'command': self.entry['command'].replace(shlex.quote(str(self.object)), shlex.quote(str(other)))}
+        self.write(self.build / 'compile_commands.json', json.dumps([self.entry, second]))
+        with self.assertRaisesRegex(ValueError, 'unambiguous'):
+            reader.android(self.repo, self.out)
+
+    def test_android_aggregate_wrong_actual_cache_abi_refused(self):
+        self.aggregate_database()
+        self.write(self.build / 'CMakeCache.txt', 'CMAKE_BUILD_TYPE:STRING=Release\nANDROID_ABI:STRING=x86_64\n')
+        with self.assertRaisesRegex(ValueError, 'release ABI'):
+            reader.android(self.repo, self.out)
+
     def test_source_identity_requires_exact_commit_tree_receipt(self):
         values = ['a' * 40, 'b' * 40]
         self.write(self.out / 'source.txt', '\n'.join(values) + '\n')

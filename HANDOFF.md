@@ -1,3 +1,15 @@
+# NATIVE8 collector repair — isolated hosted validation pending
+
+Published application source remains `8abfca45f1f910155011516eabffbebdf070821b`, tree `b8a0dc7b9c820a44f98fd13df75b2970984fcc26`, on `audit/2026-10-08-quality`. Main and review-fixes are unchanged. PAGE4 `b8fe5ea6b12ff460aba3f35dc7249f18b778dfe1` is deployed and its 118-file mobile source ZIP matches that application source.
+
+Actual source7 native run37981546336 compiled/linted Android and passed strict APK inspection, then failed the SQLite build-route collector: it assumed every recursively found compile_commands.json had an adjacent CMakeCache.txt. iOS job113993116703 succeeded; quality run37981546349 passed55/55 regression and3/3 production suites. This is not an all-green source7 native evidence qualification.
+
+The bounded collector proposal now binds the exact vendor C entry's working directory to its actual cache and output under ExpoSQLite .cxx. Identical aggregate/per-ABI copies deduplicate only after all checks; missing real cache, conflicting macros/argv, outside source/output, wrong release ABI or multiple distinct current release objects still fail. Dependency resolution uses the same arm64/JVM inputs as assembly. Existing20 reader fixtures are preserved and11 layout/conflict cases added. Application runtime, SQLite policy, mobile source and scientific data are unchanged by this milestone.
+
+Local execution is unavailable; no new local test result is claimed. Root is opening a draft validation PR from `audit/2026-10-09-cmake-evidence` to the existing audit branch to run31 reader fixtures, full quality and actual native builds before promoting this repair. No main merge or store submission. The exact original failure log and API status are recorded beside this checkpoint.
+
+Next: verify hosted validation source/tree and all job/artifact results. Only after the collector fixtures and actual build-route checks pass, fast-forward the existing audit branch with a fresh expected-head lease, verify remote tree/file readback, retain final evidence and update PR#1. Keep source7 failure and prior source6 successes as history. Source-only starter is not an installable signed phone app. Strict dependency, complete native binary SCA, physical-device, signing/disclosure, accounts and native-inference gates remain.
+
 # NATIVE7 isolated SQLite mitigation — actual published builds next
 
 Owner-authorized audit source repair is isolated in `/workspace/scratch/86ffa076637d/movefield-native7`, branch `audit/2026-10-09-sqlite`, based on verified local8ee8319a143ec1e3001c7b9b011f1d0a9cc1db60. Root owns reconciliation/publication to existing GitHub `audit/2026-10-08-quality`; this agent does not publish or deploy. Continuation98fe9f6 docs/Page3 evidence must be merged preserving both histories after this source checkpoint. Original and continuation working source were not changed by this milestone.

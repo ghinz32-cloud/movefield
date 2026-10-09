@@ -84,7 +84,7 @@ jobs:
         working-directory: mobile/android
         run: |
           mkdir -p build
-          ./gradlew :app:dependencies --configuration releaseRuntimeClasspath --console=plain --no-daemon > build/release-runtime-classpath.raw.txt
+          ./gradlew :app:dependencies --configuration releaseRuntimeClasspath --console=plain --no-daemon -PreactNativeArchitectures=arm64-v8a -Porg.gradle.jvmargs="-Xmx5g -XX:MaxMetaspaceSize=1g" > build/release-runtime-classpath.raw.txt
           python3 ../../scripts/collect-native-build-evidence.py android ../.. ../../native-evidence/android
       - name: Retain native compilation evidence
         if: always()

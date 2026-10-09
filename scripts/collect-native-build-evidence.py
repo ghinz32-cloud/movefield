@@ -119,48 +119,72 @@ def android(repo, out):
             ('+---' in dependency_text or '\\---' in dependency_text) and
             not re.search(r'\bFAILED\b', dependency_text),
             'Wrong, empty or unresolved Gradle dependency configuration receipt')
-    records = []
-    for database in sorted((module / 'android/.cxx').rglob('compile_commands.json')):
-        cache = cache_values(database.parent / 'CMakeCache.txt')
-        if cache.get('CMAKE_BUILD_TYPE') not in RELEASE_TYPES:
-            continue
-        abis = {cache[key] for key in ('ANDROID_ABI', 'CMAKE_ANDROID_ARCH_ABI') if cache.get(key)}
-        require(abis == {'arm64-v8a'}, 'Unexpected ExpoSQLite release ABI')
-        abi = 'arm64-v8a'
+    staging = (module / 'android/.cxx').resolve()
+    records = {}
+    for database in sorted(staging.rglob('compile_commands.json')):
+        require(database.resolve().is_relative_to(staging),
+                'Compile database is outside the ExpoSQLite CMake staging tree')
         rows = json.loads(regular(database, 'CMake compile database').read_text())
         require(isinstance(rows, list), 'CMake compile database must be an array')
-        matches = []
+        database_receipt = {'path': str(database.relative_to(module)), 'sha256': digest(database)}
         for entry in rows:
             require(isinstance(entry, dict) and isinstance(entry.get('file'), str) and
                     isinstance(entry.get('directory'), str), 'Malformed CMake compile record')
             directory = Path(entry['directory']).resolve()
             file = (directory / entry['file']).resolve()
-            if file in vendors:
-                tokens = words(entry['arguments'] if 'arguments' in entry else entry.get('command'))
-                public_text(json.dumps(tokens))
-                synchronous_three(tokens)
-                require((directory / option(tokens, '-c')).resolve() == file,
-                        'SQLite source field does not match actual C compiler input')
-                output = (directory / option(tokens, '-o')).resolve()
-                require(output.is_relative_to(database.parent.resolve()), 'SQLite object is outside its CMake build')
-                regular(output, 'built SQLite C object')
-                # Retain only the selected validated invocation and actual -o.
-                # A shadow command/output field must not smuggle unchecked data.
-                retained = {'directory': str(directory), 'file': str(file),
-                            'arguments': tokens, 'output': str(output)}
-                matches.append({'entry': retained, 'vendor': vendors[file], 'sourceSHA256': digest(file),
-                                'objectSHA256': digest(output), 'objectBytes': output.stat().st_size})
-        require(len(matches) == 1, 'Release compile database must contain one installed SQLite C entry')
-        records.append({'compileDatabase': str(database.relative_to(module)),
-                        'compileDatabaseSHA256': digest(database), 'cmakeCacheSHA256': digest(database.parent / 'CMakeCache.txt'),
-                        'buildType': cache['CMAKE_BUILD_TYPE'], 'abi': abi, **matches[0]})
-    require(len(records) == 1, 'Expected one unambiguous current release SQLite compile database')
+            if file not in vendors:
+                continue
+            # AGP may copy/aggregate a database above the ABI build directory.
+            # The entry's working directory binds its real CMake cache/object.
+            require(directory.is_dir() and directory.is_relative_to(staging),
+                    'SQLite compiler directory is outside its ExpoSQLite CMake build')
+            cache_path = directory / 'CMakeCache.txt'
+            cache = cache_values(cache_path)
+            if 'CMAKE_HOME_DIRECTORY' in cache:
+                require((directory / cache['CMAKE_HOME_DIRECTORY']).resolve() == (module / 'android').resolve(),
+                        'SQLite CMake cache home differs from the ExpoSQLite Android source')
+            if 'CMAKE_CACHEFILE_DIR' in cache:
+                require((directory / cache['CMAKE_CACHEFILE_DIR']).resolve() == directory,
+                        'SQLite CMake cache directory differs from compiler directory')
+            if cache.get('CMAKE_BUILD_TYPE') not in RELEASE_TYPES:
+                continue
+            abis = {cache[key] for key in ('ANDROID_ABI', 'CMAKE_ANDROID_ARCH_ABI') if cache.get(key)}
+            require(abis == {'arm64-v8a'}, 'Unexpected ExpoSQLite release ABI')
+            tokens = words(entry['arguments'] if 'arguments' in entry else entry.get('command'))
+            public_text(json.dumps(tokens))
+            synchronous_three(tokens)
+            require((directory / option(tokens, '-c')).resolve() == file,
+                    'SQLite source field does not match actual C compiler input')
+            output = (directory / option(tokens, '-o')).resolve()
+            require(output.is_relative_to(directory), 'SQLite object is outside its CMake build')
+            regular(output, 'built SQLite C object')
+            retained = {'directory': str(directory), 'file': str(file),
+                        'arguments': tokens, 'output': str(output)}
+            identity = (str(directory), str(file), str(output))
+            if identity in records:
+                record = records[identity]
+                require(record['entry'] == retained,
+                        'Conflicting SQLite compiler invocations for the same built object')
+                if database_receipt not in record['compileDatabases']:
+                    record['compileDatabases'].append(database_receipt)
+                continue
+            records[identity] = {
+                'compileDatabase': database_receipt['path'],
+                'compileDatabaseSHA256': database_receipt['sha256'],
+                'compileDatabases': [database_receipt],
+                'cmakeCache': str(cache_path.relative_to(module)),
+                'cmakeCacheSHA256': digest(cache_path),
+                'buildType': cache['CMAKE_BUILD_TYPE'], 'abi': 'arm64-v8a',
+                'entry': retained, 'vendor': vendors[file], 'sourceSHA256': digest(file),
+                'objectSHA256': digest(output), 'objectBytes': output.stat().st_size,
+            }
+    require(len(records) == 1, 'Expected one unambiguous current release SQLite compile invocation')
+    entries = list(records.values())
     shutil.copyfile(classpath, out / 'release-runtime-classpath.txt')
-    (out / 'sqlite-release-compile-entry.json').write_text(json.dumps(records, indent=2) + '\n')
+    (out / 'sqlite-release-compile-entry.json').write_text(json.dumps(entries, indent=2) + '\n')
     return {'package': package, 'synchronousMacro': 3, 'releaseRuntimeClasspathSHA256': digest(classpath),
-            'sqliteCompileEntries': records,
+            'sqliteCompileEntries': entries,
             'scope': 'Resolved Gradle report and generated SQLite C compile invocation with nonempty output object; not complete binary SCA or runtime proof'}
-
 
 def ios_settings(rows):
     require(isinstance(rows, list), 'Xcode build settings must be an array')
