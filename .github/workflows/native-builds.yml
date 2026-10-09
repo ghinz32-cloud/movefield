@@ -1,6 +1,15 @@
 name: Native release compilation
 on:
   pull_request:
+    paths:
+      - "mobile/**"
+      - "!mobile/docs/**"
+      - "!mobile/*.md"
+      - "scripts/inspect-native-artifacts.py"
+      - "scripts/test-native-artifact-inspector.py"
+      - "scripts/extract-apk-rules.py"
+      - "scripts/test-apk-rule-extractor.py"
+      - ".github/workflows/native-builds.yml"
   workflow_dispatch:
 permissions:
   contents: read

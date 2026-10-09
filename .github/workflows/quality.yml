@@ -51,6 +51,8 @@ jobs:
         run: |
           npm run build
           npm run test:production
+          npm run build:pages
+          npm run check:pages
       - name: Android and iOS bundle export
         working-directory: mobile
         run: npm run export:mobile

@@ -35,6 +35,29 @@ module.exports = function withMovefieldSecurity(config) {
     // The development template's debug overlay deliberately overrides this for
     // local Metro. Release builds must retain the main manifest's denial.
     app.$['android:usesCleartextTraffic'] = 'false';
+    // This app schedules local alerts only. Do not auto-start optional remote
+    // messaging/installation services bundled transitively by the SDK.
+    for (const [tag, names] of Object.entries({
+      service: ['expo.modules.notifications.service.ExpoFirebaseMessagingService',
+        'com.google.firebase.messaging.FirebaseMessagingService',
+        'com.google.firebase.components.ComponentDiscoveryService',
+        'com.google.android.datatransport.runtime.backends.TransportBackendDiscovery',
+        'com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService'],
+      receiver: ['com.google.firebase.iid.FirebaseInstanceIdReceiver',
+        'com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver'],
+      activity: ['com.google.android.gms.common.api.GoogleApiActivity'],
+      provider: ['com.google.firebase.provider.FirebaseInitProvider'],
+    })) {
+      app[tag] ??= [];
+      for (const name of names) {
+        app[tag] = app[tag].filter(node => node.$['android:name'] !== name);
+        app[tag].push({$: {'android:name': name, 'tools:node': 'remove'}});
+      }
+    }
+    for (const name of ['firebase_messaging_auto_init_enabled', 'firebase_analytics_collection_enabled']) {
+      AndroidConfig.Manifest.addMetaDataItemToMainApplication(app, name, 'false');
+    }
+
     // Lint reads this merger-removal marker as a camera request. Annotate only
     // that source-node diagnostic; CAMERA must still be absent from the APK.
     for (const permission of mod.modResults.manifest['uses-permission'] ?? []) {

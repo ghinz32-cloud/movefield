@@ -1,5 +1,5 @@
-import {publicPath} from '@/lib/public-path';
 'use client';
+import {publicPath} from '@/lib/public-path';
 import {useEffect,useMemo,useState} from 'react';
 import {type ResearchArchive,searchResearch} from '@/lib/research-library';
 import {Button} from '@/components/ui/button';

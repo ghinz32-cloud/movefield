@@ -1,0 +1,21 @@
+{
+  "nativeConfigAssertions": 248,
+  "inspectorFixtures": 65,
+  "zipExtractorScenarios": 9,
+  "packagingScenarios": 12,
+  "regression": {
+    "passed": 53,
+    "total": 53
+  },
+  "production": {
+    "passed": 3,
+    "total": 3
+  },
+  "types": true,
+  "lint": true,
+  "pagesIntegrityPassed": true,
+  "nativeActualNewSource": "pending",
+  "dependencyReleaseGate": false,
+  "qualifiedPhysicalDevices": 0,
+  "storeAccepted": false
+}

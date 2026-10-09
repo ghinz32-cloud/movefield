@@ -22,19 +22,28 @@
         "NSPrivacyAccessedAPITypes": [
           {
             "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
-            "NSPrivacyAccessedAPITypeReasons": ["C617.1", "3B52.1"]
+            "NSPrivacyAccessedAPITypeReasons": [
+              "C617.1",
+              "3B52.1"
+            ]
           },
           {
             "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryDiskSpace",
-            "NSPrivacyAccessedAPITypeReasons": ["E174.1"]
+            "NSPrivacyAccessedAPITypeReasons": [
+              "E174.1"
+            ]
           },
           {
             "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults",
-            "NSPrivacyAccessedAPITypeReasons": ["CA92.1"]
+            "NSPrivacyAccessedAPITypeReasons": [
+              "CA92.1"
+            ]
           },
           {
             "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategorySystemBootTime",
-            "NSPrivacyAccessedAPITypeReasons": ["35F9.1"]
+            "NSPrivacyAccessedAPITypeReasons": [
+              "35F9.1"
+            ]
           }
         ]
       }
@@ -47,7 +56,29 @@
         "android.permission.READ_EXTERNAL_STORAGE",
         "android.permission.WRITE_EXTERNAL_STORAGE",
         "android.permission.RECORD_AUDIO",
-        "android.permission.CAMERA"
+        "android.permission.CAMERA",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.WAKE_LOCK",
+        "com.google.android.c2dm.permission.RECEIVE",
+        "android.permission.USE_BIOMETRIC",
+        "android.permission.USE_FINGERPRINT",
+        "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE",
+        "com.sec.android.provider.badge.permission.READ",
+        "com.sec.android.provider.badge.permission.WRITE",
+        "com.htc.launcher.permission.READ_SETTINGS",
+        "com.htc.launcher.permission.UPDATE_SHORTCUT",
+        "com.sonyericsson.home.permission.BROADCAST_BADGE",
+        "com.sonymobile.home.permission.PROVIDER_INSERT_BADGE",
+        "com.anddoes.launcher.permission.UPDATE_COUNT",
+        "com.majeur.launcher.permission.UPDATE_BADGE",
+        "com.huawei.android.launcher.permission.CHANGE_BADGE",
+        "com.huawei.android.launcher.permission.READ_SETTINGS",
+        "com.huawei.android.launcher.permission.WRITE_SETTINGS",
+        "android.permission.READ_APP_BADGE",
+        "com.oppo.launcher.permission.READ_SETTINGS",
+        "com.oppo.launcher.permission.WRITE_SETTINGS",
+        "me.everything.badger.permission.BADGE_COUNT_READ",
+        "me.everything.badger.permission.BADGE_COUNT_WRITE"
       ],
       "adaptiveIcon": {
         "backgroundColor": "#132325",
@@ -62,7 +93,13 @@
     },
     "plugins": [
       "expo-notifications",
-      ["expo-secure-store", {"configureAndroidBackup": false, "faceIDPermission": false}],
+      [
+        "expo-secure-store",
+        {
+          "configureAndroidBackup": false,
+          "faceIDPermission": false
+        }
+      ],
       "./plugins/withMovefieldSecurity.cjs"
     ],
     "extra": {

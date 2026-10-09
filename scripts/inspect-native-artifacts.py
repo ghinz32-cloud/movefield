@@ -139,6 +139,50 @@ def android(path, backup, extraction, resources):
         check(app.get(ns + attribute) == 'false', 'APK must deny ' + attribute)
     check(ns + 'networkSecurityConfig' not in app.attrib,
           'Unreviewed network security configuration may override cleartext denial')
+    remote_components = {
+        'expo.modules.notifications.service.ExpoFirebaseMessagingService',
+        'com.google.firebase.messaging.FirebaseMessagingService',
+        'com.google.firebase.components.ComponentDiscoveryService',
+        'com.google.firebase.iid.FirebaseInstanceIdReceiver',
+        'com.google.firebase.provider.FirebaseInitProvider',
+        'com.google.android.datatransport.runtime.backends.TransportBackendDiscovery',
+        'com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService',
+        'com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver',
+        'com.google.android.gms.common.api.GoogleApiActivity',
+    }
+    check(not any(node.get(ns + 'name') in remote_components for node in app),
+          'Unused remote SDK startup components must be absent from the APK')
+    allowed_components = {
+        PACKAGE + '.MainActivity': 'activity',
+        'expo.modules.filesystem.FileSystemFileProvider': 'provider',
+        'expo.modules.sharing.SharingFileProvider': 'provider',
+        'expo.modules.notifications.service.NotificationsService': 'receiver',
+        'expo.modules.notifications.service.NotificationForwarderActivity': 'activity',
+        'androidx.startup.InitializationProvider': 'provider',
+        'androidx.profileinstaller.ProfileInstallReceiver': 'receiver',
+    }
+    names_seen = set()
+    for node in app:
+        if node.tag not in {'activity', 'activity-alias', 'service', 'receiver', 'provider'}:
+            continue
+        name = node.get(ns + 'name')
+        check(name in allowed_components and allowed_components[name] == node.tag and name not in names_seen,
+              'Unreviewed or duplicate APK component: ' + str(name))
+        names_seen.add(name)
+        exported = node.get(ns + 'exported')
+        if name == PACKAGE + '.MainActivity':
+            check(exported == 'true', 'Launcher must have its explicit exported boundary')
+        elif name == 'androidx.profileinstaller.ProfileInstallReceiver':
+            check(exported == 'true' and node.get(ns + 'permission') == 'android.permission.DUMP',
+                  'Profile tooling receiver requires the system DUMP permission')
+        else:
+            check(exported == 'false', 'Internal components must not be exported: ' + str(name))
+    check(PACKAGE + '.MainActivity' in names_seen, 'Expected reviewed launcher activity')
+    for name in ('firebase_messaging_auto_init_enabled', 'firebase_analytics_collection_enabled'):
+        declarations = [node for node in app.findall('meta-data') if node.get(ns + 'name') == name]
+        check(len(declarations) == 1 and declarations[0].get(ns + 'value') == 'false' and
+              ns + 'resource' not in declarations[0].attrib,
+              'Remote SDK initialization/collection must be explicitly disabled: ' + name)
     identifiers = resource_rules(resources)
     for attribute, name in zip(('fullBackupContent', 'dataExtractionRules'), RULE_NAMES):
         linked_rule(app.get(ns + attribute), name, identifiers)
@@ -167,7 +211,7 @@ def android(path, backup, extraction, resources):
             'manifestSHA256': sha(path), 'backupRulesLinked': True, 'backupDomainsExcluded': sorted(DOMAINS),
             'cloudBackupAndDeviceTransferExcluded': True, 'backupRulesSHA256': sha(backup),
             'extractionRulesSHA256': sha(extraction), 'resourceTableSHA256': sha(resources),
-            'cleartextDenied': True, 'signing': 'uninspected; inspect the APK certificate separately',
+            'cleartextDenied': True, 'remoteSdkStartupDisabled': True, 'componentBoundariesChecked': True, 'signing': 'uninspected; inspect the APK certificate separately',
             'physicalDeviceTested': False, 'storeAccepted': False}
 
 

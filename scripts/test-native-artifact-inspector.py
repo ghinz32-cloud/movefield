@@ -32,7 +32,11 @@ MANIFEST = """<manifest xmlns:android="http://schemas.android.com/apk/res/androi
 <uses-permission android:name="android.permission.VIBRATE"/>
 <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 <application android:debuggable="false" android:allowBackup="false" android:usesCleartextTraffic="false"
- android:fullBackupContent="@ref/0x7f130001" android:dataExtractionRules="@ref/0x7f130002"/>
+ android:fullBackupContent="@ref/0x7f130001" android:dataExtractionRules="@ref/0x7f130002">
+<activity android:name="com.ghinz32.movefield.MainActivity" android:exported="true"/>
+<meta-data android:name="firebase_messaging_auto_init_enabled" android:value="false"/>
+<meta-data android:name="firebase_analytics_collection_enabled" android:value="false"/>
+</application>
 </manifest>"""
 RESOURCES = """Package name=com.ghinz32.movefield id=7f
   type xml id=13 entryCount=3
@@ -123,6 +127,43 @@ class Fixtures(unittest.TestCase):
     def test_package_qualified_aapt_rows(self):
         self.change(3, ' xml/movefield_', ' com.ghinz32.movefield:xml/movefield_')
         self.assertTrue(self.android()['backupRulesLinked'])
+
+    def test_remote_sdk_components_refused(self):
+        for name in ['expo.modules.notifications.service.ExpoFirebaseMessagingService',
+                     'com.google.firebase.messaging.FirebaseMessagingService',
+                     'com.google.firebase.components.ComponentDiscoveryService',
+                     'com.google.firebase.iid.FirebaseInstanceIdReceiver',
+                     'com.google.firebase.provider.FirebaseInitProvider']:
+            self.paths[0].write_text(MANIFEST.replace('</application>', '<service android:name="'+name+'"/></application>'))
+            self.rejects_android('remote SDK startup')
+
+    def test_unreviewed_exported_component_refused(self):
+        self.change(0, '</application>', '<service android:name="other.Exported" android:exported="true"/></application>')
+        self.rejects_android('Unreviewed')
+
+    def test_exported_file_provider_refused(self):
+        self.change(0, '</application>', '<provider android:name="expo.modules.sharing.SharingFileProvider" android:exported="true"/></application>')
+        self.rejects_android('must not be exported')
+
+    def test_profile_receiver_without_system_permission_refused(self):
+        self.change(0, '</application>', '<receiver android:name="androidx.profileinstaller.ProfileInstallReceiver" android:exported="true"/></application>')
+        self.rejects_android('system DUMP')
+
+    def test_profile_system_tool_receiver_accepted(self):
+        self.change(0, '</application>', '<receiver android:name="androidx.profileinstaller.ProfileInstallReceiver" android:exported="true" android:permission="android.permission.DUMP"/></application>')
+        self.assertTrue(self.android()['componentBoundariesChecked'])
+
+    def test_remote_auto_init_enabled_refused(self):
+        self.change(0, 'firebase_messaging_auto_init_enabled" android:value="false"', 'firebase_messaging_auto_init_enabled" android:value="true"')
+        self.rejects_android('explicitly disabled')
+
+    def test_remote_init_declaration_missing_refused(self):
+        self.change(0, '<meta-data android:name="firebase_messaging_auto_init_enabled" android:value="false"/>', '')
+        self.rejects_android('explicitly disabled')
+
+    def test_remote_collection_enabled_refused(self):
+        self.change(0, 'firebase_analytics_collection_enabled" android:value="false"', 'firebase_analytics_collection_enabled" android:value="true"')
+        self.rejects_android('explicitly disabled')
 
     def test_wrong_manifest_resource_id(self):
         self.change(0, '@ref/0x7f130001', '@ref/0x7f130000')

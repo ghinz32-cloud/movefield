@@ -15,7 +15,7 @@ const {parseStringPromise} = requireMobile('xml2js');
 const plist = requireMobile('@expo/plist').default;
 const domains = ['root', 'file', 'database', 'sharedpref', 'external',
   'device_root', 'device_file', 'device_database', 'device_sharedpref'];
-const blocked = ['SYSTEM_ALERT_WINDOW', 'READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE', 'RECORD_AUDIO', 'CAMERA'];
+const blocked = JSON.parse(fs.readFileSync(path.join(mobile, 'app.json'),'utf8')).expo.android.blockedPermissions;
 const expectedReasons = {
   NSPrivacyAccessedAPICategoryFileTimestamp: ['C617.1', '3B52.1'],
   NSPrivacyAccessedAPICategoryDiskSpace: ['E174.1'],
@@ -38,7 +38,7 @@ async function inspect(dir) {
   equal(app['android:dataExtractionRules'], '@xml/movefield_data_extraction_rules', 'Modern extraction rules must be linked');
   const permissions = manifest['uses-permission'] ?? [];
   for (const name of blocked) {
-    const matches = permissions.filter(p => p.$['android:name'] === `android.permission.${name}`);
+    const matches = permissions.filter(p => p.$['android:name'] === name);
     equal(matches.length, 1, `${name} must have one explicit manifest merger removal`);
     equal(matches[0].$['tools:node'], 'remove', `${name} must not survive library manifest merging`);
   }
@@ -49,6 +49,11 @@ async function inspect(dir) {
       'tools:ignore':'PermissionImpliesUnsupportedChromeOsHardware'}],
     'The annotation must never apply to a granted permission or another removal marker');
   equal(manifest.$['tools:ignore'], undefined, 'Manifest-wide lint suppression is forbidden');
+  for (const [tag,names] of Object.entries({service:['expo.modules.notifications.service.ExpoFirebaseMessagingService','com.google.firebase.messaging.FirebaseMessagingService','com.google.firebase.components.ComponentDiscoveryService','com.google.android.datatransport.runtime.backends.TransportBackendDiscovery','com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService'],receiver:['com.google.firebase.iid.FirebaseInstanceIdReceiver','com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver'],activity:['com.google.android.gms.common.api.GoogleApiActivity'],provider:['com.google.firebase.provider.FirebaseInitProvider']})) {
+    for (const name of names) equal(manifest.application[0][tag]?.filter(node=>node.$['android:name']===name).map(node=>node.$),[{'android:name':name,'tools:node':'remove'}],'Remove automatic remote SDK component '+name);
+  }
+  for (const name of ['firebase_messaging_auto_init_enabled','firebase_analytics_collection_enabled']) equal(manifest.application[0]['meta-data']?.filter(node=>node.$['android:name']===name).map(node=>node.$['android:value']),['false'],'Remote SDK auto initialization disabled '+name);
+
   equal(app['tools:ignore'], undefined, 'Application-wide lint suppression is forbidden');
   const annotations = value => value && typeof value === 'object' ? [
     ...(value.$?.['tools:ignore'] !== undefined ? [value.$] : []),
@@ -116,6 +121,12 @@ async function inspect(dir) {
 async function main() {
   const config = json('app.json').expo;
   equal(config.android.allowBackup, false, 'Source backup policy must be explicit');
+  const sdkPermissions=['android.permission.ACCESS_NETWORK_STATE','android.permission.WAKE_LOCK','com.google.android.c2dm.permission.RECEIVE','android.permission.USE_BIOMETRIC','android.permission.USE_FINGERPRINT','com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE','com.sec.android.provider.badge.permission.READ','com.sec.android.provider.badge.permission.WRITE','com.htc.launcher.permission.READ_SETTINGS','com.htc.launcher.permission.UPDATE_SHORTCUT','com.sonyericsson.home.permission.BROADCAST_BADGE','com.sonymobile.home.permission.PROVIDER_INSERT_BADGE','com.anddoes.launcher.permission.UPDATE_COUNT','com.majeur.launcher.permission.UPDATE_BADGE','com.huawei.android.launcher.permission.CHANGE_BADGE','com.huawei.android.launcher.permission.READ_SETTINGS','com.huawei.android.launcher.permission.WRITE_SETTINGS','android.permission.READ_APP_BADGE','com.oppo.launcher.permission.READ_SETTINGS','com.oppo.launcher.permission.WRITE_SETTINGS','me.everything.badger.permission.BADGE_COUNT_READ','me.everything.badger.permission.BADGE_COUNT_WRITE'];
+  for (const permission of sdkPermissions) equal(blocked.includes(permission),true,'Explicit removal of observed unused SDK permission '+permission);
+  const localScheduler=read(mobile,'node_modules/expo-notifications/android/src/main/java/expo/modules/notifications/service/delegates/ExpoSchedulingDelegate.kt');
+  equal(localScheduler.includes('AlarmManager.RTC_WAKEUP'),true,'Local notifications use the installed alarm scheduler');
+  equal(localScheduler.includes('WakeLock'),false,'Installed local scheduler does not require the remote messaging wake-lock path');
+
   const secure = config.plugins.find(p => Array.isArray(p) && p[0] === 'expo-secure-store');
   equal(secure?.[1], {configureAndroidBackup: false, faceIDPermission: false}, 'Custom backup policy owns rules; no biometric permission requested');
   const eas = json('eas.json');

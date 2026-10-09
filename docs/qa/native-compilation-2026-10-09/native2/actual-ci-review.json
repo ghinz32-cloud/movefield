@@ -1,0 +1,32 @@
+{
+  "source": "2fda048599d36dae64084833d1f52e0298327766",
+  "tree": "65dd410c4c0113a05b47b197549edf096bbd1dc3",
+  "nativeRun": 37972717088,
+  "android": {
+    "assembled": true,
+    "lintPassed": true,
+    "nativeUnitTests": "NO-SOURCE",
+    "sameApkPaths": [
+      "res/r1.xml",
+      "res/zk.xml"
+    ],
+    "backupRulesDecodedAndValidated": true,
+    "finalInspectorPassed": false,
+    "failure": "22 unexpected merged SDK permissions",
+    "archiveVerified": true
+  },
+  "ios": {
+    "compiled": true,
+    "inspectionPassed": true,
+    "archiveSourceVerified": true,
+    "signing": "unsigned simulator"
+  },
+  "quality": {
+    "run": 37972717133,
+    "passed": true,
+    "regression": 53,
+    "production": 3,
+    "integrationTreeMatchesSource": true
+  },
+  "next": "NATIVE3 capability removals; new-source CI required"
+}

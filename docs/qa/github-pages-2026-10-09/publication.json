@@ -8,9 +8,10 @@
   "remoteHeadAndManifestReadback": true,
   "run": {
     "id": 37972092909,
-    "status": "in_progress",
-    "conclusion": null
+    "status": "completed",
+    "conclusion": "success"
   },
-  "liveVerification": "Pending deployment; initial manifest404",
-  "qualifiedDevices": 0
+  "liveVerification": "34/34 public non-dotfile asset SHA256 values and HTML/worker/main JS/privacy/ZIP bytes verified over HTTPS",
+  "qualifiedDevices": 0,
+  "liveReadback": "live-readback.json"
 }

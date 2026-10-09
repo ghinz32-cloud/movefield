@@ -11,8 +11,8 @@
     "tree": "34b1958cce560a59015de2788c4b6ece1e7e03f3",
     "event": "pull_request",
     "attempt": 1,
-    "status": "in_progress",
-    "conclusion": null
+    "status": "completed",
+    "conclusion": "failure"
   },
   "jobs": [
     {
@@ -188,14 +188,17 @@
   ],
   "artifacts": [],
   "qualification": {
-    "actualBuiltSource": "pending source.txt artifact verification",
+    "actualBuiltSource": "5eb847ec/tree34b1958 exact metadata source artifacts verified",
     "physicalDevices": 0,
     "storeAcceptance": false,
-    "androidSigning": "expected debug-signed test APK; actual certificate pending",
+    "androidSigning": "not completed in NATIVE1; NATIVE2 signature is Android Debug",
     "iosSigning": "unsigned Release simulator build; actual metadata pending",
     "nativeUnitTests": "previous run NO-SOURCE/0 JUnit; preserve unless current logs establish otherwise"
   },
-  "findings": [],
+  "findings": [
+    "iOS actual unsigned simulator compile/inspection passed",
+    "Android assemble/lint passed, original backup filename decode failed"
+  ],
   "limits": [
     "In progress; no current build/metadata success claimed",
     "Metadata/artifacts will be byte-hash/size verified; APK/.app binaries intentionally not retained"
