@@ -1,3 +1,9 @@
+# Later deployment checkpoint — 9 October 2026
+
+The qualification tables and source/Pages counts below preserve historical evidence. Current status is recorded in [claude-audit-deployment-2026-10-09.md](claude-audit-deployment-2026-10-09.md). Both web prototypes are deployed, with 52 public files verified and a 124-entry mobile source starter. Web account sync and backend feedback processing are implemented and deployed on the authenticated Site; signed-in sync acceptance and live model feedback remain unverified. Public Pages provides local functionality. Native account authentication remains unavailable. Dependency, signing, physical-device and the recorded resource-lifecycle/refusal follow-ups remain release gates.
+
+---
+
 # Android, iOS and website readiness — 9 October 2026
 
 This checkpoint is a prototype and security-hardening result. It is not Apple/Google acceptance, a penetration-test certificate or confirmation that every device works. Static website publication does not certify the mobile release.

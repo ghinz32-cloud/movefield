@@ -6,9 +6,9 @@
 - [x] Implement transactional ciphertext outboxes and authenticated browser sync with reviewed replacement.
 - [x] Implement persisted async feedback backend/UI, account preconditions and cancel/stale-result protection.
 - [x] Remove obsolete wrappers; verify shared platform boundaries; disable implicit mock authentication.
-- [x]66 regression,3 production suites; types/product lint; native engine/Hermes; Pages generation/hash checks.
-- [ ] Publish exact source and both existing web hosts; preserve private Site audience.
-- [ ] Verify fresh Android/iOS compilation and retained test-package evidence.
+- [x] 66 regression and 3 production suites; types/product lint; native engine/Hermes; Pages generation/hash checks.
+- [x] Publish exact source and both existing web hosts; preserve private Site audience. Source 83b2f94, Pages f3286af with all 52 live files verified, owner-private Site b61ded3 with qualified native/backend inputs and corrected web availability copy.
+- [x] Verify fresh Android/iOS compilation and retained test-package evidence. Run 37990501073 succeeded; Android artifact 11644933560 and unsigned iOS simulator artifact 11644643820 are retained. Current artifact-byte retrieval returned HTTP 403, so no independent archive replay is claimed.
 - [ ] Obtain real provider/native-auth/Apple distribution credentials before live AI or physical-iPhone distribution.
 
 # Claude audit — bounded history capacity

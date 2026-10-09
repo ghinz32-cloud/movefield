@@ -1,3 +1,9 @@
+# Later deployment checkpoint — 9 October 2026
+
+The qualification tables and source/Pages counts below preserve historical evidence. Current status is recorded in [claude-audit-deployment-2026-10-09.md](claude-audit-deployment-2026-10-09.md). Both web prototypes are deployed, with 52 public files verified and a 124-entry mobile source starter. Web account sync and backend feedback processing are implemented and deployed on the authenticated Site; signed-in sync acceptance and live model feedback remain unverified. Public Pages provides local functionality. Native account authentication remains unavailable. Dependency, signing, physical-device and the recorded resource-lifecycle/refusal follow-ups remain release gates.
+
+---
+
 # Movefield security, platform, science and Pages audit — 9 October 2026
 
 This is the current completion record for the owner's Android/iOS security audit, workout review and GitHub Pages publication request. Earlier milestone reports retain their original failures and pending states as historical evidence. This record does not certify store acceptance, physical-device behavior or independent penetration testing.
