@@ -18,6 +18,8 @@ jobs:
       CI: "true"
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: "24"
@@ -30,11 +32,11 @@ jobs:
         run: |
           npm run check
           npm run lint
-      - name: Shared domain, storage and regression checks
-        run: npm run test:regression
       - name: Install the locked native dependencies
         working-directory: mobile
-        run: npm ci --no-audit --no-fund
+        run: npm ci --no-audit --no-fund --ignore-scripts
+      - name: Shared domain, storage and regression checks
+        run: npm run test:regression
       - name: Native type and training checks
         working-directory: mobile
         run: |

@@ -1,4 +1,18 @@
-# Active checkpoint — native verified-model files, 9 October 2026
+# Active work — cross-platform security, science and GitHub Pages, 9 October 2026
+
+The owner explicitly requests Android+iOS security/compatibility, an all-template scientific review, and the new website on existing GitHub Pages with instructions. Existing commit/source/audit publication authority persists. Baseline recovered from GitHub `587438a8a2ba21cf88c943f857348dd7190eb078`, exact tree `e394eeda958d94a1cfa7686bc0235024d961d118`. Checkout `/workspace/scratch/86ffa076637d/movefield`, branch/upstream `audit/2026-10-08-quality`. Main/review-fixes unchanged; existing `gh-pages` is `a900521b5d018093f1fa48e52c45165c4df706d3` and its old site returns HTTP200.
+
+| ID | State | Milestone | Acceptance |
+| --- | --- | --- | --- |
+| SEC1 | Complete locally, publish/verify next | Platform security configuration, bounded crypto transfer and safe source packaging | 50 regressions/3 production, 104 generated native-config assertions, 62 transfer checks, 12 packaging scenarios, types/lint/build/39 shared hashes/both Hermes exports; strict release gate remains blocked |
+| SEC2 | Next | Honest persistent legacy cleanup privacy status and safe retry | Preserve authoritative encrypted SQL, detect retained plaintext across restart, retry only matching owned legacy copies, verify reset and denied access |
+| SCI1 | Read-only audit complete, fixes next after SEC2 checkpoint | Review75original templates/20named references and repair demonstrated schedule/evidence defects | Per-template source/dose/population evidence, HY5 scheduling, PLSL3 rotation/copy, population-appropriate citations; zero exact-template outcome validations claimed |
+| PAGE1 | Architecture reviewed, implementation queued | Dedicated static Vite client build at `/movefield/` and verified branch publication | Runtime assets/SW scoped to project, static CSP, no photos/private/server/model files, actual output/hashes and live readback, instructions |
+| NATIVE1 | Workflow prepared, awaiting actual run | Android release compile/lint and unsigned iOS Release simulator compile | Exact-commit CI status and assembled metadata; debug-signing/simulator limits preserved; no physical/store claim |
+
+SEC1 evidence: `docs/security-audit-2026-10-09.md`, `mobile/docs/native-security-2026-10-09.md`, `docs/qa/cross-platform-security-2026-10-09/validation.json`. Fresh generated validation copies are preserved there rather than overwriting historical reports. Dependency roots remain unpatched; no incompatible downgrade or waiver. Publish this checkpoint to existing audit branch, verify exact tree/ref/report readback and native CI run; then implement SEC2. Source commit resolves through report history, publication metadata follows separately.
+
+# Previous checkpoint — native verified-model files, 9 October 2026
 
 Standing owner authorization includes delegated technical/destination choices, GitHub commit creation and publication of this app's source/audit evidence to `ghinz32-cloud/movefield`. Use existing review branch `audit/2026-10-08-quality`; no further routine push confirmation is needed. Prior audit `07e540dcfe8bcd9339651db868f9a07184b4d49a` is pushed and independently verified against local audit tree; prior automatic-review blockers below are historical and resolved.
 

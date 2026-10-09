@@ -1,0 +1,11 @@
+PASS Current tracked working-tree source ships without requiring a commit
+PASS Untracked source, native output, photos and credentials never enter the public starter
+PASS Repeated packaging is byte-identical
+PASS Tracked generated native output and photo directories remain excluded
+PASS Accidentally tracked credential filenames fail closed and preserve the prior archive
+PASS Credential content hidden in a tracked source file fails without replacing the archive
+PASS Tracked source symlinks cannot expose a file outside the starter
+PASS Replacing a tracked source directory with a symlink fails closed
+PASS Missing required tracked source fails and keeps the last usable download
+PASS A source copy without its Git index cannot silently fall back to scanning local files
+10 mobile source packaging security scenarios passed.

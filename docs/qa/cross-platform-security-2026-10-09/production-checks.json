@@ -1,0 +1,14 @@
+[
+  {
+    "check": "check-bundle.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-production-offline.cjs",
+    "passed": true
+  },
+  {
+    "check": "check-production-security.cjs",
+    "passed": true
+  }
+]

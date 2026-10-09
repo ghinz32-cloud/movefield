@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-09T16:53:52.640438+00:00",
+  "baseline": "587438a8a2ba21cf88c943f857348dd7190eb078",
+  "status": "source/configuration checks passed; strict dependency release blocked",
+  "checks": {
+    "regressionSuites": 50,
+    "productionSuites": 3,
+    "transferAssertions": 62,
+    "packagingScenarios": 12,
+    "nativePrebuildAssertions": 104,
+    "webTypes": true,
+    "nativeTypes": true,
+    "lint": true,
+    "webBuild": true,
+    "expoInstallCheck": true,
+    "androidHermesExport": true,
+    "iosHermesExport": true,
+    "nativeCompilation": false,
+    "physicalDeviceTests": false,
+    "storeAcceptance": false
+  },
+  "sourceSHA256": {
+    ".github/workflows/native-builds.yml": "889fa6cac70333c7b4c3ef08d6a6e9a22b1c528f7ec8f8b8c4769bbbde8b1156",
+    ".github/workflows/quality.yml": "bc3a5b475bfe2444882878108efb30c34d7ab5be956112a0e5de0b7a7d64b79e",
+    "docs/security-audit-2026-10-09.md": "ff72805f1934071eb7a7c92525be77af5de3bec4002fdc9e3983c463abd2a884",
+    "lib/transfer-bundle.ts": "dd7a200b62c627b205d059e78713d4c0c6bbbd2db5bc15414c77e271b16b4b75",
+    "mobile/app.json": "c83355a8c96024115700e691c278a6ae872a328abae8c03567dd4f7ac3340e2a",
+    "mobile/docs/native-security-2026-10-09.md": "fad8a817bf86ba8b3f36c79f5fb4117994b77a407d2062f601e67dc5e19e23a5",
+    "mobile/docs/security-review.md": "5fc3a57d7bb2d5040d02d6f58077fbeecdbe77246cd4182880a34b5cb72e437e",
+    "mobile/docs/shared-snapshot.json": "5f7fd9cae49e62aad05d605275d000d1d57096513a369f178fb7c192094f749f",
+    "mobile/eas.json": "f06de28ec93f1efd9afc3bea3e820b8768d5fe9063eff2cb342f0036a6137ba3",
+    "mobile/plugins/withMovefieldSecurity.cjs": "8c118ee2f5aba661d68723defde66d770ee244bb46eab218d932ae0f6a71e5e9",
+    "mobile/src/shared/transfer-bundle.ts": "dd7a200b62c627b205d059e78713d4c0c6bbbd2db5bc15414c77e271b16b4b75",
+    "scripts/check-mobile-package.cjs": "100a78d6d1c2bf5e5ba36ccbbbe8d07d9490d7934869756ef563fc663b8fd09d",
+    "scripts/check-native-security-config.cjs": "c0c68e7a082aeb629c783d48db35fee32355baa29efddce667c26b8f56393a2e",
+    "scripts/check-transfer.cjs": "ebbe48933ba4f6c350cfe9515bb391f429590d49ac012d02b26fca4917dd2d29",
+    "scripts/inspect-native-artifacts.py": "67ea8ceb6c6acc7162681b8a26b66217a59f4a3a0d51e6ff6f0e696b9940d07b",
+    "scripts/package-mobile.py": "4cfd136bffe2240f433c71f6fbeda92849ce1e5f90890309cc3e6bef031c6848"
+  },
+  "artifactSHA256": {
+    "mobile/dist-mobile/_expo/static/js/android/index-2b2f65c4c055535682ae3824f78cc81e.hbc": {
+      "bytes": 4640165,
+      "sha256": "e4b2786a76029861c1f9360df70380bef809d4bd8f30ba1f1bdbf48e76024cbb"
+    },
+    "mobile/dist-mobile/_expo/static/js/ios/index-3e1f987beaf1208e1e7d035143fa55db.hbc": {
+      "bytes": 4630048,
+      "sha256": "511316f186caf9d88eb725c65d30db58b4431cbcace68926a1575a5d67cdd134"
+    },
+    "dist/client/offline-build.json": {
+      "bytes": 9533,
+      "sha256": "e492f7d07ab1b58010feb2081c6eef4b9c63f8b61eb76fdfb26e349f2daad787"
+    },
+    "public/downloads/movefield-mobile-r14.zip": {
+      "bytes": 2060788,
+      "sha256": "e8e8bd903fa70de63f4938789d8e1a11de254cbfae109299605c835fe184164d"
+    }
+  },
+  "limits": [
+    "No real device or store acceptance",
+    "New native CI workflow not run yet",
+    "Two current high advisory roots; release gate fails",
+    "Legacy plaintext cleanup status follow-up pending",
+    "The later report-publication checkpoint is documentation only"
+  ]
+}

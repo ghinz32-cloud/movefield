@@ -23,6 +23,8 @@ const failsWith=async(promise,code,msg)=>{try{await promise}catch(e){same(e inst
  same(T.passwordProblem(PASSWORD),null,'a four-word phrase is accepted');
  same(T.passwordProblem('x'.repeat(1025))?.code,'long-password','an absurdly long password is refused');
  await failsWith(T.createTransferFile(PLAIN,'short',{source:'web',random}),'short-password','create refuses a short password');
+ await failsWith(T.createTransferFile('x'.repeat(5_000_001),PASSWORD,{source:'web',random}),'too-large','create bounds backup before KDF and byte allocation');
+ await failsWith(T.createTransferFile(PLAIN,PASSWORD,{source:'web',random:()=>new Uint8Array(1)}),'bad-format','bad random byte counts cannot produce a file');
 
  // 2. Round trip. The file never contains the plaintext.
  const start=Date.now();
@@ -38,6 +40,10 @@ const failsWith=async(promise,code,msg)=>{try{await promise}catch(e){same(e inst
  await failsWith(T.openTransferFile(file,'quiet river lantern 43'),'wrong-password','a wrong password fails');
  await failsWith(T.openTransferFile(file,''),'wrong-password','an empty password asks for the password');
  const parsed=JSON.parse(file);
+ await failsWith(T.openTransferFile(file,'x'.repeat(1025)),'long-password','opening also bounds password before KDF');
+ await failsWith(T.openTransferFile(JSON.stringify({...parsed,data:'aa'.repeat(1_000_000)+'zz'}),PASSWORD),'bad-format','large malformed hex is rejected without a regex stack overflow');
+ await failsWith(T.openTransferFile(JSON.stringify({...parsed,data:'a'.repeat(35)}),PASSWORD),'bad-format','odd-length ciphertext is refused');
+ await failsWith(T.openTransferFile(JSON.stringify({...parsed,createdAt:'x'.repeat(101)}),PASSWORD),'bad-format','header text is bounded');
  const flipped={...parsed,data:(parsed.data.slice(0,-2)+(parsed.data.slice(-2)==='00'?'01':'00'))};
  await failsWith(T.openTransferFile(JSON.stringify(flipped),PASSWORD),'wrong-password','a changed ciphertext byte fails');
  await failsWith(T.openTransferFile(JSON.stringify({...parsed,createdAt:'2026-01-01T00:00:00.000Z'}),PASSWORD),'wrong-password','a changed creation time fails (header is authenticated)');
@@ -62,6 +68,24 @@ const failsWith=async(promise,code,msg)=>{try{await promise}catch(e){same(e inst
  ok(other.kdf.salt!==parsed.kdf.salt&&other.nonce!==parsed.nonce&&other.data!==parsed.data,'a new salt, nonce and ciphertext are used each time');
  same(await T.openTransferFile(again,PASSWORD),PLAIN,'the second file opens with the same password');
  same(JSON.parse(again).source,'phone','the phone source is recorded');
+
+ // 6. Observe owned byte buffers around the real KDF/cipher, including failure.
+ // These wrappers don't substitute cryptography; they retain references solely to
+ // verify cleanup after the actual library returns or authentication throws.
+ const passwordBytes=[],keys=[],plaintextBytes=[];
+ const observed={exports:{}};
+ const compiled=ts.transpileModule(fs.readFileSync('lib/transfer-bundle.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+ new Function('require','module','exports',compiled)(s=>{
+  if(s==='@noble/hashes/argon2.js')return {...require(s),argon2idAsync:async(...args)=>{passwordBytes.push(args[0]);const key=await require(s).argon2idAsync(...args);keys.push(key);return key}};
+  if(s==='@noble/ciphers/chacha.js')return {...require(s),xchacha20poly1305:(...args)=>{const cipher=require(s).xchacha20poly1305(...args);return {encrypt:plain=>{plaintextBytes.push(plain);return cipher.encrypt(plain)},decrypt:data=>{const plain=cipher.decrypt(data);plaintextBytes.push(plain);return plain}}}};
+  return require(s);
+ },observed,observed.exports);
+ const protectedFile=await observed.exports.createTransferFile(PLAIN,PASSWORD,{source:'web',random});
+ same(await observed.exports.openTransferFile(protectedFile,PASSWORD),PLAIN,'cleanup preserves real cryptographic round trip');
+ await assert.rejects(observed.exports.openTransferFile(protectedFile,'wrong phrase with many words'),e=>e.code==='wrong-password');checks++;
+ ok(passwordBytes.length===3&&passwordBytes.every(b=>b.every(v=>v===0)),'encoded password bytes cleared on every KDF path');
+ ok(keys.length===3&&keys.every(b=>b.every(v=>v===0)),'owned keys cleared after encryption, decryption and failed authentication');
+ ok(plaintextBytes.length===2&&plaintextBytes.every(b=>b.every(v=>v===0)),'owned plaintext byte buffers cleared after use');
 
  console.log(`PASS transfer files: ${checks} checks`);
 })().catch(error=>{console.error(error);process.exit(1)});

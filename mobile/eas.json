@@ -7,18 +7,18 @@
     "development": {
       "developmentClient": true,
       "distribution": "internal",
-      "android": { "image": "latest" },
-      "ios": { "image": "latest" }
+      "android": { "image": "ubuntu-26.04-jdk-17-ndk-r27b-sdk-57" },
+      "ios": { "image": "macos-tahoe-26.5-xcode-26.6" }
     },
     "preview": {
       "distribution": "internal",
-      "android": { "image": "latest" },
-      "ios": { "image": "latest" }
+      "android": { "image": "ubuntu-26.04-jdk-17-ndk-r27b-sdk-57" },
+      "ios": { "image": "macos-tahoe-26.5-xcode-26.6" }
     },
     "production": {
       "autoIncrement": true,
-      "android": { "image": "latest" },
-      "ios": { "image": "latest" }
+      "android": { "image": "ubuntu-26.04-jdk-17-ndk-r27b-sdk-57" },
+      "ios": { "image": "macos-tahoe-26.5-xcode-26.6" }
     }
   },
   "submit": {

@@ -109,7 +109,7 @@
     {
       "source": "lib/transfer-bundle.ts",
       "target": "src/shared/transfer-bundle.ts",
-      "sha256": "149d5689c95598c35a6eb455e67f04d2392d164584dc78edf88ea33f8f1091ed"
+      "sha256": "dd7a200b62c627b205d059e78713d4c0c6bbbd2db5bc15414c77e271b16b4b75"
     },
     {
       "source": "lib/progress.ts",

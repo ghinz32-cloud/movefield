@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-09T16:51:26.041Z",
+  "groups": [
+    "Standing dumbbell plans match adult goals, experience, sex, starts and full block lengths",
+    "Two-day hybrid keeps full strength plus timed walk/jog and does not duplicate cardio add-ons",
+    "Boundaries stay explicit: no counterfeit SBD, no unsupported youth prescriptions, no invisible fallback",
+    "Same-weekday tracking copies targets atomically without touching dates or completed work",
+    "Reviewed return block resolves the dependency chain without restoring old volume",
+    "Coarse equipment increments offer reviewed reps for muscle work with unchanged rest and sets",
+    "Long custom timed actuals, feedback drafts, machine context and timers survive save/reopen"
+  ],
+  "checks": 428582,
+  "coverage": {
+    "matched": 8082,
+    "limited": 1,
+    "unsupported": 5,
+    "tracking": 1
+  },
+  "notes": [
+    "Coverage counts are tested setups, not independent clinical validation.",
+    "Native notifications, screen readers, visual layout and real-account isolation require device/browser verification."
+  ]
+}
