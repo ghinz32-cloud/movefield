@@ -1,3 +1,9 @@
+# Current calendar UI checkpoint — 9 October 2026
+
+Completed Plans tab geometry/spacing, removed floating Appearance controls, added web/native Today date selection and read-only historical workout details. Report: `docs/calendar-and-coaching-2026-10-09.md`. Canonical branch `audit/2026-10-09-claude`, repository https://github.com/ghinz32-cloud/movefield.git; resolve this milestone source with `git log -1 --format=%H -- components/training-day.tsx`. Validation: 11 date/history groups, 16 compiled log/save/alarm scenarios, 8 storage UI scenarios, 45 shared hashes, web/native types, zero-warning focused lint, production build and 3/3 production suites. Browser/physical-device acceptance is not claimed. Local milestone commit will be published to the existing audit branch and independently read back before starting AI source changes. Existing web hosts are still the previous deployed version until the final deployment milestone.
+
+Next: personalized free browser-local coaching with profile/performance/attendance context and secure optional backend routing. Preserve explicit consent and durable-save gating. Current provider keys and native auth remain absent; do not invent them.
+
 # Current Claude repair and deployment checkpoint — 9 October 2026
 
 The core and native qualification source is published at `83b2f94cdc7cd697b9cb45f311794c4371ca4826`, tree `1c47d2b0343e0d1768deda6850e50be38cac6ad7`, on the existing GitHub audit branch. All 66 regression and 3 production suites pass locally and in quality run 37990501064; web/native types and product lint pass without warnings. Source report and full changed-file inventory: `docs/claude-audit-deployment-2026-10-09.md`.

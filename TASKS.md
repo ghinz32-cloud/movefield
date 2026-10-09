@@ -1,3 +1,11 @@
+# Active calendar and coaching request — 9 October 2026
+
+- [x] UI: bounded Plans tabs, Settings-only appearance, web/native calendar day history and truthful Day off.
+- [x] Relevant UI checks, native shared snapshot, production build and 3/3 production suites.
+- [ ] Publish/read back UI recoverable checkpoint on the existing audit branch.
+- [ ] Personalized local Qwen3.5 coaching and consented secure backend routing.
+- [ ] Integrated verification, both existing web deployments and new native testing builds.
+
 # Current Claude pipeline checkpoint — 9 October 2026
 
 - [x] Reconcile current GitHub audit/review/native collector histories and raw Claude audit.

@@ -205,12 +205,12 @@ h1{font-size:clamp(2.6rem,4vw,3.5rem)}h2{font-size:1.9rem}h3{font-family:Inter,A
 .entry-context{background:radial-gradient(ellipse at top right,#284d41 0%,#132325 65%)}.entry-context h2{letter-spacing:0}.entry-primary{min-height:3rem}.mode-choice.selected,.choice.selected,.day-picker label.selected,.plan-option.selected{background:var(--soft-accent);border-color:var(--accent-strong);box-shadow:0 0 0 1px var(--accent-strong)}
 input,textarea,select,[data-slot=select-trigger]{color:var(--foreground);border-color:var(--input)}input::placeholder,textarea::placeholder{color:var(--muted-foreground);opacity:1}button:not([role=switch]):not([role=checkbox]),[data-slot=button]{white-space:normal;height:auto;min-height:2.75rem}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--ring);outline-offset:3px}
 :root.dark .app-sidebar{--ring:var(--brand-from)}.app-sidebar button:focus-visible,.entry-context a:focus-visible{outline-color:var(--brand-from)}.app-sidebar [data-active=true]{background:var(--sidebar-accent);color:var(--brand-from)}
-.settings-grid{align-items:start}.preference-settings{margin-bottom:1.5rem}.settings-heading{display:flex;justify-content:space-between;gap:1rem;align-items:center}.settings-heading .eyebrow{margin-bottom:.3rem}.theme-preview{display:flex;align-items:center;flex-wrap:wrap;gap:.8rem;margin:1.5rem 0;padding:1.5rem;border-radius:1rem;background:linear-gradient(120deg,var(--brand-from),var(--brand-to));color:#132325}.theme-preview .brand-wordmark{font-size:2.1rem}.theme-preview-caption{flex-basis:100%;font-size:.875rem;letter-spacing:.02em}.palette-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem;margin:.6rem 0 1.25rem}.palette-choice{display:flex;flex-direction:column;gap:.5rem;align-items:center;justify-content:center;padding:.65rem .35rem;border:2px solid var(--border);border-radius:.75rem;font-size:.875rem;line-height:1.4}.palette-choice.selected,.mode-picker .selected{border-color:var(--accent-strong);background:var(--soft-accent);font-weight:650}.palette-swatch{width:100%;height:2.25rem;border-radius:.4rem;display:grid;place-items:center;color:#132325;border:1px solid #637a75}.mode-picker{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0}.mode-picker button{display:flex;align-items:center;justify-content:center;gap:.4rem;border:2px solid var(--border);padding:.65rem;flex:1;min-width:6rem;border-radius:.65rem;font-size:.875rem}.field-label{display:block}.appearance-shortcut{position:fixed;right:1rem;bottom:1rem;z-index:35;background:var(--card);color:var(--foreground);border:1px solid var(--input);box-shadow:0 4px 18px #0002;padding:.65rem .85rem}.appearance-dialog{max-width:min(43rem,calc(100% - 2rem))!important;max-height:90dvh;display:flex;flex-direction:column}.appearance-dialog-body{overflow:auto;min-height:0;display:grid;gap:1rem;padding:.25rem}.appearance-dialog .card{padding:1.25rem}.switch-row{gap:1rem}.switch-row [data-slot=switch]{flex-shrink:0}.switch-row p{font-size:.875rem;color:var(--muted-foreground)}
+.settings-grid{align-items:start}.preference-settings{margin-bottom:1.5rem}.settings-heading{display:flex;justify-content:space-between;gap:1rem;align-items:center}.settings-heading .eyebrow{margin-bottom:.3rem}.theme-preview{display:flex;align-items:center;flex-wrap:wrap;gap:.8rem;margin:1.5rem 0;padding:1.5rem;border-radius:1rem;background:linear-gradient(120deg,var(--brand-from),var(--brand-to));color:#132325}.theme-preview .brand-wordmark{font-size:2.1rem}.theme-preview-caption{flex-basis:100%;font-size:.875rem;letter-spacing:.02em}.palette-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem;margin:.6rem 0 1.25rem}.palette-choice{display:flex;flex-direction:column;gap:.5rem;align-items:center;justify-content:center;padding:.65rem .35rem;border:2px solid var(--border);border-radius:.75rem;font-size:.875rem;line-height:1.4}.palette-choice.selected,.mode-picker .selected{border-color:var(--accent-strong);background:var(--soft-accent);font-weight:650}.palette-swatch{width:100%;height:2.25rem;border-radius:.4rem;display:grid;place-items:center;color:#132325;border:1px solid #637a75}.mode-picker{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0}.mode-picker button{display:flex;align-items:center;justify-content:center;gap:.4rem;border:2px solid var(--border);padding:.65rem;flex:1;min-width:6rem;border-radius:.65rem;font-size:.875rem}.field-label{display:block}.switch-row{gap:1rem}.switch-row [data-slot=switch]{flex-shrink:0}.switch-row p{font-size:.875rem;color:var(--muted-foreground)}
 .skip-link{position:fixed;top:.5rem;left:.5rem;padding:.8rem 1rem;z-index:100;background:var(--card);color:var(--foreground);transform:translateY(-200%);border:2px solid var(--ring);border-radius:.5rem}.skip-link:focus{transform:translateY(0)}.workspace:focus{outline:none}.workspace h1:focus{outline:none}.workspace{padding-bottom:7rem;overflow-wrap:anywhere}.page-heading>div,.split>div,.card,.field-grid>*{min-width:0}.topbar{padding-right:1rem}.exercise-card small{font-size:.875rem;color:var(--muted-foreground)}.training-chart text{fill:var(--muted-foreground)}.training-chart .recharts-cartesian-grid line{stroke:var(--border)}.training-chart .recharts-tooltip-label,.training-chart .recharts-tooltip-item{color:var(--foreground)!important}.chart-empty{min-height:14rem;height:auto}.chart-controls label{min-width:min(10rem,100%)}
 :root[data-underline-links=true] a:not([data-slot=button]){text-decoration:underline;text-underline-offset:.2em}
 :root[data-contrast=true] .session-feature,:root[data-contrast=true] .theme-preview{background:var(--brand-from)}:root[data-contrast=true] .monogram-fill{fill:var(--brand-from)}
 :root[data-reduce-motion=true] *,:root[data-reduce-motion=true] *::before,:root[data-reduce-motion=true] *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.upcoming:hover{transform:none}
-@media(max-width:600px){.settings-grid,.field-grid,.custom-targets{grid-template-columns:1fr!important}.palette-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.workspace{padding:1.25rem 1rem 7rem}.card{padding:1.2rem}.appearance-shortcut span{display:none}.appearance-shortcut{bottom:.75rem;right:.75rem}.appearance-shortcut svg{width:1.2rem;height:1.2rem}.session-feature h2{font-size:2.1rem}.detail-sheet{width:100%!important;max-width:100%!important}.page-heading button{max-width:100%}.today-shortcuts{align-items:stretch}.rest-status{position:static}.builder-dialog{padding:1rem!important}.setup-steps{flex-wrap:wrap}}
+@media(max-width:600px){.settings-grid,.field-grid,.custom-targets{grid-template-columns:1fr!important}.palette-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.workspace{padding:1.25rem 1rem 7rem}.card{padding:1.2rem}.session-feature h2{font-size:2.1rem}.detail-sheet{width:100%!important;max-width:100%!important}.page-heading button{max-width:100%}.today-shortcuts{align-items:stretch}.rest-status{position:static}.builder-dialog{padding:1rem!important}.setup-steps{flex-wrap:wrap}}
 @media(forced-colors:active){.session-feature,.theme-preview,.palette-swatch{background:Canvas!important;color:CanvasText}.palette-choice.selected,.mode-picker .selected{outline:3px solid Highlight}.monogram-fill{fill:CanvasText}.theme-preview svg rect,.brand svg rect{fill:Canvas}.card,input,button{border-color:ButtonText}.skip-link{color:LinkText;background:Canvas}}
 
 .field select,.chart-controls select,.set-extra textarea{border-color:var(--input)}
@@ -309,7 +309,7 @@ html[data-density=roomy] .weekly-review{margin-bottom:2rem}
 .workout-actionbar .rest-status strong{font-variant-numeric:tabular-nums;font-size:1.2rem;min-width:3.5rem}
 .workout-tools{margin-bottom:1rem}.workout-tools>summary,.load-guidance>summary{cursor:pointer;min-height:44px;padding:.65rem 0;font-size:1rem;font-weight:600}
 .workout-tools .training-tools{margin-top:.75rem}.exercise-log .load-guidance{margin-top:.75rem}.exercise-log .load-guidance[open]{padding-bottom:.75rem}
-body:has(.workout-actionbar) .appearance-shortcut{display:none}
+
 @media(max-width:600px){.workout-actionbar{padding:.65rem}.workout-actionbar .rest-status{width:100%;justify-content:space-between}.workout-actionbar button{min-height:44px}.exercise-log .split{gap:.75rem}}
 
 /* Optional model files follow the same theme and remain usable at large text. */
@@ -334,3 +334,52 @@ html[data-density=compact] .qwen-file-actions [data-slot=button]{height:auto;min
 
 /* Coarse pointers retain a 44px minimum target in every density. */
 @media (pointer:coarse){[data-slot=button],[data-slot=input],[data-slot=select-trigger]{min-height:44px}}
+
+/* Plan tabs share one content origin, including when the page scrollbar changes. */
+:root{scrollbar-gutter:stable}
+.plans-tabs{min-width:0;gap:20px;overflow-anchor:none}
+.plans-tabs>[data-slot=tabs-list]{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;width:min(100%,32rem);max-width:100%;height:auto;padding:4px;gap:4px}
+.plans-tabs>[data-slot=tabs-list]>[data-slot=tabs-trigger]{min-width:0;min-height:44px;height:auto;flex:none;padding:.6rem .75rem;white-space:normal;overflow-wrap:normal;line-height:1.25;background-clip:padding-box}
+.plans-tabs>[data-slot=tabs-list]>[data-slot=tabs-trigger][data-state=active]:not(:focus-visible){box-shadow:none}
+.plans-tabs>[data-slot=tabs-content]{display:flow-root;min-width:0;margin:0;flex:none}
+.plans-tabs>[data-slot=tabs-content][hidden]{display:none}
+.plans-tabs>[data-slot=tabs-content]>:first-child{margin-top:0}
+.plans-tabs>[data-slot=tabs-content]>:last-child{margin-bottom:0}
+.plans-tabs .saved-plan{flex-wrap:wrap}
+.plans-tabs .saved-plan>div{flex:1 1 15rem;min-width:0}
+.plans-tabs .saved-plan>[data-slot=button]{max-width:100%;height:auto;min-height:44px;padding-block:.6rem;white-space:normal;text-align:center}
+@media(max-width:500px){.plans-tabs>[data-slot=tabs-list]>[data-slot=tabs-trigger]{padding:.55rem .35rem}}
+
+/* Calendar details use the same cards as Today and keep recorded sets readable. */
+.training-day-detail{display:grid;gap:16px;min-width:0}
+.training-day-detail>.page-heading{margin-bottom:0}
+.training-day-detail .split{flex-wrap:wrap}
+.training-day-detail .split>*{min-width:0}
+.training-day-detail .today-session .small-copy{margin:0;color:inherit}
+.training-day-workout>.muted,.training-day-plan>.muted{margin-top:8px}
+.training-day-workout>.small-copy{margin-block:10px}
+.training-day-workout .history-exercise{margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+.training-day-workout .history-exercise>.small-copy{margin-block:8px}
+.training-day-sets{display:grid;gap:8px;margin-top:10px}
+.training-day-set{padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--muted)}
+.training-day-set .split{gap:6px 12px;align-items:baseline}
+.training-day-set .small-copy{margin:4px 0 0;overflow-wrap:anywhere}
+.training-day-plan .session-detail-list{margin-top:12px}
+.training-day-plan .session-detail-list>div{padding-block:12px;border-bottom:1px solid var(--border)}
+.training-day-plan .session-detail-list>div:last-child{border-bottom:0;padding-bottom:0}
+.training-day-plan .session-detail-list .small-copy{margin-block:6px}
+.today-week>.split{flex-wrap:wrap;gap:8px}
+.today-week .actions{display:flex;align-items:center;flex-wrap:wrap;gap:4px}
+.today-week .actions>[data-slot=button]{min-width:44px;min-height:44px}
+.week-chips>button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;min-height:64px;padding:8px 0 12px;border:1px solid transparent;border-radius:8px;text-align:center;background:var(--muted);color:var(--muted-foreground);font-size:.8rem;white-space:nowrap}
+.week-chips>button>b{font-size:1rem;line-height:1.25}
+.week-chips>button.training-day{border-color:var(--input);background:var(--soft-accent);color:var(--foreground);font-weight:650}
+.week-chips>button[aria-pressed=true]{border-color:var(--ring);box-shadow:inset 0 0 0 1px var(--ring);color:var(--foreground)}
+.week-chips>button[aria-current=date]>b{text-decoration:underline;text-underline-offset:.2em}
+.week-chips>button:hover{border-color:var(--input);color:var(--foreground)}
+.week-chips>button:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.calendar-log-marker{position:absolute;bottom:0;left:0;right:0;line-height:1;text-align:center;color:var(--foreground)}
+.calendar-day>button.date-label{align-self:flex-start;min-width:44px;min-height:76px;padding:6px 4px;border:1px solid var(--border);border-radius:8px;background:var(--muted);color:var(--foreground);text-align:center}
+.calendar-day>button.date-label:hover{background:var(--accent);border-color:var(--input)}
+.calendar-day>button.date-label:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+@media(max-width:500px){.week-chips{gap:3px}}

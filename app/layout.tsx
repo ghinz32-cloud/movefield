@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import {brand} from '@/lib/brand';
 import "./globals.css";
-import {AppPreferencesProvider,AppearanceShortcut} from "@/components/app-preferences";
+import {AppPreferencesProvider} from "@/components/app-preferences";
 import {OfflineSupport} from "@/components/offline-support";
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased"><AppPreferencesProvider>{children}<AppearanceShortcut/></AppPreferencesProvider><OfflineSupport/></body>
+      <body className="antialiased"><AppPreferencesProvider>{children}</AppPreferencesProvider><OfflineSupport/></body>
     </html>
   );
 }

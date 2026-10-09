@@ -2,6 +2,11 @@
   "source": "Training Studio website domain modules; paths relative to its root",
   "files": [
     {
+      "source": "lib/training-day.ts",
+      "target": "src/shared/training-day.ts",
+      "sha256": "98c99cb7835915ba0d9ed5eb58b3844518e66f534e098c8aff18e2c66bb8b729"
+    },
+    {
       "source": "lib/sync-outbox.ts",
       "target": "src/shared/sync-outbox.ts",
       "sha256": "81df726d2a10fdf3b2e36dace735ffc01c886806cd496cb3b63a7c2412c204eb"
