@@ -1,0 +1,244 @@
+{
+  "milestone": "U08a2",
+  "recordedFor": "2026-10-08",
+  "repository": "https://github.com/ghinz32-cloud/movefield.git",
+  "branch": "audit/2026-10-08-continue",
+  "upstream": "origin/audit/2026-10-08-quality",
+  "remoteBase": "8cd39e42f2178b807d63af2042b70481041b028b",
+  "recoveredBaseline": "5c117e4fb3ea490326cb92be8a8bb377f564c409",
+  "testedApplicationCommit": "65232aae0fab994f00ca725497caf39886e5d027",
+  "testedApplicationTree": "84f688b216ad0aeea548469660677543a1ce0665",
+  "status": "implementation-complete-secure-browser-acceptance-pending",
+  "offeredModelId": "web-qwen3-0.6b-q4f16_1-mlc",
+  "downloadBytes": 356920759,
+  "sourceSha256": {
+    "app/globals.css": "b82585223cb5541e335119795b5e9c1ba2bf4f5c79c090b8c879c4c13fa67ab9",
+    "components/app-preferences.tsx": "df3478b4ba49f53f3dc38c62766d7b4ae08bda9864c05a3aa1b65dbed6e84928",
+    "components/qwen-model-files.tsx": "2f9f5097cdd15799b24cc5db0fad039e3d58d88545198d7ba969e9ad95fb9294",
+    "lib/http-security.ts": "9a677af550176e5552fdfd522d8057171995270e741a6bac7e9c9ffb06b2a262",
+    "lib/qwen-controls.ts": "ef63c43409c88056301d55392ec0005eea3d27745d0926cad2d5cc09433f50e6",
+    "lib/qwen-network-policy.json": "774bfbb26cf80ad76eef53b61408b6ff39f5fdede3b70da185ab08a98c297d06",
+    "lib/qwen-network-policy.ts": "937da64e70202e8d7cd0dd76b3611df63927eea2f8b1765ef631b3d34746c6ab",
+    "lib/qwen-network.ts": "f92528487a6e34dae01b8d7cff45184af4c139c27000bdb62ef73ac90ba26c7b",
+    "scripts/check-qwen-controls.cjs": "c79a7942c93c972272d7896abbb79df6cb0c91174bf7b5b8131f2ff2eeab5698",
+    "scripts/check-bundle.cjs": "ac9f9b6104a76cbbe1a1ff41d4539e66c6b7bcad8f1204233416c9b93cf1fd5b",
+    "scripts/check-production-security.cjs": "b94541955e263fce4bee2baacba729109522d7d0776e2f4a521821648bceb02b",
+    "lib/qwen-download.ts": "12727ceb58091e016532837744ca66c837643ff20d716d487cc2b5ce29bca57c",
+    "lib/browser-qwen-cache.ts": "ea323f5c02aeb940a0c639530b7043cc6c5b5439f7628d1d57d9c216e5a8e5c8",
+    "lib/qwen-assets.json": "2794f6b673fa094d91d9bc8a406bb930f35374acbc17713007164c4c8828a547",
+    "lib/qwen-evaluation-lock.json": "114932e96feb85d49b4a914e87ed1ccd741bbfc8a631f6d94d4a3532159d220f",
+    "package.json": "9f2b6591b81290ed8db2d0047a22064ccdecd24f913166c7850af24b6ef836be",
+    "pnpm-lock.yaml": "f37a9a3fbdcd8ff8fa0c1349eb96a674c3db67231c3ea8b1db63a3917d32829d"
+  },
+  "checks": {
+    "controlsAndPolicyAssertions": 132,
+    "downloadLifecycleAssertions": 190,
+    "indexedDBAdapterAssertions": 74,
+    "securityAssertions": 29,
+    "offlineAssertions": 31,
+    "qwenArtifactAndQualificationAssertions": 1675,
+    "fitnessGroundingAssertions": 221,
+    "evaluationGradingAssertions": 21,
+    "sharedFiles": 36,
+    "regressionSuites": [
+      {
+        "check": "check-audit.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-backup.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-browser-qwen-cache.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-browser-vault.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-catalog.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-equipment-capacity.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-fitness-evaluation.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-fitness-grounding.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-focus.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-goals.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-library.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-native-storage.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-offline.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-onboarding.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-preferences.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-program-depth.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-program-design.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-program-selection.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-qwen-assets.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-qwen-controls.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-qwen-download.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-revision-10.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-revision-11.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-security.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-shared.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-tools.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-training.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-transfer.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-workout-review.cjs",
+        "passed": true
+      }
+    ],
+    "productionSuites": [
+      {
+        "check": "check-bundle.cjs",
+        "passed": true
+      },
+      {
+        "check": "check-production-security.cjs",
+        "passed": true
+      }
+    ],
+    "webTypesExitCode": 0,
+    "lintExitCode": 0,
+    "managedProductionBuildExitCode": 0,
+    "initialGzipBytes": 388537,
+    "initialLimitGzipBytes": 400000
+  },
+  "browser": {
+    "surface": "Chrome cloud browser via cua_repl",
+    "originKind": "HTTP supervised development preview",
+    "secureContext": false,
+    "profileUsed": "Jordan sample only; saved own profile retained",
+    "observed": [
+      "Settings and lazy file view open",
+      "HTTPS requirement prevents file requests",
+      "Off visibly applied then Automatic restored",
+      "Keyboard Enter collapses file controls",
+      "Existing dark mode and 130% text remain readable",
+      "1348 px viewport and scrollWidth both 1348"
+    ],
+    "notAccepted": [
+      "Secure IndexedDB/Web Locks download/confirm/cancel/delete",
+      "Physical browser quota/OS interruption",
+      "Full keyboard focus and screen-reader acceptance",
+      "Small-screen reflow and 200% zoom: browser shortcuts did not change observed viewport",
+      "Runtime inference or qualification"
+    ],
+    "screenshotLocal": "/workspace/scratch/movefield-qwen-settings-20261008.jpg",
+    "screenshotLibraryId": "libfile_afe7ff31937c8191bbf2a54b5896c4d7"
+  },
+  "metadataProbe": {
+    "method": "HEAD",
+    "files": 16,
+    "publisherBodiesRead": 0,
+    "allFinalStatus200": true,
+    "observedCDN": "https://us.aws.cdn.hf.co",
+    "separateCorsHeadChecks": {
+      "origin": "https://example.test",
+      "merges.txt": "https://example.test",
+      "params_shard_0.bin": "*",
+      "Qwen3-0.6B-q4f16_1_cs1k-webgpu.wasm": "*"
+    },
+    "evidence": "docs/qwen-endpoints-head-2026-10-08.json",
+    "source": "https://huggingface.co/docs/hub/models-downloading#downloading-behind-a-proxy-or-firewall",
+    "limits": "HEAD/CORS metadata are not complete browser GET/hash/throughput acceptance; only observed exact destinations are allowed."
+  },
+  "dependencyInputsChanged": false,
+  "installedDependencies": "Reused locked installed packages in a checkout-local copy. Test-only fake-indexeddb remains pinned 6.2.5. No clean install or new CI run. Prior worktrees unchanged.",
+  "historicalContentReportsPreserved": true,
+  "logSha256": {
+    ".sites-runtime/u08a2-build.log": "16f2863a9a2018c6e252e1d53433404382ca860217acc31747527e5dfff32511",
+    ".sites-runtime/u08a2-production.log": "716fc667e5bd15baa5dc48a89f3be245539e1a7fc9a264c0144ce4b8732c1665",
+    ".sites-runtime/u08a2-regression.log": "83e3ba2f3ca81b09ef80396af06835be4345411ce9ea387ba1f877d70d5ec307"
+  },
+  "advisoryReleaseBlockers": [
+    "GHSA-vfj7-8cjw-p6xm",
+    "GHSA-86w9-cpqp-85rv"
+  ],
+  "acceptance": {
+    "productOptInScreenWired": true,
+    "networkPolicyWired": true,
+    "realModelWeightsDownloaded": false,
+    "actualSecureBrowserAcceptance": false,
+    "inferenceExecuted": false,
+    "modelTrained": false,
+    "deviceQualified": false,
+    "nativeRuntimeWired": false,
+    "cleanInstall": false,
+    "newCI": false,
+    "pushed": false,
+    "merged": false,
+    "deployed": false
+  },
+  "nextMilestone": "U08b verified WebLLM worker loading in a tested slice; secure browser/device task/tokenizer/context/memory/latency/interruption qualification before assistant activation. S02/U09 and release blockers remain required."
+}

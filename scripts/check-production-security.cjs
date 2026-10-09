@@ -9,6 +9,10 @@ async function main(){
  try{
   const {response:res,bytes}=await request(),body=new TextDecoder().decode(bytes),csp=res.headers.get('Content-Security-Policy'),nonce=csp?.match(/'nonce-([^']+)'/)?.[1];
   assert.equal(res.status,200);assert.ok(nonce);
+  const modelPolicy=JSON.parse(fs.readFileSync('lib/qwen-network-policy.json','utf8'));
+  const modelSources=[...new Set(modelPolicy.assets.flatMap(a=>[a.url,a.finalUrl]))];
+  assert.equal(csp.split('; ').find(s=>s.startsWith('connect-src ')),`connect-src 'self' ${modelSources.join(' ')}`);
+  assert.ok(!csp.includes('wasm-unsafe-eval')&&!csp.includes('unsafe-eval'),'download-only milestone cannot execute an inference runtime');
   const scripts=[...body.matchAll(/<script\b([^>]*)>/g)];assert.ok(scripts.length);
   for(const s of scripts)assert.ok(s[1].includes('nonce="'+nonce+'"'),'script missing nonce: '+s[1]);
   assert.notEqual((await request()).response.headers.get('Content-Security-Policy'),csp);

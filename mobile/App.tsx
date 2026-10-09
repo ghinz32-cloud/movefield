@@ -27,6 +27,7 @@ import { guides, media, safeWebUrl } from './src/content';
 import { adoptPlan, emptyDemo, finishWorkout, RUN_WALK, SPORT_FOUNDATION, previewPlan, startWorkout } from './src/mobile-engine';
 import { readLocalRaw, readLocalState, replaceLocalState, resetLocalState, saveLocalState } from './src/storage';
 import { LocalDataError } from './src/local-crypto';
+import { nativeSaveFailure, type NativeSaveFailure } from './src/storage-capacity';
 import { NativeTransferOpen } from './src/transfer';
 import { createTransferFile, isTransferFile, openTransferFile, TransferError } from './src/shared/transfer-bundle';
 import { getRandomBytes } from 'expo-crypto';
@@ -105,6 +106,7 @@ function TrainingApp() {
 
   const [readError, setReadError] = useState<string | null>(null);
   const [saveStatus, setSaveStatus] = useState('Loading local data…');
+  const [saveFailure, setSaveFailure] = useState<NativeSaveFailure | null>(null);
   const [error, setError] = useState('');
   const [tab, setTab] = useState<Tab>('Today');
   const [showRestOptions,setShowRestOptions]=useState(false);
@@ -165,10 +167,19 @@ function TrainingApp() {
       await replaceLocalState(checked);
     } catch (e) { setError(e instanceof LocalDataError ? e.message : 'The file opened, but this phone could not save it. Nothing was replaced.'); return; }
     setReadError(null); setError('');
-    stateRef.current=checked;setState(checked);writeVersion.current++;setSaveStatus('Saved on this device');setTab('Today');setCheckin(null);setChangePreview(null);
+    stateRef.current=checked;setState(checked);writeVersion.current++;setSaveFailure(null);setSaveStatus('Saved on this device');setTab('Today');setCheckin(null);setChangePreview(null);
     }finally{restoringRef.current=false}
   };
-  const commit = (next: State) => { const checked=normalizeWorkoutRest(next);readSavedState(JSON.stringify(checked));stateRef.current=checked;setState(checked);const version=++writeVersion.current;setSaveStatus('Saving on this device…');void saveLocalState(checked).then(()=>{if(version===writeVersion.current)setSaveStatus('Saved on this device')}).catch(()=>{if(version===writeVersion.current)setSaveStatus('Save failed · keep the app open and retry')}); };
+  const commit = (next: State) => {
+    const checked=normalizeWorkoutRest(next);readSavedState(JSON.stringify(checked));
+    stateRef.current=checked;setState(checked);const version=++writeVersion.current;
+    setSaveStatus('Saving on this device…');
+    void saveLocalState(checked).then(()=>{
+      if(version===writeVersion.current){setSaveFailure(null);setSaveStatus('Saved on this device');}
+    }).catch(error=>{
+      if(version===writeVersion.current){setSaveFailure(nativeSaveFailure(error));setSaveStatus('Save failed · latest changes are still open');}
+    });
+  };
   const [personalSetup,setPersonalSetup]=useState(false);
   const [trackingSession,setTrackingSession]=useState('');
   const [preview, setPreview] = useState<Plan | null>(null);
@@ -180,7 +191,11 @@ function TrainingApp() {
   const [equipment, setEquipment] = useState('All');
 
 
-  useEffect(() => { let mounted = true; readLocalState().then(s => { if (mounted) commit(s ?? emptyDemo()); }).catch(e => { if (mounted) setReadError(e instanceof LocalDataError ? e.message : 'We could not open your saved training. It has not been replaced.'); }); return () => { mounted = false; }; }, []);
+  useEffect(() => { let mounted = true; readLocalState().then(s => {
+    if (!mounted) return;
+    if(s){const checked=normalizeWorkoutRest(s);stateRef.current=checked;setState(checked);setSaveStatus('Saved on this device');}
+    else commit(emptyDemo());
+  }).catch(e => { if (mounted) setReadError(e instanceof LocalDataError ? e.message : 'We could not open your saved training. It has not been replaced.'); }); return () => { mounted = false; }; }, []);
   const workoutReminderMessage=useNativeWorkoutReminders(state,appearance.p,appearance.ready);
   const restAlertMessage=useNativeRestAlerts(state?.restTimer,state?.active?.id,!!state?.restAlerts,!!state);
   const [alertMessage,setAlertMessage]=useState('');
@@ -300,13 +315,20 @@ function TrainingApp() {
 
   return <SafeAreaView style={styles.safe} edges={['top', 'bottom']}><StatusBar style={appearance.dark?"light":"dark"} /><View style={styles.brandBar}><View><Text style={styles.brand}>{brand.name}</Text><Text style={styles.brandSub}>{brand.tagline}</Text></View><View style={styles.demoBadge}><Text style={styles.demoText}>LOCAL DEMO</Text></View></View>
     {error ? <Pressable accessibilityRole="button" onPress={() => setError('')} style={styles.error}><Text style={styles.errorText}>{error}</Text><Text style={styles.small}>Tap to dismiss</Text></Pressable> : null}
-    {resetting&&<Text accessibilityLiveRegion="polite" style={styles.body}>Resetting local data…</Text>}<KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>{tab === 'Today' ? todayView : tab === 'Plan' ? planView : tab === 'Library' ? libraryView : tab === 'Settings' ? <NativeSettings reminderMessage={workoutReminderMessage} onExport={exportBackup} onMakeTransfer={makeTransfer} onOpenTransfer={openTransfer}/> : historyView}
+    {resetting&&<Text accessibilityLiveRegion="polite" style={styles.body}>Resetting local data…</Text>}<KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>{tab === 'Today' ? todayView : tab === 'Plan' ? planView : tab === 'Library' ? libraryView : tab === 'Settings' ? <NativeSettings reminderMessage={workoutReminderMessage} recoveryMessage={saveFailure?.message} onExport={exportBackup} onMakeTransfer={makeTransfer} onOpenTransfer={openTransfer}/> : historyView}
     {active&&tab==='Today'&&<View style={styles.workoutBar}>
       <View style={styles.workoutRestRow}><Text style={styles.small}>{active.sets.filter(x=>x.done).length}/{active.sets.length} logged</Text><NativeRestClock timer={state.restTimer} compact/>{state.restTimer&&<><Pill label={state.restTimer.pausedSeconds!==null?'Resume rest':'Pause rest'} selected={false} onPress={()=>modify(s=>({...s,restTimer:s.restTimer?(s.restTimer.pausedSeconds!==null?resumeRest(s.restTimer):pauseRest(s.restTimer)):null}))}/><Pill label="+30 sec" selected={false} onPress={()=>modify(s=>({...s,restTimer:s.restTimer?extendRest(s.restTimer):null}))}/></>}</View>
       <Button label="Finish & save workout" onPress={requestFinish}/>
     </View>}
     </KeyboardAvoidingView>
-    <Pressable disabled={!saveStatus.startsWith('Save failed')} accessibilityRole="button" accessibilityLabel="Retry saving on this device" onPress={() => modify(s=>({...s}))}><Text accessibilityLiveRegion="polite" style={styles.saveStatus}>{saveStatus}</Text></Pressable>
+    {saveFailure?<View style={styles.saveRecovery}>
+      <Text accessibilityRole="alert" style={styles.errorText}>{saveFailure.kind==='capacity'?'Local save limit reached':'Your latest changes need saving'}</Text>
+      <Text style={styles.small}>{saveFailure.message}</Text>
+      <View style={styles.saveRecoveryActions}>
+        {saveFailure.kind!=='capacity'&&<Button label="Retry save" secondary onPress={()=>modify(s=>({...s}))}/>}
+        <Button label="Export current records" secondary onPress={()=>{setTab('Settings');setError('');}}/>
+      </View>
+    </View>:<Text accessibilityLiveRegion="polite" style={styles.saveStatus}>{saveStatus}</Text>}
     <ScrollView style={{flexGrow:0}} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.tabs}>{(['Today', 'Plan', 'Library', 'History', 'Settings'] as const).map((label, i) => <Pressable accessibilityRole="tab" accessibilityLabel={label} accessibilityState={{ selected: tab === label }} key={label} onPress={() => { setTab(label); setError(''); }} style={[styles.tab, tab === label && styles.activeTab]}><Text style={[styles.tabIcon, tab === label && { color: COLORS.green }]}>{['◉', '▤', '⌕', '◷', '⚙'][i]}</Text><Text style={[styles.tabLabel, tab === label && { color: COLORS.green, fontWeight: '800' }]}>{label}</Text></Pressable>)}</ScrollView>
 
     <ModalFrame visible={!!trackingSession} close={()=>setTrackingSession('')} title="Workout targets">{trackingSession&&state.plan?.sessions.some(x=>x.id===trackingSession)&&<SessionEditor key={trackingSession} state={state} sessionId={trackingSession} onSave={edit=>{const r=applyTrackingEdit(stateRef.current!,edit);if(r.error)return r.error;if(modify(()=>r.state)){setTrackingSession('');return}return 'This workout could not be saved.';}}/>}</ModalFrame>
@@ -360,5 +382,7 @@ const baseStyles = StyleSheet.create({
   workoutBar: { paddingHorizontal: 16, paddingVertical: 10, gap: 8, backgroundColor: COLORS.white, borderTopWidth: 1, borderTopColor: COLORS.line }, workoutRestRow: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8 }, setFields: { flexDirection: 'row', flexWrap: 'wrap', gap: 12 }, setField: { flex: 1, minWidth: 100, gap: 6 }, setLogAction: { alignSelf: 'stretch', marginTop: 4 },
   setBlock: { gap: 10, paddingVertical: 12, borderBottomColor: COLORS.line, borderBottomWidth: 1 }, detailsToggle: { minHeight: 48, justifyContent: 'center' }, optionalFields: { gap: 12, padding: 12, borderRadius: 10, backgroundColor: COLORS.bg }, setHeader: { flexDirection: 'row', gap: 10, marginTop: 6 }, setRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, alignItems: 'center' }, numberInput: { flex: 1, minWidth: 54, minHeight: 48, borderWidth: 1, borderColor: COLORS.line, backgroundColor: COLORS.bg, borderRadius: 9, color: COLORS.ink, fontSize: 17, textAlign: 'center', padding: 8 }, check: { minWidth: 64, minHeight: 48, padding: 8, alignItems: 'center', justifyContent: 'center', backgroundColor: COLORS.pale, borderRadius: 9 }, checkDone: { backgroundColor: COLORS.green },
   tabs: { flexDirection: 'row', borderTopWidth: 1, borderTopColor: COLORS.line, paddingHorizontal: 10, paddingTop: 6, paddingBottom: 4, backgroundColor: COLORS.white }, tab: { flex: 1, minWidth:84, minHeight: 55, alignItems: 'center', justifyContent: 'center', gap: 3, borderRadius: 13 }, activeTab: { backgroundColor: '#EFF3E8' }, tabIcon: { fontSize: 21, color: COLORS.muted }, tabLabel: { fontSize: 12, color: COLORS.muted }, saveStatus: { color: COLORS.muted, fontSize: 12, textAlign: 'center', paddingVertical: 14 },
+  saveRecovery: { padding: 12, gap: 8, borderTopWidth: 1, borderTopColor: COLORS.line, backgroundColor: COLORS.white },
+  saveRecoveryActions: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   modalHeader: { padding: 20, borderBottomWidth: 1, borderBottomColor: COLORS.line, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 20 }, modalTitle: { flex: 1, fontSize: 17, fontWeight: '700', color: COLORS.ink }, source: { paddingVertical: 10, gap: 5 }, stats: { flexDirection: 'row', gap: 12 }, statNumber: { fontSize: 36, fontWeight: '800', color: COLORS.green }, error: { paddingHorizontal: 22, paddingVertical: 12, backgroundColor: '#F6E3DC' }, errorText: { color: COLORS.danger, fontSize: 13, lineHeight: 18 }
 });

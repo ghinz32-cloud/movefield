@@ -110,6 +110,22 @@ test('Every plan evidence key has a Sources entry, and plans cite the right fami
   same(E.planEvidence({goal: 'hybrid', run: true, youth: false, jumping: false})[0], 'NHS-C25K', 'run plans keep the run source first');
   ok(E.planEvidence({goal: 'strength', run: false, youth: true, jumping: false}).includes('AAP-2020'), 'youth plans keep youth sources');
   ok(E.planEvidence({goal: 'sport', run: false, youth: false, jumping: true}).includes('MARKOVIC-2007'), 'jump focus adds jump sources');
+  for (const family of Object.keys(E.disciplineEvidence)) {
+    for (const run of [false, true]) for (const youth of [false, true]) {
+      const current = E.planEvidence({goal: family, run, youth, jumping: true});
+      ok(!current.includes('ACSM-2009'), `${family} does not use historical adult guidance as current support`);
+      ok(!current.includes('SCHOENFELD-2016-FREQ'), `${family} uses current frequency evidence`);
+      same(current.length, new Set(current).size, `${family} evidence is deduplicated`);
+      for (const key of current) ok(registry.has(key), `${family} resolves ${key}`);
+    }
+  }
+  for (const family of ['hypertrophy', 'powerbuilding', 'hybrid']) {
+    ok(E.disciplineEvidence[family].keys.includes('SCHOENFELD-2019-FREQ'), `${family} cites volume-equated frequency review`);
+  }
+  for (const family of ['hypertrophy', 'powerbuilding', 'powerlifting', 'strength']) {
+    ok(E.disciplineEvidence[family].keys.includes('PELLAND-2026-DOSE'), `${family} cites updated volume/strength evidence`);
+  }
+  ok(registry.has('ACSM-2009') && registry.has('SCHOENFELD-2016-FREQ'), 'historical sources remain available');
 });
 
 console.log(`${groups.length} groups, ${checks} checks passed.`);

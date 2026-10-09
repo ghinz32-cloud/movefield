@@ -173,6 +173,8 @@ Two sessions a week cannot reach the app's 10-set target for each major group at
 
 ## 6. Corrections made 8 October 2026
 
+U04b updates current-plan support to the 2019 volume-equated hypertrophy-frequency review and Pelland's 2026 volume/frequency meta-regressions. ACSM 2009 and the 2016 frequency review remain historical Sources entries and are no longer attached to current plans. See `docs/evidence-mapping-repair-2026-10-08.md` for checked primary sources, applicability, limits and tests. The exact app dose and progression rules remain product choices.
+
 These changed the words users see on the Sources page and the source mapping. Catalog IDs, display names, stored workout titles and history keys did not change.
 
 - **TIME-EFFICIENT** is now named as a narrative review. It is cited for brief strength and muscle-building sessions (the QPL3 and brief-series programs), not for run or walk-run starts.

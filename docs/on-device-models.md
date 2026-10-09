@@ -1,5 +1,7 @@
 # On-device models for Movefield
 
+Current artifact/runtime verification: `docs/qwen-runtime-verification-2026-10-08.md` and `lib/qwen-assets.json` supersede the older sizes/API examples below where they differ. Seven selected Android/web candidates have immutable artifact metadata and exact-context qualification logic. No runtime inference or device qualification has run. Native 4B is a 2.693 GB selected download with a 2048-token export context; web Qwen3.5 9B is a separate 5.068 GB desktop candidate. The dated discussion below remains historical.
+
 Research checked 7 October 2026. This is an integration recommendation; no model is installed, included in the app download, or benchmarked on a phone yet.
 
 Start with short summaries of saved workouts. Keep the existing training rules responsible for exercises, loads, recovery holds, progression and dates. A model can explain verified results or turn a request into a proposed change; it must not apply a change itself. The app should remain fully usable without a model.

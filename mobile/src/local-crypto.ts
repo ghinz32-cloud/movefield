@@ -10,7 +10,7 @@ const KEY_BYTES = 32;
 const NONCE_BYTES = 24;
 const TAG_BYTES = 16;
 
-export type LocalDataErrorCode = 'key-missing' | 'key-unavailable' | 'decrypt-failed' | 'unknown-format';
+export type LocalDataErrorCode = 'key-missing' | 'key-unavailable' | 'decrypt-failed' | 'unknown-format' | 'storage-capacity';
 
 export class LocalDataError extends Error {
   readonly code: LocalDataErrorCode;
@@ -23,6 +23,14 @@ export class LocalDataError extends Error {
 
 export type SealedRecord = { v: typeof LOCAL_ENVELOPE_VERSION; alg: typeof LOCAL_CIPHER; nonce: string; data: string };
 export type RandomBytes = (byteCount: number) => Uint8Array;
+
+// Exact byte count for this ASCII envelope, including its nonce and authentication tag.
+// UTF-16 string length undercounts names/notes containing non-ASCII characters.
+export function sealedTextBytes(text: string): number {
+  const envelopeBytes = JSON.stringify({v: LOCAL_ENVELOPE_VERSION, alg: LOCAL_CIPHER,
+    nonce: '0'.repeat(NONCE_BYTES * 2), data: '0'.repeat(TAG_BYTES * 2)}).length;
+  return envelopeBytes + utf8ToBytes(text).length * 2;
+}
 
 const HEX_KEY = /^[0-9a-f]{64}$/;
 

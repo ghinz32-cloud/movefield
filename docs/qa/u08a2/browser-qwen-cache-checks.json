@@ -1,0 +1,7 @@
+{
+  "checks": 74,
+  "indexedDBImplementation": "fake-indexeddb 6.2.5",
+  "actualBrowser": false,
+  "physicalQuotaMeasured": false,
+  "realWeightsDownloaded": false
+}

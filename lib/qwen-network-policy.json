@@ -1,0 +1,89 @@
+{
+  "modelId": "web-qwen3-0.6b-q4f16_1-mlc",
+  "checkedOn": "2026-10-08",
+  "repository": "mlc-ai/Qwen3-0.6B-q4f16_1-MLC",
+  "revision": "8c14ce481d4c692769976ad52afea453a102df19",
+  "source": "https://huggingface.co/docs/hub/models-downloading#downloading-behind-a-proxy-or-firewall",
+  "assets": [
+    {
+      "path": "merges.txt",
+      "url": "https://huggingface.co/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/resolve/8c14ce481d4c692769976ad52afea453a102df19/merges.txt",
+      "finalUrl": "https://huggingface.co/api/resolve-cache/models/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/8c14ce481d4c692769976ad52afea453a102df19/merges.txt"
+    },
+    {
+      "path": "mlc-chat-config.json",
+      "url": "https://huggingface.co/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/resolve/8c14ce481d4c692769976ad52afea453a102df19/mlc-chat-config.json",
+      "finalUrl": "https://huggingface.co/api/resolve-cache/models/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/8c14ce481d4c692769976ad52afea453a102df19/mlc-chat-config.json"
+    },
+    {
+      "path": "params_shard_0.bin",
+      "url": "https://huggingface.co/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/resolve/8c14ce481d4c692769976ad52afea453a102df19/params_shard_0.bin",
+      "finalUrl": "https://us.aws.cdn.hf.co/xet-bridge-us/681326eaef52a53ef9342a8f/285ac8ae81fbd7033933b8cd381792acd46a60657eac665161e309deaec9b7d2"
+    },
+    {
+      "path": "params_shard_1.bin",
+      "url": "https://huggingface.co/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/resolve/8c14ce481d4c692769976ad52afea453a102df19/params_shard_1.bin",
+      "finalUrl": "https://us.aws.cdn.hf.co/xet-bridge-us/681326eaef52a53ef9342a8f/ea48655cb73f636fc54bcd07e07963ae5cff9a3b471900269a1f3cf85684dc6d"
+    },
+    {
+      "path": "params_shard_2.bin",
+      "url": "https://huggingface.co/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/resolve/8c14ce481d4c692769976ad52afea453a102df19/params_shard_2.bin",
+      "finalUrl": "https://us.aws.cdn.hf.co/xet-bridge-us/681326eaef52a53ef9342a8f/2dd5ffe06435bfa3281d50b1692a102b162456bc228d1bdfc336144af65cd812"
+    },
+    {
+      "path": "params_shard_3.bin",
+      "url": "https://huggingface.co/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/resolve/8c14ce481d4c692769976ad52afea453a102df19/params_shard_3.bin",
+      "finalUrl": "https://us.aws.cdn.hf.co/xet-bridge-us/681326eaef52a53ef9342a8f/a6e45b4b1a5215e9414c7b4088100017e2c147168c320b765bb5b5083658934c"
+    },
+    {
+      "path": "params_shard_4.bin",
+      "url": "https://huggingface.co/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/resolve/8c14ce481d4c692769976ad52afea453a102df19/params_shard_4.bin",
+      "finalUrl": "https://us.aws.cdn.hf.co/xet-bridge-us/681326eaef52a53ef9342a8f/bfb78a4f983571e278979a57e05517f33b0279e539608499155b5e08ddba59d8"
+    },
+    {
+      "path": "params_shard_5.bin",
+      "url": "https://huggingface.co/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/resolve/8c14ce481d4c692769976ad52afea453a102df19/params_shard_5.bin",
+      "finalUrl": "https://us.aws.cdn.hf.co/xet-bridge-us/681326eaef52a53ef9342a8f/81539121dffee5a3385094f1b2ba7626024d0c946d881d98cc095beaafb70402"
+    },
+    {
+      "path": "params_shard_6.bin",
+      "url": "https://huggingface.co/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/resolve/8c14ce481d4c692769976ad52afea453a102df19/params_shard_6.bin",
+      "finalUrl": "https://us.aws.cdn.hf.co/xet-bridge-us/681326eaef52a53ef9342a8f/aced0aea0edd7161a5daf4f3384e2a7a083032638c6a178821d10e77b9c9e55b"
+    },
+    {
+      "path": "params_shard_7.bin",
+      "url": "https://huggingface.co/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/resolve/8c14ce481d4c692769976ad52afea453a102df19/params_shard_7.bin",
+      "finalUrl": "https://us.aws.cdn.hf.co/xet-bridge-us/681326eaef52a53ef9342a8f/3ddd042a139e7bf963b748a0aa9f0785e002bba3fea96717fddbe31689995d69"
+    },
+    {
+      "path": "params_shard_8.bin",
+      "url": "https://huggingface.co/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/resolve/8c14ce481d4c692769976ad52afea453a102df19/params_shard_8.bin",
+      "finalUrl": "https://us.aws.cdn.hf.co/xet-bridge-us/681326eaef52a53ef9342a8f/635f4abc31402b5f7a7e877a951ed0d9e637ae2e30478a18c76e5810512a7d08"
+    },
+    {
+      "path": "tensor-cache.json",
+      "url": "https://huggingface.co/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/resolve/8c14ce481d4c692769976ad52afea453a102df19/tensor-cache.json",
+      "finalUrl": "https://huggingface.co/api/resolve-cache/models/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/8c14ce481d4c692769976ad52afea453a102df19/tensor-cache.json"
+    },
+    {
+      "path": "tokenizer.json",
+      "url": "https://huggingface.co/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/resolve/8c14ce481d4c692769976ad52afea453a102df19/tokenizer.json",
+      "finalUrl": "https://us.aws.cdn.hf.co/xet-bridge-us/681326eaef52a53ef9342a8f/6aec39639a0a2d1ca966356b8c2b8426a484f80ff80731f44fa8482040713bdf"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "url": "https://huggingface.co/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/resolve/8c14ce481d4c692769976ad52afea453a102df19/tokenizer_config.json",
+      "finalUrl": "https://huggingface.co/api/resolve-cache/models/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/8c14ce481d4c692769976ad52afea453a102df19/tokenizer_config.json"
+    },
+    {
+      "path": "vocab.json",
+      "url": "https://huggingface.co/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/resolve/8c14ce481d4c692769976ad52afea453a102df19/vocab.json",
+      "finalUrl": "https://huggingface.co/api/resolve-cache/models/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/8c14ce481d4c692769976ad52afea453a102df19/vocab.json"
+    },
+    {
+      "path": "Qwen3-0.6B-q4f16_1_cs1k-webgpu.wasm",
+      "url": "https://raw.githubusercontent.com/mlc-ai/binary-mlc-llm-libs/025bcaf3780fa8254f5e5efd3bfea0a5397248f4/web-llm-models/v0_2_84/base/Qwen3-0.6B-q4f16_1_cs1k-webgpu.wasm",
+      "finalUrl": "https://raw.githubusercontent.com/mlc-ai/binary-mlc-llm-libs/025bcaf3780fa8254f5e5efd3bfea0a5397248f4/web-llm-models/v0_2_84/base/Qwen3-0.6B-q4f16_1_cs1k-webgpu.wasm"
+    }
+  ]
+}

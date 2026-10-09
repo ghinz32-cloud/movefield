@@ -19,14 +19,18 @@ function memoryStorage(){
  const map=new Map();
  return {map,getItem:k=>map.has(k)?map.get(k):null,setItem:(k,v)=>map.set(k,String(v)),removeItem:k=>map.delete(k)};
 }
-function memoryKeys(){
- let key;
+function memoryKeys(initialKey,initialTransition){
+ let key=initialKey,transition=initialTransition;
  const store={
   puts:0,
   get:async()=>key,
   put:async k=>{key=k;store.puts++},
   remove:async()=>{key=undefined},
   peek:()=>key,
+  getTransition:async()=>transition,
+  prepareTransition:async next=>{transition=next},
+  finishTransition:async(next,keepJournal=false)=>{key=next??undefined;if(!keepJournal)transition=undefined},
+  peekTransition:()=>transition,
  };
  return store;
 }
@@ -143,6 +147,8 @@ const rejects=async(promise,code,msg)=>{try{await promise}catch(e){same(e instan
  cleanStorage.removeItem=realRemove;
  ok(replaced,'a failed clean-up does not reject a stored restore');
  same(await cleanVault.read(SLOT),'restored plan','the restored record opens after a failed clean-up');
+ same(await cleanVault.read(SETUP),null,'an obsolete draft is ignored until cleanup can complete');
+ same(cleanKeys.peekTransition(),undefined,'a later read finishes cleanup and retires the old key');
 
  // A tab that opened before a restore must read and write under the current key.
  const sibling=makeVault(repStorage,repKeys,[SLOT,SETUP]);
@@ -158,6 +164,96 @@ const rejects=async(promise,code,msg)=>{try{await promise}catch(e){same(e instan
  await rejects(sibling.write(SLOT,'stale edit',expected),'conflict','a stale encrypted save cannot overwrite another tab');
  await rejects(sibling.replace(SLOT,'stale restore',expected),'conflict','a stale restore cannot rotate the key');
  same(await repVault.read(SLOT),'other tab edit','conflicts leave the latest saved record readable');
+
+ // Reopen independent persistent snapshots taken at every restore boundary. The original
+ // vault may finish, but these snapshots represent its disk state if that page died there.
+ const crashStorage=memoryStorage(),crashKeys=memoryKeys(),crashVault=makeVault(crashStorage,crashKeys,[SLOT,SETUP]);
+ await crashVault.write(SLOT,'before interruption');await crashVault.write(SETUP,'before draft');
+ crashStorage.map.set('unrelated-preference','keep preference');
+ const snapshots=[];
+ function capture(boundary,expected){
+  const journal=crashKeys.peekTransition();
+  snapshots.push({boundary,expected,values:new Map(crashStorage.map),key:crashKeys.peek(),journal:journal?{...journal,obsolete:{...journal.obsolete}}:undefined});
+ }
+ capture('before journal','before interruption');
+ const prepare=crashKeys.prepareTransition,finish=crashKeys.finishTransition,set=crashStorage.setItem,remove=crashStorage.removeItem;
+ crashKeys.prepareTransition=async t=>{await prepare(t);capture('after journal','before interruption')};
+ crashStorage.setItem=(k,v)=>{set(k,v);if(k===SLOT)capture('after ciphertext','restored after interruption')};
+ crashStorage.removeItem=k=>{remove(k);if(k===SETUP)capture('after obsolete cleanup','restored after interruption')};
+ crashKeys.finishTransition=async(k,keep)=>{capture('before key commit','restored after interruption');await finish(k,keep);capture('after atomic key/journal commit','restored after interruption')};
+ await crashVault.replace(SLOT,'restored after interruption');
+ same(snapshots.length,6,'all persistence boundaries were captured');
+ for(const snapshot of snapshots){
+  const reopenedStorage=memoryStorage();snapshot.values.forEach((v,k)=>reopenedStorage.map.set(k,v));
+  const reopenedKeys=memoryKeys(snapshot.key,snapshot.journal),reopened=makeVault(reopenedStorage,reopenedKeys,[SLOT,SETUP]);
+  same(await reopened.read(SLOT),snapshot.expected,`${snapshot.boundary}: fresh vault opens the previous or restored record`);
+  same(await reopened.read(SETUP),snapshot.expected==='before interruption'?'before draft':null,`${snapshot.boundary}: setup belongs to the selected profile`);
+  same(reopenedKeys.peekTransition(),undefined,`${snapshot.boundary}: recovery completes the journal`);
+  same(reopenedStorage.getItem('unrelated-preference'),'keep preference',`${snapshot.boundary}: unrelated data stays intact`);
+  same(reopenedKeys.peek().extractable,false,`${snapshot.boundary}: recovered key remains non-extractable`);
+  await reopened.write(SLOT,'edit after reopening');
+  same(await makeVault(reopenedStorage,reopenedKeys,[SLOT,SETUP]).read(SLOT),'edit after reopening',`${snapshot.boundary}: subsequent saves reopen`);
+ }
+
+ // Quota while preparing leaves the old data; failed final key commit retains both keys
+ // so a genuinely fresh vault can finish once persistence becomes available again.
+ const phaseStorage=memoryStorage(),phaseKeys=memoryKeys(),phaseVault=makeVault(phaseStorage,phaseKeys,[SLOT,SETUP]);
+ await phaseVault.write(SLOT,'phase before');
+ const phasePrepare=phaseKeys.prepareTransition,phaseFinish=phaseKeys.finishTransition;
+ phaseKeys.prepareTransition=async()=>{throw Error('journal quota')};
+ await rejects(phaseVault.replace(SLOT,'phase restored'),'key-unavailable','journal persistence failure rejects before changing records');
+ same(await makeVault(phaseStorage,phaseKeys,[SLOT,SETUP]).read(SLOT),'phase before','preparation failure keeps the old record readable');
+ phaseKeys.prepareTransition=phasePrepare;
+ phaseKeys.finishTransition=async()=>{throw Error('IDB unavailable')};
+ await rejects(phaseVault.replace(SLOT,'phase restored'),'key-unavailable','final key persistence failure is reported');
+ ok(Boolean(phaseKeys.peekTransition()),'both keys remain journaled after failed finalization');
+ phaseKeys.finishTransition=phaseFinish;
+ same(await makeVault(phaseStorage,phaseKeys,[SLOT,SETUP]).read(SLOT),'phase restored','fresh vault recovers a stored restore after finalization failure');
+
+ // Cleanup denial leaves the restored profile readable but prevents mutations until the
+ // obsolete slots can be retired. A fresh instance never uses the new key on an old draft.
+ await phaseVault.write(SETUP,'obsolete draft');
+ const phaseRemove=phaseStorage.removeItem;
+ phaseStorage.removeItem=k=>{if(k===SETUP)throw Error('removal denied');phaseRemove(k)};
+ await phaseVault.replace(SLOT,'cleanup restored');
+ const cleanupReopen=makeVault(phaseStorage,phaseKeys,[SLOT,SETUP]);
+ same(await cleanupReopen.read(SLOT),'cleanup restored','cleanup denial preserves the restored profile');
+ same(await cleanupReopen.read(SETUP),null,'cleanup denial never revives an obsolete draft');
+ await rejects(cleanupReopen.write(SLOT,'blocked edit'),'key-unavailable','mutation waits for cleanup');
+ phaseStorage.removeItem=phaseRemove;
+ await cleanupReopen.write(SLOT,'allowed edit');
+ same(await makeVault(phaseStorage,phaseKeys,[SLOT,SETUP]).read(SLOT),'allowed edit','cleanup retry allows future saves');
+
+ // Unexpected persistent changes must not be overwritten by recovery, and reset is the
+ // explicit escape hatch that clears both ciphertexts and the pending keys.
+ const collision=snapshots.find(s=>s.boundary==='after ciphertext');
+ const collisionStorage=memoryStorage();collision.values.forEach((v,k)=>collisionStorage.map.set(k,v));
+ collisionStorage.map.set(SLOT,'unexpected concurrent record');
+ const collisionKeys=memoryKeys(collision.key,collision.journal),collisionVault=makeVault(collisionStorage,collisionKeys,[SLOT,SETUP]);
+ await rejects(collisionVault.read(SLOT),'conflict','unexpected changes pause recovery');
+ same(collisionStorage.getItem(SLOT),'unexpected concurrent record','recovery never erases an unexpected record');
+ await collisionVault.reset();
+ same(collisionKeys.peekTransition(),undefined,'confirmed reset clears the recovery journal');
+ same(collisionKeys.peek(),undefined,'confirmed reset clears both recoverable keys');
+ same(collisionStorage.getItem('unrelated-preference'),'keep preference','confirmed reset stays scoped');
+
+ // Recovery from a confirmed transfer with a missing old key can still activate the
+ // newly prepared key; no new key is created merely because a normal read failed.
+ const missingStorage=memoryStorage(),missingKeys=memoryKeys(),missingVault=makeVault(missingStorage,missingKeys,[SLOT,SETUP]);
+ missingStorage.map.set(SLOT,raw);
+ await missingVault.replace(SLOT,'transfer after key loss');
+ same(await makeVault(missingStorage,missingKeys,[SLOT,SETUP]).read(SLOT),'transfer after key loss','explicit restore recovers a key-lost profile');
+ const noLock=V.createVault({storage:missingStorage,keys:missingKeys,subtle:webcrypto.subtle,random,restoreSafe:false});
+ const noLockBefore=missingStorage.getItem(SLOT);
+ await rejects(noLock.replace(SLOT,'unsupported browser restore'),'key-unavailable','browser without cross-tab locking cannot begin restore');
+ same(missingStorage.getItem(SLOT),noLockBefore,'unsupported restore leaves data intact');
+ same(missingKeys.peekTransition(),undefined,'unsupported restore creates no journal');
+ const legacyReplaceStorage=memoryStorage(),legacyReplaceKeys=memoryKeys(),legacyReplaceVault=makeVault(legacyReplaceStorage,legacyReplaceKeys,[SLOT,SETUP]);
+ legacyReplaceStorage.map.set(SLOT,SECRET);legacyReplaceStorage.map.set(SETUP,SECRET+' draft');
+ const legacyPrepare=legacyReplaceKeys.prepareTransition;
+ legacyReplaceKeys.prepareTransition=async t=>{ok(!JSON.stringify(t).includes(SECRET),'restore journal never duplicates legacy plaintext');await legacyPrepare(t)};
+ await legacyReplaceVault.replace(SLOT,'protected restored record');
+ same(await makeVault(legacyReplaceStorage,legacyReplaceKeys,[SLOT,SETUP]).read(SLOT),'protected restored record','legacy restore remains readable');
 
  console.log(`PASS browser vault: ${checks} checks`);
 })().catch(error=>{console.error(error);process.exit(1)});

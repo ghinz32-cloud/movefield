@@ -32,6 +32,18 @@ export type KeyStore = {
   get(): Promise<CryptoKey | undefined>;
   put(key: CryptoKey): Promise<void>;
   remove(): Promise<void>;
+  getTransition(): Promise<VaultTransition | undefined>;
+  prepareTransition(transition: VaultTransition): Promise<void>;
+  // Updates the active key and optionally deletes the journal in one IndexedDB transaction.
+  finishTransition(key: CryptoKey | null, keepJournal?: boolean): Promise<void>;
+};
+export type VaultTransition = {
+  slot: string;
+  beforeHash: string | null;
+  after: string;
+  previous: CryptoKey | null;
+  next: CryptoKey;
+  obsolete: Record<string, string | null>;
 };
 export type VaultStorage = {
   getItem(key: string): string | null;
@@ -45,6 +57,7 @@ export type VaultDeps = {
   random: (n: number) => Uint8Array<ArrayBuffer>;
   slots?: readonly string[];
   lock?: <T>(job: () => Promise<T>) => Promise<T>;
+  restoreSafe?: boolean;
 };
 
 const PREFIX = `{"v":${VAULT_VERSION},"alg":"${VAULT_ALG}"`;
@@ -77,6 +90,43 @@ export function createVault(deps: VaultDeps) {
 
   const associated = (slot: string) => encoder.encode(`movefield-vault:${VAULT_VERSION}:${slot}`);
   const anySealed = () => slots.some(slot => isSealed(deps.storage.getItem(slot)));
+  const fingerprint = async (raw: string | null): Promise<string | null> => raw === null ? null : toBase64(new Uint8Array(await deps.subtle.digest('SHA-256', encoder.encode(raw))));
+
+  // The journal keeps both non-extractable keys and ciphertexts, never plaintext. A new
+  // page can decide which key to activate from the single atomic localStorage write.
+  // Reads may proceed while obsolete-slot cleanup is blocked; mutations wait for cleanup.
+  async function recoverTransition(allowCleanupPending = false): Promise<void> {
+    let transition: VaultTransition | undefined;
+    try { transition = await deps.keys.getTransition(); }
+    catch { throw new VaultError('key-unavailable', KEY_UNAVAILABLE_MESSAGE); }
+    if (!transition) return;
+    if (!slots.includes(transition.slot) || !isSealed(transition.after) || !transition.obsolete || typeof transition.obsolete !== 'object') {
+      throw new VaultError('unknown-format', 'Restore recovery has an unexpected format. Export records before resetting this profile.');
+    }
+    const current = deps.storage.getItem(transition.slot);
+    if (await fingerprint(current) === transition.beforeHash) {
+      try { await deps.keys.finishTransition(transition.previous); }
+      catch { throw new VaultError('key-unavailable', 'The previous records are retained. Reopen the app to finish restore recovery.'); }
+      cached = transition.previous;
+      return;
+    }
+    if (current !== transition.after) {
+      throw new VaultError('conflict', 'Saved records changed during restore recovery. Nothing was overwritten. Export records and reopen this profile.');
+    }
+    let cleanupPending = false;
+    for (const other of slots) {
+      if (other === transition.slot || transition.obsolete[other] === null || transition.obsolete[other] === undefined) continue;
+      // Never erase data another writer has changed since the restore was prepared.
+      if (await fingerprint(deps.storage.getItem(other)) !== transition.obsolete[other]) continue;
+      try { deps.storage.removeItem(other); } catch { cleanupPending = true; }
+    }
+    try { await deps.keys.finishTransition(transition.next, cleanupPending); }
+    catch { throw new VaultError('key-unavailable', 'The restored records are retained. Reopen the app to finish restore recovery.'); }
+    cached = transition.next;
+    if (cleanupPending && !allowCleanupPending) {
+      throw new VaultError('key-unavailable', 'Your restore is saved. Reopen the app to finish cleanup before editing.');
+    }
+  }
 
   async function loadKey(): Promise<CryptoKey | null> {
     // Another tab can replace the key during an approved restore.
@@ -126,8 +176,12 @@ export function createVault(deps: VaultDeps) {
     return raw;
   }
 
-  function enqueue<T>(job: () => Promise<T>): Promise<T> {
-    const run = queue.then(() => deps.lock ? deps.lock(job) : job());
+  function enqueue<T>(job: () => Promise<T>, mode: 'read' | 'write' | 'reset' = 'write'): Promise<T> {
+    const recovered = async () => {
+      if (mode !== 'reset') await recoverTransition(mode === 'read');
+      return job();
+    };
+    const run = queue.then(() => deps.lock ? deps.lock(recovered) : recovered());
     queue = run.catch(() => undefined);
     return run;
   }
@@ -143,6 +197,10 @@ export function createVault(deps: VaultDeps) {
       return enqueue(async () => {
         const raw = deps.storage.getItem(slot);
         if (raw === null) return null;
+        const pending = await deps.keys.getTransition();
+        // An approved restore invalidates the captured setup/profile previews even if
+        // the browser currently denies their removal. They must not be opened with the new key.
+        if (pending && pending.slot !== slot && pending.obsolete[slot] === await fingerprint(raw)) return null;
         if (!isSealed(raw)) return raw;
         const parsed = parseRecord(raw);
         const key = await loadKey();
@@ -153,13 +211,15 @@ export function createVault(deps: VaultDeps) {
         } catch {
           throw new VaultError('decrypt-failed', DECRYPT_MESSAGE);
         }
-      });
+      }, 'read');
     },
-    // Replaces the record in one slot under a new key, for a restore the person has confirmed. The previous key is
-    // kept until the new record is stored. If storing fails, the previous key is put back, so records sealed with it
-    // still open. Other slots are cleared only after the new record is stored, because they were sealed with the old key.
+    // Prepare both keys durably before changing the ciphertext. Startup recovery rolls back
+    // an uninstalled restore or finishes an installed restore after a crash/page shutdown.
     replace(slot: string, text: string, expected?:string): Promise<string> {
       return enqueue(async () => {
+        if (deps.restoreSafe === false) {
+          throw new VaultError('key-unavailable', 'This browser cannot lock a restore across open tabs. Use an updated browser with Web Locks to restore safely. Your records are unchanged.');
+        }
         checkExpected(slot,expected);
         let previous: CryptoKey | null;
         try {
@@ -170,29 +230,22 @@ export function createVault(deps: VaultDeps) {
         const next = await deps.subtle.generateKey({name: 'AES-GCM', length: 256}, false, ['encrypt', 'decrypt']) as CryptoKey;
         const raw = await sealRecord(next, slot, text);
         checkExpected(slot,expected);
+        const before = deps.storage.getItem(slot);
+        const obsolete = Object.fromEntries(await Promise.all(slots.filter(other => other !== slot).map(async other => [other, await fingerprint(deps.storage.getItem(other))])));
         try {
-          await deps.keys.put(next);
+          await deps.keys.prepareTransition({slot, beforeHash: await fingerprint(before), after: raw, previous, next, obsolete});
+          checkExpected(slot, before ?? '');
           deps.storage.setItem(slot, raw);
-        } catch {
-          // Failure before or during the store: the slot still holds the previous record, so the previous key goes back.
-          cached = previous;
-          try {
-            if (previous) await deps.keys.put(previous);
-            else await deps.keys.remove();
-          } catch {
-            // The previous record is still in place; the caller reports that nothing was replaced.
+          await recoverTransition(true);
+        } catch (error) {
+          // Keep the journal on recovery failure, so a fresh page still has both keys.
+          if (deps.storage.getItem(slot) === before) {
+            await recoverTransition().catch(() => undefined);
+            if (error instanceof VaultError && error.code === 'conflict') throw error;
+            throw new VaultError('key-unavailable', 'Your saved training could not be replaced. The previous records are retained. Reopen the app to retry.');
           }
-          throw new VaultError('key-unavailable', 'Your saved training could not be replaced. Nothing was changed.');
-        }
-        // The new record is stored, so the restore has happened. Clearing other slots is cleanup and cannot undo it.
-        cached = next;
-        for (const other of slots) {
-          if (other === slot) continue;
-          try {
-            deps.storage.removeItem(other);
-          } catch {
-            // Clearing another slot is cleanup. If it fails, the restored record in this slot is unaffected.
-          }
+          if (error instanceof VaultError) throw error;
+          throw new VaultError('key-unavailable', 'The restored records are retained. Reopen the app to finish restore recovery.');
         }
         return raw;
       });
@@ -202,8 +255,8 @@ export function createVault(deps: VaultDeps) {
       return enqueue(async () => {
         for (const slot of slots) deps.storage.removeItem(slot);
         cached = null;
-        await deps.keys.remove();
-      });
+        await deps.keys.finishTransition(null);
+      }, 'reset');
     },
     // Removes one record and keeps the key, so the other records still open.
     discard(slot: string): Promise<void> {
@@ -220,7 +273,7 @@ export function createVault(deps: VaultDeps) {
         } catch {
           return false;
         }
-      });
+      }, 'read');
     },
   };
 }
@@ -257,14 +310,15 @@ export function browserVault(): ReturnType<typeof createVault> | null {
       subtle: globalThis.crypto.subtle,
       random: n => globalThis.crypto.getRandomValues(new Uint8Array(new ArrayBuffer(n))),
       lock: window.navigator.locks ? async job => await window.navigator.locks.request('movefield-vault', job) : undefined,
+      restoreSafe: Boolean(window.navigator.locks),
     });
   } catch {
     return null;
   }
 }
 
-function indexedDbKeyStore(idb: IDBFactory): KeyStore {
-  const DB = 'movefield-vault', STORE = 'keys', ID = 'data-key-v1';
+export function indexedDbKeyStore(idb: IDBFactory): KeyStore {
+  const DB = 'movefield-vault', STORE = 'keys', ID = 'data-key-v1', JOURNAL = 'restore-transition-v1';
   const open = () => new Promise<IDBDatabase>((resolve, reject) => {
     const request = idb.open(DB, 1);
     request.onupgradeneeded = () => request.result.createObjectStore(STORE);
@@ -290,5 +344,15 @@ function indexedDbKeyStore(idb: IDBFactory): KeyStore {
     get: async () => (await run('readonly', store => store.get(ID))) as CryptoKey | undefined,
     put: async key => { await run('readwrite', store => store.put(key, ID)); },
     remove: async () => { await run('readwrite', store => store.delete(ID)); },
+    getTransition: async () => (await run('readonly', store => store.get(JOURNAL))) as VaultTransition | undefined,
+    prepareTransition: async transition => { await run('readwrite', store => store.put(transition, JOURNAL)); },
+    finishTransition: async (key, keepJournal = false) => {
+      await run('readwrite', store => {
+        if (key) store.put(key, ID);
+        else store.delete(ID);
+        if (!keepJournal) store.delete(JOURNAL);
+        return store.get(ID);
+      });
+    },
   };
 }

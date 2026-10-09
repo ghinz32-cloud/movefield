@@ -311,3 +311,13 @@ html[data-density=roomy] .weekly-review{margin-bottom:2rem}
 .workout-tools .training-tools{margin-top:.75rem}.exercise-log .load-guidance{margin-top:.75rem}.exercise-log .load-guidance[open]{padding-bottom:.75rem}
 body:has(.workout-actionbar) .appearance-shortcut{display:none}
 @media(max-width:600px){.workout-actionbar{padding:.65rem}.workout-actionbar .rest-status{width:100%;justify-content:space-between}.workout-actionbar button{min-height:44px}.exercise-log .split{gap:.75rem}}
+
+/* Optional model files follow the same theme and remain usable at large text. */
+.model-settings{min-width:0}.qwen-files{border-top:1px solid var(--border);margin-top:1.2rem;padding-top:1.2rem;min-width:0}
+.qwen-file-heading{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}.qwen-file-heading h3{font-size:1.2rem;margin:0}.qwen-file-heading p{margin:.35rem 0}
+.qwen-file-status{font-size:.875rem;color:var(--muted-foreground);align-self:center}.qwen-download-progress{margin:1rem 0}.qwen-download-progress p{margin:.6rem 0}
+.qwen-file-actions{margin:1rem 0;align-items:stretch}.qwen-file-actions [data-slot=button]{white-space:normal;height:auto;min-height:44px;max-width:100%;padding-block:.65rem;text-align:center}
+html[data-density=compact] .qwen-file-actions [data-slot=button]{height:auto;min-height:44px;padding-block:.65rem}
+.qwen-consent-dialog{max-height:calc(100dvh - 2rem);overflow:auto;overflow-wrap:anywhere}.qwen-consent-dialog p,.qwen-consent-dialog [data-slot=dialog-description],.qwen-consent-dialog [data-slot=alert-dialog-description]{font-size:1rem;line-height:1.55}
+.qwen-consent-dialog [data-slot=alert-dialog-footer] [data-slot=button]{white-space:normal;height:auto;min-height:44px;padding-block:.65rem}
+@media(max-width:600px){.qwen-file-actions{display:grid;grid-template-columns:1fr}.qwen-file-status{width:100%}.qwen-consent-dialog{padding:1.1rem!important;padding-top:2.5rem!important}}
