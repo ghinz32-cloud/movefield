@@ -1,0 +1,138 @@
+{
+  "scope": "Completed service-worker repair qualification; separate from the historical pre-repair ci directory.",
+  "source": {
+    "sha": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+    "tree": "0d84999d80c57c7731713aea85cec5901e54475c",
+    "url": "https://github.com/ghinz32-cloud/movefield/commit/c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58"
+  },
+  "integration": {
+    "sha": "e6494209a994ab8a03db473b8c60ad8c0c0c8468",
+    "tree": "0d84999d80c57c7731713aea85cec5901e54475c",
+    "sameFullTree": true
+  },
+  "quality": {
+    "runId": 38002481257,
+    "jobId": 114063577237,
+    "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38002481257",
+    "status": "completed",
+    "conclusion": "success",
+    "decodedLogRetained": true,
+    "counts": "quality-counts.json"
+  },
+  "native": {
+    "runId": 38002481357,
+    "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38002481357",
+    "status": "completed",
+    "conclusion": "success",
+    "gate": {
+      "jobId": 114063577184,
+      "compile": true,
+      "conclusion": "success",
+      "decodedLogRetained": true
+    },
+    "android": {
+      "jobId": 114063633528,
+      "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38002481357/job/114063633528",
+      "conclusion": "success",
+      "successfulSteps": 18,
+      "compile": {
+        "name": "Compile and lint release test APK",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 9,
+        "started_at": "2026-10-09T23:04:37Z",
+        "completed_at": "2026-10-09T23:12:09Z"
+      },
+      "decodedLogRetained": true,
+      "unitTestTask": "testReleaseUnitTest NO-SOURCE; no Android unit-test execution claim"
+    },
+    "ios": {
+      "jobId": 114063633445,
+      "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38002481357/job/114063633445",
+      "conclusion": "success",
+      "successfulSteps": 15,
+      "compile": {
+        "name": "Compile unsigned iOS Release simulator application",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 7,
+        "started_at": "2026-10-09T23:05:13Z",
+        "completed_at": "2026-10-09T23:11:11Z"
+      },
+      "decodedLogRetained": false,
+      "fullLogRetrieval": "not attempted for this checkpoint"
+    },
+    "parallelCompilationOverlapSeconds": 358,
+    "exactSourceCheckout": true,
+    "retention": "Official successful package/upload steps and fresh artifact metadata; artifact bytes not downloaded or independently replayed in this checkpoint."
+  },
+  "artifacts": [
+    {
+      "id": 11649978145,
+      "name": "native-input-decision",
+      "sizeBytes": 383,
+      "digest": "sha256:f57160c4776dfc061c93409d2e4a36455f2fdca94584f56bdcacba601b1abcaa",
+      "expired": false,
+      "expiresAt": "2027-01-07T23:03:26Z",
+      "source": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+      "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38002481357/artifacts/11649978145"
+    },
+    {
+      "id": 11649369079,
+      "name": "android-release-compilation-test-only",
+      "sizeBytes": 344389,
+      "digest": "sha256:c94602ad99c4bf80054e7427dc3a4d7afbf285978806575d407e076b7525e283",
+      "expired": false,
+      "expiresAt": "2027-01-07T23:03:26Z",
+      "source": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+      "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38002481357/artifacts/11649369079"
+    },
+    {
+      "id": 11649119080,
+      "name": "ios-release-simulator-compilation",
+      "sizeBytes": 23246,
+      "digest": "sha256:bab7a3570c47fe23f078109d91a612db7af3d0b53b32905d7026ae8ae72919e9",
+      "expired": false,
+      "expiresAt": "2027-01-07T23:03:26Z",
+      "source": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+      "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38002481357/artifacts/11649119080"
+    },
+    {
+      "id": 11649014357,
+      "name": "android-arm64-preview-test-only",
+      "sizeBytes": 18814555,
+      "digest": "sha256:f7a3839c6c5d304761436a2e1fee95c4a82c72d5b795823ea5b028d24c0fa051",
+      "expired": false,
+      "expiresAt": "2026-11-08T23:12:26Z",
+      "source": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+      "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38002481357/artifacts/11649014357"
+    },
+    {
+      "id": 11649009267,
+      "name": "ios-simulator-preview-test-only",
+      "sizeBytes": 18576172,
+      "digest": "sha256:97e4b9c9b086fa2f74fef9c7bccc7a6d45cdd2a32f47312dd7650ee14aa72c0a",
+      "expired": false,
+      "expiresAt": "2026-11-08T23:11:21Z",
+      "source": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+      "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38002481357/artifacts/11649009267"
+    },
+    {
+      "id": 11649203787,
+      "name": "quality-results",
+      "sizeBytes": 11451,
+      "digest": "sha256:585f6077b04acf31294ad8ab08d489a7cc7cba6a07934bb9b352342f3a694d72",
+      "expired": false,
+      "expiresAt": "2027-01-07T23:03:26Z",
+      "source": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+      "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38002481257/artifacts/11649203787"
+    }
+  ],
+  "boundaries": [
+    "Android is an arm64 test APK and iOS is an unsigned Release simulator application; no signed store, TestFlight, EAS or IPA delivery claim.",
+    "Worker/offline/runtime/UI fixture success does not qualify actual browser GPU inference, weights download, paid backend execution, real-browser offline behavior or physical-device acceptance.",
+    "CI retains declared release-blocking dependency exceptions (web/mobile braces and mobile node-forge); successful quality does not imply a clean dependency audit.",
+    "Product type/lint/build checks succeeded; native/toolchain and upload-action deprecation warnings remain in retained logs.",
+    "Current binary materialization attempts: zero, as instructed. Previous checkpoint HTTP403 receipts do not establish current download availability."
+  ]
+}

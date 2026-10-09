@@ -24,13 +24,23 @@ Live private hosting served both model workers with exact source bytes but omitt
 
 ## Publication checkpoint
 
-The UI checkpoint81840879 is pushed and independently read back. Quality37996257648 and native37996257659 succeeded for that earlier UI tree. The combined coaching sourcec0aab491/tree8821849a and corrected consent source96496ffd/tree20397284 are pushed and read back on the existing audit branch. Both hosts deployed the corrected consent tree; live inspection then identified the private host's omitted worker header. The correction is the active deployment milestone. PR1 remains draft and main is unchanged.
+Final application source **c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58**, full tree **0d84999d80c57c7731713aea85cec5901e54475c**, is pushed and independently read back on the existing audit branch. Local code checkpoint873b3e0 has the same tree. [Quality38002481257](https://github.com/ghinz32-cloud/movefield/actions/runs/38002481257) succeeds at that exact source/integration tree with75/75 regression suites,29/168 UI checks,34/34 offline scenarios,745 policy assertions,102 runtime assertions, types/lint, native checks/exports and3/3 production suites. Its initial bundle399,874gzip bytes remains below400,000. Final report/receipts are a documentation-only checkpoint; product inputs are unchanged. PR1 remains draft and main80e6ea26 is unchanged.
 
-Actual Android and unsigned iOS Release simulator compilation at c0aab491 succeeded in run37999301260; both test binaries are retained. Corrected-source native gate37999781136 succeeded with both platforms skipped because the five changed web/UI-test/documentation files did not alter compiled native inputs. The recorded188-file fingerprint and127-member starter equality prove that distinction. Current artifact-byte retrieval returned HTTP403 and the iOS decoded log was unavailable; no independent binary replay, device installation, signed iPhone package or TestFlight claim is made. A library change in the worker correction conservatively requires fresh official native CI.
+Public [GitHub Pages](https://ghinz32-cloud.github.io/movefield/) is deployed at **520db44ee3b86345826ea19d96148b61f146dc9e**, output treeb122a28494878782f3a3eb9c199b02902f15aa9c. [Pages deployment38002846782](https://github.com/ghinz32-cloud/movefield/actions/runs/38002846782) succeeds. All63 live files/21,808,941bytes match byte counts, SHA-256 and Git blob hashes without redirects. Manifest8c60686b3c01114959052f980441ce9b9da5c0ee309c50891542463fc51c5f6d and downloaded127-member native source ZIP match the committed source; ZIP CRC checks pass.632 generated Pages checks,745 policy and102 runtime assertions pass. This is HTTP/content and controlled-worker verification, not actual browser/GPU inference.
+
+The existing owner-private host is also deployed from the same canonical tree.101/101 live asset hashes,82/82 offline asset hashes/status/public cache control/no redirects, current SW/manifest, the first module and25 shell references match. Five runtime files match current hashes. Document CSP/nonces and seven401 identity/two403 gateway refusal checks pass. Audience and logical database are preserved; the new coaching table is present. Groq base/model presets are configured and the API key is absent. Raw service-access HTTP carries Set-Cookie; its no-cookie diagnostic correctly fails. [Basic browser Fetch responses filter this forbidden header](https://fetch.spec.whatwg.org/#concept-filtered-response-basic), so the raw diagnostic proves neither actual browser installation failure nor success. Actual browser control, positive signed-in jobs and model inference remain unexecuted. Complete qualified receipts are in docs/qa/workout-coaching-2026-10-09/site-controlled-worker/.
+
+Fresh actual [Android and iOS compilation38002481357](https://github.com/ghinz32-cloud/movefield/actions/runs/38002481357) succeeds at final application sourcec60ee243. Both platforms compiled concurrently, were inspected and retained test binaries; compile overlap was358seconds. [Android arm64 test APK artifact11649014357](https://github.com/ghinz32-cloud/movefield/actions/runs/38002481357/artifacts/11649014357) has18,814,555 archive bytes/GitHub-reported SHA-256f7a3839c6c5d304761436a2e1fee95c4a82c72d5b795823ea5b028d24c0fa051. [Unsigned iOS Release simulator artifact11649009267](https://github.com/ghinz32-cloud/movefield/actions/runs/38002481357/artifacts/11649009267) has18,576,172 archive bytes/GitHub-reported SHA-25697e4b9c9b086fa2f74fef9c7bccc7a6d45cdd2a32f47312dd7650ee14aa72c0a. Both expire8November2026. Android's unit-test task is NO-SOURCE. No fresh binary materialization, independent archive/signature replay, device installation, signed physical-iPhone package or TestFlight claim is made. Older c0/964 native/input/retrieval evidence remains explicitly historical under ci/; new receipts are under ci-worker-repair/.
+
+## Enable coaching
+
+For cloud feedback, add an owner-created Groq key as server secret **MOVEFIELD_AI_API_KEY** in the existing private host settings. **MOVEFIELD_AI_BASE_URL=https://api.groq.com/openai/v1** and **MOVEFIELD_AI_MODEL=openai/gpt-oss-120b** are already bound. Groq publishes a free plan for this larger model, subject to account limits; no paid plan or key was created. Sign in to the private host, save an eligible completed lift/workout, and explicitly consent to that exact coaching context. The backend validates and durably saves the result before the client displays it. Public Pages has no cloud backend.
+
+For experimental local feedback, use a supported WebGPU browser, download/check Qwen3.5 4B or9B in Settings, reload after the verified offline worker is installed, then enable local coaching consent. The separate automatic option requests feedback after a completed lift/workout is durably saved. No API fee is needed for local inference; substantial storage/GPU memory and actual device qualification are required. Native personal inference/account auth, real provider feedback, browser/GPU acceptance, physical/store signing and strict release dependency qualification remain pending. Muse requires a separate supported model host and is not configured.
 
 ## Modified files
 
-The inventory below covers this request relative to core checkpoint83b2f94, including retained public verification receipts. Generated deployment outputs and ignored runtime logs are excluded.
+The 201-file inventory below covers this request relative to core checkpoint83b2f94, including retained public verification receipts. Generated deployment outputs and ignored runtime logs are excluded.
 
 - `HANDOFF.md`
 - `TASKS.md`
@@ -76,6 +86,23 @@ The inventory below covers this request relative to core checkpoint83b2f94, incl
 - `docs/qa/claude-integration-2026-10-09/hosted-publication.json`
 - `docs/qa/claude-integration-2026-10-09/pages-publication.json`
 - `docs/qa/claude-integration-2026-10-09/web-copy-validation.json`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/README.md`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/SHA256SUMS`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/android-job-114063633528.log`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/final-summary.json`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/integration.json`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/inventory.json`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/native-final-artifacts.json`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/native-final-jobs.json`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/native-final-run.json`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/native-gate-job-114063577184.log`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/quality-counts.json`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/quality-final-artifacts.json`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/quality-final-jobs.json`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/quality-final-run.json`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/quality-job-114063577237.log`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/retrieval-limits.json`
+- `docs/qa/workout-coaching-2026-10-09/ci-worker-repair/source.json`
 - `docs/qa/workout-coaching-2026-10-09/ci/README.md`
 - `docs/qa/workout-coaching-2026-10-09/ci/SHA256SUMS`
 - `docs/qa/workout-coaching-2026-10-09/ci/android-job-114053245360.log`
@@ -99,6 +126,30 @@ The inventory below covers this request relative to core checkpoint83b2f94, incl
 - `docs/qa/workout-coaching-2026-10-09/ci/native-run-final.json`
 - `docs/qa/workout-coaching-2026-10-09/ci/source.json`
 - `docs/qa/workout-coaching-2026-10-09/native-input-equality.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/README.md`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/controlled-worker-policy-verification.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/deployment-jobs.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/deployment-run.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/evidence-inventory.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/generated-inventory.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/independent-git-tree-readback.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/live-readback.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/mobile-package.log`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/native-starter-readback.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/pages-build.log`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/pages-check.log`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/pages-commit-readback.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/pages-independent-peer-summary.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/pages-live-http-independent-peer-receipt.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/pages-ref-readback.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/pages-tree-readback.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/publication.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/published-source-readback.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/root-url-readback.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/site-controlled-worker-checks.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/verify-live-pages.py`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/workout-coaching-runtime-checks.json`
+- `docs/qa/workout-coaching-2026-10-09/pages-worker-repair/workout-coaching-worker-policy-checks.json`
 - `docs/qa/workout-coaching-2026-10-09/pages/controlled-worker-policy-verification.json`
 - `docs/qa/workout-coaching-2026-10-09/pages/deployment-jobs.json`
 - `docs/qa/workout-coaching-2026-10-09/pages/deployment-run.json`
@@ -120,11 +171,13 @@ The inventory below covers this request relative to core checkpoint83b2f94, incl
 - `docs/qa/workout-coaching-2026-10-09/qwen-larger-endpoints-head.json`
 - `docs/qa/workout-coaching-2026-10-09/runtime-implementation.md`
 - `docs/qa/workout-coaching-2026-10-09/site-controlled-worker/evidence-inventory.json`
+- `docs/qa/workout-coaching-2026-10-09/site-controlled-worker/hosted-delivery.json`
 - `docs/qa/workout-coaching-2026-10-09/site-controlled-worker/local-validation.json`
 - `docs/qa/workout-coaching-2026-10-09/site-controlled-worker/site-controlled-worker-checks.json`
 - `docs/qa/workout-coaching-2026-10-09/site-controlled-worker/site-controlled-worker-fixture.log`
 - `docs/qa/workout-coaching-2026-10-09/site-controlled-worker/site-worker-correction-build.log`
 - `docs/qa/workout-coaching-2026-10-09/site-controlled-worker/site-worker-correction-production.log`
+- `docs/qa/workout-coaching-2026-10-09/site-controlled-worker/verification-boundaries.md`
 - `docs/qa/workout-coaching-2026-10-09/site-controlled-worker/workout-coaching-runtime-checks.json`
 - `docs/qa/workout-coaching-2026-10-09/site-controlled-worker/workout-coaching-worker-policy-checks.json`
 - `docs/qa/workout-coaching-2026-10-09/workout-coaching-runtime-checks.json`

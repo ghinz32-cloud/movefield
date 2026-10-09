@@ -1,0 +1,69 @@
+{
+  "source": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+  "qualityRun": 38002481257,
+  "qualityJob": 114063577237,
+  "conclusion": "success",
+  "checks": {
+    "regressionSuites": {
+      "passed": 75,
+      "total": 75,
+      "evidence": "2026-10-09T23:08:27.5689326Z 75/75 check suites passed."
+    },
+    "offlineFixture": {
+      "passed": 34,
+      "total": 34,
+      "evidence": [
+        "2026-10-09T23:07:37.0973284Z Checking check-offline.cjs",
+        "2026-10-09T23:07:37.3666681Z {",
+        "2026-10-09T23:07:37.3667122Z   \"passed\": 34,",
+        "2026-10-09T23:07:37.3667546Z   \"total\": 34,",
+        "2026-10-09T23:07:37.3667900Z   \"results\": ["
+      ],
+      "scope": "VM worker lifecycle/content fixture; no real browser or OS acceptance."
+    },
+    "workerPolicy": {
+      "assertions": 745,
+      "evidence": "2026-10-09T23:08:25.2973303Z PASS coaching worker policy and larger download pins: 745 assertions; mocked headers/controller/network only.",
+      "scope": "Mocked headers/controller/network."
+    },
+    "localRuntime": {
+      "assertions": 102,
+      "evidence": "2026-10-09T23:08:15.8184784Z PASS local workout coaching runtime: 102 assertions; synthetic protocol/timers only, no GPU inference or weights download.",
+      "scope": "Synthetic protocol/timers; zero GPU inference or weights download."
+    },
+    "coachingUI": {
+      "passed": 29,
+      "total": 29,
+      "assertions": 168,
+      "evidence": "2026-10-09T23:08:24.8945686Z PASS workout coaching UI: 29/29 scenarios, 168 assertions (actual compiled component callbacks and real coaching projection/digest/reply contracts; mocked runtime/store/transport/hooks, no browser GPU, inference, backend deployment or device claim).",
+      "scope": "Actual compiled callbacks and projection/digest/reply; mocked runtime/store/transport/hooks."
+    },
+    "coachingStore": {
+      "scenarios": 12,
+      "checks": 95,
+      "evidence": "2026-10-09T23:08:16.8218984Z {\"passed\":true,\"scenarios\":12,\"checks\":95,\"scope\":\"Actual transpiled coaching store and transactional browser vault with fake-indexeddb and real WebCrypto. No mocked application storage, browser UI/GPU, physical-device or inference claim.\"}",
+      "scope": "Actual transpiled store and transactional vault, fake-indexeddb and real WebCrypto."
+    },
+    "productionSuites": {
+      "passed": 3,
+      "total": 3,
+      "evidence": "2026-10-09T23:08:57.0836252Z 3/3 check suites passed."
+    },
+    "bundleBudget": {
+      "initialGzipBytes": 399874,
+      "initialLimitGzipBytes": 400000,
+      "evidence": "2026-10-09T23:08:56.1022211Z PASS bundle budgets and lazy chart boundary {\"page\":\"_next/static/chunks/page-BvUrm9Su.js\",\"key\":\"app/page.tsx\",\"bytes\":178567,\"gzipBytes\":54131,\"initialGzipBytes\":399874,\"initialLimitGzipBytes\":400000,\"chunks\":[{\"key\":\"app/page.tsx\",\"bytes\":178567,\"gzipBytes\":54131},{\"key\":\"_rolldown-runtime-QTnfLwEv.js\",\"bytes\":694,\"gzipBytes\":422},{\"key\":\"virtual:vinext-app-browser-entry\",\"bytes\":195675,\"gzipBytes\":56463},{\"key\":\"_framework-JGc2HF7T.js\",\"bytes\":190152,\"gzipBytes\":59097},{\"key\":\"components/app-preferences.tsx\",\"bytes\":113780,\"gzipBytes\":36419},{\"key\":\"_button-CBvz_Igj.js\",\"bytes\":32543,\"gzipBytes\":10650},{\"key\":\"_createLucideIcon-rCMSQdv6.js\",\"bytes\":31626,\"gzipBytes\":11151},{\"key\":\"_progress-D4KJ_sZI.js\",\"bytes\":20687,\"gzipBytes\":7338},{\"key\":\"_checkbox-C9BEa7ej.js\",\"bytes\":4731,\"gzipBytes\":2010},{\"key\":\"_browser-vault-CqwzMhLd.js\",\"bytes\":35628,\"gzipBytes\":10847},{\"key\":\"_storage-capacity-Egu5ZFOb.js\",\"bytes\":14207,\"gzipBytes\":5419},{\"key\":\"_training-jn8H07LS.js\",\"bytes\":794960,\"gzipBytes\":114744},{\"key\":\"_types-B-MU-IOR.js\",\"bytes\":56526,\"gzipBytes\":12856},{\"key\":\"_cloud-client-Dab8Rxa3.js\",\"bytes\":2776,\"gzipBytes\":1288},{\"key\":\"_local-backup-D5FjEcIY.js\",\"bytes\":873,\"gzipBytes\":540},{\"key\":\"_onboarding-DztY_flP.js\",\"bytes\":9606,\"gzipBytes\":4080},{\"key\":\"_presentation-BhurRxrE.js\",\"bytes\":21851,\"gzipBytes\":6050},{\"key\":\"_progress-CI4fxsR3.js\",\"bytes\":3126,\"gzipBytes\":1265},{\"key\":\"_public-path-Dnx1y3mw.js\",\"bytes\":152,\"gzipBytes\":138},{\"key\":\"_safety-copy-BKXgRPRs.js\",\"bytes\":844,\"gzipBytes\":506},{\"key\":\"_training-day-BEN4a0Ry.js\",\"bytes\":3665,\"gzipBytes\":1782},{\"key\":\"_substitutions-M5QdKEMw.js\",\"bytes\":6693,\"gzipBytes\":2678}]}"
+    }
+  },
+  "releaseBoundary": [
+    "2026-10-09T23:09:30.3105581Z KNOWN CI EXCEPTION / RELEASE BLOCKED web: braces https://github.com/advisories/GHSA-vfj7-8cjw-p6xm (temporary-ci-exception)",
+    "2026-10-09T23:09:34.4782404Z KNOWN CI EXCEPTION / RELEASE BLOCKED mobile: braces https://github.com/advisories/GHSA-vfj7-8cjw-p6xm (temporary-ci-exception)",
+    "2026-10-09T23:09:34.4784316Z KNOWN CI EXCEPTION / RELEASE BLOCKED mobile: node-forge https://github.com/advisories/GHSA-86w9-cpqp-85rv (temporary-ci-exception)"
+  ],
+  "warnings": [
+    "2026-10-09T23:03:33.8110834Z (node:2392) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+    "2026-10-09T23:09:34.6597929Z (node:4872) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+    "2026-10-09T23:09:34.9794524Z (node:4872) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.",
+    "2026-10-09T23:09:35.5692278Z (node:4884) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead."
+  ]
+}

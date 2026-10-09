@@ -1,0 +1,31 @@
+{
+  "checkpoint": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+  "androidBinary": {
+    "attempted": false,
+    "reason": "No further binary materialization requested; official fresh metadata retained."
+  },
+  "iosBinary": {
+    "attempted": false,
+    "reason": "No further binary materialization requested; official fresh metadata retained."
+  },
+  "iosFullDecodedLog": {
+    "attempted": false,
+    "reason": "Do not repeat large full-log retrieval; final official job and step metadata retained."
+  },
+  "qualityDecodedLog": {
+    "attempted": true,
+    "status": "success",
+    "jobId": 114063577237
+  },
+  "androidDecodedLog": {
+    "attempted": true,
+    "status": "success",
+    "jobId": 114063633528
+  },
+  "nativeGateDecodedLog": {
+    "attempted": true,
+    "status": "success",
+    "jobId": 114063577184
+  },
+  "interpretation": "Archive digests are official GitHub artifact ZIP metadata, not independent APK/app bytes or local package replay. Historical HTTP403/transport limitations apply only to their documented earlier attempts."
+}

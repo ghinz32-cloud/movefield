@@ -1,0 +1,127 @@
+{
+  "schema": 1,
+  "sourceCommit": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+  "sourceTree": "0d84999d80c57c7731713aea85cec5901e54475c",
+  "pagesCommit": "520db44ee3b86345826ea19d96148b61f146dc9e",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2470,
+      "sha256": "9a0865ccfcaa6a0f8bb2b2304d2e65813fdf65302f0c88857381eea47daa3ac2"
+    },
+    {
+      "path": "publication.json",
+      "bytes": 1758,
+      "sha256": "39c51855ee42056db971d03188c6943409f5e3e41c5ba894b18e73f06056ac08"
+    },
+    {
+      "path": "generated-inventory.json",
+      "bytes": 14461,
+      "sha256": "b03a39b848a9a164559bc261bff60da0512334c09d77c3465764e79388bd8561"
+    },
+    {
+      "path": "mobile-package.log",
+      "bytes": 76,
+      "sha256": "feb67558caddbfc41b12bf631693d294ee27d268b4b0bcb9a7feec5c2339c4e6"
+    },
+    {
+      "path": "pages-build.log",
+      "bytes": 3446,
+      "sha256": "aa56ddb3a1b3ccf069c2be65c3c663c8d3fee3aa8f49387438e8f85e97a9b777"
+    },
+    {
+      "path": "pages-check.log",
+      "bytes": 226,
+      "sha256": "9b7d2b27b9d54839191ddef6f964d1b86e2e296a6262cd910d048eb63db2c4f2"
+    },
+    {
+      "path": "published-source-readback.json",
+      "bytes": 1342,
+      "sha256": "d7a31871dddd2f6b752f6e7e2276c4a74f8e68521da71007849705c8cbdfb430"
+    },
+    {
+      "path": "pages-commit-readback.json",
+      "bytes": 1729,
+      "sha256": "e6956bb7f08fb8a7a8cc9636dc2fe0c9e48b0cb67405d349bc24a2b3fd22b83d"
+    },
+    {
+      "path": "pages-tree-readback.json",
+      "bytes": 20324,
+      "sha256": "d6e9c6b338ccf6c2b77b9464c6148212fc7babff56bc595a8b41dff46232dc6c"
+    },
+    {
+      "path": "pages-ref-readback.json",
+      "bytes": 964,
+      "sha256": "9684d750517484e5b3b42505ddf30302594c6ceeb44dd9030dae7fb72236b136"
+    },
+    {
+      "path": "independent-git-tree-readback.json",
+      "bytes": 10641,
+      "sha256": "bf5b168779e16cb3710b4d56f06fbfddf8a4c4b4916b8984c3daeebdeb596e2b"
+    },
+    {
+      "path": "deployment-run.json",
+      "bytes": 14343,
+      "sha256": "c261ad95899b2686e160b208b541a18b32e6e3ddb334811cb001780a61a70448"
+    },
+    {
+      "path": "deployment-jobs.json",
+      "bytes": 2237,
+      "sha256": "8b5747451e22149ee6f62ca1ed50ad497ee6ba9d3760f6de08599960f912357d"
+    },
+    {
+      "path": "live-readback.json",
+      "bytes": 60459,
+      "sha256": "b51bc799be2da09672a1bd343d40cfaf0901a939a417c932c8aa0de0fd158d6f"
+    },
+    {
+      "path": "root-url-readback.json",
+      "bytes": 313,
+      "sha256": "6587df17992e2a512e1d18c24beb73ed8faca2085b3038eea1beaa6d1cda23db"
+    },
+    {
+      "path": "native-starter-readback.json",
+      "bytes": 25627,
+      "sha256": "26e0a33e37af9de826a47cccac0143eee981b0bc3f3c0c8c77e3d531f7251897"
+    },
+    {
+      "path": "controlled-worker-policy-verification.json",
+      "bytes": 1859,
+      "sha256": "386471b53da2a7b94fa377a4ab2c063c2d7b1fea2efe4bef4e29fa5f4ba9fa77"
+    },
+    {
+      "path": "workout-coaching-worker-policy-checks.json",
+      "bytes": 131,
+      "sha256": "82230161339ea764751cbafb8f272632036c474f41a9005b013dc055b0a38a4a"
+    },
+    {
+      "path": "workout-coaching-runtime-checks.json",
+      "bytes": 138,
+      "sha256": "b7d956940b4e4382f888e8fd7fb7206a5ab68b5480dc649a172b01c5637538c1"
+    },
+    {
+      "path": "site-controlled-worker-checks.json",
+      "bytes": 4590,
+      "sha256": "aeb63922d1b93c129a8ea09d73522504dea5592c9686ccb7b6c0026296d8595d"
+    },
+    {
+      "path": "pages-independent-peer-summary.json",
+      "bytes": 2161,
+      "sha256": "1f3979d96e8406cea41190188d4f43bc033e619c3432acadd73fca75980337bf"
+    },
+    {
+      "path": "pages-live-http-independent-peer-receipt.json",
+      "bytes": 6576,
+      "sha256": "78f259e78b08b13c6c7a3b158e54851cc890d98545a53753c7cd0220679a20a8"
+    },
+    {
+      "path": "verify-live-pages.py",
+      "bytes": 6618,
+      "sha256": "bbdc6b4145e260b1043ddc9492d1a7e66db6c72a8ff0d41dbf0959455e9d0db1"
+    }
+  ],
+  "totalFiles": 23,
+  "totalBytes": 182489,
+  "createdAt": "2026-10-09T23:11:46.765711+00:00",
+  "excluded": "raw live payloads, temporary indexes, blob upload candidates, broad duplicate peer inventory, helper staging and older publication records"
+}

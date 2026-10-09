@@ -10,7 +10,9 @@
 - [x] Publish/read back final consent correction96496ffd; both hosts deployed its tree, quality75/75+3/3 and native input gate succeeded.
 - [x] Verify actual concurrent Android/iOS compilation at c0aab491 and unchanged compiled inputs at96496ffd; retain official receipts and artifact retrieval limits.
 - [x] Repair private-host worker policy delivery through current-build hash-verified service worker;34/34 offline scenarios,745 policy and102 runtime assertions pass.
-- [ ] Build/publish/read back worker correction, redeploy both existing hosts, verify live delivery prerequisites and fresh conservative native CI.
+- [x] Build/publish/read back worker correctionc60ee243/tree0d84999d; both hosts redeployed with101/63 live asset hashes verified and qualified current-worker delivery.
+- [x] Exact-source quality38002481257 succeeds75/75+3/3; actual Android+iOS compilation38002481357 succeeds with fresh retained testing binaries.
+- [x] Prepare final documentation and immutable receipts; resolve its checkpoint with `git log -1 --format=%H -- docs/calendar-and-coaching-2026-10-09.md`. Remote head/tree/file readback and draft PR preservation are required before final delivery; no product changes or repeated application checks.
 - [ ] Real GPU/device coaching acceptance and owner-supplied cloud provider key; native inference/authentication and Apple distribution remain unavailable.
 
 # Current Claude pipeline checkpoint — 9 October 2026
