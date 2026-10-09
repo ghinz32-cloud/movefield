@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-09T17:29:06.490599+00:00",
+  "repository": "ghinz32-cloud/movefield",
+  "headSource": "c9b6471f916f4a70e4b828cf54c6ad93040962f7",
+  "headTree": "2e58e02cffe74f7af6d7a42f47f0a24c1c251958",
+  "currentPullRequestMerge": "67fdcf5b0d5ed84b1059d0ae998940b0f74a6742",
+  "currentPullRequestMergeTree": "2e58e02cffe74f7af6d7a42f47f0a24c1c251958",
+  "runId": 37965114809,
+  "jobId": 113937402165,
+  "jobConclusion": "success",
+  "artifactId": 11634380040,
+  "archiveBytes": 11774,
+  "archiveSHA256": "e082a2e475fe86f4df9e7d33fed99e56cbcc3c57d22c219f6226e050cacb72f2",
+  "archiveMatchesGitHubDigest": true,
+  "memberSHA256": {
+    "Info.plist": "9f7d264fde03eb71e168a5d20ee366258c59e2abbadcb3c4b7a609d9346237e1",
+    "PrivacyInfo.xcprivacy": "ab8e9be3d1713701eef605d660a79483ebfab512bc726a28b67c82663382b1fa",
+    "inspection.json": "d64d584718318560dd8baca1657ecd399a7f7c933e023731319cabc82a22b7c7",
+    "Podfile.lock": "1d6e645a9a1eeb94d3b7a20e7874f38ca195f0fc47d85c61edef1f85cc263fe8"
+  },
+  "qualification": "Actual unsigned Release simulator compilation and assembled metadata inspection succeeded. Artifact bytes and Info/root privacy hashes independently verified. Checkout uses PR merge ref; current merge tree equals source tree, but actual checkout job log unavailable, so exact built checkout SHA is not attested. Next workflow pins native PR head and records commit/tree. No signed distribution, physical device, XCTest, semantic native API reachability or store approval."
+}

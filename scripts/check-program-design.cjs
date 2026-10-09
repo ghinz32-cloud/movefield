@@ -1,7 +1,7 @@
 const fs = require('node:fs'), path = require('node:path'), assert = require('node:assert/strict'), ts = require('typescript');
 // Evidence rules for the built-in programs. Every catalog program is built with the same profile the app uses
-// for a full, established lifter, then checked week by week. Thresholds are app rules taken from the sources
-// named beside them (docs/program-evidence.md). They are not measured results for Movefield users.
+// for a full, established lifter, then checked week by week. Thresholds are product quality checks
+// informed by source principles (docs/program-evidence.md), not validated individualized prescriptions.
 const root = path.join(__dirname, '..');
 const cache = new Map();
 function load(name) {
@@ -35,10 +35,10 @@ const LIBRARY = {
 };
 // Audited major groups. Glutes, calves and abdominals are reported but not required: the main lifts give them indirect work.
 const MAJOR = ['chest', 'back', 'quads', 'hams', 'shoulders', 'biceps', 'triceps'];
-const VOLUME_TARGET = 10; // weighted weekly sets per major group, full-length muscle-building programs (Schoenfeld 2017 volume review)
-const FREQ_TARGET = 2; // sessions per week for each major group (Schoenfeld 2016 frequency)
-const HEAVY_REPS = 6; // a set whose top rep count is 6 or fewer is heavy work (Schoenfeld 2017 loads; Suchomel 2018)
-const HEAVY_REST = 120; // seconds; the 2016 rest study used 3 minutes, 2 minutes is the app minimum for heavy sets
+const VOLUME_TARGET = 10; // app weighted-set coverage target; source dose-response does not validate these exact muscle weights or an individual optimum
+const FREQ_TARGET = 2; // app distribution preference; 2019 volume-equated evidence does not require twice-weekly frequency for superior hypertrophy
+const HEAVY_REPS = 6; // app lower-rep band proxy; reps alone do not establish actual load, effort or percentage of 1RM
+const HEAVY_REST = 120; // app minimum for this lower-rep band; preserve time for actual technique and recovery needs
 const LIFT_IDS = {squat: 'bar-squat', bench: 'bench', deadlift: 'deadlift'};
 const MAIN_IDS = Object.values(LIFT_IDS);
 

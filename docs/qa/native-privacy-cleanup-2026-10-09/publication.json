@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-09T17:17:12.741Z",
+  "localCommit": "ae01486eabe696087bdcd0cc27b572e3196fe297",
+  "remoteCommit": "c9b6471f916f4a70e4b828cf54c6ad93040962f7",
+  "tree": "2e58e02cffe74f7af6d7a42f47f0a24c1c251958",
+  "branch": "audit/2026-10-08-quality",
+  "verifiedRemoteHead": true,
+  "verifiedExactTree": true,
+  "verifiedReportReadback": true,
+  "bundle": ".sites-runtime/checkpoints/sec2-native-privacy.bundle",
+  "bundleCompleteAndVerified": true,
+  "scope": "Source and audit only. New native CI queued; Pages not published by this checkpoint. No main merge/store distribution."
+}

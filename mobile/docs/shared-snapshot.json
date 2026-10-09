@@ -44,7 +44,7 @@
     {
       "source": "lib/onboarding.ts",
       "target": "src/shared/onboarding.ts",
-      "sha256": "aa49763bc759b88eec9764a1494981604f645969222f4d519b9ff859145b6e58"
+      "sha256": "eda6111409d23a9c54f334adb20e0a4b999755016ab10fc5a4b75325e48dcecc"
     },
     {
       "source": "lib/rest-timer.ts",
@@ -54,7 +54,7 @@
     {
       "source": "lib/training.ts",
       "target": "src/shared/training.ts",
-      "sha256": "75e51bfe0b9c0887c51552bdeeaf3338743a24dd6971068fa091efb09f0db7fa"
+      "sha256": "be27eb1bc30c2823df371d7712309264f109516f85f07e43ec5d1ad432b251d5"
     },
     {
       "source": "lib/training-tools.ts",
@@ -64,12 +64,12 @@
     {
       "source": "lib/training-focus.ts",
       "target": "src/shared/training-focus.ts",
-      "sha256": "78a4a6d58462071d033c612c3a8aa23786a23531e6d4dbccde7730e1289c60ec"
+      "sha256": "3e4a94e9a6a4ec4056e195e244edcf6dd6f365dbbb432e17d35f8e3f3babba39"
     },
     {
       "source": "lib/program-catalog.ts",
       "target": "src/shared/program-catalog.ts",
-      "sha256": "d7403aa0817356183a97ac310994a8463aabe36beed430bdf92462f0dd0c4988"
+      "sha256": "d5ab1eb1c61338dc58e8c06aa1899f967574a2c9c6102e6be7e783396018949c"
     },
     {
       "source": "lib/substitutions.ts",
@@ -99,7 +99,7 @@
     {
       "source": "lib/program-evidence.ts",
       "target": "src/shared/program-evidence.ts",
-      "sha256": "164ca01cc460922089a9ddf0d681edd59a3aa8a9c69c210da9291687f9318860"
+      "sha256": "beaad36890c37d5de560cfdb0d26776e62b4e2cec21722e912a7dc57e0a313c4"
     },
     {
       "source": "lib/saved-data.ts",
@@ -124,7 +124,7 @@
     {
       "source": "lib/recipes.json",
       "target": "src/shared/recipes.json",
-      "sha256": "667a3b8678ffc458d725a50ae9bd5372f8dcc3b4f6f7dfb1f4f7148ac17dde8d"
+      "sha256": "a6b5f0e919cf0f3ba492e67db8164223e333dab70e24bfab830796136c02c175"
     },
     {
       "source": "public/exercise-guides.json",

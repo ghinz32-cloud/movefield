@@ -15,9 +15,20 @@ export const disciplineEvidence: Record<string, {label: string; keys: string[]}>
   youth: {label: 'Youth training', keys: ['AAP-2020', 'NSCA-YOUTH', 'LLOYD-2016-LTAD']},
 };
 
-export function planEvidence(input: {goal: string; run: boolean; youth: boolean; jumping: boolean}): string[] {
-  const base = input.run ? ['NHS-C25K'] : input.youth ? ['AAP-2020', 'NSCA-YOUTH'] : ['ACSM-2026'];
+export function planEvidence(input: {goal: string; run: boolean; youth: boolean; jumping: boolean; age?:number; source?:string}): string[] {
+  // Youth supervision/competence guidance does not inherit adult goal studies.
+  if(input.youth)return [...disciplineEvidence.youth.keys];
+  // `run` means the actual NHS stage recipe. App-authored intervals and existing
+  // running-base plans use activity context, without claiming NHS source fidelity.
+  if(input.run||input.goal==='running')return input.run?['NHS-C25K','WHO-2020']:['WHO-2020'];
   const goal = disciplineEvidence[input.goal]?.keys ?? [];
-  const extra = [...(input.youth ? disciplineEvidence.youth.keys : []), ...(input.jumping ? disciplineEvidence.jumping.keys : [])];
-  return [...new Set([...base, ...goal, ...extra])];
+  const extra = [...(input.jumping ? disciplineEvidence.jumping.keys : []),...(input.age!==undefined&&input.age>=65?['OLDER-ADULT','WHO-2020']:[])];
+  return [...new Set(['ACSM-2026', ...goal, ...(input.source?[input.source]:[]), ...extra])];
+}
+
+/** Selected add-on principles, not independent validation of their exact dose. */
+export function focusEvidence(focuses:readonly string[],youth:boolean):string[]{
+  if(youth)return focuses.some(f=>f==='core'||f==='jumping')?['NSCA-YOUTH']:[];
+  const sources:Record<string,string[]>={core:['ACSM-2026'],jumping:['NSCA-PLYOMETRICS'],supersets:['ZHANG-2025-SUPERSET'],activity:['CDC-ACTIVITY','WHO-2020']};
+  return [...new Set(focuses.flatMap(f=>sources[f]||[]))];
 }

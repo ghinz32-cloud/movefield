@@ -1,6 +1,6 @@
 import {focusSetupErrors} from './training-focus';
 import {programCatalog,programReferences,referenceMatchesGoal} from './program-catalog';
-import {type Profile,type Plan,type Event,type State,blankProfile,initialState,buildPlan,day,validDay,changed} from './training';
+import {type Profile,type Plan,type Event,type State,blankProfile,initialState,buildPlan,day,validDay,changed,exFor} from './training';
 
 export const setupSteps=['You','Goal','Coaching','Schedule','Equipment','Commitments','Choose a plan','Review'];
 export function freshState():State{return {...initialState(),profile:{...blankProfile,name:'',goal:'general',experience:'First time',start:day()},plan:null};}
@@ -17,6 +17,13 @@ function draftMinutes(id:string,p:Profile,plan?:Plan|null):number|null{
  const draft=plan===undefined?buildPlan({...p,programId:id}).plan:plan;
  return draft?.sessions.length?Math.max(...draft.sessions.map(s=>s.minutes)):null;
 }
+// Whole-body work-set totals describe this app's plan, not per-muscle dose or a
+// universal workload limit. Compare actual drafts only after normal fit checks.
+function foundationDose(plan:Plan):{early:number;later:number}{
+ const weeks=new Map<number,number>();
+ for(const s of plan.sessions)weeks.set(s.week,(weeks.get(s.week)||0)+s.items.reduce((n,i)=>n+(exFor(i.exerciseId).metric==='reps'?i.sets:0),0));
+ return {early:Math.max(0,...[...weeks].filter(([week])=>week<=2).map(([,sets])=>sets)),later:Math.max(0,...weeks.values())};
+}
 // Plain fit notes for one catalogue program against the person's chosen days and session length.
 export function fitNotes(id:string,p:Profile,plan?:Plan|null):string[]{
  const d=programCatalog.find(x=>x.id===id);
@@ -24,7 +31,12 @@ export function fitNotes(id:string,p:Profile,plan?:Plan|null):string[]{
  const notes=[d.days===p.days.length?`Uses all ${d.days} of your chosen days`:d.days<p.days.length?`Uses ${d.days} of your ${p.days.length} chosen days, which leaves rest days between sessions`:`Needs ${d.days} training days; you chose ${p.days.length}`];
  const minutes=draftMinutes(id,p,plan);
  notes.push(minutes===null?'This setup needs a change; review the plan errors':minutes<=p.minutes?`Fits your ${p.minutes}-minute session window · up to ${minutes} minutes in this block`:`About ${minutes} minutes per session, longer than your ${p.minutes}-minute window`);
- notes.push(d.experience==='all'?'Suitable from your first session':d.experience==='advanced'?'Needs established technique and consistent recent training':'Assumes some lifting experience');
+ notes.push(d.experience==='all'?'Available to first-time lifters':d.experience==='advanced'?'Needs established technique and consistent recent training':'Assumes some lifting experience');
+ if(p.age>=18&&p.experience==='First time'&&p.mode==='app'&&p.goal!=='running'&&plan){
+  const dose=foundationDose(plan);
+  notes.push(`${dose.early} whole-body work sets per week at the start; up to ${dose.later} later in this block. These totals span all exercises, not sets per muscle.`);
+  notes.push('Later set increases are accepted calendar targets after completed prerequisites, not a comfortable-feedback or recovery assessment. Review a repeat or shorter return block if earlier work felt too hard.');
+ }
  return notes;
 }
 // Higher is a better fit. Days matter most, then session length, then experience. Used to pick the recommended and starting plans.
@@ -42,10 +54,16 @@ export function planOptions(p:Profile,events:Event[]):PlanOption[]{
  const built=variants.map(v=>({...v,...buildPlan(v.profile,events),recommended:false}));
  // The best-fitting plan for this goal is recommended. For a first-time lifter it is also the starting suggestion.
  const eligible=built.filter(v=>v.plan&&v.profile.mode===p.mode&&v.profile.goal===p.goal);
- const best=eligible.reduce<(typeof eligible)[number]|null>((a,b)=>!a||fitScore(b.id,p,b.plan)>fitScore(a.id,p,a.plan)?b:a,null);
+ const preferSmaller=p.mode==='app'&&p.age>=18&&p.experience==='First time'&&p.goal!=='running';
+ const best=eligible.reduce<(typeof eligible)[number]|null>((a,b)=>{
+  if(!a)return b;
+  const diff=fitScore(b.id,p,b.plan)-fitScore(a.id,p,a.plan);if(diff)return diff>0?b:a;
+  if(preferSmaller){const first=foundationDose(a.plan!),next=foundationDose(b.plan!);if(next.later!==first.later)return next.later<first.later?b:a;if(next.early!==first.early)return next.early<first.early?b:a;}
+  return a;
+ },null);
  if(best)best.recommended=true;
  if(best&&p.experience==='First time'&&p.mode==='app')best.startHere=true;
- return built.map(v=>({...v,notes:v.plan?fitNotes(v.id,p,v.plan):undefined})).sort((a,b)=>Number(!!b.plan)-Number(!!a.plan)||Number(b.recommended)-Number(a.recommended));
+ return built.map(v=>({...v,notes:v.plan?[...fitNotes(v.id,p,v.plan),...(preferSmaller&&v===best?['Among plans with the same schedule and equipment fit, the starting suggestion favors less planned work. This is an app preference; you can choose another eligible plan.']:[])]:undefined})).sort((a,b)=>Number(!!b.plan)-Number(!!a.plan)||Number(b.recommended)-Number(a.recommended));
 }
 export function acceptSetup(s:State,p:Profile,plan:Plan,events:Event[],expectedEvents=JSON.stringify(s.events)):{state:State;error?:string}{
  if(s.plan&&s.saved.length>=100)return {state:s,error:'This local demo holds 100 archived or saved plans. Export your records before starting another block.'};
