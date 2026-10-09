@@ -1,3 +1,15 @@
+# Current continuation — 9 October 2026, strict dependency release gate
+
+S02 is published and independently verified at `cbb39a4b04f7d9f8d3ba19bf44d20d72304bd73b`, exact tree `ea2d63918653adcc0fa6193df3748487571443aa`, matching local `64eb774168a0690b4d5ea466a6214275bb05e2fe`; report readback and fresh Git head checks pass. Publication metadata: `docs/qa/native-history-2026-10-09/publication.json`. Both source histories are retained locally and in the verified bundle.
+
+R01 implementation is complete locally. `node scripts/check-dependencies.mjs --release` rejects every high/critical, including the two CI exceptions. Default CI permits only exact known high advisory/package pairs until 8 November; malformed/incomplete/error audits, unknown flags and critical escalations fail closed. Seven policy scenarios pass; live CI exit0, strict release exit1, invalid flag exit1. Fresh reports retain one web and 15 propagated native high entries; no compatible published fixes were found and no dependency versions changed. The seven-day release-age rule remains. Evidence: `docs/dependency-release-gate-2026-10-09.md`, `docs/qa/dependency-release-gate-2026-10-09/`. No application rebuild/device proof claimed for this policy-only checkpoint.
+
+Resolve this source commit by the policy report history. Save/verify `.sites-runtime/checkpoints/dependency-release-gate.bundle`, publish to the standing approved `audit/2026-10-08-quality` destination with expected-head lease, compare the exact tree and read back its report. Main/review-fixes remain unchanged; no merge/deploy/distribution.
+
+Next prompt: Resume from the verified release-policy checkpoint and implement U09a native model-file handling using installed Expo FS/SQLite/hashes: explicit frozen-manifest consent, private opaque attempt files, bounded SHA256/byte validation, completion pointers, cancel/timeout/late-callback suppression, restart cleanup and load/delete exclusion. Native inference stays disconnected until a real native runtime build and hardware qualification. Actual phone/browser acceptance and cloud accounts/sync remain pending.
+
+# Previous continuation — incremental phone history
+
 # Current continuation — 9 October 2026, incremental phone history
 
 Repository `https://github.com/ghinz32-cloud/movefield.git`; checkout `/workspace/scratch/30756d258ac2/movefield`; local branch `audit/2026-10-09-approved`, upstream `origin/audit/2026-10-08-quality`. Verified starting local checkpoint `9196735b51d26e6b65d1b5537cf387184103e799`; remote baseline `d4f94890cf0c19c1bfb399d1080d615553e2f70a`. Main `80e6ea26437f0aeaa1d8f816ace464da81fe0a81` and review-fixes `667a3e381035b16cb1aa611c85cdf9d143b7b835` remain unchanged. Standing explicit owner approval covers GitHub commit creation and this source/audit evidence to the existing review branch; historical approval blockers below are resolved.

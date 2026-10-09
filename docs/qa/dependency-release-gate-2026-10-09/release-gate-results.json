@@ -1,0 +1,14 @@
+[
+  {
+    "mode": "ci",
+    "exitCode": 0
+  },
+  {
+    "mode": "release",
+    "exitCode": 1
+  },
+  {
+    "mode": "invalid",
+    "exitCode": 1
+  }
+]

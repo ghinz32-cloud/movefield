@@ -13,6 +13,8 @@
     "lint": "eslint app components lib hooks db vite.config.ts next.config.ts mobile/App.tsx mobile/src --ignore-pattern mobile/src/shared",
     "db:generate": "drizzle-kit generate",
     "check": "tsc --noEmit",
+    "check:dependencies": "node scripts/check-dependencies.mjs",
+    "check:release-dependencies": "node scripts/check-dependencies.mjs --release",
     "test:regression": "node scripts/check-all.cjs",
     "test:production": "node scripts/check-all.cjs --production",
     "package:mobile": "python3 scripts/package-mobile.py"
