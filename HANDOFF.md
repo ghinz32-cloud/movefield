@@ -1,3 +1,17 @@
+# Exercise overview milestone complete — 9 October 2026
+
+Active native workouts now start with every exercise, planned sets/rep ranges and logged status. Opening one shows only its entry fields; logging its final set advances to the next unfinished exercise. At the bottom, a remaining-exercises list is shown or a completion screen opens. Navigation is bound to the current workout; completed screen rechecks unfinished work, and first-time demonstrations only start after exercise selection. Shared canonical lib/workout-navigation.ts includes archived/legacy target lookup and completion signatures;48 native shared hashes match.
+
+14 actual compiled native App callback scenarios and navigation domain checks pass; web and native TypeScript and focused ESLint with zero warnings pass. Hook/device I/O are simulated; no phone layout or installation claim. Resolve local milestone via git log -1 --format=%H -- lib/workout-navigation.ts. Publish/read back this checkpoint on the existing audit branch before starting the next milestone. Parent remote64d60ac/local038f9fec; PR1 draft and main/review-fixes preserved.
+
+Next: explicit partial-workout finish consent and a staged saved-workout editor preserving record identity/timestamps, another active draft and atomic history updates. Current source is not yet deployed or compiled into a new binary.
+
+# Exercise-first mobile workout milestone — 9 October 2026
+
+Repository https://github.com/ghinz32-cloud/movefield.git, canonical local branch audit/2026-10-09-claude at038f9fece45c481d725d6790977811d77688b3b2; clean initial tree5d0dc6ec3e89fe7266846905a46a076a87a99a8c. Remote audit64d60ac0cbe6afbd976b1dda7a55f8ddac408663 verified; PR1 remains open/draft, main80e6ea26 and review-fixes a7c36d7 unchanged. Current scope is native active-workout overview/focused entry, unfinished-aware advancement, explicit partial finish and saved-workout editing. No new credentials or service/store scope.
+
+Next milestone: implement/test overview and navigation against real compiled native callbacks, then commit/publish/read back before saved-record editing. Existing calendar/coaching deployments/builds below qualify the prior application source, not new edits. Keep shared domain source in lib and regenerate native snapshot.
+
 # Final calendar/coaching deployment checkpoint — 9 October 2026
 
 Application sourcec60ee243baaf88eb9aa7dbd4c1dea16a01af1d58, full tree0d84999d80c57c7731713aea85cec5901e54475c, is pushed/read back on the existing audit branch. Root canonical branch audit/2026-10-09-claude in https://github.com/ghinz32-cloud/movefield.git; local code873b3e0 and connector-history mergedf5f36a share that tree. UI fixes, consent-bound saved-context coaching and current-build worker-policy correction are deployed to both existing hosts. Public Pages520db44/treeb122a284 serves63verified files/21,808,941bytes; Pages38002846782 succeeds. Owner-private host matches canonical source tree with101verified assets/82offline assets, current SW/manifest/first module/25shell refs and unchanged owner audience/database; no hosting origin/IDs/credentials are recorded here.

@@ -110,12 +110,52 @@ async function scenario(name, run) {await run();count++;console.log('PASS ' + na
   });
   await scenario('only selected new exercise prompts; external link errors remain visible',async()=>{
     let state=activeState();state={...state,active:{...state.active,sets:state.active.sets.map(set=>({...set,done:false}))}};
-    const {h,alerts,opened,saved}=await mount(state);assert.equal(alerts.length,1);
+    const {h,alerts,opened,saved}=await mount(state);assert.equal(alerts.length,0,'Overview does not ask about an exercise before selection');
+    h.find(node=>node.props.accessibilityLabel===`Record ${T.exFor(state.active.targets[0].exerciseId).name}`).props.onPress();await h.settle();assert.equal(alerts.length,1);
     const first=alerts[0];assert.match(first[0],new RegExp(T.exFor(state.active.targets[0].exerciseId).name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
     first[2].find(choice=>choice.text==='Not now').onPress();await h.settle();assert.equal(alerts.length,1,'No cascade to second exercise');
-    const target=state.active.targets[1];await press(h,`2. ${T.exFor(target.exerciseId).name}`);assert.equal(alerts.length,2);
+    const target=state.active.targets[1];await press(h,'Back to exercises');h.find(node=>node.props.accessibilityLabel===`Record ${T.exFor(target.exerciseId).name}`).props.onPress();await h.settle();assert.equal(alerts.length,2);
     alerts[1][2].find(choice=>choice.text==='Open the source page').onPress();await h.settle();
     assert.equal(opened.length,1);assert.match(h.text(),/Could not open the demonstration/);assert.equal(alerts.length,2);assert.equal(saved.length,0,'Failed reference does not persist an answered preference');
+  });
+  await scenario('exercise overview opens only selected fields and logging advances through remaining work',async()=>{
+    let state=activeState();state={...state,videoPromptsAnswered:state.active.targets.map(t=>t.exerciseId)};
+    const {h,saved}=await mount(state);
+    assert.equal(h.nodes().filter(n=>n.props.accessibilityLabel?.startsWith('Record ')).length,state.active.targets.length);
+    assert.equal(h.nodes().filter(n=>n.props.label?.includes('actual reps')).length,0,'Overview has no data-entry fields');
+    assert.equal(h.nodes().filter(n=>n.type==='ScrollView'&&n.props.horizontal).length,0,'Active workout has no horizontal exercise strip');
+    const first=state.active.targets[0],name=T.exFor(first.exerciseId).name;
+    h.find(n=>n.props.accessibilityLabel===`Record ${name}`).props.onPress();await h.settle();
+    for(const set of state.active.sets.filter(s=>s.exerciseId===first.exerciseId&&!s.done)){
+      h.find(n=>n.props.label===`${name} set ${set.set} actual reps`).props.onChange(8);await h.settle();
+      h.find(n=>n.props.accessibilityLabel===`Log ${name} set ${set.set}`).props.onPress();await h.settle();
+    }
+    const second=T.exFor(state.active.targets[1].exerciseId).name;
+    assert.ok(h.find(n=>n.props.label===`${second} set 1 actual reps`),'Last set advances to next exercise');
+    assert.equal(h.find(n=>n.props.label===`${name} set 1 actual reps`),undefined);
+    assert.ok(saved.at(-1).active.sets.filter(s=>s.exerciseId===first.exerciseId).every(s=>s.done));
+    await press(h,'Back to exercises');assert.ok(h.text().includes('Your exercises'));
+  });
+  await scenario('finishing the bottom exercise shows earlier unfinished exercises then the done screen',async()=>{
+    let state=activeState();state.active.sets=state.active.sets.map(s=>({...s,reps:8,done:false}));state.videoPromptsAnswered=state.active.targets.map(t=>t.exerciseId);
+    const {h}=await mount(state),last=state.active.targets.at(-1),lastName=T.exFor(last.exerciseId).name;
+    h.find(n=>n.props.accessibilityLabel===`Record ${lastName}`).props.onPress();await h.settle();
+    for(const set of state.active.sets.filter(s=>s.exerciseId===last.exerciseId)){
+      h.find(n=>n.props.accessibilityLabel===`Log ${lastName} set ${set.set}`).props.onPress();await h.settle();
+    }
+    assert.ok(h.text().includes('Exercises still to finish'));
+    assert.equal(h.find(n=>n.props.accessibilityLabel===`Record ${lastName}`),undefined,'Completed last exercise is omitted from remaining list');
+    for(const target of state.active.targets.slice(0,-1)){
+      const name=T.exFor(target.exerciseId).name;
+      if(!h.find(n=>n.props.accessibilityLabel===`Log ${name} set 1`)){
+        h.find(n=>n.props.accessibilityLabel===`Record ${name}`).props.onPress();await h.settle();
+      }
+      for(const set of state.active.sets.filter(s=>s.exerciseId===target.exerciseId)){
+        h.find(n=>n.props.accessibilityLabel===`Log ${name} set ${set.set}`).props.onPress();await h.settle();
+      }
+    }
+    assert.ok(h.text().includes('Workout complete'));assert.ok(h.find(n=>n.props.label==='Review & save workout'));
+    await press(h,'Review exercises');assert.ok(h.text().includes('Your exercises'));
   });
   await scenario('library searches imported custom exercises and exposes their equipment',async()=>{
     const state=E.adoptPlan(E.emptyDemo(),E.previewPlan(E.FOUNDATION).plan);

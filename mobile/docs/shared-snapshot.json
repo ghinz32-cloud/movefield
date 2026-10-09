@@ -2,6 +2,11 @@
   "source": "Training Studio website domain modules; paths relative to its root",
   "files": [
     {
+      "source": "lib/workout-navigation.ts",
+      "target": "src/shared/workout-navigation.ts",
+      "sha256": "9d69a1beed190736a3823b55a27787f3f0454df3bc1d3b6d9b60e55395b79cd5"
+    },
+    {
       "source": "lib/training-day.ts",
       "target": "src/shared/training-day.ts",
       "sha256": "98c99cb7835915ba0d9ed5eb58b3844518e66f534e098c8aff18e2c66bb8b729"
