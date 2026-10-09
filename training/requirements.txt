@@ -1,4 +1,4 @@
-# Integration candidates published at least seven days before 2026-10-09.
+# Exact top-level versions from the observed 2026-10-09 training environment.
 torch==2.14.1
 transformers==5.18.0
 peft==0.21.2

@@ -1,4 +1,4 @@
-import {type State,type Exercise,type Item,exFor,requiresSetup,changed,day} from './training';
+import {type State,type Exercise,type Item,exFor,estimateSessionMinutes,requiresSetup,changed,day} from './training';
 export type Addition={sessionId:string;exercise:Exercise;sets:number;lo:number;hi:number;rest:number;all:boolean;setup:string;allowLonger:boolean;planId:string;version:number};
 export function previewAddition(s:State,a:Addition){
  const errors:string[]=[];const base=s.plan?.sessions.find(x=>x.id===a.sessionId);
@@ -14,11 +14,8 @@ export function previewAddition(s:State,a:Addition){
  if(sessions.some(x=>x.items.some(i=>i.exerciseId===a.exercise.id)))errors.push('This exact exercise is already in one of these workouts. Choose a different variation; duplicate entries would merge its set log.');
  const changes=sessions.map(x=>{
   const sets=x.title.endsWith(' · review week')?Math.max(1,Math.ceil(a.sets/2)):a.sets;
-  const perSide=/per side|each side|both sides/i.test(a.exercise.loadConvention||'')?2:1;
-  const seconds=a.exercise.metric==='minutes'?a.hi*60:a.exercise.metric==='seconds'?a.hi:a.hi*4*perSide;
-  const extra=Math.ceil((sets*seconds+(sets-1)*a.rest+120)/60);
-  const item:Item={exerciseId:a.exercise.id,sets,reps:a.lo,...(a.exercise.metric==='reps'?{repMin:a.lo,repMax:a.hi}:{}),rest:a.rest,kg:null,note:'You added this exercise. Weight suggestions use its own workout history and weight-entry rules.'};
-  return{sessionId:x.id,before:x.minutes,after:x.minutes+extra,item};
+  const item:Item={exerciseId:a.exercise.id,sets,reps:a.exercise.metric==='reps'?a.lo:a.hi,...(a.exercise.metric==='reps'?{repMin:a.lo,repMax:a.hi}:{}),rest:a.rest,kg:null,note:'You added this exercise. Weight suggestions use its own workout history and weight-entry rules.'};
+  return{sessionId:x.id,before:x.minutes,after:x.minutes+estimateSessionMinutes([...x.items,item],x.timeProfile==='brief',[...s.custom,a.exercise])-estimateSessionMinutes(x.items,x.timeProfile==='brief',s.custom),item};
  });
  if(changes.some(c=>!Number.isFinite(c.after)||c.after>1440))errors.push('A session cannot exceed 1,440 minutes. Reduce the sets or task duration.');
  if(sessions.some(x=>x.items.length>=100))errors.push('This demo supports up to 100 exercises in one workout.');

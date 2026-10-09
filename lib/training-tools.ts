@@ -1,4 +1,4 @@
-import {addDays,exFor,requiresSetup,type State} from './training';
+import {addDays,exFor,isLoadTracked,requiresSetup,type State} from './training';
 import {estimatedMax} from './progress';
 
 // Pure training tools. They calculate only from numbers the person entered or has logged.
@@ -34,7 +34,7 @@ export function platesForLoad(target:number|null,unit:LoadUnit,bar:number,plates
 }
 
 export const warmupSteps=[{percent:40,reps:5},{percent:60,reps:3},{percent:75,reps:2},{percent:85,reps:1}] as const;
-export type WarmupInput={unit:LoadUnit;kind:'barbell'|'dumbbell';bar:number;adult:boolean};
+export type WarmupInput={unit:LoadUnit;kind:'barbell'|'dumbbell';bar:number;adult:boolean;step?:number};
 export type WarmupRow={percent:number;reps:number;load:number;barOnly:boolean};
 export type WarmupResult=
  | {status:'unknown'}
@@ -51,9 +51,14 @@ export function warmupLadder(working:number|null,input:WarmupInput):WarmupResult
   const barbell=input.kind==='barbell';
   if(!Number.isFinite(working)||working<=0||working>1500)return {status:'error',message:`Enter a working load above 0 ${input.unit}.`};
   if(barbell&&working<input.bar)return {status:'error',message:`The working load must be at least the bar weight, ${input.bar} ${input.unit}.`};
-  const step=barbell?(input.unit==='kg'?2.5:5):(input.unit==='kg'?2:5);
+  const step=input.step??(barbell?(input.unit==='kg'?2.5:5):(input.unit==='kg'?2:5));
+  if(!Number.isFinite(step)||step<=0||step>100)return {status:'error',message:'Enter an available load step above zero and up to 100.'};
+  if(barbell&&(!Number.isFinite(input.bar)||input.bar<=0))return {status:'error',message:'Enter the measured bar weight above zero.'};
+  const origin=barbell?input.bar:0,min=barbell?input.bar:step;
+  const maximum=round(origin+Math.floor((working-origin+1e-9)/step)*step);
+  if(maximum<min)return {status:'not-available',message:'Your working load is below this equipment step. Enter a smaller available step, or use the movement warm-up in your plan.'};
   const rows=warmupSteps.map(s=>{
-    let load=round(Math.round(working*s.percent/100/step)*step);
+    let load=round(Math.max(min,Math.min(maximum,origin+Math.round((working*s.percent/100-origin)/step)*step)));
     const barOnly=barbell&&load<=input.bar;
     if(barOnly)load=input.bar;
     return {percent:s.percent,reps:s.reps,load,barOnly};
@@ -73,10 +78,13 @@ export function personalBests(s:State,workoutId:string):PersonalBest[]{
   const ids=[...new Set(w.sets.filter(x=>x.done).map(x=>x.exerciseId))];
   const out:PersonalBest[]=[];
   for(const id of ids){
+    const ex=exFor(id,s.custom);
+    if(ex.metric!=='reps'||!isLoadTracked(ex)||!ex.progressionEnabled)continue;
+    const setup=w.loadContext?.[id]?.trim();
+    if(requiresSetup(ex)&&!setup)continue;
     const estimate=estimatedMax(w,id);
     if(estimate===null)continue;
-    const ex=exFor(id,s.custom);
-    const comparable=earlier.filter(x=>!requiresSetup(ex)||(x.loadContext?.[id]||'')===(w.loadContext?.[id]||''));
+    const comparable=earlier.filter(x=>!requiresSetup(ex)||x.loadContext?.[id]?.trim()===setup);
     const previous=comparable.map(x=>estimatedMax(x,id)).filter((n):n is number=>n!==null);
     if(!previous.length)continue;
     const best=Math.max(...previous);

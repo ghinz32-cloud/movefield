@@ -5,7 +5,7 @@ import {Input} from '@/components/ui/input';
 import {barWeights,personalBests,platesForLoad,warmupLadder,weeklyReview,type LoadUnit,type PlateResult} from '@/lib/training-tools';
 import {displayLoad,niceDate,type State} from '@/lib/training';
 
-const parse=(value:string):number|null=>value.trim()===''?null:Number(value);
+const parse=(value:string):number|null=>value.trim()===''?null:Number(value.trim().replace(',', '.'));
 const fmt=(n:number)=>String(Math.round(n*100)/100);
 
 function Choice<T extends string|number>({label,options,value,onChange,render}:{label:string;options:readonly T[];value:T;onChange:(v:T)=>void;render:(v:T)=>string}){
@@ -21,21 +21,23 @@ function PlateSummary({result}:{result:PlateResult}){
 
 // Plate calculator and warm-up ladder. Both calculate from the numbers entered here. They do not change the workout log.
 export function TrainingTools({units,adult}:{units:LoadUnit;adult:boolean}){
- const [total,setTotal]=useState(''),[bar,setBar]=useState<number|null>(null),[working,setWorking]=useState(''),[kind,setKind]=useState<'barbell'|'dumbbell'>('barbell');
+ const [total,setTotal]=useState(''),[bar,setBar]=useState<number|null>(null),[working,setWorking]=useState(''),[increment,setIncrement]=useState(''),[kind,setKind]=useState<'barbell'|'dumbbell'>('barbell');
  const bars=barWeights[units];
  const barValue=bar!==null&&bars.includes(bar)?bar:bars[0];
  const plates=platesForLoad(parse(total),units,barValue);
- const warm=warmupLadder(parse(working),{unit:units,kind,bar:kind==='barbell'?barValue:0,adult});
+ const warm=warmupLadder(parse(working),{unit:units,kind,bar:kind==='barbell'?barValue:0,adult,...(increment.trim()?{step:parse(increment)!}:{})});
  return <section className="card training-tools" aria-labelledby="training-tools-heading"><p className="eyebrow">LOADING</p><h2 id="training-tools-heading">Plate calculator</h2><p className="muted">Work out the plates for a barbell load. Enter the total, including the bar.</p>
   <div className="field-grid"><label className="field"><span>Total load · {units}</span><Input inputMode="decimal" aria-label={`Total barbell load in ${units}`} value={total} onChange={e=>setTotal(e.target.value)} placeholder={units==='kg'?'e.g. 100':'e.g. 225'}/></label>
   <Choice label="Bar" options={bars} value={barValue} onChange={setBar} render={b=>`${b} ${units}`}/></div>
   <PlateSummary result={plates}/>
   <h2 className="tools-subheading">Warm-up ladder</h2>
   {!adult?<p className="notice blue">For people under 18, your supervisor chooses warm-up loads. Use the warm-up in your plan.</p>:<>
-   <p className="muted">Four sets at 40%, 60%, 75% and 85% of your working load, rounded to loadable steps.</p>
+   <p className="muted">Four example sets at 40%, 60%, 75% and 85%, rounded to your equipment and capped at the working load. Use the movement warm-up in your plan too.</p>
    <div className="field-grid"><label className="field"><span>Working load · {units}{kind==='dumbbell'?' per hand':''}</span><Input inputMode="decimal" aria-label={`Working load in ${units}`} value={working} onChange={e=>setWorking(e.target.value)} placeholder={units==='kg'?'e.g. 100':'e.g. 225'}/></label>
    <Choice label="Equipment" options={['barbell','dumbbell'] as const} value={kind} onChange={setKind} render={k=>k==='barbell'?'Barbell':'Dumbbell'}/></div>
-   {warm.status==='unknown'&&<p className="muted">Enter your working load to see the warm-up sets.</p>}
+   <label className="field"><span>Available load step · {units}</span><Input inputMode="decimal" aria-label={`Available warm-up load step in ${units}`} value={increment} onChange={e=>setIncrement(e.target.value)} placeholder={kind==='barbell'?(units==='kg'?'2.5':'5'):(units==='kg'?'2':'5')}/><small>{kind==='barbell'?'Total increase from equal plates on both sides.':'Difference between available dumbbell weights, per hand.'} Leave blank to use the displayed standard step.</small></label>
+   {warm.status==='not-available'&&<p role="status" className="notice blue">{warm.message}</p>}
+   {warm.status==='unknown' &&<p className="muted">Enter your working load to see the warm-up sets.</p>}
    {warm.status==='error'&&<p role="alert" className="notice warning">{warm.message}</p>}
    {warm.status==='ok'&&<div className="tool-rows" aria-live="polite">{warm.rows.map(row=><div key={row.percent}><span>{row.percent}% × {row.reps} {row.reps===1?'rep':'reps'}</span><b>{fmt(row.load)} {warm.unit}{kind==='dumbbell'?' each hand':''}{row.barOnly?' · bar only':''}</b></div>)}<p className="small-copy">Steps of {fmt(warm.step)} {warm.unit}.</p></div>}
   </>}

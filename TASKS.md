@@ -1,3 +1,20 @@
+# Full application audit — 9 October 2026 UTC
+
+Current owner request: audit and improve the complete web/native application, user-data durability, tools, workout progression and daily/weekly load. The user grants implementation and commit autonomy. Root owns all application edits; parallel agents perform bounded read-only audits. Preserve current runtime and histories. Local baseline `a53f0e9295cbdd6c6f9311a10b2a1154a7399ae7`; remote audit baseline `c390b1208869a746417cd35655f1d0ce3e2a268b`; main unchanged. Publication was rejected again by automatic approval review because broad audit approval was not accepted for the recovered payload and exact destination. Do not bypass that rejection; finish local milestones and save bundles.
+
+| ID | State | Milestone | Acceptance |
+| --- | --- | --- | --- |
+| A01 | Complete — final UI acceptance follows in A05 | Audit every user-facing surface and record concrete defects | Web journey observations where available; native code/engine checks; storage, recipes/named programs, progression and tool inventory; prioritize reproducible defects |
+| A02 | Complete — device acceptance remains | Repair data durability and recovery gaps | Meaningful injected-failure/readback tests; canonical/native parity where applicable; recoverable commit |
+| A03 | Complete — device acceptance remains | Repair workout load/progression gaps | Before/after cases across affected templates; partial/history/schedule constraints; native shared hashes; recoverable commit |
+| A04 | Complete — real device/offline acceptance remains | Repair usability and tool gaps | Valid/invalid inputs, accessible primary actions and error paths; browser observations where available; native types; recoverable commit |
+| A05 | Complete locally — publication blocked | Verify the integrated result and final handoff | Full relevant regressions, types/lint/build/exports when available; explicit physical-device/account/runtime blockers; verified checkpoint and source-publication state |
+
+
+Final evidence: 40/40 regressions, 3/3 production suites, web/native types and lint, 78-plan native engine and iOS/Android Hermes exports. Actual final offline manifest: 54 assets / 19,661,787 bytes and 393,516 initial gzip bytes. `docs/qa/application-audit/final-validation.json` records source/log/artifact hashes; browser screenshot/observations alongside it. No GitHub publication, main merge or deployment.
+
+Required follow-up remains: S01 transactional browser record migration beyond localStorage quota; incremental native entities beyond snapshots; secure-origin browser/physical-phone interrupted storage, transfer, reminders/reflow and offline-update acceptance; account/sync and native model feature work; exact upstream dependency repairs before release. Preserve current source, manual named-source boundaries and disabled recovered adapters.
+
 # Movefield saved task list
 
 Last updated: 9 October 2026. Read `AGENTS.md` and the current `HANDOFF.md` section first. This list sequences the approved audit and repairs; it does not remove requirements from `docs/product-requirements.md`.
@@ -21,6 +38,19 @@ U13 is pushed at `aba25b02cde3d8717de1eda36a365684dd96625c`; U14 is pushed at `0
 | M08 | Queued — browser access needed | Verify complete browser protected/plain restore UI | File selection, malformed/wrong-password paths, preview/cancel/confirm, active/stale guards, refresh and key loss; recorded UI evidence plus focused storage checks |
 | M09 | Queued — physical devices needed | Verify one native save/interruption/restore flow on iPhone and Android | Enter workout, interrupt/reopen, recover history, denied permissions and protected transfer; device/OS/build recorded; bundle export alone does not complete this milestone |
 | M10 | Queued — browser/device access needed | Verify appearance, reflow and keyboard/screen-reader behavior | Representative small screens and large text, light/dark, all palette/font controls, focus and readable errors; fix observed defects and run targeted checks; do not infer accessibility conformance from token contrast |
+
+## Approved recovery publication — 9 October 2026 UTC
+
+Current publication state: **blocked again by automatic approval review**. Source recovery commit `b40219119ecaf334cb7c72d0f515a9092e67693c` contains the recovered source/data/results and preserved runtime/history. The push was rejected because the prior approval named the lost/original commits rather than this exact reconciled payload. No write succeeded and no workaround was attempted. Complete saved checkpoint before requesting concrete approval of this range.
+
+User approval supersedes the earlier automatic-review source-upload blocker. Current isolated checkout `/workspace/scratch/30756d258ac2/movefield`, branch `audit/2026-10-09-approved`; publish only to existing `audit/2026-10-08-quality`. Current verified review baseline `c390b1208869a746417cd35655f1d0ce3e2a268b`. Original local U15 commit `1df2471` was pruned; exact trainer/exporter/evaluator/dataset/results were recovered by saved hashes and reconciled without changing the newer active runtime. Original Qwen `0597d5e` is retained in history. A new commit records the recovered source; verify its remote tree/readback before calling it pushed.
+
+| ID | State | Milestone | Evidence |
+| --- | --- | --- | --- |
+| U15 | Complete, approved for publication | Original 162/44 training export, hardened tooling and saved real pilot | Exact source/data/result recovery fingerprints; 650 assertions/four evaluator tests, 33/33 regressions, web types/lint; historical 16-step CPU adapter 6/8 development accuracy with two abstention failures; disabled |
+| U15b | Queued | Improve unsupported-question development behavior | Original examples, unchanged held-out labels, fresh measured results and immutable artifact provenance before integration |
+
+The recovered 1024/192 experiment differs from the newer 2048/256 runtime and older-pilot 66-run CPU evidence. Preserve both records and keep device/native/security/storage/account/release limits explicit. No main merge/deployment.
 
 ## Current owner request — 8 October 2026, 19:38 Chicago
 

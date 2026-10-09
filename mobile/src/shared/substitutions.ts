@@ -1,4 +1,4 @@
-import {changed,day,exFor,loadSuggestion,requiresSetup,type Exercise,type Item,type State} from './training';
+import {changed,day,exFor,estimateSessionMinutes,loadSuggestion,requiresSetup,type Exercise,type Item,type State} from './training';
 
 // Curated movement roles. Broad labels such as Push or Arm are not sufficient.
 const families:string[][]=[
@@ -21,7 +21,6 @@ function replacementItem(item:Item,to:string):Item{
  const pair=item.note?.match(/A[12]\. \[Focus\] Assistance superset A:.*$/)?.[0];
  return {exerciseId:to,sets:pair?item.sets:Math.min(item.sets,3),reps:lo,repMin:lo,repMax:hi,rest:pair?item.rest:isolation?90:150,kg:null,note:'Choose a starting weight for this exercise and rep range. Do not carry over the weight from the exercise it replaces.'+(pair?' '+pair:'')};
 }
-function workSeconds(item:Item){const e=exFor(item.exerciseId);return item.sets*(item.repMax??item.reps)*4*(/per side|each side|both sides/i.test(e.loadConvention||'')?2:1)+Math.max(0,item.sets-1)*item.rest+120;}
 export function previewSubstitution(s:State,q:Substitution){
  const errors:string[]=[];const base=s.plan?.sessions.find(x=>x.id===q.sessionId),old=base?.items.find(x=>x.exerciseId===q.from),replacement=exFor(q.to);
  if(!s.plan||s.plan.id!==q.planId||s.plan.version!==q.version||s.history.length!==q.historyCount)errors.push('The plan or history changed. Close and reopen substitutions.');
@@ -40,7 +39,7 @@ export function previewSubstitution(s:State,q:Substitution){
  const title=base?.roleId||base?.title.replace(' · review week','');
  const sessions=(s.plan?.sessions||[]).filter(x=>x.status==='scheduled'&&x.date>=(base?.date||day())&&(q.all?(x.roleId||x.title.replace(' · review week',''))===title:x.id===q.sessionId)&&x.items.some(i=>i.exerciseId===q.from));
  if(sessions.some(x=>x.items.some(i=>i.exerciseId===q.to)))errors.push('This substitute is already in one of these workouts. Choose another to keep each exercise log separate.');
- const changes=sessions.map(x=>{const old=x.items.find(i=>i.exerciseId===q.from)!,item=replacementItem(old,q.to);return {sessionId:x.id,date:x.date,item,before:x.minutes,after:Math.max(1,x.minutes+Math.ceil((workSeconds(item)-workSeconds(old))/60))};});
+ const changes=sessions.map(x=>{const old=x.items.find(i=>i.exerciseId===q.from)!,item=replacementItem(old,q.to);return {sessionId:x.id,date:x.date,item,before:x.minutes,after:Math.max(1,x.minutes+estimateSessionMinutes(x.items.map(i=>i===old?item:i),x.timeProfile==='brief',s.custom)-estimateSessionMinutes(x.items,x.timeProfile==='brief',s.custom))};});
  const max=Math.max(0,...changes.map(x=>x.after));
  if(max>1440)errors.push('This change exceeds the supported session length.');
  if(changes.some(x=>x.after>Math.max(x.before,s.plan?.profile.minutes||0))&&!q.allowLonger)errors.push(`Review and allow the extra time. The longest affected session is ${max} minutes.`);

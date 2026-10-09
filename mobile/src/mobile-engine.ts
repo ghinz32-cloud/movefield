@@ -1,5 +1,5 @@
 import { setMetricsSchema } from './shared/saved-data';
-import { blankProfile, buildPlan, day, eligibility, exFor, initialState, isLoadTracked, uid, type Exercise, type Plan, type Profile, type SetLog, type State, type Workout } from './shared/training';
+import { blankProfile, buildPlan, changed, day, eligibility, exFor, initialState, isLoadTracked, uid, type Exercise, type Plan, type Profile, type SetLog, type State, type Workout } from './shared/training';
 import { focusScheduleConflict } from './shared/training-focus';
 import { rirError, startingSets } from './shared/workout-log';
 import { programCatalog, programEquipment } from './shared/program-catalog';
@@ -66,3 +66,31 @@ export function finishWorkout(state: State): State {
 export function unknownLoads(w: Workout, custom: Exercise[] = []): number {
   return w.sets.filter(x => x.done && x.kg === null && isLoadTracked(exFor(x.exerciseId,custom))).length;
 }
+
+
+export type WorkoutCheckin = { workoutId: string; symptom: string; effort: string };
+/** Seed the finish form with feedback already recorded in the active workout. */
+export function workoutCheckin(state: State): WorkoutCheckin | null {
+  const workout = state.active;
+  if (!workout) return null;
+  return {
+    workoutId: workout.id,
+    symptom: ['no', 'yes', 'unsure'].includes(workout.symptom ?? '') ? workout.symptom! : '',
+    effort: ['easier', 'right', 'harder'].includes(workout.effort ?? '') ? workout.effort! : '',
+  };
+}
+/** Validate the current workout and save feedback plus completion in one state change. */
+export function completeWorkoutCheckin(state: State, checkin: WorkoutCheckin): State {
+  const workout = state.active;
+  if (!workout || workout.id !== checkin.workoutId) throw Error('The active workout changed. Open its check-in again.');
+  if (!['no', 'yes', 'unsure'].includes(checkin.symptom)) throw Error('Choose whether you had pain or a concern before saving.');
+  if (!['', 'easier', 'right', 'harder'].includes(checkin.effort)) throw Error('Choose a supported effort answer, or skip it.');
+  const concern = checkin.symptom === 'yes' || checkin.symptom === 'unsure';
+  const done = workout.sets.filter(set => set.done).length;
+  if (!concern && done === 0) throw Error('Log at least one completed set, or discard this workout.');
+  let next: State = { ...state, active: { ...workout, symptom: checkin.symptom, effort: checkin.effort || undefined } };
+  if (concern) next = changed({ ...next, hold: true }, 'Automated recommendations held after a symptom report.');
+  if (concern && done === 0) return changed({ ...next, active: null, restTimer: null }, 'Concern saved. No completed sets were added.');
+  return finishWorkout(next);
+}
+export {setPlanPaused} from './shared/training';

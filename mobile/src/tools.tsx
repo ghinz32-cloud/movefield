@@ -55,11 +55,12 @@ export function NativeTrainingTools({ units, adult }: { units: LoadUnit; adult: 
   const [total, setTotal] = useState('');
   const [bar, setBar] = useState<number | null>(null);
   const [working, setWorking] = useState('');
+  const [increment,setIncrement]=useState('');
   const [kind, setKind] = useState<'barbell' | 'dumbbell'>('barbell');
   const bars = barWeights[units];
   const barValue = bar !== null && bars.includes(bar) ? bar : bars[0];
   const plates = platesForLoad(parse(total), units, barValue);
-  const warm = warmupLadder(parse(working), { unit: units, kind, bar: kind === 'barbell' ? barValue : 0, adult });
+  const warm = warmupLadder(parse(working), { unit: units, kind, bar: kind === 'barbell' ? barValue : 0, adult,...(increment.trim()?{step:parse(increment)!}:{}) });
   return <View style={styles.card}>
     <Text style={styles.eyebrow}>LOADING</Text>
     <Text style={styles.title}>Plate calculator</Text>
@@ -70,11 +71,15 @@ export function NativeTrainingTools({ units, adult }: { units: LoadUnit; adult: 
     <PlateLines styles={styles} result={plates} />
     <Text style={styles.title}>Warm-up ladder</Text>
     {!adult ? <View style={styles.warn}><Text style={styles.warnText}>For people under 18, your supervisor chooses warm-up loads. Use the warm-up in your plan.</Text></View> : <>
-      <Text style={styles.sub}>Four sets at 40%, 60%, 75% and 85% of your working load, rounded to loadable steps.</Text>
+      <Text style={styles.sub}>Four example sets at 40%, 60%, 75% and 85%, rounded to your equipment and capped at the working load. Use your plan’s movement warm-up too.</Text>
       <Text style={styles.label}>Working load ({units}{kind === 'dumbbell' ? ' per hand' : ''})</Text>
       <TextInput accessibilityLabel={`Working load in ${units}`} keyboardType="decimal-pad" style={styles.input} value={working} onChangeText={setWorking} placeholder={units === 'kg' ? 'e.g. 100' : 'e.g. 225'} placeholderTextColor={c.muted} />
       <Choice styles={styles} label="Equipment" options={['barbell', 'dumbbell'] as const} value={kind} onChange={setKind} render={k => k === 'barbell' ? 'Barbell' : 'Dumbbell'} />
-      {warm.status === 'unknown' && <Text style={styles.sub}>Enter your working load to see the warm-up sets.</Text>}
+      <Text style={styles.label}>Available load step ({units})</Text>
+      <TextInput accessibilityLabel={`Available warm-up load step in ${units}`} keyboardType="decimal-pad" style={styles.input} value={increment} onChangeText={setIncrement} placeholder={kind==='barbell'?(units==='kg'?'2.5':'5'):(units==='kg'?'2':'5')} placeholderTextColor={c.muted}/>
+      <Text style={styles.small}>{kind==='barbell'?'Total increase from equal plates on both sides.':'Difference between available dumbbell weights, per hand.'} Leave blank for the standard step.</Text>
+      {warm.status==='not-available'&&<Text accessibilityLiveRegion="polite" style={styles.sub}>{warm.message}</Text>}
+      {warm.status === 'unknown'  && <Text style={styles.sub}>Enter your working load to see the warm-up sets.</Text>}
       {warm.status === 'error' && <View style={styles.warn}><Text accessibilityRole="alert" style={styles.warnText}>{warm.message}</Text></View>}
       {warm.status === 'ok' && <View accessibilityLiveRegion="polite">
         {warm.rows.map(row => <View key={row.percent} style={styles.row}><Text style={styles.body}>{row.percent}% × {row.reps} {row.reps === 1 ? 'rep' : 'reps'}</Text><Text style={[styles.body, { fontWeight: '700' }]}>{fmt(row.load)} {warm.unit}{kind === 'dumbbell' ? ' each hand' : ''}{row.barOnly ? ' · bar only' : ''}</Text></View>)}

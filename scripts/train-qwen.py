@@ -10,7 +10,11 @@ import importlib.util
 import json
 import os
 from pathlib import Path
-import resource
+try:
+    import resource
+except ImportError:
+    resource = None
+import subprocess
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,13 +33,20 @@ def load_bundle(directory, canonical_root=ROOT):
     manifest = json.loads((directory / 'manifest.json').read_text())
     if manifest['version'] != 'movefield-qwen-sft-v1':
         raise ValueError('Unknown training format.')
+    # Regenerate expectations from authored source. The supplied manifest
+    # cannot authorize new text, weights, evaluation examples or token limits.
+    expected = json.loads(subprocess.check_output(
+        ['node', str(canonical_root / 'scripts/prepare-qwen-training.cjs'), '--manifest-only'],
+        cwd=canonical_root, text=True))
+    if manifest != expected:
+        raise ValueError('Training manifest differs from canonical authored export.')
     for name, record in manifest['files'].items():
         if name not in {'train.jsonl', 'validation.jsonl', 'default-prompt.txt'}:
             raise ValueError('Unexpected training file.')
         file = directory / name
         if file.stat().st_size != record['bytes'] or digest(file) != record['sha256']:
             raise ValueError('Training file fingerprint mismatch: ' + name)
-    for key, file in [('corpusSha256', 'lib/fitness-reference.json'), ('contractSha256', 'lib/fitness-grounding.ts')]:
+    for key, file in [('corpusSha256', 'lib/fitness-reference.json'), ('contractSha256', 'lib/fitness-grounding.ts'), ('runtimePromptSha256', 'lib/qwen-worker.ts')]:
         if digest(canonical_root / file) != manifest[key]:
             raise ValueError('Stale corpus or task contract.')
     prompt = (directory / 'default-prompt.txt').read_text().rstrip('\n')
@@ -71,10 +82,17 @@ def load_bundle(directory, canonical_root=ROOT):
     return manifest, splits
 
 
-def encode_example(tokenizer, row, context_tokens=2048, output_tokens=256):
+def build_prompt(row):
+    system, user = [m['content'] for m in row['messages'][:2]]
+    return f'<|im_start|>system\n{system}<|im_end|>\n<|im_start|>user\n{user}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n'
+
+
+def encode_example(tokenizer, row, context_tokens=1024, output_tokens=192):
     # Use the publisher's non-thinking template, then supervise ONLY the JSON
     # assistant continuation. Neither prompt tokens nor padding are loss targets.
     prompt = tokenizer.apply_chat_template(row['messages'][:2], tokenize=False, add_generation_prompt=True, enable_thinking=False)
+    if prompt != build_prompt(row):
+        raise ValueError('Publisher chat template differs from the deployed prompt.')
     prefix = tokenizer.encode(prompt, add_special_tokens=False)
     target = tokenizer.encode(row['messages'][2]['content'] + '<|im_end|>\n', add_special_tokens=False)
     if not prefix or len(prefix) + output_tokens > context_tokens or not target or len(target) > output_tokens:
@@ -110,23 +128,25 @@ def train(args, manifest, splits):
     torch.set_num_threads(args.threads)
     set_seed(42)
     base = manifest['baseModel']
-    weights = hf_hub_download(base['repository'], filename=base['weightsFile'], revision=base['revision'])
+    weights = hf_hub_download(base['repository'], filename=base['weightsFile'], revision=base['revision'], local_files_only=not args.allow_download)
     if Path(weights).stat().st_size != base['weightsBytes'] or digest(weights) != base['weightsSha256']:
         raise ValueError('Base model weights failed verification.')
-    tokenizer = AutoTokenizer.from_pretrained(base['repository'], revision=base['revision'], trust_remote_code=False)
+    tokenizer = AutoTokenizer.from_pretrained(base['repository'], revision=base['revision'], trust_remote_code=False, local_files_only=not args.allow_download)
+    base_files = {name: digest(hf_hub_download(base['repository'], filename=name, revision=base['revision'], local_files_only=not args.allow_download))
+                  for name in ['config.json', 'tokenizer.json', 'tokenizer_config.json']}
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
-    encoded = {split: [encode_example(tokenizer, row) for row in rows] for split, rows in splits.items()}
+    encoded = {split: [encode_example(tokenizer, row, manifest['contract']['contextTokens'], manifest['contract']['outputTokens']) for row in rows] for split, rows in splits.items()}
     if args.pilot_steps:
         # A pilot has an explicit small validation subset; its loss is never a
         # held-out accuracy result or a substitute for the full qualification.
         encoded['validation'] = encoded['validation'][:4]
     cuda = torch.cuda.is_available() and not args.cpu
     bf16 = cuda and torch.cuda.is_bf16_supported()
-    dtype = torch.bfloat16 if bf16 else torch.float16 if cuda else torch.float32
-    model = AutoModelForCausalLM.from_pretrained(base['repository'], revision=base['revision'], trust_remote_code=False, use_safetensors=True, dtype=dtype, attn_implementation='sdpa')
+    dtype = torch.bfloat16 if bf16 or (not cuda and args.cpu_dtype == 'bfloat16') else torch.float16 if cuda else torch.float32
+    model = AutoModelForCausalLM.from_pretrained(base['repository'], revision=base['revision'], trust_remote_code=False, use_safetensors=True, dtype=dtype, attn_implementation='sdpa', local_files_only=not args.allow_download)
     model.config.use_cache = False
-    model = get_peft_model(model, LoraConfig(task_type='CAUSAL_LM', r=8, lora_alpha=16, lora_dropout=0.05, target_modules=['q_proj', 'v_proj'], bias='none'))
+    model = get_peft_model(model, LoraConfig(task_type='CAUSAL_LM', r=8, lora_alpha=16, lora_dropout=0.05, target_modules=['q_proj', 'v_proj'], bias='none', revision=base['revision']))
     model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={'use_reentrant': False})
     model.enable_input_require_grads()
     before = parameter_fingerprint(model)
@@ -167,14 +187,17 @@ def train(args, manifest, splits):
     report = {'schema':1, 'status':'trained-pilot' if args.pilot_steps else 'trained-experiment', 'qualified':False,
         'task':manifest['task'], 'baseModel':base, 'datasetManifestSha256':digest(args.dataset / 'manifest.json'),
         'corpusSha256':manifest['corpusSha256'], 'contractSha256':manifest['contractSha256'], 'defaultPromptSha256':manifest['defaultPromptSha256'],
+        'runtimePromptSha256':manifest['runtimePromptSha256'], 'contract':manifest['contract'],
         'trainingSteps':trainer.state.global_step, 'usedExamples':trainer.used_examples, 'uniqueUsedExamples':len(set(trainer.used_examples)),
         'trainableParameters':sum(p.numel() for p in model.parameters() if p.requires_grad), 'adapterBeforeSha256':before, 'adapterAfterSha256':after,
         'baselineValidation':baseline, 'postTrainingValidation':evaluation, 'trainMetrics':result.metrics,
         'validationCases':len(encoded['validation']), 'validationIsHeldoutQualification':False,
         'maxPromptTokens':max(r['prompt_tokens'] for rows in encoded.values() for r in rows),
         'maxTargetTokens':max(r['output_tokens'] for rows in encoded.values() for r in rows),
-        'elapsedSeconds':round(time.monotonic()-started,2), 'peakProcessRssBytes':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024,
-        'environment':{'torch':torch.__version__,'transformers':transformers.__version__,'peft':peft.__version__,'device':'cuda' if cuda else 'cpu','threads':args.threads},
+        'elapsedSeconds':round(time.monotonic()-started,2), 'peakProcessRssBytes':(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * (1 if __import__('sys').platform=='darwin' else 1024)) if resource else None,
+        'environment':{'torch':torch.__version__,'transformers':transformers.__version__,'peft':peft.__version__,'device':'cuda' if cuda else 'cpu','threads':args.threads,'dtype':str(dtype)},
+        'toolingSha256':{'trainer':digest(Path(__file__)), 'exporter':digest(ROOT/'scripts/prepare-qwen-training.cjs'), 'requirements':digest(ROOT/'training/requirements.txt')},
+        'baseFilesSha256':base_files, 'downloadAllowed':args.allow_download,
         'artifacts':artifacts,'heldoutEvaluationRan':False,'demoUsesThisAdapter':False,'publishedModel':False,
         'limits':'Small synthetic source-selection experiment. Loss is not accuracy, safety qualification or exercise-science training. Merge and compile a separately pinned MLC artifact only after independent evaluation.'}
     (args.output / 'training-result.json').write_text(json.dumps(report, indent=2)+'\n')
@@ -187,6 +210,8 @@ def main():
     parser.add_argument('--output',type=Path,default=ROOT/'.sites-runtime/qwen-adapter')
     parser.add_argument('--preflight',action='store_true')
     parser.add_argument('--cpu',action='store_true')
+    parser.add_argument('--cpu-dtype',choices=['float32','bfloat16'],default='float32',help='Use bfloat16 deliberately on CPUs supporting its operations to reduce memory.')
+    parser.add_argument('--allow-download',action='store_true',help='Allow the pinned public base model download; default uses local cache only.')
     parser.add_argument('--pilot-steps',type=int,default=0)
     parser.add_argument('--epochs',type=int,default=3)
     parser.add_argument('--threads',type=int,default=4)

@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { nativeRecords as AsyncStorage } from './native-database';
 import * as SecureStore from 'expo-secure-store';
 import { getRandomBytes } from 'expo-crypto';
 import { sha256 } from '@noble/hashes/sha2.js';
@@ -8,7 +8,9 @@ import { type State } from './shared/training';
 import { LocalDataError, isSealed, keyFromHex, newKeyHex, openText, sealText } from './local-crypto';
 import { assertNativeRecordCapacity } from './storage-capacity';
 
-// Saved training is encrypted before it reaches AsyncStorage: XChaCha20-Poly1305 with a fresh random nonce per write.
+// Saved training is encrypted before it reaches transactional SQLite snapshots:
+// XChaCha20-Poly1305 with a fresh random nonce per write. Legacy AsyncStorage is
+// retained until the validated encrypted migration commits and passes readback.
 // The 256-bit data key lives only in the device's secure store (iOS Keychain / Android Keystore-backed storage).
 // AsyncStorage never holds the key. The key is set to stay on this device, so a copy of the app data restored
 // to another phone cannot be opened, and the app says so instead of replacing it.
@@ -138,18 +140,19 @@ async function openRecord(raw: string, slot: string): Promise<string> {
 function migrateLegacy(slot: string, legacy: string): Promise<void> {
   return enqueue(async () => {
     if ((await AsyncStorage.getItem(slot)) !== legacy) return;
-    assertNativeRecordCapacity(legacy);
+    const plaintext = await openRecord(legacy, slot);
+    assertNativeRecordCapacity(plaintext);
     const key = await keyForWrite();
-    await AsyncStorage.setItem(slot, sealText(legacy, key, slot, getRandomBytes));
+    await AsyncStorage.setItem(slot, sealText(plaintext, key, slot, getRandomBytes));
   });
 }
 
 export async function readLocalState(): Promise<State | null> {
   const result = await enqueue(async () => {
     const raw = await AsyncStorage.getItem(KEY);
-    return raw === null ? null : {raw, state: readSavedState(await openRecord(raw, KEY))};
+    return raw === null ? null : {raw, legacy: !await AsyncStorage.hasRecord(KEY), state: readSavedState(await openRecord(raw, KEY))};
   }, 'read');
-  if (result && !isSealed(result.raw)) await migrateLegacy(KEY, result.raw).catch(() => undefined);
+  if (result && (result.legacy || !isSealed(result.raw))) await migrateLegacy(KEY, result.raw);
   return result?.state ?? null;
 }
 
@@ -216,9 +219,9 @@ export async function readLocalSetup(): Promise<ReturnType<typeof readSetupDraft
     if (raw === null) return null;
     const journalRaw = await AsyncStorage.getItem(RESTORE_JOURNAL);
     if (journalRaw && (JSON.parse(journalRaw) as RestoreJournal).setupHash === fingerprint(raw)) return null;
-    return {raw, draft: readSetupDraft(await openRecord(raw, SETUP_KEY))};
+    return {raw, legacy: !await AsyncStorage.hasRecord(SETUP_KEY), draft: readSetupDraft(await openRecord(raw, SETUP_KEY))};
   }, 'read');
-  if (result && !isSealed(result.raw)) await migrateLegacy(SETUP_KEY, result.raw).catch(() => undefined);
+  if (result && (result.legacy || !isSealed(result.raw))) await migrateLegacy(SETUP_KEY, result.raw);
   return result?.draft ?? null;
 }
 

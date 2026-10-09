@@ -248,6 +248,25 @@ const rejects=async(promise,code,msg)=>{try{await promise}catch(e){same(e instan
  await rejects(noLock.replace(SLOT,'unsupported browser restore'),'key-unavailable','browser without cross-tab locking cannot begin restore');
  same(missingStorage.getItem(SLOT),noLockBefore,'unsupported restore leaves data intact');
  same(missingKeys.peekTransition(),undefined,'unsupported restore creates no journal');
+ // No-lock fallback must not let two tabs mint different keys or race a reset.
+ // Every attempted mutation rejects before any key/ciphertext can change.
+ const unlockedStorage=memoryStorage(),unlockedKeys=memoryKeys();
+ const unlocked=()=>V.createVault({storage:unlockedStorage,keys:unlockedKeys,subtle:webcrypto.subtle,random,restoreSafe:false});
+ const attempts=await Promise.allSettled([unlocked().write(SLOT,'tab one',''),unlocked().write(SLOT,'tab two',''),unlocked().reset()]);
+ for(const attempt of attempts){same(attempt.status,'rejected','unsafe cross-tab mutation rejected');same(attempt.reason.code,'key-unavailable','unsafe mutation explains unavailable locking');}
+ same(unlockedKeys.puts,0,'concurrent initial saves never mint a key without an origin lock');
+ same(unlockedStorage.getItem(SLOT),null,'concurrent initial saves/reset leave no unreadable ciphertext');
+ same(await noLock.read(SLOT),'transfer after key loss','existing readable records remain available without locks');
+ await rejects(noLock.discard(SLOT),'key-unavailable','unlocked discard cannot race a key transition');
+ await rejects(noLock.reset(),'key-unavailable','unlocked reset cannot delete a pending writer key');
+ same(missingStorage.getItem(SLOT),noLockBefore,'unlocked reset/discard preserve saved records');
+ const transitionSnapshot=snapshots.find(s=>s.boundary==='after ciphertext');
+ const unlockedRecoveryStorage=memoryStorage();transitionSnapshot.values.forEach((v,k)=>unlockedRecoveryStorage.map.set(k,v));
+ const unlockedRecoveryKeys=memoryKeys(transitionSnapshot.key,transitionSnapshot.journal);
+ const unlockedRecovery=V.createVault({storage:unlockedRecoveryStorage,keys:unlockedRecoveryKeys,subtle:webcrypto.subtle,random,restoreSafe:false});
+ await rejects(unlockedRecovery.read(SLOT),'key-unavailable','unlocked read cannot activate a recovery key');
+ same(unlockedRecoveryKeys.peek(),transitionSnapshot.key,'unlocked recovery retains active key');
+ same(unlockedRecoveryKeys.peekTransition(),transitionSnapshot.journal,'unlocked recovery retains both journal keys');
  const legacyReplaceStorage=memoryStorage(),legacyReplaceKeys=memoryKeys(),legacyReplaceVault=makeVault(legacyReplaceStorage,legacyReplaceKeys,[SLOT,SETUP]);
  legacyReplaceStorage.map.set(SLOT,SECRET);legacyReplaceStorage.map.set(SETUP,SECRET+' draft');
  const legacyPrepare=legacyReplaceKeys.prepareTransition;

@@ -1,7 +1,7 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),ts=require('typescript');
 const mobileDir=path.resolve(__dirname,'..','mobile');
 const values=new Map();let release,started,gate=null;
-const disk={getItem:async key=>values.get(key)??null,setItem:async(key,value)=>{if(gate){started();await gate;}values.set(key,value)},removeItem:async key=>values.delete(key),multiRemove:async keys=>{keys.forEach(k=>values.delete(k))}};
+const disk={hasRecord:async()=>true,getItem:async key=>values.get(key)??null,setItem:async(key,value)=>{if(gate){started();await gate;}values.set(key,value)},removeItem:async key=>values.delete(key),multiRemove:async keys=>{keys.forEach(k=>values.delete(k))}};
 // In-memory stand-ins for the device secure store and secure random source; the real modules need native code.
 const secure=new Map();
 const secureStore={AFTER_FIRST_UNLOCK_THIS_DEVICE_ONLY:'after-first-unlock-this-device',getItemAsync:async key=>secure.get(key)??null,setItemAsync:async(key,value)=>{secure.set(key,value)},deleteItemAsync:async key=>{secure.delete(key)}};
@@ -9,6 +9,7 @@ const expoCrypto={getRandomBytes:n=>new Uint8Array(require('node:crypto').random
 const DATA_KEY='movefield.dataKey.v1',STATE_KEY='training-studio:mobile-local-demo:v1',SETUP_KEY='training-studio:mobile-setup:v1',RECOVERY_KEY='movefield.restoreKeys.v1',JOURNAL='training-studio:mobile-restore:v1';
 const cache=new Map();
 function moduleFor(s,file){
+ if(s==='./native-database')return {nativeRecords:disk};
  if(s==='@react-native-async-storage/async-storage')return disk;
  if(s==='expo-secure-store')return secureStore;
  if(s==='expo-crypto')return expoCrypto;
@@ -182,49 +183,50 @@ const storage=load('mobile/src/storage.ts'),T=load('mobile/src/shared/training.t
  assert.doesNotThrow(()=>capacity.assertNativeRecordCapacity(realisticJson),'312 sessions (two years at three sessions/week) fit this synthetic fixture');
  await fresh.saveLocalState(realistic);
  const readableRecord=values.get(STATE_KEY),readableKey=secure.get(DATA_KEY);
- assert.ok(readableRecord.length<=capacity.MAX_NATIVE_RECORD_BYTES,'saved row remains within the interim read budget');
+ assert.ok(readableRecord.length<=capacity.MAX_NATIVE_RECORD_BYTES,'saved envelope remains within the memory budget');
  fresh=reopen({disk:new Map(values),secure:new Map(secure)});
  assert.equal((await fresh.readLocalState()).history.length,312,'multi-year history survives fresh-module reopen');
- const oversized=historyState(312,'🏋️'.repeat(600));
- assert.doesNotThrow(()=>load('mobile/src/shared/saved-data.ts').readSavedState(JSON.stringify(oversized)),'large Unicode history is valid app data, not a corrupt file');
- assert.ok(JSON.stringify(oversized).length<5_000_000,'fits the shared import schema while exceeding the encrypted native budget');
- assert.ok(crypto.sealedTextBytes(JSON.stringify(oversized))>capacity.MAX_NATIVE_RECORD_BYTES,'UTF-8 ciphertext, not JS string length, controls capacity');
- await assert.rejects(fresh.saveLocalState(oversized),e=>e.code==='storage-capacity'&&e.message.includes('Settings'));
- await assert.rejects(fresh.replaceLocalState(oversized),e=>e.code==='storage-capacity','oversized restore is rejected before any key/journal changes');
- assert.equal(values.get(STATE_KEY),readableRecord,'capacity rejection preserves previous ciphertext byte for byte');
- assert.equal(secure.get(DATA_KEY),readableKey,'capacity rejection preserves the previous key');
- assert.equal(values.has(JOURNAL)||secure.has(RECOVERY_KEY),false,'capacity preflight never starts a restore journal');
- assert.equal((await fresh.readLocalState()).history.length,312,'previous saved history still opens after oversized save/restore');
- const backup=load('mobile/src/shared/local-backup.ts').serializeBackup(oversized);
- assert.equal(load('mobile/src/shared/saved-data.ts').readSavedState(backup).history.length,312,'unsaved valid large history can still be exported without native persistence');
+ const unicodeHistory=historyState(312,'🏋️'.repeat(600));
+ assert.doesNotThrow(()=>load('mobile/src/shared/saved-data.ts').readSavedState(JSON.stringify(unicodeHistory)));
+ assert.ok(crypto.sealedTextBytes(JSON.stringify(unicodeHistory))>1_750_000,'fixture exceeds the former single-row capacity');
+ await fresh.saveLocalState(unicodeHistory);
+ fresh=reopen({disk:new Map(values),secure:new Map(secure)});
+ assert.equal((await fresh.readLocalState()).history.length,312,'Unicode history above the old capacity reopens');
+ await fresh.replaceLocalState(unicodeHistory);
+ assert.equal((await fresh.readLocalState()).history[0].details[baseSession.items[0].exerciseId].notes,'🏋️'.repeat(600),'restore retains Unicode notes');
+ const backup=load('mobile/src/shared/local-backup.ts').serializeBackup(unicodeHistory);
+ assert.equal(load('mobile/src/shared/saved-data.ts').readSavedState(backup).history.length,312,'large persisted history also exports');
  const largeDraft={...draft,baseEvents:'x'.repeat(900_000)};
- await assert.rejects(fresh.saveLocalSetup(largeDraft),e=>e.code==='storage-capacity','setup preflight also prevents an unreadable encrypted row');
+ await fresh.saveLocalSetup(largeDraft);
+ assert.equal((await fresh.readLocalSetup()).baseEvents.length,900_000,'setup above the old row limit saves too');
 
- // A real storage failure may happen even below the guard. It is never a successful save.
+ // A real storage failure may still happen below the memory/schema limits.
+ const priorRecord=values.get(STATE_KEY),priorKey=secure.get(DATA_KEY);
  const failingState={...realistic,profile:{...realistic.profile,name:'Unsaved latest change'}};
  disk.setItem=async(k,v)=>{if(k===STATE_KEY)throw Error('SQLITE_FULL');return snapshotSet(k,v)};
  await assert.rejects(fresh.saveLocalState(failingState));
- assert.equal(values.get(STATE_KEY),readableRecord,'injected low-storage save keeps the last record');
+ assert.equal(values.get(STATE_KEY),priorRecord,'injected low-storage save keeps the last record');
+ assert.equal(secure.get(DATA_KEY),priorKey,'failed save keeps its existing key');
  const fullDiskSnapshot={disk:new Map(values),secure:new Map(secure)};
  disk.setItem=snapshotSet;
  fresh=reopen(fullDiskSnapshot);
  assert.equal((await fresh.readLocalState()).profile.name,'Capacity fixture','fresh reopen after low storage still reads previous state');
  await fresh.saveLocalState(failingState);
- assert.equal((await fresh.readLocalState()).profile.name,'Unsaved latest change','retry after space becomes available saves the retained edits');
+ assert.equal((await fresh.readLocalState()).profile.name,'Unsaved latest change','retry saves the retained edits');
  assert.equal(capacity.nativeSaveFailure(Error('SQLITE_FULL')).kind,'save');
- assert.ok(capacity.nativeSaveFailure(Error('private driver details')).message.includes('Settings'),'generic failure has an export action without exposing driver details');
+ assert.ok(capacity.nativeSaveFailure(Error('private driver details')).message.includes('Settings'));
  assert.equal(capacity.nativeSaveFailure(new crypto.LocalDataError('storage-capacity','capacity details')).kind,'capacity');
 
- // Do not turn a readable large legacy record into oversized encrypted ciphertext on startup.
- values.set(STATE_KEY,JSON.stringify(oversized));
+ values.set(STATE_KEY,JSON.stringify(unicodeHistory));
  fresh=reopen({disk:new Map(values),secure:new Map(secure)});
- assert.equal((await fresh.readLocalState()).history.length,312,'oversized legacy data remains readable for export');
- assert.equal(values.get(STATE_KEY),JSON.stringify(oversized),'failed legacy migration leaves the original byte for byte');
+ assert.equal((await fresh.readLocalState()).history.length,312,'large plaintext legacy remains readable during encryption migration');
+ assert.ok(crypto.isSealed(values.get(STATE_KEY)),'validated large legacy is encrypted without the former row cap');
  await fresh.resetLocalState();
- await assert.rejects(fresh.saveLocalState(oversized),e=>e.code==='storage-capacity');
- assert.equal(secure.has(DATA_KEY),false,'rejected first save does not mint a needless data key');
- assert.equal(await fresh.readLocalRaw(),null,'rejected first save does not install ciphertext');
+ const invalid={...unicodeHistory,history:Array.from({length:5001},(_,i)=>({...unicodeHistory.history[0],id:'overflow-'+i}))};
+ await assert.rejects(fresh.saveLocalState(invalid),'shared bounded schema still rejects unsupported histories');
+ assert.equal(secure.has(DATA_KEY),false,'invalid first save never creates a needless data key');
+ assert.equal(await fresh.readLocalRaw(),null,'invalid first save never installs ciphertext');
 
  const custom={id:'custom-load',name:'Custom timed loaded work',equipment:'Custom',pattern:'Custom',metric:'seconds',cues:[],custom:true,loadTracked:true};const w={id:'w',sessionId:'s',title:'Timed',date:T.day(),startedAt:1,sets:[{exerciseId:custom.id,set:1,reps:1200.5,kg:null,done:true}]};assert.equal(engine.unknownLoads(w,[custom]),1);assert.doesNotThrow(()=>engine.editSet({...s,custom:[custom],active:w},0,{}));
- console.log(`PASS native storage: eight fresh-module restore boundaries, key-loss/legacy privacy, 312-session capacity (${crypto.sealedTextBytes(realisticJson)} encrypted bytes), Unicode/oversized/low-storage recovery and custom timed/load conventions. Physical-device capacity: NOT MEASURED.`);
+ console.log(`PASS native storage: eight fresh-module restore boundaries, key-loss/legacy privacy, 312-session capacity (${crypto.sealedTextBytes(realisticJson)} encrypted bytes), Unicode above legacy capacity/low-storage recovery and custom timed/load conventions. Physical-device capacity: NOT MEASURED.`);
 })().catch(e=>{console.error(e);process.exit(1)});

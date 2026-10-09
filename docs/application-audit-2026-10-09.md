@@ -1,0 +1,53 @@
+# Movefield application audit — 9 October 2026 UTC
+
+Audit baseline: local `a53f0e9295cbdd6c6f9311a10b2a1154a7399ae7`, incorporating remote `c390b1208869a746417cd35655f1d0ce3e2a268b` plus recovered approved training evidence. Phone/web source was reviewed across onboarding, Today, calendar, templates/named routines, exercise library, set logging, partial finish, rest/reminders, substitutions, progress, tools, sources, backup/restore, storage and optional Qwen. Browser sample Today/start/log/rest/partial-finish observed while preserving existing saved records. Native engine tested 78 plans across seven starting weekdays and 989 guides. Physical phone interactions were unavailable.
+
+## Fixed data-durability defects
+
+A02a: browser mutations require the origin-wide Web Lock. Unsupported browsers retain read/export access, but cannot race first-key creation, reset or prepared recovery. Before: a save could succeed with ciphertext encrypted under a lost key. After: all unsupported mutation attempts reject before persistence. 133 real WebCrypto checks, types and focused lint pass. Local commit `2c097ad37586cbcc6e9eb78449907bfd8cbb4db5`.
+
+A02b: native encrypted records now use SQLite exclusive transactions and 128-Ki-character ciphertext chunks. SecureStore still holds device-only keys. Snapshot/chunk hashes and in-transaction plus committed readback detect incomplete storage. A tombstone prevents retained legacy data from reappearing after deletion. Missing manifests, false tombstones or damaged chunks fail closed. Validated legacy plaintext is encrypted before SQL writes; old records stay until commit/readback succeeds. Failed migrations retain the old record/key. No credentials, training plaintext or data keys enter SQL.
+
+Actual `node:sqlite` tests cover 14 scenarios, including every write/precommit failure, in-transaction mismatch rollback, postcommit ambiguity, multi-slot deletion abort, key-loss, retry/idempotency, cleanup failure and fresh-module restore key activation. The multi-year fixture contains 2,000 workouts, 24,000 logged sets and Unicode notes: 2,525,038 JSON characters, 5,082,846 encrypted bytes, maximum SQL chunk 131,072 characters. Native storage's eight previous interruption/key-journal boundary tests also pass, including Unicode histories above the former 1,750,000-byte cliff. Web/native types, lint, 38 shared hashes and native engine pass; Android/iOS Hermes exports succeed (4.4 MB each). These are actual SQLite transactions with injected SecureStore/crypto APIs, not physical-device/power-loss acceptance.
+
+The compatible Expo SDK 57 SQLite version is `~57.0.4`, verified against the installed Expo bundle and [official Expo documentation](https://docs.expo.dev/versions/latest/sdk/sqlite/). The website keeps its existing browser vault; native starter web use fails with a clear website instruction rather than silently relying on the alpha SQLite web backend.
+
+A02c: both onboarding screens check saved-draft integrity before autosaving. An unreadable draft remains intact; new answers stay available for the visit. Ten compiled actual-TSX hook/callback scenarios cover failed reads, invalid parsed data, fresh/source entry, field/step changes and normal saving. Pre-fix source fails the same protection test. Browser/native rendered-device acceptance is separate.
+
+## Fixed programming defects
+
+A03: RNBASE4 date previews and acceptance now permit at most four runs and one adjacent pair in each affected rolling seven-day window, including actual completed/active dates. Existing valid sequences and whole-block shifts remain valid. Substitutions/additions use the canonical session estimator, retain separately allocated focus time and correctly include both sides of timed work. Bilateral plate wording no longer doubles execution time. Capacity range proposals retain A1/A2 instructions and paired rest. An explicit review proposal acknowledges one dependent workout’s unchanged targets after its prerequisites are complete; stale, forged, paused/held/active and incomplete evidence cannot bypass the checks. Web and native expose that review route.
+
+Thirty desired-behavior regression cases pass, along with training, program design/depth, named programs, goals, focus and shared parity checks, web/native types and focused lint. Existing goal-specific ranges, two comparable exposure load thresholds, youth supervision, partial-work and equipment-cap restrictions remain covered. `docs/qa/application-audit/progression-validation.json` records source hashes and results.
+
+## Fixed tool and cancellation defects
+
+A04a: warm-ups accept available equipment increments, use bar-relative grids, cap at the entered working load and never suggest zero-load dumbbells. A too-small load produces a clear unavailable result. Web/phone expose the step input. Estimated personal bests exclude timed/disabled/untracked exercises and require a known matching machine setup. Reminder reconciliation attempts every known owned cancellation/dismissal despite individual/list failures; failed cleanup schedules nothing further and clears foreground authorization. Transfer Cancel/unmount invalidates delayed encryption output before download, with a synchronous duplicate-submission guard.
+
+Fourteen tool boundary cases, four mocked OS cancellation cases, three deferred actual-TSX export cases and existing 33 tool assertions pass. Types/lint/shared parity pass. These are failure-boundary tests; actual OS notifications remain device acceptance.
+
+## Fixed offline installation
+
+A04b: the build generates a deterministic SHA-256 manifest for every client JS/CSS chunk, including lazy features, and allowlisted guides, research, fonts, brand and optional runtime code. Installation fetches and checks all assets, then verifies stored hashes/bytes and matching generic root/readiness before activation. Interrupted, quota, corrupt, private/cookie/redirect/error and mismatched deployment cases cannot activate or replace the previous usable shell. A prior cache supports older tabs. No user records, downloads, models, photos or private routes enter this cache.
+
+Twenty-three VM lifecycle/boundary cases pass against actual sources. The actual production build includes 54 assets (19,660,994 bytes), every client code/CSS file, with matching manifest/worker/hash values. Production security and bundle checks pass (393,296 initial gzip bytes under 400,000). Real secure-browser network-offline/update acceptance remains pending; HTTP preview does not qualify the worker.
+
+## Fixed everyday workflows
+
+A04c: native finish preselects existing answers and saves feedback/completion/rest cleanup atomically. Stale/empty check-ins are refused, and concerns retain their hold. Shared guarded pause/resume keeps dates/history/holds, advances the plan version and invalidates pending suggestions. Imported custom exercises are searchable/filterable on phone. First-use prompts follow only the selected exercise; failed links remain visible. Overdue primary actions review dates before starting. Optional loading tools start collapsed. Web/phone history sorts copies by actual workout date, timestamp and ID regardless of source insertion order. Numeric fields accept decimal commas while retaining integer/range restrictions. Guide/modal actions have 44-point minimum touch areas; timed substitute units and storage/appearance copy are accurate.
+
+Twelve compiled actual native callback/engine scenarios pass, with web/native types, full lint and shared parity. In Chrome sample mode, web pause/resume advanced versions 1→2→3 while retaining the schedule, and the workspace now has one main landmark. Today/start/log/rest/partial save, guide/search, plan/progress/coaching and Sources were observed while preserving existing protected records. The final Today screenshot and precise browser limits are in `docs/qa/application-audit/browser-observations.json` and `browser-today.jpg`. Existing dark/130% text remained readable. Physical-phone, narrow viewport, 200% zoom and secure-origin transfer/offline acceptance remain separate.
+
+## Final integrated validation
+
+40/40 regression suites and 3/3 production suites pass, with web/native types, full lint, native engine coverage (78 plans across seven starting weekdays and 989 guides), Android/iOS Hermes exports (4,452,792/4,443,533 bytes), and 38 shared file hashes. The final offline artifact contains 54 assets / 19,661,787 bytes; all built/lazy code and manifest hashes match. Initial client graph: 393,516 gzip bytes under the 400,000-byte budget. Twenty-six offline failure/isolation scenarios pass. `docs/qa/application-audit/final-validation.json` records exact source, log and artifact fingerprints and validation order. Historical reports stay unchanged; fresh final copies have separate filenames.
+
+Settings now describes sample training as visit-only and native inference as unconnected. Generated build output is cleaned before production builds. The supervised preview was stopped before the final build because concurrent preview output had retained obsolete chunks; the final artifact was verified independently.
+
+The fresh dependency gate reports only the two existing high advisory roots, [braces](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm) and [node-forge](https://github.com/advisories/GHSA-86w9-cpqp-85rv). Official advisories still list no patched versions. Existing temporary exceptions expire 8 November 2026; the gate passing with those exceptions does not clear release. No incompatible dependency downgrade or unverified security-patch claim was made.
+
+## Limits and publication
+
+Browser ciphertext still uses quota-bound localStorage; S01 transactional record migration remains. Native storage still re-encrypts whole bounded snapshots; incremental workout entities remain a performance follow-up. Shared five-million-character and 5,000-workout schema limits, real OS free-space/secure-store failure and actual device acceptance remain. Account creation/cloud sync, native Qwen inference and secure WebGPU/trained-artifact qualification are incomplete and must not be portrayed as production-ready. Named references include manual source progression/tracking calendars; they are not all automated program engines.
+
+Automatic approval review rejected source publication again this turn. All new work is local on `audit/2026-10-09-approved`; no push, main merge or deployment succeeded. Review destination remains `ghinz32-cloud/movefield` → `audit/2026-10-08-quality`. Verified Git bundles are in `.sites-runtime/checkpoints/`; do not bypass the rejection using a different export route.

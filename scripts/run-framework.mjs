@@ -1,4 +1,5 @@
 import { spawnSync } from "node:child_process";
+import {rmSync} from "node:fs";
 import { fileURLToPath } from "node:url";
 import { readExecutionProfile } from "./execution-profile.mjs";
 
@@ -17,12 +18,19 @@ if (starter.error) throw starter.error;
 if (starter.status !== 0) throw new Error("The mobile source starter could not be packaged.");
 const managedLinux = readExecutionProfile() === "managed-linux";
 
-if (managedLinux && command === "build") {
-  const result = spawnSync("bash", [
-    fileURLToPath(new URL("./build-verified.sh", import.meta.url)), ...args,
-  ], { stdio: "inherit" });
+if (command === "build") {
+  // Remove generated output so server/client copy stages cannot retain obsolete chunks.
+  rmSync(fileURLToPath(new URL("../dist/",import.meta.url)),{recursive:true,force:true});
+  // Finalize both execution profiles after the framework's successful build.
+  // Importing its CLI in this process can exit before offline finalization.
+  const result = managedLinux
+    ? spawnSync("bash", [fileURLToPath(new URL("./build-verified.sh", import.meta.url)), ...args], {stdio: "inherit"})
+    : spawnSync(process.execPath, [fileURLToPath(new URL("../node_modules/vinext/dist/cli.js", import.meta.url)), "build", ...args], {stdio: "inherit"});
   if (result.error) throw result.error;
-  process.exit(result.status ?? 1);
+  if (result.status !== 0) process.exit(result.status ?? 1);
+  const offline = spawnSync(process.execPath, [fileURLToPath(new URL("./generate-offline.mjs", import.meta.url))], {stdio: "inherit"});
+  if (offline.error) throw offline.error;
+  process.exit(offline.status ?? 1);
 }
 
 // Import in this process so the preview owner retains its PID and signals.

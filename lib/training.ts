@@ -14,7 +14,7 @@ export type SetMetrics={distanceM?:number;durationSeconds?:number;heightCm?:numb
 export type SetLog={exerciseId:string;set:number;reps:number;kg:number|null;done:boolean;metrics?:SetMetrics;rir?:number|null};
 export type ExerciseNotes={notes?:string};
 export type Workout={id:string;sessionId:string;title:string;date:string;startedAt:number;finishedAt?:number;sets:SetLog[];targets?:Item[];loadContext?:Record<string,string>;rir?:Record<string,number|null>;details?:Record<string,ExerciseNotes>;effort?:string;symptom?:string;rating?:number;partial?:boolean;supervisorConfirmed?:boolean;demo?:boolean};
-export type Proposal={id:string;title:string;reason:string;type:'sets'|'move'|'return'|'load'|'substitute'|'ranges'|'capacity';changes?:{sessionId:string;beforeDate?:string;patch:Partial<Session>}[];warnings?:string[];eventSignature?:string;historyCount?:number;planId:string;baseVersion:number;sessionId:string;before:string;after:string;status:'pending'|'accepted'|'declined'|'stale'|'queued';patch:Partial<Session>;source:string;createdAt:string};
+export type Proposal={id:string;title:string;reason:string;type:'sets'|'move'|'return'|'load'|'substitute'|'ranges'|'capacity'|'review';changes?:{sessionId:string;beforeDate?:string;patch:Partial<Session>}[];warnings?:string[];eventSignature?:string;historyCount?:number;planId:string;baseVersion:number;sessionId:string;before:string;after:string;status:'pending'|'accepted'|'declined'|'stale'|'queued';patch:Partial<Session>;source:string;createdAt:string};
 export type Event={id:string;name:string;date:string;kind:string;priority:string;minutes:number;provisional:boolean};
 export type State={restTimer?:RestTimer|null;restAlerts?:boolean;restSound?:boolean;videoPromptsAnswered?:string[];schema:2;profile:Profile;plan:Plan|null;history:Workout[];active:Workout|null;proposals:Proposal[];events:Event[];custom:Exercise[];ratings:Record<string,number>;audit:{at:string;message:string}[];saved:Plan[];checkins:boolean;soreness:boolean;hold:boolean;simulatedOffline:boolean;equipmentCaps?:{exerciseId:string;setup:string;maxKg:number}[];incrementKg?:Record<string,number>;loadContext?:Record<string,string>};
 export const weekdays=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -197,6 +197,8 @@ function buildBasePlan(p:Profile,events:Event[]=[]):{plan:Plan|null;errors:strin
  const phases=p.weeks<=3?[{name:'Foundation',weeks:`1–${p.weeks}`,description:'Find a comfortable starting point, follow the plan and review how it went.'}]:[{name:'Familiarize',weeks:'1–2',description:tracking?'Enter your workouts and build a regular logging habit.':run?'Find an easy running pace and get used to the walk breaks.':'Practice each exercise and find a weight you can control.'},{name:'Build',weeks:`3–${p.weeks-1}`,description:'Complete the earlier workouts before moving to the next targets.'},{name:'Review',weeks:String(p.weeks),description:'Use your workout history to choose your next plan or maintain your current routine.'}];
  return{errors:[],plan:{id,name:label,version:1,progressionModel:!tracking&&!run&&!youth?'ranges':undefined,profile:{...p,days},acceptedAt:null,sessions,phases,evidence:planEvidence({goal:p.goal,run:!!run,youth:!!youth,jumping:!!p.focuses?.includes('jumping')}),notes,progression,template,paused:false}};
 }
+// Display imports consistently without changing their stored insertion order.
+export function sortWorkoutHistory(history:Workout[]):Workout[]{return [...history].sort((a,b)=>b.date.localeCompare(a.date)||(b.finishedAt??b.startedAt)-(a.finishedAt??a.startedAt)||a.id.localeCompare(b.id))}
 export function latestSessionRecord(s:State,id:string){return s.history.filter(w=>w.sessionId===id&&w.finishedAt).sort((a,b)=>(b.finishedAt||0)-(a.finishedAt||0))[0]}
 export function competitionConflict(profile:Profile,date:string,events:Event[]):string|null{
  if(profile.mode!=='app')return null;
@@ -229,8 +231,22 @@ export function nextSession(s:State){return s.plan?.sessions.filter(x=>x.status=
 // Without this, resolved proposals accumulate until the saved-state schema rejects every save.
 export function pruneProposals(list:State['proposals']):State['proposals']{let resolved=0;return list.filter(p=>p.status==='pending'||p.status==='queued'||resolved++<50)}
 export function changed(s:State,message:string){return {...s,audit:[{at:new Date().toISOString(),message},...s.audit].slice(0,150),proposals:pruneProposals(s.proposals)}}
+/** Pausing changes future eligibility, not dates, recorded work, or a concern hold. */
+export function setPlanPaused(state: State, planId: string, version: number, paused: boolean): State {
+  const plan = state.plan;
+  if (!plan || plan.id !== planId || plan.version !== version) throw Error('The plan changed. Reopen it before pausing or resuming.');
+  if (state.active) throw Error('Finish or discard your active workout before pausing or resuming the plan.');
+  if (plan.paused === paused) return state;
+  return changed({
+    ...state,
+    plan: { ...plan, paused, version: plan.version + 1 },
+    proposals: state.proposals.map(proposal => proposal.status === 'pending' || proposal.status === 'queued' ? { ...proposal, status: 'stale' } : proposal),
+  }, paused ? 'Paused plan. Dates and history preserved.' : 'Resumed plan. Dates and history preserved.');
+}
+
 export function makeProposal(s:State,type:Proposal['type'],input?:string):Proposal|null{
  const plan=s.plan,session=nextSession(s);if(!plan||!session||plan.profile.mode!=='app'||s.hold||plan.paused)return null;
+ if(type==='review')return makeContinuationReview(s,input||session.id);
  if(type==='capacity')return makeCapacityProposal(s);
  if(type==='load')return makeLoadProposal(s).proposal||null;
  if(type==='ranges')return makeRangeProposal(s);
@@ -271,13 +287,13 @@ export function applyProposal(s:State,id:string):{state:State;error?:string}{
  if(p.type!=='move'&&s.plan.profile.mode!=='app')return{state:s,error:'Coach-directed and manual targets stay under your control.'};
  const changes=p.changes||[{sessionId:p.sessionId,patch:p.patch}];
  if(p.type==='move'){if(changes.some(c=>Object.keys(c.patch).some(k=>k!=='date')))return stale('A date change cannot alter workout targets or history. Preview it again.');}
- else {const expected=p.type==='ranges'?makeRangeProposal(s):p.type==='load'?makeLoadProposal(s).proposal:makeProposal(s,p.type);if(!expected||!sameData(changes,expected.changes||[{sessionId:expected.sessionId,patch:expected.patch}]))return stale('This change does not match a current, checked training proposal. Preview it again.');}
+ else {const expected=p.type==='review'?makeContinuationReview(s,p.sessionId):p.type==='ranges'?makeRangeProposal(s):p.type==='load'?makeLoadProposal(s).proposal:makeProposal(s,p.type);if(!expected||!sameData(changes,expected.changes||[{sessionId:expected.sessionId,patch:expected.patch}]))return stale('This change does not match a current, checked training proposal. Preview it again.');}
  if(!changes.length||new Set(changes.map(c=>c.sessionId)).size!==changes.length)return{state:s,error:'This preview is invalid. Create a fresh one.'};
  for(const c of changes){const x=s.plan.sessions.find(x=>x.id===c.sessionId);if(!x||x.status!=='scheduled'||s.active?.sessionId===x.id||s.history.some(w=>w.sessionId===x.id&&w.finishedAt))return stale('A selected session has started, finished or been skipped. Preview again.');if(c.beforeDate&&c.beforeDate!==x.date)return stale('A date changed. Preview again.');}
  if(p.type==='move'){const error=checkSchedule(s,changes);if(error)return{state:s,error};}
  if(p.type==='load'){const ss=s.plan.sessions.find(x=>x.id===p.sessionId);for(const next of p.patch.items||[]){const old=ss?.items.find(i=>i.exerciseId===next.exerciseId);if(old&&next.kg!==old.kg){const latest=loadSuggestion(s,old);if(latest.nextKg===undefined||next.kg===null||Math.abs(latest.nextKg-next.kg)>1e-6)return stale('The load evidence or equipment changed. Review a fresh load suggestion.');}}}
  if(s.simulatedOffline)return{state:changed({...s,proposals:s.proposals.map(x=>x.id===id?{...x,status:'queued'}:x)},'Offline acceptance queued; targets unchanged.'),error:'Queued only. Reconnect, review and confirm before anything changes.'};
- const affected=new Set<string>();if(!['move','ranges','load','capacity'].includes(p.type)){affected.add(p.sessionId);for(const ss of s.plan.sessions)if(ss.dependsOn?.some(id=>affected.has(id)))affected.add(ss.id)}
+ const affected=new Set<string>();if(!['move','ranges','load','capacity','review'].includes(p.type)){affected.add(p.sessionId);for(const ss of s.plan.sessions)if(ss.dependsOn?.some(id=>affected.has(id)))affected.add(ss.id)}
  const sessions=s.plan.sessions.map(x=>{const c=changes.find(c=>c.sessionId===x.id);return c?{...x,...c.patch}:affected.has(x.id)?{...x,needsReview:true}:x}).sort((a,b)=>a.date.localeCompare(b.date));
  const plan:Plan={...s.plan,version:s.plan.version+1,sessions,scheduleEnd:sessions.at(-1)?.date,...(p.type==='ranges'?{progressionModel:'ranges' as const,progression:RANGE_PROGRESSION}:{})};
  return{state:changed({...s,plan,proposals:s.proposals.map(x=>x.id===id?{...x,status:'accepted'}:x.status==='pending'||x.status==='queued'?{...x,status:'stale'}:x)},`Accepted: ${p.title}. ${changes.length} session(s) updated. Completed history unchanged.`)};
@@ -357,7 +373,7 @@ export function makeCapacityProposal(s:State):Proposal|null{
   const matches=plan.sessions.filter(x=>x.status==='scheduled'&&!x.needsReview&&x.date>=ss.date&&(x.roleId||x.title)===(ss.roleId||ss.title));
   const changes:NonNullable<Proposal['changes']>=[];let fits=true;
   for(const x of matches){const old=x.items.find(i=>i.exerciseId===item.exerciseId&&i.repMin===item.repMin&&i.repMax===hi&&(i.loadRole||'')===(item.loadRole||''));if(!old)continue;
-   const items=x.items.map(i=>i===old?{...i,reps:nextLo,repMin:nextLo,repMax:nextHi,kg:null,loadContext:undefined,note:'Build reps with the equipment you have. Choose a weight that leaves 2–3 good reps left, and keep the same number of sets and the same rest.'}:i);
+   const items=x.items.map(i=>i===old?{...i,reps:nextLo,repMin:nextLo,repMax:nextHi,kg:null,loadContext:undefined,note:[i.note,'Build reps with the equipment you have. Choose a weight that leaves 2–3 good reps left, and keep the same number of sets and the same rest.'].filter(Boolean).join(' ')}:i);
    const minutes=x.minutes+Math.max(0,estimateSessionMinutes(items,x.timeProfile==='brief')-estimateSessionMinutes(x.items,x.timeProfile==='brief'));
    if(minutes>plan.profile.minutes){fits=false;break;}changes.push({sessionId:x.id,patch:{items,minutes}});
   }
@@ -365,6 +381,14 @@ export function makeCapacityProposal(s:State):Proposal|null{
   return{...proposalBase(s,'capacity',ss.id),title:a.coarseIncrement?'Build reps before a large equipment step':'Build reps within your equipment limit',reason:'Two comfortable top-of-range sessions support reviewing more reps. The new range is an app choice informed by rep-progression research. It does not replace heavy-load practice for maximal strength. Recalibrate; keep the same set count and rest.',source:'REP-PROGRESSION',before:exFor(item.exerciseId,s.custom).name+' · '+targetText(item)+' reps',after:nextLo+'–'+nextHi+' reps · '+changes.length+' future matching sessions · available load only',changes};
  }
  return null;
+}
+// A review acknowledges the displayed targets only after their unchanged prerequisites are complete.
+export function makeContinuationReview(s:State,sessionId:string):Proposal|null{
+ const plan=s.plan,target=plan?.sessions.find(x=>x.id===sessionId);
+ if(!plan||!target||!target.needsReview||target.status!=='scheduled'||plan.profile.mode!=='app'||plan.profile.age<18||s.active||s.hold||plan.paused)return null;
+ const reviewed={...target,needsReview:false};
+ if(eligibility({...s,plan:{...plan,sessions:plan.sessions.map(x=>x.id===target.id?reviewed:x)}},reviewed))return null;
+ return{...proposalBase(s,'review',target.id),title:'Review the displayed targets',reason:'The earlier workout changed. Check this workout’s displayed sets, reps, loads and rest before continuing. Completed prerequisites have been checked; accepting acknowledges these targets without increasing them.',before:'Targets waiting for review',after:'Same targets and dates · ready after your review',patch:{needsReview:false}};
 }
 export function makeRangeProposal(s:State):Proposal|null{if(!s.plan||s.active||s.plan.profile.mode!=='app'||s.plan.profile.age<18||s.plan.template==='RUN-WALK'||s.plan.progressionModel==='ranges')return null;const sessions=s.plan.sessions.filter(x=>x.status==='scheduled');if(!sessions.length)return null;return{...proposalBase(s,'ranges',sessions[0].id),title:'Use rep ranges for future strength sessions',reason:RANGE_PROGRESSION,before:'Fixed repetition targets',after:'Goal-specific rep ranges · existing sets and dates retained',changes:sessions.map(x=>({sessionId:x.id,patch:{items:x.items.map(i=>rangeItem(i,s.plan!.template,x.title)),progressionStep:'Accepted rep range; load changes need approval.'}}))};}
 export function eventSignature(s:State){return JSON.stringify(s.events.map(e=>({id:e.id,date:e.date,kind:e.kind,priority:e.priority})).sort((a,b)=>a.id.localeCompare(b.id)))}
@@ -375,6 +399,15 @@ export function checkSchedule(s:State,changes:NonNullable<Proposal['changes']>):
   if(all.some(y=>y.id!==x.id&&y.status!=='missed'&&y.date===x.date))return `${niceDate(x.date)} already has a workout. Select “Shift this and later workouts” or another date.`;
  }
  for(const x of all){if(x.dependsOn?.some(id=>{const y=all.find(z=>z.id===id);return y&&(ids.has(x.id)||ids.has(y.id))&&y.date>=x.date}))return 'This move would reverse progression order. Shift later workouts together or choose another date.';}
+ // Four-run base permits one adjacent pair in any rolling seven days, including actual recorded dates.
+ if(s.plan.profile.mode==='app'&&s.plan.template==='RNBASE4'){
+  const runs=all.filter(x=>x.status!=='missed'&&x.recoveryGroup==='run').map(x=>({id:x.id,date:(s.active?.sessionId===x.id?s.active.date:undefined)||latestSessionRecord(s,x.id)?.date||x.date})).sort((a,b)=>a.date.localeCompare(b.date));
+  for(const run of runs){const window=runs.filter(x=>dayDistance(run.date,x.date)>=0&&dayDistance(run.date,x.date)<7);if(!window.some(x=>ids.has(x.id)))continue;
+   if(new Set(window.map(x=>x.date)).size!==window.length)return 'This move would place two runs on the same actual training date.';
+   const pairs=window.slice(1).filter((x,i)=>dayDistance(window[i].date,x.date)===1).length;
+   if(window.length>4||pairs>1)return 'Keep at most four runs and one back-to-back pair in any seven days. Review more separated dates, including your actual completed runs.';
+  }
+ }
  const reference=programReferences.find(r=>r.id===s.plan!.profile.programId);
  if(reference?.nonconsecutive)for(const x of all.filter(x=>ids.has(x.id)))for(const y of all.filter(y=>y.id!==x.id&&y.status!=='missed')){const actual=(s.active?.sessionId===y.id?s.active.date:undefined)||latestSessionRecord(s,y.id)?.date||y.date;if(Math.abs(dayDistance(x.date,actual))<2)return 'This source routine requires a recovery day between workouts. Choose a more separated date.';}
  const requiresRest=s.plan.profile.mode==='app';if(requiresRest)for(const x of all.filter(x=>ids.has(x.id)))for(const y of all.filter(y=>y.id!==x.id&&y.status!=='missed')){const full=!x.recoveryGroup&&!y.recoveryGroup&&s.plan.template!=='AT02',sameRegion=x.recoveryGroup&&y.recoveryGroup?x.recoveryGroup===y.recoveryGroup:x.title.split(' ')[0]===y.title.split(' ')[0];const actual=(s.active?.sessionId===y.id?s.active.date:undefined)||latestSessionRecord(s,y.id)?.date||y.date;if(!(s.plan.template==='RNBASE4'&&x.recoveryGroup==='run'&&y.recoveryGroup==='run')&&(full||sameRegion)&&Math.abs(dayDistance(x.date,actual))<2)return 'The move would remove the recovery day between comparable sessions. Shift later workouts together or choose a more separated date.';}
@@ -469,7 +502,7 @@ export function buildCatalogPlan(p:Profile,events:Event[]):{plan:Plan|null;error
 // One estimator for all strength plans: general warm-up / movement prep, work,
 // between-set rest, setup transitions and a short finish. Practice sets are not logged as work.
 export function estimateSessionMinutes(items:Item[],brief=false,custom:Exercise[]=[]):number{
- const seconds=(brief?6:13)*60+items.reduce((n,i)=>{const e=exFor(i.exerciseId,custom),perSide=/per side/i.test(e.loadConvention||'')?2:1;const work=e.metric==='minutes'?i.reps*60:e.metric==='seconds'?i.reps:(i.repMax??i.reps)*4*perSide;return n+i.sets*work+Math.max(0,i.sets-1)*i.rest+(brief?Math.max(60,i.rest):120)+(e.equipment==='Barbell'?120:0)},0);
+ const seconds=(brief?6:13)*60+items.reduce((n,i)=>{const e=exFor(i.exerciseId,custom),perSide=/(?:\bper side\b|\bfor each side\b)/i.test(e.loadConvention||'')?2:1;const work=(e.metric==='minutes'?i.reps*60:e.metric==='seconds'?i.reps:(i.repMax??i.reps)*4)*perSide;return n+i.sets*work+Math.max(0,i.sets-1)*i.rest+(brief?Math.max(60,i.rest):120)+(e.equipment==='Barbell'?120:0)},0);
  return Math.ceil(seconds/300)*5;
 }
 function catalogPhases(p:Profile,wave:boolean,brief=false):Plan['phases']{

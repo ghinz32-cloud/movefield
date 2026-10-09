@@ -22,12 +22,16 @@ export function useNativeWorkoutReminders(state:State|null,p:AppPreferences,read
  const signature=JSON.stringify({plan:state?.plan?.id,paused:state?.plan?.paused,hold:state?.hold,sessions:state?.plan?.sessions.map(s=>[s.id,s.date,s.status]),finished:state?.history.filter(w=>w.finishedAt).map(w=>w.sessionId),active:state?.active?.sessionId,events:state?.events.map(e=>e.date),enabled:p.reminders,time:p.reminderTime,zone:Intl.DateTimeFormat().resolvedOptions().timeZone});
  useEffect(()=>{
   if(!ready||!state||Platform.OS==='web')return;
-  let live=true;const version=++generation;const desired=workoutReminders(state,p);allowedIds=new Set(desired.map(x=>x.id));
+  let live=true;const version=++generation;const desired=workoutReminders(state,p);allowedIds.clear();
   const task=serial.catch(()=>{}).then(async()=>{
    if(version!==generation)return;
-   const [scheduled,shown]=await Promise.all([Notifications.getAllScheduledNotificationsAsync(),Notifications.getPresentedNotificationsAsync()]);
-   for(const item of scheduled.filter(x=>x.content.data?.kind===workoutReminderKind))await Notifications.cancelScheduledNotificationAsync(item.identifier);
-   for(const item of shown.filter(x=>x.request.content.data?.kind===workoutReminderKind))await Notifications.dismissNotificationAsync(item.request.identifier);
+   const listed=await Promise.allSettled([Notifications.getAllScheduledNotificationsAsync(),Notifications.getPresentedNotificationsAsync()]);
+   const scheduled=listed[0].status==='fulfilled'?listed[0].value:[],shown=listed[1].status==='fulfilled'?listed[1].value:[];
+   const cleared=await Promise.allSettled([
+    ...scheduled.filter(x=>x.content.data?.kind===workoutReminderKind).map(x=>Notifications.cancelScheduledNotificationAsync(x.identifier)),
+    ...shown.filter(x=>x.request.content.data?.kind===workoutReminderKind).map(x=>Notifications.dismissNotificationAsync(x.request.identifier))
+   ]);
+   if(listed.some(x=>x.status==='rejected')||cleared.some(x=>x.status==='rejected'))throw Error('Older reminders could not all be cleared.');
    if(version!==generation)return;
    if(!p.reminders){if(live)setMessage('Workout reminders are off.');return;}
    const permission=await Notifications.getPermissionsAsync();if(version!==generation)return;

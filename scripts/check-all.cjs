@@ -3,7 +3,7 @@ const {readdirSync,mkdirSync,writeFileSync}=require('node:fs');
 const path=require('node:path');
 process.chdir(path.resolve(__dirname,'..'));
 const production=process.argv.includes('--production');
-const checks=readdirSync('scripts').filter(name=>/^check-.*\.cjs$/.test(name)&&name!=='check-all.cjs'&&(/^(check-production-security|check-bundle)\.cjs$/.test(name)===production)).sort();
+const checks=readdirSync('scripts').filter(name=>/^check-.*\.cjs$/.test(name)&&name!=='check-all.cjs'&&(/^(check-production-security|check-production-offline|check-bundle)\.cjs$/.test(name)===production)).sort();
 const results=[];
 for(const name of checks){
  console.log(`Checking ${name}`);

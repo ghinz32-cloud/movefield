@@ -1,9 +1,9 @@
 import { LocalDataError, sealedTextBytes } from './local-crypto';
 
-// Interim guard for the installed AsyncStorage backend. This is a product limit,
-// below the common Android per-row read window, not a guaranteed device quota.
-// S02 replaces this whole-history snapshot with transactional encrypted entities.
-export const MAX_NATIVE_RECORD_BYTES = 1_750_000;
+// SQLite partitions encrypted snapshots into bounded rows. This limit protects
+// client memory while opening a snapshot; OS free-space failures remain possible.
+// The shared 5M-character/5,000-workout schema limit also applies.
+export const MAX_NATIVE_RECORD_BYTES = 40_000_000;
 
 export function assertNativeRecordCapacity(json: string): void {
   if (sealedTextBytes(json) > MAX_NATIVE_RECORD_BYTES) {

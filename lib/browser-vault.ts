@@ -17,6 +17,7 @@ export const VAULT_SLOTS = [
 export const KEY_MISSING_MESSAGE = 'Your saved training is encrypted with a key that is not in this browser. Nothing was replaced. Restore a transfer file to continue, or start a fresh profile.';
 const DECRYPT_MESSAGE = 'Your saved training could not be opened. It may be damaged. Nothing was replaced.';
 const KEY_UNAVAILABLE_MESSAGE = 'This browser would not keep the encryption key, so changes are not saved here. Export a transfer file to keep your work.';
+const LOCK_UNAVAILABLE_MESSAGE = 'This browser cannot protect saves across open tabs. Your saved records are unchanged. Export your current work and use an updated browser with Web Locks before editing or restoring.';
 
 export type VaultErrorCode = 'key-missing' | 'key-unavailable' | 'decrypt-failed' | 'unknown-format' | 'conflict';
 export class VaultError extends Error {
@@ -100,6 +101,9 @@ export function createVault(deps: VaultDeps) {
     try { transition = await deps.keys.getTransition(); }
     catch { throw new VaultError('key-unavailable', KEY_UNAVAILABLE_MESSAGE); }
     if (!transition) return;
+    // Recovery changes keys too. An unlocked read must never race a writer/reset
+    // while activating a prepared restore, even when ordinary reads are allowed.
+    if (deps.restoreSafe === false) throw new VaultError('key-unavailable', LOCK_UNAVAILABLE_MESSAGE);
     if (!slots.includes(transition.slot) || !isSealed(transition.after) || !transition.obsolete || typeof transition.obsolete !== 'object') {
       throw new VaultError('unknown-format', 'Restore recovery has an unexpected format. Export records before resetting this profile.');
     }
@@ -178,6 +182,10 @@ export function createVault(deps: VaultDeps) {
 
   function enqueue<T>(job: () => Promise<T>, mode: 'read' | 'write' | 'reset' = 'write'): Promise<T> {
     const recovered = async () => {
+      // A per-page queue cannot protect first-key creation or key deletion from
+      // another tab. Without an origin-wide lock, keep read/export available but
+      // reject every mutation before touching ciphertext, keys or journals.
+      if (mode !== 'read' && deps.restoreSafe === false) throw new VaultError('key-unavailable', LOCK_UNAVAILABLE_MESSAGE);
       if (mode !== 'reset') await recoverTransition(mode === 'read');
       return job();
     };

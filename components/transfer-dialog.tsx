@@ -1,5 +1,5 @@
 "use client";
-import {useRef,useState} from 'react';
+import {useEffect,useRef,useState} from 'react';
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import {Dialog,DialogContent,DialogDescription,DialogFooter,DialogHeader,DialogTitle} from '@/components/ui/dialog';
@@ -20,19 +20,24 @@ export function downloadText(name:string,text:string){
 // Makes a password-protected transfer file from the current data. The password is never stored.
 export function ExportTransferDialog({open,onOpenChange,plaintext}:{open:boolean;onOpenChange:(open:boolean)=>void;plaintext:()=>string}){
   const [password,setPassword]=useState(''),[again,setAgain]=useState(''),[show,setShow]=useState(false),[error,setError]=useState(''),[busy,setBusy]=useState(false),[done,setDone]=useState(false);
-  const close=(value:boolean)=>{if(!value){setPassword('');setAgain('');setShow(false);setError('');setDone(false)}onOpenChange(value)};
+  const operation=useRef(0),making=useRef(false);
+  useEffect(()=>()=>{operation.current++;making.current=false},[open]);
+  const close=(value:boolean)=>{if(!value){operation.current++;making.current=false;setBusy(false);setPassword('');setAgain('');setShow(false);setError('');setDone(false)}onOpenChange(value)};
   async function make(){
+    if(!open||making.current)return;
     if(password!==again){setError('The two passwords do not match.');return}
     const problem=passwordProblem(password);
     if(problem){setError(problem.message);return}
-    setBusy(true);setError('');
+    const version=++operation.current;making.current=true;setBusy(true);setError('');
     try{
       const file=await createTransferFile(plaintext(),password,{source:'web',random:randomBytes});
+      if(version!==operation.current)return;
       downloadText(fileName(),file);
       setPassword('');setAgain('');setDone(true);
     }catch{
+      if(version!==operation.current)return;
       setError('The file could not be made in this browser. Your data is unchanged.');
-    }finally{setBusy(false)}
+    }finally{if(version===operation.current){making.current=false;setBusy(false)}}
   }
   return <Dialog open={open} onOpenChange={close}><DialogContent>
     <DialogHeader><DialogTitle>{done?'Transfer file downloaded':'Make a transfer file'}</DialogTitle>
