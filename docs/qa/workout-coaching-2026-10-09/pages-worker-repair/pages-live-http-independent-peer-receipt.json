@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-09T23:09:48.235822+00:00",
+  "passed": true,
+  "publishedPagesCommit": "520db44ee3b86345826ea19d96148b61f146dc9e",
+  "expectedGeneratedTree": "b122a28494878782f3a3eb9c199b02902f15aa9c",
+  "expectedManifestVersion": "8c60686b3c01114959052f980441ce9b9da5c0ee309c50891542463fc51c5f6d",
+  "baseUrl": "https://ghinz32-cloud.github.io/movefield/",
+  "observations": [
+    {
+      "path": "index.html",
+      "requestedUrl": "https://ghinz32-cloud.github.io/movefield/index.html",
+      "method": "GET",
+      "redirectsAllowed": false,
+      "expectedBytes": 60055,
+      "expectedSha256": "af11abf5a71dbe23a6af337eb1e0ea6c99373a58c637334bd1a114fcad8a1aaf",
+      "status": 200,
+      "finalUrl": "https://ghinz32-cloud.github.io/movefield/index.html",
+      "headers": {
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": "60055",
+        "Cache-Control": "max-age=600",
+        "ETag": "\"6ac973da-ea97\"",
+        "Last-Modified": "Fri, 09 Oct 2026 23:08:10 GMT",
+        "X-GitHub-Request-Id": "587A:35FED0:E0BB70:EDC497:6AC9742E"
+      },
+      "bodyBytesRead": 60055,
+      "sha256": "af11abf5a71dbe23a6af337eb1e0ea6c99373a58c637334bd1a114fcad8a1aaf",
+      "passed": true
+    },
+    {
+      "path": "pages-manifest.json",
+      "requestedUrl": "https://ghinz32-cloud.github.io/movefield/pages-manifest.json",
+      "method": "GET",
+      "redirectsAllowed": false,
+      "expectedBytes": 7591,
+      "expectedSha256": "0b49796fafd250c8cd8193449474ffa03f8bc6979cd10462f6c08fdc022eacaa",
+      "status": 200,
+      "finalUrl": "https://ghinz32-cloud.github.io/movefield/pages-manifest.json",
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "7591",
+        "Cache-Control": "max-age=600",
+        "ETag": "\"6ac973da-1da7\"",
+        "Last-Modified": "Fri, 09 Oct 2026 23:08:10 GMT",
+        "X-GitHub-Request-Id": "9298:5E23B:6E386D:84FAC6:6AC9742E"
+      },
+      "bodyBytesRead": 7591,
+      "sha256": "0b49796fafd250c8cd8193449474ffa03f8bc6979cd10462f6c08fdc022eacaa",
+      "passed": true
+    },
+    {
+      "path": "sw.js",
+      "requestedUrl": "https://ghinz32-cloud.github.io/movefield/sw.js",
+      "method": "GET",
+      "redirectsAllowed": false,
+      "expectedBytes": 9986,
+      "expectedSha256": "371b26713fb8ae9e00eb1bf4d2b439f53b1bb7169cfd764d295af3a547caa0f5",
+      "status": 200,
+      "finalUrl": "https://ghinz32-cloud.github.io/movefield/sw.js",
+      "headers": {
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "9986",
+        "Cache-Control": "max-age=600",
+        "ETag": "\"6ac973da-2702\"",
+        "Last-Modified": "Fri, 09 Oct 2026 23:08:10 GMT",
+        "X-GitHub-Request-Id": "9F70:301A5E:6EBD7C:857E7A:6AC97431"
+      },
+      "bodyBytesRead": 9986,
+      "sha256": "371b26713fb8ae9e00eb1bf4d2b439f53b1bb7169cfd764d295af3a547caa0f5",
+      "passed": true
+    },
+    {
+      "path": "runtime/workout-coaching-worker.js",
+      "requestedUrl": "https://ghinz32-cloud.github.io/movefield/runtime/workout-coaching-worker.js",
+      "method": "GET",
+      "redirectsAllowed": false,
+      "expectedBytes": 18826,
+      "expectedSha256": "002a062f3fb540d737a055901ce24949fa444e6c3c8a87669f08beb96b2a08e6",
+      "status": 200,
+      "finalUrl": "https://ghinz32-cloud.github.io/movefield/runtime/workout-coaching-worker.js",
+      "headers": {
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "18826",
+        "Cache-Control": "max-age=600",
+        "ETag": "\"6ac973da-498a\"",
+        "Last-Modified": "Fri, 09 Oct 2026 23:08:10 GMT",
+        "X-GitHub-Request-Id": "5F2E:1CAD:2DFFCB:3A0118:6AC97431"
+      },
+      "bodyBytesRead": 18826,
+      "sha256": "002a062f3fb540d737a055901ce24949fa444e6c3c8a87669f08beb96b2a08e6",
+      "passed": true
+    },
+    {
+      "path": "assets/workout-coaching-CNi2ZBAe.js",
+      "requestedUrl": "https://ghinz32-cloud.github.io/movefield/assets/workout-coaching-CNi2ZBAe.js",
+      "method": "GET",
+      "redirectsAllowed": false,
+      "expectedBytes": 23981,
+      "expectedSha256": "c60393c44fb316d2215bd8cbc1e6993dfa323d7ca1dfe96dbf5617c886a5c3af",
+      "status": 200,
+      "finalUrl": "https://ghinz32-cloud.github.io/movefield/assets/workout-coaching-CNi2ZBAe.js",
+      "headers": {
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "23981",
+        "Cache-Control": "max-age=600",
+        "ETag": "\"6ac973da-5dad\"",
+        "Last-Modified": "Fri, 09 Oct 2026 23:08:10 GMT",
+        "X-GitHub-Request-Id": "EC76:16CEF7:B8749F:C80D3D:6AC9741F"
+      },
+      "bodyBytesRead": 23981,
+      "sha256": "c60393c44fb316d2215bd8cbc1e6993dfa323d7ca1dfe96dbf5617c886a5c3af",
+      "passed": true
+    },
+    {
+      "path": "assets/index-CgajflZF.js",
+      "requestedUrl": "https://ghinz32-cloud.github.io/movefield/assets/index-CgajflZF.js",
+      "method": "GET",
+      "redirectsAllowed": false,
+      "expectedBytes": 646695,
+      "expectedSha256": "f0edcd8b5e79504fc3f0d1bee27c2cf7e5d204d76f87a330fe52572d4c715ea4",
+      "status": 200,
+      "finalUrl": "https://ghinz32-cloud.github.io/movefield/assets/index-CgajflZF.js",
+      "headers": {
+        "Content-Type": "application/javascript; charset=utf-8",
+        "Content-Length": "646695",
+        "Cache-Control": "max-age=600",
+        "ETag": "\"6ac973da-9de27\"",
+        "Last-Modified": "Fri, 09 Oct 2026 23:08:10 GMT",
+        "X-GitHub-Request-Id": "4BA6:2BDC33:E118EF:EE209A:6AC97417"
+      },
+      "bodyBytesRead": 646695,
+      "sha256": "f0edcd8b5e79504fc3f0d1bee27c2cf7e5d204d76f87a330fe52572d4c715ea4",
+      "passed": true
+    }
+  ],
+  "checks": {
+    "liveManifestVersionMatches": true,
+    "liveManifestAssetCount": 61,
+    "liveManifestCanonicalMatchesLocal": true,
+    "entryReferencesVerifiedCurrentMainModule": true,
+    "documentCspPresentBeforeScript": true,
+    "documentCspRejectsWasmEvalAndBlobWorkers": true,
+    "ordinaryHttpWorkerCspAbsentAsExpected": true,
+    "allSelectedLiveHashesMatch": true
+  },
+  "totalBodyBytesRead": 767134,
+  "qualification": "Direct unauthenticated HTTP GET without redirects verifies live static bytes only. GitHub Pages ordinary worker responses have no CSP header; the browser service worker must verify the pinned asset and synthesize the canonical worker CSP before coaching initialization. This peer did not run a browser, service-worker installation, WebGPU, model download, inference, OS offline acceptance or native builds."
+}

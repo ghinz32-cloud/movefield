@@ -1,0 +1,21 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> site-creator-vinext-starter@0.1.0 test:production
+> node scripts/check-all.cjs --production
+
+Checking check-bundle.cjs
+PASS bundle budgets and lazy chart boundary {"page":"_next/static/chunks/page-DDuKZ_o8.js","key":"app/page.tsx","bytes":276960,"gzipBytes":83193,"initialGzipBytes":399580,"initialLimitGzipBytes":400000,"chunks":[{"key":"app/page.tsx","bytes":276960,"gzipBytes":83193},{"key":"_rolldown-runtime-QTnfLwEv.js","bytes":694,"gzipBytes":422},{"key":"virtual:vinext-app-browser-entry","bytes":193131,"gzipBytes":56062},{"key":"_framework-JGc2HF7T.js","bytes":190152,"gzipBytes":59097},{"key":"components/app-preferences.tsx","bytes":152908,"gzipBytes":48571},{"key":"_button-CBvz_Igj.js","bytes":32543,"gzipBytes":10650},{"key":"_alert-dialog-lrKB92c4.js","bytes":6769,"gzipBytes":2269},{"key":"_training-e4WnSvcK.js","bytes":793315,"gzipBytes":114028},{"key":"_local-backup-Dd_58mCP.js","bytes":7937,"gzipBytes":3003},{"key":"_types-n0CmVGHn.js","bytes":56482,"gzipBytes":12831},{"key":"_progress-BLdZ8dmX.js","bytes":24931,"gzipBytes":7212},{"key":"_workout-review-_uJXkssg.js","bytes":4813,"gzipBytes":2242}]}
+Checking check-production-offline.cjs
+{
+  "status": "pass",
+  "assets": 54,
+  "totalBytes": 19682462,
+  "build": "1eeb32abbfb7dde2712de945ea2d788d25e8dccc2acb8a441c3e7df67a4e0626",
+  "allBuiltClientChunksCovered": true,
+  "workerManifestMatches": true,
+  "assetHashesMatch": true,
+  "privateDataAndModelWeightsAbsent": true
+}
+Checking check-production-security.cjs
+{"brandAssetsAvailable":true,"nativeStarterAvailable":true,"status":200,"scripts":23,"nonceMatched":true,"nonceRotates":true,"writeRouteClosed":true,"internalRouteClosed":true,"qaRouteAbsent":true,"unclearedPhotosAbsent":true,"cache":"private, no-store"}
+3/3 check suites passed.

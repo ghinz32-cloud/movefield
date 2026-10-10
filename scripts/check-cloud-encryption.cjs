@@ -1,0 +1,35 @@
+const assert=require('node:assert/strict');
+const {webcrypto}=require('node:crypto');
+const {createLoader}=require('./lib/load-typescript.cjs');
+const load=createLoader({crypto:webcrypto});
+const E=load('lib/cloud-envelope.ts'),T=load('lib/training.ts');
+let checks=0;
+async function rejects(p){await assert.rejects(p);checks++}
+(async()=>{
+ const key=await E.cloudKey('seven quiet lantern rivers 42');
+ assert.equal(key.key.extractable,false);checks++;
+ const a=await E.sealCloudRecord(key,'account-a','state-head','secret record marker');
+ const b=await E.sealCloudRecord(key,'account-a','state-head','secret record marker');
+ assert.notEqual(a,b);assert.ok(!a.includes('secret record marker'));checks+=2;
+ assert.equal(await E.openCloudRecord(key,'account-a','state-head',a),'secret record marker');checks++;
+ await rejects(E.openCloudRecord(key,'account-b','state-head',a));
+ await rejects(E.openCloudRecord(key,'account-a','other-record',a));
+ const wrong=await E.cloudKey('seven quiet lantern rivers 43',key.salt);
+ await rejects(E.openCloudRecord(wrong,'account-a','state-head',a));
+ await rejects(E.cloudKey('short'));
+ const state=T.initialState(),w={id:'retained-id',sessionId:'session-id',title:'Test',date:T.day(),startedAt:1,finishedAt:2,sets:[{exerciseId:'squat',set:1,reps:5,kg:20,done:true}],symptom:'no'};
+ state.history=[w];
+ const out=await E.cloudRecords(state,key,'account-a');
+ assert.equal(out.records.at(-1).id,'state-head');checks++;
+ const records=new Map(out.records.map(r=>[r.id,r.ciphertext]));
+ const reopened=await E.assembleCloudState(records,key,'account-a');
+ assert.equal(reopened.state.history[0].id,'retained-id');checks++;
+ const same=await E.cloudRecords(state,key,'account-a',out.digests);assert.equal(same.records.length,0);checks++;
+ const missing=new Map(records);missing.delete(E.cloudHistoryId(w.id));await rejects(E.assembleCloudState(missing,key,'account-a'));
+ const changed=new Map(records);changed.set(E.cloudHistoryId(w.id),await E.sealCloudRecord(key,'account-a',E.cloudHistoryId(w.id),JSON.stringify({...w,title:'changed'})));await rejects(E.assembleCloudState(changed,key,'account-a'));
+ await rejects(E.sealCloudRecord(key,'account-a','big','x'.repeat(800_000)));
+ const large={...state,history:Array.from({length:5000},(_,i)=>({...w,id:'saved-workout-'+i,sets:w.sets.map(set=>({...set}))}))};
+ const full=await E.cloudRecords(large,key,'account-a');assert.equal(full.records.length,5001);assert.ok(full.records.at(-1).ciphertext.length<=1_000_000);checks++;
+ const fullOpened=await E.assembleCloudState(new Map(full.records.map(r=>[r.id,r.ciphertext])),key,'account-a');assert.equal(fullOpened.state.history.length,5000);assert.equal(fullOpened.state.history[4999].id,'saved-workout-4999');checks++;
+ console.log(`${checks} cloud encryption/account binding/incomplete snapshot checks passed.`);
+})().catch(e=>{console.error(e);process.exitCode=1});

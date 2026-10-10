@@ -1,0 +1,34 @@
+test_canonical_shared_module_and_public_snapshot_data_compile (__main__.Histories.test_canonical_shared_module_and_public_snapshot_data_compile) ... ok
+test_cli_writes_only_boolean_output_and_json_receipt (__main__.Histories.test_cli_writes_only_boolean_output_and_json_receipt) ... ok
+test_deleting_native_source_compiles (__main__.Histories.test_deleting_native_source_compiles) ... ok
+test_documentation_rename_and_delete_skip (__main__.Histories.test_documentation_rename_and_delete_skip) ... ok
+test_empty_tree_update_skips (__main__.Histories.test_empty_tree_update_skips) ... ok
+test_exact_checkout_mismatch_compiles (__main__.Histories.test_exact_checkout_mismatch_compiles) ... ok
+test_failed_or_incomplete_diff_cannot_skip (__main__.Histories.test_failed_or_incomplete_diff_cannot_skip) ... ok
+test_force_push_removing_native_change_compiles (__main__.Histories.test_force_push_removing_native_change_compiles) ... ok
+test_force_push_unchanged_native_tree_skips (__main__.Histories.test_force_push_unchanged_native_tree_skips) ... ok
+test_inspection_and_gate_policy_changes_compile (__main__.Histories.test_inspection_and_gate_policy_changes_compile) ... ok
+test_invalid_sha_or_mismatched_after_compile (__main__.Histories.test_invalid_sha_or_mismatched_after_compile) ... ok
+test_invalid_utf8_native_path_is_detected_and_receipt_safe (__main__.Histories.test_invalid_utf8_native_path_is_detected_and_receipt_safe) ... ok
+test_missing_event_structure_and_range_fields_compile (__main__.Histories.test_missing_event_structure_and_range_fields_compile) ... ok
+test_missing_repository_compiles (__main__.Histories.test_missing_repository_compiles) ... ok
+test_mobile_copied_docs_and_top_level_markdown_skip (__main__.Histories.test_mobile_copied_docs_and_top_level_markdown_skip) ... ok
+test_more_than_3000_paths_do_not_hide_last_native_input (__main__.Histories.test_more_than_3000_paths_do_not_hide_last_native_input) ... ok
+test_moving_documentation_into_native_source_compiles (__main__.Histories.test_moving_documentation_into_native_source_compiles) ... ok
+test_moving_native_source_outside_mobile_compiles (__main__.Histories.test_moving_native_source_outside_mobile_compiles) ... ok
+test_multi_commit_update_sees_native_change_before_final_docs_commit (__main__.Histories.test_multi_commit_update_sees_native_change_before_final_docs_commit) ... ok
+test_native_change_reverted_in_same_update_is_input_unchanged (__main__.Histories.test_native_change_reverted_in_same_update_is_input_unchanged) ... ok
+test_native_file_mode_change_compiles (__main__.Histories.test_native_file_mode_change_compiles) ... ok
+test_open_reopen_and_manual_always_compile_without_range (__main__.Histories.test_open_reopen_and_manual_always_compile_without_range) ... ok
+test_source_lock_plugin_and_nested_markdown_compile (__main__.Histories.test_source_lock_plugin_and_nested_markdown_compile) ... ok
+test_unknown_before_or_blob_before_compiles (__main__.Histories.test_unknown_before_or_blob_before_compiles) ... ok
+test_unusual_newline_and_nonascii_paths_are_nul_delimited (__main__.Histories.test_unusual_newline_and_nonascii_paths_are_nul_delimited) ... ok
+test_website_and_root_docs_update_skips (__main__.Histories.test_website_and_root_docs_update_skips) ... ok
+test_actual_workflow_condition_preserves_failure_and_missing_output_fallback (__main__.RepositoryContract.test_actual_workflow_condition_preserves_failure_and_missing_output_fallback) ... ok
+test_observed_page2_range_skips_when_history_available (__main__.RepositoryContract.test_observed_page2_range_skips_when_history_available) ... ok
+test_workflow_guards_gate_and_exact_source_without_cancellation (__main__.RepositoryContract.test_workflow_guards_gate_and_exact_source_without_cancellation) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 1.741s
+
+OK

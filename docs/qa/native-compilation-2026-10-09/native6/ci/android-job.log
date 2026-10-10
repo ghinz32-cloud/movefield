@@ -1,0 +1,1443 @@
+﻿2026-10-09T19:10:30.9520669Z Current runner version: '2.337.0'
+2026-10-09T19:10:30.9551479Z ##[group]Runner Image Provisioner
+2026-10-09T19:10:30.9552752Z Hosted Compute Agent
+2026-10-09T19:10:30.9553522Z Version: 20261002.596
+2026-10-09T19:10:30.9554505Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+2026-10-09T19:10:30.9555613Z Build Date: 2026-10-02T22:28:27Z
+2026-10-09T19:10:30.9556500Z Worker ID: {59a902e9-b5e0-441a-915f-21cd61d3a9ce}
+2026-10-09T19:10:30.9557478Z Region: eastus
+2026-10-09T19:10:30.9558190Z Cloud: Azure
+2026-10-09T19:10:30.9558861Z ##[endgroup]
+2026-10-09T19:10:30.9560898Z ##[group]Operating System
+2026-10-09T19:10:30.9561812Z Ubuntu
+2026-10-09T19:10:30.9562595Z 24.04.5
+2026-10-09T19:10:30.9563253Z LTS
+2026-10-09T19:10:30.9564200Z ##[endgroup]
+2026-10-09T19:10:30.9564989Z ##[group]Runner Image
+2026-10-09T19:10:30.9565777Z Image: ubuntu-24.04
+2026-10-09T19:10:30.9566587Z Version: 20261004.327.1
+2026-10-09T19:10:30.9568297Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-09T19:10:30.9570559Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+2026-10-09T19:10:30.9571887Z ##[endgroup]
+2026-10-09T19:10:30.9573513Z ##[group]GITHUB_TOKEN Permissions
+2026-10-09T19:10:30.9576169Z Contents: read
+2026-10-09T19:10:30.9577055Z Metadata: read
+2026-10-09T19:10:30.9577817Z ##[endgroup]
+2026-10-09T19:10:30.9580594Z Secret source: Actions
+2026-10-09T19:10:30.9581754Z Cache mode: write
+2026-10-09T19:10:30.9583050Z Prepare workflow directory
+2026-10-09T19:10:31.0054149Z Prepare all required actions
+2026-10-09T19:10:31.0113313Z Getting action download info
+2026-10-09T19:10:31.1673065Z Download action repository 'actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09' (SHA:fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09)
+2026-10-09T19:10:31.2764751Z Download action repository 'actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444' (SHA:a0853c24544627f65ddf259abe73b1d18a591444)
+2026-10-09T19:10:31.4512318Z Download action repository 'actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961' (SHA:b6effb05e454b25005698d916606bdc6ffcbf961)
+2026-10-09T19:10:31.7419587Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-09T19:10:31.9872295Z Complete job name: android
+2026-10-09T19:10:32.0703762Z ##[group]Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+2026-10-09T19:10:32.0705100Z with:
+2026-10-09T19:10:32.0705535Z   persist-credentials: false
+2026-10-09T19:10:32.0706164Z   ref: ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf
+2026-10-09T19:10:32.0706874Z   repository: ghinz32-cloud/movefield
+2026-10-09T19:10:32.0713690Z   token: ***
+2026-10-09T19:10:32.0714255Z   ssh-strict: true
+2026-10-09T19:10:32.0714695Z   ssh-user: git
+2026-10-09T19:10:32.0715103Z   clean: true
+2026-10-09T19:10:32.0715547Z   sparse-checkout-cone-mode: true
+2026-10-09T19:10:32.0716119Z   fetch-depth: 1
+2026-10-09T19:10:32.0716556Z   fetch-tags: false
+2026-10-09T19:10:32.0717078Z   show-progress: true
+2026-10-09T19:10:32.0717557Z   lfs: false
+2026-10-09T19:10:32.0717957Z   submodules: false
+2026-10-09T19:10:32.0718419Z   set-safe-directory: true
+2026-10-09T19:10:32.0718968Z   allow-unsafe-pr-checkout: false
+2026-10-09T19:10:32.0719705Z env:
+2026-10-09T19:10:32.0720065Z   CI: 1
+2026-10-09T19:10:32.0720499Z   EXPO_NO_TELEMETRY: 1
+2026-10-09T19:10:32.0720956Z ##[endgroup]
+2026-10-09T19:10:32.1640374Z Syncing repository: ghinz32-cloud/movefield
+2026-10-09T19:10:32.1643010Z ##[group]Getting Git version info
+2026-10-09T19:10:32.1644476Z Working directory is '/home/runner/work/movefield/movefield'
+2026-10-09T19:10:32.1646432Z [command]/usr/bin/git version
+2026-10-09T19:10:32.1669629Z git version 2.55.0
+2026-10-09T19:10:32.1705241Z ##[endgroup]
+2026-10-09T19:10:32.1712152Z Temporarily overriding HOME='/home/runner/work/_temp/2a2bff34-4eca-4190-b9e5-b97c24f1e624' before making global git config changes
+2026-10-09T19:10:32.1715831Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-09T19:10:32.1718564Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/movefield/movefield
+2026-10-09T19:10:32.1747564Z Deleting the contents of '/home/runner/work/movefield/movefield'
+2026-10-09T19:10:32.1752400Z ##[group]Initializing the repository
+2026-10-09T19:10:32.1756876Z [command]/usr/bin/git init /home/runner/work/movefield/movefield
+2026-10-09T19:10:32.1835731Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-09T19:10:32.1837993Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-09T19:10:32.1840167Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-09T19:10:32.1841812Z hint: call:
+2026-10-09T19:10:32.1842588Z hint:
+2026-10-09T19:10:32.1843620Z hint: 	git config --global init.defaultBranch <name>
+2026-10-09T19:10:32.1845042Z hint:
+2026-10-09T19:10:32.1847347Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-09T19:10:32.1849506Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-09T19:10:32.1851159Z hint:
+2026-10-09T19:10:32.1852281Z hint: 	git branch -m <name>
+2026-10-09T19:10:32.1854980Z hint:
+2026-10-09T19:10:32.1856597Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-09T19:10:32.1858808Z Initialized empty Git repository in /home/runner/work/movefield/movefield/.git/
+2026-10-09T19:10:32.1862226Z [command]/usr/bin/git remote add origin https://github.com/ghinz32-cloud/movefield
+2026-10-09T19:10:32.1891532Z ##[endgroup]
+2026-10-09T19:10:32.1892749Z ##[group]Disabling automatic garbage collection
+2026-10-09T19:10:32.1894924Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-09T19:10:32.1935218Z ##[endgroup]
+2026-10-09T19:10:32.1936381Z ##[group]Setting up auth
+2026-10-09T19:10:32.1940797Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-09T19:10:32.1975718Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-09T19:10:32.2290893Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-09T19:10:32.2327143Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-09T19:10:32.2552908Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-09T19:10:32.2588581Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-09T19:10:32.2797233Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-09T19:10:32.2835591Z ##[endgroup]
+2026-10-09T19:10:32.2836500Z ##[group]Fetching the repository
+2026-10-09T19:10:32.2843958Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf
+2026-10-09T19:10:32.8705980Z From https://github.com/ghinz32-cloud/movefield
+2026-10-09T19:10:32.8708452Z  * branch            ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf -> FETCH_HEAD
+2026-10-09T19:10:32.8712811Z ##[endgroup]
+2026-10-09T19:10:32.8714902Z ##[group]Determining the checkout info
+2026-10-09T19:10:32.8716715Z ##[endgroup]
+2026-10-09T19:10:32.8720294Z [command]/usr/bin/git sparse-checkout disable
+2026-10-09T19:10:32.8770538Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-09T19:10:32.8810823Z ##[group]Checking out the ref
+2026-10-09T19:10:32.8812063Z [command]/usr/bin/git checkout --progress --force ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf
+2026-10-09T19:10:32.9809085Z Note: switching to 'ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf'.
+2026-10-09T19:10:32.9810836Z 
+2026-10-09T19:10:32.9811727Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-09T19:10:32.9814148Z changes and commit them, and you can discard any commits you make in this
+2026-10-09T19:10:32.9816291Z state without impacting any branches by switching back to a branch.
+2026-10-09T19:10:32.9817643Z 
+2026-10-09T19:10:32.9818626Z If you want to create a new branch to retain commits you create, you may
+2026-10-09T19:10:32.9820280Z do so (now or later) by using -c with the switch command. Example:
+2026-10-09T19:10:32.9821142Z 
+2026-10-09T19:10:32.9821691Z   git switch -c <new-branch-name>
+2026-10-09T19:10:32.9822598Z 
+2026-10-09T19:10:32.9823127Z Or undo this operation with:
+2026-10-09T19:10:32.9823751Z 
+2026-10-09T19:10:32.9824364Z   git switch -
+2026-10-09T19:10:32.9824908Z 
+2026-10-09T19:10:32.9825724Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-09T19:10:32.9826725Z 
+2026-10-09T19:10:32.9827939Z HEAD is now at ba8fec4 Harden final native artifact policies, preserve CI builds and repair scoped SDK removal lint
+2026-10-09T19:10:32.9831674Z ##[endgroup]
+2026-10-09T19:10:32.9868119Z [command]/usr/bin/git log -1 --format=%H
+2026-10-09T19:10:32.9894801Z ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf
+2026-10-09T19:10:32.9903128Z ##[group]Removing auth
+2026-10-09T19:10:32.9906683Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-09T19:10:32.9938589Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-09T19:10:33.0156919Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-09T19:10:33.0182738Z http.https://github.com/.extraheader
+2026-10-09T19:10:33.0189278Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-09T19:10:33.0223436Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-09T19:10:33.0436945Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-09T19:10:33.0466880Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-09T19:10:33.0669819Z ##[endgroup]
+2026-10-09T19:10:33.0901774Z ##[group]Run mkdir -p native-evidence/android
+2026-10-09T19:10:33.0902954Z [36;1mmkdir -p native-evidence/android[0m
+2026-10-09T19:10:33.0904486Z [36;1mgit rev-parse HEAD HEAD^{tree} > native-evidence/android/source.txt[0m
+2026-10-09T19:10:33.1114978Z shell: /usr/bin/bash -e {0}
+2026-10-09T19:10:33.1115841Z env:
+2026-10-09T19:10:33.1116523Z   CI: 1
+2026-10-09T19:10:33.1117218Z   EXPO_NO_TELEMETRY: 1
+2026-10-09T19:10:33.1117989Z ##[endgroup]
+2026-10-09T19:10:33.1412480Z ##[group]Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
+2026-10-09T19:10:33.1413668Z with:
+2026-10-09T19:10:33.1414528Z   node-version: 24.19.0
+2026-10-09T19:10:33.1415350Z   package-manager-cache: false
+2026-10-09T19:10:33.1416198Z   always-auth: false
+2026-10-09T19:10:33.1416970Z   check-latest: false
+2026-10-09T19:10:33.1423440Z   token: ***
+2026-10-09T19:10:33.1424374Z env:
+2026-10-09T19:10:33.1425059Z   CI: 1
+2026-10-09T19:10:33.1425765Z   EXPO_NO_TELEMETRY: 1
+2026-10-09T19:10:33.1426528Z ##[endgroup]
+2026-10-09T19:10:33.2645658Z Attempting to download 24.19.0...
+2026-10-09T19:10:33.2738002Z (node:2188) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-09T19:10:33.2740108Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-09T19:10:33.7844110Z Acquiring 24.19.0 - x64 from https://github.com/actions/node-versions/releases/download/24.19.0-30872449280/node-24.19.0-linux-x64.tar.gz
+2026-10-09T19:10:34.3541095Z Extracting ...
+2026-10-09T19:10:34.3642829Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/126b8c33-500c-4979-b763-97e16824d1e8 -f /home/runner/work/_temp/9a18c88a-a771-4161-9987-8ba5381494d0
+2026-10-09T19:10:35.5156074Z Adding to the cache ...
+2026-10-09T19:10:37.5466030Z ##[group]Environment details
+2026-10-09T19:10:37.7445252Z node: v24.19.0
+2026-10-09T19:10:37.7445812Z npm: 11.17.0
+2026-10-09T19:10:37.7446150Z yarn: 1.22.22
+2026-10-09T19:10:37.7446800Z ##[endgroup]
+2026-10-09T19:10:37.7673356Z ##[group]Run actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961
+2026-10-09T19:10:37.7673702Z with:
+2026-10-09T19:10:37.7674138Z   distribution: temurin
+2026-10-09T19:10:37.7674341Z   java-version: 17
+2026-10-09T19:10:37.7674529Z   java-package: jdk
+2026-10-09T19:10:37.7674744Z   check-latest: false
+2026-10-09T19:10:37.7674957Z   set-default: true
+2026-10-09T19:10:37.7675143Z   verify-signature: false
+2026-10-09T19:10:37.7675351Z   server-id: github
+2026-10-09T19:10:37.7675565Z   server-username: GITHUB_ACTOR
+2026-10-09T19:10:37.7675801Z   server-password: GITHUB_TOKEN
+2026-10-09T19:10:37.7676024Z   overwrite-settings: true
+2026-10-09T19:10:37.7676226Z   job-status: success
+2026-10-09T19:10:37.7678352Z   token: ***
+2026-10-09T19:10:37.7678547Z   show-download-progress: false
+2026-10-09T19:10:37.7678770Z env:
+2026-10-09T19:10:37.7678950Z   CI: 1
+2026-10-09T19:10:37.7679134Z   EXPO_NO_TELEMETRY: 1
+2026-10-09T19:10:37.7679334Z ##[endgroup]
+2026-10-09T19:10:37.8984721Z ##[group]Installed distributions
+2026-10-09T19:10:37.9122745Z Resolved Java 17.0.20+1 from tool-cache
+2026-10-09T19:10:37.9123258Z Setting Java 17.0.20+1 as the default
+2026-10-09T19:10:37.9126338Z Creating toolchains.xml for JDK version 17 from temurin
+2026-10-09T19:10:37.9188824Z Writing to /home/runner/.m2/toolchains.xml
+2026-10-09T19:10:37.9189218Z 
+2026-10-09T19:10:37.9189403Z Java configuration:
+2026-10-09T19:10:37.9189770Z   Distribution: temurin
+2026-10-09T19:10:37.9191940Z   Version: 17.0.20+1
+2026-10-09T19:10:37.9192549Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-09T19:10:37.9192940Z 
+2026-10-09T19:10:37.9193314Z ##[endgroup]
+2026-10-09T19:10:37.9198701Z Creating settings.xml with server-id: github
+2026-10-09T19:10:37.9214273Z Writing to /home/runner/.m2/settings.xml
+2026-10-09T19:10:37.9215530Z Configured MAVEN_ARGS to include -ntp to suppress Maven transfer progress logs. Set 'show-download-progress: true' to keep the download progress output.
+2026-10-09T19:10:37.9376294Z ##[group]Run npm ci --ignore-scripts --no-audit --no-fund
+2026-10-09T19:10:37.9376871Z [36;1mnpm ci --ignore-scripts --no-audit --no-fund[0m
+2026-10-09T19:10:37.9456172Z shell: /usr/bin/bash -e {0}
+2026-10-09T19:10:37.9456525Z env:
+2026-10-09T19:10:37.9456788Z   CI: 1
+2026-10-09T19:10:37.9457046Z   EXPO_NO_TELEMETRY: 1
+2026-10-09T19:10:37.9457490Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-09T19:10:37.9458136Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-09T19:10:37.9458677Z   MAVEN_ARGS: -ntp
+2026-10-09T19:10:37.9458942Z ##[endgroup]
+2026-10-09T19:10:46.6934987Z 
+2026-10-09T19:10:46.6935867Z added 514 packages in 9s
+2026-10-09T19:10:46.7597016Z ##[group]Run npx --no-install expo prebuild --platform android --no-install
+2026-10-09T19:10:46.7597775Z [36;1mnpx --no-install expo prebuild --platform android --no-install[0m
+2026-10-09T19:10:46.7678680Z shell: /usr/bin/bash -e {0}
+2026-10-09T19:10:46.7679035Z env:
+2026-10-09T19:10:46.7679290Z   CI: 1
+2026-10-09T19:10:46.7679561Z   EXPO_NO_TELEMETRY: 1
+2026-10-09T19:10:46.7680043Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-09T19:10:46.7680752Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-09T19:10:46.7681301Z   MAVEN_ARGS: -ntp
+2026-10-09T19:10:46.7681589Z ##[endgroup]
+2026-10-09T19:10:47.2339085Z - Creating native directory (./android)
+2026-10-09T19:10:47.4971644Z ✔ Created native directory
+2026-10-09T19:10:47.4973593Z - Updating package.json
+2026-10-09T19:10:47.5017073Z ✔ Updated package.json
+2026-10-09T19:10:47.5017588Z - Running prebuild
+2026-10-09T19:10:48.9682575Z » android: userInterfaceStyle: Install expo-system-ui in your project to enable this feature.
+2026-10-09T19:10:48.9688637Z - Running prebuild
+2026-10-09T19:10:48.9725804Z ✔ Finished prebuild
+2026-10-09T19:10:49.0061637Z ##[group]Run "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-36" "build-tools;36.0.0" "ndk;27.1.12297006" "cmake;3.30.5" "cmake;3.31.5"
+2026-10-09T19:10:49.0063028Z [36;1m"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-36" "build-tools;36.0.0" "ndk;27.1.12297006" "cmake;3.30.5" "cmake;3.31.5"[0m
+2026-10-09T19:10:49.0140305Z shell: /usr/bin/bash -e {0}
+2026-10-09T19:10:49.0140537Z env:
+2026-10-09T19:10:49.0140704Z   CI: 1
+2026-10-09T19:10:49.0140871Z   EXPO_NO_TELEMETRY: 1
+2026-10-09T19:10:49.0141169Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-09T19:10:49.0141616Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-09T19:10:49.0141933Z   MAVEN_ARGS: -ntp
+2026-10-09T19:10:49.0142116Z ##[endgroup]
+2026-10-09T19:10:55.5904400Z Loading package information...                                                  
+2026-10-09T19:10:55.6701218Z Loading local repository...                                                     
+2026-10-09T19:10:55.6710550Z [                                       ] 3% Loading local repository...        
+2026-10-09T19:10:56.9188927Z [                                       ] 3% Fetch remote repository...         
+2026-10-09T19:10:57.3290886Z [=                                      ] 3% Fetch remote repository...         
+2026-10-09T19:10:57.3971900Z [=                                      ] 4% Fetch remote repository...         
+2026-10-09T19:10:57.4285588Z [=                                      ] 5% Fetch remote repository...         
+2026-10-09T19:10:57.4792031Z [==                                     ] 5% Fetch remote repository...         
+2026-10-09T19:10:57.6176604Z [==                                     ] 6% Fetch remote repository...         
+2026-10-09T19:11:00.1165713Z [==                                     ] 7% Fetch remote repository...         
+2026-10-09T19:11:00.1195231Z [==                                     ] 7% Computing updates...               
+2026-10-09T19:11:00.1284867Z [===                                    ] 8% Computing updates...               
+2026-10-09T19:11:00.1467966Z [===                                    ] 10% Computing updates...              
+2026-10-09T19:11:00.2037749Z [===                                    ] 10% Installing CMake 3.30.5           
+2026-10-09T19:11:00.2450685Z [===                                    ] 10% Downloading cmake-3.30.5-linux.zip
+2026-10-09T19:11:00.3105460Z [====                                   ] 10% Downloading cmake-3.30.5-linux.zip
+2026-10-09T19:11:00.3621679Z [====                                   ] 11% Downloading cmake-3.30.5-linux.zip
+2026-10-09T19:11:00.3927503Z [====                                   ] 12% Downloading cmake-3.30.5-linux.zip
+2026-10-09T19:11:00.4043286Z [=====                                  ] 13% Downloading cmake-3.30.5-linux.zip
+2026-10-09T19:11:00.4190134Z [=====                                  ] 14% Downloading cmake-3.30.5-linux.zip
+2026-10-09T19:11:00.4247367Z [=====                                  ] 15% Downloading cmake-3.30.5-linux.zip
+2026-10-09T19:11:00.4335617Z [======                                 ] 15% Downloading cmake-3.30.5-linux.zip
+2026-10-09T19:11:00.4403250Z [======                                 ] 16% Downloading cmake-3.30.5-linux.zip
+2026-10-09T19:11:00.4461864Z [======                                 ] 17% Downloading cmake-3.30.5-linux.zip
+2026-10-09T19:11:00.4556898Z [=======                                ] 18% Downloading cmake-3.30.5-linux.zip
+2026-10-09T19:11:00.4621112Z [=======                                ] 19% Downloading cmake-3.30.5-linux.zip
+2026-10-09T19:11:00.4704777Z [=======                                ] 20% Downloading cmake-3.30.5-linux.zip
+2026-10-09T19:11:00.4719927Z [========                               ] 20% Downloading cmake-3.30.5-linux.zip
+2026-10-09T19:11:00.4764536Z [========                               ] 21% Downloading cmake-3.30.5-linux.zip
+2026-10-09T19:11:00.6476032Z [========                               ] 21% Unzipping...                      
+2026-10-09T19:11:00.6619630Z [========                               ] 21% Unzipping... bin/cpack            
+2026-10-09T19:11:00.7056411Z [========                               ] 22% Unzipping... bin/cpack            
+2026-10-09T19:11:00.7415272Z [=========                              ] 23% Unzipping... bin/cpack            
+2026-10-09T19:11:00.7730853Z [=========                              ] 24% Unzipping... bin/cpack            
+2026-10-09T19:11:00.8072748Z [=========                              ] 25% Unzipping... bin/cpack            
+2026-10-09T19:11:00.8232697Z [=========                              ] 25% Unzipping... bin/ctest            
+2026-10-09T19:11:00.8413926Z [==========                             ] 25% Unzipping... bin/ctest            
+2026-10-09T19:11:00.8781072Z [==========                             ] 26% Unzipping... bin/ctest            
+2026-10-09T19:11:00.9064542Z [==========                             ] 27% Unzipping... bin/ctest            
+2026-10-09T19:11:01.0365346Z [===========                            ] 28% Unzipping... bin/ctest            
+2026-10-09T19:11:01.0547011Z [===========                            ] 28% Unzipping... bin/cmake            
+2026-10-09T19:11:01.0900829Z [===========                            ] 29% Unzipping... bin/cmake            
+2026-10-09T19:11:01.1060497Z [===========                            ] 30% Unzipping... bin/cmake            
+2026-10-09T19:11:01.1203427Z [============                           ] 30% Unzipping... bin/cmake            
+2026-10-09T19:11:01.2125031Z [============                           ] 31% Unzipping... bin/cmake            
+2026-10-09T19:11:01.2139238Z [============                           ] 31% Unzipping... share/vim/vimfiles/sy
+2026-10-09T19:11:01.2142097Z [============                           ] 31% Unzipping... share/vim/vimfiles/in
+2026-10-09T19:11:01.2145657Z [============                           ] 31% Unzipping... share/aclocal/cmake.m
+2026-10-09T19:11:01.2154334Z [============                           ] 31% Unzipping... share/bash-completion
+2026-10-09T19:11:01.2313228Z [============                           ] 31% Unzipping... share/cmake-3.30/Temp
+2026-10-09T19:11:01.2314321Z [============                           ] 31% Unzipping... share/cmake-3.30/incl
+2026-10-09T19:11:01.3315133Z [============                           ] 31% Unzipping... share/cmake-3.30/Modu
+2026-10-09T19:11:01.4575547Z [============                           ] 32% Unzipping... share/cmake-3.30/Modu
+2026-10-09T19:11:01.7603274Z [============                           ] 32% Unzipping... share/cmake-3.30/Help
+2026-10-09T19:11:01.7624051Z [============                           ] 32% Unzipping... share/emacs/site-lisp
+2026-10-09T19:11:01.7625088Z [============                           ] 32% Unzipping... doc/cmake-3.30/Copyri
+2026-10-09T19:11:01.7625942Z [============                           ] 32% Unzipping... doc/cmake-3.30/cmzlib
+2026-10-09T19:11:01.7626982Z [============                           ] 32% Unzipping... doc/cmake-3.30/cmcppd
+2026-10-09T19:11:01.7627833Z [============                           ] 32% Unzipping... doc/cmake-3.30/cmlibr
+2026-10-09T19:11:01.7628628Z [============                           ] 32% Unzipping... doc/cmake-3.30/cmcurl
+2026-10-09T19:11:01.7629621Z [============                           ] 32% Unzipping... doc/cmake-3.30/cmlibu
+2026-10-09T19:11:01.7630443Z [============                           ] 32% Unzipping... doc/cmake-3.30/cmsys/
+2026-10-09T19:11:01.7631431Z [============                           ] 32% Unzipping... doc/cmake-3.30/cmzstd
+2026-10-09T19:11:01.7632250Z [============                           ] 32% Unzipping... doc/cmake-3.30/cmliba
+2026-10-09T19:11:01.7633307Z [============                           ] 32% Unzipping... doc/cmake-3.30/cmnght
+2026-10-09T19:11:01.7634223Z [============                           ] 32% Unzipping... doc/cmake-3.30/cmlibl
+2026-10-09T19:11:01.7635225Z [============                           ] 32% Unzipping... doc/openssl-openssl-3
+2026-10-09T19:11:01.7636075Z [============                           ] 32% Unzipping... source.properties    
+2026-10-09T19:11:01.7653400Z [============                           ] 32% Unzipping... bin/ninja            
+2026-10-09T19:11:01.7655832Z [============                           ] 32% Unzipping... doc/ninja/LICENSE    
+2026-10-09T19:11:01.7659813Z [============                           ] 32% Unzipping... share/cmake-3.30/Modu
+2026-10-09T19:11:01.7749447Z [=============                          ] 33% Unzipping... share/cmake-3.30/Modu
+2026-10-09T19:11:02.1083648Z [=====================                  ] 55% Unzipping... share/cmake-3.30/Modu
+2026-10-09T19:11:02.1485415Z [=====================                  ] 55% Installing NDK (Side by side) 27.1
+2026-10-09T19:11:02.1688275Z [=====================                  ] 55% Downloading android-ndk-r27b-linux
+2026-10-09T19:11:02.2336646Z [======================                 ] 55% Downloading android-ndk-r27b-linux
+2026-10-09T19:11:02.3434533Z [======================                 ] 56% Downloading android-ndk-r27b-linux
+2026-10-09T19:11:02.4695490Z [======================                 ] 57% Downloading android-ndk-r27b-linux
+2026-10-09T19:11:02.5815993Z [=======================                ] 58% Downloading android-ndk-r27b-linux
+2026-10-09T19:11:02.6862226Z [=======================                ] 59% Downloading android-ndk-r27b-linux
+2026-10-09T19:11:02.7579831Z [=======================                ] 60% Downloading android-ndk-r27b-linux
+2026-10-09T19:11:02.8057172Z [========================               ] 60% Downloading android-ndk-r27b-linux
+2026-10-09T19:11:02.9254115Z [========================               ] 61% Downloading android-ndk-r27b-linux
+2026-10-09T19:11:03.0353259Z [========================               ] 62% Downloading android-ndk-r27b-linux
+2026-10-09T19:11:03.1573231Z [=========================              ] 63% Downloading android-ndk-r27b-linux
+2026-10-09T19:11:03.6654061Z [=========================              ] 64% Downloading android-ndk-r27b-linux
+2026-10-09T19:11:03.7061931Z [=========================              ] 65% Downloading android-ndk-r27b-linux
+2026-10-09T19:11:03.7604412Z [==========================             ] 65% Downloading android-ndk-r27b-linux
+2026-10-09T19:11:03.8402207Z [==========================             ] 66% Downloading android-ndk-r27b-linux
+2026-10-09T19:11:04.0636787Z [==========================             ] 66% Unzipping... share/cmake-3.30/Modu
+2026-10-09T19:11:04.0645441Z [==========================             ] 66% Unzipping... android-ndk-r27b/    
+2026-10-09T19:11:04.0704708Z [==========================             ] 66% Unzipping... android-ndk-r27b/READ
+2026-10-09T19:11:04.0724933Z [==========================             ] 66% Unzipping... android-ndk-r27b/meta
+2026-10-09T19:11:04.3123636Z [==========================             ] 66% Unzipping... android-ndk-r27b/shad
+2026-10-09T19:11:04.3259876Z [==========================             ] 66% Unzipping... android-ndk-r27b/ndk-
+2026-10-09T19:11:04.3294715Z [==========================             ] 66% Unzipping... android-ndk-r27b/wrap
+2026-10-09T19:11:04.3296379Z [==========================             ] 66% Unzipping... android-ndk-r27b/ndk-
+2026-10-09T19:11:04.4128989Z [==========================             ] 66% Unzipping... android-ndk-r27b/tool
+2026-10-09T19:11:06.3562543Z [==========================             ] 67% Unzipping... android-ndk-r27b/tool
+2026-10-09T19:11:09.4525697Z [===========================            ] 68% Unzipping... android-ndk-r27b/tool
+2026-10-09T19:11:11.9967789Z [===========================            ] 69% Unzipping... android-ndk-r27b/tool
+2026-10-09T19:11:13.7571733Z [===========================            ] 70% Unzipping... android-ndk-r27b/tool
+2026-10-09T19:11:14.5385571Z [============================           ] 70% Unzipping... android-ndk-r27b/tool
+2026-10-09T19:11:16.0259187Z [============================           ] 71% Unzipping... android-ndk-r27b/tool
+2026-10-09T19:11:17.8030884Z [============================           ] 72% Unzipping... android-ndk-r27b/tool
+2026-10-09T19:11:19.0657507Z [=============================          ] 73% Unzipping... android-ndk-r27b/tool
+2026-10-09T19:11:20.3115694Z [=============================          ] 74% Unzipping... android-ndk-r27b/tool
+2026-10-09T19:11:20.6540011Z [=============================          ] 75% Unzipping... android-ndk-r27b/tool
+2026-10-09T19:11:21.6636559Z [==============================         ] 75% Unzipping... android-ndk-r27b/tool
+2026-10-09T19:11:22.9503104Z [==============================         ] 76% Unzipping... android-ndk-r27b/tool
+2026-10-09T19:11:23.5635286Z [==============================         ] 77% Unzipping... android-ndk-r27b/tool
+2026-10-09T19:11:23.6516664Z [==============================         ] 77% Unzipping... android-ndk-r27b/buil
+2026-10-09T19:11:23.9288019Z [==============================         ] 77% Unzipping... android-ndk-r27b/sour
+2026-10-09T19:11:23.9306567Z [==============================         ] 77% Unzipping... android-ndk-r27b/NOTI
+2026-10-09T19:11:23.9307745Z [==============================         ] 77% Unzipping... android-ndk-r27b/ndk-
+2026-10-09T19:11:23.9319242Z [==============================         ] 77% Unzipping... android-ndk-r27b/NOTI
+2026-10-09T19:11:23.9346642Z [==============================         ] 77% Unzipping... android-ndk-r27b/pyth
+2026-10-09T19:11:23.9709650Z [==============================         ] 77% Unzipping... android-ndk-r27b/preb
+2026-10-09T19:11:23.9711882Z [==============================         ] 77% Unzipping... android-ndk-r27b/ndk-
+2026-10-09T19:11:23.9712852Z [==============================         ] 77% Unzipping... android-ndk-r27b/sour
+2026-10-09T19:11:24.1825504Z [==============================         ] 77% Unzipping... android-ndk-r27b/simp
+2026-10-09T19:11:24.1826370Z [==============================         ] 77% Unzipping... android-ndk-r27b/CHAN
+2026-10-09T19:11:24.2852881Z [==============================         ] 78% Unzipping... android-ndk-r27b/CHAN
+2026-10-09T19:11:24.2853591Z [=======================================] 100% Unzipping... android-ndk-r27b/CHA
+2026-10-09T19:11:24.2897583Z 
+2026-10-09T19:11:24.3300911Z ##[group]Run ./gradlew :app:assembleRelease :app:lintRelease :app:testReleaseUnitTest --no-daemon -PreactNativeArchitectures=arm64-v8a -Porg.gradle.jvmargs="-Xmx5g -XX:MaxMetaspaceSize=1g"
+2026-10-09T19:11:24.3302724Z [36;1m./gradlew :app:assembleRelease :app:lintRelease :app:testReleaseUnitTest --no-daemon -PreactNativeArchitectures=arm64-v8a -Porg.gradle.jvmargs="-Xmx5g -XX:MaxMetaspaceSize=1g"[0m
+2026-10-09T19:11:24.3372040Z shell: /usr/bin/bash -e {0}
+2026-10-09T19:11:24.3372287Z env:
+2026-10-09T19:11:24.3372465Z   CI: 1
+2026-10-09T19:11:24.3372641Z   EXPO_NO_TELEMETRY: 1
+2026-10-09T19:11:24.3372939Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-09T19:11:24.3373356Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-09T19:11:24.3373687Z   MAVEN_ARGS: -ntp
+2026-10-09T19:11:24.3374069Z ##[endgroup]
+2026-10-09T19:11:24.4243409Z Downloading https://services.gradle.org/distributions/gradle-9.3.1-bin.zip
+2026-10-09T19:11:25.8333010Z .............10%.............20%.............30%.............40%.............50%.............60%.............70%.............80%.............90%.............100%
+2026-10-09T19:11:27.0515231Z 
+2026-10-09T19:11:27.0535356Z Welcome to Gradle 9.3.1!
+2026-10-09T19:11:27.0535659Z 
+2026-10-09T19:11:27.0535915Z Here are the highlights of this release:
+2026-10-09T19:11:27.0536400Z  - Test reporting improvements
+2026-10-09T19:11:27.0536816Z  - Error and warning improvements
+2026-10-09T19:11:27.0537693Z  - Build authoring improvements
+2026-10-09T19:11:27.0537962Z 
+2026-10-09T19:11:27.0538362Z For more details see https://docs.gradle.org/9.3.1/release-notes.html
+2026-10-09T19:11:27.0538769Z 
+2026-10-09T19:11:27.1546751Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+2026-10-09T19:11:28.2512348Z Daemon will be stopped at the end of the build 
+2026-10-09T19:12:18.1549399Z > Task :gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:12:18.1556560Z > Task :expo-gradle-plugin:expo-autolinking-settings-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:12:18.1557919Z > Task :gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:12:18.1559397Z > Task :expo-gradle-plugin:expo-autolinking-plugin-shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:12:18.3508367Z > Task :expo-gradle-plugin:expo-autolinking-settings-plugin:pluginDescriptors
+2026-10-09T19:12:18.3512196Z > Task :gradle-plugin:settings-plugin:pluginDescriptors
+2026-10-09T19:12:18.3513312Z > Task :expo-gradle-plugin:expo-autolinking-settings-plugin:processResources
+2026-10-09T19:12:18.3514482Z > Task :gradle-plugin:settings-plugin:processResources
+2026-10-09T19:12:23.6510066Z > Task :expo-gradle-plugin:expo-autolinking-plugin-shared:processResources NO-SOURCE
+2026-10-09T19:12:23.6512179Z > Task :gradle-plugin:shared:processResources NO-SOURCE
+2026-10-09T19:12:29.9555419Z > Task :gradle-plugin:shared:compileKotlin
+2026-10-09T19:12:29.9584773Z > Task :gradle-plugin:shared:compileJava NO-SOURCE
+2026-10-09T19:12:29.9614784Z > Task :gradle-plugin:shared:classes UP-TO-DATE
+2026-10-09T19:12:30.0508893Z > Task :gradle-plugin:shared:jar
+2026-10-09T19:12:30.0535526Z > Task :expo-gradle-plugin:expo-autolinking-plugin-shared:compileKotlin
+2026-10-09T19:12:30.0536770Z > Task :expo-gradle-plugin:expo-autolinking-plugin-shared:compileJava NO-SOURCE
+2026-10-09T19:12:30.0538001Z > Task :expo-gradle-plugin:expo-autolinking-plugin-shared:classes UP-TO-DATE
+2026-10-09T19:12:30.0538962Z > Task :expo-gradle-plugin:expo-autolinking-plugin-shared:jar
+2026-10-09T19:12:38.1519369Z > Task :gradle-plugin:settings-plugin:compileKotlin
+2026-10-09T19:12:38.1575621Z > Task :gradle-plugin:settings-plugin:compileJava NO-SOURCE
+2026-10-09T19:12:38.1635833Z > Task :gradle-plugin:settings-plugin:classes
+2026-10-09T19:12:38.1642533Z > Task :gradle-plugin:settings-plugin:jar
+2026-10-09T19:12:39.4508907Z > Task :expo-gradle-plugin:expo-autolinking-settings-plugin:compileKotlin
+2026-10-09T19:12:39.4515424Z > Task :expo-gradle-plugin:expo-autolinking-settings-plugin:compileJava NO-SOURCE
+2026-10-09T19:12:39.4516362Z > Task :expo-gradle-plugin:expo-autolinking-settings-plugin:classes
+2026-10-09T19:12:39.4517182Z > Task :expo-gradle-plugin:expo-autolinking-settings-plugin:jar
+2026-10-09T19:12:50.6520881Z > Task :expo-gradle-plugin:expo-max-sdk-override-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:12:50.6544909Z > Task :expo-gradle-plugin:expo-autolinking-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:12:50.6562243Z > Task :expo-dev-launcher-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:12:50.7545806Z > Task :expo-module-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:12:50.7564693Z > Task :expo-module-gradle-plugin:pluginDescriptors
+2026-10-09T19:12:50.7594842Z > Task :expo-dev-launcher-gradle-plugin:pluginDescriptors
+2026-10-09T19:12:50.7634608Z > Task :expo-module-gradle-plugin:processResources
+2026-10-09T19:12:50.7664927Z > Task :gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:12:50.7666164Z > Task :expo-dev-launcher-gradle-plugin:processResources
+2026-10-09T19:12:50.7694739Z > Task :expo-gradle-plugin:expo-max-sdk-override-plugin:pluginDescriptors
+2026-10-09T19:12:50.7724627Z > Task :expo-gradle-plugin:expo-autolinking-plugin:pluginDescriptors
+2026-10-09T19:12:50.7725576Z > Task :expo-gradle-plugin:expo-max-sdk-override-plugin:processResources
+2026-10-09T19:12:50.7726626Z > Task :expo-gradle-plugin:expo-autolinking-plugin:processResources
+2026-10-09T19:12:54.2515635Z > Task :expo-gradle-plugin:expo-max-sdk-override-plugin:compileKotlin
+2026-10-09T19:12:54.2594946Z > Task :expo-gradle-plugin:expo-max-sdk-override-plugin:compileJava NO-SOURCE
+2026-10-09T19:12:54.2604485Z > Task :expo-gradle-plugin:expo-max-sdk-override-plugin:classes
+2026-10-09T19:12:54.3527619Z > Task :expo-gradle-plugin:expo-max-sdk-override-plugin:jar
+2026-10-09T19:12:54.8510636Z > Task :expo-gradle-plugin:expo-autolinking-plugin:compileKotlin
+2026-10-09T19:12:54.8524669Z > Task :expo-gradle-plugin:expo-autolinking-plugin:compileJava NO-SOURCE
+2026-10-09T19:12:54.8547337Z > Task :expo-gradle-plugin:expo-autolinking-plugin:classes
+2026-10-09T19:12:54.8548315Z > Task :expo-gradle-plugin:expo-autolinking-plugin:jar
+2026-10-09T19:12:55.2508555Z > Task :gradle-plugin:react-native-gradle-plugin:pluginDescriptors
+2026-10-09T19:12:55.2510648Z > Task :gradle-plugin:react-native-gradle-plugin:processResources
+2026-10-09T19:12:58.9514593Z > Task :gradle-plugin:react-native-gradle-plugin:compileKotlin
+2026-10-09T19:12:58.9515336Z > Task :gradle-plugin:react-native-gradle-plugin:compileJava NO-SOURCE
+2026-10-09T19:12:58.9516054Z > Task :gradle-plugin:react-native-gradle-plugin:classes
+2026-10-09T19:12:59.0525364Z > Task :gradle-plugin:react-native-gradle-plugin:jar
+2026-10-09T19:13:00.3510914Z > Task :expo-dev-launcher-gradle-plugin:compileKotlin
+2026-10-09T19:13:00.3515147Z > Task :expo-dev-launcher-gradle-plugin:compileJava NO-SOURCE
+2026-10-09T19:13:00.3516208Z > Task :expo-dev-launcher-gradle-plugin:classes
+2026-10-09T19:13:00.3517039Z > Task :expo-dev-launcher-gradle-plugin:jar
+2026-10-09T19:13:00.8514484Z 
+2026-10-09T19:13:00.8584957Z > Task :expo-module-gradle-plugin:compileKotlin
+2026-10-09T19:13:00.8616617Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/expo-module-gradle-plugin/src/main/kotlin/expo/modules/plugin/android/AndroidLibraryExtension.kt:9:24 'var targetSdk: Int?' is deprecated. Will be removed from library DSL in v9.0. Use testOptions.targetSdk or/and lint.targetSdk instead.
+2026-10-09T19:13:00.8626497Z 
+2026-10-09T19:13:00.8634621Z > Task :expo-module-gradle-plugin:compileJava NO-SOURCE
+2026-10-09T19:13:00.8635845Z > Task :expo-module-gradle-plugin:classes
+2026-10-09T19:13:00.8636598Z > Task :expo-module-gradle-plugin:jar
+2026-10-09T19:13:08.0507863Z 
+2026-10-09T19:13:08.0518740Z > Configure project :
+2026-10-09T19:13:08.0519915Z [32m[ExpoRootProject][0m Using the following versions:
+2026-10-09T19:13:08.0522487Z   - buildTools:  [32m36.0.0[0m
+2026-10-09T19:13:08.0523113Z   - minSdk:      [32m24[0m
+2026-10-09T19:13:08.0523665Z   - compileSdk:  [32m36[0m
+2026-10-09T19:13:08.0524469Z   - targetSdk:   [32m36[0m
+2026-10-09T19:13:08.0525065Z   - ndk:         [32m27.1.12297006[0m
+2026-10-09T19:13:08.0525694Z   - kotlin:      [32m2.1.20[0m
+2026-10-09T19:13:08.0526308Z   - ksp:         [32m2.1.20-2.0.1[0m
+2026-10-09T19:13:11.1517099Z 
+2026-10-09T19:13:11.1564945Z > Configure project :app
+2026-10-09T19:13:11.1593702Z  ℹ️  [33mApplying gradle plugin[0m '[32mexpo-max-sdk-override-plugin[0m'
+2026-10-09T19:13:11.1628092Z   [expo-max-sdk-override-plugin] This plugin will find all permissions declared with `android:maxSdkVersion`. If there exists a declaration with the `android:maxSdkVersion` annotation and another one without, the plugin will remove the annotation from the final merged manifest. In order to see a log with the changes run a clean build of the app.
+2026-10-09T19:13:11.1639281Z  ℹ️  [33mApplying gradle plugin[0m '[32mexpo-dev-launcher-gradle-plugin[0m'
+2026-10-09T19:13:13.1506710Z 
+2026-10-09T19:13:13.1507421Z > Configure project :expo
+2026-10-09T19:13:13.1508182Z 
+2026-10-09T19:13:13.1508872Z Using expo modules
+2026-10-09T19:13:13.1509570Z   - [32mexpo-log-box[0m (57.0.4)
+2026-10-09T19:13:13.1510036Z   - [32mexpo-constants[0m (57.0.21)
+2026-10-09T19:13:13.1510500Z   - [32mexpo-dev-client[0m (57.0.19)
+2026-10-09T19:13:13.7507261Z   - [32mexpo-dev-launcher[0m (57.0.20)
+2026-10-09T19:13:14.1515937Z   - [32mexpo-dev-menu[0m (57.0.19)
+2026-10-09T19:13:14.2544227Z   - [32mexpo-dev-menu-interface[0m (57.0.0)
+2026-10-09T19:13:14.4508279Z   - [32mexpo-json-utils[0m (57.0.2)
+2026-10-09T19:13:14.5507613Z   - [32mexpo-manifests[0m (57.0.2)
+2026-10-09T19:13:15.4522139Z   - [32mexpo-modules-core[0m (57.0.21)
+2026-10-09T19:13:15.5535631Z   - [32mexpo-updates-interface[0m (57.0.2)
+2026-10-09T19:13:15.5536379Z   - [33m[📦][0m [32mexpo-dom-webview[0m (57.0.1)
+2026-10-09T19:13:15.5536992Z   - [33m[📦][0m [32mexpo-application[0m (57.0.3)
+2026-10-09T19:13:15.5537541Z   - [33m[📦][0m [32mexpo-asset[0m (57.0.19)
+2026-10-09T19:13:15.5538078Z   - [33m[📦][0m [32mexpo-crypto[0m (57.0.3)
+2026-10-09T19:13:15.5538737Z   - [33m[📦][0m [32mexpo-document-picker[0m (57.0.3)
+2026-10-09T19:13:15.5539351Z   - [33m[📦][0m [32mexpo-file-system[0m (57.0.7)
+2026-10-09T19:13:15.5539892Z   - [33m[📦][0m [32mexpo-font[0m (57.0.4)
+2026-10-09T19:13:15.5540407Z   - [33m[📦][0m [32mexpo-keep-awake[0m (57.0.2)
+2026-10-09T19:13:15.5541003Z   - [33m[📦][0m [32mexpo-linear-gradient[0m (57.0.2)
+2026-10-09T19:13:15.5541624Z   - [33m[📦][0m [32mexpo-notifications[0m (57.0.22)
+2026-10-09T19:13:15.5542241Z   - [33m[📦][0m [32mexpo-secure-store[0m (57.0.4)
+2026-10-09T19:13:15.5542807Z   - [33m[📦][0m [32mexpo-sharing[0m (57.0.22)
+2026-10-09T19:13:15.5543343Z   - [33m[📦][0m [32mexpo-sqlite[0m (57.0.4)
+2026-10-09T19:13:15.5544141Z   - [33m[📦][0m [32mexpo-status-bar[0m (57.0.1)
+2026-10-09T19:13:15.5544438Z 
+2026-10-09T19:14:11.3511889Z 
+2026-10-09T19:14:11.3554157Z > Task :expo-dev-client:preBuild UP-TO-DATE
+2026-10-09T19:14:11.3557609Z > Task :expo-dev-launcher:preBuild UP-TO-DATE
+2026-10-09T19:14:11.3558412Z > Task :expo-dev-menu:preBuild UP-TO-DATE
+2026-10-09T19:14:11.3559133Z > Task :expo-dev-menu-interface:preBuild UP-TO-DATE
+2026-10-09T19:14:11.3559840Z > Task :expo-json-utils:preBuild UP-TO-DATE
+2026-10-09T19:14:11.4575371Z > Task :expo-log-box:preBuild UP-TO-DATE
+2026-10-09T19:14:11.4604660Z > Task :expo-manifests:preBuild UP-TO-DATE
+2026-10-09T19:14:11.4665194Z > Task :expo-modules-core:preBuild UP-TO-DATE
+2026-10-09T19:14:11.4728272Z > Task :expo-updates-interface:preBuild UP-TO-DATE
+2026-10-09T19:14:11.4766019Z > Task :expo:generatePackagesList
+2026-10-09T19:14:11.4809959Z > Task :expo:preBuild
+2026-10-09T19:14:11.4834608Z > Task :app:generateAutolinkingNewArchitectureFiles
+2026-10-09T19:14:11.4885052Z > Task :app:generateAutolinkingPackageList
+2026-10-09T19:14:11.4936591Z > Task :app:generateCodegenSchemaFromJavaScript SKIPPED
+2026-10-09T19:14:11.5024898Z > Task :app:generateCodegenArtifactsFromSchema SKIPPED
+2026-10-09T19:14:11.5083989Z > Task :app:generateReactNativeEntryPoint
+2026-10-09T19:14:11.5104944Z > Task :expo:preReleaseBuild
+2026-10-09T19:14:11.6529447Z The NODE_ENV environment variable is required but was not specified. Ensure the project is bundled with Expo CLI or NODE_ENV is set. Using only .env.local and .env
+2026-10-09T19:14:11.6530612Z > Task :expo:mergeReleaseJniLibFolders
+2026-10-09T19:14:11.6566251Z > Task :expo:mergeReleaseNativeLibs NO-SOURCE
+2026-10-09T19:14:11.6594870Z > Task :expo:copyReleaseJniLibsProjectOnly
+2026-10-09T19:14:11.6624492Z > Task :expo-dev-client:preReleaseBuild UP-TO-DATE
+2026-10-09T19:14:11.6627735Z > Task :expo-dev-client:mergeReleaseJniLibFolders
+2026-10-09T19:14:11.6654573Z > Task :expo-dev-client:mergeReleaseNativeLibs NO-SOURCE
+2026-10-09T19:14:11.6684463Z > Task :expo-dev-client:copyReleaseJniLibsProjectOnly
+2026-10-09T19:14:11.6714532Z > Task :expo-dev-launcher:preReleaseBuild UP-TO-DATE
+2026-10-09T19:14:11.6714901Z 
+2026-10-09T19:14:11.6724468Z > Task :expo-constants:createExpoConfig
+2026-10-09T19:14:11.6748047Z 
+2026-10-09T19:14:11.6774563Z > Task :expo-constants:preBuild
+2026-10-09T19:14:11.6784793Z > Task :expo-constants:preReleaseBuild
+2026-10-09T19:14:11.6785627Z > Task :expo-dev-launcher:mergeReleaseJniLibFolders
+2026-10-09T19:14:11.6786367Z > Task :expo-dev-launcher:mergeReleaseNativeLibs NO-SOURCE
+2026-10-09T19:14:11.6786942Z > Task :expo-constants:mergeReleaseJniLibFolders
+2026-10-09T19:14:11.6787517Z > Task :expo-dev-launcher:copyReleaseJniLibsProjectOnly
+2026-10-09T19:14:11.6788073Z > Task :expo-dev-menu:preReleaseBuild UP-TO-DATE
+2026-10-09T19:14:11.7515074Z > Task :expo-constants:mergeReleaseNativeLibs NO-SOURCE
+2026-10-09T19:14:11.7575395Z > Task :expo-constants:copyReleaseJniLibsProjectOnly
+2026-10-09T19:14:11.7606608Z > Task :expo-dev-menu-interface:preReleaseBuild UP-TO-DATE
+2026-10-09T19:14:11.7644902Z > Task :react-native-async-storage_async-storage:generateCodegenSchemaFromJavaScript
+2026-10-09T19:14:11.7651940Z > Task :expo-dev-menu:mergeReleaseJniLibFolders
+2026-10-09T19:14:11.7663576Z > Task :expo-dev-menu:mergeReleaseNativeLibs NO-SOURCE
+2026-10-09T19:14:11.7664650Z > Task :expo-dev-menu-interface:mergeReleaseJniLibFolders
+2026-10-09T19:14:11.7665514Z > Task :expo-dev-menu-interface:mergeReleaseNativeLibs NO-SOURCE
+2026-10-09T19:14:11.7666405Z > Task :expo-dev-menu-interface:copyReleaseJniLibsProjectOnly
+2026-10-09T19:14:11.7667210Z > Task :expo-json-utils:preReleaseBuild UP-TO-DATE
+2026-10-09T19:14:11.7667986Z > Task :expo-dev-menu:copyReleaseJniLibsProjectOnly
+2026-10-09T19:14:11.7695028Z > Task :expo-log-box:preReleaseBuild UP-TO-DATE
+2026-10-09T19:14:11.7724703Z > Task :expo-json-utils:mergeReleaseJniLibFolders
+2026-10-09T19:14:11.7752228Z > Task :expo-log-box:mergeReleaseJniLibFolders
+2026-10-09T19:14:11.7777609Z > Task :expo-json-utils:mergeReleaseNativeLibs NO-SOURCE
+2026-10-09T19:14:11.7795312Z > Task :expo-json-utils:copyReleaseJniLibsProjectOnly
+2026-10-09T19:14:11.7804596Z > Task :expo-manifests:preReleaseBuild UP-TO-DATE
+2026-10-09T19:14:11.7816681Z > Task :expo-log-box:mergeReleaseNativeLibs NO-SOURCE
+2026-10-09T19:14:11.7817679Z > Task :react-native-safe-area-context:generateCodegenSchemaFromJavaScript
+2026-10-09T19:14:11.7818529Z > Task :expo-log-box:copyReleaseJniLibsProjectOnly
+2026-10-09T19:14:11.7819275Z > Task :expo-modules-core:preReleaseBuild UP-TO-DATE
+2026-10-09T19:14:11.7819995Z > Task :expo-manifests:mergeReleaseJniLibFolders
+2026-10-09T19:14:11.7820717Z > Task :expo-manifests:mergeReleaseNativeLibs NO-SOURCE
+2026-10-09T19:14:11.7821463Z > Task :expo-manifests:copyReleaseJniLibsProjectOnly
+2026-10-09T19:14:11.7823080Z > Task :expo-updates-interface:preReleaseBuild UP-TO-DATE
+2026-10-09T19:14:11.8510740Z > Task :expo-updates-interface:mergeReleaseJniLibFolders
+2026-10-09T19:14:11.8511502Z > Task :expo-updates-interface:mergeReleaseNativeLibs NO-SOURCE
+2026-10-09T19:14:11.8512190Z > Task :expo-updates-interface:copyReleaseJniLibsProjectOnly
+2026-10-09T19:14:11.8512879Z > Task :expo:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:14:11.8513448Z > Task :expo:generateReleaseBuildConfig
+2026-10-09T19:14:11.9515287Z > Task :expo:generateReleaseResValues
+2026-10-09T19:14:11.9515912Z > Task :expo:generateReleaseResources
+2026-10-09T19:14:11.9516693Z > Task :react-native-async-storage_async-storage:generateCodegenArtifactsFromSchema
+2026-10-09T19:14:11.9517422Z > Task :expo:packageReleaseResources
+2026-10-09T19:14:11.9518004Z > Task :react-native-async-storage_async-storage:preBuild
+2026-10-09T19:14:11.9518679Z > Task :react-native-async-storage_async-storage:preReleaseBuild
+2026-10-09T19:14:11.9519515Z > Task :react-native-async-storage_async-storage:mergeReleaseJniLibFolders
+2026-10-09T19:14:11.9520381Z > Task :react-native-safe-area-context:generateCodegenArtifactsFromSchema
+2026-10-09T19:14:11.9521062Z > Task :react-native-safe-area-context:preBuild
+2026-10-09T19:14:11.9521826Z > Task :react-native-async-storage_async-storage:mergeReleaseNativeLibs NO-SOURCE
+2026-10-09T19:14:11.9522434Z > Task :app:preBuild
+2026-10-09T19:14:11.9522796Z > Task :app:preReleaseBuild
+2026-10-09T19:14:11.9524041Z > Task :react-native-async-storage_async-storage:copyReleaseJniLibsProjectOnly
+2026-10-09T19:14:11.9524799Z > Task :react-native-safe-area-context:preReleaseBuild
+2026-10-09T19:14:13.0575181Z > Task :react-native-safe-area-context:mergeReleaseJniLibFolders
+2026-10-09T19:14:13.0586871Z > Task :react-native-safe-area-context:mergeReleaseNativeLibs NO-SOURCE
+2026-10-09T19:14:13.0615216Z > Task :react-native-safe-area-context:copyReleaseJniLibsProjectOnly
+2026-10-09T19:14:13.0686858Z > Task :react-native-safe-area-context:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:14:13.0724857Z > Task :react-native-safe-area-context:generateReleaseBuildConfig
+2026-10-09T19:14:13.0756014Z > Task :react-native-safe-area-context:generateReleaseResValues
+2026-10-09T19:14:13.0757023Z > Task :react-native-safe-area-context:generateReleaseResources
+2026-10-09T19:14:13.0784817Z > Task :react-native-safe-area-context:packageReleaseResources
+2026-10-09T19:14:13.1528585Z > Task :expo:parseReleaseLocalResources
+2026-10-09T19:14:13.1539736Z > Task :react-native-safe-area-context:parseReleaseLocalResources
+2026-10-09T19:14:13.1561351Z > Task :react-native-async-storage_async-storage:generateReleaseBuildConfig
+2026-10-09T19:14:13.1590814Z > Task :react-native-async-storage_async-storage:generateReleaseResValues
+2026-10-09T19:14:13.1624504Z > Task :react-native-safe-area-context:javaPreCompileRelease
+2026-10-09T19:14:13.1635394Z > Task :react-native-async-storage_async-storage:generateReleaseResources
+2026-10-09T19:14:13.2515510Z > Task :react-native-async-storage_async-storage:packageReleaseResources
+2026-10-09T19:14:13.2542498Z > Task :react-native-async-storage_async-storage:parseReleaseLocalResources
+2026-10-09T19:14:13.2543673Z > Task :react-native-safe-area-context:generateReleaseRFile
+2026-10-09T19:14:13.2544910Z > Task :react-native-async-storage_async-storage:generateReleaseRFile
+2026-10-09T19:14:13.2545896Z > Task :react-native-async-storage_async-storage:javaPreCompileRelease
+2026-10-09T19:14:13.7519877Z 
+2026-10-09T19:14:13.7545574Z > Task :expo-modules-core:configureCMakeRelWithDebInfo[arm64-v8a]
+2026-10-09T19:14:13.7554876Z Checking the license for package CMake 3.22.1 in /usr/local/lib/android/sdk/licenses
+2026-10-09T19:14:13.7555907Z License for package CMake 3.22.1 accepted.
+2026-10-09T19:14:13.7556694Z Preparing "Install CMake 3.22.1 v.3.22.1".
+2026-10-09T19:14:15.6507553Z "Install CMake 3.22.1 v.3.22.1" ready.
+2026-10-09T19:14:15.6515337Z Installing CMake 3.22.1 in /usr/local/lib/android/sdk/cmake/3.22.1
+2026-10-09T19:14:15.6516192Z "Install CMake 3.22.1 v.3.22.1" complete.
+2026-10-09T19:14:15.8555420Z "Install CMake 3.22.1 v.3.22.1" finished.
+2026-10-09T19:14:28.4544141Z Note: Some input files use or override a deprecated API.
+2026-10-09T19:14:28.4544954Z Note: Recompile with -Xlint:deprecation for details.
+2026-10-09T19:14:28.4545331Z 
+2026-10-09T19:14:28.4575914Z Note: /home/runner/work/movefield/movefield/mobile/node_modules/@react-native-async-storage/async-storage/android/src/javaPackage/java/com/reactnativecommunity/asyncstorage/AsyncStoragePackage.java uses unchecked or unsafe operations.
+2026-10-09T19:14:28.4614494Z Note: Recompile with -Xlint:unchecked for details.
+2026-10-09T19:14:28.4615188Z > Task :react-native-safe-area-context:compileReleaseKotlin
+2026-10-09T19:14:28.4617632Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/react-native-safe-area-context/android/src/main/java/com/th3rdwave/safeareacontext/SafeAreaProviderManager.kt:39:19 'fun getEventDispatcherForReactTag(context: ReactContext, reactTag: Int): EventDispatcher?' is deprecated. reactTag is no longer needed.
+2026-10-09T19:14:28.4647872Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/react-native-safe-area-context/android/src/main/java/com/th3rdwave/safeareacontext/SafeAreaView.kt:9:8 'class UIManagerModule : ReactContextBaseJavaModule, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
+2026-10-09T19:14:28.4650520Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/react-native-safe-area-context/android/src/main/java/com/th3rdwave/safeareacontext/SafeAreaView.kt:50:54 'class UIManagerModule : ReactContextBaseJavaModule, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
+2026-10-09T19:14:28.4652717Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/react-native-safe-area-context/android/src/main/java/com/th3rdwave/safeareacontext/SafeAreaView.kt:59:23 'val uiImplementation: UIImplementation!' is deprecated. Deprecated in Java.
+2026-10-09T19:14:28.4690365Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/react-native-safe-area-context/android/src/main/java/com/th3rdwave/safeareacontext/SafeAreaViewShadowNode.kt:9:32 'class LayoutShadowNode : ReactShadowNodeImpl' is deprecated. This class is part of Legacy Architecture and will be removed in a future release.
+2026-10-09T19:14:28.4746337Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/react-native-safe-area-context/android/src/main/java/com/th3rdwave/safeareacontext/SafeAreaViewShadowNode.kt:110:61 'class NativeViewHierarchyOptimizer : Any' is deprecated. This class is part of Legacy Architecture and will be removed in a future release.
+2026-10-09T19:14:28.4768677Z 
+2026-10-09T19:14:28.4771783Z > Task :react-native-async-storage_async-storage:compileReleaseJavaWithJavac
+2026-10-09T19:14:29.5527865Z 
+2026-10-09T19:14:29.5528851Z > Task :react-native-safe-area-context:compileReleaseJavaWithJavac
+2026-10-09T19:14:29.5529861Z > Task :react-native-async-storage_async-storage:bundleLibRuntimeToDirRelease
+2026-10-09T19:14:29.5530774Z > Task :react-native-safe-area-context:bundleLibRuntimeToDirRelease
+2026-10-09T19:14:30.9645433Z > Task :app:configureCMakeRelWithDebInfo[arm64-v8a]
+2026-10-09T19:14:32.0551342Z > Task :expo-constants:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:14:32.0655413Z > Task :expo-constants:generateReleaseBuildConfig
+2026-10-09T19:14:32.0691416Z > Task :expo-constants:generateReleaseResValues
+2026-10-09T19:14:32.1555088Z > Task :expo:generateReleaseRFile
+2026-10-09T19:14:32.1645164Z > Task :expo-dev-client:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:14:32.1702499Z > Task :expo-constants:generateReleaseResources
+2026-10-09T19:14:32.1758467Z > Task :expo-constants:packageReleaseResources
+2026-10-09T19:14:32.1764565Z > Task :expo-dev-client:dataBindingMergeDependencyArtifactsRelease
+2026-10-09T19:14:32.2529977Z > Task :expo-constants:parseReleaseLocalResources
+2026-10-09T19:14:32.2615232Z > Task :expo-constants:javaPreCompileRelease
+2026-10-09T19:14:32.2724927Z > Task :expo-dev-client:generateReleaseResValues
+2026-10-09T19:14:32.2779883Z > Task :expo-dev-client:generateReleaseResources
+2026-10-09T19:14:32.2864935Z > Task :expo-constants:generateReleaseRFile
+2026-10-09T19:14:32.2955977Z > Task :expo-dev-launcher:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:14:32.3518401Z > Task :expo-dev-client:packageReleaseResources
+2026-10-09T19:14:35.4545111Z > Task :expo-dev-client:parseReleaseLocalResources
+2026-10-09T19:14:35.6555351Z > Task :expo-dev-client:dataBindingGenBaseClassesRelease
+2026-10-09T19:14:35.6584601Z > Task :expo-dev-client:generateReleaseBuildConfig
+2026-10-09T19:14:36.0511901Z > Task :expo-dev-client:generateReleaseRFile
+2026-10-09T19:14:36.1521777Z > Task :expo-dev-client:javaPreCompileRelease
+2026-10-09T19:14:36.1615522Z > Task :expo-dev-menu:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:14:36.1664871Z > Task :expo-dev-menu:generateReleaseBuildConfig
+2026-10-09T19:14:36.1744877Z > Task :expo-dev-menu:generateReleaseResValues
+2026-10-09T19:14:36.1754480Z > Task :expo-dev-menu:generateReleaseResources
+2026-10-09T19:14:36.2507570Z > Task :expo-dev-menu:packageReleaseResources
+2026-10-09T19:14:36.2555087Z > Task :expo-dev-launcher:dataBindingMergeDependencyArtifactsRelease
+2026-10-09T19:14:36.2604897Z > Task :expo-dev-launcher:generateReleaseResValues
+2026-10-09T19:14:36.2668295Z > Task :expo-dev-menu:parseReleaseLocalResources
+2026-10-09T19:14:36.2694507Z > Task :expo-dev-launcher:generateReleaseResources
+2026-10-09T19:14:36.2695132Z > Task :expo-dev-launcher:packageReleaseResources
+2026-10-09T19:14:36.2754656Z > Task :expo-dev-menu:generateReleaseRFile
+2026-10-09T19:14:36.3580321Z > Task :expo-dev-menu:javaPreCompileRelease
+2026-10-09T19:14:36.3636507Z > Task :expo-dev-launcher:parseReleaseLocalResources
+2026-10-09T19:14:36.3664896Z > Task :expo-dev-menu-interface:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:14:36.3724873Z > Task :expo-dev-launcher:generateReleaseBuildConfig
+2026-10-09T19:14:36.3784837Z > Task :expo-dev-menu-interface:generateReleaseBuildConfig
+2026-10-09T19:14:36.3854879Z > Task :expo-dev-menu-interface:generateReleaseResValues
+2026-10-09T19:14:36.3864513Z > Task :expo-dev-menu-interface:generateReleaseResources
+2026-10-09T19:14:36.4515462Z > Task :expo-dev-menu-interface:packageReleaseResources
+2026-10-09T19:14:36.6545325Z > Task :expo-dev-menu-interface:parseReleaseLocalResources
+2026-10-09T19:14:36.8515337Z > Task :expo-dev-menu-interface:generateReleaseRFile
+2026-10-09T19:14:36.8555705Z > Task :expo-dev-menu-interface:javaPreCompileRelease
+2026-10-09T19:14:36.8603558Z > Task :expo-json-utils:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:14:36.8634646Z > Task :expo-json-utils:generateReleaseBuildConfig
+2026-10-09T19:14:36.8694582Z > Task :expo-json-utils:generateReleaseResValues
+2026-10-09T19:14:36.8724581Z > Task :expo-json-utils:generateReleaseResources
+2026-10-09T19:14:36.9536717Z > Task :expo-dev-launcher:dataBindingGenBaseClassesRelease
+2026-10-09T19:14:36.9614903Z > Task :expo-json-utils:packageReleaseResources
+2026-10-09T19:14:36.9640855Z > Task :expo-json-utils:parseReleaseLocalResources
+2026-10-09T19:14:36.9695024Z > Task :expo-dev-launcher:generateReleaseRFile
+2026-10-09T19:14:36.9734698Z > Task :expo-dev-launcher:javaPreCompileRelease
+2026-10-09T19:14:36.9784674Z > Task :expo-log-box:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:14:36.9824604Z > Task :expo-log-box:generateReleaseBuildConfig
+2026-10-09T19:14:36.9874529Z > Task :expo-json-utils:generateReleaseRFile
+2026-10-09T19:14:36.9903597Z > Task :expo-json-utils:javaPreCompileRelease
+2026-10-09T19:14:36.9954754Z > Task :expo-manifests:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:14:37.0512689Z > Task :expo-log-box:generateReleaseResValues
+2026-10-09T19:14:37.0575226Z > Task :expo-log-box:generateReleaseResources
+2026-10-09T19:14:37.0619956Z > Task :expo-manifests:generateReleaseBuildConfig
+2026-10-09T19:14:37.0642918Z > Task :expo-manifests:generateReleaseResValues
+2026-10-09T19:14:37.0695017Z > Task :expo-manifests:generateReleaseResources
+2026-10-09T19:14:37.0754557Z > Task :expo-log-box:packageReleaseResources
+2026-10-09T19:14:37.0784641Z > Task :expo-log-box:parseReleaseLocalResources
+2026-10-09T19:14:37.0817173Z > Task :expo-manifests:packageReleaseResources
+2026-10-09T19:14:37.1556004Z > Task :expo-manifests:parseReleaseLocalResources
+2026-10-09T19:14:37.1557386Z > Task :expo-log-box:generateReleaseRFile
+2026-10-09T19:14:37.1646696Z > Task :expo-log-box:javaPreCompileRelease
+2026-10-09T19:14:37.1674894Z > Task :expo-updates-interface:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:14:37.1764745Z > Task :expo-updates-interface:generateReleaseBuildConfig
+2026-10-09T19:14:37.1823174Z > Task :expo-manifests:generateReleaseRFile
+2026-10-09T19:14:37.1869446Z > Task :expo-updates-interface:generateReleaseResValues
+2026-10-09T19:14:37.1944683Z > Task :expo-manifests:javaPreCompileRelease
+2026-10-09T19:14:37.1994533Z > Task :expo:javaPreCompileRelease
+2026-10-09T19:14:37.2004360Z > Task :expo-updates-interface:generateReleaseResources
+2026-10-09T19:14:37.2066434Z > Task :expo-updates-interface:packageReleaseResources
+2026-10-09T19:14:37.2525150Z > Task :expo:writeReleaseAarMetadata
+2026-10-09T19:14:37.2584724Z > Task :expo-constants:writeReleaseAarMetadata
+2026-10-09T19:14:37.2614749Z > Task :expo-updates-interface:parseReleaseLocalResources
+2026-10-09T19:14:37.2664575Z > Task :expo-updates-interface:javaPreCompileRelease
+2026-10-09T19:14:37.2696111Z > Task :expo-dev-client:writeReleaseAarMetadata
+2026-10-09T19:14:37.2754562Z > Task :expo-updates-interface:generateReleaseRFile
+2026-10-09T19:14:37.2807157Z > Task :expo-dev-launcher:writeReleaseAarMetadata
+2026-10-09T19:14:37.2855211Z > Task :expo-dev-menu:writeReleaseAarMetadata
+2026-10-09T19:14:37.2917396Z > Task :expo-dev-menu-interface:writeReleaseAarMetadata
+2026-10-09T19:14:37.2974625Z > Task :expo-json-utils:writeReleaseAarMetadata
+2026-10-09T19:14:37.3014625Z > Task :expo-log-box:writeReleaseAarMetadata
+2026-10-09T19:14:37.3565084Z > Task :expo-manifests:writeReleaseAarMetadata
+2026-10-09T19:14:37.3587326Z > Task :expo-updates-interface:writeReleaseAarMetadata
+2026-10-09T19:14:37.3624813Z > Task :react-native-async-storage_async-storage:writeReleaseAarMetadata
+2026-10-09T19:14:37.3684837Z > Task :react-native-safe-area-context:writeReleaseAarMetadata
+2026-10-09T19:14:37.3714549Z > Task :expo:extractDeepLinksRelease
+2026-10-09T19:14:37.3774708Z > Task :expo-constants:extractDeepLinksRelease
+2026-10-09T19:14:37.5517540Z > Task :expo-constants:processReleaseManifest
+2026-10-09T19:14:37.6555740Z > Task :expo-dev-client:extractDeepLinksRelease
+2026-10-09T19:14:37.6594817Z > Task :expo:processReleaseManifest
+2026-10-09T19:14:37.6659152Z > Task :expo-dev-launcher:extractDeepLinksRelease
+2026-10-09T19:14:37.6684756Z > Task :expo-dev-client:processReleaseManifest
+2026-10-09T19:14:37.6764766Z > Task :expo-dev-menu:extractDeepLinksRelease
+2026-10-09T19:14:37.6833481Z > Task :expo-dev-launcher:processReleaseManifest
+2026-10-09T19:14:37.6853027Z > Task :expo-dev-menu-interface:extractDeepLinksRelease
+2026-10-09T19:14:37.6904617Z > Task :expo-dev-menu:processReleaseManifest
+2026-10-09T19:14:37.6933526Z > Task :expo-json-utils:extractDeepLinksRelease
+2026-10-09T19:14:37.6976169Z > Task :expo-dev-menu-interface:processReleaseManifest
+2026-10-09T19:14:37.7515731Z > Task :expo-log-box:extractDeepLinksRelease
+2026-10-09T19:14:37.7578747Z > Task :expo-json-utils:processReleaseManifest
+2026-10-09T19:14:37.7604786Z > Task :expo-manifests:extractDeepLinksRelease
+2026-10-09T19:14:37.7658762Z > Task :expo-log-box:processReleaseManifest
+2026-10-09T19:14:37.7714890Z > Task :expo-updates-interface:extractDeepLinksRelease
+2026-10-09T19:14:37.7763049Z > Task :expo-updates-interface:processReleaseManifest
+2026-10-09T19:14:37.8528848Z > Task :react-native-async-storage_async-storage:extractDeepLinksRelease
+2026-10-09T19:14:37.8564863Z > Task :expo-manifests:processReleaseManifest
+2026-10-09T19:14:37.8615616Z > Task :react-native-safe-area-context:extractDeepLinksRelease
+2026-10-09T19:14:37.8644377Z 
+2026-10-09T19:14:37.8705025Z > Task :react-native-async-storage_async-storage:processReleaseManifest
+2026-10-09T19:14:37.8735929Z package="com.reactnativecommunity.asyncstorage" found in source AndroidManifest.xml: /home/runner/work/movefield/movefield/mobile/node_modules/@react-native-async-storage/async-storage/android/src/main/AndroidManifest.xml.
+2026-10-09T19:14:37.8795170Z Setting the namespace via the package attribute in the source AndroidManifest.xml is no longer supported, and the value is ignored.
+2026-10-09T19:14:37.8825910Z Recommendation: remove package="com.reactnativecommunity.asyncstorage" from the source AndroidManifest.xml: /home/runner/work/movefield/movefield/mobile/node_modules/@react-native-async-storage/async-storage/android/src/main/AndroidManifest.xml.
+2026-10-09T19:14:37.8884272Z 
+2026-10-09T19:14:37.8914858Z > Task :react-native-safe-area-context:processReleaseManifest
+2026-10-09T19:14:37.8955661Z package="com.th3rdwave.safeareacontext" found in source AndroidManifest.xml: /home/runner/work/movefield/movefield/mobile/node_modules/react-native-safe-area-context/android/src/main/AndroidManifest.xml.
+2026-10-09T19:14:37.9005103Z Setting the namespace via the package attribute in the source AndroidManifest.xml is no longer supported, and the value is ignored.
+2026-10-09T19:14:37.9038716Z Recommendation: remove package="com.th3rdwave.safeareacontext" from the source AndroidManifest.xml: /home/runner/work/movefield/movefield/mobile/node_modules/react-native-safe-area-context/android/src/main/AndroidManifest.xml.
+2026-10-09T19:14:38.9546084Z 
+2026-10-09T19:14:38.9605346Z > Task :expo-constants:compileReleaseLibraryResources
+2026-10-09T19:14:38.9731840Z > Task :expo:compileReleaseLibraryResources
+2026-10-09T19:14:38.9814954Z > Task :expo-dev-client:compileReleaseLibraryResources
+2026-10-09T19:14:38.9875053Z > Task :expo-dev-launcher:compileReleaseLibraryResources
+2026-10-09T19:14:38.9985181Z > Task :expo-dev-menu-interface:compileReleaseLibraryResources
+2026-10-09T19:14:39.0535269Z > Task :expo-dev-menu:compileReleaseLibraryResources
+2026-10-09T19:14:39.0685386Z > Task :expo-log-box:compileReleaseLibraryResources
+2026-10-09T19:14:39.0766717Z > Task :expo-json-utils:compileReleaseLibraryResources
+2026-10-09T19:14:39.0825009Z > Task :expo-manifests:compileReleaseLibraryResources
+2026-10-09T19:14:39.0945112Z > Task :expo-updates-interface:compileReleaseLibraryResources
+2026-10-09T19:14:39.1035251Z > Task :react-native-safe-area-context:compileReleaseLibraryResources
+2026-10-09T19:14:39.1558632Z > Task :react-native-async-storage_async-storage:compileReleaseLibraryResources
+2026-10-09T19:14:39.2535556Z > Task :react-native-async-storage_async-storage:bundleLibCompileToJarRelease
+2026-10-09T19:14:39.2598716Z > Task :expo:prepareReleaseArtProfile
+2026-10-09T19:14:39.2735455Z > Task :react-native-safe-area-context:bundleLibCompileToJarRelease
+2026-10-09T19:14:39.2818330Z > Task :expo-constants:prepareReleaseArtProfile
+2026-10-09T19:14:39.2874967Z > Task :expo-dev-client:prepareReleaseArtProfile
+2026-10-09T19:14:39.2945030Z > Task :expo-dev-launcher:prepareReleaseArtProfile
+2026-10-09T19:14:39.3014795Z > Task :expo-dev-menu:prepareReleaseArtProfile
+2026-10-09T19:14:39.3074893Z > Task :expo-dev-menu-interface:prepareReleaseArtProfile
+2026-10-09T19:14:39.3124730Z > Task :expo-json-utils:prepareReleaseArtProfile
+2026-10-09T19:14:39.3194754Z > Task :expo-manifests:prepareReleaseArtProfile
+2026-10-09T19:14:39.3264781Z > Task :expo-log-box:prepareReleaseArtProfile
+2026-10-09T19:14:39.3585203Z > Task :expo-updates-interface:prepareReleaseArtProfile
+2026-10-09T19:14:39.3675095Z > Task :react-native-async-storage_async-storage:prepareReleaseArtProfile
+2026-10-09T19:14:39.3734944Z > Task :react-native-safe-area-context:prepareReleaseArtProfile
+2026-10-09T19:14:39.4575643Z > Task :react-native-async-storage_async-storage:bundleLibRuntimeToJarRelease
+2026-10-09T19:14:39.4655392Z > Task :react-native-safe-area-context:bundleLibRuntimeToJarRelease
+2026-10-09T19:14:41.1615228Z > Task :expo:mergeReleaseShaders
+2026-10-09T19:14:41.1644896Z > Task :expo-constants:mergeReleaseShaders
+2026-10-09T19:14:41.1666373Z > Task :expo:compileReleaseShaders NO-SOURCE
+2026-10-09T19:14:41.1716589Z > Task :expo:generateReleaseAssets UP-TO-DATE
+2026-10-09T19:14:41.1825142Z > Task :expo-constants:compileReleaseShaders NO-SOURCE
+2026-10-09T19:14:41.1844722Z > Task :expo:mergeReleaseAssets
+2026-10-09T19:14:41.1845376Z > Task :expo-constants:generateReleaseAssets UP-TO-DATE
+2026-10-09T19:14:41.2515099Z > Task :expo-dev-client:mergeReleaseShaders
+2026-10-09T19:14:41.2645224Z > Task :expo-dev-client:compileReleaseShaders NO-SOURCE
+2026-10-09T19:14:41.2725264Z > Task :expo-dev-client:generateReleaseAssets UP-TO-DATE
+2026-10-09T19:14:41.2784909Z > Task :expo-constants:mergeReleaseAssets
+2026-10-09T19:14:41.3537214Z > Task :expo-dev-client:mergeReleaseAssets
+2026-10-09T19:14:41.3594962Z > Task :expo-dev-launcher:mergeReleaseShaders
+2026-10-09T19:14:41.3725168Z > Task :expo-dev-launcher:compileReleaseShaders NO-SOURCE
+2026-10-09T19:14:41.3805079Z > Task :expo-dev-launcher:generateReleaseAssets UP-TO-DATE
+2026-10-09T19:14:41.3930344Z > Task :expo-dev-menu:mergeReleaseShaders
+2026-10-09T19:14:41.3978610Z > Task :expo-dev-launcher:mergeReleaseAssets
+2026-10-09T19:14:41.4115187Z > Task :expo-dev-menu:compileReleaseShaders NO-SOURCE
+2026-10-09T19:14:41.4195196Z > Task :expo-dev-menu:generateReleaseAssets UP-TO-DATE
+2026-10-09T19:14:41.4545096Z > Task :expo-dev-menu:mergeReleaseAssets
+2026-10-09T19:14:41.4667170Z > Task :expo-dev-menu-interface:mergeReleaseShaders
+2026-10-09T19:14:41.4785257Z > Task :expo-dev-menu-interface:compileReleaseShaders NO-SOURCE
+2026-10-09T19:14:41.4804909Z > Task :expo-dev-menu-interface:generateReleaseAssets UP-TO-DATE
+2026-10-09T19:14:41.4905014Z > Task :expo-json-utils:mergeReleaseShaders
+2026-10-09T19:14:41.5050938Z > Task :expo-dev-menu-interface:mergeReleaseAssets
+2026-10-09T19:14:41.5215310Z > Task :expo-json-utils:compileReleaseShaders NO-SOURCE
+2026-10-09T19:14:41.5284961Z > Task :expo-json-utils:generateReleaseAssets UP-TO-DATE
+2026-10-09T19:14:41.5395006Z > Task :expo-log-box:mergeReleaseShaders
+2026-10-09T19:14:41.5456113Z > Task :expo-json-utils:mergeReleaseAssets
+2026-10-09T19:14:41.5524921Z > Task :expo-log-box:compileReleaseShaders NO-SOURCE
+2026-10-09T19:14:41.5556459Z > Task :expo-log-box:generateReleaseAssets UP-TO-DATE
+2026-10-09T19:14:41.5666762Z > Task :expo-manifests:mergeReleaseShaders
+2026-10-09T19:14:41.5736172Z > Task :expo-log-box:mergeReleaseAssets
+2026-10-09T19:14:41.5821380Z > Task :expo-manifests:compileReleaseShaders NO-SOURCE
+2026-10-09T19:14:41.5867040Z > Task :expo-manifests:generateReleaseAssets UP-TO-DATE
+2026-10-09T19:14:41.5947916Z > Task :expo-updates-interface:mergeReleaseShaders
+2026-10-09T19:14:41.6042970Z > Task :expo-manifests:mergeReleaseAssets
+2026-10-09T19:14:41.6165121Z > Task :expo-updates-interface:compileReleaseShaders NO-SOURCE
+2026-10-09T19:14:41.6195189Z > Task :expo-updates-interface:generateReleaseAssets UP-TO-DATE
+2026-10-09T19:14:41.6242798Z > Task :react-native-async-storage_async-storage:mergeReleaseShaders
+2026-10-09T19:14:41.6314868Z > Task :expo-updates-interface:mergeReleaseAssets
+2026-10-09T19:14:41.6436747Z > Task :react-native-async-storage_async-storage:compileReleaseShaders NO-SOURCE
+2026-10-09T19:14:41.6509491Z > Task :react-native-async-storage_async-storage:generateReleaseAssets UP-TO-DATE
+2026-10-09T19:14:41.6658196Z > Task :react-native-safe-area-context:mergeReleaseShaders
+2026-10-09T19:14:41.6705108Z > Task :react-native-async-storage_async-storage:mergeReleaseAssets
+2026-10-09T19:14:41.6779225Z > Task :react-native-safe-area-context:compileReleaseShaders NO-SOURCE
+2026-10-09T19:14:41.6848652Z > Task :react-native-safe-area-context:generateReleaseAssets UP-TO-DATE
+2026-10-09T19:14:41.6939286Z > Task :react-native-safe-area-context:mergeReleaseAssets
+2026-10-09T19:14:41.6994954Z > Task :expo:extractProguardFiles
+2026-10-09T19:14:41.7145482Z > Task :expo-constants:extractProguardFiles
+2026-10-09T19:14:41.7234983Z > Task :expo-dev-client:extractProguardFiles
+2026-10-09T19:14:41.7349404Z > Task :expo-dev-client:prepareLintJarForPublish
+2026-10-09T19:14:41.7425034Z > Task :expo-constants:prepareLintJarForPublish
+2026-10-09T19:14:41.7499815Z > Task :expo-dev-launcher:extractProguardFiles
+2026-10-09T19:14:41.7605377Z > Task :expo-dev-launcher:prepareLintJarForPublish
+2026-10-09T19:14:41.7644762Z > Task :expo-dev-menu:extractProguardFiles
+2026-10-09T19:14:41.7735304Z > Task :expo-dev-menu:prepareLintJarForPublish
+2026-10-09T19:14:41.7824959Z > Task :expo-dev-menu-interface:extractProguardFiles
+2026-10-09T19:14:41.7907353Z > Task :expo-json-utils:extractProguardFiles
+2026-10-09T19:14:41.8015105Z > Task :expo-dev-menu-interface:prepareLintJarForPublish
+2026-10-09T19:14:41.8074841Z > Task :expo-json-utils:prepareLintJarForPublish
+2026-10-09T19:14:41.8185016Z > Task :expo-manifests:extractProguardFiles
+2026-10-09T19:14:41.8235804Z > Task :expo-log-box:extractProguardFiles
+2026-10-09T19:14:41.8335023Z > Task :expo-log-box:prepareLintJarForPublish
+2026-10-09T19:14:41.8437684Z > Task :expo-manifests:prepareLintJarForPublish
+2026-10-09T19:14:41.8535083Z > Task :expo-updates-interface:extractProguardFiles
+2026-10-09T19:14:41.8584821Z > Task :expo:prepareLintJarForPublish
+2026-10-09T19:14:41.8695027Z > Task :expo-updates-interface:prepareLintJarForPublish
+2026-10-09T19:14:41.8785223Z > Task :react-native-async-storage_async-storage:processReleaseJavaRes NO-SOURCE
+2026-10-09T19:14:41.8786757Z > Task :react-native-async-storage_async-storage:createFullJarRelease
+2026-10-09T19:14:41.8787517Z > Task :react-native-safe-area-context:processReleaseJavaRes
+2026-10-09T19:14:41.8788268Z > Task :react-native-async-storage_async-storage:extractProguardFiles
+2026-10-09T19:14:41.8789066Z > Task :react-native-safe-area-context:createFullJarRelease
+2026-10-09T19:14:41.8985104Z > Task :react-native-safe-area-context:extractProguardFiles
+2026-10-09T19:14:57.9527680Z > Task :react-native-safe-area-context:generateReleaseLintModel
+2026-10-09T19:14:57.9528900Z > Task :react-native-safe-area-context:prepareLintJarForPublish
+2026-10-09T19:14:57.9609729Z > Task :react-native-async-storage_async-storage:generateReleaseLintModel
+2026-10-09T19:14:57.9695460Z > Task :react-native-safe-area-context:stripReleaseDebugSymbols NO-SOURCE
+2026-10-09T19:14:58.0514684Z > Task :react-native-async-storage_async-storage:prepareLintJarForPublish
+2026-10-09T19:14:58.0575285Z > Task :react-native-safe-area-context:copyReleaseJniLibsProjectAndLocalJars
+2026-10-09T19:14:58.0635361Z > Task :react-native-async-storage_async-storage:stripReleaseDebugSymbols NO-SOURCE
+2026-10-09T19:14:58.0725724Z > Task :react-native-safe-area-context:extractDeepLinksForAarRelease
+2026-10-09T19:14:58.0785065Z > Task :react-native-async-storage_async-storage:copyReleaseJniLibsProjectAndLocalJars
+2026-10-09T19:14:58.0825163Z > Task :react-native-async-storage_async-storage:extractDeepLinksForAarRelease
+2026-10-09T19:15:00.8595353Z > Task :expo-modules-core:buildCMakeRelWithDebInfo[arm64-v8a]
+2026-10-09T19:15:00.9535183Z > Task :app:buildCMakeRelWithDebInfo[arm64-v8a]
+2026-10-09T19:15:10.3525038Z > Task :app:mergeReleaseJniLibFolders
+2026-10-09T19:15:12.6525268Z > Task :react-native-safe-area-context:extractReleaseAnnotations
+2026-10-09T19:15:12.6526548Z > Task :react-native-async-storage_async-storage:extractReleaseAnnotations
+2026-10-09T19:15:12.6554828Z > Task :react-native-safe-area-context:mergeReleaseGeneratedProguardFiles
+2026-10-09T19:15:12.6584987Z > Task :react-native-async-storage_async-storage:mergeReleaseGeneratedProguardFiles
+2026-10-09T19:15:12.6586187Z > Task :react-native-async-storage_async-storage:mergeReleaseConsumerProguardFiles
+2026-10-09T19:15:12.6614732Z > Task :react-native-safe-area-context:mergeReleaseConsumerProguardFiles
+2026-10-09T19:15:12.9515452Z > Task :react-native-safe-area-context:mergeReleaseJavaResource
+2026-10-09T19:15:12.9544835Z > Task :react-native-safe-area-context:syncReleaseLibJars
+2026-10-09T19:15:12.9557295Z > Task :react-native-safe-area-context:bundleReleaseLocalLintAar
+2026-10-09T19:15:13.0525174Z > Task :expo:stripReleaseDebugSymbols NO-SOURCE
+2026-10-09T19:15:13.5513075Z > Task :react-native-async-storage_async-storage:mergeReleaseJavaResource
+2026-10-09T19:15:13.5554983Z > Task :react-native-async-storage_async-storage:syncReleaseLibJars
+2026-10-09T19:15:13.5584744Z > Task :react-native-async-storage_async-storage:bundleReleaseLocalLintAar
+2026-10-09T19:15:13.5621843Z > Task :expo:extractDeepLinksForAarRelease
+2026-10-09T19:15:13.5644458Z > Task :expo-log-box:stripReleaseDebugSymbols NO-SOURCE
+2026-10-09T19:15:13.5674442Z > Task :expo-log-box:copyReleaseJniLibsProjectAndLocalJars
+2026-10-09T19:15:13.5675284Z > Task :expo:copyReleaseJniLibsProjectAndLocalJars
+2026-10-09T19:15:13.5704433Z > Task :expo-log-box:extractDeepLinksForAarRelease
+2026-10-09T19:15:13.5734535Z > Task :expo-dev-launcher:stripReleaseDebugSymbols NO-SOURCE
+2026-10-09T19:15:13.5764625Z > Task :expo-dev-menu-interface:stripReleaseDebugSymbols NO-SOURCE
+2026-10-09T19:15:13.5765669Z > Task :expo-dev-menu-interface:copyReleaseJniLibsProjectAndLocalJars
+2026-10-09T19:15:13.5794533Z > Task :expo-dev-launcher:copyReleaseJniLibsProjectAndLocalJars
+2026-10-09T19:15:13.5801288Z > Task :expo-dev-menu-interface:extractDeepLinksForAarRelease
+2026-10-09T19:15:13.5807084Z > Task :expo-constants:stripReleaseDebugSymbols NO-SOURCE
+2026-10-09T19:15:13.5834606Z > Task :expo-dev-launcher:extractDeepLinksForAarRelease
+2026-10-09T19:15:13.5842513Z > Task :expo-dev-client:stripReleaseDebugSymbols NO-SOURCE
+2026-10-09T19:15:13.5846474Z > Task :expo-constants:copyReleaseJniLibsProjectAndLocalJars
+2026-10-09T19:15:13.5847274Z > Task :expo-constants:extractDeepLinksForAarRelease
+2026-10-09T19:15:13.5871888Z > Task :expo-dev-client:extractDeepLinksForAarRelease
+2026-10-09T19:15:13.5894483Z > Task :expo-dev-client:copyReleaseJniLibsProjectAndLocalJars
+2026-10-09T19:15:13.5904643Z > Task :expo-dev-menu:stripReleaseDebugSymbols NO-SOURCE
+2026-10-09T19:15:13.5934569Z > Task :expo-manifests:stripReleaseDebugSymbols NO-SOURCE
+2026-10-09T19:15:13.5964442Z > Task :expo-dev-menu:copyReleaseJniLibsProjectAndLocalJars
+2026-10-09T19:15:13.5994462Z > Task :expo-manifests:copyReleaseJniLibsProjectAndLocalJars
+2026-10-09T19:15:13.5995290Z > Task :expo-manifests:extractDeepLinksForAarRelease
+2026-10-09T19:15:13.6034037Z > Task :expo-json-utils:stripReleaseDebugSymbols NO-SOURCE
+2026-10-09T19:15:13.6064434Z > Task :expo-dev-menu:extractDeepLinksForAarRelease
+2026-10-09T19:15:13.6094730Z > Task :expo-json-utils:copyReleaseJniLibsProjectAndLocalJars
+2026-10-09T19:15:13.6124393Z > Task :expo-json-utils:extractDeepLinksForAarRelease
+2026-10-09T19:15:13.6177231Z > Task :expo-updates-interface:stripReleaseDebugSymbols NO-SOURCE
+2026-10-09T19:15:13.6204537Z > Task :expo-updates-interface:copyReleaseJniLibsProjectAndLocalJars
+2026-10-09T19:15:13.6229217Z > Task :expo-constants:writeReleaseLintModelMetadata
+2026-10-09T19:15:13.6254438Z > Task :expo-updates-interface:extractDeepLinksForAarRelease
+2026-10-09T19:15:13.6284386Z > Task :expo-dev-launcher:writeReleaseLintModelMetadata
+2026-10-09T19:15:13.6314315Z > Task :expo-dev-client:writeReleaseLintModelMetadata
+2026-10-09T19:15:13.6344384Z > Task :expo-dev-menu:writeReleaseLintModelMetadata
+2026-10-09T19:15:13.6544790Z > Task :expo-dev-menu-interface:writeReleaseLintModelMetadata
+2026-10-09T19:15:13.6574476Z > Task :expo-json-utils:writeReleaseLintModelMetadata
+2026-10-09T19:15:13.6604385Z > Task :expo-log-box:writeReleaseLintModelMetadata
+2026-10-09T19:15:13.6633727Z > Task :expo-manifests:writeReleaseLintModelMetadata
+2026-10-09T19:15:13.6634536Z > Task :expo-updates-interface:writeReleaseLintModelMetadata
+2026-10-09T19:15:13.6635055Z > Task :expo:writeReleaseLintModelMetadata
+2026-10-09T19:15:14.1507094Z 
+2026-10-09T19:15:14.1515033Z > Task :expo-modules-core:buildCMakeRelWithDebInfo[arm64-v8a]
+2026-10-09T19:15:14.1545698Z C/C++: ninja: Entering directory `/home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/.cxx/RelWithDebInfo/5a63o4e2/arm64-v8a'
+2026-10-09T19:15:14.1570409Z C/C++: /home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/cpp/fabric/ExpoComponentDescriptorFactory.cpp:17:5: warning: 'RawPropsParser' is deprecated [-Wdeprecated-declarations]
+2026-10-09T19:15:14.1594717Z C/C++:    17 |     react::RawPropsParser(/*useRawPropsJsiValue=*/true)
+2026-10-09T19:15:14.1602375Z C/C++:       |     ^
+2026-10-09T19:15:14.1626053Z C/C++: /home/runner/.gradle/caches/9.3.1/transforms/2632d6d2d8d86a67264f1929d6ca7219/transformed/react-android-0.86.3-release/prefab/modules/reactnative/include/react/renderer/core/RawPropsParser.h:31:5: note: 'RawPropsParser' has been explicitly marked deprecated here
+2026-10-09T19:15:14.1654838Z C/C++:    31 |   [[deprecated]] explicit RawPropsParser(bool /* ignored */) : RawPropsParser() {}
+2026-10-09T19:15:14.1674261Z C/C++:       |     ^
+2026-10-09T19:15:14.1714421Z C/C++: 1 warning generated.
+2026-10-09T19:15:15.1544333Z 
+2026-10-09T19:15:15.1575157Z > Task :expo-modules-core:mergeReleaseJniLibFolders
+2026-10-09T19:15:15.3535224Z > Task :expo-modules-core:mergeReleaseNativeLibs
+2026-10-09T19:15:15.9564387Z > Task :expo-modules-core:copyReleaseJniLibsProjectOnly
+2026-10-09T19:15:17.4513945Z > Task :app:checkReleaseDuplicateClasses
+2026-10-09T19:15:17.4545675Z > Task :expo-modules-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:15:17.4603212Z > Task :expo-modules-core:generateReleaseBuildConfig
+2026-10-09T19:15:17.4645591Z > Task :expo-modules-core:generateReleaseResValues
+2026-10-09T19:15:17.4688824Z > Task :expo-modules-core:generateReleaseResources
+2026-10-09T19:15:17.4734447Z > Task :expo-modules-core:packageReleaseResources
+2026-10-09T19:15:17.4754583Z > Task :expo-modules-core:parseReleaseLocalResources
+2026-10-09T19:15:17.4756016Z > Task :expo-modules-core:generateReleaseRFile
+2026-10-09T19:15:18.7525143Z > Task :app:mergeReleaseNativeLibs
+2026-10-09T19:15:20.7526826Z > Task :app:stripReleaseDebugSymbols
+2026-10-09T19:15:21.1555320Z > Task :app:extractReleaseNativeSymbolTables
+2026-10-09T19:15:22.2525021Z > Task :app:mergeReleaseNativeDebugMetadata
+2026-10-09T19:15:22.2552240Z > Task :expo-modules-core:javaPreCompileRelease
+2026-10-09T19:15:22.2561442Z > Task :app:buildKotlinToolingMetadata
+2026-10-09T19:15:22.2585644Z > Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-10-09T19:15:22.3537875Z > Task :app:generateReleaseBuildConfig
+2026-10-09T19:15:22.3590965Z > Task :expo-modules-core:writeReleaseAarMetadata
+2026-10-09T19:15:23.0530206Z > Task :app:checkReleaseAarMetadata
+2026-10-09T19:15:25.0526082Z 
+2026-10-09T19:15:25.0615158Z > Task :app:createBundleReleaseJsAndAssets
+2026-10-09T19:15:25.0702860Z Starting Metro Bundler
+2026-10-09T19:15:25.0734055Z 
+2026-10-09T19:15:37.4534681Z 
+2026-10-09T19:15:37.4540891Z > Task :react-native-async-storage_async-storage:lintVitalAnalyzeRelease
+2026-10-09T19:15:37.4589302Z > Task :expo-modules-core:extractDeepLinksRelease
+2026-10-09T19:15:37.4644376Z 
+2026-10-09T19:15:37.4705102Z > Task :expo-modules-core:processReleaseManifest
+2026-10-09T19:15:37.4735610Z /home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/AndroidManifest.xml:8:9-11:45 Warning:
+2026-10-09T19:15:37.4765055Z 	meta-data#com.facebook.soloader.enabled@android:value was tagged at AndroidManifest.xml:8 to replace other declarations but no other declaration present
+2026-10-09T19:15:37.5514487Z 
+2026-10-09T19:15:37.5555122Z > Task :expo-modules-core:compileReleaseLibraryResources
+2026-10-09T19:15:37.5674177Z > Task :expo-modules-core:prepareReleaseArtProfile
+2026-10-09T19:15:37.5704674Z > Task :expo-modules-core:mergeReleaseShaders
+2026-10-09T19:15:37.5764954Z > Task :expo-modules-core:compileReleaseShaders NO-SOURCE
+2026-10-09T19:15:37.5804632Z > Task :expo-modules-core:generateReleaseAssets UP-TO-DATE
+2026-10-09T19:15:37.5825543Z > Task :expo-modules-core:mergeReleaseAssets
+2026-10-09T19:15:37.5934996Z > Task :expo-modules-core:extractProguardFiles
+2026-10-09T19:15:37.5981972Z > Task :expo-modules-core:prepareLintJarForPublish
+2026-10-09T19:15:37.6536904Z > Task :expo-modules-core:stripReleaseDebugSymbols
+2026-10-09T19:15:37.6617970Z > Task :expo-modules-core:copyReleaseJniLibsProjectAndLocalJars
+2026-10-09T19:15:37.6705098Z > Task :expo-modules-core:extractDeepLinksForAarRelease
+2026-10-09T19:15:37.6785154Z > Task :expo-modules-core:writeReleaseLintModelMetadata
+2026-10-09T19:15:37.6824987Z > Task :react-native-async-storage_async-storage:writeReleaseLintModelMetadata
+2026-10-09T19:15:37.6893533Z > Task :react-native-safe-area-context:writeReleaseLintModelMetadata
+2026-10-09T19:15:37.7584617Z > Task :react-native-async-storage_async-storage:generateReleaseLintVitalModel
+2026-10-09T19:15:37.7645396Z > Task :react-native-safe-area-context:generateReleaseLintVitalModel
+2026-10-09T19:15:38.2605513Z The Daemon will expire after the build after running out of JVM Metaspace.
+2026-10-09T19:15:38.2675241Z The project memory settings are likely not configured or are configured to an insufficient value.
+2026-10-09T19:15:38.2705216Z The daemon will restart for the next build, which may increase subsequent build times.
+2026-10-09T19:15:38.2765127Z These settings can be adjusted by setting 'org.gradle.jvmargs' in 'gradle.properties'.
+2026-10-09T19:15:38.2804854Z The currently configured max heap space is '2 GiB' and the configured max metaspace is '512 MiB'.
+2026-10-09T19:15:38.2825583Z For more information on how to set these values, please refer to https://docs.gradle.org/9.3.1/userguide/build_environment.html#sec:configuring_jvm_memory in the Gradle documentation.
+2026-10-09T19:15:38.2895034Z To disable this warning, set 'org.gradle.daemon.performance.disable-logging=true'.
+2026-10-09T19:15:42.8506566Z > Task :react-native-safe-area-context:lintVitalAnalyzeRelease
+2026-10-09T19:15:47.4506591Z > Task :expo-modules-core:compileReleaseKotlin
+2026-10-09T19:15:55.1564297Z 
+2026-10-09T19:15:55.1580730Z > Task :app:createBundleReleaseJsAndAssets
+2026-10-09T19:15:55.1652099Z Android Bundled 24741ms index.ts (824 modules)
+2026-10-09T19:15:55.1728074Z Writing bundle output to: /home/runner/work/movefield/movefield/mobile/android/app/build/generated/assets/react/release/index.android.bundle
+2026-10-09T19:15:55.1820563Z Writing sourcemap output to: /home/runner/work/movefield/movefield/mobile/android/app/build/intermediates/sourcemaps/react/release/index.android.bundle.packager.map
+2026-10-09T19:15:55.1894707Z Copying 12 asset files
+2026-10-09T19:15:55.1938034Z Done writing bundle output
+2026-10-09T19:15:55.1977702Z Done writing sourcemap output
+2026-10-09T19:15:56.9527791Z 
+2026-10-09T19:15:56.9582687Z > Task :react-native-async-storage_async-storage:lintAnalyzeRelease
+2026-10-09T19:15:56.9644728Z > Task :expo:preReleaseUnitTestBuild
+2026-10-09T19:15:56.9695392Z > Task :expo-constants:preReleaseUnitTestBuild
+2026-10-09T19:15:56.9754800Z > Task :expo-dev-client:preReleaseUnitTestBuild UP-TO-DATE
+2026-10-09T19:15:56.9806018Z > Task :expo-dev-launcher:preReleaseUnitTestBuild UP-TO-DATE
+2026-10-09T19:15:56.9873147Z > Task :expo-dev-menu:preReleaseUnitTestBuild UP-TO-DATE
+2026-10-09T19:15:56.9904688Z > Task :expo-dev-menu-interface:preReleaseUnitTestBuild UP-TO-DATE
+2026-10-09T19:15:56.9924711Z > Task :expo-json-utils:preReleaseUnitTestBuild UP-TO-DATE
+2026-10-09T19:15:56.9994939Z > Task :expo-log-box:preReleaseUnitTestBuild UP-TO-DATE
+2026-10-09T19:15:57.0024679Z > Task :expo-manifests:preReleaseUnitTestBuild UP-TO-DATE
+2026-10-09T19:15:57.0102119Z > Task :expo-modules-core:preReleaseUnitTestBuild UP-TO-DATE
+2026-10-09T19:15:57.0139780Z > Task :expo-updates-interface:preReleaseUnitTestBuild UP-TO-DATE
+2026-10-09T19:15:57.0164682Z > Task :react-native-async-storage_async-storage:preReleaseUnitTestBuild
+2026-10-09T19:15:57.0525378Z > Task :react-native-async-storage_async-storage:generateReleaseUnitTestLintModel
+2026-10-09T19:16:00.6515307Z > Task :react-native-async-storage_async-storage:lintAnalyzeReleaseUnitTest
+2026-10-09T19:16:00.6605435Z > Task :react-native-safe-area-context:preReleaseUnitTestBuild
+2026-10-09T19:16:00.7535625Z > Task :react-native-safe-area-context:generateReleaseUnitTestLintModel
+2026-10-09T19:16:01.2515208Z > Task :react-native-safe-area-context:lintAnalyzeReleaseUnitTest
+2026-10-09T19:16:04.6521625Z > Task :react-native-safe-area-context:lintAnalyzeRelease
+2026-10-09T19:16:06.2507705Z 
+2026-10-09T19:16:06.2527039Z > Task :expo-modules-core:compileReleaseKotlin
+2026-10-09T19:16:06.2550686Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/java/expo/modules/apploader/AppLoaderProvider.kt:34:52 Unchecked cast of 'Class<*>!' to 'Class<out HeadlessAppLoader>'.
+2026-10-09T19:16:06.2575819Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/AppContext.kt:14:8 'class UIManagerModule : ReactContextBaseJavaModule, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
+2026-10-09T19:16:06.2604053Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/AppContext.kt:22:8 'typealias ErrorManagerModule = JSLoggerModule' is deprecated. Use JSLoggerModule instead.
+2026-10-09T19:16:06.2630656Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/AppContext.kt:61:13 'val hostingRuntimeContext: MainRuntime' is deprecated. Use AppContext.runtimeContext instead.
+2026-10-09T19:16:06.2656421Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/AppContext.kt:271:21 'typealias ErrorManagerModule = JSLoggerModule' is deprecated. Use JSLoggerModule instead.
+2026-10-09T19:16:06.2685764Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/AppContext.kt:380:21 'val DEFAULT: Int' is deprecated. UIManagerType.DEFAULT will be deleted in the next release of React Native. Use [LEGACY] instead.
+2026-10-09T19:16:06.2713246Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/AppContext.kt:381:10 'class UIManagerModule : ReactContextBaseJavaModule, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
+2026-10-09T19:16:06.2717034Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/defaultmodules/NativeModulesProxyModule.kt:16:5 'fun Constants(legacyConstantsProvider: () -> Map<String, Any?>): Unit' is deprecated. Use `Constant` or `Property` instead.
+2026-10-09T19:16:06.2721588Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/events/KModuleEventEmitterWrapper.kt:99:21 'fun getEventDispatcherForReactTag(context: ReactContext, reactTag: Int): EventDispatcher?' is deprecated. reactTag is no longer needed.
+2026-10-09T19:16:06.2726167Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/events/KModuleEventEmitterWrapper.kt:108:21 'fun getEventDispatcherForReactTag(context: ReactContext, reactTag: Int): EventDispatcher?' is deprecated. reactTag is no longer needed.
+2026-10-09T19:16:06.2730129Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/views/ViewDefinitionBuilder.kt:470:16 'val errorManager: JSLoggerModule?' is deprecated. Use AppContext.jsLogger instead.
+2026-10-09T19:16:06.2734163Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/views/ViewDefinitionBuilder.kt:470:30 'fun reportExceptionToLogBox(codedException: CodedException): Unit' is deprecated. Use appContext.jsLogger.error(...) instead.
+2026-10-09T19:16:06.2738144Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/views/ViewManagerDefinition.kt:41:16 'val errorManager: JSLoggerModule?' is deprecated. Use AppContext.jsLogger instead.
+2026-10-09T19:16:06.2741699Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/views/ViewManagerDefinition.kt:41:30 'fun reportExceptionToLogBox(codedException: CodedException): Unit' is deprecated. Use appContext.jsLogger.error(...) instead.
+2026-10-09T19:16:08.3529169Z Note: Some input files use or override a deprecated API.
+2026-10-09T19:16:08.3529656Z 
+2026-10-09T19:16:08.3554540Z Note: Recompile with -Xlint:deprecation for details.
+2026-10-09T19:16:08.3555133Z > Task :expo-modules-core:compileReleaseJavaWithJavac
+2026-10-09T19:16:08.4514505Z 
+2026-10-09T19:16:08.4544988Z > Task :expo-modules-core:bundleLibCompileToJarRelease
+2026-10-09T19:16:08.6527068Z > Task :expo-modules-core:bundleLibRuntimeToJarRelease
+2026-10-09T19:16:08.6594842Z > Task :expo-dev-client:compileReleaseKotlin NO-SOURCE
+2026-10-09T19:16:08.8540200Z > Task :expo-modules-core:bundleLibRuntimeToDirRelease
+2026-10-09T19:16:09.3506277Z > Task :expo-dev-client:compileReleaseJavaWithJavac
+2026-10-09T19:16:10.0506552Z 
+2026-10-09T19:16:10.0574892Z > Task :expo-constants:compileReleaseKotlin
+2026-10-09T19:16:10.0626319Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-constants/android/src/main/java/expo/modules/constants/ConstantsModule.kt:13:5 'fun Constants(legacyConstantsProvider: () -> Map<String, Any?>): Unit' is deprecated. Use `Constant` or `Property` instead.
+2026-10-09T19:16:10.1544443Z 
+2026-10-09T19:16:10.1605006Z > Task :expo-dev-client:bundleLibCompileToJarRelease
+2026-10-09T19:16:10.1695185Z > Task :expo-dev-menu-interface:compileReleaseKotlin NO-SOURCE
+2026-10-09T19:16:10.3535364Z > Task :expo-dev-menu-interface:compileReleaseJavaWithJavac
+2026-10-09T19:16:10.3575176Z > Task :expo-dev-menu-interface:bundleLibCompileToJarRelease
+2026-10-09T19:16:10.3644834Z > Task :expo-constants:compileReleaseJavaWithJavac
+2026-10-09T19:16:10.3694883Z > Task :expo-constants:bundleLibCompileToJarRelease
+2026-10-09T19:16:11.0535265Z > Task :expo-json-utils:compileReleaseKotlin
+2026-10-09T19:16:11.1531142Z > Task :expo-dev-menu:compileReleaseKotlin
+2026-10-09T19:16:11.4526944Z > Task :expo-json-utils:compileReleaseJavaWithJavac
+2026-10-09T19:16:11.4551680Z > Task :expo-json-utils:bundleLibCompileToJarRelease
+2026-10-09T19:16:11.4594220Z 
+2026-10-09T19:16:11.4664805Z > Task :expo-dev-launcher:compileReleaseKotlin
+2026-10-09T19:16:11.4713266Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-dev-launcher/android/src/main/java/expo/modules/devlauncher/DevLauncherPackage.kt:15:16 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+2026-10-09T19:16:12.8512905Z 
+2026-10-09T19:16:12.8554931Z > Task :expo-log-box:compileReleaseKotlin
+2026-10-09T19:16:13.4506494Z 
+2026-10-09T19:16:13.4508791Z > Task :expo-manifests:compileReleaseKotlin
+2026-10-09T19:16:13.4510864Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-manifests/android/src/main/java/expo/modules/manifests/core/EmbeddedManifest.kt:19:16 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+2026-10-09T19:16:13.4514249Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-manifests/android/src/main/java/expo/modules/manifests/core/EmbeddedManifest.kt:19:86 'fun getLegacyID(): String' is deprecated. Prefer scopeKey or projectId depending on use case.
+2026-10-09T19:16:13.4522157Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-manifests/android/src/main/java/expo/modules/manifests/core/ExpoUpdatesManifest.kt:16:16 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+2026-10-09T19:16:13.4531326Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-manifests/android/src/main/java/expo/modules/manifests/core/Manifest.kt:13:3 Deprecations and opt-ins on a method overridden from 'Any' may not be reported.
+2026-10-09T19:16:13.4533621Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo-manifests/android/src/main/java/expo/modules/manifests/core/Manifest.kt:15:12 'fun getRawJson(): JSONObject' is deprecated. Prefer to use specific field getters.
+2026-10-09T19:16:13.8524449Z 
+2026-10-09T19:16:13.8526126Z > Task :expo-dev-launcher:compileReleaseJavaWithJavac
+2026-10-09T19:16:13.9525726Z > Task :expo-manifests:compileReleaseJavaWithJavac
+2026-10-09T19:16:13.9549784Z > Task :expo-manifests:bundleLibCompileToJarRelease
+2026-10-09T19:16:13.9594951Z > Task :expo-dev-launcher:bundleLibCompileToJarRelease
+2026-10-09T19:16:13.9624680Z > Task :expo-dev-launcher:bundleLibRuntimeToDirRelease
+2026-10-09T19:16:14.0506697Z > Task :expo-dev-menu:compileReleaseJavaWithJavac
+2026-10-09T19:16:14.0598650Z > Task :expo-log-box:compileReleaseJavaWithJavac
+2026-10-09T19:16:14.0654870Z > Task :expo-log-box:bundleLibCompileToJarRelease
+2026-10-09T19:16:14.0684559Z > Task :expo-dev-menu:bundleLibCompileToJarRelease
+2026-10-09T19:16:14.0714584Z > Task :expo-dev-menu-interface:bundleLibRuntimeToDirRelease
+2026-10-09T19:16:14.0774733Z > Task :expo-log-box:bundleLibRuntimeToDirRelease
+2026-10-09T19:16:14.1565100Z > Task :expo-constants:bundleLibRuntimeToDirRelease
+2026-10-09T19:16:14.4506933Z > Task :expo-updates-interface:compileReleaseKotlin
+2026-10-09T19:16:14.5585123Z > Task :expo-dev-client:bundleLibRuntimeToDirRelease
+2026-10-09T19:16:14.5585879Z > Task :expo-dev-menu:bundleLibRuntimeToDirRelease
+2026-10-09T19:16:14.6506585Z > Task :expo-manifests:bundleLibRuntimeToDirRelease
+2026-10-09T19:16:14.7516144Z > Task :expo-updates-interface:compileReleaseJavaWithJavac
+2026-10-09T19:16:14.7555464Z > Task :expo-updates-interface:bundleLibCompileToJarRelease
+2026-10-09T19:16:14.8536874Z > Task :expo-json-utils:bundleLibRuntimeToDirRelease
+2026-10-09T19:16:15.1526286Z > Task :expo-updates-interface:bundleLibRuntimeToDirRelease
+2026-10-09T19:16:15.4515204Z > Task :app:generateReleaseResValues
+2026-10-09T19:16:15.9522050Z > Task :expo-log-box:bundleLibRuntimeToJarRelease
+2026-10-09T19:16:16.0506538Z > Task :app:mapReleaseSourceSetPaths
+2026-10-09T19:16:16.0534992Z > Task :app:generateReleaseResources
+2026-10-09T19:16:16.2565168Z > Task :expo-dev-launcher:bundleLibRuntimeToJarRelease
+2026-10-09T19:16:16.4515285Z > Task :expo-dev-menu-interface:bundleLibRuntimeToJarRelease
+2026-10-09T19:16:20.7544490Z 
+2026-10-09T19:16:20.7575107Z > Task :expo:compileReleaseKotlin
+2026-10-09T19:16:20.7631510Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo/android/src/main/java/expo/modules/ExpoModulesPackage.kt:34:16 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+2026-10-09T19:16:20.7685888Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo/android/src/main/java/expo/modules/ReactActivityDelegateWrapper.kt:22:8 'class ReactInstanceManager : Any' is deprecated. Deprecated in Java.
+2026-10-09T19:16:20.7696147Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo/android/src/main/java/expo/modules/ReactActivityDelegateWrapper.kt:102:16 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+2026-10-09T19:16:20.7738286Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo/android/src/main/java/expo/modules/ReactActivityDelegateWrapper.kt:102:43 'class ReactInstanceManager : Any' is deprecated. Deprecated in Java.
+2026-10-09T19:16:20.7798527Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo/android/src/main/java/expo/modules/ReactActivityDelegateWrapper.kt:103:21 'val reactInstanceManager: ReactInstanceManager' is deprecated. Deprecated in Java.
+2026-10-09T19:16:20.7833188Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo/android/src/main/java/expo/modules/fetch/ExpoFetchModule.kt:33:39 'constructor(reactContext: ReactContext): ForwardingCookieHandler' is deprecated. Use the default constructor.
+2026-10-09T19:16:20.7904308Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo/android/src/main/java/expo/modules/fetch/NativeResponse.kt:44:16 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+2026-10-09T19:16:20.7935552Z w: file:///home/runner/work/movefield/movefield/mobile/node_modules/expo/android/src/main/java/expo/modules/fetch/NativeResponse.kt:46:11 'fun deallocate(): Unit' is deprecated. Use sharedObjectDidRelease() instead.
+2026-10-09T19:16:23.0509712Z 
+2026-10-09T19:16:23.0579975Z > Task :app:mergeReleaseResources
+2026-10-09T19:16:23.1526558Z > Task :app:packageReleaseResources
+2026-10-09T19:16:23.4535096Z > Task :app:parseReleaseLocalResources
+2026-10-09T19:16:23.5514983Z > Task :app:createReleaseCompatibleScreenManifests
+2026-10-09T19:16:23.5574710Z > Task :app:extractDeepLinksRelease
+2026-10-09T19:16:23.6545304Z > Task :expo:compileReleaseJavaWithJavac
+2026-10-09T19:16:23.8525214Z > Task :expo:bundleLibRuntimeToDirRelease
+2026-10-09T19:16:24.3534312Z 
+2026-10-09T19:16:24.3565099Z > Task :app:processReleaseMainManifest
+2026-10-09T19:16:24.3589261Z /home/runner/work/movefield/movefield/mobile/android/app/src/main/AndroidManifest.xml:3:3-142 Warning:
+2026-10-09T19:16:24.3645649Z 	uses-permission#android.permission.CAMERA was tagged at AndroidManifest.xml:3 to remove other declarations but no other declaration present
+2026-10-09T19:16:24.3715158Z /home/runner/work/movefield/movefield/mobile/android/app/src/main/AndroidManifest.xml:7:3-88 Warning:
+2026-10-09T19:16:24.3741310Z 	uses-permission#android.permission.RECORD_AUDIO was tagged at AndroidManifest.xml:7 to remove other declarations but no other declaration present
+2026-10-09T19:16:24.3774992Z /home/runner/work/movefield/movefield/mobile/android/app/src/main/AndroidManifest.xml:8:3-95 Warning:
+2026-10-09T19:16:24.3815126Z 	uses-permission#android.permission.SYSTEM_ALERT_WINDOW was tagged at AndroidManifest.xml:8 to remove other declarations but no other declaration present
+2026-10-09T19:16:24.3874994Z /home/runner/work/movefield/movefield/mobile/android/app/src/main/AndroidManifest.xml Warning:
+2026-10-09T19:16:24.3935391Z 	provider#expo.modules.filesystem.FileSystemFileProvider@android:authorities was tagged at AndroidManifest.xml:0 to replace other declarations but no other declaration present
+2026-10-09T19:16:24.3949782Z 
+2026-10-09T19:16:24.3974574Z > Task :app:expoReleaseOverrideMaxSdkConflicts
+2026-10-09T19:16:24.3975557Z [33m---------- Expo Max Sdk Override Plugin ----------[0m
+2026-10-09T19:16:24.3976265Z [32m>>> No 'android:maxSdkVersion' conflicts found[0m
+2026-10-09T19:16:24.3976946Z [33m--------------------------------------------------[0m
+2026-10-09T19:16:24.4524408Z 
+2026-10-09T19:16:24.4585215Z > Task :app:processReleaseManifest
+2026-10-09T19:16:24.5555302Z > Task :app:processReleaseManifestForPackage
+2026-10-09T19:16:25.8553373Z > Task :expo:bundleLibCompileToJarRelease
+2026-10-09T19:16:26.0507095Z > Task :expo:bundleLibRuntimeToJarRelease
+2026-10-09T19:16:27.2520078Z > Task :app:javaPreCompileRelease
+2026-10-09T19:16:27.2585344Z > Task :app:desugarReleaseFileDependencies
+2026-10-09T19:16:27.2614680Z > Task :app:mergeReleaseStartupProfile
+2026-10-09T19:16:29.2525194Z > Task :app:processReleaseResources
+2026-10-09T19:16:57.2525081Z > Task :app:mergeExtDexRelease
+2026-10-09T19:16:59.2515116Z > Task :expo-constants:bundleLibRuntimeToJarRelease
+2026-10-09T19:16:59.2534624Z > Task :expo-dev-client:bundleLibRuntimeToJarRelease
+2026-10-09T19:17:00.1506880Z > Task :expo-dev-menu:bundleLibRuntimeToJarRelease
+2026-10-09T19:17:03.3506521Z > Task :expo-json-utils:bundleLibRuntimeToJarRelease
+2026-10-09T19:17:03.3564905Z > Task :expo-updates-interface:bundleLibRuntimeToJarRelease
+2026-10-09T19:17:03.4506989Z > Task :expo:processReleaseJavaRes
+2026-10-09T19:17:03.4554511Z > Task :expo:createFullJarRelease
+2026-10-09T19:17:03.4599719Z > Task :expo-constants:processReleaseJavaRes
+2026-10-09T19:17:03.4654594Z > Task :expo-constants:createFullJarRelease
+2026-10-09T19:17:03.5565012Z > Task :expo-modules-core:processReleaseJavaRes
+2026-10-09T19:17:03.5624851Z > Task :expo-modules-core:createFullJarRelease
+2026-10-09T19:17:03.8525413Z > Task :expo-dev-client:processReleaseJavaRes NO-SOURCE
+2026-10-09T19:17:03.8526387Z > Task :expo-dev-client:createFullJarRelease
+2026-10-09T19:17:03.8528108Z > Task :expo-dev-launcher:processReleaseJavaRes
+2026-10-09T19:17:03.8530884Z > Task :expo-dev-launcher:createFullJarRelease
+2026-10-09T19:17:03.8531492Z > Task :expo-dev-menu:processReleaseJavaRes
+2026-10-09T19:17:03.8534947Z > Task :expo-dev-menu:createFullJarRelease
+2026-10-09T19:17:03.8542008Z > Task :expo-dev-menu-interface:processReleaseJavaRes NO-SOURCE
+2026-10-09T19:17:03.8542690Z > Task :expo-dev-menu-interface:createFullJarRelease
+2026-10-09T19:17:03.8545522Z > Task :expo-json-utils:processReleaseJavaRes
+2026-10-09T19:17:03.8545970Z > Task :expo-json-utils:createFullJarRelease
+2026-10-09T19:17:03.9531263Z > Task :expo-log-box:processReleaseJavaRes
+2026-10-09T19:17:03.9565723Z > Task :expo-log-box:createFullJarRelease
+2026-10-09T19:17:03.9574879Z > Task :expo-manifests:processReleaseJavaRes
+2026-10-09T19:17:03.9607125Z > Task :expo-updates-interface:processReleaseJavaRes
+2026-10-09T19:17:03.9634662Z > Task :expo-updates-interface:createFullJarRelease
+2026-10-09T19:17:03.9644455Z > Task :expo:extractReleaseAnnotations
+2026-10-09T19:17:03.9670195Z > Task :expo:mergeReleaseGeneratedProguardFiles
+2026-10-09T19:17:04.0506375Z > Task :expo:mergeReleaseConsumerProguardFiles
+2026-10-09T19:17:04.0544589Z > Task :expo:mergeReleaseJavaResource
+2026-10-09T19:17:04.0564772Z > Task :expo:syncReleaseLibJars
+2026-10-09T19:17:04.0574521Z > Task :expo:bundleReleaseLocalLintAar
+2026-10-09T19:17:04.1532259Z > Task :expo-log-box:extractReleaseAnnotations
+2026-10-09T19:17:04.1597833Z > Task :expo-log-box:mergeReleaseGeneratedProguardFiles
+2026-10-09T19:17:04.1634693Z > Task :expo-log-box:mergeReleaseConsumerProguardFiles
+2026-10-09T19:17:04.2525080Z > Task :expo-modules-core:generateReleaseLintModel
+2026-10-09T19:17:04.2584695Z > Task :expo-constants:generateReleaseLintModel
+2026-10-09T19:17:04.3525162Z > Task :expo-manifests:bundleLibRuntimeToJarRelease
+2026-10-09T19:17:05.1506744Z > Task :expo-log-box:mergeReleaseJavaResource
+2026-10-09T19:17:05.3515216Z > Task :expo-dev-client:generateReleaseLintModel
+2026-10-09T19:17:05.3545128Z > Task :expo-dev-menu-interface:generateReleaseLintModel
+2026-10-09T19:17:05.3574761Z > Task :expo-json-utils:generateReleaseLintModel
+2026-10-09T19:17:05.7506909Z > Task :expo-log-box:generateReleaseLintModel
+2026-10-09T19:17:05.7534529Z > Task :expo-dev-launcher:generateReleaseLintModel
+2026-10-09T19:17:05.7564396Z > Task :expo-manifests:createFullJarRelease
+2026-10-09T19:17:05.7564994Z > Task :expo-dev-menu:generateReleaseLintModel
+2026-10-09T19:17:05.8506623Z > Task :expo-manifests:generateReleaseLintModel
+2026-10-09T19:17:05.8548228Z > Task :expo-updates-interface:generateReleaseLintModel
+2026-10-09T19:17:05.8554613Z > Task :expo-log-box:syncReleaseLibJars
+2026-10-09T19:17:05.8584475Z > Task :expo-log-box:bundleReleaseLocalLintAar
+2026-10-09T19:17:05.8614497Z > Task :expo-dev-launcher:extractReleaseAnnotations
+2026-10-09T19:17:05.8644662Z > Task :expo-dev-launcher:mergeReleaseGeneratedProguardFiles
+2026-10-09T19:17:05.8654598Z > Task :expo-dev-launcher:mergeReleaseConsumerProguardFiles
+2026-10-09T19:17:05.9525277Z > Task :expo-dev-launcher:mergeReleaseJavaResource
+2026-10-09T19:17:05.9552894Z > Task :expo-dev-launcher:syncReleaseLibJars
+2026-10-09T19:17:05.9592576Z > Task :expo-dev-launcher:bundleReleaseLocalLintAar
+2026-10-09T19:17:05.9654446Z > Task :expo-dev-menu-interface:extractReleaseAnnotations
+2026-10-09T19:17:05.9684537Z > Task :expo-dev-menu-interface:mergeReleaseGeneratedProguardFiles
+2026-10-09T19:17:05.9714938Z > Task :expo-dev-menu-interface:mergeReleaseConsumerProguardFiles
+2026-10-09T19:17:06.0506347Z > Task :expo-dev-menu-interface:mergeReleaseJavaResource
+2026-10-09T19:17:06.0543421Z > Task :expo-dev-menu-interface:syncReleaseLibJars
+2026-10-09T19:17:06.0544325Z > Task :expo-dev-menu-interface:bundleReleaseLocalLintAar
+2026-10-09T19:17:06.0544943Z > Task :expo-modules-core:extractReleaseAnnotations
+2026-10-09T19:17:06.5546651Z > Task :app:mergeReleaseArtProfile
+2026-10-09T19:17:06.5574452Z > Task :app:mergeReleaseShaders
+2026-10-09T19:17:06.5604430Z > Task :app:compileReleaseShaders NO-SOURCE
+2026-10-09T19:17:06.5644467Z > Task :app:generateReleaseAssets UP-TO-DATE
+2026-10-09T19:17:07.0565099Z > Task :app:mergeReleaseAssets
+2026-10-09T19:17:07.0594852Z > Task :expo:generateReleaseLintModel
+2026-10-09T19:17:07.1507071Z > Task :expo-modules-core:mergeReleaseGeneratedProguardFiles
+2026-10-09T19:17:07.1510082Z > Task :expo-modules-core:mergeReleaseConsumerProguardFiles
+2026-10-09T19:17:07.1574948Z > Task :expo-modules-core:mergeReleaseJavaResource
+2026-10-09T19:17:07.1630862Z > Task :app:compressReleaseAssets
+2026-10-09T19:17:07.5541698Z > Task :app:extractReleaseVersionControlInfo
+2026-10-09T19:17:07.5584967Z > Task :app:extractProguardFiles
+2026-10-09T19:17:07.6550776Z > Task :expo-constants:extractReleaseAnnotations
+2026-10-09T19:17:07.6627367Z > Task :expo-constants:mergeReleaseGeneratedProguardFiles
+2026-10-09T19:17:07.6715233Z > Task :expo-constants:mergeReleaseConsumerProguardFiles
+2026-10-09T19:17:07.6727607Z > Task :expo-constants:mergeReleaseJavaResource
+2026-10-09T19:17:07.6787893Z > Task :expo-constants:syncReleaseLibJars
+2026-10-09T19:17:07.7535441Z > Task :expo-constants:bundleReleaseLocalLintAar
+2026-10-09T19:17:07.7590053Z > Task :expo-dev-client:extractReleaseAnnotations
+2026-10-09T19:17:07.7645091Z > Task :expo-dev-client:mergeReleaseGeneratedProguardFiles
+2026-10-09T19:17:07.7705038Z > Task :expo-dev-client:mergeReleaseConsumerProguardFiles
+2026-10-09T19:17:07.8506343Z > Task :expo-dev-client:mergeReleaseJavaResource
+2026-10-09T19:17:07.8506996Z > Task :expo-dev-client:syncReleaseLibJars
+2026-10-09T19:17:07.8507544Z > Task :expo-dev-client:bundleReleaseLocalLintAar
+2026-10-09T19:17:07.9506640Z > Task :expo-dev-menu:extractReleaseAnnotations
+2026-10-09T19:17:07.9524857Z > Task :expo-dev-menu:mergeReleaseGeneratedProguardFiles
+2026-10-09T19:17:07.9534416Z > Task :expo-dev-menu:mergeReleaseConsumerProguardFiles
+2026-10-09T19:17:07.9594446Z > Task :app:compileReleaseKotlin
+2026-10-09T19:17:07.9624441Z > Task :expo-dev-menu:mergeReleaseJavaResource
+2026-10-09T19:17:08.0536970Z > Task :expo-dev-menu:syncReleaseLibJars
+2026-10-09T19:17:08.0585155Z > Task :expo-dev-menu:bundleReleaseLocalLintAar
+2026-10-09T19:17:08.0614517Z > Task :expo-manifests:extractReleaseAnnotations
+2026-10-09T19:17:08.0669745Z > Task :expo-manifests:mergeReleaseGeneratedProguardFiles
+2026-10-09T19:17:08.0694426Z > Task :expo-manifests:mergeReleaseConsumerProguardFiles
+2026-10-09T19:17:08.0754518Z > Task :expo-manifests:mergeReleaseJavaResource
+2026-10-09T19:17:08.1535144Z > Task :expo-manifests:syncReleaseLibJars
+2026-10-09T19:17:08.1581297Z > Task :expo-manifests:bundleReleaseLocalLintAar
+2026-10-09T19:17:08.1664587Z > Task :expo-modules-core:syncReleaseLibJars
+2026-10-09T19:17:08.1740820Z > Task :expo-json-utils:extractReleaseAnnotations
+2026-10-09T19:17:08.1796713Z > Task :expo-json-utils:mergeReleaseGeneratedProguardFiles
+2026-10-09T19:17:08.1824483Z > Task :expo-modules-core:bundleReleaseLocalLintAar
+2026-10-09T19:17:08.1825188Z > Task :expo-json-utils:mergeReleaseConsumerProguardFiles
+2026-10-09T19:17:08.2535155Z > Task :expo-json-utils:mergeReleaseJavaResource
+2026-10-09T19:17:08.2604795Z > Task :expo-json-utils:syncReleaseLibJars
+2026-10-09T19:17:08.2634565Z > Task :expo-json-utils:bundleReleaseLocalLintAar
+2026-10-09T19:17:08.2724796Z > Task :expo-updates-interface:extractReleaseAnnotations
+2026-10-09T19:17:08.2819554Z > Task :expo-updates-interface:mergeReleaseGeneratedProguardFiles
+2026-10-09T19:17:08.2905828Z > Task :expo-updates-interface:mergeReleaseConsumerProguardFiles
+2026-10-09T19:17:08.2934634Z > Task :expo-updates-interface:mergeReleaseJavaResource
+2026-10-09T19:17:08.2974497Z > Task :expo-updates-interface:syncReleaseLibJars
+2026-10-09T19:17:08.3044641Z > Task :expo-updates-interface:bundleReleaseLocalLintAar
+2026-10-09T19:17:08.8524595Z > Task :app:compileReleaseJavaWithJavac
+2026-10-09T19:17:09.8507091Z > Task :expo-constants:lintVitalAnalyzeRelease
+2026-10-09T19:17:09.8534724Z > Task :app:dexBuilderRelease
+2026-10-09T19:17:11.9506331Z > Task :expo-dev-client:lintVitalAnalyzeRelease
+2026-10-09T19:17:11.9544769Z > Task :app:mergeReleaseGlobalSynthetics
+2026-10-09T19:17:14.5525251Z > Task :expo-dev-launcher:lintVitalAnalyzeRelease
+2026-10-09T19:17:14.6565033Z > Task :app:generateReleaseLintVitalReportModel
+2026-10-09T19:17:15.9518941Z > Task :expo-dev-menu:lintVitalAnalyzeRelease
+2026-10-09T19:17:16.3507148Z > Task :expo-dev-menu-interface:lintVitalAnalyzeRelease
+2026-10-09T19:17:17.4525653Z > Task :expo-json-utils:lintVitalAnalyzeRelease
+2026-10-09T19:17:21.5506819Z > Task :expo:lintVitalAnalyzeRelease
+2026-10-09T19:17:23.1535256Z > Task :expo-log-box:lintVitalAnalyzeRelease
+2026-10-09T19:17:23.6506781Z > Task :app:mergeDexRelease
+2026-10-09T19:17:24.0515226Z > Task :expo-updates-interface:lintVitalAnalyzeRelease
+2026-10-09T19:17:24.0544864Z > Task :expo-manifests:lintVitalAnalyzeRelease
+2026-10-09T19:17:24.0607647Z > Task :expo-constants:generateReleaseLintVitalModel
+2026-10-09T19:17:24.0644597Z > Task :expo-dev-client:generateReleaseLintVitalModel
+2026-10-09T19:17:24.0703381Z > Task :expo:generateReleaseLintVitalModel
+2026-10-09T19:17:24.1507884Z > Task :expo-dev-launcher:generateReleaseLintVitalModel
+2026-10-09T19:17:24.1534509Z > Task :expo-dev-menu:generateReleaseLintVitalModel
+2026-10-09T19:17:24.1590830Z > Task :expo-json-utils:generateReleaseLintVitalModel
+2026-10-09T19:17:24.1614342Z > Task :expo-dev-menu-interface:generateReleaseLintVitalModel
+2026-10-09T19:17:24.1635901Z > Task :expo-manifests:generateReleaseLintVitalModel
+2026-10-09T19:17:24.1636320Z > Task :expo-log-box:generateReleaseLintVitalModel
+2026-10-09T19:17:24.2545565Z > Task :expo-updates-interface:generateReleaseLintVitalModel
+2026-10-09T19:17:24.2574665Z > Task :expo-modules-core:generateReleaseLintVitalModel
+2026-10-09T19:17:24.2624637Z > Task :app:processReleaseJavaRes
+2026-10-09T19:17:24.7507448Z > Task :app:compileReleaseArtProfile
+2026-10-09T19:17:28.8509066Z > Task :app:mergeReleaseJavaResource
+2026-10-09T19:17:29.6525030Z > Task :app:optimizeReleaseResources
+2026-10-09T19:17:30.1506667Z > Task :app:collectReleaseDependencies
+2026-10-09T19:17:30.2525033Z > Task :app:sdkReleaseDependencyData
+2026-10-09T19:17:30.2555060Z > Task :app:validateSigningRelease
+2026-10-09T19:17:30.2615242Z > Task :app:writeReleaseAppMetadata
+2026-10-09T19:17:30.2675127Z > Task :app:writeReleaseSigningConfigVersions
+2026-10-09T19:17:30.3525087Z > Task :app:generateReleaseLintReportModel
+2026-10-09T19:17:30.3554819Z > Task :app:bundleReleaseClassesToCompileJar
+2026-10-09T19:17:30.3555422Z > Task :app:preReleaseUnitTestBuild
+2026-10-09T19:17:30.4506848Z > Task :app:generateReleaseUnitTestLintModel
+2026-10-09T19:17:30.9507060Z > Task :app:lintAnalyzeReleaseUnitTest
+2026-10-09T19:17:31.1515330Z > Task :expo-constants:generateReleaseUnitTestLintModel
+2026-10-09T19:17:31.3535318Z > Task :expo-constants:lintAnalyzeReleaseUnitTest
+2026-10-09T19:17:31.4515399Z > Task :expo-dev-client:generateReleaseUnitTestLintModel
+2026-10-09T19:17:31.5525225Z > Task :expo-dev-client:lintAnalyzeReleaseUnitTest
+2026-10-09T19:17:33.3515069Z > Task :expo:generateReleaseUnitTestLintModel
+2026-10-09T19:17:39.2525308Z > Task :expo:lintAnalyzeReleaseUnitTest
+2026-10-09T19:17:39.2544897Z > Task :expo-dev-menu:generateReleaseUnitTestLintModel
+2026-10-09T19:17:39.9527410Z > Task :expo-dev-menu:lintAnalyzeReleaseUnitTest
+2026-10-09T19:17:40.0508359Z > Task :expo-dev-menu-interface:generateReleaseUnitTestLintModel
+2026-10-09T19:17:40.4507299Z > Task :expo-dev-menu-interface:lintAnalyzeReleaseUnitTest
+2026-10-09T19:17:40.7506568Z > Task :expo-dev-launcher:generateReleaseUnitTestLintModel
+2026-10-09T19:17:41.1515222Z > Task :expo-json-utils:generateReleaseUnitTestLintModel
+2026-10-09T19:17:41.1542999Z > Task :expo-log-box:generateReleaseUnitTestLintModel
+2026-10-09T19:17:41.5525258Z > Task :expo-manifests:generateReleaseUnitTestLintModel
+2026-10-09T19:17:42.0545206Z > Task :expo-dev-launcher:lintAnalyzeReleaseUnitTest
+2026-10-09T19:17:42.5515233Z > Task :expo-json-utils:lintAnalyzeReleaseUnitTest
+2026-10-09T19:17:42.6506595Z > Task :expo-log-box:lintAnalyzeReleaseUnitTest
+2026-10-09T19:17:42.8506802Z > Task :expo-manifests:lintAnalyzeReleaseUnitTest
+2026-10-09T19:17:42.9515862Z > Task :expo-updates-interface:generateReleaseUnitTestLintModel
+2026-10-09T19:17:43.0506434Z > Task :expo-updates-interface:lintAnalyzeReleaseUnitTest
+2026-10-09T19:17:43.0534971Z > Task :app:bundleReleaseClassesToRuntimeJar
+2026-10-09T19:17:43.0562225Z > Task :app:compileReleaseUnitTestKotlin NO-SOURCE
+2026-10-09T19:17:43.0584497Z > Task :app:javaPreCompileReleaseUnitTest
+2026-10-09T19:17:43.0587572Z > Task :app:compileReleaseUnitTestJavaWithJavac NO-SOURCE
+2026-10-09T19:17:43.0614581Z > Task :app:processReleaseUnitTestJavaRes NO-SOURCE
+2026-10-09T19:17:43.0644514Z > Task :app:testReleaseUnitTest NO-SOURCE
+2026-10-09T19:17:43.1512137Z > Task :expo-modules-core:generateReleaseUnitTestLintModel
+2026-10-09T19:17:44.9515330Z > Task :expo-modules-core:lintAnalyzeReleaseUnitTest
+2026-10-09T19:17:51.5524552Z > Task :expo-modules-core:lintVitalAnalyzeRelease
+2026-10-09T19:17:54.2525027Z > Task :expo-modules-core:lintAnalyzeRelease
+2026-10-09T19:18:03.5526425Z > Task :app:lintVitalAnalyzeRelease
+2026-10-09T19:18:03.6525102Z > Task :app:lintVitalReportRelease SKIPPED
+2026-10-09T19:18:03.6584600Z > Task :app:lintVitalRelease SKIPPED
+2026-10-09T19:18:04.9506492Z > Task :app:packageRelease
+2026-10-09T19:18:04.9508161Z > Task :app:createReleaseApkListingFileRedirect
+2026-10-09T19:18:04.9508963Z > Task :app:assembleRelease
+2026-10-09T19:18:21.4525177Z > Task :expo-constants:lintAnalyzeRelease
+2026-10-09T19:18:21.6514106Z > Task :expo-dev-menu:lintAnalyzeRelease
+2026-10-09T19:18:22.6506909Z > Task :expo-dev-client:lintAnalyzeRelease
+2026-10-09T19:18:23.0515063Z > Task :expo-dev-menu-interface:lintAnalyzeRelease
+2026-10-09T19:18:23.7515257Z > Task :expo-json-utils:lintAnalyzeRelease
+2026-10-09T19:18:24.1515038Z > Task :expo-dev-launcher:lintAnalyzeRelease
+2026-10-09T19:18:24.2565126Z > Task :expo-updates-interface:lintAnalyzeRelease
+2026-10-09T19:18:26.0544359Z > Task :expo-manifests:lintAnalyzeRelease
+2026-10-09T19:18:26.8506695Z > Task :expo-log-box:lintAnalyzeRelease
+2026-10-09T19:18:32.1506815Z > Task :expo:lintAnalyzeRelease
+2026-10-09T19:18:35.1506684Z > Task :app:lintAnalyzeRelease
+2026-10-09T19:18:35.3506809Z 
+2026-10-09T19:18:35.3510361Z > Task :app:lintReportRelease
+2026-10-09T19:18:35.3513193Z Wrote HTML report to file:///home/runner/work/movefield/movefield/mobile/android/app/build/reports/lint-results-release.html
+2026-10-09T19:18:35.3514190Z 
+2026-10-09T19:18:35.3514485Z > Task :app:lintRelease
+2026-10-09T19:18:35.3514874Z 
+2026-10-09T19:18:35.3515759Z [Incubating] Problems report is available at: file:///home/runner/work/movefield/movefield/mobile/android/build/reports/problems/problems-report.html
+2026-10-09T19:18:35.3516551Z 
+2026-10-09T19:18:35.3517092Z Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+2026-10-09T19:18:35.3517669Z 
+2026-10-09T19:18:35.3518499Z You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+2026-10-09T19:18:35.3519302Z 
+2026-10-09T19:18:35.3520239Z For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+2026-10-09T19:18:35.3520982Z 
+2026-10-09T19:18:35.3521149Z BUILD SUCCESSFUL in 7m 10s
+2026-10-09T19:18:35.3521536Z 625 actionable tasks: 625 executed
+2026-10-09T19:18:35.8246809Z ##[group]Run mkdir -p native-evidence/android
+2026-10-09T19:18:35.8247359Z [36;1mmkdir -p native-evidence/android[0m
+2026-10-09T19:18:35.8248380Z [36;1m"$ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer" manifest print mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/manifest.xml[0m
+2026-10-09T19:18:35.8249881Z [36;1m"$ANDROID_HOME/build-tools/36.0.0/aapt2" dump resources mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/resources.txt[0m
+2026-10-09T19:18:35.8251870Z [36;1mpython3 scripts/extract-apk-rules.py mobile/android/app/build/outputs/apk/release/app-release.apk native-evidence/android/manifest.xml native-evidence/android/resources.txt "$ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer" native-evidence/android[0m
+2026-10-09T19:18:35.8254083Z [36;1m"$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --print-certs mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/signing.txt[0m
+2026-10-09T19:18:35.8256128Z [36;1mpython3 scripts/inspect-native-artifacts.py android native-evidence/android/manifest.xml native-evidence/android/backup.xml native-evidence/android/extraction.xml native-evidence/android/resources.txt > native-evidence/android/inspection.json[0m
+2026-10-09T19:18:35.8257857Z [36;1msha256sum mobile/android/app/build/outputs/apk/release/app-release.apk > native-evidence/android/apk.sha256[0m
+2026-10-09T19:18:35.8345131Z shell: /usr/bin/bash -e {0}
+2026-10-09T19:18:35.8345519Z env:
+2026-10-09T19:18:35.8345685Z   CI: 1
+2026-10-09T19:18:35.8345852Z   EXPO_NO_TELEMETRY: 1
+2026-10-09T19:18:35.8346144Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-09T19:18:35.8346553Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-09T19:18:35.8346872Z   MAVEN_ARGS: -ntp
+2026-10-09T19:18:35.8347052Z ##[endgroup]
+2026-10-09T19:18:40.9158022Z {
+2026-10-09T19:18:40.9158778Z   "apkSHA256": "d478befae26f757d83fae5c67f3c4e1e4d265384ee6cb11efd9a5bc2e4ee3f6e",
+2026-10-09T19:18:40.9159374Z   "manifestSHA256": "b3bd4fa452a9ba8053ca8d4d2c2ae0ec24a6a337b96de5b69f33920ee227e73c",
+2026-10-09T19:18:40.9159972Z   "resourceTableSHA256": "e82723a42c00388860b2907be6a7ddc25a28f42505b720dec14de220c6898593",
+2026-10-09T19:18:40.9160346Z   "rules": [
+2026-10-09T19:18:40.9160532Z     {
+2026-10-09T19:18:40.9160752Z       "name": "movefield_backup_rules",
+2026-10-09T19:18:40.9161025Z       "identifier": 2132017157,
+2026-10-09T19:18:40.9161269Z       "file": "res/r1.xml",
+2026-10-09T19:18:40.9161507Z       "decodedFile": "backup.xml",
+2026-10-09T19:18:40.9161920Z       "decodedSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff"
+2026-10-09T19:18:40.9162276Z     },
+2026-10-09T19:18:40.9162436Z     {
+2026-10-09T19:18:40.9176936Z       "name": "movefield_data_extraction_rules",
+2026-10-09T19:18:40.9177315Z       "identifier": 2132017158,
+2026-10-09T19:18:40.9177561Z       "file": "res/zk.xml",
+2026-10-09T19:18:40.9177823Z       "decodedFile": "extraction.xml",
+2026-10-09T19:18:40.9178352Z       "decodedSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032"
+2026-10-09T19:18:40.9178880Z     }
+2026-10-09T19:18:40.9179091Z   ]
+2026-10-09T19:18:40.9179254Z }
+2026-10-09T19:18:41.5555166Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-10-09T19:18:41.5555531Z with:
+2026-10-09T19:18:41.5555743Z   name: android-release-compilation-test-only
+2026-10-09T19:18:41.5556107Z   path: native-evidence/android
+mobile/android/app/build/reports
+
+2026-10-09T19:18:41.5556424Z   if-no-files-found: warn
+2026-10-09T19:18:41.5556629Z   compression-level: 6
+2026-10-09T19:18:41.5556821Z   overwrite: false
+2026-10-09T19:18:41.5557023Z   include-hidden-files: false
+2026-10-09T19:18:41.5557237Z env:
+2026-10-09T19:18:41.5557395Z   CI: 1
+2026-10-09T19:18:41.5557557Z   EXPO_NO_TELEMETRY: 1
+2026-10-09T19:18:41.5557836Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-09T19:18:41.5558248Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64
+2026-10-09T19:18:41.5558574Z   MAVEN_ARGS: -ntp
+2026-10-09T19:18:41.5558758Z ##[endgroup]
+2026-10-09T19:18:41.7081515Z (node:4084) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-09T19:18:41.7082224Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-09T19:18:41.7148186Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-09T19:18:41.7150177Z The least common ancestor is /home/runner/work/movefield/movefield. This will be the root directory of the artifact
+2026-10-09T19:18:41.7151115Z With the provided path, there will be 12 files uploaded
+2026-10-09T19:18:41.7174472Z Artifact name is valid!
+2026-10-09T19:18:41.7175479Z Root directory input is valid!
+2026-10-09T19:18:41.9183411Z Beginning upload of artifact content to blob storage
+2026-10-09T19:18:41.9783566Z (node:4084) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-09T19:18:42.0230023Z Uploaded bytes 334088
+2026-10-09T19:18:42.0356678Z Finished uploading artifact content to blob storage!
+2026-10-09T19:18:42.0358073Z SHA256 digest of uploaded artifact zip is 6c0b98503cede51471d37129ab0839721fe4cd3b28760f899c880c238d3f8a46
+2026-10-09T19:18:42.0359591Z Finalizing artifact upload
+2026-10-09T19:18:42.3045984Z Artifact android-release-compilation-test-only.zip successfully finalized. Artifact ID 11639789893
+2026-10-09T19:18:42.3046946Z Artifact android-release-compilation-test-only has been successfully uploaded! Final size is 334088 bytes. Artifact ID is 11639789893
+2026-10-09T19:18:42.3052830Z Artifact download URL: https://github.com/ghinz32-cloud/movefield/actions/runs/37978371785/artifacts/11639789893
+2026-10-09T19:18:42.3249105Z Post job cleanup.
+2026-10-09T19:18:42.4541520Z Post job cleanup.
+2026-10-09T19:18:42.5761575Z (node:4104) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-09T19:18:42.5762619Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-09T19:18:42.5908840Z Post job cleanup.
+2026-10-09T19:18:42.6774326Z [command]/usr/bin/git version
+2026-10-09T19:18:42.6818439Z git version 2.55.0
+2026-10-09T19:18:42.6853037Z Temporarily overriding HOME='/home/runner/work/_temp/88ccaaa9-087a-4f76-b366-0336a68fb229' before making global git config changes
+2026-10-09T19:18:42.6854188Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-09T19:18:42.6859801Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/movefield/movefield
+2026-10-09T19:18:42.6894943Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-09T19:18:42.6926372Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-09T19:18:42.7154918Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-09T19:18:42.7193629Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-09T19:18:42.7435429Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-09T19:18:42.7467118Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-09T19:18:42.7839883Z Cleaning up orphan processes
+2026-10-09T19:18:42.8132390Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

@@ -1,0 +1,22 @@
+{
+  "recoveryDate": "2026-10-08",
+  "sourceCheckout": "/workspace/scratch/205446dc0ae6/movefield",
+  "branch": "audit/2026-10-08-continue",
+  "upstream": "origin/audit/2026-10-08-quality",
+  "remoteBase": "8cd39e42f2178b807d63af2042b70481041b028b",
+  "missingGitDirectory": "/workspace/scratch/244fd0e92bb6/movefield/.git",
+  "matchingU08a1SourceSha256": {
+    "lib/qwen-assets.json": "2794f6b673fa094d91d9bc8a406bb930f35374acbc17713007164c4c8828a547",
+    "lib/qwen-evaluation-lock.json": "114932e96feb85d49b4a914e87ed1ccd741bbfc8a631f6d94d4a3532159d220f",
+    "lib/qwen-catalog.ts": "bc40f5aa1d96622c412222dd94bd265ddddd897c6e3a27c164d1109abe5b01cb",
+    "lib/qwen-download.ts": "12727ceb58091e016532837744ca66c837643ff20d716d487cc2b5ce29bca57c",
+    "lib/browser-qwen-cache.ts": "ea323f5c02aeb940a0c639530b7043cc6c5b5439f7628d1d57d9c216e5a8e5c8",
+    "scripts/check-qwen-download.cjs": "9205827e614c1662398cc24a82f53cafbc01cfb2e608963413dd876ac5d52be5",
+    "scripts/check-browser-qwen-cache.cjs": "66c5c775d555046e7e36f9e64ee91b3559d36778c4f568d8306d634125dde597",
+    "package.json": "9f2b6591b81290ed8db2d0047a22064ccdecd24f913166c7850af24b6ef836be",
+    "pnpm-lock.yaml": "f37a9a3fbdcd8ff8fa0c1349eb96a674c3db67231c3ea8b1db63a3917d32829d",
+    "mobile/src/shared/qwen-catalog.ts": "bc40f5aa1d96622c412222dd94bd265ddddd897c6e3a27c164d1109abe5b01cb",
+    "mobile/docs/shared-snapshot.json": "91cd42aa900a5d3e46e5089e36d865631e0aa8b22f6e991ecbd49c31137f1237"
+  },
+  "limitation": "Original local commits and staging state cannot be recovered from missing metadata. Preserved source is checkpointed as one recovered change on the verified remote base. Earlier test reports are retained as historical evidence."
+}

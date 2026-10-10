@@ -1,0 +1,1092 @@
+{
+  "verifiedAtUtc": "2026-10-09T19:15:57.921580+00:00",
+  "sourceCommit": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf",
+  "sourceTree": "eec113576e18fc18d4976ceaa03b7e7ca464a930",
+  "localSourceTreeMatchesIndependentGitHubCommit": true,
+  "publicZip": {
+    "url": "https://ghinz32-cloud.github.io/movefield/downloads/movefield-mobile-r14.zip",
+    "preservedFile": "movefield-mobile-r14.zip",
+    "bytes": 2077246,
+    "sha256": "2b2192c9ae265340888c686302d1b249afe82aa23eeeee70428160e28a1a18f0",
+    "githubBlobSha": "69e5fdffd3eeaf120eb8ca277eae2dce68582f50",
+    "matchesPublishedPagesAndLocalGeneratedBytes": true
+  },
+  "sourceMembership": "Every one of the 117 tracked mobile files at the exact published source commit; no missing, extra or duplicate archive entries.",
+  "requiredFilesPresent": [
+    "App.tsx",
+    "app.json",
+    "index.ts",
+    "package-lock.json",
+    "package.json",
+    "tsconfig.json"
+  ],
+  "crcCheckPassed": true,
+  "ordinaryFilesOnly": true,
+  "allMatched": true,
+  "entryCount": 117,
+  "pluginAlsoMatchesIndependentGitHubContentReadback": {
+    "path": "plugins/withMovefieldSecurity.cjs",
+    "gitBlobSha": "5b7d913dd6bf8241dbf3b66ba917324371d079c6",
+    "sha256": "6c1437b59e33cd3e3f095c0e202dcbc0ee5bb860a41b81fc2a132af06a3212a0",
+    "matched": true,
+    "containsScopedRemovalLintRepair": true
+  },
+  "entries": [
+    {
+      "archivePath": "training-studio-mobile/.gitignore",
+      "sourcePath": "mobile/.gitignore",
+      "bytes": 117,
+      "sourceGitBlobSha": "56f5a440fcb35716275c36a2323d1379132dd438",
+      "expectedSha256": "ca6df0880092913b286a2b110e1be2e1bc292b4985d1714881cc63c76af3d71c",
+      "actualSha256": "ca6df0880092913b286a2b110e1be2e1bc292b4985d1714881cc63c76af3d71c",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/App.tsx",
+      "sourcePath": "mobile/App.tsx",
+      "bytes": 78553,
+      "sourceGitBlobSha": "47c0f9a611e3514e7b97c34e1a9d815738c20c24",
+      "expectedSha256": "934c7efaef08861b121a8ad1a18d5daf11d659fdccb23358bb6589ae9a28658d",
+      "actualSha256": "934c7efaef08861b121a8ad1a18d5daf11d659fdccb23358bb6589ae9a28658d",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/LICENSE",
+      "sourcePath": "mobile/LICENSE",
+      "bytes": 1106,
+      "sourceGitBlobSha": "30b20e3b5f0f470947ba9480d90587ba07c137b4",
+      "expectedSha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4",
+      "actualSha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/README.md",
+      "sourcePath": "mobile/README.md",
+      "bytes": 848,
+      "sourceGitBlobSha": "26c631421eb4cb085c34804af1898717131305be",
+      "expectedSha256": "a64ebcdd135057c626a33a35c0f74c5c05c1294f6a5c3fa0ceb57cd634d041f8",
+      "actualSha256": "a64ebcdd135057c626a33a35c0f74c5c05c1294f6a5c3fa0ceb57cd634d041f8",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/START-HERE.md",
+      "sourcePath": "mobile/START-HERE.md",
+      "bytes": 16867,
+      "sourceGitBlobSha": "3ab300339f1f0d9e4b110d3193253bbd79a4775a",
+      "expectedSha256": "34f71da9f3ce6de67972ac4c22598c307abf856b73fe77e56ede1f4e921f1890",
+      "actualSha256": "34f71da9f3ce6de67972ac4c22598c307abf856b73fe77e56ede1f4e921f1890",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/app.json",
+      "sourcePath": "mobile/app.json",
+      "bytes": 3801,
+      "sourceGitBlobSha": "485cbae2db701472c6802b9dbcfc02809b911d6f",
+      "expectedSha256": "aafd3ed1f95118c6cc1ac01b7067283e31d0eba806779d48937a98c0bfd836f6",
+      "actualSha256": "aafd3ed1f95118c6cc1ac01b7067283e31d0eba806779d48937a98c0bfd836f6",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets.d.ts",
+      "sourcePath": "mobile/assets.d.ts",
+      "bytes": 74,
+      "sourceGitBlobSha": "949ef79c53edcd1729531a95e31b22241cd9e957",
+      "expectedSha256": "b5d4fe332b830cb9d443e4b582bbc2fc0cadefd647986add242d7bc9207dd94d",
+      "actualSha256": "b5d4fe332b830cb9d443e4b582bbc2fc0cadefd647986add242d7bc9207dd94d",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/android-icon-background.png",
+      "sourcePath": "mobile/assets/android-icon-background.png",
+      "bytes": 3932,
+      "sourceGitBlobSha": "b30cc08468598d08c903c5b77a7d66190e30958d",
+      "expectedSha256": "d117f53aca6eecd18ee3eca65fe6025cae5d137dcaea54b8a1a2740e41d2f921",
+      "actualSha256": "d117f53aca6eecd18ee3eca65fe6025cae5d137dcaea54b8a1a2740e41d2f921",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/android-icon-foreground.png",
+      "sourcePath": "mobile/assets/android-icon-foreground.png",
+      "bytes": 15018,
+      "sourceGitBlobSha": "95206986941bb0c6d5ac30431ce01195a1664308",
+      "expectedSha256": "9e3765cfba9f572f2cd7903675923b077613eab5e3bf6832035f7635e6a26f0f",
+      "actualSha256": "9e3765cfba9f572f2cd7903675923b077613eab5e3bf6832035f7635e6a26f0f",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/android-icon-monochrome.png",
+      "sourcePath": "mobile/assets/android-icon-monochrome.png",
+      "bytes": 7500,
+      "sourceGitBlobSha": "45b6a0b47301e97e8b047f92a9ac736def7b0abf",
+      "expectedSha256": "3cf2546ec983c76c73b355f276b81ca382d9646f921f0e964c55e1a27857c0ad",
+      "actualSha256": "3cf2546ec983c76c73b355f276b81ca382d9646f921f0e964c55e1a27857c0ad",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/content/exercise-content.json",
+      "sourcePath": "mobile/assets/content/exercise-content.json",
+      "bytes": 521358,
+      "sourceGitBlobSha": "b49db0f14c7e3ec0af86d4a573ba925c1be5d7c0",
+      "expectedSha256": "9a17a1c905fe80e7210803a7b1b466c0a207a40b702386f6e75fb891585b68bb",
+      "actualSha256": "9a17a1c905fe80e7210803a7b1b466c0a207a40b702386f6e75fb891585b68bb",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/content/exercise-guides.json",
+      "sourcePath": "mobile/assets/content/exercise-guides.json",
+      "bytes": 2536044,
+      "sourceGitBlobSha": "03122e7f239cc31e751f5e8d90259f8e2b489436",
+      "expectedSha256": "62fa1d71ee08312f6e8809ce60e17e7df7e8a3a8d79f49bed15731592d0f7a38",
+      "actualSha256": "62fa1d71ee08312f6e8809ce60e17e7df7e8a3a8d79f49bed15731592d0f7a38",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/content/fitness-research.json",
+      "sourcePath": "mobile/assets/content/fitness-research.json",
+      "bytes": 834506,
+      "sourceGitBlobSha": "4121fb31f222b621fcc47bb55496e3adb6e8446a",
+      "expectedSha256": "437f2724162639849949aed8f6b47b0f8ab1eac88da1e0d4535920d2eebaa757",
+      "actualSha256": "437f2724162639849949aed8f6b47b0f8ab1eac88da1e0d4535920d2eebaa757",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/favicon.png",
+      "sourcePath": "mobile/assets/favicon.png",
+      "bytes": 4277,
+      "sourceGitBlobSha": "61bf7b9870774e98e84e20d09a9e36ed2d711bce",
+      "expectedSha256": "d9907ac2fa8392ff9d9267fe55730ca4c7c0512850e9ad9d9ca633efdead934c",
+      "actualSha256": "d9907ac2fa8392ff9d9267fe55730ca4c7c0512850e9ad9d9ca633efdead934c",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/fonts/AtkinsonHyperlegible_400Regular.ttf",
+      "sourcePath": "mobile/assets/fonts/AtkinsonHyperlegible_400Regular.ttf",
+      "bytes": 53504,
+      "sourceGitBlobSha": "f0edd19047f7272b1abac2169850cb28bec503cd",
+      "expectedSha256": "752bace0a9820236f24d65d680ac07aeb543c92dd903c871e09f6627261b812f",
+      "actualSha256": "752bace0a9820236f24d65d680ac07aeb543c92dd903c871e09f6627261b812f",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/fonts/AtkinsonHyperlegible_700Bold.ttf",
+      "sourcePath": "mobile/assets/fonts/AtkinsonHyperlegible_700Bold.ttf",
+      "bytes": 54444,
+      "sourceGitBlobSha": "80da7d0a9a99f8857df5b251dc775f9d6e0fc4ad",
+      "expectedSha256": "9ebfea858a99e61e2fc299d194ba55b87de4884094f86fdcb6fa0d510b9d77da",
+      "actualSha256": "9ebfea858a99e61e2fc299d194ba55b87de4884094f86fdcb6fa0d510b9d77da",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/fonts/Lexend_400Regular.ttf",
+      "sourcePath": "mobile/assets/fonts/Lexend_400Regular.ttf",
+      "bytes": 78356,
+      "sourceGitBlobSha": "b869458f7387ff8367a7c3ab5c8c29f54742006e",
+      "expectedSha256": "5f9ed62e28658e53a02cc8751566821e8515af753f18b02014669ed0341c9f5b",
+      "actualSha256": "5f9ed62e28658e53a02cc8751566821e8515af753f18b02014669ed0341c9f5b",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/fonts/Lexend_700Bold.ttf",
+      "sourcePath": "mobile/assets/fonts/Lexend_700Bold.ttf",
+      "bytes": 78628,
+      "sourceGitBlobSha": "97614b98f31fa691e5628172c770dca603004ef7",
+      "expectedSha256": "db820d3ccf6b1175e9c96d03e4f093835cb7525e1ae3289702362e43f82b24b3",
+      "actualSha256": "db820d3ccf6b1175e9c96d03e4f093835cb7525e1ae3289702362e43f82b24b3",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/fonts/Nunito_400Regular.ttf",
+      "sourcePath": "mobile/assets/fonts/Nunito_400Regular.ttf",
+      "bytes": 132200,
+      "sourceGitBlobSha": "be80c3f04dd43c91a0b6bba392a9a34b7409842a",
+      "expectedSha256": "b0885056b60511b29aa9f69198055fe3bad13e76ec8a9b9e37cd61da7b4ee1e5",
+      "actualSha256": "b0885056b60511b29aa9f69198055fe3bad13e76ec8a9b9e37cd61da7b4ee1e5",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/fonts/Nunito_700Bold.ttf",
+      "sourcePath": "mobile/assets/fonts/Nunito_700Bold.ttf",
+      "bytes": 132148,
+      "sourceGitBlobSha": "69096898f635ab346bbbdf239255246a54c38446",
+      "expectedSha256": "ad443e47990c5fc4b263693b3018b7807868263b8c42ccb1115e030158931960",
+      "actualSha256": "ad443e47990c5fc4b263693b3018b7807868263b8c42ccb1115e030158931960",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/fonts/Oswald_600SemiBold.ttf",
+      "sourcePath": "mobile/assets/fonts/Oswald_600SemiBold.ttf",
+      "bytes": 87604,
+      "sourceGitBlobSha": "72495edc0d5e54383985524f6446ae528baffd1a",
+      "expectedSha256": "901c0d593fcb06080fd49d01262391254e472efd4e1d21734557e9ef869922d6",
+      "actualSha256": "901c0d593fcb06080fd49d01262391254e472efd4e1d21734557e9ef869922d6",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/fonts/Oswald_700Bold.ttf",
+      "sourcePath": "mobile/assets/fonts/Oswald_700Bold.ttf",
+      "bytes": 87600,
+      "sourceGitBlobSha": "cf01c4d4683d6622699f117a347360f1e22feb4b",
+      "expectedSha256": "21843a0ccca2e97030da1330961646510ed6e9b8bb39620974c1195b9803034a",
+      "actualSha256": "21843a0ccca2e97030da1330961646510ed6e9b8bb39620974c1195b9803034a",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/fonts/Saira_400Regular.ttf",
+      "sourcePath": "mobile/assets/fonts/Saira_400Regular.ttf",
+      "bytes": 83608,
+      "sourceGitBlobSha": "b85a512c9a86b32a3d54ed58a9aeb2ad9e7b7584",
+      "expectedSha256": "50c4e76f9cd28369c7a5b62b06c6ac1f495c53c66950b0318fe5e07ebe71f33c",
+      "actualSha256": "50c4e76f9cd28369c7a5b62b06c6ac1f495c53c66950b0318fe5e07ebe71f33c",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/fonts/Saira_700Bold.ttf",
+      "sourcePath": "mobile/assets/fonts/Saira_700Bold.ttf",
+      "bytes": 83468,
+      "sourceGitBlobSha": "28ce023eac5cfd6d5223f678352fe840a4af5ae6",
+      "expectedSha256": "964c37fd0cf965e36fe7f216ce5a25c512d7d35d679002b9d6289b51bcffdf17",
+      "actualSha256": "964c37fd0cf965e36fe7f216ce5a25c512d7d35d679002b9d6289b51bcffdf17",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/fonts/barlow-condensed-semibold.ttf",
+      "sourcePath": "mobile/assets/fonts/barlow-condensed-semibold.ttf",
+      "bytes": 109428,
+      "sourceGitBlobSha": "9df66576492bee4bd0559066825472808fa98adc",
+      "expectedSha256": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9",
+      "actualSha256": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/fonts/inter-variable.ttf",
+      "sourcePath": "mobile/assets/fonts/inter-variable.ttf",
+      "bytes": 876576,
+      "sourceGitBlobSha": "047c92f6e2212473dc436020afed689527076d44",
+      "expectedSha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+      "actualSha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/icon.png",
+      "sourcePath": "mobile/assets/icon.png",
+      "bytes": 56553,
+      "sourceGitBlobSha": "67cda62af15cf7992de674b0c0872f02964013c4",
+      "expectedSha256": "d22fda4471b2c9ed71163390840c5a2fd2aeaca0d21c5a79b0497d798d61b427",
+      "actualSha256": "d22fda4471b2c9ed71163390840c5a2fd2aeaca0d21c5a79b0497d798d61b427",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/assets/splash-icon.png",
+      "sourcePath": "mobile/assets/splash-icon.png",
+      "bytes": 13625,
+      "sourceGitBlobSha": "d436bf3eb98822c86c1f17fc78d4c8c84b4fd8ca",
+      "expectedSha256": "28c2f67326a6457cc01e9309ad706c3e54981393599e27edd939250fb5f54f78",
+      "actualSha256": "28c2f67326a6457cc01e9309ad706c3e54981393599e27edd939250fb5f54f78",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/AI-COACHING.md",
+      "sourcePath": "mobile/docs/AI-COACHING.md",
+      "bytes": 8698,
+      "sourceGitBlobSha": "7ff40ecfc92b5e0f751be5ef233af07582d64f12",
+      "expectedSha256": "dbe224737e2c2d675f6343f89a16c602bb8c8c544d9974910576794021ba30c1",
+      "actualSha256": "dbe224737e2c2d675f6343f89a16c602bb8c8c544d9974910576794021ba30c1",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/CONTINUATION.md",
+      "sourcePath": "mobile/docs/CONTINUATION.md",
+      "bytes": 3437,
+      "sourceGitBlobSha": "6555c1e6b5d3d9e913fd83c3af4437749121feeb",
+      "expectedSha256": "15acef7a22efd862f96e628a0c0e5132e6e168e88526b36d4b089f38ac65ca5f",
+      "actualSha256": "15acef7a22efd862f96e628a0c0e5132e6e168e88526b36d4b089f38ac65ca5f",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/ON-DEVICE-MODELS.md",
+      "sourcePath": "mobile/docs/ON-DEVICE-MODELS.md",
+      "bytes": 8816,
+      "sourceGitBlobSha": "a5d0af967ac17b7434d5200620484e49e231e053",
+      "expectedSha256": "1577857bad5edf5fe1d25d42edefc4dc2286b834716b89bfe49154375ed5b107",
+      "actualSha256": "1577857bad5edf5fe1d25d42edefc4dc2286b834716b89bfe49154375ed5b107",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/REVISION-10.md",
+      "sourcePath": "mobile/docs/REVISION-10.md",
+      "bytes": 8356,
+      "sourceGitBlobSha": "e19e56009af8764d2072f3ac8f52760c385728b7",
+      "expectedSha256": "4b705a1824552ba3882750871b06a82d4580107af530963097b063e30bd1462d",
+      "actualSha256": "4b705a1824552ba3882750871b06a82d4580107af530963097b063e30bd1462d",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/REVISION-11.md",
+      "sourcePath": "mobile/docs/REVISION-11.md",
+      "bytes": 11256,
+      "sourceGitBlobSha": "75536560a6b546a42d544cfb1c0615d2699d64c3",
+      "expectedSha256": "d045e4d9896a1b43db61fb570e849f61e00b0f845efd1c8ae5b1bbb9900143db",
+      "actualSha256": "d045e4d9896a1b43db61fb570e849f61e00b0f845efd1c8ae5b1bbb9900143db",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/REVISION-8.md",
+      "sourcePath": "mobile/docs/REVISION-8.md",
+      "bytes": 4781,
+      "sourceGitBlobSha": "39b9d2d768a9ab8301b2676cf2625918b4614a15",
+      "expectedSha256": "39bafd7d276d3feaa993cb1c725ea6fa4583d0dacb3c9c3ca0a92fbc2690aa6e",
+      "actualSha256": "39bafd7d276d3feaa993cb1c725ea6fa4583d0dacb3c9c3ca0a92fbc2690aa6e",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/VALIDATION.md",
+      "sourcePath": "mobile/docs/VALIDATION.md",
+      "bytes": 6015,
+      "sourceGitBlobSha": "58538733715fcc5e9c9d7be919b50b59d57744cf",
+      "expectedSha256": "ba69875d702103965583ef8aa5956eee6273b8e0a3ddd28734d68bb4f905f23a",
+      "actualSha256": "ba69875d702103965583ef8aa5956eee6273b8e0a3ddd28734d68bb4f905f23a",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/ai-coaching-decision.md",
+      "sourcePath": "mobile/docs/ai-coaching-decision.md",
+      "bytes": 5515,
+      "sourceGitBlobSha": "0018c45d54986992e0639b80238b8907d45f50e5",
+      "expectedSha256": "3b27fc0d94618d72f0431b6ba101953987f4b0fd5712207ae0cc29ed0aa96252",
+      "actualSha256": "3b27fc0d94618d72f0431b6ba101953987f4b0fd5712207ae0cc29ed0aa96252",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/audit-acceptance-matrix.json",
+      "sourcePath": "mobile/docs/audit-acceptance-matrix.json",
+      "bytes": 21058,
+      "sourceGitBlobSha": "ce8b8da682b42e968d7f86ab940590610ff3d56f",
+      "expectedSha256": "12571c7c432f11a8e530f3a10d004d8ac89115515e27a5b5dd31c90bdeb8f257",
+      "actualSha256": "12571c7c432f11a8e530f3a10d004d8ac89115515e27a5b5dd31c90bdeb8f257",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/deep-audit-2026-10-07.md",
+      "sourcePath": "mobile/docs/deep-audit-2026-10-07.md",
+      "bytes": 27730,
+      "sourceGitBlobSha": "632e7e0e0978568c24f01b7b24e195a093c9a46d",
+      "expectedSha256": "d6913255c58940811391b6c852151611c7c9a6b3a34113762356b6a47285a005",
+      "actualSha256": "d6913255c58940811391b6c852151611c7c9a6b3a34113762356b6a47285a005",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/exercise-library-LICENSE.txt",
+      "sourcePath": "mobile/docs/exercise-library-LICENSE.txt",
+      "bytes": 1211,
+      "sourceGitBlobSha": "fdddb29aa445bf3d6a5d843d6dd77e10a9f99657",
+      "expectedSha256": "6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e",
+      "actualSha256": "6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/exercise-library-completion.json",
+      "sourcePath": "mobile/docs/exercise-library-completion.json",
+      "bytes": 283417,
+      "sourceGitBlobSha": "007799a7b31938be53cf8e23375d967fb4c9f77c",
+      "expectedSha256": "8676a4a76423f5876a4044ee10073b230add7f63041b8b5f52bd62f53852899b",
+      "actualSha256": "8676a4a76423f5876a4044ee10073b230add7f63041b8b5f52bd62f53852899b",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/exercise-library-provenance.json",
+      "sourcePath": "mobile/docs/exercise-library-provenance.json",
+      "bytes": 1729,
+      "sourceGitBlobSha": "48b16146ab561801a6c1ca96d43458ecd770ec77",
+      "expectedSha256": "8471e9b317ad7296e6add7a4de215505c93130c70052ec3692d7ec08649d596e",
+      "actualSha256": "8471e9b317ad7296e6add7a4de215505c93130c70052ec3692d7ec08649d596e",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/font-licenses/Atkinson-Hyperlegible-OFL.txt",
+      "sourcePath": "mobile/docs/font-licenses/Atkinson-Hyperlegible-OFL.txt",
+      "bytes": 4603,
+      "sourceGitBlobSha": "54e3127833733abae13b8da2b41c068f5d6197a3",
+      "expectedSha256": "e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18",
+      "actualSha256": "e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/font-licenses/Barlow-Condensed-OFL.txt",
+      "sourcePath": "mobile/docs/font-licenses/Barlow-Condensed-OFL.txt",
+      "bytes": 4377,
+      "sourceGitBlobSha": "2f22ba6ca4dbc12145ae40b14c3368f387cba0e2",
+      "expectedSha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+      "actualSha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/font-licenses/Inter-OFL.txt",
+      "sourcePath": "mobile/docs/font-licenses/Inter-OFL.txt",
+      "bytes": 4377,
+      "sourceGitBlobSha": "21f6aff961064c2e429f570995e446bcdd555422",
+      "expectedSha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+      "actualSha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/font-licenses/Lexend-OFL.txt",
+      "sourcePath": "mobile/docs/font-licenses/Lexend-OFL.txt",
+      "bytes": 4436,
+      "sourceGitBlobSha": "b1477aae6210797999bd5ad9c13bcae5fc98788b",
+      "expectedSha256": "5da8505887d0fa7fe963445fd58852707fda34adfeb65af25c99d152bab285bd",
+      "actualSha256": "5da8505887d0fa7fe963445fd58852707fda34adfeb65af25c99d152bab285bd",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/font-licenses/Nunito-OFL.txt",
+      "sourcePath": "mobile/docs/font-licenses/Nunito-OFL.txt",
+      "bytes": 4385,
+      "sourceGitBlobSha": "c8210f08ca3cece05b4f7baa428afe8e1abe3293",
+      "expectedSha256": "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65",
+      "actualSha256": "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/font-licenses/Oswald-OFL.txt",
+      "sourcePath": "mobile/docs/font-licenses/Oswald-OFL.txt",
+      "bytes": 4388,
+      "sourceGitBlobSha": "76a02175dbde6453b8527c9163b904c1a2567c7c",
+      "expectedSha256": "23916cdee678823c3c517c699cb2e043088de0d46c959eeaa168b54bb84534df",
+      "actualSha256": "23916cdee678823c3c517c699cb2e043088de0d46c959eeaa168b54bb84534df",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/font-licenses/Saira-OFL.txt",
+      "sourcePath": "mobile/docs/font-licenses/Saira-OFL.txt",
+      "bytes": 4386,
+      "sourceGitBlobSha": "38d9b88131f7d2f8ef7fdb0d48e4c9e8aa3fd35d",
+      "expectedSha256": "f2665d4718b452b3818a877191355ac884a6b9b419d35408fe7ee487e9e8f30f",
+      "actualSha256": "f2665d4718b452b3818a877191355ac884a6b9b419d35408fe7ee487e9e8f30f",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/native-compilation-2026-10-09.md",
+      "sourcePath": "mobile/docs/native-compilation-2026-10-09.md",
+      "bytes": 10600,
+      "sourceGitBlobSha": "e3eb61a7833a735b9580a3da4496c29e7bf1a7f6",
+      "expectedSha256": "e35ac25cef4a0047828b0702b8e97231fa3162adcd8a85ce4d92e6e8d60b4eff",
+      "actualSha256": "e35ac25cef4a0047828b0702b8e97231fa3162adcd8a85ce4d92e6e8d60b4eff",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/native-privacy-cleanup-2026-10-09.md",
+      "sourcePath": "mobile/docs/native-privacy-cleanup-2026-10-09.md",
+      "bytes": 8703,
+      "sourceGitBlobSha": "b49d51b9515ceab1f5f2e9b6a86485d615583169",
+      "expectedSha256": "a9f82acf5aa55accce3cf694de5b3eb204b3c8287c3e1880e66f64ee79bfb0d8",
+      "actualSha256": "a9f82acf5aa55accce3cf694de5b3eb204b3c8287c3e1880e66f64ee79bfb0d8",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/native-security-2026-10-09.md",
+      "sourcePath": "mobile/docs/native-security-2026-10-09.md",
+      "bytes": 8480,
+      "sourceGitBlobSha": "a74cc80550a612f055a785f71314844889c5f5c2",
+      "expectedSha256": "fad8a817bf86ba8b3f36c79f5fb4117994b77a407d2062f601e67dc5e19e23a5",
+      "actualSha256": "fad8a817bf86ba8b3f36c79f5fb4117994b77a407d2062f601e67dc5e19e23a5",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/product-requirements.md",
+      "sourcePath": "mobile/docs/product-requirements.md",
+      "bytes": 17885,
+      "sourceGitBlobSha": "54409b397a72a960d46236d6b44d58add68cd7c4",
+      "expectedSha256": "d9023d91adacd6343e2a8a87996efbe83cf361b277b816c337b624c038c891b3",
+      "actualSha256": "d9023d91adacd6343e2a8a87996efbe83cf361b277b816c337b624c038c891b3",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/revision-10-validation.json",
+      "sourcePath": "mobile/docs/revision-10-validation.json",
+      "bytes": 2679,
+      "sourceGitBlobSha": "b5009498efa46b71792fa02ba983dff1240251ae",
+      "expectedSha256": "a6e21e93ebb9a5e8bda843224b65a8bae4c220362e38145be36e31bc29ef7d81",
+      "actualSha256": "a6e21e93ebb9a5e8bda843224b65a8bae4c220362e38145be36e31bc29ef7d81",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/revision-9-program-depth.md",
+      "sourcePath": "mobile/docs/revision-9-program-depth.md",
+      "bytes": 12057,
+      "sourceGitBlobSha": "4ca6a2c7b0ee3757f5404940e1eb06b7ba53bb6f",
+      "expectedSha256": "e0bcb3c2d9e4ba1970fe0ca04269b30b2978dcd2e380ff3e3b73a3690268d2ec",
+      "actualSha256": "e0bcb3c2d9e4ba1970fe0ca04269b30b2978dcd2e380ff3e3b73a3690268d2ec",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/security-review.md",
+      "sourcePath": "mobile/docs/security-review.md",
+      "bytes": 8598,
+      "sourceGitBlobSha": "57a5d22fb718f0c23a51f721e51ada07af5d84a2",
+      "expectedSha256": "5fc3a57d7bb2d5040d02d6f58077fbeecdbe77246cd4182880a34b5cb72e437e",
+      "actualSha256": "5fc3a57d7bb2d5040d02d6f58077fbeecdbe77246cd4182880a34b5cb72e437e",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/docs/shared-snapshot.json",
+      "sourcePath": "mobile/docs/shared-snapshot.json",
+      "bytes": 7376,
+      "sourceGitBlobSha": "a27cabc381e32d0ac5e204aa23e5fe5cbb1237cf",
+      "expectedSha256": "1bb01c62c9fd27cd21a4f467076be20059614cb9aa08e3bdfc5a98c76bf64b9a",
+      "actualSha256": "1bb01c62c9fd27cd21a4f467076be20059614cb9aa08e3bdfc5a98c76bf64b9a",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/eas.json",
+      "sourcePath": "mobile/eas.json",
+      "bytes": 721,
+      "sourceGitBlobSha": "9db80456f298137bb4958a3895a299045e4ab77b",
+      "expectedSha256": "f06de28ec93f1efd9afc3bea3e820b8768d5fe9063eff2cb342f0036a6137ba3",
+      "actualSha256": "f06de28ec93f1efd9afc3bea3e820b8768d5fe9063eff2cb342f0036a6137ba3",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/index.ts",
+      "sourcePath": "mobile/index.ts",
+      "bytes": 307,
+      "sourceGitBlobSha": "1d6e981ef6c4ea336e6fe8f3fbce9487221a075c",
+      "expectedSha256": "5c157f4d44972d9c84415e1e4bda595b3abcd8cf733f8a9cd20935bec3eccc42",
+      "actualSha256": "5c157f4d44972d9c84415e1e4bda595b3abcd8cf733f8a9cd20935bec3eccc42",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/package-lock.json",
+      "sourcePath": "mobile/package-lock.json",
+      "bytes": 260840,
+      "sourceGitBlobSha": "693a52ec1d699c0940417dcd11c4a4d120a0fb54",
+      "expectedSha256": "bd5cc6eab3fb4f0a8434a16b0c33db08655be9aa07535fe737ef82879272cabf",
+      "actualSha256": "bd5cc6eab3fb4f0a8434a16b0c33db08655be9aa07535fe737ef82879272cabf",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/package.json",
+      "sourcePath": "mobile/package.json",
+      "bytes": 1585,
+      "sourceGitBlobSha": "b516a057a573fb84d1895d4947c3c42ab5c75d56",
+      "expectedSha256": "eea209fabd55a254c61c006be9635eca115146107f2d85b7d678e8cd5ccefbce",
+      "actualSha256": "eea209fabd55a254c61c006be9635eca115146107f2d85b7d678e8cd5ccefbce",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/plugins/withMovefieldSecurity.cjs",
+      "sourcePath": "mobile/plugins/withMovefieldSecurity.cjs",
+      "bytes": 6120,
+      "sourceGitBlobSha": "5b7d913dd6bf8241dbf3b66ba917324371d079c6",
+      "expectedSha256": "6c1437b59e33cd3e3f095c0e202dcbc0ee5bb860a41b81fc2a132af06a3212a0",
+      "actualSha256": "6c1437b59e33cd3e3f095c0e202dcbc0ee5bb860a41b81fc2a132af06a3212a0",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/scripts/check-engine.ts",
+      "sourcePath": "mobile/scripts/check-engine.ts",
+      "bytes": 11581,
+      "sourceGitBlobSha": "039b0e7bf9575d7082ffa369e713a73516c8eb0c",
+      "expectedSha256": "9bc62da426695f7c808a497e4bbcd2c3af91caa7ce6226e8bea0df616d630b69",
+      "actualSha256": "9bc62da426695f7c808a497e4bbcd2c3af91caa7ce6226e8bea0df616d630b69",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/scripts/sync-shared.mjs",
+      "sourcePath": "mobile/scripts/sync-shared.mjs",
+      "bytes": 2796,
+      "sourceGitBlobSha": "f86bcea81adad7a66ca89c61edb587d907d18a78",
+      "expectedSha256": "f5c4a7d3f7abd9ab6c0985bf1d6483a86383f7532e63569839c456adb16c8a0a",
+      "actualSha256": "f5c4a7d3f7abd9ab6c0985bf1d6483a86383f7532e63569839c456adb16c8a0a",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/appearance.tsx",
+      "sourcePath": "mobile/src/appearance.tsx",
+      "bytes": 5939,
+      "sourceGitBlobSha": "3fd6d32f57fc1b1f7f15fb7f511de2591129b386",
+      "expectedSha256": "f3dacedba592229d69334cac46288204140c0de2d7bb0ffaba07e905b24a875d",
+      "actualSha256": "f3dacedba592229d69334cac46288204140c0de2d7bb0ffaba07e905b24a875d",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/backup.tsx",
+      "sourcePath": "mobile/src/backup.tsx",
+      "bytes": 5162,
+      "sourceGitBlobSha": "c162d2fc7a9e03c62aa6031485af8970b8948137",
+      "expectedSha256": "4e1bf020f87772f5c348e869133a1a341d0c073af1e67f5f9518a36d1cafaad6",
+      "actualSha256": "4e1bf020f87772f5c348e869133a1a341d0c073af1e67f5f9518a36d1cafaad6",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/content.ts",
+      "sourcePath": "mobile/src/content.ts",
+      "bytes": 970,
+      "sourceGitBlobSha": "6eaf936aad60e91b6aa3421ce2c45ddfb57f8fbf",
+      "expectedSha256": "99b9aa2e836c9eec2b2de9dc49d26917b92e8be4bcbec9887deec5d55d55609f",
+      "actualSha256": "99b9aa2e836c9eec2b2de9dc49d26917b92e8be4bcbec9887deec5d55d55609f",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/local-crypto.ts",
+      "sourcePath": "mobile/src/local-crypto.ts",
+      "bytes": 4622,
+      "sourceGitBlobSha": "a51084b4fa0e9bbc19035c776e90d32532bbc584",
+      "expectedSha256": "c04b815ea495237e32ce997557dcd1bce40b16e12e48aec8c82200fa3633a36b",
+      "actualSha256": "c04b815ea495237e32ce997557dcd1bce40b16e12e48aec8c82200fa3633a36b",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/mobile-engine.ts",
+      "sourcePath": "mobile/src/mobile-engine.ts",
+      "bytes": 7735,
+      "sourceGitBlobSha": "6bf71afbb9e8485aaadee35d218a74c339f2aa10",
+      "expectedSha256": "edeb09cb22f8ed88b3b9614ad21abee9bb180a6dc56016b876e4fcb50f4eb219",
+      "actualSha256": "edeb09cb22f8ed88b3b9614ad21abee9bb180a6dc56016b876e4fcb50f4eb219",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/model-files.tsx",
+      "sourcePath": "mobile/src/model-files.tsx",
+      "bytes": 10077,
+      "sourceGitBlobSha": "2ed1473fd88b660c7c1542a4ad7e698ec74b89b4",
+      "expectedSha256": "c00acc8750f4475584acbbb0c0a41bad084865530af7dfd36b15fb86fbc4eca0",
+      "actualSha256": "c00acc8750f4475584acbbb0c0a41bad084865530af7dfd36b15fb86fbc4eca0",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/named-programs.tsx",
+      "sourcePath": "mobile/src/named-programs.tsx",
+      "bytes": 3960,
+      "sourceGitBlobSha": "a78968da2a4222de8dde1d512b821a6fc1aac23f",
+      "expectedSha256": "91a136772979f627094dd959816bcd4e33d1123742d19380e405c7ddbcda8846",
+      "actualSha256": "91a136772979f627094dd959816bcd4e33d1123742d19380e405c7ddbcda8846",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/native-database.ts",
+      "sourcePath": "mobile/src/native-database.ts",
+      "bytes": 803,
+      "sourceGitBlobSha": "51f16f0952a367c3f796abc0966414d2d39df086",
+      "expectedSha256": "ce7ac8f0b4cab11f5895a85cabd69007e8759b4553e18aaeb6bb237bb3635519",
+      "actualSha256": "ce7ac8f0b4cab11f5895a85cabd69007e8759b4553e18aaeb6bb237bb3635519",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/native-history.ts",
+      "sourcePath": "mobile/src/native-history.ts",
+      "bytes": 3305,
+      "sourceGitBlobSha": "f1be6feeeb64266fbf0378c329dc7335a8db982a",
+      "expectedSha256": "48fc60852aa1adebaf3b4ff30986c073ec63f2a61a2ac67a5b301143d7b4e348",
+      "actualSha256": "48fc60852aa1adebaf3b4ff30986c073ec63f2a61a2ac67a5b301143d7b4e348",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/native-record-store.ts",
+      "sourcePath": "mobile/src/native-record-store.ts",
+      "bytes": 23504,
+      "sourceGitBlobSha": "fc3f8b7540d5f02444c2375f604a09937a10deac",
+      "expectedSha256": "4ae1f85d6b05bdb64fb0fae5c86280e9c0a0259afa1c42f572b4c595760a4b33",
+      "actualSha256": "4ae1f85d6b05bdb64fb0fae5c86280e9c0a0259afa1c42f572b4c595760a4b33",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/plan-setup.tsx",
+      "sourcePath": "mobile/src/plan-setup.tsx",
+      "bytes": 13000,
+      "sourceGitBlobSha": "c6768a7586b2b7865be8af24bf4ac41035033a16",
+      "expectedSha256": "66958c6b4b1db1d51504e1095c2b7a455dd03fb3295d76de4d5369fdf2a06a63",
+      "actualSha256": "66958c6b4b1db1d51504e1095c2b7a455dd03fb3295d76de4d5369fdf2a06a63",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/qwen-file-cache.ts",
+      "sourcePath": "mobile/src/qwen-file-cache.ts",
+      "bytes": 19118,
+      "sourceGitBlobSha": "5598ecb5da690fda38baf4702f8713952171b575",
+      "expectedSha256": "3a7538ac28edf0bf8366a8061f36ec567c0e964692197cc7b772f71944c89f32",
+      "actualSha256": "3a7538ac28edf0bf8366a8061f36ec567c0e964692197cc7b772f71944c89f32",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/research-library.tsx",
+      "sourcePath": "mobile/src/research-library.tsx",
+      "bytes": 4273,
+      "sourceGitBlobSha": "f9b05943def25665b0fa3b193158db917cfc619f",
+      "expectedSha256": "85d9a7d75976a49bcc79d42b6aaa3dba279a204d6ab5531dfd71a7885c829c66",
+      "actualSha256": "85d9a7d75976a49bcc79d42b6aaa3dba279a204d6ab5531dfd71a7885c829c66",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/rest-alerts.ts",
+      "sourcePath": "mobile/src/rest-alerts.ts",
+      "bytes": 4264,
+      "sourceGitBlobSha": "1f24e3aff176a48354ecd93ef6a06432ecb7165b",
+      "expectedSha256": "c5cf1d7a34d4d8af9363b5ba6fa24f13b2cc2a2267bacafa43df435d81a174fa",
+      "actualSha256": "c5cf1d7a34d4d8af9363b5ba6fa24f13b2cc2a2267bacafa43df435d81a174fa",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/session-editor.tsx",
+      "sourcePath": "mobile/src/session-editor.tsx",
+      "bytes": 6248,
+      "sourceGitBlobSha": "7cfff4f2b05b9db1abcfd54fa442297bc387503e",
+      "expectedSha256": "39e3ab951e0739cfcf728ed0016d780dbd65cf23bb4361888a6ddfbce89e34cc",
+      "actualSha256": "39e3ab951e0739cfcf728ed0016d780dbd65cf23bb4361888a6ddfbce89e34cc",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/settings.tsx",
+      "sourcePath": "mobile/src/settings.tsx",
+      "bytes": 11772,
+      "sourceGitBlobSha": "913718a7ede8259fbb3bf7c951e6d4dd236f9774",
+      "expectedSha256": "c6d4de00a4fb7fa805d195f88938ab702e316985cc556bc7279411aae48a37f2",
+      "actualSha256": "c6d4de00a4fb7fa805d195f88938ab702e316985cc556bc7279411aae48a37f2",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/app-preferences.ts",
+      "sourcePath": "mobile/src/shared/app-preferences.ts",
+      "bytes": 4848,
+      "sourceGitBlobSha": "b3e706fac8ddddc5b3cf2937fb4e2ad0042ea8a5",
+      "expectedSha256": "b9791bcfdebc2b35f301ed160fd6c623cb3a8173bdc3aadcdf755cbd380a73e0",
+      "actualSha256": "b9791bcfdebc2b35f301ed160fd6c623cb3a8173bdc3aadcdf755cbd380a73e0",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/brand.ts",
+      "sourcePath": "mobile/src/shared/brand.ts",
+      "bytes": 294,
+      "sourceGitBlobSha": "bd83f7440597d75f723b63ccc220eb036e7e77f6",
+      "expectedSha256": "bd01748eddce662edd225d141f40e055f996297eac92d52f9a0987f5e85efaed",
+      "actualSha256": "bd01748eddce662edd225d141f40e055f996297eac92d52f9a0987f5e85efaed",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/exercise-library.json",
+      "sourcePath": "mobile/src/shared/exercise-library.json",
+      "bytes": 750865,
+      "sourceGitBlobSha": "ad81e13c001ec46d8bed4de47d58676b18def999",
+      "expectedSha256": "255e51c2dad783a487d37ea4bbe3eb6942f6d7dfde497b7a432ec3bd54620040",
+      "actualSha256": "255e51c2dad783a487d37ea4bbe3eb6942f6d7dfde497b7a432ec3bd54620040",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/exercise-video.ts",
+      "sourcePath": "mobile/src/shared/exercise-video.ts",
+      "bytes": 1730,
+      "sourceGitBlobSha": "d49b12a29cf8a72c9768c853736b996c89121f48",
+      "expectedSha256": "fe8b0e22196436a4eca4fe379b5aba782f82f69dcc45f2c6726dd1c78fa3bac4",
+      "actualSha256": "fe8b0e22196436a4eca4fe379b5aba782f82f69dcc45f2c6726dd1c78fa3bac4",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/fitness-grounding.ts",
+      "sourcePath": "mobile/src/shared/fitness-grounding.ts",
+      "bytes": 6879,
+      "sourceGitBlobSha": "f2cbefdb9a55300c23513f553a224951c0912e27",
+      "expectedSha256": "544d6ab38b7da08cd903e22591e18268d1eb2425222d49705fb5e76e191cddd3",
+      "actualSha256": "544d6ab38b7da08cd903e22591e18268d1eb2425222d49705fb5e76e191cddd3",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/fitness-reference.json",
+      "sourcePath": "mobile/src/shared/fitness-reference.json",
+      "bytes": 22677,
+      "sourceGitBlobSha": "1a81723bc053d75f8b1def1138173ecbfa54b309",
+      "expectedSha256": "4b802db8ac033ac6b1256376f9aa4ddf80ff049734a5583f0581e2bb03ed1c04",
+      "actualSha256": "4b802db8ac033ac6b1256376f9aa4ddf80ff049734a5583f0581e2bb03ed1c04",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/local-backup.ts",
+      "sourcePath": "mobile/src/shared/local-backup.ts",
+      "bytes": 1533,
+      "sourceGitBlobSha": "e2b96cdf0bbd8d81f9adb0d47cc2be9f8aa3963c",
+      "expectedSha256": "7e1e9ae66aef7e8e5f861235ddb79cd8eebc215531d8bbb6578f19ac2ec45dc0",
+      "actualSha256": "7e1e9ae66aef7e8e5f861235ddb79cd8eebc215531d8bbb6578f19ac2ec45dc0",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/onboarding.ts",
+      "sourcePath": "mobile/src/shared/onboarding.ts",
+      "bytes": 9999,
+      "sourceGitBlobSha": "b7e00e49df6954dae654893b36839e978ab726b1",
+      "expectedSha256": "eda6111409d23a9c54f334adb20e0a4b999755016ab10fc5a4b75325e48dcecc",
+      "actualSha256": "eda6111409d23a9c54f334adb20e0a4b999755016ab10fc5a4b75325e48dcecc",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/presentation.ts",
+      "sourcePath": "mobile/src/shared/presentation.ts",
+      "bytes": 24339,
+      "sourceGitBlobSha": "b65263cb707ee122c2b01b4461ec54984e03e379",
+      "expectedSha256": "4f4ce03e2e290dab44654479533107e8dd0f2aa1e83d9b6ad4e8b2e8b8377dbf",
+      "actualSha256": "4f4ce03e2e290dab44654479533107e8dd0f2aa1e83d9b6ad4e8b2e8b8377dbf",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/program-catalog.ts",
+      "sourcePath": "mobile/src/shared/program-catalog.ts",
+      "bytes": 71099,
+      "sourceGitBlobSha": "8264aca090acbc56be7256fe9ab37f0db076c38c",
+      "expectedSha256": "d5ab1eb1c61338dc58e8c06aa1899f967574a2c9c6102e6be7e783396018949c",
+      "actualSha256": "d5ab1eb1c61338dc58e8c06aa1899f967574a2c9c6102e6be7e783396018949c",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/program-evidence.ts",
+      "sourcePath": "mobile/src/shared/program-evidence.ts",
+      "bytes": 3486,
+      "sourceGitBlobSha": "222d609094207c8549e096027cb8dbbe0d3b8758",
+      "expectedSha256": "beaad36890c37d5de560cfdb0d26776e62b4e2cec21722e912a7dc57e0a313c4",
+      "actualSha256": "beaad36890c37d5de560cfdb0d26776e62b4e2cec21722e912a7dc57e0a313c4",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/progress.ts",
+      "sourcePath": "mobile/src/shared/progress.ts",
+      "bytes": 4278,
+      "sourceGitBlobSha": "e87185a502f86112c7e0f0d43f6e3bdc6016ed22",
+      "expectedSha256": "e4c1c26753ab0c575b6466195cfa803a6373d69338583564b8fbacdd5ca81314",
+      "actualSha256": "e4c1c26753ab0c575b6466195cfa803a6373d69338583564b8fbacdd5ca81314",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/qwen-assets.json",
+      "sourcePath": "mobile/src/shared/qwen-assets.json",
+      "bytes": 126382,
+      "sourceGitBlobSha": "4a844481a0a7e80641fecc3d3cd344cf725251e6",
+      "expectedSha256": "2794f6b673fa094d91d9bc8a406bb930f35374acbc17713007164c4c8828a547",
+      "actualSha256": "2794f6b673fa094d91d9bc8a406bb930f35374acbc17713007164c4c8828a547",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/qwen-catalog.ts",
+      "sourcePath": "mobile/src/shared/qwen-catalog.ts",
+      "bytes": 3844,
+      "sourceGitBlobSha": "1d4af0edf5f0785df24f9b4d6f5c785acad67daa",
+      "expectedSha256": "bc40f5aa1d96622c412222dd94bd265ddddd897c6e3a27c164d1109abe5b01cb",
+      "actualSha256": "bc40f5aa1d96622c412222dd94bd265ddddd897c6e3a27c164d1109abe5b01cb",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/qwen-evaluation-lock.json",
+      "sourcePath": "mobile/src/shared/qwen-evaluation-lock.json",
+      "bytes": 417,
+      "sourceGitBlobSha": "9430ac2f280222d4922a4b9bce814905bbbb41bb",
+      "expectedSha256": "f704870ed1cc19799abdf7f30cc2d67950e66224d054835380f1f6ee418881fc",
+      "actualSha256": "f704870ed1cc19799abdf7f30cc2d67950e66224d054835380f1f6ee418881fc",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/qwen-native-files.ts",
+      "sourcePath": "mobile/src/shared/qwen-native-files.ts",
+      "bytes": 19748,
+      "sourceGitBlobSha": "7a4c3726f4f97d9cc694839255f29d86e1b46752",
+      "expectedSha256": "a9694f3e98b67e4a2f4ca276934f937aff62eca1ddc7ba250f37a495c0bc7e47",
+      "actualSha256": "a9694f3e98b67e4a2f4ca276934f937aff62eca1ddc7ba250f37a495c0bc7e47",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/recipes.json",
+      "sourcePath": "mobile/src/shared/recipes.json",
+      "bytes": 34462,
+      "sourceGitBlobSha": "91bb6a30f97a48e7bfb5190bc12bf48b27c0b2f5",
+      "expectedSha256": "a6b5f0e919cf0f3ba492e67db8164223e333dab70e24bfab830796136c02c175",
+      "actualSha256": "a6b5f0e919cf0f3ba492e67db8164223e333dab70e24bfab830796136c02c175",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/research-library.ts",
+      "sourcePath": "mobile/src/shared/research-library.ts",
+      "bytes": 1134,
+      "sourceGitBlobSha": "c89135ead5e4c0b01c944bda7c7621fe1f0a88a0",
+      "expectedSha256": "fac5dbc8a09fb4c4ba80cf147b535cd9f003b0d968b202ec4bf230722b770d32",
+      "actualSha256": "fac5dbc8a09fb4c4ba80cf147b535cd9f003b0d968b202ec4bf230722b770d32",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/rest-timer.ts",
+      "sourcePath": "mobile/src/shared/rest-timer.ts",
+      "bytes": 2923,
+      "sourceGitBlobSha": "2231747f62daada6fed31ca01257f4ef5d9225bc",
+      "expectedSha256": "36538cc608229d05c2d31cdad444842bea930701422482f15e48feea68862170",
+      "actualSha256": "36538cc608229d05c2d31cdad444842bea930701422482f15e48feea68862170",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/safety-copy.ts",
+      "sourcePath": "mobile/src/shared/safety-copy.ts",
+      "bytes": 1103,
+      "sourceGitBlobSha": "f3a7c133f395c336fd0c29d010ec92e8eeff6eb4",
+      "expectedSha256": "dc5e7c7a733753d217328d95a76e8184ce73b0bccd35a6c5f9560793bdb18fef",
+      "actualSha256": "dc5e7c7a733753d217328d95a76e8184ce73b0bccd35a6c5f9560793bdb18fef",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/saved-data.ts",
+      "sourcePath": "mobile/src/shared/saved-data.ts",
+      "bytes": 9115,
+      "sourceGitBlobSha": "0af5be2f118404da269c4622967941913b45526b",
+      "expectedSha256": "f9700820986ae884b77d8450b93e42e87437d93ff5270ac45e7f5241e8766119",
+      "actualSha256": "f9700820986ae884b77d8450b93e42e87437d93ff5270ac45e7f5241e8766119",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/session-guide.ts",
+      "sourcePath": "mobile/src/shared/session-guide.ts",
+      "bytes": 4333,
+      "sourceGitBlobSha": "265653a9cbd7c9d0cb33634aef8a7976a7ca0ac1",
+      "expectedSha256": "b01214210929f222cac058d698970d148ecb64084fcbd6c1a8a0527f1a325485",
+      "actualSha256": "b01214210929f222cac058d698970d148ecb64084fcbd6c1a8a0527f1a325485",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/set-metrics.ts",
+      "sourcePath": "mobile/src/shared/set-metrics.ts",
+      "bytes": 993,
+      "sourceGitBlobSha": "46edb2713ae7a88c6cca887fb2b8a3bc16521e61",
+      "expectedSha256": "0efe2451baba1794e96c6672e41e1df0c7b2c748a9a2b1bac6be9564d8c65558",
+      "actualSha256": "0efe2451baba1794e96c6672e41e1df0c7b2c748a9a2b1bac6be9564d8c65558",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/substitutions.ts",
+      "sourcePath": "mobile/src/shared/substitutions.ts",
+      "bytes": 8122,
+      "sourceGitBlobSha": "377d05e49792347c5bde3f928562a43eddb4f86e",
+      "expectedSha256": "3084b97eae49727d828787491efe67f921bafd56ea205a91fc249872e8e3efb6",
+      "actualSha256": "3084b97eae49727d828787491efe67f921bafd56ea205a91fc249872e8e3efb6",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/tracking.ts",
+      "sourcePath": "mobile/src/shared/tracking.ts",
+      "bytes": 4220,
+      "sourceGitBlobSha": "5c6790511fd394875d822162578c261315263125",
+      "expectedSha256": "2fa8186de1fa6e189dd50d354adf7688d3a0de506818faaa843f9187a7829b83",
+      "actualSha256": "2fa8186de1fa6e189dd50d354adf7688d3a0de506818faaa843f9187a7829b83",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/training-focus.ts",
+      "sourcePath": "mobile/src/shared/training-focus.ts",
+      "bytes": 12946,
+      "sourceGitBlobSha": "af7123dab8c2beee66d31679cb62e6f447ca1eef",
+      "expectedSha256": "3e4a94e9a6a4ec4056e195e244edcf6dd6f365dbbb432e17d35f8e3f3babba39",
+      "actualSha256": "3e4a94e9a6a4ec4056e195e244edcf6dd6f365dbbb432e17d35f8e3f3babba39",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/training-tools.ts",
+      "sourcePath": "mobile/src/shared/training-tools.ts",
+      "bytes": 7322,
+      "sourceGitBlobSha": "de3cd6f9ac276bb60173ab4952400bd86d18fa69",
+      "expectedSha256": "e74300e7307dfe49dfc415272ca0796c24d5ad6f95ebadecd4efa63b00c38180",
+      "actualSha256": "e74300e7307dfe49dfc415272ca0796c24d5ad6f95ebadecd4efa63b00c38180",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/training.ts",
+      "sourcePath": "mobile/src/shared/training.ts",
+      "bytes": 92258,
+      "sourceGitBlobSha": "7042d6d5a6e77e4c8e4709196484ea247153eff9",
+      "expectedSha256": "be27eb1bc30c2823df371d7712309264f109516f85f07e43ec5d1ad432b251d5",
+      "actualSha256": "be27eb1bc30c2823df371d7712309264f109516f85f07e43ec5d1ad432b251d5",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/transfer-bundle.ts",
+      "sourcePath": "mobile/src/shared/transfer-bundle.ts",
+      "bytes": 8707,
+      "sourceGitBlobSha": "84a1c66e3fea713ae55c8689e6b7bcc508d65fd5",
+      "expectedSha256": "dd7a200b62c627b205d059e78713d4c0c6bbbd2db5bc15414c77e271b16b4b75",
+      "actualSha256": "dd7a200b62c627b205d059e78713d4c0c6bbbd2db5bc15414c77e271b16b4b75",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/workout-log.ts",
+      "sourcePath": "mobile/src/shared/workout-log.ts",
+      "bytes": 2909,
+      "sourceGitBlobSha": "1c024da9b9d9abd9013983ff661cf5f4f6eaab07",
+      "expectedSha256": "0e5e1a8c078f211a5c05d476421b89dda44ce69a6bd5e672637ab78571597d2b",
+      "actualSha256": "0e5e1a8c078f211a5c05d476421b89dda44ce69a6bd5e672637ab78571597d2b",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/workout-reminders.ts",
+      "sourcePath": "mobile/src/shared/workout-reminders.ts",
+      "bytes": 2182,
+      "sourceGitBlobSha": "7593efaef2f15546a5dbc28618551980d50b7401",
+      "expectedSha256": "50e9fe8d123c8778165bc5547747ad02cf249a28eca7d2e20f508f6be8d2276e",
+      "actualSha256": "50e9fe8d123c8778165bc5547747ad02cf249a28eca7d2e20f508f6be8d2276e",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/shared/workout-review.ts",
+      "sourcePath": "mobile/src/shared/workout-review.ts",
+      "bytes": 7864,
+      "sourceGitBlobSha": "dcfba8594b216e075f9d01c508377c48a9f947c6",
+      "expectedSha256": "ea8eabf95466f827114b1a8684a8bcebc2d6cda1119cf03cf376313097a8e21f",
+      "actualSha256": "ea8eabf95466f827114b1a8684a8bcebc2d6cda1119cf03cf376313097a8e21f",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/storage-capacity.ts",
+      "sourcePath": "mobile/src/storage-capacity.ts",
+      "bytes": 1270,
+      "sourceGitBlobSha": "817d708e1cf7a4b3704fca657b61646dcee1686e",
+      "expectedSha256": "4ce3199f618fba13960ba5c2239c8edae857c7bdf9e15a4c2a6706016a29c2af",
+      "actualSha256": "4ce3199f618fba13960ba5c2239c8edae857c7bdf9e15a4c2a6706016a29c2af",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/storage.ts",
+      "sourcePath": "mobile/src/storage.ts",
+      "bytes": 23301,
+      "sourceGitBlobSha": "0bd4f72939d4a449515fd43f7b612a91194ade2f",
+      "expectedSha256": "1a5f6c0f4008f394e4229d2a5ee5c90de2894cc31afeaf266197550b5d134d18",
+      "actualSha256": "1a5f6c0f4008f394e4229d2a5ee5c90de2894cc31afeaf266197550b5d134d18",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/tools.tsx",
+      "sourcePath": "mobile/src/tools.tsx",
+      "bytes": 10206,
+      "sourceGitBlobSha": "5c1c07e7ad46a5eddd0639ad377cdc8e15fe3ce3",
+      "expectedSha256": "cda4795f9e480cd1a90eb9ed181d7b410a67a50a8b8d67b915706d635ffa666d",
+      "actualSha256": "cda4795f9e480cd1a90eb9ed181d7b410a67a50a8b8d67b915706d635ffa666d",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/transfer.tsx",
+      "sourcePath": "mobile/src/transfer.tsx",
+      "bytes": 5879,
+      "sourceGitBlobSha": "1bbd54169e4fe3a6da5bd7d00c485fb9b2df9ece",
+      "expectedSha256": "fc0faf2af8060d15a3b12efe52e0879cbc31f5af0c833a8b6cc9f01deaf53817",
+      "actualSha256": "fc0faf2af8060d15a3b12efe52e0879cbc31f5af0c833a8b6cc9f01deaf53817",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/src/workout-notifications.ts",
+      "sourcePath": "mobile/src/workout-notifications.ts",
+      "bytes": 4961,
+      "sourceGitBlobSha": "7f47fda90e1f9359338a2881fbee1a0097893b83",
+      "expectedSha256": "c71e8004cba19a92e7d1c9a10fb8541277895578c00a1b9223a9566bd01daa92",
+      "actualSha256": "c71e8004cba19a92e7d1c9a10fb8541277895578c00a1b9223a9566bd01daa92",
+      "matched": true
+    },
+    {
+      "archivePath": "training-studio-mobile/tsconfig.json",
+      "sourcePath": "mobile/tsconfig.json",
+      "bytes": 157,
+      "sourceGitBlobSha": "62c226cc41482cdc00b24a708ac9fb44271fb352",
+      "expectedSha256": "b6d63fc2582c0485c0c5f973234cd31e0ea283b14d9306f417500ea35858c6a1",
+      "actualSha256": "b6d63fc2582c0485c0c5f973234cd31e0ea283b14d9306f417500ea35858c6a1",
+      "matched": true
+    }
+  ],
+  "limits": [
+    "Byte/source/download provenance only; no native binary, runtime, device or store qualification."
+  ]
+}

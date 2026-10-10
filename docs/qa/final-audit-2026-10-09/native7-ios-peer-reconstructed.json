@@ -1,0 +1,212 @@
+{
+  "schema": 1,
+  "reviewKind": "Reconstructed portable receipt of independently completed pre-outage NATIVE7 iOS review",
+  "reconstructionBasis": "Prior successful local read-only verification outputs and retained conversation context. Exact original scratch-review JSON bytes are currently inaccessible; this receipt does not claim their original file hash.",
+  "source": {
+    "commit": "8abfca45f1f910155011516eabffbebdf070821b",
+    "tree": "b8a0dc7b9c820a44f98fd13df75b2970984fcc26"
+  },
+  "nativeRunID": 37981546336,
+  "qualityRunID": 37981546349,
+  "historicalPeerCheckCompleted": true,
+  "findingsWithinObservedIOSScope": [],
+  "archiveChecks": [
+    {
+      "kind": "ios",
+      "artifactID": 11641715468,
+      "bytes": 23246,
+      "sha256": "ee42ddc5f85eec0de91607d80f1b2ef624f83f93230562b3ab2db42424ff4bdc",
+      "memberCount": 20,
+      "sourceReceiptCommit": "8abfca45f1f910155011516eabffbebdf070821b",
+      "checkedAgainstSavedGitHubAPIDigestAndSize": true,
+      "zipCRCVerified": true,
+      "memberPathsSafeUniqueAndNonSymlinked": true,
+      "allMemberBytesAndSizesMatchRetainedFilesAndSavedReceipt": true
+    },
+    {
+      "kind": "native-input",
+      "artifactID": 11639869865,
+      "bytes": 503,
+      "sha256": "aec51046ad483cecbfe5f9fab913c9470de97e576baad90818161cb273b76b90",
+      "memberCount": 1,
+      "decisionCompile": true,
+      "checkedAgainstSavedGitHubAPIDigestAndSize": true,
+      "zipCRCVerified": true,
+      "memberPathsSafeUniqueAndNonSymlinked": true,
+      "allMemberBytesAndSizesMatchRetainedFilesAndSavedReceipt": true
+    },
+    {
+      "kind": "quality",
+      "artifactID": 11641675416,
+      "bytes": 8003,
+      "sha256": "9dd7b0d7e7268d4961a430d33a215eb5ac5eb451543d614fd97049816e1a90f7",
+      "memberCount": 12,
+      "sourceReceiptCommit": "a32db358ef62af4153838dcd519bcae3a01a931b",
+      "sourceReceiptTree": "b8a0dc7b9c820a44f98fd13df75b2970984fcc26",
+      "retainedRegressionSuites": 55,
+      "regressionsAllPassed": true,
+      "retainedProductionSuites": 3,
+      "productionSuitesAllPassed": true,
+      "checkedAgainstSavedGitHubAPIDigestAndSize": true,
+      "zipCRCVerified": true,
+      "memberPathsSafeUniqueAndNonSymlinked": true,
+      "allMemberBytesAndSizesMatchRetainedFilesAndSavedReceipt": true
+    }
+  ],
+  "archiveAuthorityScope": "Independent byte/CRC/member checking used existing downloaded archives and saved GitHub API receipts. This peer did not duplicate artifact downloads or independently refetch API metadata.",
+  "exactSourceReaders": [
+    {
+      "path": "scripts/collect-native-build-evidence.py",
+      "gitBlob": "0b979583a5581520937f4b2357aeef46667d3120",
+      "sha256": "f2076094615fe57ffbea6b7f22ce5ad03bb64d0de494207a9a393a732c2c3186",
+      "localCopiedBytesExactlyMatchedGitSourceAtReviewedCommit": true
+    },
+    {
+      "path": "scripts/inspect-native-artifacts.py",
+      "gitBlob": "c8ce8193cf1d931ec9c66c8eb83e40c4298662ba",
+      "sha256": "db33ac39abc5b1e49f37fc0802f4ff60555f42c0696e61fb66774a81e6caf0dc",
+      "localCopiedBytesExactlyMatchedGitSourceAtReviewedCommit": true
+    }
+  ],
+  "iosBuildRoute": {
+    "platform": "iphonesimulator",
+    "configuration": "Release",
+    "target": "ExpoSQLite",
+    "package": "expo-sqlite",
+    "packageVersion": "57.0.4",
+    "packageJSONSHA256": "dfbcb74ec3dae858221cde06efa60f09b838f56f79260c97b806d339a5fa00ec",
+    "vendor": "sqlite3",
+    "copiedVendorSourceSHA256": "df16f4f2845488289d416e1d3b928c82ade5256564605b762daf0113fad394c5",
+    "vendorSourceMatchedInstalledLockedSource": true,
+    "podfileLockExpoSQLiteVersionMatched": true,
+    "resolvedReleaseOtherCFlagsAndGCCDefinitionsSingleMacro3IndependentlyValidated": true,
+    "generatedReleaseXcconfigOtherCFlagsSingleMacro3IndependentlyValidated": true,
+    "generatedReleaseXcconfigSwiftXccSingleMacro3IndependentlyValidated": true,
+    "resolvedSwiftFlagsRetained": false,
+    "buildRouteReportSHA256": "cfb040f975bdf179f96d27b441b8f14e436b3422ea005bfe0cc957b7ddba2ed0",
+    "releaseXcconfigSHA256": "002be527cb93790c6724f11ccc489222133633af4e45d75dff61c850b187ef47",
+    "releaseBuildSettingsSHA256": "e3c0da3fe5fa5d41ad6bb5bbad848f54b926b1797430eb80a21f611e179f5e5e",
+    "ciReportedObjects": [
+      {
+        "architecture": "arm64",
+        "bytes": 5802280,
+        "sha256": "442977f5210d5184542230df2ecbd5d621c5ee63a1754a7fe151e1b2a6b9658e"
+      },
+      {
+        "architecture": "x86_64",
+        "bytes": 5853744,
+        "sha256": "0f78db44953ffe1150f8db625975198708683b756421e2c144f62943cf5bd177"
+      }
+    ],
+    "objectsRawBytesRetained": false,
+    "objectsIndependentlyRehashedByPeer": false,
+    "perFileCInvocationRetained": false,
+    "scope": "Actual retained resolved C target flags, generated xcconfig and source identity support default3 configuration. Successful CI collector checked nonempty C objects and reported hashes; raw objects were unavailable for independent byte/instruction-level verification."
+  },
+  "privacyReplay": {
+    "manifestCount": 11,
+    "retainedPlistPlusPrivacyFileCount": 12,
+    "actualManifestNamesAllPrivacyInfo": true,
+    "relativeFileInventory": [
+      {
+        "path": "Info.plist",
+        "bytes": 3553,
+        "sha256": "9f7d264fde03eb71e168a5d20ee366258c59e2abbadcb3c4b7a609d9346237e1"
+      },
+      {
+        "path": "ExpoApplication_privacy.bundle/PrivacyInfo.xcprivacy",
+        "bytes": 608,
+        "sha256": "b48763ffd29cbad815125ae56e1073273e418ae086103fc7dff7efbec1675aaa"
+      },
+      {
+        "path": "ExpoConstants_privacy.bundle/PrivacyInfo.xcprivacy",
+        "bytes": 607,
+        "sha256": "2b2d8edb71d51c5b1f1ace4cdb28a94baf22fdde9bbf2e2bfc17d187ff7b5f47"
+      },
+      {
+        "path": "ExpoNotifications_privacy.bundle/PrivacyInfo.xcprivacy",
+        "bytes": 607,
+        "sha256": "2b2d8edb71d51c5b1f1ace4cdb28a94baf22fdde9bbf2e2bfc17d187ff7b5f47"
+      },
+      {
+        "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/PrivacyInfo.xcprivacy",
+        "bytes": 776,
+        "sha256": "d3559c988dff940d4f758f37a0ba1863208304e33ab0b97c0e3dd5d3762f5f1d"
+      },
+      {
+        "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/PrivacyInfo.xcprivacy",
+        "bytes": 552,
+        "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+      },
+      {
+        "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/PrivacyInfo.xcprivacy",
+        "bytes": 552,
+        "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+      },
+      {
+        "path": "PrivacyInfo.xcprivacy",
+        "bytes": 1274,
+        "sha256": "ab8e9be3d1713701eef605d660a79483ebfab512bc726a28b67c82663382b1fa"
+      },
+      {
+        "path": "RNCAsyncStorage_resources.bundle/PrivacyInfo.xcprivacy",
+        "bytes": 512,
+        "sha256": "0b1287d0e686cf867d38d97cca5dc694b3029f27c4fe4270dd4bd2fd5458a2f0"
+      },
+      {
+        "path": "React-Core_privacy.bundle/PrivacyInfo.xcprivacy",
+        "bytes": 768,
+        "sha256": "7c08969e459621a6ecec043ccdb9012651f185811945f75517c623dae2e11627"
+      },
+      {
+        "path": "React-cxxreact_privacy.bundle/PrivacyInfo.xcprivacy",
+        "bytes": 552,
+        "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+      },
+      {
+        "path": "React-timing_privacy.bundle/PrivacyInfo.xcprivacy",
+        "bytes": 553,
+        "sha256": "23ddfa062a6d4392e65882d151fdececbd29904a227ad8918c0144ebc777ee61"
+      }
+    ],
+    "allPathsSizesAndBytesIndependentlyMatchedCollectorReportAndOriginalCIInspection": true,
+    "noDuplicateManifestPaths": true,
+    "topLevelCompatibilityCopiesMatchedReplayCopies": true,
+    "exactSourceInspectorReplayPassed": true,
+    "exactSourceInspectorReplayJSONExactlyMatchedOriginalCIInspection": true,
+    "originalCIInspectionSHA256": "32270bd48f36decdddbbcf9b177e9f59014790b0528715cce9f91540bb216c01",
+    "noActualManifestOmissionEstablished": true
+  },
+  "outage": {
+    "originalOwnerWorkspace": "/workspace/scratch/86ffa076637d",
+    "originalOwnerWorkspaceBecameUnavailable": true,
+    "executionTransportBecameUnavailable": true,
+    "originalScratchPeerReceipt": "/workspace/scratch/a905d1d2368a/native7-actual-ios-evidence-peer.json",
+    "uncommittedLocalEvidenceCopiesCurrentlyUnavailable": true,
+    "preciseOriginalPeerReceiptFileHashClaimed": false,
+    "exactArchiveRedownloadAndSuccessorEvidenceOwnedByRoot": true
+  },
+  "successorScope": {
+    "isolatedRepairPR": 2,
+    "rootReportedCommitPrefix": "e85",
+    "rootReportedTreePrefix": "890",
+    "rootReportedNativeRunID": 37984196327,
+    "rootReportedQualityRunID": 37984196434,
+    "rootReportedMobileTreeUnchanged": "90f031f1d49ad590ad390f02a57fcf43ca85ab02",
+    "collectorProposalBlob": "30d45ecf8b5ead1777f52f9744e1a046ae97ffdb",
+    "testProposalBlob": "b9e81a8854e41ef89c25a2e3dc6d888871b809eb",
+    "addedFixtures": 11,
+    "totalDeclaredFixtures": 31,
+    "newFixturesLocallyExecuted": false,
+    "successorNativeArtifactsIndependentlyReplayedByThisReceipt": false,
+    "qualification": "This receipt is historical source7 evidence. It does not certify successor source8 CI or independently replay a newly downloaded archive."
+  },
+  "limits": [
+    "No source/commit/ref update or duplicate build/download performed by this peer review.",
+    "No actual SELECT/runtime PRAGMA, phone execution, power-loss durability, native API reachability, complete binary SCA, production signing or store acceptance qualification.",
+    "Generated Swift Xcc default3 is verified from real retained xcconfig; resolved Swift target settings were filtered out. No bad Swift C-runtime effect is inferred.",
+    "Known actual11 privacy manifests all have the supported canonical name and were preserved. The broader generic all-*.xcprivacy contract does not establish any omitted actual file.",
+    "Actual source7 Android collection later failed on a cache-location assumption after compilation/lint/strict APK inspection succeeded as reported by root; this iOS receipt does not qualify Android default3.",
+    "31 successor reader fixtures require hosted/recovered execution; no passing result is claimed here."
+  ]
+}

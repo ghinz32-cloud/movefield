@@ -1,0 +1,32 @@
+{
+  "verifiedAtUtc": "2026-10-09T19:15:57.921580+00:00",
+  "sourceRemote": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf",
+  "sourceTree": "eec113576e18fc18d4976ceaa03b7e7ca464a930",
+  "sourceTreeReadback": true,
+  "pagesRemote": "528f3b67f2bfb78f908e0f1503009a8a599dd843",
+  "pagesLocal": "fedd25035a3eb408e607f27a57f93cfffa6b4172",
+  "pagesTree": "d6c323e556e118795e472155be90ba03532bf42f",
+  "pagesParent": "4ab2b7ade02a431eb0798166149fbe882c893555",
+  "pagesCommitTreeParentReadback": true,
+  "pagesGeneratedTreeMatchesGitHub": true,
+  "pagesTreeAndManifestReadback": true,
+  "liveVerified": true,
+  "liveFileCount": 37,
+  "deploymentRun": 37978559644,
+  "deploymentConclusion": "success",
+  "deploymentHeadMatchesPagesCommitAndTree": true,
+  "version": "f6c58a4e6449e490ce4bf2da6b78c7ed1ad728579e8531311b5092b58a7eb4e4",
+  "nativeStarterEntriesVerified": 117,
+  "nativeStarterAllEntriesMatchPublishedSource": true,
+  "nativeStarterSha256": "2b2192c9ae265340888c686302d1b249afe82aa23eeeee70428160e28a1a18f0",
+  "preservedNativeStarter": "movefield-mobile-r14.zip",
+  "buildAndCheckEvidence": {
+    "buildLog": "pages-build.log",
+    "checkLog": "pages-check.log",
+    "generatedWorkerAssertions": 421,
+    "manifestAssets": 35
+  },
+  "limits": [
+    "Read-only HTTPS/GitHub/source-byte evidence; no new browser, offline, phone or native binary qualification."
+  ]
+}

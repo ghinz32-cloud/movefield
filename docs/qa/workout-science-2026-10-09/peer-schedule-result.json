@@ -1,0 +1,427 @@
+{
+  "timestamp": "2026-10-09T17:37:10.274Z",
+  "sourceCommit": "0e43ddf47730bdb264be45326884646b17a25ade",
+  "sourceSHA256": {
+    "lib/training.ts": "be27eb1bc30c2823df371d7712309264f109516f85f07e43ec5d1ad432b251d5",
+    "lib/training-focus.ts": "3e4a94e9a6a4ec4056e195e244edcf6dd6f365dbbb432e17d35f8e3f3babba39",
+    "lib/program-catalog.ts": "d5ab1eb1c61338dc58e8c06aa1899f967574a2c9c6102e6be7e783396018949c",
+    "lib/program-evidence.ts": "beaad36890c37d5de560cfdb0d26776e62b4e2cec21722e912a7dc57e0a313c4",
+    "lib/exercise-library.json": "255e51c2dad783a487d37ea4bbe3eb6942f6d7dfde497b7a432ec3bd54620040",
+    "lib/recipes.json": "a6b5f0e919cf0f3ba492e67db8164223e333dab70e24bfab830796136c02c175",
+    "scripts/lib/native-source-loader.cjs": "50a40b4ecf5c1cfa6e4d15372f02a20200bede587110d3561297aa42db3ea62f"
+  },
+  "scriptSHA256": "2de2b62f4830a9f4f7b8478535e2efe2940ac11103de94c6844acc259872dbf8",
+  "catalogPrograms": 75,
+  "combinations": 51191,
+  "built": 41832,
+  "unavailable": 9359,
+  "byProgram": {
+    "PL3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "PL4": {
+      "profiles": 448,
+      "built": 448,
+      "unavailable": 0
+    },
+    "PB3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "PB4": {
+      "profiles": 448,
+      "built": 448,
+      "unavailable": 0
+    },
+    "BB3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "BB4": {
+      "profiles": 448,
+      "built": 448,
+      "unavailable": 0
+    },
+    "HY4": {
+      "profiles": 448,
+      "built": 448,
+      "unavailable": 0
+    },
+    "HY5": {
+      "profiles": 203,
+      "built": 203,
+      "unavailable": 0
+    },
+    "BBPPL6": {
+      "profiles": 56,
+      "built": 56,
+      "unavailable": 0
+    },
+    "BBARN6": {
+      "profiles": 56,
+      "built": 56,
+      "unavailable": 0
+    },
+    "PLTX3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "PLSL3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "PLU3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "PBPH4": {
+      "profiles": 448,
+      "built": 448,
+      "unavailable": 0
+    },
+    "PBT4": {
+      "profiles": 448,
+      "built": 448,
+      "unavailable": 0
+    },
+    "ST2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "ST3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "GF2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "GFHOME2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "CAL2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "CAL3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "RNEASY3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "PL2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "PBSTART2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "PBSTART3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "PBDB3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "BB2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "BBDB3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "BBM3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "STGYM2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "STDB3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "GF3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "GFM2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "CALBUILD3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "CALBUILD2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "HYHOME4": {
+      "profiles": 448,
+      "built": 448,
+      "unavailable": 0
+    },
+    "HYDB4": {
+      "profiles": 448,
+      "built": 448,
+      "unavailable": 0
+    },
+    "RNBASE4": {
+      "profiles": 448,
+      "built": 203,
+      "unavailable": 245
+    },
+    "BBHOME3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "BBADV4": {
+      "profiles": 448,
+      "built": 448,
+      "unavailable": 0
+    },
+    "PLW4": {
+      "profiles": 448,
+      "built": 448,
+      "unavailable": 0
+    },
+    "PBW4": {
+      "profiles": 448,
+      "built": 448,
+      "unavailable": 0
+    },
+    "ST4": {
+      "profiles": 448,
+      "built": 448,
+      "unavailable": 0
+    },
+    "QG2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "QG3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "QS2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "QM2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "QC2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "QPB2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "QSP2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "QS3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "QM3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "QPB3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "QC3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "QSP3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "QPL3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "QHY4": {
+      "profiles": 448,
+      "built": 448,
+      "unavailable": 0
+    },
+    "QR3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "SP2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "QHY3": {
+      "profiles": 693,
+      "built": 693,
+      "unavailable": 0
+    },
+    "HY3": {
+      "profiles": 693,
+      "built": 693,
+      "unavailable": 0
+    },
+    "QR2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "PLSTART3": {
+      "profiles": 693,
+      "built": 399,
+      "unavailable": 294
+    },
+    "GFSTAND2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "STSTAND2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "GFNOGROUND2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "GFNONE2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "STDBST2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "GFDBST2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "BBDBST2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "PBDBST2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "SPDBST2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "CALDB2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "HYDB2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    },
+    "HYHOME2": {
+      "profiles": 840,
+      "built": 791,
+      "unavailable": 49
+    }
+  },
+  "invariants": [
+    "full weeks * days session count",
+    "slot zero first",
+    "chosen weekdays",
+    "ordered week assignment",
+    "hard session window",
+    "strict date order",
+    "present earlier dependencies",
+    "actual slot title/role/recovery group including rolling A/B",
+    "app comparable-session recovery rule"
+  ],
+  "assumptions": {
+    "weeks": 3,
+    "availability": "Every nonempty subset of Sunday-Saturday with sufficient days for the split",
+    "startDates": "2026-10-04 through 2026-10-10, one per weekday",
+    "minutes": 120,
+    "equipment": "Matching catalog equipment",
+    "adults": "Age 28; some lifting experience, or experienced for advanced programs; established training",
+    "youth": "Age16 with qualified supervision reported",
+    "running": "Reported comfortable base, four recent running days and 120 easy minutes",
+    "events": [],
+    "focuses": []
+  },
+  "limits": [
+    "Source-level deterministic invariant check, not clinical or individual safety validation",
+    "Unavailable profiles are not asserted invalid for every possible training design",
+    "Three-week blocks omit later deload and higher-set weeks",
+    "No commitments, date proposals, feedback progression, physical devices or actual exercise outcomes tested in this sweep",
+    "RNBASE4 intentionally exempts the same-run recovery-day invariant; its separate rolling-window rule is not checked here"
+  ],
+  "failureCount": 0,
+  "failures": []
+}

@@ -1,0 +1,54 @@
+{
+  "milestone": "S01 transactional browser snapshots",
+  "baselineGitHub": "07e540dcfe8bcd9339651db868f9a07184b4d49a",
+  "preservedLocalAudit": "22a208b10a7cb8a726478617ae6d70fee1210b3b",
+  "regression": {
+    "passed": 43,
+    "total": 43
+  },
+  "production": {
+    "passed": 3,
+    "total": 3
+  },
+  "focused": {
+    "recordStoreAssertions": 76,
+    "transactionalVaultScenarios": 24,
+    "transactionalVaultAssertions": 163,
+    "legacyVaultAssertions": 133,
+    "compiledHomeCallbackScenarios": 8
+  },
+  "webTypes": "pass",
+  "fullProductLint": "pass",
+  "productionBuild": "pass",
+  "initialGzipBytes": 397290,
+  "offline": {
+    "version": "bd4c3d14225526578bd985858b8727a357558f97b5a08ce799bc98a1d4e16eaf",
+    "assets": 66,
+    "bytes": 20484593
+  },
+  "sourceSha256": {
+    "app/page.tsx": "d27cfd8843c9b05ce076d9a99a798071fdea64a779a994fb1f5aa693a0a4e01e",
+    "components/saved-data-recovery.tsx": "b3066347ac21b2220928a3a378a8735801dc1b10f0bfd029f07ddc62dc05cfb6",
+    "lib/browser-vault.ts": "bdf68250c6fcaf0c2244a2a10064c6d80fc8bf2db79ba93442260cb2ba0c9cea",
+    "lib/browser-record-store.ts": "b37009d3e616b3d7a7bea3729fca139658162f6345952ea5502a702567409125",
+    "scripts/check-browser-record-store.cjs": "c4a06df341798cd6f5f4ad50b36509331f14fa78598e2a6be23a295d99643989",
+    "scripts/check-transactional-browser-vault.cjs": "20b041bfab1df22881cf4c7fd412c7dee6af2a79e1ce758fdf9c5c2bd69d5ade",
+    "scripts/check-browser-storage-ui.cjs": "1d01cdad6732a803bde4fdcff8cfa713b00df127acac316ec951515bf022cf96"
+  },
+  "logSha256": {
+    "s01-vault.log": "5c2cf671a92bd69ab38aabfc77115d8f8c643a3b1e049dfe62f9c1ce84fa91dd",
+    "s01-final-regression.log": "57654d22b0eb83653f5d5b4846478283027552a15558d5344e5bb359c3d628db",
+    "s01-types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "s01-final-lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "s01-build.log": "e804c6dbaaf4c652e93037c1ba146a1e28c18ce9a5e2f3d019bdcf2477c0fb3f",
+    "s01-production.log": "cdd6ba9a666e6db08a73d9f4a6cbf6f63b3f4c2f12e7dec55c475697b9abf265"
+  },
+  "limits": [
+    "Actual fake-indexeddb transactions and real Node WebCrypto; no secure-origin real-browser disk/quota/power acceptance.",
+    "Compiled Home callbacks use simulated hooks/DOM and mocked vault; no browser screenshot or accessibility conformance claim.",
+    "Whole-profile snapshot remains limited by existing 5M-character / 5000-workout app guards; incremental entities and cloud sync remain pending.",
+    "Physical Android/iOS acceptance, native Qwen and trained artifact qualification remain pending.",
+    "Two previously documented temporary dependency exceptions remain release blockers.",
+    "No main merge, service provisioning, live deployment or store distribution."
+  ]
+}

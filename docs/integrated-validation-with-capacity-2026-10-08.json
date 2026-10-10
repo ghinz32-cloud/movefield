@@ -1,0 +1,234 @@
+{
+  "schema": 1,
+  "checkedOn": "2026-10-08",
+  "sourceCommit": "aa57726f7d0615a47587758c8c9a965e2c5c7ed0",
+  "sourceTree": "2daf6c38f3aef78f264ac77b2150e46de92c7d68",
+  "localBranch": "audit/2026-10-08-resume",
+  "remoteReviewBranch": "audit/2026-10-08-quality",
+  "remoteVerifiedHead": "8cd39e42f2178b807d63af2042b70481041b028b",
+  "regression": [
+    {
+      "check": "check-audit.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-backup.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-browser-vault.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-catalog.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-equipment-capacity.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-fitness-evaluation.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-fitness-grounding.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-focus.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-goals.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-library.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-storage.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-offline.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-onboarding.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-preferences.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-program-depth.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-program-design.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-program-selection.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-qwen-assets.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-revision-10.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-revision-11.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-security.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-shared.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-tools.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-training.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-transfer.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-workout-review.cjs",
+      "passed": true
+    }
+  ],
+  "production": [
+    {
+      "check": "check-bundle.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-production-security.cjs",
+      "passed": true
+    }
+  ],
+  "bundle": {
+    "page": "_next/static/chunks/page-s9F_jPeY.js",
+    "key": "app/page.tsx",
+    "bytes": 275853,
+    "gzipBytes": 82506,
+    "initialGzipBytes": 387165,
+    "initialLimitGzipBytes": 400000,
+    "chunks": [
+      {
+        "key": "app/page.tsx",
+        "bytes": 275853,
+        "gzipBytes": 82506
+      },
+      {
+        "key": "_rolldown-runtime-QTnfLwEv.js",
+        "bytes": 694,
+        "gzipBytes": 422
+      },
+      {
+        "key": "virtual:vinext-app-browser-entry",
+        "bytes": 192984,
+        "gzipBytes": 55991
+      },
+      {
+        "key": "_framework-JGc2HF7T.js",
+        "bytes": 190152,
+        "gzipBytes": 59097
+      },
+      {
+        "key": "components/app-preferences.tsx",
+        "bytes": 151332,
+        "gzipBytes": 47936
+      },
+      {
+        "key": "_button-CBvz_Igj.js",
+        "bytes": 32543,
+        "gzipBytes": 10650
+      },
+      {
+        "key": "_training-DJXfdpTg.js",
+        "bytes": 771238,
+        "gzipBytes": 107734
+      },
+      {
+        "key": "_local-backup-BsRyCazp.js",
+        "bytes": 64380,
+        "gzipBytes": 15615
+      },
+      {
+        "key": "_progress-BIHciO6D.js",
+        "bytes": 24893,
+        "gzipBytes": 7214
+      }
+    ]
+  },
+  "commands": {
+    "web-types": {
+      "command": "npm run check",
+      "exitCode": 0,
+      "logSha256": "41d39cff24a2767fb623a40788a74db6700d2427f22215a1734981e58231bc25"
+    },
+    "lint": {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "native-types": {
+      "command": "mobile: npm run check",
+      "exitCode": 0,
+      "logSha256": "670d01d210acd2e995c8fa4949fa5481f8b3dde171e00650be865ae911fad166"
+    },
+    "native-engine": {
+      "command": "mobile: npm run test:engine",
+      "exitCode": 0,
+      "logSha256": "76ed9686553bcd433fbc00af3350edc93ec5401af402db1ae6abccdb10689289"
+    },
+    "native-export": {
+      "command": "mobile: npm run export:mobile",
+      "exitCode": 0,
+      "logSha256": "fe0c54384b3efe21f476669358e1570509b6fafaf58877730ab1e2c583d41d34"
+    },
+    "regression": {
+      "command": "node scripts/check-all.cjs",
+      "exitCode": 0,
+      "logSha256": "f17dc31c876d7009a8c16eb5400f7b6cefd9ef68f79c75c68f721f2310332660"
+    },
+    "build": {
+      "command": "npm run build",
+      "exitCode": 0,
+      "logSha256": "baea489735332c5af37d57ae34229aebfdad226e919a661c8a91d31e4d96e5b3"
+    },
+    "production": {
+      "command": "node scripts/check-all.cjs --production",
+      "exitCode": 0,
+      "logSha256": "f936ddb7eeb47938ff30ab616e3c564e2c095f434515af772dca5061b3348977"
+    },
+    "dependencies": {
+      "command": "node scripts/check-dependencies.mjs",
+      "exitCode": 0,
+      "logSha256": "112184f36c4e8afc81b366a2ccf891c8be75e87f64d74b0882feb2fbb12a0a08"
+    }
+  },
+  "limits": [
+    "Existing locked dependencies reused; no fresh clean install or new GitHub Actions run.",
+    "No physical-phone or fresh browser UI acceptance.",
+    "Actual Qwen inference and device qualification remain unmeasured.",
+    "Dependency gate passes only with the two documented temporary exceptions, not release approval.",
+    "No push, merge or deployment."
+  ]
+}

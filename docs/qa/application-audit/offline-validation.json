@@ -1,0 +1,119 @@
+{
+  "passed": 26,
+  "total": 26,
+  "results": [
+    {
+      "name": "Generator is deterministic and contains every lazy public app feature without private files",
+      "pass": true
+    },
+    {
+      "name": "First completed install immediately supports offline root and unopened lazy tools/research",
+      "pass": true
+    },
+    {
+      "name": "An old tab can read an old hashed chunk and unrelated caches remain untouched",
+      "pass": true
+    },
+    {
+      "name": "Changed asset bytes reject activation and preserve the previous working cache",
+      "pass": true
+    },
+    {
+      "name": "Cache quota failure rejects partial installation without deleting the previous build",
+      "pass": true
+    },
+    {
+      "name": "Same-length corruption during cache readback rejects activation",
+      "pass": true
+    },
+    {
+      "name": "A lost staged cache entry rejects activation",
+      "pass": true
+    },
+    {
+      "name": "A replaced staged shell cannot count as a working app shell",
+      "pass": true
+    },
+    {
+      "name": "A corrupt completed marker cannot count as a completed build",
+      "pass": true
+    },
+    {
+      "name": "Activation rechecks staged bytes before claiming clients or deleting previous caches",
+      "pass": true
+    },
+    {
+      "name": "Unsafe redirect asset rejects installation without deleting the old cache",
+      "pass": true
+    },
+    {
+      "name": "Unsafe redirect response after cache eviction is neither returned as trusted code nor cached",
+      "pass": true
+    },
+    {
+      "name": "Unsafe private asset rejects installation without deleting the old cache",
+      "pass": true
+    },
+    {
+      "name": "Unsafe private response after cache eviction is neither returned as trusted code nor cached",
+      "pass": true
+    },
+    {
+      "name": "Unsafe no-store asset rejects installation without deleting the old cache",
+      "pass": true
+    },
+    {
+      "name": "Unsafe no-store response after cache eviction is neither returned as trusted code nor cached",
+      "pass": true
+    },
+    {
+      "name": "Unsafe cookie asset rejects installation without deleting the old cache",
+      "pass": true
+    },
+    {
+      "name": "Unsafe cookie response after cache eviction is neither returned as trusted code nor cached",
+      "pass": true
+    },
+    {
+      "name": "Unsafe error asset rejects installation without deleting the old cache",
+      "pass": true
+    },
+    {
+      "name": "Unsafe error response after cache eviction is neither returned as trusted code nor cached",
+      "pass": true
+    },
+    {
+      "name": "Unsafe opaque asset rejects installation without deleting the old cache",
+      "pass": true
+    },
+    {
+      "name": "Unsafe opaque response after cache eviction is neither returned as trusted code nor cached",
+      "pass": true
+    },
+    {
+      "name": "A root shell from a different deployment is never paired with mismatched chunks",
+      "pass": true
+    },
+    {
+      "name": "Inline RSC references and a generic login page cannot overwrite a usable shell",
+      "pass": true
+    },
+    {
+      "name": "A network navigation into a newer uninstalled build retains the last working offline shell",
+      "pass": true
+    },
+    {
+      "name": "Protected requests, private routes, downloads, arbitrary queries and foreign origins remain uncached",
+      "pass": true
+    }
+  ],
+  "limits": [
+    "VM fixture validates lifecycle/content boundaries, not real-browser worker registration or physical-device behavior."
+  ],
+  "builtAssets": {
+    "assets": 54,
+    "bytes": 19661787,
+    "version": "998318f9857529f6c9cb3092b7aa38eb41b4e571109a2f2fb7e0ab7f1289e696",
+    "manifestAndHashes": "verified by check-production-offline.cjs"
+  }
+}

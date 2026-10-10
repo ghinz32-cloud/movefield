@@ -1,16 +1,20 @@
 # Movefield — mobile starter
 
-This is a working React Native + Expo **source-code starter** for iPhone and Android. The screens use native components. You can open it in Expo Go from a Windows computer without building an app-store release.
+This is a working React Native + Expo **source-code starter** for iPhone and Android. The screens use native components. Saved training requires your own native development build with the included SQLite compiler configuration. Expo Go does not apply this project’s native flags, so the app refuses unqualified storage instead of accepting unsafe writes.
 
 It is a local demo: there is no Movefield sign-in, shared account, website sync, cloud backup, subscription, or production backend. The existing website and this mobile app keep separate local records. This download is not an APK, an IPA, or an app-store release.
 
-## Revision 13
+## Revision 14
+
+Settings now includes reviewed backup import/export for manual transfer with the website. Backups include profile and workout notes; keep them private. Restoring replaces this device’s records after review, preserves actual history, cancels old timers and makes old queued suggestions stale. It never merges by position. The starter also includes all optional set measurements and avoids refreshing the entire app every half second.
+
+## Appearance and reminders
 
 Open **Settings** for six color themes, System/Light/Dark mode, text size, contrast, reduced motion and optional workout-day notifications. Local reminders schedule the next 30 workout days and refresh when the app opens or the schedule changes. Reopen after time-zone changes. Delivery depends on phone notification settings and has not been verified on a physical phone in this revision.
 
-The Qwen model selector saves a future preference only. No model download or inference is included. Model integration will require a native development build; it will not work in Expo Go. Barlow Condensed and Inter are bundled with their license notices in `docs/font-licenses`.
+Optional Model files controls review, download, verify and explicitly delete private cached files for the listed Android model candidates. No native inference runtime or device-qualified model is included. These controls require the custom native SQLite build as well; ordinary training does not require model downloads. Barlow Condensed and Inter are bundled with their license notices in `docs/font-licenses`.
 
-## First run on Windows — about 15–30 minutes
+## First run and native development build
 
 1. Install **Node.js 24 LTS** from [nodejs.org](https://nodejs.org/en/download). Choose the Windows Installer for your computer and keep the normal installer options. Node 24 is an LTS release; Expo SDK 57 requires at least Node 22.13. Open a new PowerShell window after installation.
 2. Extract the downloaded starter ZIP into a normal folder such as `Documents\TrainingStudioStarter`. Do not run commands from inside the ZIP viewer.
@@ -26,46 +30,33 @@ npm.cmd run check
 
 `npm.cmd ci` downloads the exact dependencies in the included lockfile; the first run needs internet and may take a few minutes. The `.cmd` spelling works around PowerShell’s common “running scripts is disabled” error without changing your machine’s execution policy. These commands should not need an administrator window.
 
-5. Install **Expo Go** on your iPhone from the App Store or on Android from Google Play. Keep your phone and computer on the same private Wi-Fi network.
+5. Build and install your own development app. Android needs Android Studio, Android SDK and JDK 17; iOS needs a Mac with Xcode and its normal device-signing setup. The project already includes `expo-dev-client`. Do not start paid cloud builds or submit to a store as part of this setup.
 
-   **For a physical iPhone:** Expo currently requires Expo CLI on your computer and Expo Go on the phone to be signed in to the **same Expo account**. Create a free Expo account if needed, sign in to Expo Go using its account icon, then run this in the same PowerShell window and follow Expo's sign-in prompts:
-
-```powershell
-npx.cmd expo login
-```
-
-   This is a development-tool account. It does not create a Movefield account, back up workouts, or connect the website and app. Do not enter your Expo password into the Movefield screens or source files. The current iPhone requirement is documented in [Expo's Start developing guide](https://docs.expo.dev/get-started/start-developing/).
-
-6. Start the project and leave this window running:
+   On an Android development computer with the toolchain configured, run:
 
 ```powershell
-npm.cmd start
+npx.cmd expo prebuild --platform android --no-install
+npx.cmd expo run:android
 ```
 
-   The terminal shows a QR code. On iPhone, scan it with Camera and open the Expo Go link. On Android, use Expo Go’s QR scanner (or a camera that recognizes the Expo link). Use an Expo Go version compatible with SDK 57. [Expo’s setup instructions](https://docs.expo.dev/get-started/set-up-your-environment/) and [Expo Go downloads](https://expo.dev/go) are the authoritative reference if the store flow changes.
-7. Open **Plan** and choose **Build my plan**. Enter your goal, time and equipment, review the workouts, then tap **Start this plan**. Samples remain available separately. In **Today**, start the first session, enter the actual reps/time and weight, then tap **Log set**. Rest starts after a valid set is logged. Finish the workout to save its history. Open **History** to see the record. **Library** has search, equipment filters, and exercise guidance.
+   On a Mac with the iOS toolchain configured, run:
 
-To stop, press `Ctrl+C` in PowerShell. Next time, open PowerShell in the same `training-studio-mobile` folder and run just:
+```sh
+npx expo prebuild --platform ios --no-install
+npx expo run:ios
+```
+
+   Native generation must retain `expo.sqlite.customBuildFlags=-DSQLITE_DEFAULT_SYNCHRONOUS=3` on Android and the same string in iOS `Podfile.properties.json`. Rebuild the installed app after changing this configuration; a JavaScript reload cannot change SQLite’s compiled connection default. Existing unqualified Expo Go or older builds can show a storage error. Keep existing records and transfer backups; do not reset or delete database/journal files to bypass that error.
+
+6. For later development sessions, keep the installed custom app and computer on the same private network, and run:
 
 ```powershell
-npm.cmd start
+npm.cmd run start:dev
 ```
 
-You do not need to run `create-expo-app` again; this folder is already the project. The physical iPhone Expo Go workflow needs the free Expo account described above. An EAS build and paid store developer account are not needed for this first-run workflow.
+7. Open **Plan** and choose **Build my plan**. Enter your goal, time and equipment, review the workouts, then tap **Start this plan**. Samples remain available separately. In **Today**, start the first session, enter actual reps/time and weight, then tap **Log set**. Rest starts after a valid set is logged. Finish the workout to save its history. Open **History** to see the record. **Library** has search, equipment filters and exercise guidance.
 
-## If the phone cannot connect
-
-- Confirm both devices use the same network; guest Wi-Fi can prevent devices from reaching each other. A corporate VPN or firewall can also interfere. If Windows asks whether Node may communicate, allow your trusted **Private** network as appropriate for your computer.
-- Stop the server, then try clearing Metro’s cache:
-
-```powershell
-npx.cmd expo start --go --clear
-```
-
-- If an iPhone reports an account error, stop the server, run `npx.cmd expo login`, confirm Expo Go uses the same account, then run `npm.cmd start` again and tap Try Again on the phone.
-- If Expo Go reports an SDK mismatch, check the installed Expo Go version against SDK 57. Do not randomly upgrade React Native independently of Expo. The included versions are a tested group.
-- You can try the web rendering on the computer with `npm.cmd run web`, but it is a browser preview and does not replace testing on a real phone.
-- If installation fails, keep the first error message, your `node --version`, and the command you ran. Avoid deleting the lockfile; it is what makes the install reproducible.
+To stop Metro, press `Ctrl+C`. If connection fails, confirm the private network/firewall settings and restart with `npx.cmd expo start --dev-client --clear`. Keep the first error message and command if native installation fails. Preserve `package-lock.json`; it makes the dependency group reproducible. No physical-device storage, alarm or interruption acceptance is claimed by these instructions.
 
 ## What the starter does
 
@@ -73,7 +64,8 @@ npx.cmd expo start --go --clear
 - Personal plan setup uses the same TypeScript engine as the website. The catalog has 71 variants, with three additional legacy preview choices. Your goal, equipment, training days, time and readiness determine which choices fit. You can review all workouts before accepting.
 - All 989 exercises have bundled detailed text guides, with exact equipment-tag filters and multiword search. The website’s 1,726 source photos are not bundled in this native starter. Source and reference-video links open externally when available; no video is represented as hosted by this app.
 - Actual reps/time and load, completed sets, optional machine setup, per-set distance in meters, duration in seconds and notes, partial workouts, rest timer, history and pounds/kilograms. Optional extra measurements are stored as entered and do not change progression targets. Unknown weight remains unknown; the app does not invent starting loads.
-- Local persistence using AsyncStorage. Reads and writes use the shared Zod schema, size checks and unsafe-key rejection. A failed read does not silently overwrite the saved record; reset asks for confirmation. Writes are queued to preserve edit order.
+- Local persistence using a transactional SQLite record database, with legacy AsyncStorage import; saved training and setup drafts are encrypted before they are written (XChaCha20-Poly1305, one random nonce per write, bound to their storage slot). The 256-bit key is kept in the device’s secure store and is never written to the record database. Reads and writes use the shared Zod schema, size checks and unsafe-key rejection. A failed read or a missing key does not overwrite the saved record; reset asks for confirmation and deletes the key. Writes are queued to preserve edit order.
+- Plate calculator and warm-up ladder (adults only) on the Library tab, and a weekly review on History. They calculate from entered or logged numbers only and never change the saved log. Estimated bests use rated sets and are approximate.
 - Shared plan eligibility checks. Incomplete prerequisites can block a later session. The starter does not bypass them. Reviewed date changes and a shorter-session option are available. They do not silently rewrite the full block.
 
 The sample-plan preview openly shows its assumptions: age 28, equipment, lifting experience and, where applicable, an existing running base. These samples are demonstration configurations, separate from personal plan setup; they are not assessments of readiness. A new plan retains existing workout history and cannot replace an active workout.
@@ -86,7 +78,7 @@ Tap **Enable rest alerts** to request notification permission. The app schedules
 
 ## Data and account boundaries
 
-The storage key is `training-studio:mobile-local-demo:v1`, separate from the website. AsyncStorage is unencrypted local app storage. Only the local demo’s training data is stored; there are no passwords, credentials or tokens. Removing app data or uninstalling can remove these records. There is no backup or import/export screen yet.
+The storage key is `training-studio:mobile-local-demo:v1`, separate from the website. The stored value is ciphertext. Its key is `movefield.dataKey.v1` in the device’s secure store, set to stay on this device and not move in device backups, so a copy of the app data restored to another phone shows a “key not on this device” message instead of being replaced. Only the local demo’s training data is stored; there are no passwords, credentials or tokens. Removing app data or uninstalling can remove these records. Settings can export a backup as plain JSON and restore it by paste; that exported file is not encrypted, so share it only deliberately. Encryption has been checked in Node and by a bundle build, not yet on a physical iPhone or Android phone.
 
 A shared website/mobile account requires a real backend: identity, authenticated API, per-user authorization, database, sync/conflict handling, backup and account deletion. `src/storage.ts` is the small storage boundary to replace or complement when that service exists. Future credentials belong in an appropriate secure credential store, not this file. No backend endpoint or secret is hidden in the starter.
 
@@ -118,11 +110,9 @@ Replace `C:\path\to\training-studio` with the real folder containing the website
 
 ## Expo Go versus your own development build
 
-**Expo Go** is an installed playground that loads this project’s JavaScript. It is the quickest first step and supports the native libraries chosen here. It is not your branded installed production app.
+**Expo Go** is an installed playground that loads JavaScript into its own native host. It cannot apply Movefield’s SQLite native compile flags. It is not a qualified host for saved training or model-file metadata; the app checks DELETE journaling and EXTRA synchronization on each fresh transaction connection and refuses incompatible storage before application SQL.
 
-A **development build** is your own native app with Expo’s developer tools. It is needed when you add custom native libraries, use platform services not included in Expo Go, or move toward store release. Local Android builds on Windows need Android Studio, the Android SDK and the correct Java toolchain. Local iOS builds need a Mac with Xcode. An iPhone can still run this starter in Expo Go while you develop on Windows. A cloud build service is a later choice; this delivery has not registered an EAS project or started paid builds.
-
-When a developer is ready and the native toolchain is set up, the official path starts with `npx.cmd expo install expo-dev-client`, then `npx.cmd expo run:android`. This is a different workflow from the first-run instructions. See [Expo’s development-build guide](https://docs.expo.dev/develop/development-builds/introduction/) for the current platform requirements.
+A **development build** compiles your own native app with the included plugins and developer tools. The commands above generate this project’s configuration before building. Local Android builds on Windows need Android Studio, Android SDK and Java; local iOS builds need a Mac with Xcode. Production signing, store disclosures and real-device acceptance are separate work. This delivery does not start a paid build or submit an app.
 
 ## Checks and limits
 
@@ -138,7 +128,8 @@ Checked 7 October 2026. Created using the official `expo-template-blank-typescri
 - [Official create-expo-app templates](https://docs.expo.dev/more/create-expo/) — `blank-typescript` is the minimal TypeScript template used here.
 - [Expo environment setup](https://docs.expo.dev/get-started/set-up-your-environment/) — physical devices and Expo Go.
 - [Expo Start developing](https://docs.expo.dev/get-started/start-developing/) — physical iPhone CLI/Expo Go same-account sign-in requirement.
-- [AsyncStorage in Expo](https://docs.expo.dev/versions/latest/sdk/async-storage/) — local unencrypted storage.
+- [AsyncStorage in Expo](https://docs.expo.dev/versions/latest/sdk/async-storage/) — local storage that holds only ciphertext here.
+- [SecureStore in Expo](https://docs.expo.dev/versions/latest/sdk/securestore/) — holds the data key.
 - [Development builds](https://docs.expo.dev/develop/development-builds/introduction/) — native toolchain and platform distinctions.
 - [Node.js release status](https://nodejs.org/en/about/previous-releases) — Node 24 LTS recommendation.
 

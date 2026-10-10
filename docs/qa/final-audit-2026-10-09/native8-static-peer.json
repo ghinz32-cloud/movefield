@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "sourceBase": "8abfca45f1f910155011516eabffbebdf070821b",
+  "proposal": {
+    "collector": "30d45ecf8b5ead1777f52f9744e1a046ae97ffdb",
+    "fixtures": "b9e81a8854e41ef89c25a2e3dc6d888871b809eb",
+    "workflow": "3e4f51f61fc56de51e52997f420bc6ca60a1ce85"
+  },
+  "independentStaticPeer": "No blocking issue; actual entry directory binds source/cache/Release/arm64/once-defined macro3/-c/-o/nonempty object; identical validated copies deduplicate; conflicts/distinct objects/missing actual cache fail; original20 and non-Android reader unchanged.",
+  "newFixtures": 11,
+  "totalFixtures": 31,
+  "hostedExecution": {
+    "run": 37984196434,
+    "passed": true,
+    "rawLog": "native8/ci/quality-job.log"
+  },
+  "scope": "Static peer followed by hosted execution; no local execution after environment interruption, no direct native binary or device proof."
+}

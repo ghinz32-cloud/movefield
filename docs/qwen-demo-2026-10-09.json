@@ -1,0 +1,143 @@
+{
+  "schema": 1,
+  "milestone": "U08b",
+  "checkedOn": "2026-10-09",
+  "baselineCommit": "026ac627a67bbba6feeffcf0b1c1097e43b2b0a4",
+  "status": "implementation-checked-cpu-pilot-trained-browser-qualification-pending",
+  "runtime": {
+    "webllm": "0.2.85",
+    "webTokenizers": "0.1.6",
+    "demoModelId": "web-qwen3-0.6b-q4f16_1-mlc",
+    "source": "verified publisher artifact",
+    "contextTokens": 2048,
+    "outputReserveTokens": 256,
+    "automaticQualificationRecordsAdded": 0,
+    "privateWorkoutContextUsed": false,
+    "hostedInferenceUsed": false,
+    "workerNetwork": "CSP connect-src none plus cache-only fetch/Cache adapter, XMLHttpRequest refused",
+    "cancellation": "Off/close/cancel/timeout/error terminate worker",
+    "cache": "Every runtime file read verifies pinned bytes/SHA under the existing model lock; no WebLLM persistent cache accepted"
+  },
+  "training": {
+    "datasetVersion": "movefield-qwen-sft-v1",
+    "trainCases": 132,
+    "validationCases": 34,
+    "status": "trained-pilot",
+    "trainingSteps": 16,
+    "uniqueUsedExamples": 16,
+    "trainableParameters": 1146880,
+    "elapsedSeconds": 188.06,
+    "peakCpuProcessRssBytes": 5036859392,
+    "baselineValidationLoss": 0.08779414743185043,
+    "postTrainingValidationLoss": 0.0015141917392611504,
+    "validationCasesActuallyMeasured": 4,
+    "adapterSha256": "eac8cfe3ec8b994293ad9b2d19f5361c9a9a3ae49f8196b7e0cad6fdf390b437",
+    "baseWeightsVerified": true,
+    "containsPrivateData": false,
+    "heldoutUsedForTraining": false,
+    "lossIsAccuracy": false
+  },
+  "evaluation": {
+    "kind": "actual float32 CPU LoRA inference, three independent sessions per case",
+    "cases": 22,
+    "runs": 66,
+    "invokedRuns": 39,
+    "gatedRuns": 27,
+    "accuracyRate": 1,
+    "criticalRate": 1,
+    "automatedSelectionPassed": true,
+    "temperature": 0,
+    "qualified": false,
+    "browserArtifactTested": false,
+    "demoUsesTrainedAdapter": false,
+    "report": "docs/evals/qwen-cpu-pilot-2026-10-09-report.json"
+  },
+  "tokenizer": {
+    "kind": "actual pinned CPU WASM tokenizer",
+    "cases": 182,
+    "maxPromptTokens": 501,
+    "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "browserTargetWorkerInitialization": "passed using standard worker/storage API fixtures, with all fetches refused; no WebGPU inference"
+  },
+  "checks": {
+    "regression": "33/33 before final worker/selector repairs; focused runtime/training/shared and types/lint/build/production rerun after relevant repairs",
+    "runtimeAssertions": 91,
+    "trainingBoundaryAssertions": 520,
+    "offlineAssertions": 35,
+    "sharedHashes": 38,
+    "webTypes": "passed",
+    "lint": "passed",
+    "production": "2/2",
+    "initialGzipBytes": 392296,
+    "initialGzipLimit": 400000,
+    "nativeExports": "U14 Android/iOS evidence retained; no native source changed by this milestone"
+  },
+  "browser": {
+    "observed": [
+      "Today on sample entry",
+      "Coaching optional demo closed/open",
+      "three source-bearing questions",
+      "rest-interval question selection after accessible picker repair",
+      "HTTPS support blocker and disabled Run/Unload",
+      "saved profile preserved"
+    ],
+    "secureWebGPUInference": false,
+    "physicalPhone": false,
+    "savedTextPreference": "130% retained",
+    "screenshot": "movefield-qwen-u08b-20261009.jpg"
+  },
+  "artifacts": {
+    "adapterArchive": {
+      "file": "movefield-qwen3-evidence-pilot.zip",
+      "bytes": 6374156,
+      "sha256": "e39fe534991655ba65d3f0de832db559d221dd9bdc19878c970bffde879121a9"
+    },
+    "sourceCheckpoint": ".sites-runtime/checkpoints/u08b-complete.bundle"
+  },
+  "sourceSha256": {
+    "app/page.tsx": "8e97e745c1d323e7c6918d9e62d05d8c9b90f3a2e3e9fa550bc8aea4587c85f5",
+    "components/qwen-demo.tsx": "ba1051e12913be167702950f8b305f3b19c2bef6d3446192c07f8f4ba7e26e28",
+    "components/qwen-model-files.tsx": "97ad5a6f81f6d04079d108f55a080fcca1fe28ef0d9162814117e614fb2edfd1",
+    "components/app-preferences.tsx": "0bdda93f68915d73c0a166bee899b087d775533561ee91fc6aefcc0c3da92868",
+    "lib/qwen-runtime.ts": "b2195910b252e12067a93ec7504a1126def5bca848e924ed37e62ce6a633fea9",
+    "lib/qwen-runtime.worker.ts": "222951648acdf6ad61fa48377f75a61d2393f86c2a788bcf9f719c7efcb357b1",
+    "lib/qwen-runtime-contract.ts": "91e30636df0cc2ec4b5ed5e034dce0a7e185168eebb9028a97910576c1c42489",
+    "lib/qwen-tokenizer.ts": "b64dfee0a2222df08bda0207a16a67ec58a4689befbf690ae1361860964170aa",
+    "lib/qwen-demo-context.ts": "0d49afa48e7162eddc17c086717d1936843019eed5c89dd532b7e873d46de66c",
+    "lib/http-security.ts": "f7c5a56105cc19aa697b9104d9125798655bd28e6d150a4aa6295c64afc55d76",
+    "public/_headers": "83d3cdac37d8217fbf36b786f11c9b3e37ba186bcb3e54bdc2796fdc650534c6",
+    "public/sw.js": "1a6b4a9630d705dc7c40e5695ec572f7df5a6ae0a7aef6aee91e54a03020e205",
+    "build/qwen-worker.config.mjs": "634332665696495e8f6f0acd5cf454d72c2d9199296cc497362ee792dc7fbf9f",
+    "scripts/run-framework.mjs": "5d70e0cb892dafca4e0da7fa84c45705f1295bc5bef659dd5f98cf28d644b47c",
+    "scripts/train-qwen.py": "59d8f5131883ddf362c96f3dc7e33861bfa2b350f8657851ed34e9285a7ffde3",
+    "scripts/prepare-qwen-training.cjs": "1b3bd893561dc52bbad06b49e0e7acd3a4732560bf50ed3ddf06adc5ea0e50f9",
+    "scripts/run-qwen-cpu-evaluation.py": "7e054b5240d940875851c1a65ac97f5d29f2e731890053dcf440407a2e1996a6",
+    "scripts/evaluate-qwen-cpu.cjs": "25014b4f1696edfd041454a507319216cb99d94536b431a6d80d1a8f859751ea",
+    "training/qwen-evidence-v1/manifest.json": "09b09b9fc6bda0c22015aae6876b4be064cbc94879c333f42647d05cfc71a848",
+    "package.json": "0daa2a32a88f09169f9af6ae50dec5afc3d6d47fdd21a4afbf646edf9c8bacf0",
+    "pnpm-lock.yaml": "2c6f5826cad0639cb9cf5b33fa8b4b82c8f6374853827c270f621ceac0631fc9"
+  },
+  "logSha256": {
+    "u08b-regression.log": "e5d7b30af8883f1ab15c3c9a79ef9fffd831d3081fe66bcfd84495690b24bb2c",
+    "u08b-accepted-types.log": "41d39cff24a2767fb623a40788a74db6700d2427f22215a1734981e58231bc25",
+    "u08b-accepted-lint.log": "5ba06a102cfaab767a3f313fba3e41c2800ec846ff0ef6364d6b943b2bf80f1a",
+    "u08b-accepted-build.log": "a9c1e2265493390bb3493559ecd7d2279d8c471dd93eb15d3f81b0a9f3502c15",
+    "u08b-accepted-production.log": "d12efb65cac8313364f366fd7feb24ddd3958c80f1f53c1a13b0452efccb57b2",
+    "u08b-tokenizer-final.log": "5517c9beb533eea29f0d9c5c579f64e40543be2de3c8de8fc4618003dde95124",
+    "u08b-worker-inspection-final.log": "fe6417315d69f1aa1e1f8d1d5ff7a045b734e4df0ee50cb1b28ad9e309436fd0",
+    "u08b-training-pilot-retry.log": "9dc3332031fa4465cf872fbb03aeed93008353b0f18cef2e1bf87a65651fe912",
+    "u08b-cpu-eval.log": "5328f3d81c45eee320a4646fa9ceccf158d7d0fb6db6643fb52171060c3e9bd0",
+    "u08b-runtime-accepted.log": "cca9c4de417b4f44118a09152985b7322a0f204dd225ef6e46b2546f28d62105",
+    "u08b-checkpoint-build.log": "dadd0d3c0e22d557e890bf747bc954d8554f71af51bfa62d1524a3f2a9437d9b",
+    "u08b-checkpoint-production.log": "59d23ea02ba872284828571c1305eab4c488fb4610599678fa7d0c00f761284d",
+    "u08b-worker-checkpoint.log": "fe6417315d69f1aa1e1f8d1d5ff7a045b734e4df0ee50cb1b28ad9e309436fd0"
+  },
+  "remaining": [
+    "Merge/MLC conversion/new immutable manifest for trained adapter",
+    "Actual secure-browser publisher/trained-artifact downloads, output, memory/latency and interruption qualification",
+    "Real phone native runtime and usability testing",
+    "Real authentication/cloud sync; no backend provisioned",
+    "Existing release advisories and SQLite device capacity acceptance remain open"
+  ],
+  "publication": "Standing-authorized audit branch push; no main merge or live deployment. Verify remote tree/head/report readback before claiming pushed."
+}

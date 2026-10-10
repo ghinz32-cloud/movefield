@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "scope": [
+    "NATIVE5 change gate and native workflow",
+    "NATIVE4 final-artifact declaration guards",
+    "NATIVE6 source-node lint suppression diff"
+  ],
+  "repository": "ghinz32-cloud/movefield",
+  "checkout": "continuation isolated Git worktree",
+  "sourceCommit": "b81107896f510fe2a13cab548ef1557a09a36a14",
+  "sourceTree": "eec113576e18fc18d4976ceaa03b7e7ca464a930",
+  "reviewedFileSHA256": {
+    ".github/workflows/native-builds.yml": "7032c06f0402d88e6072c9263d0be5454f5479e2c8cb0369a34e924c84b082c4",
+    ".github/workflows/quality.yml": "276dbd9d38c64dc2cc975b71543a326cfb0690d56b1cb769e6a9ae3edd310728",
+    "scripts/native-change-gate.py": "02a4ae880a9f256978f753089df0f82172c27eefe81afe7c372121a0e0c2da06",
+    "scripts/test-native-change-gate.py": "819240d7ea18b31f71216ce6815bad4517e62733719682e11071cba4d8832419",
+    "scripts/inspect-native-artifacts.py": "db33ac39abc5b1e49f37fc0802f4ff60555f42c0696e61fb66774a81e6caf0dc",
+    "scripts/test-native-artifact-inspector.py": "afa38f4999bc1c277f556936fa2731f5f81482fa7c27cafd873fcb2e1edadfc2",
+    "mobile/plugins/withMovefieldSecurity.cjs": "6c1437b59e33cd3e3f095c0e202dcbc0ee5bb860a41b81fc2a132af06a3212a0",
+    "scripts/check-native-security-config.cjs": "74455927fc185c60415f0e6f0271e02eedf1484c375f0827345e12813c7b2176",
+    "mobile/app.json": "aafd3ed1f95118c6cc1ac01b7067283e31d0eba806779d48937a98c0bfd836f6"
+  },
+  "reviewMode": "Read-only source, local fixtures, parsed YAML and prior actual diagnostic evidence",
+  "gatePreviouslyAuthoredByReviewer": true,
+  "separateGatePeerReview": "/root/publication_prep/gate_review found no blocking issue; final empty-path, file-mode, invalid-UTF8 and guard truth-case updates reviewed",
+  "blockingFindings": [],
+  "observations": {
+    "nativeSkipping": "Only successful complete exact before-to-head synchronize diff can skip; all ambiguity/failure requires compilation",
+    "nativeWorkflow": "No outer cumulative path filter or workflow/job concurrency; gate failure or absent output compiles unless canceled; exact source pinning and read permissions preserved",
+    "inspectorRequiredRuntimeDeclarations": "Enabled application, launcher and notification receiver/forwarder required; launcher/reminder intent topology and boot capability required",
+    "startupScope": "Provider authority and present initializer declarations restricted to three reviewed names/values; provider or initializer absence is intentionally optional",
+    "iosSourceDenials": "FaceID usage description must be absent; direct Documents exposure absent/default-false or explicit boolean false only",
+    "native6Suppression": "Exactly the eight prior actual MissingClass errors are annotated on tools:node=remove source markers; ninth removal and actual launcher remain unannotated; recursive typed attribute check rejects global or extra diagnostics; final APK remote-component denial remains unchanged"
+  },
+  "checks": {
+    "gateTestMethods": 29,
+    "inspectorFixtureMethods": 90,
+    "staticWorkflowYAMLParsed": true,
+    "jobGateSourcePinningPermissionsAndFinalInspectionContract": true,
+    "pluginAndConfigCheckerJavaScriptSyntax": true,
+    "diffWhitespace": true,
+    "actualPriorMissingClassNamesMatchedPluginAndChecker": true,
+    "native6FreshExpoPrebuildDuplicatedHere": false
+  },
+  "priorActualDiagnostic": {
+    "path": "../native3/android/lint-results-release.xml",
+    "sha256": "6348dff794700d9d160f27a1bdf7a9ba7882799f45eaed84022316c9d89f6778",
+    "diagnostic": "MissingClass",
+    "errorCount": 8,
+    "classes": [
+      "com.google.android.datatransport.runtime.backends.TransportBackendDiscovery",
+      "com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver",
+      "com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService",
+      "com.google.android.gms.common.api.GoogleApiActivity",
+      "com.google.firebase.components.ComponentDiscoveryService",
+      "com.google.firebase.iid.FirebaseInstanceIdReceiver",
+      "com.google.firebase.messaging.FirebaseMessagingService",
+      "com.google.firebase.provider.FirebaseInitProvider"
+    ],
+    "scope": "Prior compiled-source lint failure; not a passing current-source APK qualification"
+  },
+  "logs": [
+    "peer-gate.log",
+    "peer-inspector.log"
+  ],
+  "runtimeClaims": {
+    "currentSourceGitHubGateExecutedHere": false,
+    "currentSourceAndroidCompiledHere": false,
+    "currentSourceIOSCompiledHere": false,
+    "actualCurrentAPKOrAppInspectedHere": false,
+    "physicalDeviceTested": false,
+    "storeAccepted": false
+  },
+  "limits": [
+    "Parsed YAML and restricted local guard truth cases are source-only checks, not the GitHub hosted event evaluator",
+    "Fixture declarations do not prove notification delivery, lifecycle, SDK reachability, or all runtime dependencies",
+    "Intentional optional AndroidX initializers do not imply binary implementation acceptance",
+    "Input-unchanged skip is not a successful prior build or a new binary qualification",
+    "Node-level lint suppression repair still needs fresh actual lint and final APK inspection",
+    "Signing, physical-device/privacy/backup behavior, dependency release blockers and store distribution remain independent gates"
+  ]
+}

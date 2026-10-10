@@ -1,0 +1,26 @@
+test_android_argument_vector_supported_and_metadata_not_retained (__main__.Evidence.test_android_argument_vector_supported_and_metadata_not_retained) ... ok
+test_android_cpp_entry_or_mismatched_actual_c_input_refused (__main__.Evidence.test_android_cpp_entry_or_mismatched_actual_c_input_refused) ... ok
+test_android_debug_only_and_wrong_or_conflicting_abi_refused (__main__.Evidence.test_android_debug_only_and_wrong_or_conflicting_abi_refused) ... ok
+test_android_duplicate_release_databases_refused (__main__.Evidence.test_android_duplicate_release_databases_refused) ... ok
+test_android_missing_empty_or_outside_object_refused (__main__.Evidence.test_android_missing_empty_or_outside_object_refused) ... ok
+test_android_positive_relwithdebinfo_source_object_and_dependency_receipts (__main__.Evidence.test_android_positive_relwithdebinfo_source_object_and_dependency_receipts) ... ok
+test_android_sqlcipher_vendor_route_supported_without_invented_codec_claim (__main__.Evidence.test_android_sqlcipher_vendor_route_supported_without_invented_codec_claim) ... ok
+test_android_unresolved_empty_or_signed_dependency_receipts_refused_and_not_copied (__main__.Evidence.test_android_unresolved_empty_or_signed_dependency_receipts_refused_and_not_copied) ... ok
+test_exact_macro_spellings_and_distinct_prefix (__main__.Evidence.test_exact_macro_spellings_and_distinct_prefix) ... ok
+test_ios_copied_source_or_release_object_absence_refused (__main__.Evidence.test_ios_copied_source_or_release_object_absence_refused) ... ok
+test_ios_original_info_or_privacy_inspection_hash_mismatch_refused (__main__.Evidence.test_ios_original_info_or_privacy_inspection_hash_mismatch_refused) ... ok
+test_ios_positive_filtered_flags_objects_and_complete_privacy_locations (__main__.Evidence.test_ios_positive_filtered_flags_objects_and_complete_privacy_locations) ... ok
+test_ios_string_or_array_flags_are_supported_without_mutating_input (__main__.Evidence.test_ios_string_or_array_flags_are_supported_without_mutating_input) ... ok
+test_ios_wrong_target_configuration_platform_or_duplicate_target_refused (__main__.Evidence.test_ios_wrong_target_configuration_platform_or_duplicate_target_refused) ... ok
+test_ios_xcconfig_or_gcc_definition_conflicts_refused (__main__.Evidence.test_ios_xcconfig_or_gcc_definition_conflicts_refused) ... ok
+test_missing_conflicting_duplicate_or_response_flags_refused (__main__.Evidence.test_missing_conflicting_duplicate_or_response_flags_refused) ... ok
+test_privacy_directory_link_cannot_hide_external_sdk_manifest (__main__.Evidence.test_privacy_directory_link_cannot_hide_external_sdk_manifest) ... ok
+test_privacy_only_traversed_symlinks_refused_unrelated_code_link_allowed (__main__.Evidence.test_privacy_only_traversed_symlinks_refused_unrelated_code_link_allowed) ... ok
+test_privacy_replay_destination_must_be_fresh (__main__.Evidence.test_privacy_replay_destination_must_be_fresh) ... ok
+test_source_identity_requires_exact_commit_tree_receipt (__main__.Evidence.test_source_identity_requires_exact_commit_tree_receipt) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.108s
+
+OK
+{"passed":true,"scope":"Portable reader fixtures; actual native builds and evidence remain CI qualifications"}

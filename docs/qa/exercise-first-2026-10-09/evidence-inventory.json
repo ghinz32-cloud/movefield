@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "applicationSource": "9cdcec081bee3525838ac334da1bb48de6690f13",
+  "applicationTree": "45d6d18cc693a72179424c1936dd503bd7d09517",
+  "applicationMilestoneModifiedFiles": [
+    "HANDOFF.md",
+    "TASKS.md",
+    "docs/qa/exercise-first-2026-10-09/README.md",
+    "docs/qa/exercise-first-2026-10-09/current-controls.log",
+    "docs/qa/exercise-first-2026-10-09/local-validation.json",
+    "docs/qa/exercise-first-2026-10-09/native-export.log",
+    "docs/qa/exercise-first-2026-10-09/production-build.log",
+    "docs/qa/exercise-first-2026-10-09/production-checks.log",
+    "docs/qa/exercise-first-2026-10-09/regression-initial.log",
+    "docs/workout-navigation-2026-10-09.md",
+    "lib/saved-data.ts",
+    "lib/workout-edit.ts",
+    "lib/workout-navigation.ts",
+    "mobile/App.tsx",
+    "mobile/docs/shared-snapshot.json",
+    "mobile/scripts/sync-shared.mjs",
+    "mobile/src/mobile-engine.ts",
+    "mobile/src/shared/saved-data.ts",
+    "mobile/src/shared/workout-edit.ts",
+    "mobile/src/shared/workout-navigation.ts",
+    "mobile/src/workout-exercise-fields.tsx",
+    "scripts/check-current-log-controls.cjs",
+    "scripts/check-native-history.cjs",
+    "scripts/check-native-workflows.cjs",
+    "scripts/check-workout-edit.cjs",
+    "scripts/check-workout-navigation.cjs",
+    "scripts/lib/component-hook-harness.cjs"
+  ],
+  "evidence": [
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/README.md",
+      "bytes": 1723,
+      "sha256": "1cd8c784904f1ff09b87e121df739655ad7ee0622d73ac480192ebfebb5cf22d"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/ci/android.log",
+      "bytes": 139561,
+      "sha256": "6057f237ebcf4dff78f7764e05b219a77e5e326fb1890247e247e0de02cde7fe"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/ci/official-receipt.json",
+      "bytes": 65235,
+      "sha256": "bf0ce2fe09cd1b8b3e6fee31e22204b8e13e7323744c9988dd809765b04110db"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/ci/quality.log",
+      "bytes": 253382,
+      "sha256": "a0be44c27a660e4c9926174c589ac35a20f457fe66f27f4f0478a0fd2922a7d2"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/current-controls.log",
+      "bytes": 1645,
+      "sha256": "8d89586e1a0e1f35b9dcb7d4b83709a4df21aa6e1a048a5532224abbe9500ab2"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/hosted-delivery.json",
+      "bytes": 21684,
+      "sha256": "c17133502741f78adb0f10352c98d329d290d08afab13bc3dffc057ba6822c07"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/local-validation.json",
+      "bytes": 7138,
+      "sha256": "e2c720201b585eb8d4e9ef735cf194fc1feecca1e158ed047fea49373a8a938e"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/native-export.log",
+      "bytes": 1896,
+      "sha256": "01d015381600e232ac980c0bfc8e08f0ee897d55c7d5e7e63f578cde0fc6200a"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/pages/inventory.json",
+      "bytes": 14266,
+      "sha256": "c0447f491ad308db55b6041770ab23c480f1b4ab771ff98f6ee3cc33dc169ba8"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/pages/live-readback.json",
+      "bytes": 60459,
+      "sha256": "b5a3de13364adf617a48e906959ace4723cea8066fa9170c22b5a3595788bdc7"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/pages/native-starter-readback.json",
+      "bytes": 26235,
+      "sha256": "e43f5c7b63ba01d2ee77f9b2e9035510a34278792fd808b002493b8d77da484b"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/pages/production-build.log",
+      "bytes": 3446,
+      "sha256": "390a6d57e95bbcd4780ed5113e1c2c255f39e44a3bd1b5e31bf93ca4c31fbf90"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/pages/production-checks.log",
+      "bytes": 226,
+      "sha256": "6194237f40cbde910ac063d7f65e955ff53692ff90593be83de6b38a4962cc69"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/pages/verify-live-pages.py",
+      "bytes": 6754,
+      "sha256": "eb4097b46225ba044b0d6baa43e88acea9e395f4167640e92c6baba8884f6f1c"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/production-build.log",
+      "bytes": 2205,
+      "sha256": "bc161a9f2f0314528e1d365af268f4cdd04061b646814ebd5f9038cc87e445d9"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/production-checks.log",
+      "bytes": 2400,
+      "sha256": "0f034215dd67e3d072176c8a130fe4a1d6c564e5a1ffe1f1766d130bb800a913"
+    },
+    {
+      "path": "docs/qa/exercise-first-2026-10-09/regression-initial.log",
+      "bytes": 97079,
+      "sha256": "499f53bda9e57c50cb8dce874a94575b8e007cd1f7817f95740904203ccdf40c"
+    }
+  ],
+  "limits": [
+    "Inventory excludes itself to avoid a self-referential digest.",
+    "Final checkpoint is documentation only and follows the qualified application source."
+  ]
+}

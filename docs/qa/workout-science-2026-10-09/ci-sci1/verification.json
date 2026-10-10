@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-10-09T17:58:39.388078+00:00",
+  "runId": 37969466143,
+  "jobId": 113952080952,
+  "conclusion": "success",
+  "publishedHead": "5af4582fe4bc78e60a07952a3b0bf0eca3592c8f",
+  "testedIntegrationCommit": "34139e95d07d37e8f4eacc98971a2df2a9dacd2a",
+  "testedIntegrationTree": "4efd7bd8d72f503e47c26e451e8c5e5395635699",
+  "expectedSourceTree": "4efd7bd8d72f503e47c26e451e8c5e5395635699",
+  "artifactId": 11634479768,
+  "artifactSHA256": "38e41c3f8822b4b35d7c6588f4d44ee117a0ec0d7da7d32e8888c83cc7679276",
+  "regressionsPassed": 53,
+  "regressionsTotal": 53,
+  "productionPassed": 3,
+  "productionTotal": 3,
+  "allJobStepsSuccess": true,
+  "scope": "Full automated quality; no device/store qualification",
+  "testedTreeMatchesPublishedHead": true
+}

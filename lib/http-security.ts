@@ -1,15 +1,18 @@
-// The app has no public write API. Revisit this boundary when real accounts and
-// server-side saves are added; do not replace it with a blanket POST allowance.
+import {QWEN_CONNECT_SOURCES} from './qwen-network-policy';
+
+// Only these account routes accept POST. They independently authenticate the
+// trusted ingress identity, enforce same-origin requests and validate bodies.
 export function blockedRequest(request:Request):Response|null {
   const path=new URL(request.url).pathname;
   if(path==='/_next/image'||path.startsWith('/__vinext/'))return new Response('Not found',{status:404});
+  if(request.method==='POST'&&['/api/sync','/api/daily-feedback','/api/workout-coaching'].includes(path))return null;
   if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405,headers:{Allow:'GET, HEAD'}});
   return null;
 }
 export function securityContext(request:Request){
   const bytes=crypto.getRandomValues(new Uint8Array(24));
   const nonce=btoa(String.fromCharCode(...bytes));
-  const policy=["default-src 'self'",`script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,"style-src 'self' 'unsafe-inline'","img-src 'self' data:","font-src 'self' data:","connect-src 'self'","object-src 'none'","base-uri 'none'","form-action 'self'","frame-src 'none'","frame-ancestors 'self' https://chatgpt.com","upgrade-insecure-requests"].join('; ');
+  const policy=["default-src 'self'",`script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,"worker-src 'self'","style-src 'self' 'unsafe-inline'","img-src 'self' data:","font-src 'self' data:",`connect-src 'self' ${QWEN_CONNECT_SOURCES.join(' ')}`,"object-src 'none'","base-uri 'none'","form-action 'self'","frame-src 'none'","frame-ancestors 'self' https://chatgpt.com","upgrade-insecure-requests"].join('; ');
   const headers=new Headers(request.headers);
   // Vinext reads this header to nonce its own scripts. Never trust a nonce
   // supplied by the browser and never add nonces to arbitrary HTML scripts.

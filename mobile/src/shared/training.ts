@@ -1,25 +1,28 @@
 import {type RestTimer} from './rest-timer';
+import {recordUuid} from './record-identity';
 import expandedLibrary from './exercise-library.json';
 import recipes from './recipes.json';
 import {applyTrainingFocus,focusScheduleConflict} from './training-focus';
-import {programCatalog,programReferences,equipmentRequirements,type ProgramDefinition} from './program-catalog';
+import {programCatalog,programReferences,referenceMatchesGoal,equipmentRequirements,type ProgramDefinition} from './program-catalog';
+import {planEvidence} from './program-evidence';
 export type Mode = 'app'|'coach'|'manual';
 export type Profile={noFloor?:boolean;age:number;goal:string;experience:string;mode:Mode;minutes:number;days:number[];weeks:number;start:string;equipment:string;sport:string;position:string;season:string;supervision:boolean;units:'kg'|'lb';name:string;sex?:'female'|'male'|'intersex'|'unspecified';dumbbellMaxKg?:number;programId?:string;runBase?:boolean;runDays?:number;runMinutes?:number;establishedTraining?:boolean;focuses?:('core'|'jumping'|'supersets'|'activity')[];jumpReady?:boolean};
 export type Exercise={id:string;name:string;pattern:string;equipment:string;metric:'reps'|'seconds'|'minutes';cues:string[];source?:string;video?:string;videoNote?:string;custom?:boolean;loadConvention?:string;loadMultiplier?:number;loadTracked?:boolean;requiresSetup?:boolean;primaryMuscles?:string[];instructionStatus?:string;progressionEnabled?:boolean;category?:string};
-export type Item={exerciseId:string;sets:number;reps:number;repMin?:number;repMax?:number;rest:number;kg:number|null;loadContext?:string;loadRole?:string;note?:string};
+export type Item={exerciseId:string;sets:number;reps:number;repMin?:number;repMax?:number;rest:number;kg:number|null;loadContext?:string;loadRole?:string;note?:string;supersetGroup?:string;supersetPosition?:1|2};
 export type Session={id:string;date:string;week:number;title:string;kind:string;minutes:number;items:Item[];dependsOn?:string[];progressionStep?:string;needsReview?:boolean;status:'scheduled'|'completed'|'partial'|'missed';recoveryGroup?:string;roleId?:string;timeProfile?:'brief';runSteps?:{label:string;seconds:number}[]};
 export type Plan={id:string;name:string;version:number;progressionModel?:'ranges';scheduleEnd?:string;profile:Profile;acceptedAt:string|null;sessions:Session[];phases:{name:string;weeks:string;description:string}[];evidence:string[];notes:string[];progression:string;template:string;paused:boolean};
 export type SetMetrics={distanceM?:number;durationSeconds?:number;heightCm?:number;heartRate?:number;cadence?:number;powerWatts?:number;speedKph?:number;inclinePercent?:number;level?:number;assistanceKg?:number;tempo?:string;side?:string;notes?:string};
-export type SetLog={exerciseId:string;set:number;reps:number;kg:number|null;done:boolean;metrics?:SetMetrics};
-export type Workout={id:string;sessionId:string;title:string;date:string;startedAt:number;finishedAt?:number;sets:SetLog[];targets?:Item[];loadContext?:Record<string,string>;rir?:Record<string,number|null>;effort?:string;symptom?:string;rating?:number;partial?:boolean;supervisorConfirmed?:boolean;demo?:boolean};
-export type Proposal={id:string;title:string;reason:string;type:'sets'|'move'|'return'|'load'|'substitute'|'ranges'|'capacity';changes?:{sessionId:string;beforeDate?:string;patch:Partial<Session>}[];warnings?:string[];eventSignature?:string;historyCount?:number;planId:string;baseVersion:number;sessionId:string;before:string;after:string;status:'pending'|'accepted'|'declined'|'stale'|'queued';patch:Partial<Session>;source:string;createdAt:string};
+export type SetLog={exerciseId:string;set:number;reps:number;kg:number|null;done:boolean;metrics?:SetMetrics;rir?:number|null};
+export type ExerciseNotes={notes?:string};
+export type Workout={id:string;sessionId:string;title:string;date:string;startedAt:number;finishedAt?:number;timeZone?:string;startedAtUtc?:string;finishedAtUtc?:string;sets:SetLog[];targets?:Item[];loadContext?:Record<string,string>;rir?:Record<string,number|null>;details?:Record<string,ExerciseNotes>;effort?:string;symptom?:string;rating?:number;partial?:boolean;supervisorConfirmed?:boolean;demo?:boolean};
+export type Proposal={id:string;title:string;reason:string;type:'sets'|'move'|'return'|'load'|'substitute'|'ranges'|'capacity'|'review';changes?:{sessionId:string;beforeDate?:string;patch:Partial<Session>}[];warnings?:string[];eventSignature?:string;historyCount?:number;planId:string;baseVersion:number;sessionId:string;before:string;after:string;status:'pending'|'accepted'|'declined'|'stale'|'queued';patch:Partial<Session>;source:string;createdAt:string};
 export type Event={id:string;name:string;date:string;kind:string;priority:string;minutes:number;provisional:boolean};
-export type State={restTimer?:RestTimer|null;restAlerts?:boolean;restSound?:boolean;schema:2;profile:Profile;plan:Plan|null;history:Workout[];active:Workout|null;proposals:Proposal[];events:Event[];custom:Exercise[];ratings:Record<string,number>;audit:{at:string;message:string}[];saved:Plan[];checkins:boolean;soreness:boolean;hold:boolean;simulatedOffline:boolean;equipmentCaps?:{exerciseId:string;setup:string;maxKg:number}[];incrementKg?:Record<string,number>;loadContext?:Record<string,string>};
+export type State={restTimer?:RestTimer|null;restAlerts?:boolean;restSound?:boolean;videoPromptsAnswered?:string[];schema:2;profile:Profile;plan:Plan|null;history:Workout[];active:Workout|null;proposals:Proposal[];events:Event[];custom:Exercise[];ratings:Record<string,number>;audit:{at:string;message:string}[];saved:Plan[];checkins:boolean;soreness:boolean;hold:boolean;simulatedOffline:boolean;equipmentCaps?:{exerciseId:string;setup:string;maxKg:number}[];incrementKg?:Record<string,number>;loadContext?:Record<string,string>};
 export const weekdays=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 export function day(d=new Date()){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
 export function addDays(date:string,n:number){const d=new Date(date+'T12:00:00');d.setDate(d.getDate()+n);return day(d)}
 export function niceDate(date:string){return new Date(date+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}
-export function uid(prefix='id'){return prefix+'-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7)}
+export function uid(prefix='id'){void prefix;return recordUuid()}
 const foundationExercises:Exercise[]=[
 {id:'squat',name:'Goblet squat',pattern:'Squat',equipment:'Dumbbells',metric:'reps',cues:['Hold one weight close to your chest.','Sit between your hips through a comfortable range.','Keep the whole foot grounded and stand smoothly.']},
 {id:'bench',name:'Barbell bench press',pattern:'Push',equipment:'Full gym',metric:'reps',cues:['Set a stable position with feet supported.','Lower the bar under control to a comfortable chest position.','Press smoothly; use appropriate safeties or a qualified spotter.']},
@@ -70,7 +73,8 @@ export const blankProfile:Profile={age:28,goal:'hybrid',experience:'Some experie
 export function roundLoad(kg:number,increment:number){return Math.floor((kg+1e-8)/increment)*increment}
 export function displayLoad(kg:number|null,units:'kg'|'lb'){return kg==null?'Choose a light load':`${Math.round(kg*(units==='lb'?2.2046226218:1)*10)/10} ${units}`}
 export function toKg(n:number,units:'kg'|'lb'){return units==='lb'?n/2.2046226218:n}
-export function exFor(id:string,custom:Exercise[]=[]):Exercise{return exercises.find(e=>e.id===id)||custom.find(e=>e.id===id)||{id,name:'Archived exercise',pattern:'Custom',equipment:'Custom',metric:'reps',cues:[]}}
+const exerciseById=new Map(exercises.map(e=>[e.id,e]));
+export function exFor(id:string,custom:Exercise[]=[]):Exercise{return exerciseById.get(id)||custom.find(e=>e.id===id)||{id,name:'Archived exercise',pattern:'Custom',equipment:'Custom',metric:'reps',cues:[]}}
 export function validateProfile(p:Profile){
  if(!p||!Array.isArray(p.days))return ['Choose valid available weekdays.'];
  const errors:string[]=[];if(!Array.isArray(p.days)||!p.days.length||p.days.some(d=>!Number.isInteger(d)||d<0||d>6)||new Set(p.days).size!==p.days.length)errors.push('Choose distinct weekdays from Sunday through Saturday.');if(!['First time','Some experience','Experienced'].includes(p.experience)||!['app','coach','manual'].includes(p.mode)||!['Full gym','Dumbbells','Bodyweight + band','No equipment'].includes(p.equipment)||!['kg','lb'].includes(p.units))errors.push('Choose supported experience, coaching, equipment and units.');if(!Number.isInteger(p.age)||!Number.isInteger(p.minutes))errors.push('Age and session minutes must be whole numbers.');if(!goals.some(([id])=>id===p.goal))errors.push('Choose a supported training goal.');if(!Number.isFinite(p.age)||p.age<14||p.age>100)errors.push('This prototype supports ages 14–100. Under-14 planning is outside its scope.');
@@ -114,18 +118,38 @@ export function buildPlan(p:Profile,events:Event[]=[]):{plan:Plan|null;errors:st
 function buildBasePlan(p:Profile,events:Event[]=[]):{plan:Plan|null;errors:string[]}{
  const errors=validateProfile(p);if(errors.length)return{plan:null,errors};
  if(p.programId?.startsWith('ref-')){
-  const ref=programReferences.find(x=>x.id===p.programId&&x.goal===p.goal);
-  if(!ref||p.mode!=='manual')return {plan:null,errors:['Choose a matching official program in user-entered tracking mode.']};
+  const ref=programReferences.find(x=>x.id===p.programId&&referenceMatchesGoal(x,p.goal));
+  if(!ref||p.mode!=='manual')return {plan:null,errors:['Choose a matching named program in manual tracking mode.']};
   if(p.age<18)return {plan:null,errors:['These adult program references are not youth prescriptions. Review training with your coach and choose coach-directed tracking.']};
   if(p.days.length<ref.days)return {plan:null,errors:[`${ref.name} uses ${ref.days} days per week. Add availability before creating its tracking schedule.`]};
   if(ref.weeks&&p.weeks>ref.weeks)return {plan:null,errors:[`${ref.name} lasts ${ref.weeks} weeks. Choose that length or a shorter tracking segment.`]};
-  const offsets=ref.days===5?[0,1,3,4,5]:[0,1,3,4],startDay=new Date(p.start+'T12:00:00').getDay();
-  const arranged=Array.from({length:7},(_,n)=>offsets.map(o=>(startDay+n+o)%7)).find(ds=>ds.every(d=>p.days.includes(d)));
-  if(!arranged)return {plan:null,errors:['This tracking calendar needs training days with recovery gaps. Add availability for two training days, a rest day, then two training days (three for PHAT). Review the original schedule before using it.']};
-  const days=arranged.slice().sort((a,b)=>a-b);
-  const result=buildBasePlan({...p,programId:undefined,days},events);if(!result.plan)return result;
-  const plan=result.plan;plan.name=ref.name+' by '+ref.author+' · user-entered tracking';plan.phases=[{name:'Track the original',weeks:`1–${p.weeks}`,description:'Enter the author’s targets and progression. No app-written phases replace the source program.'}];plan.profile={...plan.profile,programId:ref.id};plan.notes=[`Official program by ${ref.author}: ${ref.url}`,`This is an empty ${p.weeks}-week tracking schedule, not a preloaded or automated copy of ${ref.name}. Enter the author’s exercises, loads and progression yourself.`,`The calendar leaves a recovery gap between training groups. Confirm the dates, phase and session order against your original copy.`,...(ref.weeks&&p.weeks<ref.weeks?[`The original lasts ${ref.weeks} weeks. This schedule covers only the first ${p.weeks} weeks.`]:[]),...plan.notes];plan.sessions=plan.sessions.map((x,i)=>({...x,title:ref.name+' by '+ref.author+' · Day '+(i%ref.days+1)}));return result;
+  if(ref.workouts){
+   const compatible=ref.equipment==='dumbbells'?['Dumbbells','Full gym']:ref.equipment==='bodyweight'?['Bodyweight + band','Full gym']:['Full gym'];
+   if(!compatible.includes(p.equipment))return {plan:null,errors:[`${ref.name} needs ${compatible.join(' or ')} plus the listed supports. The app will not replace source exercises silently.`]};
+   if(p.experience==='First time'&&ref.experience!=='Beginner')return {plan:null,errors:['This prefilled selection assumes experience with its listed movements. Choose a beginner routine or enter reviewed variations in your own tracking plan.']};
+   if(p.noFloor&&!ref.noFloor)return {plan:null,errors:['This source template has no verified no-floor version. Use your own tracking schedule with suitable exercises.']};
+   if(ref.equipment==='dumbbells'&&p.dumbbellMaxKg===0)return {plan:null,errors:['This source routine requires dumbbells; your available maximum is zero. Update equipment or choose another plan.']};
+  }
+  const patterns=ref.offsets||(ref.days===5?[[0,1,3,4,5]]:[[0,1,3,4]]),startDay=new Date(p.start+'T12:00:00').getDay();
+  const arranged=Array.from({length:7},(_,delay)=>patterns.map(offsets=>({delay,offsets,days:offsets.map(o=>(startDay+delay+o)%7)}))).flat().find(x=>x.days.length===ref.days&&x.days.every(d=>p.days.includes(d)));
+  if(!arranged)return {plan:null,errors:['This named routine needs its source recovery gaps. Add suitable availability, or use a separate custom tracking schedule.']};
+  const days=arranged.days.slice().sort((a,b)=>a-b),effectiveStart=addDays(p.start,arranged.delay),id=uid('plan'),sessions:Session[]=[];
+  for(let week=1;week<=p.weeks;week++)for(const offset of arranged.offsets){
+   const index=sessions.length,slot=index%(ref.workouts?.length||ref.days),source=ref.workouts?.[slot],roleId=ref.id+'-'+slot;
+   const date=addDays(effectiveStart,(week-1)*7+offset);
+   if(events.some(e=>e.date===date))return {plan:null,errors:['A source workout falls on a commitment. Review a shifted draft.']};
+   const items:Item[]=source?.items.map(([exerciseId,sets,repMin,repMax,rest,note])=>({exerciseId,sets,reps:repMin,repMin,repMax,rest,kg:null,loadRole:roleId,note}))||[];
+   const minutes=items.length?Math.max(ref.minMinutes||0,estimateSessionMinutes(items)):p.minutes;
+   if(minutes>p.minutes)return {plan:null,errors:[`${ref.name} · ${source?.title} needs about ${minutes} minutes including work, rest and setup, beyond your ${p.minutes}-minute window. Choose more time or another routine.`]};
+   sessions.push({id:uid('session'),date,week,title:ref.name+' · '+(source?.title||'Day '+(slot+1)),kind:'Manual strength',minutes,items,roleId,dependsOn:index?[sessions[index-1].id]:[],progressionStep:ref.progression,status:'scheduled'});
+  }
+  const plan:Plan={id,name:ref.name+' by '+ref.author+' · manual tracking',version:1,profile:{...p,days},acceptedAt:null,sessions,
+   phases:[{name:ref.workouts?'Source template':'Track the original',weeks:`1–${p.weeks}`,description:'Review the author’s targets, chosen variations and progression. Loads and future target edits stay user directed.'}],evidence:[],
+   notes:[`Published program by ${ref.author}: ${ref.url}`,ref.workouts?'Prefilled workout facts with the variations below. Loads, later phases, AMRAP and failure-stage rules require your review.':'Empty tracking calendar. Enter source exercises, loads and progression from your own copy.',...(ref.requirements||[]).map(r=>'Required: '+r),...(ref.scope||[]),...(arranged.delay?[`The first source workout starts ${niceDate(effectiveStart)}, after your selected start date, to preserve its weekly recovery pattern.`]:[]),...(ref.weeks&&p.weeks<ref.weeks?[`The original lasts ${ref.weeks} weeks. This schedule covers only the first ${p.weeks} weeks.`]:[])],
+   progression:ref.progression||'Enter and review targets from the original program. Source-specific loads and progression are not automated.',template:'TRACK',paused:false};
+  return {plan,errors:[]};
  }
+
  if(p.mode==='app'&&(p.programId||((p.noFloor||p.equipment==='No equipment'||p.age>=18)&&p.goal!=='running'&&programCatalog.some(d=>d.goal===p.goal))))return buildCatalogPlan(p,events);
  const youth=p.age<18,run=p.goal==='running',tracking=p.mode!=='app',gym=p.equipment==='Full gym',db=!p.equipment.startsWith('Bodyweight');
  if(!tracking&&!run&&db&&p.dumbbellMaxKg===0)return {plan:null,errors:['This foundation uses dumbbells but your available maximum is zero. Choose bodyweight/band training or update your equipment.']};
@@ -149,10 +173,10 @@ function buildBasePlan(p:Profile,events:Event[]=[]):{plan:Plan|null;errors:strin
  const date=addDays(p.start,offset),weekday=new Date(date+'T12:00:00').getDay();if(!days.includes(weekday))continue;
  const index=sessions.length,week=Math.floor(index/days.length)+1,slot=index%days.length,cycle=Math.min(week-1,5);let title='',items:Item[]=[],runSteps:Session['runSteps'];
  if(tracking){title='Enter your '+(p.mode==='coach'?'coach’s':'custom')+' session';}
- else if(run){const cfg=recipes.running;const stage=cfg.weeks_pattern_ids[Math.min(week-1,8)][slot];const pattern=(cfg.patterns as any)[stage];let seq:number[]=Array.isArray(pattern)?pattern:Array.from({length:pattern.repeat},()=>pattern.pair_seconds).flat().concat(pattern.final_run_seconds);runSteps=[{label:'Warm-up walk',seconds:300},...seq.map(n=>({label:n>0?'Easy run':'Recovery walk',seconds:Math.abs(n)})),{label:'Cool-down walk',seconds:300}];title=`Run/walk · stage ${week}${week===5||week===6?' / '+(slot+1):''}`;items=[{exerciseId:'run',sets:1,reps:runSteps.reduce((n,r)=>n+r.seconds,0)/60,rest:0,kg:null,note:'Log the total time, including the walking intervals. Follow the steps at an easy pace.'}];}
+ else if(run){const cfg=recipes.running;const stage=cfg.weeks_pattern_ids[Math.min(week-1,8)][slot];const pattern=cfg.patterns[stage as keyof typeof cfg.patterns];const seq:number[]=Array.isArray(pattern)?pattern:Array.from({length:pattern.repeat},()=>pattern.pair_seconds).flat().concat(pattern.final_run_seconds);runSteps=[{label:'Warm-up walk',seconds:300},...seq.map(n=>({label:n>0?'Easy run':'Recovery walk',seconds:Math.abs(n)})),{label:'Cool-down walk',seconds:300}];title=`Run/walk · stage ${week}${week===5||week===6?' / '+(slot+1):''}`;items=[{exerciseId:'run',sets:1,reps:runSteps.reduce((n,r)=>n+r.seconds,0)/60,rest:0,kg:null,note:'Log the total time, including the walking intervals. Follow the steps at an easy pace.'}];}
  else if(youth){title='Youth foundation '+(slot%2?'B':'A');const ids=slot%2?[db?'squat':'bw-squat','bridge','pushup',gym?'pulldown':db?'row':'band-row','calf','deadbug']:['bw-squat','bridge','pushup',db?'row':'band-row','split','deadbug'];items=ids.map((exerciseId,index)=>({exerciseId,sets:week>=4&&index<week-3?2:1,reps:8,rest:90,kg:null,note:'Your supervisor chooses the exercise variation and a light starting weight. Take more rest when needed.'}));}
- else if(template==='AT03'){title='Strength '+['A','B','C'][slot];const ts=recipes.adult.find(x=>x.id==='AT03')!.sessions[slot];items=strengthMenus[slot].map((exerciseId,j)=>{const item=(ts as any).slots[j];const primary=item.reps[0]===3,secondary=item.reps[0]===5;return{exerciseId,sets:item.sets,reps:primary?[3,4,5,3,4,5][cycle]:secondary?[5,6,7,8,8,8][cycle]:[8,9,10,11,12,12][cycle],rest:item.rest_seconds,kg:null}});}
- else if(template==='AT02'){title=['Upper A','Lower A','Upper B','Lower B'][slot];const ts=(recipes.adult.find(x=>x.id==='AT02')!.sessions[slot%2] as any);items=hypertrophyMenus[slot].map((exerciseId,j)=>{const item=ts.slots[j];return{exerciseId,sets:item.sets,reps:item.reps[0]===10?[10,11,12,13,14,15][cycle]:[8,9,10,11,12,12][cycle],rest:item.rest_seconds,kg:null}});}
+ else if(template==='AT03'){title='Strength '+['A','B','C'][slot];const ts=recipes.adult.find(x=>x.id==='AT03')!.sessions[slot];items=strengthMenus[slot].map((exerciseId,j)=>{const item=ts.slots![j];const primary=item.reps[0]===3,secondary=item.reps[0]===5;return{exerciseId,sets:item.sets,reps:primary?[3,4,5,3,4,5][cycle]:secondary?[5,6,7,8,8,8][cycle]:[8,9,10,11,12,12][cycle],rest:item.rest_seconds,kg:null}});}
+ else if(template==='AT02'){title=['Upper A','Lower A','Upper B','Lower B'][slot];const ts=recipes.adult.find(x=>x.id==='AT02')!.sessions[slot%2];items=hypertrophyMenus[slot].map((exerciseId,j)=>{const item=ts.slots![j];return{exerciseId,sets:item.sets,reps:item.reps[0]===10?[10,11,12,13,14,15][cycle]:[8,9,10,11,12,12][cycle],rest:item.rest_seconds,kg:null}});}
  else {title=(template==='AT04'?'Home foundation ':'Full-body ')+(slot%2?'B':'A');const ids=template==='AT04'?home:slot%2?foundationB:foundationA;items=ids.map((exerciseId,j)=>{const trunk=exerciseId==='deadbug',calf=exerciseId==='calf',push=template==='AT04'&&exerciseId==='pushup';return{exerciseId,sets:week===1?1:((template==='AT04'?j<4:j<4)?2:1),reps:trunk?[6,6,7,8,9,10][cycle]:calf?[10,10,11,12,13,14][cycle]:push?[6,6,7,8,9,10][cycle]:[8,8,9,10,11,12][cycle],rest:trunk?60:calf||exerciseId==='ohp'?90:120,kg:null}});}
  if(!tracking&&!run&&!youth)items=items.map(i=>rangeItem(i,template,title));
  const estimated=estimateSessionMinutes(items);
@@ -172,8 +196,11 @@ function buildBasePlan(p:Profile,events:Event[]=[]):{plan:Plan|null;errors:strin
  if(!tracking&&run)notes.push('Three nonconsecutive sessions. The accepted source sequence progresses only after the prior stage/session is completed; missing prerequisites wait. Thirty minutes of running is not a guaranteed 5 km.');
  const progression=tracking?'You or your coach decide when to change the targets.':youth?'Start with one set of 8 reps for the first three weeks. From week 4, a second set can be added to one more exercise each time the workout repeats. First, complete two comparable sessions that felt comfortable, with your supervisor’s confirmation. Reps and weight do not increase together. Missing workouts or feedback pause progression. Review weight or exercise changes separately.':run?'Accepted baseline: the displayed NHS run/walk sequence, in order. Complete the preceding session before advancing; a missed/partial session leaves progression waiting. Repeats, reductions and day moves are separate proposals.':RANGE_PROGRESSION;
  const phases=p.weeks<=3?[{name:'Foundation',weeks:`1–${p.weeks}`,description:'Find a comfortable starting point, follow the plan and review how it went.'}]:[{name:'Familiarize',weeks:'1–2',description:tracking?'Enter your workouts and build a regular logging habit.':run?'Find an easy running pace and get used to the walk breaks.':'Practice each exercise and find a weight you can control.'},{name:'Build',weeks:`3–${p.weeks-1}`,description:'Complete the earlier workouts before moving to the next targets.'},{name:'Review',weeks:String(p.weeks),description:'Use your workout history to choose your next plan or maintain your current routine.'}];
- return{errors:[],plan:{id,name:label,version:1,progressionModel:!tracking&&!run&&!youth?'ranges':undefined,profile:{...p,days},acceptedAt:null,sessions,phases,evidence:run?['NHS-C25K']:youth?['AAP-2020','NSCA-YOUTH','IOC-YOUTH']:['ACSM-2026','ACSM-2009'],notes,progression,template,paused:false}};
+ if(!tracking&&p.age>=65)notes.push('For general health from age 65, WHO recommends varied activity emphasizing balance and functional strength on at least three days each week, alongside aerobic activity. Review that wider weekly activity alongside these listed sessions.');
+ return{errors:[],plan:{id,name:label,version:1,progressionModel:!tracking&&!run&&!youth?'ranges':undefined,profile:{...p,days},acceptedAt:null,sessions,phases,evidence:tracking?[]:planEvidence({goal:p.goal,run:!!run,youth:!!youth,jumping:!!p.focuses?.includes('jumping'),age:p.age}),notes,progression,template,paused:false}};
 }
+// Display imports consistently without changing their stored insertion order.
+export function sortWorkoutHistory(history:Workout[]):Workout[]{return [...history].sort((a,b)=>b.date.localeCompare(a.date)||(b.finishedAt??b.startedAt)-(a.finishedAt??a.startedAt)||a.id.localeCompare(b.id))}
 export function latestSessionRecord(s:State,id:string){return s.history.filter(w=>w.sessionId===id&&w.finishedAt).sort((a,b)=>(b.finishedAt||0)-(a.finishedAt||0))[0]}
 export function competitionConflict(profile:Profile,date:string,events:Event[]):string|null{
  if(profile.mode!=='app')return null;
@@ -202,9 +229,26 @@ export function eligibility(s:State,target:Session):string|null{
 }
 export function initialState():State{const p={...blankProfile,goal:'strength',programId:undefined};const today=new Date().getDay();p.days=[today,(today+2)%7,(today+4)%7].sort();const plan=buildPlan(p).plan!;plan.acceptedAt=new Date().toISOString();return{schema:2,profile:p,plan,history:[],active:null,proposals:[],events:[],custom:[],ratings:{},audit:[],saved:[],checkins:true,soreness:false,hold:false,simulatedOffline:false}}
 export function nextSession(s:State){return s.plan?.sessions.filter(x=>x.status==='scheduled').sort((a,b)=>a.date.localeCompare(b.date))[0]}
-export function changed(s:State,message:string){return {...s,audit:[{at:new Date().toISOString(),message},...s.audit].slice(0,150)}}
+// Keeps every open proposal and the 50 newest resolved ones. Proposals are stored newest first.
+// Without this, resolved proposals accumulate until the saved-state schema rejects every save.
+export function pruneProposals(list:State['proposals']):State['proposals']{let resolved=0;return list.filter(p=>p.status==='pending'||p.status==='queued'||resolved++<50)}
+export function changed(s:State,message:string){return {...s,audit:[{at:new Date().toISOString(),message},...s.audit].slice(0,150),proposals:pruneProposals(s.proposals)}}
+/** Pausing changes future eligibility, not dates, recorded work, or a concern hold. */
+export function setPlanPaused(state: State, planId: string, version: number, paused: boolean): State {
+  const plan = state.plan;
+  if (!plan || plan.id !== planId || plan.version !== version) throw Error('The plan changed. Reopen it before pausing or resuming.');
+  if (state.active) throw Error('Finish or discard your active workout before pausing or resuming the plan.');
+  if (plan.paused === paused) return state;
+  return changed({
+    ...state,
+    plan: { ...plan, paused, version: plan.version + 1 },
+    proposals: state.proposals.map(proposal => proposal.status === 'pending' || proposal.status === 'queued' ? { ...proposal, status: 'stale' } : proposal),
+  }, paused ? 'Paused plan. Dates and history preserved.' : 'Resumed plan. Dates and history preserved.');
+}
+
 export function makeProposal(s:State,type:Proposal['type'],input?:string):Proposal|null{
  const plan=s.plan,session=nextSession(s);if(!plan||!session||plan.profile.mode!=='app'||s.hold||plan.paused)return null;
+ if(type==='review')return makeContinuationReview(s,input||session.id);
  if(type==='capacity')return makeCapacityProposal(s);
  if(type==='load')return makeLoadProposal(s).proposal||null;
  if(type==='ranges')return makeRangeProposal(s);
@@ -245,13 +289,13 @@ export function applyProposal(s:State,id:string):{state:State;error?:string}{
  if(p.type!=='move'&&s.plan.profile.mode!=='app')return{state:s,error:'Coach-directed and manual targets stay under your control.'};
  const changes=p.changes||[{sessionId:p.sessionId,patch:p.patch}];
  if(p.type==='move'){if(changes.some(c=>Object.keys(c.patch).some(k=>k!=='date')))return stale('A date change cannot alter workout targets or history. Preview it again.');}
- else {const expected=p.type==='ranges'?makeRangeProposal(s):p.type==='load'?makeLoadProposal(s).proposal:makeProposal(s,p.type);if(!expected||!sameData(changes,expected.changes||[{sessionId:expected.sessionId,patch:expected.patch}]))return stale('This change does not match a current, checked training proposal. Preview it again.');}
+ else {const expected=p.type==='review'?makeContinuationReview(s,p.sessionId):p.type==='ranges'?makeRangeProposal(s):p.type==='load'?makeLoadProposal(s).proposal:makeProposal(s,p.type);if(!expected||!sameData(changes,expected.changes||[{sessionId:expected.sessionId,patch:expected.patch}]))return stale('This change does not match a current, checked training proposal. Preview it again.');}
  if(!changes.length||new Set(changes.map(c=>c.sessionId)).size!==changes.length)return{state:s,error:'This preview is invalid. Create a fresh one.'};
  for(const c of changes){const x=s.plan.sessions.find(x=>x.id===c.sessionId);if(!x||x.status!=='scheduled'||s.active?.sessionId===x.id||s.history.some(w=>w.sessionId===x.id&&w.finishedAt))return stale('A selected session has started, finished or been skipped. Preview again.');if(c.beforeDate&&c.beforeDate!==x.date)return stale('A date changed. Preview again.');}
  if(p.type==='move'){const error=checkSchedule(s,changes);if(error)return{state:s,error};}
  if(p.type==='load'){const ss=s.plan.sessions.find(x=>x.id===p.sessionId);for(const next of p.patch.items||[]){const old=ss?.items.find(i=>i.exerciseId===next.exerciseId);if(old&&next.kg!==old.kg){const latest=loadSuggestion(s,old);if(latest.nextKg===undefined||next.kg===null||Math.abs(latest.nextKg-next.kg)>1e-6)return stale('The load evidence or equipment changed. Review a fresh load suggestion.');}}}
  if(s.simulatedOffline)return{state:changed({...s,proposals:s.proposals.map(x=>x.id===id?{...x,status:'queued'}:x)},'Offline acceptance queued; targets unchanged.'),error:'Queued only. Reconnect, review and confirm before anything changes.'};
- const affected=new Set<string>();if(!['move','ranges','load','capacity'].includes(p.type)){affected.add(p.sessionId);for(const ss of s.plan.sessions)if(ss.dependsOn?.some(id=>affected.has(id)))affected.add(ss.id)}
+ const affected=new Set<string>();if(!['move','ranges','load','capacity','review'].includes(p.type)){affected.add(p.sessionId);for(const ss of s.plan.sessions)if(ss.dependsOn?.some(id=>affected.has(id)))affected.add(ss.id)}
  const sessions=s.plan.sessions.map(x=>{const c=changes.find(c=>c.sessionId===x.id);return c?{...x,...c.patch}:affected.has(x.id)?{...x,needsReview:true}:x}).sort((a,b)=>a.date.localeCompare(b.date));
  const plan:Plan={...s.plan,version:s.plan.version+1,sessions,scheduleEnd:sessions.at(-1)?.date,...(p.type==='ranges'?{progressionModel:'ranges' as const,progression:RANGE_PROGRESSION}:{})};
  return{state:changed({...s,plan,proposals:s.proposals.map(x=>x.id===id?{...x,status:'accepted'}:x.status==='pending'||x.status==='queued'?{...x,status:'stale'}:x)},`Accepted: ${p.title}. ${changes.length} session(s) updated. Completed history unchanged.`)};
@@ -266,10 +310,13 @@ export const RANGE_PROGRESSION='Stay within the listed rep range and finish most
 export function validDay(v:string){if(typeof v!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(v))return false;const [y,m,d]=v.split('-').map(Number);const x=new Date(Date.UTC(y,m-1,d));return y>=1900&&y<=2200&&x.getUTCFullYear()===y&&x.getUTCMonth()===m-1&&x.getUTCDate()===d;}
 export function dayDistance(a:string,b:string){if(!validDay(a)||!validDay(b))return NaN;const parse=(x:string)=>{const [y,m,d]=x.split('-').map(Number);return Date.UTC(y,m-1,d)};return (parse(b)-parse(a))/86400000;}
 export function rangeItem(i:Item,template:string,title=''):Item{if(exFor(i.exerciseId).metric!=='reps')return{...i};let lo=i.repMin,hi=i.repMax;if(lo===undefined||hi===undefined){if(template==='AT03'&&['bar-squat','bench','deadlift','ohp'].includes(i.exerciseId)&&i.reps<=8){const main=(title==='Strength A'&&['bar-squat','bench'].includes(i.exerciseId))||(title==='Strength B'&&i.exerciseId==='deadlift');[lo,hi]=main?[3,5]:[5,8];}else if(template==='AT03')[lo,hi]=[8,12];else if((template==='AT02'&&['calf','lateral','curl','triceps','leg-curl','leg-extension'].includes(i.exerciseId))||i.exerciseId==='calf')[lo,hi]=[10,15];else if(i.exerciseId==='deadbug')[lo,hi]=template==='AT02'?[8,12]:[6,10];else if(template==='AT04'&&i.exerciseId==='pushup')[lo,hi]=[6,12];else[lo,hi]=[8,12];}return{...i,repMin:lo,repMax:hi,reps:lo!};}
-export function targetText(i:Item){return i.repMin!==undefined&&i.repMax!==undefined?`${i.repMin}–${i.repMax}`:String(i.reps)}
+export function targetText(i:Item){const base=i.repMin!==undefined&&i.repMax!==undefined?(i.repMin===i.repMax?String(i.repMin):`${i.repMin}–${i.repMax}`):String(i.reps);return base+(i.note?.includes('[AMRAP]')?` · last set ${i.reps}+`:'')}
 export function loadConvention(id:string,custom:Exercise[]=[]){return exFor(id,custom).loadConvention||'Not configured. Choose a logging convention before enabling progression.'}
 export function exerciseRecords(s:State,id:string){return s.history.filter(w=>w.finishedAt&&Array.isArray(w.sets)&&w.sets.some(x=>x.exerciseId===id&&x.done)).sort((a,b)=>b.date.localeCompare(a.date)||(b.finishedAt||0)-(a.finishedAt||0));}
 export function comparableSet(x:SetLog){return !['Left','Right','Alternating'].includes(x.metrics?.side||'')&&!(x.metrics?.assistanceKg&&x.metrics.assistanceKg>0)}
+// Exercise reps-in-reserve for progression and estimates. Per-set RIR counts only when every completed set has a whole number;
+// the lowest value (closest to failure) is used. Older workouts keep their exercise-level value.
+export function exerciseRir(w:Workout,id:string):number|null|undefined{const done=w.sets.filter(x=>x.exerciseId===id&&x.done);if(done.length&&done.every(x=>typeof x.rir==='number'))return Math.min(...done.map(x=>x.rir as number));return w.rir?.[id]}
 export function equipmentLimit(s:State,exerciseId:string):number|undefined{
  const e=exFor(exerciseId,s.custom),setup=requiresSetup(e)?s.loadContext?.[exerciseId]||'':'';
  const exact=s.equipmentCaps?.find(c=>c.exerciseId===exerciseId&&c.setup===setup)?.maxKg;
@@ -294,6 +341,7 @@ export function loadSuggestion(s:State,i:Item):{kg:number|null;nextKg?:number;da
  if(limit!==undefined&&i.kg!==null&&i.kg>limit+1e-6)return{kg:null,reason:'The accepted weight exceeds your equipment limit. Choose a manageable weight from the equipment available.'};
  if(i.kg!==null&&requiresSetup(ex)&&(!i.loadContext||i.loadContext!==s.loadContext?.[i.exerciseId]))return{kg:null,reason:'This weight was chosen for a different or unrecorded machine setup. Start light and check a suitable weight for this setup.'};
  if(i.kg!==null&&Number.isFinite(i.kg))return{kg:i.kg,reason:'Accepted load for this session. Reassess during your warm-up.'};
+ if(s.plan?.profile.programId?.startsWith('ref-'))return{kg:null,reason:'Choose this load using the linked program’s rules. Source-specific progression is manual; history does not assign a weight.'};
  const records=exerciseRecords(s,i.exerciseId).filter(r=>{const t=r.targets?.find(t=>t.exerciseId===i.exerciseId);return t&&(t.loadRole||'')===(i.loadRole||'')&&(t.repMin??t.reps)===(i.repMin??i.reps)&&t.repMax===i.repMax&&(!requiresSetup(ex)||r.loadContext?.[i.exerciseId]===s.loadContext?.[i.exerciseId]);}),w=records[0];const machine=requiresSetup(ex);if(machine&&!s.loadContext?.[i.exerciseId])return{kg:null,reason:'Add the machine and setup label above the set log, then record work with that setup before reusing its load.'};if(!w)return{kg:null,reason:'No comparable history for this range and setup yet. Start with a controllable light resistance, then record the actual load.'};
  const log=w.sets.filter(x=>x.exerciseId===i.exerciseId&&x.done),kg=log[0]?.kg,lo=i.repMin??i.reps;
  if(w.partial||['yes','unsure'].includes(w.symptom||'')||w.effort==='harder'||log.length<i.sets||kg===null||kg===undefined||kg<=0||log.some(x=>x.kg!==kg||x.reps<lo||!comparableSet(x)))return{kg:null,date:w.date,reason:'Your recent sets do not give us a reliable starting weight for this target. Check your history, then start light and adjust during the warm-up.'};
@@ -301,7 +349,7 @@ export function loadSuggestion(s:State,i:Item):{kg:number|null;nextKg?:number;da
  if((s.plan?.profile.age??s.profile.age)<18)return{kg:null,date:w.date,reason:'Youth loads need the qualified supervisor’s selection; the history remains available.'};
  if(limit!==undefined&&kg>limit+1e-6)return{kg:null,date:w.date,reason:'The previous weight exceeds your equipment limit. Choose an available weight you can control. Your past records stay the same.'};
  const hi=i.repMax;if(hi===undefined)return{kg,date:w.date,reason:'Weight from your last matching workout. Preview rep ranges to build reps before increasing the weight.'};
- const successful=(r:Workout)=>{const a=r.sets.filter(x=>x.exerciseId===i.exerciseId&&x.done),target=r.targets?.find(t=>t.exerciseId===i.exerciseId);return (!machine||r.loadContext?.[i.exerciseId]===s.loadContext?.[i.exerciseId])&&!r.partial&&r.symptom==='no'&&r.effort!=='harder'&&dayDistance(r.date,day())<=35&&target?.repMax===hi&&target?.repMin===lo&&a.length>=i.sets&&a.every(x=>x.kg===kg&&x.reps>=hi&&comparableSet(x))&&(r.rir?.[i.exerciseId]??-1)>=2;};
+ const successful=(r:Workout)=>{const a=r.sets.filter(x=>x.exerciseId===i.exerciseId&&x.done),target=r.targets?.find(t=>t.exerciseId===i.exerciseId);return (!machine||r.loadContext?.[i.exerciseId]===s.loadContext?.[i.exerciseId])&&!r.partial&&r.symptom==='no'&&r.effort!=='harder'&&dayDistance(r.date,day())<=35&&target?.repMax===hi&&target?.repMin===lo&&a.length>=i.sets&&a.every(x=>x.kg===kg&&x.reps>=hi&&comparableSet(x))&&(exerciseRir(r,i.exerciseId)??-1)>=2;};
  const ready=records.length>=2&&records.slice(0,2).every(successful),step=s.incrementKg?.[i.exerciseId];
  if(!ready)return{kg,date:w.date,reason:'Repeat this recent load and build reps within the range. A load increase waits for two comparable top-of-range sessions and effort feedback.'};
  if(limit!==undefined&&(kg>=limit-1e-6||(step&&kg+step>limit+1e-6)))return{kg,date:w.date,ready:true,atCapacity:true,reason:'You reached this equipment’s limit or its next available step would exceed it. Keep this load. For muscle-focused work, review a wider rep range; for heavy strength, choose suitable heavier equipment or maintain. This is an equipment limit, not a strength plateau.'};
@@ -327,7 +375,7 @@ export function makeCapacityProposal(s:State):Proposal|null{
   const matches=plan.sessions.filter(x=>x.status==='scheduled'&&!x.needsReview&&x.date>=ss.date&&(x.roleId||x.title)===(ss.roleId||ss.title));
   const changes:NonNullable<Proposal['changes']>=[];let fits=true;
   for(const x of matches){const old=x.items.find(i=>i.exerciseId===item.exerciseId&&i.repMin===item.repMin&&i.repMax===hi&&(i.loadRole||'')===(item.loadRole||''));if(!old)continue;
-   const items=x.items.map(i=>i===old?{...i,reps:nextLo,repMin:nextLo,repMax:nextHi,kg:null,loadContext:undefined,note:'Build reps with the equipment you have. Choose a weight that leaves 2–3 good reps left, and keep the same number of sets and the same rest.'}:i);
+   const items=x.items.map(i=>i===old?{...i,reps:nextLo,repMin:nextLo,repMax:nextHi,kg:null,loadContext:undefined,note:[i.note,'Build reps with the equipment you have. Choose a weight that leaves 2–3 good reps left, and keep the same number of sets and the same rest.'].filter(Boolean).join(' ')}:i);
    const minutes=x.minutes+Math.max(0,estimateSessionMinutes(items,x.timeProfile==='brief')-estimateSessionMinutes(x.items,x.timeProfile==='brief'));
    if(minutes>plan.profile.minutes){fits=false;break;}changes.push({sessionId:x.id,patch:{items,minutes}});
   }
@@ -335,6 +383,14 @@ export function makeCapacityProposal(s:State):Proposal|null{
   return{...proposalBase(s,'capacity',ss.id),title:a.coarseIncrement?'Build reps before a large equipment step':'Build reps within your equipment limit',reason:'Two comfortable top-of-range sessions support reviewing more reps. The new range is an app choice informed by rep-progression research. It does not replace heavy-load practice for maximal strength. Recalibrate; keep the same set count and rest.',source:'REP-PROGRESSION',before:exFor(item.exerciseId,s.custom).name+' · '+targetText(item)+' reps',after:nextLo+'–'+nextHi+' reps · '+changes.length+' future matching sessions · available load only',changes};
  }
  return null;
+}
+// A review acknowledges the displayed targets only after their unchanged prerequisites are complete.
+export function makeContinuationReview(s:State,sessionId:string):Proposal|null{
+ const plan=s.plan,target=plan?.sessions.find(x=>x.id===sessionId);
+ if(!plan||!target||!target.needsReview||target.status!=='scheduled'||plan.profile.mode!=='app'||plan.profile.age<18||s.active||s.hold||plan.paused)return null;
+ const reviewed={...target,needsReview:false};
+ if(eligibility({...s,plan:{...plan,sessions:plan.sessions.map(x=>x.id===target.id?reviewed:x)}},reviewed))return null;
+ return{...proposalBase(s,'review',target.id),title:'Review the displayed targets',reason:'The earlier workout changed. Check this workout’s displayed sets, reps, loads and rest before continuing. Completed prerequisites have been checked; accepting acknowledges these targets without increasing them.',before:'Targets waiting for review',after:'Same targets and dates · ready after your review',patch:{needsReview:false}};
 }
 export function makeRangeProposal(s:State):Proposal|null{if(!s.plan||s.active||s.plan.profile.mode!=='app'||s.plan.profile.age<18||s.plan.template==='RUN-WALK'||s.plan.progressionModel==='ranges')return null;const sessions=s.plan.sessions.filter(x=>x.status==='scheduled');if(!sessions.length)return null;return{...proposalBase(s,'ranges',sessions[0].id),title:'Use rep ranges for future strength sessions',reason:RANGE_PROGRESSION,before:'Fixed repetition targets',after:'Goal-specific rep ranges · existing sets and dates retained',changes:sessions.map(x=>({sessionId:x.id,patch:{items:x.items.map(i=>rangeItem(i,s.plan!.template,x.title)),progressionStep:'Accepted rep range; load changes need approval.'}}))};}
 export function eventSignature(s:State){return JSON.stringify(s.events.map(e=>({id:e.id,date:e.date,kind:e.kind,priority:e.priority})).sort((a,b)=>a.id.localeCompare(b.id)))}
@@ -345,6 +401,17 @@ export function checkSchedule(s:State,changes:NonNullable<Proposal['changes']>):
   if(all.some(y=>y.id!==x.id&&y.status!=='missed'&&y.date===x.date))return `${niceDate(x.date)} already has a workout. Select “Shift this and later workouts” or another date.`;
  }
  for(const x of all){if(x.dependsOn?.some(id=>{const y=all.find(z=>z.id===id);return y&&(ids.has(x.id)||ids.has(y.id))&&y.date>=x.date}))return 'This move would reverse progression order. Shift later workouts together or choose another date.';}
+ // Four-run base permits one adjacent pair in any rolling seven days, including actual recorded dates.
+ if(s.plan.profile.mode==='app'&&s.plan.template==='RNBASE4'){
+  const runs=all.filter(x=>x.status!=='missed'&&x.recoveryGroup==='run').map(x=>({id:x.id,date:(s.active?.sessionId===x.id?s.active.date:undefined)||latestSessionRecord(s,x.id)?.date||x.date})).sort((a,b)=>a.date.localeCompare(b.date));
+  for(const run of runs){const window=runs.filter(x=>dayDistance(run.date,x.date)>=0&&dayDistance(run.date,x.date)<7);if(!window.some(x=>ids.has(x.id)))continue;
+   if(new Set(window.map(x=>x.date)).size!==window.length)return 'This move would place two runs on the same actual training date.';
+   const pairs=window.slice(1).filter((x,i)=>dayDistance(window[i].date,x.date)===1).length;
+   if(window.length>4||pairs>1)return 'Keep at most four runs and one back-to-back pair in any seven days. Review more separated dates, including your actual completed runs.';
+  }
+ }
+ const reference=programReferences.find(r=>r.id===s.plan!.profile.programId);
+ if(reference?.nonconsecutive)for(const x of all.filter(x=>ids.has(x.id)))for(const y of all.filter(y=>y.id!==x.id&&y.status!=='missed')){const actual=(s.active?.sessionId===y.id?s.active.date:undefined)||latestSessionRecord(s,y.id)?.date||y.date;if(Math.abs(dayDistance(x.date,actual))<2)return 'This source routine requires a recovery day between workouts. Choose a more separated date.';}
  const requiresRest=s.plan.profile.mode==='app';if(requiresRest)for(const x of all.filter(x=>ids.has(x.id)))for(const y of all.filter(y=>y.id!==x.id&&y.status!=='missed')){const full=!x.recoveryGroup&&!y.recoveryGroup&&s.plan.template!=='AT02',sameRegion=x.recoveryGroup&&y.recoveryGroup?x.recoveryGroup===y.recoveryGroup:x.title.split(' ')[0]===y.title.split(' ')[0];const actual=(s.active?.sessionId===y.id?s.active.date:undefined)||latestSessionRecord(s,y.id)?.date||y.date;if(!(s.plan.template==='RNBASE4'&&x.recoveryGroup==='run'&&y.recoveryGroup==='run')&&(full||sameRegion)&&Math.abs(dayDistance(x.date,actual))<2)return 'The move would remove the recovery day between comparable sessions. Shift later workouts together or choose a more separated date.';}
  for(const x of all.filter(x=>x.status==='scheduled')){const issue=focusScheduleConflict({...s.plan,sessions:all},s.events,x);if(issue)return issue;}
  return null;
@@ -357,18 +424,22 @@ export function makeMoveProposal(s:State,sessionId:string,date:string,cascade:bo
 }
 export function changeSessionStatus(s:State,id:string,status:'scheduled'|'missed'):{state:State;error?:string}{const x=s.plan?.sessions.find(x=>x.id===id);if(!x||s.active?.sessionId===id||s.history.some(w=>w.sessionId===id&&w.finishedAt))return{state:s,error:'An active or recorded workout cannot be changed this way.'};if(s.simulatedOffline)return{state:s,error:'Reconnect before changing the schedule.'};if(status==='scheduled'){const restored={...s,plan:{...s.plan!,sessions:s.plan!.sessions.map(y=>y.id===id?{...y,status}:y)}};const issue=checkSchedule(restored,[{sessionId:id,patch:{date:x.date}}]);if(issue)return{state:s,error:issue};}return{state:changed({...s,plan:{...s.plan!,version:s.plan!.version+1,sessions:s.plan!.sessions.map(x=>x.id===id?{...x,status}:x)},proposals:s.proposals.map(p=>p.status==='pending'||p.status==='queued'?{...p,status:'stale'}:p)},status==='missed'?'Skipped a session. You can restore it.':'Restored a skipped session.')}};
 
-function catalogDays(p:Profile,d:ProgramDefinition,events:Event[]=[]):number[]{
+// Days that follow each other in the week (Saturday to Sunday counts). Used to space the run-only base.
+const adjacentPairs=(days:number[])=>{let n=0;for(let i=0;i<days.length;i++)for(let j=i+1;j<days.length;j++){const k=Math.abs(days[i]-days[j]);if(k===1||k===6)n++}return n};
+function catalogSchedule(p:Profile,d:ProgramDefinition,events:Event[]=[]):{days:number[];delay:number}|null{
  const eventDates=new Set(events.map(e=>e.date));
  const available=[...new Set(p.days)].sort((a,b)=>a-b),combos:number[][]=[];
  function collect(i:number,a:number[]){if(a.length===d.days){combos.push(a);return}for(let j=i;j<available.length;j++)collect(j+1,[...a,available[j]])}collect(0,[]);
  const startDay=new Date(p.start+'T12:00:00').getDay();
- combos.sort((a,b)=>Math.min(...a.map(d=>(d-startDay+7)%7))-Math.min(...b.map(d=>(d-startDay+7)%7)));
- for(const combo of combos){
-  const assigned=combo.slice().sort((a,b)=>(a-startDay+7)%7-(b-startDay+7)%7);
+ const orientations=combos.flatMap(combo=>combo.map(first=>({days:combo.slice().sort((a,b)=>(a-first+7)%7-(b-first+7)%7),delay:(first-startDay+7)%7})));
+ orientations.sort((a,b)=>a.delay-b.delay);
+ // Run-only base: prefer the fewest back-to-back days. Four runs in seven days must include at least one such pair.
+ if(d.id==='RNBASE4')orientations.sort((a,b)=>adjacentPairs(a.days)-adjacentPairs(b.days)||a.delay-b.delay);
+ for(const {days:assigned,delay} of orientations){
   const groups=d.slots.map(x=>x.group);
-  const fits=groups.every((g,i)=>groups.every((h,j)=>i===j||(d.id==='RNBASE4'&&g==='run'&&h==='run')||g!==h||!['full','upper','lower','run'].includes(g)||![1,6].includes(Math.abs(assigned[i]-assigned[j]))));
-  if(fits&&!Array.from({length:p.weeks*7},(_,n)=>addDays(p.start,n)).some(date=>assigned.includes(new Date(date+'T12:00:00').getDay())&&eventDates.has(date)))return assigned;
- }return [];
+  const fits=groups.every((g,i)=>groups.every((h,j)=>i===j||(d.id==='RNBASE4'&&g==='run'&&h==='run')||g!==h||!['full','upper','lower','run','push','pull','legs','chestback','shouldersarms'].includes(g)||![1,6].includes(Math.abs(assigned[i]-assigned[j]))))&&(d.id!=='RNBASE4'||adjacentPairs(assigned)<=Math.max(0,d.days-3));
+  if(fits&&!Array.from({length:p.weeks*7},(_,n)=>addDays(p.start,n+delay)).some(date=>assigned.includes(new Date(date+'T12:00:00').getDay())&&eventDates.has(date)))return {days:assigned,delay};
+ }return null;
 }
 export function buildCatalogPlan(p:Profile,events:Event[]):{plan:Plan|null;errors:string[]}{
  if(!p.programId){let first:{plan:Plan|null;errors:string[]}|undefined;for(const d of programCatalog.filter(d=>d.goal===p.goal)){const r=buildCatalogPlan({...p,programId:d.id},events);first??=r;if(r.plan)return r;}return first||{plan:null,errors:['No program is available for this goal.']};}
@@ -387,11 +458,13 @@ export function buildCatalogPlan(p:Profile,events:Event[]):{plan:Plan|null;error
  if(def.runBase){const requiredDays=def.id==='RNBASE4'?4:def.id==='HYDB4'?2:3,requiredMinutes=def.id==='RNBASE4'?100:def.id==='HYDB4'?50:70;if((p.runDays??0)<requiredDays||(p.runMinutes??0)<requiredMinutes)errors.push(`This running base needs at least ${requiredDays} recent running days and ${requiredMinutes} easy running minutes per week. Enter your current base or choose walk–run.`);}
  if(p.days.length<def.days)errors.push(`This template uses ${def.days} training days. Add availability or choose another template.`);
  if(p.age<18&&p.season==='In-season')errors.push('Use coach-directed tracking for in-season youth training.');
- const assigned=catalogDays(p,def,events);if(!assigned.length&&!errors.length)errors.push('These days cannot fit this split with separated repeated muscle-group or running sessions. Add other available days or review commitments.');
+ const schedule=catalogSchedule(p,def,events);if(!schedule&&!errors.length)errors.push('These days cannot fit this split with separated repeated muscle-group or running sessions. Add other available days or review commitments.');
  if(errors.length)return{plan:null,errors};
+ const assigned=schedule!.days,effectiveStart=addDays(p.start,schedule!.delay);
  const id=uid('plan'),sessions:Session[]=[],previous:Record<string,string>={};
  for(let offset=0;offset<p.weeks*7;offset++){
-  const date=addDays(p.start,offset),weekday=new Date(date+'T12:00:00').getDay(),slot=assigned.indexOf(weekday);if(slot<0)continue;
+  const date=addDays(effectiveStart,offset),weekday=new Date(date+'T12:00:00').getDay(),scheduledSlot=assigned.indexOf(weekday);if(scheduledSlot<0)continue;
+  const slot=def.rotation==='rolling-ab'?sessions.length%2:scheduledSlot;
   const spec=def.slots[slot],week=Math.floor(offset/7)+1,deload=(def.wave&&week%4===0)||(week===p.weeks&&p.weeks>=6);
   let items:Item[]=spec.items.map(([exerciseId,sets,lo,hi,rest],index)=>{
    const strengthWave=!!def.wave&&index===0&&!spec.title.toLowerCase().includes('volume');
@@ -420,20 +493,21 @@ export function buildCatalogPlan(p:Profile,events:Event[]):{plan:Plan|null;error
   sessions.push({id:sessionId,date,week,recoveryGroup:spec.group,roleId:def.id+'-'+slot,timeProfile:def.brief?'brief':undefined,title:spec.title+(deload&&!runSteps?' · review week':''),kind:runSteps?'Run/walk':p.goal==='powerlifting'?'Powerlifting':p.goal==='hypertrophy'?'Hypertrophy':'Strength',minutes,items,runSteps,dependsOn:previous[key]?[previous[key]]:[],progressionStep:p.age<18?'One supervised work set per exercise; progression stays with the supervisor':runSteps?'Accepted easy-duration sequence; repeat when needed':'Rep ranges with approved load changes; review-week volume is preplanned',status:'scheduled'});previous[key]=sessionId;
  }
  const conflicts=sessions.filter(x=>events.some(e=>e.date===x.date));if(conflicts.length)return{plan:null,errors:[`${conflicts.length} sessions overlap a commitment or day off. Adjust availability, start date or commitments before accepting.`]};
- const notes=[def.description,'An original app plan informed by the sources below. It is not a copy of a creator’s program or endorsed by them. The app chooses the exercises, sets and progression rules; workout times are estimates.','Choose starting weights during practice or from recent results with the same exercise and setup. Use lighter weights for technique practice when needed.',def.wave?'You’ll do fewer work sets every fourth week and in the final week of plans lasting six weeks or longer. Check your weight whenever the rep range changes.':'Plans lasting six weeks or longer finish with fewer strength sets, keeping at least one per exercise. This lighter week is part of the schedule; it is not based on an assessment of your fatigue.', 'Equipment: '+equipmentRequirements(def,p.equipment).join('; '),'First-time lifters start with up to two work sets for the first two weeks. Finish the earlier workouts before adding the later sets. Choose weights from your recent performance, even if you have trained before.'];
+ const notes=[def.description,'An original app plan informed by the sources below. It is not a copy of a creator’s program or endorsed by them. The app chooses the exercises, sets and progression rules; workout times are estimates.','Choose starting weights during practice or from recent results with the same exercise and setup. Use lighter weights for technique practice when needed.',def.wave?'You’ll do fewer work sets every fourth week and in the final week of plans lasting six weeks or longer. Check your weight whenever the rep range changes.':'Plans lasting six weeks or longer finish with fewer strength sets, keeping at least one per exercise. This lighter week is part of the schedule; it is not based on an assessment of your fatigue.', 'Equipment: '+equipmentRequirements(def,p.equipment).join('; '),'First-time lifters start with up to two work sets for the first two weeks. Finish the earlier workouts before adding the later sets. Later set increases are accepted parts of this calendar, not a comfortable-feedback or recovery assessment. If earlier work felt too hard, review a repeat or shorter return block before advancing.'];
+ if(schedule!.delay)notes.push(`The first workout starts ${niceDate(effectiveStart)}, after your selected start date, to preserve this split’s session order and recovery gaps. The full ${p.weeks}-week block is retained.`);
  if(def.brief)notes.push('Short plans include fewer work sets. The time estimate includes preparation and rest, but learning an exercise may take longer. Keep the listed rest and skip catch-up sets. You do not need to fill every available minute.');
  if(p.age<18){notes.splice(notes.findIndex(n=>n.startsWith('First-time lifters')),1,'Youth brief sessions use one controlled work set per movement. The supervisor guides rep and resistance changes. This block does not automatically add load or adult set progressions.');}
  if(p.sex)notes.push('Sex does not set a starting weight or a fixed amount of work. Your actual work, preferences and recovery guide changes.');
- if(p.age>=65)notes.push('Age alone does not rule out strength work. Use the exercise support and range you can control; choose an accessible substitute when floor transfers or balance are difficult.');
+ if(p.age>=65)notes.push('Age alone does not rule out strength work. Use the exercise support and range you can control; choose an accessible substitute when floor transfers or balance are difficult.','For general health from age 65, WHO recommends varied activity emphasizing balance and functional strength on at least three days each week, alongside aerobic activity. Review that wider weekly activity alongside these listed sessions.');
  if(p.goal==='powerlifting')notes.push('Squat, bench press and deadlift remain primary. Use qualified instruction for unfamiliar lifts. This is a development block, not meet peaking, attempt selection or an automatic 1RM test.');
  if(p.goal==='hybrid')notes.push((def.slots.some(x=>x.conditioning)?'Strength comes first, then the listed ten-minute walk/jog finish on the same day. This low-volume introduction does not replace a higher-frequency running plan.':'Lifting and running are on separate days.')+' Running and strength targets have separate prerequisites. This is not a sprint program or a guarantee of race performance. Easy continuous-run durations remain stable in this base block. The walk–run sequence is app-authored, not the NHS program.');
- return{errors:[],plan:{id,name:def.name,version:1,progressionModel:'ranges',profile:{...p,programId:def.id,days:assigned.slice().sort((a,b)=>a-b)},acceptedAt:null,sessions,phases:catalogPhases(p,!!def.wave,!!def.brief),evidence:p.age<18?['NSCA-YOUTH',def.source]:['ACSM-2026',def.source],notes,progression:p.age<18?'Complete the displayed supervised practice. Your qualified supervisor chooses any change in reps or resistance. No maximum tests, adult automatic load increases or catch-up work.':(p.goal==='running'?'Keep the displayed easy durations. Repeat or reduce after feedback; increases need review.':RANGE_PROGRESSION)+(p.goal==='hybrid'?' Running follows its own displayed sequence; no universal weekly percentage increase.':''),template:def.id,paused:false}};
+ return{errors:[],plan:{id,name:def.name,version:1,progressionModel:'ranges',profile:{...p,programId:def.id,days:assigned.slice().sort((a,b)=>a-b)},acceptedAt:null,sessions,phases:catalogPhases(p,!!def.wave,!!def.brief),evidence:planEvidence({goal:p.goal,run:false,youth:p.age<18,jumping:!!p.focuses?.includes('jumping'),age:p.age,source:def.source}),notes,progression:p.age<18?'Complete the displayed supervised practice. Your qualified supervisor chooses any change in reps or resistance. No maximum tests, adult automatic load increases or catch-up work.':(p.goal==='running'?'Keep the displayed easy durations. Repeat or reduce after feedback; increases need review.':RANGE_PROGRESSION)+(p.goal==='hybrid'?' Running follows its own displayed sequence; no universal weekly percentage increase.':''),template:def.id,paused:false}};
 }
 
 // One estimator for all strength plans: general warm-up / movement prep, work,
 // between-set rest, setup transitions and a short finish. Practice sets are not logged as work.
 export function estimateSessionMinutes(items:Item[],brief=false,custom:Exercise[]=[]):number{
- const seconds=(brief?6:13)*60+items.reduce((n,i)=>{const e=exFor(i.exerciseId,custom),perSide=/per side/i.test(e.loadConvention||'')?2:1;const work=e.metric==='minutes'?i.reps*60:e.metric==='seconds'?i.reps:(i.repMax??i.reps)*4*perSide;return n+i.sets*work+Math.max(0,i.sets-1)*i.rest+(brief?Math.max(60,i.rest):120)+(e.equipment==='Barbell'?120:0)},0);
+ const seconds=(brief?6:13)*60+items.reduce((n,i)=>{const e=exFor(i.exerciseId,custom),perSide=/(?:\bper side\b|\bfor each side\b)/i.test(e.loadConvention||'')?2:1;const work=(e.metric==='minutes'?i.reps*60:e.metric==='seconds'?i.reps:(i.repMax??i.reps)*4)*perSide;return n+i.sets*work+Math.max(0,i.sets-1)*i.rest+(brief?Math.max(60,i.rest):120)+(e.equipment==='Barbell'?120:0)},0);
  return Math.ceil(seconds/300)*5;
 }
 function catalogPhases(p:Profile,wave:boolean,brief=false):Plan['phases']{
@@ -443,4 +517,4 @@ function catalogPhases(p:Profile,wave:boolean,brief=false):Plan['phases']{
  return [{name:'Find your starting weights',weeks:'1–2',description:brief?'Practice the listed movements and find a manageable load. Keep the small set count shown.':'Practice the movements. First-time lifters start with up to two work sets.'},{name:'Build',weeks:`3–${p.weeks>=6?p.weeks-1:p.weeks}`,description:brief?'Keep the displayed sets and rest. Build controlled reps within the range; any load change needs review.':'Keep the movements stable. Complete the preceding session before adding planned sets; build reps at a manageable load.'},...(p.weeks>=6?[{name:'Review',weeks:String(p.weeks),description:'Fewer work sets where possible, with at least one per movement. Review your recent training before choosing the next block.'}]:[])];
 }
 
-function sameData(a:unknown,b:unknown):boolean{const normalize=(v:any):any=>Array.isArray(v)?v.map(normalize):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).filter(k=>v[k]!==undefined).sort().map(k=>[k,normalize(v[k])])):v;return JSON.stringify(normalize(a))===JSON.stringify(normalize(b));}
+function sameData(a:unknown,b:unknown):boolean{const normalize=(v:unknown):unknown=>Array.isArray(v)?v.map(normalize):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).filter(([,value])=>value!==undefined).sort(([a],[b])=>(a<b?-1:a>b?1:0)).map(([key,value])=>[key,normalize(value)])):v;return JSON.stringify(normalize(a))===JSON.stringify(normalize(b));}

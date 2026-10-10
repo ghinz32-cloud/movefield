@@ -1,14 +1,15 @@
 "use client";
 import {Checkbox} from '@/components/ui/checkbox';
-import {focusChoices,focusSources,selectedFocuses,type TrainingFocus} from '@/lib/training-focus';
+import {focusChoices,selectedFocusSources,selectedFocuses,type TrainingFocus} from '@/lib/training-focus';
 import type {Profile} from '@/lib/training';
 
 export function TrainingFocusPicker({profile,onChange}:{profile:Profile;onChange:(patch:Partial<Profile>)=>void}){
  const selected=selectedFocuses(profile);
+ const sources=selectedFocusSources(selected,profile.age<18);
  const toggle=(id:TrainingFocus,checked:boolean)=>onChange({focuses:checked?[...selected,id]:selected.filter(x=>x!==id)});
  return <section aria-labelledby="training-focus-heading" style={{marginTop:'2rem'}}>
   <h2 id="training-focus-heading">Anything to add?</h2>
-  <p className="small-copy">Choose any extra work you want alongside your main goal. The preview checks whether it fits your time and recovery needs.</p>
+  <p className="small-copy">Choose any extra work you want alongside your main goal. The preview checks your time and the app’s scheduling rules.</p>
   <div className="mode-choices">{focusChoices.map(choice=><label className={'mode-choice '+(selected.includes(choice.id)?'selected':'')} key={choice.id} style={{cursor:'pointer'}}>
    <Checkbox checked={selected.includes(choice.id)} onCheckedChange={v=>toggle(choice.id,Boolean(v))} aria-label={choice.title}/>
    <div><b>{choice.title}</b><p>{choice.description}</p></div>
@@ -19,6 +20,6 @@ export function TrainingFocusPicker({profile,onChange}:{profile:Profile;onChange
   </div></div>}
   {profile.mode!=='app'&&selected.length>0&&<p className="small-copy">These interests are saved for your {profile.mode==='coach'?'coach':'own planning'}. Tracking mode adds no exercises or grouping.</p>}
   {profile.age<18&&<p className="small-copy">Youth plans can use supervised core and small jump practice. Supersets and weight-management add-ons are adult-only in this prototype.</p>}
-  <details className="scope-details" style={{marginTop:'1rem'}}><summary>How these add-ons are chosen</summary><p className="small-copy">The sets, reps and schedule limits are prototype choices informed by these sources. They are not a validated personal prescription.</p><ul className="plain-list">{focusSources.map(source=><li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a></li>)}</ul></details>
+  <details className="scope-details" style={{marginTop:'1rem'}}><summary>How these add-ons are chosen</summary><p className="small-copy">The sets, reps and schedule limits are prototype choices. Sources shown for your selected add-ons support general principles, rather than validating this personal prescription.</p>{sources.length?<ul className="plain-list">{sources.map(source=><li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a></li>)}</ul>:<p className="small-copy">Choose an add-on to see the relevant sources.</p>}</details>
  </section>
 }

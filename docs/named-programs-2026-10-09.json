@@ -1,0 +1,109 @@
+{
+  "milestone": "U14",
+  "checkedAt": "2026-10-09",
+  "baseline": "aba25b02cde3d8717de1eda36a365684dd96625c",
+  "namedEntries": 20,
+  "prefilledVariants": 8,
+  "emptySourceCalendars": 12,
+  "originalAppPlans": 78,
+  "guideCount": 989,
+  "workflow": "Overlapping changes preserved in the original checkout; continuation uses independent clone audit/2026-10-09-continuation. Publish to existing audit/2026-10-08-quality with expected-head guard.",
+  "checks": {
+    "namedAssertions": 3582,
+    "regression": "Initial 29/31; outdated empty-reference fixture and generic tracking-field regression corrected. Both failed suites pass on targeted rerun; other passing results retained.",
+    "webTypes": "pass",
+    "nativeTypes": "pass",
+    "lint": "pass",
+    "sharedHashes": 38,
+    "nativeEngine": "pass",
+    "productionSuites": "2/2 pass",
+    "initialGzipBytes": 391201,
+    "androidHermesExport": "pass 4.3 MB",
+    "iosHermesExport": "pass 4.3 MB",
+    "browser": "Sample setup \u2192 three initial choices \u2192 named search GZCLP \u2192 three-day first-stage review \u2192 accept \u2192 Today with three exercises. Original protected profile preserved."
+  },
+  "limits": [
+    "No physical-phone or 200% reflow acceptance.",
+    "HTTP preview lacks secure storage; real saved-profile/authentication flows unverified.",
+    "Named routines are public workout facts and original summaries. Creator loading, later phases, failure stages and AMRAP are user directed.",
+    "No source-derived starting weights, copied books, paid instructions or clinical validation claims.",
+    "No actual Qwen inference or training yet.",
+    "Source calendars remain empty until user targets are entered; exercises are not silently substituted."
+  ],
+  "sources": [
+    {
+      "name": "PHUL",
+      "url": "https://cdn.muscleandstrength.com/sites/default/files/workouts/powerhypertrophy_0.pdf",
+      "scope": "Lowest published set count; chosen machine variants; app rest defaults disclosed."
+    },
+    {
+      "name": "StrongLifts 5\u00d75",
+      "url": "https://stronglifts.com/stronglifts-5x5/workout-program/",
+      "scope": "Three-day base A/B. Unverified two-day original variant removed."
+    },
+    {
+      "name": "StrongLifts Lite",
+      "url": "https://stronglifts.com/stronglifts-5x5/lite/",
+      "scope": "Two work sets per movement including deadlift; source supports two or three nonconsecutive days."
+    },
+    {
+      "name": "Basic Beginner",
+      "url": "https://thefitness.wiki/routines/r-fitness-basic-beginner-routine/",
+      "scope": "Lifting portion only; pulldown disclosed as allowed chin-up alternative; maximum twelve weeks."
+    },
+    {
+      "name": "GZCLP",
+      "url": "https://www.reddit.com/r/gzcl/wiki/gzclp/",
+      "scope": "Community first-stage table; rotating four-workout cycle, three or four weekly days; original Cody author source also checked."
+    },
+    {
+      "name": "Metallicadpa PPL",
+      "url": "https://www.reddit.com/r/Fitness/comments/37ylk5/a_linear_progression_based_ppl_program_for/",
+      "scope": "Six source sessions, disclosed combined lateral-raise groups; pairing manual."
+    },
+    {
+      "name": "Dumbbell Stopgap",
+      "url": "https://www.reddit.com/r/Fitness/comments/zc0uy/a_beginner_dumbbell_program_the_dumbbell_stopgap/",
+      "scope": "Calendar only; individual plank duration."
+    },
+    {
+      "name": "Dumbbell PPL",
+      "url": "https://www.reddit.com/r/Fitness/comments/2e79y4/dumbbell_ppl_proposed_alternative_to_dumbbell/",
+      "scope": "Calendar only; six-day option; bench and pull-up support required."
+    },
+    {
+      "name": "Recommended Routine",
+      "url": "https://www.reddit.com/r/bodyweightfitness/wiki/kb/recommended_routine/",
+      "scope": "Calendar only; user-selected progressions."
+    },
+    {
+      "name": "Frankoman",
+      "url": "https://www.muscleandstrength.com/workouts/frankoman-dumbbell-only-split.html",
+      "scope": "Calendar only; exact per-set sequences not representable as uniform targets."
+    },
+    {
+      "name": "5/3/1 Beginners",
+      "url": "https://www.jimwendler.com/blogs/jimwendler-com/101065094-5-3-1-for-a-beginner",
+      "scope": "Calendar only; training-max percentages not guessed."
+    },
+    {
+      "name": "Steve Shaw dumbbells",
+      "url": "https://cdn.muscleandstrength.com/sites/default/files/workouts/dumbbellonly.pdf",
+      "scope": "Calendar only; unmapped exact variants, bench, step and pull-up support disclosed."
+    },
+    {
+      "name": "Josh England dumbbells",
+      "url": "https://www.muscleandstrength.com/workouts/3-day-full-body-dumbbell-workout",
+      "scope": "Calendar only; exact variants not all mapped."
+    }
+  ],
+  "sourceSha256": {
+    "lib/program-catalog.ts": "d7403aa0817356183a97ac310994a8463aabe36beed430bdf92462f0dd0c4988",
+    "lib/training.ts": "920d9bb258d3bc021a035659a9ca66adafeb54f1067759178ed71de8e6fcba61",
+    "lib/tracking.ts": "2fa8186de1fa6e189dd50d354adf7688d3a0de506818faaa843f9187a7829b83",
+    "components/named-program-picker.tsx": "7264ab9dda1decc73875f7a0c9d1eb62ce023746880f40b47e45377ed28cc43d",
+    "mobile/src/named-programs.tsx": "91a136772979f627094dd959816bcd4e33d1123742d19380e405c7ddbcda8846",
+    "mobile/src/plan-setup.tsx": "aba720f24a7bea662cd419af5aaf1233405818ca2906e0cadbfa8f44d4ee553b",
+    "scripts/check-named-programs.cjs": "d0ff0037c3f1397cdcb095336646b708f0269c74518613ce4dc645140f5b85ba"
+  }
+}

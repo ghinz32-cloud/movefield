@@ -1,0 +1,12 @@
+{
+  "repository": "ghinz32-cloud/movefield",
+  "branch": "audit/2026-10-08-quality",
+  "applicationCommit": "ea437ccb8a3383db0230006b453de90b867dbb4f",
+  "localImplementationCommit": "2cb27c13a950103858f70d331e5f8ab6977d970f",
+  "tree": "34a6d30b0c418dca8b1edf39244a8ae546c4a941",
+  "verified": "fresh Git fetch and ls-remote; exact tree equality; validation.json and HANDOFF.md read back at applicationCommit",
+  "priorAuditCommit": "07e540dcfe8bcd9339651db868f9a07184b4d49a",
+  "mainUnchanged": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
+  "reviewFixesUnchanged": "667a3e381035b16cb1aa611c85cdf9d143b7b835",
+  "deployment": "none"
+}

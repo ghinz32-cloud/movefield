@@ -1,0 +1,136 @@
+{
+  "repository": "/home/runner/work/movefield/movefield",
+  "checkedAt": "2026-10-09T18:24:05.048Z",
+  "sourceHashes": {
+    "training.ts": "be27eb1bc30c2823df371d7712309264f109516f85f07e43ec5d1ad432b251d5",
+    "substitutions.ts": "3084b97eae49727d828787491efe67f921bafd56ea205a91fc249872e8e3efb6",
+    "customize.ts": "1b8409380892bc2206b78a749563b1e105701eec7583b5cb8da432d37fcf7700",
+    "training-focus.ts": "3e4a94e9a6a4ec4056e195e244edcf6dd6f365dbbb432e17d35f8e3f3babba39",
+    "program-catalog.ts": "d5ab1eb1c61338dc58e8c06aa1899f967574a2c9c6102e6be7e783396018949c",
+    "saved-data.ts": "f9700820986ae884b77d8450b93e42e87437d93ff5270ac45e7f5241e8766119"
+  },
+  "passed": 30,
+  "total": 30,
+  "results": [
+    {
+      "name": "RNBASE4 original pattern and seven-day cascade remain valid",
+      "passed": true
+    },
+    {
+      "name": "RNBASE4 one bounded adjacent pair is allowed but a three-day run streak is refused",
+      "passed": true
+    },
+    {
+      "name": "RNBASE4 direct schedule validation rejects four consecutive runs",
+      "passed": true
+    },
+    {
+      "name": "RNBASE4 recovery uses a completed workout actual date instead of only its old planned date",
+      "passed": true
+    },
+    {
+      "name": "RNBASE4 recovery includes an active workout actual date",
+      "passed": true
+    },
+    {
+      "name": "Bilateral plate load wording does not double exercise execution time",
+      "passed": true
+    },
+    {
+      "name": "Substitution preview and committed estimate match canonical time for equal bilateral work",
+      "passed": true
+    },
+    {
+      "name": "Plate addition preview agrees with canonical estimate and permits a fitting tight budget",
+      "passed": true
+    },
+    {
+      "name": "Substitution preserves separately allocated focus time when changing canonical work time",
+      "passed": true
+    },
+    {
+      "name": "Seconds recorded per side include both sides and keep five-minute estimate rounding",
+      "passed": true
+    },
+    {
+      "name": "Minutes recorded per side include both sides",
+      "passed": true
+    },
+    {
+      "name": "Timed per-side addition matches canonical time and rejects an insufficient budget",
+      "passed": true
+    },
+    {
+      "name": "Capacity range progression retains A1 superset instructions and paired rest",
+      "passed": true
+    },
+    {
+      "name": "Capacity range progression retains A2 superset instructions and paired rest",
+      "passed": true
+    },
+    {
+      "name": "Continuation preview targets only one review flag and preserves displayed targets",
+      "passed": true
+    },
+    {
+      "name": "Accepted continuation review clears one flag without changing loads/items/history/dates/dependencies",
+      "passed": true
+    },
+    {
+      "name": "Continuation review cannot bypass a still-unfinished later dependency",
+      "passed": true
+    },
+    {
+      "name": "Continuation constructor refuses paused state",
+      "passed": true
+    },
+    {
+      "name": "Continuation constructor refuses hold state",
+      "passed": true
+    },
+    {
+      "name": "Continuation constructor refuses active state",
+      "passed": true
+    },
+    {
+      "name": "Continuation refuses missing prerequisite evidence",
+      "passed": true
+    },
+    {
+      "name": "Continuation refuses partial prerequisite evidence",
+      "passed": true
+    },
+    {
+      "name": "Continuation refuses unfinished prerequisite evidence",
+      "passed": true
+    },
+    {
+      "name": "Continuation refuses unknown-load prerequisite evidence",
+      "passed": true
+    },
+    {
+      "name": "Continuation refuses an ordinary unflagged or already recorded workout",
+      "passed": true
+    },
+    {
+      "name": "Continuation acceptance rejects a stale plan snapshot",
+      "passed": true
+    },
+    {
+      "name": "Continuation acceptance rejects a stale history snapshot",
+      "passed": true
+    },
+    {
+      "name": "Continuation acceptance rechecks missing prerequisites even when history count stays the same",
+      "passed": true
+    },
+    {
+      "name": "Continuation acceptance rejects forged loads/dates/dependencies/status and multiple review targets",
+      "passed": true
+    },
+    {
+      "name": "Continuation proposals survive saved-state validation and reopen for review",
+      "passed": true
+    }
+  ]
+}

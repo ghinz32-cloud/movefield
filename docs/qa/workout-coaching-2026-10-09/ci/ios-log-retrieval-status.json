@@ -1,0 +1,14 @@
+{
+  "job_id": 114053245286,
+  "status": "unavailable",
+  "error": {
+    "content": [
+      {
+        "type": "text",
+        "text": "tool call error: tool call failed for `codex_apps/github.fetch_workflow_job_logs`\n\nCaused by:\n    Transport closed"
+      }
+    ],
+    "isError": true
+  },
+  "scope": "Official job/step metadata reports successful iOS compilation, inspection, packaging and artifact retention. Log retrieval failure does not change job result; no independent byte replay is implied."
+}

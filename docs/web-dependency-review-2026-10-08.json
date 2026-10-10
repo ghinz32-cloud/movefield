@@ -1,0 +1,52 @@
+{
+  "checkedAt": "2026-10-08T22:49:18.556634+00:00",
+  "applicationCommit": "4b92b0a4db915b8ea5b75ca5702b063e7c6f8677",
+  "platform": "web",
+  "advisorySource": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+  "installedBraces": "3.0.3",
+  "registryLatestBraces": "3.0.3",
+  "officialPatchedVersion": null,
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 1,
+      "critical": 0
+    },
+    "dependencies": 207,
+    "devDependencies": 552,
+    "optionalDependencies": 167,
+    "totalDependencies": 794
+  },
+  "advisories": [
+    {
+      "findings": [
+        {
+          "version": "3.0.3",
+          "paths": [
+            ".>eslint-config-next>@next/eslint-plugin-next>fast-glob>micromatch>braces",
+            ".>vinext>vite-plugin-commonjs>vite-plugin-dynamic-import>fast-glob>micromatch>braces"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1240992,
+      "title": "braces vulnerable to stack-exhaustion denial of service through deeply nested patterns",
+      "module_name": "braces",
+      "vulnerable_versions": "<=3.0.3",
+      "patched_versions": null,
+      "severity": "high",
+      "cwe": "CWE-674",
+      "github_advisory_id": "GHSA-vfj7-8cjw-p6xm",
+      "url": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+      "patched_versions_unpublished": true
+    }
+  ],
+  "rawAuditSha256": "95885a45b9ade1eede925336527e6a64b9b0b96ac558a4a4510691270c54c307",
+  "resolution": "blocked-upstream-no-published-compatible-patch",
+  "releaseEligible": false,
+  "dependencyVersionsChanged": false
+}

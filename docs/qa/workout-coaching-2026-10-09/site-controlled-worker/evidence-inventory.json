@@ -1,0 +1,52 @@
+{
+  "scope": "Current-build Site service-worker correction and live HTTP delivery; exact code sourcec60ee243",
+  "realBrowserExecuted": false,
+  "inferenceExecuted": false,
+  "files": [
+    {
+      "path": "hosted-delivery.json",
+      "bytes": 46455,
+      "sha256": "2fd452bbb7189cf7a2bacf00fbd8965965ef6fa1d37f27da53ac27ee8524f1a2"
+    },
+    {
+      "path": "local-validation.json",
+      "bytes": 1264,
+      "sha256": "0f4dc40191be967fb2c39ca1881afb1eefe04155825be0bff999529012167c9f"
+    },
+    {
+      "path": "site-controlled-worker-checks.json",
+      "bytes": 4590,
+      "sha256": "aeb63922d1b93c129a8ea09d73522504dea5592c9686ccb7b6c0026296d8595d"
+    },
+    {
+      "path": "site-controlled-worker-fixture.log",
+      "bytes": 4590,
+      "sha256": "aeb63922d1b93c129a8ea09d73522504dea5592c9686ccb7b6c0026296d8595d"
+    },
+    {
+      "path": "site-worker-correction-build.log",
+      "bytes": 2200,
+      "sha256": "cc7af6eb4f94be7ca3c4d05edc72a8f065ec929e422b99f8afbe69c352b8eabd"
+    },
+    {
+      "path": "site-worker-correction-production.log",
+      "bytes": 2400,
+      "sha256": "8c0e4d62996379209ae9646d08cda776d2f547b773b1f281ac486b96e924227a"
+    },
+    {
+      "path": "verification-boundaries.md",
+      "bytes": 2328,
+      "sha256": "7e8e1dc7edf1e84852da5a092c7528cebd5de76121628a51d74067f9bc60eacd"
+    },
+    {
+      "path": "workout-coaching-runtime-checks.json",
+      "bytes": 138,
+      "sha256": "b7d956940b4e4382f888e8fd7fb7206a5ab68b5480dc649a172b01c5637538c1"
+    },
+    {
+      "path": "workout-coaching-worker-policy-checks.json",
+      "bytes": 131,
+      "sha256": "82230161339ea764751cbafb8f272632036c474f41a9005b013dc055b0a38a4a"
+    }
+  ]
+}

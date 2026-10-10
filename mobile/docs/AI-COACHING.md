@@ -1,3 +1,15 @@
+# Current coaching implementation — 9 October 2026
+
+The browser now has an explicit-consent experimental Qwen3.5 coaching path for a fully logged active lift or a saved workout. It uses minimized owning-plan profile, actual set metrics, up to three comparable prior records per exercise and truthful 28-day attendance. Replies select known observations and engine-owned review options. Trusted facts render the explanation; no model-authored plan patch or prescription is accepted. The newest twelve validated selections are encrypted separately from State, and ready UI follows durable storage. Automatic local generation is separately opt-in and bound to newly saved events. Off, context changes, cancellation, model deletion, backgrounding and unmount invalidate in-flight publication.
+
+The optional secure `/api/workout-coaching` backend uses authenticated host identity, expected-account preconditions, bounded input/provider responses, durable leases and combined feedback quotas. The client submits an explicitly consented minimized context. The server cannot load plaintext canonical workouts from opaque encrypted account-sync records; eligibility is client-attested. A completed reply is returned only after a validated database save. Provider keys are server-only and none are configured. A free-tier open-weight provider can be used after the owner supplies an appropriate key; free quotas do not imply free or unlimited hosting.
+
+Native Today now supports date selection and historical workout detail. Native model inference and account authentication remain unconnected. Native model files alone cannot generate coaching. No actual GPU generation, phone memory/latency/heat/battery or physical-device acceptance is claimed. Existing calculated workout review remains available. Do not add an invented native identity or direct mobile LLM endpoint to bypass this boundary.
+
+The 7 October design notes below are retained as historical evidence; they do not describe current browser/backend implementation or present pricing recommendations.
+
+---
+
 # Post-workout AI: implementation decision
 
 Reviewed 7 October 2026. Current prototype: deterministic workout review only. No model calls, paid endpoint, server quota implementation, production accounts or secret have been added.

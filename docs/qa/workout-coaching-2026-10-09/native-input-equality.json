@@ -1,0 +1,21 @@
+{
+  "native_inputs": [
+    {
+      "source": "c0aab491084f2b1a7d2829925e4bba434d6d6148",
+      "files": 188,
+      "sha256": "818b7b101c5c49f387cbef63d0b6b845e6978fbff2b629694f2c9bf828a3fc1a"
+    },
+    {
+      "source": "96496ffd4e94b32becccb5db61667fb4fea4ce01",
+      "files": 188,
+      "sha256": "818b7b101c5c49f387cbef63d0b6b845e6978fbff2b629694f2c9bf828a3fc1a"
+    }
+  ],
+  "identical": true,
+  "starter": {
+    "files": 127,
+    "bytes": 2109850,
+    "sha256": "165da5ee0b3644c499d7ff4819af0fa3c21415b0ea2f6eff61559d9ab54139ed",
+    "all_entries_equal_committed_source": true
+  }
+}

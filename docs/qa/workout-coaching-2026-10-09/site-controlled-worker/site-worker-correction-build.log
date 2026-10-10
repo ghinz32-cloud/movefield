@@ -1,0 +1,63 @@
+vite v8.0.16 building client environment for production...
+[2Ktransforming...✓ 45 modules transformed.
+rendering chunks...
+computing gzip size...
+public/runtime/workout-coaching-worker.js     18.82 kB │ gzip:     6.71 kB
+public/runtime/qwen-worker.js                 26.28 kB │ gzip:     8.40 kB
+public/runtime/training-C8u1q4KT.js        1,065.50 kB │ gzip:   139.77 kB
+public/runtime/lib-C9O0qMAG.js             4,745.91 kB │ gzip: 1,717.36 kB
+public/runtime/lib-DcORhR3s.js             6,194.29 kB │ gzip: 2,183.09 kB
+
+✓ built in 553ms
+Packaged 127 tracked source files: movefield-mobile-r14.zip (2109850 bytes)
+
+  vinext build  (Vite 8.0.16)
+
+[1/5] analyze client references...
+[2Ktransforming...✓ 268 modules transformed.
+rendering chunks...
+✓ built in 2.18s
+[2/5] analyze server references...
+[2Ktransforming...✓ 887 modules transformed.
+rendering chunks...
+✓ built in 2.26s
+[3/5] build rsc environment...
+[2Ktransforming...✓ 265 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 1.92s
+[4/5] build client environment...
+[2Ktransforming...✓ 2698 modules transformed.
+rendering chunks...
+computing gzip size...
+[33m[PLUGIN_TIMINGS] [0mYour build spent significant time in plugins. Here is a breakdown:
+  - vinext:middleware-server-only (45%)
+  - rsc:virtual-client-package (20%)
+  - vinext:optimize-imports (9%)
+  - alias (5%)
+  - vite-plugin-commonjs (5%)
+See https://rolldown.rs/options/checks#plugintimings for more details.
+
+✓ built in 3.56s
+[5/5] build ssr environment...
+[2Ktransforming...✓ 898 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 2.25s
+[0m
+  Route (app)
+  ┌ ? /                    
+  ├ λ /api/account         
+  ├ λ /api/daily-feedback  
+  ├ λ /api/sync            
+  └ λ /api/workout-coaching
+
+  λ API  ? Unknown
+
+  ? Some routes could not be classified. vinext currently uses static analysis
+    and cannot detect dynamic API usage (headers(), cookies(), etc.) at build time.
+    Automatic classification will be improved in a future release.
+
+  Build complete. Run `vinext start` to start the production server.
+
+Prepared 82 offline assets for 57f870c9185a.

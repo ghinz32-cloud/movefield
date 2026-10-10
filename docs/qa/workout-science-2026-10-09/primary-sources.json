@@ -1,0 +1,780 @@
+{
+  "schemaVersion": 1,
+  "auditDate": "2026-10-09",
+  "purpose": "Primary-publication evidence and provenance audit for SCI1; not clinical validation or an exhaustive systematic literature search.",
+  "sourceCodeBaseline": "587438a8a2ba21cf88c943f857348dd7190eb078",
+  "preImplementationCheckpoint": "0e43ddf47730bdb264be45326884646b17a25ade",
+  "reviewDefinition": "A primary URL is the original publisher, society, public-health body or bibliographic record. Reviews and consensus documents are not primary randomized trials. ReviewLevel records the content actually inspected.",
+  "independentlyValidatedExactMovefieldTemplates": 0,
+  "optimalExactMovefieldTemplatesEstablished": 0,
+  "universalWeeklySetIncreaseCapEstablished": false,
+  "implementationVerificationStatus": "SCI1 implemented; focused16 groups and independent schedule51191 profiles/boundaries86 cases/focus1125 profiles passed. Parent full integration/publication record remains separately owned.",
+  "scope": {
+    "originalCatalogCount": 75,
+    "namedReferenceCount": 20,
+    "originalCatalogIds": [
+      "PL3",
+      "PL4",
+      "PB3",
+      "PB4",
+      "BB3",
+      "BB4",
+      "HY4",
+      "HY5",
+      "BBPPL6",
+      "BBARN6",
+      "PLTX3",
+      "PLSL3",
+      "PLU3",
+      "PBPH4",
+      "PBT4",
+      "ST2",
+      "ST3",
+      "GF2",
+      "GFHOME2",
+      "CAL2",
+      "CAL3",
+      "RNEASY3",
+      "PL2",
+      "PBSTART2",
+      "PBSTART3",
+      "PBDB3",
+      "BB2",
+      "BBDB3",
+      "BBM3",
+      "STGYM2",
+      "STDB3",
+      "GF3",
+      "GFM2",
+      "CALBUILD3",
+      "CALBUILD2",
+      "HYHOME4",
+      "HYDB4",
+      "RNBASE4",
+      "BBHOME3",
+      "BBADV4",
+      "PLW4",
+      "PBW4",
+      "ST4",
+      "QG2",
+      "QG3",
+      "QS2",
+      "QM2",
+      "QC2",
+      "QPB2",
+      "QSP2",
+      "QS3",
+      "QM3",
+      "QPB3",
+      "QC3",
+      "QSP3",
+      "QPL3",
+      "QHY4",
+      "QR3",
+      "SP2",
+      "QHY3",
+      "HY3",
+      "QR2",
+      "PLSTART3",
+      "GFSTAND2",
+      "STSTAND2",
+      "GFNOGROUND2",
+      "GFNONE2",
+      "STDBST2",
+      "GFDBST2",
+      "BBDBST2",
+      "PBDBST2",
+      "SPDBST2",
+      "CALDB2",
+      "HYDB2",
+      "HYHOME2"
+    ],
+    "namedReferenceIds": [
+      "ref-tsa-beginner",
+      "ref-tsa-intermediate",
+      "ref-calgary16",
+      "ref-phul",
+      "ref-phat",
+      "ref-jt2",
+      "ref-stronglifts",
+      "ref-stronglifts-lite",
+      "ref-stronglifts-lite-2",
+      "ref-fitness-basic",
+      "ref-gzclp",
+      "ref-gzclp-4",
+      "ref-metallicadpa-ppl",
+      "ref-db-stopgap",
+      "ref-db-ppl",
+      "ref-bwf-rr",
+      "ref-frankoman",
+      "ref-531-beginner",
+      "ref-db-steve",
+      "ref-db-josh"
+    ],
+    "catalogReview": "docs/qa/workout-science-2026-10-09/catalog-review.json",
+    "additionalPaths": [
+      "AT01",
+      "AT02",
+      "AT03",
+      "AT04",
+      "YOUTH-FOUNDATION",
+      "youth catalog variants",
+      "RUN-WALK / NHS",
+      "TRACK / empty manual or coach calendar",
+      "core focus",
+      "jump focus",
+      "superset focus",
+      "activity focus",
+      "session preparation guide",
+      "adult warm-up ladder"
+    ],
+    "modifierFamilyCount": 10,
+    "modifierGrouping": "Ten grouped families include the four focus overlays; load/ranges/capacity/substitution share one family. These are not ten standalone proposal types."
+  },
+  "sources": [
+    {
+      "id": "ACSM-2026",
+      "group": "core",
+      "title": "American College of Sports Medicine Position Stand: Resistance Training Prescription for Muscle Function, Hypertrophy, and Physical Performance in Healthy Adults: An Overview of Reviews",
+      "primaryUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/",
+      "doi": "10.1249/MSS.0000000000003897",
+      "otherPrimaryUrls": [
+        "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/"
+      ],
+      "publication": {
+        "online": "2026-03-05",
+        "issue": "2026-04-01",
+        "officialAnnouncement": "2026-03-17"
+      },
+      "evidenceType": "Society position stand; umbrella review of 137 systematic reviews",
+      "reviewLevel": "Full-text eligibility, interpretation and practical-recommendation sections inspected by the implementation reviewer, plus abstract and official ACSM interpretation; supplementary-review reappraisal not performed.",
+      "accessLimits": "One reader initially met an access wall; later primary PMC text was available. Supplemental review-level appendices were not independently reappraised.",
+      "population": "Healthy adults aged at least 18; over 30,000 participants; interventions 6–52 weeks; evidence search through October 2024.",
+      "supportedPrinciples": [
+        "Progressive resistance training improves muscle function across adulthood.",
+        "Strength favors heavier loading, full range, 2–3 sets and at least twice-weekly training; hypertrophy responds to higher weekly volume.",
+        "Failure and complex periodization are not consistently necessary for improvement."
+      ],
+      "limits": [
+        "Heavy-load optimization is not a universal novice starting prescription.",
+        "No exact Movefield exercise menu, RIR gate, set ramp, deload or template was tested."
+      ],
+      "accessedOn": "2026-10-09",
+      "exactMovefieldTemplateValidation": false
+    },
+    {
+      "id": "WHO-2020",
+      "group": "core",
+      "title": "WHO guidelines on physical activity and sedentary behaviour",
+      "primaryUrl": "https://www.who.int/publications/i/item/9789240015128",
+      "otherPrimaryUrls": [
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+      ],
+      "publication": {
+        "guideline": "2020-11-25",
+        "officialSummary": "2021-09-01"
+      },
+      "evidenceType": "Evidence-based public-health guideline",
+      "reviewLevel": "Official publication record and age-group recommendations on WHO summary checked; complete guideline evidence tables not reviewed",
+      "population": "Children and adolescents 5–17, adults 18–64, and older adults 65+; recommendations also discuss specified clinical populations.",
+      "supportedPrinciples": [
+        "Adults: 150–300 moderate or 75–150 vigorous aerobic minutes weekly, plus major-muscle strengthening on at least two days.",
+        "Youth: average 60 daily moderate-to-vigorous minutes, with vigorous, muscle- and bone-strengthening activity at least three days weekly.",
+        "Older adults additionally benefit from balance/strength multicomponent activity at least three days weekly."
+      ],
+      "limits": [
+        "Whole-week health guidance is not validation of a lifting-only, brief or two-walk app program.",
+        "Special-population recommendations do not confer individual medical clearance."
+      ],
+      "accessedOn": "2026-10-09",
+      "exactMovefieldTemplateValidation": false
+    },
+    {
+      "id": "AAP-2020",
+      "group": "core",
+      "title": "Resistance Training for Children and Adolescents",
+      "primaryUrl": "https://publications.aap.org/pediatrics/article/145/6/e20201011/76942/Resistance-Training-for-Children-and-Adolescents",
+      "doi": "10.1542/peds.2020-1011",
+      "otherPrimaryUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/32457216/",
+        "https://publications.aap.org/pediatrics/article-abstract/145/6/e20201011/76942"
+      ],
+      "publication": {
+        "issue": "2020-06",
+        "reaffirmed": "2024-11"
+      },
+      "evidenceType": "AAP clinical report; expert synthesis and recommendations",
+      "reviewLevel": "Official indexed recommendation excerpts and reaffirmation notice checked; complete article not reviewed",
+      "accessLimits": "AAP full-text/PDF redirected to inaccessible SSO; PubMed was intermittent.",
+      "population": "Children and adolescents; resistance-training competence and qualified supervision are central.",
+      "supportedPrinciples": [
+        "Begin with low intensity and 1–2 sets of 8–12 while learning.",
+        "Increase resistance gradually as technique and competence develop; instruction and supervision remain required."
+      ],
+      "limits": [
+        "The report does not prescribe Movefield's fixed three-week 1×8 foundation or its exact staged second-set rule.",
+        "A supervision attestation does not assess technique; supervised 1RM testing is not universally prohibited by the report."
+      ],
+      "accessedOn": "2026-10-09",
+      "exactMovefieldTemplateValidation": false
+    },
+    {
+      "id": "NSCA-YOUTH",
+      "group": "core",
+      "title": "Youth Resistance Training: Updated Position Statement Paper from the National Strength and Conditioning Association",
+      "primaryUrl": "https://www.nsca.com/globalassets/about/position-statements/position_stand_youth_resistance_training---2009.pdf",
+      "doi": "10.1519/JSC.0b013e31819df407",
+      "publication": {
+        "issue": "2009-08"
+      },
+      "evidenceType": "NSCA position statement; expert evidence synthesis",
+      "reviewLevel": "Official full PDF retrieved; relevant program-design and progression sections reviewed",
+      "population": "Healthy children and adolescents; age-appropriate instruction and competent supervision.",
+      "supportedPrinciples": [
+        "Start light; use 5–10 minutes of dynamic preparation, balanced movements and qualified supervision.",
+        "Typical strength work: 1–3 sets of 6–15; power work: 1–3 sets of 3–6.",
+        "Train 2–3 nonconsecutive days; gradual load progression responds to strength and technique."
+      ],
+      "limits": [
+        "Older position statement, cross-checked against AAP's reaffirmed report.",
+        "Its ranges do not validate an exact app youth template or automatically assess recovery."
+      ],
+      "accessedOn": "2026-10-09",
+      "exactMovefieldTemplateValidation": false
+    },
+    {
+      "id": "OLDER-ADULT",
+      "group": "core",
+      "title": "Resistance Training for Older Adults: Position Statement from the National Strength and Conditioning Association",
+      "primaryUrl": "https://www.nsca.com/contentassets/2a4112fb355a4a48853bbafbe070fb8e/resistance_training_for_older_adults__position.1.pdf",
+      "doi": "10.1519/JSC.0000000000003230",
+      "publication": {
+        "issue": "2019-08"
+      },
+      "evidenceType": "NSCA position statement; evidence synthesis and recommendations",
+      "reviewLevel": "Official full PDF retrieved; general recommendations, progression and individual-adaptation sections reviewed",
+      "population": "Older adults with varied function, mobility, frailty and chronic-condition contexts.",
+      "supportedPrinciples": [
+        "Work toward 2–3 sets for major muscles, 2–3 days weekly, with intensity and progression adapted to ability.",
+        "Function, technique, tolerance and relevant conditions guide selection; age alone does not set load."
+      ],
+      "limits": [
+        "70–85% 1RM recommendations describe progressively developed training, not everyone's initial load.",
+        "The statement does not establish suitability of every unmodified adult app template for every older person."
+      ],
+      "accessedOn": "2026-10-09",
+      "exactMovefieldTemplateValidation": false
+    },
+    {
+      "id": "PELLAND-2026-DOSE",
+      "group": "core",
+      "title": "The Resistance Training Dose Response: Meta-Regressions Exploring the Effects of Weekly Volume and Frequency on Muscle Hypertrophy and Strength Gains",
+      "primaryUrl": "https://link.springer.com/article/10.1007/s40279-025-02344-w",
+      "doi": "10.1007/s40279-025-02344-w",
+      "otherPrimaryUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41343037/"
+      ],
+      "publication": {
+        "online": "2025-12-04",
+        "issue": "2026-02"
+      },
+      "evidenceType": "Systematic review; multilevel dose-response meta-regressions",
+      "reviewLevel": "Publisher abstract and bibliographic record checked; complete paywalled paper not reviewed",
+      "population": "67 studies; 2,058 participants; 79.1% male; mean age about 25.",
+      "supportedPrinciples": [
+        "Greater weekly volume associates with greater gains and diminishing returns.",
+        "Fractional indirect-set accounting fit these data best; frequency effects were clearer for strength than hypertrophy."
+      ],
+      "limits": [
+        "Group associations do not give a universal weekly increase ceiling or individual optimal dose.",
+        "The app's exercise-specific muscle coefficients and exact weekly set counts are estimates."
+      ],
+      "accessedOn": "2026-10-09",
+      "exactMovefieldTemplateValidation": false
+    },
+    {
+      "id": "ROBINSON-2024-RIR",
+      "group": "core",
+      "title": "Exploring the Dose–Response Relationship Between Estimated Resistance Training Proximity to Failure, Strength Gain, and Muscle Hypertrophy: A Series of Meta-Regressions",
+      "primaryUrl": "https://link.springer.com/article/10.1007/s40279-024-02069-2",
+      "doi": "10.1007/s40279-024-02069-2",
+      "publication": {
+        "online": "2024-07-06",
+        "issue": "2024-09"
+      },
+      "evidenceType": "Exploratory meta-regressions of resistance-training studies",
+      "reviewLevel": "Publisher abstract and methodological caveats checked; complete paywalled paper not reviewed",
+      "population": "Resistance-training study participants with varied training status; exact demographic extraction not reviewed.",
+      "supportedPrinciples": [
+        "Estimated RIR had a negligible relationship with strength gains; closer-to-failure sets associated with more hypertrophy."
+      ],
+      "limits": [
+        "RIR was reconstructed from intervention descriptions, and models had modest fit.",
+        "This does not validate a precise 2–3 RIR default or a two-exposure readiness test."
+      ],
+      "accessedOn": "2026-10-09",
+      "exactMovefieldTemplateValidation": false
+    },
+    {
+      "id": "WU-2026-NONFAILURE",
+      "group": "core",
+      "title": "Effects of Resistance Training Performed to Repetition Non-failure on Exercise Performance in Healthy Adults: A Systematic Review and Meta-analysis",
+      "primaryUrl": "https://link.springer.com/article/10.1186/s13102-026-01861-z",
+      "doi": "10.1186/s13102-026-01861-z",
+      "publication": {
+        "published": "2026-07-06",
+        "versionOfRecord": "2026-07-17"
+      },
+      "evidenceType": "Systematic review and random-effects meta-analysis of randomized trials",
+      "reviewLevel": "Open full article retrieved; methods, results and limitations reviewed",
+      "population": "20 studies; 556 healthy adults; mean study ages 19.0–67.6; trained and untrained participants.",
+      "supportedPrinciples": [
+        "Non-failure had a small dynamic-strength advantage; other pooled outcomes showed no significant differences."
+      ],
+      "limits": [
+        "Definitions and volume protocols varied; samples were small and heterogeneous.",
+        "No significant difference is not proof that all non-failure doses are equivalent or optimal."
+      ],
+      "accessedOn": "2026-10-09",
+      "exactMovefieldTemplateValidation": false
+    },
+    {
+      "id": "BINMAHFOZ-2025-WEIGHT",
+      "group": "core",
+      "title": "Effect of Resistance Exercise on Body Composition, Muscle Strength and Cardiometabolic Health during Dietary Weight Loss in People Living with Overweight or Obesity: A Systematic Review and Meta-analysis",
+      "primaryUrl": "https://pubmed.ncbi.nlm.nih.gov/40909191/",
+      "doi": "10.1136/bmjsem-2024-002363",
+      "otherPrimaryUrls": [
+        "https://bmjopensem.bmj.com/content/11/3/e002363",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12406911/"
+      ],
+      "publication": {
+        "published": "2025-09-02"
+      },
+      "evidenceType": "Systematic review and meta-analysis of randomized trials; GRADE assessment",
+      "reviewLevel": "Primary indexed abstract and bibliography checked; full publisher/PMC paper not reviewed",
+      "accessLimits": "Publisher/PDF returned 403; PMC returned browser-check.",
+      "population": "25 randomized trials; 1,608 adults aged 18–65, BMI at least 25, undergoing dietary weight loss.",
+      "supportedPrinciples": [
+        "Adding resistance exercise preserved fat-free mass, increased fat loss and improved strength; added scale-weight loss was not significant."
+      ],
+      "limits": [
+        "Certainty differed by outcome: fat mass high, fat-free mass moderate, strength low.",
+        "Diet-plus-training evidence does not validate the app's twenty-minute walking add-on or supersets as weight-loss treatment."
+      ],
+      "accessedOn": "2026-10-09",
+      "exactMovefieldTemplateValidation": false
+    },
+    {
+      "id": "NHS-C25K",
+      "group": "core",
+      "title": "Couch to 5K running plan",
+      "primaryUrl": "https://www.nhs.uk/better-health/get-active/get-running-with-couch-to-5k/couch-to-5k-running-plan/",
+      "publication": {
+        "published": null,
+        "dateNote": "No publication or last-review date was exposed on the accessed page."
+      },
+      "evidenceType": "Official public beginner running program; not an app-validation trial",
+      "reviewLevel": "Full current NHS schedule checked against all nine recipe stages, including distinct sessions in weeks 5–6",
+      "population": "People beginning running; Movefield restricts this automatic pathway to adults.",
+      "supportedPrinciples": [
+        "Three weekly runs with a rest day between; staged run/walk intervals and five-minute opening/closing walks.",
+        "The sequence ends at 30 minutes of continuous running."
+      ],
+      "limits": [
+        "Source fidelity is not a guarantee of completing 5 km, injury prevention or individual readiness.",
+        "App-authored brief/hybrid walk–runs are separate from this sequence."
+      ],
+      "accessedOn": "2026-10-09",
+      "exactMovefieldTemplateValidation": false
+    },
+    {
+      "id": "FOCUS-NSCA-PAIRS",
+      "group": "historical-context",
+      "title": "Time-Efficient Training Approach as a Solution to Sedentary Occupational Health Risks",
+      "primaryUrl": "https://www.nsca.com/education/articles/ptq/time-efficient-training",
+      "publication": {
+        "published": "2022-11"
+      },
+      "evidenceType": "NSCA Personal Training Quarterly educational article; narrative synthesis and examples",
+      "reviewLevel": "Official article's pairing, warm-up and recovery sections checked",
+      "population": "Busy working adults; examples draw on differing training populations.",
+      "supportedPrinciples": [
+        "Paired exercises are a possible organization strategy; preserve suitable preparation and rest."
+      ],
+      "limits": [
+        "Not a consensus statement or trial of Movefield's accessory pairs.",
+        "Its examples include failure-oriented methods; citing it does not require applying those methods."
+      ],
+      "accessedOn": "2026-10-09",
+      "exactMovefieldTemplateValidation": false,
+      "usage": "Historical pre-SCI1 focus context; current adult superset selection uses ZHANG-2025-SUPERSET."
+    },
+    {
+      "id": "NSCA-PLYOMETRICS",
+      "group": "focus",
+      "title": "Plyometric Exercises",
+      "primaryUrl": "https://www.nsca.com/education/articles/kinetic-select/plyometric-exercises/",
+      "publication": {
+        "published": "2019-08"
+      },
+      "evidenceType": "NSCA educational book excerpt from Developing Power",
+      "reviewLevel": "Official excerpt checked",
+      "population": "Athletes using plyometric work for lower-body power.",
+      "supportedPrinciples": [
+        "Account for jumps already performed in sport; emphasize movement mastery and purposeful dose."
+      ],
+      "limits": [
+        "Not a trial of six or three weekly app landings.",
+        "Does not validate the app's 48/72-hour calendar buffers or guarantee recovery."
+      ],
+      "accessedOn": "2026-10-09",
+      "exactMovefieldTemplateValidation": false,
+      "appEvidenceKey": "NSCA-PLYOMETRICS"
+    },
+    {
+      "id": "CDC-ACTIVITY",
+      "group": "focus",
+      "title": "Physical Activity and Your Weight and Health",
+      "primaryUrl": "https://www.cdc.gov/healthy-weight-growth/physical-activity/",
+      "publication": {
+        "updated": "2026-04-07"
+      },
+      "evidenceType": "Official public-health guidance page",
+      "reviewLevel": "Official page's activity, weight and individual-variation guidance checked",
+      "population": "Adults seeking overall health and healthy weight.",
+      "supportedPrinciples": [
+        "Activity supports health; weight-management activity needs vary and healthy eating remains relevant.",
+        "Adult health guidance includes at least 150 moderate aerobic minutes and two strengthening days weekly."
+      ],
+      "limits": [
+        "Does not establish sufficient weight-loss dose for a pair of ten-minute walks.",
+        "No outcome guarantee for a specific app or superset routine."
+      ],
+      "accessedOn": "2026-10-09",
+      "exactMovefieldTemplateValidation": false,
+      "appEvidenceKey": "CDC-ACTIVITY"
+    },
+    {
+      "id": "ZHANG-2025-SUPERSET",
+      "group": "focus",
+      "title": "Superset Versus Traditional Resistance Training Prescriptions: A Systematic Review and Meta-analysis Exploring Acute and Chronic Effects on Mechanical, Metabolic, and Perceptual Variables",
+      "primaryUrl": "https://pubmed.ncbi.nlm.nih.gov/39903375/",
+      "doi": "10.1007/s40279-025-02176-8",
+      "otherPrimaryUrls": [
+        "https://link.springer.com/article/10.1007/s40279-025-02176-8"
+      ],
+      "publication": {
+        "online": "2025-02-04",
+        "issue": "2025-04"
+      },
+      "evidenceType": "Systematic review and random-effects meta-analysis",
+      "reviewLevel": "Open publisher article retrieved; methods, results and limitations checked. Direct PubMed retrieval was intermittent.",
+      "population": "19 studies, 313 healthy participants, mostly young trained men; only three studies assessed chronic outcomes.",
+      "supportedPrinciples": [
+        "Supersets can shorten sessions but generally increase perceived exertion; effects depend on pairing.",
+        "Chronic pooled estimates were similar, with limited evidence."
+      ],
+      "limits": [
+        "Small samples, heterogeneity and restricted populations limit generalization.",
+        "Exact Movefield pairings/rests are not validated; no guaranteed time savings or fat loss."
+      ],
+      "appScope": "Current selected adult superset principle source; not youth guidance.",
+      "accessedOn": "2026-10-09",
+      "exactMovefieldTemplateValidation": false
+    }
+  ],
+  "modifierFamilies": [
+    {
+      "id": "focus-core",
+      "code": "lib/training-focus.ts",
+      "authorship": "App overlay chosen at plan acceptance",
+      "sourcePrinciples": [
+        "ACSM-2026",
+        "NSCA-YOUTH"
+      ],
+      "exactRuleStatus": "Existing core work counts first; added 1/2 sets of six per-side reps and twice-weekly placement are app choices.",
+      "populationMapping": {
+        "adult": [
+          "ACSM-2026"
+        ],
+        "youth": [
+          "NSCA-YOUTH"
+        ]
+      }
+    },
+    {
+      "id": "focus-jumping",
+      "code": "lib/training-focus.ts",
+      "authorship": "App overlay chosen at plan acceptance",
+      "sourcePrinciples": [
+        "NSCA-YOUTH",
+        "NSCA-PLYOMETRICS"
+      ],
+      "exactRuleStatus": "Three/six weekly practice landings and 48/72-hour calendar buffers are not independently validated.",
+      "populationMapping": {
+        "adult": [
+          "NSCA-PLYOMETRICS"
+        ],
+        "youth": [
+          "NSCA-YOUTH"
+        ]
+      }
+    },
+    {
+      "id": "focus-supersets",
+      "code": "lib/training-focus.ts",
+      "authorship": "App overlay chosen at plan acceptance",
+      "sourcePrinciples": [
+        "ZHANG-2025-SUPERSET"
+      ],
+      "exactRuleStatus": "Adult superset organization cites Zhang; greater perceived effort and limited chronic evidence matter. Exact assistance pairings/combined rest remain app choices."
+    },
+    {
+      "id": "focus-activity",
+      "code": "lib/training-focus.ts",
+      "authorship": "Adult app overlay chosen at plan acceptance",
+      "sourcePrinciples": [
+        "WHO-2020",
+        "CDC-ACTIVITY"
+      ],
+      "exactRuleStatus": "Two ten-minute walks are an addition, not a complete activity or weight-loss prescription."
+    },
+    {
+      "id": "approved-return-block",
+      "code": "lib/training.ts: makeProposal('return')",
+      "authorship": "Explicitly accepted app proposal",
+      "sourcePrinciples": [
+        "ACSM-2026",
+        "AAP-2020",
+        "NSCA-YOUTH",
+        "NHS-C25K"
+      ],
+      "exactRuleStatus": "Reduced strength sets and repeated opening walk/run are app restart defaults, not medical clearance."
+    },
+    {
+      "id": "approved-set-reduction",
+      "code": "lib/training.ts: makeProposal('sets')",
+      "authorship": "Explicitly accepted app proposal",
+      "sourcePrinciples": [
+        "ACSM-2026",
+        "NSCA-YOUTH",
+        "NHS-C25K"
+      ],
+      "exactRuleStatus": "One-set reduction or stage repeat is reversible; feedback does not measure recovery."
+    },
+    {
+      "id": "approved-load-range-capacity-substitution",
+      "code": "lib/training.ts / lib/substitutions.ts",
+      "authorship": "Explicitly accepted app proposals or user-selected replacements",
+      "sourcePrinciples": [
+        "ACSM-2026",
+        "PELLAND-2026-DOSE",
+        "ROBINSON-2024-RIR"
+      ],
+      "additionalAppBibliography": [
+        "REP-PROGRESSION"
+      ],
+      "exactRuleStatus": "Comparable records, RIR, equipment steps, ranges and replacement defaults are guards; exact algorithms are unvalidated."
+    },
+    {
+      "id": "approved-schedule-move-competition-buffer",
+      "code": "lib/training.ts: checkSchedule / makeMoveProposal / competitionConflict",
+      "authorship": "Explicitly accepted user-requested date proposal",
+      "sourcePrinciples": [
+        "NSCA-YOUTH",
+        "NHS-C25K",
+        "NSCA-PLYOMETRICS"
+      ],
+      "exactRuleStatus": "Calendar spacing and protected competition days are planning rules, not measured recovery."
+    },
+    {
+      "id": "accepted-user-exercise-or-target-edits",
+      "code": "lib/customize.ts / lib/tracking.ts",
+      "authorship": "User/coach prescription with preview and time review",
+      "sourcePrinciples": [],
+      "exactRuleStatus": "Technical input bounds do not recommend those doses; edits must remain identified as user-authored."
+    },
+    {
+      "id": "session-guide-and-example-warmup-ladder",
+      "code": "lib/session-guide.ts / lib/training-tools.ts",
+      "authorship": "App guidance and optional adult calculator",
+      "sourcePrinciples": [
+        "ACSM-2026",
+        "AAP-2020",
+        "NSCA-YOUTH"
+      ],
+      "exactRuleStatus": "Generic preparation guidance is principle-informed; the 40/60/75/85% working-load example ladder is not validated."
+    }
+  ],
+  "preImplementationFindings": [
+    {
+      "id": "SCI1-HY5-SCHEDULE",
+      "status": "Implemented locally; final regression verification pending",
+      "finding": "HY5 with Monday-Friday availability and Monday start rejects despite a feasible rotation: strength Tuesday/Thursday and runs Wednesday/Friday/Monday.",
+      "reproduction": {
+        "start": "2026-10-12",
+        "goal": "hybrid",
+        "programId": "HY5",
+        "days": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "experience": "Experienced",
+        "equipment": "Full gym",
+        "minutes": 120,
+        "runBase": true,
+        "runDays": 4,
+        "runMinutes": 100
+      },
+      "implementedBehavior": "Disclose Tuesday first-session start and preserve every session in the accepted block; this is a scheduling repair."
+    },
+    {
+      "id": "SCI1-PLSL3-ROTATION",
+      "status": "Implemented locally; final regression verification pending",
+      "finding": "Original PLSL3 weekly slot reuse produces A/B/A/A/B/A while copy claims continuous A/B alternation. Named ref-stronglifts already alternates A/B/A/B/A/B and remains manually progressed.",
+      "implementedBehavior": "Scope rolling A/B rotation to an explicit catalog definition; preserve named-source manual authority."
+    },
+    {
+      "id": "SCI1-EVIDENCE",
+      "status": "Implemented locally; final regression verification pending",
+      "finding": "Catalog plans bypass richer planEvidence mapping and emit only ACSM-2026/NSCA-YOUTH plus def.source; selected focus references are collective plain-note URLs; OLDER-ADULT is not attached for age 65+.",
+      "implementedBehavior": "Catalog now uses population/discipline planEvidence; selected focus keys and selected-only source displays are attached. Empty manual/coach and named tracking plans have no app evidence keys."
+    },
+    {
+      "id": "SCI1-FOCUS-TIME",
+      "status": "Implemented locally; final regression verification pending",
+      "finding": "PL3 first-time/full-gym/Mon-Wed-Fri/4-week/65-minute/activity profile builds; week-3 Squat + bench reports 65 minutes while canonical final-item estimate is 70.",
+      "cause": "Flat focus minute additions omit canonical item transition/setup time.",
+      "implementedBehavior": "Final strength-item canonical estimate is recomputed before checking the selected window."
+    },
+    {
+      "id": "SCI1-NOVICE-READINESS",
+      "status": "Foundation tie-break ranking and dose/readiness disclosures implemented; completion-only adult eligibility remains a stated limitation; final regressions pending",
+      "finding": "PBSTART3 first-time week-2 to week-3 total work sets rise 36 to 57. Completed prerequisites with effort harder and RIR 0 still permit the 12-to-19-set squat session when there is no symptom hold.",
+      "interpretation": "Later work is preaccepted in the block, not a silent new load proposal; completion alone does not demonstrate readiness. No universal weekly total-set cap is inferred.",
+      "implementedBehavior": "Among equally fitting novice choices, ranking prefers lower later/early whole-body work sets. Fit and plan notes disclose calendar increases, prerequisite completion and the absence of a recovery assessment."
+    },
+    {
+      "id": "SCI1-RECIPES-DRIFT",
+      "status": "Implemented locally; final regression verification pending",
+      "finding": "Unused recipes.youth specifies rep-first progression distinct from live YOUTH-FOUNDATION; recipe SCxx/ARxx identifiers have no resolving registry. AT02/AT03 slot facts and running stages are the recipe data consumed.",
+      "implementedBehavior": "Recipe root explicitly labels unresolved SC/AR aliases as legacy metadata and the detailed youth policy as not executed; runtime and supervisor authority remain distinct."
+    }
+  ],
+  "limits": [
+    "No exact Movefield plan, focus overlay or modifier algorithm had independently measured outcomes in the verified sources.",
+    "Structural builds, target counts, schedule checks and source fidelity do not establish safety, clinical suitability, adherence or optimal outcomes.",
+    "The 20 named references are author instructions or tracking options; this focused consensus audit does not newly verify every author's full program or reproduction rights.",
+    "Additional app bibliography entries are not silently upgraded to full-text review by inclusion in planEvidence."
+  ],
+  "targetMutationPaths": [
+    {
+      "id": "load",
+      "code": "lib/training.ts: makeLoadProposal / loadSuggestion",
+      "authorship": "App proposal, explicit acceptance",
+      "exactRuleStatus": "Two recent comparable top-of-range exposures, RIR and available-step limits are product guards, not a validated algorithm.",
+      "preFixTraceability": "Inherits the first plan evidence key through proposalBase."
+    },
+    {
+      "id": "capacity",
+      "code": "lib/training.ts: makeCapacityProposal",
+      "authorship": "App proposal, explicit acceptance",
+      "exactRuleStatus": "Wider ranges at equipment limits retain sets/rest and reset load; exact 15/20 ceilings are app choices.",
+      "preFixTraceability": "Uses REP-PROGRESSION; this focused audit did not fully re-review that additional trial."
+    },
+    {
+      "id": "reduce-or-repeat",
+      "code": "lib/training.ts: makeProposal('sets')",
+      "authorship": "App proposal, explicit acceptance",
+      "exactRuleStatus": "Reduce one exercise by one set, or repeat a familiar run stage; neither measures recovery.",
+      "preFixTraceability": "Uses plan.evidence[0], not evidence for an exact reduction."
+    },
+    {
+      "id": "return-block",
+      "code": "lib/training.ts: makeProposal('return')",
+      "authorship": "App proposal, explicit acceptance",
+      "exactRuleStatus": "One set per strength exercise, chosen load again, opening walk/run repeated; no automatic ramp back or medical clearance.",
+      "preFixTraceability": "Uses plan.evidence[0], not a tested return-to-training protocol."
+    },
+    {
+      "id": "rep-ranges",
+      "code": "lib/training.ts: makeRangeProposal / rangeItem",
+      "authorship": "App proposal, explicit acceptance",
+      "exactRuleStatus": "Goal-specific ranges replace fixed future targets; old sets and dates stay.",
+      "preFixTraceability": "Uses proposalBase; exact ranges remain app choices."
+    },
+    {
+      "id": "continuation-review",
+      "code": "lib/training.ts: makeContinuationReview",
+      "authorship": "App review, explicit acceptance",
+      "exactRuleStatus": "Acknowledges unchanged targets after prerequisite completion; does not itself establish readiness.",
+      "preFixTraceability": "Uses proposalBase; engineering safeguard rather than an intervention with measured outcomes."
+    },
+    {
+      "id": "date-move",
+      "code": "lib/training.ts: makeMoveProposal / checkSchedule",
+      "authorship": "User-requested schedule proposal, explicit acceptance",
+      "exactRuleStatus": "Order, commitments and recovery-group spacing checked; calendar buffers are product rules.",
+      "preFixTraceability": "Uses proposalBase; no guarantee of recovery from a passed calendar check."
+    },
+    {
+      "id": "curated-substitution",
+      "code": "lib/substitutions.ts",
+      "authorship": "User-selected curated replacement, explicit preview",
+      "exactRuleStatus": "Replacement uses its own load history and default rep/rest targets; competition specificity is acknowledged.",
+      "preFixTraceability": "No new structured evidence provenance for the replacement defaults."
+    },
+    {
+      "id": "exercise-addition",
+      "code": "lib/customize.ts",
+      "authorship": "User-entered targets, explicit time review",
+      "exactRuleStatus": "Numeric input bounds are technical validation, not recommended training doses.",
+      "preFixTraceability": "Added-item note/audit record identifies user authorship; original plan evidence persists."
+    },
+    {
+      "id": "tracking-session-edit",
+      "code": "lib/tracking.ts",
+      "authorship": "User/coach-entered targets",
+      "exactRuleStatus": "Rewrites upcoming tracking targets; source copies get a user-edited note; dates/history preserved.",
+      "preFixTraceability": "Original source remains context, not proof of the edited routine."
+    }
+  ],
+  "implementedFocusMapping": {
+    "adult": {
+      "core": [
+        "ACSM-2026"
+      ],
+      "jumping": [
+        "NSCA-PLYOMETRICS"
+      ],
+      "supersets": [
+        "ZHANG-2025-SUPERSET"
+      ],
+      "activity": [
+        "CDC-ACTIVITY",
+        "WHO-2020"
+      ]
+    },
+    "youth": {
+      "core": [
+        "NSCA-YOUTH"
+      ],
+      "jumping": [
+        "NSCA-YOUTH"
+      ]
+    },
+    "display": "Selected sources only in focus notes and picker; structured plan evidence receives selected focus keys.",
+    "population": "Youth mapping omits adult goal research. Adult strength plans age65+ add OLDER-ADULT and WHO-2020. Actual NHS stages retain NHS-C25K; app-authored running uses activity context."
+  },
+  "sourceGroupCounts": {
+    "core": 10,
+    "focus": 3,
+    "historicalContext": 1,
+    "total": 14
+  }
+}

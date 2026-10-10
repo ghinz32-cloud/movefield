@@ -1,0 +1,12 @@
+{
+  "localImplementation": "64eb774168a0690b4d5ea466a6214275bb05e2fe",
+  "githubImplementation": "cbb39a4b04f7d9f8d3ba19bf44d20d72304bd73b",
+  "tree": "ea2d63918653adcc0fa6193df3748487571443aa",
+  "branch": "audit/2026-10-08-quality",
+  "verified": [
+    "git fetch and ls-remote head",
+    "exact local/remote source tree equality",
+    "implementation report readback at commit"
+  ],
+  "mainUnchanged": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81"
+}

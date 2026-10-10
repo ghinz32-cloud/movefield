@@ -1,0 +1,45 @@
+vite v8.0.16 building client environment for production...
+[2Ktransforming...
+/movefield/fonts/inter-variable.ttf referenced in /movefield/fonts/inter-variable.ttf didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/movefield/fonts/barlow-condensed-semibold.ttf referenced in /movefield/fonts/barlow-condensed-semibold.ttf didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/movefield/fonts/atkinson-hyperlegible-latin-400-normal.woff2 referenced in /movefield/fonts/atkinson-hyperlegible-latin-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/movefield/fonts/atkinson-hyperlegible-latin-700-normal.woff2 referenced in /movefield/fonts/atkinson-hyperlegible-latin-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/movefield/fonts/oswald-latin-600-normal.woff2 referenced in /movefield/fonts/oswald-latin-600-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/movefield/fonts/oswald-latin-700-normal.woff2 referenced in /movefield/fonts/oswald-latin-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/movefield/fonts/saira-latin-400-normal.woff2 referenced in /movefield/fonts/saira-latin-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/movefield/fonts/saira-latin-700-normal.woff2 referenced in /movefield/fonts/saira-latin-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/movefield/fonts/lexend-latin-400-normal.woff2 referenced in /movefield/fonts/lexend-latin-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/movefield/fonts/lexend-latin-700-normal.woff2 referenced in /movefield/fonts/lexend-latin-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/movefield/fonts/nunito-latin-400-normal.woff2 referenced in /movefield/fonts/nunito-latin-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/movefield/fonts/nunito-latin-700-normal.woff2 referenced in /movefield/fonts/nunito-latin-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+✓ 2552 modules transformed.
+rendering chunks...
+computing gzip size...
+dist-pages/index.html                                 1.03 kB │ gzip:   0.52 kB
+dist-pages/assets/index-BDPBdBWE.css                221.70 kB │ gzip:  36.15 kB
+dist-pages/assets/qwen-unavailable-IXSK3HSm.js        0.46 kB │ gzip:   0.32 kB
+dist-pages/assets/jsx-runtime-DUAcabCT.js             1.06 kB │ gzip:   0.60 kB
+dist-pages/assets/research-library-dG25azH1.js        4.46 kB │ gzip:   1.82 kB
+dist-pages/assets/transfer-dialog-bz8GaSkU.js        36.22 kB │ gzip:  13.49 kB
+dist-pages/assets/button-BZyDGPNM.js                 39.97 kB │ gzip:  13.33 kB
+dist-pages/assets/progress-dashboard-D7SQsE0c.js    368.46 kB │ gzip: 108.44 kB
+dist-pages/assets/index--lcHmWne.js               1,504.07 kB │ gzip: 328.90 kB
+
+✓ built in 932ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+Pages output: 35 allowlisted files; version f6c58a4e6449e490ce4bf2da6b78c7ed1ad728579e8531311b5092b58a7eb4e4

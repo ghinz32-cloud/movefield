@@ -1,4 +1,5 @@
-import type {Profile,Plan,Session,Item,Event} from './training';
+import {estimateSessionMinutes,type Profile,type Plan,type Session,type Item,type Event} from './training';
+import {focusEvidence} from './program-evidence';
 
 export type TrainingFocus='core'|'jumping'|'supersets'|'activity';
 export const focusChoices:{id:TrainingFocus;title:string;description:string}[]=[
@@ -8,16 +9,31 @@ export const focusChoices:{id:TrainingFocus;title:string;description:string}[]=[
  {id:'activity',title:'Weight-management support',description:'Short brisk walks when they fit. Exercise supports health; it does not guarantee weight loss.'},
 ];
 export const focusSources=[
- {title:'ACSM resistance training position stand (2026)',url:'https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/'},
- {title:'NSCA time-efficient training and paired sets',url:'https://www.nsca.com/education/articles/ptq/time-efficient-training'},
- {title:'NSCA youth resistance training position statement',url:'https://www.nsca.com/globalassets/about/position-statements/position_stand_youth_resistance_training---2009.pdf'},
- {title:'NSCA: account for existing jumping load',url:'https://www.nsca.com/education/articles/kinetic-select/plyometric-exercises/'},
- {title:'CDC physical activity and weight',url:'https://www.cdc.gov/healthy-weight-growth/physical-activity/'},
+ {id:'ACSM-2026',title:'ACSM healthy-adult resistance training position stand (2026)',url:'https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/'},
+ {id:'ZHANG-2025-SUPERSET',title:'Zhang and colleagues: adult superset review (2025)',url:'https://pubmed.ncbi.nlm.nih.gov/39903375/'},
+ {id:'NSCA-YOUTH',title:'NSCA youth resistance training position statement',url:'https://www.nsca.com/globalassets/about/position-statements/position_stand_youth_resistance_training---2009.pdf'},
+ {id:'NSCA-PLYOMETRICS',title:'NSCA: account for existing jumping load',url:'https://www.nsca.com/education/articles/kinetic-select/plyometric-exercises/'},
+ {id:'CDC-ACTIVITY',title:'CDC physical activity and weight',url:'https://www.cdc.gov/healthy-weight-growth/physical-activity/'},
+ {id:'WHO-2020',title:'WHO physical activity guidance',url:'https://www.who.int/europe/news-room/fact-sheets/item/physical-activity'},
 ];
+export function selectedFocusSources(focuses:readonly string[],youth:boolean){const ids=new Set(focusEvidence(focuses,youth));return focusSources.filter(s=>ids.has(s.id));}
 const PREFIX='[Focus]';
 const daysApart=(a:string,b:string)=>Math.abs(Date.parse(a+'T12:00:00Z')-Date.parse(b+'T12:00:00Z'))/86400000;
 const addNote=(item:Item,note:string)=>{item.note=[item.note,note].filter(Boolean).join(' ')};
 export function selectedFocuses(p:Profile):TrainingFocus[]{return [...new Set(p.focuses??[])].filter((f):f is TrainingFocus=>focusChoices.some(x=>x.id===f));}
+export function supersetFieldsError(items:readonly Item[]):string|null{
+ const groups=new Map<string,Item[]>();
+ for(const item of items){
+  if((item.supersetGroup===undefined)!==(item.supersetPosition===undefined))return 'A superset needs both a group and an exercise position.';
+  if(item.supersetGroup===undefined)continue;
+  if(!/^[A-Za-z][A-Za-z0-9_-]{0,19}$/.test(item.supersetGroup)||![1,2].includes(item.supersetPosition!))return 'Invalid superset metadata.';
+  groups.set(item.supersetGroup,[...(groups.get(item.supersetGroup)||[]),item]);
+ }
+ for(const pair of groups.values()){
+  if(pair.length!==2||pair[0].supersetPosition!==1||pair[1].supersetPosition!==2||items.indexOf(pair[1])!==items.indexOf(pair[0])+1||pair[0].sets!==pair[1].sets||pair[0].rest!==0||pair[1].rest<=0)return 'A superset needs two adjacent exercises in order, matching set counts, and rest after the second exercise.';
+ }
+ return null;
+}
 /** Recheck existing jump work whenever dates, events or starting context change. */
 export function focusScheduleConflict(plan:Plan,events:Event[],target:Session):string|null{
  if(plan.profile.mode!=='app'||!target.items.some(i=>i.exerciseId==='lib-small-jump-reset'))return null;
@@ -88,6 +104,7 @@ export function applyTrainingFocus(input:Plan,events:Event[]=[]):{plan:Plan|null
     if(!pair)continue;const [ai,bi]=pair,[a,b]=[s.items[ai],s.items[bi]],roundRest=Math.max(120,a.rest+b.rest);
     // Same total between-round recovery budget; never use primary lifts or assume time saved.
     a.rest=0;b.rest=roundRest;
+    a.supersetGroup='A';a.supersetPosition=1;b.supersetGroup='A';b.supersetPosition=2;
     const instruction=`${PREFIX} Assistance superset A: do one A1 set, then one A2 set; rest ${roundRest} seconds after A2 before repeating. Log the matching set on each exercise. Take extra rest if technique changes. Main lifts stay as straight sets.`;
     addNote(a,'A1. '+instruction);addNote(b,'A2. '+instruction);
     const later=Math.max(ai,bi);s.items=s.items.filter((_,i)=>i!==ai&&i!==bi);s.items.splice(Math.min(later-1,s.items.length),0,a,b);pairs++;totals.supersets++;
@@ -96,12 +113,19 @@ export function applyTrainingFocus(input:Plan,events:Event[]=[]):{plan:Plan|null
   }
   errors.push(...weekErrors);
  }
+ // Flat add-on allowances retain instruction time; the final canonical item
+ // estimate also accounts for work, transitions and the resulting rest budget.
+ for(const s of plan.sessions.filter(strength)){
+  s.minutes=Math.max(s.minutes,estimateSessionMinutes(s.items,s.timeProfile==='brief'));
+  if(s.minutes>p.minutes)errors.push(`${s.title} in week ${s.week} needs about ${s.minutes} minutes after the selected add-ons, beyond your ${p.minutes}-minute window. Increase available time or remove an add-on; the main work and rest were retained.`);
+ }
  if(errors.length)return {plan:null,errors:[...new Set(errors)].slice(0,6)};
+ plan.evidence=[...new Set([...plan.evidence,...focusEvidence(focuses,p.age<18)])];
  plan.notes.push(`${PREFIX} Selected: ${focuses.map(f=>focusChoices.find(c=>c.id===f)!.title).join(', ')}. The primary discipline, scheduled dates and main lift sets and reps are retained. Added time includes setup and rest; do not shorten rest to hit the estimate.`);
  if(focuses.includes('core'))plan.notes.push(`${PREFIX} Core: ${totals.core} session blocks, at most two per week. Existing trunk work counts first; added work is ${p.age<18?'one set':'two sets'} of six dead-bug reps per side with 60-second rest.`);
  if(focuses.includes('jumping'))plan.notes.push(`${PREFIX} Jumps: ${totals.jumping} small practice blocks, one per week, ${p.age<18?'three':'six'} landings per block. Two-minute set rest, a full reset between reps, and no automatic increase. Qualified supervision is required for youth and first-time users.`);
  if(focuses.includes('supersets'))plan.notes.push(`${PREFIX} Supersets: ${totals.supersets} assistance pairs. A1 then A2, then the combined rest (at least two minutes). Pair notes tell you what to log; no time saving is assumed and no main lift is paired.`);
  if(focuses.includes('activity'))plan.notes.push(`${PREFIX} Activity support adds two 10-minute walks per week when this is a strength-only plan, or uses existing easy run/walk work. These walks are a small addition, not a complete activity or weight-management plan. Supersets do not guarantee fat loss.`);
- plan.notes.push(`${PREFIX} The exact sets and reps and scheduling cutoffs are conservative product choices within source principles, not a validated personalized program. Sources: ${focusSources.map(s=>s.url).join(' ; ')}`);
+ plan.notes.push(`${PREFIX} The exact sets and reps and scheduling cutoffs are conservative product choices within source principles, not a validated personalized program. Selected principle sources: ${selectedFocusSources(focuses,p.age<18).map(s=>s.url).join(' ; ')}`);
  return {plan,errors:[]};
 }

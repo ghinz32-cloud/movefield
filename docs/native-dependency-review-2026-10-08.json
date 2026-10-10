@@ -1,0 +1,115 @@
+{
+  "checkedAt": "2026-10-08T22:51:06.357656+00:00",
+  "applicationCommit": "4b92b0a4db915b8ea5b75ca5702b063e7c6f8677",
+  "parentDocumentationCommit": "4105086958c9df67de919ef758259bf02be0a2a7",
+  "platform": "native-toolchain",
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 15,
+      "critical": 0,
+      "total": 15
+    },
+    "dependencies": {
+      "prod": 508,
+      "dev": 29,
+      "optional": 38,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 547
+    }
+  },
+  "rootAdvisories": {
+    "braces": {
+      "name": "braces",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1240992,
+          "name": "braces",
+          "dependency": "braces",
+          "title": "braces vulnerable to stack-exhaustion denial of service through deeply nested patterns",
+          "url": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+          "severity": "high",
+          "cwe": [
+            "CWE-674"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<=3.0.3"
+        }
+      ],
+      "effects": [
+        "micromatch"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/braces"
+      ],
+      "fixAvailable": {
+        "name": "expo",
+        "version": "44.0.6",
+        "isSemVerMajor": true
+      }
+    },
+    "node-forge": {
+      "name": "node-forge",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1240912,
+          "name": "node-forge",
+          "dependency": "node-forge",
+          "title": "node-forge RSA PKCS#1 v1.5 signature verification accepts extra nested DigestAlgorithm elements",
+          "url": "https://github.com/advisories/GHSA-86w9-cpqp-85rv",
+          "severity": "high",
+          "cwe": [
+            "CWE-347"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": "<=1.4.0"
+        }
+      ],
+      "effects": [
+        "@expo/cli",
+        "@expo/code-signing-certificates"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/node-forge"
+      ],
+      "fixAvailable": {
+        "name": "expo",
+        "version": "44.0.6",
+        "isSemVerMajor": true
+      }
+    }
+  },
+  "confirmedInstalledPaths": [
+    "expo@57.0.27 > @expo/cli@57.0.28 > @expo/code-signing-certificates@0.0.6 > node-forge@1.4.0",
+    "expo@57.0.27 > @expo/cli@57.0.28 > node-forge@1.4.0",
+    "expo@57.0.27 > @expo/metro@56.0.2 > metro-file-map@0.84.5 > micromatch@4.0.8 > braces@3.0.3"
+  ],
+  "registryLatest": {
+    "braces": "3.0.3",
+    "node-forge": "1.4.0"
+  },
+  "officialPatchedVersions": {
+    "braces": null,
+    "node-forge": null
+  },
+  "rawAuditSha256": "7fc2195ef2cad8b05d78eaf748f499ff8c420543cbb30db567309dc8583f3683",
+  "resolution": "blocked-upstream-no-published-compatible-patch",
+  "releaseEligible": false,
+  "dependencyVersionsChanged": false,
+  "installedBinaryExposure": "not-verified"
+}

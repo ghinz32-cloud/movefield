@@ -1,0 +1,11 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> training-studio-mobile@0.1.0 test:engine
+> node --import tsx scripts/check-engine.ts
+
+PASS: 78 plans across all 7 starting weekdays, workout validation, partial save, optional measurements round-trip, retained history, unsafe read/link rejection, 989 exercises and 989 guides.
+PASS: native substitution survives validated save/reload; invalid program IDs are rejected.
+PASS: native plan archives are retained and guarded; saved machine context carries forward without changing history.
+PASS: local records are sealed with XChaCha20-Poly1305, bound to their storage slot, and reject tampering or wrong keys.
+PASS: phone transfer files round-trip, reject a wrong password, and keep the header authenticated.
+PASS: first-time lifters get one starting plan that matches their days; fit notes are shown.

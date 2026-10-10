@@ -1,0 +1,30 @@
+{
+  "observed_at": "2026-10-09T22:36:47.509Z",
+  "attempts": [
+    {
+      "platform": "android",
+      "artifact_id": 11648024239,
+      "file_name": "ai-android-arm64-preview.zip",
+      "connector_reference_created": true,
+      "materialization_attempts": 1,
+      "result": {
+        "status": "unavailable",
+        "error_type": "LibraryFileTransferError",
+        "error": "download failed with HTTP status 403"
+      }
+    },
+    {
+      "platform": "ios",
+      "artifact_id": 11647554837,
+      "file_name": "ai-ios-simulator-preview.zip",
+      "connector_reference_created": true,
+      "materialization_attempts": 1,
+      "result": {
+        "status": "unavailable",
+        "error_type": "LibraryFileTransferError",
+        "error": "download failed with HTTP status 403"
+      }
+    }
+  ],
+  "scope": "Both exact-current binary artifact materialization attempts returned HTTP 403. No independent ZIP hash, APK content/signature inspection, simulator archive inspection, installation or artifact-byte replay is claimed. Only official API artifact digests/metadata and job upload evidence are retained; signed download URLs are omitted."
+}

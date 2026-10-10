@@ -1,0 +1,7 @@
+{
+  "jobId": 113982397674,
+  "attempts": 2,
+  "tool": "github_fetch_workflow_job_logs",
+  "result": "Transport closed twice; full iOS job log was not obtained.",
+  "remainingOfficialEvidence": "Run and job success, compile/inspection step success, exact-source receipt, digest-verified official archive and CI inspection are retained."
+}

@@ -1,0 +1,233 @@
+{
+  "milestone": "U08a1",
+  "recordedFor": "2026-10-08",
+  "repository": "https://github.com/ghinz32-cloud/movefield.git",
+  "branch": "audit/2026-10-08-resume",
+  "parentCommit": "a4a56c16039b121b9179d5c9e0c1610207608f65",
+  "lastVerifiedReviewHead": "8cd39e42f2178b807d63af2042b70481041b028b",
+  "status": "download-cache-service-foundation-complete",
+  "sourceSha256": {
+    "lib/qwen-assets.json": "2794f6b673fa094d91d9bc8a406bb930f35374acbc17713007164c4c8828a547",
+    "lib/qwen-evaluation-lock.json": "114932e96feb85d49b4a914e87ed1ccd741bbfc8a631f6d94d4a3532159d220f",
+    "lib/qwen-catalog.ts": "bc40f5aa1d96622c412222dd94bd265ddddd897c6e3a27c164d1109abe5b01cb",
+    "lib/qwen-download.ts": "12727ceb58091e016532837744ca66c837643ff20d716d487cc2b5ce29bca57c",
+    "lib/browser-qwen-cache.ts": "ea323f5c02aeb940a0c639530b7043cc6c5b5439f7628d1d57d9c216e5a8e5c8",
+    "scripts/check-qwen-download.cjs": "9205827e614c1662398cc24a82f53cafbc01cfb2e608963413dd876ac5d52be5",
+    "scripts/check-browser-qwen-cache.cjs": "66c5c775d555046e7e36f9e64ee91b3559d36778c4f568d8306d634125dde597",
+    "package.json": "9f2b6591b81290ed8db2d0047a22064ccdecd24f913166c7850af24b6ef836be",
+    "pnpm-lock.yaml": "f37a9a3fbdcd8ff8fa0c1349eb96a674c3db67231c3ea8b1db63a3917d32829d",
+    "mobile/src/shared/qwen-catalog.ts": "bc40f5aa1d96622c412222dd94bd265ddddd897c6e3a27c164d1109abe5b01cb",
+    "mobile/docs/shared-snapshot.json": "91cd42aa900a5d3e46e5089e36d865631e0aa8b22f6e991ecbd49c31137f1237"
+  },
+  "commands": [
+    {
+      "command": "node scripts/check-qwen-download.cjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node scripts/check-browser-qwen-cache.cjs",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:regression",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run check",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run check (mobile)",
+      "exitCode": 0
+    },
+    {
+      "command": "node scripts/check-dependencies.mjs",
+      "exitCode": 0
+    }
+  ],
+  "regressionSuites": [
+    {
+      "check": "check-audit.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-backup.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-browser-qwen-cache.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-browser-vault.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-catalog.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-equipment-capacity.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-fitness-evaluation.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-fitness-grounding.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-focus.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-goals.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-library.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-storage.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-offline.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-onboarding.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-preferences.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-program-depth.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-program-design.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-program-selection.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-qwen-assets.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-qwen-download.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-revision-10.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-revision-11.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-security.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-shared.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-tools.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-training.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-transfer.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-workout-review.cjs",
+      "passed": true
+    }
+  ],
+  "downloadChecks": {
+    "checks": 190,
+    "syntheticOnly": true,
+    "realWeightsDownloaded": false,
+    "actualDeviceQualification": false,
+    "boundaries": [
+      "begin",
+      "append",
+      "seal",
+      "commit"
+    ],
+    "maxWriteBytes": 262144
+  },
+  "indexedDBChecks": {
+    "checks": 74,
+    "indexedDBImplementation": "fake-indexeddb 6.2.5",
+    "actualBrowser": false,
+    "physicalQuotaMeasured": false,
+    "realWeightsDownloaded": false
+  },
+  "testDependency": {
+    "name": "fake-indexeddb",
+    "version": "6.2.5",
+    "kind": "development-only",
+    "integrityVerified": true,
+    "sha512": "CGnyrvbhPlWYMngksqrSSUT1BAVP49dZocrHuK0SvtR0D5TMs5wP0o3j7jexDJW01KSadjBp1M/71o/KR3nD1w=="
+  },
+  "limits": {
+    "storageChunkBytes": 262144,
+    "maxIncomingChunkBytes": 4194304,
+    "cleanupKeysPerTransaction": 128,
+    "networkIdleMs": 60000,
+    "storageTransactionTimeoutMs": 30000
+  },
+  "logSha256": {
+    ".sites-runtime/validation/u08a1-regression.log": "1c2936d90d249d1ad46b7166e7dbbac05e73188238259c2882e9a19c4dfe12c7",
+    ".sites-runtime/validation/u08a1-web-types.log": "41d39cff24a2767fb623a40788a74db6700d2427f22215a1734981e58231bc25",
+    ".sites-runtime/validation/u08a1-native-types.log": "670d01d210acd2e995c8fa4949fa5481f8b3dde171e00650be865ae911fad166",
+    ".sites-runtime/validation/u08a1-lint.log": "5ba06a102cfaab767a3f313fba3e41c2800ec846ff0ef6364d6b943b2bf80f1a",
+    ".sites-runtime/validation/u08a1-dependencies.log": "112184f36c4e8afc81b366a2ccf891c8be75e87f64d74b0882feb2fbb12a0a08"
+  },
+  "integratedStdoutComplete": false,
+  "advisoryGate": {
+    "passedOnlyWithExistingExceptions": true,
+    "releaseBlockedBy": [
+      "GHSA-vfj7-8cjw-p6xm",
+      "GHSA-86w9-cpqp-85rv"
+    ],
+    "exceptionExpires": "2026-11-08T00:00:00Z"
+  },
+  "acceptance": {
+    "productOptInScreenWired": false,
+    "networkPolicyWired": false,
+    "realModelWeightsDownloaded": false,
+    "actualSecureBrowserAcceptance": false,
+    "browserOSDurabilityMeasured": false,
+    "physicalQuotaMeasured": false,
+    "inferenceExecuted": false,
+    "deviceQualified": false,
+    "cleanInstall": false,
+    "newCI": false,
+    "newProductionBuild": false,
+    "pushed": false,
+    "merged": false,
+    "deployed": false
+  },
+  "nextMilestone": "U08a2 explicit browser download/cancel/delete/off UI and scoped publisher/CDN policy; then U08b verified WebLLM worker inference and actual device qualification"
+}

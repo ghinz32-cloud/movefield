@@ -1,0 +1,147 @@
+{
+  "milestone": "S02 incremental encrypted native history",
+  "baselineGitHub": "d4f94890cf0c19c1bfb399d1080d615553e2f70a",
+  "recordedAt": "2026-10-09T15:35:03.417641+00:00",
+  "source": [
+    {
+      "path": "mobile/App.tsx",
+      "bytes": 75304,
+      "sha256": "8cb9571e44b3336e3fd8468318cdc81949f682084bc74a9ff4171b251dc374c2"
+    },
+    {
+      "path": "mobile/src/native-record-store.ts",
+      "bytes": 17575,
+      "sha256": "479bf44223580117ae35cd90d4ad06b5c72656cc66cf6d4ee8b4821173c3d724"
+    },
+    {
+      "path": "mobile/src/native-history.ts",
+      "bytes": 3305,
+      "sha256": "48fc60852aa1adebaf3b4ff30986c073ec63f2a61a2ac67a5b301143d7b4e348"
+    },
+    {
+      "path": "mobile/src/storage.ts",
+      "bytes": 20858,
+      "sha256": "e9eba784b5f70fe995f6299f4e8a3a750f2c00f4f65489b839fad863855e028f"
+    },
+    {
+      "path": "scripts/check-native-history.cjs",
+      "bytes": 32353,
+      "sha256": "c41456c8ee543c22e8914aaf813912c7269d9add844ce3baff47dc38497f32a5"
+    },
+    {
+      "path": "scripts/check-native-record-batches.cjs",
+      "bytes": 15879,
+      "sha256": "4da0912e54122536178fbf6ea01306723d33a561afaaa4995dcbc4507ac3dc14"
+    },
+    {
+      "path": "scripts/check-native-storage.cjs",
+      "bytes": 21772,
+      "sha256": "bebab246b57faca8b79d9a06b814fd34784b3aa64d3cc75355eacecfa5fd06b9"
+    }
+  ],
+  "logs": [
+    {
+      "path": ".sites-runtime/s02-history.log",
+      "bytes": 2529,
+      "sha256": "20142c51032e3e5c579b5e724165a8d489f198d2480b56cda1794ee64207e0b1"
+    },
+    {
+      "path": ".sites-runtime/s02-batches.log",
+      "bytes": 2739,
+      "sha256": "abcd74767964856df1e4dbbc3279a962ed200c3621a5cdf37bf7e11ddd12ac3b"
+    },
+    {
+      "path": ".sites-runtime/s02-storage.log",
+      "bytes": 259,
+      "sha256": "0ffc7085b312fd70f29528ec6c9fd62db398bf673e6dc561d12db19db1fe36e0"
+    },
+    {
+      "path": ".sites-runtime/s02-sqlite.log",
+      "bytes": 3033,
+      "sha256": "9164130b6f3d1be5b340e00ec6aff7fad62b92d6d687ee3e34b9cd0a439f7879"
+    },
+    {
+      "path": ".sites-runtime/s02-regression.log",
+      "bytes": 48425,
+      "sha256": "1961c997cf508ca9d8c91036c968a093cf2ecd99921aef3b8661897ae5c2042d"
+    },
+    {
+      "path": ".sites-runtime/s02-lint.log",
+      "bytes": 270,
+      "sha256": "5ba06a102cfaab767a3f313fba3e41c2800ec846ff0ef6364d6b943b2bf80f1a"
+    },
+    {
+      "path": ".sites-runtime/s02-web-types.log",
+      "bytes": 158,
+      "sha256": "41d39cff24a2767fb623a40788a74db6700d2427f22215a1734981e58231bc25"
+    },
+    {
+      "path": ".sites-runtime/s02-native-types.log",
+      "bytes": 99,
+      "sha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f"
+    },
+    {
+      "path": ".sites-runtime/s02-native-engine.log",
+      "bytes": 521,
+      "sha256": "f620e82625b8a0e216a07d78ec4aff8f022c1563c5cd0cacda4512e31ffb098a"
+    },
+    {
+      "path": ".sites-runtime/s02-build.log",
+      "bytes": 3257,
+      "sha256": "03893a814665009730ea028d5bb140064ce6e2137484a98bfab5a806085c9868"
+    },
+    {
+      "path": ".sites-runtime/s02-production.log",
+      "bytes": 1677,
+      "sha256": "b6b5f6401180a4e0fbcfb5f91b1376e2ae260a5854743a6b799ccf19119b88b4"
+    },
+    {
+      "path": ".sites-runtime/s02-mobile-export.log",
+      "bytes": 2024,
+      "sha256": "49e618a951d2b1314c9813cda687bc4a8285225eedb085bd41437c557f3afb15"
+    }
+  ],
+  "applicationRegressionSuites": 45,
+  "productionSuites": 3,
+  "historyScenarios": 27,
+  "historyAssertions": 192,
+  "batchScenarios": 13,
+  "retainedSQLiteScenarios": 14,
+  "cachedSave": {
+    "completedWorkouts": [
+      3,
+      2000
+    ],
+    "sqlSelects": 18,
+    "secureStoreReads": 3,
+    "historyRowsRead": 0,
+    "historyRowsWritten": 0
+  },
+  "mobileHermesArtifacts": [
+    {
+      "platform": "ios",
+      "path": ".sites-runtime/s02-mobile-export/_expo/static/js/ios/index-479ece5ea5b454c8ae22c4218d27fcc1.hbc",
+      "bytes": 4476380,
+      "sha256": "87d83df807f6f70137998898982b0df9a1424a4a1ae71aa5396f1aa48f3bb715"
+    },
+    {
+      "platform": "android",
+      "path": ".sites-runtime/s02-mobile-export/_expo/static/js/android/index-81c01469a25bf7776369afae3b11a4c7.hbc",
+      "bytes": 4485645,
+      "sha256": "b411220ce264f54ff5bca51cdd73e8619db720658b2030f2589d11332b4484a5"
+    }
+  ],
+  "offlineManifest": {
+    "path": "dist/client/offline-build.json",
+    "bytes": 9533,
+    "sha256": "1238cefb3408b92986f7bc0ffd68300858ec26b6b9ce5dcd4ce7c04928a5f2d3"
+  },
+  "limits": [
+    "No physical Android/iOS process-kill/power/free-space measurements",
+    "No browser acceptance inferred from tests",
+    "Same JS runtime lifecycle; separate OS processes/JS runtimes unsupported",
+    "Full State validation remains O(history), 5M-character/5000-workout limits retained",
+    "Recovery copy may retain legacy plaintext; SQL chunk corruption can block export",
+    "No native model inference, cloud account, deployment or main merge"
+  ]
+}

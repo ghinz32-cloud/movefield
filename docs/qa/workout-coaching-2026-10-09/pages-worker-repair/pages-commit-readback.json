@@ -1,0 +1,35 @@
+{
+  "sha": "520db44ee3b86345826ea19d96148b61f146dc9e",
+  "node_id": "C_kwDOVAFhB9oAKDUyMGRiNDRlZTNiODYzNDU4MjZlYTE5ZDk2MTQ4YjYxZjE0NmRjOWU",
+  "url": "https://api.github.com/repos/ghinz32-cloud/movefield/git/commits/520db44ee3b86345826ea19d96148b61f146dc9e",
+  "html_url": "https://github.com/ghinz32-cloud/movefield/commit/520db44ee3b86345826ea19d96148b61f146dc9e",
+  "author": {
+    "name": "ghinz32-cloud",
+    "email": "ghinz32@gmail.com",
+    "date": "2026-10-09T23:07:33Z"
+  },
+  "committer": {
+    "name": "ghinz32-cloud",
+    "email": "ghinz32@gmail.com",
+    "date": "2026-10-09T23:07:33Z"
+  },
+  "tree": {
+    "sha": "b122a28494878782f3a3eb9c199b02902f15aa9c",
+    "url": "https://api.github.com/repos/ghinz32-cloud/movefield/git/trees/b122a28494878782f3a3eb9c199b02902f15aa9c"
+  },
+  "message": "Deploy verified Movefield coaching worker policy from c60ee243\n\nSource: c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58\nSource tree: 0d84999d80c57c7731713aea85cec5901e54475c\nLocally tested source: 873b3e0e01c1ff4fb89d1698857650a57c0bda59\nPages manifest: 8c60686b3c01114959052f980441ce9b9da5c0ee309c50891542463fc51c5f6d\nComplete generated output: 63 files; 632 Pages, 745 policy and 102 runtime assertions. Real browser and GPU inference remain unverified.",
+  "parents": [
+    {
+      "sha": "de4ac3cbff1dd36b2144290044e1c7f6ada6428a",
+      "url": "https://api.github.com/repos/ghinz32-cloud/movefield/git/commits/de4ac3cbff1dd36b2144290044e1c7f6ada6428a",
+      "html_url": "https://github.com/ghinz32-cloud/movefield/commit/de4ac3cbff1dd36b2144290044e1c7f6ada6428a"
+    }
+  ],
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  }
+}

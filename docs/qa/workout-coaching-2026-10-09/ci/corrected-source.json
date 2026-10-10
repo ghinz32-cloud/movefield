@@ -1,0 +1,45 @@
+{
+  "sha": "96496ffd4e94b32becccb5db61667fb4fea4ce01",
+  "tree": "20397284f4c07cf0b8b5a1edc554b04d39ea0976",
+  "parents": [
+    "c0aab491084f2b1a7d2829925e4bba434d6d6148"
+  ],
+  "files": [
+    {
+      "filename": "HANDOFF.md",
+      "status": "modified",
+      "sha": "5852e96eee628af60af24b1d027253ec246c161b",
+      "additions": 6,
+      "deletions": 0
+    },
+    {
+      "filename": "TASKS.md",
+      "status": "modified",
+      "sha": "498b6e288a78cb32bec784c13ecef27ac141e5dc",
+      "additions": 3,
+      "deletions": 1
+    },
+    {
+      "filename": "components/workout-coach.tsx",
+      "status": "modified",
+      "sha": "c31d17966890934d884989473871017538ac6be5",
+      "additions": 6,
+      "deletions": 4
+    },
+    {
+      "filename": "docs/calendar-and-coaching-2026-10-09.md",
+      "status": "modified",
+      "sha": "ca23927a8012f5dff8ac8d792dfd80e3e05d6648",
+      "additions": 4,
+      "deletions": 2
+    },
+    {
+      "filename": "scripts/check-workout-coaching-ui.cjs",
+      "status": "modified",
+      "sha": "415082aef4621e5a79da4dc0847f8412d2fde3f6",
+      "additions": 2,
+      "deletions": 0
+    }
+  ],
+  "url": "https://github.com/ghinz32-cloud/movefield/commit/96496ffd4e94b32becccb5db61667fb4fea4ce01"
+}

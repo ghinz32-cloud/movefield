@@ -1,0 +1,423 @@
+{
+  "sha": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+  "tree": "0d84999d80c57c7731713aea85cec5901e54475c",
+  "parents": [
+    "96496ffd4e94b32becccb5db61667fb4fea4ce01"
+  ],
+  "url": "https://github.com/ghinz32-cloud/movefield/commit/c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+  "files": [
+    {
+      "filename": "HANDOFF.md",
+      "status": "modified",
+      "sha": "94f99a7ccdca2125f6bfab4389580513bccd4bcc",
+      "additions": 8,
+      "deletions": 0
+    },
+    {
+      "filename": "TASKS.md",
+      "status": "modified",
+      "sha": "8dc43ef372078e3b54028aecc4ebcae520a55626",
+      "additions": 4,
+      "deletions": 1
+    },
+    {
+      "filename": "docs/calendar-and-coaching-2026-10-09.md",
+      "status": "modified",
+      "sha": "a927840329c89d0e7b0080c7b1d1c28f7440f44b",
+      "additions": 63,
+      "deletions": 4
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/README.md",
+      "status": "added",
+      "sha": "411a5fb1ce7a6c1be8b50547b3f062b3c33f2b40",
+      "additions": 23,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/SHA256SUMS",
+      "status": "added",
+      "sha": "5ff11f478b9cbe9d1ebb02a910488852377eb619",
+      "additions": 21,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/android-job-114053245360.log",
+      "status": "added",
+      "sha": "009a540a473d0df7f870b377fbe2769a04e8d879",
+      "additions": 1566,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/corrected-integration.json",
+      "status": "added",
+      "sha": "3d52177c07bec53e333d7b73eebaa45a3fcf3bca",
+      "additions": 9,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/corrected-native-gate-artifacts-final.json",
+      "status": "added",
+      "sha": "e63bfe749b38ddf64f44cb4183c6148080d5de52",
+      "additions": 23,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/corrected-native-gate-job-114054754463.log",
+      "status": "added",
+      "sha": "ae8ca72519828e29561e4f57be379fb5e8f929b2",
+      "additions": 194,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/corrected-native-gate-jobs-final.json",
+      "status": "added",
+      "sha": "0f01e57d62ea2df396959fd52718d8c491012826",
+      "additions": 68,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/corrected-native-gate-run-final.json",
+      "status": "added",
+      "sha": "2b0f2f04291af73484a60781ddd30b08872c5637",
+      "additions": 248,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/corrected-source.json",
+      "status": "added",
+      "sha": "3791ac8838982aecf12d71885a94f858aa52a59a",
+      "additions": 45,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/current-artifact-retrieval-status.json",
+      "status": "added",
+      "sha": "07875f9ab0f3c199dea6263f8a303fa77542a66e",
+      "additions": 30,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/final-quality-artifacts.json",
+      "status": "added",
+      "sha": "19529fece3e0260311cb16c2d594b44054a7cf81",
+      "additions": 23,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/final-quality-job-114054952762.log",
+      "status": "added",
+      "sha": "7a50b88bb68308318fd2c5913d20c01c2ad6e44a",
+      "additions": 2335,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/final-quality-jobs.json",
+      "status": "added",
+      "sha": "bc6475a43bf57f5d9b585bfd7451656d0d65c738",
+      "additions": 116,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/final-quality-run.json",
+      "status": "added",
+      "sha": "e6cfabf55c6ae402443c4a393c6c58c5b1abb9c7",
+      "additions": 248,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/final-summary.json",
+      "status": "added",
+      "sha": "e32070334d41bd2cd30c5ce6de0b5815169952a4",
+      "additions": 184,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/integration.json",
+      "status": "added",
+      "sha": "ebf8a1829b54d9c964e3306da059b2ef39155182",
+      "additions": 9,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/inventory.json",
+      "status": "added",
+      "sha": "41e62f71ec67f9ade934e9c9c6e2702662918957",
+      "additions": 129,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/ios-log-retrieval-status.json",
+      "status": "added",
+      "sha": "fda7d997f3383a2fdbb307d0d32c0dbb9b5afd3e",
+      "additions": 14,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/native-artifacts-final.json",
+      "status": "added",
+      "sha": "619e988717f058a152551d143bb9a8e36a4490c5",
+      "additions": 99,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/native-jobs-final.json",
+      "status": "added",
+      "sha": "ee8adebbaf09f59b45646ef8311670463b78302f",
+      "additions": 401,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/native-run-final.json",
+      "status": "added",
+      "sha": "3e17383c1810e0935be06faac02ebb20f2d28176",
+      "additions": 248,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/ci/source.json",
+      "status": "added",
+      "sha": "7e74ca2fa6177bc738b3a011bf5048b91abfb9ba",
+      "additions": 8,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/native-input-equality.json",
+      "status": "added",
+      "sha": "def4cf2d46c40d25cb8f58264edb42cd09d8c030",
+      "additions": 21,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/controlled-worker-policy-verification.json",
+      "status": "added",
+      "sha": "be582c8fe5b84cf589d2d6db525b1903ba0ddabf",
+      "additions": 45,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/deployment-jobs.json",
+      "status": "added",
+      "sha": "de94da7c9d84919ea18537e481d9b8ee4af942e6",
+      "additions": 100,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/deployment-run.json",
+      "status": "added",
+      "sha": "0ce6bd14e4036b5d68fb1c93a62c772d9ccb2a8f",
+      "additions": 224,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/evidence-inventory.json",
+      "status": "added",
+      "sha": "55cf4350349743b04926be685899f1849a5f33d2",
+      "additions": 93,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/generated-inventory.json",
+      "status": "added",
+      "sha": "d45da0f76adc335a66708169ed7c42cfca9253a2",
+      "additions": 388,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/independent-git-tree-readback.json",
+      "status": "added",
+      "sha": "7ed4cfb2e79ccd86997abd88c23539b5c6fd6ff3",
+      "additions": 386,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/live-readback.json",
+      "status": "added",
+      "sha": "16386a35dbdb111e4bfd56b98dbd91d597bceb46",
+      "additions": 1402,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/mobile-package.log",
+      "status": "added",
+      "sha": "74ed797a9cd33e0b1649ac3472c2db87f997f18a",
+      "additions": 1,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/native-starter-readback.json",
+      "status": "added",
+      "sha": "696b660c3b0e7830db7023e45be4ee181dc1d3da",
+      "additions": 773,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/pages-build.log",
+      "status": "added",
+      "sha": "b524ffe637a96ca31dcee8d36bc9c2e1a45f8b51",
+      "additions": 48,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/pages-check.log",
+      "status": "added",
+      "sha": "26b1d37fe2d7621207544f65fed600a6c591cef3",
+      "additions": 9,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/pages-commit-readback.json",
+      "status": "added",
+      "sha": "08d78117a28c1ac73f7f1c98a0896c3f3c949a51",
+      "additions": 35,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/pages-tree-readback.json",
+      "status": "added",
+      "sha": "b02384a9071949c64b9f5bd8cb6f05ae1b14510a",
+      "additions": 539,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/publication.json",
+      "status": "added",
+      "sha": "55e63aa66a3dfb0b1bc63caa099ea4694ad27ed7",
+      "additions": 31,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/published-source-readback.json",
+      "status": "added",
+      "sha": "58d5d425584fecd21208c2455da18cba8a693400",
+      "additions": 35,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/verify-live-pages.py",
+      "status": "added",
+      "sha": "5c118309e028243165f51bfbf15b92b49b00884e",
+      "additions": 100,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/workout-coaching-runtime-checks.json",
+      "status": "added",
+      "sha": "818125f2b715eb71cd8090ce519c106539874bd0",
+      "additions": 7,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/pages/workout-coaching-worker-policy-checks.json",
+      "status": "added",
+      "sha": "e67faf8c8b0606d9362a1cc944b7d87758f75388",
+      "additions": 7,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/site-controlled-worker/evidence-inventory.json",
+      "status": "added",
+      "sha": "0146fa7a692ebc728ffc96c3a32b7cf85c78cfc6",
+      "additions": 42,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/site-controlled-worker/local-validation.json",
+      "status": "added",
+      "sha": "6f9de69f877b86f4299842c7bbebac10f01fcc09",
+      "additions": 45,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/site-controlled-worker/site-controlled-worker-checks.json",
+      "status": "added",
+      "sha": "35a56a0ee343dbd009c945e5ee42f81aa1d61869",
+      "additions": 145,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/site-controlled-worker/site-controlled-worker-fixture.log",
+      "status": "added",
+      "sha": "35a56a0ee343dbd009c945e5ee42f81aa1d61869",
+      "additions": 145,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/site-controlled-worker/site-worker-correction-build.log",
+      "status": "added",
+      "sha": "18ecd7c04edca547b4c5e5790b953fee7724b94b",
+      "additions": 63,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/site-controlled-worker/site-worker-correction-production.log",
+      "status": "added",
+      "sha": "ca60ebf5030b0c6ba36b2efc9a690748f8d6e49c",
+      "additions": 16,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/site-controlled-worker/workout-coaching-runtime-checks.json",
+      "status": "added",
+      "sha": "818125f2b715eb71cd8090ce519c106539874bd0",
+      "additions": 7,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qa/workout-coaching-2026-10-09/site-controlled-worker/workout-coaching-worker-policy-checks.json",
+      "status": "added",
+      "sha": "584f9b34fc6314b1e69bf8ba650132d8bfa27a93",
+      "additions": 7,
+      "deletions": 0
+    },
+    {
+      "filename": "docs/qwen-muse-current-feasibility-2026-10-09.md",
+      "status": "modified",
+      "sha": "45f7e339f3c2041b96ae7a092f24cd35f3f4f976",
+      "additions": 5,
+      "deletions": 9
+    },
+    {
+      "filename": "lib/workout-coaching-worker-security.ts",
+      "status": "modified",
+      "sha": "7ba3276ea5febe5bb6e5b26bc53cfee7b5d9c56f",
+      "additions": 33,
+      "deletions": 11
+    },
+    {
+      "filename": "public/sw.js",
+      "status": "modified",
+      "sha": "36e0b7dc73ef1c9c9c08890d2304f0ae088b9a90",
+      "additions": 32,
+      "deletions": 1
+    },
+    {
+      "filename": "scripts/check-built-offline.mjs",
+      "status": "modified",
+      "sha": "8dc6b7c0122bf0a7bca066d8ac4d0226854f089d",
+      "additions": 3,
+      "deletions": 1
+    },
+    {
+      "filename": "scripts/check-offline-fixture.mjs",
+      "status": "modified",
+      "sha": "f700647b48a473d1fb426eef25ca62fb8c732502",
+      "additions": 18,
+      "deletions": 8
+    },
+    {
+      "filename": "scripts/check-workout-coaching-worker-policy.cjs",
+      "status": "modified",
+      "sha": "7280e86d393035a581ca9d62ee0af20d763cce43",
+      "additions": 35,
+      "deletions": 2
+    },
+    {
+      "filename": "scripts/generate-offline.mjs",
+      "status": "modified",
+      "sha": "fccea704a394387bbea8bdc8a659eb32f48ecdc1",
+      "additions": 5,
+      "deletions": 2
+    }
+  ]
+}

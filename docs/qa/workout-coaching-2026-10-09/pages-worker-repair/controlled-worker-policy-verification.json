@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "sourceCommit": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+  "localTestedSource": "873b3e0e01c1ff4fb89d1698857650a57c0bda59",
+  "sourceTree": "0d84999d80c57c7731713aea85cec5901e54475c",
+  "pagesCommit": "520db44ee3b86345826ea19d96148b61f146dc9e",
+  "manifestVersion": "8c60686b3c01114959052f980441ce9b9da5c0ee309c50891542463fc51c5f6d",
+  "workerPolicy": {
+    "path": "runtime/workout-coaching-worker.js",
+    "csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+  },
+  "liveExactBytes": [
+    {
+      "path": "pages-manifest.json",
+      "bytes": 7591,
+      "sha256": "0b49796fafd250c8cd8193449474ffa03f8bc6979cd10462f6c08fdc022eacaa",
+      "matchesTestedBuild": true
+    },
+    {
+      "path": "runtime/workout-coaching-worker.js",
+      "bytes": 18826,
+      "sha256": "002a062f3fb540d737a055901ce24949fa444e6c3c8a87669f08beb96b2a08e6",
+      "matchesTestedBuild": true
+    },
+    {
+      "path": "sw.js",
+      "bytes": 9986,
+      "sha256": "371b26713fb8ae9e00eb1bf4d2b439f53b1bb7169cfd764d295af3a547caa0f5",
+      "matchesTestedBuild": true
+    }
+  ],
+  "generatedSWAssertions": 632,
+  "runtimeControllerPolicyAssertions": 745,
+  "runtimeOperationAssertions": 102,
+  "siteOfflineScenarios": 34,
+  "firstVisitWithoutController": "refused with reload instruction",
+  "ordinaryHTTPWithoutWorkerCSP": "refused",
+  "changedVersionOrController": "refused",
+  "changedWorkerHashOrBytes": "refused",
+  "headerInjection": "only after pinned response byte hash check",
+  "networkInferencePolicy": "connect-src 'none'",
+  "manifestMaxBytes": 1048576,
+  "workerProbeMaxBytes": 33554432,
+  "browserExecuted": false,
+  "gpuInferenceExecuted": false,
+  "qualification": "live HTTPS bytes plus mocked controller/SW/runtime harness only"
+}

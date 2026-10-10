@@ -1,0 +1,1 @@
+{"profiles":1125,"accepted":527,"rejected":598,"profileFailureCount":0,"additionalCases":[{"name":"Walking flat allowance cannot bypass canonical final time","status":"pass"},{"name":"Manual interests cannot change targets or add prescription evidence","status":"pass"}]}

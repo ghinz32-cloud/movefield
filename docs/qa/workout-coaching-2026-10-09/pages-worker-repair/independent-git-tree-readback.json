@@ -1,0 +1,390 @@
+{
+  "schema": 1,
+  "pagesCommit": "520db44ee3b86345826ea19d96148b61f146dc9e",
+  "tree": "b122a28494878782f3a3eb9c199b02902f15aa9c",
+  "files": 63,
+  "remoteObjectFetched": true,
+  "fetchCommand": "git fetch --no-write-fetch-head origin 520db44ee3b86345826ea19d96148b61f146dc9e",
+  "matchesGeneratedTree": true,
+  "allBlobHashesAndModesMatch": true,
+  "entries": [
+    {
+      "path": ".nojekyll",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "assets/account-security-BMvM1HMu.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "0ecf1338b392cb14da8bac4c214d56efc8a687c3"
+    },
+    {
+      "path": "assets/account-sync-94JU-mmb.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "a23458434e437c338504ff285435ebd25a8e3d72"
+    },
+    {
+      "path": "assets/button-BZyDGPNM.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "4e2d61d8f62b84965dfdf08f07a4f5cb9a7ecf0d"
+    },
+    {
+      "path": "assets/cloud-envelope-C74ZEbMR.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "21c050c9869f921d2a1253f74bc317de18b4c5a6"
+    },
+    {
+      "path": "assets/customize-CnMED5ja.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "3170209c2089b9b799c11b6828c01a9540ecc83e"
+    },
+    {
+      "path": "assets/daily-feedback-DyhRMtb8.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "66cc0e4c9517a021473ebd47eddefa381f277fcf"
+    },
+    {
+      "path": "assets/equipment-limits-CpHvxzsM.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "5cae02942f805de6d7a62498658ae9db34b1dcce"
+    },
+    {
+      "path": "assets/exercise-substitutions-CiUmlXxS.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e7c2c0f1ef372f9247562dee935e1dd6daec479a"
+    },
+    {
+      "path": "assets/index-COMBkNy7.css",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "4f3e2acdfeb46bd373722df5c3422e7835c98487"
+    },
+    {
+      "path": "assets/index-CgajflZF.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "2a90e73a0825cf0190952f36c62cba7b659aff17"
+    },
+    {
+      "path": "assets/jsx-runtime-DUAcabCT.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "11df460257623c7c27fbdcf3b5bef58e053bc2d3"
+    },
+    {
+      "path": "assets/plan-customizer-BiKgyGE1.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "d43c01bad914985899cfe0fe9d031f949064bd05"
+    },
+    {
+      "path": "assets/progress-dashboard-PXcHSRtU.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "2a913eacd0265bc033842bfafbec1a98da617569"
+    },
+    {
+      "path": "assets/qwen-model-files-DhOkYO_T.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "8799f4da9eda42d383464a6f8f95fd9b71e496a6"
+    },
+    {
+      "path": "assets/qwen-unavailable-IXSK3HSm.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "2a12d98f4e4a79dc483f65c957388f097c12da2a"
+    },
+    {
+      "path": "assets/react-dom-Ci36WYJj.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "3a434437c41120344499ef6e63844983cf4b75f0"
+    },
+    {
+      "path": "assets/research-library-YDRmiqP-.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "8b537d0a387f241c56d4648e71cfb22d00acbd95"
+    },
+    {
+      "path": "assets/session-guide-3EUQPwSU.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "38ff17e21a877e1bedeaf380ae98f23183ede019"
+    },
+    {
+      "path": "assets/tracking-editor-DBo3vjNH.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "90003282af0b11a27840046c720d72801033ee03"
+    },
+    {
+      "path": "assets/training-day-c54AaLBh.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "1054663d5f537e08f69c434e504cf40397b8d4ae"
+    },
+    {
+      "path": "assets/training-jn8H07LS.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "4d17f2d9d8450d7f29187039f10080eedc3fa5bc"
+    },
+    {
+      "path": "assets/training-onboarding-DME_WJCO.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "f995e5bf3aa819e9dac7bd0b06be4cbe1b8b9e80"
+    },
+    {
+      "path": "assets/transfer-bundle-yk--Q7cp.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e906ff7413039050c781ebf70c57ba2f1efa9960"
+    },
+    {
+      "path": "assets/transfer-dialog-Bp-xjYnY.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "78ba2de6f38ae29fc9978a0cfcc976648c946996"
+    },
+    {
+      "path": "assets/workout-coach-Cs9ADjQI.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "b642dca2409c234441bfed222ef5484edf3dc7f4"
+    },
+    {
+      "path": "assets/workout-coaching-CNi2ZBAe.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "6338a82877735ca24a986e49b2986c82efddc981"
+    },
+    {
+      "path": "assets/workout-coaching-identity-CDHS7c86.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "5e994f28e653deaf795fd3c4fea94d20f53e1e74"
+    },
+    {
+      "path": "assets/workout-review-FffrZHRw.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "3d9386f99534b976696faf80940146458fbabc9c"
+    },
+    {
+      "path": "assets/x-CEXRaG68.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "d8b41e887c6691b95996f316e288bad03ec19001"
+    },
+    {
+      "path": "downloads/movefield-mobile-r14.zip",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "d977bdf623989568df3f7680c6f5ac7c90ad7584"
+    },
+    {
+      "path": "exercise-content.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "b49db0f14c7e3ec0af86d4a573ba925c1be5d7c0"
+    },
+    {
+      "path": "exercise-guides.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "03122e7f239cc31e751f5e8d90259f8e2b489436"
+    },
+    {
+      "path": "favicon.svg",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "5b817f5647e2f8372e2bce0a777005be78a5f5b0"
+    },
+    {
+      "path": "fitness-research.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "4121fb31f222b621fcc47bb55496e3adb6e8446a"
+    },
+    {
+      "path": "fonts/Atkinson-Hyperlegible-OFL.txt",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "54e3127833733abae13b8da2b41c068f5d6197a3"
+    },
+    {
+      "path": "fonts/Barlow-Condensed-OFL.txt",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "2f22ba6ca4dbc12145ae40b14c3368f387cba0e2"
+    },
+    {
+      "path": "fonts/Inter-OFL.txt",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "21f6aff961064c2e429f570995e446bcdd555422"
+    },
+    {
+      "path": "fonts/Lexend-OFL.txt",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "b1477aae6210797999bd5ad9c13bcae5fc98788b"
+    },
+    {
+      "path": "fonts/Nunito-OFL.txt",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "c8210f08ca3cece05b4f7baa428afe8e1abe3293"
+    },
+    {
+      "path": "fonts/Oswald-OFL.txt",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "76a02175dbde6453b8527c9163b904c1a2567c7c"
+    },
+    {
+      "path": "fonts/Saira-OFL.txt",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "38d9b88131f7d2f8ef7fdb0d48e4c9e8aa3fd35d"
+    },
+    {
+      "path": "fonts/atkinson-hyperlegible-latin-400-normal.woff2",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "2e43c90d5456bbf449b5c4f8e119ae83d129abae"
+    },
+    {
+      "path": "fonts/atkinson-hyperlegible-latin-700-normal.woff2",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "bc31903acd1b6772780b04b4f6f7e0e9f36021bb"
+    },
+    {
+      "path": "fonts/barlow-condensed-semibold.ttf",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "9df66576492bee4bd0559066825472808fa98adc"
+    },
+    {
+      "path": "fonts/inter-variable.ttf",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "047c92f6e2212473dc436020afed689527076d44"
+    },
+    {
+      "path": "fonts/lexend-latin-400-normal.woff2",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "a65647312da6b8cc7f3120dc9eb1f9dfba6f2a10"
+    },
+    {
+      "path": "fonts/lexend-latin-700-normal.woff2",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "1639b34452a1686eaeb8d2f5f4a890df8966199c"
+    },
+    {
+      "path": "fonts/nunito-latin-400-normal.woff2",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "8c68e5744e4d08f9d720f9607d42d683c125f9fd"
+    },
+    {
+      "path": "fonts/nunito-latin-700-normal.woff2",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "5b423ba969e8afefa066dc42eb1bd3b5bebbb96c"
+    },
+    {
+      "path": "fonts/oswald-latin-600-normal.woff2",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "b19a892ae3f81d8ac37c50363e12bb5218febcea"
+    },
+    {
+      "path": "fonts/oswald-latin-700-normal.woff2",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "e1290c1e8c19d93f1f30030b4c1e9782f3d5d8ac"
+    },
+    {
+      "path": "fonts/saira-latin-400-normal.woff2",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "3314cfcdf4f0ddbe5221f6dcbab49f91d52c1bfe"
+    },
+    {
+      "path": "fonts/saira-latin-700-normal.woff2",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "bb6887f55185d378936139333f3d351a7a59e927"
+    },
+    {
+      "path": "index.html",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "357dc743ffbc4e0843ec87ba193e22a5df5c8c81"
+    },
+    {
+      "path": "pages-manifest.json",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "daec880ab3c86022e643f64e2b9fb359bcc51450"
+    },
+    {
+      "path": "privacy.html",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "6df664f9d82346cd53642c2dbbc7053440ac6001"
+    },
+    {
+      "path": "runtime/lib-2aWPZDmS.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "4782e256759bd26de765fede488a317d03cb604c"
+    },
+    {
+      "path": "runtime/lib-BQHvV-JG.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "a7d729f4b50c8220128b36d5006cfa43f3170304"
+    },
+    {
+      "path": "runtime/qwen-worker.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "9f10097256a0642ac72a4a22e293bb3f42f1b8c9"
+    },
+    {
+      "path": "runtime/training-BicQG7jj.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "9042a934601409a54a4f2151bd02c1ccfc45e28f"
+    },
+    {
+      "path": "runtime/workout-coaching-worker.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "9f824bffcd4004303947e9b272aad98edfe7b2e8"
+    },
+    {
+      "path": "sw.js",
+      "mode": "100644",
+      "type": "blob",
+      "blob": "165a93bebae959aa56dbe2803f19060fa6e42558"
+    }
+  ]
+}

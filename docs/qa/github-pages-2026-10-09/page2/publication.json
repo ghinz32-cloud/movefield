@@ -1,0 +1,59 @@
+{
+  "sourceRemote": "d740c61084f44505273e900f7672ac92bae1a218",
+  "sourceLocal": "8dd2f9e6ba77b2d973d87210b686bda9dffa0a7e",
+  "sourceTree": "c1217e053085154ca19c1952301ef4f47f3c0ca2",
+  "sourceParent": "06ca10f536397bb845dd1fdea08b179818e898b2",
+  "pagesRemote": "4ab2b7ade02a431eb0798166149fbe882c893555",
+  "pagesLocal": "3bad94eec3d7aa04c418bbaef4aaa62dcc64085e",
+  "pagesTree": "9fed5c143e036db232a2afb18d85dc2a386486be",
+  "pagesParent": "47f0f2c41ca6d7166f521f44a4987c5d42027a7a",
+  "expectedHeadLeases": true,
+  "sourceTreeAndReportReadback": true,
+  "pagesTreeAndManifestReadback": true,
+  "liveVerified": true,
+  "blobs": [
+    {
+      "path": "assets/index--lcHmWne.js",
+      "sha": "4d1d2b67e1715b2fa998143f47271f2940b57f06",
+      "bytes": 1504076
+    },
+    {
+      "path": "assets/progress-dashboard-D7SQsE0c.js",
+      "sha": "c922ae4adc549808d609a1e9375942c0cc7b4d44",
+      "bytes": 368466
+    },
+    {
+      "path": "assets/research-library-dG25azH1.js",
+      "sha": "a76209221a6f7f256d9a5211af9b2b294149185d",
+      "bytes": 4466
+    },
+    {
+      "path": "assets/transfer-dialog-bz8GaSkU.js",
+      "sha": "099a281aa70cb250919c7cb97016e111efae2879",
+      "bytes": 36223
+    },
+    {
+      "path": "downloads/movefield-mobile-r14.zip",
+      "sha": "06268b1856e4809e9501e256528afeca7661780f",
+      "bytes": 2077030
+    },
+    {
+      "path": "index.html",
+      "sha": "85608587a62743f2390e4b0b5304e420f22cffb4",
+      "bytes": 1039
+    },
+    {
+      "path": "pages-manifest.json",
+      "sha": "473856c8b82c119623d2d281fc03378899998c1c",
+      "bytes": 4264
+    },
+    {
+      "path": "sw.js",
+      "sha": "b698c16c66016da83074bbbffd74d6a664d1ffbd",
+      "bytes": 6254
+    }
+  ],
+  "liveFileCount": 37,
+  "deploymentRun": 37975838469,
+  "deploymentConclusion": "success"
+}

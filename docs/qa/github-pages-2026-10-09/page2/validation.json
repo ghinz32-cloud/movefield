@@ -1,0 +1,80 @@
+{
+  "milestone": "PAGE2",
+  "sourceBaseLocal": "dab3685eb057765f486ee4aa2fcedb491e6f6d8a",
+  "sourceBaseRemote": "06ca10f536397bb845dd1fdea08b179818e898b2",
+  "sourceHashes": {
+    "static-web/sw-template.js": "fee548f52250d007e6ada60a0d8a0b7e2ae26fc5796e18d9f60b2f4e77f48fd7",
+    "scripts/build-pages.mjs": "3a0fe5a5261b51c13d7faa9f0ac860fd43954c66ea9cc50691ed2b0c9d5a0a28",
+    "scripts/check-pages.mjs": "af2f5e6d46369a21f0f4d8e7a67a8b63da8cbc13b4e1dfb237f79586ed5ca83c",
+    "docs/github-pages-2026-10-09.md": "79f9c90a93c592b10c81baf20fc69a1d4dbad395f5f650155460ced5ba9ff394"
+  },
+  "generatedWorkerCheck": {
+    "passed": true,
+    "assertions": 421,
+    "assets": 35,
+    "version": "26b641628dc88e99625d2422fb5d63c0ac74273ce465718e6f47e593fef01b10",
+    "limits": [
+      "VM worker verification; no real browser/OS offline acceptance"
+    ]
+  },
+  "generatedFiles": {
+    ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "assets/button-BZyDGPNM.js": "5901fcc142fcc2cbab3e3a832b727516580f2b4e73163d99ca5b4f9eede97a99",
+    "assets/index--lcHmWne.js": "a3e357b12601973b1da6e7334533bcef29fced8321dd834b7e81594bc94c5236",
+    "assets/index-BDPBdBWE.css": "0c8128532c4656611db848ca5c09ced7668d512bd38749660ca7e0c098f8abb2",
+    "assets/jsx-runtime-DUAcabCT.js": "afa9863e5c6f7611685a66c3ed93ea9226a1af161256ae0e9339e1524204ee53",
+    "assets/progress-dashboard-D7SQsE0c.js": "974baeaa2146beb3c14f98ad8546567572b04add8e9f3081d4fa80442c95d2d0",
+    "assets/qwen-unavailable-IXSK3HSm.js": "3bd10437f03a9d63f02e37884b3e4a0b05c83c8d0da90aefea4c019d5d9bafe6",
+    "assets/research-library-dG25azH1.js": "81d224d77f67869af2f4466d4a27f354ab6515d37895af384a78faa86bda0fbe",
+    "assets/transfer-dialog-bz8GaSkU.js": "ff6be6d028a8d97ad8b2155681640dc107d8f60dcf9a62bbd3b64f4d581ced87",
+    "downloads/movefield-mobile-r14.zip": "fb088ac46eaab4f654a4778a2cfa5aa3043b064e9d672692b541d02a395f6979",
+    "exercise-content.json": "9a17a1c905fe80e7210803a7b1b466c0a207a40b702386f6e75fb891585b68bb",
+    "exercise-guides.json": "62fa1d71ee08312f6e8809ce60e17e7df7e8a3a8d79f49bed15731592d0f7a38",
+    "favicon.svg": "e60a09d8fe6ca9311ab14f0f9f05a5ed92cb2f74b3a41fc3680bde30f3a0b11e",
+    "fitness-research.json": "437f2724162639849949aed8f6b47b0f8ab1eac88da1e0d4535920d2eebaa757",
+    "fonts/Atkinson-Hyperlegible-OFL.txt": "e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18",
+    "fonts/Barlow-Condensed-OFL.txt": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+    "fonts/Inter-OFL.txt": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+    "fonts/Lexend-OFL.txt": "5da8505887d0fa7fe963445fd58852707fda34adfeb65af25c99d152bab285bd",
+    "fonts/Nunito-OFL.txt": "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65",
+    "fonts/Oswald-OFL.txt": "23916cdee678823c3c517c699cb2e043088de0d46c959eeaa168b54bb84534df",
+    "fonts/Saira-OFL.txt": "f2665d4718b452b3818a877191355ac884a6b9b419d35408fe7ee487e9e8f30f",
+    "fonts/atkinson-hyperlegible-latin-400-normal.woff2": "d64ba838ef5472bba248620ec4fd8b5aa7cf0db2908e0bb230600caf279ba7bc",
+    "fonts/atkinson-hyperlegible-latin-700-normal.woff2": "140e2bd25a7315c8a062508391426b0d8c3297400c947b8d847be28f73a199f0",
+    "fonts/barlow-condensed-semibold.ttf": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9",
+    "fonts/inter-variable.ttf": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+    "fonts/lexend-latin-400-normal.woff2": "0601e0a909219a542cdd581e3f8f1ff8fb208978cbc9bca1c90df02fd8062bb1",
+    "fonts/lexend-latin-700-normal.woff2": "52dcdaa127bac4a5ea4c39ee17a3f454ceacc18d9f2a45cc453eeab68d378588",
+    "fonts/nunito-latin-400-normal.woff2": "a5906e15ceb68f73d3b2c2076b4057c3f6ed401186d56283b45ce12944ca0735",
+    "fonts/nunito-latin-700-normal.woff2": "fa89300b9bbb3bd0f60d6991aa055965d98e2ccca27bf8688fe0c39cdc796846",
+    "fonts/oswald-latin-600-normal.woff2": "f6cb541f4d9794b86145c9c3e7d778ffb78c92f8180c577e245238991503da6f",
+    "fonts/oswald-latin-700-normal.woff2": "aae665c75af89ea7cb7d8ccc8b0911ea72267442ebcd84f6e3efa041ad3b3c16",
+    "fonts/saira-latin-400-normal.woff2": "f477825b1d839c775bda7708f78e933bd246c582e7186769e9a25e9b1a59b350",
+    "fonts/saira-latin-700-normal.woff2": "07eb78fecb9cbc519e08a727d438389b2983a140a4d8651d000141ec55b8bacf",
+    "index.html": "5735079392b55dabe7fc86cac11d1fa4e5d3582304a88da3b2ee73b3b22e12ff",
+    "pages-manifest.json": "932a20ee36e5c3130c17cd179974cc0d5695f5c9173de9580d58e65062772f2d",
+    "privacy.html": "6b36d090f43764f911d02547e09ca873c1763d523365be1f4e9c77fd71f952a0",
+    "sw.js": "b087591771187d3961a307f3bb3cac5fc7fbd9d2f9842351c562bbe73c240336"
+  },
+  "browserObserved": {
+    "url": "https://ghinz32-cloud.github.io/movefield/",
+    "publishedVersionTested": "47f0f2c41ca6d7166f521f44a4987c5d42027a7a",
+    "https": true,
+    "steps": [
+      "Initial Today entry and empty profile",
+      "Try demo opens fictional Jordan plan",
+      "Start workout",
+      "Log squat 177.5 lb x6, RIR3; 1/12 and180-second rest observed",
+      "Finish partial workout shows11 unlogged warning",
+      "Skip and save returns Today with next session",
+      "Reload exits demo and restores empty personal profile",
+      "Settings backup/privacy/local assistant/account scope visible"
+    ],
+    "scope": "Online desktop UI only; no private user data entered, no model download, real encrypted persistence/transfer/offline/OS interruption or physical-device acceptance claim"
+  },
+  "releaseLimits": [
+    "Native new-source CI pending separately",
+    "Strict dependency release gate blocked",
+    "Native hardware/inference and stores unqualified"
+  ]
+}

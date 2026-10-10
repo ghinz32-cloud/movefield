@@ -1,4 +1,10 @@
 {
+  "metadata_scope": {
+    "legacy_adult_routing": "AT01-AT04 are maintained legacy fallback recipes. Current new adult app requests for non-running catalog goals use program-catalog.ts; existing saved legacy targets can still be reviewed.",
+    "unresolved_aliases": "The SC/AR source and rule aliases are inherited metadata with no resolving registry in this repository. They are preserved historical metadata, not independently verified citations or executable rule IDs. Runtime evidence uses the reviewed IDs in program-evidence.ts.",
+    "youth_policy_runtime_difference": "The detailed youth policy below is not executed by the current generator. YOUTH-FOUNDATION uses one set of eight reps initially, then staggered second sets after two comfortable supervised prerequisite sessions; youth load and rep changes remain supervisor-owned.",
+    "exact_template_validation": "Published principles inform these app defaults; no independent validation or individual optimality of these exact templates is claimed."
+  },
   "adult": [
     {
       "id": "AT01",

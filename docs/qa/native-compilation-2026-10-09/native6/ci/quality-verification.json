@@ -1,0 +1,91 @@
+{
+  "verifiedAt": "2026-10-09T19:15:57.783833+00:00",
+  "runId": 37978371782,
+  "jobId": 113982311587,
+  "jobConclusion": "success",
+  "source": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf",
+  "sourceTree": "eec113576e18fc18d4976ceaa03b7e7ca464a930",
+  "testedIntegrationCommit": "61afe097261b44672af81312e5e4f0efec9fb1d7",
+  "testedIntegrationTree": "eec113576e18fc18d4976ceaa03b7e7ca464a930",
+  "officialIntegrationCommit": {
+    "sha": "61afe097261b44672af81312e5e4f0efec9fb1d7",
+    "tree": "eec113576e18fc18d4976ceaa03b7e7ca464a930",
+    "parents": [
+      "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
+      "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf"
+    ]
+  },
+  "integrationTreeMatchesSource": true,
+  "checks": {
+    "regression-checks.json": {
+      "passed": 53,
+      "total": 53,
+      "checks": [
+        "check-audit.cjs",
+        "check-backup.cjs",
+        "check-browser-qwen-cache.cjs",
+        "check-browser-record-store.cjs",
+        "check-browser-storage-ui.cjs",
+        "check-browser-vault.cjs",
+        "check-catalog.cjs",
+        "check-dependency-policy.cjs",
+        "check-equipment-capacity.cjs",
+        "check-export-cancellation.cjs",
+        "check-fitness-evaluation.cjs",
+        "check-fitness-grounding.cjs",
+        "check-focus.cjs",
+        "check-goals.cjs",
+        "check-library.cjs",
+        "check-mobile-package.cjs",
+        "check-named-programs.cjs",
+        "check-native-history.cjs",
+        "check-native-privacy-cleanup.cjs",
+        "check-native-privacy-ui.cjs",
+        "check-native-qwen-files.cjs",
+        "check-native-qwen-ui.cjs",
+        "check-native-record-batches.cjs",
+        "check-native-reminder-cleanup.cjs",
+        "check-native-security-config.cjs",
+        "check-native-sqlite.cjs",
+        "check-native-storage.cjs",
+        "check-native-workflows.cjs",
+        "check-offline.cjs",
+        "check-onboarding.cjs",
+        "check-preferences.cjs",
+        "check-program-depth.cjs",
+        "check-program-design.cjs",
+        "check-program-selection.cjs",
+        "check-progression-regressions.cjs",
+        "check-qwen-assets.cjs",
+        "check-qwen-controls.cjs",
+        "check-qwen-download.cjs",
+        "check-qwen-runtime.cjs",
+        "check-qwen-training.cjs",
+        "check-research-library.cjs",
+        "check-revision-10.cjs",
+        "check-revision-11.cjs",
+        "check-security.cjs",
+        "check-setup-hydration.cjs",
+        "check-shared.cjs",
+        "check-tools-boundaries.cjs",
+        "check-tools.cjs",
+        "check-training.cjs",
+        "check-transactional-browser-vault.cjs",
+        "check-transfer.cjs",
+        "check-workout-review.cjs",
+        "check-workout-science.cjs"
+      ]
+    },
+    "production-checks.json": {
+      "passed": 3,
+      "total": 3,
+      "checks": [
+        "check-bundle.cjs",
+        "check-production-offline.cjs",
+        "check-production-security.cjs"
+      ]
+    }
+  },
+  "officialArchiveDigestMatches": true,
+  "limits": "Quality is web/domain/configuration and source-bundle validation, not device execution or store qualification."
+}

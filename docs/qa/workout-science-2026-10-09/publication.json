@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-10-09T17:53:54.410320+00:00",
+  "localSourceCommit": "10e09d3bdaba84831fd0046017bbe9189d1e8d45",
+  "remoteSourceCommit": "5af4582fe4bc78e60a07952a3b0bf0eca3592c8f",
+  "tree": "4efd7bd8d72f503e47c26e451e8c5e5395635699",
+  "branch": "audit/2026-10-08-quality",
+  "exactHeadTreeReportReadback": true,
+  "historiesPreserved": true,
+  "completeBundleVerified": true,
+  "bundleSHA256": "028088ecd481e18e3c98d48c2e473d31dc6aa93ae05f0c04e90da603c45e2570"
+}

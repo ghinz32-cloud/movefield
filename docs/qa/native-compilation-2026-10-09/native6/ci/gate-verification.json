@@ -1,0 +1,60 @@
+{
+  "verifiedAt": "2026-10-09T19:15:57.783450+00:00",
+  "source": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf",
+  "sourceTree": "eec113576e18fc18d4976ceaa03b7e7ca464a930",
+  "actualOfficialDecision": {
+    "before": "d740c61084f44505273e900f7672ac92bae1a218",
+    "changedPathCount": 26,
+    "compile": true,
+    "head": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf",
+    "nativeChangedPaths": [
+      ".github/workflows/native-builds.yml",
+      "mobile/plugins/withMovefieldSecurity.cjs",
+      "scripts/inspect-native-artifacts.py",
+      "scripts/native-change-gate.py",
+      "scripts/test-native-artifact-inspector.py",
+      "scripts/test-native-change-gate.py"
+    ],
+    "reason": "native-inputs-changed",
+    "schema": 1,
+    "sourceTree": "eec113576e18fc18d4976ceaa03b7e7ca464a930"
+  },
+  "independentCompleteGitDiff": [
+    ".github/workflows/native-builds.yml",
+    ".github/workflows/quality.yml",
+    "HANDOFF.md",
+    "TASKS.md",
+    "docs/browser-acceptance-2026-10-09.md",
+    "docs/native-artifact-guards-2026-10-09.md",
+    "docs/native-ci-gating-2026-10-09.md",
+    "docs/native-removal-lint-2026-10-09.md",
+    "docs/qa/github-pages-2026-10-09/browser/observations.json",
+    "docs/qa/github-pages-2026-10-09/browser/workout-after-restore.png",
+    "docs/qa/github-pages-2026-10-09/page2/live-readback.json",
+    "docs/qa/github-pages-2026-10-09/page2/publication.json",
+    "docs/qa/native-compilation-2026-10-09/native4/REVIEW.md",
+    "docs/qa/native-compilation-2026-10-09/native4/inspector.log",
+    "docs/qa/native-compilation-2026-10-09/native4/probe-results.json",
+    "docs/qa/native-compilation-2026-10-09/native4/source-validation.json",
+    "docs/qa/native-compilation-2026-10-09/native5/gate-tests.log",
+    "docs/qa/native-compilation-2026-10-09/native5/validation.json",
+    "docs/qa/native-compilation-2026-10-09/native6/prebuild.log",
+    "docs/qa/native-compilation-2026-10-09/native6/validation.json",
+    "mobile/plugins/withMovefieldSecurity.cjs",
+    "scripts/check-native-security-config.cjs",
+    "scripts/inspect-native-artifacts.py",
+    "scripts/native-change-gate.py",
+    "scripts/test-native-artifact-inspector.py",
+    "scripts/test-native-change-gate.py"
+  ],
+  "independentNativeInputPaths": [
+    ".github/workflows/native-builds.yml",
+    "mobile/plugins/withMovefieldSecurity.cjs",
+    "scripts/inspect-native-artifacts.py",
+    "scripts/native-change-gate.py",
+    "scripts/test-native-artifact-inspector.py",
+    "scripts/test-native-change-gate.py"
+  ],
+  "matches": true,
+  "limits": "Gate decision verifies a source range, not binary/device behavior."
+}
