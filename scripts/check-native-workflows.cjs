@@ -27,7 +27,7 @@ function activeState() {
 }
 function ui(names) { return Object.fromEntries(names.map(name => [name, name])); }
 async function mount(state, componentName = 'TrainingApp', input = {}) {
-  const h = createHookHarness(), saved = [], alerts = [], opened = [];
+  const h = createHookHarness({expand:['WorkoutExerciseFields']}), saved = [], alerts = [], opened = [];
   const media = Object.fromEntries((state.active?.targets || state.plan?.sessions[0]?.items || []).map(item => [item.exerciseId, {sourceUrl:'https://example.com/' + item.exerciseId}]));
   const colors = {bg:'#fff', ink:'#123', muted:'#456', green:'#234', line:'#ddd', pale:'#eee', white:'#fff', onAccent:'#fff', danger:'#900'};
   const appearance = {p:{textSize:100}, colors, dark:false, reduceMotion:false, fonts:false, ready:true};
@@ -67,7 +67,7 @@ async function scenario(name, run) {await run();count++;console.log('PASS ' + na
 (async()=>{
   await scenario('finish uses previously entered feedback and saves partial work once',async()=>{
     const state=activeState(), {h,saved}=await mount(state);
-    await press(h,'Finish & save workout');
+    await press(h,'Finish & save workout');await press(h,'Finish partial workout');
     assert.ok(h.find(node=>node.props.label==='✓ No'),'Previous symptom answer is selected');
     assert.ok(h.find(node=>node.props.label==='✓ About right'),'Previous effort answer is selected');
     await press(h,'Save workout');
@@ -77,7 +77,7 @@ async function scenario(name, run) {await run();count++;console.log('PASS ' + na
   });
   await scenario('finish supports explicitly skipping effort without clearing concern hold',async()=>{
     const state={...activeState(),hold:true}, {h,saved}=await mount(state);
-    await press(h,'Finish & save workout');const skip=h.nodes().filter(node=>node.props.label==='Skip'&&typeof node.props.onPress==='function').at(-1);assert.ok(skip);skip.props.onPress();await h.settle();await press(h,'Save workout');
+    await press(h,'Finish & save workout');await press(h,'Finish partial workout');const skip=h.nodes().filter(node=>node.props.label==='Skip'&&typeof node.props.onPress==='function').at(-1);assert.ok(skip);skip.props.onPress();await h.settle();await press(h,'Save workout');
     assert.equal(saved[0].history.at(-1).effort,undefined);assert.equal(saved[0].hold,true);
   });
   await scenario('finish rejects stale workout check-ins and empty non-concern work',async()=>{
@@ -89,6 +89,40 @@ async function scenario(name, run) {await run();count++;console.log('PASS ' + na
     assert.equal(E.completeWorkoutCheckin(empty,{...checkin,symptom:'yes'}).history.length,state.history.length);
     const held=E.completeWorkoutCheckin(empty,{...checkin,symptom:'unsure'});
     assert.equal(held.hold,true);assert.equal(held.active,null);assert.equal(held.restTimer,null);
+  });
+  await scenario('partial finish must be confirmed and cancel keeps the active workout',async()=>{
+    const state=activeState(),{h,saved}=await mount(state);
+    await press(h,'Finish & save workout');assert.ok(h.text().includes('sets are not logged'));assert.equal(saved.length,0);
+    const cancel=h.nodes().filter(n=>n.props.label==='Keep editing'&&typeof n.props.onPress==='function').at(-1);cancel.props.onPress();await h.settle();assert.equal(saved.length,0);
+    await press(h,'Finish & save workout');await press(h,'Finish partial workout');await press(h,'Save workout');assert.equal(saved.length,1);assert.equal(saved[0].history.at(-1).partial,true);
+    const retry=button(h,'Save workout');retry.props.onPress();await h.settle();assert.equal(saved.length,1,'Repeated save cannot duplicate a closed workout');
+  });
+  await scenario('saved workout corrections replace the same record while another workout stays active',async()=>{
+    let state=activeState();const record={...state.active,id:'saved-before',date:T.addDays(T.day(),-2),finishedAt:Date.now(),partial:false,sets:state.active.sets.map(set=>({...set,reps:8,done:true}))};state={...state,history:[record]};
+    const {h,saved}=await mount(state),beforeActive=JSON.stringify(state.active),beforeTimer=JSON.stringify(state.restTimer);
+    await tab(h,'History');h.find(n=>n.type==='Pressable'&&n.key===record.id).props.onPress();await h.settle();await press(h,'Edit workout');
+    const target=record.targets[0],name=T.exFor(target.exerciseId).name;
+    h.find(n=>n.props.accessibilityLabel===`Edit recorded ${name}`).props.onPress();await h.settle();
+    h.find(n=>n.props.label===`${name} set 1 actual reps`).props.onChange(9);await h.settle();assert.equal(saved.length,0,'Editing only stages a draft');
+    h.find(n=>n.props.accessibilityLabel===`Log ${name} set 1`).props.onPress();await h.settle();assert.equal(saved.length,0);
+    const save=button(h,'Save changes');await press(h,'Save changes');assert.equal(saved.length,1,h.text().slice(0,1200));
+    assert.equal(saved[0].history.length,1);assert.equal(saved[0].history[0].id,record.id);assert.equal(saved[0].history[0].date,record.date);assert.equal(saved[0].history[0].finishedAt,record.finishedAt);assert.equal(saved[0].history[0].sets[0].reps,9);
+    assert.equal(JSON.stringify(saved[0].active),beforeActive);assert.equal(JSON.stringify(saved[0].restTimer),beforeTimer);
+    save.props.onPress();await h.settle();assert.equal(saved.length,1,'A retained editor save cannot replay');
+  });
+  await scenario('canceling saved corrections preserves records and a reopened editor refuses old callbacks',async()=>{
+    let state=activeState();const record={...state.active,id:'saved-before',finishedAt:Date.now(),partial:true};state={...state,active:null,restTimer:null,history:[record]};
+    const {h,saved}=await mount(state);await tab(h,'History');h.find(n=>n.type==='Pressable'&&n.key===record.id).props.onPress();await h.settle();await press(h,'Edit workout');
+    const name=T.exFor(record.targets[0].exerciseId).name;h.find(n=>n.props.accessibilityLabel===`Edit recorded ${name}`).props.onPress();await h.settle();
+    const old=h.find(n=>n.props.label===`${name} set 1 actual reps`);old.props.onChange(9);await h.settle();await press(h,'Cancel corrections');await press(h,'Discard corrections');assert.equal(saved.length,0);
+    h.find(n=>n.type==='Pressable'&&n.key===record.id).props.onPress();await h.settle();await press(h,'Edit workout');old.props.onChange(99);await h.settle();assert.match(h.text(),/editor is no longer open/);assert.equal(saved.length,0);
+    h.find(n=>n.props.accessibilityLabel===`Edit recorded ${name}`).props.onPress();await h.settle();assert.equal(h.find(n=>n.props.label===`${name} set 1 actual reps`).props.value,8);
+  });
+  await scenario('saved partial corrections require confirmation and retain unfinished sets',async()=>{
+    let state=activeState();const record={...state.active,id:'saved-before',finishedAt:Date.now(),partial:true};state={...state,active:null,restTimer:null,history:[record]};
+    const {h,saved}=await mount(state);await tab(h,'History');h.find(n=>n.type==='Pressable'&&n.key===record.id).props.onPress();await h.settle();await press(h,'Edit workout');
+    const name=T.exFor(record.targets[0].exerciseId).name;h.find(n=>n.props.accessibilityLabel===`Edit recorded ${name}`).props.onPress();await h.settle();
+    h.find(n=>n.props.label===`${name} set 1 reps left, RIR 0 to 5`).props.onChange(2);await h.settle();await press(h,'Save changes');assert.equal(saved.length,0);await press(h,'Save partial changes');assert.equal(saved.length,1);assert.equal(saved[0].history[0].partial,true);assert.equal(saved[0].history[0].sets[0].rir,2);assert.equal(saved[0].history[0].sets.filter(s=>!s.done).length,record.sets.filter(s=>!s.done).length);
   });
   await scenario('paused imported plan resumes without changing dates/history or lifting holds',async()=>{
     const state=E.adoptPlan(E.emptyDemo(),E.previewPlan(E.FOUNDATION).plan);state.plan.paused=true;state.hold=true;

@@ -1,0 +1,16 @@
+Checking check-bundle.cjs
+PASS bundle budgets and lazy chart boundary {"page":"_next/static/chunks/page-mvjbbzl2.js","key":"app/page.tsx","bytes":178567,"gzipBytes":54132,"initialGzipBytes":399877,"initialLimitGzipBytes":400000,"chunks":[{"key":"app/page.tsx","bytes":178567,"gzipBytes":54132},{"key":"_rolldown-runtime-QTnfLwEv.js","bytes":694,"gzipBytes":422},{"key":"virtual:vinext-app-browser-entry","bytes":195675,"gzipBytes":56465},{"key":"_framework-JGc2HF7T.js","bytes":190152,"gzipBytes":59097},{"key":"components/app-preferences.tsx","bytes":113780,"gzipBytes":36420},{"key":"_button-CBvz_Igj.js","bytes":32543,"gzipBytes":10650},{"key":"_createLucideIcon-rCMSQdv6.js","bytes":31626,"gzipBytes":11151},{"key":"_progress-D4KJ_sZI.js","bytes":20687,"gzipBytes":7338},{"key":"_checkbox-zFrbmAvj.js","bytes":4731,"gzipBytes":2009},{"key":"_browser-vault-CqwzMhLd.js","bytes":35628,"gzipBytes":10847},{"key":"_storage-capacity-Egu5ZFOb.js","bytes":14207,"gzipBytes":5419},{"key":"_training-jn8H07LS.js","bytes":794960,"gzipBytes":114744},{"key":"_types-B-MU-IOR.js","bytes":56526,"gzipBytes":12856},{"key":"_cloud-client-Dab8Rxa3.js","bytes":2776,"gzipBytes":1288},{"key":"_local-backup-D5FjEcIY.js","bytes":873,"gzipBytes":540},{"key":"_onboarding-DztY_flP.js","bytes":9606,"gzipBytes":4080},{"key":"_presentation-BhurRxrE.js","bytes":21851,"gzipBytes":6050},{"key":"_progress-CI4fxsR3.js","bytes":3126,"gzipBytes":1265},{"key":"_public-path-Dnx1y3mw.js","bytes":152,"gzipBytes":138},{"key":"_safety-copy-BKXgRPRs.js","bytes":844,"gzipBytes":506},{"key":"_training-day-BEN4a0Ry.js","bytes":3665,"gzipBytes":1782},{"key":"_substitutions-M5QdKEMw.js","bytes":6693,"gzipBytes":2678}]}
+Checking check-production-offline.cjs
+{
+  "status": "pass",
+  "assets": 82,
+  "totalBytes": 19966146,
+  "build": "470b3f09ec0e076fadd2bd96a2d002015c090d6a7bfb4534e75508cb94818971",
+  "allBuiltClientChunksCovered": true,
+  "workerManifestMatches": true,
+  "assetHashesMatch": true,
+  "privateDataAndModelWeightsAbsent": true
+}
+Checking check-production-security.cjs
+{"brandAssetsAvailable":true,"nativeStarterAvailable":true,"privacyNoticeMatchesSource":true,"privacyNoticeStaticPolicy":true,"status":200,"scripts":22,"nonceMatched":true,"nonceRotates":true,"writeRouteClosed":true,"internalRouteClosed":true,"qaRouteAbsent":true,"unclearedPhotosAbsent":true,"cache":"private, no-store"}
+3/3 check suites passed.

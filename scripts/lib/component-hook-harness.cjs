@@ -1,6 +1,6 @@
 const fs=require('node:fs'),path=require('node:path'),{createRequire}=require('node:module');
 function sameDeps(a,b){return !!a&&!!b&&a.length===b.length&&a.every((v,i)=>Object.is(v,b[i]))}
-function createHookHarness(){
+function createHookHarness({expand=[]}={}){
  const cells=[];let cursor=0,dirty=true,rendering=false,component,props,tree,pending=[];
  const hooks={
   useState(initial){const at=cursor++;if(!cells[at])cells[at]={kind:'state',value:typeof initial==='function'?initial():initial};const cell=cells[at];return [cell.value,input=>{const next=typeof input==='function'?input(cell.value):input;if(!Object.is(next,cell.value)){cell.value=next;dirty=true}}]},
@@ -8,7 +8,7 @@ function createHookHarness(){
   useMemo(make,deps){const at=cursor++;const previous=cells[at];if(!previous||!sameDeps(previous.deps,deps))cells[at]={kind:'memo',value:make(),deps};return cells[at].value},
   useEffect(effect,deps){const at=cursor++;const previous=cells[at];if(!previous||!sameDeps(previous.deps,deps)){cells[at]={kind:'effect',deps,cleanup:previous?.cleanup};pending.push({at,effect})}},
  };
- const element=(type,props,key)=>({type,props:props||{},key});
+ const element=(type,props,key)=>typeof type==='function'&&expand.includes(type.name)?type(props||{}):({type,props:props||{},key});
  const react={...hooks,Fragment:Symbol.for('test-fragment'),createElement:(type,props,...children)=>element(type,{...props,children:children.length===1?children[0]:children})};
  function render(){if(rendering)throw Error('Recursive hook render');rendering=true;cursor=0;dirty=false;try{tree=component(props)}finally{rendering=false}const effects=pending;pending=[];for(const {at,effect}of effects){cells[at].cleanup?.();cells[at].cleanup=effect()}}
  async function settle(){for(let i=0;i<50;i++){if(dirty)render();await new Promise(r=>setImmediate(r));if(!dirty&&!pending.length){await Promise.resolve();if(!dirty)return tree}}throw Error('Hook harness did not settle')}

@@ -1,8 +1,8 @@
 # Active exercise-first mobile workout request — 9 October 2026
 
 - [x] Overview/focused logging/unfinished-aware advancement:14 compiled native UI scenarios, navigation domain checks, web/native types, focused lint and48 shared hashes pass.
-- [ ] In progress: explicit partial-finish confirmation and editable saved workouts without duplicate history or lost active drafts.
-- [ ] Verify, publish/read back and deliver updated web/native testing builds; preserve draft PR/main.
+- [x] Explicit completion-bound partial confirmation and staged saved-workout editing;18 native UI scenarios,28 real SQLite history scenarios/205 assertions and domain guards pass.
+- [ ] In progress: publish/read back final source, refresh both existing prototype downloads and verify fresh web/native CI/build receipts; preserve draft PR/main.
 
 # Active calendar and coaching request — 9 October 2026
 

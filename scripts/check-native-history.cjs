@@ -98,6 +98,16 @@ async function head(e) {
 }
 
 (async () => {
+  await scenario('saved-workout corrections atomically replace one encrypted entity and survive reopen',async e=>{
+    const original=state(),first=e.storage();await first.api.saveLocalState(original);
+    const before=await historyCiphertexts(e),editLoader=createSourceLoader(repo),editor=editLoader.load(path.join(repo,'mobile/src/shared/workout-edit.ts'));
+    const opened=editor.beginSavedWorkoutEdit(original,original.history[0].id);opened.draft.sets[0].reps=8;
+    const corrected=editor.applySavedWorkoutEdit(original,opened);e.h.controller.calls.length=0;
+    await first.api.saveLocalState(corrected);
+    const after=await historyCiphertexts(e),changed=Object.keys(before).filter(key=>before[key]!==after[key]);same(changed.length,1,'Exactly one workout ciphertext changes');same(historyWrites(e).length,1,'Exactly one history entity is written');
+    const reopened=await e.storage().api.readLocalState();same(reopened.history.length,original.history.length);same(reopened.history[0].id,original.history[0].id);same(reopened.history[0].sets[0].reps,8);same(reopened.history[0].date,original.history[0].date);same(reopened.history[0].finishedAt,original.history[0].finishedAt);same(reopened.history.slice(1),original.history.slice(1));noPlaintext(e,corrected);
+  });
+
   for (const source of ['plaintext legacy', 'encrypted legacy', 'encrypted SQL snapshot']) {
     await scenario('Whole snapshot migration: ' + source, async e => {
       const original = state();

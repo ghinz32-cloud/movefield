@@ -2,6 +2,11 @@
   "source": "Training Studio website domain modules; paths relative to its root",
   "files": [
     {
+      "source": "lib/workout-edit.ts",
+      "target": "src/shared/workout-edit.ts",
+      "sha256": "6656ffab220e8f52291bf161a4d8907306a323a667f5ed26637d08436d76c12e"
+    },
+    {
       "source": "lib/workout-navigation.ts",
       "target": "src/shared/workout-navigation.ts",
       "sha256": "9d69a1beed190736a3823b55a27787f3f0454df3bc1d3b6d9b60e55395b79cd5"
@@ -149,7 +154,7 @@
     {
       "source": "lib/saved-data.ts",
       "target": "src/shared/saved-data.ts",
-      "sha256": "763e484f8718d6c81d84ebaba8f24b89d5aede34e2260c0b03afb9a07c33aa20"
+      "sha256": "91063dcefb168a67d3bcaee221f0797aee853a43c23f165cf043dd640ca8143f"
     },
     {
       "source": "lib/transfer-bundle.ts",

@@ -1,4 +1,5 @@
 import {workoutTimeMetadata,workoutFinishedAtUtc} from './shared/record-identity';
+import {workoutCompletionSignature,workoutExerciseProgress} from './shared/workout-navigation';
 import { setMetricsSchema } from './shared/saved-data';
 import { blankProfile, buildPlan, changed, day, eligibility, exFor, initialState, isLoadTracked, uid, type Exercise, type Plan, type Profile, type SetLog, type State, type Workout } from './shared/training';
 import { focusScheduleConflict } from './shared/training-focus';
@@ -60,7 +61,7 @@ export function finishWorkout(state: State): State {
   if(state.history.some(x=>x.id===w.id)) throw new Error('This workout is already saved.');
   const done = w.sets.filter(x => x.done);
   if (!done.length) throw new Error('Log at least one completed set, or discard this workout.');
-  const partial = done.length < w.sets.length;
+  const partial = workoutExerciseProgress(state,w).some(entry=>!entry.complete);
   const finishedAt=Date.now();
   const recorded = { ...w, finishedAt,...workoutFinishedAtUtc(finishedAt), partial };
   return { ...state, active: null, history: [...state.history, recorded], loadContext:{...state.loadContext,...w.loadContext}, restTimer:null, plan: { ...state.plan, version: state.plan.version + 1,
@@ -71,7 +72,7 @@ export function unknownLoads(w: Workout, custom: Exercise[] = []): number {
 }
 
 
-export type WorkoutCheckin = { workoutId: string; symptom: string; effort: string };
+export type WorkoutCheckin = { workoutId: string; symptom: string; effort: string; partialAcknowledgement?:string };
 /** Seed the finish form with feedback already recorded in the active workout. */
 export function workoutCheckin(state: State): WorkoutCheckin | null {
   const workout = state.active;
@@ -91,6 +92,7 @@ export function completeWorkoutCheckin(state: State, checkin: WorkoutCheckin): S
   const concern = checkin.symptom === 'yes' || checkin.symptom === 'unsure';
   const done = workout.sets.filter(set => set.done).length;
   if (!concern && done === 0) throw Error('Log at least one completed set, or discard this workout.');
+  if (done>0&&workoutExerciseProgress(state,workout).some(entry=>!entry.complete)&&checkin.partialAcknowledgement!==workoutCompletionSignature(state,workout)) throw Error('Confirm the unfinished exercises before saving a partial workout.');
   let next: State = { ...state, active: { ...workout, symptom: checkin.symptom, effort: checkin.effort || undefined } };
   if (concern) next = changed({ ...next, hold: true }, 'Automated recommendations held after a symptom report.');
   if (concern && done === 0) return changed({ ...next, active: null, restTimer: null }, 'Concern saved. No completed sets were added.');
