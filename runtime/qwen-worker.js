@@ -1,4 +1,4 @@
-import { D as e, _ as t, a as n, g as r, l as i, m as a, o, r as s, u as c, y as l } from "./training-BicQG7jj.js";
+import { D as e, _ as t, a as n, g as r, l as i, m as a, o, r as s, u as c, y as l } from "./training-C8u1q4KT.js";
 var u = {
 	schema: 1,
 	version: "fitness-reference-v2",
@@ -546,7 +546,7 @@ function h(e, t, n) {
 //#endregion
 //#region lib/qwen-tokenizer.ts
 async function g(t) {
-	let n = await import("./lib-BQHvV-JG.js").then((t) => /* @__PURE__ */ e(t.t(), 1)), r = n.Tokenizer || n.default?.Tokenizer || globalThis.tokenizers?.Tokenizer;
+	let n = await import("./lib-C9O0qMAG.js").then((t) => /* @__PURE__ */ e(t.t(), 1)), r = n.Tokenizer || n.default?.Tokenizer || globalThis.tokenizers?.Tokenizer;
 	if (!r) throw Error("The model tokenizer could not open.");
 	return r.fromJSON(t);
 }
@@ -595,7 +595,7 @@ async function E(e) {
 			value: h(n, x.assets.map((e) => e.path), _.fetch),
 			configurable: !0
 		});
-		let [{ MLCEngine: i }, a] = await Promise.all([import("./lib-2aWPZDmS.js").then((e) => e.n), r("tokenizer.json").then(g)]);
+		let [{ MLCEngine: i }, a] = await Promise.all([import("./lib-DcORhR3s.js").then((e) => e.n), r("tokenizer.json").then(g)]);
 		y = a, v = new i({
 			logLevel: "SILENT",
 			appConfig: { model_list: [{

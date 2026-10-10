@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "base": "/movefield/",
-  "version": "8c60686b3c01114959052f980441ce9b9da5c0ee309c50891542463fc51c5f6d",
+  "version": "750fc5a8f56e8ecbfe1caa2590c32f4e2cfd57233c552da370aa04923a748673",
   "workerTemplateSha256": "025d7ea1407c5b39e515e9ce0726e867600982f60008f72940cf1f4ae4837ad7",
   "coachingWorker": {
     "path": "runtime/workout-coaching-worker.js",
@@ -38,7 +38,7 @@
     "/movefield/assets/workout-coaching-identity-CDHS7c86.js": "819adab6e423db2f8d7c2bcb25a9671ea7875b3a1158e776cf85565cf98b4a24",
     "/movefield/assets/workout-review-FffrZHRw.js": "ac42246020459c24af41949ab31dac92ea34910cbf1dbc4b1dc40596c9aee3b2",
     "/movefield/assets/x-CEXRaG68.js": "fb079b3cf7898ed271ff80d2a7714fa0bae9c6da5331ba0c1448a3eea58222cf",
-    "/movefield/downloads/movefield-mobile-r14.zip": "165da5ee0b3644c499d7ff4819af0fa3c21415b0ea2f6eff61559d9ab54139ed",
+    "/movefield/downloads/movefield-mobile-r14.zip": "c4739f89df0e4c868d96dad694539f62f13ce2fb86fb9a420d72e958f7eee57f",
     "/movefield/exercise-content.json": "9a17a1c905fe80e7210803a7b1b466c0a207a40b702386f6e75fb891585b68bb",
     "/movefield/exercise-guides.json": "62fa1d71ee08312f6e8809ce60e17e7df7e8a3a8d79f49bed15731592d0f7a38",
     "/movefield/favicon.svg": "e60a09d8fe6ca9311ab14f0f9f05a5ed92cb2f74b3a41fc3680bde30f3a0b11e",
@@ -64,10 +64,10 @@
     "/movefield/fonts/saira-latin-700-normal.woff2": "07eb78fecb9cbc519e08a727d438389b2983a140a4d8651d000141ec55b8bacf",
     "/movefield/index.html": "af11abf5a71dbe23a6af337eb1e0ea6c99373a58c637334bd1a114fcad8a1aaf",
     "/movefield/privacy.html": "8da3cb0250c57ff711634338934ec8e08c16fe7811448bef62cc2dbeb83fcd0b",
-    "/movefield/runtime/lib-2aWPZDmS.js": "81ac22c370346729fcd4e8081ddcaad33b125763ace67152dfad9b056a7c6051",
-    "/movefield/runtime/lib-BQHvV-JG.js": "1df1f00be35d28240668cbbba8667e5b7d7db0c06b045128447138cb95b45cdd",
-    "/movefield/runtime/qwen-worker.js": "50439cceea70a797a41de855d60ccf2575ea4fa6a38e2656cf46f483617d354b",
-    "/movefield/runtime/training-BicQG7jj.js": "572e33f702b07cd8ea9d2d0c59e6379dbc3c994c90b10f58499a187ae76c2a88",
-    "/movefield/runtime/workout-coaching-worker.js": "002a062f3fb540d737a055901ce24949fa444e6c3c8a87669f08beb96b2a08e6"
+    "/movefield/runtime/lib-C9O0qMAG.js": "125e6c1b74e73417f05b49c72c49580a5a511fc2d5b232658034de58f0dae5cf",
+    "/movefield/runtime/lib-DcORhR3s.js": "203134a3fd7bfc2b58e7ebf1ddb5d1516124cf348729e829ff9d16b77557e39b",
+    "/movefield/runtime/qwen-worker.js": "067f818c58c3d04cb617199337007237b5b1447819cf7baf040b65e8f7541b77",
+    "/movefield/runtime/training-C8u1q4KT.js": "afe700f6213488b4a8c4f0abebdd8a7a649a0f8657403fb136180c570564b78e",
+    "/movefield/runtime/workout-coaching-worker.js": "bbe260316abad93fae39387427e14c4e19ef1ed0eb7973fa3913a373968e3363"
   }
 }

@@ -1,4 +1,4 @@
-import { C as e, E as t, T as n, w as r } from "./training-BicQG7jj.js";
+import { C as e, E as t, T as n, w as r } from "./training-C8u1q4KT.js";
 //#region build/worker-node-refusal.ts
 var i = /* @__PURE__ */ n({
 	createRequire: () => a,
