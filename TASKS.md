@@ -2,7 +2,9 @@
 
 - [x] Overview/focused logging/unfinished-aware advancement:14 compiled native UI scenarios, navigation domain checks, web/native types, focused lint and48 shared hashes pass.
 - [x] Explicit completion-bound partial confirmation and staged saved-workout editing;18 native UI scenarios,28 real SQLite history scenarios/205 assertions and domain guards pass.
-- [ ] In progress: publish/read back final source, refresh both existing prototype downloads and verify fresh web/native CI/build receipts; preserve draft PR/main.
+- [x] Final source9cdcec08 read back; quality38007809565 passes77/77+3/3, native38007809566 succeeds Android/iOS; both existing prototype downloads refreshed.
+- [x] Final documentation-only checkpoint prepared; resolve through `git log -1 --format=%H -- docs/workout-navigation-2026-10-09.md`; remote readback/draft preservation required before delivery.
+- [ ] Next: physical-phone layout, navigation, partial-save, restart and saved-edit acceptance using Android artifact11652690887.
 
 # Active calendar and coaching request — 9 October 2026
 

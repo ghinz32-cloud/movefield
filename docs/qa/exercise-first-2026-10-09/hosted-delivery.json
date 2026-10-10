@@ -1,0 +1,635 @@
+{
+  "sourceCommit": "9cdcec081bee3525838ac334da1bb48de6690f13",
+  "sourceTree": "45d6d18cc693a72179424c1936dd503bd7d09517",
+  "hostedSourceTreeMatches": true,
+  "deployment": {
+    "status": "succeeded",
+    "environmentRevision": 2,
+    "audiencePreserved": true
+  },
+  "assetReadback": {
+    "passed": true,
+    "files": 101,
+    "bytes": 26711170,
+    "rows": [
+      {
+        "path": "sw.js",
+        "bytes": 19520,
+        "sha256": "67fb6188884b334284d06887785869cd4a61bbbd4a7a787f294e7aafa13fe400",
+        "passed": true
+      },
+      {
+        "path": "vinext-client-entry-manifest.json",
+        "bytes": 65,
+        "sha256": "ca63d6cb6e53d4d0bb14aa1026d3d8dde3c7ab3ccf23dc697d27f785c3acc77f",
+        "passed": true
+      },
+      {
+        "path": "exercise-content.json",
+        "bytes": 521358,
+        "sha256": "9a17a1c905fe80e7210803a7b1b466c0a207a40b702386f6e75fb891585b68bb",
+        "passed": true
+      },
+      {
+        "path": "globe.svg",
+        "bytes": 1036,
+        "sha256": "d051a8c47936990a9085693d307bb7cea1bc1b6d7ed956bcbaacf674f4ec96b9",
+        "passed": true
+      },
+      {
+        "path": "offline-build.json",
+        "bytes": 14859,
+        "sha256": "e2a47618c76efaba555b2b25aa73245295c4792239fcdd51e511584165a58530",
+        "passed": true
+      },
+      {
+        "path": "fitness-research.json",
+        "bytes": 834506,
+        "sha256": "437f2724162639849949aed8f6b47b0f8ab1eac88da1e0d4535920d2eebaa757",
+        "passed": true
+      },
+      {
+        "path": "favicon.svg",
+        "bytes": 460,
+        "sha256": "e60a09d8fe6ca9311ab14f0f9f05a5ed92cb2f74b3a41fc3680bde30f3a0b11e",
+        "passed": true
+      },
+      {
+        "path": "privacy.html",
+        "bytes": 15042,
+        "sha256": "8da3cb0250c57ff711634338934ec8e08c16fe7811448bef62cc2dbeb83fcd0b",
+        "passed": true
+      },
+      {
+        "path": "file.svg",
+        "bytes": 392,
+        "sha256": "1e0ae4d1a1ddfa36752988647b731e4abf150c414d069ec83c96fb0aaeff0307",
+        "passed": true
+      },
+      {
+        "path": "window.svg",
+        "bytes": 386,
+        "sha256": "decf1cf7bb22b5c99c4857cfcd5718ce5465c4454166317589c83fc73df74b66",
+        "passed": true
+      },
+      {
+        "path": "exercise-guides.json",
+        "bytes": 2536044,
+        "sha256": "62fa1d71ee08312f6e8809ce60e17e7df7e8a3a8d79f49bed15731592d0f7a38",
+        "passed": true
+      },
+      {
+        "path": "downloads/movefield-mobile-r13.zip",
+        "bytes": 1334278,
+        "sha256": "432c728d4cb5cd51575681626c341bcd55fc0249f6ad897906a64ef6672d4304",
+        "passed": true
+      },
+      {
+        "path": "downloads/training-studio-mobile-r11.zip",
+        "bytes": 1223848,
+        "sha256": "c18918923319e670a0c7a48c3cfc374dbac57e93c021b76f54f59a8a307bdc62",
+        "passed": true
+      },
+      {
+        "path": "downloads/movefield-mobile-r12.zip",
+        "bytes": 765553,
+        "sha256": "ebf317b2a538a8db4c32ce01a6a999d0825ec8e0089194e62576e20dcde2191e",
+        "passed": true
+      },
+      {
+        "path": "downloads/movefield-mobile-r14.zip",
+        "bytes": 2116908,
+        "sha256": "c4739f89df0e4c868d96dad694539f62f13ce2fb86fb9a420d72e958f7eee57f",
+        "passed": true
+      },
+      {
+        "path": "downloads/training-studio-mobile-r10.zip",
+        "bytes": 1222185,
+        "sha256": "7c9b2f77bb005285308d01cacb809d04bb9e58c39a7e5ade7240bd7b21b6d8bf",
+        "passed": true
+      },
+      {
+        "path": "brand/movefield-wordmark.png",
+        "bytes": 10059,
+        "sha256": "976d17e9b890de28cac738041597d2337884b5eb44d70da4b5ccb41c1b905447",
+        "passed": true
+      },
+      {
+        "path": "brand/movefield-wordmark-dark.svg",
+        "bytes": 4108,
+        "sha256": "8a5931161a05de18efbd000373558e4d28cd82f0d628ebfc2dbbbc0ac03e248a",
+        "passed": true
+      },
+      {
+        "path": "brand/brand-preview.svg",
+        "bytes": 48968,
+        "sha256": "4c2c74b44831ac0e328d9f26b0fc6b5c36768a677f3075df94859b49e6d693a1",
+        "passed": true
+      },
+      {
+        "path": "brand/movefield-wordmark-dark.png",
+        "bytes": 10156,
+        "sha256": "61ed5a40d4d164d2537fb0e643224995f1ccd1c4d204a08eb70c9f1c8217f022",
+        "passed": true
+      },
+      {
+        "path": "brand/brand-preview.png",
+        "bytes": 77556,
+        "sha256": "eca3f2553a0cc3b8eb3cf6dd87c3b80cf2dd905fa1d9321bf924c2d77227e42a",
+        "passed": true
+      },
+      {
+        "path": "brand/movefield-mark-mono.svg",
+        "bytes": 464,
+        "sha256": "0a08fe738caadd0a82700b1cb7bd7f2df8c5529a5e582dfbab7188bc96c59091",
+        "passed": true
+      },
+      {
+        "path": "brand/movefield-mark.png",
+        "bytes": 4277,
+        "sha256": "d9907ac2fa8392ff9d9267fe55730ca4c7c0512850e9ad9d9ca633efdead934c",
+        "passed": true
+      },
+      {
+        "path": "brand/movefield-wordmark.svg",
+        "bytes": 4108,
+        "sha256": "c150b3b270f70b639dc89a9581552bff407964b1e576af404fdbf8bd8cd05e0a",
+        "passed": true
+      },
+      {
+        "path": "brand/movefield-mark.svg",
+        "bytes": 464,
+        "sha256": "60d1ec814c3875f92c23cc2cc3cd1d7f00bf08fa9d2b6afb2f6f9f346938812d",
+        "passed": true
+      },
+      {
+        "path": "fonts/Lexend-OFL.txt",
+        "bytes": 4436,
+        "sha256": "5da8505887d0fa7fe963445fd58852707fda34adfeb65af25c99d152bab285bd",
+        "passed": true
+      },
+      {
+        "path": "fonts/Saira-OFL.txt",
+        "bytes": 4386,
+        "sha256": "f2665d4718b452b3818a877191355ac884a6b9b419d35408fe7ee487e9e8f30f",
+        "passed": true
+      },
+      {
+        "path": "fonts/atkinson-hyperlegible-latin-700-normal.woff2",
+        "bytes": 17524,
+        "sha256": "140e2bd25a7315c8a062508391426b0d8c3297400c947b8d847be28f73a199f0",
+        "passed": true
+      },
+      {
+        "path": "fonts/lexend-latin-400-normal.woff2",
+        "bytes": 14476,
+        "sha256": "0601e0a909219a542cdd581e3f8f1ff8fb208978cbc9bca1c90df02fd8062bb1",
+        "passed": true
+      },
+      {
+        "path": "fonts/saira-latin-400-normal.woff2",
+        "bytes": 13876,
+        "sha256": "f477825b1d839c775bda7708f78e933bd246c582e7186769e9a25e9b1a59b350",
+        "passed": true
+      },
+      {
+        "path": "fonts/nunito-latin-700-normal.woff2",
+        "bytes": 16228,
+        "sha256": "fa89300b9bbb3bd0f60d6991aa055965d98e2ccca27bf8688fe0c39cdc796846",
+        "passed": true
+      },
+      {
+        "path": "fonts/inter-variable.ttf",
+        "bytes": 876576,
+        "sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+        "passed": true
+      },
+      {
+        "path": "fonts/barlow-condensed-semibold.ttf",
+        "bytes": 109428,
+        "sha256": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9",
+        "passed": true
+      },
+      {
+        "path": "fonts/saira-latin-700-normal.woff2",
+        "bytes": 13732,
+        "sha256": "07eb78fecb9cbc519e08a727d438389b2983a140a4d8651d000141ec55b8bacf",
+        "passed": true
+      },
+      {
+        "path": "fonts/lexend-latin-700-normal.woff2",
+        "bytes": 14808,
+        "sha256": "52dcdaa127bac4a5ea4c39ee17a3f454ceacc18d9f2a45cc453eeab68d378588",
+        "passed": true
+      },
+      {
+        "path": "fonts/oswald-latin-700-normal.woff2",
+        "bytes": 12672,
+        "sha256": "aae665c75af89ea7cb7d8ccc8b0911ea72267442ebcd84f6e3efa041ad3b3c16",
+        "passed": true
+      },
+      {
+        "path": "fonts/atkinson-hyperlegible-latin-400-normal.woff2",
+        "bytes": 17208,
+        "sha256": "d64ba838ef5472bba248620ec4fd8b5aa7cf0db2908e0bb230600caf279ba7bc",
+        "passed": true
+      },
+      {
+        "path": "fonts/Atkinson-Hyperlegible-OFL.txt",
+        "bytes": 4603,
+        "sha256": "e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18",
+        "passed": true
+      },
+      {
+        "path": "fonts/oswald-latin-600-normal.woff2",
+        "bytes": 12740,
+        "sha256": "f6cb541f4d9794b86145c9c3e7d778ffb78c92f8180c577e245238991503da6f",
+        "passed": true
+      },
+      {
+        "path": "fonts/Oswald-OFL.txt",
+        "bytes": 4388,
+        "sha256": "23916cdee678823c3c517c699cb2e043088de0d46c959eeaa168b54bb84534df",
+        "passed": true
+      },
+      {
+        "path": "fonts/nunito-latin-400-normal.woff2",
+        "bytes": 16316,
+        "sha256": "a5906e15ceb68f73d3b2c2076b4057c3f6ed401186d56283b45ce12944ca0735",
+        "passed": true
+      },
+      {
+        "path": "fonts/Nunito-OFL.txt",
+        "bytes": 4385,
+        "sha256": "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65",
+        "passed": true
+      },
+      {
+        "path": "fonts/Inter-OFL.txt",
+        "bytes": 4377,
+        "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+        "passed": true
+      },
+      {
+        "path": "fonts/Barlow-Condensed-OFL.txt",
+        "bytes": 4377,
+        "sha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+        "passed": true
+      },
+      {
+        "path": "runtime/lib-DcORhR3s.js",
+        "bytes": 6194294,
+        "sha256": "203134a3fd7bfc2b58e7ebf1ddb5d1516124cf348729e829ff9d16b77557e39b",
+        "passed": true
+      },
+      {
+        "path": "runtime/lib-C9O0qMAG.js",
+        "bytes": 4745911,
+        "sha256": "125e6c1b74e73417f05b49c72c49580a5a511fc2d5b232658034de58f0dae5cf",
+        "passed": true
+      },
+      {
+        "path": "runtime/workout-coaching-worker.js",
+        "bytes": 18826,
+        "sha256": "bbe260316abad93fae39387427e14c4e19ef1ed0eb7973fa3913a373968e3363",
+        "passed": true
+      },
+      {
+        "path": "runtime/training-C8u1q4KT.js",
+        "bytes": 1065507,
+        "sha256": "afe700f6213488b4a8c4f0abebdd8a7a649a0f8657403fb136180c570564b78e",
+        "passed": true
+      },
+      {
+        "path": "runtime/qwen-worker.js",
+        "bytes": 26283,
+        "sha256": "067f818c58c3d04cb617199337007237b5b1447819cf7baf040b65e8f7541b77",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/session-guide-CIgp4fXY.js",
+        "bytes": 4497,
+        "sha256": "9001ace8536879f82087922816ddc683628f8a216bb098b9d2fd3b942bb6c8a9",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/onboarding-DztY_flP.js",
+        "bytes": 9606,
+        "sha256": "ec821d13333fc82b27a7adf222e8aa0f815fa5db004c17dd05a96d09413851c7",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/plan-customizer-a7IIEc39.js",
+        "bytes": 9059,
+        "sha256": "dc645e8dc7f078e7a7b23cd1ff15367093289c4622087aa6ae7e53cfbf372edf",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/cloud-envelope-B17_UVwM.js",
+        "bytes": 4005,
+        "sha256": "5dd1d5f98bb9834dcf9c5e9a85db4bbf920fbe17b9e64877b0a27535e838470e",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/training-jn8H07LS.js",
+        "bytes": 794960,
+        "sha256": "fdf0f3092f61218d5557af4d057e61c7a4a8933670c410d2de9161f6a846027c",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/qwen-demo-B2Ea4-iU.js",
+        "bytes": 28161,
+        "sha256": "1208bd16a2b5b81ada34bfec08fd5dd9fa121e6d7fd7a4d990359ad497a11c66",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/framework-JGc2HF7T.js",
+        "bytes": 190152,
+        "sha256": "51eeab1516fa74a7a401a24514cf16d409e4c478b29fc99f7bc909066afefc9a",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/training-day-BEN4a0Ry.js",
+        "bytes": 3665,
+        "sha256": "ef9e2de6db7ab8056351a135a570db6027c30026238b13db5c007c81204d29bf",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/qwen-model-files-DrAtGo3p.js",
+        "bytes": 193200,
+        "sha256": "f2162e413043faed69281ecb8bb2fcc5725bdec307c2c4ebf5d8da85760bdd8e",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/workout-review-DdeEtKVw.js",
+        "bytes": 1628,
+        "sha256": "c91892de3ad31eb2ea69f049b246259dad39ee7b25a4c7a66c0d7743531219c5",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/layout-segment-context-B0vYzScg.js",
+        "bytes": 494,
+        "sha256": "57433f9e8eaf7b44a32a63889e4da02a6615e0a98fbef871ef27503769f1f74b",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/app-route-prefetch-policy-5v_ULWfZ.js",
+        "bytes": 937,
+        "sha256": "8786861cc300f3b82a3288c03eec2b9da2e41930e36472054a7d732344a00fa4",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/progress-CI4fxsR3.js",
+        "bytes": 3126,
+        "sha256": "af55f36a56317fbac5af23eb4c8a904f26a4df5c87067b445838172accb89bc7",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/public-path-Dnx1y3mw.js",
+        "bytes": 152,
+        "sha256": "af39fa80038bcfe26cd35f73b04be1c701912e565e6bfe2b862640de7987a5fa",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/equipment-limits-B0hFW39V.js",
+        "bytes": 2672,
+        "sha256": "88b62d0b1d8960daaf80cb961e8b992acde4443abe3d5e4ceec96d5951bffbd9",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/local-backup-D5FjEcIY.js",
+        "bytes": 873,
+        "sha256": "377e3222fc4b4a0c74ac586d8bf261f40eb909800632f8f00636e35675e6341e",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/storage-capacity-Egu5ZFOb.js",
+        "bytes": 14207,
+        "sha256": "32554ab1d33678d9e5d5a86ed9d12d4e0061d7e0b7abd9fc3ec305d64cb52e9e",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/training-onboarding-Dx5JT9Tv.js",
+        "bytes": 43517,
+        "sha256": "6b53b402d6aca00835646fce333fb328a229f69e00f9d8c0415b8975361f9110",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/progress-dashboard-BGb25gmD.js",
+        "bytes": 368456,
+        "sha256": "c036a1c7a4c359612e651a68ada8b433e5636f7c31ccc2423c485ed057e0c8e6",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/exercise-substitutions-NPLptlpV.js",
+        "bytes": 4278,
+        "sha256": "37685bcacc1a0f5f4668ee0e518240a609e6042d9f5ff15ec1e9a8b113c1a687",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/safety-copy-BKXgRPRs.js",
+        "bytes": 844,
+        "sha256": "d2258c2811f00a1c7c4614dda42963c8b34f3835c1437dcccf36a46b00745191",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/workout-coach-DdlyD4sZ.js",
+        "bytes": 28050,
+        "sha256": "182c57bbe8e057552bb4e1adf4bb0e778d22d5e2245ff7d2d9fcc6c64ed1f6bb",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/research-library-0DA8e4Zv.js",
+        "bytes": 4562,
+        "sha256": "6c88d8fb818408140b0ff6c0aba7304afffa51db441699a8bde82ad6b5b30236",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/button-CBvz_Igj.js",
+        "bytes": 32543,
+        "sha256": "466ce1e3cbd19a6fc23e4c9913c1c6b0b55e98a1017fe9f9709c0bcd67bf7e19",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/index-BMdJBXzZ.js",
+        "bytes": 195675,
+        "sha256": "2b4f7c1096a6369fadfbb66115db6b7aecb75efae7220f7c039b19166bad903d",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/customize-CnMED5ja.js",
+        "bytes": 3892,
+        "sha256": "35d5c979ffd33cdc5a3123a151adf53c87f3fe9a43b46990cdf7f00860dc49dd",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/workout-review-C35-NjVH.js",
+        "bytes": 4027,
+        "sha256": "0ca897522d2b4470bee10c9be799d95b4f0bb11b8e0b0ae86b4900dab3350c43",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/transfer-bundle-BiYhP5Di.js",
+        "bytes": 23038,
+        "sha256": "7261eb4d3fbb59c971c3658bb709afe7dce16742c4e21ed9f7f6def8aa262549",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/account-sync-Bi7y2Lo6.js",
+        "bytes": 4094,
+        "sha256": "9be6461593577b11514dcae72821bfad497fcca575cdaf700b75b898b2673a09",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/cloud-client-Dab8Rxa3.js",
+        "bytes": 2776,
+        "sha256": "1008b760006746bbbf6b75c483ac0603a9d8c44eaa9d8386e79da997557e2c1f",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/tracking-editor-2DdqWwxO.js",
+        "bytes": 9518,
+        "sha256": "aaa41a5aa987d2b142a8e5c049c7dc3fc6af8c53bed85a8cc6e4dfb7516fb69d",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/app-preferences-CoJ1dMRK.js",
+        "bytes": 113780,
+        "sha256": "39ad288e0df3e66d61202560c1003676b516264d9838746f1b91561cf041ff3a",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/substitutions-M5QdKEMw.js",
+        "bytes": 6693,
+        "sha256": "cb0b97a12c11111dbbdbf63ab9cfcb3a2893eeb2a7459f64d6d71c1911e71da2",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/page-D2VNy0rs.js",
+        "bytes": 178567,
+        "sha256": "09c5bb67887c216cbf439125bf988f47154841b7861b2ba319bffd0dcb92f40a",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/daily-feedback-DnfDl7vu.js",
+        "bytes": 4778,
+        "sha256": "6c6e9a6465a607dfc3c72573d429216475c1243c75b490c5854dfaab1ec26066",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/types-B-MU-IOR.js",
+        "bytes": 56526,
+        "sha256": "20c239f64e4dfe563ad671bbc622fe953d0a680b479b17ddbfd58ba778a81d96",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/checkbox-jJZHV6zE.js",
+        "bytes": 4731,
+        "sha256": "8e1f2892b0ea9777023c6252489e93efa1b5052bbd50237f23c12dc93ce8e6e9",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/presentation-BhurRxrE.js",
+        "bytes": 21851,
+        "sha256": "9ccaea29591c5e09466bd71f039d1e7df8562665b12c5ad307c364cb00dd8cea",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/account-security-CObOsyMr.js",
+        "bytes": 743,
+        "sha256": "c7a6f7794a45b31688843fb94adfc045c7805283922eb927368042b7fc3b9f58",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/createLucideIcon-rCMSQdv6.js",
+        "bytes": 31626,
+        "sha256": "05cb2fecaac4a90bf3feaf756489c8691f1592c6133a8aa099f39839d5877d98",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/workout-coaching-DVrcxJFI.js",
+        "bytes": 24020,
+        "sha256": "0d8773b16b3533c33d7509fd0123b016acf16f1b148cb41488319a0ff4548d79",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/rolldown-runtime-QTnfLwEv.js",
+        "bytes": 694,
+        "sha256": "5db5ba82eef00d1dee7e86e663098c9427d01183a88d357437daff295aec3e75",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/transfer-dialog-BPPy4LaH.js",
+        "bytes": 6665,
+        "sha256": "55194dd182cf18310b0e1a97bfc85186d239a5c6e6a13e4a4174e8498a1218d7",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/streamed-icons-BfkstFTP.js",
+        "bytes": 772,
+        "sha256": "5c9b8c911fea37116e8bb778a63fa13f960b2e856962bd656e754a67b7db2bfa",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/browser-vault-CqwzMhLd.js",
+        "bytes": 35628,
+        "sha256": "b4cea6a76211d569c6dabeb6b92bbefdfd10fdda6f41d008d1d762333e9f625a",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/workout-coaching-identity-ZreJUi2H.js",
+        "bytes": 568,
+        "sha256": "453fd283489f1e81d31367b5fa0fa189310ab4cb9b35635b02e3380ec7a188e8",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/training-day-BYgaGpxd.js",
+        "bytes": 4524,
+        "sha256": "b05fe66576e816ef7baae036038c4b4bf9a36995ec342645a1578cd440eb44ab",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/offline-support-BqhCDVzC.js",
+        "bytes": 340,
+        "sha256": "877c805ecc92763e1c1de5377b1c2b0d552e241489fdab2086a4a83e8e8f565b",
+        "passed": true
+      },
+      {
+        "path": "_next/static/chunks/progress-D4KJ_sZI.js",
+        "bytes": 20687,
+        "sha256": "b0cf4a4d0c39cee0476ac93f4e4d8de4261a9917dd9ea086b86552243be10cd0",
+        "passed": true
+      },
+      {
+        "path": "_next/static/f83eb96d-5d79-4ba3-96b6-e3c5e7afdde5/_ssgManifest.js",
+        "bytes": 76,
+        "sha256": "653f3e53e89b4f8548ff86c19e92bb3c6b84b6be7485a320b1e00893ed877479",
+        "passed": true
+      },
+      {
+        "path": "_next/static/f83eb96d-5d79-4ba3-96b6-e3c5e7afdde5/_buildManifest.js",
+        "bytes": 159,
+        "sha256": "47f02b34be6dc481257b6efce4c19e19111f37ef5c437f8ffed44f0da97fa9bb",
+        "passed": true
+      },
+      {
+        "path": "_next/static/css/index.DVUViwHp.css",
+        "bytes": 227121,
+        "sha256": "df90e53cbd884a696846a39d8969866e87bb72240838a103318d1954338ad48f",
+        "passed": true
+      }
+    ]
+  },
+  "nativeStarter": {
+    "bytes": 2116908,
+    "sha256": "c4739f89df0e4c868d96dad694539f62f13ce2fb86fb9a420d72e958f7eee57f",
+    "members": 130,
+    "allCommittedBytesMatch": true,
+    "crcPassed": true
+  },
+  "offlineBuildVersion": "3b70664752bea6d2604760094eeb14879ac5391a705edf59d55484df4b3dd038",
+  "limits": [
+    "HTTP byte verification only; no browser, controller, GPU or phone installation.",
+    "Source ZIP is source code, not an Android package."
+  ]
+}
