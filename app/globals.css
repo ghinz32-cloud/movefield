@@ -188,3 +188,10 @@ input,textarea,select,[data-slot=select-trigger]{color:var(--foreground);border-
 
 .field select,.chart-controls select,.set-extra textarea{border-color:var(--input)}
 .switch-row [role=switch],.check-line [role=checkbox]{position:relative}.switch-row [role=switch]::before,.check-line [role=checkbox]::before{content:"";position:absolute;inset:-.65rem -.35rem}
+
+/* Exercise overview remains usable with narrow screens and large text. */
+.workout-overview{list-style:none;padding:0;display:grid;gap:.75rem}
+.workout-overview button{height:auto;min-height:48px;width:100%;justify-content:flex-start;text-align:left;white-space:normal;padding:.875rem}
+.workout-overview button span{min-width:0;overflow-wrap:anywhere}
+
+.rest-card .button-row button{flex:1 0 7rem;white-space:nowrap;overflow-wrap:normal;word-break:normal}

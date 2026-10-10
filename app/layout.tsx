@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import {brand} from '@/lib/brand';
 import "./globals.css";
-import {AppPreferencesProvider,AppearanceShortcut} from "@/components/app-preferences";
+import {AppPreferencesProvider} from "@/components/app-preferences";
 
 export const metadata: Metadata = {
   title: `${brand.name} | Your training, day by day`,
@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased"><AppPreferencesProvider>{children}<AppearanceShortcut/></AppPreferencesProvider></body>
+      <body className="antialiased"><AppPreferencesProvider>{children}</AppPreferencesProvider></body>
     </html>
   );
 }

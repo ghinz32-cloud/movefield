@@ -1,3 +1,43 @@
+# Active implementation checkpoint — 10 October 2026
+
+The user requested all six version 3 master prompts. The package explicitly uses tested, bounded **PROTOTYPE_FIRST** milestones and authorizes $0 new service spending. This checkout is earlier than the encrypted/account/AI implementation described by parts of those prompts. Do not assume those systems already exist.
+
+The canonical scope and current statuses are in `docs/master-prompts-task-register.json` (72 requirement sections, original requirement text and shared contract retained). This checkpoint implements the first data-safety repair; it does **not** complete all six prompts or qualify a production release.
+
+Implemented:
+
+- One serialized persistence controller shared by web/native. Staged input remains visible on failure; logging and finishing publish completion only after a successful write. Repeated commands are guarded. Web writes use Web Locks and compare the current stored snapshot before writing.
+- Workout overview → focused exercise logger → next unfinished exercise → remaining/completion overview on both platforms. Successful saves advance once; failed saves do not advance. Deliberate back navigation during a pending save is preserved.
+- Finish confirmations bind workout identity, targets, sets and equipment context; stale confirmations reject. Partial/full finishing preserves dates and IDs and clears the active timer only after saving.
+- Web sample data uses a separate session-storage key. Reset restores the example dataset. Returning to personal data preserves the active workout and timer. Native dataset isolation remains pending.
+- Account simulations are confined to sample mode; personal screens show real connections as unavailable. Appearance lives in Settings. Narrow-screen exercise/timer controls no longer clip or wrap labels letter by letter.
+- Restored 396 static assets flattened by the original upload, checking their original manifest SHA256 first. 1,354 exercise photos remain missing; written guides and photo-unavailable states are available. The recovery script is idempotent. Do not fabricate the absent images.
+- Updated `next` and `eslint-config-next` to 16.3.8. Added pinned Playwright Core for real browser checks. Root still uses pnpm 11.25.0 and mobile retains its npm lockfile.
+
+Evidence already run: web/native type checks; 11 durability/flow regression groups; 11 audit groups; native storage ordering/reset regression; 29 schema/HTTP security checks; native engine checks covering 74 plans across seven starting weekdays; web build and production nonce/route/static-asset check; iOS and Android Hermes bundle exports; seven dev-browser journeys and the same seven journeys against a freshly started final built Worker, including sample exit with an active personal rest timer. An earlier built-browser attempt hit an orphaned old preview and 404 chunks; clearing that process and restarting the current Worker resolved it. HTTP 200 alone was not accepted as readiness.
+
+Application-source SHA256 (code, tests, configuration and available static assets): `47bc35e43f6e96435736595e85062d5ca9eeb0375b2b49751d8ffcb8e4aff783`. Detailed local file/artifact hashes are in ignored `.sites-runtime/candidate-receipt.json`. Native exports are JS/Hermes bundles, **not** installable APK/IPA artifacts. Physical-device behavior was not tested. The public revision 13 starter ZIP remains historical and is labeled accordingly.
+
+Known limits and release gates:
+
+- Browser localStorage and native AsyncStorage remain plaintext. Encryption, key loss/recovery, vault migration and true transactional outboxes are required code work.
+- Some existing plan/custom-exercise/import callbacks still stage optimistically. Extend commit-before-display contracts to those paths before claiming all saves are atomic.
+- History editing, revision-aware summaries, full training/evidence/rights qualification, connected identity/sync/AI, broader accessibility/performance checks and device/signing qualification remain tracked.
+- Web production dependency audit reports zero advisories after the patch. Native audit reports 33 affected dependency-chain entries originating in **two** high advisories: braces <=3.0.3 (Expo Metro pattern processing, GHSA-vfj7-8cjw-p6xm) and node-forge <=1.4.0 (Expo CLI/signature tooling, GHSA-86w9-cpqp-85rv). Registry latest versions remain those affected versions. No blind upgrade or suppressed scan was used; native distribution/update security remains unqualified.
+- No repository CI workflows were found. External deployment triggers, owner-console configuration, quotas and open-PR status were not independently qualified. A source push/deployment is not claimed. Do not spend money or deploy from this checkpoint.
+
+Reproduce checks from the root: `pnpm test:durability`, `node scripts/check-audit.cjs`, `node scripts/check-native-storage.cjs`, `node scripts/check-security.cjs`, `pnpm exec tsc --noEmit --incremental false`, `pnpm build`, `node scripts/check-production-security.cjs`. For browser tests, start the app locally and run `pnpm test:browser`; use `MOVEFIELD_BASE_URL` to test a fresh built Worker. Chromium must retain its user-namespace sandbox; this cloud runner requires executing browser tests outside the outer command sandbox. A browser or sandbox failure is an unavailable/failed check, never a pass. Screenshots use only synthetic data and live in `.sites-runtime/evidence/`.
+
+From mobile: `npm run check`, `npm run test:engine`, `EXPO_OFFLINE=1 EXPO_NO_TELEMETRY=1 CI=1 npm run export:mobile -- --max-workers 4`. Native secure storage and physical notification/restore tests are still pending. Use a writable XDG cache for Expo; optional desktop DevTools sandbox support is separate from Metro.
+
+**Next checkpoint:** complete encrypted local storage/key recovery and native sample/personal isolation using the existing stores and shared schema, with explicit legacy-data migration and failure tests. Then implement staged saved-workout editing while preserving another active workout/timer and invalidate only relevant reviews. Extend durable acknowledgment to remaining mutation callbacks. Resume the register rather than restarting the audit.
+
+Rollback must preserve device records: export a backup first; revert the source checkpoint without resetting storage or deleting app installations. This repair retains state schema 2 and existing personal record IDs/keys. It introduces a separate disposable sample key and no production-data migration.
+
+---
+
+The historical handoff below remains context; current source/evidence above takes precedence.
+
 # Movefield / Training Studio — Claude Code handoff
 
 Prepared 7 October 2026. Movefield is a **working name**. This package transfers the existing project; continue it rather than creating another starter.
