@@ -2,6 +2,16 @@
   "source": "Training Studio website domain modules; paths relative to its root",
   "files": [
     {
+      "source": "lib/coaching-facts.ts",
+      "target": "src/shared/coaching-facts.ts",
+      "sha256": "cefeff01cdf00e6183c36ae0f6a0c3533b01dfb5f7149b577e6ff816e9399d06"
+    },
+    {
+      "source": "lib/cloud-sync.ts",
+      "target": "src/shared/cloud-sync.ts",
+      "sha256": "434045258e92236a7d11b59a30b93f3b132a2da1e765e1b86c3f35c790f07e91"
+    },
+    {
       "source": "lib/plan-import.ts",
       "target": "src/shared/plan-import.ts",
       "sha256": "7dc5a573c30fcd4a55405a40de8a6990a1e0ce83d1f286ce3a34a333aea9e488"
@@ -109,12 +119,12 @@
     {
       "source": "lib/workout-review.ts",
       "target": "src/shared/workout-review.ts",
-      "sha256": "02d2bd78a546e1380a938cb3e9f0ed7a160619477b564833465e1cbfb70fa159"
+      "sha256": "6f15ab93c06a9ca502fd1a2fb33c9946aa0e125536615faaf6f428b8c2ce503c"
     },
     {
       "source": "lib/saved-data.ts",
       "target": "src/shared/saved-data.ts",
-      "sha256": "3df6d8b4713df9379f2789e724d6c931eb3c6f642e11509c5eb7066baa313414"
+      "sha256": "42f102e3519dccf7f4e668fa54bee04fb5d727b2efd7530a912b788b6d091a26"
     },
     {
       "source": "lib/progress.ts",
@@ -130,6 +140,11 @@
       "source": "lib/recipes.json",
       "target": "src/shared/recipes.json",
       "sha256": "667a3b8678ffc458d725a50ae9bd5372f8dcc3b4f6f7dfb1f4f7148ac17dde8d"
+    },
+    {
+      "source": "docs/cloudflare-implementation.md",
+      "target": "docs/cloudflare-implementation.md",
+      "sha256": "d657c4a1150943bb94c2e3d567ee468ad8058dc6ae9c850841afcb1dcd5f34c9"
     },
     {
       "source": "public/exercise-guides.json",

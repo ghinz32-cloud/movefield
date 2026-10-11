@@ -4,6 +4,7 @@ const encode=(value:string)=>new TextEncoder().encode(value);
 export class BrowserVault {
  private constructor(private key:CryptoKey,readonly header:Omit<VaultEnvelope,'iv'|'ciphertext'>){}
  static async open(passphrase:string,raw?:string){
+  if(passphrase.length>1024)throw Error('Passphrases are limited to 1,024 characters.');
   if(!crypto.subtle)throw Error('Encrypted storage requires a secure browser connection.');
   if(!raw&&passphrase.length<12)throw Error('Use a passphrase of at least 12 characters. Keep it somewhere safe; we cannot recover it.');
   const e=raw?readEnvelope(raw):null;

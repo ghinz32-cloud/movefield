@@ -8,6 +8,8 @@ import {encryptedStorage} from './shared/encrypted-storage';
 const KEY='training-studio:mobile-local-demo:v1',SETUP_KEY='training-studio:mobile-setup:v1';
 const SAMPLE_KEY='movefield:mobile-sample:v1',SAMPLE_SETUP='movefield:mobile-sample-setup:v1';
 const SECRET='movefield.local-vault-key.v1';
+const CLOUD_OUTBOX='movefield:cloud-outbox:v1';
+let storageGeneration=0,storageErased=false;
 const secureOptions={keychainAccessible:SecureStore.WHEN_UNLOCKED_THIS_DEVICE_ONLY};
 type KeyRecord={key:string;vaultId:string;salt:string};
 let pendingKey:Promise<KeyRecord>|null=null;
@@ -48,7 +50,7 @@ export async function readLocalState(sample=false):Promise<State|null>{
  if(sample){await sampleWrites.catch(()=>undefined);const raw=await AsyncStorage.getItem(SAMPLE_KEY);return raw===null?null:readSavedState(raw)}
  await personal.migrate();const raw=await personal.read();return raw===null?null:readSavedState(raw);
 }
-export function saveLocalState(state:State,sample=false):Promise<void>{const raw=JSON.stringify(state);readSavedState(raw);return sample?sampleWrite(SAMPLE_KEY,raw):personal.write(raw)}
+export async function saveLocalState(state:State,sample=false):Promise<void>{const raw=JSON.stringify(state);readSavedState(raw);await (sample?sampleWrite(SAMPLE_KEY,raw):personal.write(raw));if(!sample)storageErased=false}
 export async function resetLocalState(sample=false):Promise<void>{await (sample?sampleWrites:personal.flush()).catch(()=>undefined);if(!sample)throw Error('Personal records are preserved. Use a confirmed replacement backup or erase action.');await sampleWrite(SAMPLE_KEY,null);await sampleWrite(SAMPLE_SETUP,null)}
 export async function readLocalSetup(sample=false):Promise<ReturnType<typeof readSetupDraft>|null>{if(sample){await sampleWrites.catch(()=>undefined);const raw=await AsyncStorage.getItem(SAMPLE_SETUP);return raw===null?null:readSetupDraft(raw)}await setup.migrate();const raw=await setup.read();return raw===null?null:readSetupDraft(raw)}
 export function saveLocalSetup(draft:ReturnType<typeof readSetupDraft>,sample=false):Promise<void>{const raw=JSON.stringify(draft);readSetupDraft(raw);return sample?sampleWrite(SAMPLE_SETUP,raw):setup.write(raw)}
@@ -59,8 +61,9 @@ export async function encryptedLocalBackup(){await personal.flush();return await
 export async function previewLocalBackup(raw:string,recovery:string):Promise<State>{
  const k=validateKey(recovery),e=readEnvelope(raw);if(e.kdf!=='platform'||e.purpose!=='state'||e.vaultId!==k.vaultId||e.salt!==k.salt)throw Error('This backup and recovery key do not match.');const key=await AESEncryptionKey.import(unhex(k.key));const bytes=await aesDecryptAsync(AESSealedData.fromParts(unhex(e.iv),unhex(e.ciphertext),16),key,{additionalData:new TextEncoder().encode(vaultAAD(e))});return readSavedState(new TextDecoder('utf-8',{fatal:true}).decode(bytes));
 }
-export async function restoreLocalBackup(raw:string,recovery:string):Promise<State>{
- const state=await previewLocalBackup(raw,recovery),k=validateKey(recovery);await personal.flush().catch(()=>undefined);await setup.flush().catch(()=>undefined);
+export async function restoreLocalBackup(raw:string,recovery:string,unchangedKeyRecovery=false):Promise<State>{
+ const state=await previewLocalBackup(raw,recovery),k=validateKey(recovery);await personal.flush().catch(()=>undefined);await setup.flush().catch(()=>undefined);await cloudWrites.catch(()=>undefined);
+ if(await AsyncStorage.getItem(CLOUD_OUTBOX)&&(!unchangedKeyRecovery||await AsyncStorage.getItem(KEY)!==raw))throw Error('Retry or discard the queued cloud upload before restoring a different vault.');
  const stored=await SecureStore.getItemAsync(SECRET,secureOptions),keys=stored?keyRing(stored):[];
  const matched=keys.find(x=>x.vaultId===k.vaultId);if(matched&&JSON.stringify(matched)!==JSON.stringify(k))throw Error('Recovery metadata conflicts with this device.');
  if(!matched)keys.push(k);if(keys.length>8)throw Error('This device retains eight recovery keys. Export and review recovery before adding another.');
@@ -68,11 +71,18 @@ export async function restoreLocalBackup(raw:string,recovery:string):Promise<Sta
  const encoded=JSON.stringify({version:1,keys});await SecureStore.setItemAsync(SECRET,encoded,secureOptions);if(await SecureStore.getItemAsync(SECRET,secureOptions)!==encoded)throw Error('Recovery key could not be verified.');
  await AsyncStorage.setItem(KEY,raw);if(await AsyncStorage.getItem(KEY)!==raw)throw Error('Restored backup could not be verified.');pendingKey=null;return state;
 }
-export async function restoreDeviceKey(recovery:string){const existing=await AsyncStorage.getItem(KEY);if(!existing)throw Error('Restore an encrypted file first.');await restoreLocalBackup(existing,recovery);}
+export async function restoreDeviceKey(recovery:string){const existing=await AsyncStorage.getItem(KEY);if(!existing)throw Error('Restore an encrypted file first.');await restoreLocalBackup(existing,recovery,true);}
 
 export async function flushLocalSetup(sample=false){await (sample?sampleWrites:setup.flush())}
 
 /** Owner-confirmed local erasure. Keep ciphertext decryptable if deletion fails. */
-export async function erasePrivateProfile(){await personal.flush().catch(()=>undefined);await setup.flush().catch(()=>undefined);await AsyncStorage.multiRemove([KEY,SETUP_KEY]);await SecureStore.deleteItemAsync(SECRET,secureOptions);pendingKey=null;}
+export async function erasePrivateProfile(){storageGeneration++;storageErased=true;await personal.flush().catch(()=>undefined);await setup.flush().catch(()=>undefined);await cloudWrites.catch(()=>undefined);await AsyncStorage.multiRemove([KEY,SETUP_KEY,CLOUD_OUTBOX]);await SecureStore.deleteItemAsync(SECRET,secureOptions);pendingKey=null;}
 
 export async function encryptedStateBackup(state:State){const raw=JSON.stringify(state);readSavedState(raw);return encrypt(raw,'state')}
+
+let cloudWrites:Promise<void>=Promise.resolve();
+export const nativeOutbox={
+ read:async()=>{await cloudWrites.catch(()=>undefined);const raw=await AsyncStorage.getItem(CLOUD_OUTBOX);return raw?decrypt(raw,'setup'):null},
+ write:(plain:string)=>{const token=storageGeneration;const operation=cloudWrites.catch(()=>undefined).then(async()=>{if(await AsyncStorage.getItem(CLOUD_OUTBOX))throw Error('A backup is already queued.');const raw=await encrypt(plain,'setup');if(token!==storageGeneration||storageErased)throw Error('The private profile changed. The upload was not queued.');await AsyncStorage.setItem(CLOUD_OUTBOX,raw);if(await AsyncStorage.getItem(CLOUD_OUTBOX)!==raw)throw Error('The encrypted backup queue could not be verified.');});cloudWrites=operation;return operation},
+ clear:(expected?:string)=>{const operation=cloudWrites.catch(()=>undefined).then(async()=>{const raw=await AsyncStorage.getItem(CLOUD_OUTBOX);if(expected&&(!raw||await decrypt(raw,'setup')!==expected))throw Error('The backup queue changed. It has been kept.');await AsyncStorage.removeItem(CLOUD_OUTBOX)});cloudWrites=operation;return operation},
+};

@@ -1,4 +1,4 @@
-import {z} from 'zod';
+import {z} from 'zod/v3';
 import {type State,type Profile,type Event,validDay,exFor} from './training';
 const text=z.string().max(6000),short=z.string().max(200),id=z.string().min(1).max(150),number=z.number().finite(),date=z.string().refine(validDay),bool=z.boolean();
 const strings=z.array(short).max(500),map=<T extends z.ZodTypeAny>(v:T)=>z.record(v).refine(v=>Object.keys(v).length<=1500);

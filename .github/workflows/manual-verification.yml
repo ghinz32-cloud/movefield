@@ -22,6 +22,11 @@ jobs:
       - run: pnpm verify:core
       - run: pnpm build
       - run: node scripts/check-production-security.cjs
+      - name: Built account and encrypted backup browser checks
+        run: |
+          export CHROMIUM_PATH=$(command -v chromium || command -v google-chrome)
+          test -n "$CHROMIUM_PATH"
+          node scripts/check-cloud-browser.mjs
       - run: npm run export:mobile -- --max-workers 2
         working-directory: mobile
         env:

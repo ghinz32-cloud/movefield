@@ -15,12 +15,17 @@
     "test:durability": "node scripts/check-durable-state.cjs",
     "test:browser": "node scripts/check-workout-browser.cjs",
     "test:vault": "node scripts/check-vault.cjs",
-    "verify:core": "node scripts/verify-core.mjs"
+    "verify:core": "node scripts/verify-core.mjs",
+    "test:cloud": "node scripts/check-cloud.mjs && node scripts/check-cloud-sync.cjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
+    "@better-auth/drizzle-adapter": "1.7.7",
+    "@better-auth/expo": "1.7.7",
     "@hookform/resolvers": "^5.7.1",
+    "@noble/hashes": "2.0.1",
     "@shadcn/react": "^0.3.0",
+    "better-auth": "1.7.7",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "cmdk": "^1.1.1",
@@ -41,7 +46,7 @@
     "sonner": "^2.0.8",
     "tailwind-merge": "3.6.0",
     "vaul": "^1.1.2",
-    "zod": "^3.25.76"
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.37.1",

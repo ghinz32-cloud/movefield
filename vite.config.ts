@@ -9,7 +9,8 @@ import { connectorPreview } from "./build/connector-preview-plugin.mjs";
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
 
-const { d1, r2 } = hostingConfig;
+// Explicit local emulation; preserve the existing owner's hosting file.
+const { d1, r2 } = process.env.MOVEFIELD_LOCAL_CLOUD === 'true' ? {d1:'DB',r2:'BUCKET'} : hostingConfig;
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";

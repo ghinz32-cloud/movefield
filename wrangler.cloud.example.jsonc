@@ -1,0 +1,16 @@
+// Review and copy this file for an owner-controlled deployment. No deploy script.
+{
+  "name": "movefield",
+  "main": "dist/server/index.js",
+  "no_bundle": true,
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "rules": [{"type":"ESModule","globs":["**/*.js","**/*.mjs"]}],
+  "assets": {"directory":"dist/client"},
+  "workers_dev": false,
+  "observability": {"enabled":false},
+  "d1_databases": [{"binding":"DB","database_name":"movefield-owner-reviewed","database_id":"00000000-0000-4000-8000-000000000000","migrations_dir":"drizzle"}],
+  "r2_buckets": [{"binding":"BUCKET","bucket_name":"movefield-owner-reviewed"}],
+  "triggers": {"crons":["0 * * * *"]},
+  "vars": {"MOVEFIELD_CLOUD_ENABLED":"false","FREE_ALLOWANCE_VERIFIED":"false","AI_PROVIDER_VERIFIED":"false","APP_ORIGIN":"https://your-owned-domain.example"}
+}

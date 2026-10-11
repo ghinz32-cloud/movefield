@@ -29,6 +29,7 @@
           "configureAndroidBackup": true
         }
       ]
-    ]
+    ],
+    "scheme": "movefield"
   }
 }

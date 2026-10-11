@@ -1,4 +1,16 @@
-// Intentionally empty by default.
-// Add Drizzle tables here when the site actually needs a database.
-// See examples/d1/db/schema.ts for an opt-in example.
-export {};
+import {sqliteTable,text,integer,index,uniqueIndex,primaryKey} from 'drizzle-orm/sqlite-core';
+
+// Better Auth 1.7.7 core tables (getAuthTables), with persistent session revocation.
+const time=(name:string)=>integer(name,{mode:'timestamp_ms'}).notNull();
+export const user=sqliteTable('auth_user',{id:text('id').primaryKey(),name:text('name').notNull(),email:text('email').notNull().unique(),emailVerified:integer('email_verified',{mode:'boolean'}).notNull().default(false),image:text('image'),createdAt:time('created_at'),updatedAt:time('updated_at')});
+export const session=sqliteTable('auth_session',{id:text('id').primaryKey(),expiresAt:time('expires_at'),token:text('token').notNull().unique(),createdAt:time('created_at'),updatedAt:time('updated_at'),ipAddress:text('ip_address'),userAgent:text('user_agent'),userId:text('user_id').notNull().references(()=>user.id,{onDelete:'cascade'})},t=>[index('session_owner').on(t.userId)]);
+export const account=sqliteTable('auth_account',{id:text('id').primaryKey(),accountId:text('account_id').notNull(),providerId:text('provider_id').notNull(),userId:text('user_id').notNull().references(()=>user.id,{onDelete:'cascade'}),accessToken:text('access_token'),refreshToken:text('refresh_token'),idToken:text('id_token'),accessTokenExpiresAt:integer('access_token_expires_at',{mode:'timestamp_ms'}),refreshTokenExpiresAt:integer('refresh_token_expires_at',{mode:'timestamp_ms'}),scope:text('scope'),password:text('password'),createdAt:time('created_at'),updatedAt:time('updated_at')},t=>[index('account_owner').on(t.userId),uniqueIndex('provider_identity').on(t.providerId,t.accountId)]);
+export const verification=sqliteTable('auth_verification',{id:text('id').primaryKey(),identifier:text('identifier').notNull(),value:text('value').notNull(),expiresAt:time('expires_at'),createdAt:time('created_at'),updatedAt:time('updated_at')},t=>[index('verification_identifier').on(t.identifier)]);
+export const rateLimit=sqliteTable('auth_rate_limit',{id:text('id').primaryKey(),key:text('key').notNull().unique(),count:integer('count').notNull(),lastRequest:integer('last_request',{mode:'number'}).notNull()});
+
+// No FK on tombstones: retain the deletion barrier after the auth user is gone.
+export const cloudProfile=sqliteTable('cloud_profile',{ownerId:text('owner_id').primaryKey(),revision:integer('revision').notNull().default(0),objectKey:text('object_key'),digest:text('digest'),vaultId:text('vault_id'),updatedAt:integer('updated_at').notNull(),deletedAt:integer('deleted_at'),consentVersion:integer('consent_version').notNull().default(0),aiConsent:integer('ai_consent').notNull().default(0)});
+export const cloudOperation=sqliteTable('cloud_operation',{ownerId:text('owner_id').notNull(),operationId:text('operation_id').notNull(),expectedRevision:integer('expected_revision').notNull(),digest:text('digest').notNull(),revision:integer('revision').notNull(),createdAt:integer('created_at').notNull()},t=>[primaryKey({columns:[t.ownerId,t.operationId]})]);
+export const cloudQuota=sqliteTable('cloud_quota',{ownerId:text('owner_id').notNull(),day:text('day').notNull(),kind:text('kind').notNull(),count:integer('count').notNull()},t=>[primaryKey({columns:[t.ownerId,t.day,t.kind]})]);
+export const coachingJob=sqliteTable('coaching_job',{id:text('id').primaryKey(),ownerId:text('owner_id').notNull(),contextDigest:text('context_digest').notNull(),revision:integer('revision').notNull(),consentVersion:integer('consent_version').notNull(),status:text('status').notNull(),input:text('input').notNull(),output:text('output'),createdAt:integer('created_at').notNull(),updatedAt:integer('updated_at').notNull()},t=>[index('jobs_owner').on(t.ownerId),uniqueIndex('job_dedupe').on(t.ownerId,t.contextDigest,t.revision,t.consentVersion)]);
+export const cloudMaintenance=sqliteTable('cloud_maintenance',{key:text('key').primaryKey(),value:text('value').notNull()});

@@ -1,5 +1,4 @@
-// The app has no public write API. Revisit this boundary when real accounts and
-// server-side saves are added; do not replace it with a blanket POST allowance.
+// Account API routes enforce their own exact methods before this shell boundary.
 export function blockedRequest(request:Request):Response|null {
   const path=new URL(request.url).pathname;
   if(path==='/_next/image'||path.startsWith('/__vinext/'))return new Response('Not found',{status:404});
@@ -28,8 +27,8 @@ export function secureResponse(response:Response,policy?:string){
     result.headers.set('Strict-Transport-Security','max-age=31536000');
     // HTML and RSC responses must not reuse another request's nonce.
     result.headers.set('Cache-Control','private, no-store');
-    // Opt in only while the origin is stateless and has no connected accounts.
-    result.headers.set('X-Movefield-Offline-Shell','local-v1');
+    // Only the stateless client shell can be cached. APIs/private SSR never opt in.
+    if(result.headers.get('Content-Type')?.includes('text/html')&&!result.headers.has('Set-Cookie'))result.headers.set('X-Movefield-Offline-Shell','local-v1');
   }
   result.headers.delete('X-Powered-By');
   return result;

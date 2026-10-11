@@ -2,9 +2,17 @@ import handler from "vinext/server/fetch-handler";
 import { runWithConnectorBinding } from "../lib/connector-context";
 import type { ConnectorBinding } from "../lib/connector-contract.mjs";
 import {blockedRequest,securityContext,secureResponse} from '../lib/http-security';
+import {cloudApi,reconcileCloud} from '../lib/server/cloud-api';
 
 export default {
   async fetch(request: Request, env: Cloudflare.Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
+    const api=await cloudApi(request,env,ctx);
+    if(api){
+      const response=secureResponse(api);
+      response.headers.set('Cache-Control','private, no-store');
+      response.headers.delete('X-Movefield-Offline-Shell');
+      return response;
+    }
     const security=import.meta.env.DEV?null:securityContext(request);
     if(security){
       request=security.request;
@@ -33,4 +41,5 @@ export default {
     const response=await runWithConnectorBinding(binding, () => handler.fetch(request, env, ctx));
     return secureResponse(response,security?.policy);
   },
+  async scheduled(_event:ScheduledEvent,env:Cloudflare.Env,ctx:ExecutionContext){ctx.waitUntil(reconcileCloud(env));},
 };

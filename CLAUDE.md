@@ -10,9 +10,9 @@ The detailed requirements remain the contract. Newer explicit user decisions tak
 
 - Web: Vinext/React/TypeScript/Tailwind, encrypted local browser vault, production offline shell, existing Sites/Cloudflare project.
 - Native: Expo SDK 57 / React Native, encrypted AsyncStorage state with Expo Crypto/SecureStore and separate synthetic sample data.
-- No real app-owned accounts, web/mobile sync, cloud backups, paid AI calls, or installed on-device model.
+- Cloudflare account/backup/highlights code now uses Better Auth Google OAuth, D1 owner/revision metadata and private R2 ciphertext. It is tested locally and disabled without reviewed owner configuration. No live accounts, paid AI calls or installed on-device model are configured. Backup is manual snapshot sync, not automatic merging. See docs/cloudflare-implementation.md.
 - Working brand: Movefield. Final name is undecided and no trademark clearance is claimed.
-- Current local checkpoint adds encrypted backup/recovery, saved-workout corrections, credited full-plan imports, durable commands and native file sharing. It has NOT been pushed or deployed. Revision 13 is historical.
+- Current local checkpoints add encrypted backup/recovery, saved-workout corrections, credited full-plan imports, durable commands, native file sharing and configured cloud clients. It has NOT been pushed or deployed. Revision 13 is historical.
 - Source ZIP is a portable working tree. It omits dependencies, runtime caches, credentials and `.git` history. Preserve the included lockfiles and non-secret `.openai/hosting.json`.
 
 ## Run and check
@@ -30,6 +30,7 @@ node scripts/check-preferences.cjs
 node scripts/check-audit.cjs
 node scripts/check-native-storage.cjs
 pnpm verify:core
+node scripts/check-cloud-browser.mjs # after pnpm build, with a sandboxed Chromium installed
 ```
 
 Install/activate the exact pnpm version using the user's normal Node tooling if it is absent. Do not use root `npm ci`: there is no root package-lock. The generic root README is not authoritative for the package manager.

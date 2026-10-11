@@ -8,7 +8,7 @@ OUTPUT=ROOT/'public/downloads/movefield-native-current.zip'
 FILES=[]
 for path in sorted(MOBILE.rglob('*')):
     rel=path.relative_to(MOBILE)
-    if not path.is_file() or any(part in EXCLUDED for part in rel.parts) or any(part.startswith('.env') for part in rel.parts):continue
+    if not path.is_file() or any(part in EXCLUDED for part in rel.parts) or any(part.startswith(('.env','.dev.vars')) for part in rel.parts):continue
     if path.suffix in ALLOWED or rel.as_posix()=='.gitignore':FILES.append(path)
 OUTPUT.parent.mkdir(parents=True,exist_ok=True)
 records=[]
