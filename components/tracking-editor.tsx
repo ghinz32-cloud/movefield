@@ -9,7 +9,7 @@ import {Checkbox} from '@/components/ui/checkbox';
 import {type State,type Item,exercises,exFor,matchesExercise,niceDate} from '@/lib/training';
 import {type TrackingEdit,previewTrackingEdit,applyTrackingEdit} from '@/lib/tracking';
 
-export function TrackingEditor({state,sessionId,onClose,onApply}:{state:State;sessionId:string;onClose:()=>void;onApply:(state:State)=>boolean}){
+export function TrackingEditor({state,sessionId,onClose,onApply}:{state:State;sessionId:string;onClose:()=>void;onApply:(state:State)=>Promise<boolean>}){
  const session=state.plan!.sessions.find(s=>s.id===sessionId)!;
  const [base]=useState({planId:state.plan!.id,version:state.plan!.version,sessionId});
  const [items,setItems]=useState<Item[]>(session.items.map(i=>({...i}))),[search,setSearch]=useState(''),[selected,setSelected]=useState(''),[editing,setEditing]=useState<number|null>(null),[sets,setSets]=useState('2'),[amount,setAmount]=useState('8'),[rest,setRest]=useState('90'),[repeatWeekday,setRepeat]=useState(false),[allowLonger,setLonger]=useState(false),[error,setError]=useState('');
@@ -28,5 +28,5 @@ export function TrackingEditor({state,sessionId,onClose,onApply}:{state:State;se
  {preview.minutes>state.plan!.profile.minutes&&<label className="check-line"><Checkbox checked={allowLonger} onCheckedChange={v=>setLonger(!!v)}/>I have time for the longer workouts shown.</label>}
  <details className="review-dates"><summary>Review affected dates</summary>{preview.sessions.map(s=><p key={s.id}>{niceDate(s.date)} · {sessionName(s,state.plan)}</p>)}</details>
  {error&&<p role="alert" className="notice warning">{error}</p>}
- <div className="dialog-actions"><Button variant="outline" onClick={onClose}>Cancel</Button><Button onClick={()=>{if(selected){setError('Keep or cancel your exercise edit before saving.');return}const r=applyTrackingEdit(state,edit);if(r.error){setError(r.error);return}if(onApply(r.state))onClose();else setError('The changes could not be saved. Your targets remain open.')}}>Save reviewed targets</Button></div></DialogContent></Dialog>;
+ <div className="dialog-actions"><Button variant="outline" onClick={onClose}>Cancel</Button><Button onClick={async()=>{if(selected){setError('Keep or cancel your exercise edit before saving.');return}const r=applyTrackingEdit(state,edit);if(r.error){setError(r.error);return}if(await onApply(r.state))onClose();else setError('The changes could not be saved. Your targets remain open.')}}>Save reviewed targets</Button></div></DialogContent></Dialog>;
 }

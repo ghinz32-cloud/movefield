@@ -4,8 +4,15 @@ const { chromium } = require('playwright-core');
 const { workoutFixture, load } = require('./domain-test-loader.cjs');
 const base = process.env.MOVEFIELD_BASE_URL || 'http://127.0.0.1:5173';
 if (!['127.0.0.1', 'localhost', '[::1]'].includes(new URL(base).hostname)) throw new Error('These synthetic mutation tests are limited to a local app.');
+const {BrowserVault}=load('lib/browser-vault.ts');
+const syntheticPassphrase='Synthetic browser vault passphrase';
+let cachedVault;
+async function decoded(raw){if(!cachedVault||cachedVault.header.vaultId!==JSON.parse(raw).vaultId)cachedVault=await BrowserVault.open(syntheticPassphrase,raw);return JSON.parse(await cachedVault.decrypt(raw));}
+async function readState(page){return decoded(await page.evaluate(()=>localStorage.getItem('training-studio-v2')))}
+async function unlock(page,create=false){await page.getByLabel('Vault passphrase',{exact:true}).fill(syntheticPassphrase);if(create)await page.getByLabel('Confirm passphrase',{exact:true}).fill(syntheticPassphrase);await page.getByRole('button',{name:create?'Create encrypted profile':'Unlock profile',exact:true}).click();}
 const { exFor } = load('lib/training.ts');
 const fixture = workoutFixture();
+fixture.restTimer = null;
 fixture.active.targets = fixture.active.targets.slice(0, 3).map(x => ({ ...x, sets: 1 }));
 fixture.active.sets = fixture.active.targets.map(x => ({ exerciseId: x.exerciseId, set: 1, reps: 8, kg: null, done: false }));
 const ids = fixture.active.targets.map(x => x.exerciseId), names = ids.map(id => exFor(id).name);
@@ -16,6 +23,7 @@ async function seeded(context) {
   await page.goto(base);
   await page.evaluate(s => { localStorage.setItem('training-studio-v2', JSON.stringify(s)); localStorage.setItem('training-studio-access-v1', 'open'); }, fixture);
   await page.reload();
+  await unlock(page,true);
   await page.getByRole('heading', { name: 'Today', exact: true }).waitFor();
   await page.getByRole('button', { name: 'Resume workout', exact: true }).click();
   await page.getByRole('heading', { name: 'Exercises in this workout', exact: true }).waitFor();
@@ -23,7 +31,7 @@ async function seeded(context) {
 }
 async function test(name, run) { await run(); passed++; console.log('PASS ' + name); }
 (async () => {
-  const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium', chromiumSandbox: true, args: ['--disable-setuid-sandbox'], env: { ...process.env, XDG_CONFIG_HOME: '/workspace/movefield/.sites-runtime/config', XDG_CACHE_HOME: '/workspace/movefield/.sites-runtime/cache' } });
+  const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium', chromiumSandbox: true, args: ['--disable-setuid-sandbox'], env: { ...process.env, XDG_CONFIG_HOME: require('node:path').resolve('.sites-runtime/config'), XDG_CACHE_HOME: require('node:path').resolve('.sites-runtime/cache') } });
   try {
     await test('Actual quota failure keeps the set unfinished, focused, and recoverable', async () => {
       const context = await browser.newContext(); const page = await seeded(context);
@@ -33,14 +41,14 @@ async function test(name, run) { await run(); passed++; console.log('PASS ' + na
         await page.getByRole('button', { name: `Log ${names[0]} set 1`, exact: true }).click();
         await page.getByText('Synthetic quota failure', { exact: false }).first().waitFor();
         assert.equal(await page.getByRole('heading', { name: names[0], exact: true }).count(), 1);
-        assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('training-studio-v2')).active.sets[0].done), false);
+        assert.equal((await readState(page)).active.sets[0].done, false);
         assert.equal(await page.getByRole('button', { name: `Saved ${names[0]} set 1`, exact: true }).count(), 0);
         await page.evaluate(() => { Storage.prototype.setItem = window.originalSetItem; });
         await page.getByRole('button', { name: `Log ${names[0]} set 1`, exact: true }).click();
         await page.getByRole('heading', { name: names[1], exact: true }).waitFor();
-        assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('training-studio-v2')).active.sets[0].done), true);
-        await page.reload(); await page.getByRole('heading', { name: 'Today', exact: true }).waitFor();
-        assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('training-studio-v2')).active.sets[0].done), true);
+        assert.equal((await readState(page)).active.sets[0].done, true);
+        await page.reload(); await unlock(page); await page.getByRole('heading', { name: 'Today', exact: true }).waitFor();
+        assert.equal((await readState(page)).active.sets[0].done, true);
       } finally { await context.close(); }
     });
     await test('Partial finish cannot appear saved when the real storage write fails', async () => {
@@ -55,14 +63,14 @@ async function test(name, run) { await run(); passed++; console.log('PASS ' + na
         await page.getByRole('button', { name: 'Save workout', exact: true }).click();
         await page.getByText('Synthetic finish failure', { exact: false }).first().waitFor();
         assert.equal(await page.getByRole('dialog').count(), 1);
-        assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('training-studio-v2')).history.length), 0);
+        assert.equal((await readState(page)).history.length, 0);
         await page.evaluate(() => { Storage.prototype.setItem = window.originalSetItem; });
         await page.getByRole('button', { name: 'Save workout', exact: true }).dblclick();
         await page.getByRole('heading', { name: 'Today', exact: true }).waitFor();
-        const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('training-studio-v2')));
+        const saved = await readState(page);
         assert.equal(saved.active, null); assert.equal(saved.history.length, 1); assert.equal(saved.history[0].partial, true); assert.equal(saved.history[0].sets.filter(x => x.done).length, 1);
-        await page.reload(); await page.getByRole('heading', { name: 'Today', exact: true }).waitFor();
-        assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('training-studio-v2')).history.length), 1);
+        await page.reload(); await unlock(page); await page.getByRole('heading', { name: 'Today', exact: true }).waitFor();
+        assert.equal((await readState(page)).history.length, 1);
       } finally { await context.close(); }
     });
     await test('Delayed save respects deliberate navigation back to the remaining list', async () => {
@@ -72,10 +80,11 @@ async function test(name, run) { await run(); passed++; console.log('PASS ' + na
         await page.evaluate(() => { void navigator.locks.request('training-studio-save:training-studio-v2', () => new Promise(resolve => { window.releaseSyntheticSave = resolve; })); });
         await page.waitForFunction(() => typeof window.releaseSyntheticSave === 'function', undefined, { timeout: 15000 });
         await page.getByRole('button', { name: `Log ${names[0]} set 1`, exact: true }).click();
+        assert.equal(await page.getByLabel(`${names[0]} set 1 ${exFor(ids[0]).metric}`,{exact:true}).isDisabled(),true);
         await page.getByRole('button', { name: 'All exercises / remaining work', exact: true }).click();
-        assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('training-studio-v2')).active.sets[0].done), false);
+        assert.equal((await readState(page)).active.sets[0].done, false);
         await page.evaluate(() => { window.releaseSyntheticSave(); });
-        await page.waitForFunction(() => JSON.parse(localStorage.getItem('training-studio-v2')).active.sets[0].done, undefined, { timeout: 15000 });
+        await page.getByRole('button', {name:`1. ${names[0]}`,exact:false}).waitFor();assert.equal((await readState(page)).active.sets[0].done,true);
         await page.getByRole('heading', { name: 'Exercises in this workout', exact: true }).waitFor();
         assert.equal(await page.getByRole('heading', { name: names[1], exact: true }).count(), 0);
       } finally { await context.close(); }
@@ -92,10 +101,10 @@ async function test(name, run) { await run(); passed++; console.log('PASS ' + na
         await page.getByRole('button', { name: 'Finish workout', exact: true }).click();
         await page.getByRole('button', { name: 'Save workout', exact: true }).click();
         await page.getByRole('heading', { name: 'Today', exact: true }).waitFor();
-        const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('training-studio-v2')));
+        const saved = await readState(page);
         assert.equal(saved.history.length, 1); assert.equal(saved.history[0].id, fixture.active.id); assert.equal(saved.history[0].date, fixture.active.date); assert.equal(saved.history[0].partial, false); assert.equal(saved.history[0].sets.filter(x => x.done).length, 3); assert.equal(saved.active, null); assert.equal(saved.restTimer, null);
-        await page.reload(); await page.getByRole('heading', { name: 'Today', exact: true }).waitFor();
-        assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('training-studio-v2')).history.length), 1);
+        await page.reload(); await unlock(page); await page.getByRole('heading', { name: 'Today', exact: true }).waitFor();
+        assert.equal((await readState(page)).history.length, 1);
       } finally { await context.close(); }
     });
     await test('A second tab changes the snapshot without being overwritten by a stale command', async () => {
@@ -103,10 +112,10 @@ async function test(name, run) { await run(); passed++; console.log('PASS ' + na
       try {
         await page.getByRole('button', { name: `1. ${names[0]}`, exact: false }).click();
         const other = await context.newPage(); await other.goto(base);
-        await other.evaluate(() => { const s = JSON.parse(localStorage.getItem('training-studio-v2')); s.profile.name = 'Synthetic other tab'; localStorage.setItem('training-studio-v2', JSON.stringify(s)); });
+        const changed=await readState(other);changed.profile.name='Synthetic other tab';const encoded=await cachedVault.encrypt(JSON.stringify(changed));await other.evaluate(raw=>localStorage.setItem('training-studio-v2',raw),encoded);
         await page.getByText('Your saved profile changed in another tab.', { exact: false }).first().waitFor();
         await page.getByRole('button', { name: `Log ${names[0]} set 1`, exact: true }).click();
-        const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('training-studio-v2')));
+        const saved = await readState(page);
         assert.equal(saved.profile.name, 'Synthetic other tab'); assert.equal(saved.active.sets[0].done, false);
       } finally { await context.close(); }
     });
@@ -117,7 +126,7 @@ async function test(name, run) { await run(); passed++; console.log('PASS ' + na
         await page.getByRole('button', { name: `Log ${names[0]} set 1`, exact: true }).click();
         await page.getByRole('heading', { name: names[1], exact: true }).waitFor();
         const personal = await page.evaluate(() => localStorage.getItem('training-studio-v2'));
-        assert.ok(JSON.parse(personal).restTimer);
+        assert.ok((await decoded(personal)).restTimer);
         await page.getByRole('button', { name: 'Progress', exact: true }).click();
         await page.getByRole('button', { name: 'View 12-week example', exact: false }).click();
         await page.getByRole('button', { name: 'Return to my profile', exact: true }).waitFor();
@@ -130,6 +139,46 @@ async function test(name, run) { await run(); passed++; console.log('PASS ' + na
         await page.getByRole('button', { name: 'Return to my profile', exact: true }).click();
         assert.equal(await page.evaluate(() => localStorage.getItem('training-studio-v2')), personal);
       } finally { await context.close(); }
+    });
+    await test('Encrypted reload rejects a wrong passphrase without overwriting the saved file',async()=>{
+      const context=await browser.newContext();const page=await seeded(context);
+      try{const original=await page.evaluate(()=>localStorage.getItem('training-studio-v2'));assert.equal(JSON.parse(original).format,'movefield-vault');assert.ok(!original.includes('Synthetic test athlete'));await page.reload();await page.getByLabel('Vault passphrase',{exact:true}).fill('Wrong synthetic vault passphrase');await page.getByRole('button',{name:'Unlock profile',exact:true}).click();await page.getByText('The passphrase is incorrect or this file is damaged.',{exact:false}).waitFor();assert.equal(await page.evaluate(()=>localStorage.getItem('training-studio-v2')),original);await unlock(page);await page.getByRole('heading',{name:'Today',exact:true}).waitFor();}finally{await context.close()}
+    });
+    await test('History corrections preserve another active workout and timer through encrypted reload',async()=>{
+      const context=await browser.newContext();const page=await seeded(context);
+      try{
+        await page.getByRole('button',{name:`1. ${names[0]}`,exact:false}).click();await page.getByRole('button',{name:`Log ${names[0]} set 1`,exact:true}).click();await page.getByRole('heading',{name:names[1],exact:true}).waitFor();
+        const before=await readState(page);const old={...before.active,id:'synthetic-history-edit',sessionId:'synthetic-old-session',finishedAt:2,sets:before.active.sets.map(x=>({...x,done:true})),partial:false};before.history=[old];const encoded=await cachedVault.encrypt(JSON.stringify(before));await page.evaluate(raw=>localStorage.setItem('training-studio-v2',raw),encoded);await page.reload();await unlock(page);await page.getByRole('heading',{name:'Today',exact:true}).waitFor();
+        await page.getByRole('button',{name:'Progress',exact:true}).click();await page.getByRole('button',{name:'View workout',exact:true}).click();await page.getByRole('button',{name:'Edit saved workout',exact:true}).click();await page.getByLabel(`Edit ${names[0]} set 1 amount`,{exact:true}).fill('9');await page.getByRole('button',{name:'Review corrections',exact:true}).click();await page.getByRole('button',{name:'Save corrections',exact:true}).click();await page.getByRole('button',{name:'Edit saved workout',exact:true}).waitFor();const after=await readState(page);assert.equal(after.history[0].sets[0].reps,9);assert.equal(after.history[0].revision,2);assert.deepEqual(after.active,before.active);assert.deepEqual(after.restTimer,before.restTimer);assert.equal(after.history[0].date,old.date);await page.reload();await unlock(page);await page.getByRole('heading',{name:'Today',exact:true}).waitFor();assert.equal((await readState(page)).history[0].sets[0].reps,9);
+      }finally{await context.close()}
+    });
+    await test('Migration quota failure leaves the original plaintext file intact until retry',async()=>{
+      const context=await browser.newContext();const page=await context.newPage();
+      try{await page.goto(base);const original=JSON.stringify(fixture);await page.evaluate(raw=>{localStorage.setItem('training-studio-v2',raw);localStorage.setItem('training-studio-access-v1','open')},original);await page.reload();await page.evaluate(()=>{window.originalSetItem=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(key==='training-studio-v2')throw new DOMException('Synthetic migration failure','QuotaExceededError');return window.originalSetItem.call(this,key,value)}});await unlock(page,true);await page.getByText('Synthetic migration failure',{exact:false}).waitFor();assert.equal(await page.evaluate(()=>localStorage.getItem('training-studio-v2')),original);await page.evaluate(()=>{Storage.prototype.setItem=window.originalSetItem});await unlock(page,true);await page.getByRole('heading',{name:'Today',exact:true}).waitFor();assert.equal((await readState(page)).active.id,fixture.active.id);}finally{await context.close()}
+    });
+    await test('Encrypted backup is previewed and restored through the actual settings flow',async()=>{
+      const context=await browser.newContext();const page=await seeded(context);
+      try{await page.getByRole('button',{name:`1. ${names[0]}`,exact:false}).click();await page.getByRole('button',{name:`Log ${names[0]} set 1`,exact:true}).click();await page.getByRole('heading',{name:names[1],exact:true}).waitFor();await page.getByRole('button',{name:'Finish workout',exact:true}).click();await page.getByRole('button',{name:'Save workout',exact:true}).click();await page.getByRole('heading',{name:'Today',exact:true}).waitFor();const raw=await page.evaluate(()=>localStorage.getItem('training-studio-v2')),saved=await decoded(raw);await page.getByRole('button',{name:'Profile & settings',exact:true}).click();await page.getByText('Restore an encrypted backup',{exact:true}).click();await page.getByLabel('Encrypted backup file',{exact:true}).setInputFiles({name:'synthetic-encrypted-backup.json',mimeType:'application/json',buffer:Buffer.from(raw)});await page.getByLabel('Backup passphrase',{exact:true}).fill(syntheticPassphrase);await page.getByRole('button',{name:'Preview restore',exact:true}).click();await page.getByText('Backup contains 1 saved workouts',{exact:false}).waitFor();await page.getByLabel('Encrypted backup file',{exact:true}).setInputFiles({name:'oversized-synthetic.json',mimeType:'application/json',buffer:Buffer.alloc(10_002_001,32)});await page.getByText('This file exceeds the supported vault size.',{exact:true}).waitFor();assert.equal(await page.getByRole('button',{name:'Replace private profile with this backup',exact:true}).count(),0);assert.equal(await page.getByRole('button',{name:'Preview restore',exact:true}).isDisabled(),true);assert.equal(await page.evaluate(()=>localStorage.getItem('training-studio-v2')),raw);await page.getByLabel('Encrypted backup file',{exact:true}).setInputFiles({name:'synthetic-encrypted-backup.json',mimeType:'application/json',buffer:Buffer.from(raw)});await page.getByRole('button',{name:'Preview restore',exact:true}).click();await page.getByText('Backup contains 1 saved workouts',{exact:false}).waitFor();await page.getByRole('button',{name:'Replace private profile with this backup',exact:true}).click();await page.getByRole('heading',{name:'Today',exact:true}).waitFor();assert.deepEqual(await readState(page),saved);}finally{await context.close()}
+    });
+    if(process.env.MOVEFIELD_TEST_OFFLINE==='1')await test('Built app reopens offline, unlocks and saves without caching private records',async()=>{
+      const context=await browser.newContext();const page=await seeded(context);
+      try{await page.evaluate(()=>navigator.serviceWorker.ready);await page.waitForFunction(()=>navigator.serviceWorker.controller!==null,undefined,{timeout:30000});await context.setOffline(true);await page.reload();await unlock(page);await page.getByRole('heading',{name:'Today',exact:true}).waitFor();await page.getByRole('button',{name:'Resume workout',exact:true}).click();await page.getByRole('button',{name:`1. ${names[0]}`,exact:false}).click();await page.getByRole('button',{name:`Log ${names[0]} set 1`,exact:true}).click();await page.getByRole('heading',{name:names[1],exact:true}).waitFor();assert.equal((await readState(page)).active.sets[0].done,true);const cached=await page.evaluate(async()=>{const contents=[];for(const name of await caches.keys()){const cache=await caches.open(name);for(const request of await cache.keys())contents.push(await (await cache.match(request)).text())}return contents.some(text=>text.includes('Synthetic test athlete')||text.includes('synthetic-active'))});assert.equal(cached,false);await context.setOffline(false);}finally{await context.close()}
+    });
+    await test('Passphrase change and explicit locking keep records and reject the old passphrase',async()=>{
+      const context=await browser.newContext();const page=await seeded(context);
+      try{const before=await readState(page),replacement='Replacement synthetic passphrase';await page.getByRole('button',{name:'Profile & settings',exact:true}).click();await page.getByText('Change vault passphrase',{exact:true}).click();await page.getByLabel('New vault passphrase',{exact:true}).fill(replacement);await page.getByLabel('Confirm new passphrase',{exact:true}).fill(replacement);await page.getByRole('button',{name:'Save new passphrase',exact:true}).click();await page.getByText('Passphrase changed. Older backups',{exact:false}).waitFor();const raw=await page.evaluate(()=>localStorage.getItem('training-studio-v2'));await assert.rejects(BrowserVault.open(syntheticPassphrase,raw));const rotated=await BrowserVault.open(replacement,raw);assert.deepEqual(JSON.parse(await rotated.decrypt(raw)),before);await page.getByRole('button',{name:'Lock private profile',exact:true}).click();await page.getByRole('heading',{name:'Unlock your training',exact:true}).waitFor();await page.getByLabel('Vault passphrase',{exact:true}).fill(replacement);await page.getByRole('button',{name:'Unlock profile',exact:true}).click();await page.getByRole('button',{name:'Continue on this device',exact:false}).count().then(async count=>{if(count)await page.getByRole('button',{name:'Continue on this device',exact:false}).click()});assert.equal(await page.evaluate(()=>localStorage.getItem('training-studio-v2')),raw);}finally{await context.close()}
+    });
+    await test('Encrypted export includes a staged input after device storage fails',async()=>{
+      const context=await browser.newContext({acceptDownloads:true});const page=await seeded(context);
+      try{await page.getByRole('button',{name:`1. ${names[0]}`,exact:false}).click();await page.evaluate(()=>{window.originalSetItem=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(key==='training-studio-v2')throw new DOMException('Synthetic draft export failure','QuotaExceededError');return window.originalSetItem.call(this,key,value)}});await page.getByLabel(`${names[0]} set 1 ${exFor(ids[0]).metric}`,{exact:true}).fill('9');await page.getByText('Synthetic draft export failure',{exact:false}).first().waitFor();assert.equal((await readState(page)).active.sets[0].reps,8);const downloading=page.waitForEvent('download');await page.getByRole('button',{name:'Export',exact:true}).click();const download=await downloading;const raw=fs.readFileSync(await download.path(),'utf8'),backup=await decoded(raw);assert.equal(JSON.parse(raw).format,'movefield-vault');assert.equal(backup.active.sets[0].reps,9);assert.equal(backup.active.sets[0].done,false);assert.equal((await readState(page)).active.sets[0].reps,8);}finally{await context.close()}
+    });
+    await test('Full tracking-plan import retains saved history and creates no completed workouts',async()=>{
+      const context=await browser.newContext();const page=await seeded(context);
+      try{await page.getByRole('button',{name:`1. ${names[0]}`,exact:false}).click();await page.getByRole('button',{name:`Log ${names[0]} set 1`,exact:true}).click();await page.getByRole('heading',{name:names[1],exact:true}).waitFor();await page.getByRole('button',{name:'Finish workout',exact:true}).click();await page.getByRole('button',{name:'Save workout',exact:true}).click();await page.getByRole('heading',{name:'Today',exact:true}).waitFor();const before=await readState(page);await page.getByRole('button',{name:'Plans',exact:true}).click();await page.getByRole('button',{name:'Import a saved plan',exact:true}).click();await page.getByLabel('Plan JSON',{exact:true}).fill(JSON.stringify(before.plan));await page.getByLabel('Plan creator or source',{exact:true}).fill('Synthetic owner template');await page.getByRole('button',{name:'Preview full imported schedule',exact:true}).click();await page.getByText('unperformed workouts · credit: Synthetic owner template',{exact:false}).waitFor();await page.getByRole('button',{name:'Accept credited tracking plan',exact:true}).click();await page.getByRole('heading',{name:'Today',exact:true}).waitFor();const after=await readState(page);assert.deepEqual(after.history,before.history);assert.equal(after.plan.profile.mode,'manual');assert.ok(after.plan.sessions.every(s=>s.status==='scheduled'));assert.notEqual(after.plan.id,before.plan.id);assert.ok(after.saved.some(p=>p.id===before.plan.id));await page.reload();await unlock(page);await page.getByRole('heading',{name:'Today',exact:true}).waitFor();assert.equal((await readState(page)).history.length,1);}finally{await context.close()}
+    });
+    await test('Private erasure removes state and draft while retaining sample records',async()=>{
+      const context=await browser.newContext();const page=await seeded(context);
+      try{await page.evaluate(()=>{sessionStorage.setItem('training-studio-sample-v1','synthetic-sample-retained');localStorage.setItem('training-studio-setup-v1','synthetic-encrypted-draft')});await page.getByRole('button',{name:'Profile & settings',exact:true}).click();await page.getByRole('button',{name:'Erase private profile',exact:true}).click();await page.getByRole('button',{name:'Erase private profile',exact:true}).last().click();await page.getByRole('heading',{name:'Protect your private profile',exact:true}).waitFor();assert.equal(await page.evaluate(()=>localStorage.getItem('training-studio-v2')),null);assert.equal(await page.evaluate(()=>localStorage.getItem('training-studio-setup-v1')),null);assert.equal(await page.evaluate(()=>sessionStorage.getItem('training-studio-sample-v1')),'synthetic-sample-retained');await page.reload();await page.getByRole('heading',{name:'Protect your private profile',exact:true}).waitFor();}finally{await context.close()}
     });
     await test('Recovered static assets and narrow exercise overview render in the actual app', async () => {
       const context = await browser.newContext({ viewport: { width: 320, height: 740 } }); const page = await seeded(context);

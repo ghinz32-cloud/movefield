@@ -4,17 +4,27 @@ This is a working React Native + Expo **source-code starter** for iPhone and And
 
 It is a local demo: there is no Movefield sign-in, shared account, website sync, cloud backup, subscription, or production backend. The existing website and this mobile app keep separate local records. This download is not an APK, an IPA, or an app-store release.
 
-## Revision 13
+## Current source — 11 October 2026
 
 Open **Settings** for six color themes, System/Light/Dark mode, text size, contrast, reduced motion and optional workout-day notifications. Local reminders schedule the next 30 workout days and refresh when the app opens or the schedule changes. Reopen after time-zone changes. Delivery depends on phone notification settings and has not been verified on a physical phone in this revision.
 
 The Qwen model selector saves a future preference only. No model download or inference is included. Model integration will require a native development build; it will not work in Expo Go. Barlow Condensed and Inter are bundled with their license notices in `docs/font-licenses`.
 
+## Private records, recovery and sample data
+
+Personal records and saved setup drafts are encrypted with Expo Crypto AES-GCM; device key material stays in Expo SecureStore. Existing valid plaintext records are migrated only after an encrypted round trip verifies. A missing key or damaged file opens recovery controls and preserves the original saved bytes. Sample data lives separately; resetting it keeps your personal workout and timer.
+
+In Settings, export an encrypted backup and independently keep the recovery key in a safe place. The key is sensitive: it can decrypt the backup. Sharing a backup does not include the key. Use **Choose backup file**, enter the recovery key, review the profile and explicitly restore. A restore is blocked while a workout is active. Uninstalling or moving devices can lose the device key; no account recovery exists. Erase private profile removes app-owned encrypted state, drafts, key material and temporary export copies after confirmation. Downloaded files remain where you saved them.
+
+Saved-workout corrections use a staged review and preserve IDs, dates, prescriptions and another active workout/timer. Full plan JSON imports require source credit and review; all imported sessions start unperformed and stay manual/coach-directed. Optional set fields include time, distance, heart rate, cadence, power, assistance and notes; those fields do not control training progression. JSON plan exports are explicitly plaintext.
+
+These controls have source/adapter checks and successful iOS/Android JavaScript exports. Real phone keychain, share-sheet, file-picker, installation and notification behavior still require physical-device testing. See `docs/security-review.md`. No APK/IPA was compiled or signed.
+
 ## First run on Windows — about 15–30 minutes
 
 1. Install **Node.js 24 LTS** from [nodejs.org](https://nodejs.org/en/download). Choose the Windows Installer for your computer and keep the normal installer options. Node 24 is an LTS release; Expo SDK 57 requires at least Node 22.13. Open a new PowerShell window after installation.
 2. Extract the downloaded starter ZIP into a normal folder such as `Documents\TrainingStudioStarter`. Do not run commands from inside the ZIP viewer.
-3. In File Explorer, open the extracted `training-studio-mobile` folder containing `package.json` and `START-HERE.md`. Click the address bar, type `powershell`, and press Enter. PowerShell should open **in that folder**.
+3. In File Explorer, open the extracted `mobile` folder containing `package.json` and `START-HERE.md`. Click the address bar, type `powershell`, and press Enter. PowerShell should open **in that folder**.
 4. Run these commands one line at a time:
 
 ```powershell
@@ -128,7 +138,7 @@ When a developer is ready and the native toolchain is set up, the official path 
 
 See `docs/VALIDATION.md` for actual commands and results. Metro export proves the JavaScript can bundle for Android and iOS; it does **not** compile or sign an APK/IPA. Real iPhone/Android device testing, app-store submission, accessibility auditing and production security review have not been performed.
 
-The native starter now includes personal plan setup, curated substitutions, reviewed schedule changes, coach/manual session target editing, post-workout feedback, equipment increment settings and saved rest timers. It does not yet match every website feature: commitment entry, reusable custom workout/block editing, advanced measurements such as heart rate/cadence/power/assistance, account sync, charts, coach permissions, wearable/health integration and payments remain work to do. Existing saved commitments are checked during native plan setup. Camera-based technique assessment is outside the planned coaching scope.
+The native starter now includes personal plan setup, curated substitutions, reviewed schedule changes, coach/manual session target editing, post-workout feedback, equipment increment settings and saved rest timers. It does not yet match every website feature: commitment entry, reusable custom workout/block editing, account sync, charts, coach permissions, wearable/health integration and payments remain work to do. Existing saved commitments are checked during native plan setup. Camera-based technique assessment is outside the planned coaching scope.
 
 ## Versions and official sources
 
@@ -138,7 +148,7 @@ Checked 7 October 2026. Created using the official `expo-template-blank-typescri
 - [Official create-expo-app templates](https://docs.expo.dev/more/create-expo/) — `blank-typescript` is the minimal TypeScript template used here.
 - [Expo environment setup](https://docs.expo.dev/get-started/set-up-your-environment/) — physical devices and Expo Go.
 - [Expo Start developing](https://docs.expo.dev/get-started/start-developing/) — physical iPhone CLI/Expo Go same-account sign-in requirement.
-- [AsyncStorage in Expo](https://docs.expo.dev/versions/latest/sdk/async-storage/) — local unencrypted storage.
+- [AsyncStorage in Expo](https://docs.expo.dev/versions/latest/sdk/async-storage/) — encrypted vault container (the storage package itself supplies no encryption).
 - [Development builds](https://docs.expo.dev/develop/development-builds/introduction/) — native toolchain and platform distinctions.
 - [Node.js release status](https://nodejs.org/en/about/previous-releases) — Node 24 LTS recommendation.
 
@@ -148,4 +158,4 @@ Checked 7 October 2026. Created using the official `expo-template-blank-typescri
 
 ### Continuation update
 
-Personal setup also exposes optional secondary focuses and sport/position context. General athletic foundations remain distinct from position-specific programming. Coach/manual users can add, edit, reorder and remove upcoming workout targets from Today, and explicitly repeat them onto future matching weekdays. Setup drafts resume after reopening. Exercise guides now allow recording a machine/setup label, maximum and smallest available increase. Review a load or rep-range change on Today; it applies only after acceptance. Changing setup clears incompatible limit/increment drafts. A simulated concern hold has an explicitly confirmed reset for interface testing; it does not provide medical clearance.
+Personal setup also exposes optional secondary focuses and sport/position context. General athletic foundations remain distinct from position-specific programming. Coach/manual users can add, edit, reorder and remove upcoming workout targets from Today, and explicitly repeat them onto future matching weekdays. Setup drafts resume after reopening. Exercise guides now allow recording a machine/setup label, maximum and smallest available increase. Review a load or rep-range change on Today; it applies only after acceptance. Changing setup clears incompatible limit/increment drafts. A simulated concern hold does not provide medical clearance.

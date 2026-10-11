@@ -1,0 +1,9 @@
+'use client';
+import {useState} from 'react';
+import {Button} from './ui/button';
+import {Input} from './ui/input';
+export function VaultControls({onLock,onRotate}:{onLock:()=>Promise<void>;onRotate:(passphrase:string)=>Promise<void>}){
+ const [passphrase,setPassphrase]=useState(''),[confirmation,setConfirmation]=useState(''),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
+ const act=async(operation:()=>Promise<void>)=>{if(busy)return;setBusy(true);setMessage('');try{await operation()}catch(e){setMessage(e instanceof Error?e.message:'The change could not be saved.')}finally{setBusy(false)}};
+ return <section className="card"><h2>Private profile lock</h2><p>Lock this visit before leaving a shared device. Any pending saves must finish first.</p><Button variant="outline" disabled={busy} onClick={()=>void act(onLock)}>Lock private profile</Button><details><summary>Change vault passphrase</summary><p>Keep a backup before changing your passphrase. Older downloaded backups keep their original passphrases.</p><label className="field"><span>New vault passphrase</span><Input type="password" aria-label="New vault passphrase" autoComplete="new-password" minLength={12} maxLength={1024} value={passphrase} onChange={e=>setPassphrase(e.target.value)}/></label><label className="field"><span>Confirm new passphrase</span><Input type="password" aria-label="Confirm new passphrase" autoComplete="new-password" maxLength={1024} value={confirmation} onChange={e=>setConfirmation(e.target.value)}/></label><Button disabled={busy||passphrase.length<12||passphrase!==confirmation} onClick={()=>void act(async()=>{await onRotate(passphrase);setPassphrase('');setConfirmation('');setMessage('Passphrase changed. Older backups still use their original passphrases.')})}>Save new passphrase</Button></details>{message&&<p role="status">{message}</p>}</section>
+}

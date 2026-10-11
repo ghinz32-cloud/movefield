@@ -13,7 +13,9 @@
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate",
     "test:durability": "node scripts/check-durable-state.cjs",
-    "test:browser": "node scripts/check-workout-browser.cjs"
+    "test:browser": "node scripts/check-workout-browser.cjs",
+    "test:vault": "node scripts/check-vault.cjs",
+    "verify:core": "node scripts/verify-core.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

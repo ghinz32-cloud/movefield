@@ -1,3 +1,53 @@
+# Active implementation checkpoint — 11 October 2026
+
+The user requested every change in `ALL_SIX_MASTER_PROMPTS.md` and asked to continue to completion. Keep that full scope. The version 3 package authorizes $0 in new service spending and uses PROTOTYPE_FIRST delivery; a local checkpoint does not complete the six prompts. `docs/master-prompts-task-register.json` retains all 72 original requirement sections, prior evidence, current checks and remaining actions. **Full six-prompt implementation is still incomplete.**
+
+This checkpoint implements the encrypted local-data milestone on the existing app:
+
+- Web personal state and setup drafts use authenticated AES-256-GCM envelopes, PBKDF2-SHA256 and a passphrase-derived key held only in memory. Existing plaintext is migrated only after schema and encrypted-round-trip verification. Locked/wrong-key/corrupt files are preserved. Settings provide encrypted export, backup preview/restore, explicit locking, passphrase rotation and private erasure. Rotation refuses to strand an existing encrypted setup draft. Plaintext history/plan exports are labeled.
+- Native personal state/drafts use Expo Crypto AES-GCM and Expo SecureStore, with verified migration and explicit original-file/key recovery. A bounded key ring preserves prior keys during interrupted foreign-backup restoration. Personal and sample datasets are independent; sample reset/exit preserves personal active work/timers. Native confirmed erasure drains writes and removes encrypted state/drafts/keys and owned temporary export copies. Hardware keychain/share/erase behavior is unverified.
+- Durable command acknowledgement now covers plans, onboarding, custom exercise/import/substitution/equipment and workout paths. Save failures retain staged entries and avoid completion claims. Logger fields disable during commits; deliberate back navigation survives a delayed save.
+- Saved workouts can be corrected through a staged review on web/native. Edits preserve IDs, original dates/timing/targets/order and another active workout/rest timer, reject stale/invalid records, increment revisions and invalidate relevant deterministic review context. Corrections do not turn unperformed targets into actual work.
+- Full plan JSON imports require creator/source credit, bounded schema validation, complete schedule preview, personal availability/event checks and explicit manual/coach authority. New sessions get new IDs and start scheduled/unperformed. Existing history is preserved; previous plans are archived. Stale/tampered previews reject. Imported prescriptions are user-supplied tracking plans, not certified training rules.
+- Backup restore actions bind the exact previewed ciphertext and key/passphrase. Selecting an invalid new file clears the old preview. Stale native preview/picker/key-display callbacks reject after profile switches or erasure; web restore also revalidates the incoming file against its preview.
+- Native document selection and backup/plan sharing use bounded files and file URIs. Exports never include native recovery keys. Owned temporary copies expire after 24 hours or are removed before erasure; late exports reject if their profile changed. Original selected files stay intact.
+- Production offline shell, JS/CSS/fonts/guides use final-byte cache versions. Actual offline reopening, vault unlock and saving passed. Private records/API responses/keys are excluded from caches. Updates wait for old windows to close. The opt-in shell assumes stateless local-only HTML; review/remove it before adding private SSR/accounts.
+- Recovered all 1,354 absent original exercise photos from a pinned public-domain source, checking source license and each manifest SHA256. All 1,726 original photos are present. Progress charts load as a separate deferred chunk.
+- Added repeatable core checks and a pinned **manual-dispatch-only** verification workflow. The native dependency release gate intentionally fails until upstream advisories are resolved. No external CI run is claimed.
+
+Verification at this source:
+
+- `pnpm verify:core`: 10 groups passed (plan import, durability, vault/history, native encrypted storage, native file IO, schema/HTTP security, data/calendar, web types, native types, native engine).
+- Fresh production build plus built-origin nonce rotation/script matching, route denial and asset/archive checks passed. **16 real Chromium journeys passed** against a newly started final Worker, including quota/retry, double action, delayed back, stable full/partial finish, stale tab, sample separation, wrong passphrase, history correction, failed migration, encrypted backup recovery, actual offline saving, passphrase rotation/locking, failed-input backup, full-plan import, erasure and 320px overflow check. Chromium retained its namespace sandbox.
+- Current iOS and Android Hermes/JS exports passed; frozen web and native installs passed. These exports are **not APK/IPA artifacts**.
+- Existing catalog baseline rechecked: 71 plan variants, 4,297 scenarios, 2,481,929 assertions; native engine 74 plans across seven starting weekdays; exercise-library checks passed. These checks do not prove full scientific or lawful-program coverage.
+- Three clean desktop contexts measured the local interactive vault gate at 482/471/458 ms; sample Progress opened in 384 ms with one deferred JS resource and chart keyboard traversal. This is a current local baseline, not a before/after speedup, native/field benchmark or WCAG certification.
+- Finite credential-shaped-value scan of 3,810 source/artifact files plus archive members found no matches. The current source archive's 79 files match current mobile source. No credential values or personal records were logged.
+- Web production audit: zero advisories. Native production audit: **failed**, 15 high affected dependency-chain entries originating in two advisories: braces <=3.0.3 (GHSA-vfj7-8cjw-p6xm) and node-forge <=1.4.0 (GHSA-86w9-cpqp-85rv). Latest registry versions remained affected; no unsupported replacement or suppression was used.
+
+Source/artifacts:
+
+- Tested application-source SHA256: `850bbb67daf5e8002539e5b77430f2ed3baa521a010ac466224686fa6c875647`. Hash method and exact file list are in ignored `.sites-runtime/candidate-receipt-current.json`; docs/runtime credentials/caches are excluded.
+- Current native source download: `public/downloads/movefield-native-current.zip`, SHA256 `1afc4b3e55f5a2595cfc3b6c65d5f6e539e47e378cb90b8403f8aec23b18c9f0`. The revision 13 archive remains historical.
+- Web entry SHA256: `deaa43516ba57f6db366bc622a89387234d251fc56ae08d3604ae322f49dac7b`. Final client/server artifact-tree SHA256: `3fc97d44522d6e2137ed18abee071bb481dd1c0f753b854ce54d2b4e300afbe8`.
+- Native bundles and exact hashes are in the task register and local receipt; `mobile/dist-mobile` is ignored. Distribution/signing/installation and deployed-origin behavior were not tested.
+
+Remaining work is divided accurately:
+
+1. **Code still needed:** real authentication/accounts, owner authorization, web/native sync, encrypted cloud backup, transactional authenticated outboxes/deletion; actual bounded coaching jobs/consent/runtime/provider integration and semantic validation; remaining native calendar/custom-block parity. No provider/model is installed or called. These are not merely switches awaiting keys.
+2. **Independent development still needed:** full evidence ledger and claim-to-code review, lawful named-program completion and catalog gaps, progression/time/equipment/end-of-block qualification, comprehensive accessibility/performance and mixed-version update tests, independent security/crypto review and youth/privacy safeguards. Real personal youth-plan acceptance is disabled pending verified safeguards; synthetic youth previews and existing records remain available.
+3. **Owner/environment gates:** the backend choice question is pending, no backend/provider credentials are configured, no Android SDK/Java/iOS toolchain/signing/device is available, hosting/CI/provider allowance and privacy settings remain unqualified. Do not buy services or assume builds are free.
+
+Cloud setup: saved `install_script` and `start_skill` drafts with tested frozen installs, required local-only `.openai/hosting.json` creation only if absent, existing checkout use, startup/readiness and qualification instructions. Review/save in environment settings and publish the environment to activate the draft. This is separate from publishing the application. Fresh-task restoration of unpublished local Git commits has not been independently verified.
+
+Reproduce from root: `pnpm verify:core`, `pnpm build`, `node scripts/check-production-security.cjs`. Start a fresh built Worker with the repository startup command and a free local port; use `MOVEFIELD_BASE_URL` plus `MOVEFIELD_TEST_OFFLINE=1 node scripts/check-workout-browser.cjs`, then `MOVEFIELD_BASE_URL=... node scripts/measure-browser.cjs`. Only local synthetic mutation tests are allowed by these scripts. This cloud's outer command sandbox requires the browser command to run outside it while retaining Chromium's own sandbox. Do not use `--no-sandbox`. From mobile: `npm ci`, `npm run check`, `npm run test:engine`, and `EXPO_OFFLINE=1 EXPO_NO_TELEMETRY=1 CI=1 XDG_CACHE_HOME=<writable-cache> npm run export:mobile -- --max-workers 4`. Shared source is canonical in `lib/`; run `node mobile/scripts/sync-shared.mjs <project-root>` before native checks after any shared changes.
+
+Rollback: first export an encrypted backup and independently preserve the passphrase/native recovery key. An older plaintext-only checkpoint cannot read the new envelope: **do not revert the app and reset/uninstall storage**. Prefer a forward repair preserving ciphertext, or decrypt/export with this checkpoint and deliberately review a compatible migration in a disposable copy. Native restored key rings and old downloaded backups retain their own keys/passphrases. Erasure cannot delete copies the owner exported elsewhere.
+
+No source push, deployment, external CI invocation, signing, paid service or live-user external test occurred. Resume from the register, not a new scaffold. The historical handoffs below are dated context; this active checkpoint takes precedence.
+
+---
+
 # Active implementation checkpoint — 10 October 2026
 
 The user requested all six version 3 master prompts. The package explicitly uses tested, bounded **PROTOTYPE_FIRST** milestones and authorizes $0 new service spending. This checkout is earlier than the encrypted/account/AI implementation described by parts of those prompts. Do not assume those systems already exist.

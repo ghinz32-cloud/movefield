@@ -2,18 +2,7 @@
 import {useState} from 'react';
 import {type SetMetrics} from '@/lib/training';
 import {Input} from '@/components/ui/input';
-const FIELDS=[
- {key:'distanceM',label:'Distance (meters)',max:1000000},
- {key:'durationSeconds',label:'Time (seconds)',max:604800},
- {key:'heightCm',label:'Jump / box height (cm)',max:10000},
- {key:'heartRate',label:'Heart rate (bpm)',max:300},
- {key:'cadence',label:'Cadence (steps or turns/min)',max:1000},
- {key:'powerWatts',label:'Power (watts)',max:10000},
- {key:'speedKph',label:'Speed (km/h)',max:300},
- {key:'inclinePercent',label:'Incline (%)',min:-100,max:100},
- {key:'level',label:'Machine level',max:1000},
- {key:'assistanceKg',label:'Assistance (kg)',max:1500},
-] as const;
+import {SET_METRIC_FIELDS as FIELDS} from '@/lib/set-metric-fields';
 export function SetMetricsFields({name,set,value={},onChange}:{name:string;set:number;value?:SetMetrics;onChange:(v:SetMetrics)=>void}){
  const [visible,setVisible]=useState<string[]>(()=>[...new Set(['distanceM','durationSeconds',...Object.keys(value)])]);
  const patch=(key:string,v:number|string|undefined)=>{const next={...value,[key]:v};if(v===undefined)delete next[key as keyof SetMetrics];onChange(next)};

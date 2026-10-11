@@ -6,13 +6,13 @@ export const FOUNDATION = 'foundation';
 export const RUN_WALK = 'run-walk';
 export const SPORT_FOUNDATION = 'sport-foundation';
 export function emptyDemo(): State {
-  return { ...initialState(), plan: null, history: [], active: null, saved: [], profile: { ...blankProfile, name: 'Local demo', age: 28 } };
+  return { ...initialState(), plan: null, history: [], active: null, saved: [], profile: { ...blankProfile, name: '', age: 28 } };
 }
 export function previewPlan(id: string, start = day()): {plan: Plan | null; errors: string[]} {
   const choice = programCatalog.find(x => x.id === id);
   if(!choice&&![FOUNDATION,RUN_WALK,SPORT_FOUNDATION].includes(id))return {plan:null,errors:['This program is unavailable. Choose a program from the selected training style.']};
   const offsets = !choice ? (id===RUN_WALK?[0,2,4]:[0,3]) : choice.days===2 ? [0,3] : choice.id==='RNBASE4'?[0,2,4,6]:choice.days === 5 ? [0, 1, 3, 4, 6] : choice?.days === 4 ? [0, 1, 3, 4] : [0, 2, 4];
-  const profile: Profile = { ...blankProfile, age: 28, name: 'Local demo', start, weeks: 4,
+  const profile: Profile = { ...blankProfile, age: 28, name: '', start, weeks: 4,
     goal: choice?.goal ?? (id===RUN_WALK?'running':id===SPORT_FOUNDATION?'sport':'general'), programId: choice?.id, experience: choice?.experience === 'advanced'?'Experienced':choice?.experience === 'some' ? 'Some experience' : 'First time',
     minutes: 120, equipment: choice ? programEquipment(choice) : 'Dumbbells',
     days: offsets.map(n => (new Date(start + 'T12:00:00').getDay() + n) % 7).sort(), runBase: choice?.runBase ?? false,runDays:choice?.id==='RNBASE4'?4:3,runMinutes:100,establishedTraining:true };

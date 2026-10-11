@@ -9,7 +9,7 @@ export function blockedRequest(request:Request):Response|null {
 export function securityContext(request:Request){
   const bytes=crypto.getRandomValues(new Uint8Array(24));
   const nonce=btoa(String.fromCharCode(...bytes));
-  const policy=["default-src 'self'",`script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,"style-src 'self' 'unsafe-inline'","img-src 'self' data:","font-src 'self' data:","connect-src 'self'","object-src 'none'","base-uri 'none'","form-action 'self'","frame-src 'none'","frame-ancestors 'self' https://chatgpt.com","upgrade-insecure-requests"].join('; ');
+  const policy=["default-src 'self'",`script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,"style-src 'self' 'unsafe-inline'","img-src 'self' data:","font-src 'self' data:","connect-src 'self'","worker-src 'self'","object-src 'none'","base-uri 'none'","form-action 'self'","frame-src 'none'","frame-ancestors 'self' https://chatgpt.com","upgrade-insecure-requests"].join('; ');
   const headers=new Headers(request.headers);
   // Vinext reads this header to nonce its own scripts. Never trust a nonce
   // supplied by the browser and never add nonces to arbitrary HTML scripts.
@@ -28,6 +28,8 @@ export function secureResponse(response:Response,policy?:string){
     result.headers.set('Strict-Transport-Security','max-age=31536000');
     // HTML and RSC responses must not reuse another request's nonce.
     result.headers.set('Cache-Control','private, no-store');
+    // Opt in only while the origin is stateless and has no connected accounts.
+    result.headers.set('X-Movefield-Offline-Shell','local-v1');
   }
   result.headers.delete('X-Powered-By');
   return result;

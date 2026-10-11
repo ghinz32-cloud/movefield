@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict'),{load,workoutFixture}=require('./domain-test-loader.cjs');
+const {previewPlanImport,acceptPlanImport}=load('lib/plan-import.ts'),T=load('lib/training.ts');
+const state=workoutFixture();state.active=null;state.history=[{id:'synthetic-retained',sessionId:'old',title:'Original title',date:'2026-01-01',startedAt:1,finishedAt:2,sets:[{exerciseId:'squat',set:1,reps:8,kg:null,done:true}]}];
+const original=JSON.stringify(state.plan),options={credit:'Synthetic owner plan',start:state.plan.sessions[0].date,mode:'coach'};
+const preview=previewPlanImport(state,original,options);assert.equal(preview.plan.profile.mode,'coach');assert.equal(preview.plan.profile.name,state.profile.name);assert.ok(preview.plan.sessions.every(s=>s.status==='scheduled'));assert.equal(preview.plan.evidence.length,0);assert.ok(preview.plan.notes.some(n=>n.includes(options.credit)));assert.notEqual(preview.plan.id,state.plan.id);assert.ok(preview.plan.sessions.every(s=>!state.plan.sessions.some(old=>old.id===s.id)));
+const next=acceptPlanImport(state,preview);assert.strictEqual(next.history,state.history);assert.strictEqual(next.saved[0],state.plan);assert.equal(next.history[0].date,'2026-01-01');assert.ok(next.plan.acceptedAt);
+assert.throws(()=>acceptPlanImport({...state,events:[{id:'new',name:'Synthetic time off',date:T.day(),kind:'Day off',priority:'Normal',minutes:60,provisional:false}]},preview),/changed/);
+assert.throws(()=>previewPlanImport({...state,active:workoutFixture().active},original,options),/active workout/);
+const altered=structuredClone(preview);altered.plan.sessions[0].items[0].sets++;assert.throws(()=>acceptPlanImport(state,altered),/changed/);
+const imported=JSON.parse(original);imported.sessions[0].items[0].exerciseId='nonexistent';assert.throws(()=>previewPlanImport(state,JSON.stringify(imported),options),/unavailable/);
+assert.throws(()=>previewPlanImport(state,original,{...options,credit:''}),/credit/);assert.throws(()=>previewPlanImport(state,'{"constructor":{}}',options));assert.throws(()=>previewPlanImport({...state,profile:{...state.profile,minutes:5}},original,options),/available/);
+console.log('PASS full-schedule plan import: explicit tracking authority/credit, fresh identities, preserved history/archive, unperformed targets, stale/tampered previews, bounds, unknown exercise and time constraints');

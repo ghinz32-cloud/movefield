@@ -8,11 +8,11 @@ The detailed requirements remain the contract. Newer explicit user decisions tak
 
 ## Current status
 
-- Web: Vinext/React/TypeScript/Tailwind, local browser state, existing Sites/Cloudflare project.
-- Native: Expo SDK 57 / React Native, independent local AsyncStorage state.
+- Web: Vinext/React/TypeScript/Tailwind, encrypted local browser vault, production offline shell, existing Sites/Cloudflare project.
+- Native: Expo SDK 57 / React Native, encrypted AsyncStorage state with Expo Crypto/SecureStore and separate synthetic sample data.
 - No real app-owned accounts, web/mobile sync, cloud backups, paid AI calls, or installed on-device model.
 - Working brand: Movefield. Final name is undecided and no trademark clearance is claimed.
-- Revision 13 adds themes, accessibility controls, reminders and a saved future Qwen preference. It has NOT been successfully published.
+- Current local checkpoint adds encrypted backup/recovery, saved-workout corrections, credited full-plan imports, durable commands and native file sharing. It has NOT been pushed or deployed. Revision 13 is historical.
 - Source ZIP is a portable working tree. It omits dependencies, runtime caches, credentials and `.git` history. Preserve the included lockfiles and non-secret `.openai/hosting.json`.
 
 ## Run and check
@@ -29,6 +29,7 @@ pnpm build
 node scripts/check-preferences.cjs
 node scripts/check-audit.cjs
 node scripts/check-native-storage.cjs
+pnpm verify:core
 ```
 
 Install/activate the exact pnpm version using the user's normal Node tooling if it is absent. Do not use root `npm ci`: there is no root package-lock. The generic root README is not authoritative for the package manager.
@@ -65,7 +66,7 @@ Outside ChatGPT Work, do not copy the old `.sites-runtime/execution-profile.json
 - Preserve saved history and comparable exercise/setup contexts through edits, imports, substitutions and plan changes.
 - Keep deterministic training rules authoritative. Feedback changes and date moves require review with before/after and accept/decline.
 - Respect stale plan/version checks, competition/recovery constraints, holds, partial sessions, paused plans and offline queues.
-- App ages are 14+. Preserve youth/supervision restrictions and the existing restricted AI-review eligibility.
+- Intended app ages are 14+. Youth programs remain available in the synthetic sample; accepting a real personal youth plan is disabled until consent/privacy safeguards are verified. Preserve youth/supervision restrictions and restricted AI-review eligibility.
 - Coach-owned plans stay tracking plans unless the user explicitly changes authority. Do not add competing workload.
 - Never silently substitute an empty tracking calendar for a requested generated plan.
 - No automatic inference during rest timing or continuous background model work.

@@ -33,5 +33,12 @@
     "cardio": 14,
     "olympic weightlifting": 35
   },
-  "completionManifest": "exercise-library-completion.json"
+  "completionManifest": "exercise-library-completion.json",
+  "photoRecovery": {
+    "sourceCommit": "f00c92c7dcf1216a928a52c3706c7ce8e2f71ed5",
+    "licenseSHA256": "6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e",
+    "verification": "All 1726 original exercise photos match the handoff manifest sizes and SHA256 hashes. 1354 absent upload assets restored; no substitutions.",
+    "dateUTC": "2026-10-11",
+    "script": "scripts/recover-exercise-photos.py"
+  }
 }
