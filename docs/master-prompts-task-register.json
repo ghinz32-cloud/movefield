@@ -8,7 +8,7 @@
   "active_checkpoint": "Encrypted local-first web/native records, durable commands, recovery, staged history edits, full tracking-plan import, offline shell and current native source delivery",
   "completion_claim": "The local data-safety checkpoint is implemented and tested. Full six-prompt implementation is incomplete; broad requirements below remain partial or unstarted.",
   "external_gates": [
-    "Backend owner choice, usable credentials/bindings, authenticated-provider privacy/age/quota eligibility and $0 allowance verification",
+    "Cloudflare account access, usable credentials/bindings, authenticated-provider privacy/age/quota eligibility and $0 allowance verification",
     "Native Android/iOS toolchains, existing signing identity and physical devices",
     "Owner-console hosting/deployment/CI triggers and quota verification; publication remains unauthorised",
     "Independent security/crypto review and source/creator permissions where required. Evidence research and other unimplemented code remain development work, not merely activation gates."
@@ -1457,6 +1457,30 @@
       "Full evidence/claim-to-code/named-program rights qualification",
       "Complete accessibility, field/native performance and old/new update compatibility",
       "External CI, hosting quotas, source push, deployment or fresh-task local-commit restoration"
+    ]
+  },
+  "backend_decision": {
+    "provider": "Cloudflare",
+    "selected_by_user": "Cloudflare seems the most reasonable right?",
+    "stage": "Selected implementation target; no provisioning or deployment authorized/performed.",
+    "recommended_components": {
+      "compute": "Workers, retaining the existing Vinext/Cloudflare deployment shape",
+      "metadata": "D1 for authenticated owner/device/revision/idempotency metadata",
+      "encrypted_objects": "R2 for private encrypted snapshots only after account/billing/free-allowance qualification",
+      "identity": "Established authentication implementation with verified web/native issuer/session/PKCE rules; no identity provider is configured yet"
+    },
+    "observed_configuration": {
+      "d1_binding": false,
+      "r2_binding": false,
+      "cloudflare_credential_binding": false,
+      "runtime_observations_current": true
+    },
+    "still_required": [
+      "Inspect existing account/resources and actual plan/allowances through authorized credentials or owner settings.",
+      "Implement real authentication and server-side ownership checks before exposing any data API.",
+      "Design explicit cross-device key enrollment/recovery; browser and native local vault keys currently differ.",
+      "Implement idempotent CAS sync and storage/revision reconciliation; R2 objects and D1 metadata are not one atomic transaction.",
+      "Qualify account/privacy/quota/provider eligibility separately before enabling optional AI."
     ]
   }
 }
