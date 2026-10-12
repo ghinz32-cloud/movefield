@@ -19,7 +19,8 @@
     "test:cloud": "node scripts/check-cloud.mjs && node scripts/check-cloud-sync.cjs",
     "build:pages": "pnpm build && node scripts/package-pages.mjs",
     "preview:pages": "node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js pages dev --cwd .sites-runtime/pages-preview --port 8814 --ip 127.0.0.1 --inspector-port 0 --persist-to ../pages-state",
-    "build:github-pages": "vite build --config vite.github-pages.config.ts"
+    "build:github-pages": "vite build --config vite.github-pages.config.ts",
+    "build:grizzly": "vite build --config vite.grizzly.config.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

@@ -58,3 +58,4 @@ next-env.d.ts
 # Reproducible native projects and their build/signing outputs
 /mobile/android/
 /mobile/ios/
+mobile/dist-grizzly/

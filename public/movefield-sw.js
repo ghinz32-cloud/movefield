@@ -3,8 +3,10 @@ const REVISION = 'DEVELOPMENT_DISABLED';
 const BASE = '/';
 const STATIC_REVIEW = false;
 const ASSETS = /* BUILD_ASSETS */ [];
-const CACHE = 'movefield-shell-' + REVISION;
-const STATIC = new Set([...ASSETS, ...['exercise-guides.json', 'exercise-content.json', 'fonts/inter-variable.ttf', 'fonts/barlow-condensed-semibold.ttf'].map(path=>BASE+path)]);
+const CACHE_PREFIX = 'movefield-shell-';
+const EXTRA_STATIC = /* BRAND_ASSETS */ [];
+const CACHE = CACHE_PREFIX + REVISION;
+const STATIC = new Set([...ASSETS, ...['exercise-guides.json', 'exercise-content.json', 'fonts/inter-variable.ttf', 'fonts/barlow-condensed-semibold.ttf',...EXTRA_STATIC].map(path=>BASE+path)]);
 async function safeShell(response) { if(!response.ok||!response.headers.get('Content-Type')?.includes('text/html')||response.headers.has('Set-Cookie'))return false;return STATIC_REVIEW?(await response.clone().text()).includes('<meta name="movefield-static-review" content="true">'):response.headers.get('X-Movefield-Offline-Shell') === 'local-v1'; }
 self.addEventListener('install', event => event.waitUntil((async () => {
   if (REVISION === 'DEVELOPMENT_DISABLED') throw Error('Offline shell requires a qualified build.');
@@ -18,7 +20,7 @@ self.addEventListener('install', event => event.waitUntil((async () => {
   // Wait for all old windows to close. Do not reload an active workout for an update.
 })()));
 self.addEventListener('activate', event => event.waitUntil((async () => {
-  for (const key of await caches.keys()) if(key.startsWith(STATIC_REVIEW?'movefield-review-shell-':'movefield-shell-') && key !== CACHE) await caches.delete(key);
+  for (const key of await caches.keys()) if(key.startsWith(CACHE_PREFIX) && key !== CACHE) await caches.delete(key);
   await self.clients.claim();
 })()));
 self.addEventListener('fetch', event => {

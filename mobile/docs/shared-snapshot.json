@@ -104,17 +104,17 @@
     {
       "source": "lib/app-preferences.ts",
       "target": "src/shared/app-preferences.ts",
-      "sha256": "4bf28146c0345869ed642bd9e111ab17956f9c2e8552dacbc22712940f402286"
+      "sha256": "f4b1908552585e66e07e442f3ad6e8e1db523be9a3afd9a94d86df4c2592b6f8"
     },
     {
       "source": "lib/workout-reminders.ts",
       "target": "src/shared/workout-reminders.ts",
-      "sha256": "50e9fe8d123c8778165bc5547747ad02cf249a28eca7d2e20f508f6be8d2276e"
+      "sha256": "88b316c86d72701474bc2a8d9ac3ce483cbd8f494c59b85bf2cf8837c3b2a99b"
     },
     {
       "source": "lib/brand.ts",
       "target": "src/shared/brand.ts",
-      "sha256": "bd01748eddce662edd225d141f40e055f996297eac92d52f9a0987f5e85efaed"
+      "sha256": "be1c917ff5528f20cab1b3fb313a937c9c0bb6691e5a472d2c53331310d2f6d4"
     },
     {
       "source": "lib/presentation.ts",

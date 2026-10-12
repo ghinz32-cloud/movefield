@@ -1,6 +1,7 @@
 import type {State} from './training';
 import type {AppPreferences} from './app-preferences';
-export const workoutReminderKind='training-workout';
+import {nativeStorageKey} from './brand';
+export const workoutReminderKind=nativeStorageKey('training-workout');
 export type WorkoutReminder={id:string;date:string;at:number;sessionIds:string[]};
 export function workoutReminders(s:State,p:AppPreferences,now=Date.now(),limit=30):WorkoutReminder[]{
   if(!p.reminders||!s.plan||s.plan.paused||s.hold||typeof p.reminderTime!=='string'||!/^([01]\d|2[0-3]):[0-5]\d$/.test(p.reminderTime))return [];
@@ -14,7 +15,7 @@ export function workoutReminders(s:State,p:AppPreferences,now=Date.now(),limit=3
   return [...grouped].sort(([a],[b])=>a.localeCompare(b)).map(([date,sessionIds])=>{
     const [year,month,d]=date.split('-').map(Number);
     const at=new Date(year,month-1,d,hour,minute,0,0).getTime();
-    return {id:`workout-${date}`,date,at,sessionIds};
+    return {id:nativeStorageKey(`workout-${date}`),date,at,sessionIds};
   }).filter(r=>Number.isFinite(r.at)&&r.at>=now).slice(0,limit);
 }
 function stamp(at:number){return new Date(at).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z');}

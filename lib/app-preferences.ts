@@ -1,5 +1,6 @@
+import {isGrizzly} from './brand';
 export const palettes = [
-  {id:'green',name:'Volt green',from:'#c4f275',to:'#56dfae',strong:'#226345'},
+  {id:'green',name:isGrizzly?'Grizzly amber':'Volt green',from:isGrizzly?'#f5cb79':'#c4f275',to:isGrizzly?'#e6ac69':'#56dfae',strong:isGrizzly?'#80501d':'#226345'},
   {id:'ocean',name:'Ocean blue',from:'#9bdfff',to:'#92a9ff',strong:'#2458a0'},
   {id:'violet',name:'Iris violet',from:'#dcbaff',to:'#b4a1ff',strong:'#6842a1'},
   {id:'sunset',name:'Sunset',from:'#ffd49b',to:'#ffa6b3',strong:'#97430c'},
@@ -10,7 +11,7 @@ export type PaletteId=typeof palettes[number]['id'];
 export type ModelChoice='auto'|'off'|'0.6b'|'1.7b'|'4b';
 export type AppPreferences={mode:'system'|'light'|'dark';palette:PaletteId;textSize:100|115|130;contrast:boolean;reduceMotion:boolean;underlineLinks:boolean;reminders:boolean;reminderTime:string;model:ModelChoice};
 export const defaultPreferences:AppPreferences={mode:'system',palette:'green',textSize:100,contrast:false,reduceMotion:false,underlineLinks:false,reminders:false,reminderTime:'18:00',model:'auto'};
-export const preferenceKey='training-studio:preferences:v1';
+export const preferenceKey=isGrizzly?'grizzly-fitness:preferences:v1':'training-studio:preferences:v1';
 export function readPreferences(raw:string|null):AppPreferences {
   if(!raw)return {...defaultPreferences};
   try{

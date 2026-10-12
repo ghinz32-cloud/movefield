@@ -2,7 +2,8 @@ import {File,Directory,Paths} from 'expo-file-system';
 import {getDocumentAsync} from 'expo-document-picker';
 import {isAvailableAsync,shareAsync} from 'expo-sharing';
 import {randomUUID} from 'expo-crypto';
-const prefix='movefield-export-';
+import {brand,isGrizzly} from './shared/brand';
+const prefix=isGrizzly?'grizzly-fitness-export-':'movefield-export-';
 export async function cleanExportFiles(all=false){for(const item of new Directory(Paths.cache).list())if(item instanceof File&&item.name.startsWith(prefix)&&item.name.endsWith('.json')&&(all||item.modificationTime!==null&&Date.now()-item.modificationTime>86_400_000))item.delete();}
 /** Owner selects a destination; use a file URI rather than a large IPC message. */
 export async function shareJsonFile(raw:string,label:'encrypted-backup'|'plaintext-plan'|'original-saved-file',current:()=>boolean=()=>true){
@@ -10,7 +11,7 @@ export async function shareJsonFile(raw:string,label:'encrypted-backup'|'plainte
  if(!await isAvailableAsync())throw Error('File sharing is unavailable on this device.');
  await cleanExportFiles();if(!current())throw Error('Your profile changed while preparing this export. Retry from the current profile.');
  const file=new File(Paths.cache,prefix+label+'-'+randomUUID()+'.json');file.create({overwrite:false});file.write(raw);
- try{await shareAsync(file.uri,{mimeType:'application/json',dialogTitle:'Movefield '+label,UTI:'public.json'})}catch{if(file.exists)file.delete();throw Error('The file could not be shared. Your saved profile is kept.');}
+ try{await shareAsync(file.uri,{mimeType:'application/json',dialogTitle:brand.name+' '+label,UTI:'public.json'})}catch{if(file.exists)file.delete();throw Error('The file could not be shared. Your saved profile is kept.');}
  // Recipients may read after the sheet closes. Expire owned cache files later.
 }
 export async function pickJsonFile(maxBytes:number):Promise<string|null>{

@@ -8,7 +8,7 @@ import hashlib,json,pathlib,subprocess,zipfile
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 OUTPUT=ROOT/'.sites-runtime/movefield-continuation-source.zip'
 names=subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','-z'],cwd=ROOT).decode().split('\0')
-excluded={'.git','.openai','.sites-runtime','.agents','.codex','.aws','node_modules','.expo','dist','dist-mobile','dist-web','.wrangler','coverage'}
+excluded={'.git','.openai','.sites-runtime','.agents','.codex','.aws','node_modules','.expo','dist','dist-mobile','dist-web','dist-grizzly','.wrangler','coverage'}
 records=[]
 OUTPUT.parent.mkdir(exist_ok=True)
 with zipfile.ZipFile(OUTPUT,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as archive:

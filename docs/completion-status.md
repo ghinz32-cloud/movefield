@@ -1,3 +1,5 @@
+> Latest active goal: Grizzly Fitness Wautoma is a separate UI flavor of the shared app. See `grizzly-fitness.md` for its verification and the pending official-logo retrieval. This new UI work does not mark the original six-prompt launch/security/device requirements complete.
+
 # Completion status — 12 October 2026 UTC
 
 **The six master prompts are incomplete, and not every release gate has passed.** Premium experience work continues. The [task register](master-prompts-task-register.json) retains all 72 original requirement bodies: 61 sections are in progress, 11 are not started, and none has full section acceptance. These broad counts are not a percentage of code completion.

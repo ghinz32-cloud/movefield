@@ -1,0 +1,11 @@
+# Grizzly Fitness Wautoma flavor
+
+This is a separate app identity built from the same training code. The bear mark and amber colors are provisional; the official gym website is https://www.fitnessgrizzly.com/ and its assets have not yet been retrieved in the managed environment.
+
+After `npm ci`, use `npm run start:grizzly` for the Expo preview or `npm run export:grizzly` for Android/iOS JavaScript exports. For native compilation, set `EXPO_PUBLIC_APP_VARIANT=grizzly` in the terminal before `npm run android` / `npm run ios`. Clear Metro with `--clear` when switching flavors. Default commands continue to select Movefield.
+
+Grizzly uses `com.ghinz32.grizzlyfitness.prototype`, the `grizzlyfitness` URL scheme, its own AsyncStorage/SecureStore keys, SQLite filename and preferences. Existing Movefield identifiers and record formats stay stable. No automatic profile migration occurs. An explicitly imported backup uses the same portable encrypted format.
+
+Headings use bundled Bungee, with Inter for data and controls. Both font licenses accompany the source. Sample data, deterministic training rules, plan review and privacy controls remain shared. An installed device test is still needed to qualify each platform's keychain, notifications, fonts and layout; an Expo export is not an APK/IPA.
+
+Grizzly cloud sign-in stays off unless its own `EXPO_PUBLIC_GRIZZLY_API_URL` and `EXPO_PUBLIC_GRIZZLY_NATIVE_AUTH_VERIFIED=true` are supplied after callback/server qualification. Movefield's API setting is not reused.

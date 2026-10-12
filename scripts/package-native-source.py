@@ -1,10 +1,11 @@
 """Package current native source only; exclude runtime state, credentials and build caches."""
-import hashlib,json,pathlib,zipfile
+import hashlib,json,pathlib,sys,zipfile
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 MOBILE=ROOT/'mobile'
-EXCLUDED={'node_modules','.expo','.git','.sites-runtime','dist-mobile','dist-web','coverage','.wrangler','android','ios','build'}
+EXCLUDED={'node_modules','.expo','.git','.sites-runtime','dist-mobile','dist-web','dist-grizzly','coverage','.wrangler','android','ios','build'}
 ALLOWED={'.ts','.tsx','.js','.mjs','.cjs','.json','.md','.txt','.png','.ttf','.jpg','.svg'}
-OUTPUT=ROOT/'public/downloads/movefield-native-current.zip'
+GRIZZLY='--grizzly' in sys.argv
+OUTPUT=ROOT/('public/downloads/grizzly-fitness-native-source.zip' if GRIZZLY else 'public/downloads/movefield-native-current.zip')
 FILES=[]
 for path in sorted(MOBILE.rglob('*')):
     rel=path.relative_to(MOBILE)
@@ -19,7 +20,7 @@ with zipfile.ZipFile(OUTPUT,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9
         archive.writestr(info,data)
         records.append({'path':name,'sha256':hashlib.sha256(data).hexdigest()})
     info=zipfile.ZipInfo('SOURCE_MANIFEST.json',date_time=(2026,10,11,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED
-    archive.writestr(info,json.dumps({'scope':'Current native source; JS exports are separately qualified; no APK/IPA or installed-device claim.','files':records},indent=2)+'\n')
+    archive.writestr(info,json.dumps({'scope':'Current native source; JS exports are separately qualified; no APK/IPA or installed-device claim.','entry_instructions':'mobile/GRIZZLY.md' if GRIZZLY else 'mobile/START-HERE.md','files':records},indent=2)+'\n')
 with zipfile.ZipFile(OUTPUT) as archive:
     for record in records:
         if hashlib.sha256(archive.read(record['path'])).hexdigest()!=record['sha256']:raise RuntimeError('Archive verification failed')
