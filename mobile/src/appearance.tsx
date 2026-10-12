@@ -3,7 +3,17 @@ import {AccessibilityInfo,useColorScheme,type ViewStyle,type TextStyle,type Imag
 import interFont from '../assets/fonts/inter-variable.ttf';
 import headingFont from '../assets/fonts/barlow-condensed-semibold.ttf';
 import grizzlyHeadingFont from '../assets/fonts/bungee-regular.ttf';
-import beastFont from '../assets/fonts/rubik-beastly-regular.ttf';
+import oswaldFont from '../assets/fonts/oswald-heading.ttf';
+import bitterFont from '../assets/fonts/bitter-heading.ttf';
+import rajdhaniFont from '../assets/fonts/rajdhani-heading.ttf';
+import newrockerFont from '../assets/fonts/newrocker-heading.ttf';
+import blackopsoneFont from '../assets/fonts/blackopsone-heading.ttf';
+import sairastenciloneFont from '../assets/fonts/sairastencilone-heading.ttf';
+import stardosstencilFont from '../assets/fonts/stardosstencil-heading.ttf';
+import pirataoneFont from '../assets/fonts/pirataone-heading.ttf';
+import eaterFont from '../assets/fonts/eater-heading.ttf';
+import nosiferFont from '../assets/fonts/nosifer-heading.ttf';
+import rubikdirtFont from '../assets/fonts/rubikdirt-heading.ttf';
 import metalFont from '../assets/fonts/metal-mania-regular.ttf';
 import {isGrizzly} from './shared/brand';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -13,7 +23,7 @@ const Context=createContext({p:defaultPreferences,ready:false,update:(_patch:Par
 export function NativeAppearanceProvider({children}:{children:React.ReactNode}){
  const [p,setP]=useState(defaultPreferences),[ready,setReady]=useState(false),[error,setError]=useState(''),[systemReduce,setSystemReduce]=useState(false);
  const current=useRef(p),writes=useRef(Promise.resolve()),scheme=useColorScheme();
- const [fonts]=useFonts({Inter:interFont,'Barlow Condensed':headingFont,Bungee:grizzlyHeadingFont,'Rubik Beastly':beastFont,'Metal Mania':metalFont});
+ const [fonts]=useFonts({Inter:interFont,'Barlow Condensed':headingFont,...(isGrizzly?{Bungee:grizzlyHeadingFont,'Metal Mania':metalFont,'Oswald':oswaldFont,'Bitter':bitterFont,'Rajdhani':rajdhaniFont,'New Rocker':newrockerFont,'Black Ops One':blackopsoneFont,'Saira Stencil One':sairastenciloneFont,'Stardos Stencil':stardosstencilFont,'Pirata One':pirataoneFont,'Eater':eaterFont,'Nosifer':nosiferFont,'Rubik Dirt':rubikdirtFont}:{})});
  useEffect(()=>{let live=true;AsyncStorage.getItem(preferenceKey).then(raw=>{if(live){current.current=readPreferences(raw);setP(current.current)}}).catch(()=>{if(live)setError('Your preferences could not be opened. Try reopening the app.')}).finally(()=>{if(live)setReady(true)});AccessibilityInfo.isReduceMotionEnabled().then(v=>{if(live)setSystemReduce(v)});const listener=AccessibilityInfo.addEventListener('reduceMotionChanged',setSystemReduce);return()=>{live=false;listener.remove()}},[]);
  const update=(patch:Partial<AppPreferences>)=>{const next=readPreferences(JSON.stringify({...current.current,...patch}));current.current=next;setP(next);writes.current=writes.current.catch(()=>{}).then(()=>AsyncStorage.setItem(preferenceKey,JSON.stringify(next))).then(()=>setError('')).catch(()=>setError('Preferences apply now but could not be saved.'))};
  return <Context.Provider value={{p,ready,error,update,dark:p.mode==='dark'||p.mode==='system'&&scheme==='dark',reduceMotion:p.reduceMotion||systemReduce,fonts}}>{children}</Context.Provider>;
@@ -36,7 +46,7 @@ export function useThemedStyles<T extends Record<string,ViewStyle|TextStyle|Imag
     const lower=v.toLowerCase();return [prop,lower==='#ffffff'?(prop==='color'?c.onAccent:c.white):lower==='#d4e3c6'||lower==='#e5ecdc'?c.onAccent:mapping[lower]||v];
    })) as ViewStyle&TextStyle&ImageStyle;
    if(style.fontSize){style.fontSize=Math.max(14,style.fontSize)*(p.textSize/100);if(fonts)style.fontFamily=(isGrizzly?['title','darkTitle','brand']:['title','darkTitle','brandSub']).includes(key)?headingFamily:'Inter';}
-   if(isGrizzly&&['title','darkTitle','brand'].includes(key)){style.fontWeight=p.headingFont==='inter'?'700':p.headingFont==='barlow'?'600':'400';}
+   if(isGrizzly&&['title','darkTitle','brand'].includes(key)){style.fontWeight=String(Math.round(headingFonts.find(x=>x.id===p.headingFont)!.weight/100)*100) as TextStyle['fontWeight'];}
    if(isGrizzly&&p.grizzlyStyle==='wild'&&['card','darkCard'].includes(key)){style.borderRadius=4;style.borderTopWidth=3;style.borderTopColor=c.from;}
    if(isGrizzly&&key==='brand'){style.fontSize=16*(p.textSize/100);style.letterSpacing=0;style.fontWeight='400';}
    if(style.lineHeight)style.lineHeight*=p.textSize/100;

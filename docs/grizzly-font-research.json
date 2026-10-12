@@ -1,0 +1,185 @@
+{
+  "researched_at": "2026-10-12T13:08:42.562056+00:00",
+  "method": "Online search of the official Google Fonts tag catalog for rugged, loud, blackletter, stencil and distressed families; checked each selected family metadata, designer description and OFL; downloaded via inherited proxy with TLS verification. General Google web search was blocked with a proxy tunnel 403; no bypass was attempted.",
+  "catalog_url": "https://raw.githubusercontent.com/google/fonts/main/tags/all/families.csv",
+  "catalog_sha256": "db1871908664f23ed136f3b050d00c7172e4f3990b02c2be0cdc455595a2f56c",
+  "families": [
+    {
+      "directory": "oswald",
+      "metadata_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/oswald/METADATA.pb",
+      "description_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/oswald/DESCRIPTION.en_us.html",
+      "family": "Oswald",
+      "license": "OFL",
+      "description": "Oswald is a reworking of the classic style historically represented by the 'Alternate Gothic' sans serif typefaces.\nThe characters of Oswald were initially re-drawn and reformed to better fit the pixel grid of standard digital screens.\nOswald is designed to be used freely across the internet by web browsers on desktop computers, laptops and mobile devices.\n \n \n- Since the initial launch in 2011, Oswald was updated continually by Vernon Adams until 2014.\nVernon added Light and Bold weights, support for more Latin and Cyrillic languages, tightened the spacing and kerning and made many glyph refinements throughout the family based on hundreds of users' feedback. \n- In 2016 the Latin part of the family was updated by Kalapi Gajjar to complete the work started by Vernon. \n- In January 2019, it was updated with a variable font Weight axis. \n- In July 2023, the font was upgraded with a Cyrillic character set expansion, and the rendering of math symbols was improved.\n \n \nTo contribute, see  github.com/googlefonts/OswaldFont",
+      "catalog_tags": {
+        "/Expressive/Loud": 11,
+        "/Expressive/Rugged": 72
+      },
+      "font_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/oswald/Oswald[wght].ttf",
+      "filename": "oswald-heading.ttf",
+      "bytes": 172088,
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817"
+    },
+    {
+      "directory": "bitter",
+      "metadata_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/bitter/METADATA.pb",
+      "description_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/bitter/DESCRIPTION.en_us.html",
+      "family": "Bitter",
+      "license": "OFL",
+      "description": "People read and interact with text on screens more and more each day.\n What happens on screen ends up being more important than what comes out of the printer.\n With the accelerating popularity of electronic books, type designers are working hard to seek out the ideal designs for reading on screen.\n \n \n Motivated by her love for the pixel, Sol Matas designed Bitter.\n A \"contemporary\" slab serif typeface for text, it is specially designed for comfortably reading on any computer or device.\n The robust design started from the austerity of the pixel grid, based on rational rather than emotional principles.\n It combines the large x-heights and legibility of the humanistic tradition with subtle characteristics in the characters that inject a certain rhythm to flowing texts.\n \n \n Bitter has little variation in stroke weight and the Regular style is thicker than a usual \u2018Regular\u2019 style for print design.\n This generates an intense color in paragraphs, accentuated by the serifs that are as thick as strokes with square terminals.\n \n \n Each glyph is carefully designed with an excellent curve quality added to the first stage of the design, that was entirely made in a pixel grid.\n The typeface is balanced and manually spaced to use very few kerning pairs.\n \n \n To contribute, see\n  \n  github.com/solmatas/BitterPro\n  \n .",
+      "catalog_tags": {
+        "/Expressive/Loud": 88,
+        "/Expressive/Rugged": 56
+      },
+      "font_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/bitter/Bitter[wght].ttf",
+      "filename": "bitter-heading.ttf",
+      "bytes": 328636,
+      "sha256": "ef2b9a711fb02f1e5823b34da1b7450e0fc76793b7d733a8b41006e24916d4a7"
+    },
+    {
+      "directory": "rajdhani",
+      "metadata_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/rajdhani/METADATA.pb",
+      "description_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/rajdhani/DESCRIPTION.en_us.html",
+      "family": "Rajdhani",
+      "license": "OFL",
+      "description": "Rajdhani has modularized letterforms and supports the Devanagari and Latin writing systems. \nThe squared and condensed appearance may be interpreted as technical or even futuristic. \nTypically round bowls and other letterform elements have straight sides in Rajdhani. \nThe stroke terminals typically end in flat line segments that are horizontal or vertical, rather than diagonal. \nTheir corners are slightly rounded, giving stroke-endings a softer feeling, rather than a pointy one.\n \n \nSatya Rajpurohit and Jyotish Sonowal developed the Devanagari component together, while the Latin was designed by Shiva Nalleperumal. \nTo contribute, see  github.com/itfoundry/rajdhani",
+      "catalog_tags": {
+        "/Expressive/Rugged": 50
+      },
+      "font_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/rajdhani/Rajdhani-Bold.ttf",
+      "filename": "rajdhani-heading.ttf",
+      "bytes": 400680,
+      "sha256": "691470dd3286a14e9677940d0bf75796179841ba5215cbda1a2c8910a3226afd"
+    },
+    {
+      "directory": "newrocker",
+      "metadata_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/newrocker/METADATA.pb",
+      "description_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/newrocker/DESCRIPTION.en_us.html",
+      "family": "New Rocker",
+      "license": "OFL",
+      "description": "New Rocker is a loud, harsh, screaming font. With Blackletter, Tattoo and\rHeavy Metal logos as inspiration.",
+      "catalog_tags": {
+        "/Expressive/Loud": 19,
+        "/Expressive/Rugged": 65,
+        "/Theme/Blackletter": 100
+      },
+      "font_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/newrocker/NewRocker-Regular.ttf",
+      "filename": "newrocker-heading.ttf",
+      "bytes": 173224,
+      "sha256": "28a499ce5b8bcf0652f8b2e25135183eaddf0c3c8c3e251259b075c71d1ef14c"
+    },
+    {
+      "directory": "blackopsone",
+      "metadata_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/blackopsone/METADATA.pb",
+      "description_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/blackopsone/DESCRIPTION.en_us.html",
+      "family": "Black Ops One",
+      "license": "OFL",
+      "description": "Black Ops One is a low contrast, semi geometric typeface inspired by military stencil lettering. \nIt is heavy, sturdy, punchy, and looks best when used at medium to large sizes because of the small cuts found in stencils. \n In the July 2022 update, Black Ops One has improved language support. \n To contribute, see  github.com/SorkinType/Black-Ops .",
+      "catalog_tags": {
+        "/Expressive/Loud": 91,
+        "/Expressive/Rugged": 95,
+        "/Theme/Stencil": 50
+      },
+      "font_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/blackopsone/BlackOpsOne-Regular.ttf",
+      "filename": "blackopsone-heading.ttf",
+      "bytes": 166532,
+      "sha256": "282a825b5f294377387e3969f765408157dbea8da0f5d0aae68c6bc704b145b3"
+    },
+    {
+      "directory": "sairastencilone",
+      "metadata_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/sairastencilone/METADATA.pb",
+      "description_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/sairastencilone/DESCRIPTION.en_us.html",
+      "family": "Saira Stencil One",
+      "license": "OFL",
+      "description": "Saira Stencil is the stencil version of  Saira , designed by H\u00e9ctor Gatti and developed by Omnibus-Type Team. \n\n To contribute, see  github.com/Omnibus-Type/Saira/tree/master/SairaStencilOne .",
+      "catalog_tags": {},
+      "font_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/sairastencilone/SairaStencilOne-Regular.ttf",
+      "filename": "sairastencilone-heading.ttf",
+      "bytes": 109944,
+      "sha256": "781496fdaf8e04cf6741b31025f6b4ba84f66021b097a8e0d85cbea2180cf223"
+    },
+    {
+      "directory": "stardosstencil",
+      "metadata_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/stardosstencil/METADATA.pb",
+      "description_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/stardosstencil/DESCRIPTION.en_us.html",
+      "family": "Stardos Stencil",
+      "license": "OFL",
+      "description": "Stardos is a stencilled serif font designed to be used a display-only webfont. Stardos Stencil has been designed to be used freely across the internet by web browsers on desktop computers, laptops, mobile devices, and Cloud systems.   Stardos Stencil is a stencilled serif font designed to be used a display-only webfont. Stardos Stencil has been designed to be used freely across the internet by web browsers on desktop computers, laptops, mobile devices, and Cloud systems.",
+      "catalog_tags": {
+        "/Expressive/Loud": 1,
+        "/Expressive/Rugged": 70,
+        "/Theme/Stencil": 100
+      },
+      "font_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/stardosstencil/StardosStencil-Bold.ttf",
+      "filename": "stardosstencil-heading.ttf",
+      "bytes": 33044,
+      "sha256": "6b15f50b1b358512d922b5f11937af17e90704587e1d7fb009f1715d2d5dfa74"
+    },
+    {
+      "directory": "pirataone",
+      "metadata_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/pirataone/METADATA.pb",
+      "description_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/pirataone/DESCRIPTION.en_us.html",
+      "family": "Pirata One",
+      "license": "OFL",
+      "description": "Pirata One is a gothic textura font, simplified and optimized to work\nwell on screen and pixel displays. Its condensed structure and \nspacing give it an excellent performance and rhythm on texts so it\ncan be used as a header font or in shorts paragraphs. \n\n Designed by Rodrigo Fuenzalida and Nicolas Massi. To contribute to the\nproject contact  Rodrigo Fuenzalida .",
+      "catalog_tags": {
+        "/Expressive/Loud": 47,
+        "/Expressive/Rugged": 55,
+        "/Theme/Blackletter": 100
+      },
+      "font_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/pirataone/PirataOne-Regular.ttf",
+      "filename": "pirataone-heading.ttf",
+      "bytes": 56316,
+      "sha256": "5347a2e155589ecf667d4b766613c8ee003edde9f83717fd24c09599a4b1ecc0"
+    },
+    {
+      "directory": "eater",
+      "metadata_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/eater/METADATA.pb",
+      "description_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/eater/DESCRIPTION.en_us.html",
+      "family": "Eater",
+      "license": "OFL",
+      "description": "Eater is a display font infected by the darkest of rare disease that slowly spreads at night while the webfont user sleeps.",
+      "catalog_tags": {
+        "/Expressive/Loud": 26,
+        "/Expressive/Rugged": 58
+      },
+      "font_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/eater/Eater-Regular.ttf",
+      "filename": "eater-heading.ttf",
+      "bytes": 83928,
+      "sha256": "df2744af0f58592c4ff13e8205e62a56f7bdf915b3e31c9def075668c42a2b3f"
+    },
+    {
+      "directory": "nosifer",
+      "metadata_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/nosifer/METADATA.pb",
+      "description_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/nosifer/DESCRIPTION.en_us.html",
+      "family": "Nosifer",
+      "license": "OFL",
+      "description": "Nobody knows where Nosifer comes from. It emanates a dark stench as it drips from the Internet.",
+      "catalog_tags": {
+        "/Expressive/Loud": 69,
+        "/Expressive/Rugged": 55
+      },
+      "font_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/nosifer/Nosifer-Regular.ttf",
+      "filename": "nosifer-heading.ttf",
+      "bytes": 43272,
+      "sha256": "09c5ac35e34dc7a397d5f698b703c5640b59cf93d4d343ebae4f16f3859d09b8"
+    },
+    {
+      "directory": "rubikdirt",
+      "metadata_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/rubikdirt/METADATA.pb",
+      "description_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/rubikdirt/DESCRIPTION.en_us.html",
+      "family": "Rubik Dirt",
+      "license": "OFL",
+      "description": "The Generative Fonts  is an original, script-generated collection of fonts based on the Google Fonts  Rubik  by Hubert and Fischer, Meir Sadan and Cyreal. The code used to generate it can be found at  github.com/NaN-xyz/Glyph-Filters .\n \n\n \nCheck for more  Rubik \"Filtered\" fonts !\n \n\n \nTo contribute, see  github.com/NaN-xyz/Rubik-Filtered .",
+      "catalog_tags": {
+        "/Expressive/Loud": 55,
+        "/Expressive/Rugged": 92,
+        "/Theme/Distressed": 100
+      },
+      "font_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/rubikdirt/RubikDirt-Regular.ttf",
+      "filename": "rubikdirt-heading.ttf",
+      "bytes": 1492292,
+      "sha256": "9de3d928e434a47ec85d759012c8a0ebfeab0860076eea4e3989a47c5e213123"
+    }
+  ]
+}
