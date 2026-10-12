@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "base": "/movefield/",
-  "version": "c7972d3948771c8d78fd9a66d5e070ad88ff357f4ae8de8185d340a864faf105",
+  "version": "8c445d45a95ba348bcacf438bb7c344361cd98bc541e47f08e8e01f40096a9f8",
   "workerTemplateSha256": "025d7ea1407c5b39e515e9ce0726e867600982f60008f72940cf1f4ae4837ad7",
   "coachingWorker": {
     "path": "runtime/workout-coaching-worker.js",
@@ -62,7 +62,7 @@
     "/movefield/fonts/oswald-latin-700-normal.woff2": "aae665c75af89ea7cb7d8ccc8b0911ea72267442ebcd84f6e3efa041ad3b3c16",
     "/movefield/fonts/saira-latin-400-normal.woff2": "f477825b1d839c775bda7708f78e933bd246c582e7186769e9a25e9b1a59b350",
     "/movefield/fonts/saira-latin-700-normal.woff2": "07eb78fecb9cbc519e08a727d438389b2983a140a4d8651d000141ec55b8bacf",
-    "/movefield/index.html": "170055ec1b6d23cc9d5c93d916044864d48b8b454312febff059532d3a224ba5",
+    "/movefield/index.html": "03e5b24917fca69179d0282fee294410fe037de2fc02ba076511f1353d253950",
     "/movefield/privacy.html": "8da3cb0250c57ff711634338934ec8e08c16fe7811448bef62cc2dbeb83fcd0b",
     "/movefield/runtime/lib-C9O0qMAG.js": "125e6c1b74e73417f05b49c72c49580a5a511fc2d5b232658034de58f0dae5cf",
     "/movefield/runtime/lib-DcORhR3s.js": "203134a3fd7bfc2b58e7ebf1ddb5d1516124cf348729e829ff9d16b77557e39b",
