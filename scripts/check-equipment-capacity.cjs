@@ -77,7 +77,7 @@ function seedComparable(state, exerciseId = 'row', kg = 20, chosenRole) {
   const completed = matching.slice(0, 2);
   const setup = state.loadContext?.[exerciseId] || '';
   const history = [...state.history, ...completed.map((session, i) => record(session, exerciseId, kg, state.history.length + i, setup))];
-  const next = {...state, history, incrementKg: {...state.incrementKg, [exerciseId]: 0.5},
+  const next = {...state, history, incrementKg: {...Object.fromEntries(state.plan.sessions.flatMap(x=>x.items).map(i=>[i.exerciseId,0.01])),...state.incrementKg, [exerciseId]: 0.5},
     plan: {...state.plan, sessions: state.plan.sessions.map(session => completed.some(c => c.id === session.id) ? {...session, status: 'completed'} : session)}};
   const session = next.plan.sessions.find(s => s.id === matching[2].id);
   return {state: next, session, item: session.items.find(i => i.exerciseId === exerciseId)};
@@ -288,7 +288,7 @@ test('Wider ranges stop at 20 after new comparable evidence for each accepted ra
 
 for (const weeks of [5, 8]) test(`Capacity progression respects time throughout a ${weeks}-week block`, () => {
   let checked = false;
-  for (const [program, exerciseId] of [['GFM2', 'leg-curl'], ['BBM3', 'lib-stack-chest-press'], ['PBSTART3', 'row'], ['PBT4', 'leg-extension']]) {
+  for (const [program, exerciseId] of [['BB2','triceps'], ['GFM2', 'leg-curl'], ['BBM3', 'lib-stack-chest-press'], ['PBSTART3', 'row'], ['PBT4', 'leg-extension']]) {
     const {state} = capacityFixture(program, exerciseId, {weeks});
     const proposal = T.makeCapacityProposal(state);
     if (!proposal) continue;

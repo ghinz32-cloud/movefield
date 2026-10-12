@@ -1,3 +1,15 @@
+# Current continuation — local prototype
+
+Private history now uses encrypted SQLite records, with SecureStore keys and a separate recovery key. Sample data stays isolated. Calendar/commitments, reviewed custom additions, reusable blocks, recorded progress and searchable source references are available. Default cloud services remain disabled; configured cloud backup is a manually requested encrypted snapshot. Android OS automatic backup is disabled. Keep an explicit backup and recovery key before uninstalling.
+
+This source contains Expo SDK 57, `expo-sqlite` and `expo-system-ui`. Install with `npm ci`, then run `npm run check`, `npm run test:engine` and `npm start`. Google sign-in requires an installed native build and owner configuration; it remains disabled in Expo Go and until both server/app native-auth qualification switches are explicitly enabled. `npm run android` / `npm run ios` generate and run native builds using the required local platform toolchains. The provisional development ID is `com.ghinz32.movefield.prototype`.
+
+No APK/IPA or phone qualification is included. Current local Android compilation is blocked by the managed network denial for `repo.reactnative.dev`; the environment draft contains the required domain but must be published. Native dependencies still have two unresolved upstream advisories (`braces`, `node-forge`). See the repository's `docs/android-build.md`, `docs/record-storage.md` and `docs/completion-status.md`. Full six-prompt acceptance remains incomplete.
+
+---
+
+The original starter instructions follow; current persistence/build notes above take precedence.
+
 # Movefield — mobile starter
 
 This is a working React Native + Expo **source-code starter** for iPhone and Android. The screens use native components. You can open it in Expo Go from a Windows computer without building an app-store release.

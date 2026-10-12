@@ -5,13 +5,13 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Cloudflare Better Auth Google accounts, portable encrypted manual web/native snapshot sync, persistent retry queues, owner CAS storage/deletion, consent-bound optional cloud fact-selection jobs",
-  "completion_claim": "The Cloudflare account/backup/highlights milestone is implemented and locally tested. No live resources, credentials or provider are configured. Full six-prompt implementation remains incomplete; all original requirement text is retained.",
+  "active_checkpoint": "Encrypted per-record IndexedDB/SQLite, native calendar/reusable blocks/customization/progress/science parity, honest duration fitting, hardened SDK identity/session boundaries, rendered accessibility and reproducible Cloudflare account preparation",
+  "completion_claim": "Locally verified continuation checkpoint. Full six-prompt implementation and acceptance remain incomplete; no live deployment, physical-device qualification or full standards/scientific acceptance is claimed.",
   "external_gates": [
-    "Cloudflare account access, usable credentials/bindings, authenticated-provider privacy/age/quota eligibility and $0 allowance verification",
-    "Native Android/iOS toolchains, existing signing identity and physical devices",
-    "Owner-console hosting/deployment/CI triggers and quota verification; publication remains unauthorised",
-    "Independent security/crypto review and source/creator permissions where required. Evidence research and other unimplemented code remain development work, not merely activation gates."
+    "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and owner publication decision. Account ID supplied; ignored local config and secure requirements prepared.",
+    "Saved environment network additions need activation for full-text research and repo.reactnative.dev Android artifact download. Current proxy denials are not bypassed.",
+    "Mac/iOS toolchain, owner signing/update configuration and installed physical Android/iPhone device matrix; broad coverage target does not certify old/unpatched devices.",
+    "Independent security/crypto/privacy/science/rights reviews and compatible native upstream advisory remediation. Remaining code is separately retained below."
   ],
   "requirements": [
     {
@@ -34,6 +34,12 @@
           "application_source_sha256": "84fea0bd95e94bf2185d4fe8ff54f72da4244784820301913e61d16eb84c1962",
           "environment": "Node24/pnpm11.25, local freshly built Worker and sandboxed Chromium; native JS export/adapter, no physical devices or connected providers",
           "result": "Current baseline rechecked: 71 plan variants, 4297 scenarios, 2481929 assertions; 989 exercise guides, all 1726 original photos; native engine 74 plans across seven weekdays. Counts are not a full science/rights/runtime-flow certification."
+        },
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
         }
       ],
       "next_action": "Complete modality/level/environment coverage, evidence and end-of-block runtime qualification; retain unsupported combinations honestly."
@@ -43,78 +49,120 @@
       "prompt": 1,
       "title": "Build an evidence-to-rule system, not a citation dump",
       "priority": "normal",
-      "status": "not_started",
+      "status": "in_progress",
       "requirement": "Audit the existing research archive first. Distinguish discovered records, abstract-screened papers, full-text-reviewed papers, and sources actually used to support a rule. Do not relabel hundreds of collected references as hundreds of critically reviewed studies or training examples.\n\nResearch current consensus documents, systematic reviews/meta-analyses, and relevant original studies. Use the source papers and professional organizations directly. Read methods, populations, interventions, results, uncertainty, and limitations before encoding a numerical rule. Inspect relevant figures and tables; do not infer their contents from abstracts. Record when full text was inaccessible. Search beyond the starter sources below for each modality, including the newest reliable evidence available when this prompt is executed.\n\nCover at least volume, frequency, load, proximity to failure, rest intervals, exercise selection/order, range of motion, progression, autoregulation, deloading, tapering, concurrent training, sprint/jump exposure, adherence, time-efficient training, youth, and older adults. Evaluate task-specific evidence rather than applying hypertrophy findings to speed training.\n\nCreate a versioned evidence ledger with: source ID; title/authors/year; DOI/PMID/canonical link; source type; population and training status; exposure/comparator; relevant outcomes; quantitative findings when justified; limitations; date checked; access/review depth; claim supported; applicability; and rule IDs using that claim. Record conflicts, retractions/corrections, and uncertain extrapolations.\n\nCreate a claim-to-code map linking each important programming rule to evidence IDs, affected plans, executable implementation, and tests. Separate direct evidence, broader principle support, author-prescribed rules, and explicitly reasoned product heuristics. Do not invent a numeric confidence percentage or call an exact named routine \u201cclinically validated\u201d merely because its ingredients have supporting literature.\n\nDo not hardcode one universal set target, failure requirement, weekly percentage increase, acute:chronic ratio, or deload interval across goals and populations. Where the literature does not determine an exact threshold, implement a configurable, conservative policy and label its rationale as a heuristic. More work must not automatically receive a better quality score.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
       "test_commands": [],
-      "evidence": [],
-      "next_action": "Review the current production entrypoints before starting this requirement."
+      "evidence": [
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
+      ],
+      "next_action": "Review accessible original methods/populations/figures and complete claims/rule mapping; keep inventory and product heuristics distinct from qualified evidence."
     },
     {
       "id": "P1-03",
       "prompt": 1,
       "title": "Make each plan complete and internally consistent",
       "priority": "normal",
-      "status": "not_started",
+      "status": "in_progress",
       "requirement": "Every selectable plan needs its purpose, eligibility, prerequisites, schedule, equipment, realistic time range, complete cycle, start-load procedure, next-session rules, recovery structure, and next-block route. Preserve the author's actual cycle length for named routines; original plans should contain their complete intended blocks, not one sample week endlessly relabeled.\n\nFor each exercise prescribe the appropriate fields: stable exercise/variant ID, order, warmup or work-set status, sets, rep range or duration/distance, load rule, effort target, rest/recovery, priority, progression role, equipment constraints, substitutions, and necessary cues. Distinguish total versus per-hand/per-side resistance, assisted versus added resistance, timed versus repetition work, and actual versus estimated performance.\n\nShow weekly distributions by movement and relevant muscles, with a documented direct/indirect-set convention. Do not count every compound exercise as a full set for every muscle or present an estimated \u201ceffective sets\u201d metric as physiological ground truth. Analyze overlapping stress across lifting, sprinting, jumping, conditioning, sport practice, and competition.\n\nMake beginner plans genuinely teachable and complete without unnecessary exercise churn. Intermediate plans need progression beyond blindly adding weight forever. Advanced/elite options need sport/lift specificity, fatigue management, individual constraints, appropriate testing/tapering, and editable structure\u2014not simply extra sets and harder labels.\n\nPreserve custom plans and meaningful mix-and-match options. A jump, sprint, conditioning, or core add-on must recheck the combined week; it cannot be appended independently without considering total time and competing demands. Support maintenance and a sensible transition after a block ends.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
       "test_commands": [],
-      "evidence": [],
-      "next_action": "Review the current production entrypoints before starting this requirement."
+      "evidence": [
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
+      ],
+      "next_action": "Qualify complete cycles, stress distributions and next-block transitions across supported modalities; reusable blocks preserve prescriptions/history but do not certify each plan."
     },
     {
       "id": "P1-04",
       "prompt": 1,
       "title": "Implement progression as a tested state machine",
       "priority": "normal",
-      "status": "not_started",
+      "status": "in_progress",
       "requirement": "Prefer explicit deterministic rules in shared domain code. Support the distinct mechanisms actually required by the catalog: linear progression, double progression, training-max/percentage schemes, rep-target or performance-based progression, autoregulated load adjustments, and appropriate session/week/block changes.\n\nEach rule must define: eligible observations, missing-data behavior, success, near-success, failure, repeat, reset/deload, and when an adjustment takes effect. Record a readable reason and a stable rule version. RPE and RIR are optional reported inputs, not precise measurements or interchangeable values without qualification.\n\nHonor available increments and minimum/maximum loads. Do not keep suggesting impossible microloads, weights heavier than the available dumbbells, or a lighter-than-empty-bar prescription without offering an actual implementable alternative. When equipment tops out, consider permissible rep, set, leverage, unilateral, or exercise changes; explain when the equipment cannot serve the goal well. Do not pretend these changes are mechanically identical.\n\nAvoid mandatory maximal testing for every beginner or returning user. Initial loads should use relevant recent data, effort calibration, or a conservative discovery session. Estimated max formulas need units, eligible rep ranges, limitations, and comparable variants. Do not calculate a PR or plateau from incomparable machines, altered ranges of motion, different implements, warmups, or missing effort without qualification.\n\nPartial/skipped sessions, illness/time away, missed training, and edits must not be treated as ordinary failed attempts automatically. Use available context without inventing the cause. Do not automatically double a later workout to catch up. Preserve the sequence for rotating A/B or multi-session cycles across calendar weeks.\n\nDefault scheduled progression may proceed under the selected plan's known rules. Feedback-driven changes to the plan, exercise substitutions outside those rules, or schedule rearrangements require a clear preview and accept/decline. Revalidate the current plan/workout revision when accepting, and prevent duplicate or stale proposals.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
       "test_commands": [],
-      "evidence": [],
-      "next_action": "Review the current production entrypoints before starting this requirement."
+      "evidence": [
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
+      ],
+      "next_action": "Finish versioned progression state mechanisms and exhaustive runtime outcomes; existing equipment/effort/partial/custom regression checks are partial evidence."
     },
     {
       "id": "P1-05",
       "prompt": 1,
       "title": "Make time and scheduling constraints real",
       "priority": "normal",
-      "status": "not_started",
+      "status": "in_progress",
       "requirement": "Build a duration estimator that includes setup, ramp-up sets, execution, both sides of unilateral work, rests, exercise transitions, and required sprint/jump recoveries. Provide a range with documented assumptions, not fake single-minute precision. Validate estimates against scripted session timing and actual user measurements when available; distinguish simulations from observed sessions.\n\nFit a shorter session by preserving the goal-specific priority work and necessary preparation, removing low-priority accessories, selecting approved supersets where appropriate, or offering a coherent shorter variant. Do not force fit by deleting essential recovery or putting maximal speed work into a fatigue circuit.\n\nWhen rescheduling, preview affected days, preserve order/recovery/event constraints, handle occupied days, and require acceptance. Distinguish a rest day, unplanned day, missed workout, and incomplete workout. Respect user-local dates, time zones, daylight-saving changes, and events with fixed dates.\n\nFor supported sports, model sport, position, in/off-season status, practice and competition dates, priority, available sessions, and \u201cnone\u201d for commitments. Integrate sprinting, jumping, and agility purposefully rather than attaching a universal warmup to a bodybuilding plan. Recheck demanding work near competition using an evidence-linked policy with sport-specific uncertainty.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
       "test_commands": [],
-      "evidence": [],
-      "next_action": "Review the current production entrypoints before starting this requirement."
+      "evidence": [
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
+      ],
+      "next_action": "Calibrate heuristic duration ranges with actual sessions and finish sport-specific overlap/competition policies without deleting essential recovery."
     },
     {
       "id": "P1-06",
       "prompt": 1,
       "title": "Finish popular named programs faithfully and lawfully",
       "priority": "normal",
-      "status": "not_started",
+      "status": "in_progress",
       "requirement": "Audit all existing named entries before expanding. Build a provenance/fidelity register: exact author, edition/variant, original source, retrieval date, public availability, applicable reuse basis or license, attribution, brand constraints, missing details, and implementation status.\n\nInvestigate relevant candidates such as GZCLP and other creator-published GZCL variants, specific publicly described 5/3/1 variants, nSuns variants, established Reddit PPL/bodyweight routines, PHUL/PHAT, and Stronger by Science programs. These are research candidates, not an assertion that every name is currently redistributable or appropriate for every user. Verify the authoritative source and exact version before implementation.\n\nPublic forum research is permitted where allowed. Prefer official author pages, creator posts, maintainers' documentation, and authorized APIs/exports; then use forum reviews to find recurring usability and implementation complaints. Respect site rules, access controls, rate limits, and content rights. Do not bypass logins/paywalls/CAPTCHAs, retrieve leaked paid material, harvest usernames or private details, or bulk clone another app's catalog/assets.\n\nDistinguish independently implemented training methods/factual prescriptions from protected prose, images, videos, spreadsheets, compilations, and branding. Publicly readable is not automatically permission to republish everything. Attribution is necessary where applicable but is not a replacement for required permission. Use original explanatory wording and document the lawful basis for shipping each entry; unresolved rights are a specific blocked item, not a blanket reason to abandon the catalog. [W6]\n\nA complete named program includes every relevant day/week, rotation, main and assistance work, progression, stall/reset rules, training-max definition, deload/test weeks where prescribed, and cycle transition. Verify critical rules against the original source, not just a popular summary. Do not mix editions or assign generic progression to an author-specific routine.\n\nClearly distinguish: faithful implemented program; explicitly adapted program with listed changes; reference only; and unavailable pending rights/details. References and title cards do not count as playable programs. Do not invent missing author instructions. Where an author leaves a choice open, provide a labeled app default rather than attributing that choice to the author.\n\nAllow users to inspect the full prescription before starting. Warn when their equipment/time/day selection is incompatible with the original. Never silently cut a named routine to fit a filter. An adaptation must receive an honest label and retain the original reference without implying endorsement.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
       "test_commands": [],
-      "evidence": [],
-      "next_action": "Review the current production entrypoints before starting this requirement."
+      "evidence": [
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
+      ],
+      "next_action": "Obtain exact creator/version/rights sources before implementing named routines; current six provenance records are reference-only."
     },
     {
       "id": "P1-07",
       "prompt": 1,
       "title": "Make the science easy to find without clutter",
       "priority": "normal",
-      "status": "not_started",
+      "status": "in_progress",
       "requirement": "Plan cards should show goal, level, days, time, equipment, and one clear reason it fits. Plan details should expose a visible \u201cWhy this plan?\u201d or \u201cScience behind this plan\u201d disclosure within one interaction of the detail page, not bury the sources only in developer documentation.\n\nInside it show a short plain-language rationale, key supported principles, limitations/applicability, and a small set of directly relevant references. Each reference needs a descriptive title/year and an original-source link. Keep a searchable/filterable science library for people who want more depth. Avoid repeated walls of prose on every training screen.\n\nSeparate \u201cprogram source\u201d from \u201cscientific support.\u201d Display source version and evidence review date. Curated source/claim IDs must be reusable by the AI-coaching feature so it can cite approved material without fabricating papers or scraping live during a workout.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
       "test_commands": [],
-      "evidence": [],
-      "next_action": "Review the current production entrypoints before starting this requirement."
+      "evidence": [
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
+      ],
+      "next_action": "Complete reviewed source metadata and claim UI; current web/native searchable references and Why-plan disclosures are implemented honestly."
     },
     {
       "id": "P1-08",
@@ -149,6 +197,12 @@
           "application_source_sha256": "84fea0bd95e94bf2185d4fe8ff54f72da4244784820301913e61d16eb84c1962",
           "environment": "Node24/pnpm11.25, local freshly built Worker and sandboxed Chromium; native JS export/adapter, no physical devices or connected providers",
           "result": "Current baseline rechecked: 71 plan variants, 4297 scenarios, 2481929 assertions; 989 exercise guides, all 1726 original photos; native engine 74 plans across seven weekdays. Counts are not a full science/rights/runtime-flow certification."
+        },
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
         }
       ],
       "next_action": "Complete modality/level/environment coverage, evidence and end-of-block runtime qualification; retain unsupported combinations honestly."
@@ -470,12 +524,19 @@
       "prompt": 3,
       "title": "Use progressive disclosure correctly",
       "priority": "normal",
-      "status": "not_started",
+      "status": "in_progress",
       "requirement": "Use accessible inline disclosures/accordions for explanations, and actual select menus/dropdowns for choosing values. Do not replace descriptive help with a fake dropdown form field. Implement correct web keyboard/focus/expanded-state behavior and native accessibility semantics. [U1]\n\nDefault-visible content should answer: What is this? What do I need to do now? What will happen when I press the button? Everything else should earn its space.\n\nA good plan detail view starts with name, purpose, days, realistic duration, level, equipment, short fit explanation, preview, and the activation action. Group optional depth under labels such as \u201cHow it works,\u201d \u201cHow you progress,\u201d \u201cExercise options,\u201d and \u201cScience behind this plan.\u201d Avoid a separate accordion for every sentence or nested accordion mazes.\n\nNever hide current exercise, target/actual reps or time, recommended/entered weight, units, effort control when relevant, set completion, rest timer, save/sync state, material privacy choice, or an active warning behind optional help. Important form errors must remain adjacent to the relevant control.\n\nUse context-specific help labels such as \u201cHow we estimate your max,\u201d not dozens of indistinguishable \u201cLearn more\u201d controls. Provide a clear close/collapse affordance and preserve logical focus. Keep essential facts available to screen readers without making them listen to all optional teaching content on every visit.\n\nPersist disclosure preferences only when helpful, scoped appropriately to the user and context. Do not reopen every section on rerender, share another account's state, or preserve a stale confirmation across a different workout. Allow full details to be viewed deliberately without requiring people to uncover many tiny fragments.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
       "test_commands": [],
-      "evidence": [],
+      "evidence": [
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
+      ],
       "next_action": "Review the current production entrypoints before starting this requirement."
     },
     {
@@ -496,13 +557,20 @@
       "prompt": 3,
       "title": "Make navigation and Today unambiguous",
       "priority": "normal",
-      "status": "not_started",
+      "status": "in_progress",
       "requirement": "Today is the normal opening screen. Preserve a valid active-workout resume state and avoid unexpected navigation during account changes or recovery. Use a small, stable navigation model based on actual tasks, such as Today, Plans, History, Progress, and Settings; do not add tabs just to mirror internal code modules.\n\nOn Today prioritize the selected date, today's/selected day's workout or accurate rest-day message, one obvious start/resume action, and a compact useful summary. Put the latest review below the primary task. Do not let coaching, feature advertising, model downloads, or appearance controls displace starting a workout.\n\nCalendar dates must use the selected local day. Today, past days, future days, rest days, unplanned days, and missed sessions need truthful labels. Browsing history must not destroy or replace a concurrent active workout. Show schedule-change consequences before accepting them, including occupied-day shifts.\n\nKeep Saved/Previous/Explore/My plan tabs within a stable container. Selected-state backgrounds must fit their controls, not bleed beyond them. Swapping tabs should not unexpectedly shift the overall page header or control positions. Preserve useful scroll state without concealing the newly selected content.\n\nMove appearance configuration into Settings, not a floating element covering content. Keep current branding unless a distinct branding task authorizes changing it.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
       "test_commands": [],
-      "evidence": [],
-      "next_action": "Review the current production entrypoints before starting this requirement."
+      "evidence": [
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
+      ],
+      "next_action": "Continue premium Today/history/navigation clarity and verify all state transitions; current native stable plan tabs/calendar and account refresh are implemented."
     },
     {
       "id": "P3-05",
@@ -534,6 +602,12 @@
           "checked_at": "2026-10-11",
           "application_source_sha256": "850bbb67daf5e8002539e5b77430f2ed3baa521a010ac466224686fa6c875647",
           "result": "Final exact-preview binding, stale restore/key callback guards and invalid file selection recovery requalified: 10 core groups, 16 real production-browser journeys, web build/origin security and iOS/Android JS exports passed. Native installed-device behavior, connected services and full prompt completion remain unqualified."
+        },
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
         }
       ],
       "next_action": "Broaden remaining states/accessibility and native installed-device flow coverage; complete native parity and connected revision/outbox behavior."
@@ -566,12 +640,19 @@
       "prompt": 3,
       "title": "Make progress and coaching useful at a glance",
       "priority": "normal",
-      "status": "not_started",
+      "status": "in_progress",
       "requirement": "Progress views should lead with metrics appropriate to the user's goal and comparable history. Label estimated values and units, show the selected period, handle sparse data gracefully, and provide accessible text/table alternatives to charts. Do not make \u201cmore total weight\u201d the winning metric for every sport or use color alone for positive/negative changes.\n\nUse short post-workout/weekly coaching cards with one specific takeaway and an optional deeper explanation. Separate \u201crecorded fact,\u201d \u201cinterpretation,\u201d and \u201cproposed change.\u201d Applying a proposal must be distinct from reading it and must retain the approval/state guards in the AI implementation.\n\nRender pending, unavailable, offline/basic, failed, outdated, cancelled, and completed reviews accurately. A cloud failure should not make the workout appear unsaved. Avoid repeated consent modals after valid scoped opt-in, but never simplify away provider/data-sharing permission or silently broaden it.\n\nScience is available from plan details and relevant coaching without crowding the workout recorder. Source links need meaningful titles, not raw identifiers or \u201csource 1.\u201d Keep program authorship separate from evidence about a training principle.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
       "test_commands": [],
-      "evidence": [],
+      "evidence": [
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
+      ],
       "next_action": "Review the current production entrypoints before starting this requirement."
     },
     {
@@ -605,6 +686,12 @@
           "application_source_sha256": "84fea0bd95e94bf2185d4fe8ff54f72da4244784820301913e61d16eb84c1962",
           "environment": "Node24/pnpm11.25, local freshly built Worker and sandboxed Chromium; native JS export/adapter, no physical devices or connected providers",
           "result": "Progress charts moved to a deferred JS chunk. Three clean desktop local Worker contexts measured interactive gate at 502/578/592ms; sample Progress at 427ms, one new JS resource and chart keyboard traversal passed. 320px overview had no horizontal overflow. Current baseline only, no comparative speedup, native/field/memory or full WCAG claim."
+        },
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
         }
       ],
       "next_action": "Measure and fix remaining startup/delivery costs, rendered accessibility/reflow and field/native scenarios; avoid treating this limited baseline as full acceptance."
@@ -614,12 +701,19 @@
       "prompt": 3,
       "title": "Audit every state, not only the happy path",
       "priority": "normal",
-      "status": "not_started",
+      "status": "in_progress",
       "requirement": "For each major journey test empty, first-use, populated, loading, offline, stale, unauthorized, invalid, save-failed, partially synced, restored, cancelled, and destructive-action states where relevant. Use synthetic data with long names, many exercises, substantial history, missing fields, mixed units, and imperfect connectivity.\n\nTest browser reload/multiple tabs, account switching, native background/restart, keyboard open, navigation back, rapid taps, nested dialogs, denied notifications, expired sessions, unavailable cloud AI, restored backups, and history editing during another workout. Preserve functional regression coverage while changing component structure; update selectors without weakening behavior assertions.\n\nRun layout/visual regression and interaction tests at representative phone/tablet/desktop widths, both themes, large text, and supported platforms. Check for unintended horizontal overflow, clipped selected backgrounds, unstable tab geometry, covered buttons, duplicate saves, lost inputs, focus traps, inaccessible charts, stale confirmations, and incorrect calendar labels.\n\nTake reproducible before/after screenshots of implemented screens where possible. Record actual interaction steps and network conditions. Do not claim user-tested improvements based on imaginary interviews or synthetic agent personas. Forum feedback can suggest hypotheses but is not evidence of our users' behavior.\n\nMeasure the outcome: fewer unnecessary visible words on verbose screens, lower or unchanged task-completion steps, clear labels, no new data-entry errors, unchanged essential warnings, no accessibility regressions, and improved or unchanged startup/interaction performance. Set screen-specific copy budgets from the baseline rather than imposing an arbitrary global percentage reduction.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
       "test_commands": [],
-      "evidence": [],
+      "evidence": [
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
+      ],
       "next_action": "Review the current production entrypoints before starting this requirement."
     },
     {
@@ -666,12 +760,19 @@
       "prompt": 4,
       "title": "Define useful measurements before optimizing",
       "priority": "normal",
-      "status": "not_started",
+      "status": "in_progress",
       "requirement": "Measure production/release builds on documented hardware/runtime, data size, network conditions, and cache state. Use supported profiling tools for the installed stack; do not compare an optimized native release against a development build and claim an app improvement. React Native's performance guidance and Expo's bundle analysis documentation are starting points, not substitutes for measurement. [D1\u2013D2]\n\nRecord, where tools allow:\n\n- Web initial-route JavaScript/CSS transfer and decoded size, lazy-route chunks, request count, largest assets, startup work, long tasks, LCP/INP/CLS, and the first usable Today/start-workout action. Distinguish field measurements from synthetic lab tests. [D3]\n- Native build/package download size versus installed size, JavaScript/Hermes/native-library contributions, cold/warm start, time to useful screen, interaction/frame traces, peak/steady memory, and workload during timers, charts, and an extended workout.\n- Local write latency, history query cost, touched rows/bytes, queue depth, retry count, API latency, response size, and optional model memory/download behavior.\n- Clean/incremental build duration, test duration and flakiness, duplicate dependency versions, unused runtime modules, and generated asset drift.\n\nUse repeatable samples and report sample count, spread, and test conditions; do not manufacture p95/p99 confidence from a handful of samples. For a small sample, report the median/range and its limits. Separate first-install, first local-model use, cached return, offline reopen, and normal workout logging.\n\nCreate justified performance budgets from the observed baseline and product needs. Hard gates should protect durable saves, responsiveness of set entry, bounded memory/queues, and no expensive model initialization on the ordinary launch path. Google currently describes good web Core Web Vitals targets of LCP \u22642.5 s, INP \u2264200 ms, and CLS \u22640.1 at the 75th percentile; verify current definitions, keep lab/field evidence separate, and do not treat these as native performance thresholds. [D3]\n\nSet numeric app-specific budgets only after measuring the feasible baseline. Document provisional targets that cannot yet be tested. Reject benchmark gaming such as removing real data, hiding work behind a spinner, postponing a required save, disabling encryption, or measuring a static mock route instead of the actual app.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
       "test_commands": [],
-      "evidence": [],
+      "evidence": [
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
+      ],
       "next_action": "Review the current production entrypoints before starting this requirement."
     },
     {
@@ -701,12 +802,19 @@
       "prompt": 4,
       "title": "Simplify architecture without a rewrite",
       "priority": "normal",
-      "status": "not_started",
+      "status": "in_progress",
       "requirement": "Find duplicate training engines, state stores, schema validators, fetch wrappers, auth helpers, persistence paths, coaching adapters, theme systems, and content registries. Select the existing best-supported canonical implementation. Migrate callers in small groups with behavior-equivalence tests before removing the duplicate.\n\nKeep shared domain logic platform-neutral and pure where practical. Browser/native shared modules must not accidentally import Node-only, server-secret, filesystem, or database-admin APIs. Split platform boundaries explicitly. If mobile consumes generated snapshots of shared source, preserve the generator and verification mechanism rather than editing both independently.\n\nReduce components with excessive unrelated responsibilities, long switch trees, and repeated derived state. Do not replace understandable direct code with excessive generic factories, plugin registries, event buses, or \u201cmanager\u201d layers. Abstractions should remove real duplication and make invariants easier to test.\n\nSeparate refactoring commits from behavior changes where possible. Preserve public and stored contracts until a tested migration changes them. Keep compatibility aliases for renamed exercises/programs and legacy record versions. A wrapper used only for compatibility is not dead until its supported consumers and data have a safe path.\n\nRemove genuinely unreachable prototype screens, mock authentication bypasses in production paths, placeholder UI, fake progress data, and abandoned connectors without breaking valid demos or approved future hooks. Label unavailable capabilities honestly; do not show a functional-looking button that silently does nothing. Do not remove a working feature solely because its implementation is inconvenient to optimize.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
       "test_commands": [],
-      "evidence": [],
+      "evidence": [
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
+      ],
       "next_action": "Review the current production entrypoints before starting this requirement."
     },
     {
@@ -776,7 +884,13 @@
           "application_source_sha256": "850bbb67daf5e8002539e5b77430f2ed3baa521a010ac466224686fa6c875647",
           "result": "Final exact-preview binding, stale restore/key callback guards and invalid file selection recovery requalified: 10 core groups, 16 real production-browser journeys, web build/origin security and iOS/Android JS exports passed. Native installed-device behavior, connected services and full prompt completion remain unqualified."
         },
-        "2026-10-11: Better Auth Google/Expo clients, db/schema.ts + Drizzle migrations, lib/server/{auth,cloud-api,coaching}.ts, portable cloud vault/outbox web/native and explicit settings UI. Local actual-SDK OAuth with mocked signed Google transport, owner/CSRF/replay/CAS/deletion/consent/output/budget tests, cross-platform crypto/retry tests and a real built-browser offline queue/conflict/restore test. See docs/cloudflare-implementation.md. No live account/provider/device qualification; manual snapshot sync and canonical fact selection only."
+        "2026-10-11: Better Auth Google/Expo clients, db/schema.ts + Drizzle migrations, lib/server/{auth,cloud-api,coaching}.ts, portable cloud vault/outbox web/native and explicit settings UI. Local actual-SDK OAuth with mocked signed Google transport, owner/CSRF/replay/CAS/deletion/consent/output/budget tests, cross-platform crypto/retry tests and a real built-browser offline queue/conflict/restore test. See docs/cloudflare-implementation.md. No live account/provider/device qualification; manual snapshot sync and canonical fact selection only.",
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
       ],
       "next_action": "Physically qualify web/native portable recovery, device keychain/erasure and live storage retention; complete per-record/background synchronization, mixed-version migrations, cloud key rotation and independent crypto/privacy review."
     },
@@ -785,12 +899,19 @@
       "prompt": 4,
       "title": "Debug workout calculations and calendar edge cases",
       "priority": "normal",
-      "status": "not_started",
+      "status": "in_progress",
       "requirement": "Trace a supported plan from selection through actual prescriptions, saved results, next-session progression, schedule moves, and history summaries. Prompt 1 owns exercise-science decisions; this prompt verifies their implementation and arithmetic without changing program intent silently.\n\nTest pounds/kilograms round trips; barbell versus per-hand/per-side loads; assisted/weighted bodyweight work; decimals/local numeric entry; blank versus valid zero; negative/NaN/infinite/overflow inputs; available equipment increments; different exercise variants; warming up versus work sets; sprint distance/time versus pace; and meaningful totals. No false PRs or plateau states from incompatible records.\n\nTest rotating A/B sessions across missed weeks, custom plans, substitutions, partial workouts, equipment ceilings, progress resets, return after time away, and edits to earlier performance. Preserve accepted progression and require approval for new feedback-driven changes.\n\nTest local calendar days near midnight, DST gaps/folds, leap days, month/year changes, locale week starts, travel time-zone changes, and user-adjusted clocks. Define whether a scheduled event uses a fixed instant or a local wall time. Do not overwrite the original training date when a user travels or edits a record later.\n\nRest timers need elapsed-time semantics, persisted start/end context, safe resume after suspension, and no dependence on a tick counter that stalls in the background. Handle clock changes honestly. Historical edits must not create new live timers; denied notifications cannot break on-screen timing. Do not market phone input timing as laboratory-accurate sprint measurement.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
       "test_commands": [],
-      "evidence": [],
+      "evidence": [
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
+      ],
       "next_action": "Review the current production entrypoints before starting this requirement."
     },
     {
@@ -882,13 +1003,20 @@
       "prompt": 5,
       "title": "Define scope, assets, threats, and control coverage",
       "priority": "normal",
-      "status": "not_started",
+      "status": "in_progress",
       "requirement": "Inventory actual applications, environments, domains, routes, endpoints, databases, storage buckets, queues, service workers, identity providers, email/push services, AI endpoints, downloaded models, signing/update channels, telemetry, CI workflows, administrators, backups, and secrets. Identify what is public, authenticated, privileged, offline-only, experimental, or currently disabled. Do not mistake old prototype diagrams for the deployed architecture.\n\nCreate a data-flow and trust-boundary model from input to deletion. Record workout history, profile/goals, optional pain/health notes, youth eligibility, credentials/tokens, device keys, session data, exports, AI context/reviews, operational metadata, and future coach/team data only where implemented. Show where plaintext exists, which process can decrypt it, and who can access each component.\n\nMap attacker goals to realistic entry points: cross-account access, stolen session use, credential abuse, XSS, tampered clients, unsafe imports, queue replay, database corruption, malicious content/prompt injection, secret leakage, cost/resource abuse, compromised dependency/build pipeline, and operational mistakes. Include anonymous, normal authenticated, guest/local, revoked/deleted, and administrative actors. Keep future coach/team roles disabled unless there is a real tested authorization model.\n\nUse the current stable OWASP ASVS as the web/backend verification baseline, targeting applicable Level 2 requirements and justified stronger controls for high-risk operations. Use MASVS with MASTG for native controls, OWASP API Security and GenAI guidance for API/AI threats, and the current applicable NIST SSDF for development practices. Record exact versions, actual requirement IDs, applicability rationale, and test evidence; never invent numbered controls or assume old MASVS level labels still apply. [S1\u2013S5]\n\nCreate one control register: control/finding ID, asset, threat, requirement/version, observed evidence, severity rationale, exploitation preconditions, fix, regression, owner, status, artifact/source revision, and any restricted evidence location. Use explicit `not_applicable_with_reason` rather than calling untested controls passing.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
       "test_commands": [],
-      "evidence": [],
-      "next_action": "Review the current production entrypoints before starting this requirement."
+      "evidence": [
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
+      ],
+      "next_action": "Review all 369 actual ASVS/MASVS control rows for applicability/coverage and finish current MASTG/API/GenAI/NIST mappings. Local observations are partial, with zero full control passes."
     },
     {
       "id": "P5-02",
@@ -935,6 +1063,12 @@
           "application_source_sha256": "d8822936086f9ff4afb40e22f416212e8a6efc42757b3d8d5da47f8d75afeaf5",
           "environment": "Actual SDK with mocked external transport, local D1/R2 and final built Worker with sandboxed Chromium; no live OAuth/provider or physical-device qualification.",
           "result": "12 core groups and six cloud browser checks passed. Queued ciphertext survives lost acknowledgement and device-key recovery; owner/CAS/consent/budget/deletion checks passed; local key replacement refuses to strand pending uploads; youth and known sample records reject cloud/AI use. See docs/cloudflare-implementation.md and docs/completion-status.md for limits."
+        },
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
         }
       ],
       "next_action": "Qualify live Google recovery/native callback app links and account/device revocation; implement stronger factor enrollment and independently verify remaining sharing/authorization boundaries."
@@ -956,6 +1090,12 @@
           "application_source_sha256": "d8822936086f9ff4afb40e22f416212e8a6efc42757b3d8d5da47f8d75afeaf5",
           "environment": "Actual SDK with mocked external transport, local D1/R2 and final built Worker with sandboxed Chromium; no live OAuth/provider or physical-device qualification.",
           "result": "12 core groups and six cloud browser checks passed. Queued ciphertext survives lost acknowledgement and device-key recovery; owner/CAS/consent/budget/deletion checks passed; local key replacement refuses to strand pending uploads; youth and known sample records reject cloud/AI use. See docs/cloudflare-implementation.md and docs/completion-status.md for limits."
+        },
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
         }
       ],
       "next_action": "Qualify live Google recovery/native callback app links and account/device revocation; implement stronger factor enrollment and independently verify remaining sharing/authorization boundaries."
@@ -991,6 +1131,12 @@
           "application_source_sha256": "d8822936086f9ff4afb40e22f416212e8a6efc42757b3d8d5da47f8d75afeaf5",
           "environment": "Actual SDK with mocked external transport, local D1/R2 and final built Worker with sandboxed Chromium; no live OAuth/provider or physical-device qualification.",
           "result": "12 core groups and six cloud browser checks passed. Queued ciphertext survives lost acknowledgement and device-key recovery; owner/CAS/consent/budget/deletion checks passed; local key replacement refuses to strand pending uploads; youth and known sample records reject cloud/AI use. See docs/cloudflare-implementation.md and docs/completion-status.md for limits."
+        },
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
         }
       ],
       "next_action": "Physically qualify web/native portable recovery, device keychain/erasure and live storage retention; complete per-record/background synchronization, mixed-version migrations, cloud key rotation and independent crypto/privacy review."
@@ -1022,6 +1168,12 @@
           "application_source_sha256": "d8822936086f9ff4afb40e22f416212e8a6efc42757b3d8d5da47f8d75afeaf5",
           "environment": "Actual SDK with mocked external transport, local D1/R2 and final built Worker with sandboxed Chromium; no live OAuth/provider or physical-device qualification.",
           "result": "12 core groups and six cloud browser checks passed. Queued ciphertext survives lost acknowledgement and device-key recovery; owner/CAS/consent/budget/deletion checks passed; local key replacement refuses to strand pending uploads; youth and known sample records reject cloud/AI use. See docs/cloudflare-implementation.md and docs/completion-status.md for limits."
+        },
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
         }
       ],
       "next_action": "Finish remaining native/science/state/accessibility/security requirements and qualify live accounts, devices, hosting allowances and approved publication; local integration checks do not establish full acceptance."
@@ -1046,6 +1198,12 @@
           "application_source_sha256": "84fea0bd95e94bf2185d4fe8ff54f72da4244784820301913e61d16eb84c1962",
           "environment": "Node24/pnpm11.25, local freshly built Worker and sandboxed Chromium; native JS export/adapter, no physical devices or connected providers",
           "result": "Current native source archive has 79 manifest-hashed files, matches current sources and is served by the built website. iOS/Android Hermes exports passed. Expo-compatible picker/file-system/sharing/SecureStore/Crypto packages pinned. No SDK/signing/device/installed APK or IPA available; no deployment or external CI run."
+        },
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
         }
       ],
       "next_action": "Obtain authorized backend/hosting configuration and native toolchains/signing/devices; build/install/update actual artifacts and verify the deployed audience/artifact only after publication authorization."
@@ -1119,6 +1277,12 @@
           "application_source_sha256": "84fea0bd95e94bf2185d4fe8ff54f72da4244784820301913e61d16eb84c1962",
           "environment": "Node24/pnpm11.25, local freshly built Worker and sandboxed Chromium; native JS export/adapter, no physical devices or connected providers",
           "result": "Repeatable verifier now runs 10 real core groups and fails on any failed group. Pinned manual-dispatch-only source/release-gate workflow added but not run externally. Frozen installs/builds passed; web audit zero, native audit remains failed from two upstream advisories."
+        },
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
         }
       ],
       "next_action": "Resolve/qualify upstream native advisory fixes, inspect owner CI/hosting controls and run approved external verification with known quota; keep audits failing until fixed."
@@ -1339,13 +1503,20 @@
       "prompt": 6,
       "title": "Training quality and science in the demo candidate",
       "priority": "normal",
-      "status": "not_started",
+      "status": "in_progress",
       "requirement": "Apply Prompt 1 to all training behavior exposed in the candidate. Reuse existing valid programs; do not rewrite the catalog just to create sample diversity. Preserve the broader beginner-to-elite, sport, equipment, time, and days/week ambitions in the canonical backlog.\n\nFor every selectable path in the candidate, verify that prescription, sets/reps/rest, starting-load logic, progression, missed-session behavior, resets/deloads where applicable, and next-block handling are actually implemented. Evaluate time estimates with transitions, rest, warm-up, and equipment limitations rather than merely shortening the label. Never force an advanced goal into an inadequate schedule while claiming equivalent results.\n\nWhere research, rights, or implementation is genuinely incomplete, mark the exact plan/variant unavailable or experimental with a reason, preserve existing user history/versioning, and track the remaining task. Do not delete unrelated safe programs or claim the entire library is fully reviewed because a subset passed.\n\nExpose \u201cWhy this plan\u201d or \u201cScience behind this plan\u201d in compact expandable UI. Include verified source IDs, links, authors/year or guideline version, relevant claim, and evidence uncertainty. Original rules, adaptations, consensus, and practical extrapolations must be distinguishable. Do not fill sources with invented papers or use forum popularity as scientific validation. Follow Prompt 1's source-access and lawful implementation requirements.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
       "test_commands": [],
-      "evidence": [],
-      "next_action": "Review the current production entrypoints before starting this requirement."
+      "evidence": [
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        }
+      ],
+      "next_action": "Complete selectable-path training/science acceptance; time fitting and source disclosure are improved but no full scientific/rights qualification exists."
     },
     {
       "id": "P6-06",
@@ -1465,6 +1636,12 @@
           "checked_at": "2026-10-11",
           "application_source_sha256": "850bbb67daf5e8002539e5b77430f2ed3baa521a010ac466224686fa6c875647",
           "result": "Final exact-preview binding, stale restore/key callback guards and invalid file selection recovery requalified: 10 core groups, 16 real production-browser journeys, web build/origin security and iOS/Android JS exports passed. Native installed-device behavior, connected services and full prompt completion remain unqualified."
+        },
+        {
+          "checked_at": "2026-10-12T03:28:50.064991+00:00",
+          "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+          "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+          "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
         }
       ],
       "next_action": "Obtain authorized backend/hosting configuration and native toolchains/signing/devices; build/install/update actual artifacts and verify the deployed audience/artifact only after publication authorization."
@@ -1524,11 +1701,11 @@
   "shared_contract": "## Version 3 delivery constraint \u2014 $0 prototype first\n\nThe current objective is an honest, production-shaped prototype of the existing application, with **$0 authorized new service spending**. This applies to this specialist prompt even when used alone. Read `00_MASTER_SUPREME_PROMPT.md` and `06_Prototype_Demo_to_Launch.md` for the selected delivery stage. Preserve this document's full scope in the task register; do not claim that finishing a demonstration completes all production requirements.\n\nUse existing authorized infrastructure and genuinely available free allowances. Do not buy credits, start an automatically charging trial, enable paid overages, upgrade a plan, add a billable service, or assume CI/build/model usage is free. Observe existing spending controls; do not change them without authorization. Missing billing or credentials gates only the affected capability. Provide useful offline/local behavior without faking authentication, synchronization, cloud AI, or test results. Use synthetic data for external testing unless separately authorized.\n\nAt startup, establish actual read, write, execution, Git publication, browser, native-build, and deployment capabilities. A repository link or attachment is not a working checkout or write permission. Use available authorized tools before declaring a capability unavailable. If a required capability is absent, produce a precise patch/artifact or handoff and mark unperformed work unverified. Never report a generated patch as an applied or pushed change.\n\nThe master is an orchestrator, not a request to execute every section in one giant turn. In prototype-first mode, implement the current bounded milestone using this specialist's applicable requirements, retain remaining scope explicitly, and checkpoint. Full-library research, paid provider comparisons, and store distribution must not prevent a secure no-key demonstration of already supported functionality. They must not be silently marked complete either.\n\n## Shared execution contract \u2014 applies to this entire prompt\n\nWork in the existing Movefield / Workout APP repository, `ghinz32-cloud/movefield`. These are instructions to implement improvements when I give you this prompt in a repository-connected coding session. Do not stop at a critique, a plan, mock controls, or a replacement prototype. Preserve the application and improve it in recoverable, independently tested milestones.\n\n### Establish the actual starting point\n\nVerify the remote, working directory, branch, HEAD, working-tree status, worktrees, upstream, divergence, open pull requests, and any other agent's ownership before editing. Read applicable `AGENTS.md`, `CLAUDE.md`, other repository instructions, `HANDOFF.md`, the current task list, manifests/lockfiles, and relevant tests. Discover the real stack and supported versions; do not install a remembered Expo, React Native, Node, database, or model version blindly.\n\nHistorical context only: earlier work used `audit/2026-10-08-quality`, draft PR #1, `review-fixes`, and a local integration branch. These names are leads, not a current branch assignment or permission to reset. Reconcile current branches by inspection; preserve unrelated and uncommitted work. Do not assume old green CI, handoff prose, or an old APK proves the current source works.\n\n### Authority and safe boundaries\n\nI authorize appropriate implementation changes, synthetic test fixtures, ordinary commits, and pushes to the verified working branch. Before pushing, inspect workflow triggers: where a source push also deploys, keep it within the existing deployment authorization or use a non-deploying branch. Verify the remote commit after pushing. Do not force-push, rewrite shared history, delete unrelated files, merge protected branches, broaden access, spend money, upgrade billing, create new paid infrastructure, rotate live credentials, submit to app stores, or migrate production data without the applicable authorization. Source-push permission is not blanket production-change permission.\n\nSecurity tests are limited to this repository and explicitly authorized local/staging targets. Do not attack unrelated services, third-party accounts, or public production systems. Use synthetic users and data. Never send private records to external analysis services merely to debug them. Never commit keys, tokens, cookies, personal data, private deployment details, unsanitized captures, or sensitive vulnerability evidence to a public repository. Separate safe public regression fixtures from restricted operational evidence.\n\n### Non-negotiable product and data invariants\n\n- Preserve web, Android, and iOS; Today as the normal opening screen; meaningful training modalities; complete plans; custom plans; appearance choices; light/dark/system themes; and accessibility.\n- Preserve the exercise-first overview, focused exercise recording, next-unfinished advancement after successful save, remaining-exercise list, all-complete screen, and current-workout-bound partial-finish confirmation. Do not reintroduce horizontal exercise-tab navigation as the required flow.\n- Preserve stable workout/exercise/set IDs and historical dates. Editing a saved workout replaces the intended record, never a concurrent active workout, timer, or another history entry. Cancelling an edit changes nothing. Revise modification metadata honestly without altering the original training date.\n- Preserve encrypted local-first storage, transactional saves/outboxes, resumable drafts, backup/export/recovery, account boundaries, import compatibility, and accurate local/synced/save-failed states. A write failure must not appear successful. Do not silently reset damaged storage or mint replacement keys over an existing encrypted history.\n- Default progression may follow the accepted plan's known rules. Feedback-driven changes, unplanned substitutions, and calendar rearrangements require a current, reviewable acceptance. No AI text directly mutates plans, loads, schedules, permissions, or accounts.\n- Cloud coaching is optional, backend-mediated, provider-aware, consent-bound, and nonblocking. No secret in a browser/mobile bundle; no unauthorized fallback provider; no private workout data in logs. Keep optional local Qwen isolated from ordinary startup and accurately labeled when unqualified.\n- Reduce redundant code and copy, not legitimate functionality, useful source attribution, recovery mechanisms, validation, authorization, accessibility, or tests. A missing tool is not evidence of a passing test.\n\n### Milestone discipline and proof\n\nCreate or update a single canonical task list and the short actionable top of `HANDOFF.md`; reuse existing documentation instead of proliferating overlapping reports. Record requirement IDs, severity, scope, acceptance criteria, test commands, dependencies, and the next checkpoint. Implement one coherent milestone at a time. Use parallel agents only with isolated worktrees, explicit file ownership, and a named integrator. Never let multiple agents independently rewrite the same working tree.\n\nFor a reproducible defect, add a failing regression or a documented before-fix reproduction, fix the cause, and rerun the relevant checks. Trace production entrypoints, not only a helper function. Exercise real persistence, build outputs, and boundaries where available. Do not manufacture a test count, user study, benchmark, model response, device run, scan result, compliance badge, or deployment.\n\nDistinguish `not_started`, `in_progress`, `implemented_unverified`, `verified`, `blocked`, and `not_applicable_with_reason`. Preserve failures and skipped/unavailable checks. Do not relax assertions, disable security policies, hide warnings, or remove tests merely to turn CI green. Risk-based focused checks are appropriate per milestone; final integration must cover the complete affected surfaces. Tie evidence to the tested source revision and artifact; a later documentation-only commit is not a new application test.\n\nMake reasonable reversible decisions without repeatedly asking for design permission. Missing keys, owner console access, rights, signing credentials, or devices should gate only the affected capability. Complete other runnable work and document the exact activation step. Existing blockers are not automatically your new regression, but neither are they waived by this prompt.\n\nAt every checkpoint: review the diff and secret exposure; run relevant checks; commit; push safely; read back the remote; update the handoff with what changed, what actually ran, remaining risks, and the next executable action. If context or tools run out, leave a recoverable checkpoint and a precise continuation prompt. Do not claim background work, an unattended continuation, or unperformed success.\n\n### Coordination with the six-prompt package\n\nPrompt 1 owns programming and evidence; Prompt 2 owns AI analytics/coaching; Prompt 3 owns presentation and interaction; Prompt 4 owns correctness, debloating, and performance; Prompt 5 owns whole-product security and release controls. Prompt 6 owns demo isolation, free-tier delivery, artifact qualification, and the transition to launch. Use a single implementation of shared contracts, not parallel competing systems. Existing passing work should be verified and reused. Under the master runbook, execute the requested phase; when this prompt is used alone, execute its full applicable scope. Security defects found in any phase receive immediate triage, not deferral until the last prompt.\n\nAll numerical budgets in this package are explicit product targets or hypothetical scenarios unless backed by measured evidence. Recheck current official documentation before relying on changing prices, policies, APIs, standards, or model availability. These prompts do not establish that the application is already secure, bug-free, medically validated, or store-approved.",
   "master_runbook_sha256": "476856a3f881c6c2d5330b95dad914cc45f3b6eba2b7a0c705f842e658f87811",
   "remaining_core_code": [
-    "Established Google auth, owner-isolated D1/R2, portable manual snapshot sync, encrypted retry queues and account tombstone deletion are implemented. Remaining code includes account/device-session management, stronger-factor enrollment, per-record/background sync/merge, setup-draft sync and cloud key rotation/mixed-version migrations.",
-    "Consent-bound durable bounded cloud jobs and a Groq adapter are implemented for selecting canonical fact IDs only. General coaching prose, licensed-evidence retrieval and usefulness/evidence evaluations remain development work. No live provider or on-device model is installed or invoked.",
-    "Complete evidence ledger/claim-to-code mapping, modality-specific progression and time/equipment/end-of-block qualification, lawful named-program completion and remaining catalog gaps.",
-    "Remaining native parity (including richer calendar/commitment and reusable-block editing), comprehensive state/accessibility coverage, measured native/field performance, and mixed-version/offline update qualification.",
-    "Independent crypto/security review, platform privacy/youth safeguards, patch qualification for two upstream native tooling advisories, Android/iOS installable artifacts and physical-device acceptance."
+    "Finish full evidence-to-rule/claim-to-code review, lawful named-program variants, modality-specific complete cycles, versioned progression/equipment/time/end-of-block acceptance. Current 15-source ledger inventories links only and qualifies zero new numerical rules.",
+    "Finish general bounded coaching/evidence retrieval/usefulness evaluations and on-device runtime/download/device qualification; current optional provider selects canonical fact IDs only and is disabled.",
+    "Stronger account factor enrollment/recovery, native callback/biometric/OS lifecycle protection, cloud key rotation, per-record/background merge and setup-draft synchronization; manual whole-profile snapshots remain explicit.",
+    "Premium UI/state/disclosure work, broader native editors/integrations, full rendered themes/screen-reader/update/mixed-version and native/field performance qualification. Current calendar/reuse/customization/progress/science workflows are implemented; this does not close all parity requirements.",
+    "Complete security-control applicability and MASTG/API/GenAI/NIST mappings, signed update/recovery/operational incident lifecycle, youth/guardian/privacy safeguards and infrastructure cost/retention/ownership qualification."
   ],
   "known_findings": [
     {
@@ -1544,12 +1721,12 @@
     {
       "id": "NATIVE-DEPS",
       "status": "blocked",
-      "finding": "Final native production audit failed: 15 high affected dependency-chain entries from two advisories, braces <=3.0.3 GHSA-vfj7-8cjw-p6xm and node-forge <=1.4.0 GHSA-86w9-cpqp-85rv. Registry latest versions remain affected; no unsupported overrides or suppression. Native release remains unqualified."
+      "finding": "Current native production audit fails with 43 high affected dependency-chain entries from two upstream advisories: braces GHSA-vfj7-8cjw-p6xm and node-forge GHSA-86w9-cpqp-85rv. No compatible patch qualified; no force downgrade/suppression."
     },
     {
       "id": "LOCAL-STORAGE",
       "status": "in_progress",
-      "finding": "Encrypted web/native personal state and setup drafts, verified migration/recovery, passphrase rotation/locking, separate sample namespaces, explicit erasure and original-file preservation are implemented. Browser/adapter checks passed; physical keychain/uninstall/sharing and independent crypto review remain unverified."
+      "finding": "Per-record encrypted IndexedDB/SQLite is wired on web/native, with transactional CAS, complete recovery bundles and preservation-first migration. Actual IndexedDB/Node SQLite checks include 100/1000/5000 archives and failure ordering. Installed keychain/OS/independent crypto qualification remains."
     },
     {
       "id": "DEPLOYMENT",
@@ -1557,69 +1734,33 @@
       "finding": "Manual-dispatch-only pinned verification workflow added; never dispatched externally. Hosting/CI quota and deployment triggers not qualified. No push, deployment, signing or spending performed. Reusable setup/start draft saved, requiring environment-settings activation; fresh-task local-commit restoration unverified."
     }
   ],
-  "tested_application_source_sha256": "d8822936086f9ff4afb40e22f416212e8a6efc42757b3d8d5da47f8d75afeaf5",
+  "tested_application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
   "artifact_sha256": {
-    "dist/server/index.js": "c7d50c0408ce2638c96dcc20b94a65ee85486061f4bea006c2364ad6fa894587",
-    "dist/client/movefield-sw.js": "c51090e6d2042c230fac86c99de6e4a042f3fa7a57235955ed951896626e42ab",
-    "public/downloads/movefield-native-current.zip": "a6c2493bb5b30ebd9292c963069a5d9aaea5a2c44ba995a5ed009b040916a71e",
-    "mobile/dist-mobile/_expo/static/js/android/index-3d02788bab3d078aae114f2b4c13b43e.hbc": "10eb027aac874fe420ff6472b368792090511d389da6238f1dce58551653f555",
-    "mobile/dist-mobile/_expo/static/js/ios/index-8b10ee3b331b88e9106c4e7f9af88a67.hbc": "5b18eda610f5d9fc558d9d692369e7eb79ad8903396157d6591068ac736731d8"
+    "dist/server/index.js": "7753a2bd48dab2d2f27c83dda12d88013cca4488a6fe95820fc75e71420dfc0c",
+    "dist/client/movefield-sw.js": "061bd698eca370d1e6b57d3bba64db17fc5ec2b6c9fb42e27fb03309e9d610b9",
+    "public/downloads/movefield-native-current.zip": "3a3f7b003ff9d277cce074c3f2015cb4a34db24b40b89dce0b545d9ff71ec4b6",
+    "mobile/dist-mobile/_expo/static/js/android/index-78c582241681366381060d927b60d680.hbc": "df82b4d17291b5f141068f03fc714542cc869e6863f60760ead19e5a9fd85a6c",
+    "mobile/dist-mobile/_expo/static/js/ios/index-74ebea1ab0a347ef8a5e494c9c697bf1.hbc": "d3c1f531ec471a5bd035d86f49737fe6c96834f7a9697b357260f405b92ecef3"
   },
-  "checkpoint_result": "12 core groups, 16 final built-Worker workout browser journeys, six cloud browser checks, web build/security command, both native Hermes exports, exact 86-file native archive and finite pattern scan passed. Native audit remains failed. Full six-prompt scope remains incomplete.",
-  "web_artifact_tree_sha256": "24e55918c688c847395d5ce85f8d71e1e3df077f5dc7da6b4be6f12eaaa1b2b1",
+  "checkpoint_result": "passed_local_checkpoint_with_explicit_failed_native_release_gate_and_unverified_full_scope",
+  "web_artifact_tree_sha256": "f9b739cf93500e70ad108180f0d99f4e1158adc706be76a54f620517195f0ed5",
   "latest_validation": {
-    "checked_at": "2026-10-11",
-    "application_source_sha256": "d8822936086f9ff4afb40e22f416212e8a6efc42757b3d8d5da47f8d75afeaf5",
-    "core_groups_passed": 12,
-    "production_browser_journeys_passed": 16,
-    "web_build_and_security": "passed",
-    "native_ios_android_js_export": "passed; no APK/IPA/device qualification",
-    "source_archive_matches_current_native_files": true,
-    "finite_secret_scan_files": 3853,
-    "finite_secret_scan_matches": 0,
-    "web_production_dependency_advisories": 0,
-    "native_production_audit": "failed: 15 high affected chain entries from two root advisories",
-    "current_desktop_gate_interactive_ms": [
-      580,
-      552,
-      487
-    ],
-    "current_sample_progress_ms": 347,
-    "limits": [
-      "Full six-prompt completion",
-      "Live Google/Cloudflare/provider account, privacy, budget and recovery qualification",
-      "Automatic/per-record/background sync, general AI coaching or an installed Qwen model",
-      "Native installed APK/IPA/signing/keychain/file sharing/notifications or device behavior",
-      "Native upstream advisory remediation",
-      "Full evidence/claim-to-code/named-program rights qualification",
-      "Complete accessibility, field/native performance and old/new update compatibility",
-      "External CI, hosting quotas, source push, deployment or fresh-task local-commit restoration"
-    ],
-    "cloud_browser_checks_passed": 6,
-    "finite_secret_scan_zip_members": 658,
-    "source_archive_files": 86
+    "date": "2026-10-12T03:28:50.064991+00:00",
+    "core_groups_passed": 17,
+    "workout_browser_journeys": 16,
+    "rendered_accessibility_states": 32,
+    "preference_browser_behaviors": 6,
+    "native_sdk_adapter_checks": 5,
+    "lint_errors": 0,
+    "lint_warnings": 75,
+    "root_production_advisories": 0,
+    "native_high_affected_chain_entries": 43,
+    "native_underlying_advisories": 2,
+    "science_inventory_only": 15,
+    "new_numeric_rules_qualified": 0,
+    "security_controls_inventory": 369,
+    "full_security_control_passes": 0,
+    "full_prompt_sections_accepted": 0
   },
-  "backend_decision": {
-    "provider": "Cloudflare",
-    "selected_by_user": "Cloudflare seems the most reasonable right?",
-    "stage": "Locally implemented and tested; no provisioning, live-provider activation, source push or deployment performed.",
-    "recommended_components": {
-      "compute": "Workers, retaining the existing Vinext/Cloudflare deployment shape",
-      "metadata": "D1 for authenticated owner/device/revision/idempotency metadata",
-      "encrypted_objects": "R2 for private encrypted snapshots only after account/billing/free-allowance qualification",
-      "identity": "Better Auth 1.7.7 Google OAuth with Drizzle/D1 sessions, exact trusted origins, PKCE/signed ID tokens and Expo SecureStore client; live Google application unconfigured."
-    },
-    "observed_configuration": {
-      "d1_binding": false,
-      "r2_binding": false,
-      "cloudflare_credential_binding": false,
-      "runtime_observations_current": true
-    },
-    "still_required": [
-      "Inspect the existing Cloudflare account/resources, actual $0 entitlement, overage protections and allowed audience.",
-      "Configure owner domain, D1/R2 bindings/migrations, secure runtime secrets and Google OAuth callback; qualify live account/recovery and native callback/app-link behavior.",
-      "Qualify privacy/provider eligibility and verified free model settings before explicitly enabling optional cloud highlights.",
-      "Extend explicit manual snapshot sync to per-record/background synchronization, device-session management, mixed-version migration and cloud key rotation; qualify physical recovery/deletion."
-    ]
-  }
+  "backend_decision": "Cloudflare remains selected. Owner Account ID supplied and ignored workers.dev config prepared; management token requirement saved but not ready. Local dry run uploads nothing, and account plan/subdomain/free/R2/runtime secrets remain unverified."
 }

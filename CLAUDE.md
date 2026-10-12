@@ -9,10 +9,10 @@ The detailed requirements remain the contract. Newer explicit user decisions tak
 ## Current status
 
 - Web: Vinext/React/TypeScript/Tailwind, encrypted local browser vault, production offline shell, existing Sites/Cloudflare project.
-- Native: Expo SDK 57 / React Native, encrypted AsyncStorage state with Expo Crypto/SecureStore and separate synthetic sample data.
+- Native: Expo SDK 57 / React Native, transactional encrypted SQLite workout records with Expo Crypto/SecureStore and an encrypted AsyncStorage index/draft cache and separate synthetic sample data.
 - Cloudflare account/backup/highlights code now uses Better Auth Google OAuth, D1 owner/revision metadata and private R2 ciphertext. It is tested locally and disabled without reviewed owner configuration. No live accounts, paid AI calls or installed on-device model are configured. Backup is manual snapshot sync, not automatic merging. See docs/cloudflare-implementation.md.
 - Working brand: Movefield. Final name is undecided and no trademark clearance is claimed.
-- Current local checkpoints add encrypted backup/recovery, saved-workout corrections, credited full-plan imports, durable commands, native file sharing and configured cloud clients. It has NOT been pushed or deployed. Revision 13 is historical.
+- Current continuation adds calendar/block parity, account session revocation, actual Google JWT claim verification, per-record local storage, evidence inventory, duration qualification and rendered accessibility checks. It also retains encrypted backup/recovery, saved-workout corrections, credited full-plan imports, durable commands, native file sharing and configured cloud clients. It has NOT been pushed or deployed. Revision 13 is historical.
 - Source ZIP is a portable working tree. It omits dependencies, runtime caches, credentials and `.git` history. Preserve the included lockfiles and non-secret `.openai/hosting.json`.
 
 ## Run and check

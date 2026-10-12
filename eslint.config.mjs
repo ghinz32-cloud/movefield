@@ -11,8 +11,23 @@ const eslintConfig = defineConfig([
     ".next/**",
     "out/**",
     "build/**",
+    ".sites-runtime/**",
+    "dist/**",
+    "mobile/dist-mobile/**",
+    "mobile/dist-web/**",
+    "mobile/android/**",
+    "mobile/ios/**",
+    "mobile/src/shared/**",
     "next-env.d.ts",
   ]),
+  {
+    files: ["scripts/**/*.cjs"],
+    rules: {
+      // These Node verification programs intentionally use CommonJS loaders.
+      "@typescript-eslint/no-require-imports": "off",
+      "@next/next/no-assign-module-variable": "off",
+    },
+  },
   {
     files: ["components/ui/**/*.{ts,tsx}", "hooks/use-mobile.ts"],
     rules: {

@@ -195,3 +195,6 @@ input,textarea,select,[data-slot=select-trigger]{color:var(--foreground);border-
 .workout-overview button span{min-width:0;overflow-wrap:anywhere}
 
 .rest-card .button-row button{flex:1 0 7rem;white-space:nowrap;overflow-wrap:normal;word-break:normal}
+
+/* Inactive plan tabs must retain text contrast against their muted surface. */
+[data-slot="tabs-trigger"]{color:var(--foreground)}

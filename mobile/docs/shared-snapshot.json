@@ -2,6 +2,51 @@
   "source": "Training Studio website domain modules; paths relative to its root",
   "files": [
     {
+      "source": "lib/record-state.ts",
+      "target": "src/shared/record-state.ts",
+      "sha256": "4c95fdfbb1fa0600bb97706c3f6927ab45540afe51efb0b501d848419dec0d35"
+    },
+    {
+      "source": "lib/sql-records.ts",
+      "target": "src/shared/sql-records.ts",
+      "sha256": "0b9bc90abf13b7fc633c9ee74f93f4657dbd8928d57d5363fefa59636766d95f"
+    },
+    {
+      "source": "lib/activity-progress.ts",
+      "target": "src/shared/activity-progress.ts",
+      "sha256": "7dd1ca8f6a86d3859a347774964c31ce76620f7b451836e440a624694e7b09dd"
+    },
+    {
+      "source": "lib/session-duration.ts",
+      "target": "src/shared/session-duration.ts",
+      "sha256": "135f5c68cb8b2a3b1d55adbc8332c7cc2a2ff8e26cd86cf445b28051c52479d9"
+    },
+    {
+      "source": "lib/evidence-sources.ts",
+      "target": "src/shared/evidence-sources.ts",
+      "sha256": "10633b9ed7e409274b8874f26e5b2f3f1205337d4b409e62719a47638d2d884e"
+    },
+    {
+      "source": "lib/account-sessions.ts",
+      "target": "src/shared/account-sessions.ts",
+      "sha256": "89013dba6ef99bfaa63570b5609a970f84e26210b556a2eebaf28f232da98c9d"
+    },
+    {
+      "source": "lib/customize.ts",
+      "target": "src/shared/customize.ts",
+      "sha256": "a736262af65cd29f2bb69efc088473206e9db4d1d1a2350345817ebe3be6f0e8"
+    },
+    {
+      "source": "lib/calendar.ts",
+      "target": "src/shared/calendar.ts",
+      "sha256": "8ec84dd8ec74f45dc4a3019d5619008f5996385370cdae84a1e4140960fb5699"
+    },
+    {
+      "source": "lib/reusable-plan.ts",
+      "target": "src/shared/reusable-plan.ts",
+      "sha256": "e765eb831dcabc3e2a0ce7e31518dd7c8f118d808b67e68286fe6e40d495f251"
+    },
+    {
       "source": "lib/coaching-facts.ts",
       "target": "src/shared/coaching-facts.ts",
       "sha256": "cefeff01cdf00e6183c36ae0f6a0c3533b01dfb5f7149b577e6ff816e9399d06"
@@ -14,7 +59,7 @@
     {
       "source": "lib/plan-import.ts",
       "target": "src/shared/plan-import.ts",
-      "sha256": "7dc5a573c30fcd4a55405a40de8a6990a1e0ce83d1f286ce3a34a333aea9e488"
+      "sha256": "f3332b3b0707a3459d270c41a9c8f4be6517cfc2000e1fd45c742808f3e85a7a"
     },
     {
       "source": "lib/set-metric-fields.ts",
@@ -94,17 +139,17 @@
     {
       "source": "lib/training.ts",
       "target": "src/shared/training.ts",
-      "sha256": "60ebe68d02e1d54d7cff07c0a0b00d18e789cc8725b80cdbbd6789bb01269a77"
+      "sha256": "9af5b57ad9e3e10522724ddcda584bb726f00b26b18f929711d56350aa8965bb"
     },
     {
       "source": "lib/training-focus.ts",
       "target": "src/shared/training-focus.ts",
-      "sha256": "78a4a6d58462071d033c612c3a8aa23786a23531e6d4dbccde7730e1289c60ec"
+      "sha256": "24d3eb434487fe0955349bb0629184bcd4168ae71fc915f80e25183430487d3a"
     },
     {
       "source": "lib/program-catalog.ts",
       "target": "src/shared/program-catalog.ts",
-      "sha256": "3082b0a2c2c94f4736e6804c53f532937bbe92bfca36b845e6eb51566c9f4e2f"
+      "sha256": "abd478ccf12019fe5927aa6bbca89910aa26cd958cef2b617678e4516009c907"
     },
     {
       "source": "lib/substitutions.ts",
@@ -129,7 +174,7 @@
     {
       "source": "lib/progress.ts",
       "target": "src/shared/progress.ts",
-      "sha256": "9495f8db6077f0b4b0506646ff9c330b12589fb647e7de5ea089bcdf4a9cd65a"
+      "sha256": "b231d9ff4930506400e21df6fc4c29918700e5d60d28ddd5fd27ca4a5db3e099"
     },
     {
       "source": "lib/exercise-library.json",
@@ -144,7 +189,7 @@
     {
       "source": "docs/cloudflare-implementation.md",
       "target": "docs/cloudflare-implementation.md",
-      "sha256": "d657c4a1150943bb94c2e3d567ee468ad8058dc6ae9c850841afcb1dcd5f34c9"
+      "sha256": "217844f271873434194cc732470551b3c2875727685a846c8fc8f78377c1ec37"
     },
     {
       "source": "public/exercise-guides.json",

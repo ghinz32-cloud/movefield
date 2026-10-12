@@ -1,5 +1,5 @@
 'use client';
-import {useEffect,useRef,useState} from 'react';
+import {useEffect,useLayoutEffect,useRef,useState} from 'react';
 import {coachingInput,coachingFacts,validateHighlights,type HighlightSelection} from '@/lib/coaching-facts';
 import type {CloudTransport} from '@/lib/cloud-sync';
 import type {State} from '@/lib/training';
@@ -7,7 +7,7 @@ import {Button} from './ui/button';
 export function CloudHighlights({state,revision,matchesBackup,api}:{state:State;revision:number;matchesBackup:boolean;api:CloudTransport}){
  const input=state.history.map(w=>coachingInput(state,w.id)).filter(x=>!!x).at(-1)||null,fingerprint=input?JSON.stringify(input):'';
  const [settings,setSettings]=useState<{enabled:boolean;version:number;available:boolean}|null>(null),[busy,setBusy]=useState(false),[error,setError]=useState(''),[status,setStatus]=useState(''),[job,setJob]=useState<{id:string;contextDigest:string;fingerprint:string}|null>(null),[result,setResult]=useState<{fingerprint:string;selection:HighlightSelection}|null>(null);
- const epoch=useRef(0),latest=useRef(fingerprint);latest.current=fingerprint;
+ const epoch=useRef(0),latest=useRef(fingerprint);useLayoutEffect(()=>{latest.current=fingerprint},[fingerprint]);
  useEffect(()=>{const token=++epoch.current;void api('/api/cloud/coaching').then(value=>{if(token===epoch.current)setSettings(value as typeof settings)}).catch(e=>{if(token===epoch.current)setError((e as Error).message)});return()=>{epoch.current++}},[]);
  const run=async(action:(token:number)=>Promise<void>)=>{if(busy)return;const token=epoch.current;setBusy(true);setError('');try{await action(token)}catch(e){if(token===epoch.current)setError((e as Error).message)}finally{if(token===epoch.current)setBusy(false)}};
  return <section aria-label="Optional cloud highlights"><h3>Optional cloud highlights</h3><p>The workout summary remains available without AI. This separate request sends completed sets, targets, effort and eligibility flags to the account service. Groq receives only the resulting set count, exercise count and effort facts. The model selects existing facts; it cannot change your targets. This does not activate your on-device model preference.</p>{!settings?<p>Checking availability…</p>:!settings.available?<p>Cloud highlights are not configured.</p>:<>

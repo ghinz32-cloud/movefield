@@ -19,6 +19,9 @@ for (const id of choices) for (let offset = 0; offset < 7; offset++) {
 }
 let state: State = adoptPlan(emptyDemo(), previewPlan(FOUNDATION).plan!);
 state = startWorkout(state, state.plan!.sessions[0].id);
+assert.equal(state.active!.demo, false, 'A private workout must not be tagged as sample data');
+const samplePlan=previewPlan(FOUNDATION).plan!;
+assert.equal(startWorkout(adoptPlan(emptyDemo(),samplePlan),samplePlan.sessions[0].id,true).active!.demo,true,'Sample provenance must be explicit');
 assert.equal(state.active!.sets[0].reps, 0, 'Do not prefill actual reps from targets');
 assert.throws(() => editSet(state, 0, { done: true }), /actual/);
 assert.throws(() => editSet(state, 0, { kg: -1 }), /load/);
@@ -60,8 +63,8 @@ assert.throws(()=>editSet(overdue,0,{reps:1.5}),/whole-number/);
 overdue=editSet(overdue,0,{reps:8,kg:10,done:true});overdue=finishWorkout(overdue);
 const returnPlan=makeProposal(overdue,'return');assert.ok(returnPlan);
 overdue={...overdue,proposals:[returnPlan!]};const returned=applyProposal(overdue,returnPlan!.id);assert.equal(returned.error,undefined);assert.equal(returned.state.history.length,1);
-let held={...emptyDemo(),hold:true,events:[{id:'off',name:'Vacation',date:addDays(day(),100),kind:'Vacation',priority:'Normal',minutes:1440,provisional:false}]};
-let retained=adoptPlan(held,previewPlan(FOUNDATION).plan!);assert.equal(retained.hold,true);assert.deepEqual(retained.events,held.events);
+const held={...emptyDemo(),hold:true,events:[{id:'off',name:'Vacation',date:addDays(day(),100),kind:'Vacation',priority:'Normal',minutes:1440,provisional:false}]};
+const retained=adoptPlan(held,previewPlan(FOUNDATION).plan!);assert.equal(retained.hold,true);assert.deepEqual(retained.events,held.events);
 assert.throws(()=>adoptPlan({...held,events:[{...held.events[0],date:day()}]},previewPlan(FOUNDATION).plan!),/conflicts/);
 
 let swapState=adoptPlan(emptyDemo(),previewPlan('PL3').plan!);swapState=startWorkout(swapState,swapState.plan!.sessions[0].id);const swap=applySubstitution(swapState,{sessionId:swapState.active!.sessionId,from:'bench',to:'lib-db-flat-bench-press',all:false,setup:'',allowLonger:true,acknowledgeSpecificity:true,planId:swapState.plan!.id,version:swapState.plan!.version,historyCount:0});assert.equal(swap.error,undefined);assert.ok(readSavedState(JSON.stringify(swap.state)).active!.targets!.some(x=>x.exerciseId==='lib-db-flat-bench-press'));console.log('PASS: native substitution survives validated save/reload; invalid program IDs are rejected.');

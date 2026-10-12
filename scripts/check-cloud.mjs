@@ -1,21 +1,23 @@
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
 import {mkdir,readFile,writeFile,readdir} from 'node:fs/promises';
-import {createHmac,generateKeyPairSync,sign,randomBytes} from 'node:crypto';
+import {createHmac,generateKeyPairSync,sign,randomBytes,createHash} from 'node:crypto';
 const require=createRequire(import.meta.resolve('wrangler'));
 const {build}=require('esbuild'),{Miniflare,createFetchMock}=require('miniflare');
 await mkdir('.sites-runtime/cloud-check',{recursive:true});
 await build({stdin:{contents:"import {cloudApi,reconcileCloud} from './lib/server/cloud-api'; export default {fetch:async(r,e)=>await cloudApi(r,e)||new Response('Not found',{status:404}),scheduled:async(_c,e)=>await reconcileCloud(e)};",resolveDir:process.cwd(),sourcefile:'cloud-test-entry.ts'},bundle:true,format:'esm',platform:'browser',external:['node:*'],define:{'process.env.NODE_ENV':'"production"'},outfile:'.sites-runtime/cloud-check/worker.mjs',logLevel:'warning',plugins:[{name:'synthetic-test-diagnostics',setup(b){b.onLoad({filter:/server\/cloud-api\.ts$/},async args=>({loader:'ts',contents:(await readFile(args.path,'utf8')).replace('catch(e){return json','catch(e){if(!(e instanceof ApiError))console.error(e.message);return json')}))}}]});
 const secret=randomBytes(48).toString('hex'),origin='http://127.0.0.1',mock=createFetchMock();mock.disableNetConnect();
 const keys=generateKeyPairSync('rsa',{modulusLength:2048}),publicJwk={...keys.publicKey.export({format:'jwk'}),kid:'synthetic-key',alg:'RS256',use:'sig'};
-function token(email='alice@example.test',verified=true){const now=Math.floor(Date.now()/1000),head=Buffer.from(JSON.stringify({alg:'RS256',kid:'synthetic-key'})).toString('base64url'),payload=Buffer.from(JSON.stringify({iss:'https://accounts.google.com',aud:'synthetic-client',sub:email,email,email_verified:verified,name:'Synthetic account',iat:now,exp:now+3600})).toString('base64url');const data=head+'.'+payload;return data+'.'+sign('RSA-SHA256',Buffer.from(data),keys.privateKey).toString('base64url')}
-mock.get('https://oauth2.googleapis.com').intercept({path:'/token',method:'POST'}).reply(200,()=>JSON.stringify({access_token:'synthetic-access',refresh_token:'synthetic-refresh',id_token:token(),token_type:'Bearer',expires_in:3600}),{headers:{'content-type':'application/json'}}).persist();
+let tokenMode='valid',lastTokenForm=null,providerEmail='alice@example.test',providerSubject='synthetic-google-subject-a';
+function token(email=providerEmail,verified=true){const now=Math.floor(Date.now()/1000),head=Buffer.from(JSON.stringify({alg:tokenMode==='wrong-algorithm'?'HS256':'RS256',kid:'synthetic-key'})).toString('base64url'),payload=Buffer.from(JSON.stringify({iss:tokenMode==='wrong-issuer'?'https://attacker.test':'https://accounts.google.com',aud:tokenMode==='wrong-audience'?'unrelated-client':'synthetic-client',sub:providerSubject,email,email_verified:verified,name:'Synthetic account',iat:now,exp:tokenMode==='missing-exp'?undefined:tokenMode==='expired'?now-3600:now+3600,azp:tokenMode==='wrong-authorized-party'?'attacker-client':undefined})).toString('base64url');const data=head+'.'+payload;return data+'.'+sign('RSA-SHA256',Buffer.from(data),(tokenMode==='bad-signature'?generateKeyPairSync('rsa',{modulusLength:2048}).privateKey:keys.privateKey)).toString('base64url')}
+mock.get('https://oauth2.googleapis.com').intercept({path:'/token',method:'POST'}).reply(200,async opts=>{lastTokenForm=new URLSearchParams(await new Response(opts.body).text());return JSON.stringify({access_token:'synthetic-access',refresh_token:'synthetic-refresh',id_token:token(),token_type:'Bearer',expires_in:3600})},{headers:{'content-type':'application/json'}}).persist();
 mock.get('https://www.googleapis.com').intercept({path:'/oauth2/v3/certs',method:'GET'}).reply(200,{keys:[publicJwk]}).persist();
 let providerCalls=0,providerMode='valid',providerStarted;
 mock.get('https://api.groq.com').intercept({path:'/openai/v1/chat/completions',method:'POST'}).reply(200,async opts=>{providerCalls++;providerStarted?.();const input=JSON.parse(await new Response(opts.body).text()),prompt=input.messages[0].content,digest=prompt.match(/contextDigest\":\"([a-f0-9]{64})/)[1];return JSON.stringify({choices:[{message:{content:JSON.stringify(providerMode==='valid'?{schema:1,contextDigest:digest,factIds:['effort','targets']}:{schema:1,contextDigest:digest,factIds:['unsafe'],advice:'Add training'})}}]})},{headers:{'content-type':'application/json'}}).delay(100).persist();
 const mf=new Miniflare({modules:[{type:'ESModule',path:'.sites-runtime/cloud-check/worker.mjs'}],compatibilityDate:'2026-05-15',compatibilityFlags:['nodejs_compat'],d1Databases:['DB'],r2Buckets:['BUCKET'],bindings:{APP_ORIGIN:origin,AUTH_SECRET:secret,GOOGLE_CLIENT_ID:'synthetic-client',GOOGLE_CLIENT_SECRET:'synthetic-only',MOVEFIELD_CLOUD_ENABLED:'true',FREE_ALLOWANCE_VERIFIED:'true',MOVEFIELD_LOCAL_TEST:'true',AI_PROVIDER_VERIFIED:'true',AI_API_KEY:'synthetic-provider-only',AI_MODEL:'synthetic-model'},fetchMock:mock});
 const passed=[];const check=(name,fn)=>async()=>{await fn();passed.push(name);console.log('PASS',name)};
-const call=async(path,method='GET',body,cookie='',extra={})=>mf.dispatchFetch(origin+path,{method,redirect:'manual',headers:{...(method==='GET'?{}:{Origin:origin,'Content-Type':'application/json'}),...(cookie?{Cookie:cookie}:{}),...extra},...(body===undefined?{}:{body:JSON.stringify(body)})});
+const ownerForCookie=new Map();
+const call=async(path,method='GET',body,cookie='',extra={})=>mf.dispatchFetch(origin+path,{method,redirect:'manual',headers:{...(method==='GET'?{}:{Origin:origin,'Content-Type':'application/json'}),...(cookie?{Cookie:cookie}:{}),...(ownerForCookie.has(cookie)?{'X-Movefield-Account':ownerForCookie.get(cookie)}:{}),...extra},...(body===undefined?{}:{body:JSON.stringify(body)})});
 const cookies=r=>r.headers.getSetCookie().map(x=>x.split(';')[0]).join('; ');
 try{
  const db=await mf.getD1Database('DB'),bucket=await mf.getR2Bucket('BUCKET');
@@ -23,19 +25,51 @@ try{
  let aliceCookie='',aliceId='';
  await check('real SDK Google OAuth state, PKCE, signed ID token and persistent session (mocked Google transport)',async()=>{
   const begin=await call('/api/auth/sign-in/social','POST',{provider:'google',callbackURL:origin+'/'});assert.equal(begin.status,200);const data=await begin.json(),target=new URL(data.url);assert.equal(target.origin,'https://accounts.google.com');assert.equal(target.searchParams.get('code_challenge_method'),'S256');assert.ok(target.searchParams.get('state'));const callback='/api/auth/callback/google?code=synthetic-code&state='+encodeURIComponent(target.searchParams.get('state'));
-  const finish=await call(callback,'GET',undefined,cookies(begin));assert.equal(finish.status,302);aliceCookie=cookies(finish);assert.ok(aliceCookie.includes('session_token'));
-  const signed=await call('/api/auth/get-session','GET',undefined,aliceCookie);assert.equal(signed.status,200);const account=await signed.json();assert.equal(account.user.emailVerified,true);aliceId=account.user.id;
-  const saved=await db.prepare('SELECT access_token,refresh_token,id_token FROM auth_account WHERE user_id=?').bind(aliceId).first();assert.deepEqual(saved,{access_token:null,refresh_token:null,id_token:null});
+  const finish=await call(callback,'GET',undefined,cookies(begin));assert.equal(finish.status,302);aliceCookie=cookies(finish);assert.ok(aliceCookie.includes('session_token'));assert.equal(lastTokenForm.get('redirect_uri'),origin+'/api/auth/callback/google');assert.equal(createHash('sha256').update(lastTokenForm.get('code_verifier')).digest('base64url'),target.searchParams.get('code_challenge'),'The SDK token exchange must use the verifier bound to this authorization request');
+  const signed=await call('/api/auth/get-session','GET',undefined,aliceCookie);assert.equal(signed.status,200);const account=await signed.json();assert.equal(account.session.token,undefined);assert.equal(account.session.ipAddress,undefined);assert.equal(account.session.userAgent,undefined);assert.equal(account.user.emailVerified,true);aliceId=account.user.id;ownerForCookie.set(aliceCookie,aliceId);
+  const saved=await db.prepare('SELECT access_token,refresh_token,id_token FROM auth_account WHERE user_id=?').bind(aliceId).first();assert.deepEqual(saved,{access_token:null,refresh_token:null,id_token:null});assert.equal((await db.prepare('SELECT account_id FROM auth_account WHERE user_id=?').bind(aliceId).first()).account_id,providerSubject);assert.notEqual(aliceId,providerEmail);assert.notEqual(aliceId,providerSubject);
   const replay=await call(callback,'GET',undefined,cookies(begin));assert.equal(replay.status,302);assert.ok(!cookies(replay).includes('session_token'));
  })();
+ await check('verified provider subject preserves ownership across email changes and rejects implicit linking',async()=>{
+  const signIn=async address=>{const begin=await call('/api/auth/sign-in/social','POST',{provider:'google',callbackURL:origin+'/'},'',{'CF-Connecting-IP':address});assert.equal(begin.status,200);const target=new URL((await begin.json()).url);return call('/api/auth/callback/google?code=synthetic-identity-change&state='+encodeURIComponent(target.searchParams.get('state')),'GET',undefined,cookies(begin))};
+  providerEmail='updated@example.test';const same=await signIn('203.0.113.41');assert.equal(same.status,302);const session=await (await call('/api/auth/get-session','GET',undefined,cookies(same))).json();assert.equal(session.user.id,aliceId);assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM auth_user').first()).n,1);
+  providerEmail=session.user.email;providerSubject='synthetic-unrelated-google-subject';const other=await signIn('203.0.113.42');assert.equal(other.status,302);assert.ok(!cookies(other).includes('session_token'));assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM auth_user').first()).n,1);assert.equal((await db.prepare('SELECT account_id FROM auth_account WHERE user_id=?').bind(aliceId).first()).account_id,'synthetic-google-subject-a');providerSubject='synthetic-google-subject-a';providerEmail='alice@example.test';
+ })();
+ await check('unqualified native callbacks and unsupported direct-token sign-in stay closed',async()=>{assert.equal((await call('/api/auth/sign-in/social','POST',{provider:'google',callbackURL:'movefield://'},'',{'CF-Connecting-IP':'203.0.113.18'})).status,503);assert.equal((await call('/api/auth/sign-in/social','POST',{provider:'google',idToken:{token:'synthetic-untrusted'}},'',{'CF-Connecting-IP':'203.0.113.19'})).status,400);assert.equal((await call('/api/auth/expo-authorization-proxy?authorizationURL='+encodeURIComponent('https://accounts.google.com/o/oauth2/v2/auth'))).status,503)} )();
+ await check('signed OAuth tokens with wrong signature, algorithm, issuer, audience or lifetime cannot create a session',async()=>{
+  const before=(await db.prepare('SELECT COUNT(*) AS n FROM auth_session').first()).n;
+  let address=20;for(const mode of ['wrong-issuer','wrong-audience','expired','bad-signature','wrong-algorithm','missing-exp','wrong-authorized-party']){
+   tokenMode=mode;const begin=await call('/api/auth/sign-in/social','POST',{provider:'google',callbackURL:origin+'/'},'',{'CF-Connecting-IP':'203.0.113.'+(address++)});assert.equal(begin.status,200);const target=new URL((await begin.json()).url);const finish=await call('/api/auth/callback/google?code=synthetic-invalid-'+mode+'&state='+encodeURIComponent(target.searchParams.get('state')),'GET',undefined,cookies(begin));assert.equal(finish.status,302);assert.ok(!cookies(finish).includes('session_token'));assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM auth_session').first()).n,before);
+  }
+  tokenMode='valid';
+ })();
  const now=Date.now(),bobId='synthetic-owner-b',bobToken='synthetic-session-b',bobCookie='better-auth.session_token='+encodeURIComponent(bobToken+'.'+createHmac('sha256',secret).update(bobToken).digest('base64'));
+ ownerForCookie.set(bobCookie,bobId);
  await db.prepare('INSERT INTO auth_user(id,name,email,email_verified,created_at,updated_at) VALUES(?,?,?,?,?,?)').bind(bobId,'Synthetic B','bob@example.test',1,now,now).run();
  await db.prepare('INSERT INTO auth_session(id,token,user_id,expires_at,created_at,updated_at) VALUES(?,?,?,?,?,?)').bind('session-b',bobToken,bobId,now+3600000,now,now).run();
+ await check('owner-isolated session metadata and fresh revocation never expose other tokens',async()=>{
+  const row=await db.prepare('SELECT id FROM auth_session WHERE user_id=?').bind(aliceId).first();
+  const existingCount=(await db.prepare('SELECT COUNT(*) AS n FROM auth_session WHERE user_id=?').bind(aliceId).first()).n;
+  const ids=['synthetic-alice-device-1','synthetic-alice-device-2'],tokens=ids.map(()=>randomBytes(32).toString('hex'));
+  for(let n=0;n<2;n++)await db.prepare('INSERT INTO auth_session(id,token,user_id,expires_at,created_at,updated_at) VALUES(?,?,?,?,?,?)').bind(ids[n],tokens[n],aliceId,now+3600000,now,now).run();
+  const listResponse=await call('/api/cloud/sessions','GET',undefined,aliceCookie),raw=await listResponse.text(),list=JSON.parse(raw);assert.equal(listResponse.status,200);assert.equal(listResponse.headers.get('Cache-Control'),'private, no-store');assert.equal(list.ownerId,aliceId);assert.equal(list.sessions.length,existingCount+ids.length);assert.equal(list.sessions.filter(x=>x.current).length,1);assert.equal(list.sessions.find(x=>x.current).id,row.id);assert.ok(tokens.every(token=>!raw.includes(token)));assert.ok(!raw.includes(bobToken));assert.ok(list.sessions.every(x=>Object.keys(x).sort().join(',')==='createdAt,current,expiresAt,id,updatedAt'));
+  assert.equal((await call('/api/cloud/sessions/revoke','POST',{sessionId:'session-b'},aliceCookie)).status,404);assert.ok(await db.prepare('SELECT id FROM auth_session WHERE id=?').bind('session-b').first());
+  assert.equal((await call('/api/cloud/sessions/revoke','POST',{sessionId:row.id},aliceCookie)).status,400);
+  assert.equal((await call('/api/cloud/sessions/revoke','POST',{sessionId:ids[0],ownerId:aliceId},aliceCookie)).status,400);
+  assert.equal((await call('/api/cloud/sessions/revoke','POST',{sessionId:ids[0]},aliceCookie,{Origin:'https://attacker.test'})).status,403);
+  await db.prepare('UPDATE auth_session SET created_at=? WHERE id=?').bind(now-700000,row.id).run();assert.equal((await call('/api/cloud/sessions/revoke','POST',{sessionId:ids[0]},aliceCookie)).status,403);assert.ok(await db.prepare('SELECT id FROM auth_session WHERE id=?').bind(ids[0]).first());await db.prepare('UPDATE auth_session SET created_at=? WHERE id=?').bind(now,row.id).run();
+  assert.equal((await call('/api/cloud/sessions/revoke','POST',{sessionId:ids[0]},aliceCookie)).status,200);
+  const revokedCookie='better-auth.session_token='+encodeURIComponent(tokens[0]+'.'+createHmac('sha256',secret).update(tokens[0]).digest('base64'));ownerForCookie.set(revokedCookie,aliceId);assert.equal((await call('/api/cloud/sessions','GET',undefined,revokedCookie)).status,401);
+  assert.equal((await call('/api/cloud/sessions/revoke-others','POST',{},aliceCookie)).status,200);assert.equal((await db.prepare('SELECT id FROM auth_session WHERE user_id=?').bind(aliceId).all()).results.length,1);assert.ok(await db.prepare('SELECT id FROM auth_session WHERE id=?').bind('session-b').first());assert.equal((await call('/api/cloud/sessions','GET',undefined,aliceCookie)).status,200);
+ })();
  await check('unauthenticated, forged cookies, foreign origins and unsupported auth paths fail closed',async()=>{
   assert.equal((await call('/api/cloud/profile')).status,401);assert.equal((await call('/api/cloud/profile','GET',undefined,'better-auth.session_token=forged')).status,401);
   assert.equal((await call('/api/cloud/consent','POST',{adult:true,backup:true},aliceCookie,{Origin:'https://attacker.test'})).status,403);
   assert.equal((await call('/api/auth/delete-user','POST',{},aliceCookie)).status,404);assert.equal((await call('/api/auth/sign-up/email','POST',{},aliceCookie)).status,404);
   assert.equal((await call('/api/cloud/profile','PUT',{},aliceCookie)).status,405);
+  assert.equal((await call('/api/cloud/profile','GET',undefined,aliceCookie,{'X-Movefield-Account':bobId})).status,409);
+  assert.equal((await call('/api/cloud/account','DELETE',undefined,bobCookie,{'X-Movefield-Account':aliceId})).status,409);assert.ok(await db.prepare('SELECT id FROM auth_user WHERE id=?').bind(bobId).first());
+  assert.equal((await call('/api/auth/sign-out','POST',{},bobCookie,{'X-Movefield-Account':aliceId})).status,409);assert.ok(await db.prepare('SELECT id FROM auth_session WHERE user_id=?').bind(bobId).first());
  })();
  const portable={format:'movefield-vault',version:1,algorithm:'AES-256-GCM',vaultId:'a'.repeat(32),purpose:'state',schema:2,keyVersion:1,kdf:'PBKDF2-SHA256',iterations:600000,salt:'b'.repeat(32),iv:'c'.repeat(24),ciphertext:'d'.repeat(64)};
  let operation={expectedRevision:0,operationId:crypto.randomUUID(),ciphertext:JSON.stringify(portable)};
@@ -87,5 +121,20 @@ try{
   assert.equal((await call('/api/cloud/profile','POST',{...operation,expectedRevision:2},oldCookie)).status,401);assert.equal((await call('/api/cloud/profile','GET',undefined,bobCookie)).status,200);
  })();
  await check('sign-out invalidates the persistent session',async()=>{assert.equal((await call('/api/auth/sign-out','POST',{},bobCookie)).status,200);assert.equal((await call('/api/cloud/profile','GET',undefined,bobCookie)).status,401)})();
+ await check('HTTPS SDK cookies use host-only Secure/HttpOnly/SameSite attributes and preserve session revocation',async()=>{
+  const productionOrigin='https://synthetic-production.example';
+  const production=new Miniflare({modules:[{type:'ESModule',path:'.sites-runtime/cloud-check/worker.mjs'}],compatibilityDate:'2026-05-15',compatibilityFlags:['nodejs_compat'],d1Databases:['DB'],r2Buckets:['BUCKET'],bindings:{APP_ORIGIN:productionOrigin,AUTH_SECRET:secret,GOOGLE_CLIENT_ID:'synthetic-client',GOOGLE_CLIENT_SECRET:'synthetic-only',MOVEFIELD_CLOUD_ENABLED:'true',FREE_ALLOWANCE_VERIFIED:'true'},fetchMock:mock});
+  try{
+   const database=await production.getD1Database('DB');for(const file of (await readdir('drizzle')).filter(f=>f.endsWith('.sql')).sort())for(const statement of (await readFile('drizzle/'+file,'utf8')).split('--> statement-breakpoint'))if(statement.trim())await database.prepare(statement).run();
+   const invoke=(path,method='GET',body,cookie='',extra={})=>production.dispatchFetch(productionOrigin+path,{method,redirect:'manual',headers:{Origin:productionOrigin,...(body===undefined?{}:{'Content-Type':'application/json'}),...(cookie?{Cookie:cookie}:{}),...extra},...(body===undefined?{}:{body:JSON.stringify(body)})});
+   const begin=await invoke('/api/auth/sign-in/social','POST',{provider:'google',callbackURL:productionOrigin+'/'});assert.equal(begin.status,200);const target=new URL((await begin.json()).url);
+   const finish=await invoke('/api/auth/callback/google?code=synthetic-production-code&state='+encodeURIComponent(target.searchParams.get('state')),'GET',undefined,cookies(begin));assert.equal(finish.status,302);
+   const issued=finish.headers.getSetCookie();assert.ok(issued.some(cookie=>cookie.startsWith('__Host-better-auth.session_token=')));
+   for(const cookie of issued){assert.ok(cookie.startsWith('__Host-'));assert.match(cookie,/; Secure(?:;|$)/i);assert.match(cookie,/; HttpOnly(?:;|$)/i);assert.match(cookie,/; SameSite=Lax(?:;|$)/i);assert.match(cookie,/; Path=\/(?:;|$)/i);assert.ok(!/; Domain=/i.test(cookie))}
+   const cookie=cookies(finish),signed=await invoke('/api/auth/get-session','GET',undefined,cookie),value=await signed.json();assert.equal(signed.status,200);assert.equal(value.user.emailVerified,true);assert.equal(value.session.token,undefined);assert.equal(value.session.ipAddress,undefined);assert.equal(value.session.userAgent,undefined);
+   assert.equal((await invoke('/api/cloud/profile','GET',undefined,cookie,{'X-Movefield-Account':value.user.id})).status,200);
+   assert.equal((await invoke('/api/auth/sign-out','POST',{},cookie,{'X-Movefield-Account':value.user.id})).status,200);assert.equal((await invoke('/api/cloud/profile','GET',undefined,cookie,{'X-Movefield-Account':value.user.id})).status,401);
+  }finally{await production.dispose()}
+ })();
  await writeFile('.sites-runtime/cloud-check/results.json',JSON.stringify({checkedAt:new Date().toISOString(),scope:'Local Miniflare D1/R2 and actual Better Auth SDK; synthetic users, mocked external OAuth transport; no live account/device qualification.',passed},null,2)+'\n');
 }finally{await mf.dispose()}

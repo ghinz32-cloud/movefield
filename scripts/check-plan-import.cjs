@@ -9,4 +9,7 @@ assert.throws(()=>previewPlanImport({...state,active:workoutFixture().active},or
 const altered=structuredClone(preview);altered.plan.sessions[0].items[0].sets++;assert.throws(()=>acceptPlanImport(state,altered),/changed/);
 const imported=JSON.parse(original);imported.sessions[0].items[0].exerciseId='nonexistent';assert.throws(()=>previewPlanImport(state,JSON.stringify(imported),options),/unavailable/);
 assert.throws(()=>previewPlanImport(state,original,{...options,credit:''}),/credit/);assert.throws(()=>previewPlanImport(state,'{"constructor":{}}',options));assert.throws(()=>previewPlanImport({...state,profile:{...state.profile,minutes:5}},original,options),/available/);
+assert.throws(()=>acceptPlanImport({...state,profile:{...state.profile,minutes:5}},preview),/changed/);
+const understated=JSON.parse(original);understated.sessions[0].minutes=1;understated.sessions[0].items[0].sets=100;assert.throws(()=>previewPlanImport(state,JSON.stringify(understated),options),/available/);
+const zeroTarget=JSON.parse(original);zeroTarget.sessions[0].items[0].reps=0;assert.throws(()=>previewPlanImport(state,JSON.stringify(zeroTarget),options),/positive/);
 console.log('PASS full-schedule plan import: explicit tracking authority/credit, fresh identities, preserved history/archive, unperformed targets, stale/tampered previews, bounds, unknown exercise and time constraints');

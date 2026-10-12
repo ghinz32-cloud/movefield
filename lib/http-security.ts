@@ -22,9 +22,9 @@ export function secureResponse(response:Response,policy?:string){
   result.headers.set('Referrer-Policy','no-referrer');
   result.headers.set('X-Robots-Tag','noindex, nofollow');
   result.headers.set('Permissions-Policy','camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=(), bluetooth=()');
+  result.headers.set('Strict-Transport-Security','max-age=31536000; includeSubDomains');
   if(policy){
     result.headers.set('Content-Security-Policy',policy);
-    result.headers.set('Strict-Transport-Security','max-age=31536000');
     // HTML and RSC responses must not reuse another request's nonce.
     result.headers.set('Cache-Control','private, no-store');
     // Only the stateless client shell can be cached. APIs/private SSR never opt in.

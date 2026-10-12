@@ -1,0 +1,258 @@
+{
+  "checked_at": "2026-10-12T03:28:50.064991+00:00",
+  "scope": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
+  "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+  "artifact_sha256": {
+    "dist/server/index.js": "7753a2bd48dab2d2f27c83dda12d88013cca4488a6fe95820fc75e71420dfc0c",
+    "dist/client/movefield-sw.js": "061bd698eca370d1e6b57d3bba64db17fc5ec2b6c9fb42e27fb03309e9d610b9",
+    "public/downloads/movefield-native-current.zip": "3a3f7b003ff9d277cce074c3f2015cb4a34db24b40b89dce0b545d9ff71ec4b6",
+    "mobile/dist-mobile/_expo/static/js/android/index-78c582241681366381060d927b60d680.hbc": "df82b4d17291b5f141068f03fc714542cc869e6863f60760ead19e5a9fd85a6c",
+    "mobile/dist-mobile/_expo/static/js/ios/index-74ebea1ab0a347ef8a5e494c9c697bf1.hbc": "d3c1f531ec471a5bd035d86f49737fe6c96834f7a9697b357260f405b92ecef3"
+  },
+  "web_artifact_tree_sha256": "f9b739cf93500e70ad108180f0d99f4e1158adc706be76a54f620517195f0ed5",
+  "core": {
+    "ran_at": "2026-10-12T03:16:02.088Z",
+    "scope": "Local synthetic domain/adapter and type checks; no device, connected provider or deployment qualification.",
+    "results": [
+      {
+        "name": "transactional encrypted records",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 12312
+      },
+      {
+        "name": "activity progress and comparison context",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 990
+      },
+      {
+        "name": "evidence/duration/calendar zones",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 5638
+      },
+      {
+        "name": "calendar and reusable blocks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1612
+      },
+      {
+        "name": "Cloudflare account/storage/coaching",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 6245
+      },
+      {
+        "name": "portable cloud vault and retry",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 4122
+      },
+      {
+        "name": "native SDK cookie transport",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1229
+      },
+      {
+        "name": "plan import",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 745
+      },
+      {
+        "name": "durability",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 959
+      },
+      {
+        "name": "vault and history",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1239
+      },
+      {
+        "name": "native encrypted adapter",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1382
+      },
+      {
+        "name": "native file transfer",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 361
+      },
+      {
+        "name": "security",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 812
+      },
+      {
+        "name": "data and calendar",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 869
+      },
+      {
+        "name": "web types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 15671
+      },
+      {
+        "name": "native types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 7038
+      },
+      {
+        "name": "native engine",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1097
+      }
+    ]
+  },
+  "browser": {
+    "workout_journeys": 16,
+    "accessibility_states": 32,
+    "preference_behaviors": 6,
+    "cloud": {
+      "checkedAt": "2026-10-12T03:21:24.948Z",
+      "scope": "Built Worker, real Chromium sandbox, synthetic SDK session fixture and local D1/R2; no live Google or physical-device test.",
+      "checks": [
+        "signed-in web UI and uncached authentication responses",
+        "real offline encrypted queue and safe local passphrase-rotation refusal",
+        "retry and verified cloud acknowledgement",
+        "concurrent-device conflict retains both profiles",
+        "previewed restoration preserves local key",
+        "account switch rejects stale actions and clears consent/key/preview before fresh review",
+        "actual SDK request burst is bounded and disposable next-window fixture permits recovery",
+        "unconfigured installation fails closed"
+      ]
+    },
+    "native_components": {
+      "checkedAt": "2026-10-12T02:53:02.550Z",
+      "scope": "Real React Native components rendered via React Native Web in sandboxed Chromium. Synthetic durable JSON writer with injected failure; font loading boundary stubbed. No native crypto, installed OS, TalkBack/VoiceOver or physical-device claim.",
+      "passed": [
+        "commitment range preview, failed-write preservation and durable retry",
+        "custom movement and addition preserve active workout and history",
+        "saved block full preview and accepted new unperformed sessions",
+        "320px region containment, app text scaling and 48px date targets",
+        "recorded progress period/exercise filtering",
+        "plan evidence disclosure and searchable research references"
+      ]
+    },
+    "native_sdk_adapter": {
+      "checkedAt": "2026-10-12T03:15:30.904Z",
+      "scope": "Actual Better Auth/Expo client SDK and native cloud transport; synthetic fetch and mocked platform/SecureStore boundaries. No installed OAuth/keychain/phone qualification.",
+      "checks": [
+        "Default qualification flag blocks native auth before requests",
+        "Actual SDK accepts public session DTO without an opaque token",
+        "Host-prefixed cookie is recognized and retained by actual Expo SDK",
+        "Native transport sends the saved cookie and owner precondition",
+        "SDK sign-out removes its stored session cookie"
+      ]
+    }
+  },
+  "record_storage": {
+    "indexeddb": {
+      "ran_at": "2026-10-12T01:35:46.403Z",
+      "scope": "Synthetic local Chromium with actual IndexedDB/WebCrypto. Timings are cloud-runner observations, not phone/field measurements.",
+      "samples": [
+        {
+          "records": 100,
+          "create_ms": 129.20000000298023,
+          "reopen_ms": 57.79999999701977,
+          "profile_edit_ms": 19.599999994039536,
+          "record_edit_ms": 24.700000002980232,
+          "bundle_bytes": 163694
+        },
+        {
+          "records": 1000,
+          "create_ms": 459.29999999701977,
+          "reopen_ms": 394.5,
+          "profile_edit_ms": 135.40000000596046,
+          "record_edit_ms": 161.5,
+          "bundle_bytes": 1454294
+        },
+        {
+          "records": 5000,
+          "create_ms": 2343.7000000029802,
+          "reopen_ms": 1879.800000011921,
+          "profile_edit_ms": 833.9000000059605,
+          "record_edit_ms": 1109.0999999940395,
+          "bundle_bytes": 7214294
+        }
+      ],
+      "checks": [
+        "actual IndexedDB transactions",
+        "100/1000/5000 record archives",
+        "schema-clone write amplification",
+        "fresh writer reopen",
+        "record edit",
+        "complete encrypted recovery",
+        "quota rollback",
+        "stale writer CAS",
+        "5001 record limit",
+        "UTF8 size preservation",
+        "missing/substituted row rejection",
+        "erasure"
+      ]
+    },
+    "sqlite": {
+      "ran_at": "2026-10-12T03:15:12.023Z",
+      "scope": "Actual Node SQLite file database with the shared SQL adapter and WebCrypto. No native OS/bridge or phone-performance claim.",
+      "samples": [
+        {
+          "records": 100,
+          "create_ms": 78.27180799999996,
+          "reopen_ms": 46.5903400000002,
+          "profile_edit_ms": 19.784274000000096,
+          "bundle_bytes": 161260
+        },
+        {
+          "records": 1000,
+          "create_ms": 594.8861219999999,
+          "reopen_ms": 502.7171149999999,
+          "profile_edit_ms": 140.8052029999999,
+          "bundle_bytes": 1430260
+        },
+        {
+          "records": 5000,
+          "create_ms": 3798.9225100000003,
+          "reopen_ms": 1777.5947659999983,
+          "profile_edit_ms": 555.7683680000009,
+          "bundle_bytes": 7094260
+        }
+      ]
+    }
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 75,
+    "baseline_errors": 69,
+    "baseline_warnings": 70,
+    "baseline_scope": "Prior e3c6fc6 source with the same current lint configuration; generated/copied artifacts excluded."
+  },
+  "audits": {
+    "root_production": 0,
+    "native_high_affected_chains": 43,
+    "underlying_native_advisories": 2,
+    "native_release_gate": "failed"
+  },
+  "extended_matrix": {
+    "plan_variants": 71,
+    "scenarios": 4291,
+    "assertions": 2238180,
+    "meaning": "Parameterized software invariants, not independent clinical cases or scientific acceptance."
+  },
+  "android": "Project generation/plugin compilation passed; assembleRelease blocked by repo.reactnative.dev proxy 403; no APK.",
+  "ios": "Project generation and Hermes export passed; minimum iOS 16.4; no signed/installed binary.",
+  "spending_or_remote_actions": "No paid service, live provider/user traffic, provisioning, source push, remote CI or deployment. Wrangler dry run is local only."
+}

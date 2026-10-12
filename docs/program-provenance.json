@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "checked_at": "2026-10-11",
+  "scope": "Existing named reference cards are reference-only; none is represented as a faithful shipped author program.",
+  "programs": [
+    {
+      "id": "ref-tsa-beginner",
+      "name": "TSA Beginner Approach",
+      "author": "The Strength Athlete",
+      "original_source": "https://www.thestrengthathlete.com/freebies",
+      "edition_variant": "not independently verified",
+      "retrieval_date": null,
+      "prior_link_check": "2026-10-07",
+      "reuse_basis": null,
+      "attribution": "The Strength Athlete",
+      "brand_constraints": "No endorsement or redistribution of paid content is claimed.",
+      "missing_details": [
+        "Current authoritative variant, full cycle/progression and applicable content permissions require direct review."
+      ],
+      "status": "reference only; user-entered tracking available"
+    },
+    {
+      "id": "ref-tsa-intermediate",
+      "name": "TSA Intermediate 2.0",
+      "author": "The Strength Athlete",
+      "original_source": "https://www.thestrengthathlete.com/freebies",
+      "edition_variant": "not independently verified",
+      "retrieval_date": null,
+      "prior_link_check": "2026-10-07",
+      "reuse_basis": null,
+      "attribution": "The Strength Athlete",
+      "brand_constraints": "No endorsement or redistribution of paid content is claimed.",
+      "missing_details": [
+        "Current authoritative variant, full cycle/progression and applicable content permissions require direct review."
+      ],
+      "status": "reference only; user-entered tracking available"
+    },
+    {
+      "id": "ref-calgary16",
+      "name": "Calgary Barbell 16-Week",
+      "author": "Calgary Barbell",
+      "original_source": "https://www.calgarybarbell.com/16-week-program",
+      "edition_variant": "not independently verified",
+      "retrieval_date": null,
+      "prior_link_check": "2026-10-07",
+      "reuse_basis": null,
+      "attribution": "Calgary Barbell",
+      "brand_constraints": "No endorsement or redistribution of paid content is claimed.",
+      "missing_details": [
+        "Current authoritative variant, full cycle/progression and applicable content permissions require direct review."
+      ],
+      "status": "reference only; user-entered tracking available"
+    },
+    {
+      "id": "ref-phul",
+      "name": "PHUL",
+      "author": "Brandon Campbell",
+      "original_source": "https://www.muscleandstrength.com/workouts/phul-workout",
+      "edition_variant": "not independently verified",
+      "retrieval_date": null,
+      "prior_link_check": "2026-10-07",
+      "reuse_basis": null,
+      "attribution": "Brandon Campbell",
+      "brand_constraints": "No endorsement or redistribution of paid content is claimed.",
+      "missing_details": [
+        "Current authoritative variant, full cycle/progression and applicable content permissions require direct review."
+      ],
+      "status": "reference only; user-entered tracking available"
+    },
+    {
+      "id": "ref-phat",
+      "name": "PHAT",
+      "author": "Layne Norton",
+      "original_source": "https://biolayne.com/articles/training/phat-power-hypertrophy-adaptive-training/",
+      "edition_variant": "not independently verified",
+      "retrieval_date": null,
+      "prior_link_check": "2026-10-07",
+      "reuse_basis": null,
+      "attribution": "Layne Norton",
+      "brand_constraints": "No endorsement or redistribution of paid content is claimed.",
+      "missing_details": [
+        "Current authoritative variant, full cycle/progression and applicable content permissions require direct review."
+      ],
+      "status": "reference only; user-entered tracking available"
+    },
+    {
+      "id": "ref-jt2",
+      "name": "Jacked & Tan 2.0",
+      "author": "Cody Lefever",
+      "original_source": "https://swoleateveryheight.blogspot.com/2016/07/jacked-tan-20.html",
+      "edition_variant": "not independently verified",
+      "retrieval_date": null,
+      "prior_link_check": "2026-10-07",
+      "reuse_basis": null,
+      "attribution": "Cody Lefever",
+      "brand_constraints": "No endorsement or redistribution of paid content is claimed.",
+      "missing_details": [
+        "Current authoritative variant, full cycle/progression and applicable content permissions require direct review."
+      ],
+      "status": "reference only; user-entered tracking available"
+    }
+  ]
+}

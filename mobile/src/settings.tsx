@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';
+import React,{useState} from 'react';
 import {View,Text,Pressable,TextInput,Switch,ScrollView} from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
 import {useNativeAppearance} from './appearance';
@@ -7,7 +7,8 @@ import {brand} from './shared/brand';
 import {enableWorkoutReminders} from './workout-notifications';
 export function NativeSettings({reminderMessage,children}:{reminderMessage:string;children?:React.ReactNode}){
  const {p,update,colors:c,error,fonts,ready}=useNativeAppearance();const [message,setMessage]=useState(''),[busy,setBusy]=useState(false),[time,setTime]=useState(p.reminderTime);
- useEffect(()=>{setTime(p.reminderTime)},[p.reminderTime]);
+ const [savedTime,setSavedTime]=useState(p.reminderTime);
+ if(savedTime!==p.reminderTime){setSavedTime(p.reminderTime);setTime(p.reminderTime)}
  const text={color:c.ink,fontSize:16*p.textSize/100,lineHeight:24*p.textSize/100,fontFamily:fonts?'Inter':undefined};
  const title={...text,fontFamily:fonts?'Barlow Condensed':undefined,fontSize:28*p.textSize/100,lineHeight:34*p.textSize/100};
  const card={padding:20,gap:14,backgroundColor:c.white,borderColor:c.line,borderWidth:1,borderRadius:16};

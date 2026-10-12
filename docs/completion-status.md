@@ -1,29 +1,31 @@
-# Completion status — 11 October 2026
+# Completion status — 12 October 2026 UTC
 
-**The six master prompts are not complete, and not every acceptance check has passed.** The current Cloudflare account, encrypted manual backup and bounded highlights milestone is implemented and locally verified. This is a prototype checkpoint, not launch approval.
+**The six master prompts are incomplete, and not every release gate has passed.** Premium experience work continues. The [task register](master-prompts-task-register.json) retains all 72 original requirement bodies: 61 sections are in progress, 11 are not started, and none has full section acceptance. These broad counts are not a percentage of code completion.
 
-The [task register](master-prompts-task-register.json) preserves all 72 original requirement sections: 46 are in progress, 26 are not started, and none has full section acceptance recorded. These counts describe broad requirement sections; they are not a percentage of code completed.
-
-| Master prompt | Current status | Major remaining work |
+| Master prompt | Implemented continuation | Important remaining work |
 | --- | --- | --- |
-| Workouts, programs and science | Incomplete | Evidence and claim-to-code mapping, lawful named programs, modality coverage and progression/equipment/time/block-completion qualification. |
-| Secure AI coaching | Incomplete | The optional adapter selects canonical facts only. General coaching, evidence retrieval, usefulness evaluations, live provider/privacy/free-allowance qualification and an on-device model remain. |
-| UI/UX clarity and polish | Incomplete | Richer native calendar, commitments and reusable blocks; comprehensive accessibility and physical-device interaction checks. |
-| Streamline, debloat and debug | Incomplete | Full runtime/state coverage, field/native performance and mixed-version/offline update qualification. Local performance measurements do not establish a speedup. |
-| Comprehensive security | Incomplete | Stronger account factors and device-session controls, per-record/background sync, cloud-key migrations, independent crypto/security review and verified youth/privacy safeguards. |
-| Prototype/demo to launch | Incomplete | Native dependency release gate, installable signed builds, physical-device acceptance, live infrastructure qualification and authorized deployment. |
+| Workouts, programs and science | Duration ranges/fit, full block reuse, source/claim/provenance scaffolds and searchable web/native references. | Full-text review, qualified claim-to-code mapping, lawful named routines, modality-specific cycles/progression/stress/next-block acceptance. Fifteen links are inventoried; zero new numerical rules are scientifically qualified. |
+| Secure AI coaching | Separate consent, durable bounded jobs and canonical fact selection. | General coaching, licensed evidence/usefulness evaluation, live eligibility/privacy/free allowance and actual on-device runtime/device qualification. |
+| UI/UX clarity and polish | Native calendar/commitments, stable plan browsing, reviewed customization/reuse, progress filters, source disclosure and modal focus. | Premium Today/history/disclosure refinements, full state/theme and installed assistive-technology checks. |
+| Streamline, debloat and debug | Transactional record storage, changed-row writes, large-archive tests, safer React state and fewer redundant account reads. | Remaining warnings, mixed-version/update/offline coverage and native/field memory, battery and performance qualification. |
+| Comprehensive security | Explicit JWT/subject identity, owner guards, session review/revocation, restricted external session DTO, host cookies/HSTS and 369 official control records. | Full control applicability, stronger factors/recovery/update, cloud merge/key migrations and independent crypto/security/privacy/youth/platform reviews. |
+| Prototype/demo to launch | Local builds/types/browser checks, reproducible source/Hermes artifacts, Workers dry run and a broad device matrix. | Native dependency gate, Android network access, Mac/signing/installed devices, live cost/privacy/provider qualification and authorized publication. |
 
-Verified for this local checkpoint:
+Passed for the recorded local checkpoint:
 
-- All 12 core check groups, including real Better Auth SDK behavior with mocked signed Google transport, local D1/R2 ownership and concurrency, portable encrypted vaults, retries, recovery, and web/native types.
-- All 16 workout/recovery/offline browser journeys and six cloud browser checks against the final built Worker. Chromium retained its own sandbox.
-- Web build and production security checks; frozen dependency installs; iOS/Android Hermes JavaScript exports; exact contents of the 86-file native source archive.
-- Web production dependency audit: zero advisories. A finite credential-pattern scan found no matches; its limited scope is documented in the candidate receipt.
+- All 17 core groups: actual SDK state/PKCE/JWT/identity/cookie behavior with mocked Google transport; local D1/R2 ownership/CAS/replay/deletion and consent/budget tests; encrypted recovery/adapters; web/native types.
+- All 16 built workout/recovery/offline browser journeys, 32 rendered accessibility states, six browser preference persistence/failure/multitab behaviors, cloud queue/conflict/restore/account-switch/rate-limit checks and five actual native SDK adapter checks. Chromium retained its own sandbox.
+- Actual IndexedDB and Node SQLite at 100/1,000/5,000 histories, with recovery/transaction/CAS/corruption/erasure checks; native components through React Native Web with explicit platform/font boundaries.
+- Web build/security, frozen installs, both Hermes exports and the 104-file manifest-verified native source ZIP. These are not installed APK/IPA files.
+- Lint: zero errors, 75 warnings. The prior source had 69 errors/70 warnings with the same configuration. Root production audit: zero advisories. The finite credential-pattern scan found zero matches within its documented scope.
+- Local Workers dry run: about 902 KiB compressed Worker/2,645 static files, connected features disabled. It uploaded nothing and does not prove account entitlement or a hard spending cap.
 
-**Failed release gate:** the native production dependency audit has 15 high affected dependency-chain entries from two upstream advisories, in `braces` and `node-forge`. It has not been suppressed or treated as passed.
+**Failed release gate:** native production audit reports 43 high affected dependency-chain entries from two upstream advisories (`braces`, `node-forge`). These overlap; they are not 43 demonstrated app exploits. No compatible remedy is qualified or finding suppressed.
 
-**Unverified:** live Google sign-in, Cloudflare account/resource/free-allowance settings, provider eligibility/privacy, installed native callbacks/keychain/recovery/sharing/erasure, signed APK/IPA installation, and independent reviews. JavaScript exports are not installable app binaries.
+**Blocked/unverified:** Android project generation/plugin compilation passed, but the proxy denied `repo.reactnative.dev`; no APK exists. iOS requires a Mac/signing/device qualification. Dependencies declare Android API 24/Expo iOS 16.4 minima, which do not certify every old phone or its security updates. Physical notifications, key storage, installed callbacks, sharing, screenshots, process death, erasure, updates and performance remain.
 
-No paid service, live model call, source push, remote CI run, provisioning or app deployment was performed. The saved cloud-environment draft needs review/save in environment settings and environment publication; that is separate from app deployment. Fresh-task restoration of local-only Git commits remains unverified.
+The owner has a Cloudflare account and supplied its Account ID. Ignored account-specific Workers configuration, a non-secret environment suggestion, read-only helper and secure `CLOUDFLARE_API_TOKEN` requirement are prepared. The reported plugin exposes no tools here and no management token is ready. Subdomain/plan/R2/overage status, Google OAuth secrets and live privacy settings remain unverified. See [cloudflare-start-here.md](cloudflare-start-here.md).
 
-See [HANDOFF](../HANDOFF.md) for the checkpoint and [Cloudflare implementation](cloudflare-implementation.md) for configuration and limitations.
+No paid service, live model/user test, source push, remote CI, provisioning or deployment occurred. Review/save and publish the environment draft to activate its network/credential settings; this is separate from app publication. Fresh-task restoration of local-only commits remains unverified, so retain source/Git exports.
+
+[continuation-validation.json](continuation-validation.json) records source/artifact identities and qualified evidence. [HANDOFF](../HANDOFF.md), [record-storage.md](record-storage.md), [security-boundaries.md](security-boundaries.md) and [device-coverage.md](device-coverage.md) describe the implementation and remaining acceptance work.

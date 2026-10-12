@@ -6,7 +6,7 @@ const prefix='movefield-export-';
 export async function cleanExportFiles(all=false){for(const item of new Directory(Paths.cache).list())if(item instanceof File&&item.name.startsWith(prefix)&&item.name.endsWith('.json')&&(all||item.modificationTime!==null&&Date.now()-item.modificationTime>86_400_000))item.delete();}
 /** Owner selects a destination; use a file URI rather than a large IPC message. */
 export async function shareJsonFile(raw:string,label:'encrypted-backup'|'plaintext-plan'|'original-saved-file',current:()=>boolean=()=>true){
- if(raw.length>10_002_000||new TextEncoder().encode(raw).length>10_002_000)throw Error('This export exceeds the supported file size.');
+ if(raw.length>32*1024*1024||new TextEncoder().encode(raw).length>32*1024*1024)throw Error('This export exceeds the supported file size.');
  if(!await isAvailableAsync())throw Error('File sharing is unavailable on this device.');
  await cleanExportFiles();if(!current())throw Error('Your profile changed while preparing this export. Retry from the current profile.');
  const file=new File(Paths.cache,prefix+label+'-'+randomUUID()+'.json');file.create({overwrite:false});file.write(raw);

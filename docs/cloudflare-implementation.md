@@ -1,3 +1,19 @@
+# Current continuation security changes
+
+Google code-exchange ID tokens are now explicitly verified using JOSE against Google's fixed trusted JWKS, with RS256, issuer, audience, lifetime, verified email, subject and authorized-party checks. Actual SDK tests reject wrong signatures/algorithms/issuers/audiences, expired or missing-expiry tokens and mismatched authorized parties, and verify the PKCE token-exchange verifier against its authorization challenge. Earlier signed positive fixtures alone did not establish these rejection checks; that older wording was too broad. Direct ID-token sign-in is unsupported and rejected.
+
+Production SDK cookies now use an explicit `__Host-` prefix with Secure/HttpOnly/SameSite Lax, Path=/ and no Domain. External session responses exclude opaque tokens, IPs and device agents while internal SDK validation/renewal remains authoritative. Actual HTTPS SDK tests exercise issuance, session read and revocation. The native adapter recognizes host cookies and works with the restricted session DTO in a mocked platform/fetch harness; this does not qualify an installed callback. The SDK automatic `__Secure-` name prefix is turned off solely to supply the stricter name explicitly; production Secure attributes remain mandatory. Older production cookie names require a fresh sign-in; cloud/local records and owner-bound queues are retained. One-year HSTS including subdomains is supplied for Worker/API and static responses.
+
+Every business API call carries an expected-account header that is compared with the SDK-verified owner. The header grants no authority. An account switch rejects an old panel's read, write, deletion or sign-out before touching the new account. Account settings can list owner-only session metadata and review revoking one other session or all other sessions, with fresh authentication. Session metadata responses contain no tokens, device names or IP addresses.
+
+Native callbacks remain disabled unless the server's `NATIVE_AUTH_VERIFIED=true` and the built app's `EXPO_PUBLIC_NATIVE_AUTH_VERIFIED=true` are explicitly set after installed callback and protocol qualification. An API URL alone cannot enable the native sign-in UI. The server rejects the native return scheme and Expo authorization proxy while its gate is unset. These are operator qualification gates, not a claim that the current custom scheme has been proved safe on a phone. No live Google/native callback testing has occurred.
+
+Local workout persistence is now per-record IndexedDB/SQLite; see `record-storage.md`. Cloud backup still sends a deliberate portable encrypted whole-state snapshot. Automatic/background merge, setup-draft sync, cloud passphrase rotation and account passkey/TOTP enrollment are still unimplemented. No new service spend, deployment or provider traffic was authorized.
+
+---
+
+The preceding Cloudflare checkpoint details follow; current notes above take precedence.
+
 # Cloudflare implementation — 11 October 2026
 
 The recommended Cloudflare backend is implemented locally. It has **not** been provisioned, pushed or deployed. Accounts, backup and optional provider calls fail closed on an unconfigured installation. The full six-prompt project is still in progress; this is the account/backup/highlights milestone.
@@ -23,6 +39,7 @@ No account IDs, domain, database, bucket, Google client or provider model have b
 | `APP_ORIGIN` | Exact owned HTTPS origin, without trailing slash/path. Native uses the same origin. |
 | `AUTH_SECRET` | Secret, at least 32 characters of secure random material; stable across restarts. |
 | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | Owner's Google OAuth web application; callback is `APP_ORIGIN/api/auth/callback/google`. |
+| `NATIVE_AUTH_VERIFIED`, `EXPO_PUBLIC_NATIVE_AUTH_VERIFIED` | Separate server/app switches; enable only after installed callback/security qualification. |
 | `MOVEFIELD_CLOUD_ENABLED` | Set `true` only for the reviewed connected installation. |
 | `FREE_ALLOWANCE_VERIFIED` | Owner verification flag, not a billing hard cap or proof of entitlement. |
 | `AI_PROVIDER_VERIFIED`, `AI_API_KEY`, `AI_MODEL` | Separate optional provider gate and owner's verified eligible model/key. No model ID is assumed. |

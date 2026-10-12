@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {mkdir,writeFile} from 'node:fs/promises';
+import {resolve} from 'node:path';
+import {chromium} from 'playwright-core';
+
+const base=process.env.MOVEFIELD_BASE_URL;
+if(!base||!['localhost','127.0.0.1','[::1]'].includes(new URL(base).hostname))throw Error('Use only a local synthetic app.');
+const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',chromiumSandbox:true,args:['--disable-setuid-sandbox'],env:{...process.env,XDG_CONFIG_HOME:resolve('.sites-runtime/config'),XDG_CACHE_HOME:resolve('.sites-runtime/cache')}});
+const checks=[],errors=[];
+try{
+ const context=await browser.newContext(),first=await context.newPage(),second=await context.newPage();
+ for(const page of [first,second]){page.on('pageerror',error=>errors.push(error.message));await page.goto(base);await page.getByRole('button',{name:'Create encrypted profile',exact:true}).waitFor();await page.getByRole('button',{name:'Explore sample training',exact:true}).click();await page.getByRole('heading',{name:'Today',exact:true}).waitFor();await page.locator('[data-sidebar=menu-button]').filter({hasText:/^Profile & settings$/}).click();await page.getByRole('heading',{name:'Appearance',exact:true}).waitFor()}
+ await first.getByRole('button',{name:'Ocean blue',exact:true}).click();for(const page of [first,second])await page.waitForFunction(()=>document.documentElement.dataset.palette==='ocean');checks.push('Appearance change persists and reaches a second tab');
+ await second.getByRole('button',{name:'Dark',exact:true}).click();await first.waitForFunction(()=>document.documentElement.dataset.mode==='dark');assert.equal(await first.evaluate(()=>document.documentElement.dataset.palette),'ocean');checks.push('Second-tab update retains the previously saved palette');
+ await first.evaluate(()=>{window.syntheticPreferenceWrite=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(key==='training-studio:preferences:v1')throw new DOMException('Synthetic preference quota','QuotaExceededError');return window.syntheticPreferenceWrite.call(this,key,value)}});
+ await first.getByRole('button',{name:'Sunset',exact:true}).click();await first.waitForFunction(()=>document.documentElement.dataset.palette==='sunset');await first.getByText('Your changes apply here but could not be saved.',{exact:true}).waitFor();assert.equal(await first.evaluate(()=>JSON.parse(localStorage.getItem('training-studio:preferences:v1')).palette),'ocean');assert.equal(await second.evaluate(()=>document.documentElement.dataset.palette),'ocean');checks.push('Failed write stays visible in this tab and preserves the stored/other-tab preferences');
+ await first.evaluate(()=>{Storage.prototype.setItem=window.syntheticPreferenceWrite;delete window.syntheticPreferenceWrite});await first.getByRole('button',{name:'Volt green',exact:true}).click();for(const page of [first,second])await page.waitForFunction(()=>document.documentElement.dataset.palette==='green');assert.equal(await first.getByText('Your changes apply here but could not be saved.',{exact:true}).count(),0);checks.push('Successful retry clears the save error and reaches both tabs');
+ await first.reload();await first.getByRole('button',{name:'Create encrypted profile',exact:true}).waitFor();assert.equal(await first.evaluate(()=>document.documentElement.dataset.mode),'dark');checks.push('Fresh document hydration restores the saved preference snapshot');
+ await second.evaluate(()=>localStorage.removeItem('training-studio:preferences:v1'));await first.waitForFunction(()=>document.documentElement.dataset.mode!=='dark'&&document.documentElement.dataset.palette==='green');checks.push('Cross-tab preference removal returns to system/default appearance');assert.deepEqual(errors,[]);await context.close();
+ await mkdir('.sites-runtime/browser-preferences',{recursive:true});await writeFile('.sites-runtime/browser-preferences/results.json',JSON.stringify({checkedAt:new Date().toISOString(),scope:'Actual freshly built web UI in sandboxed Chromium, disposable preferences and injected quota failure; no personal data or native OS qualification.',checks},null,2)+'\n');console.log('PASS '+checks.length+' browser preference persistence/failure/multitab behaviors');
+}finally{await browser.close()}

@@ -1,0 +1,24 @@
+const assert=require('node:assert/strict'),{load,workoutFixture}=require('./domain-test-loader.cjs');
+const T=load('lib/training.ts'),C=load('lib/calendar.ts'),B=load('lib/reusable-plan.ts'),S=load('lib/saved-data.ts');
+let active=workoutFixture(),state={...active,active:null};
+const before=JSON.stringify(active),input={name:'Synthetic travel',date:T.addDays(T.day(),1),through:T.addDays(T.day(),3),kind:'Travel / unavailable',priority:'High',minutes:60,provisional:false};
+const event=C.previewCommitment(active,input),withEvents=C.acceptCommitment(active,event);
+assert.equal(withEvents.events.length,3);assert.equal(withEvents.events[0].minutes,1440);assert.deepEqual(withEvents.active,active.active);assert.deepEqual(withEvents.plan.sessions,active.plan.sessions);assert.deepEqual(withEvents.history,active.history);assert.equal(JSON.stringify(active),before);
+assert.throws(()=>C.acceptCommitment(withEvents,event),/changed/);assert.throws(()=>C.previewCommitment(withEvents,input),/matching/);
+assert.throws(()=>C.previewCommitment(state,{...input,through:T.addDays(input.date,90)}),/90 days/);
+assert.throws(()=>C.previewCommitment(state,{...input,date:'2025-02-29'}),/valid date/);
+assert.throws(()=>C.previewCommitment(state,{...input,kind:'Other training'}),/range/);
+assert.throws(()=>C.previewCommitment(state,{...input,minutes:Infinity}),/duration/);
+assert.throws(()=>C.acceptCommitment(active,{...event,input:{...event.input,name:'Changed'}}),/preview changed/);
+const fixed=withEvents.events[0],removed=C.removeCommitment(withEvents,fixed.id,JSON.stringify(fixed));assert.equal(removed.events.length,2);assert.deepEqual(removed.active,active.active);
+assert.throws(()=>C.removeCommitment(withEvents,fixed.id,JSON.stringify({...fixed,minutes:1})),/changed/);
+for(const date of ['2024-02-29','2026-03-08','2026-11-01','2026-12-31'])for(const start of [0,1]){const dates=C.monthDates(date,start);assert.equal(dates.length,42);assert.equal(new Set(dates).size,42);assert.equal(new Date(dates[0]+'T12:00:00').getDay(),start);for(let n=1;n<42;n++)assert.equal(T.dayDistance(dates[n-1],dates[n]),1)}
+assert.equal(C.calendarDay({...state,plan:null},T.day()).label,'Unplanned day');assert.equal(C.calendarDay(state,T.addDays(state.plan.sessions[0].date,1)).label,'Rest day');assert.equal(C.calendarDay(state,state.plan.sessions[0].date,T.addDays(state.plan.sessions[0].date,1)).label,'Overdue workout');
+const historical={...active.active,finishedAt:1234,sets:active.active.sets.map(x=>({...x,reps:8,kg:null,done:true}))};state={...state,history:[historical]};
+const copied=B.savePlanCopy(state,state.plan.id,state.plan.version);assert.equal(copied.saved.length,1);assert.deepEqual(copied.history,state.history);assert.notEqual(copied.saved[0].id,state.plan.id);
+const reuse=B.previewReusablePlan(copied,copied.saved[0].id,T.addDays(state.plan.sessions[0].date,14)),accepted=B.acceptReusablePlan(copied,reuse);
+assert.notEqual(accepted.plan.id,state.plan.id);assert.equal(accepted.plan.sessions.length,state.plan.sessions.length);assert.equal(accepted.plan.sessions[0].date,T.addDays(state.plan.sessions[0].date,14));assert.ok(accepted.plan.sessions.every(x=>x.status==='scheduled'&&x.items.every(i=>i.kg===null)));assert.ok(accepted.plan.sessions.every(x=>!state.plan.sessions.some(old=>old.id===x.id)));assert.deepEqual(accepted.history,state.history);S.readSavedState(JSON.stringify(accepted));
+assert.throws(()=>B.acceptReusablePlan({...copied,events:[fixed]},reuse),/changed/);assert.throws(()=>B.acceptReusablePlan(copied,{...reuse,plan:{...reuse.plan,name:'Tampered'}}),/changed/);assert.throws(()=>B.previewReusablePlan({...copied,active:active.active},copied.saved[0].id,T.day()),/active/);assert.throws(()=>B.previewReusablePlan({...copied,profile:{...copied.profile,equipment:'No equipment'}},copied.saved[0].id,T.day()),/equipment/);
+const coaching={...copied,saved:[{...copied.saved[0],profile:{...copied.saved[0].profile,mode:'coach'}}]};assert.equal(B.acceptReusablePlan(coaching,B.previewReusablePlan(coaching,coaching.saved[0].id,T.addDays(state.plan.sessions[0].date,14))).plan.profile.mode,'coach');
+assert.throws(()=>B.setPlanPaused(active,active.plan.id,active.plan.version,true),/active/);const paused=B.setPlanPaused(state,state.plan.id,state.plan.version,true);assert.equal(paused.plan.paused,true);assert.equal(paused.plan.version,state.plan.version+1);assert.deepEqual(paused.history,state.history);assert.throws(()=>B.setPlanPaused(paused,state.plan.id,state.plan.version,false),/changed/);
+console.log('PASS: fixed-calendar range/duplicate/stale guards, active/history preservation, local day and month boundaries, new unperformed reusable blocks, coach authority and guarded pause');

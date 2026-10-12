@@ -1,3 +1,11 @@
+# Current continuation security assessment — 12 October 2026 UTC
+
+Current persistence is encrypted per-record IndexedDB/SQLite, with complete original-file recovery and preservation-first migrations. Accounts/backup use the actual Better Auth SDK and explicit Google JWT verification; expected-account guards reject stale panels. External SDK session responses omit opaque tokens/IP/device agents, production cookies are host-prefixed with mandatory Secure/HttpOnly attributes, and native cookie transport is adapter-tested but installed callbacks remain disabled. The local lint check now reports zero errors, with warnings retained.
+
+See [security-boundaries.md](security-boundaries.md) and the 369-row [security-controls.json](security-controls.json) for the current inventory, official ASVS/MASVS identifiers, partial observations and remaining verification. No complete standards conformance, independent penetration test or live/device qualification is claimed. Native audit still fails on two upstream advisories (43 high affected-chain entries); the root production audit has zero advisories. Historical sections below retain their original dates and findings.
+
+---
+
 # Local vault implementation — 11 October 2026
 
 Web personal state now uses WebCrypto AES-256-GCM with a fresh 96-bit nonce per write, a 128-bit tag, a random 128-bit salt and PBKDF2-SHA256 with 600,000 iterations. The derived nonextractable key lives in memory for the unlocked visit; it is not stored beside the ciphertext. The passphrase is never sent to a server. Authenticated metadata binds the format, vault ID, record purpose, schema, KDF and key version. State and setup drafts have different authenticated purposes. Header versions, payload sizes and decrypted schemas are validated before publication. This protects stored bytes; it does not protect an unlocked origin against arbitrary same-origin script execution or a compromised device.

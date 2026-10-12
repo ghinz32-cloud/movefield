@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "checked_at": "2026-10-11",
+  "qualification": "Executable map of current important rules; source review and full claim coverage remain incomplete.",
+  "rules": [
+    {
+      "id": "session-time-v1",
+      "title": "Session timing assumptions",
+      "classification": "product heuristic",
+      "sources": [
+        "TIME-EFFICIENT"
+      ],
+      "implementation": "lib/training.ts#estimateSessionMinutes",
+      "tests": [
+        "scripts/check-program-depth.cjs",
+        "scripts/check-calendar-blocks.cjs"
+      ],
+      "claim": "Preparation, actual target work, both sides, prescribed rest and transitions take time. Exact estimator parameters are product assumptions, not a validated physiological rule."
+    },
+    {
+      "id": "range-progression-v1",
+      "title": "Comparable rep-range progression",
+      "classification": "product heuristic informed by an existing research reference",
+      "sources": [
+        "REP-PROGRESSION"
+      ],
+      "implementation": "lib/training.ts#loadSuggestion",
+      "tests": [
+        "scripts/check-audit.cjs",
+        "scripts/check-program-depth.cjs"
+      ],
+      "claim": "The app uses accepted comparable targets and explicit review. Exact success-count, RIR and increment thresholds require qualification; this link does not validate every app rule."
+    },
+    {
+      "id": "competition-buffer-v1",
+      "title": "Competition calendar protection",
+      "classification": "product heuristic",
+      "sources": [
+        "IOC-YOUTH"
+      ],
+      "implementation": "lib/training.ts#competitionConflict",
+      "tests": [
+        "scripts/check-onboarding.cjs",
+        "scripts/check-calendar-blocks.cjs"
+      ],
+      "claim": "The one/two-day buffer is an app planning choice, not a proven sport-specific taper or a promise to prevent soreness."
+    },
+    {
+      "id": "source-run-walk-v1",
+      "title": "Source-prescribed run/walk stages",
+      "classification": "author-prescribed timing",
+      "sources": [
+        "NHS-C25K"
+      ],
+      "implementation": "lib/training.ts#buildBasePlan",
+      "tests": [
+        "scripts/check-program-depth.cjs",
+        "mobile/scripts/check-engine.ts"
+      ],
+      "claim": "Targets preserve the represented staged source timings; selectable short previews are not the full nine-stage course. Current source fidelity/rights review remains outstanding."
+    },
+    {
+      "id": "youth-path-v1",
+      "title": "Qualified youth pathway",
+      "classification": "conservative product constraint informed by guidance references",
+      "sources": [
+        "AAP-2020",
+        "NSCA-YOUTH",
+        "IOC-YOUTH"
+      ],
+      "implementation": "lib/training.ts#validateProfile",
+      "tests": [
+        "scripts/check-security.cjs",
+        "scripts/check-program-depth.cjs"
+      ],
+      "claim": "Synthetic supervised pathways preserve restrictions. Personal acceptance remains gated by verified privacy/consent safeguards; chronological age does not measure physical readiness."
+    },
+    {
+      "id": "training-focus-v1",
+      "title": "Combined-week add-ons and time/recovery checks",
+      "classification": "product heuristic",
+      "sources": [
+        "CONCURRENT"
+      ],
+      "implementation": "lib/training-focus.ts#applyTrainingFocus",
+      "tests": [
+        "scripts/check-onboarding.cjs",
+        "scripts/check-program-depth.cjs"
+      ],
+      "claim": "Combined time and recovery are checked. This is not proof that every add-on combination achieves the intended sport outcome."
+    }
+  ]
+}

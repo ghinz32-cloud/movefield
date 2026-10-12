@@ -4,6 +4,7 @@ declare namespace Cloudflare {
     BUCKET?: R2Bucket;
     APP_ORIGIN?: string;
     AUTH_SECRET?: string;
+    NATIVE_AUTH_VERIFIED?: string;
     GOOGLE_CLIENT_ID?: string;
     GOOGLE_CLIENT_SECRET?: string;
     MOVEFIELD_CLOUD_ENABLED?: string;

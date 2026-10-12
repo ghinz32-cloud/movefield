@@ -7,7 +7,8 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ghinz32.movefield.prototype"
     },
     "android": {
       "adaptiveIcon": {
@@ -16,7 +17,9 @@
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.ghinz32.movefield.prototype",
+      "allowBackup": false
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -28,7 +31,8 @@
         {
           "configureAndroidBackup": true
         }
-      ]
+      ],
+      "expo-sqlite"
     ],
     "scheme": "movefield"
   }

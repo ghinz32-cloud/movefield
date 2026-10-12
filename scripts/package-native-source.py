@@ -2,7 +2,7 @@
 import hashlib,json,pathlib,zipfile
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 MOBILE=ROOT/'mobile'
-EXCLUDED={'node_modules','.expo','.git','.sites-runtime','dist-mobile','dist-web','coverage','.wrangler'}
+EXCLUDED={'node_modules','.expo','.git','.sites-runtime','dist-mobile','dist-web','coverage','.wrangler','android','ios','build'}
 ALLOWED={'.ts','.tsx','.js','.mjs','.cjs','.json','.md','.txt','.png','.ttf','.jpg','.svg'}
 OUTPUT=ROOT/'public/downloads/movefield-native-current.zip'
 FILES=[]

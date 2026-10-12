@@ -1,5 +1,5 @@
 "use client";
-import {useEffect,useState} from 'react';
+import {useState,useSyncExternalStore} from 'react';
 import {Fingerprint,ShieldCheck,KeyRound,Check,Smartphone} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
@@ -8,8 +8,10 @@ import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription} from '@
 type Preferences={passkey:boolean;mfa:boolean};
 const EMPTY:Preferences={passkey:false,mfa:false};
 export function AccountSecurity({compact=false,onContinue,storageKey='training-studio-security-preview-v1',simulation=false}:{compact?:boolean;onContinue?:()=>void;storageKey?:string;simulation?:boolean}){
- const [preferences,setPreferences]=useState<Preferences>(EMPTY),[loaded,setLoaded]=useState(false),[open,setOpen]=useState(false),[flow,setFlow]=useState(''),[stage,setStage]=useState(''),[code,setCode]=useState(''),[error,setError]=useState(''),[unavailable,setUnavailable]=useState(false),[expired,setExpired]=useState(false),[attempts,setAttempts]=useState(0);
- useEffect(()=>{if(!simulation){setLoaded(true);return}try{const p=JSON.parse(localStorage.getItem(storageKey)||'null');if(p)setPreferences({passkey:p.passkey===true,mfa:p.mfa===true})}catch{}setLoaded(true)},[storageKey,simulation]);
+ const [preferences,setPreferences]=useState<Preferences>(EMPTY),[open,setOpen]=useState(false),[flow,setFlow]=useState(''),[stage,setStage]=useState(''),[code,setCode]=useState(''),[error,setError]=useState(''),[unavailable,setUnavailable]=useState(false),[expired,setExpired]=useState(false),[attempts,setAttempts]=useState(0);
+ const raw=useSyncExternalStore(listener=>{const changed=(event:StorageEvent)=>{if(event.key===storageKey||event.key===null)listener()};window.addEventListener('storage',changed);return()=>window.removeEventListener('storage',changed)},()=>{try{return simulation?localStorage.getItem(storageKey):null}catch{return null}},()=>undefined);
+ const loaded=raw!==undefined,[previous,setPrevious]=useState<{key:string;raw:string|null|undefined}>({key:storageKey,raw:undefined});
+ if(simulation&&loaded&&(previous.key!==storageKey||previous.raw!==raw)){setPrevious({key:storageKey,raw});let next=EMPTY;try{const value=JSON.parse(raw||'null');if(value)next={passkey:value.passkey===true,mfa:value.mfa===true}}catch{}setPreferences(next)}
  const save=(p:Preferences)=>{setPreferences(p);try{localStorage.setItem(storageKey,JSON.stringify(p))}catch{}};
  const start=(kind:string)=>{setFlow(kind);setStage(kind==='google'?'provider':kind==='passkey'?'device':kind==='enroll-passkey'?'register':kind==='enroll-mfa'?'enroll':kind==='remove-mfa'?'remove':'recovery');setError('');setCode('');setAttempts(0);setUnavailable(false);setExpired(false);setOpen(true)};
  const signedIn=()=>{if(preferences.mfa){setStage('challenge');setCode('')}else setStage('success')};

@@ -26,14 +26,14 @@ export function adoptPlan(state: State, plan: Plan): State {
     plan: { ...plan, profile: { ...plan.profile, units: state.profile.units }, acceptedAt: new Date().toISOString() },
     proposals: state.proposals.map(p=>p.status==='pending'||p.status==='queued'?{...p,status:'stale'}:p), saved: state.plan ? [state.plan,...state.saved] : state.saved };
 }
-export function startWorkout(state: State, sessionId: string): State {
+export function startWorkout(state: State, sessionId: string, sample = false): State {
   if (state.active) return state;
   const session = state.plan?.sessions.find(x => x.id === sessionId);
   if (!session) throw new Error('Session not found.');
   const blocked = eligibility(state, session);
   if (blocked) throw new Error(blocked);
   if (session.date !== day()) throw new Error('Review moving this workout to today before starting.');
-  const active: Workout = { id: uid('workout'), sessionId, title: session.title, date: day(), startedAt: Date.now(), demo: true,
+  const active: Workout = { id: uid('workout'), sessionId, title: session.title, date: day(), startedAt: Date.now(), demo: sample,
     targets: session.items.map(x => ({ ...x })),
     sets: session.items.flatMap(x => Array.from({ length: x.sets }, (_, i) => ({ exerciseId: x.exerciseId, set: i + 1, reps: 0, kg: null, done: false }))), loadContext: {...state.loadContext} };
   return { ...state, active };

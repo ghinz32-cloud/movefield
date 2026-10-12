@@ -2,10 +2,11 @@
 import {useState} from 'react';
 import {type Exercise,loadConvention} from '@/lib/training';
 import {ExternalLink,BookOpen} from 'lucide-react';
+export type ExerciseMedia={videoUrl?:string;sourceUrl?:string;hasVideo?:boolean;images?:unknown[]};
 export type MovementGuide={variant:string;summary?:string;equipment?:string[];setup:string[];execution:string[];finish?:string[];breathing:string[];commonErrors:string[];easierOption:string;safety:string;loadConvention:string;sourceURLs?:string[];sourceNote?:string;quickCues?:string[];terms?:{term:string;meaning:string}[]};
 function safeLink(url:unknown){try{const u=new URL(String(url));return u.protocol==='https:'&&!u.username&&!u.password?u.href:null}catch{return null}}
 const TERMS=[{term:'Rep',meaning:'One full movement, from the start and back again.'},{term:'Set',meaning:'A group of reps done before a rest.'},{term:'Load',meaning:'The weight or resistance used for an exercise.'},{term:'RIR · reps in reserve',meaning:'How many more reps you think you could do with the same form.'},{term:'1RM',meaning:'The most weight you can lift for one full rep. An estimated 1RM is a guess from a lighter set.'}];
-export function ExerciseGuide({exercise:e,guide:g,media,custom=[]}:{exercise:Exercise;guide?:MovementGuide;media?:any;custom?:Exercise[]}){
+export function ExerciseGuide({exercise:e,guide:g,media,custom=[]}:{exercise:Exercise;guide?:MovementGuide;media?:ExerciseMedia;custom?:Exercise[]}){
  const [unavailable,setUnavailable]=useState<string[]>([]);
  const demo=safeLink(media?.videoUrl||media?.sourceUrl),cues=g?.quickCues||e.cues.slice(0,3),sourceURLs=(g?.sourceURLs||[e.source]).map(safeLink).filter((x):x is string=>!!x);
  const photos:string[]=(Array.isArray(media?.images)?media.images:[]).filter((x:unknown):x is string=>typeof x==='string'&&/^\/exercise-photos\/[a-zA-Z0-9_/-]+\.jpg$/.test(x));

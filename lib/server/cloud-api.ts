@@ -22,6 +22,7 @@ export async function readJson(request:Request,max=10_050_000):Promise<Record<st
  try{const parsed=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));if(!parsed||Array.isArray(parsed)||typeof parsed!=='object')throw Error();return parsed}catch{throw new ApiError(400,'This JSON request is invalid.')}
 }
 export function exact(value:Record<string,unknown>,fields:string[]){if(Object.keys(value).length!==fields.length||Object.keys(value).some(k=>!fields.includes(k)))throw new ApiError(400,'The request contains unsupported fields.')}
+function accountContext(request:Request,owner:string){if(request.headers.get('X-Movefield-Account')!==owner)throw new ApiError(409,'The account context is missing or changed. Update or refresh the account screen before continuing.')}
 type Profile={owner_id:string;revision:number;object_key:string|null;digest:string|null;vault_id:string|null;deleted_at:number|null;consent_version:number;ai_consent:number;updated_at:number};
 export async function profile(env:Cloudflare.Env,owner:string){return env.DB!.prepare('SELECT * FROM cloud_profile WHERE owner_id=?').bind(owner).first<Profile>()}
 export async function liveProfile(env:Cloudflare.Env,owner:string){const p=await profile(env,owner);if(p?.deleted_at)throw new ApiError(410,'This cloud profile was deleted.');return p}
@@ -64,7 +65,7 @@ async function saveProfile(request:Request,env:Cloudflare.Env,owner:string){
 }
 
 const authPaths:Record<string,string[]>={'/api/auth/sign-in/social':['POST'],'/api/auth/callback/google':['GET'],'/api/auth/get-session':['GET'],'/api/auth/sign-out':['POST'],'/api/auth/expo-authorization-proxy':['GET']};
-const cloudPaths:Record<string,string[]>={'/api/cloud/capabilities':['GET'],'/api/cloud/consent':['POST'],'/api/cloud/profile':['GET','POST'],'/api/cloud/account':['DELETE'],'/api/cloud/coaching-consent':['POST'],'/api/cloud/coaching':['GET','POST']};
+const cloudPaths:Record<string,string[]>={'/api/cloud/capabilities':['GET'],'/api/cloud/consent':['POST'],'/api/cloud/profile':['GET','POST'],'/api/cloud/account':['DELETE'],'/api/cloud/coaching-consent':['POST'],'/api/cloud/coaching':['GET','POST'],'/api/cloud/sessions':['GET'],'/api/cloud/sessions/revoke':['POST'],'/api/cloud/sessions/revoke-others':['POST']};
 export async function cloudApi(request:Request,env:Cloudflare.Env,ctx?:Pick<ExecutionContext,'waitUntil'>):Promise<Response|null>{
  const url=new URL(request.url),path=url.pathname;if(!path.startsWith('/api/auth/')&&!path.startsWith('/api/cloud/'))return null;
  if(request.url.length>8192)return json({error:'This request address is too long.'},414);
@@ -81,21 +82,32 @@ export async function cloudApi(request:Request,env:Cloudflare.Env,ctx?:Pick<Exec
     const body=await readJson(request,4096);if(body.provider!=='google'||Object.keys(body).some(k=>!['provider','callbackURL','errorCallbackURL','newUserCallbackURL','disableRedirect','requestSignUp'].includes(k)))throw new ApiError(400,'Use the supported Google sign-in flow.');
     for(const field of ['callbackURL','errorCallbackURL','newUserCallbackURL'])if(body[field]!==undefined){
      if(typeof body[field]!=='string')throw new ApiError(400,'Invalid sign-in return address.');
-     const value=body[field] as string;if(value==='movefield://')continue;
+     const value=body[field] as string;if(value==='movefield://'){if(env.NATIVE_AUTH_VERIFIED!=='true')throw new ApiError(503,'Native sign-in callbacks have not been qualified for this installation.');continue;}
      const target:URL=new URL(value,env.APP_ORIGIN);if(target.origin!==env.APP_ORIGIN||target.username||target.password||target.pathname!=='/'||target.search||target.hash)throw new ApiError(400,'Use the app’s own sign-in return address.');
     }
     request=new Request(request.url,{method:request.method,headers:request.headers,body:JSON.stringify(body)});
    }
-   if(path==='/api/auth/expo-authorization-proxy'){const target=new URL(url.searchParams.get('authorizationURL')||'');if(target.origin!=='https://accounts.google.com')throw new ApiError(400,'Unsupported sign-in provider.');}
+   if(path==='/api/auth/expo-authorization-proxy'){if(env.NATIVE_AUTH_VERIFIED!=='true')throw new ApiError(503,'Native sign-in callbacks have not been qualified for this installation.');const target=new URL(url.searchParams.get('authorizationURL')||'');if(target.origin!=='https://accounts.google.com')throw new ApiError(400,'Unsupported sign-in provider.');}
    if(path==='/api/auth/sign-out'){
+    const signed=await auth.api.getSession({headers:request.headers});if(signed)accountContext(request,signed.user.id);
     const body=request.body?await readJson(request,1024):{};exact(body,[]);
     const headers=new Headers(request.headers);headers.set('Content-Type','application/json');
     request=new Request(request.url,{method:'POST',headers,body:'{}'});
    }
-   return await auth.handler(request);
+   const response=await auth.handler(request);
+   if(path==='/api/auth/get-session'&&response.ok){
+    // Keep SDK session validation/renewal, but never expose its opaque token to
+    // application JavaScript. Internal SDK calls still retain their full data.
+    const value=await response.json() as {session?:{id:string;userId:string;expiresAt:string;createdAt:string;updatedAt:string};user?:{id:string;email:string;emailVerified:boolean;name:string;createdAt:string;updatedAt:string}}|null;
+    const publicSession=value?.session&&value.user?{session:{id:value.session.id,userId:value.session.userId,expiresAt:value.session.expiresAt,createdAt:value.session.createdAt,updatedAt:value.session.updatedAt},user:{id:value.user.id,email:value.user.email,emailVerified:value.user.emailVerified,name:value.user.name,createdAt:value.user.createdAt,updatedAt:value.user.updatedAt}}:null;
+    const headers=new Headers(response.headers);headers.delete('Content-Length');headers.delete('Content-Encoding');
+    return new Response(JSON.stringify(publicSession),{status:response.status,headers});
+   }
+   return response;
   }
   const signed=await auth.api.getSession({headers:request.headers});if(!signed?.user.emailVerified)throw new ApiError(401,'Sign in with your verified Google account.');
   const owner=signed.user.id;
+  accountContext(request,owner);
   if(path==='/api/cloud/account'){
    // SDK enforces fresh authentication, invokes the tombstone hook, and revokes sessions.
    const response=await auth.api.deleteUser({headers:request.headers,body:{},asResponse:true});
@@ -103,6 +115,30 @@ export async function cloudApi(request:Request,env:Cloudflare.Env,ctx?:Pick<Exec
    return response;
   }
   await liveProfile(env,owner);
+  if(path==='/api/cloud/sessions'){
+   await quota(env,owner,'sessions-read',50);
+   const rows=await env.DB!.prepare('SELECT id,created_at,updated_at,expires_at FROM auth_session WHERE user_id=? AND expires_at>? ORDER BY created_at DESC LIMIT 101').bind(owner,Date.now()).all<{id:string;created_at:number;updated_at:number;expires_at:number}>();
+   return json({ownerId:owner,hasMore:rows.results.length>100,sessions:rows.results.slice(0,100).map(s=>({id:s.id,createdAt:s.created_at,updatedAt:s.updated_at,expiresAt:s.expires_at,current:s.id===signed.session.id}))});
+  }
+  if(path==='/api/cloud/sessions/revoke'||path==='/api/cloud/sessions/revoke-others'){
+   const created=new Date(signed.session.createdAt).getTime();
+   if(!Number.isFinite(created)||Date.now()-created>600000||created>Date.now()+30000)throw new ApiError(403,'Sign in again before revoking other sessions.');
+   const body=await readJson(request,1024);
+   exact(body,path.endsWith('revoke-others')?[]:['sessionId']);
+   if(path.endsWith('revoke-others')){
+    await quota(env,owner,'sessions-revoke',10);
+    // One bounded D1 operation revokes every other owner session, including older
+    // entries outside the displayed page. Cookie caching is disabled in the SDK.
+    await env.DB!.prepare('DELETE FROM auth_session WHERE user_id=? AND id<>?').bind(owner,signed.session.id).run();
+    return json({revoked:true});
+   }
+   if(typeof body.sessionId!=='string'||!body.sessionId||body.sessionId.length>128)throw new ApiError(400,'Choose a session from your account.');
+   if(body.sessionId===signed.session.id)throw new ApiError(400,'Use Sign out to end your current sign-in.');
+   const target=await env.DB!.prepare('SELECT token FROM auth_session WHERE id=? AND user_id=? AND expires_at>?').bind(body.sessionId,owner,Date.now()).first<{token:string}>();
+   if(!target)throw new ApiError(404,'This session is unavailable. Refresh your session list.');
+   await quota(env,owner,'sessions-revoke',10);
+   return await auth.api.revokeSession({headers:request.headers,body:{token:target.token},asResponse:true});
+  }
   if(path==='/api/cloud/coaching'||path==='/api/cloud/coaching-consent')return await coachingApi(request,env,owner,ctx);
   if(path==='/api/cloud/consent'){
    const body=await readJson(request,1024);exact(body,['adult','backup']);if(body.adult!==true||body.backup!==true)throw new ApiError(403,'Cloud backup is available only with adult consent.');

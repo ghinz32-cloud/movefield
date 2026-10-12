@@ -31,11 +31,13 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 .dev.vars*
+/wrangler.*.local.jsonc
 
 # vercel
 .vercel
 
 # typescript
+*.tsbuildinfo
 next-env.d.ts
 /dist/
 /.wrangler/
@@ -52,3 +54,7 @@ next-env.d.ts
 /mobile/dist-mobile/
 /mobile/dist-web/
 /mobile/*.tsbuildinfo
+
+# Reproducible native projects and their build/signing outputs
+/mobile/android/
+/mobile/ios/
