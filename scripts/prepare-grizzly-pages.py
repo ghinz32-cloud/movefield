@@ -1,7 +1,7 @@
 """Prepare a separate Grizzly addition; preserve both existing Movefield apps."""
 import argparse,datetime,hashlib,io,json,pathlib,re,shutil,subprocess,tarfile
 ROOT=pathlib.Path(__file__).resolve().parents[1];RUNTIME=ROOT/'.sites-runtime'
-parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--base-commit',required=True);args=parser.parse_args()
+parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--base-commit',required=True);parser.add_argument('--replace-existing',action='store_true');args=parser.parse_args()
 if not re.fullmatch(r'[a-f0-9]{40}',args.base_commit):parser.error('Use the inspected full Pages commit.')
 candidate=RUNTIME/'grizzly-pages-candidate';marker=RUNTIME/'grizzly-pages-candidate.generated'
 if candidate.exists():
@@ -13,7 +13,17 @@ with tarfile.open(fileobj=io.BytesIO(archive)) as tar:tar.extractall(candidate,f
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def js_json(value):return json.dumps(value,separators=(',',':'),ensure_ascii=False)
 original={str(p.relative_to(candidate)):digest(p) for p in candidate.rglob('*') if p.is_file()}
-if (candidate/'grizzly').exists():raise RuntimeError('Existing Grizzly files require inspection before replacement')
+if (candidate/'grizzly').exists():
+ if not args.replace_existing:raise RuntimeError('Existing Grizzly files require --replace-existing after inspection')
+ previous=json.loads((candidate/'grizzly/grizzly-manifest.json').read_text())
+ if previous.get('schema')!=1 or previous.get('base')!='/movefield/grizzly/' or previous.get('brand')!='Grizzly Fitness Wautoma':raise RuntimeError('Existing directory is not this Grizzly build')
+ owned=set(previous['files'])|{'grizzly-manifest.json'}
+ actual={str(p.relative_to(candidate/'grizzly')) for p in (candidate/'grizzly').rglob('*') if p.is_file()}
+ if owned!=actual:raise RuntimeError('Existing Grizzly directory contains unexpected/unowned files')
+ for name,expected in previous['files'].items():
+  path=candidate/'grizzly'/name
+  if path.is_symlink() or '..' in pathlib.PurePosixPath(name).parts or not path.resolve().is_relative_to((candidate/'grizzly').resolve()) or digest(path)!=expected:raise RuntimeError('Existing Grizzly artifact differs: '+name)
+ shutil.rmtree(candidate/'grizzly')
 shutil.copytree(RUNTIME/'github-pages-grizzly',candidate/'grizzly')
 for name in ['_headers','.assetsignore']:
  path=candidate/'grizzly'/name
@@ -22,27 +32,30 @@ for name in ['_headers','.assetsignore']:
 files={str(p.relative_to(candidate/'grizzly')):digest(p) for p in sorted((candidate/'grizzly').rglob('*')) if p.is_file()}
 if any(p.is_symlink() for p in candidate.rglob('*')):raise RuntimeError('No symlinks may be published')
 source=json.loads((RUNTIME/'candidate-receipt-current.json').read_text());commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
-gym_manifest={'schema':1,'base':'/movefield/grizzly/','brand':'Grizzly Fitness Wautoma','official_logo_retrieved':False,'profile_scope':'Separate Grizzly profile, database, preferences and offline cache. Training code is shared.','application_source_sha256':source['application_source_sha256'],'source_commit':commit,'files':files}
+gym_manifest={'schema':1,'base':'/movefield/grizzly/','brand':'Grizzly Fitness Wautoma','official_logo_retrieved':False,'logo_supplied_by_user':True,'logo_source':'User-supplied JPEG, unchanged; not retrieved from the gym website.','logo_sha256':digest(candidate/'grizzly/brand/grizzly-fitness-logo.jpg'),'profile_scope':'Separate Grizzly profile, database, preferences and offline cache. Training code is shared.','application_source_sha256':source['application_source_sha256'],'source_commit':commit,'files':files}
 (candidate/'grizzly/grizzly-manifest.json').write_text(json.dumps(gym_manifest,indent=2)+'\n')
 html=(candidate/'index.html').read_text()
-if 'id="grizzly-review-link"' in html:raise RuntimeError('Inspect the existing Grizzly link before changing it')
+linked='id="grizzly-review-link"' in html
+if linked and not re.search(r'<a\b[^>]*id="grizzly-review-link"[^>]*href="/movefield/grizzly/"',html):raise RuntimeError('Existing Grizzly link differs from the expected destination')
 anchor='<a id="grizzly-review-link" href="/movefield/grizzly/" style="color:inherit;text-decoration:underline">Grizzly Fitness preview</a>'
-html,count=re.subn(r'(<div id="movefield-review-link"[^>]*>)(.*?)(</div>)',lambda m:m[1]+m[2]+anchor+m[3],html,count=1,flags=re.S)
-if count!=1:raise RuntimeError('Expected reviewed app discovery banner was not found')
-(candidate/'index.html').write_text(html)
+if not linked:
+ html,count=re.subn(r'(<div id="movefield-review-link"[^>]*>)(.*?)(</div>)',lambda m:m[1]+m[2]+anchor+m[3],html,count=1,flags=re.S)
+ if count!=1:raise RuntimeError('Expected reviewed app discovery banner was not found')
+ (candidate/'index.html').write_text(html)
 manifest_path=candidate/'pages-manifest.json';manifest=json.loads(manifest_path.read_text())
 def version(m):return hashlib.sha256(js_json({key:m[key] for key in ['workerTemplateSha256','coachingWorker','assets']}).encode()).hexdigest()
 if version(manifest)!=manifest['version']:raise RuntimeError('Original manifest algorithm differs')
-manifest['assets']['/movefield/index.html']=digest(candidate/'index.html');manifest['version']=version(manifest);manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
-worker_path=candidate/'sw.js';worker,count=re.subn(r'^const MANIFEST=.*;$',lambda _: 'const MANIFEST='+js_json(manifest)+';',worker_path.read_text(),count=1,flags=re.M)
-if count!=1:raise RuntimeError('Original worker manifest declaration differs')
-worker_path.write_text(worker)
+if not linked:
+ manifest['assets']['/movefield/index.html']=digest(candidate/'index.html');manifest['version']=version(manifest);manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
+ worker_path=candidate/'sw.js';worker,count=re.subn(r'^const MANIFEST=.*;$',lambda _: 'const MANIFEST='+js_json(manifest)+';',worker_path.read_text(),count=1,flags=re.M)
+ if count!=1:raise RuntimeError('Original worker manifest declaration differs')
+ worker_path.write_text(worker)
 for path,expected in manifest['assets'].items():
  if not path.startswith('/movefield/') or digest(candidate/path.removeprefix('/movefield/'))!=expected:raise RuntimeError('Original pinned asset changed: '+path)
-changes=['index.html','pages-manifest.json','sw.js']
+changes=[] if linked else ['index.html','pages-manifest.json','sw.js']
 for name,expected in original.items():
- if name not in changes and digest(candidate/name)!=expected:raise RuntimeError('Other existing app file changed: '+name)
+ if not name.startswith('grizzly/') and name not in changes and digest(candidate/name)!=expected:raise RuntimeError('Other existing app file changed: '+name)
 paths={str(p.relative_to(candidate)):digest(p) for p in sorted(candidate.rglob('*')) if p.is_file()}
-receipt={'prepared_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'base_pages_commit':args.base_commit,'current_source_commit':commit,'application_source_sha256':source['application_source_sha256'],'original_files_changed':changes,'preserved_existing_files':len(original)-len(changes),'candidate_files':paths,'uploaded':False}
+receipt={'prepared_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'base_pages_commit':args.base_commit,'current_source_commit':commit,'application_source_sha256':source['application_source_sha256'],'original_files_changed':changes,'preserved_existing_files':sum(not n.startswith('grizzly/') and n not in changes for n in original),'deleted_files':sorted(set(original)-set(paths)),'candidate_files':paths,'uploaded':False}
 (RUNTIME/'grizzly-pages-candidate-receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
 print(json.dumps({k:receipt[k] for k in ['base_pages_commit','current_source_commit','preserved_existing_files','original_files_changed','uploaded']}))

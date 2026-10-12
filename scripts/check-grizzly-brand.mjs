@@ -3,6 +3,7 @@ import {createRequire} from 'node:module';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {chromium} from 'playwright-core';
+import {createHash} from 'node:crypto';
 const require=createRequire(import.meta.url),{workoutFixture}=require('./domain-test-loader.cjs');
 const base=process.env.MOVEFIELD_BASE_URL||'http://127.0.0.1:8817/movefield/grizzly/';
 if(!['localhost','127.0.0.1','[::1]'].includes(new URL(base).hostname))throw Error('Synthetic local checks only');
@@ -11,6 +12,9 @@ await mkdir('.sites-runtime/grizzly-evidence',{recursive:true});
 try {
  const context=await browser.newContext({viewport:{width:390,height:844}}),page=await context.newPage(),errors=[];
  page.on('pageerror',e=>errors.push(e.message));await page.goto(base);
+ const original=await readFile('public/brand/grizzly-fitness-logo.jpg');assert.equal(createHash('sha256').update(original).digest('hex'),'8b97ad7dd972812b066cd5b919ff96d90d961ad00230230eb1faebd6e222b0f5');
+ await page.locator('.recovery-page .grizzly-logo-full img').waitFor();await page.waitForFunction(()=>[...document.querySelectorAll('.grizzly-logo-image')].every(img=>img.complete&&img.naturalWidth===1280&&img.naturalHeight===593));
+ await page.screenshot({path:'.sites-runtime/grizzly-evidence/logo-welcome-phone.png',fullPage:true});
  const state=workoutFixture();state.active=null;state.restTimer=null;
  await page.evaluate(async state=>{
   for(const prefix of ['','movefield-review-']) {
@@ -45,9 +49,11 @@ try {
  });
  await page.getByRole('button',{name:'Explore sample training',exact:true}).click();await page.getByRole('heading',{name:'Today',exact:true}).waitFor();assert.equal(await page.evaluate(()=>getComputedStyle(document.querySelector('.grizzly-hero-paw')).animationName),'none');await page.setViewportSize({width:1440,height:1000});await page.screenshot({path:'.sites-runtime/grizzly-evidence/today-desktop.png',fullPage:true});
  await context.setOffline(true);await page.reload();await page.getByRole('button',{name:'Create encrypted profile',exact:true}).waitFor();await page.getByRole('button',{name:'Explore sample training',exact:true}).click();await page.getByRole('heading',{name:'Today',exact:true}).waitFor();assert.equal(await page.evaluate(()=>document.fonts.load('16px Bungee').then(()=>document.fonts.check('16px Bungee'))),true);await context.setOffline(false);
+ assert.equal(await page.locator('.grizzly-preview-title img').evaluate(img=>img.complete&&img.naturalWidth===1280),true);
  const sw=await readFile('.sites-runtime/github-pages-grizzly/movefield-sw.js','utf8');assert.match(sw,/CACHE_PREFIX = "grizzly-fitness-shell-"/);assert.match(sw,/fonts\/bungee-regular.ttf/);
+ assert.match(sw,/brand\/grizzly-fitness-logo.jpg/);
  const motion=await browser.newContext({reducedMotion:'reduce'}),motionPage=await motion.newPage();await motionPage.goto(base);await motionPage.getByRole('button',{name:'Explore sample training',exact:true}).click();await motionPage.getByRole('heading',{name:'Today',exact:true}).waitFor();assert.equal(await motionPage.evaluate(()=>getComputedStyle(document.querySelector('.grizzly-hero-paw')).animationName),'none');await motion.close();
  assert.deepEqual(errors,[]);
- await writeFile('.sites-runtime/grizzly-brand-checks.json',JSON.stringify({checkedAt:new Date().toISOString(),scope:'Sandboxed Chromium; synthetic disposable profiles. Physical phones and official gym assets not qualified.',passed:['Bungee heading font loaded; amber default','phone primary action spans a full row','both Movefield localStorage, drafts, preferences, queues, IndexedDB roots and caches preserved through Grizzly migration/erasure','Grizzly preferences have their own key','system and in-app reduced motion stop paw animation','separate offline shell and heading font reopen offline']},null,2)+'\n');
+ await writeFile('.sites-runtime/grizzly-brand-checks.json',JSON.stringify({checkedAt:new Date().toISOString(),scope:'Sandboxed Chromium; synthetic disposable profiles. Supplied JPEG identity and rendered loading verified; physical phones and independent brand-rights verification not qualified.',passed:['uploaded logo SHA and 1280×593 source retained; welcome/header render and reopen offline','Bungee heading font loaded; amber default','phone primary action spans a full row','both Movefield localStorage, drafts, preferences, queues, IndexedDB roots and caches preserved through Grizzly migration/erasure','Grizzly preferences have their own key','system and in-app reduced motion stop paw animation','separate offline shell and heading font reopen offline']},null,2)+'\n');
  console.log('PASS Grizzly identity, dual-profile isolation, motion preferences and offline font');
 } finally {await browser.close();}

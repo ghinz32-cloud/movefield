@@ -39,3 +39,15 @@
 
 .grizzly-preview-title{display:flex;align-items:center;gap:8px;min-width:0}.grizzly-preview-title>svg{width:30px;height:30px;flex-shrink:0}.grizzly-preview-title small{display:block;color:#e6d1a8}
 @media(min-width:768px){body:has([data-sidebar=sidebar]) .grizzly-preview-banner{padding-left:18rem}}
+
+/* Use the original photograph. This viewport trims empty black side margins only. */
+.grizzly-logo-frame{position:relative;display:inline-block;width:56px;height:56px;flex-shrink:0;overflow:hidden;border-radius:10px;background:#000;vertical-align:middle}
+.grizzly-logo-frame .grizzly-logo-image{position:absolute;max-width:none;width:182.86%;height:auto;left:50%;top:50%;transform:translate(-50%,-50%)}
+[data-brand=grizzly] .brand .grizzly-logo-frame{width:56px;height:56px}
+[data-brand=grizzly] .flow-brand .grizzly-logo-frame{width:64px;height:64px}
+.grizzly-preview-title .grizzly-logo-frame{width:44px;height:44px}
+.grizzly-logo-frame.grizzly-logo-full{display:block;width:100%;height:auto;aspect-ratio:1280/593;border-radius:12px;margin:0 0 18px}
+.grizzly-logo-frame.grizzly-logo-full .grizzly-logo-image{position:static;width:100%;height:auto;transform:none}
+[data-brand=grizzly] .recovery-page .grizzly-logo-full{max-width:430px;margin:0 auto 22px}
+[data-brand=grizzly] .flow-brand{min-width:0}
+@media(max-width:400px){[data-brand=grizzly] .flow-brand .grizzly-logo-frame{width:48px;height:48px}}

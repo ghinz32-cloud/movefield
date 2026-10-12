@@ -1,17 +1,7 @@
-/** Original provisional bear mark. Replace only after retrieving the gym's logo. */
+import {publicPath} from '../lib/public-path';
+/** Display the uploaded JPEG directly; no redrawing or recoloring of its artwork. */
 export function GrizzlyMark({className}: {className?:string}) {
- return <svg className={className} viewBox="0 0 64 64" width="48" height="48" aria-hidden="true" focusable="false">
-  <rect width="64" height="64" rx="18" fill="#24221d"/>
-  <g fill="var(--brand-from, #f5cb79)">
-   <circle cx="17" cy="18" r="9"/><circle cx="47" cy="18" r="9"/>
-   <path d="M13 28 21 18 32 15 43 18 51 28 49 43 40 53H24L15 43Z"/>
-  </g>
-  <g fill="#24221d"><circle cx="17" cy="18" r="4"/><circle cx="47" cy="18" r="4"/>
-   <path d="m21 29 7 2-5 3Zm22 0-7 2 5 3Z"/>
-   <path d="m32 34 8 5-4 6h-8l-4-6Z"/>
-   <path d="M30 43h4v5h-4Z"/>
-  </g>
- </svg>;
+ return <span className={'grizzly-logo-frame '+(className||'')} aria-hidden="true"><img src={publicPath('/brand/grizzly-fitness-logo.jpg')} width="1280" height="593" alt="" className="grizzly-logo-image"/></span>;
 }
 
 export function GrizzlyPaw() {

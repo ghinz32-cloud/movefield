@@ -1,6 +1,6 @@
 # Grizzly Fitness Wautoma flavor
 
-This is a separate app identity built from the same training code. The bear mark and amber colors are provisional; the official gym website is https://www.fitnessgrizzly.com/ and its assets have not yet been retrieved in the managed environment.
+This is a separate app identity built from the same training code. The user supplied the Grizzly Fitness logo. `assets/grizzly-fitness-logo.jpg` preserves the uploaded JPEG unchanged; the Expo asset compiler renders the whole source onto square black launcher canvases. The amber colors are a custom app theme. Gym website: https://www.fitnessgrizzly.com/.
 
 After `npm ci`, use `npm run start:grizzly` for the Expo preview or `npm run export:grizzly` for Android/iOS JavaScript exports. For native compilation, set `EXPO_PUBLIC_APP_VARIANT=grizzly` in the terminal before `npm run android` / `npm run ios`. Clear Metro with `--clear` when switching flavors. Default commands continue to select Movefield.
 
