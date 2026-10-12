@@ -181,14 +181,27 @@
     "sourceSnapshotFiles": 49,
     "componentWorkflows": "Both flavors passed via React Native Web; OS/font boundaries mocked.",
     "platformExports": "Android and iOS Hermes bundles exported for each flavor.",
-    "physicalDevices": "Not tested."
+    "physicalDevices": "Not tested.",
+    "sourceArchives": {
+      "filesEach": 145,
+      "movefieldSHA256": "9e680e68de0327d42e74e14bb880df61d975a958bc56c223b6df53ae715df833",
+      "grizzlySHA256": "643080062b275291419f56ac983e71bf6c5e5ef92af5bf21442438cfc6a1f2ca"
+    }
   },
   "lint": {
     "exit": 0,
     "errors": 0,
     "warnings": 77
   },
-  "publication": "Prepared next; live evidence recorded separately.",
+  "publication": {
+    "pagesCommit": "b8a52c1269c0003fec4bad3d9a4d3aa343308013",
+    "implementationCommit": "a479bd5715d4b077cb252db8f795215f7a9f299f",
+    "applicationSHA256": "e826c4fb1ca42acc5ac478d9861d34ef076e70256a3a056022dcffc4153a611c",
+    "liveAssetHashes": 89,
+    "liveBrowserBrands": 2,
+    "originalRootFilesPreserved": 63,
+    "note": "Initial code release verified. Native ZIP packaging checkpoint/provenance follows; exact final IDs are recorded in HANDOFF.md and the local publication receipt."
+  },
   "researchLimits": [
     "Consensus and Wiley tools are not exposed in this run.",
     "Full ACSM 2026 publisher position stand returned HTTP 402.",
