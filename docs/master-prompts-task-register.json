@@ -6,13 +6,13 @@
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
   "active_checkpoint": "Encrypted per-record IndexedDB/SQLite, native calendar/reusable blocks/customization/progress/science parity, honest duration fitting, hardened SDK identity/session boundaries, rendered accessibility and reproducible Cloudflare account preparation; premium Today and a linked isolated GitHub Pages review preserving the existing deployed app",
-  "completion_claim": "Locally verified continuation checkpoint. Full six-prompt implementation and acceptance remain incomplete; no live deployment, physical-device qualification or full standards/scientific acceptance is claimed.",
+  "completion_claim": "The premium web review is published and live-verified. Full six-prompt implementation and acceptance remain incomplete; no physical-device or full standards/scientific acceptance is claimed.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
     "Saved environment network additions need activation for full-text research and repo.reactnative.dev Android artifact download. Current proxy denials are not bypassed.",
     "Mac/iOS toolchain, owner signing/update configuration and installed physical Android/iPhone device matrix; broad coverage target does not certify old/unpatched devices.",
     "Independent security/crypto/privacy/science/rights reviews and compatible native upstream advisory remediation. Remaining code is separately retained below.",
-    "GitHub Pages/API live verification: required destinations are saved but the current proxy denies them; owner publication authorization is already supplied."
+    "GitHub API build metadata remains denied; actual Pages delivery is independently confirmed by live manifest/asset/browser evidence. Remaining native/research domains need activation."
   ],
   "requirements": [
     {
@@ -1766,5 +1766,17 @@
     "full_security_control_passes": 0,
     "full_prompt_sections_accepted": 0
   },
-  "backend_decision": "Cloudflare remains the optional backend choice. The owner clarified GitHub Pages for immediate web review updates. Preserve the existing Pages app and publish a separately stored linked review; no Cloudflare credential is required for the repository push."
+  "backend_decision": "Cloudflare remains the optional backend choice. The owner clarified GitHub Pages for immediate web review updates. Preserve the existing Pages app and publish a separately stored linked review; no Cloudflare credential is required for the repository push.",
+  "github_pages_publication": {
+    "pages_commit": "7912af91627437e21d4530fece9a9612937c263f",
+    "base_pages_commit": "831fc32e045736fb9bb907b4de772099ce201ad7",
+    "source_commit": "a81ad7893e796b486378f0869211299b814e9426",
+    "application_source_sha256": "dc2b3b210c46f927fd55c97563ccf226b96ac63488aad346739c7f05c3825a33",
+    "candidate_file_count": 1821,
+    "review_url": "https://ghinz32-cloud.github.io/movefield/review/",
+    "pushed": true,
+    "live_verified": true,
+    "remote_head": "7912af91627437e21d4530fece9a9612937c263f",
+    "live_check_status": "Actual HTTPS manifest/source SHA, selected byte-identical assets and deployed sample/browser/navigation/phone smoke checks passed. GitHub API inspection remains denied."
+  }
 }

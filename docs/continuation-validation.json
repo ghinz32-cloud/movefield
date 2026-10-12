@@ -290,7 +290,7 @@
   },
   "android": "Project generation/plugin compilation passed; assembleRelease blocked by repo.reactnative.dev proxy 403; no APK.",
   "ios": "Project generation and Hermes export passed; minimum iOS 16.4; no signed/installed binary.",
-  "spending_or_remote_actions": "GitHub Pages review publication explicitly authorized and prepared. No push yet; live checks blocked by configured API/Pages destinations. No paid service, live model/user test, provisioning or remote CI.",
+  "spending_or_remote_actions": "Owner-authorized source review branch and gh-pages review publication completed with matching remote heads and live manifest/assets/sample browser checks. Existing original app/other source branches retained. No paid service/provider calls, provisioning, real user-record test or manually dispatched remote CI.",
   "pages_package": {
     "checkedAt": "2026-10-12T04:36:19.585Z",
     "scope": "Exact locally packaged Pages modules and assets through Miniflare; no upload, connected account or live Pages claim.",
@@ -302,5 +302,86 @@
       "server source and internal route denied",
       "review package keeps cloud and AI off despite old project flags"
     ]
+  },
+  "github_pages_publication": {
+    "pages_commit": "7912af91627437e21d4530fece9a9612937c263f",
+    "base_pages_commit": "831fc32e045736fb9bb907b4de772099ce201ad7",
+    "source_commit": "a81ad7893e796b486378f0869211299b814e9426",
+    "application_source_sha256": "dc2b3b210c46f927fd55c97563ccf226b96ac63488aad346739c7f05c3825a33",
+    "candidate_file_count": 1821,
+    "review_url": "https://ghinz32-cloud.github.io/movefield/review/",
+    "pushed": true,
+    "live_verified": true,
+    "remote_head": "7912af91627437e21d4530fece9a9612937c263f",
+    "live_check_status": "Actual HTTPS manifest/source SHA, selected byte-identical assets and deployed sample/browser/navigation/phone smoke checks passed. GitHub API inspection remains denied."
+  },
+  "github_pages_live_manifest": {
+    "checked_at": "2026-10-12T04:51:40.307424+00:00",
+    "url": "https://ghinz32-cloud.github.io/movefield/review/review-manifest.json",
+    "verified": true,
+    "http_status": 200,
+    "application_source_sha256": "dc2b3b210c46f927fd55c97563ccf226b96ac63488aad346739c7f05c3825a33",
+    "source_commit": "a81ad7893e796b486378f0869211299b814e9426"
+  },
+  "github_pages_live_assets": {
+    "checked_at": "2026-10-12T04:55:49.040309+00:00",
+    "scope": "Selected actual HTTPS GitHub Pages review assets via configured proxy/TLS; exact manifest byte hashes. No account/native/real-user qualification.",
+    "results": [
+      {
+        "path": "index.html",
+        "sha256": "5f4f4f69a60786c72c23b5fde240643d1da8cc70328842f06a9e670e889728a3",
+        "bytes": 868,
+        "status": "passed"
+      },
+      {
+        "path": "fonts/inter-variable.ttf",
+        "sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+        "bytes": 876576,
+        "status": "passed"
+      },
+      {
+        "path": "downloads/movefield-native-current.zip",
+        "sha256": "6ccd714d99d3e345dc61e5f53d19fbfb63550023be8efb8157960e1fd08f66a6",
+        "bytes": 1420491,
+        "status": "passed"
+      },
+      {
+        "path": "movefield-sw.js",
+        "sha256": "79eee568c743e2fa0116645442616d3afacb48151d7e26c9ed6eff7e4c94e5b6",
+        "bytes": 2886,
+        "status": "passed"
+      },
+      {
+        "path": "assets/cloud-account-Db8FP2L0.js",
+        "sha256": "6ded91a21939d7c9c8e99426c9f72fd08a526bbaf143b51289635a107798f5a1",
+        "bytes": 52947,
+        "status": "passed"
+      },
+      {
+        "path": "assets/index-BtbLaHWK.css",
+        "sha256": "cffe64d03f90654d33be4113f1d0272ed6fe0cf95e336563d1373d37cdb6941e",
+        "bytes": 206972,
+        "status": "passed"
+      },
+      {
+        "path": "assets/index-Dwp8FZJ-.js",
+        "sha256": "2d365ff60b56da4c50bdd13908dbee0a95908ccb8c958956129d5cb324be19ab",
+        "bytes": 1518776,
+        "status": "passed"
+      }
+    ]
+  },
+  "github_pages_live_browser": {
+    "checkedAt": "2026-10-12T04:53:46.169Z",
+    "url": "https://ghinz32-cloud.github.io/movefield/review/",
+    "scope": "Actual deployed review in sandboxed Chromium through the configured sidecar proxy with TLS verification. Fresh browser context, synthetic sample only; no private/server account mutation, native or real-user qualification.",
+    "checks": [
+      "Live review HTML and actual client boot",
+      "Live synthetic sample Today",
+      "Live calendar navigation",
+      "Live source library navigation",
+      "Live phone viewport containment"
+    ],
+    "errors": []
   }
 }
