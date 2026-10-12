@@ -4,7 +4,7 @@
   "brand": "Grizzly Fitness Wautoma",
   "profile_scope": "Separate brand profile, database, preferences and offline cache. Training code is shared.",
   "application_source_sha256": "e826c4fb1ca42acc5ac478d9861d34ef076e70256a3a056022dcffc4153a611c",
-  "source_commit": "a479bd5715d4b077cb252db8f795215f7a9f299f",
+  "source_commit": "a3a383a95c12942fae1056aa72f041a13b5b8c8d",
   "files": {
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "assets/cloud-account-hTxUb8C5.js": "1f1f14e2e97e1592df421582f476126489e9035d43543dca927d6566d26478cc",
