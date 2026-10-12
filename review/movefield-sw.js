@@ -1,10 +1,12 @@
 /* Local-only app shell; stores code/guides, never decrypted records or API responses. */
-const REVISION = "86ab70c7278315a32f89";
+const REVISION = "9dfa05afd72ef84f8cd4";
 const BASE = "/movefield/review/";
 const STATIC_REVIEW = true;
-const ASSETS = ["/movefield/review/assets/cloud-account-Db8FP2L0.js","/movefield/review/assets/index-BtbLaHWK.css","/movefield/review/assets/index-Dwp8FZJ-.js","/movefield/review/assets/progress-dashboard-DqB0Ja2o.js"];
-const CACHE = "movefield-review-shell-" + REVISION;
-const STATIC = new Set([...ASSETS, ...['exercise-guides.json', 'exercise-content.json', 'fonts/inter-variable.ttf', 'fonts/barlow-condensed-semibold.ttf'].map(path=>BASE+path)]);
+const ASSETS = ["/movefield/review/assets/cloud-account-9iA8MhC9.js","/movefield/review/assets/index-BtbLaHWK.css","/movefield/review/assets/index-CK5pL5T9.js","/movefield/review/assets/progress-dashboard-BUy8chbG.js"];
+const CACHE_PREFIX = "movefield-review-shell-";
+const EXTRA_STATIC = [];
+const CACHE = CACHE_PREFIX + REVISION;
+const STATIC = new Set([...ASSETS, ...['exercise-guides.json', 'exercise-content.json', 'fonts/inter-variable.ttf', 'fonts/barlow-condensed-semibold.ttf',...EXTRA_STATIC].map(path=>BASE+path)]);
 async function safeShell(response) { if(!response.ok||!response.headers.get('Content-Type')?.includes('text/html')||response.headers.has('Set-Cookie'))return false;return STATIC_REVIEW?(await response.clone().text()).includes('<meta name="movefield-static-review" content="true">'):response.headers.get('X-Movefield-Offline-Shell') === 'local-v1'; }
 self.addEventListener('install', event => event.waitUntil((async () => {
   if (REVISION === 'DEVELOPMENT_DISABLED') throw Error('Offline shell requires a qualified build.');
@@ -18,7 +20,7 @@ self.addEventListener('install', event => event.waitUntil((async () => {
   // Wait for all old windows to close. Do not reload an active workout for an update.
 })()));
 self.addEventListener('activate', event => event.waitUntil((async () => {
-  for (const key of await caches.keys()) if(key.startsWith(STATIC_REVIEW?'movefield-review-shell-':'movefield-shell-') && key !== CACHE) await caches.delete(key);
+  for (const key of await caches.keys()) if(key.startsWith(CACHE_PREFIX) && key !== CACHE) await caches.delete(key);
   await self.clients.claim();
 })()));
 self.addEventListener('fetch', event => {
