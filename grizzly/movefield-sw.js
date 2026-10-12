@@ -1,10 +1,10 @@
 /* Local-only app shell; stores code/guides, never decrypted records or API responses. */
-const REVISION = "c9af865495c17cb9e3e4";
+const REVISION = "1da6cbeb877e4e1ecde8";
 const BASE = "/movefield/grizzly/";
 const STATIC_REVIEW = true;
-const ASSETS = ["/movefield/grizzly/assets/cloud-account-BhJLltea.js","/movefield/grizzly/assets/index--U8s_B7f.js","/movefield/grizzly/assets/index-BsmtHePA.css","/movefield/grizzly/assets/progress-dashboard-C_5mxkAA.js"];
+const ASSETS = ["/movefield/grizzly/assets/cloud-account-DV-Sr7QO.js","/movefield/grizzly/assets/index-CVYzMMa9.css","/movefield/grizzly/assets/index-Dmps-BWC.js","/movefield/grizzly/assets/progress-dashboard-BD3flcEm.js"];
 const CACHE_PREFIX = "grizzly-fitness-shell-";
-const EXTRA_STATIC = ["fonts/bungee-regular.ttf","fonts/rubik-beastly-regular.ttf","fonts/metal-mania-regular.ttf","brand/grizzly-fitness-logo.jpg","grizzly-favicon.svg","grizzly-paw.svg"];
+const EXTRA_STATIC = ["fonts/inter-variable.ttf","fonts/barlow-condensed-semibold.ttf","fonts/oswald-heading.ttf","fonts/bitter-heading.ttf","fonts/rajdhani-heading.ttf","fonts/newrocker-heading.ttf","fonts/blackopsone-heading.ttf","fonts/rubikdirt-heading.ttf","fonts/metal-mania-regular.ttf","fonts/bungee-regular.ttf","fonts/sairastencilone-heading.ttf","fonts/stardosstencil-heading.ttf","fonts/pirataone-heading.ttf","fonts/eater-heading.ttf","fonts/nosifer-heading.ttf","brand/grizzly-fitness-logo.jpg","grizzly-favicon.svg","grizzly-paw.svg"];
 const CACHE = CACHE_PREFIX + REVISION;
 const STATIC = new Set([...ASSETS, ...['exercise-guides.json', 'exercise-content.json', 'fonts/inter-variable.ttf', 'fonts/barlow-condensed-semibold.ttf',...EXTRA_STATIC].map(path=>BASE+path)]);
 async function safeShell(response) { if(!response.ok||!response.headers.get('Content-Type')?.includes('text/html')||response.headers.has('Set-Cookie'))return false;return STATIC_REVIEW?(await response.clone().text()).includes('<meta name="movefield-static-review" content="true">'):response.headers.get('X-Movefield-Offline-Shell') === 'local-v1'; }
