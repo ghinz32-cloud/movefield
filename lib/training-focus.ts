@@ -59,7 +59,7 @@ export function applyTrainingFocus(input:Plan,events:Event[]=[]):{plan:Plan|null
  const byWeek=new Map<number,Session[]>();for(const s of plan.sessions){const group=byWeek.get(s.week)||[];group.push(s);byWeek.set(s.week,group)}
  const totals={core:0,jumping:0,supersets:0,activity:0};
  const fits=(s:Session,minutes:number)=>s.minutes+minutes<=p.minutes;
- const strength=(s:Session)=>!s.runSteps&&s.items.length>0;
+ const strength=(s:Session)=>s.kind!=='Easy activity'&&!s.runSteps&&s.items.length>0;
  for(const [week,sessions] of byWeek){
   const lifts=sessions.filter(strength),weekErrors:string[]=[];
   if(focuses.includes('jumping')){
@@ -104,6 +104,6 @@ export function applyTrainingFocus(input:Plan,events:Event[]=[]):{plan:Plan|null
  if(focuses.includes('supersets'))plan.notes.push(`${PREFIX} Supersets: ${totals.supersets} assistance pairs. A1 then A2, then the combined rest (at least two minutes). Pair notes tell you what to log; no time saving is assumed and no main lift is paired.`);
  if(focuses.includes('activity'))plan.notes.push(`${PREFIX} Activity support adds two 10-minute walks per week when this is a strength-only plan, or uses existing easy run/walk work. These walks are a small addition, not a complete activity or weight-management plan. Supersets do not guarantee fat loss.`);
  plan.notes.push(`${PREFIX} The exact sets and reps and scheduling cutoffs are conservative product choices within source principles, not a validated personalized program. Sources: ${focusSources.map(s=>s.url).join(' ; ')}`);
- for(const session of plan.sessions){if(session.runSteps?.length)continue;session.minutes=Math.max(session.minutes,estimateSessionMinutes(session.items,session.timeProfile==='brief'));if(session.minutes>p.minutes)return {plan:null,errors:[`${session.title} needs up to ${session.minutes} minutes after these add-ons. Increase availability or remove an add-on.`]};}
+ for(const session of plan.sessions){if(session.kind==='Easy activity'||session.runSteps?.length)continue;session.minutes=Math.max(session.minutes,estimateSessionMinutes(session.items,session.timeProfile==='brief'));if(session.minutes>p.minutes)return {plan:null,errors:[`${session.title} needs up to ${session.minutes} minutes after these add-ons. Increase availability or remove an add-on.`]};}
  return {plan,errors:[]};
 }

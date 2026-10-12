@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-07",
-  "totalCatalogEntries": 989,
+  "date": "2026-10-12",
+  "totalCatalogEntries": 995,
   "previousDetailedGuides": 122,
   "completedReferenceGuides": 866,
   "entriesWithPhotos": 863,
@@ -10,7 +10,7 @@
   "sourceDatasetSHA256": "5bb747e3fc658f095a60dcbf6d53c96627acdcc6ffb6fffde86f7e26995d40bf",
   "sourceLicense": "https://github.com/yuhonas/free-exercise-db/blob/main/LICENSE.md",
   "reviewScope": "Source comparison, authored movement-specific prose, metadata correction and automated completeness checks. This is not independent clinical or professional certification. Exact-variation videos are not available for every entry.",
-  "correctionsPolicy": "Prelaunch prototype: existing IDs and metadata corrected directly; no production user-history migration is needed.",
+  "correctionsPolicy": "Existing exercise IDs and logging conventions retained. Six new named home variations have separate histories; no accepted plan or workout is rewritten.",
   "photos": [
     {
       "path": "3_4_Sit-Up/0.jpg",
@@ -8643,5 +8643,6 @@
       "bytes": 48119
     }
   ],
-  "newPracticeGuide": "lib-small-jump-reset"
+  "newPracticeGuide": "lib-small-jump-reset",
+  "additionalAuthoredHomeVariants": 6
 }

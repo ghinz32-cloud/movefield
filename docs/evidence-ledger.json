@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "checked_at": "2026-10-11",
-  "scope": "Inventory of existing linked references, not a completed scientific review. New source retrieval is blocked by the managed proxy pending saved research-network activation. No new numerical training prescription is derived from this ledger.",
+  "checked_at": "2026-10-12",
+  "scope": "Historical inventory is preserved. Current access probes and review depths are appended; retrieval is not automatic scientific qualification. PubMed pages returned bot challenges, APIs/publisher hosts remain restricted, and the full 2026 stand requires publisher payment. Current review uses actual retrieved official documents without bypassing restrictions.",
   "archive_inventory": {
     "linked_sources": 15,
     "abstract_screened_current": 0,
@@ -11,7 +11,7 @@
   "sources": [
     {
       "id": "TIME-EFFICIENT",
-      "title": "Iversen et al. · Time-efficient strength training",
+      "title": "Iversen et al. \u00b7 Time-efficient strength training",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -28,7 +28,7 @@
       "limitations": [
         "Current original metadata, methods, populations, results, tables/figures and applicability have not been verified. Existing descriptive summaries must not establish scientific certification."
       ],
-      "date_checked": "2026-10-11",
+      "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
       "review_depth": "linked-reference inventory only",
       "existing_summary": "Short focused sessions can distribute training across the week. Our 15-minute plans use less weekly work and do not promise the same results as longer plans.",
@@ -39,11 +39,17 @@
       ],
       "conflicts": [],
       "corrections_retractions": "not checked",
-      "status": "review pending"
+      "status": "review pending",
+      "current_access_probe": {
+        "id": "TIME-EFFICIENT",
+        "url": "https://link.springer.com/article/10.1007/s40279-021-01490-1",
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+        "checked_at": "2026-10-12"
+      }
     },
     {
       "id": "REP-PROGRESSION",
-      "title": "Plotkin et al. · Repetition versus load progression",
+      "title": "Plotkin et al. \u00b7 Repetition versus load progression",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -60,7 +66,7 @@
       "limitations": [
         "Current original metadata, methods, populations, results, tables/figures and applicability have not been verified. Existing descriptive summaries must not establish scientific certification."
       ],
-      "date_checked": "2026-10-11",
+      "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
       "review_depth": "linked-reference inventory only",
       "existing_summary": "An eight-week study supports repetitions as one progression route. This does not prove indefinite progress at a fixed weight or equal maximal-strength transfer.",
@@ -71,11 +77,20 @@
       ],
       "conflicts": [],
       "corrections_retractions": "not checked",
-      "status": "review pending"
+      "status": "review pending",
+      "current_access_probe": {
+        "id": "REP-PROGRESSION",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36199287/",
+        "status": 203,
+        "bytes": 5590,
+        "sha256": "c3806cc7424f397cdf15887b77adf65e94335a9b3658095a5a37d3424c3cd117",
+        "title": "pubmed.ncbi.nlm.nih.gov",
+        "checked_at": "2026-10-12"
+      }
     },
     {
       "id": "SEX-RESPONSE",
-      "title": "Roberts et al. · Sex differences in resistance training",
+      "title": "Roberts et al. \u00b7 Sex differences in resistance training",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -92,7 +107,7 @@
       "limitations": [
         "Current original metadata, methods, populations, results, tables/figures and applicability have not been verified. Existing descriptive summaries must not establish scientific certification."
       ],
-      "date_checked": "2026-10-11",
+      "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
       "review_depth": "linked-reference inventory only",
       "existing_summary": "Group response differences do not justify fixed sex-based loads or separate goal menus. Individual capacity and actual feedback guide this app.",
@@ -101,41 +116,69 @@
       "rule_ids": [],
       "conflicts": [],
       "corrections_retractions": "not checked",
-      "status": "review pending"
+      "status": "review pending",
+      "current_access_probe": {
+        "id": "SEX-RESPONSE",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32218059/",
+        "status": 203,
+        "bytes": 5590,
+        "sha256": "9ce99879b0c183531df720bd46e22d3518f174ed82385a9dc71e7053f07c27ca",
+        "title": "pubmed.ncbi.nlm.nih.gov",
+        "checked_at": "2026-10-12"
+      }
     },
     {
       "id": "OLDER-ADULT",
-      "title": "NSCA · Resistance training for older adults",
-      "authors": [],
-      "authors_verification": "pending original metadata",
-      "year": null,
+      "title": "NSCA \u00b7 Resistance training for older adults",
+      "authors": [
+        "Maren S. Fragala",
+        "Eduardo L. Cadore",
+        "Sandro Dorgo",
+        "Mikel Izquierdo",
+        "William J. Kraemer",
+        "Mark D. Peterson",
+        "Eric D. Ryan"
+      ],
+      "authors_verification": "Title page of retrieved official PDF",
+      "year": 2019,
       "doi": null,
       "pmid": null,
       "canonical_link": "https://www.nsca.com/contentassets/2a4112fb355a4a48853bbafbe070fb8e/resistance_training_for_older_adults__position.1.pdf",
       "source_type": "professional or public guidance reference",
-      "population": null,
+      "population": "Older adults; broad variation in function and health",
       "training_status": null,
       "exposure": null,
       "comparator": null,
       "outcomes": [],
       "quantitative_findings": [],
       "limitations": [
-        "Current original metadata, methods, populations, results, tables/figures and applicability have not been verified. Existing descriptive summaries must not establish scientific certification."
+        "Healthy adult options are not treatment for frailty, chronic disease or unstable medical conditions.",
+        "The source\u2019s clinical contraindications are not turned into diagnosis or automatic clearance by the app.",
+        "Six-day split distribution is an app choice; the statement describes 2\u20133 weekly resistance-training sessions and does not test these exact app splits."
       ],
-      "date_checked": "2026-10-11",
-      "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
-      "review_depth": "linked-reference inventory only",
+      "date_checked": "2026-10-12",
+      "access": "Official full PDF retrieved and text extracted on 2026-10-12",
+      "review_depth": "Full official PDF retrieved; synthesis, methods/applicability, intensity/volume and contraindication sections reviewed.",
       "existing_summary": "Training adapts to function, experience and tolerance; chronological age alone does not determine the starting load.",
-      "claim_supported": null,
-      "applicability": "pending source review",
+      "claim_supported": "Individualize to function, experience and health; strength and function can improve; chronological age alone does not define capability.",
+      "applicability": "Accessible standing/seated, machine, home and two-strength-day daily-habit options. Age does not assign a starting weight. Symptom holds and individually selected loads remain in place.",
       "rule_ids": [],
       "conflicts": [],
       "corrections_retractions": "not checked",
-      "status": "review pending"
+      "status": "Selected full-text recommendations applied; no clinical clearance inferred",
+      "current_access_probe": {
+        "id": "OLDER-ADULT",
+        "url": "https://www.nsca.com/contentassets/2a4112fb355a4a48853bbafbe070fb8e/resistance_training_for_older_adults__position.1.pdf",
+        "status": 200,
+        "bytes": 1305768,
+        "sha256": "2c4152fb1d0d5ecb1aaa98e7fffe71b6dcf121711701dbd47f66900816e69554",
+        "title": "",
+        "checked_at": "2026-10-12"
+      }
     },
     {
       "id": "AAP-2020",
-      "title": "AAP · Resistance Training for Children and Adolescents",
+      "title": "AAP \u00b7 Resistance Training for Children and Adolescents",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -152,7 +195,7 @@
       "limitations": [
         "Current original metadata, methods, populations, results, tables/figures and applicability have not been verified. Existing descriptive summaries must not establish scientific certification."
       ],
-      "date_checked": "2026-10-11",
+      "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
       "review_depth": "linked-reference inventory only",
       "existing_summary": "Qualified instruction, appropriate supervision, low initial intensity, and gradual progression tied to observed competence.",
@@ -163,73 +206,123 @@
       ],
       "conflicts": [],
       "corrections_retractions": "not checked",
-      "status": "review pending"
+      "status": "review pending",
+      "current_access_probe": {
+        "id": "AAP-2020",
+        "url": "https://publications.aap.org/pediatrics/article/145/6/e20201011/76942/Resistance-Training-for-Children-and-Adolescents",
+        "error": "HTTP Error 403: Forbidden",
+        "checked_at": "2026-10-12"
+      }
     },
     {
       "id": "NSCA-YOUTH",
-      "title": "NSCA · Youth resistance training position statement",
-      "authors": [],
-      "authors_verification": "pending original metadata",
-      "year": null,
+      "title": "NSCA \u00b7 Youth resistance training position statement",
+      "authors": [
+        "Avery D. Faigenbaum",
+        "William J. Kraemer",
+        "Cameron J. R. Blimkie",
+        "Ian Jeffreys",
+        "Lyle J. Micheli",
+        "Mike Nitka",
+        "Thomas W. Rowland"
+      ],
+      "authors_verification": "Title page of retrieved official PDF",
+      "year": 2009,
       "doi": null,
       "pmid": null,
       "canonical_link": "https://www.nsca.com/globalassets/about/position-statements/position_stand_youth_resistance_training---2009.pdf",
       "source_type": "professional or public guidance reference",
-      "population": null,
+      "population": "Children and adolescents; qualified supervision and individual readiness",
       "training_status": null,
       "exposure": null,
       "comparator": null,
       "outcomes": [],
       "quantitative_findings": [],
       "limitations": [
-        "Current original metadata, methods, populations, results, tables/figures and applicability have not been verified. Existing descriptive summaries must not establish scientific certification."
+        "A 2009 position statement; newer AAP/IOC sources could not be retrieved in this session.",
+        "The app uses conservative practice sets and supervisor selection; the document does not validate the app\u2019s precise progression algorithm."
       ],
-      "date_checked": "2026-10-11",
-      "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
-      "review_depth": "linked-reference inventory only",
+      "date_checked": "2026-10-12",
+      "access": "Official full PDF retrieved and text extracted on 2026-10-12",
+      "review_depth": "Full official PDF retrieved; Table 1 and exercise-choice, order, warm-up, intensity and volume sections reviewed.",
       "existing_summary": "A broad strength foundation, dynamic warm-up, nonconsecutive training, and appropriate rest.",
-      "claim_supported": null,
-      "applicability": "pending source review",
+      "claim_supported": "Qualified supervision; technique first; dynamic warm-up; balanced upper/lower/core work; start with 2\u20133 nonconsecutive strength days.",
+      "applicability": "Youth daily-habit options use two supervised strength sessions plus easy walking. Adult six-day lifting splits and automatic adult load increases remain unavailable.",
       "rule_ids": [
         "youth-path-v1"
       ],
       "conflicts": [],
       "corrections_retractions": "not checked",
-      "status": "review pending"
+      "status": "Selected full-text recommendations applied; not a complete modern youth evidence synthesis",
+      "current_access_probe": {
+        "id": "NSCA-YOUTH",
+        "url": "https://www.nsca.com/globalassets/about/position-statements/position_stand_youth_resistance_training---2009.pdf",
+        "status": 200,
+        "bytes": 198736,
+        "sha256": "136875723a4f882d1f668efcee682015fa76452032f4fa7056287cb621a5f1c9",
+        "title": "",
+        "checked_at": "2026-10-12"
+      }
     },
     {
       "id": "ACSM-2026",
-      "title": "ACSM · Resistance Training Prescription, 2026",
+      "title": "ACSM \u00b7 Resistance Training Prescription, 2026",
       "authors": [],
       "authors_verification": "pending original metadata",
-      "year": "2026",
+      "year": 2026,
       "doi": null,
       "pmid": null,
       "canonical_link": "https://acsm.org/resistance-training-guidelines-update-2026/",
-      "source_type": "professional or public guidance reference",
-      "population": null,
+      "source_type": "Official public summary of a position stand",
+      "population": "Healthy adults",
       "training_status": null,
       "exposure": null,
       "comparator": null,
       "outcomes": [],
-      "quantitative_findings": [],
-      "limitations": [
-        "Current original metadata, methods, populations, results, tables/figures and applicability have not been verified. Existing descriptive summaries must not establish scientific certification."
+      "quantitative_findings": [
+        {
+          "claim": "Strength emphasis",
+          "public_guidance": "Heavier resistance, about 80% 1RM; 2\u20133 sets per exercise.",
+          "use": "No percentage-based starting loads or 1RM tests are assigned."
+        },
+        {
+          "claim": "Hypertrophy emphasis",
+          "public_guidance": "Higher weekly volume, about 10 sets per muscle group.",
+          "use": "Preview shows regional involvement counts and distinguishes low-dose practice from fuller blocks; indirect work is not converted into isolation-set equivalents."
+        },
+        {
+          "claim": "Frequency",
+          "public_guidance": "Train all major muscle groups at least twice per week.",
+          "use": "Complete foundations are checked for repeated chest/back/quadriceps/hamstring/glute coverage. Exact short-practice scopes remain explicit."
+        }
       ],
-      "date_checked": "2026-10-11",
-      "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
-      "review_depth": "linked-reference inventory only",
+      "limitations": [
+        "This is the ACSM public summary, not the full 137-review methods, tables or certainty assessment.",
+        "Source principles do not validate every exercise combination, numerical rep range, recovery gap, app progression ceiling or exact user result."
+      ],
+      "date_checked": "2026-10-12",
+      "access": "Official ACSM 2026 public guidance retrieved; publisher full position stand returned HTTP 402. No paywall bypass.",
+      "review_depth": "Official public summary read; full publisher position stand unavailable (HTTP 402).",
       "existing_summary": "Adult guidance distinguishes strength, hypertrophy and power outcomes. Consistent progressive training matters; failure is not essential.",
-      "claim_supported": null,
-      "applicability": "pending source review",
+      "claim_supported": "Regular individualized training; major muscle groups at least twice weekly; goal-specific strength, hypertrophy and power emphasis; bands/bodyweight/home can be effective.",
+      "applicability": "Adult original templates. Six total training days with muscle groups repeated twice is an app distribution choice; seven-day choices include easy activity, not seven hard sessions.",
       "rule_ids": [],
       "conflicts": [],
       "corrections_retractions": "not checked",
-      "status": "review pending"
+      "status": "Public principles reviewed; exact app dosing remains an implementation decision",
+      "current_access_probe": {
+        "id": "ACSM-2026",
+        "url": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "status": 200,
+        "bytes": 391646,
+        "sha256": "93767fdf4f1d873857ce93e1c85171e96fab0183d5c82efe36d0375ec1279f58",
+        "title": "ACSM Publishes Updated Resistance Training Guidelines",
+        "checked_at": "2026-10-12"
+      }
     },
     {
       "id": "ACSM-2009",
-      "title": "ACSM · Historical progression statement (2009)",
+      "title": "ACSM \u00b7 Historical progression statement (2009)",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": "2009",
@@ -246,7 +339,7 @@
       "limitations": [
         "Current original metadata, methods, populations, results, tables/figures and applicability have not been verified. Existing descriptive summaries must not establish scientific certification."
       ],
-      "date_checked": "2026-10-11",
+      "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
       "review_depth": "linked-reference inventory only",
       "existing_summary": "Superseded by the 2026 adult position stand. Historical context only. A published range is not a universal automatic load increase.",
@@ -255,11 +348,20 @@
       "rule_ids": [],
       "conflicts": [],
       "corrections_retractions": "not checked",
-      "status": "historical, not current prescription support"
+      "status": "historical, not current prescription support",
+      "current_access_probe": {
+        "id": "ACSM-2009",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/19204579/",
+        "status": 203,
+        "bytes": 5590,
+        "sha256": "181af63ce620784a0ee7f24d0b4978af6766e0345f610aa437aa68f2ef885e6f",
+        "title": "pubmed.ncbi.nlm.nih.gov",
+        "checked_at": "2026-10-12"
+      }
     },
     {
       "id": "IOC-YOUTH",
-      "title": "IOC · Youth athletic development consensus",
+      "title": "IOC \u00b7 Youth athletic development consensus",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -276,7 +378,7 @@
       "limitations": [
         "Current original metadata, methods, populations, results, tables/figures and applicability have not been verified. Existing descriptive summaries must not establish scientific certification."
       ],
-      "date_checked": "2026-10-11",
+      "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
       "review_depth": "linked-reference inventory only",
       "existing_summary": "Development, experience and total sport demands require individual consideration.",
@@ -288,11 +390,17 @@
       ],
       "conflicts": [],
       "corrections_retractions": "not checked",
-      "status": "review pending"
+      "status": "review pending",
+      "current_access_probe": {
+        "id": "IOC-YOUTH",
+        "url": "https://bjsm.bmj.com/content/49/13/843",
+        "error": "HTTP Error 429: Too Many Requests",
+        "checked_at": "2026-10-12"
+      }
     },
     {
       "id": "PL-EXPERT",
-      "title": "Powerlifting program architecture · Barbell Medicine",
+      "title": "Powerlifting program architecture \u00b7 Barbell Medicine",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -309,7 +417,7 @@
       "limitations": [
         "Current original metadata, methods, populations, results, tables/figures and applicability have not been verified. Existing descriptive summaries must not establish scientific certification."
       ],
-      "date_checked": "2026-10-11",
+      "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
       "review_depth": "linked-reference inventory only",
       "existing_summary": "Expert program examples centered on squat, bench and deadlift. Our templates are original, not copies or endorsed programs.",
@@ -318,11 +426,20 @@
       "rule_ids": [],
       "conflicts": [],
       "corrections_retractions": "not checked",
-      "status": "review pending"
+      "status": "review pending",
+      "current_access_probe": {
+        "id": "PL-EXPERT",
+        "url": "https://www.barbellmedicine.com/training-programs/powerlifting/",
+        "status": 200,
+        "bytes": 370491,
+        "sha256": "13471a30fede47df7d4561690865811327fb3f79460acfd441ecc4d806a1df31",
+        "title": "Powerlifting Programs - Barbell Medicine",
+        "checked_at": "2026-10-12"
+      }
     },
     {
       "id": "PB-EXPERT",
-      "title": "Powerbuilding architecture · Barbell Medicine",
+      "title": "Powerbuilding architecture \u00b7 Barbell Medicine",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -339,7 +456,7 @@
       "limitations": [
         "Current original metadata, methods, populations, results, tables/figures and applicability have not been verified. Existing descriptive summaries must not establish scientific certification."
       ],
-      "date_checked": "2026-10-11",
+      "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
       "review_depth": "linked-reference inventory only",
       "existing_summary": "Examples combining strength and hypertrophy. Exact app prescriptions remain product choices.",
@@ -348,11 +465,20 @@
       "rule_ids": [],
       "conflicts": [],
       "corrections_retractions": "not checked",
-      "status": "review pending"
+      "status": "review pending",
+      "current_access_probe": {
+        "id": "PB-EXPERT",
+        "url": "https://www.barbellmedicine.com/training-programs/powerbuilding/",
+        "status": 200,
+        "bytes": 357057,
+        "sha256": "ecf3ae7761399bbc1ded18ca321bb2c1cfc4e3f070d35e7597efb676f1dc1c18",
+        "title": "Powerbuilding Programs For Muscle &amp; Strength",
+        "checked_at": "2026-10-12"
+      }
     },
     {
       "id": "HYP-EXPERT",
-      "title": "Hypertrophy program examples · Jeff Nippard",
+      "title": "Hypertrophy program examples \u00b7 Jeff Nippard",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -369,7 +495,7 @@
       "limitations": [
         "Current original metadata, methods, populations, results, tables/figures and applicability have not been verified. Existing descriptive summaries must not establish scientific certification."
       ],
-      "date_checked": "2026-10-11",
+      "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
       "review_depth": "linked-reference inventory only",
       "existing_summary": "Expert split examples; no commercial routines are reproduced.",
@@ -378,11 +504,20 @@
       "rule_ids": [],
       "conflicts": [],
       "corrections_retractions": "not checked",
-      "status": "review pending"
+      "status": "review pending",
+      "current_access_probe": {
+        "id": "HYP-EXPERT",
+        "url": "https://jeffnippard.com/products/fundamentals-hypertrophy-program",
+        "status": 200,
+        "bytes": 265155,
+        "sha256": "830172c8766f76ee28d0b8b58eddc5a27695bcc692672d7f7c6194042798e6d0",
+        "title": "\n    Fundamentals Hypertrophy Program\n    \n     &ndash; Jeff Nippard Fitness\n  ",
+        "checked_at": "2026-10-12"
+      }
     },
     {
       "id": "CONCURRENT",
-      "title": "Concurrent training · systematic review and meta-analysis",
+      "title": "Concurrent training \u00b7 systematic review and meta-analysis",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -399,7 +534,7 @@
       "limitations": [
         "Current original metadata, methods, populations, results, tables/figures and applicability have not been verified. Existing descriptive summaries must not establish scientific certification."
       ],
-      "date_checked": "2026-10-11",
+      "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
       "review_depth": "linked-reference inventory only",
       "existing_summary": "Strength and endurance can be combined. Explosive-strength interference can depend on training arrangement; our hybrid base separates sessions.",
@@ -410,11 +545,17 @@
       ],
       "conflicts": [],
       "corrections_retractions": "not checked",
-      "status": "review pending"
+      "status": "review pending",
+      "current_access_probe": {
+        "id": "CONCURRENT",
+        "url": "https://link.springer.com/article/10.1007/s40279-021-01587-7",
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+        "checked_at": "2026-10-12"
+      }
     },
     {
       "id": "EXERCISE-DATA",
-      "title": "Exercise reference catalog · public-domain dataset",
+      "title": "Exercise reference catalog \u00b7 public-domain dataset",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -431,7 +572,7 @@
       "limitations": [
         "Current original metadata, methods, populations, results, tables/figures and applicability have not been verified. Existing descriptive summaries must not establish scientific certification."
       ],
-      "date_checked": "2026-10-11",
+      "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
       "review_depth": "linked-reference inventory only",
       "existing_summary": "Detailed source-based guides and exact-record photos. Each variation states its logging rules. Independent professional certification and universal video coverage are not claimed.",
@@ -440,39 +581,73 @@
       "rule_ids": [],
       "conflicts": [],
       "corrections_retractions": "not checked",
-      "status": "review pending"
+      "status": "review pending",
+      "current_access_probe": {
+        "id": "EXERCISE-DATA",
+        "url": "https://github.com/yuhonas/free-exercise-db",
+        "status": 200,
+        "bytes": 332235,
+        "sha256": "938c37daf4e675406504332cf174355fc83462ea150956adc38a54efdea83c1d",
+        "title": "GitHub - yuhonas/free-exercise-db: Open Public Domain Exercise Dataset in JSON format, over 800 exercises with a browsable public searchable frontend \u00b7 GitHub",
+        "checked_at": "2026-10-12"
+      }
     },
     {
       "id": "NHS-C25K",
-      "title": "NHS · Couch to 5K",
+      "title": "NHS \u00b7 Couch to 5K",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
       "doi": null,
       "pmid": null,
       "canonical_link": "https://www.nhs.uk/better-health/get-active/get-running-with-couch-to-5k/couch-to-5k-running-plan/",
-      "source_type": "professional or public guidance reference",
-      "population": null,
+      "source_type": "Official public-health running schedule",
+      "population": "Adult beginner runners",
       "training_status": null,
       "exposure": null,
       "comparator": null,
       "outcomes": [],
       "quantitative_findings": [],
       "limitations": [
-        "Current original metadata, methods, populations, results, tables/figures and applicability have not been verified. Existing descriptive summaries must not establish scientific certification."
+        "Thirty running minutes do not guarantee a 5 km distance.",
+        "The separately labeled short walk\u2013run and hybrid introductions are app-authored and do not reproduce the NHS nine-stage plan.",
+        "The app adds a scheduling buffer, not additional mandatory running work."
       ],
-      "date_checked": "2026-10-11",
-      "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
-      "review_depth": "linked-reference inventory only",
+      "date_checked": "2026-10-12",
+      "access": "Official current full plan page retrieved on 2026-10-12",
+      "review_depth": "Current official page read; all 27 displayed sequences compared to canonical app recipes with walking warm-up/cool-down.",
       "existing_summary": "A staged run/walk program with three weekly runs and rest days between. Repeat stages when needed.",
-      "claim_supported": null,
-      "applicability": "pending source review",
+      "claim_supported": "Nine stages, three separated runs each week, progression toward 30 continuous minutes; repeat stages when needed.",
+      "applicability": "Six/seven activity-day options preserve three source runs and add comfortable walking on the other selected days.",
       "rule_ids": [
         "source-run-walk-v1"
       ],
       "conflicts": [],
       "corrections_retractions": "not checked",
-      "status": "review pending"
+      "status": "Source sequence verified; additional easy walks are app choices",
+      "current_access_probe": {
+        "id": "NHS-C25K",
+        "url": "https://www.nhs.uk/better-health/get-active/get-running-with-couch-to-5k/couch-to-5k-running-plan/",
+        "status": 200,
+        "bytes": 124810,
+        "sha256": "abe951b9e6d1bb7a0465ebec9dc9a9d0823e85801e79258d1da0096acaec18d7",
+        "title": "Couch to 5K running plan - Better Health - NHS",
+        "checked_at": "2026-10-12"
+      }
     }
-  ]
+  ],
+  "current_audit_started": "2026-10-12",
+  "current_review": {
+    "official_public_summary_reviewed": 1,
+    "full_documents_retrieved_selected_sections_reviewed": 2,
+    "official_running_sequence_compared": 1,
+    "full_2026_position_stand_reviewed": false,
+    "exact_app_programs_independently_validated": false,
+    "plugin_tools_available": {
+      "Consensus": false,
+      "Wiley Scholar Gateway": false,
+      "Cloudflare": false
+    },
+    "scope": "Current tools do not expose the user-linked plugins. Review uses retrieved ACSM public guidance, selected NSCA position-statement sections, and all 27 NHS running sequences. No bot-challenge response is treated as an abstract."
+  }
 }

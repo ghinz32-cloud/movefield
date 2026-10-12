@@ -181,7 +181,7 @@
     "id": "core-hanging-knee-raise",
     "name": "Hanging knee raise",
     "pattern": "Core",
-    "equipment": "Other / unspecified",
+    "equipment": "Pull-up bar",
     "metric": "reps",
     "loadConvention": "Bodyweight only; one simultaneous knee raise is one repetition. Requires a secure overhead bar.",
     "loadMultiplier": 0,
@@ -204,7 +204,7 @@
     "id": "core-hanging-leg-raise",
     "name": "Hanging straight-leg raise",
     "pattern": "Core",
-    "equipment": "Other / unspecified",
+    "equipment": "Pull-up bar",
     "metric": "reps",
     "loadConvention": "Bodyweight only; one simultaneous leg raise is one repetition. Requires a secure overhead bar.",
     "loadMultiplier": 0,
@@ -227,7 +227,7 @@
     "id": "core-captain-chair-knee-raise",
     "name": "Captain's chair knee raise",
     "pattern": "Core",
-    "equipment": "Other / unspecified",
+    "equipment": "Vertical knee-raise station",
     "metric": "reps",
     "loadConvention": "Bodyweight only; count each simultaneous knee raise as one repetition. Record the support station.",
     "loadMultiplier": 0,
@@ -250,7 +250,7 @@
     "id": "core-captain-chair-leg-raise",
     "name": "Captain's chair straight-leg raise",
     "pattern": "Core",
-    "equipment": "Other / unspecified",
+    "equipment": "Vertical knee-raise station",
     "metric": "reps",
     "loadConvention": "Bodyweight only; count each simultaneous leg raise as one repetition. Record the support station.",
     "loadMultiplier": 0,
@@ -273,7 +273,7 @@
     "id": "core-kneeling-ab-wheel",
     "name": "Kneeling ab-wheel rollout",
     "pattern": "Core",
-    "equipment": "Other / unspecified",
+    "equipment": "Ab wheel",
     "metric": "reps",
     "loadConvention": "Bodyweight leverage exercise; do not enter bodyweight as lifted load. Record wheel and rollout range.",
     "loadMultiplier": 0,
@@ -720,7 +720,7 @@
     "id": "core-stability-ball-crunch",
     "name": "Stability-ball crunch",
     "pattern": "Core",
-    "equipment": "Other / unspecified",
+    "equipment": "Stability ball",
     "metric": "reps",
     "loadConvention": "Bodyweight only; record ball size and foot position, not bodyweight as lifted load.",
     "loadMultiplier": 0,
@@ -22189,5 +22189,148 @@
       "calves",
       "glutes"
     ]
+  },
+  {
+    "id": "lib-single-db-rdl",
+    "name": "Two-hand single-dumbbell Romanian deadlift",
+    "pattern": "Hinge",
+    "equipment": "Dumbbell",
+    "metric": "reps",
+    "cues": [
+      "Move your hips back as the dumbbell travels close to your legs. Keep the knee bend fairly steady.",
+      "Lower only as far as you can keep your trunk controlled; reaching the floor is not the target.",
+      "Push through your feet and bring your hips forward to stand. Finish upright without leaning backward."
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/dumbbell-romanian-deadlift",
+    "loadConvention": "One dumbbell held in both hands; enter its total weight and total repetitions.",
+    "loadMultiplier": 1,
+    "loadTracked": true,
+    "requiresSetup": false,
+    "primaryMuscles": [
+      "hamstrings",
+      "glutes"
+    ],
+    "instructionStatus": "authored-variation",
+    "progressionEnabled": true,
+    "category": "Home strength"
+  },
+  {
+    "id": "lib-band-standing-row",
+    "name": "Standing anchored resistance-band row",
+    "pattern": "Pull",
+    "equipment": "Resistance band",
+    "metric": "reps",
+    "cues": [
+      "Pull your elbows back toward your sides while keeping your trunk steady.",
+      "Pause briefly without forcing your shoulders backward or leaning away from the anchor.",
+      "Let the arms reach forward under control. Repeat with the same stance and distance."
+    ],
+    "source": "https://www.acefitness.org/resources/everyone/exercise-library/48/seated-row/",
+    "loadConvention": "Record band identity, anchor height and starting distance; total simultaneous repetitions. Do not invent a kilogram value.",
+    "loadMultiplier": 0,
+    "loadTracked": false,
+    "requiresSetup": true,
+    "primaryMuscles": [
+      "upper back",
+      "lats",
+      "elbow flexors"
+    ],
+    "instructionStatus": "authored-variation",
+    "progressionEnabled": false,
+    "category": "Home strength"
+  },
+  {
+    "id": "lib-single-db-curl",
+    "name": "Standing one-arm dumbbell curl",
+    "pattern": "Arm",
+    "equipment": "Dumbbell",
+    "metric": "reps",
+    "cues": [
+      "Bend the elbow to bring the dumbbell up without swinging or lifting the shoulder.",
+      "Lower until your elbow is comfortably straight.",
+      "Repeat the listed count, then change hands and complete the same count on the other side."
+    ],
+    "source": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/biceps-curl/vid-20084675",
+    "loadConvention": "One dumbbell; repetitions per side. Do both sides before Done; enter the weight once and the per-side rep count once.",
+    "loadMultiplier": 2,
+    "loadTracked": true,
+    "requiresSetup": false,
+    "primaryMuscles": [
+      "elbow flexors"
+    ],
+    "instructionStatus": "authored-variation",
+    "progressionEnabled": true,
+    "category": "Home strength"
+  },
+  {
+    "id": "lib-single-db-floor-press",
+    "name": "One-arm dumbbell floor press",
+    "pattern": "Push",
+    "equipment": "Dumbbell",
+    "metric": "reps",
+    "cues": [
+      "Lower the upper arm until it rests gently on the floor; keep the elbow at a comfortable angle from your torso.",
+      "Press upward smoothly without twisting or letting the weight drift toward your face.",
+      "Finish the listed count, put the dumbbell down safely, then set up the other side and do the same count."
+    ],
+    "source": "https://www.acefitness.org/resources/everyone/exercise-library/19/chest-press/",
+    "loadConvention": "One dumbbell; repetitions per side. Complete both sides before Done and enter its weight and the per-side count once.",
+    "loadMultiplier": 2,
+    "loadTracked": true,
+    "requiresSetup": false,
+    "primaryMuscles": [
+      "chest",
+      "triceps"
+    ],
+    "instructionStatus": "authored-variation",
+    "progressionEnabled": true,
+    "category": "Home strength"
+  },
+  {
+    "id": "lib-single-db-split-squat",
+    "name": "Single-dumbbell static split squat",
+    "pattern": "Single leg",
+    "equipment": "Dumbbell",
+    "metric": "reps",
+    "cues": [
+      "Bend both knees to lower through a comfortable range while keeping the front foot supported.",
+      "Stand by pressing through your feet without changing the foot positions.",
+      "Finish the listed count and switch the front leg. Complete the same count on both sides."
+    ],
+    "source": "https://www.acefitness.org/resources/pros/expert-articles/5269/how-to-get-started-with-kettlebells/",
+    "loadConvention": "One dumbbell total; repetitions per side. Do both sides before Done; enter the single weight and per-side rep count once.",
+    "loadMultiplier": 2,
+    "loadTracked": true,
+    "requiresSetup": false,
+    "primaryMuscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "instructionStatus": "authored-variation",
+    "progressionEnabled": true,
+    "category": "Home strength"
+  },
+  {
+    "id": "lib-band-curl",
+    "name": "Standing resistance-band curl",
+    "pattern": "Arm",
+    "equipment": "Resistance band",
+    "metric": "reps",
+    "cues": [
+      "Bend the elbows without swinging your body or moving the upper arms forward.",
+      "Lower under control until the elbows are comfortably straight.",
+      "Keep foot placement and grip the same for every repetition."
+    ],
+    "source": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/biceps-curl/vid-20084675",
+    "loadConvention": "Total simultaneous repetitions; record band identity, grip and stance. Do not enter estimated band weight.",
+    "loadMultiplier": 0,
+    "loadTracked": false,
+    "requiresSetup": true,
+    "primaryMuscles": [
+      "elbow flexors"
+    ],
+    "instructionStatus": "authored-variation",
+    "progressionEnabled": false,
+    "category": "Home strength"
   }
 ]

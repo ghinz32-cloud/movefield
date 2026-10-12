@@ -1,10 +1,11 @@
+import {equipmentFit,equipmentSummary,inventoryErrors,movementRoles,prescriptionAlternatives,recoveryGroupsOverlap,type EquipmentInventory} from './equipment';
 import {type RestTimer} from './rest-timer';
 import expandedLibrary from './exercise-library.json';
 import recipes from './recipes.json';
 import {applyTrainingFocus,focusScheduleConflict} from './training-focus';
 import {programCatalog,programReferences,equipmentRequirements,type ProgramDefinition} from './program-catalog';
 export type Mode = 'app'|'coach'|'manual';
-export type Profile={noFloor?:boolean;age:number;goal:string;experience:string;mode:Mode;minutes:number;days:number[];weeks:number;start:string;equipment:string;sport:string;position:string;season:string;supervision:boolean;units:'kg'|'lb';name:string;sex?:'female'|'male'|'intersex'|'unspecified';dumbbellMaxKg?:number;programId?:string;runBase?:boolean;runDays?:number;runMinutes?:number;establishedTraining?:boolean;focuses?:('core'|'jumping'|'supersets'|'activity')[];jumpReady?:boolean};
+export type Profile={noFloor?:boolean;trainingDays?:number;inventory?:EquipmentInventory;age:number;goal:string;experience:string;mode:Mode;minutes:number;days:number[];weeks:number;start:string;equipment:string;sport:string;position:string;season:string;supervision:boolean;units:'kg'|'lb';name:string;sex?:'female'|'male'|'intersex'|'unspecified';dumbbellMaxKg?:number;programId?:string;runBase?:boolean;runDays?:number;runMinutes?:number;establishedTraining?:boolean;focuses?:('core'|'jumping'|'supersets'|'activity')[];jumpReady?:boolean};
 export type Exercise={id:string;name:string;pattern:string;equipment:string;metric:'reps'|'seconds'|'minutes';cues:string[];source?:string;video?:string;videoNote?:string;custom?:boolean;loadConvention?:string;loadMultiplier?:number;loadTracked?:boolean;requiresSetup?:boolean;primaryMuscles?:string[];instructionStatus?:string;progressionEnabled?:boolean;category?:string};
 export type Item={exerciseId:string;sets:number;reps:number;repMin?:number;repMax?:number;rest:number;kg:number|null;loadContext?:string;loadRole?:string;note?:string};
 export type Session={id:string;date:string;week:number;title:string;kind:string;minutes:number;items:Item[];dependsOn?:string[];progressionStep?:string;needsReview?:boolean;status:'scheduled'|'completed'|'partial'|'missed';recoveryGroup?:string;roleId?:string;timeProfile?:'brief';runSteps?:{label:string;seconds:number}[]};
@@ -55,7 +56,7 @@ const foundationMetadata:Record<string,Partial<Exercise>>={
  ...Object.fromEntries(['pulldown','triceps'].map(id=>[id,{equipment:'Cable',loadMultiplier:1,requiresSetup:true,loadConvention:'One selected stack weight; repetitions total. Keep machine, pulley and attachment identical.'}])),
  ...Object.fromEntries(['leg-curl','leg-extension'].map(id=>[id,{equipment:'Selectorized machine',loadMultiplier:1,requiresSetup:true,loadConvention:'Selected stack weight; repetitions total. Keep machine and seat/pad settings identical.'}]))
 };
-export const exercises:Exercise[]=[...foundationExercises.map(e=>({...e,pattern:e.pattern==='Trunk'?'Core':e.pattern,instructionStatus:'reviewed-source',loadTracked:!!foundationMetadata[e.id],progressionEnabled:!!foundationMetadata[e.id],loadMultiplier:0,loadConvention:['split','deadbug'].includes(e.id)?'Bodyweight; repetitions per side. Complete both sides.':'Bodyweight or task time; external load not included in volume.',...foundationMetadata[e.id]})),...(expandedLibrary as Exercise[])];
+export const exercises:Exercise[]=[...foundationExercises.map(e=>({...e,pattern:e.pattern==='Trunk'?'Core':e.pattern,instructionStatus:e.id==='skill'?'coach-selected':'reviewed-source',loadTracked:!!foundationMetadata[e.id],progressionEnabled:!!foundationMetadata[e.id],loadMultiplier:0,loadConvention:['split','deadbug'].includes(e.id)?'Bodyweight; repetitions per side. Complete both sides.':'Bodyweight or task time; external load not included in volume.',primaryMuscles:movementRoles[e.id]?.muscles||({plank:['trunk stabilizers'],walk:['quadriceps','glutes','calves'],run:['quadriceps','hamstrings','glutes','calves'],skill:[]} as Record<string,string[]>)[e.id]||[],...foundationMetadata[e.id]})),...(expandedLibrary as Exercise[])];
 export function isLoadTracked(e:Exercise){return e.loadTracked===true;}
 export function requiresSetup(e:Exercise){return e.requiresSetup===true;}
 export function matchesExercise(e:Exercise,query:string){
@@ -73,7 +74,7 @@ export function toKg(n:number,units:'kg'|'lb'){return units==='lb'?n/2.204622621
 export function exFor(id:string,custom:Exercise[]=[]):Exercise{return exercises.find(e=>e.id===id)||custom.find(e=>e.id===id)||{id,name:'Archived exercise',pattern:'Custom',equipment:'Custom',metric:'reps',cues:[]}}
 export function validateProfile(p:Profile){
  if(!p||!Array.isArray(p.days))return ['Choose valid available weekdays.'];
- const errors:string[]=[];if(!Array.isArray(p.days)||!p.days.length||p.days.some(d=>!Number.isInteger(d)||d<0||d>6)||new Set(p.days).size!==p.days.length)errors.push('Choose distinct weekdays from Sunday through Saturday.');if(!['First time','Some experience','Experienced'].includes(p.experience)||!['app','coach','manual'].includes(p.mode)||!['Full gym','Dumbbells','Bodyweight + band','No equipment'].includes(p.equipment)||!['kg','lb'].includes(p.units))errors.push('Choose supported experience, coaching, equipment and units.');if(!Number.isInteger(p.age)||!Number.isInteger(p.minutes))errors.push('Age and session minutes must be whole numbers.');if(!goals.some(([id])=>id===p.goal))errors.push('Choose a supported training goal.');if(!Number.isFinite(p.age)||p.age<14||p.age>100)errors.push('This prototype supports ages 14–100. Under-14 planning is outside its scope.');
+ const errors:string[]=[...inventoryErrors(p)];if(p.trainingDays!==undefined&&(!Number.isInteger(p.trainingDays)||p.trainingDays<2||p.trainingDays>7||p.trainingDays>p.days.length))errors.push('Choose 2–7 training days, within your available weekdays.');if(!Array.isArray(p.days)||!p.days.length||p.days.some(d=>!Number.isInteger(d)||d<0||d>6)||new Set(p.days).size!==p.days.length)errors.push('Choose distinct weekdays from Sunday through Saturday.');if(!['First time','Some experience','Experienced'].includes(p.experience)||!['app','coach','manual'].includes(p.mode)||!['Full gym','Dumbbells','Bodyweight + band','No equipment'].includes(p.equipment)||!['kg','lb'].includes(p.units))errors.push('Choose supported experience, coaching, equipment and units.');if(!Number.isInteger(p.age)||!Number.isInteger(p.minutes))errors.push('Age and session minutes must be whole numbers.');if(!goals.some(([id])=>id===p.goal))errors.push('Choose a supported training goal.');if(!Number.isFinite(p.age)||p.age<14||p.age>100)errors.push('This prototype supports ages 14–100. Under-14 planning is outside its scope.');
  if(!validDay(p.start))errors.push('Choose a valid start date.');
  if(!Number.isFinite(p.minutes)||p.minutes<15||p.minutes>120)errors.push('Choose a session window of 15–120 minutes.');
  if(p.sex!==undefined&&!['female','male','intersex','unspecified'].includes(p.sex))errors.push('Choose a supported sex option or leave it unspecified.');if(p.dumbbellMaxKg!==undefined&&(!Number.isFinite(p.dumbbellMaxKg)||p.dumbbellMaxKg<0||p.dumbbellMaxKg>500))errors.push('Enter a valid maximum weight for one dumbbell.');
@@ -109,8 +110,40 @@ export function buildPlan(p:Profile,events:Event[]=[]):{plan:Plan|null;errors:st
   result=open;
  }}
  if(result.plan&&events.some(e=>e.kind==='Competition')&&p.mode==='app')result.plan.notes.unshift('Competition dates are protected. This draft leaves the day before each competition free, or two days for a high-priority event. These are app planning rules, not a promise to prevent soreness or a sport-specific taper.');
- return result.plan?applyTrainingFocus(result.plan,events):result;
+ if(result.plan)result=addEasyActivityDays(result,p,protectedEvents);
+ if(result.plan)result=applyTrainingFocus(result.plan,events);
+ if(result.plan&&p.mode==='app'&&p.inventory?.confirmed)for(const session of result.plan.sessions){const error=resolveInventory(session.items,p);if(error)return{plan:null,errors:[error]};if(!session.runSteps?.length){session.minutes=Math.max(session.minutes,estimateSessionMinutes(session.items,session.timeProfile==='brief'));if(session.minutes>p.minutes)return{plan:null,errors:[`${session.title} needs ${session.minutes} minutes with your available equipment and add-ons. Review time or add-ons.`]};}}
+ return result;
 }
+function addEasyActivityDays(result:{plan:Plan|null;errors:string[]},p:Profile,events:Event[]){
+ const plan=result.plan,wanted=p.trainingDays;
+ if(!plan||p.mode!=='app'||!wanted||wanted<6||!['running','hybrid'].includes(p.goal))return result;
+ const existing=new Set(plan.sessions.map(s=>new Date(s.date+'T12:00:00').getDay()));
+ if(existing.size>=wanted)return result;
+ if(p.inventory?.confirmed&&!equipmentFit(exFor('walk'),p).available)return {plan:null,errors:['Daily activity options need a suitable walking route. Confirm it in Equipment.']};
+ const extra=p.days.filter(d=>!existing.has(d)).slice(0,wanted-existing.size);
+ if(extra.length<wanted-existing.size)return {plan:null,errors:['Add enough available weekdays for your requested activity frequency.']};
+ for(let n=0;n<p.weeks*7;n++){
+  const date=addDays(p.start,n);if(!extra.includes(new Date(date+'T12:00:00').getDay()))continue;
+  if(events.some(e=>e.date===date))return {plan:null,errors:['An easy activity day overlaps a commitment. Review availability or choose a later start.']};
+  plan.sessions.push({id:plan.id+'-activity-'+n,date,week:Math.floor(n/7)+1,title:'Easy activity · recovery walk',kind:'Easy activity',minutes:Math.min(20,p.minutes-5)+5,items:[{exerciseId:'walk',sets:1,reps:Math.min(20,p.minutes-5),rest:0,kg:null,note:'Comfortable conversational walk. This is an easy activity day, not another hard run or strength session.'}],status:'scheduled',recoveryGroup:'activity',roleId:'easy-activity'});
+ }
+ plan.sessions.sort((a,b)=>a.date.localeCompare(b.date));plan.profile={...plan.profile,days:[...new Set([...plan.profile.days,...extra])].sort((a,b)=>a-b)};
+ plan.name+=` · ${wanted}-day activity week`;plan.notes.unshift(`Your ${wanted}-day preference includes easy walking between the displayed strength or running sessions. Their work, order and recovery gaps are preserved. A daily habit does not mean daily hard training.`);
+ return result;
+}
+
+function resolveInventory(items:Item[],p:Profile):string|undefined{
+ if(!p.inventory?.confirmed)return;
+ for(const item of items){
+  const original=exFor(item.exerciseId),fit=equipmentFit(original,p);if(fit.available)continue;
+  const protectedLift=p.goal==='powerlifting'&&['bar-squat','bench','deadlift'].includes(item.exerciseId);
+  const replacement=!protectedLift?prescriptionAlternatives(item.exerciseId,p).find(id=>equipmentFit(exFor(id),p).available&&!items.some(i=>i.exerciseId===id)):undefined;
+  if(!replacement)return `${original.name}: ${fit.reason} No available substitute preserves this movement's role. Review equipment or choose another plan.`;
+  item.exerciseId=replacement;item.kg=null;item.note=(item.note||'')+` Equipment fit: ${exFor(replacement).name} replaces ${original.name}; starting load and history stay separate. ${movementRoles[replacement]?.difference||''}`;
+ }
+}
+
 function buildBasePlan(p:Profile,events:Event[]=[]):{plan:Plan|null;errors:string[]}{
  const errors=validateProfile(p);if(errors.length)return{plan:null,errors};
  if(p.programId?.startsWith('ref-')){
@@ -128,8 +161,10 @@ function buildBasePlan(p:Profile,events:Event[]=[]):{plan:Plan|null;errors:strin
  }
  if(p.mode==='app'&&(p.programId||((p.noFloor||p.equipment==='No equipment'||p.age>=18)&&p.goal!=='running'&&programCatalog.some(d=>d.goal===p.goal))))return buildCatalogPlan(p,events);
  const youth=p.age<18,run=p.goal==='running',tracking=p.mode!=='app',gym=p.equipment==='Full gym',db=!p.equipment.startsWith('Bodyweight');
+ if(!tracking&&run&&p.trainingDays!==undefined&&p.trainingDays<6&&p.trainingDays!==3)return {plan:null,errors:['The NHS beginner sequence needs three running days. Choose three days, or six/seven activity days with easy walks.']};
  if(!tracking&&!run&&db&&p.dumbbellMaxKg===0)return {plan:null,errors:['This foundation uses dumbbells but your available maximum is zero. Choose bodyweight/band training or update your equipment.']};
  if(youth&&!tracking&&p.season==='In-season')return{plan:null,errors:['In-season youth sport defaults to coach-directed tracking. A complementary app plan needs an explicitly coordinated total schedule; use tracking in this prototype.']};
+ if(!tracking&&run&&p.inventory?.confirmed&&!equipmentFit(exFor('run'),p).available)return{plan:null,errors:['Confirm a suitable walking/running route in Equipment.']};
  if(!tracking&&run&&p.weeks>9)return{plan:null,errors:['The source run/walk sequence contains nine stages. Choose 2–9 weeks for this preview, then review the next block.']};
  let template=tracking?'TRACK':run?'RUN-WALK':youth?'YOUTH-FOUNDATION':p.goal==='hypertrophy'&&p.experience!=='First time'?'AT02':(['powerlifting','strength','hybrid'].includes(p.goal)&&p.experience!=='First time'&&gym)?'AT03':p.goal==='calisthenics'||!db?'AT04':'AT01';
  let days=p.days.slice().sort();
@@ -150,11 +185,12 @@ function buildBasePlan(p:Profile,events:Event[]=[]):{plan:Plan|null;errors:strin
  const index=sessions.length,week=Math.floor(index/days.length)+1,slot=index%days.length,cycle=Math.min(week-1,5);let title='',items:Item[]=[],runSteps:Session['runSteps'];
  if(tracking){title='Enter your '+(p.mode==='coach'?'coach’s':'custom')+' session';}
  else if(run){const cfg=recipes.running;const stage=cfg.weeks_pattern_ids[Math.min(week-1,8)][slot];const pattern=cfg.patterns[stage as keyof typeof cfg.patterns];const seq:number[]=Array.isArray(pattern)?pattern:Array.from({length:pattern.repeat},()=>pattern.pair_seconds).flat().concat(pattern.final_run_seconds);runSteps=[{label:'Warm-up walk',seconds:300},...seq.map(n=>({label:n>0?'Easy run':'Recovery walk',seconds:Math.abs(n)})),{label:'Cool-down walk',seconds:300}];title=`Run/walk · stage ${week}${week===5||week===6?' / '+(slot+1):''}`;items=[{exerciseId:'run',sets:1,reps:runSteps.reduce((n,r)=>n+r.seconds,0)/60,rest:0,kg:null,note:'Log the total time, including the walking intervals. Follow the steps at an easy pace.'}];}
- else if(youth){title='Youth foundation '+(slot%2?'B':'A');const ids=slot%2?[db?'squat':'bw-squat','bridge','pushup',gym?'pulldown':db?'row':'band-row','calf','deadbug']:['bw-squat','bridge','pushup',db?'row':'band-row','split','deadbug'];items=ids.map((exerciseId,index)=>({exerciseId,sets:week>=4&&index<week-3?2:1,reps:8,rest:90,kg:null,note:'Your supervisor chooses the exercise variation and a light starting weight. Take more rest when needed.'}));}
+ else if(youth){title='Youth foundation '+(slot%2?'B':'A');const ids=slot%2?[db?'squat':'bw-squat','bridge','pushup',gym?'pulldown':db?'row':'lib-band-standing-row','calf','deadbug']:['bw-squat','bridge','pushup',db?'row':'lib-band-standing-row','split','deadbug'];items=ids.map((exerciseId,index)=>({exerciseId,sets:week>=4&&index<week-3?2:1,reps:8,rest:90,kg:null,note:'Your supervisor chooses the exercise variation and a light starting weight. Take more rest when needed.'}));}
  else if(template==='AT03'){title='Strength '+['A','B','C'][slot];const ts=recipes.adult.find(x=>x.id==='AT03')!.sessions[slot];items=strengthMenus[slot].map((exerciseId,j)=>{const item=ts.slots![j];const primary=item.reps[0]===3,secondary=item.reps[0]===5;return{exerciseId,sets:item.sets,reps:primary?[3,4,5,3,4,5][cycle]:secondary?[5,6,7,8,8,8][cycle]:[8,9,10,11,12,12][cycle],rest:item.rest_seconds,kg:null}});}
  else if(template==='AT02'){title=['Upper A','Lower A','Upper B','Lower B'][slot];const ts=recipes.adult.find(x=>x.id==='AT02')!.sessions[slot%2];items=hypertrophyMenus[slot].map((exerciseId,j)=>{const item=ts.slots![j];return{exerciseId,sets:item.sets,reps:item.reps[0]===10?[10,11,12,13,14,15][cycle]:[8,9,10,11,12,12][cycle],rest:item.rest_seconds,kg:null}});}
  else {title=(template==='AT04'?'Home foundation ':'Full-body ')+(slot%2?'B':'A');const ids=template==='AT04'?home:slot%2?foundationB:foundationA;items=ids.map((exerciseId,j)=>{const trunk=exerciseId==='deadbug',calf=exerciseId==='calf',push=template==='AT04'&&exerciseId==='pushup';return{exerciseId,sets:week===1?1:((template==='AT04'?j<4:j<4)?2:1),reps:trunk?[6,6,7,8,9,10][cycle]:calf?[10,10,11,12,13,14][cycle]:push?[6,6,7,8,9,10][cycle]:[8,8,9,10,11,12][cycle],rest:trunk?60:calf||exerciseId==='ohp'?90:120,kg:null}});}
  if(!tracking&&!run&&!youth)items=items.map(i=>rangeItem(i,template,title));
+ if(!tracking){const inventoryError=resolveInventory(items,p);if(inventoryError)return{plan:null,errors:[inventoryError]};}
  const estimated=estimateSessionMinutes(items);
  const minutes=tracking?p.minutes:run?Math.ceil(runSteps!.reduce((n,r)=>n+r.seconds,0)/60)+5:youth?Math.max(40,estimated):Math.max(template==='AT03'?50:template==='AT02'?60:30,estimated);
  if(minutes>p.minutes)return{plan:null,errors:[`${title} in week ${week} needs about ${minutes} minutes including work, rest and setup. Increase your time or choose a smaller foundation template.`]};
@@ -287,7 +323,7 @@ export function setEquipmentLimit(s:State,exerciseId:string,maxKg:number|undefin
  return{state:changed({...s,equipmentCaps:maxKg===undefined?rest:[...rest,{exerciseId,setup,maxKg}],proposals:s.proposals.map(p=>p.status==='pending'||p.status==='queued'?{...p,status:'stale'}:p)},'Updated equipment limit for '+e.name)};
 }
 export function loadSuggestion(s:State,i:Item):{kg:number|null;nextKg?:number;date?:string;reason:string;ready?:boolean;atCapacity?:boolean;coarseIncrement?:boolean}{
- const ex=exFor(i.exerciseId,s.custom);if(!ex.progressionEnabled||ex.metric!=='reps'||!isLoadTracked(ex))return{kg:null,reason:'Choose the resistance or assistance for this exact variation.'};
+ const ex=exFor(i.exerciseId,s.custom);const fit=equipmentFit(ex,s.profile);if(s.profile.inventory?.confirmed&&!fit.available)return{kg:null,reason:fit.reason+' Choose an available substitute or review equipment; past records stay intact.'};if(!ex.progressionEnabled||ex.metric!=='reps'||!isLoadTracked(ex))return{kg:null,reason:'Choose the resistance or assistance for this exact variation.'};
  if(s.hold)return{kg:null,reason:'Load suggestions are on hold after a concern.'};
  const limit=equipmentLimit(s,i.exerciseId);
  if(limit===0)return{kg:null,reason:'This equipment is marked unavailable. Choose an available substitute or update its limit.'};
@@ -303,6 +339,7 @@ export function loadSuggestion(s:State,i:Item):{kg:number|null;nextKg?:number;da
  const hi=i.repMax;if(hi===undefined)return{kg,date:w.date,reason:'Weight from your last matching workout. Preview rep ranges to build reps before increasing the weight.'};
  const successful=(r:Workout)=>{const a=r.sets.filter(x=>x.exerciseId===i.exerciseId&&x.done),target=r.targets?.find(t=>t.exerciseId===i.exerciseId);return (!machine||r.loadContext?.[i.exerciseId]===s.loadContext?.[i.exerciseId])&&!r.partial&&r.symptom==='no'&&r.effort!=='harder'&&dayDistance(r.date,day())<=35&&target?.repMax===hi&&target?.repMin===lo&&a.length>=i.sets&&a.every(x=>x.kg===kg&&x.reps>=hi&&comparableSet(x))&&(r.rir?.[i.exerciseId]??-1)>=2;};
  const ready=records.length>=2&&records.slice(0,2).every(successful),step=s.incrementKg?.[i.exerciseId];
+ if(ex.equipment==='Dumbbell'&&s.profile.inventory?.confirmed&&s.profile.inventory.dumbbellLoading==='fixed')return{kg,date:w.date,ready,atCapacity:true,reason:'Your dumbbell weight is fixed. Keep this load and review more controlled reps or an appropriate variation. No heavier dumbbell is assigned.'};
  if(!ready)return{kg,date:w.date,reason:'Repeat this recent load and build reps within the range. A load increase waits for two comparable top-of-range sessions and effort feedback.'};
  if(limit!==undefined&&(kg>=limit-1e-6||(step&&kg+step>limit+1e-6)))return{kg,date:w.date,ready:true,atCapacity:true,reason:'You reached this equipment’s limit or its next available step would exceed it. Keep this load. For muscle-focused work, review a wider rep range; for heavy strength, choose suitable heavier equipment or maintain. This is an equipment limit, not a strength plateau.'};
  if(!step||!Number.isFinite(step)||step<=0)return{kg,date:w.date,ready:true,reason:'Top-of-range work is consistent. Enter the smallest available equipment increase to preview the next load.'};
@@ -345,7 +382,7 @@ export function checkSchedule(s:State,changes:NonNullable<Proposal['changes']>):
   if(all.some(y=>y.id!==x.id&&y.status!=='missed'&&y.date===x.date))return `${niceDate(x.date)} already has a workout. Select “Shift this and later workouts” or another date.`;
  }
  for(const x of all){if(x.dependsOn?.some(id=>{const y=all.find(z=>z.id===id);return y&&(ids.has(x.id)||ids.has(y.id))&&y.date>=x.date}))return 'This move would reverse progression order. Shift later workouts together or choose another date.';}
- const requiresRest=s.plan.profile.mode==='app';if(requiresRest)for(const x of all.filter(x=>ids.has(x.id)))for(const y of all.filter(y=>y.id!==x.id&&y.status!=='missed')){const full=!x.recoveryGroup&&!y.recoveryGroup&&s.plan.template!=='AT02',sameRegion=x.recoveryGroup&&y.recoveryGroup?x.recoveryGroup===y.recoveryGroup:x.title.split(' ')[0]===y.title.split(' ')[0];const actual=(s.active?.sessionId===y.id?s.active.date:undefined)||latestSessionRecord(s,y.id)?.date||y.date;if(!(s.plan.template==='RNBASE4'&&x.recoveryGroup==='run'&&y.recoveryGroup==='run')&&(full||sameRegion)&&Math.abs(dayDistance(x.date,actual))<2)return 'The move would remove the recovery day between comparable sessions. Shift later workouts together or choose a more separated date.';}
+ const requiresRest=s.plan.profile.mode==='app';if(requiresRest)for(const x of all.filter(x=>ids.has(x.id)))for(const y of all.filter(y=>y.id!==x.id&&y.status!=='missed')){const full=!x.recoveryGroup&&!y.recoveryGroup&&s.plan.template!=='AT02',sameRegion=x.recoveryGroup&&y.recoveryGroup?recoveryGroupsOverlap(x.recoveryGroup,y.recoveryGroup):x.title.split(' ')[0]===y.title.split(' ')[0];const actual=(s.active?.sessionId===y.id?s.active.date:undefined)||latestSessionRecord(s,y.id)?.date||y.date;if(!(s.plan.template==='RNBASE4'&&x.recoveryGroup==='run'&&y.recoveryGroup==='run')&&(full||sameRegion)&&Math.abs(dayDistance(x.date,actual))<2)return 'The move would remove the recovery day between comparable sessions. Shift later workouts together or choose a more separated date.';}
  for(const x of all.filter(x=>x.status==='scheduled')){const issue=focusScheduleConflict({...s.plan,sessions:all},s.events,x);if(issue)return issue;}
  return null;
 }
@@ -366,7 +403,7 @@ function catalogDays(p:Profile,d:ProgramDefinition,events:Event[]=[]):number[]{
  for(const combo of combos){
   const assigned=combo.slice().sort((a,b)=>(a-startDay+7)%7-(b-startDay+7)%7);
   const groups=d.slots.map(x=>x.group);
-  const fits=groups.every((g,i)=>groups.every((h,j)=>i===j||(d.id==='RNBASE4'&&g==='run'&&h==='run')||g!==h||!['full','upper','lower','run'].includes(g)||![1,6].includes(Math.abs(assigned[i]-assigned[j]))));
+  const fits=groups.every((g,i)=>groups.every((h,j)=>i===j||(d.id==='RNBASE4'&&g==='run'&&h==='run')||!recoveryGroupsOverlap(g,h)||![1,6].includes(Math.abs(assigned[i]-assigned[j]))));
   if(fits&&!Array.from({length:p.weeks*7},(_,n)=>addDays(p.start,n)).some(date=>assigned.includes(new Date(date+'T12:00:00').getDay())&&eventDates.has(date)))return assigned;
  }return [];
 }
@@ -374,8 +411,9 @@ export function buildCatalogPlan(p:Profile,events:Event[]):{plan:Plan|null;error
  if(!p.programId){let first:{plan:Plan|null;errors:string[]}|undefined;for(const d of programCatalog.filter(d=>d.goal===p.goal)){const r=buildCatalogPlan({...p,programId:d.id},events);first??=r;if(r.plan)return r;}return first||{plan:null,errors:['No program is available for this goal.']};}
  const def=programCatalog.find(d=>d.id===p.programId&&d.goal===p.goal)||(!p.programId?programCatalog.find(d=>d.goal===p.goal):undefined);
  if(!def)return{plan:null,errors:['Choose a program that matches this training focus.']};
- const errors:string[]=[];
- if(p.noFloor&&!def.noFloor&&!(p.equipment==='Full gym'&&['QHY3','QHY4'].includes(def.id))&&p.goal!=='running')errors.push('This plan includes floor work. Choose a standing or seated foundation, or change your floor-work setting.');
+ const errors:string[]=[...inventoryErrors(p)];
+ if(p.trainingDays!==undefined&&def.days!==p.trainingDays&&!(p.trainingDays>=6&&['running','hybrid'].includes(p.goal)&&def.days<p.trainingDays))errors.push(`You requested ${p.trainingDays} training days; this plan schedules ${def.days}. Choose a matching plan or change your preference.`);
+ if(p.noFloor&&!p.inventory?.confirmed&&!def.noFloor&&!(p.equipment==='Full gym'&&['QHY3','QHY4'].includes(def.id))&&p.goal!=='running')errors.push('This plan includes floor work. Choose a standing or seated foundation, or change your floor-work setting.');
  if(p.equipment==='No equipment'&&def.equipment!=='none'&&p.goal!=='running')errors.push('This plan needs equipment. Choose the no-equipment movement start under General fitness, or update your equipment.');
  if(p.age<18&&!def.youth)errors.push('These specialized templates are adult pathways. Choose supervised youth foundations or follow your coach’s program in tracking mode.');
  if(def.experience==='advanced'&&(p.experience!=='Experienced'||!p.establishedTraining))errors.push('This development block needs established technique and consistent recent training. Confirm that readiness in setup, or choose a foundation or build plan.');
@@ -398,10 +436,12 @@ export function buildCatalogPlan(p:Profile,events:Event[]):{plan:Plan|null;error
    const band=strengthWave?[[5,7],[4,6],[3,5],[6,8]][(week-1)%4]:[lo,hi];
    return {exerciseId,sets:deload?Math.max(1,Math.ceil(sets/2)):p.experience==='First time'&&week<=2?Math.min(sets,2):sets,reps:band[0],repMin:band[0],repMax:band[1],rest,kg:null,loadRole:spec.title+' / '+(strengthWave?'wave '+(week-1)%4:'work'),note:strengthWave?'The rep range changes this week. Choose a weight that leaves about 2–3 good reps left at the end of each set.':exerciseId==='bench'&&spec.title.includes('practice')?'Use a lighter weight for this practice set. We track these weights separately from your heavier bench work.':'Finish each set with about 2–3 good reps left (RIR). Start light while learning and stop if you lose control of the movement.'};
   });
-  if(def.equipment==='flexible'||(def.brief&&def.equipment==='bodyweight-band'))items=items.map(i=>{const home=def.equipment==='bodyweight-band'||p.equipment==='Bodyweight + band',gym=p.equipment==='Full gym';const map:Record<string,string>=home?{'squat':'bw-squat','rdl':'bridge','lib-db-floor-press':'pushup','ohp':'pushup','row':'band-row'}:gym?{'squat':'lib-stack-leg-press','lib-db-floor-press':'lib-stack-chest-press','row':'lib-cable-seated-row'}:{};return {...i,exerciseId:map[i.exerciseId]||i.exerciseId};});
-  if(def.brief&&p.minutes>=20&&!spec.kind){const expanded=items.map(i=>({...i,sets:p.age<18||deload?1:2}));if(estimateSessionMinutes(expanded,true)<=p.minutes)items=expanded;}
+  if(!p.inventory?.confirmed&&!def.distributed&&(def.equipment==='flexible'||(def.brief&&def.equipment==='bodyweight-band')))items=items.map(i=>{const home=def.equipment==='bodyweight-band'||p.equipment==='Bodyweight + band',gym=p.equipment==='Full gym';const map:Record<string,string>=home?{'squat':'bw-squat','rdl':'ref-Band_Good_Morning','lib-db-floor-press':'pushup','ohp':'ref-Shoulder_Press_-_With_Bands','row':'lib-band-standing-row'}:gym?{'squat':'lib-stack-leg-press','lib-db-floor-press':'lib-stack-chest-press','row':'lib-cable-seated-row'}:{};return {...i,exerciseId:map[i.exerciseId]||i.exerciseId};});
+  if(def.brief&&!def.distributed&&p.minutes>=20&&!spec.kind){const expanded=items.map(i=>({...i,sets:p.age<18||deload?1:2}));if(estimateSessionMinutes(expanded,true)<=p.minutes)items=expanded;}
+  const inventoryError=resolveInventory(items,p);if(inventoryError)return{plan:null,errors:[inventoryError]};
   let runSteps:Session['runSteps'];
-  if(spec.kind==='brief-run'){runSteps=[{label:'Warm-up walk',seconds:300},...Array.from({length:5},()=>[{label:'Easy jog (or walk)',seconds:20},{label:'Recovery walk',seconds:40}]).flat(),{label:'Cool-down walk',seconds:300}];}
+  if(spec.kind==='recovery-walk'){runSteps=[{label:'Comfortable recovery walk · conversational, no pace target',seconds:Math.min(p.minutes-5,20)*60}];}
+  else if(spec.kind==='brief-run'){runSteps=[{label:'Warm-up walk',seconds:300},...Array.from({length:5},()=>[{label:'Easy jog (or walk)',seconds:20},{label:'Recovery walk',seconds:40}]).flat(),{label:'Cool-down walk',seconds:300}];}
   else if(spec.kind==='walkrun'){
    const stage=Math.min(3,Math.floor((week-1)/2)),pairs=[[60,120,6],[90,90,6],[120,60,6],[180,90,4]][stage];
    runSteps=[{label:'Warm-up walk',seconds:300},...Array.from({length:pairs[2]},()=>[{label:'Conversational jog (or walk)',seconds:pairs[0]},{label:'Recovery walk',seconds:pairs[1]}]).flat(),{label:'Cool-down walk',seconds:300}];
@@ -409,18 +449,22 @@ export function buildCatalogPlan(p:Profile,events:Event[]):{plan:Plan|null;error
    const base=spec.title==='Longer easy run'?30:20;
    runSteps=[{label:'Warm-up walk',seconds:300},{label:'Conversational easy run',seconds:base*60},{label:'Cool-down walk',seconds:300}];
   }
+  if(p.inventory?.confirmed&&runSteps&&!equipmentFit(exFor(spec.kind==='recovery-walk'?'walk':'run'),p).available)return {plan:null,errors:['Confirm a suitable walking/running route in your equipment survey.']};
   if(p.dumbbellMaxKg===0&&items.some(i=>exFor(i.exerciseId).equipment==='Dumbbell'))return{plan:null,errors:['This plan uses dumbbells but your available maximum is zero. Choose the bodyweight/band option or update your equipment.']};
   if(p.age<18)items=items.map(i=>({...i,sets:1,reps:8,repMin:8,repMax:12,note:'Your qualified supervisor chooses the manageable variation, load and reps within this range. No adult automatic load increases.'}));
   if(def.noFloor)items=items.map(i=>({...i,note:(i.note||'')+(i.exerciseId==='pushup'?' Use a wall push-up for this standing plan. Keep the wall and foot distance the same for comparisons.':['bw-squat','calf'].includes(i.exerciseId)?' Use steady support as needed. Record the same range and support each time.':'')}));
   if(spec.conditioning==='walkrun')items.push({exerciseId:'run',sets:1,reps:10,rest:0,kg:null,note:'After strength, walk easily for 2 minutes. Then repeat 20 seconds of easy jogging (or walking) and 40 seconds of walking six times. Finish with 2 easy walking minutes. Stay conversational; walking throughout is allowed. Log the whole 10-minute block. Duration stays fixed until a reviewed change.'});
-  if(runSteps)items=[{exerciseId:'run',sets:1,reps:runSteps.reduce((n,x)=>n+x.seconds,0)/60,rest:0,kg:null,note:'Log your total time. Repeat this workout if it still feels too hard or you have not recovered. Keep an easy pace.'}];
+  if(runSteps)items=[{exerciseId:spec.kind==='recovery-walk'?'walk':'run',sets:1,reps:runSteps.reduce((n,x)=>n+x.seconds,0)/60,rest:0,kg:null,note:'Log your total time. Repeat this workout if it still feels too hard or you have not recovered. Keep an easy pace.'}];
+  const finalInventoryError=resolveInventory(items,p);if(finalInventoryError)return{plan:null,errors:[finalInventoryError]};
   const minutes=runSteps?Math.ceil(runSteps.reduce((n,x)=>n+x.seconds,0)/60)+5:estimateSessionMinutes(items,!!def.brief);
   if(minutes>p.minutes)return{plan:null,errors:[`${spec.title} needs about ${minutes} minutes including warm-up, rest and setup. Increase the time window; no defining work was dropped.`]};
   const key=runSteps?'run':spec.title,sessionId=id+'-s'+sessions.length;
-  sessions.push({id:sessionId,date,week,recoveryGroup:spec.group,roleId:def.id+'-'+slot,timeProfile:def.brief?'brief':undefined,title:spec.title+(deload&&!runSteps?' · review week':''),kind:runSteps?'Run/walk':p.goal==='powerlifting'?'Powerlifting':p.goal==='hypertrophy'?'Hypertrophy':'Strength',minutes,items,runSteps,dependsOn:previous[key]?[previous[key]]:[],progressionStep:p.age<18?'One supervised work set per exercise; progression stays with the supervisor':runSteps?'Accepted easy-duration sequence; repeat when needed':'Rep ranges with approved load changes; review-week volume is preplanned',status:'scheduled'});previous[key]=sessionId;
+  sessions.push({id:sessionId,date,week,recoveryGroup:spec.group,roleId:def.id+'-'+slot,timeProfile:def.brief?'brief':undefined,title:spec.title+(deload&&!runSteps?' · review week':''),kind:spec.kind==='recovery-walk'?'Easy activity':runSteps?'Run/walk':p.goal==='powerlifting'?'Powerlifting':p.goal==='hypertrophy'?'Hypertrophy':'Strength',minutes,items,runSteps:spec.kind==='recovery-walk'?undefined:runSteps,dependsOn:spec.kind==='recovery-walk'?[]:previous[key]?[previous[key]]:[],progressionStep:spec.kind==='recovery-walk'?'Easy activity; record actual minutes without a pace target':p.age<18?'One supervised work set per exercise; progression stays with the supervisor':runSteps?'Accepted easy-duration sequence; repeat when needed':'Rep ranges with approved load changes; review-week volume is preplanned',status:'scheduled'});previous[key]=sessionId;
  }
  const conflicts=sessions.filter(x=>events.some(e=>e.date===x.date));if(conflicts.length)return{plan:null,errors:[`${conflicts.length} sessions overlap a commitment or day off. Adjust availability, start date or commitments before accepting.`]};
- const notes=[def.description,'An original app plan informed by the sources below. It is not a copy of a creator’s program or endorsed by them. The app chooses the exercises, sets and progression rules; workout times are estimates.','Choose starting weights during practice or from recent results with the same exercise and setup. Use lighter weights for technique practice when needed.',def.wave?'You’ll do fewer work sets every fourth week and in the final week of plans lasting six weeks or longer. Check your weight whenever the rep range changes.':'Plans lasting six weeks or longer finish with fewer strength sets, keeping at least one per exercise. This lighter week is part of the schedule; it is not based on an assessment of your fatigue.', 'Equipment: '+equipmentRequirements(def,p.equipment).join('; '),'First-time lifters start with up to two work sets for the first two weeks. Finish the earlier workouts before adding the later sets. Choose weights from your recent performance, even if you have trained before.'];
+ const notes=[def.description,'An original app plan informed by the sources below. It is not a copy of a creator’s program or endorsed by them. The app chooses the exercises, sets and progression rules; workout times are estimates.','Choose starting weights during practice or from recent results with the same exercise and setup. Use lighter weights for technique practice when needed.',def.wave?'You’ll do fewer work sets every fourth week and in the final week of plans lasting six weeks or longer. Check your weight whenever the rep range changes.':'Plans lasting six weeks or longer finish with fewer strength sets, keeping at least one per exercise. This lighter week is part of the schedule; it is not based on an assessment of your fatigue.', 'Equipment: '+(p.inventory?.confirmed?equipmentSummary(sessions.flatMap(s=>s.items.map(i=>exFor(i.exerciseId))),p):equipmentRequirements(def,p.equipment)).join('; '),'First-time lifters start with up to two work sets for the first two weeks. Finish the earlier workouts before adding the later sets. Choose weights from your recent performance, even if you have trained before.'];
+ if(def.distributed)notes.push('Six-day strength splits separate pushing, pulling and lower-body work, or upper/lower competition practice. Seven-day options add an easy walk, not a seventh hard lifting day. Weekly work is listed in the preview; frequency alone does not increase results. Short starters provide less volume than growth blocks. Adjust through reviewed changes when recovery or enjoyment suffers.');
+ if(p.inventory?.confirmed)notes.push('Exercises were matched to your confirmed equipment at this location. Any swap is visible in the exercise notes. Machine loads and new variations keep separate histories. Fixed dumbbells need rep or variation changes, not a fictitious weight increase.');
  if(def.brief)notes.push('Short plans include fewer work sets. The time estimate includes preparation and rest, but learning an exercise may take longer. Keep the listed rest and skip catch-up sets. You do not need to fill every available minute.');
  if(p.age<18){notes.splice(notes.findIndex(n=>n.startsWith('First-time lifters')),1,'Youth brief sessions use one controlled work set per movement. The supervisor guides rep and resistance changes. This block does not automatically add load or adult set progressions.');}
  if(p.sex)notes.push('Sex does not set a starting weight or a fixed amount of work. Your actual work, preferences and recovery guide changes.');
@@ -433,6 +477,7 @@ export function buildCatalogPlan(p:Profile,events:Event[]):{plan:Plan|null;error
 // One estimator for all strength plans: general warm-up / movement prep, work,
 // between-set rest, setup transitions and a short finish. Practice sets are not logged as work.
 export function estimateSessionMinutes(items:Item[],brief=false,custom:Exercise[]=[]):number{
+ if(items.length&&items.every(i=>i.exerciseId==='walk'&&exFor(i.exerciseId,custom).metric==='minutes'))return Math.ceil(items.reduce((n,i)=>n+i.sets*i.reps,0)+5);
  const seconds=(brief?6:13)*75+items.reduce((n,i)=>{const e=exFor(i.exerciseId,custom),perSide=/per side|per leg|each side|both sides|both legs/i.test(e.loadConvention||'')?2:1;const work=e.metric==='minutes'?i.reps*60:e.metric==='seconds'?i.reps:(i.repMax??i.reps)*5*perSide;return n+i.sets*work+Math.max(0,i.sets-1)*i.rest+(brief?Math.max(60,i.rest)*1.25:150)+(e.equipment==='Barbell'?180:0)},0);
  return Math.ceil(seconds/60);
 }

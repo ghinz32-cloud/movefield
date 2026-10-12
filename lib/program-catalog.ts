@@ -1,5 +1,5 @@
-export type ProgramSlot={title:string;group:'full'|'upper'|'lower'|'run';kind?:'walkrun'|'easy'|'brief-run';conditioning?:'walkrun';items:[string,number,number,number,number][]};
-export type ProgramDefinition={id:string;goal:string;name:string;description:string;days:number;minutes:number;experience:'all'|'some'|'advanced';level?:'foundation'|'build'|'advanced';requirements?:string[];wave?:boolean;noFloor?:boolean;brief?:boolean;youth?:boolean;equipment:'gym'|'dumbbells'|'bodyweight-band'|'flexible'|'none';runBase?:boolean;source:string;slots:ProgramSlot[]};
+export type ProgramSlot={title:string;group:'full'|'upper'|'lower'|'run'|'push'|'pull'|'activity';kind?:'walkrun'|'easy'|'brief-run'|'recovery-walk';conditioning?:'walkrun';items:[string,number,number,number,number][]};
+export type ProgramDefinition={id:string;goal:string;name:string;description:string;days:number;minutes:number;experience:'all'|'some'|'advanced';level?:'foundation'|'build'|'advanced';requirements?:string[];wave?:boolean;noFloor?:boolean;brief?:boolean;distributed?:boolean;youth?:boolean;equipment:'gym'|'dumbbells'|'bodyweight-band'|'flexible'|'none';runBase?:boolean;source:string;slots:ProgramSlot[]};
 export const weightGoals=['strength','hypertrophy','powerbuilding','powerlifting','calisthenics'];
 export function goalForCategory(current:string,category:string){return category==='weights'?(weightGoals.includes(current)?current:'strength'):category;}
 export const programEquipment=(p:ProgramDefinition)=>p.equipment==='none'?'No equipment':p.equipment==='gym'?'Full gym':p.equipment==='bodyweight-band'?'Bodyweight + band':'Dumbbells';
@@ -67,15 +67,15 @@ programCatalog.push(
  lift('General fitness · A','full',[['squat',2,8,12,120],['rdl',2,8,12,120],['pushup',2,6,12,90],['row',2,8,12,90],['calf',2,10,15,60],['deadbug',2,6,10,60]]),
  lift('General fitness · B','full',[['squat',2,8,12,120],['rdl',2,8,12,120],['ohp',2,8,12,90],['row',2,8,12,90],['calf',2,10,15,60],['deadbug',2,6,10,60]])]},
  {id:'GFHOME2',goal:'general',name:'General fitness · Home foundation 2',description:'Bodyweight and resistance-band work on two separated days. Requires a secure band anchor and stable push-up support.',days:2,minutes:45,experience:'all',equipment:'bodyweight-band',source:'ACSM-2026',slots:[
- lift('Home fitness · A','full',[['bw-squat',2,8,12,90],['bridge',2,8,12,90],['pushup',2,6,12,90],['band-row',2,8,12,90],['deadbug',2,6,10,60]]),
- lift('Home fitness · B','full',[['split',2,8,12,90],['bridge',2,8,12,90],['pushup',2,6,12,90],['band-row',2,8,12,90],['calf',2,10,15,60]])]},
+ lift('Home fitness · A','full',[['bw-squat',2,8,12,90],['ref-Band_Good_Morning',2,8,12,90],['pushup',2,6,12,90],['lib-band-standing-row',2,8,12,90],['deadbug',2,6,10,60]]),
+ lift('Home fitness · B','full',[['split',2,8,12,90],['ref-Band_Good_Morning',2,8,12,90],['pushup',2,6,12,90],['lib-band-standing-row',2,8,12,90],['calf',2,10,15,60]])]},
  {id:'CAL2',goal:'calisthenics',name:'Calisthenics · Foundation 2',description:'Two days of controlled bodyweight work, with band rows for pulling. Choose a manageable push-up height; skills such as muscle-ups are not included.',days:2,minutes:45,experience:'all',equipment:'bodyweight-band',source:'ACSM-2026',slots:[
- lift('Calisthenics · A','full',[['bw-squat',2,8,12,90],['pushup',2,6,12,120],['band-row',2,8,12,90],['bridge',2,8,12,90],['deadbug',2,6,10,60]]),
- lift('Calisthenics · B','full',[['split',2,8,12,90],['pushup',2,6,12,120],['band-row',2,8,12,90],['calf',2,10,15,60],['deadbug',2,6,10,60]])]},
+ lift('Calisthenics · A','full',[['bw-squat',2,8,12,90],['pushup',2,6,12,120],['lib-band-standing-row',2,8,12,90],['ref-Band_Good_Morning',2,8,12,90],['deadbug',2,6,10,60]]),
+ lift('Calisthenics · B','full',[['split',2,8,12,90],['pushup',2,6,12,120],['lib-band-standing-row',2,8,12,90],['calf',2,10,15,60],['deadbug',2,6,10,60]])]},
  {id:'CAL3',goal:'calisthenics',name:'Calisthenics · Practice 3',description:'Three brief, separated days for more frequent bodyweight practice. The movements stay familiar; changing leverage needs your review.',days:3,minutes:45,experience:'all',equipment:'bodyweight-band',source:'ACSM-2026',slots:[
- lift('Calisthenics practice · A','full',[['bw-squat',2,8,12,90],['pushup',2,6,12,120],['band-row',2,8,12,90],['deadbug',2,6,10,60]]),
- lift('Calisthenics practice · B','full',[['split',2,8,12,90],['pushup',2,6,12,120],['band-row',2,8,12,90],['bridge',2,8,12,90]]),
- lift('Calisthenics practice · C','full',[['bw-squat',2,8,12,90],['pushup',2,6,12,120],['band-row',2,8,12,90],['calf',2,10,15,60]])]},
+ lift('Calisthenics practice · A','full',[['bw-squat',2,8,12,90],['pushup',2,6,12,120],['lib-band-standing-row',2,8,12,90],['deadbug',2,6,10,60]]),
+ lift('Calisthenics practice · B','full',[['split',2,8,12,90],['pushup',2,6,12,120],['lib-band-standing-row',2,8,12,90],['ref-Band_Good_Morning',2,8,12,90]]),
+ lift('Calisthenics practice · C','full',[['bw-squat',2,8,12,90],['pushup',2,6,12,120],['lib-band-standing-row',2,8,12,90],['calf',2,10,15,60]])]},
  {id:'RNEASY3',goal:'running',name:'Running · Easy base 3',description:'Three conversational runs for adults who already run comfortably for 30 minutes. Stable durations support consistency; no race pace or distance target.',days:3,minutes:40,experience:'all',equipment:'dumbbells',runBase:true,source:'CONCURRENT',slots:[run('Easy run · A','easy'),run('Easy run · B','easy'),run('Longer easy run','easy')]}
 );
 
@@ -86,8 +86,8 @@ const dbB=():ProgramSlot['items']=>[['rdl',3,8,12,120],['ohp',3,8,12,120],['row'
 const dbC=():ProgramSlot['items']=>[['squat',3,8,12,120],['lib-db-floor-press',3,8,12,120],['row',3,8,12,120],['rdl',2,8,12,120],['lateral',2,10,15,90],['calf',2,10,15,60]];
 const machineA=():ProgramSlot['items']=>[['lib-stack-leg-press',3,8,12,120],['lib-stack-chest-press',3,8,12,120],['lib-cable-seated-row',3,8,12,120],['leg-curl',2,10,15,90],['calf',2,10,15,60],['deadbug',2,6,10,60]];
 const machineB=():ProgramSlot['items']=>[['lib-stack-leg-press',3,8,12,120],['lib-stack-chest-press',3,8,12,120],['pulldown',3,8,12,120],['leg-curl',2,10,15,90],['lateral',2,10,15,90],['deadbug',2,6,10,60]];
-const homeA=():ProgramSlot['items']=>[['bw-squat',3,8,15,90],['pushup',3,6,12,120],['band-row',3,8,15,90],['bridge',3,10,15,90],['calf',2,10,15,60],['deadbug',2,6,10,60]];
-const homeB=():ProgramSlot['items']=>[['split',3,8,12,90],['pushup',3,6,12,120],['band-row',3,8,15,90],['bridge',3,10,15,90],['calf',2,10,15,60],['deadbug',2,6,10,60]];
+const homeA=():ProgramSlot['items']=>[['bw-squat',3,8,15,90],['pushup',3,6,12,120],['band-row',3,8,15,90],['ref-Band_Good_Morning',3,10,15,90],['calf',2,10,15,60],['deadbug',2,6,10,60]];
+const homeB=():ProgramSlot['items']=>[['split',3,8,12,90],['pushup',3,6,12,120],['band-row',3,8,15,90],['ref-Band_Good_Morning',3,10,15,90],['calf',2,10,15,60],['deadbug',2,6,10,60]];
 programCatalog.push(
  {id:'PL2',goal:'powerlifting',name:'Powerlifting · Two-day SBD',description:'Two complete full-body sessions with all three competition lifts, pulling and trunk work. More rest days; each workout needs enough time for all three lifts.',days:2,minutes:80,experience:'all',level:'foundation',equipment:'gym',source:'PL-EXPERT',slots:[
  lift('SBD foundation · A','full',[['bar-squat',3,4,6,180],['bench',3,4,6,180],['deadlift',2,4,6,180],['row',2,8,12,120],['deadbug',2,6,10,60]]),
@@ -200,7 +200,7 @@ programCatalog.push({...shortRun,id:'QR2',name:'Running · Two-day walk–run st
 programCatalog.push({id:'PLSTART3',goal:'powerlifting',name:'Powerlifting · SBD learning 3',description:'Three short practice sessions. One competition lift plus assistance each day. Start light and learn the setup. This is a learning block, not meet preparation. Allow more time if a lift is new; never rush the warm-up.',days:3,minutes:30,experience:'all',equipment:'gym',source:'PL-EXPERT',slots:[lift('Learn the squat + row','full',[['bar-squat',2,5,8,150],['row',2,8,12,90]]),lift('Learn the bench + calf raise','full',[['bench',2,5,8,150],['calf',2,10,15,60]]),lift('Learn the deadlift + core','full',[['deadlift',2,4,6,180],['deadbug',2,6,8,60]])]});
 
 for(const [id,goal,label] of [['GFSTAND2','general','General fitness'],['STSTAND2','strength','Strength']] as const){
- programCatalog.push({id,goal,name:label+' · Standing band foundation',description:'A foundation without floor transfers. Use a wall for push-ups and steady support for squats and calf raises. A band and a rated row anchor are required. This is not a rehabilitation plan.',days:2,minutes:50,experience:'all',equipment:'bodyweight-band',noFloor:true,youth:true,source:'ACSM-2026',requirements:['Resistance band and anchor designed for rows','A clear wall and steady support; no floor transfers'],slots:[lift('Standing strength · A','full',[['bw-squat',2,8,12,90],['pushup',2,6,10,90],['band-row',2,8,12,90],['calf',2,10,15,60]]),lift('Standing strength · B','full',[['ref-Band_Good_Morning',2,8,12,90],['pushup',2,6,10,90],['band-row',2,8,12,90],['calf',2,10,15,60]])]});
+ programCatalog.push({id,goal,name:label+' · Standing band foundation',description:'A foundation without floor transfers. Use a wall for push-ups and steady support for squats and calf raises. A band and a rated row anchor are required. This is not a rehabilitation plan.',days:2,minutes:50,experience:'all',equipment:'bodyweight-band',noFloor:true,youth:true,source:'ACSM-2026',requirements:['Resistance band and anchor designed for rows','A clear wall and steady support; no floor transfers'],slots:[lift('Standing strength · A','full',[['bw-squat',2,8,12,90],['pushup',2,6,10,90],['lib-band-standing-row',2,8,12,90],['calf',2,10,15,60]]),lift('Standing strength · B','full',[['ref-Band_Good_Morning',2,8,12,90],['pushup',2,6,10,90],['lib-band-standing-row',2,8,12,90],['calf',2,10,15,60]])]});
 }
 programCatalog.push({id:'GFNOGROUND2',goal:'general',name:'General fitness · Seated machine foundation',description:'Two gym sessions without getting onto the floor. Covers legs, pushing and pulling with stable machines. Choose machines you can get into and out of comfortably; this is not rehabilitation.',days:2,minutes:50,experience:'all',equipment:'gym',noFloor:true,source:'ACSM-2026',requirements:['Selectorized leg press, chest press and seated leg curl','Seated cable row and lat pulldown','Steady support for calf raises'],slots:[lift('Machine foundation · A','full',[['lib-stack-leg-press',2,8,12,120],['lib-stack-chest-press',2,8,12,120],['lib-cable-seated-row',2,8,12,120],['calf',2,10,15,60]]),lift('Machine foundation · B','full',[['leg-curl',2,8,12,90],['lib-stack-leg-press',2,8,12,120],['lib-stack-chest-press',2,8,12,120],['pulldown',2,8,12,120]])]});
 programCatalog.push({id:'GFNONE2',goal:'general',name:'General fitness · No-equipment movement start',description:'Two brief sessions using bodyweight, a clear wall and steady support. This introduces squat, push and calf work. It has no loaded pull or complete strength coverage; add a band or weights for that next step.',days:2,minutes:15,experience:'all',equipment:'none',brief:true,noFloor:true,youth:true,source:'TIME-EFFICIENT',requirements:['Clear wall, floor space to stand and steady support','No weights or band; pulling strength is not covered'],slots:[lift('Movement start · A','full',[['bw-squat',1,8,12,90],['pushup',1,6,10,90],['calf',1,10,15,60]]),lift('Movement start · B','full',[['bw-squat',1,8,12,90],['pushup',1,6,10,90],['calf',1,10,15,60]])]});
@@ -215,7 +215,7 @@ for(const [id,goal,title,source] of [
  programCatalog.push({id,goal,name:title+' · Standing dumbbells 2',description:'Two full standing sessions with dumbbells, wall push-ups and balance support. No floor transfers, bench or band. '+(goal==='sport'?'This is general strength, not position-specific sport training.':goal==='powerbuilding'?'Strength and muscle work use dumbbells; this is not competition barbell practice.':'Keep support and movement range consistent. Wall push-ups may eventually need a more challenging reviewed alternative.'),days:2,minutes:55,experience:'all',equipment:'dumbbells',noFloor:true,source,requirements:['Dumbbells, clear wall and steady balance support','Space for standing rows and hip hinges; no floor work'],slots:[lift(title+' · Standing A','full',tune(standingA())),lift(title+' · Standing B','full',tune(standingB()))]});
 }
 programCatalog.push({id:'CALDB2',goal:'calisthenics',name:'Calisthenics · Bodyweight + dumbbell pulling',description:'Two standing bodyweight sessions with dumbbell rows for pulling. No floor transfers or band. This mixed-equipment foundation does not include advanced bodyweight skills or pure bodyweight pulling.',days:2,minutes:45,experience:'all',equipment:'dumbbells',noFloor:true,source:'ACSM-2026',requirements:['One dumbbell for rows, a clear wall and steady balance support'],slots:[lift('Bodyweight + pulling · A','full',[['bw-squat',2,8,12,90],['pushup',2,6,12,120],['row',2,8,12,90],['calf',2,10,15,60]]),lift('Bodyweight + pulling · B','full',[['split',2,8,12,90],['pushup',2,6,12,120],['row',2,8,12,90],['calf',2,10,15,60]])]});
-for(const home of [false,true])programCatalog.push({id:home?'HYHOME2':'HYDB2',goal:'hybrid',name:'Hybrid · Two-day '+(home?'home':'dumbbell')+' introduction',description:'Two separated sessions combine strength practice with a fixed ten-minute walk/jog finish. A modest introduction for a small schedule, not a race plan or the same weekly work as a four-day block.',days:2,minutes:60,experience:'all',equipment:home?'bodyweight-band':'dumbbells',noFloor:!home,source:'CONCURRENT',requirements:home?['Resistance band, purpose-built secure anchor and stable push-up support','Suitable walking/jogging space or treadmill']:['Dumbbells, clear wall and steady balance support','Suitable walking/jogging space or treadmill'],slots:[{...lift('Combined strength + walk/jog · A','full',home?[['bw-squat',2,8,12,90],['bridge',2,8,12,90],['pushup',2,6,12,90],['band-row',2,8,12,90]]:standingA().slice(0,4)),conditioning:'walkrun'},{...lift('Combined strength + walk/jog · B','full',home?[['split',2,8,12,90],['bridge',2,8,12,90],['pushup',2,6,12,90],['band-row',2,8,12,90]]:standingB().slice(0,4)),conditioning:'walkrun'}]});
+for(const home of [false,true])programCatalog.push({id:home?'HYHOME2':'HYDB2',goal:'hybrid',name:'Hybrid · Two-day '+(home?'home':'dumbbell')+' introduction',description:'Two separated sessions combine strength practice with a fixed ten-minute walk/jog finish. A modest introduction for a small schedule, not a race plan or the same weekly work as a four-day block.',days:2,minutes:60,experience:'all',equipment:home?'bodyweight-band':'dumbbells',noFloor:!home,source:'CONCURRENT',requirements:home?['Resistance band, purpose-built secure anchor and stable push-up support','Suitable walking/jogging space or treadmill']:['Dumbbells, clear wall and steady balance support','Suitable walking/jogging space or treadmill'],slots:[{...lift('Combined strength + walk/jog · A','full',home?[['bw-squat',2,8,12,90],['ref-Band_Good_Morning',2,8,12,90],['pushup',2,6,12,90],['lib-band-standing-row',2,8,12,90]]:standingA().slice(0,4)),conditioning:'walkrun'},{...lift('Combined strength + walk/jog · B','full',home?[['split',2,8,12,90],['ref-Band_Good_Morning',2,8,12,90],['pushup',2,6,12,90],['lib-band-standing-row',2,8,12,90]]:standingB().slice(0,4)),conditioning:'walkrun'}]});
 for(const p of programCatalog){p.level??=p.experience==='all'?'foundation':'build';p.requirements??=p.equipment==='gym'?['Barbell, plates, rack with safeties and bench','Dumbbells and steady support']:['Review each exercise’s listed equipment'];}
 
 // Clear public names; program IDs and workout role titles remain stable.
@@ -273,11 +273,11 @@ const programDisplayNames: Record<string,string> = {
   "QSP3": "Strength for sport · 3 short workouts",
   "QPL3": "Powerlifting · Short squat, bench and deadlift practice",
   "QHY4": "Strength & running · 4 short workouts",
-  "QR3": "Running · Three 15-minute walk–runs",
+  "QR3": "Running · Three short walk–runs",
   "SP2": "Strength for sport · 2-day full body",
   "QHY3": "Strength & running · 3 short workouts",
   "HY3": "Strength & running · 3-day starter",
-  "QR2": "Running · Two 15-minute walk–runs",
+  "QR2": "Running · Two short walk–runs",
   "PLSTART3": "Powerlifting · Learn the three lifts",
   "GFSTAND2": "General fitness · Standing band workouts",
   "STSTAND2": "Strength · Standing band workouts",
@@ -292,4 +292,84 @@ const programDisplayNames: Record<string,string> = {
   "HYDB2": "Strength & running · 2-day dumbbell starter",
   "HYHOME2": "Strength & running · 2-day home starter"
 };
+
+// Original app splits: six sessions distribute weekly work; day seven is easy
+// activity. ACSM's public 2026 guidance supports goal-specific volume and
+// individualization, not a claim that seven hard sessions are necessary.
+const goalLabels:Record<string,string>={general:'General fitness',strength:'Strength',hypertrophy:'Build muscle',powerbuilding:'Strength & muscle',calisthenics:'Bodyweight training',sport:'Strength for sport'};
+for(const goal of Object.keys(goalLabels))for(const days of [6,7])for(const build of [false,true]){
+ if(build&&['general','sport','calisthenics'].includes(goal))continue;
+ const main=build?(goal==='hypertrophy'?5:4):2,assist=build?2:1,lo=goal==='strength'||goal==='powerbuilding'?5:8,hi=goal==='strength'||goal==='powerbuilding'?8:12;
+ const slots:ProgramSlot[]=[];
+ for(let cycle=0;cycle<2;cycle++){
+  slots.push(lift(`Push · ${cycle?'B':'A'}`,'push',[[goal==='calisthenics'?'pushup':'lib-db-floor-press',main,lo,hi,120],['ohp',assist,8,12,90],...(build?[['lateral',2,10,15,60] as ProgramSlot['items'][number]]:[])]));
+  slots.push(lift(`Pull · ${cycle?'B':'A'}`,'pull',[['row',build?5:2,8,12,120],['curl',assist,10,15,60]]));
+  slots.push(lift(`Lower body · ${cycle?'B':'A'}`,'lower',[['squat',main,lo,hi,120],['rdl',build?(goal==='hypertrophy'?5:3):1,8,12,120],['calf',assist,10,15,60]]));
+ }
+ if(days===7)slots.push({title:'Easy activity · recovery walk',group:'activity',kind:'recovery-walk',items:[]});
+ programCatalog.push({id:`D${days}-${goal}-${build?'BUILD':'START'}`,goal,name:`${goalLabels[goal]} · ${days} days, ${build?'more weekly work':'short distributed starter'}`,description:build?'Six focused lifting sessions with each movement family twice weekly. Main work is distributed rather than repeating full-body sessions every day.':'Six shorter lifting sessions with modest weekly work. Each movement family repeats twice; a useful starting dose, with less volume than a complete muscle-growth block.',days,minutes:build?55:35,experience:build?'some':'all',level:build?'build':'foundation',equipment:'flexible',source:'ACSM-2026',brief:true,distributed:true,slots});
+}
+for(const days of [6,7]){
+ const slots:ProgramSlot[]=[
+  lift('Squat practice · A','lower',[['bar-squat',2,4,6,180],['lib-bar-rdl',1,8,10,120]]),
+  lift('Bench practice · A','upper',[['bench',2,4,6,180],['row',2,8,12,120]]),
+  lift('Deadlift practice','lower',[['deadlift',2,3,5,180],['calf',1,10,15,60]]),
+  lift('Bench practice · lighter','upper',[['bench',2,6,8,150],['row',2,8,12,120]]),
+  lift('Squat practice · B','lower',[['bar-squat',2,5,8,180],['lib-bar-rdl',1,8,10,120]]),
+  lift('Bench practice · B','upper',[['bench',2,4,6,180],['row',2,8,12,120]])
+ ];if(days===7)slots.push({title:'Easy activity · recovery walk',group:'activity',kind:'recovery-walk',items:[]});
+ programCatalog.push({id:`D${days}-SBD`,goal:'powerlifting',name:`Powerlifting · ${days} days, distributed SBD practice`,description:'Alternate lower-body and bench-focused practice. Squat twice, deadlift once and bench three times with a lighter bench day. Small work sets; this is a learning/development block, not meet peaking.',days,minutes:45,experience:'all',equipment:'gym',source:'ACSM-2026',brief:true,distributed:true,slots});
+}
+
+
+for(const goal of Object.keys(goalLabels))for(const days of [6,7]){
+ const slots:ProgramSlot[]=[];for(let n=0;n<2;n++){
+  slots.push(lift(`Very short push · ${n?'B':'A'}`,'push',[['pushup',1,6,10,120],['ohp',1,8,10,90]]));
+  slots.push(lift(`Very short pull · ${n?'B':'A'}`,'pull',[['row',1,8,10,120],['curl',1,8,10,60]]));
+  slots.push(lift(`Very short lower · ${n?'B':'A'}`,'lower',[['squat',1,8,10,120],['rdl',1,8,10,120]]));
+ }if(days===7)slots.push({title:'Easy activity · recovery walk',group:'activity',kind:'recovery-walk',items:[]});
+ programCatalog.push({id:`D${days}-${goal}-MICRO`,goal,name:`${goalLabels[goal]} · ${days} days, very short practice`,description:'Two exercises per lifting day, one work set each. Each movement family twice weekly. This is a small starting dose, not the weekly volume of a complete growth or heavy-strength block. No direct calf or trunk work.',days,minutes:20,experience:'all',level:'foundation',equipment:'flexible',source:'ACSM-2026',brief:true,distributed:true,slots});
+}
+for(const days of [6,7]){
+ const original=programCatalog.find(d=>d.id==='GFNONE2')!;
+ const slots:ProgramSlot[]=[];for(let n=0;n<days;n++)slots.push(n===0||n===3?{...original.slots[n===0?0:1],title:'Supported movement practice · '+(n===0?'A':'B')}: {title:'Easy activity · '+(n+1),group:'activity',kind:'recovery-walk',items:[]});
+ programCatalog.push({...original,id:`D${days}-general-NONE`,name:`General fitness · ${days} activity days without weights`,description:'Two supported movement sessions plus comfortable walks. No-equipment training has limited pulling and load progression; this is an activity starter, not complete muscle-growth or heavy-strength coverage.',days,minutes:20,distributed:true,slots});
+}
+
+
+for(const goal of ['general','strength','calisthenics','sport'])for(const days of [6,7]){
+ const slots:ProgramSlot[]=[];for(let n=0;n<days;n++)slots.push(n===0||n===3?lift(`Supervised foundation · ${n===0?'A':'B'}`,'full',[['squat',1,8,12,120],['rdl',1,8,12,120],['pushup',1,8,12,120],['row',1,8,12,120],['deadbug',1,8,12,60]]):{title:'Easy activity · '+(n+1),group:'activity',kind:'recovery-walk',items:[]});
+ programCatalog.push({id:`D${days}-${goal}-HABIT`,goal,name:`${goalLabels[goal]} · ${days} activity days, two strength foundations`,description:'Two nonconsecutive whole-body foundations plus easy walks. A daily activity habit with modest strength work; qualified supervision is required for youth. This does not add six hard lifting days.',days,minutes:40,experience:'all',equipment:'flexible',source:'ACSM-2026',brief:true,distributed:true,youth:true,slots});
+}
+
 for (const program of programCatalog) program.name = programDisplayNames[program.id] ?? program.name;
+
+// Reconcile card minima with the shared duration audit (full displayed work).
+const auditedMinimumMinutes:Record<string,number>={"BB3":71,"HY4":60,"ST2":63,"GF2":63,"GFHOME2":49,"CAL2":56,"PBSTART3":71,"STGYM2":67,"HY3":60,"PLSTART3":34,"GFNONE2":16,"HY5":68,"CAL3":48,"HYDB4":76,"SP2":66,"STDBST2":59,"GFDBST2":59,"BBDBST2":59,"PBDBST2":58,"SPDBST2":59,"CALDB2":52};
+for(const d of programCatalog)if(auditedMinimumMinutes[d.id])d.minutes=Math.max(d.minutes,auditedMinimumMinutes[d.id]);
+
+for(const d of programCatalog)if(['QR2','QR3'].includes(d.id)){d.minutes=20;d.description+=' The timed sequence is 15 minutes; allow five additional minutes for preparation and recording, for a 20-minute session window.';}
+
+// Individual coverage audit: complete foundations repeat chest, knee-dominant
+// and hamstring work on at least two days. Add displayed work; never compress
+// its rest or replace an already accepted user's calendar.
+const coverageCorrections:Record<string,[number,ProgramSlot['items'][number]][]>={
+ HY4:[[0,['rdl',2,8,12,120]],[2,['pushup',2,6,12,120]]],
+ HY3:[[0,['rdl',2,8,12,120]],[1,['pushup',2,6,12,120]]],
+ HY5:[[0,['rdl',1,8,12,120]],[2,['bar-squat',2,5,8,150]],[2,['bench',2,6,10,150]]],
+ ST2:[[1,['pushup',2,6,12,120]]],GF2:[[1,['pushup',2,6,12,120]]],
+ CAL2:[[1,['ref-Band_Good_Morning',2,8,12,90]]],CAL3:[[0,['ref-Band_Good_Morning',2,8,12,90]]],
+ HYDB4:[[2,['pushup',2,6,12,120]]],SP2:[[1,['pushup',2,6,12,120]]],
+ GFSTAND2:[[0,['ref-Band_Good_Morning',2,8,12,90]],[1,['bw-squat',2,8,12,90]]],
+ STSTAND2:[[0,['ref-Band_Good_Morning',2,8,12,90]],[1,['bw-squat',2,8,12,90]]],
+ GFNOGROUND2:[[0,['leg-curl',2,10,15,90]]],
+ STDBST2:[[1,['pushup',2,6,12,120]]],GFDBST2:[[1,['pushup',2,6,12,120]]],BBDBST2:[[1,['pushup',2,6,12,120]]],PBDBST2:[[1,['pushup',2,6,12,120]]],SPDBST2:[[1,['pushup',2,6,12,120]]],
+ CALDB2:[[0,['rdl',2,8,12,120]],[1,['rdl',2,8,12,120]]],HYDB2:[[1,['pushup',2,6,12,120]]]
+};
+for(const [id,additions] of Object.entries(coverageCorrections)){
+ const d=programCatalog.find(d=>d.id===id)!;d.slots=d.slots.map(s=>({...s,items:s.items.map(i=>[...i] as ProgramSlot['items'][number])}));
+ for(const [slot,item] of additions)if(!d.slots[slot].items.some(i=>i[0]===item[0]))d.slots[slot].items.push(item);
+ d.description+=' Coverage includes chest, knee-dominant and hamstring work on two days. Review the complete time estimate before choosing.';
+}
+
+for(const d of programCatalog)if(auditedMinimumMinutes[d.id])d.minutes=Math.max(d.minutes,auditedMinimumMinutes[d.id]);

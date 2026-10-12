@@ -30,6 +30,14 @@ const eslintConfig = defineConfig([
     },
   },
   {
+    files: ["mobile/**/*.{ts,tsx}"],
+    rules: {
+      // Metro resolves static image/font requires as bundled asset modules.
+      // Executable CommonJS imports still use the normal error rule.
+      "@typescript-eslint/no-require-imports": ["error", { allow: ["\\.(png|jpg|jpeg|ttf)$"] }],
+    },
+  },
+  {
     files: ["components/ui/**/*.{ts,tsx}", "hooks/use-mobile.ts"],
     rules: {
       // These files are vendored verbatim from shadcn@4.17.0. Keep the

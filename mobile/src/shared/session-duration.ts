@@ -3,6 +3,7 @@ export type DurationEstimate={low:number;high:number;workMinutes:number;restMinu
 /** A transparent scheduling heuristic. These ranges are not measured sessions. */
 export function estimateDuration(session:Session,custom:Exercise[]=[]):DurationEstimate|null{
  if(!session.items.length)return null;
+ if(session.kind==='Easy activity'){const work=session.items.reduce((n,i)=>n+i.sets*i.reps,0);return {low:Math.ceil(work),high:Math.ceil(work+5),workMinutes:work,restMinutes:0,version:'duration-v1',assumptions:['Comfortable walking minutes; allow up to five extra minutes for preparation and recording. No running or strength sets are inferred.']};}
  if(session.runSteps?.length){
   const work=session.runSteps.reduce((n,x)=>n+x.seconds,0)/60;
   return {low:Math.ceil(work),high:Math.ceil(work+5),workMinutes:work,restMinutes:0,version:'duration-v1',assumptions:['The listed timed sequence includes its prescribed walking recoveries.','Allow 0–5 extra minutes for setup and recording. Route, pace and distance are not inferred.']};

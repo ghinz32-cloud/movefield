@@ -26939,6 +26939,12 @@
       "Back stays supported",
       "Move from the hips",
       "Return slowly"
+    ],
+    "terms": [
+      {
+        "term": "abduction",
+        "meaning": "Moving a limb away from the middle of your body."
+      }
     ]
   },
   "ref-Thigh_Adductor": {
@@ -26982,6 +26988,12 @@
       "Back stays supported",
       "Move from the hips",
       "Return slowly"
+    ],
+    "terms": [
+      {
+        "term": "adduction",
+        "meaning": "Moving a limb toward the middle of your body."
+      }
     ]
   },
   "ref-Band_Hip_Adductions": {
@@ -27028,6 +27040,12 @@
       "Hips stay level",
       "Move from the hip",
       "Slow return"
+    ],
+    "terms": [
+      {
+        "term": "abduction",
+        "meaning": "Moving a limb away from the middle of your body."
+      }
     ]
   },
   "ref-Cable_Hip_Adduction": {
@@ -27073,6 +27091,12 @@
       "Hips stay level",
       "Move from the hip",
       "Slow return"
+    ],
+    "terms": [
+      {
+        "term": "adduction",
+        "meaning": "Moving a limb toward the middle of your body."
+      }
     ]
   },
   "ref-Hip_Extension_with_Bands": {
@@ -33765,7 +33789,13 @@
       "Breathe throughout"
     ],
     "reviewedAt": "2026-10-07",
-    "capability": "Instruction only; no technique assessment"
+    "capability": "Instruction only; no technique assessment",
+    "terms": [
+      {
+        "term": "isometric",
+        "meaning": "Holding a position while the muscles work, rather than moving through repetitions."
+      }
+    ]
   },
   "ref-Isometric_Neck_Exercise_-_Sides": {
     "variant": "Isometric Neck Exercise - Sides — gentle hand-resisted hold to each side",
@@ -33809,7 +33839,13 @@
       "Breathe throughout"
     ],
     "reviewedAt": "2026-10-07",
-    "capability": "Instruction only; no technique assessment"
+    "capability": "Instruction only; no technique assessment",
+    "terms": [
+      {
+        "term": "isometric",
+        "meaning": "Holding a position while the muscles work, rather than moving through repetitions."
+      }
+    ]
   },
   "ref-Jackknife_Sit-Up": {
     "variant": "Jackknife Sit-Up — simultaneous long-leg and trunk lift",
@@ -45150,6 +45186,12 @@
       "Palms press",
       "Shoulders stay down",
       "Keep breathing"
+    ],
+    "terms": [
+      {
+        "term": "isometric",
+        "meaning": "Holding a position while the muscles work, rather than moving through repetitions."
+      }
     ]
   },
   "ref-Carioca_Quick_Step": {
@@ -47077,6 +47119,282 @@
       "Make a small jump from two feet.",
       "Bend your hips and knees as you land.",
       "Hold the landing, then fully reset."
+    ]
+  },
+  "lib-single-db-rdl": {
+    "variant": "Two-hand single-dumbbell Romanian deadlift",
+    "summary": "Two-hand single-dumbbell Romanian deadlift uses the equipment listed below. Follow the setup, complete the controlled movement and log the actual work.",
+    "equipment": [
+      "One dumbbell with a secure two-hand grip",
+      "Clear standing space"
+    ],
+    "setup": [
+      "Stand with feet about hip-width apart and a small bend in your knees.",
+      "Hold one dumbbell securely with both hands in front of your thighs. Choose a shape you can grip without pinching fingers."
+    ],
+    "execution": [
+      "Move your hips back as the dumbbell travels close to your legs. Keep the knee bend fairly steady.",
+      "Lower only as far as you can keep your trunk controlled; reaching the floor is not the target.",
+      "Push through your feet and bring your hips forward to stand. Finish upright without leaning backward."
+    ],
+    "finish": [
+      "Set the dumbbell down with a controlled hip and knee bend."
+    ],
+    "breathing": [
+      "Breathe out during the harder part and in as you return. Keep breathing; avoid a long breath hold."
+    ],
+    "commonErrors": [
+      "Bending deeper at the knees turns this into a squat rather than a hip hinge.",
+      "Reaching farther by rounding or yanking the weight does not improve the set."
+    ],
+    "easierOption": "Practice the hip-back motion without weight, or shorten the lowering range.",
+    "safety": "Use a weight and grip you can control. Stop for pain, dizziness or a slipping grip; seek instruction if this hinge is unfamiliar.",
+    "loadConvention": "One dumbbell held in both hands; enter its total weight and total repetitions.",
+    "sourceURLs": [
+      "https://www.nasm.org/resource-center/exercise-library/dumbbell-romanian-deadlift",
+      "https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842"
+    ],
+    "sourceNote": "Original app instructions for this explicitly named variation. Linked sources describe the parent movement or general technique; they are not a verified video of this exact variation. The app cannot assess your form.",
+    "quickCues": [
+      "Move your hips back as the dumbbell travels close to your legs. Keep the knee bend fairly steady.",
+      "Lower only as far as you can keep your trunk controlled; reaching the floor is not the target.",
+      "Push through your feet and bring your hips forward to stand. Finish upright without leaning backward."
+    ],
+    "terms": [
+      {
+        "term": "Per side",
+        "meaning": "Complete the stated repetitions with each side; record that count once when both sides are done."
+      }
+    ]
+  },
+  "lib-band-standing-row": {
+    "variant": "Standing anchored resistance-band row",
+    "summary": "Standing anchored resistance-band row uses the equipment listed below. Follow the setup, complete the controlled movement and log the actual work.",
+    "equipment": [
+      "Undamaged resistance band",
+      "Anchor designed and rated for band exercise"
+    ],
+    "setup": [
+      "Secure the band to its intended anchor around lower-chest height, following the manufacturer’s instructions.",
+      "Face the anchor in a balanced stance. Start with arms reaching forward and light band tension."
+    ],
+    "execution": [
+      "Pull your elbows back toward your sides while keeping your trunk steady.",
+      "Pause briefly without forcing your shoulders backward or leaning away from the anchor.",
+      "Let the arms reach forward under control. Repeat with the same stance and distance."
+    ],
+    "finish": [
+      "Walk toward the anchor to remove tension before putting the band down."
+    ],
+    "breathing": [
+      "Breathe out during the harder part and in as you return. Keep breathing; avoid a long breath hold."
+    ],
+    "commonErrors": [
+      "Leaning backward uses body movement to replace the pulling work.",
+      "An unsecured door handle or household object can release suddenly."
+    ],
+    "easierOption": "Use a lighter band or stand closer while keeping some starting tension.",
+    "safety": "Check the band and anchor before each set. Keep the recoil path away from your face; do not use a damaged band or improvised anchor.",
+    "loadConvention": "Record band identity, anchor height and starting distance; total simultaneous repetitions. Do not invent a kilogram value.",
+    "sourceURLs": [
+      "https://www.acefitness.org/resources/everyone/exercise-library/48/seated-row/",
+      "https://www.acefitness.org/continuing-education/certified/july-2025/8897/the-ace-workout-builder-for-resistance-band-workouts/",
+      "https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842"
+    ],
+    "sourceNote": "Original app instructions for this explicitly named variation. Linked sources describe the parent movement or general technique; they are not a verified video of this exact variation. The app cannot assess your form.",
+    "quickCues": [
+      "Pull your elbows back toward your sides while keeping your trunk steady.",
+      "Pause briefly without forcing your shoulders backward or leaning away from the anchor.",
+      "Let the arms reach forward under control. Repeat with the same stance and distance."
+    ],
+    "terms": [
+      {
+        "term": "Per side",
+        "meaning": "Complete the stated repetitions with each side; record that count once when both sides are done."
+      }
+    ]
+  },
+  "lib-single-db-curl": {
+    "variant": "Standing one-arm dumbbell curl",
+    "summary": "Standing one-arm dumbbell curl uses the equipment listed below. Follow the setup, complete the controlled movement and log the actual work.",
+    "equipment": [
+      "One dumbbell",
+      "Clear standing space"
+    ],
+    "setup": [
+      "Stand with feet steady and hold the dumbbell at one side, palm facing forward.",
+      "Let your free hand rest comfortably. Keep the working upper arm near your side."
+    ],
+    "execution": [
+      "Bend the elbow to bring the dumbbell up without swinging or lifting the shoulder.",
+      "Lower until your elbow is comfortably straight.",
+      "Repeat the listed count, then change hands and complete the same count on the other side."
+    ],
+    "finish": [
+      "Put the dumbbell down under control after both sides. If your sides differ, log them separately rather than inventing equal work."
+    ],
+    "breathing": [
+      "Breathe out during the harder part and in as you return. Keep breathing; avoid a long breath hold."
+    ],
+    "commonErrors": [
+      "Swinging the trunk makes the repetitions harder to compare.",
+      "Counting left plus right as one side’s repetitions doubles the recorded work."
+    ],
+    "easierOption": "Use a lighter dumbbell, or choose fewer controlled repetitions and record the actual count.",
+    "safety": "Keep wrists comfortable. Stop for pain or a slipping grip; never force the elbow past a comfortable range.",
+    "loadConvention": "One dumbbell; repetitions per side. Do both sides before Done; enter the weight once and the per-side rep count once.",
+    "sourceURLs": [
+      "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/biceps-curl/vid-20084675",
+      "https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842"
+    ],
+    "sourceNote": "Original app instructions for this explicitly named variation. Linked sources describe the parent movement or general technique; they are not a verified video of this exact variation. The app cannot assess your form.",
+    "quickCues": [
+      "Bend the elbow to bring the dumbbell up without swinging or lifting the shoulder.",
+      "Lower until your elbow is comfortably straight.",
+      "Repeat the listed count, then change hands and complete the same count on the other side."
+    ],
+    "terms": [
+      {
+        "term": "Per side",
+        "meaning": "Complete the stated repetitions with each side; record that count once when both sides are done."
+      }
+    ]
+  },
+  "lib-single-db-floor-press": {
+    "variant": "One-arm dumbbell floor press",
+    "summary": "One-arm dumbbell floor press uses the equipment listed below. Follow the setup, complete the controlled movement and log the actual work.",
+    "equipment": [
+      "One manageable dumbbell",
+      "Comfortable floor space"
+    ],
+    "setup": [
+      "Sit on the floor with the dumbbell close to your body and carefully lower onto your back. Use help for setup if needed.",
+      "Bend your knees with feet grounded. Hold the dumbbell over one side of your chest with the wrist above the elbow."
+    ],
+    "execution": [
+      "Lower the upper arm until it rests gently on the floor; keep the elbow at a comfortable angle from your torso.",
+      "Press upward smoothly without twisting or letting the weight drift toward your face.",
+      "Finish the listed count, put the dumbbell down safely, then set up the other side and do the same count."
+    ],
+    "finish": [
+      "Put the weight down before sitting up; use a controlled floor transfer."
+    ],
+    "breathing": [
+      "Breathe out during the harder part and in as you return. Keep breathing; avoid a long breath hold."
+    ],
+    "commonErrors": [
+      "Bouncing the arm off the floor loses control.",
+      "Twisting the torso or reaching behind the head changes the exercise and can compromise control."
+    ],
+    "easierOption": "Use a lighter dumbbell or choose an incline push-up on a secure support.",
+    "safety": "The floor limits pressing range. Choose a weight you can start and finish safely without dropping it. Use a standing press option if floor transfers are difficult.",
+    "loadConvention": "One dumbbell; repetitions per side. Complete both sides before Done and enter its weight and the per-side count once.",
+    "sourceURLs": [
+      "https://www.acefitness.org/resources/everyone/exercise-library/19/chest-press/"
+    ],
+    "sourceNote": "Original app instructions for this explicitly named variation. Linked sources describe the parent movement or general technique; they are not a verified video of this exact variation. The app cannot assess your form.",
+    "quickCues": [
+      "Lower the upper arm until it rests gently on the floor; keep the elbow at a comfortable angle from your torso.",
+      "Press upward smoothly without twisting or letting the weight drift toward your face.",
+      "Finish the listed count, put the dumbbell down safely, then set up the other side and do the same count."
+    ],
+    "terms": [
+      {
+        "term": "Per side",
+        "meaning": "Complete the stated repetitions with each side; record that count once when both sides are done."
+      }
+    ]
+  },
+  "lib-single-db-split-squat": {
+    "variant": "Single-dumbbell static split squat",
+    "summary": "Single-dumbbell static split squat uses the equipment listed below. Follow the setup, complete the controlled movement and log the actual work.",
+    "equipment": [
+      "One dumbbell",
+      "Clear standing space",
+      "Optional secure hand support"
+    ],
+    "setup": [
+      "Hold one dumbbell at your chest with both hands, or in one hand by your side. Record the grip you use.",
+      "Take a balanced split stance with one foot forward and one back. Keep feet on separate tracks rather than a tightrope."
+    ],
+    "execution": [
+      "Bend both knees to lower through a comfortable range while keeping the front foot supported.",
+      "Stand by pressing through your feet without changing the foot positions.",
+      "Finish the listed count and switch the front leg. Complete the same count on both sides."
+    ],
+    "finish": [
+      "Stand fully and bring your feet together before setting the weight down."
+    ],
+    "breathing": [
+      "Breathe out during the harder part and in as you return. Keep breathing; avoid a long breath hold."
+    ],
+    "commonErrors": [
+      "A very narrow stance can make balance the limiting factor.",
+      "Bouncing at the bottom or pushing the range beyond control does not improve the set."
+    ],
+    "easierOption": "Leave the weight out and use a secure support with one hand. Record support and depth so later sets are comparable.",
+    "safety": "Choose a stable stance and support. A heavier dumbbell is useful only when balance and range remain controlled.",
+    "loadConvention": "One dumbbell total; repetitions per side. Do both sides before Done; enter the single weight and per-side rep count once.",
+    "sourceURLs": [
+      "https://www.acefitness.org/resources/pros/expert-articles/5269/how-to-get-started-with-kettlebells/"
+    ],
+    "sourceNote": "Original app instructions for this explicitly named variation. Linked sources describe the parent movement or general technique; they are not a verified video of this exact variation. The app cannot assess your form.",
+    "quickCues": [
+      "Bend both knees to lower through a comfortable range while keeping the front foot supported.",
+      "Stand by pressing through your feet without changing the foot positions.",
+      "Finish the listed count and switch the front leg. Complete the same count on both sides."
+    ],
+    "terms": [
+      {
+        "term": "Per side",
+        "meaning": "Complete the stated repetitions with each side; record that count once when both sides are done."
+      }
+    ]
+  },
+  "lib-band-curl": {
+    "variant": "Standing resistance-band curl",
+    "summary": "Standing resistance-band curl uses the equipment listed below. Follow the setup, complete the controlled movement and log the actual work.",
+    "equipment": [
+      "Undamaged resistance band designed for standing exercises",
+      "Suitable shoes and clear space"
+    ],
+    "setup": [
+      "Following the band manufacturer’s instructions, stand on the middle of the band and hold the ends or handles.",
+      "Begin with arms by your sides and palms forward, with light tension and a secure grip."
+    ],
+    "execution": [
+      "Bend the elbows without swinging your body or moving the upper arms forward.",
+      "Lower under control until the elbows are comfortably straight.",
+      "Keep foot placement and grip the same for every repetition."
+    ],
+    "finish": [
+      "Remove tension before releasing the handles or stepping off the band."
+    ],
+    "breathing": [
+      "Breathe out during the harder part and in as you return. Keep breathing; avoid a long breath hold."
+    ],
+    "commonErrors": [
+      "Changing grip length during the set changes the resistance.",
+      "Letting a band slip from underfoot or releasing a stretched handle can cause recoil."
+    ],
+    "easierOption": "Use a lighter band or a longer working length within its safe stretch limit.",
+    "safety": "Check for damage and follow the band’s stretch limit. Keep the recoil path away from your face. Stop if the band slips, hurts or loses its secure grip.",
+    "loadConvention": "Total simultaneous repetitions; record band identity, grip and stance. Do not enter estimated band weight.",
+    "sourceURLs": [
+      "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/biceps-curl/vid-20084675",
+      "https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842"
+    ],
+    "sourceNote": "Original app instructions for this explicitly named variation. Linked sources describe the parent movement or general technique; they are not a verified video of this exact variation. The app cannot assess your form.",
+    "quickCues": [
+      "Bend the elbows without swinging your body or moving the upper arms forward.",
+      "Lower under control until the elbows are comfortably straight.",
+      "Keep foot placement and grip the same for every repetition."
+    ],
+    "terms": [
+      {
+        "term": "Per side",
+        "meaning": "Complete the stated repetitions with each side; record that count once when both sides are done."
+      }
     ]
   }
 }

@@ -1,32 +1,24 @@
-import {changed,day,exFor,requiresSetup,type Exercise,type Item,type State} from './training';
+import {equipmentFit,inventoryErrors,movementRoles,sameFunctionIds,type EquipmentInventory} from './equipment';
+import {changed,day,exFor,requiresSetup,type Exercise,estimateSessionMinutes,type Profile,type Item,type State} from './training';
 
-// Curated movement roles. Broad labels such as Push or Arm are not sufficient.
-const families:string[][]=[
- ['bench','lib-db-flat-bench-press','lib-plate-chest-press','lib-stack-chest-press','lib-db-floor-press'],
- ['incline-press','lib-bar-incline-bench','lib-plate-incline-chest-press','lib-stack-incline-chest-press'],
- ['bar-squat','squat','lib-plate-hack-squat','lib-stack-hack-squat','lib-plate-leg-press-45','lib-stack-leg-press'],
- ['deadlift','rdl','lib-bar-rdl','lib-kb-double-rdl'],
- ['row','lib-cable-seated-row','band-row'],
- ['leg-curl','lib-stack-seated-leg-curl'],
- ['curl','lib-cable-curl','lib-db-hammer-curl'],
- ['triceps','lib-cable-overhead-triceps','lib-db-overhead-triceps','lib-cable-single-arm-pushdown']
-];
-export function substitutionOptions(id:string):Exercise[]{
- return [...new Set(families.filter(f=>f.includes(id)).flat())].filter(x=>x!==id).map(x=>exFor(x)).filter(x=>x.name!=='Archived exercise'&&x.metric==='reps');
+// Only curated movement roles are considered; broad muscle names do not match.
+export function substitutionOptions(id:string,profile?:Profile):Exercise[]{
+ return sameFunctionIds(id).map(x=>exFor(x)).filter(x=>x.name!=='Archived exercise'&&x.metric===exFor(id).metric&&x.metric==='reps'&&equipmentFit(x,profile).available).sort((a,b)=>Number(equipmentFit(b,profile).known)-Number(equipmentFit(a,profile).known));
 }
-export type Substitution={sessionId:string;from:string;to:string;all:boolean;setup:string;allowLonger:boolean;acknowledgeSpecificity:boolean;planId:string;version:number;historyCount:number};
+export function substitutionReason(id:string){return movementRoles[id]?.difference||'Same primary movement role. Technique, resistance and setup remain specific to this variation.';}
+export type Substitution={sessionId:string;from:string;to:string;all:boolean;setup:string;allowLonger:boolean;acknowledgeSpecificity:boolean;planId:string;version:number;historyCount:number;inventory?:EquipmentInventory};
 function replacementItem(item:Item,to:string):Item{
- const isolation=['curl','lib-cable-curl','lib-db-hammer-curl','triceps','lib-cable-overhead-triceps','lib-db-overhead-triceps','lib-cable-single-arm-pushdown','leg-curl','lib-stack-seated-leg-curl'].includes(to);
- const lo=isolation?10:8,hi=isolation?15:12;
+ const e=exFor(to),unweighted=!e.loadTracked;let lo=unweighted?Math.max(6,item.repMin??item.reps):item.repMin??item.reps,hi=unweighted?Math.max(12,item.repMax??item.reps):item.repMax??item.reps;
+ if(['deadbug','core-dead-bug'].includes(item.exerciseId)&&['deadbug','core-dead-bug'].includes(to)){const factor=item.exerciseId==='deadbug'?2:0.5;lo=(item.repMin??item.reps)*factor;hi=(item.repMax??item.reps)*factor;lo=Math.max(1,Math.ceil(lo));hi=Math.max(lo,Math.ceil(hi));}
  const pair=item.note?.match(/A[12]\. \[Focus\] Assistance superset A:.*$/)?.[0];
- return {exerciseId:to,sets:pair?item.sets:Math.min(item.sets,3),reps:lo,repMin:lo,repMax:hi,rest:pair?item.rest:isolation?90:150,kg:null,note:'Choose a starting weight for this exercise and rep range. Do not carry over the weight from the exercise it replaces.'+(pair?' '+pair:'')};
+ return {...item,exerciseId:to,reps:lo,repMin:lo,repMax:hi,kg:null,loadContext:undefined,note:'Choose resistance for this exact exercise. Existing set count and rest are kept; previous weights are not carried over. '+substitutionReason(to)+(pair?' '+pair:'')};
 }
-function workSeconds(item:Item){const e=exFor(item.exerciseId);return item.sets*(item.repMax??item.reps)*4*(/per side|each side|both sides/i.test(e.loadConvention||'')?2:1)+Math.max(0,item.sets-1)*item.rest+120;}
 export function previewSubstitution(s:State,q:Substitution){
- const errors:string[]=[];const base=s.plan?.sessions.find(x=>x.id===q.sessionId),old=base?.items.find(x=>x.exerciseId===q.from),replacement=exFor(q.to);
+ const selectedProfile={...s.profile,inventory:q.inventory||s.profile.inventory};
+ const errors:string[]=[...inventoryErrors(selectedProfile)];const base=s.plan?.sessions.find(x=>x.id===q.sessionId),old=base?.items.find(x=>x.exerciseId===q.from),replacement=exFor(q.to);
  if(!s.plan||s.plan.id!==q.planId||s.plan.version!==q.version||s.history.length!==q.historyCount)errors.push('The plan or history changed. Close and reopen substitutions.');
  if(!base||base.status!=='scheduled'||(base.date<day()&&s.active?.sessionId!==base.id)||!old||s.history.some(w=>w.sessionId===base.id&&w.finishedAt))errors.push('Choose an upcoming exercise that has not been saved as completed.');
- if(!substitutionOptions(q.from).some(x=>x.id===q.to))errors.push('Choose one of the listed substitutes for this movement.');
+ if(!substitutionOptions(q.from,selectedProfile).some(x=>x.id===q.to))errors.push('Choose one of the listed substitutes for this movement and confirmed equipment.');
  if(s.simulatedOffline)errors.push('Reconnect before changing the workout.');
  if(s.hold||s.plan?.paused)errors.push('Resume the plan or review the reported concern before changing exercises. Equipment substitutions are not injury advice.');
  if(s.active&&s.active.sessionId!==q.sessionId)errors.push('Finish the active workout before changing another session.');
@@ -38,7 +30,7 @@ export function previewSubstitution(s:State,q:Substitution){
  const title=base?.roleId||base?.title.replace(' · review week','');
  const sessions=(s.plan?.sessions||[]).filter(x=>x.status==='scheduled'&&x.date>=(base?.date||day())&&(q.all?(x.roleId||x.title.replace(' · review week',''))===title:x.id===q.sessionId)&&x.items.some(i=>i.exerciseId===q.from));
  if(sessions.some(x=>x.items.some(i=>i.exerciseId===q.to)))errors.push('This substitute is already in one of these workouts. Choose another to keep each exercise log separate.');
- const changes=sessions.map(x=>{const old=x.items.find(i=>i.exerciseId===q.from)!,item=replacementItem(old,q.to);return {sessionId:x.id,date:x.date,item,before:x.minutes,after:Math.max(1,x.minutes+Math.ceil((workSeconds(item)-workSeconds(old))/60))};});
+ const changes=sessions.map(x=>{const old=x.items.find(i=>i.exerciseId===q.from)!,item=replacementItem(old,q.to);return {sessionId:x.id,date:x.date,item,before:x.minutes,after:Math.max(1,estimateSessionMinutes(x.items.map(i=>i.exerciseId===q.from?item:i),x.timeProfile==='brief',s.custom),x.minutes+estimateSessionMinutes(x.items.map(i=>i.exerciseId===q.from?item:i),x.timeProfile==='brief',s.custom)-estimateSessionMinutes(x.items,x.timeProfile==='brief',s.custom))};});
  const max=Math.max(0,...changes.map(x=>x.after));
  if(max>1440)errors.push('This change exceeds the supported session length.');
  if(changes.some(x=>x.after>Math.max(x.before,s.plan?.profile.minutes||0))&&!q.allowLonger)errors.push(`Review and allow the extra time. The longest affected session is ${max} minutes.`);
@@ -56,5 +48,5 @@ export function applySubstitution(s:State,q:Substitution):{state:State;error?:st
   const rir={...active.rir};delete rir[q.from];delete rir[q.to];
   active={...active,targets,sets:targets.flatMap(i=>i.exerciseId===q.to?Array.from({length:i.sets},(_,n)=>({exerciseId:q.to,set:n+1,reps:0,kg:null,done:false})):active!.sets.filter(x=>x.exerciseId===i.exerciseId)),loadContext,rir};
  }
- return {state:changed({...s,active,plan:{...s.plan!,sessions,version:s.plan!.version+1},loadContext:requiresSetup(preview.replacement)?{...s.loadContext,[q.to]:q.setup.trim()}:s.loadContext,proposals:s.proposals.map(p=>['pending','queued'].includes(p.status)?{...p,status:'stale'}:p)},`Replaced ${exFor(q.from).name} with ${preview.replacement.name} in ${preview.changes.length} workout(s); load reset and separate history retained.`)};
+ return {state:changed({...s,active,profile:q.inventory?{...s.profile,inventory:q.inventory}:s.profile,plan:{...s.plan!,sessions,version:s.plan!.version+1},loadContext:requiresSetup(preview.replacement)?{...s.loadContext,[q.to]:q.setup.trim()}:s.loadContext,proposals:s.proposals.map(p=>['pending','queued'].includes(p.status)?{...p,status:'stale'}:p)},`Replaced ${exFor(q.from).name} with ${preview.replacement.name} in ${preview.changes.length} workout(s); load reset and separate history retained.${q.inventory?' Confirmed equipment updated for future substitutions; other scheduled exercises were not changed.':''}`)};
 }

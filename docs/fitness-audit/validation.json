@@ -1,0 +1,198 @@
+{
+  "checkedAt": "2026-10-12T16:00:24.149928+00:00",
+  "scope": "Shared workout engineering and accessible-source audit. Not an efficacy trial, full-paper review of every linked source or installed-device qualification.",
+  "catalog": {
+    "exercises": 995,
+    "programs": 113,
+    "recommendedExerciseIds": 29,
+    "programsWithSixOrSevenDays": 42,
+    "completeFoundationCoverageFailures": [],
+    "programBuildFailures": [],
+    "programTimingCardMismatches": [],
+    "missingGuideIds": [],
+    "orphanMediaIds": [
+      "floor-pushup",
+      "db-calf",
+      "squat-jump"
+    ],
+    "flags": {
+      "coach-selected-task-muscles-unknown": 1,
+      "equipment-unconfirmed": 27
+    }
+  },
+  "core": [
+    {
+      "name": "Today facts and actions",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 2178
+    },
+    {
+      "name": "transactional encrypted records",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 26993
+    },
+    {
+      "name": "activity progress and comparison context",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 2308
+    },
+    {
+      "name": "evidence/duration/calendar zones",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 8248
+    },
+    {
+      "name": "calendar and reusable blocks",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1505
+    },
+    {
+      "name": "Cloudflare account/storage/coaching",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 6833
+    },
+    {
+      "name": "portable cloud vault and retry",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 6993
+    },
+    {
+      "name": "native SDK cookie transport",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1422
+    },
+    {
+      "name": "plan import",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1683
+    },
+    {
+      "name": "durability",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1537
+    },
+    {
+      "name": "vault and history",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 2118
+    },
+    {
+      "name": "native encrypted adapter",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 3059
+    },
+    {
+      "name": "native file transfer",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 684
+    },
+    {
+      "name": "security",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1350
+    },
+    {
+      "name": "data and calendar",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1267
+    },
+    {
+      "name": "web types",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 27940
+    },
+    {
+      "name": "native types",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 24475
+    },
+    {
+      "name": "native engine",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 3896
+    }
+  ],
+  "preferenceCases": {
+    "scenarios": 7776,
+    "fittingPlansInspected": 6260,
+    "assertions": 1316599
+  },
+  "programDepth": {
+    "programs": 113,
+    "scenarios": 5761,
+    "assertions": 4331514
+  },
+  "webBrowser": [
+    {
+      "brand": "movefield",
+      "passed": [
+        "real encrypted setup, inventory confirmation gate, 7-day single-weight plan",
+        "320px inventory layout and axe checks",
+        "regional planned work table and 21-session acceptance",
+        "available same-function substitute preserves dose, rest, dates and history",
+        "encrypted state reopens with exact accepted substitution",
+        "prominent safe form reference, including a guide without a media record"
+      ],
+      "surveyAxe": 0
+    },
+    {
+      "brand": "grizzly",
+      "passed": [
+        "real encrypted setup, inventory confirmation gate, 7-day single-weight plan",
+        "320px inventory layout and axe checks",
+        "regional planned work table and 21-session acceptance",
+        "available same-function substitute preserves dose, rest, dates and history",
+        "encrypted state reopens with exact accepted substitution",
+        "prominent safe form reference, including a guide without a media record"
+      ],
+      "surveyAxe": 0
+    }
+  ],
+  "library": {
+    "guides": 995,
+    "photoHashesVerified": 1726,
+    "checks": 6
+  },
+  "focusedChecks": {
+    "onboarding": 12,
+    "substitutions": 18,
+    "training": 28,
+    "focuses": 13
+  },
+  "native": {
+    "sourceSnapshotFiles": 49,
+    "componentWorkflows": "Both flavors passed via React Native Web; OS/font boundaries mocked.",
+    "platformExports": "Android and iOS Hermes bundles exported for each flavor.",
+    "physicalDevices": "Not tested."
+  },
+  "lint": {
+    "exit": 0,
+    "errors": 0,
+    "warnings": 77
+  },
+  "publication": "Prepared next; live evidence recorded separately.",
+  "researchLimits": [
+    "Consensus and Wiley tools are not exposed in this run.",
+    "Full ACSM 2026 publisher position stand returned HTTP 402.",
+    "Other paper access failures are recorded in the evidence ledger.",
+    "Exact app recipes have not been independently trial-validated."
+  ]
+}

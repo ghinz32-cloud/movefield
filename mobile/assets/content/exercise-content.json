@@ -9683,5 +9683,35 @@
     ],
     "sourceRecordId": "Zottman_Preacher_Curl",
     "verification": "Photos match the named upstream record. Still photos do not show every movement phase. Source-declared Unlicense; independent media-rights and expert certification are not claimed."
+  },
+  "lib-single-db-rdl": {
+    "sourceUrl": "https://www.nasm.org/resource-center/exercise-library/dumbbell-romanian-deadlift",
+    "hasVideo": false,
+    "referenceScope": "parent movement or general technique; exact variation video not verified"
+  },
+  "lib-band-standing-row": {
+    "sourceUrl": "https://www.acefitness.org/resources/everyone/exercise-library/48/seated-row/",
+    "hasVideo": false,
+    "referenceScope": "parent movement or general technique; exact variation video not verified"
+  },
+  "lib-single-db-curl": {
+    "sourceUrl": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/biceps-curl/vid-20084675",
+    "hasVideo": false,
+    "referenceScope": "parent movement or general technique; exact variation video not verified"
+  },
+  "lib-single-db-floor-press": {
+    "sourceUrl": "https://www.acefitness.org/resources/everyone/exercise-library/19/chest-press/",
+    "hasVideo": false,
+    "referenceScope": "parent movement or general technique; exact variation video not verified"
+  },
+  "lib-single-db-split-squat": {
+    "sourceUrl": "https://www.acefitness.org/resources/pros/expert-articles/5269/how-to-get-started-with-kettlebells/",
+    "hasVideo": false,
+    "referenceScope": "parent movement or general technique; exact variation video not verified"
+  },
+  "lib-band-curl": {
+    "sourceUrl": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/biceps-curl/vid-20084675",
+    "hasVideo": false,
+    "referenceScope": "parent movement or general technique; exact variation video not verified"
   }
 }

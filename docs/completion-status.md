@@ -1,3 +1,7 @@
+## Shared workout update · 12 October 2026
+
+The shared Movefield/Grizzly upgrade now includes actual equipment polling, 6–7-day schedules, conservative function-matched substitutions, explicit weekly work counts and per-ID records for 995 exercise/task entries and 113 programs. Accessible official guidance and all NHS timings were reviewed; full research/publisher access and installed-device qualification remain limited. See [the audit](fitness-audit/README.md) and [validation](fitness-audit/validation.json). This checkpoint does not close the broader launch gates below.
+
 > Latest active goal: Grizzly Fitness Wautoma is a separate UI flavor of the shared app. See `grizzly-fitness.md` for its verification and the user-supplied logo integration. This new UI work does not mark the original six-prompt launch/security/device requirements complete.
 
 # Completion status — 12 October 2026 UTC
