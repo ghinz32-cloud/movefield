@@ -1,0 +1,58 @@
+export type ProgramSlot = {
+    title: string;
+    group: 'full' | 'upper' | 'lower' | 'run' | 'push' | 'pull' | 'activity';
+    kind?: 'walkrun' | 'easy' | 'brief-run' | 'recovery-walk';
+    conditioning?: 'walkrun';
+    items: [string, number, number, number, number][];
+};
+export type ProgramDefinition = {
+    id: string;
+    goal: string;
+    name: string;
+    description: string;
+    days: number;
+    minutes: number;
+    experience: 'all' | 'some' | 'advanced';
+    level?: 'foundation' | 'build' | 'advanced';
+    requirements?: string[];
+    wave?: boolean;
+    noFloor?: boolean;
+    brief?: boolean;
+    distributed?: boolean;
+    youth?: boolean;
+    equipment: 'gym' | 'dumbbells' | 'bodyweight-band' | 'flexible' | 'none';
+    runBase?: boolean;
+    source: string;
+    slots: ProgramSlot[];
+};
+export type ProgramReference = {
+    id: string;
+    goal: string;
+    name: string;
+    author: string;
+    days: number;
+    weeks: number | null;
+    experience: string;
+    description: string;
+    url: string;
+    checked: string;
+};
+declare let weightGoals: string[];
+declare function goalForCategory(current: string, category: string): string;
+declare let programEquipment: (p: ProgramDefinition) => "Full gym" | "No equipment" | "Bodyweight + band" | "Dumbbells";
+declare let programCatalog: ProgramDefinition[];
+declare let programFamilies: {
+    id: string;
+    name: string;
+}[];
+declare function familyForProgram(p: ProgramDefinition): string;
+declare let programReferences: ProgramReference[];
+declare function equipmentRequirements(p: ProgramDefinition, equipment: string): string[];
+export { weightGoals };
+export { goalForCategory };
+export { programEquipment };
+export { programCatalog };
+export { programFamilies };
+export { familyForProgram };
+export { programReferences };
+export { equipmentRequirements };

@@ -1,0 +1,226 @@
+import type { z } from "zod/v3";
+import type { State } from "./training";
+declare let setMetricsSchema: z.ZodObject<{
+    distanceM: z.ZodOptional<z.ZodNumber>;
+    durationSeconds: z.ZodOptional<z.ZodNumber>;
+    heightCm: z.ZodOptional<z.ZodNumber>;
+    heartRate: z.ZodOptional<z.ZodNumber>;
+    cadence: z.ZodOptional<z.ZodNumber>;
+    powerWatts: z.ZodOptional<z.ZodNumber>;
+    speedKph: z.ZodOptional<z.ZodNumber>;
+    inclinePercent: z.ZodOptional<z.ZodNumber>;
+    level: z.ZodOptional<z.ZodNumber>;
+    assistanceKg: z.ZodOptional<z.ZodNumber>;
+    tempo: z.ZodOptional<z.ZodString>;
+    side: z.ZodOptional<z.ZodEnum<["Both", "Left", "Right", "Alternating"]>>;
+    notes: z.ZodOptional<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    distanceM?: number | undefined;
+    assistanceKg?: number | undefined;
+    durationSeconds?: number | undefined;
+    heightCm?: number | undefined;
+    heartRate?: number | undefined;
+    cadence?: number | undefined;
+    powerWatts?: number | undefined;
+    speedKph?: number | undefined;
+    inclinePercent?: number | undefined;
+    level?: number | undefined;
+    tempo?: string | undefined;
+    side?: "Left" | "Right" | "Alternating" | "Both" | undefined;
+    notes?: string | undefined;
+}, {
+    distanceM?: number | undefined;
+    assistanceKg?: number | undefined;
+    durationSeconds?: number | undefined;
+    heightCm?: number | undefined;
+    heartRate?: number | undefined;
+    cadence?: number | undefined;
+    powerWatts?: number | undefined;
+    speedKph?: number | undefined;
+    inclinePercent?: number | undefined;
+    level?: number | undefined;
+    tempo?: string | undefined;
+    side?: "Left" | "Right" | "Alternating" | "Both" | undefined;
+    notes?: string | undefined;
+}>;
+declare let eventSchema: z.ZodObject<{
+    id: z.ZodString;
+    name: z.ZodString;
+    date: z.ZodEffects<z.ZodString, string, string>;
+    kind: z.ZodString;
+    priority: z.ZodString;
+    minutes: z.ZodNumber;
+    provisional: z.ZodBoolean;
+}, "strip", z.ZodTypeAny, {
+    id: string;
+    date: string;
+    minutes: number;
+    name: string;
+    kind: string;
+    priority: string;
+    provisional: boolean;
+}, {
+    id: string;
+    date: string;
+    minutes: number;
+    name: string;
+    kind: string;
+    priority: string;
+    provisional: boolean;
+}>;
+declare function parseSafeJson(raw: string, max?: number): unknown;
+declare function readSavedState(raw: string): State & {
+    restEnd?: number | null;
+    restPaused?: number | null;
+};
+declare function readSetupDraft(raw: string): {
+    profile: {
+        sport: string;
+        mode: "app" | "coach" | "manual";
+        position: string;
+        start: string;
+        minutes: number;
+        units: "kg" | "lb";
+        name: string;
+        equipment: string;
+        age: number;
+        goal: string;
+        experience: string;
+        days: number[];
+        weeks: number;
+        season: string;
+        supervision: boolean;
+        noFloor?: boolean | undefined;
+        trainingDays?: number | undefined;
+        inventory?: {
+            confirmed: boolean;
+            items: string[];
+            dumbbells: "none" | "single" | "pair";
+            dumbbellLoading: "fixed" | "adjustable";
+        } | undefined;
+        sex?: "unspecified" | "female" | "male" | "intersex" | undefined;
+        dumbbellMaxKg?: number | undefined;
+        programId?: string | undefined;
+        runBase?: boolean | undefined;
+        runDays?: number | undefined;
+        runMinutes?: number | undefined;
+        establishedTraining?: boolean | undefined;
+        focuses?: ("core" | "jumping" | "supersets" | "activity")[] | undefined;
+        jumpReady?: boolean | undefined;
+    };
+    schema: 1;
+    basePlanId: string | null;
+    baseEvents: string;
+    events: {
+        id: string;
+        date: string;
+        minutes: number;
+        name: string;
+        kind: string;
+        priority: string;
+        provisional: boolean;
+    }[];
+    step: number;
+};
+/** Import prescriptions only. Caller must preview ownership, dates and local conflicts. */
+declare function readPlanFile(raw: string): {
+    id: string;
+    sessions: {
+        id: string;
+        status: "scheduled" | "completed" | "partial" | "missed";
+        week: number;
+        title: string;
+        items: {
+            reps: number;
+            sets: number;
+            kg: number | null;
+            rest: number;
+            exerciseId: string;
+            repMin?: number | undefined;
+            loadContext?: string | undefined;
+            loadRole?: string | undefined;
+            repMax?: number | undefined;
+            note?: string | undefined;
+            sourceRule?: {
+                kind: "sl5x5" | "fitness-basic" | "gzcl-t1" | "gzcl-t2" | "gzcl-t3" | "ppl-main" | "double" | "phul" | "db-stopgap" | "hold";
+                amrapLast?: boolean | undefined;
+                stage?: 0 | 2 | 1 | undefined;
+                minRir?: number | undefined;
+                publishedSetsMax?: number | undefined;
+            } | undefined;
+            setPlan?: {
+                position: 2 | 1;
+                pair: string;
+                rest: number;
+            }[] | undefined;
+        }[];
+        date: string;
+        minutes: number;
+        kind: string;
+        roleId?: string | undefined;
+        dependsOn?: string[] | undefined;
+        progressionStep?: string | undefined;
+        needsReview?: boolean | undefined;
+        recoveryGroup?: string | undefined;
+        timeProfile?: "brief" | undefined;
+        runSteps?: {
+            label: string;
+            seconds: number;
+        }[] | undefined;
+    }[];
+    profile: {
+        sport: string;
+        mode: "app" | "coach" | "manual";
+        position: string;
+        start: string;
+        minutes: number;
+        units: "kg" | "lb";
+        name: string;
+        equipment: string;
+        age: number;
+        goal: string;
+        experience: string;
+        days: number[];
+        weeks: number;
+        season: string;
+        supervision: boolean;
+        noFloor?: boolean | undefined;
+        trainingDays?: number | undefined;
+        inventory?: {
+            confirmed: boolean;
+            items: string[];
+            dumbbells: "none" | "single" | "pair";
+            dumbbellLoading: "fixed" | "adjustable";
+        } | undefined;
+        sex?: "unspecified" | "female" | "male" | "intersex" | undefined;
+        dumbbellMaxKg?: number | undefined;
+        programId?: string | undefined;
+        runBase?: boolean | undefined;
+        runDays?: number | undefined;
+        runMinutes?: number | undefined;
+        establishedTraining?: boolean | undefined;
+        focuses?: ("core" | "jumping" | "supersets" | "activity")[] | undefined;
+        jumpReady?: boolean | undefined;
+    };
+    paused: boolean;
+    template: string;
+    version: number;
+    name: string;
+    progression: string;
+    notes: string[];
+    acceptedAt: string | null;
+    phases: {
+        name: string;
+        weeks: string;
+        description: string;
+    }[];
+    evidence: string[];
+    progressionModel?: "ranges" | "source" | undefined;
+    scheduleEnd?: string | undefined;
+};
+export { setMetricsSchema };
+export { eventSchema };
+export { parseSafeJson };
+export { readSavedState };
+export { readSetupDraft };
+export { readPlanFile };

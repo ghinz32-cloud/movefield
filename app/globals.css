@@ -204,3 +204,4 @@ input,textarea,select,[data-slot=select-trigger]{color:var(--foreground);border-
 @media(max-width:600px){.session-feature .button-row>button:first-child{flex:1 0 100%}.session-feature .button-row>button{flex:1 1 auto;min-width:0}}
 
 .review-build-banner{display:flex;flex-wrap:wrap;gap:.5rem 1rem;padding:.75rem 1rem;background:var(--card);color:var(--foreground);border-bottom:1px solid var(--border);font-size:.875rem}.review-build-banner a{margin-left:auto;text-decoration:underline}
+.guide-extra table{width:100%;table-layout:fixed;font-size:.875rem}.guide-extra th,.guide-extra td{padding:.45rem .25rem;overflow-wrap:anywhere;text-align:left}.guide-extra table th:first-child,.guide-extra table td:first-child{width:34%}

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "checked_at": "2026-10-12",
-  "scope": "Historical inventory is preserved. Current access probes and review depths are appended; retrieval is not automatic scientific qualification. PubMed pages returned bot challenges, APIs/publisher hosts remain restricted, and the full 2026 stand requires publisher payment. Current review uses actual retrieved official documents without bypassing restrictions.",
+  "scope": "Historical inventories/access probes are preserved. Current reviews distinguish creator instructions, scientific abstracts, selected primary full-text sections and exact-routine qualification. Access varies by source; a successful connector retrieval does not certify a numerical app policy.",
   "archive_inventory": {
     "linked_sources": 15,
     "abstract_screened_current": 0,
@@ -30,7 +30,7 @@
       ],
       "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
-      "review_depth": "linked-reference inventory only",
+      "review_depth": "Fetched research abstract and metadata reviewed; full-paper qualification remains incomplete.",
       "existing_summary": "Short focused sessions can distribute training across the week. Our 15-minute plans use less weekly work and do not promise the same results as longer plans.",
       "claim_supported": null,
       "applicability": "pending source review",
@@ -68,7 +68,7 @@
       ],
       "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
-      "review_depth": "linked-reference inventory only",
+      "review_depth": "Fetched research abstract and metadata reviewed; full-paper qualification remains incomplete.",
       "existing_summary": "An eight-week study supports repetitions as one progression route. This does not prove indefinite progress at a fixed weight or equal maximal-strength transfer.",
       "claim_supported": null,
       "applicability": "pending source review",
@@ -109,7 +109,7 @@
       ],
       "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
-      "review_depth": "linked-reference inventory only",
+      "review_depth": "Fetched research abstract and metadata reviewed; full-paper qualification remains incomplete.",
       "existing_summary": "Group response differences do not justify fixed sex-based loads or separate goal menus. Individual capacity and actual feedback guide this app.",
       "claim_supported": null,
       "applicability": "pending source review",
@@ -158,7 +158,7 @@
       ],
       "date_checked": "2026-10-12",
       "access": "Official full PDF retrieved and text extracted on 2026-10-12",
-      "review_depth": "Full official PDF retrieved; synthesis, methods/applicability, intensity/volume and contraindication sections reviewed.",
+      "review_depth": "Selected sections of the official full-text statement reviewed.",
       "existing_summary": "Training adapts to function, experience and tolerance; chronological age alone does not determine the starting load.",
       "claim_supported": "Individualize to function, experience and health; strength and function can improve; chronological age alone does not define capability.",
       "applicability": "Accessible standing/seated, machine, home and two-strength-day daily-habit options. Age does not assign a starting weight. Symptom holds and individually selected loads remain in place.",
@@ -197,7 +197,7 @@
       ],
       "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
-      "review_depth": "linked-reference inventory only",
+      "review_depth": "Linked reference; current detailed findings not verified.",
       "existing_summary": "Qualified instruction, appropriate supervision, low initial intensity, and gradual progression tied to observed competence.",
       "claim_supported": null,
       "applicability": "pending source review",
@@ -244,7 +244,7 @@
       ],
       "date_checked": "2026-10-12",
       "access": "Official full PDF retrieved and text extracted on 2026-10-12",
-      "review_depth": "Full official PDF retrieved; Table 1 and exercise-choice, order, warm-up, intensity and volume sections reviewed.",
+      "review_depth": "Selected sections of the official full-text statement reviewed.",
       "existing_summary": "A broad strength foundation, dynamic warm-up, nonconsecutive training, and appropriate rest.",
       "claim_supported": "Qualified supervision; technique first; dynamic warm-up; balanced upper/lower/core work; start with 2\u20133 nonconsecutive strength days.",
       "applicability": "Youth daily-habit options use two supervised strength sessions plus easy walking. Adult six-day lifting splits and automatic adult load increases remain unavailable.",
@@ -302,7 +302,7 @@
       ],
       "date_checked": "2026-10-12",
       "access": "Official ACSM 2026 public guidance retrieved; publisher full position stand returned HTTP 402. No paywall bypass.",
-      "review_depth": "Official public summary read; full publisher position stand unavailable (HTTP 402).",
+      "review_depth": "Official public summary and fetched research abstract reviewed; full position stand not reviewed.",
       "existing_summary": "Adult guidance distinguishes strength, hypertrophy and power outcomes. Consistent progressive training matters; failure is not essential.",
       "claim_supported": "Regular individualized training; major muscle groups at least twice weekly; goal-specific strength, hypertrophy and power emphasis; bands/bodyweight/home can be effective.",
       "applicability": "Adult original templates. Six total training days with muscle groups repeated twice is an app distribution choice; seven-day choices include easy activity, not seven hard sessions.",
@@ -341,7 +341,7 @@
       ],
       "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
-      "review_depth": "linked-reference inventory only",
+      "review_depth": "Linked reference; current detailed findings not verified.",
       "existing_summary": "Superseded by the 2026 adult position stand. Historical context only. A published range is not a universal automatic load increase.",
       "claim_supported": null,
       "applicability": "pending source review",
@@ -380,7 +380,7 @@
       ],
       "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
-      "review_depth": "linked-reference inventory only",
+      "review_depth": "Linked reference; current detailed findings not verified.",
       "existing_summary": "Development, experience and total sport demands require individual consideration.",
       "claim_supported": null,
       "applicability": "pending source review",
@@ -419,7 +419,7 @@
       ],
       "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
-      "review_depth": "linked-reference inventory only",
+      "review_depth": "Public expert examples; exact app prescriptions are original.",
       "existing_summary": "Expert program examples centered on squat, bench and deadlift. Our templates are original, not copies or endorsed programs.",
       "claim_supported": null,
       "applicability": "pending source review",
@@ -458,7 +458,7 @@
       ],
       "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
-      "review_depth": "linked-reference inventory only",
+      "review_depth": "Public expert examples; exact app prescriptions are original.",
       "existing_summary": "Examples combining strength and hypertrophy. Exact app prescriptions remain product choices.",
       "claim_supported": null,
       "applicability": "pending source review",
@@ -497,7 +497,7 @@
       ],
       "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
-      "review_depth": "linked-reference inventory only",
+      "review_depth": "Public expert examples; exact app prescriptions are original.",
       "existing_summary": "Expert split examples; no commercial routines are reproduced.",
       "claim_supported": null,
       "applicability": "pending source review",
@@ -536,7 +536,7 @@
       ],
       "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
-      "review_depth": "linked-reference inventory only",
+      "review_depth": "Fetched research abstract and metadata reviewed; full-paper qualification remains incomplete.",
       "existing_summary": "Strength and endurance can be combined. Explosive-strength interference can depend on training arrangement; our hybrid base separates sessions.",
       "claim_supported": null,
       "applicability": "pending source review",
@@ -574,7 +574,7 @@
       ],
       "date_checked": "2026-10-12",
       "access": "proxy tunnel denied for research hosts checked this turn; original full text not retrieved",
-      "review_depth": "linked-reference inventory only",
+      "review_depth": "Individual source records and photo provenance checked.",
       "existing_summary": "Detailed source-based guides and exact-record photos. Each variation states its logging rules. Independent professional certification and universal video coverage are not claimed.",
       "claim_supported": null,
       "applicability": "pending source review",
@@ -615,7 +615,7 @@
       ],
       "date_checked": "2026-10-12",
       "access": "Official current full plan page retrieved on 2026-10-12",
-      "review_depth": "Current official page read; all 27 displayed sequences compared to canonical app recipes with walking warm-up/cool-down.",
+      "review_depth": "All 27 official running sequences compared.",
       "existing_summary": "A staged run/walk program with three weekly runs and rest days between. Repeat stages when needed.",
       "claim_supported": "Nine stages, three separated runs each week, progression toward 30 continuous minutes; repeat stages when needed.",
       "applicability": "Six/seven activity-day options preserve three source runs and add comfortable walking on the other selected days.",
@@ -634,20 +634,396 @@
         "title": "Couch to 5K running plan - Better Health - NHS",
         "checked_at": "2026-10-12"
       }
+    },
+    {
+      "id": "WHO-ACTIVITY",
+      "title": "WHO \u00b7 Adult physical activity recommendations",
+      "canonical_link": "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+      "source_type": "Official public-health summary",
+      "authors": [],
+      "doi": null,
+      "year": null,
+      "limitations": [],
+      "rule_ids": [],
+      "review_depth": "Official public adult recommendations reviewed; the full guideline evidence review was not accessed. Exact running schedules are app choices.",
+      "date_checked": "2026-10-12"
+    },
+    {
+      "id": "RT-DOSE",
+      "title": "Pelland et al. \u00b7 Volume and frequency dose response",
+      "canonical_link": "https://doi.org/10.1007/s40279-025-02344-w",
+      "source_type": "Official public-health summary",
+      "authors": [],
+      "doi": null,
+      "year": null,
+      "limitations": [],
+      "rule_ids": [],
+      "review_depth": "Fetched research abstract and metadata reviewed; full-paper qualification remains incomplete.",
+      "date_checked": "2026-10-12"
+    },
+    {
+      "id": "RIR-RESEARCH",
+      "title": "Robinson et al. \u00b7 Proximity to failure",
+      "canonical_link": "https://doi.org/10.1007/s40279-024-02069-2",
+      "source_type": "Official public-health summary",
+      "authors": [
+        "Zac P. Robinson",
+        "Joshua C. Pelland",
+        "Jacob F. Remmert",
+        "Martin C. Refalo",
+        "Ivan Jukic",
+        "James Steele",
+        "Michael C. Zourdos"
+      ],
+      "doi": "10.1007/s40279-024-02069-2",
+      "year": 2024,
+      "limitations": [],
+      "rule_ids": [],
+      "review_depth": "Original abstract and metadata reviewed; full-paper qualification remains incomplete.",
+      "date_checked": "2026-10-12",
+      "authors_verification": "Original abstract/metadata fetched with Consensus",
+      "claim_supported": "Exploratory results support goal-dependent interpretation of proximity to failure, without an exact universal RIR optimum.",
+      "applicability": "Resistance-training principle support; does not validate source recipes or app progression thresholds."
+    },
+    {
+      "id": "REST-INTERVALS",
+      "title": "Singer et al. \u00b7 Rest intervals and hypertrophy",
+      "canonical_link": "https://doi.org/10.3389/fspor.2024.1429789",
+      "source_type": "Official public-health summary",
+      "authors": [],
+      "doi": null,
+      "year": null,
+      "limitations": [],
+      "rule_ids": [],
+      "review_depth": "Abstract and selected primary full-text methods, results and limitations reviewed.",
+      "date_checked": "2026-10-12"
+    },
+    {
+      "id": "RT-PRESCRIPTION",
+      "title": "Currier et al. \u00b7 Resistance-training prescriptions",
+      "canonical_link": "https://doi.org/10.1136/bjsports-2023-106807",
+      "source_type": "Official public-health summary",
+      "authors": [],
+      "doi": null,
+      "year": null,
+      "limitations": [],
+      "rule_ids": [],
+      "review_depth": "Fetched research abstract and metadata reviewed; full-paper qualification remains incomplete.",
+      "date_checked": "2026-10-12"
+    },
+    {
+      "id": "src-sl5x5-3",
+      "title": "Stronglifts 5\u00d75 \u00b7 3 days \u00b7 Mehdi / Stronglifts",
+      "canonical_link": "https://stronglifts.com/stronglifts-5x5/workout-program/",
+      "source_type": "Public creator/community routine facts",
+      "authors": [
+        "Mehdi / Stronglifts"
+      ],
+      "doi": null,
+      "year": null,
+      "limitations": [
+        "General barbell strength foundation, not meet peaking or a complete bodybuilding split.",
+        "The source permits two or three separated days. A/B alternation continues across week boundaries.",
+        "Default rest is three minutes; extend as needed. Starting weights remain individually selected. The app uses the source-permitted standard +5 lb / +2.5 kg step; smaller or slower options remain deliberate source choices.",
+        "No exact-routine trial identified by this targeted review."
+      ],
+      "rule_ids": [],
+      "review_depth": "Public workout structure and available progression instructions checked; named-source and scientific evidence are separate. See the displayed version and adaptations.",
+      "claim_supported": "Credited workout structure and method facts; popularity does not qualify physiological efficacy.",
+      "date_checked": "2026-10-12"
+    },
+    {
+      "id": "src-sl5x5-2",
+      "title": "Stronglifts 5\u00d75 \u00b7 2 days \u00b7 Mehdi / Stronglifts",
+      "canonical_link": "https://stronglifts.com/stronglifts-5x5/workout-program/",
+      "source_type": "Public creator/community routine facts",
+      "authors": [
+        "Mehdi / Stronglifts"
+      ],
+      "doi": null,
+      "year": null,
+      "limitations": [
+        "General barbell strength foundation, not meet peaking or a complete bodybuilding split.",
+        "The source permits two or three separated days. A/B alternation continues across week boundaries.",
+        "Default rest is three minutes; extend as needed. Starting weights remain individually selected. The app uses the source-permitted standard +5 lb / +2.5 kg step; smaller or slower options remain deliberate source choices.",
+        "No exact-routine trial identified by this targeted review."
+      ],
+      "rule_ids": [],
+      "review_depth": "Public workout structure and available progression instructions checked; named-source and scientific evidence are separate. See the displayed version and adaptations.",
+      "claim_supported": "Credited workout structure and method facts; popularity does not qualify physiological efficacy.",
+      "date_checked": "2026-10-12"
+    },
+    {
+      "id": "src-gzclp-3",
+      "title": "GZCLP \u00b7 3-day base \u00b7 Cody Lefever; public r/gzcl base template",
+      "canonical_link": "https://swoleateveryheight.blogspot.com/2016/02/gzcl-applications-adaptations.html",
+      "source_type": "Public creator/community routine facts",
+      "authors": [
+        "Cody Lefever; public r/gzcl base template"
+      ],
+      "doi": null,
+      "year": null,
+      "limitations": [
+        "Creator instructions are training methods, not a controlled trial.",
+        "The T1 terminal-stage reassessment and T2 opening baseline are manual reviewed choices; no maximum is inferred.",
+        "Zero-rep or unlogged attempts remain partial and require review."
+      ],
+      "rule_ids": [
+        "source-gzclp-creator-2016-v2"
+      ],
+      "review_depth": "Creator GZCLP tables and T1/T2/T3 progression sections reviewed; four-day layout remains a disclosed public-wiki adaptation.",
+      "claim_supported": "New version implements creator base-volume and accessory triggers; old accepted contexts remain version-isolated.",
+      "date_checked": "2026-10-12",
+      "prior_review": {
+        "canonical_link": "https://www.reddit.com/r/gzcl/wiki/gzclp/",
+        "review_depth": "Public workout structure and available progression instructions checked; named-source and scientific evidence are separate. See the displayed version and adaptations.",
+        "limitations": [
+          "The published minimum T1/T2/T3 base. Extra T3 choices are not silently added. General strength development, not meet peaking.",
+          "Three-day schedules rotate A1/B1/A2/B2 continuously. Four-day schedules use the source four-day layout.",
+          "Rest defaults are 3 minutes for T1, 2 minutes for T2 and 90 seconds for T3; allow more when needed. The four-day full-body base includes adjacent lifting days; monitor recovery as the public wiki advises.",
+          "A zero-rep or unfinished attempt remains partial work and needs individual review; the app never infers a complete failure record from an unlogged single.",
+          "The public wiki confirms T3 AMRAP targets; its excerpt does not verify a numeric T3 load-increase trigger. T3 load changes remain individually reviewed.",
+          "No exact-routine trial identified by this targeted review."
+        ],
+        "claim_supported": "Credited workout structure and method facts; popularity does not qualify physiological efficacy."
+      }
+    },
+    {
+      "id": "src-gzclp-4",
+      "title": "GZCLP \u00b7 4-day base \u00b7 Cody Lefever; public r/gzcl base template",
+      "canonical_link": "https://swoleateveryheight.blogspot.com/2016/02/gzcl-applications-adaptations.html",
+      "source_type": "Public creator/community routine facts",
+      "authors": [
+        "Cody Lefever; public r/gzcl base template"
+      ],
+      "doi": null,
+      "year": null,
+      "limitations": [
+        "Creator instructions are training methods, not a controlled trial.",
+        "The T1 terminal-stage reassessment and T2 opening baseline are manual reviewed choices; no maximum is inferred.",
+        "Zero-rep or unlogged attempts remain partial and require review."
+      ],
+      "rule_ids": [
+        "source-gzclp-creator-2016-v2"
+      ],
+      "review_depth": "Creator GZCLP tables and T1/T2/T3 progression sections reviewed; four-day layout remains a disclosed public-wiki adaptation.",
+      "claim_supported": "New version implements creator base-volume and accessory triggers; old accepted contexts remain version-isolated.",
+      "date_checked": "2026-10-12",
+      "prior_review": {
+        "canonical_link": "https://www.reddit.com/r/gzcl/wiki/gzclp/",
+        "review_depth": "Public workout structure and available progression instructions checked; named-source and scientific evidence are separate. See the displayed version and adaptations.",
+        "limitations": [
+          "The published minimum T1/T2/T3 base. Extra T3 choices are not silently added. General strength development, not meet peaking.",
+          "Three-day schedules rotate A1/B1/A2/B2 continuously. Four-day schedules use the source four-day layout.",
+          "Rest defaults are 3 minutes for T1, 2 minutes for T2 and 90 seconds for T3; allow more when needed. The four-day full-body base includes adjacent lifting days; monitor recovery as the public wiki advises.",
+          "A zero-rep or unfinished attempt remains partial work and needs individual review; the app never infers a complete failure record from an unlogged single.",
+          "The public wiki confirms T3 AMRAP targets; its excerpt does not verify a numeric T3 load-increase trigger. T3 load changes remain individually reviewed.",
+          "No exact-routine trial identified by this targeted review."
+        ],
+        "claim_supported": "Credited workout structure and method facts; popularity does not qualify physiological efficacy."
+      }
+    },
+    {
+      "id": "src-fitness-basic",
+      "title": "r/Fitness Basic Beginner \u00b7 barbell module \u00b7 r/Fitness / The Fitness Wiki",
+      "canonical_link": "https://thefitness.wiki/routines/r-fitness-basic-beginner-routine/",
+      "source_type": "Public creator/community routine facts",
+      "authors": [
+        "r/Fitness / The Fitness Wiki"
+      ],
+      "doi": null,
+      "year": null,
+      "limitations": [
+        "A short introduction for up to three months. The source also asks for two conditioning sessions; this entry preloads its barbell module only and does not claim to deliver the full conditioning prescription.",
+        "The author-listed lat pulldown alternative is used for chinups.",
+        "A/B alternation continues across weeks. Two-minute rests are within the source 2\u20133-minute range.",
+        "The public page specifies pounds. In kg mode the app uses rounded 1.25 kg upper / 2.5 kg lower increments, rather than presenting those as separately published metric prescriptions.",
+        "No exact-routine trial identified by this targeted review."
+      ],
+      "rule_ids": [],
+      "review_depth": "Public workout structure and available progression instructions checked; named-source and scientific evidence are separate. See the displayed version and adaptations.",
+      "claim_supported": "Credited workout structure and method facts; popularity does not qualify physiological efficacy.",
+      "date_checked": "2026-10-12"
+    },
+    {
+      "id": "src-phul",
+      "title": "PHUL \u00b7 published four-day routine \u00b7 Brandon Campbell / Muscle & Strength",
+      "canonical_link": "https://www.muscleandstrength.com/workouts/phul-workout",
+      "source_type": "Public creator/community routine facts",
+      "authors": [
+        "Brandon Campbell / Muscle & Strength"
+      ],
+      "doi": null,
+      "year": null,
+      "limitations": [
+        "Two power and two hypertrophy days; the source gives 12 weeks and permits beginning at the lower end of its set ranges.",
+        "All table exercises are loaded at the lower published set bound. Flat dumbbell flyes, an EZ-bar skullcrusher and selectorized calf machines are explicit equipment variations.",
+        "Rest timers default to 3 minutes for heavy compounds, 2 minutes for other compounds and 90 seconds for isolation. These seconds are app defaults; the source table does not prescribe them.",
+        "The source asks for at least one rep left but does not specify a numerical overload trigger. Reviewable top-of-range load suggestions are an app implementation choice.",
+        "No exact-routine trial identified by this targeted review."
+      ],
+      "rule_ids": [],
+      "review_depth": "Public workout structure and available progression instructions checked; named-source and scientific evidence are separate. See the displayed version and adaptations.",
+      "claim_supported": "Credited workout structure and method facts; popularity does not qualify physiological efficacy.",
+      "date_checked": "2026-10-12"
+    },
+    {
+      "id": "src-reddit-ppl",
+      "title": "Reddit PPL \u00b7 six-day linear progression \u00b7 u/Metallicadpa / r/Fitness; Fitness Wiki archive",
+      "canonical_link": "https://thefitness.wiki/reddit-archive/a-linear-progression-based-ppl-program-for-beginners/",
+      "source_type": "Public creator/community routine facts",
+      "authors": [
+        "u/Metallicadpa / r/Fitness; Fitness Wiki archive"
+      ],
+      "doi": null,
+      "year": null,
+      "limitations": [
+        "A demanding six-day novice/intermediate routine; all sets, high-rep face pulls and assistance supersets are retained. No hard seventh day.",
+        "The source permits pulldowns, cable rows and calf variations; the listed choices are preloaded.",
+        "The six lateral-raise sets retain their two three-round triceps pairs. Main barbell lifts keep straight sets.",
+        "Three-minute main-lift and 90-second assistance timers lie within the published rest ranges.",
+        "The source distinguishes transient recovery misses from strength failure. A three-miss reduction is a review proposal; check that context before accepting.",
+        "No exact-routine trial identified by this targeted review."
+      ],
+      "rule_ids": [],
+      "review_depth": "Public workout structure and available progression instructions checked; named-source and scientific evidence are separate. See the displayed version and adaptations.",
+      "claim_supported": "Credited workout structure and method facts; popularity does not qualify physiological efficacy.",
+      "date_checked": "2026-10-12"
+    },
+    {
+      "id": "src-db-stopgap",
+      "title": "Dumbbell Stopgap \u00b7 public A/B routine \u00b7 r/Fitness community / Fitness Wiki archive",
+      "canonical_link": "https://thefitness.wiki/reddit-archive/dumbbell-stopgap/",
+      "source_type": "Public creator/community routine facts",
+      "authors": [
+        "r/Fitness community / Fitness Wiki archive"
+      ],
+      "doi": null,
+      "year": null,
+      "limitations": [
+        "Short-term limited-equipment introduction. The source requires adjustable dumbbells or a weight range and explicitly describes this as a stopgap rather than an optimal long-term strength or muscle plan.",
+        "The author-listed dumbbell lunge is used instead of the optional Bulgarian split squat.",
+        "A stable seated press is used. Plank time is open-ended; the estimate budgets sixty seconds per hold, not a prescribed sixty-second target.",
+        "No exact-routine trial identified by this targeted review."
+      ],
+      "rule_ids": [],
+      "review_depth": "Public workout structure and available progression instructions checked; named-source and scientific evidence are separate. See the displayed version and adaptations.",
+      "claim_supported": "Credited workout structure and method facts; popularity does not qualify physiological efficacy.",
+      "date_checked": "2026-10-12"
+    },
+    {
+      "id": "RIR-TRIAL",
+      "title": "Similar muscle hypertrophy following eight weeks of resistance training to momentary muscular failure or with repetitions-in-reserve in resistance-trained individuals",
+      "authors": [
+        "Martin C. Refalo",
+        "Eric R. Helms",
+        "Zac P. Robinson",
+        "D. Lee Hamilton",
+        "Jackson J. Fyfe"
+      ],
+      "year": 2024,
+      "doi": "10.1080/02640414.2024.2321021",
+      "canonical_link": "https://doi.org/10.1080/02640414.2024.2321021",
+      "source_type": "original intervention report",
+      "population": "18 resistance-trained adults; 12 men and 6 women in analyzed sample",
+      "training_status": "Resistance-trained",
+      "exposure": "Unilateral leg press/extension to momentary failure",
+      "comparator": "Perceived 2-RIR leg press and 1-RIR leg extension",
+      "outcomes": [
+        "Quadriceps hypertrophy and acute fatigue"
+      ],
+      "quantitative_findings": [],
+      "date_checked": "2026-10-12",
+      "review_depth": "Consensus original abstract and metadata; full paper not reviewed",
+      "claim_supported": "Similar quadriceps growth with failure and 1\u20132 RIR; failure produced greater acute fatigue.",
+      "limitations": [
+        "Small trained-adult sample and two lower-body exercises.",
+        "No universal RIR target or whole-program efficacy established.",
+        "Same intervention as RIR-PERCEPTION."
+      ],
+      "applicability": "Supports set-specific effort feedback and individual tolerability; exact app routines and progression policies are not validated.",
+      "rule_ids": [
+        "set-rir-recording-v1",
+        "history-set-rir-correction-v1"
+      ],
+      "conflicts": [],
+      "corrections_retractions": "No comprehensive correction/retraction sweep performed; Wiley metadata did not mark the 2025 record retracted.",
+      "status": "Limited principle support; no new universal numerical policy"
+    },
+    {
+      "id": "RIR-PERCEPTION",
+      "title": "The Effect of Proximity-To-Failure on Perceptual Responses to Resistance Training",
+      "authors": [
+        "Martin C. Refalo",
+        "Eric R. Helms",
+        "D. Lee Hamilton",
+        "Jackson J. Fyfe"
+      ],
+      "year": 2025,
+      "doi": "10.1002/ejsc.12266",
+      "canonical_link": "https://doi.org/10.1002/ejsc.12266",
+      "source_type": "original intervention report",
+      "population": "18 resistance-trained adults; 12 men and 6 women in analyzed sample",
+      "training_status": "Resistance-trained",
+      "exposure": "Unilateral leg press/extension to momentary failure",
+      "comparator": "Perceived 2-RIR leg press and 1-RIR leg extension",
+      "outcomes": [
+        "Perceived discomfort, exertion and feelings"
+      ],
+      "quantitative_findings": [],
+      "date_checked": "2026-10-12",
+      "review_depth": "Wiley passages plus selected primary methods/results/Table 2/limitations; figures and supplements not independently inspected",
+      "claim_supported": "Nonfailure work had more favorable perceptual responses; optional feedback may inform individual tolerability.",
+      "limitations": [
+        "Small supervised, trained-adult lower-body intervention.",
+        "Long-term adherence and whole-app outcomes were not tested.",
+        "Same intervention as RIR-TRIAL.",
+        "Methods prose reports seven females; abstract and analyzed Table 1 report six. Analysis scope is 18 participants."
+      ],
+      "applicability": "Supports set-specific effort feedback and individual tolerability; exact app routines and progression policies are not validated.",
+      "rule_ids": [
+        "set-rir-recording-v1",
+        "history-set-rir-correction-v1"
+      ],
+      "conflicts": [],
+      "corrections_retractions": "No comprehensive correction/retraction sweep performed; Wiley metadata did not mark the 2025 record retracted.",
+      "status": "Limited principle support; no new universal numerical policy"
     }
   ],
   "current_audit_started": "2026-10-12",
   "current_review": {
-    "official_public_summary_reviewed": 1,
-    "full_documents_retrieved_selected_sections_reviewed": 2,
-    "official_running_sequence_compared": 1,
-    "full_2026_position_stand_reviewed": false,
-    "exact_app_programs_independently_validated": false,
-    "plugin_tools_available": {
-      "Consensus": false,
-      "Wiley Scholar Gateway": false,
-      "Cloudflare": false
-    },
-    "scope": "Current tools do not expose the user-linked plugins. Review uses retrieved ACSM public guidance, selected NSCA position-statement sections, and all 27 NHS running sequences. No bot-challenge response is treated as an abstract."
+    "scope": "Per-plan principles/source/method review; original full-paper and exact-routine certification remain incomplete",
+    "recovery": "Original scratch source text was unavailable; executed training code and routine data recovered from successful Metro transforms. Recovered copy separately checked.",
+    "continuation_2026_10_12": {
+      "scope": "GZCLP creator-rule fidelity, per-set RIR history/corrections and scientific-source classification",
+      "consensus": {
+        "searches": 1,
+        "results_screened": 9,
+        "original_records_fetched": 2,
+        "full_papers_reviewed": 0
+      },
+      "wiley": {
+        "searches": 2,
+        "broad_passages_screened": 5,
+        "broad_articles_screened": 5,
+        "focused_passages_screened": 4,
+        "focused_articles_screened": 2,
+        "relevant_focused_articles": 1,
+        "relevant_focused_passages": 3
+      },
+      "primary_followup": "Creator GZCLP sections and selected Wiley primary methods/results/Table 2/limitations reviewed. No downloaded paper or forum archive is shipped.",
+      "scientific_new_numeric_rules_qualified": 0,
+      "creator_numeric_rules_verified": [
+        "GZCLP base-volume stages",
+        "T1 final-set ten-rep cap",
+        "T3 final-set 25-rep trigger",
+        "creator reset instructions"
+      ],
+      "limits": [
+        "Two Refalo reports derive from the same intervention, not independent replication.",
+        "Complete figures/supplements and all-paper review remain incomplete.",
+        "Fresh browser and installed-device qualification remain unperformed."
+      ]
+    }
   }
 }

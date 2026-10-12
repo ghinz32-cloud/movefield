@@ -1,0 +1,177 @@
+{
+  "checkedAt": "2026-10-12T22:54:03.109Z",
+  "scope": "Recovered current implementation as JavaScript with typed public declarations. Original complete source-text identity was not recovered. Functional, interface, lint and export checks are separate from browser/device or physiological efficacy.",
+  "sourceCommit": "60410d2d32be9dda170cd735ac63fcb0383015f9",
+  "core": [
+    {
+      "name": "public source rules and scientific accounting",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 936
+    },
+    {
+      "name": "Today facts and actions",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 685
+    },
+    {
+      "name": "transactional encrypted records",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 5848
+    },
+    {
+      "name": "activity progress and comparison context",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 640
+    },
+    {
+      "name": "evidence/duration/calendar zones",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 3777
+    },
+    {
+      "name": "calendar and reusable blocks",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 603
+    },
+    {
+      "name": "Cloudflare account/storage/coaching",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 2666
+    },
+    {
+      "name": "portable cloud vault and retry",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 2341
+    },
+    {
+      "name": "native SDK cookie transport",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1134
+    },
+    {
+      "name": "plan import",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 635
+    },
+    {
+      "name": "durability",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 664
+    },
+    {
+      "name": "vault and history",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1112
+    },
+    {
+      "name": "native encrypted adapter",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1119
+    },
+    {
+      "name": "native file transfer",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 252
+    },
+    {
+      "name": "security",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 668
+    },
+    {
+      "name": "data and calendar",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 630
+    },
+    {
+      "name": "web types",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 11215
+    },
+    {
+      "name": "native types",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 5523
+    },
+    {
+      "name": "native engine",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 2045
+    }
+  ],
+  "sourceCases": 20,
+  "programReview": {
+    "entries": 134,
+    "originalDefinitions": 125,
+    "publicStrengthVersions": 8,
+    "additionalNHS": 1,
+    "withScopeLimits": 52,
+    "exactRoutineTrialsIdentified": 0
+  },
+  "fittingMatrix": {
+    "scenarios": 7776,
+    "plans": 6689,
+    "assertions": 1398589
+  },
+  "onboardingCases": 12,
+  "catalogueCases": 9,
+  "builds": {
+    "movefieldWeb": "passed",
+    "grizzlyWeb": "passed",
+    "nativeMovefieldIOSAndroid": "passed",
+    "nativeGrizzlyIOSAndroid": "passed"
+  },
+  "nativeSourceFiles": 192,
+  "publication": {
+    "pushed": false,
+    "liveVerified": false,
+    "reason": "Prior automatic approval review rejected destination/ownership authorization; no alternate path attempted.",
+    "pagesDraftVerified": true,
+    "preservedOriginalFiles": 63
+  },
+  "artifacts": {
+    "mobile/dist-mobile/_expo/static/js/android/index-faa6ba2747de9763cada81e2b278b4e3.hbc": "b99bd38a424420f6d3ffddea380ee2b21c097e442ee4e94bfe229640c7f5a73e",
+    "mobile/dist-mobile/_expo/static/js/ios/index-2c59d0f3729b4024a6b10dd2f37570ae.hbc": "69fab5376f8a8292a3f8250c64af4e8a7ebc2bd3ef1cfcf2b8de5d76b7a2e431",
+    "mobile/dist-grizzly/_expo/static/js/android/index-090f848ee81d5523e7ec9ef54b271f7e.hbc": "ce4b0ec27b1cb36cf2210d3c07487751f28e88bbe7e25d7656f3f05059b1287a",
+    "mobile/dist-grizzly/_expo/static/js/android/index-e3894640c43737ef082af7a5537eb1a5.hbc": "032d5639e95f6607c79a13c2ee0fbd0e862055fdf5dd6facb090ac20c7c12cce",
+    "mobile/dist-grizzly/_expo/static/js/ios/index-3ff7acc725ffc30ca7eef52bed5a67ac.hbc": "fe17d0bd65428ff250eef93f1962dbdb9be0994cf3519280a4db35b5babeb8cd",
+    "mobile/dist-grizzly/_expo/static/js/ios/index-5c8f8c53f31924e4145996cf790fde74.hbc": "8c7fe9500be0d928bf9f38f2f1523cc756cfad553d558339970d6a07dd33a259",
+    "public/downloads/grizzly-fitness-native-source.zip": "ff5c18674490b81f10bbcb9f347470fd8761645fb08e13948eedcb5d0be30e2c",
+    "public/downloads/movefield-native-current.zip": "00ae4efda5c0fcb0f9e2a2611c0e8c74eaa5576083530b8417e4e2a06faecc5f"
+  },
+  "sharedSnapshotFiles": 89,
+  "lint": {
+    "errors": 0,
+    "warnings": 71
+  },
+  "applicationSourceSha256": "58c486364f10cb6db4cbf135384cf47e4431f14aef99466945ec9ef1f94a45be",
+  "preparedPagesDraft": {
+    "pages_commit": "240cd1e47fa5e3c62f76e9f683dfbf993f563b1c",
+    "base_pages_commit": "3992385adcea3d98f424cc2cdd7c54d2fda42972",
+    "source_commit": "60410d2d32be9dda170cd735ac63fcb0383015f9",
+    "application_source_sha256": "58c486364f10cb6db4cbf135384cf47e4431f14aef99466945ec9ef1f94a45be",
+    "preserved_original_files": 63,
+    "verified_candidate_files": 3653,
+    "pushed": false,
+    "live_verified": false
+  }
+}

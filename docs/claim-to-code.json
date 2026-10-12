@@ -10,7 +10,7 @@
       "sources": [
         "TIME-EFFICIENT"
       ],
-      "implementation": "lib/training.ts#estimateSessionMinutes",
+      "implementation": "lib/training-runtime.js#estimateSessionMinutes",
       "tests": [
         "scripts/check-program-depth.cjs",
         "scripts/check-calendar-blocks.cjs"
@@ -24,7 +24,7 @@
       "sources": [
         "REP-PROGRESSION"
       ],
-      "implementation": "lib/training.ts#loadSuggestion",
+      "implementation": "lib/training-runtime.js#loadSuggestion",
       "tests": [
         "scripts/check-audit.cjs",
         "scripts/check-program-depth.cjs"
@@ -38,7 +38,7 @@
       "sources": [
         "IOC-YOUTH"
       ],
-      "implementation": "lib/training.ts#competitionConflict",
+      "implementation": "lib/training-runtime.js#competitionConflict",
       "tests": [
         "scripts/check-onboarding.cjs",
         "scripts/check-calendar-blocks.cjs"
@@ -52,7 +52,7 @@
       "sources": [
         "NHS-C25K"
       ],
-      "implementation": "lib/training.ts#buildBasePlan",
+      "implementation": "lib/training-runtime.js#buildBasePlan",
       "tests": [
         "scripts/check-program-depth.cjs",
         "mobile/scripts/check-engine.ts"
@@ -68,7 +68,7 @@
         "NSCA-YOUTH",
         "IOC-YOUTH"
       ],
-      "implementation": "lib/training.ts#validateProfile",
+      "implementation": "lib/training-runtime.js#validateProfile",
       "tests": [
         "scripts/check-security.cjs",
         "scripts/check-program-depth.cjs"

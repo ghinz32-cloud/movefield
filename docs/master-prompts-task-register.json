@@ -5,8 +5,8 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Encrypted per-record IndexedDB/SQLite, native calendar/reusable blocks/customization/progress/science parity, honest duration fitting, hardened SDK identity/session boundaries, rendered accessibility and reproducible Cloudflare account preparation; premium Today and a linked isolated GitHub Pages review preserving the existing deployed app",
-  "completion_claim": "The premium web review is published and live-verified. Full six-prompt implementation and acceptance remain incomplete; no physical-device or full standards/scientific acceptance is claimed.",
+  "active_checkpoint": "Recovered public routines plus creator-version GZCLP progression, set-level saved effort/corrections and evidence/source classification. Current source and Pages builds remain unpublished after the prior automatic approval rejection.",
+  "completion_claim": "Current bounded source/effort milestone is locally implemented and checked. Earlier live releases are historical; this recovered candidate is not pushed or live-verified. Full six-prompt acceptance remains incomplete.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
     "Saved environment network additions need activation for full-text research and repo.reactnative.dev Android artifact download. Current proxy denials are not bypassed.",
@@ -1778,5 +1778,43 @@
     "live_verified": true,
     "remote_head": "7912af91627437e21d4530fece9a9612937c263f",
     "live_check_status": "Actual HTTPS manifest/source SHA, selected byte-identical assets and deployed sample/browser/navigation/phone smoke checks passed. GitHub API inspection remains denied."
+  },
+  "public_program_science_checkpoint": {
+    "status": "implemented, recovered and locally tested; publication blocked",
+    "source_branch": "codex/public-program-recovery-2026-10-12",
+    "originals": 125,
+    "public_strength_versions": 8,
+    "reviewed_entries": 134,
+    "source_cases": 20,
+    "fitting_scenarios": 7776,
+    "scope_limits": 52,
+    "source_identity_limit": "Executed functions/data recovered from exports as JavaScript with typed public declarations; original complete source identity/comments are unavailable. Lint and interfaces are checked; fresh rendered/physical-device qualification remains.",
+    "evidence": [
+      "docs/science/public-programs-and-evidence-2026-10-12.md",
+      "docs/science/program-review-2026-10-12.json",
+      "docs/science/release-validation-2026-10-12.json"
+    ],
+    "pushed": false,
+    "live_verified": false,
+    "blocked_reason": "Earlier automatic approval review rejected normal GitHub push for unrecognized end-user destination/ownership authorization; no bypass attempted."
+  },
+  "source_effort_continuation_2026_10_12": {
+    "implementation": [
+      "GZCLP creator revision with retained old contexts",
+      "Set-level RIR history/corrections on web and native",
+      "Source-versus-study filters and relevant literature provenance"
+    ],
+    "validation": "docs/science/source-refinements-validation-2026-10-12.json",
+    "report": "docs/science/continuation-source-rir-2026-10-12.md",
+    "publication": "Blocked by prior automatic destination/ownership authorization rejection; no alternate route attempted.",
+    "remaining": [
+      "Broader modality-specific full-text/claim qualification",
+      "Complete next-block/baseline editor and installed-device acceptance",
+      "Recovered typed-source cleanup",
+      "Original remaining security/privacy/model/sync/device requirements retained"
+    ],
+    "release_validation": "docs/science/continuation-release-validation-2026-10-12.json",
+    "implementation_commit": "33658513ab4ecf3aa3d6fd44207952a61ea750fa",
+    "unpublished_pages_commit": "f92fe266c68c6ae9e6e37ec16a78cdd8c2c68084"
   }
 }

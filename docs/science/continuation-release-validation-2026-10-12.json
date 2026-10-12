@@ -1,0 +1,210 @@
+{
+  "checkedAt": "2026-10-12T23:38:26.522274+00:00",
+  "sourceCommit": "33658513ab4ecf3aa3d6fd44207952a61ea750fa",
+  "scope": "Current creator-source/effort continuation on recovered JavaScript with typed public contracts. Synthetic domain/adapters, actual rendered web effort control, builds and exports; no fresh browser, installed-device, APK/IPA or physiological acceptance.",
+  "core": [
+    {
+      "name": "creator-source and set-effort refinements",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 964
+    },
+    {
+      "name": "public source rules and scientific accounting",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1006
+    },
+    {
+      "name": "Today facts and actions",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 659
+    },
+    {
+      "name": "transactional encrypted records",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 7139
+    },
+    {
+      "name": "activity progress and comparison context",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 638
+    },
+    {
+      "name": "evidence/duration/calendar zones",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 4213
+    },
+    {
+      "name": "calendar and reusable blocks",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 709
+    },
+    {
+      "name": "Cloudflare account/storage/coaching",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 2920
+    },
+    {
+      "name": "portable cloud vault and retry",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 2452
+    },
+    {
+      "name": "native SDK cookie transport",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1129
+    },
+    {
+      "name": "plan import",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 632
+    },
+    {
+      "name": "durability",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 644
+    },
+    {
+      "name": "vault and history",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1051
+    },
+    {
+      "name": "native encrypted adapter",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1097
+    },
+    {
+      "name": "native file transfer",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 270
+    },
+    {
+      "name": "security",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 630
+    },
+    {
+      "name": "data and calendar",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 686
+    },
+    {
+      "name": "web types",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 8822
+    },
+    {
+      "name": "native types",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 5106
+    },
+    {
+      "name": "native engine",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1865
+    }
+  ],
+  "sourceCases": 30,
+  "programReview": {
+    "entries": 134,
+    "originalDefinitions": 125,
+    "publicStrengthVersions": 8,
+    "additionalNHS": 1,
+    "withScopeLimits": 52
+  },
+  "sharedSnapshotFiles": 89,
+  "lint": {
+    "errors": 0,
+    "warnings": 71
+  },
+  "builds": {
+    "movefieldWeb": "passed",
+    "grizzlyWeb": "passed",
+    "nativeMovefieldIOSAndroid": "passed",
+    "nativeGrizzlyIOSAndroid": "passed"
+  },
+  "nativeSource": {
+    "movefield": {
+      "files": 192,
+      "bytes": 3927048,
+      "sha256": "76fa46941ef6d48d31b3b9e28a35b4b6ae2822efc6163827864468d650c4228c"
+    },
+    "grizzly": {
+      "files": 192,
+      "bytes": 3927044,
+      "sha256": "d5315f39aa15c8884f721f92422ce5ba509bad6cd4e4d39d78668ebcc4c2d3f1"
+    }
+  },
+  "nativeExports": {
+    "movefield": {
+      "android": {
+        "path": "_expo/static/js/android/index-76ae07a3ffcd09925acd71b4254e1b3e.hbc",
+        "bytes": 4514005,
+        "sha256": "67ae943939ed88d065af9c36f210627b4f2857f92befb7e635e739d986a7d254"
+      },
+      "ios": {
+        "path": "_expo/static/js/ios/index-9a578d74d415ddfe3ab2ec58cdf30d45.hbc",
+        "bytes": 4501250,
+        "sha256": "ab1982a5aaff2828976934ee12e2e3ca6e57ca4355beea69a146610b35d15be2"
+      }
+    },
+    "grizzly": {
+      "android": {
+        "path": "_expo/static/js/android/index-b37fb5d524f28bcf6ad18d81229e2134.hbc",
+        "bytes": 4514005,
+        "sha256": "442832ced1099ac99d3d0581d916b7dd25ea3be6e58160ea7d11f501e8feefdd"
+      },
+      "ios": {
+        "path": "_expo/static/js/ios/index-358b08ab908dfdf0d6e4de235d2a0c13.hbc",
+        "bytes": 4501250,
+        "sha256": "76875deef6f1dcda45a1b1b28b635684c3783fdadf6e3c44c4b3a7cb23437d9d"
+      }
+    }
+  },
+  "applicationSourceSha256": "c82ff880ca67b9530c88442306b3528a1103a03060286de4759435e06c0ab64f",
+  "webArtifactTreeSha256": "d8c96bc2189bb84cd50f7c9a3f477b565c0870dcf9c0fe0afbe122069231e024",
+  "credentialPatternScan": {
+    "files": 5837,
+    "zipMembers": 1884,
+    "matches": 0,
+    "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed."
+  },
+  "publication": {
+    "pages_commit": "f92fe266c68c6ae9e6e37ec16a78cdd8c2c68084",
+    "base_pages_commit": "3992385adcea3d98f424cc2cdd7c54d2fda42972",
+    "source_commit": "33658513ab4ecf3aa3d6fd44207952a61ea750fa",
+    "application_source_sha256": "c82ff880ca67b9530c88442306b3528a1103a03060286de4759435e06c0ab64f",
+    "preserved_original_files": 63,
+    "verified_candidate_files": 3639,
+    "pushed": false,
+    "live_verified": false
+  },
+  "publicationBlock": "Prior automatic approval review rejected destination/ownership authorization. No repeat push or alternate route attempted.",
+  "unverified": [
+    "Fresh browser and physical device acceptance",
+    "Terminal GZCL baseline/next-block editing beyond reviewed new-block guidance",
+    "Whole-paper/exact-routine scientific qualification",
+    "Recovered complete typed-source restoration",
+    "Previously recorded native dependency and broad six-prompt launch gates"
+  ]
+}

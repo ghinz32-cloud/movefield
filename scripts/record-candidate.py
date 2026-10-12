@@ -21,8 +21,16 @@ artifacts={p:digest(ROOT/p) for p in ['dist/server/index.js','dist/client/movefi
 review={str(p.relative_to(ROOT)):digest(p) for p in sorted((RUNTIME/'github-pages-review').rglob('*')) if p.is_file()}
 web.update(review)
 web.update({str(p.relative_to(ROOT)):digest(p) for p in sorted((RUNTIME/'github-pages-grizzly').rglob('*')) if p.is_file()})
-for p in sorted((ROOT/'mobile/dist-mobile').rglob('*.hbc')):artifacts[str(p.relative_to(ROOT))]=digest(p)
-for p in sorted((ROOT/'mobile/dist-grizzly').rglob('*.hbc')):artifacts[str(p.relative_to(ROOT))]=digest(p)
+# Expo may leave older output files. Bind the receipt to each current metadata
+# entry rather than labeling every remaining bundle as a current export.
+for name in ['dist-mobile','dist-grizzly']:
+    native=ROOT/'mobile'/name
+    if not native.exists():continue
+    metadata=json.loads((native/'metadata.json').read_text())
+    for platform in ['android','ios']:
+        p=(native/metadata['fileMetadata'][platform]['bundle']).resolve()
+        if not p.is_relative_to(native.resolve()) or p.suffix!='.hbc':raise RuntimeError('Unexpected native export path')
+        artifacts[str(p.relative_to(ROOT))]=digest(p)
 patterns=[rb'\bgh[pousr]_[A-Za-z0-9]{30,}\b',rb'\bAKIA[A-Z0-9]{16}\b',rb'\bAIza[A-Za-z0-9_-]{30,}\b',rb'\bsk-(?:proj-|live_)[A-Za-z0-9_-]{20,}\b',b'-----BEGIN '+b'(?:RSA |EC |OPENSSH )?'+b'PRIVATE KEY-----']
 compiled=[re.compile(p) for p in patterns];scanned=set();matches=[];zip_members=0
 for name in sorted(set(files)|set(web)|set(artifacts)):

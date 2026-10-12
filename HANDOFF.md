@@ -1,3 +1,37 @@
+# Active continuation · creator progression and per-set history · 12 October 2026
+
+Checkout `/workspace/scratch/40cdf1d72ab3/movefield`; branch `codex/public-program-recovery-2026-10-12`. Starting checkpoint was `a8731e6`. This continues the recovered eight public strength versions, 125 original definitions and all-selected fresh equipment. Preserve the owner’s untracked `.openai/` directory.
+
+New GZCLP plans use checked creator instructions in versioned `creator-2016-v2` loading contexts. T1 uses base-volume success and its final-set cap, T3 has its verified final-set trigger and real available increments, and accepted stage changes retain future timing/history. Old community contexts remain unchanged and their original provenance is displayed. Terminal baselines stay separately assessed/manual; no maxima or old opening loads are invented. Zero-rep/unlogged attempts remain partial.
+
+Web history now displays set RIR, with older exercise-level feedback explicitly separate. Both history editors can correct optional individual-set RIR. Zero and unknown remain distinct; immutable workout identity, targets, active work/timers and stale-correction guards are retained. Science filters separate preloaded creator routines from studies, and native no longer labels its loaded PHUL version as an unimplemented reference.
+
+Consensus and Wiley Scholar Gateway were callable in this turn and were actually used. Original abstracts and relevant Wiley passages plus selected primary methods/results/Table 2/limitations were reviewed. The two Refalo papers use one intervention and are not independent replication. No universal new numerical scientific rule or exact-routine trial qualification is claimed. See `docs/science/continuation-source-rir-2026-10-12.md`, `docs/evidence-ledger.json` and the adjacent source-refinement receipt.
+
+Application implementation commit `33658513ab4ecf3aa3d6fd44207952a61ea750fa`; application SHA256 `c82ff880ca67b9530c88442306b3528a1103a03060286de4759435e06c0ab64f`. See `docs/science/continuation-release-validation-2026-10-12.json` for current checks and exact native package/export hashes. Locally verified Pages draft `f92fe266c68c6ae9e6e37ec16a78cdd8c2c68084` is based on inspected remote `3992385adcea3d98f424cc2cdd7c54d2fda42972` and preserves all 63 original-root files. It is not pushed or live.
+
+All 20 core groups passed after the evidence ledger was updated; the initial run caught its missing new source entries and is retained in the ignored log. Thirty source/effort cases pass. Root/native types pass, and lint has zero errors/71 warnings. Build/export/artifact identities are finalized in the continuation release receipt after packaging. Fresh browser/physical-device and APK/IPA acceptance remain unperformed; the available managed environment has no browser-control skill/Chromium. Do not install or bypass a browser restriction. Recovered JavaScript with typed public declarations remains a maintenance limitation.
+
+The prior normal GitHub push was rejected by automatic approval review because destination/ownership authorization was not recognized. This continuation prepares a concrete source and two-preview Pages draft; it does not route around the rejection. Before publishing, obtain explicit authorization for `ghinz32-cloud/movefield`, this source branch, the source/audit/native-source materials, and only the existing `/movefield/review/` and `/movefield/grizzly/` previews. Re-read remote heads and use normal fast-forward publication, preserving the original Pages root. No paid service, model traffic, remote CI or account provisioning is part of this milestone.
+
+Next: publish the prepared matching candidate once that rejection is unblocked; then continue complete baseline/next-block editing and broader modality science/claim mapping while retaining the original 72-section register and launch gates. The source checkpoint artifact can restore all unpublished changes against the pinned remote base without requiring the disappeared workspace.
+
+---
+
+Historical checkpoints follow; the active section above takes precedence.
+
+# Current checkpoint · public routines and scientific support · 12 October 2026
+
+Current checkout: `/workspace/scratch/40cdf1d72ab3/movefield`, branch `codex/public-program-recovery-2026-10-12`. Prior scratch source disappeared during saving. Executed function bodies/data from successful Metro transforms were recovered; public types were retained, as JavaScript implementations with typed public declarations. Original complete typed-source identity/comments were not recovered. Preserve these working changes; typed-source cleanup remains a material maintenance limitation.
+
+All-selected fresh equipment, expanded original workouts and 8 public strength versions are implemented. See `docs/science/public-programs-and-evidence-2026-10-12.md`. Twenty actual source-rule regressions, 134 per-plan reviews (125 original, 8 strength versions, NHS), and the 7,776-setup fitting matrix pass. Current recovered-core/type/build/export checks have a separate release receipt. No fresh browser/physical-device, APK/IPA, exact-routine trial or broad launch acceptance claim.
+
+Scientific principles, public creator/community methods and numerical app policies are separate. Source programmes retain actual tables, rotations and distinct progression. Basic is its barbell module only; GZCL T3/reset baselines need individual review; PHUL timers/top-range progression are disclosed app overlays; Stopgap is short-term. Missing/partial work does not become a source attempt. Complete positive-rep misses permit reviewed source repeats/stages. Per-set RIR and paired rest/focus are retained; schema 4 preserves source metadata and older 2/3 saves remain readable. No personal actual load is invented. Existing owner/coach/manual/youth/privacy restrictions remain.
+
+Automatic approval review rejected the prior normal GitHub push because destination/ownership authorization was not recognized in end-user text. Do not route around it through Sites, another connector or another Git branch. No source or Pages push occurred. User must explicitly authorize the concrete destination/materials before publishing: `ghinz32-cloud/movefield`, current source branch, existing `/movefield/review/` and `/movefield/grizzly/` previews only. Preserve the original Pages root, re-read remote heads, publish normally and verify live assets/UI. The former local commits and Pages draft from the deleted directory are not current saved artifacts.
+
+---
+
 ## Current shared workout checkpoint — 12 October 2026
 
 Published and live-verified workout release: https://ghinz32-cloud.github.io/movefield/review/ and https://ghinz32-cloud.github.io/movefield/grizzly/. Implementation code `a479bd5715d4b077cb252db8f795215f7a9f299f`; final Pages `3992385adcea3d98f424cc2cdd7c54d2fda42972`, packaged-source checkpoint `a3a383a95c12942fae1056aa72f041a13b5b8c8d`; application SHA256 `e826c4fb1ca42acc5ac478d9861d34ef076e70256a3a056022dcffc4153a611c`. Eighty-nine live TLS hashes and both actual encrypted live browser workflows passed. All 63 original-root files are unchanged. Both source ZIPs contain 145 manifest-verified files and the native shared snapshot has 49 files. Current native archives are included in the packaging checkpoint; both live manifests bind that exact source tree. The final metadata-only release was reverified with 89 TLS hashes; clients and source ZIPs are unchanged from the live browser run. No physical-device or all-paper qualification is claimed.

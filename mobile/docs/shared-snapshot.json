@@ -2,14 +2,214 @@
   "source": "Training Studio website domain modules; paths relative to its root",
   "files": [
     {
+      "source": "lib/training-runtime.js",
+      "target": "src/shared/training-runtime.js",
+      "sha256": "a3a0a1b81417cb1890c657fed6fcbf923dd343d662a0daabfda6ed838117c744"
+    },
+    {
+      "source": "lib/training-runtime.d.ts",
+      "target": "src/shared/training-runtime.d.ts",
+      "sha256": "ea48225753daa7c4a1ca1b7cdde39f7b5ddb8dfcd654c57dfdb82b248c7df954"
+    },
+    {
+      "source": "lib/equipment-runtime.js",
+      "target": "src/shared/equipment-runtime.js",
+      "sha256": "d9f21f585437700d46cd89bcdee83025fd8aa7052c186c9b17c7b124f3e953ff"
+    },
+    {
+      "source": "lib/equipment-runtime.d.ts",
+      "target": "src/shared/equipment-runtime.d.ts",
+      "sha256": "e8d754c512281075dc87ba620ec0c8b425be073695751f2727f230c9e6e417e3"
+    },
+    {
+      "source": "lib/program-catalog-runtime.js",
+      "target": "src/shared/program-catalog-runtime.js",
+      "sha256": "b79042e6e7c3413f5ec88040f354c870b71456a57206a0132fbace486cf44098"
+    },
+    {
+      "source": "lib/program-catalog-runtime.d.ts",
+      "target": "src/shared/program-catalog-runtime.d.ts",
+      "sha256": "e2f6c6207fa574d27dd7baa45bbd916f758b45757e6a4a798f848ec31cbdbad8"
+    },
+    {
+      "source": "lib/onboarding-runtime.js",
+      "target": "src/shared/onboarding-runtime.js",
+      "sha256": "7c589f19490aabf54c6f1310679df1fac50b4a43ba3fd35446b841f04a1f9f96"
+    },
+    {
+      "source": "lib/onboarding-runtime.d.ts",
+      "target": "src/shared/onboarding-runtime.d.ts",
+      "sha256": "4c276a3292b2fbf7c4f8e2b5fb906fe61e8b04e61d65a633a17a2bd4f63d18a2"
+    },
+    {
+      "source": "lib/plan-fit-runtime.js",
+      "target": "src/shared/plan-fit-runtime.js",
+      "sha256": "7331d479cb4408500277155b8ddfcbe64e82d6f9d854abbf3373b63ed68b4997"
+    },
+    {
+      "source": "lib/plan-fit-runtime.d.ts",
+      "target": "src/shared/plan-fit-runtime.d.ts",
+      "sha256": "f9954be2b640a7756088ed0bdced37c71454faba1b03a289e7d5e0ac320e9711"
+    },
+    {
+      "source": "lib/evidence-sources-runtime.js",
+      "target": "src/shared/evidence-sources-runtime.js",
+      "sha256": "3d9ead4ca1b37c1ac493592511d4f7a8d77579ee6a54ec4825effee95e3f5933"
+    },
+    {
+      "source": "lib/evidence-sources-runtime.d.ts",
+      "target": "src/shared/evidence-sources-runtime.d.ts",
+      "sha256": "44c6cfaebccbb02e35042349964aae903ca5ddb04d15cc5c14a851d8cb374ede"
+    },
+    {
+      "source": "lib/saved-data-runtime.js",
+      "target": "src/shared/saved-data-runtime.js",
+      "sha256": "2023bdf3973b1a3ebcb7a89e90120c82d85f74cd451ce4c7e8113bebfb517345"
+    },
+    {
+      "source": "lib/saved-data-runtime.d.ts",
+      "target": "src/shared/saved-data-runtime.d.ts",
+      "sha256": "1b45109d1c07cb28a0d538d9f4d228aa628ff6750fbd9195f2912bce85eda6e1"
+    },
+    {
+      "source": "lib/plan-import-runtime.js",
+      "target": "src/shared/plan-import-runtime.js",
+      "sha256": "2dc1444b19e9e71ca6432803fc0af862e963f5a1571c1b1b2bd71da6e031a7c4"
+    },
+    {
+      "source": "lib/plan-import-runtime.d.ts",
+      "target": "src/shared/plan-import-runtime.d.ts",
+      "sha256": "365429fec904c3e08cdb932239e7e905ef32bdbccbf0a6f2abbc9c3e1e666b1e"
+    },
+    {
+      "source": "lib/reusable-plan-runtime.js",
+      "target": "src/shared/reusable-plan-runtime.js",
+      "sha256": "38eae550abf6f8355261141aa4c6de3d973bdd583f9007ba9cc2765c5fd03c7a"
+    },
+    {
+      "source": "lib/reusable-plan-runtime.d.ts",
+      "target": "src/shared/reusable-plan-runtime.d.ts",
+      "sha256": "f7364e83c09e01e46efbfc2e1830e0782396abdfbfc2a1ca628c221b386b6820"
+    },
+    {
+      "source": "lib/session-duration-runtime.js",
+      "target": "src/shared/session-duration-runtime.js",
+      "sha256": "4589cd023f1542de2800ccc3e1472e10e8766ef9178755a2d83aec17de57f787"
+    },
+    {
+      "source": "lib/session-duration-runtime.d.ts",
+      "target": "src/shared/session-duration-runtime.d.ts",
+      "sha256": "1fb7bc004a70e9c7a86c8d4b6f8e17654a52f9b80a659dbd3110a75140aa63ad"
+    },
+    {
+      "source": "lib/session-guide-runtime.js",
+      "target": "src/shared/session-guide-runtime.js",
+      "sha256": "0c171462f811b28b4dbb0606997541f59518eee72c47b73fb2e1954cb4890f48"
+    },
+    {
+      "source": "lib/session-guide-runtime.d.ts",
+      "target": "src/shared/session-guide-runtime.d.ts",
+      "sha256": "b5d803c1a97816091291b0eb81ec42a6badb49b58256356218b5ce49ebc913da"
+    },
+    {
+      "source": "lib/workout-log-runtime.js",
+      "target": "src/shared/workout-log-runtime.js",
+      "sha256": "89245940e268e21f2ff16a311d85694797aafcb011306d152fbb448ac512fec6"
+    },
+    {
+      "source": "lib/workout-log-runtime.d.ts",
+      "target": "src/shared/workout-log-runtime.d.ts",
+      "sha256": "716e1cae63aa5df1ad035bd132abff53c1f9804be4fd7d4017382c7c16796225"
+    },
+    {
+      "source": "lib/progress-runtime.js",
+      "target": "src/shared/progress-runtime.js",
+      "sha256": "6b55443e2ad5caf0119f45e281ac6d8a54094f81390f2180a5a90d77062b697b"
+    },
+    {
+      "source": "lib/progress-runtime.d.ts",
+      "target": "src/shared/progress-runtime.d.ts",
+      "sha256": "5be8844d0c44dab328fbf57bc1f2588ed9fc070dcd349e6a368d37adba745c7b"
+    },
+    {
+      "source": "lib/history-edit-runtime.js",
+      "target": "src/shared/history-edit-runtime.js",
+      "sha256": "e56e0aba41154a2995cd690c70ea4ebf740d2119b7429aedd2c311bb4420815f"
+    },
+    {
+      "source": "lib/history-edit-runtime.d.ts",
+      "target": "src/shared/history-edit-runtime.d.ts",
+      "sha256": "ad5d279793239309de9d62564152d278558c86e532656a693f87ea826b7466bf"
+    },
+    {
+      "source": "lib/source-programs-runtime.js",
+      "target": "src/shared/source-programs-runtime.js",
+      "sha256": "c39be4845bd4323a06205b781c6ff427a75362e4bbb49f98396d90691c915da6"
+    },
+    {
+      "source": "lib/source-programs-runtime.d.ts",
+      "target": "src/shared/source-programs-runtime.d.ts",
+      "sha256": "88a678775f60311045306b8a7ce1e9740a7712a643dae8c652a6adb298bdf43e"
+    },
+    {
+      "source": "lib/muscle-work-runtime.js",
+      "target": "src/shared/muscle-work-runtime.js",
+      "sha256": "525a5ab2980737224f373447eac244bacc20717e419919be562aa8abe05578fc"
+    },
+    {
+      "source": "lib/muscle-work-runtime.d.ts",
+      "target": "src/shared/muscle-work-runtime.d.ts",
+      "sha256": "9ebab0db8203c19ba180ee29fa33b980c7b6016f1f7c49b6b40b3e1ff7a231b5"
+    },
+    {
+      "source": "lib/program-science-runtime.js",
+      "target": "src/shared/program-science-runtime.js",
+      "sha256": "2c99f68d4cdf6c3f6596d3abacf3b1fb949b9a9b3c5908ebe446ee6149550070"
+    },
+    {
+      "source": "lib/program-science-runtime.d.ts",
+      "target": "src/shared/program-science-runtime.d.ts",
+      "sha256": "825fdc6cf445322dd9ca2e559b4bfd2c47d5023073168cda347560fbc9bd155e"
+    },
+    {
+      "source": "lib/paired-sets-runtime.js",
+      "target": "src/shared/paired-sets-runtime.js",
+      "sha256": "8380f80cafa9aa4f31570e2fbfc48529e8ab114f714b5fae05165892736c8e9b"
+    },
+    {
+      "source": "lib/paired-sets-runtime.d.ts",
+      "target": "src/shared/paired-sets-runtime.d.ts",
+      "sha256": "5bda11294bf94cb9315e3a0aad937ffebf62c5517fa600e156a50de03b03c58c"
+    },
+    {
+      "source": "lib/source-programs.ts",
+      "target": "src/shared/source-programs.ts",
+      "sha256": "3283cf2c34bfeee014236967a65c5379325fd7399611e4da0cb088f33082f5c1"
+    },
+    {
+      "source": "lib/muscle-work.ts",
+      "target": "src/shared/muscle-work.ts",
+      "sha256": "d9da36dd84ba642ebc36d1792d954a46a3e5bf3ef88f56c6acbef550e01c0039"
+    },
+    {
+      "source": "lib/program-science.ts",
+      "target": "src/shared/program-science.ts",
+      "sha256": "1eb3d32947586a014cdcd3682526838b0e01a841e7e37d10f29ec45c65057355"
+    },
+    {
+      "source": "lib/paired-sets.ts",
+      "target": "src/shared/paired-sets.ts",
+      "sha256": "4b197424f80c8d887ca2ef5f272daaf9904e01543b2454328da5158e6d8da313"
+    },
+    {
       "source": "lib/plan-fit.ts",
       "target": "src/shared/plan-fit.ts",
-      "sha256": "dc602cdce3059def252c0d20c08c2a3d684cd7d7626a5e0164e8207fbf389ebc"
+      "sha256": "cc2331f1136f48f051f9da72544b14b42a72c4f323fe60224a3c410cc4914a24"
     },
     {
       "source": "lib/equipment.ts",
       "target": "src/shared/equipment.ts",
-      "sha256": "e2fc08675fd50cc51b22405b50b0e5531cb3ea7783ff71cc65084c58cf31d831"
+      "sha256": "b6c1cb9ae191cadb90cffb110dcc042ae000afb499fe39c7c46920b255085544"
     },
     {
       "source": "lib/today-view.ts",
@@ -34,12 +234,12 @@
     {
       "source": "lib/session-duration.ts",
       "target": "src/shared/session-duration.ts",
-      "sha256": "5602a4a9f6c3e908bfbc170ca4e79a0a62d9163fe98ffa0decc9cf32034bae71"
+      "sha256": "383f44a25b867b80a2854b89788d9424ee5537fbd8c6e3d65fff61406ed73677"
     },
     {
       "source": "lib/evidence-sources.ts",
       "target": "src/shared/evidence-sources.ts",
-      "sha256": "a0e52ae094a7e6314ba3cc8be8ee1510bbb41bcc365807138f107d1286a24927"
+      "sha256": "6e56e6fe4e63dddafc5467085bdfa977bcab9bfe0263a93b50098ab28b825f6e"
     },
     {
       "source": "lib/account-sessions.ts",
@@ -59,7 +259,7 @@
     {
       "source": "lib/reusable-plan.ts",
       "target": "src/shared/reusable-plan.ts",
-      "sha256": "e765eb831dcabc3e2a0ce7e31518dd7c8f118d808b67e68286fe6e40d495f251"
+      "sha256": "caef4e71c0eaff32825a3bc42231a8f27b2fa84a5dcad1cdb43052e12b1d7b53"
     },
     {
       "source": "lib/coaching-facts.ts",
@@ -74,7 +274,7 @@
     {
       "source": "lib/plan-import.ts",
       "target": "src/shared/plan-import.ts",
-      "sha256": "f3332b3b0707a3459d270c41a9c8f4be6517cfc2000e1fd45c742808f3e85a7a"
+      "sha256": "2e2504894471b027e446da95a19985976861ee710828d86d0a531e86055906cd"
     },
     {
       "source": "lib/set-metric-fields.ts",
@@ -84,12 +284,12 @@
     {
       "source": "lib/history-edit.ts",
       "target": "src/shared/history-edit.ts",
-      "sha256": "bb1996f24f41837cece09ea86038f8e72167dd75dd103b239d779f3f60dbf41d"
+      "sha256": "36aac410eb9237a0c8ba3e440e393156f6f1dc5cf452822a6571fb085b566288"
     },
     {
       "source": "lib/experienced-demo.ts",
       "target": "src/shared/experienced-demo.ts",
-      "sha256": "0e7030011ea79b94fa229ebc359758291b836ac620806b81fd53acd5393a1fe7"
+      "sha256": "2b19bf797fecc2a632e24412f54862890fd05849f317c67e45cf9b863fc48d0c"
     },
     {
       "source": "lib/vault-format.ts",
@@ -139,12 +339,12 @@
     {
       "source": "lib/workout-log.ts",
       "target": "src/shared/workout-log.ts",
-      "sha256": "72d85ced641624c11a2581d8d4e946ed75397ee63904d3722a9791960b0745cb"
+      "sha256": "b0057a9b6f583990f5636369218d06ca97403736070ef8be1c6ad50e81e2e44e"
     },
     {
       "source": "lib/onboarding.ts",
       "target": "src/shared/onboarding.ts",
-      "sha256": "cedf142de893e55a0ccfdc96d9605e3155f247d2abaf4e9eb5fbb3a5f7f52ac7"
+      "sha256": "a4bc179e2227b8d5b1834bf2b518377c38251ee24f25bbc45f10d22ec0491734"
     },
     {
       "source": "lib/rest-timer.ts",
@@ -154,7 +354,7 @@
     {
       "source": "lib/training.ts",
       "target": "src/shared/training.ts",
-      "sha256": "08ccb49eaf1ba17dd9322528e5853138600e938eec82420816966654f0ab46d9"
+      "sha256": "65ec46b1a5998cb9f0c01235c209333b36f7982d5ba22f33ec496515a614db36"
     },
     {
       "source": "lib/training-focus.ts",
@@ -164,7 +364,7 @@
     {
       "source": "lib/program-catalog.ts",
       "target": "src/shared/program-catalog.ts",
-      "sha256": "6949d4df67c2b924b6b1bff1ce658f824f9fae1c8e848dc7af1d1468e7465f4e"
+      "sha256": "c0cc751f9c98ce607b70a254b5857e7499e43df9c4044564ba97492edb7fda58"
     },
     {
       "source": "lib/substitutions.ts",
@@ -174,7 +374,7 @@
     {
       "source": "lib/session-guide.ts",
       "target": "src/shared/session-guide.ts",
-      "sha256": "0900f3671bb352e7c4b7ad8550d0a42de33784144343e6bc687040b6d36f6e03"
+      "sha256": "10ed9f980249be76c47740eeaa0b9d882fc5c0cf7c746f7a2f1e6cab15cf5d1c"
     },
     {
       "source": "lib/workout-review.ts",
@@ -184,12 +384,12 @@
     {
       "source": "lib/saved-data.ts",
       "target": "src/shared/saved-data.ts",
-      "sha256": "23d1af55a5f25c836b2606b8269b9b9e836d2a764ba3db334ce196a94ad5f463"
+      "sha256": "a253dc12839b09e24668186d712951ab06d516ee604e44b5f50972b710804433"
     },
     {
       "source": "lib/progress.ts",
       "target": "src/shared/progress.ts",
-      "sha256": "b231d9ff4930506400e21df6fc4c29918700e5d60d28ddd5fd27ca4a5db3e099"
+      "sha256": "b9ece5b88050d4f02edba49597ab2c7f44a37746e6ef0313b9433c3fcadb84fe"
     },
     {
       "source": "lib/exercise-library.json",
@@ -209,7 +409,7 @@
     {
       "source": "docs/evidence-ledger.json",
       "target": "docs/evidence-ledger.json",
-      "sha256": "527eede613dee4586b16a912b7e629bdaf09f1964f38327993e6ceceb14f78c3"
+      "sha256": "029bb377257a90938f012d6add7575b79d8f37165d3597d148e77e228923409b"
     },
     {
       "source": "docs/cloudflare-implementation.md",

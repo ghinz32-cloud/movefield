@@ -1,3 +1,11 @@
+## Current source and effort continuation · 12 October 2026
+
+The recovered candidate has eight public strength versions and 125 original definitions. The newest milestone verifies GZCLP creator rules in a distinct accepted context, preserves older editions, shows saved RIR per set, and adds web/native RIR corrections. Scientific studies and creator sources have separate filters. See [the milestone report](science/continuation-source-rir-2026-10-12.md) and its validation receipt.
+
+All 20 local core groups pass, including ten new source/effort cases and twenty retained source-program regressions. Web/native types pass; lint has zero errors and 71 warnings. Actual current builds/exports and source/package identities are recorded after packaging. Fresh browser/device acceptance remains unperformed. The prior automatic approval review rejected publication destination/ownership authorization; this candidate is still local. No full six-prompt or all-paper acceptance is claimed.
+
+Historical checkpoints below describe earlier releases and must not be used as current publication or installed-device evidence.
+
 ## Shared workout update · 12 October 2026
 
 The shared Movefield/Grizzly upgrade now includes actual equipment polling, 6–7-day schedules, conservative function-matched substitutions, explicit weekly work counts and per-ID records for 995 exercise/task entries and 113 programs. Accessible official guidance and all NHS timings were reviewed; full research/publisher access and installed-device qualification remain limited. See [the audit](fitness-audit/README.md) and [validation](fitness-audit/validation.json). This checkpoint does not close the broader launch gates below.
