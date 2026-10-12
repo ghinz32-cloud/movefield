@@ -75,7 +75,7 @@ Outside ChatGPT Work, do not copy the old `.sites-runtime/execution-profile.json
 
 ## Product and visual direction
 
-The latest goal adds a separate Grizzly Fitness Wautoma flavor while sharing training code. Read `docs/grizzly-fitness.md` and `mobile/GRIZZLY.md`. Grizzly now uses the user's uploaded logo unchanged; preserve its artwork and location text. The amber palette is a custom app theme, not a claim about the gym's official colors. Keep its native IDs, local namespaces and offline cache separate. The Movefield guidance below continues to apply to the default flavor.
+The latest goal adds a separate Grizzly Fitness Wautoma flavor while sharing training code. Read `docs/grizzly-fitness.md` and `mobile/GRIZZLY.md`. Grizzly now uses the user's uploaded logo unchanged; preserve its artwork and location text. The user now requests an extreme bear default: Wild, dark Arctic frost and Rubik Beastly, with claw/rip decoration. Keep Customize accessible before vault setup and preserve Clean plus all five font choices. These are custom themes, not claims about official gym colors or typography. Keep its native IDs, local namespaces and offline cache separate. The Movefield guidance below continues to apply to the default flavor.
 
 - Green-to-mint default; six selectable palettes; System/Light/Dark.
 - Original simple gradient initial + full wordmark. Do not copy Strava, Runna or Caliber constructions.

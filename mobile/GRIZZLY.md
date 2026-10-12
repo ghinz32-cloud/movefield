@@ -6,6 +6,6 @@ After `npm ci`, use `npm run start:grizzly` for the Expo preview or `npm run exp
 
 Grizzly uses `com.ghinz32.grizzlyfitness.prototype`, the `grizzlyfitness` URL scheme, its own AsyncStorage/SecureStore keys, SQLite filename and preferences. Existing Movefield identifiers and record formats stay stable. No automatic profile migration occurs. An explicitly imported backup uses the same portable encrypted format.
 
-Headings use bundled Bungee, with Inter for data and controls. Both font licenses accompany the source. Sample data, deterministic training rules, plan review and privacy controls remain shared. An installed device test is still needed to qualify each platform's keychain, notifications, fonts and layout; an Expo export is not an APK/IPA.
+Fresh Grizzly appearance starts with Wild, dark Arctic frost and Rubik Beastly headings. Settings offers Clean & readable plus Beast, Metal, Bungee, Barlow and Inter heading choices. Body text and controls use Inter. Claw/rip decoration is removed by Clean; saved mode/colors are respected. Both font licenses accompany the source. Sample data, deterministic training rules, plan review and privacy controls remain shared. An installed device test is still needed to qualify each platform's keychain, notifications, fonts and layout; an Expo export is not an APK/IPA.
 
 Grizzly cloud sign-in stays off unless its own `EXPO_PUBLIC_GRIZZLY_API_URL` and `EXPO_PUBLIC_GRIZZLY_NATIVE_AUTH_VERIFIED=true` are supplied after callback/server qualification. Movefield's API setting is not reused.

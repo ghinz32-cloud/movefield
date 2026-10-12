@@ -1,3 +1,9 @@
+## Latest visual goal — extreme bear style
+
+The user asked for an extreme, initially less legible bear look with claws/rips/cold fonts and customization afterward. Fresh Grizzly starts Wild/dark/Arctic frost/Rubik Beastly. Customize is visible from the vault welcome; Clean & readable removes rough decoration and selects Inter/system. Settings exposes Beast, Metal, Bungee, Barlow and Inter. Existing mode/color choices are respected; missing style/font fields get Grizzly defaults. Original Movefield remains system/green/Barlow. The uploaded JPEG is unchanged. Training values and controls stay clear; only display lettering is intentionally rugged. See docs/grizzly-fitness.md.
+
+Wild/Clean persistence, two-tab updates, exact active-workout preservation, other-app preference isolation and 320px/130% dialog focus checks passed. The existing 18 browser journeys, 32 axe/reflow states, six preference behaviors and 18 core groups passed. Native decorations/settings, identity/file adapters, RN Web workflows, types and cleared-cache Hermes exports passed; no physical-device qualification is claimed. Claw animations are finite and respect system/in-app reduced motion. Self-hosted OFL fonts and the logo are in the isolated offline cache.
+
 ## Active goal — Grizzly Fitness Wautoma (12 October 2026)
 
 The user changed the immediate goal to a separate Grizzly Fitness UI using the same training features. Official website: https://www.fitnessgrizzly.com/. The user has now supplied the Grizzly Fitness logo as a JPEG. Original uploaded bytes are retained at `public/brand/grizzly-fitness-logo.jpg` and `mobile/assets/grizzly-fitness-logo.jpg` (1280×593, SHA256 `8b97ad7dd972812b066cd5b919ff96d90d961ad00230230eb1faebd6e222b0f5`). The logo is integrated directly; no website access is required. Website access additions remain saved but not activated. Amber/cream/woodland is custom app styling, not an official color claim, and this remains a prototype.

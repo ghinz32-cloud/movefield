@@ -1,4 +1,5 @@
 import {NativeTodayHero} from './src/today-hero';
+import {NativeBearDecoration} from './src/bear-decoration';
 import {NativeProgress} from './src/progress';
 import {NativePlanEvidence,NativeScienceLibrary} from './src/science';
 import {durationText} from './src/shared/session-duration';
@@ -52,7 +53,7 @@ function Button({ label, onPress, secondary = false, disabled = false }: { label
 function Pill({ label, selected, onPress }: { label: string; selected: boolean; onPress: () => void }) { const styles=useThemedStyles(baseStyles),{colors:COLORS,reduceMotion}=useNativeAppearance();
   return <Pressable accessibilityRole="button" accessibilityState={{ selected }} onPress={onPress} style={[styles.pill, selected && styles.pillSelected]}><Text style={[styles.pillText, selected && { color: COLORS.onAccent }]}>{label}</Text></Pressable>;
 }
-function Card({ children, dark = false, grow = false }: { children: React.ReactNode; dark?: boolean; grow?: boolean }) { const styles=useThemedStyles(baseStyles),{colors:COLORS,reduceMotion}=useNativeAppearance(); return <View style={[styles.card, dark && styles.darkCard, grow && styles.flex]}>{children}</View>; }
+function Card({ children, dark = false, grow = false }: { children: React.ReactNode; dark?: boolean; grow?: boolean }) { const styles=useThemedStyles(baseStyles),{colors:COLORS,reduceMotion}=useNativeAppearance(); return <View style={[styles.card, dark && styles.darkCard, grow && styles.flex]}><NativeBearDecoration/>{children}</View>; }
 function Heading({ eyebrow, title, detail }: { eyebrow: string; title: string; detail?: string }) { const styles=useThemedStyles(baseStyles),{colors:COLORS,reduceMotion}=useNativeAppearance();
   return <View style={styles.heading}><Text style={styles.eyebrow}>{eyebrow}</Text><Text style={styles.title}>{title}</Text>{detail && <Text style={styles.body}>{detail}</Text>}</View>;
 }

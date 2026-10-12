@@ -14,6 +14,6 @@ for(const name of ['browser-record-read.cjs','check-workout-browser.cjs','check-
  await writeFile(resolve(directory,name),code);
 }
 const results=[];
-for(const name of ['check-workout-browser.cjs','check-accessibility.cjs','check-browser-preferences.mjs']){const result=spawnSync(process.execPath,[resolve(directory,name)],{env:{...process.env,MOVEFIELD_BASE_URL:base},stdio:'inherit',timeout:300000});results.push({name,exit:result.status});if(result.status!==0)break}
+for(const name of ['check-workout-browser.cjs','check-accessibility.cjs','check-browser-preferences.mjs']){const result=spawnSync(process.execPath,[resolve(directory,name)],{env:{...process.env,MOVEFIELD_BASE_URL:base,...(grizzly?{MOVEFIELD_DEFAULT_PALETTE:'frost',MOVEFIELD_DEFAULT_MODE:'dark'}:{})},stdio:'inherit',timeout:300000});results.push({name,exit:result.status});if(result.status!==0)break}
 await writeFile(grizzly?'.sites-runtime/grizzly-regressions.json':'.sites-runtime/github-review-regressions.json',JSON.stringify({checkedAt:new Date().toISOString(),scope:'All existing built-browser assertions against the static subpath review; storage namespace, first palette label and module locations adapted, no assertion suppressed.',results},null,2)+'\n');
 if(results.length!==3||results.some(x=>x.exit!==0))process.exitCode=1;

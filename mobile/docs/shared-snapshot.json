@@ -104,7 +104,7 @@
     {
       "source": "lib/app-preferences.ts",
       "target": "src/shared/app-preferences.ts",
-      "sha256": "f4b1908552585e66e07e442f3ad6e8e1db523be9a3afd9a94d86df4c2592b6f8"
+      "sha256": "df6cd949e3b3a150bf82d7336dd8afedb37e381a1d7be95409e815bb8d089412"
     },
     {
       "source": "lib/workout-reminders.ts",

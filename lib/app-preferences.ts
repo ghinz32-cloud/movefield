@@ -1,5 +1,6 @@
 import {isGrizzly} from './brand';
 export const palettes = [
+  ...(isGrizzly?[{id:'frost',name:'Arctic frost',from:'#b7e6f2',to:'#a9c9e1',strong:'#28586e'} as const]:[]),
   {id:'green',name:isGrizzly?'Grizzly amber':'Volt green',from:isGrizzly?'#f5cb79':'#c4f275',to:isGrizzly?'#e6ac69':'#56dfae',strong:isGrizzly?'#80501d':'#226345'},
   {id:'ocean',name:'Ocean blue',from:'#9bdfff',to:'#92a9ff',strong:'#2458a0'},
   {id:'violet',name:'Iris violet',from:'#dcbaff',to:'#b4a1ff',strong:'#6842a1'},
@@ -9,14 +10,16 @@ export const palettes = [
 ] as const;
 export type PaletteId=typeof palettes[number]['id'];
 export type ModelChoice='auto'|'off'|'0.6b'|'1.7b'|'4b';
-export type AppPreferences={mode:'system'|'light'|'dark';palette:PaletteId;textSize:100|115|130;contrast:boolean;reduceMotion:boolean;underlineLinks:boolean;reminders:boolean;reminderTime:string;model:ModelChoice};
-export const defaultPreferences:AppPreferences={mode:'system',palette:'green',textSize:100,contrast:false,reduceMotion:false,underlineLinks:false,reminders:false,reminderTime:'18:00',model:'auto'};
+export const headingFonts=[{id:'beast',name:'Beast · rugged',family:'Rubik Beastly'},{id:'metal',name:'Metal · cold steel',family:'Metal Mania'},{id:'bungee',name:'Bungee · bold',family:'Bungee'},{id:'barlow',name:'Barlow · original',family:'Barlow Condensed'},{id:'inter',name:'Inter · clear',family:'Inter'}] as const;
+export type HeadingFont=typeof headingFonts[number]['id'];
+export type AppPreferences={mode:'system'|'light'|'dark';palette:PaletteId;grizzlyStyle:'wild'|'clean';headingFont:HeadingFont;textSize:100|115|130;contrast:boolean;reduceMotion:boolean;underlineLinks:boolean;reminders:boolean;reminderTime:string;model:ModelChoice};
+export const defaultPreferences:AppPreferences={mode:isGrizzly?'dark':'system',palette:isGrizzly?'frost':'green',grizzlyStyle:isGrizzly?'wild':'clean',headingFont:isGrizzly?'beast':'barlow',textSize:100,contrast:false,reduceMotion:false,underlineLinks:false,reminders:false,reminderTime:'18:00',model:'auto'};
 export const preferenceKey=isGrizzly?'grizzly-fitness:preferences:v1':'training-studio:preferences:v1';
 export function readPreferences(raw:string|null):AppPreferences {
   if(!raw)return {...defaultPreferences};
   try{
     const p=JSON.parse(raw);if(!p||typeof p!=='object'||Array.isArray(p))return {...defaultPreferences};
-    return {mode:['system','light','dark'].includes(p.mode)?p.mode:'system',palette:palettes.some(x=>x.id===p.palette)?p.palette:'green',textSize:[100,115,130].includes(p.textSize)?p.textSize:100,contrast:p.contrast===true,reduceMotion:p.reduceMotion===true,underlineLinks:p.underlineLinks===true,reminders:p.reminders===true,reminderTime:typeof p.reminderTime==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(p.reminderTime)?p.reminderTime:'18:00',model:['auto','off','0.6b','1.7b','4b'].includes(p.model)?p.model:'auto'};
+    return {mode:['system','light','dark'].includes(p.mode)?p.mode:defaultPreferences.mode,palette:palettes.some(x=>x.id===p.palette)?p.palette:defaultPreferences.palette,grizzlyStyle:['wild','clean'].includes(p.grizzlyStyle)?p.grizzlyStyle:defaultPreferences.grizzlyStyle,headingFont:headingFonts.some(x=>x.id===p.headingFont)?p.headingFont:defaultPreferences.headingFont,textSize:[100,115,130].includes(p.textSize)?p.textSize:100,contrast:p.contrast===true,reduceMotion:p.reduceMotion===true,underlineLinks:p.underlineLinks===true,reminders:p.reminders===true,reminderTime:typeof p.reminderTime==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(p.reminderTime)?p.reminderTime:'18:00',model:['auto','off','0.6b','1.7b','4b'].includes(p.model)?p.model:'auto'};
   }catch{return {...defaultPreferences};}
 }
 export const modelChoices:[ModelChoice,string,string][]=[['auto','Automatic','Use the largest model that passes testing on this phone.'],['0.6b','Qwen3 0.6B','Light download · about 0.5 GB'],['1.7b','Qwen3 1.7B','Balanced option · about 1.2 GB'],['4b','Qwen3 4B','Larger option · about 2.5 GB'],['off','Off','Use plans and tracking without a language model.']];
