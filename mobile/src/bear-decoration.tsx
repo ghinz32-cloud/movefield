@@ -9,5 +9,5 @@ export function NativeBearDecoration(){
 
 export function NativeGrizzlyPaw(){
  const {p,colors}=useNativeAppearance();if(!isGrizzly)return null;
- return <View accessible={false} pointerEvents="none"><Image accessible={false} source={require('../assets/grizzly-paw.png')} style={{width:p.grizzlyStyle==='wild'?52:32,height:p.grizzlyStyle==='wild'?62:38,tintColor:colors.green,transform:[{rotate:'-12deg'}]}}/></View>;
+ return <View accessible={false} pointerEvents="none"><Image accessible={false} source={require('../assets/grizzly-paw.png')} style={{width:p.grizzlyStyle==='wild'?62:36,height:p.grizzlyStyle==='wild'?70:40,tintColor:colors.green,transform:[{rotate:'-12deg'}]}}/></View>;
 }

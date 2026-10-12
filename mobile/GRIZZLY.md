@@ -12,3 +12,6 @@ Grizzly cloud sign-in stays off unless its own `EXPO_PUBLIC_GRIZZLY_API_URL` and
 
 
 Current outdoor collection: fresh Wild uses New Rocker. The five readable choices are Inter, Barlow Condensed, Oswald, Bitter and Rajdhani; ten wild faces include New Rocker, Black Ops One, Rubik Dirt, Metal Mania, Bungee, Saira Stencil One, Stardos Stencil, Pirata One, Eater and Nosifer. Font and palette selectors expand on demand. Ten outdoor themes supplement the seven existing colors. The hero now displays a five-talon bear print compiled from the authored web vector. The official gym JPEG is unchanged. Saved Beast selections migrate to New Rocker when read; workout data is untouched. Browser/native-source verification is not installed-phone qualification.
+
+
+Latest correction: Metal Mania is now the fresh/Wild default. Old unversioned Beast/New Rocker defaults migrate once; explicit choices saved with headingFontVersion 2 persist. The Today paw now uses five visibly long pointed claws and a larger native image compiled from the updated vector. The original gym JPEG remains unchanged.

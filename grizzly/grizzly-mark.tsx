@@ -4,9 +4,9 @@ export function GrizzlyMark({className}: {className?:string}) {
  return <span className={'grizzly-logo-frame '+(className||'')} aria-hidden="true"><img src={publicPath('/brand/grizzly-fitness-logo.jpg')} width="1280" height="593" alt="" className="grizzly-logo-image"/></span>;
 }
 
-/** Five long talons and cut, irregular pads; decorative, never a control. */
+/** Long, connected claws render inline so an old cached mask cannot hide them. */
 export function GrizzlyPaw() {
- return <span className="grizzly-hero-paw grizzly-talon-mark" aria-hidden="true"/>;
+ return <svg className="grizzly-hero-paw grizzly-talon-mark" viewBox="0 0 128 144" aria-hidden="true" focusable="false" fill="currentColor"><path data-bear-claw="1" d="M12 67C4 42 9 21 21 7L21 61Z"/><path data-bear-claw="2" d="M35 56C29 33 35 12 48 0L44 52Z"/><path data-bear-claw="3" d="M58 50C56 28 65 9 77 0L68 50Z"/><path data-bear-claw="4" d="M83 57C85 31 97 15 111 9L94 61Z"/><path data-bear-claw="5" d="M106 70C114 51 122 44 128 42L115 76Z"/><path d="M10 76 17 66 27 68 33 80 29 94 18 99 8 87ZM33 63 44 54 55 62 57 76 48 89 36 85 29 74ZM57 58 69 51 81 59 80 77 69 86 57 77ZM82 68 93 60 106 69 107 84 97 96 86 91 79 78ZM108 83 117 77 126 85 122 103 111 106 103 96Z"/><path fillRule="evenodd" d="M22 111 33 98 44 99 57 87 74 87 91 104 101 103 113 118 108 128 111 138 95 143 81 136 66 144 49 139 33 144 20 135 17 121ZM47 111l-7 20 9-9 6-20ZM69 107l-6 26 10-13 4-20ZM89 115l-6 19 9-10 6-17Z"/></svg>;
 }
 
 export function GrizzlyWilderness(){
