@@ -1,0 +1,16 @@
+// Copy to .sites-runtime/pages-deploy/wrangler.jsonc; fill the existing project name.
+// Pages requires a conventional config name. See docs/pages-review-deployment.md.
+// Packaging and local checks never create a project or publish it.
+{
+  "name": "REPLACE_WITH_EXISTING_PAGES_PROJECT",
+  "pages_build_output_dir": "../pages",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "no_bundle": true,
+  "vars": {
+    "MOVEFIELD_CLOUD_ENABLED": "false",
+    "FREE_ALLOWANCE_VERIFIED": "false",
+    "AI_PROVIDER_VERIFIED": "false",
+    "NATIVE_AUTH_VERIFIED": "false"
+  }
+}

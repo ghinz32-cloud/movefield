@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict'),{load,workoutFixture}=require('./domain-test-loader.cjs');
+const {todayView}=load('lib/today-view.ts'),T=load('lib/training.ts'),base=workoutFixture(),today=T.day();base.active=null;
+const clone=()=>JSON.parse(JSON.stringify(base));
+let s=clone(),view=todayView(s,today);assert.equal(view.action,'start');assert.equal(view.scheduledToday.length,1);assert.equal(view.session.id,s.plan.sessions[0].id);
+s=clone();s.plan.sessions=s.plan.sessions.slice(0,2).map((x,n)=>({...x,date:T.addDays(today,n?5:2)}));const original=JSON.stringify(s);view=todayView(s,today);assert.equal(view.action,'preview');assert.equal(view.actionLabel,'Preview next workout');assert.equal(view.calendar.label,'Unplanned day');assert.equal(JSON.stringify(s),original);
+s=clone();s.plan.sessions[0].date=T.addDays(today,-1);view=todayView(s,today);assert.equal(view.actionLabel,'Review overdue workout');assert.equal(view.overdue.length,1);assert.equal(view.session.date,T.addDays(today,-1));
+s=clone();s.plan.paused=true;view=todayView(s,today);assert.equal(view.label,'Plan paused');assert.equal(view.action,'plan');
+s=clone();s.hold=true;view=todayView(s,today);assert.equal(view.label,'Concern needs review');assert.equal(view.action,'plan');
+s=workoutFixture();s.active.date=T.addDays(today,-1);s.active.targets[0].reps=11;s.hold=true;view=todayView(s,today);assert.equal(view.action,'resume');assert.equal(view.actionLabel,'Open saved workout');assert.equal(view.session.items[0].reps,11);assert.equal(s.active.date,T.addDays(today,-1));
+s=clone();s.events=[{id:'synthetic-off',date:today,name:'Synthetic fixed day off',kind:'Day off',priority:'Normal',minutes:1440,provisional:false}];view=todayView(s,today);assert.equal(view.action,'preview');assert.match(view.issue,/commitment/);
+s=clone();s.plan.sessions=s.plan.sessions.map(x=>({...x,status:'completed'}));view=todayView(s,today);assert.equal(view.action,'plan');assert.equal(view.actionLabel,'Choose next block');assert.equal(view.next,undefined);
+s=clone();s.plan.profile.mode='manual';s.plan.sessions[0].items=[];view=todayView(s,today);assert.equal(view.action,'targets');
+console.log('PASS Today facts/actions: planned, future, overdue, paused, concern, active target snapshot, fixed commitment, finished block and manual targets; no state mutation');

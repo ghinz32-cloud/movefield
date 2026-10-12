@@ -5,6 +5,8 @@ import { fileURLToPath } from "node:url";
 export const projectRoot = fileURLToPath(new URL("../", import.meta.url));
 const runtimeRoot = process.env.SITES_RUNTIME_ROOT || path.join(projectRoot, ".sites-runtime");
 
+process.env.XDG_CONFIG_HOME ||= path.join(runtimeRoot, 'config');
+process.env.XDG_CACHE_HOME ||= path.join(runtimeRoot, 'cache');
 process.env.CLOUDFLARE_CF_FETCH_ENABLED ||= "false";
 process.env.WRANGLER_SEND_METRICS ||= "false";
 process.env.WRANGLER_WRITE_LOGS ||= "false";
@@ -14,6 +16,8 @@ process.env.MINIFLARE_REGISTRY_PATH ||= path.join(runtimeRoot, "wrangler/registr
 
 process.chdir(projectRoot);
 for (const directory of [
+  process.env.XDG_CONFIG_HOME,
+  process.env.XDG_CACHE_HOME,
   path.dirname(process.env.WRANGLER_LOG_PATH),
   process.env.WRANGLER_REGISTRY_PATH,
   process.env.MINIFLARE_REGISTRY_PATH,

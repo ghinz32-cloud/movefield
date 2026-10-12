@@ -2,6 +2,11 @@
   "source": "Training Studio website domain modules; paths relative to its root",
   "files": [
     {
+      "source": "lib/today-view.ts",
+      "target": "src/shared/today-view.ts",
+      "sha256": "0f34a1c130ca4e575af3d1a0efd4c7a8237d0881906871a320e791e8c75487d9"
+    },
+    {
       "source": "lib/record-state.ts",
       "target": "src/shared/record-state.ts",
       "sha256": "4c95fdfbb1fa0600bb97706c3f6927ab45540afe51efb0b501d848419dec0d35"

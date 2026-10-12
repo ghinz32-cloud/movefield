@@ -12,6 +12,7 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     ".sites-runtime/**",
+    ".wrangler/**", // Wrangler's generated/bundled preview modules, never source.
     "dist/**",
     "mobile/dist-mobile/**",
     "mobile/dist-web/**",

@@ -8,8 +8,11 @@ The Account ID has now been supplied and added to ignored `wrangler.workers-dev.
 
 The read-only helper `python3 scripts/inspect-cloudflare.py --account ACCOUNT_ID` preserves the configured proxy/CA, refuses redirects and prints only selected metadata. It performs no uploads or mutations. Its subscriptions/storage responses cannot establish free allowances or a hard spending cap; owner-console verification remains necessary.
 
-Two configurations are prepared:
+The owner explicitly authorized visible web updates and clarified that the target is GitHub Pages. See [github-pages-review.md](github-pages-review.md) for that update. Cloudflare remains the proposed optional backend; the following Pages alternative is not the active publishing target. The reviewed package and exact preparation/verification steps are in [pages-review-deployment.md](pages-review-deployment.md). Do not request another general publication confirmation.
 
+Three configurations are prepared:
+
+- `wrangler.pages.example.jsonc`: advanced-mode Pages review package for the existing project, with SSR, exact static assets and connected features disabled. `pnpm build:pages` prepares it; `node scripts/check-pages.cjs` verifies it locally.
 - `wrangler.workers-dev.example.jsonc`: a local-first prototype on the included Workers address, with accounts/cloud storage/AI disabled and no D1/R2 provisioning. Its URL would be `https://movefield-prototype.ACCOUNT_SUBDOMAIN.workers.dev` after owner-authorized publication.
 - `wrangler.cloud.example.jsonc`: optional account/backup infrastructure, with explicit database/bucket placeholders and all activation gates disabled. Use the actual account, private bucket and migrated database after cost/privacy qualification.
 

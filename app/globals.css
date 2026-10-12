@@ -198,3 +198,9 @@ input,textarea,select,[data-slot=select-trigger]{color:var(--foreground);border-
 
 /* Inactive plan tabs must retain text contrast against their muted surface. */
 [data-slot="tabs-trigger"]{color:var(--foreground)}
+
+/* Give Today one clear primary action at phone widths without splitting words. */
+.session-feature .button-row{flex-wrap:wrap}.session-feature .button-row button{overflow-wrap:normal;word-break:normal}
+@media(max-width:600px){.session-feature .button-row>button:first-child{flex:1 0 100%}.session-feature .button-row>button{flex:1 1 auto;min-width:0}}
+
+.review-build-banner{display:flex;flex-wrap:wrap;gap:.5rem 1rem;padding:.75rem 1rem;background:var(--card);color:var(--foreground);border-bottom:1px solid var(--border);font-size:.875rem}.review-build-banner a{margin-left:auto;text-decoration:underline}

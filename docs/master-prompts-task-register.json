@@ -5,13 +5,14 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Encrypted per-record IndexedDB/SQLite, native calendar/reusable blocks/customization/progress/science parity, honest duration fitting, hardened SDK identity/session boundaries, rendered accessibility and reproducible Cloudflare account preparation",
+  "active_checkpoint": "Encrypted per-record IndexedDB/SQLite, native calendar/reusable blocks/customization/progress/science parity, honest duration fitting, hardened SDK identity/session boundaries, rendered accessibility and reproducible Cloudflare account preparation; premium Today and a linked isolated GitHub Pages review preserving the existing deployed app",
   "completion_claim": "Locally verified continuation checkpoint. Full six-prompt implementation and acceptance remain incomplete; no live deployment, physical-device qualification or full standards/scientific acceptance is claimed.",
   "external_gates": [
-    "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and owner publication decision. Account ID supplied; ignored local config and secure requirements prepared.",
+    "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
     "Saved environment network additions need activation for full-text research and repo.reactnative.dev Android artifact download. Current proxy denials are not bypassed.",
     "Mac/iOS toolchain, owner signing/update configuration and installed physical Android/iPhone device matrix; broad coverage target does not certify old/unpatched devices.",
-    "Independent security/crypto/privacy/science/rights reviews and compatible native upstream advisory remediation. Remaining code is separately retained below."
+    "Independent security/crypto/privacy/science/rights reviews and compatible native upstream advisory remediation. Remaining code is separately retained below.",
+    "GitHub Pages/API live verification: required destinations are saved but the current proxy denies them; owner publication authorization is already supplied."
   ],
   "requirements": [
     {
@@ -568,7 +569,8 @@
           "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
           "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
           "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
-        }
+        },
+        "2026-10-12: shared Today actions preserve planned dates, active targets and concern holds; native resume scroll and sample-only reset. Phone primary row, first-install update fix, all 18 static workout/recovery journeys, 32 axe/reflow states, six preferences cases and same-origin original-storage/cache preservation through review migration/erase. Full physical/state acceptance remains pending."
       ],
       "next_action": "Continue premium Today/history/navigation clarity and verify all state transitions; current native stable plan tabs/calendar and account refresh are implemented."
     },
@@ -692,7 +694,8 @@
           "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
           "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
           "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
-        }
+        },
+        "2026-10-12: shared Today actions preserve planned dates, active targets and concern holds; native resume scroll and sample-only reset. Phone primary row, first-install update fix, all 18 static workout/recovery journeys, 32 axe/reflow states, six preferences cases and same-origin original-storage/cache preservation through review migration/erase. Full physical/state acceptance remains pending."
       ],
       "next_action": "Measure and fix remaining startup/delivery costs, rendered accessibility/reflow and field/native scenarios; avoid treating this limited baseline as full acceptance."
     },
@@ -712,7 +715,8 @@
           "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
           "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
           "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
-        }
+        },
+        "2026-10-12: shared Today actions preserve planned dates, active targets and concern holds; native resume scroll and sample-only reset. Phone primary row, first-install update fix, all 18 static workout/recovery journeys, 32 axe/reflow states, six preferences cases and same-origin original-storage/cache preservation through review migration/erase. Full physical/state acceptance remains pending."
       ],
       "next_action": "Review the current production entrypoints before starting this requirement."
     },
@@ -1734,20 +1738,20 @@
       "finding": "Manual-dispatch-only pinned verification workflow added; never dispatched externally. Hosting/CI quota and deployment triggers not qualified. No push, deployment, signing or spending performed. Reusable setup/start draft saved, requiring environment-settings activation; fresh-task local-commit restoration unverified."
     }
   ],
-  "tested_application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
+  "tested_application_source_sha256": "dc2b3b210c46f927fd55c97563ccf226b96ac63488aad346739c7f05c3825a33",
   "artifact_sha256": {
-    "dist/server/index.js": "7753a2bd48dab2d2f27c83dda12d88013cca4488a6fe95820fc75e71420dfc0c",
-    "dist/client/movefield-sw.js": "061bd698eca370d1e6b57d3bba64db17fc5ec2b6c9fb42e27fb03309e9d610b9",
-    "public/downloads/movefield-native-current.zip": "3a3f7b003ff9d277cce074c3f2015cb4a34db24b40b89dce0b545d9ff71ec4b6",
-    "mobile/dist-mobile/_expo/static/js/android/index-78c582241681366381060d927b60d680.hbc": "df82b4d17291b5f141068f03fc714542cc869e6863f60760ead19e5a9fd85a6c",
-    "mobile/dist-mobile/_expo/static/js/ios/index-74ebea1ab0a347ef8a5e494c9c697bf1.hbc": "d3c1f531ec471a5bd035d86f49737fe6c96834f7a9697b357260f405b92ecef3"
+    "dist/server/index.js": "f665566eac88077259cf00ddea26b71612f3446b518d6fee3d8614f798dd225b",
+    "dist/client/movefield-sw.js": "4ac4cdfbfb8faa31370c52bbdd391de6b605ded56a73b4e832c24d0a468eeab6",
+    "public/downloads/movefield-native-current.zip": "6ccd714d99d3e345dc61e5f53d19fbfb63550023be8efb8157960e1fd08f66a6",
+    "mobile/dist-mobile/_expo/static/js/android/index-d33f8664a5327cb2314e81a0a33dea55.hbc": "bee60b15f2419313729c91e72ecfba6f73158a24b292a4885edd24568f6316f6",
+    "mobile/dist-mobile/_expo/static/js/ios/index-65df02969298c05c64bd30b4cdc235ec.hbc": "2ce8301ea840455c26e5687f628cf0cf960999466e93064485f762b9df6b5b29"
   },
   "checkpoint_result": "passed_local_checkpoint_with_explicit_failed_native_release_gate_and_unverified_full_scope",
-  "web_artifact_tree_sha256": "f9b739cf93500e70ad108180f0d99f4e1158adc706be76a54f620517195f0ed5",
+  "web_artifact_tree_sha256": "a584f152e95c1ac64be001d3c95ab49c011534a39a00a3bc0e84ada0eff4b588",
   "latest_validation": {
-    "date": "2026-10-12T03:28:50.064991+00:00",
-    "core_groups_passed": 17,
-    "workout_browser_journeys": 16,
+    "date": "2026-10-12T04:44:46.775329+00:00",
+    "core_groups_passed": 18,
+    "workout_browser_journeys": 18,
     "rendered_accessibility_states": 32,
     "preference_browser_behaviors": 6,
     "native_sdk_adapter_checks": 5,
@@ -1762,5 +1766,5 @@
     "full_security_control_passes": 0,
     "full_prompt_sections_accepted": 0
   },
-  "backend_decision": "Cloudflare remains selected. Owner Account ID supplied and ignored workers.dev config prepared; management token requirement saved but not ready. Local dry run uploads nothing, and account plan/subdomain/free/R2/runtime secrets remain unverified."
+  "backend_decision": "Cloudflare remains the optional backend choice. The owner clarified GitHub Pages for immediate web review updates. Preserve the existing Pages app and publish a separately stored linked review; no Cloudflare credential is required for the repository push."
 }

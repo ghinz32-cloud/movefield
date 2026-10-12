@@ -21,21 +21,24 @@ fixture.active.sets = fixture.active.targets.map(x => ({ exerciseId: x.exerciseI
 const ids = fixture.active.targets.map(x => x.exerciseId), names = ids.map(id => exFor(id).name);
 let passed = 0;
 const waitFor = async (page, predicate) => { await page.waitForFunction(predicate, undefined, { timeout: 15000 }); };
-async function seeded(context) {
+async function seeded(context, state=fixture, resume=true) {
   const page = await context.newPage();
   await page.goto(base);
-  await page.evaluate(s => { localStorage.setItem('training-studio-v2', JSON.stringify(s)); localStorage.setItem('training-studio-access-v1', 'open'); }, fixture);
+  await page.evaluate(s => { localStorage.setItem('training-studio-v2', JSON.stringify(s)); localStorage.setItem('training-studio-access-v1', 'open'); }, state);
   await page.reload();
   await unlock(page,true);
   await page.getByRole('heading', { name: 'Today', exact: true }).waitFor();
-  await page.getByRole('button', { name: 'Resume workout', exact: true }).click();
-  await page.getByRole('heading', { name: 'Exercises in this workout', exact: true }).waitFor();
+  if(resume){await page.getByRole('button', { name: 'Resume workout', exact: true }).click();
+  await page.getByRole('heading', { name: 'Exercises in this workout', exact: true }).waitFor();}
   return page;
 }
 async function test(name, run) { await run(); passed++; console.log('PASS ' + name); }
 (async () => {
   const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium', chromiumSandbox: true, args: ['--disable-setuid-sandbox'], env: { ...process.env, XDG_CONFIG_HOME: require('node:path').resolve('.sites-runtime/config'), XDG_CACHE_HOME: require('node:path').resolve('.sites-runtime/cache') } });
   try {
+    await test('First offline installation does not announce a replacement update',async()=>{
+      const context=await browser.newContext();try{const page=await context.newPage();await page.goto(base);await page.getByRole('button',{name:'Explore sample training',exact:true}).click();await page.getByRole('heading',{name:'Today',exact:true}).waitFor();await page.evaluate(()=>navigator.serviceWorker.ready);await page.getByText('Offline app files ready on this device.',{exact:true}).waitFor();const registration=await page.evaluate(async()=>{const r=await navigator.serviceWorker.getRegistration();return {active:!!r?.active,waiting:!!r?.waiting}});assert.deepEqual(registration,{active:true,waiting:false});assert.equal(await page.getByText('An app update is ready. Save your work, close all Movefield windows, then reopen to use it.',{exact:true}).count(),0);}finally{await context.close()}
+    });
     await test('Actual quota failure keeps the set unfinished, focused, and recoverable', async () => {
       const context = await browser.newContext(); const page = await seeded(context);
       try {
@@ -192,6 +195,19 @@ async function test(name, run) { await run(); passed++; console.log('PASS ' + na
         fs.mkdirSync('.sites-runtime/evidence', { recursive: true });
         await page.screenshot({ path: '.sites-runtime/evidence/workout-overview-320.png', fullPage: true });
       } finally { await context.close(); }
+    });
+    await test('Today reviews future and overdue sessions without changing their dates or records',async()=>{
+      const T=load('lib/training.ts');
+      for(const offset of [2,-2]){
+        const context=await browser.newContext(),state=structuredClone(fixture);state.active=null;state.plan.sessions[0].date=T.addDays(T.day(),offset);
+        const page=await seeded(context,state,false);
+        try{const before=await readState(page),hero=page.getByRole('region',{name:'Today’s training',exact:true});assert.equal(await hero.getByRole('button',{name:'Start workout',exact:true}).count(),0);await hero.getByRole('button',{name:offset>0?'Preview next workout':'Review overdue workout',exact:true}).click();await page.getByRole('dialog').waitFor();assert.deepEqual(await readState(page),before);await page.keyboard.press('Escape');await hero.getByRole('button',{name:'Calendar',exact:true}).click();await page.getByRole('heading',{name:'Calendar',exact:true}).waitFor();assert.deepEqual(await readState(page),before);}finally{await context.close()}
+      }
+    });
+    await test('Today keeps a private concern on hold and offers plan review',async()=>{
+      const context=await browser.newContext(),state=structuredClone(fixture);state.active=null;state.hold=true;
+      const page=await seeded(context,state,false);
+      try{const before=await readState(page),hero=page.getByRole('region',{name:'Today’s training',exact:true});await hero.getByText('CONCERN NEEDS REVIEW',{exact:true}).waitFor();assert.equal(await hero.getByRole('button',{name:'Start workout',exact:true}).count(),0);assert.equal(await page.getByRole('button',{name:/Reset.*hold/i}).count(),0);await hero.getByRole('button',{name:'Review your plan',exact:true}).click();await page.getByRole('heading',{name:'Plans',exact:true}).waitFor();assert.deepEqual(await readState(page),before);}finally{await context.close()}
     });
     assert.ok(passed > 0, 'No browser journeys ran');
     console.log(`${passed} real browser regression journeys passed`);

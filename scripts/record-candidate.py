@@ -7,8 +7,8 @@ import datetime,hashlib,json,pathlib,re,subprocess,zipfile
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 RUNTIME=ROOT/'.sites-runtime'
 paths=subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','-z'],cwd=ROOT).decode().split('\0')
-prefixes=('app/','build/','components/','lib/','scripts/','db/','drizzle/','public/','mobile/src/','mobile/scripts/','mobile/assets/','.github/')
-configs={'eslint.config.mjs','.gitignore','components.json','package.json','pnpm-lock.yaml','tsconfig.json','vite.config.ts','cloudflare-env.d.ts','drizzle.config.ts','wrangler.cloud.example.jsonc','wrangler.workers-dev.example.jsonc'}
+prefixes=('github-pages/','app/','build/','components/','lib/','scripts/','db/','drizzle/','public/','mobile/src/','mobile/scripts/','mobile/assets/','.github/')
+configs={'eslint.config.mjs','.gitignore','components.json','package.json','pnpm-lock.yaml','tsconfig.json','vite.config.ts','cloudflare-env.d.ts','drizzle.config.ts','wrangler.cloud.example.jsonc','wrangler.workers-dev.example.jsonc','wrangler.pages.example.jsonc','vite.github-pages.config.ts'}
 def source(path):
     if path.startswith(prefixes):return True
     if path in configs:return True
@@ -18,6 +18,8 @@ def tree(records):return hashlib.sha256(''.join(path+'\0'+sha+'\n' for path,sha 
 files={p:digest(ROOT/p) for p in sorted(set(paths)) if p and source(p) and (ROOT/p).is_file()}
 web={str(p.relative_to(ROOT)):digest(p) for p in sorted((ROOT/'dist').rglob('*')) if p.is_file()}
 artifacts={p:digest(ROOT/p) for p in ['dist/server/index.js','dist/client/movefield-sw.js','public/downloads/movefield-native-current.zip']}
+review={str(p.relative_to(ROOT)):digest(p) for p in sorted((RUNTIME/'github-pages-review').rglob('*')) if p.is_file()}
+web.update(review)
 for p in sorted((ROOT/'mobile/dist-mobile').rglob('*.hbc')):artifacts[str(p.relative_to(ROOT))]=digest(p)
 patterns=[rb'\bgh[pousr]_[A-Za-z0-9]{30,}\b',rb'\bAKIA[A-Z0-9]{16}\b',rb'\bAIza[A-Za-z0-9_-]{30,}\b',rb'\bsk-(?:proj-|live_)[A-Za-z0-9_-]{20,}\b',b'-----BEGIN '+b'(?:RSA |EC |OPENSSH )?'+b'PRIVATE KEY-----']
 compiled=[re.compile(p) for p in patterns];scanned=set();matches=[];zip_members=0

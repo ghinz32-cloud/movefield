@@ -1,4 +1,5 @@
 "use client";
+import {publicPath} from '@/lib/public-path';
 import {createContext,useContext,useEffect,useLayoutEffect,useState,useRef,useSyncExternalStore,type ReactNode} from 'react';
 import {browserPreferences,serverPreferences,subscribePreferences,updateBrowserPreferences} from '@/lib/browser-preferences';
 import {defaultPreferences,type AppPreferences,palettes,modelChoices} from '@/lib/app-preferences';
@@ -49,7 +50,7 @@ export function useWorkoutReminders(state:State,enabled:boolean){
    // The in-page status still appears if the browser rejects its desktop
    // Notification constructor. Never suppress both after recording delivery.
    toast.info('Your workout is scheduled for today. Open Today when you’re ready.');
-   try{if('Notification' in window&&Notification.permission==='granted')new Notification(brand.name+' · Workout reminder',{body:'Your training is scheduled for today. Open the app when you’re ready.',tag:due.id,icon:'/favicon.svg'})}catch{}
+   try{if('Notification' in window&&Notification.permission==='granted')new Notification(brand.name+' · Workout reminder',{body:'Your training is scheduled for today. Open the app when you’re ready.',tag:due.id,icon:publicPath('/favicon.svg')})}catch{}
    try{localStorage.setItem(key,'yes')}catch{}
   };
   const tick=()=>{if(navigator.locks)void navigator.locks.request('training-workout-reminder',show).catch(()=>{});else show()};

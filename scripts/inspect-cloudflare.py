@@ -43,9 +43,10 @@ account=args.account
 if not account and len(report['accounts'])==1:account=report['accounts'][0]['id']
 if account and re.fullmatch(r'[a-fA-F0-9]{32}',str(account)):
  report['selected_account_id']=account
- for kind,path in [('workers','/workers/subdomain'),('subscriptions','/subscriptions'),('d1','/d1/database?per_page=50&page=1'),('r2','/r2/buckets?per_page=50')]:
+ for kind,path in [('pages','/pages/projects?per_page=50&page=1'),('workers','/workers/subdomain'),('subscriptions','/subscriptions'),('d1','/d1/database?per_page=50&page=1'),('r2','/r2/buckets?per_page=50')]:
   response=read('/accounts/'+account+path);result=response.get('result');entry={k:v for k,v in response.items() if k!='result'}
-  if kind=='workers' and isinstance(result,dict):entry['subdomain']=result.get('subdomain')
+  if kind=='pages' and isinstance(result,list):entry['projects']=[{'name':str(item.get('name',''))[:120],'subdomain':str(item.get('subdomain',''))[:250],'production_branch':str(item.get('production_branch',''))[:120],'source_type':(item.get('source') or {}).get('type')} for item in result if isinstance(item,dict)]
+  elif kind=='workers' and isinstance(result,dict):entry['subdomain']=result.get('subdomain')
   elif kind=='subscriptions' and isinstance(result,list):entry['plans']=[{'name':str((item.get('rate_plan') or {}).get('public_name',''))[:120],'id':(item.get('rate_plan') or {}).get('id')} for item in result if isinstance(item,dict)]
   elif kind=='d1' and isinstance(result,list):entry['listed_database_count']=len(result)
   elif kind=='r2' and isinstance(result,dict) and isinstance(result.get('buckets'),list):entry['listed_bucket_count']=len(result['buckets'])
