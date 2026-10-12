@@ -194,13 +194,14 @@
     "warnings": 77
   },
   "publication": {
-    "pagesCommit": "b8a52c1269c0003fec4bad3d9a4d3aa343308013",
+    "pagesCommit": "3992385adcea3d98f424cc2cdd7c54d2fda42972",
     "implementationCommit": "a479bd5715d4b077cb252db8f795215f7a9f299f",
     "applicationSHA256": "e826c4fb1ca42acc5ac478d9861d34ef076e70256a3a056022dcffc4153a611c",
     "liveAssetHashes": 89,
     "liveBrowserBrands": 2,
     "originalRootFilesPreserved": 63,
-    "note": "Initial code release verified. Native ZIP packaging checkpoint/provenance follows; exact final IDs are recorded in HANDOFF.md and the local publication receipt."
+    "note": "Final metadata binds the exact packaged source tree. Eighty-nine HTTPS hashes were reverified; unchanged client and ZIP bytes preserve the completed live browser evidence.",
+    "packagedSourceCommit": "a3a383a95c12942fae1056aa72f041a13b5b8c8d"
   },
   "researchLimits": [
     "Consensus and Wiley tools are not exposed in this run.",
