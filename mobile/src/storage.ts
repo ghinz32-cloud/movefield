@@ -113,7 +113,15 @@ export async function restoreLocalBackup(raw:string,recovery:string,unchangedKey
  if(!matched)keys.push(k);if(keys.length>8)throw Error('This device retains eight recovery keys. Export and review recovery before adding another.');
  // Keep old keys before swapping ciphertext: either side of interruption stays recoverable.
  const encoded=JSON.stringify({version:1,keys});await SecureStore.setItemAsync(SECRET,encoded,secureOptions);if(await SecureStore.getItemAsync(SECRET,secureOptions)!==encoded)throw Error('Recovery key could not be verified.');
- if(!unchangedKeyRecovery){const writer=createRecordStateStorage({backend:await nativeRecordBackend(),digest:cloudDigest,seal:plain=>encryptWith(k,plain,'state'),open:cipher=>decryptWith(k,cipher,'state'),legacyRead:()=>AsyncStorage.getItem(KEY),legacyWrite:cipher=>AsyncStorage.setItem(KEY,cipher)});await writer.write(state)}pendingKey=null;knownKeys=new Map();if(records)(await records).reset();return state;
+ if(!unchangedKeyRecovery){
+  const codec={seal:(plain:string)=>encryptWith(k,plain,'setup'),open:(cipher:string)=>decryptWith(k,cipher,'setup')};
+  const legacy=legacyLineage?await import('./legacy-upgrade-native'):null;
+  const retainedSetup=legacy?await legacy.retainLegacyReplacementCache(codec):null;
+  const writer=createRecordStateStorage({backend:await nativeRecordBackend(),digest:cloudDigest,seal:plain=>encryptWith(k,plain,'state'),open:cipher=>decryptWith(k,cipher,'state'),legacyRead:()=>AsyncStorage.getItem(KEY),legacyWrite:cipher=>AsyncStorage.setItem(KEY,cipher)});await writer.write(state);
+  if(JSON.stringify(await writer.read())!==JSON.stringify(state))throw Error('The restored training could not be verified. Previous records and keys are retained.');
+  if(legacy)await legacy.finishLegacyReplacement(codec,retainedSetup);
+ }
+ pendingKey=null;knownKeys=new Map();if(records)(await records).reset();upgrade=null;return state;
 }
 export async function restoreDeviceKey(recovery:string){const existing=await encryptedLocalBackup();if(!existing)throw Error('Restore an encrypted file first.');await restoreLocalBackup(existing,recovery,true);}
 

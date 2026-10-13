@@ -15,12 +15,13 @@ export async function readLegacySource(){
  const [active,restore]=await Promise.all(KEYS.map(k=>SecureStore.getItemAsync(k,OPTIONS)));
  const fallback=await AsyncStorage.multiGet([LEGACY_STATE,LEGACY_SETUP,LEGACY_JOURNAL]);
  const records:Record<string,string|null>={};let revision=0;let exists=false;
- if(sourceFile().exists){
+ const hasDatabase=sourceFile().exists;
+ if(hasDatabase){
   const db=await openDatabaseAsync(LEGACY_DB,{useNewConnection:true});
   try{await db.withTransactionAsync(async()=>{
    const tables=await db.getAllAsync<{name:string}>("SELECT name FROM sqlite_master WHERE type='table'");
    const names=new Set(tables.map(t=>t.name));
-   if(!names.has('training_records')){if(names.has('training_chunks'))throw fail();return}
+   if(!names.has('training_records')){if(names.has('training_chunks')||active!==null||restore!==null)throw fail();return}
    if(!names.has('training_chunks')||!names.has('training_record_metadata'))throw fail();
    const generation=await db.getFirstAsync<{revision:number}>('SELECT revision FROM training_record_metadata WHERE id=?','generation-v1');revision=generation?.revision??0;
    if(!Number.isSafeInteger(revision)||revision<0)throw fail();
@@ -48,6 +49,7 @@ export async function readLegacySource(){
  }
  const after=await Promise.all(KEYS.map(k=>SecureStore.getItemAsync(k,OPTIONS)));
  if(active!==after[0]||restore!==after[1])throw Error('The old recovery keys changed while opening training. Reopen the app.');
+ if(!exists&&!hasDatabase&&(active!==null||restore!==null))throw Error('The old device key is present, but its private database is unavailable. Original keys are kept. Reopen training or restore a verified backup.');
  if(!exists&&restore===null)return null;
  return {snapshot:{revision,records} satisfies LegacySnapshot,keys:{active,restore}};
 }
@@ -77,6 +79,30 @@ export async function runLegacyUpgrade(codec:Codec,callbacks:{hasTarget:()=>Prom
    if(JSON.stringify(await readStage(db,codec))!==raw)throw fail();
   },finish:()=>mark('complete'),
  });
+}
+/** A reviewed backup replacement can supersede an unreadable legacy profile.
+ * Retain fallback copies before the ordinary writer updates their slots. */
+export async function retainLegacyReplacementCache(codec:Codec):Promise<string|null>{
+ const values=await AsyncStorage.multiGet([LEGACY_STATE,LEGACY_SETUP,LEGACY_JOURNAL]);
+ const plain=JSON.stringify(Object.fromEntries(values)),id=legacyDigest(plain),db=await upgradeDb();
+ const manifestKey='replacement-'+id;
+ if(!await db.getFirstAsync('SELECT k FROM legacy_upgrade_archive WHERE k=?',manifestKey)){
+  const parts:string[]=[];for(let n=0;n<plain.length;n+=131072){const text=plain.slice(n,n+131072),raw=await codec.seal(text);if(await codec.open(raw)!==text)throw fail();parts.push(raw)}
+  const manifest=await codec.seal(JSON.stringify({format:'movefield-owner-replacement-cache-v1',count:parts.length,chars:plain.length,digest:id}));
+  await db.withExclusiveTransactionAsync(async tx=>{for(let n=0;n<parts.length;n++)await tx.runAsync('INSERT OR IGNORE INTO legacy_upgrade_archive(k,raw) VALUES(?,?)',manifestKey+'-'+n,parts[n]);await tx.runAsync('INSERT OR IGNORE INTO legacy_upgrade_archive(k,raw) VALUES(?,?)',manifestKey,manifest)});
+ }
+ const meta=await db.getFirstAsync<{raw:string}>('SELECT raw FROM legacy_upgrade_archive WHERE k=?',manifestKey);if(!meta)throw fail();
+ const info=parseSafeJson(await codec.open(meta.raw)) as {count:number;chars:number;digest:string};
+ if(info.digest!==id||info.chars!==plain.length||info.count!==Math.ceil(plain.length/131072))throw fail();
+ const chunks:string[]=[];for(let n=0;n<info.count;n++){const row=await db.getFirstAsync<{raw:string}>('SELECT raw FROM legacy_upgrade_archive WHERE k=?',manifestKey+'-'+n);if(!row)throw fail();chunks.push(await codec.open(row.raw))}
+ if(chunks.join('')!==plain)throw fail();return values.find(([k])=>k===LEGACY_SETUP)?.[1]??null;
+}
+export async function finishLegacyReplacement(codec:Codec,originalSetup:string|null){
+ const current=await AsyncStorage.getItem(LEGACY_SETUP);
+ if(current!==originalSetup)throw Error('Setup changed while restoring this backup. Original copies are retained.');
+ if(current&&!((parseSafeJson(current,48_000_000) as {format?:string}).format==='movefield-vault')){await AsyncStorage.removeItem(LEGACY_SETUP);if(await AsyncStorage.getItem(LEGACY_SETUP)!==null)throw fail()}
+ const db=await upgradeDb(),raw=await codec.seal('complete');if(await codec.open(raw)!=='complete')throw fail();await db.runAsync('INSERT OR REPLACE INTO legacy_upgrade_archive(k,raw) VALUES(?,?)','complete',raw);
+ const saved=await db.getFirstAsync<{raw:string}>('SELECT raw FROM legacy_upgrade_archive WHERE k=?','complete');if(!saved||await codec.open(saved.raw)!=='complete')throw fail();
 }
 /** Explicit owner erasure includes the retained old file and migration archive.
  * Delete ciphertext before keys, so an interrupted erasure stays recoverable. */

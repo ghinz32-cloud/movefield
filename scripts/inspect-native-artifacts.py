@@ -189,6 +189,7 @@ def android(path, backup, extraction, resources):
         PACKAGE + '.MainActivity': 'activity',
         'expo.modules.filesystem.FileSystemFileProvider': 'provider',
         'expo.modules.sharing.SharingFileProvider': 'provider',
+        'expo.modules.webbrowser.BrowserProxyActivity': 'activity',
         NOTIFICATION_RECEIVER: 'receiver',
         NOTIFICATION_FORWARDER: 'activity',
         STARTUP_PROVIDER: 'provider',
@@ -230,6 +231,10 @@ def android(path, backup, extraction, resources):
         'Local reminder receiver must retain notification/boot/update intent topology')
     check(not components[NOTIFICATION_FORWARDER].findall('intent-filter'),
           'Internal notification forwarder must not gain intent filters')
+    browser_proxy = components.get('expo.modules.webbrowser.BrowserProxyActivity')
+    if browser_proxy is not None:
+        check(not browser_proxy.findall('intent-filter'),
+              'Internal sign-in browser proxy must not gain external intent filters')
     initializers = set()
     if STARTUP_PROVIDER in components:
         provider = components[STARTUP_PROVIDER]
@@ -259,7 +264,7 @@ def android(path, backup, extraction, resources):
     names = [node.get(ns + 'name') for node in rows]
     check(all(isinstance(name, str) and name for name in names), 'Malformed APK permission declaration')
     permissions = sorted(set(names))
-    allowed = {'android.permission.INTERNET', 'android.permission.ACCESS_NETWORK_STATE', 'android.permission.VIBRATE',
+    allowed = {'android.permission.INTERNET', 'android.permission.ACCESS_NETWORK_STATE', 'android.permission.ACCESS_WIFI_STATE', 'android.permission.VIBRATE',
                'android.permission.POST_NOTIFICATIONS', 'android.permission.RECEIVE_BOOT_COMPLETED',
                PACKAGE + '.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'}
     required = {'android.permission.INTERNET', 'android.permission.VIBRATE',
