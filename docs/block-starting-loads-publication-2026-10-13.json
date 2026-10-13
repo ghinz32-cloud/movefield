@@ -1,0 +1,424 @@
+{
+  "publishedAt": "2026-10-13T20:54:39.357695+00:00",
+  "sourceBranch": "codex/native-delivery-2026-10-13",
+  "implementationSource": "fc3d798d875633cebc8c2b441c9c77f173c967ac",
+  "implementationTree": "af3678529400beba492eab98d1fa42dc7bd343d1",
+  "qualifiedImplementation": "c4318e92eabf2516df09eb66ebe2eadda49ae6d9",
+  "concurrentDeliveryPreservedFrom": "cdcf8387f85d0a634b4200f0e47bb50b2958d6f7",
+  "applicationSourceSHA256": "41d674766141b3cc4d88657b6c7fb71417f197378efe0e1b31592163c14211be",
+  "nativeWorkflow": {
+    "run": 38462265676,
+    "conclusion": "success",
+    "jobs": [
+      "android (movefield)",
+      "android (grizzly)"
+    ]
+  },
+  "core": {
+    "ran_at": "2026-10-13T20:52:23.244Z",
+    "scope": "Local synthetic domain/adapter and type checks; no device, connected provider or deployment qualification.",
+    "results": [
+      {
+        "name": "runtime module contracts",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 4661
+      },
+      {
+        "name": "production bundled training",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2456
+      },
+      {
+        "name": "complete training lifecycles",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 6535
+      },
+      {
+        "name": "web workout and setup controls",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1118
+      },
+      {
+        "name": "native interaction callbacks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1249
+      },
+      {
+        "name": "native compact layout and focus",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 325
+      },
+      {
+        "name": "offline update lifecycle",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 262
+      },
+      {
+        "name": "Grizzly appearance and retired preset migration",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 664
+      },
+      {
+        "name": "clickable web calendar",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 915
+      },
+      {
+        "name": "Grizzly daily context and local day changes",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 990
+      },
+      {
+        "name": "preview ownership and retained assets",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 422
+      },
+      {
+        "name": "verified Android download preparation",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 521
+      },
+      {
+        "name": "Grizzly motion and licensed fonts",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 349
+      },
+      {
+        "name": "distinct goal families and flexible selection",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1361
+      },
+      {
+        "name": "creator-source and set-effort refinements",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 795
+      },
+      {
+        "name": "public source rules and scientific accounting",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 949
+      },
+      {
+        "name": "Today facts and actions",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 603
+      },
+      {
+        "name": "transactional encrypted records",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 6149
+      },
+      {
+        "name": "activity progress and comparison context",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 664
+      },
+      {
+        "name": "evidence/duration/calendar zones",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 3959
+      },
+      {
+        "name": "calendar and reusable blocks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 682
+      },
+      {
+        "name": "reusable block equipment guards",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 973
+      },
+      {
+        "name": "next-block starting weights",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1074
+      },
+      {
+        "name": "starting-weight interface callbacks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1041
+      },
+      {
+        "name": "Cloudflare account/storage/coaching",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 10212
+      },
+      {
+        "name": "portable cloud vault and retry",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2435
+      },
+      {
+        "name": "native SDK cookie transport",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1193
+      },
+      {
+        "name": "plan import",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 671
+      },
+      {
+        "name": "durability",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 703
+      },
+      {
+        "name": "vault and history",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1046
+      },
+      {
+        "name": "historical native upgrade preservation",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 26215
+      },
+      {
+        "name": "older password-protected transfers",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 7188
+      },
+      {
+        "name": "compiled native component boundaries",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 58
+      },
+      {
+        "name": "native encrypted adapter",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1331
+      },
+      {
+        "name": "native file transfer",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 274
+      },
+      {
+        "name": "security",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 764
+      },
+      {
+        "name": "data and calendar",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 715
+      },
+      {
+        "name": "web types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 9958
+      },
+      {
+        "name": "native types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 5097
+      },
+      {
+        "name": "native engine",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2324
+      }
+    ]
+  },
+  "startingLoads": {
+    "checkedAt": "2026-10-13T20:51:12.001Z",
+    "scope": "Shared domain on synthetic records; no physical device or rendering claim.",
+    "cases": [
+      "Blank preview keeps every load unknown and preserves saved blocks and history",
+      "Reviewed weight changes the opening exposure only; future progression remains available",
+      "Clearing an entered weight restores unknown; explicit zero stays distinct",
+      "Pounds convert once; invalid and negative input cannot alter a preview",
+      "Actual recent matching weight is offered as a reference without filling any targets",
+      "Changed reps, sets, role and source stage never qualify as matching history",
+      "Latest partial, concern, missing-feedback, assisted and unequal-load records block older successes",
+      "Stale and future history does not establish a baseline",
+      "History, setup, caps and custom exercise changes invalidate an existing review",
+      "Equipment limits reject impossible weights with the original state and preview kept",
+      "Nonopening sessions, duplicate selections and unconfigured fields are rejected",
+      "Tampered numeric targets remain rejected even when a display signature is rewritten",
+      "Machine setup is explicit, retained at acceptance and never borrowed from a different machine",
+      "Changing a drafted machine label clears the weight from every role for that exercise",
+      "Coach/manual authority is kept and reference weights do not imply app progression",
+      "Creator source stages, rep targets, supersets and edition roles survive the load review",
+      "An explicitly reviewed weight is displayed even when automatic progression is disabled",
+      "Native shared entrypoint applies the same first-only and stale-history boundaries"
+    ]
+  },
+  "uiCallbacks": {
+    "checkedAt": "2026-10-13T20:51:13.033Z",
+    "scope": "Actual web/native JSX callbacks with deterministic hook/OS boundaries, not rendered accessibility or installed-device acceptance.",
+    "cases": [
+      "Web entry requires review after editing and retains the same draft after a failed write",
+      "Web date edits discard prior weights and force a fresh schedule review",
+      "Native parent reviews chosen weights before persistence and preserves a failed-save draft",
+      "Native expandable controls use the real numeric and recorded-weight callbacks"
+    ]
+  },
+  "installers": {
+    "movefield": {
+      "fileName": "Movefield_Android_Test_2026-10-13.apk",
+      "bytes": 39208736,
+      "sha256": "4d51058e4c95c8ab9f6596260d6788521f85be24936d8fab874f05fdaccd0ab8",
+      "package": "com.ghinz32.movefield",
+      "versionName": "0.1.3",
+      "versionCode": 4,
+      "sourceCommit": "fc3d798d875633cebc8c2b441c9c77f173c967ac",
+      "sourceTree": "af3678529400beba492eab98d1fa42dc7bd343d1",
+      "artifactId": 11847646728,
+      "signingCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+      "inspection": {
+        "passed": true,
+        "platform": "android",
+        "package": "com.ghinz32.movefield",
+        "permissions": [
+          "android.permission.ACCESS_NETWORK_STATE",
+          "android.permission.INTERNET",
+          "android.permission.POST_NOTIFICATIONS",
+          "android.permission.RECEIVE_BOOT_COMPLETED",
+          "android.permission.VIBRATE",
+          "com.ghinz32.movefield.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        ],
+        "manifestSHA256": "7e004932cd11c7ddc97388f55889639fef23060e1cc41549eca07fed53a70e71",
+        "backupRulesLinked": true,
+        "backupDomainsExcluded": [
+          "database",
+          "device_database",
+          "device_file",
+          "device_root",
+          "device_sharedpref",
+          "external",
+          "file",
+          "root",
+          "sharedpref"
+        ],
+        "cloudBackupAndDeviceTransferExcluded": true,
+        "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+        "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+        "resourceTableSHA256": "8f6eb154449dbb41fb23e1ed9ce985ed6b5e7f2897dc07835d0e59f2612e194d",
+        "cleartextDenied": true,
+        "remoteSdkStartupDisabled": true,
+        "componentBoundariesChecked": true,
+        "localReminderDeclarationsChecked": true,
+        "reviewedStartupInitializers": [
+          "androidx.emoji2.text.EmojiCompatInitializer",
+          "androidx.lifecycle.ProcessLifecycleInitializer",
+          "androidx.profileinstaller.ProfileInstallerInitializer"
+        ],
+        "internalBrowserProxyChecked": true,
+        "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+        "signing": "uninspected; inspect the APK certificate separately",
+        "physicalDeviceTested": false,
+        "storeAccepted": false
+      }
+    },
+    "grizzly": {
+      "fileName": "Grizzly_Android_Test_2026-10-13.apk",
+      "bytes": 39359994,
+      "sha256": "b44a0cbb9a94d41087e091fd8ec2b5d6a0395eb50e4ecdf4be861f226bccf8c7",
+      "package": "com.ghinz32.grizzlyfitness.prototype",
+      "versionName": "0.1.2",
+      "versionCode": 3,
+      "sourceCommit": "fc3d798d875633cebc8c2b441c9c77f173c967ac",
+      "sourceTree": "af3678529400beba492eab98d1fa42dc7bd343d1",
+      "artifactId": 11848375232,
+      "signingCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+      "inspection": {
+        "passed": true,
+        "platform": "android",
+        "package": "com.ghinz32.grizzlyfitness.prototype",
+        "permissions": [
+          "android.permission.ACCESS_NETWORK_STATE",
+          "android.permission.INTERNET",
+          "android.permission.POST_NOTIFICATIONS",
+          "android.permission.RECEIVE_BOOT_COMPLETED",
+          "android.permission.VIBRATE",
+          "com.ghinz32.grizzlyfitness.prototype.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        ],
+        "manifestSHA256": "8ee652b2ee57f37073e12885c748ce4cfd5fc2cabaf0ba6bbb5ab56c1bf8f1ac",
+        "backupRulesLinked": true,
+        "backupDomainsExcluded": [
+          "database",
+          "device_database",
+          "device_file",
+          "device_root",
+          "device_sharedpref",
+          "external",
+          "file",
+          "root",
+          "sharedpref"
+        ],
+        "cloudBackupAndDeviceTransferExcluded": true,
+        "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+        "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+        "resourceTableSHA256": "af8ace7e9d0b380edbef2ec97ce75e386576b44d66d0ce3ece6ebee4cf9e3b10",
+        "cleartextDenied": true,
+        "remoteSdkStartupDisabled": true,
+        "componentBoundariesChecked": true,
+        "localReminderDeclarationsChecked": true,
+        "reviewedStartupInitializers": [
+          "androidx.emoji2.text.EmojiCompatInitializer",
+          "androidx.lifecycle.ProcessLifecycleInitializer",
+          "androidx.profileinstaller.ProfileInstallerInitializer"
+        ],
+        "internalBrowserProxyChecked": true,
+        "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+        "signing": "uninspected; inspect the APK certificate separately",
+        "physicalDeviceTested": false,
+        "storeAccepted": false
+      }
+    }
+  },
+  "browserObservations": {
+    "movefield": "Published sample copy, full reused schedule, manual 225 lb opening squat review, acceptance, 34 history records retained, actual workout logger displays the reviewed weight. Actual loads remain unrecorded until owner input.",
+    "grizzly": "Published sample copy, full schedule and independent 135 lb opening bench review; other weights stay unknown.",
+    "scope": "Synthetic samples only; no private vault creation/restore or phone installation. App-origin errors were not observed; browser extension metadata errors excluded."
+  },
+  "websitePublication": "Exact final Pages/HTTPS receipts are appended after deployment. Keep the original Movefield root and prior served assets.",
+  "remaining": [
+    "Physical old/new Android installation, storage/restart/notifications/erasure",
+    "iPhone signing and physical/store validation",
+    "Native upstream dependency advisories and connected-provider qualification",
+    "Individualized next-block volume and creator terminal-stage reset review",
+    "Full canonical six-prompt scope"
+  ]
+}

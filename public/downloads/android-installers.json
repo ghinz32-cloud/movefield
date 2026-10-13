@@ -1,25 +1,25 @@
 {
   "format": "fitness-android-downloads-v1",
-  "workflowRun": 38454580248,
-  "sourceCommit": "48d7512f54d2615c8133b5717e182612ed6812a1",
+  "workflowRun": 38462265676,
+  "sourceCommit": "fc3d798d875633cebc8c2b441c9c77f173c967ac",
   "signingCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
   "apps": [
     {
       "app": "grizzly",
       "name": "Grizzly Fitness",
       "filename": "grizzly-arm64-current-test.apk",
-      "bytes": 39359826,
-      "sha256": "86ba301f2ebe9073b7e73b21db11555bc47b5f348cfe30aa5acf2cd4f15cb90a",
+      "bytes": 39359994,
+      "sha256": "b44a0cbb9a94d41087e091fd8ec2b5d6a0395eb50e4ecdf4be861f226bccf8c7",
       "package": "com.ghinz32.grizzlyfitness.prototype",
-      "versionCode": 2,
-      "sourceCommit": "48d7512f54d2615c8133b5717e182612ed6812a1",
-      "artifactId": 11843405826,
+      "versionCode": 3,
+      "sourceCommit": "fc3d798d875633cebc8c2b441c9c77f173c967ac",
+      "artifactId": 11848375232,
       "parts": [
         {
           "file": "native/grizzly/part-0.bin",
           "bytes": 10485760,
-          "sha256": "f11311120bfce87137f73e4cdec5993eb9e6c74035da8731f443c14340bbec6e",
-          "sha": "9bd199d15f35f3d9a31b845777a217676c58fc95"
+          "sha256": "c12a0ad41af742168f0bb4d7c3edc01f4ce557e7d4693e7d3a11e5f98a6121c9",
+          "sha": "b420781b6e06b15b6993a6a5c60b4923d8b8f93b"
         },
         {
           "file": "native/grizzly/part-1.bin",
@@ -30,33 +30,34 @@
         {
           "file": "native/grizzly/part-2.bin",
           "bytes": 10485760,
-          "sha256": "d44ac12ee6e27dea6925dc45e229adc64e5b9e8a92e3d59ecebe37f7a3887a7d",
-          "sha": "783112859e87715daabe6e0836977d42ef6d4b95"
+          "sha256": "a760b2854afc2bf157e9b410becc478a60c7b1279fe8bfb8e536fe9e30730ac8",
+          "sha": "0cc9489441f913e00a3d7039f801cc44c9472023"
         },
         {
           "file": "native/grizzly/part-3.bin",
-          "bytes": 7902546,
-          "sha256": "78b21c8bb6d23942094948e0f657c145cbb68f8a4465d37953981ee7faac921a",
-          "sha": "7c5430152206a96aaaee0c873f6921c91fdeb328"
+          "bytes": 7902714,
+          "sha256": "3b0aef900061ed41b0da1f0f48c08b1a0af772913648cc71fe74e65d3b1915bf",
+          "sha": "fb59cd82d080e4b76b057f46d8636071daceebf2"
         }
-      ]
+      ],
+      "versionName": "0.1.2"
     },
     {
       "app": "movefield",
       "name": "Movefield",
       "filename": "movefield-arm64-current-test.apk",
-      "bytes": 39208568,
-      "sha256": "a62605b3c3a8a4bc5f9afcdacec6dda20a032fc539c1486725547ee4918db84b",
+      "bytes": 39208736,
+      "sha256": "4d51058e4c95c8ab9f6596260d6788521f85be24936d8fab874f05fdaccd0ab8",
       "package": "com.ghinz32.movefield",
-      "versionCode": 3,
-      "sourceCommit": "48d7512f54d2615c8133b5717e182612ed6812a1",
-      "artifactId": 11841959383,
+      "versionCode": 4,
+      "sourceCommit": "fc3d798d875633cebc8c2b441c9c77f173c967ac",
+      "artifactId": 11847646728,
       "parts": [
         {
           "file": "native/movefield/part-0.bin",
           "bytes": 10485760,
-          "sha256": "99556140239065c61af22a223f9cf9bcf2184434a99ea06b506e6706661a7060",
-          "sha": "a9c23d9cbe2c6ff086013d211417282a7576d829"
+          "sha256": "dc05d29932530378f5fb70798cded8d758818eb266035e8f8b6c4a0a34713025",
+          "sha": "5e663a36ac961a6db5b02808e13608fd9664e41c"
         },
         {
           "file": "native/movefield/part-1.bin",
@@ -67,16 +68,17 @@
         {
           "file": "native/movefield/part-2.bin",
           "bytes": 10485760,
-          "sha256": "25244153948b2af491e816873b75e34af7e381e6c35cec49e61568eaed7f944c",
-          "sha": "2e336134294cc7e6eb3b7c4053c945a271caf6d2"
+          "sha256": "efa3a567a7ba3742e4e787d0f5853eed8173dea5912832c75c467b6f02be2425",
+          "sha": "71f81e1be06d45a1a1269cde27a7278a56b9e2c7"
         },
         {
           "file": "native/movefield/part-3.bin",
-          "bytes": 7751288,
-          "sha256": "8b5106d1a104c8b2ff7ea135ea702e04dc677ed73648ff21eca73a7ba5bf7466",
-          "sha": "0496804add25e6e3c3dffdbeadfd0256ebce93cc"
+          "bytes": 7751456,
+          "sha256": "3d433cb235fb7fbd9620a9bc142f2f4e8440a7d9ea5012f193948c4cdf0b9f46",
+          "sha": "6b2a6c0059de75aa73d6098038ada248a16fd509"
         }
-      ]
+      ],
+      "versionName": "0.1.3"
     }
   ]
 }

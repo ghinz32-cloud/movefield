@@ -1,3 +1,27 @@
+# Current checkpoint · final reviewed loads and current installers · 13 October 2026
+
+Continue on `codex/native-delivery-2026-10-13` from the exact receipts in
+`docs/block-starting-loads-publication-2026-10-13.json`. Both brands remain in
+scope. Movefield 0.1.3/versionCode 4 and Grizzly 0.1.2/versionCode 3 passed actual
+compilation, lint, unit tests, manifest/security and historical certificate
+inspection in run `38462265676`, source `fc3d798d875633cebc8c2b441c9c77f173c967ac`.
+The final guard displays human-reviewed weights on exercises with automatic
+progression disabled without inferring an increase. All 40 core groups, 18 load
+cases and 4 actual interface callback journeys pass. Public APK parts and complete
+files reconstruct to the exact verified hashes; saved download identities are
+preserved separately. Final Pages/live receipts below pin publication.
+
+The concurrent public Android download pages are preserved and updated to those
+final APKs. Keep the original root, prior served chunks, per-set RIR, compact UI,
+clickable calendars, source stages, unknown loads and separate brands. Normal
+source/public preview pushes and test compilation remain authorized. Physical
+old/new phone installation, storage/restart/reminders/erasure, iPhone/store,
+upstream native advisories and providers remain unqualified. Resume those
+available gates, then individualized next-block volume/source reset review and
+the canonical task register. No full six-prompt completion is claimed.
+
+---
+
 # Current checkpoint · final starting weight guard · 13 October 2026
 
 The tested follow-up fixes the hidden explicitly reviewed weight on exercises with automatic progression disabled. All 39 core groups, 18 starting-weight cases, 4 actual UI callback journeys and current native exports passed. The immutable qualified implementation is `c4318e92eabf2516df09eb66ebe2eadda49ae6d9`, tree `defc56705822b9fdce8aa23b13097cee9e7618e2`. It is reconciled onto `cdcf8387f85d0a634b4200f0e47bb50b2958d6f7` while preserving the concurrent public Android download pages and APK part delivery.
