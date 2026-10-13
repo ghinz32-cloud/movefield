@@ -11,6 +11,6 @@ export default defineConfig({
  plugins:[{
   name:'isolated-grizzly-profile',enforce:'pre',
   transform(code,id){if(id.includes('/node_modules/')||!/[.](?:ts|tsx|js|jsx)$/.test(id))return;return code.replaceAll('training-studio','grizzly-training-studio').replaceAll('movefield-private-records-v1','grizzly-private-records-v1').replaceAll('movefield-cloud-outbox-v1','grizzly-cloud-outbox-v1')},
- },react(),offlineShell(base,true,'grizzly-fitness-shell-', [...headingFonts.map(font=>'fonts/'+font.file),'brand/grizzly-fitness-logo.jpg','grizzly-favicon.svg','grizzly-paw.svg'])],
+ },react(),offlineShell(base,true,'grizzly-fitness-shell-', [...headingFonts.map(font=>'fonts/'+font.file),'brand/grizzly-fitness-logo.jpg','grizzly-favicon.svg','grizzly-paw.svg','brand/wilderness/grizzly-hero-v1.jpg','brand/wilderness/grizzly-forest-v1.jpg'])],
  build:{outDir:resolve(import.meta.dirname,'.sites-runtime/github-pages-grizzly'),emptyOutDir:true},
 });

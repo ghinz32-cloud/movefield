@@ -155,3 +155,103 @@
 @media(max-width:550px){.grizzly-comparison .palette-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:380px){.grizzly-font-grid{grid-template-columns:1fr}[data-brand=grizzly][data-grizzly-style=wild] .grizzly-preview-title b{font-size:.95rem}}
 @media(prefers-reduced-motion:reduce){[data-brand=grizzly][data-grizzly-style=wild] .grizzly-claws{animation:none!important}}
+
+/* THE WILDERNESS — deliberately maximal, with solid reading surfaces. */
+[data-brand=grizzly] #root{position:relative;isolation:isolate;min-height:100vh}
+.grizzly-environment{display:none;position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:#07130e}
+[data-brand=grizzly][data-grizzly-style=wild] .grizzly-environment{display:block}
+.grizzly-forest-image{width:100%;height:100%;object-fit:cover;object-position:50% 64%;opacity:.62}
+.grizzly-forest-shade{position:absolute;inset:0;background:linear-gradient(90deg,#06110ae8,transparent 38%,#06110a55),linear-gradient(0deg,#030b0877,transparent 70%)}
+.grizzly-fog{position:absolute;width:145%;height:42%;left:-20%;bottom:5%;opacity:.16;background:radial-gradient(ellipse at 35% 60%,#b5c9aa7a,transparent 55%),radial-gradient(ellipse at 70% 70%,#ded4b060,transparent 50%);animation:grizzly-mist-drift 27s ease-in-out infinite alternate;will-change:transform}
+.grizzly-fog-back{bottom:35%;opacity:.1;animation-duration:39s;animation-direction:alternate-reverse}
+.grizzly-embers{position:absolute;inset:0;overflow:hidden}
+.grizzly-embers i{position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;background:#ffd38b;box-shadow:0 0 9px #efb759;opacity:0;animation:grizzly-ember-rise 22s linear infinite}
+.grizzly-environment[data-paused=true] *{animation-play-state:paused!important}
+[data-brand=grizzly][data-grizzly-style=wild].dark{--background:#07130e;--foreground:#f5f1e3;--card:#132219;--card-foreground:#f5f1e3;--muted:#203327;--muted-foreground:#c0cbb7;--secondary:#293a2b;--border:#637457;--input:#a8b38a;--sidebar:#08130d;--sidebar-accent:#253724;--sidebar-border:#526446;--sidebar-foreground:#eee9d7;--ink:#122719;--warning-bg:#3c2f1c;--warning-text:#ffe0a9}
+[data-brand=grizzly][data-grizzly-style=wild] body{background-image:none}
+[data-brand=grizzly][data-grizzly-style=wild] [data-slot=sidebar-wrapper],
+[data-brand=grizzly][data-grizzly-style=wild] [data-slot=sidebar-inset]{background:transparent}
+[data-brand=grizzly][data-grizzly-style=wild] .grizzly-preview-banner{background:linear-gradient(105deg,#07110f,#1b2d1b 60%,#15170d);border-bottom:2px solid #b49b65;box-shadow:0 8px 24px #0005}
+[data-brand=grizzly][data-grizzly-style=wild] .grizzly-preview-title small{letter-spacing:.18em;color:#d6bf86;font-size:.65rem;margin-top:2px}
+[data-brand=grizzly][data-grizzly-style=wild] .grizzly-preview-title b{font-size:1.4rem}
+[data-brand=grizzly][data-grizzly-style=wild] .grizzly-logo-frame{border:1px solid #c5a66b;box-shadow:0 0 0 4px #b4914722;border-radius:50%}
+[data-brand=grizzly][data-grizzly-style=wild] .topbar{background:#0b1a13ed;border-bottom:1px solid #7d704d;color:#eee9d7;box-shadow:0 8px 25px #0003}
+[data-brand=grizzly][data-grizzly-style=wild] .app-sidebar [data-sidebar=sidebar]{background:linear-gradient(#07140dde,#0a160ff5),url('/brand/wilderness/grizzly-forest-v1.jpg') center/cover}
+[data-brand=grizzly][data-grizzly-style=wild] .brand{padding-top:28px;padding-bottom:30px}
+[data-brand=grizzly][data-grizzly-style=wild] .brand-wordmark{font-size:1.65rem;color:#eee5c9;text-shadow:2px 3px 0 #000}
+[data-brand=grizzly][data-grizzly-style=wild] .app-sidebar [data-slot=sidebar-menu-button]{border-bottom:1px solid #81734c22;border-radius:2px 14px 2px 8px;min-height:48px}
+[data-brand=grizzly][data-grizzly-style=wild] .app-sidebar [data-active=true]{background:linear-gradient(90deg,#afbd8940,#213b1d);border-left:4px solid #d4bd81;box-shadow:inset 0 1px #dbc18c55}
+[data-brand=grizzly][data-grizzly-style=wild] .workspace{background:linear-gradient(180deg,#07130e00,#07130e66 85%)}
+[data-brand=grizzly][data-grizzly-style=wild] .page-heading h1{font-size:clamp(3rem,5vw,4.7rem);line-height:1.1;color:#f0dfb5;text-shadow:3px 4px 0 #070e09,0 0 40px #e6c68222}
+[data-brand=grizzly][data-grizzly-style=wild] .eyebrow{color:var(--brand-from);letter-spacing:.2em}
+[data-brand=grizzly][data-grizzly-style=wild] .card,
+[data-brand=grizzly][data-grizzly-style=wild] .entry-card,
+[data-brand=grizzly][data-grizzly-style=wild] .plan-option{background:linear-gradient(120deg,#bfa46908,transparent 35%),var(--card);border:1px solid #7e7957;border-top:3px solid #af9761;border-radius:2px 22px 3px 8px;box-shadow:6px 7px 0 #0003,0 20px 38px #0002}
+[data-brand=grizzly][data-grizzly-style=wild] .card::after{color:#d7b984;width:56px;height:21px;opacity:.65;background:repeating-linear-gradient(112deg,transparent 0 8px,#c4aa76 8px 10px,transparent 10px 15px)}
+[data-brand=grizzly][data-grizzly-style=wild] .card h2{color:var(--foreground);font-size:1.8rem}
+[data-brand=grizzly][data-grizzly-style=wild] .card h3{font-family:var(--grizzly-heading),Inter,sans-serif;font-weight:var(--grizzly-heading-weight);font-size:1.4rem;letter-spacing:.03em}
+.grizzly-hero-art{display:none;pointer-events:none}
+[data-brand=grizzly][data-grizzly-style=wild] .grizzly-hero-art{display:block;position:absolute!important;inset:0;z-index:0!important;overflow:hidden}
+.grizzly-hero-art img{width:100%;height:100%;object-fit:cover;object-position:68% 38%}
+.grizzly-hero-art span{position:absolute;inset:0;background:linear-gradient(90deg,#05100cf5,transparent 72%),linear-gradient(0deg,#06130fe6,transparent 65%)}
+.grizzly-den-hero{display:none}
+[data-brand=grizzly][data-grizzly-style=wild] .grizzly-den-hero{display:block;position:relative!important;width:100%;min-width:0;min-height:610px;overflow:hidden;border:1px solid #9a8858;border-top:4px solid #ccb47a;box-shadow:12px 14px 0 #0003,0 30px 65px #0005;border-radius:2px 36px 3px 12px;background:#08170f}
+.grizzly-den-copy{position:relative;z-index:1;padding:46px 30px;max-width:65%}
+.grizzly-expedition-label{font:700 .64rem/1.8 Inter,sans-serif;letter-spacing:.15em;color:#ebd5a7}
+[data-brand=grizzly] .grizzly-den-copy h2{font-size:clamp(3.5rem,5.5vw,6rem);color:#f6ead0;line-height:1.04;text-shadow:3px 6px 0 #050b06;margin:28px 0 22px;overflow-wrap:normal}
+.grizzly-den-copy h2 em{font-style:normal;color:#d8bd81}
+.grizzly-den-copy>p{color:#e4e3d1;line-height:1.7;font-size:1rem}
+.grizzly-den-seal{display:flex;align-items:center;gap:14px;margin-top:54px;color:#d6bd80;font-size:.65rem;letter-spacing:.13em}
+.grizzly-den-seal .grizzly-talon-mark{width:52px;height:58px}
+.grizzly-den-seal b{font-size:.7rem;line-height:2}
+.grizzly-den-foot{position:absolute;bottom:0;left:0;right:0;z-index:1;display:flex;gap:16px;justify-content:space-between;padding:19px 24px;background:#08150ee8;border-top:1px solid #ab955657;color:#d0c29e;font-size:.56rem;letter-spacing:.15em}
+[data-brand=grizzly][data-grizzly-style=wild] .recovery-page{min-height:calc(100vh - 70px);grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center;gap:36px;max-width:1380px;margin:auto;padding:48px clamp(20px,4vw,65px);background:transparent}
+[data-brand=grizzly][data-grizzly-style=wild] .recovery-page>.grizzly-wilderness{display:none}
+[data-brand=grizzly][data-grizzly-style=wild] .recovery-page>.card{width:100%;padding:30px;max-width:none}
+[data-brand=grizzly][data-grizzly-style=wild] .recovery-page h1{font-size:2.4rem;line-height:1.18}
+[data-brand=grizzly][data-grizzly-style=wild] .recovery-page .grizzly-logo-full{max-width:220px;margin:0 0 26px;border-radius:5px}
+[data-brand=grizzly][data-grizzly-style=wild] .entry-context{position:relative;overflow:hidden;background:#07130e}
+[data-brand=grizzly][data-grizzly-style=wild] .entry-context>.grizzly-hero-art span{background:linear-gradient(90deg,#07130eed,#07130e85),linear-gradient(0deg,#07130e,transparent 90%)}
+[data-brand=grizzly][data-grizzly-style=wild] .entry-page .entry-context h1{color:#f3dfb5;font-size:clamp(3.5rem,6vw,5.8rem);line-height:1.05;text-shadow:3px 4px #050b06}
+[data-brand=grizzly][data-grizzly-style=wild] .entry-context::after{display:none}
+[data-brand=grizzly][data-grizzly-style=wild] .entry-form{background:transparent}
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature{background:#102318;color:#f5f1e3;border:1px solid #aa915e;border-top:4px solid #d6b77c;border-radius:2px 32px 3px 8px;min-height:540px;padding:26px;box-shadow:8px 9px 0 #0004,0 25px 45px #0003}
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature>.grizzly-hero-art{height:265px;bottom:auto}
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature>.grizzly-hero-art img{object-position:70% 37%}
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature>.grizzly-hero-art span{background:linear-gradient(0deg,#102318,transparent 45%),linear-gradient(90deg,#06120c77,transparent 40%)}
+.grizzly-training-callout{display:none}
+[data-brand=grizzly][data-grizzly-style=wild] .grizzly-training-callout{display:block;position:absolute;top:24px;left:24px;z-index:1;color:#f2deb3;font:400 1.65rem/1.2 var(--grizzly-heading),Inter,sans-serif;letter-spacing:.06em;text-shadow:2px 3px #000}
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature>.split{margin-top:230px}
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature h2{margin-top:16px;color:#f5e6c6;font-size:2.4rem;line-height:1.15;text-shadow:2px 3px #05100b}
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature .grizzly-talon-mark{color:#d2b479;width:50px;height:58px}
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature .grizzly-claws{top:2%;right:0;width:40%;height:250px;color:#dfc493;opacity:.15}
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature .feature-foot{color:#c5cbb9;border-color:#6e7759}
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature .lime-outline{color:#f5f1e3;border-color:#b7ad89;background:#11231be8}
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature::before{background:var(--background)}
+[data-brand=grizzly][data-grizzly-style=wild] button[data-slot=button]{border-radius:3px 13px 3px 7px;box-shadow:0 3px 0 #0003;transition:transform .18s,box-shadow .18s}
+[data-brand=grizzly][data-grizzly-style=wild] button[data-slot=button]:active{transform:translateY(2px);box-shadow:0 1px 0 #0002}
+[data-brand=grizzly][data-grizzly-style=wild] .week-bars span{border-radius:1px 8px 1px 3px;border-top:2px solid #d2bd87}
+[data-brand=grizzly][data-grizzly-style=wild] .grizzly-customize-button{background:#24301b!important;color:#f3e6c9!important;border-color:#ba9f68!important}
+[data-brand=grizzly][data-grizzly-style=wild] .theme-preview{border:1px solid #ac945e;border-radius:2px 16px 3px 6px}
+[data-brand=grizzly][data-grizzly-style=wild] .grizzly-comparison{background:var(--card)}
+[data-brand=grizzly][data-grizzly-style=wild]:not(.dark) .grizzly-forest-shade{background:#f5eddbb8}
+[data-brand=grizzly][data-grizzly-style=wild]:not(.dark) .topbar{background:#fff9eced;color:#263626}
+[data-brand=grizzly][data-grizzly-style=wild]:not(.dark) .page-heading h1{color:#314831;text-shadow:2px 3px #fff6dc}
+[data-brand=grizzly][data-grizzly-style=wild]:not(.dark) .page-heading .eyebrow{color:var(--accent-strong)}
+[data-brand=grizzly][data-grizzly-style=clean] .grizzly-den-hero,
+[data-brand=grizzly][data-grizzly-style=clean] .grizzly-training-callout{display:none}
+@keyframes grizzly-mist-drift{from{transform:translate3d(-3%,0,0) scale(1)}to{transform:translate3d(9%,-2%,0) scale(1.04)}}
+@keyframes grizzly-ember-rise{0%{transform:translate3d(0,0,0);opacity:0}12%{opacity:.55}70%{opacity:.32}100%{transform:translate3d(35px,-85vh,0);opacity:0}}
+@media(max-width:1050px){[data-brand=grizzly][data-grizzly-style=wild] .recovery-page{grid-template-columns:minmax(0,1fr);max-width:750px;gap:28px}.grizzly-den-copy{max-width:58%}[data-brand=grizzly][data-grizzly-style=wild] .grizzly-den-hero{min-height:520px}}
+@media(max-width:680px){[data-brand=grizzly][data-grizzly-style=wild] .recovery-page{padding:24px 16px;gap:24px}[data-brand=grizzly][data-grizzly-style=wild] .recovery-page>.card{padding:22px}[data-brand=grizzly][data-grizzly-style=wild] .grizzly-den-hero{min-height:470px;border-radius:2px 24px 3px 8px}.grizzly-den-copy{padding:255px 22px 54px;max-width:none}.grizzly-den-copy h2 br{display:none}[data-brand=grizzly] .grizzly-den-copy h2{font-size:3rem;margin:14px 0 10px}.grizzly-den-copy>p{font-size:.9rem}.grizzly-den-seal{display:none}.grizzly-den-hero .grizzly-hero-art span{background:linear-gradient(0deg,#06130fff 10%,#06130fdd 37%,transparent 73%)}.grizzly-den-hero .grizzly-hero-art img{object-position:72% 15%}.grizzly-den-foot{padding:14px 18px;font-size:.5rem;letter-spacing:.1em}.grizzly-den-foot span:last-child{display:none}[data-brand=grizzly][data-grizzly-style=wild] .grizzly-preview-title b{font-size:1.1rem}.grizzly-preview-title .grizzly-logo-frame{width:38px;height:38px}.grizzly-preview-banner{padding:12px 16px}.grizzly-preview-title small{max-width:130px}[data-brand=grizzly][data-grizzly-style=wild] .session-feature{padding:22px}.grizzly-fog{height:30%;opacity:.1}.grizzly-embers i:nth-child(n+7){display:none}}
+@media(prefers-reduced-motion:reduce){.grizzly-environment *{animation:none!important;will-change:auto!important}[data-brand=grizzly][data-grizzly-style=wild] button[data-slot=button]{transition:none}[data-brand=grizzly][data-grizzly-style=wild] button[data-slot=button]:active{transform:none}}
+[data-brand=grizzly][data-reduce-motion=true] .grizzly-environment *{animation:none!important;will-change:auto!important}
+[data-brand=grizzly][data-reduce-motion=true] button[data-slot=button]{transition:none!important}
+[data-brand=grizzly][data-reduce-motion=true] button[data-slot=button]:active{transform:none!important}
+[data-brand=grizzly][data-contrast=true] .grizzly-environment{display:none}
+[data-brand=grizzly][data-contrast=true] .grizzly-hero-art span{background:linear-gradient(0deg,#06130f,transparent 90%)}
+[data-brand=grizzly][data-contrast=true] .grizzly-training-callout{padding:8px;background:#08180f}
+
+[data-brand=grizzly][data-grizzly-style=wild] .section-heading{position:relative;padding-bottom:18px;border-bottom:1px solid #a88c554f}
+[data-brand=grizzly][data-grizzly-style=wild] .section-heading::after{content:"";position:absolute;right:0;bottom:-6px;width:38px;height:42px;background:url('/grizzly-paw.svg') center/contain no-repeat;opacity:.24;pointer-events:none;transform:rotate(-12deg)}
+[data-brand=grizzly][data-grizzly-style=wild] .session-index{background:linear-gradient(125deg,#b49b6528,#07130e);color:#d4c28f;border:1px solid #8d815c;border-radius:2px 10px 2px 5px}

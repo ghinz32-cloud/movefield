@@ -42,7 +42,7 @@ export const headingFonts=[
 ] as const;
 export type HeadingFont=typeof headingFonts[number]['id'];
 export type AppPreferences={mode:'system'|'light'|'dark';palette:PaletteId;grizzlyStyle:'wild'|'clean';headingFont:HeadingFont;headingFontVersion:2;textSize:100|115|130;contrast:boolean;reduceMotion:boolean;underlineLinks:boolean;reminders:boolean;reminderTime:string;model:ModelChoice};
-export const defaultPreferences:AppPreferences={mode:isGrizzly?'dark':'system',palette:isGrizzly?'frost':'green',grizzlyStyle:isGrizzly?'wild':'clean',headingFont:isGrizzly?'metal':'barlow',headingFontVersion:2,textSize:100,contrast:false,reduceMotion:false,underlineLinks:false,reminders:false,reminderTime:'18:00',model:'auto'};
+export const defaultPreferences:AppPreferences={mode:isGrizzly?'dark':'system',palette:isGrizzly?'pine':'green',grizzlyStyle:isGrizzly?'wild':'clean',headingFont:isGrizzly?'metal':'barlow',headingFontVersion:2,textSize:100,contrast:false,reduceMotion:false,underlineLinks:false,reminders:false,reminderTime:'18:00',model:'auto'};
 export const preferenceKey=isGrizzly?'grizzly-fitness:preferences:v1':'training-studio:preferences:v1';
 export function readPreferences(raw:string|null):AppPreferences {
   if(!raw)return {...defaultPreferences};

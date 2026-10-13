@@ -1,3 +1,11 @@
+# Maximal wilderness design
+
+The current Grizzly flavor includes a large original grizzly hero, bundled forest imagery, Metal Mania headings, bronze panels and native mist/ember animation. Wild Grizzly in Settings selects the full Pine forest theme. Clean, larger text, contrast and reduced motion remain available. Native atmosphere pauses while the app is inactive. No network request is required for the new images.
+
+This source release includes checked Android and iOS JavaScript exports. It is not an installed APK/IPA, store release or physical-device acceptance. The supplied gym logo remains unchanged.
+
+---
+
 # Grizzly Fitness Wautoma flavor
 
 This is a separate app identity built from the same training code. The user supplied the Grizzly Fitness logo. `assets/grizzly-fitness-logo.jpg` preserves the uploaded JPEG unchanged; the Expo asset compiler renders the whole source onto square black launcher canvases. The amber colors are a custom app theme. Gym website: https://www.fitnessgrizzly.com/.

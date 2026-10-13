@@ -1,0 +1,120 @@
+{
+  "checked_at": "2026-10-13T00:44:50.890988+00:00",
+  "scope": "Maximal Grizzly web/native design and packaged static previews. Fresh browser, rendered accessibility, physical-phone animation and APK/IPA acceptance are unperformed.",
+  "application_source_sha256": "a5a8d5ea6004ca78a94ae881e08421b1010c8ff83983ca47800bd24f5674bde4",
+  "catalog_checkpoint": {
+    "source_commit": "ad3eecd77ee01504c5554ef971d459843dfe680a",
+    "local_checkpoint": "bbdfad572a4e407170b1fec80645b313c7db4529",
+    "receipt": "docs/science/goal-families-release-validation-2026-10-13.json",
+    "scenarios": 6881,
+    "shipped_entries": 154,
+    "interpretation": "Inherited unchanged catalog rules; these prior domain checks are not a new browser or physiological validation."
+  },
+  "checks": [
+    {
+      "name": "root TypeScript",
+      "result": "passed"
+    },
+    {
+      "name": "native TypeScript",
+      "result": "passed"
+    },
+    {
+      "name": "preferences and token contrast",
+      "result": "passed",
+      "groups": 5,
+      "checks": 62
+    },
+    {
+      "name": "native Grizzly identity and encrypted profile/key/database isolation",
+      "result": "passed",
+      "scope": "Actual native modules; real Node AES-GCM/SQLite with mocked AsyncStorage/SecureStore/Expo Crypto boundaries. Not an installed phone test."
+    },
+    {
+      "name": "native Grizzly file transfer and erasure guards",
+      "result": "passed",
+      "boundary": "Mock OS file/sharing boundaries"
+    },
+    {
+      "name": "targeted frontend lint",
+      "result": "passed",
+      "errors": 0,
+      "warnings": 2,
+      "warning_reason": "Static img elements with already encoded local art, not a Next image-server path"
+    },
+    {
+      "name": "Movefield static build",
+      "result": "passed"
+    },
+    {
+      "name": "Grizzly static build",
+      "result": "passed"
+    },
+    {
+      "name": "current subpath image/JS/CSS references and offline art inclusion",
+      "result": "passed"
+    }
+  ],
+  "native_exports": {
+    "checked_at": "2026-10-13T00:43:29.726365+00:00",
+    "scope": "Distinct cleared-cache Hermes exports, paired with native identity/module checks; no installed-device claim.",
+    "flavors": {
+      "movefield": {
+        "android": {
+          "path": "_expo/static/js/android/index-a561599c1d24cfbb685ee2161c36d809.hbc",
+          "bytes": 4559496,
+          "sha256": "d5fc01cb50e8c3107b64955c3121753382ddbbc2ff32c2453db7700ba3c20a8c"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-d3ea1a9a2cf8390d74f14a48f88942ad.hbc",
+          "bytes": 4544503,
+          "sha256": "e2aac20118b594970cfa008bc6eaeb7d566aeff0169a7d8a1e5eea470262b8bd"
+        }
+      },
+      "grizzly": {
+        "android": {
+          "path": "_expo/static/js/android/index-864af3118816f84d22907e9f3d898433.hbc",
+          "bytes": 4559495,
+          "sha256": "ef325d436985b5585c309767ab55dc124ac70233d37138655e02ef55a8858d81"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-ea5ebdb6e0052c27d781cd5eae689208.hbc",
+          "bytes": 4544503,
+          "sha256": "87ac2c705118a8a13115ed2b2191d403419e806181079db8d484ebc7afd5b174"
+        }
+      }
+    }
+  },
+  "artwork": {
+    "public/brand/wilderness/grizzly-hero-v1.jpg": {
+      "bytes": 385671,
+      "sha256": "eb45c5e512a5acd4ef9ce011c41b81aa02467914f215ef6ea0cc833865c237be"
+    },
+    "public/brand/wilderness/grizzly-forest-v1.jpg": {
+      "bytes": 328745,
+      "sha256": "65c139bdfd30fb876738fa0fe17cf011bde06df9602c12c964df7a90456d121d"
+    },
+    "mobile/assets/wilderness/grizzly-hero-v1.jpg": {
+      "bytes": 173083,
+      "sha256": "1f9a4eacc62bb54c062517d18599ee5eb17fce64977bc1e517082893ba86d331"
+    },
+    "mobile/assets/wilderness/grizzly-forest-v1.jpg": {
+      "bytes": 182786,
+      "sha256": "e82f73727c0b1aa37d5dbfcea904c39ba5cb8e3e26c567e14c3b134e9d87aa8f"
+    }
+  },
+  "native_source_archives": {
+    "public/downloads/movefield-native-current.zip": "3831ddb3ef6aca132a7cdd3de68e286ee1a8f48eec89288750b32b28f0087413",
+    "public/downloads/grizzly-fitness-native-source.zip": "5d57af1782cbef2db60326d20886648bb51dd6fd25b879fba734f73123833488"
+  },
+  "native_archive_files_each": 197,
+  "secret_scan": {
+    "ran_at": "2026-10-13T00:43:59.502659+00:00",
+    "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed.",
+    "files": 5856,
+    "zip_members": 1914,
+    "matches": []
+  },
+  "browser_reason": "Managed environment without control-browser skill; no preview server or alternative browser route used.",
+  "publication": "Pending source and matching two-preview publication; exact published identities recorded separately."
+}

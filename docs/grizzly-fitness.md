@@ -1,3 +1,9 @@
+# Current direction · maximal wilderness · 13 October 2026
+
+The user requested the bear/forest aesthetic turned up to 11 on web and native. The new design is described in [grizzly-wilderness-design.md](grizzly-wilderness-design.md). Pine forest and Metal Mania are the new Wild preset. Large original bear art, a full forest environment, bronze and bark surfaces, mist, embers, claws and paws supersede the historical restrained styling below. Source/export/publication evidence is recorded separately; historical browser screenshots do not qualify the new release.
+
+---
+
 # Grizzly Fitness Wautoma
 
 User request, 12 October 2026: a separate Grizzly Fitness app with the same training features and a different UI. The official website supplied by the user is https://www.fitnessgrizzly.com/. Its homepage returned an explicit proxy destination denial in this environment. Domain additions were saved using the supported environment configuration workflow; that save does not activate access. The user subsequently uploaded the gym logo, so site access is no longer a prerequisite for branding. No membership details, gym services or official color palette have been inferred.

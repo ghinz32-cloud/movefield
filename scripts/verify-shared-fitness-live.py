@@ -18,7 +18,7 @@ for name, digest in files.items():
     if (rel in ['index.html', 'review-manifest.json', 'grizzly-manifest.json',
                 'brand/grizzly-fitness-logo.jpg', 'exercise-guides.json', 'exercise-content.json',
                 'downloads/movefield-native-current.zip', 'downloads/grizzly-fitness-native-source.zip']
-            or rel.endswith('sw.js') or rel.startswith(('assets/', 'fonts/'))):
+            or rel.endswith('sw.js') or rel.startswith(('assets/', 'fonts/', 'brand/wilderness/'))):
         tasks[name] = digest
 
 def check(task):

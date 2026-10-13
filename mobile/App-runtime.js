@@ -49,6 +49,7 @@ import * as __dependency46 from "./src/mobile-engine";
 import * as __dependency47 from "./src/storage";
 import * as __dependency48 from "react/jsx-runtime";
 import * as __dependency49 from "./assets/grizzly-fitness-logo.jpg";
+import {NativeWildernessShell,NativeDenHero} from "./src/wilderness";
 var _srcSharedPairedSets = __dependency0;
 var _srcSharedSourcePrograms = __dependency1;
 var _srcSetRir = __dependency2;
@@ -682,10 +683,10 @@ function TrainingApp() {
     };
     if (!state)
         return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNativeSafeAreaContext.SafeAreaView, {
-            style: styles.safe,
+            style: [styles.safe, _srcSharedBrand.isGrizzly && appearance.p.grizzlyStyle === 'wild' && !appearance.p.contrast && {backgroundColor: 'transparent'}],
             children: /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
                 style: styles.content,
-                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Heading, {
+                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NativeDenHero, {compact: true}), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Heading, {
                         eyebrow: _srcSharedBrand.brand.name.toUpperCase(),
                         title: readError ? 'Saved data needs attention' : 'Opening your training',
                         detail: readError ? 'We could not open your saved training. It has not been replaced.' : undefined
@@ -1873,7 +1874,7 @@ function TrainingApp() {
             })]
     });
     return /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNativeSafeAreaContext.SafeAreaView, {
-        style: styles.safe,
+        style: [styles.safe, _srcSharedBrand.isGrizzly && appearance.p.grizzlyStyle === 'wild' && !appearance.p.contrast && {backgroundColor: 'transparent'}],
         edges: ['top', 'bottom'],
         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_expoStatusBar.StatusBar, {
                 style: appearance.dark ? "light" : "dark"
@@ -2698,7 +2699,7 @@ function TrainingApp() {
 function App() {
     return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNativeSafeAreaContext.SafeAreaProvider, {
         children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcAppearance.NativeAppearanceProvider, {
-            children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(TrainingApp, {})
+            children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NativeWildernessShell, {children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(TrainingApp, {})})
         })
     });
 }

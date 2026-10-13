@@ -5,8 +5,8 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Recovered public routines plus creator-version GZCLP progression, set-level saved effort/corrections and evidence/source classification. Current source and Pages builds remain unpublished after the prior automatic approval rejection.",
-  "completion_claim": "Current bounded source/effort milestone is locally implemented and checked. Earlier live releases are historical; this recovered candidate is not pushed or live-verified. Full six-prompt acceptance remains incomplete.",
+  "active_checkpoint": "Published research-informed catalog source ad3eecd plus maximal Grizzly wilderness web/native design. Current themed source, native archives and both preview builds are preparing for publication.",
+  "completion_claim": "At least ten distinct generated original structures for each supported goal are audited at the catalog checkpoint. The themed web/native source milestone is implemented and checked. Fresh browser and installed-device acceptance and full six-prompt completion remain open.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
     "Saved environment network additions need activation for full-text research and repo.reactnative.dev Android artifact download. Current proxy denials are not bypassed.",
@@ -1816,5 +1816,13 @@
     "release_validation": "docs/science/continuation-release-validation-2026-10-12.json",
     "implementation_commit": "33658513ab4ecf3aa3d6fd44207952a61ea750fa",
     "unpublished_pages_commit": "f92fe266c68c6ae9e6e37ec16a78cdd8c2c68084"
+  },
+  "catalog_and_wilderness_2026_10_13": {
+    "catalog_source_commit": "ad3eecd77ee01504c5554ef971d459843dfe680a",
+    "catalog_local_checkpoint": "bbdfad572a4e407170b1fec80645b313c7db4529",
+    "catalog_receipt": "docs/science/goal-families-release-validation-2026-10-13.json",
+    "design": "docs/grizzly-wilderness-design.md",
+    "publication": "pending matching source and two-preview publication",
+    "authorization": "User explicitly requested normal source/preview pushes and maximal bear/forest design; previous rejected publication text is superseded by later explicit authorization."
   }
 }

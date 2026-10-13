@@ -32,7 +32,7 @@ export function useNativeAppearance(){
  const context=useContext(Context),{dark,p}=context;
  const palette=palettes.find(x=>x.id===p.palette)!;
  const colors={bg:isGrizzly?(dark?'#171a16':'#f6f3ec'):(dark?'#10191d':'#f4f6f7'),ink:dark?'#edf3f5':'#192b30',muted:p.contrast?(dark?'#e4eef3':'#253b44'):(dark?'#b4c7cf':'#4c616a'),green:dark?palette.from:palette.strong,line:p.contrast?(dark?'#a4bbc6':'#637982'):(dark?'#7d949e':'#71858e'),pale:dark?'#293c44':'#e8edef',white:isGrizzly?(dark?'#232820':'#fffefa'):(dark?'#19262c':'#ffffff'),danger:dark?'#ffadb6':'#b62d3b',onAccent:dark?'#132325':'#ffffff',from:palette.from,to:palette.to};
- if(isGrizzly&&p.grizzlyStyle==='wild'){colors.bg=dark?'#080e14':'#eef3f5';colors.white=dark?'#141f29':'#f9fcfd';colors.pale=dark?'#263746':'#dbe5ea';}
+ if(isGrizzly&&p.grizzlyStyle==='wild'){colors.bg=dark?'#07130e':'#f6f0e3';colors.white=dark?'#132219':'#fffaf0';colors.pale=dark?'#293a2b':'#e6e9d5';colors.ink=dark?'#f5f1e3':'#263626';colors.muted=p.contrast?(dark?'#f5f1e3':'#243122'):(dark?'#c0cbb7':'#4d6049');colors.line=p.contrast?(dark?'#d4d9bc':'#56603b'):(dark?'#9e956c':'#82724c');}
  return {...context,colors,headingFamily:isGrizzly?headingFonts.find(x=>x.id===p.headingFont)!.family:'Barlow Condensed'};
 }
 export function useThemedStyles<T extends Record<string,ViewStyle|TextStyle|ImageStyle>>(base:T):T{
@@ -47,7 +47,8 @@ export function useThemedStyles<T extends Record<string,ViewStyle|TextStyle|Imag
    })) as ViewStyle&TextStyle&ImageStyle;
    if(style.fontSize){style.fontSize=Math.max(14,style.fontSize)*(p.textSize/100);if(fonts)style.fontFamily=(isGrizzly?['title','darkTitle','brand']:['title','darkTitle','brandSub']).includes(key)?headingFamily:'Inter';}
    if(isGrizzly&&['title','darkTitle','brand'].includes(key)){style.fontWeight=String(Math.round(headingFonts.find(x=>x.id===p.headingFont)!.weight/100)*100) as TextStyle['fontWeight'];}
-   if(isGrizzly&&p.grizzlyStyle==='wild'&&['card','darkCard'].includes(key)){style.borderRadius=4;style.borderTopWidth=3;style.borderTopColor=c.from;}
+   if(isGrizzly&&p.grizzlyStyle==='wild'&&['card','darkCard'].includes(key)){style.borderRadius=5;style.borderTopWidth=3;style.borderTopColor='#af9761';style.borderColor=c.line;style.shadowColor='#000000';style.shadowOffset={width:3,height:5};style.shadowOpacity=.22;style.shadowRadius=8;style.elevation=3;}
+   if(isGrizzly&&p.grizzlyStyle==='wild'&&['button','secondaryButton'].includes(key)){style.borderRadius=5;style.borderBottomWidth=3;style.borderBottomColor=key==='button'?'#64754b':c.line;}
    if(isGrizzly&&key==='brand'){style.fontSize=16*(p.textSize/100);style.letterSpacing=0;style.fontWeight='400';}
    if(style.lineHeight)style.lineHeight*=p.textSize/100;
    if(key==='input'&&!style.color)style.color=c.ink;
