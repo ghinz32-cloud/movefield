@@ -1,8 +1,8 @@
 /* Local-only app shell; stores code/guides, never decrypted records or API responses. */
-const REVISION = "cdbe2ea06b680cdd089b";
+const REVISION = "b534c17ccb514697fc49";
 const BASE = "/movefield/grizzly/";
 const STATIC_REVIEW = true;
-const ASSETS = ["/movefield/grizzly/assets/cloud-account-2N9_QY4D.js","/movefield/grizzly/assets/index-D6I6cLAb.js","/movefield/grizzly/assets/index-yN_ac8dF.css","/movefield/grizzly/assets/progress-dashboard-W-qGzrKp.js"];
+const ASSETS = ["/movefield/grizzly/assets/cloud-account-CwIv-Nid.js","/movefield/grizzly/assets/index-DBH-TidB.css","/movefield/grizzly/assets/index-e648xqwJ.js","/movefield/grizzly/assets/progress-dashboard-B_uLtyXU.js"];
 const CACHE_PREFIX = "grizzly-fitness-shell-";
 const EXTRA_STATIC = ["fonts/roadrage-heading.ttf","fonts/rubikdistressed-heading.ttf","fonts/rubikburned-heading.ttf","fonts/rubikmarkerhatch-heading.ttf","fonts/rubikwetpaint-heading.ttf","fonts/rubikspraypaint-heading.ttf","fonts/rubikstorm-heading.ttf","fonts/lacquer-heading.ttf","fonts/frijole-heading.ttf","fonts/shojumaru-heading.ttf","fonts/tradewinds-heading.ttf","fonts/rubikmicrobe-heading.ttf","fonts/rubikpuddles-heading.ttf","fonts/butcherman-heading.ttf","fonts/creepster-heading.ttf","fonts/jollylodger-heading.ttf","fonts/almendradisplay-heading.ttf","fonts/rye-heading.ttf","fonts/unifrakturcook-heading.ttf","fonts/sedgwickavedisplay-heading.ttf","fonts/inter-variable.ttf","fonts/barlow-condensed-semibold.ttf","fonts/oswald-heading.ttf","fonts/bitter-heading.ttf","fonts/rajdhani-heading.ttf","fonts/newrocker-heading.ttf","fonts/blackopsone-heading.ttf","fonts/rubikdirt-heading.ttf","fonts/metal-mania-regular.ttf","fonts/bungee-regular.ttf","fonts/sairastencilone-heading.ttf","fonts/stardosstencil-heading.ttf","fonts/pirataone-heading.ttf","fonts/eater-heading.ttf","fonts/nosifer-heading.ttf","brand/grizzly-fitness-logo.jpg","grizzly-favicon.svg","grizzly-paw.svg","brand/wilderness/grizzly-hero-v1.jpg","brand/wilderness/grizzly-forest-v1.jpg"];
 const CACHE = CACHE_PREFIX + REVISION;
