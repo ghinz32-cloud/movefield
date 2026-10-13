@@ -5,7 +5,7 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Extreme Grizzly interactions and 35 fonts are published on the existing previews; all 249 selected served files and 63 original-root files verified. Browser/phone visual and broader launch qualification remain open.",
+  "active_checkpoint": "OG Grizzly and 72 daily context messages are published on both existing previews. All 249 selected served files and 63 original-root files verified; browser/physical-device and broader launch qualification remain open.",
   "completion_claim": "The distinct catalog and maximal Grizzly design milestones are complete and pushed. Fresh browser/device acceptance and full six-prompt completion remain open.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
@@ -1860,5 +1860,18 @@
     "published_pages_commit": "6ec9e3d5dae425d1747487a48804d9d2ea594c7b",
     "publication_receipt": "docs/grizzly-extreme-publication-2026-10-13.json",
     "served_files_verified": 249
+  },
+  "og_grizzly_2026_10_13": {
+    "source_commit": "042efeb0d087d0d4d31668551d993074c0d6339a",
+    "source_tree": "38d5dd2d34ee88ca577e42528e1e37126ff09d4d",
+    "pages_commit": "ce9d2ad46940e6a35bc6eca618b377797e491b13",
+    "pages_tree": "b436770e1b4c1b5d13b58e14d25deec7a534271e",
+    "application_source_sha256": "e8eb9ba30f6d069bb0e14ebcb99d01aa38e73aebe0c9b5e6b121735e0ec632e1",
+    "deployment": {
+      "id": 38399464192,
+      "conclusion": "success",
+      "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38399464192"
+    },
+    "scope": "Presentation release and HTTPS byte verification; browser/device/store acceptance remains unperformed."
   }
 }
