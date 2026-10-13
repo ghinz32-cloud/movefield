@@ -1,3 +1,17 @@
+# Current checkpoint · delivered Android installers and compatible backups · 13 October 2026
+
+Continue from remote `codex/native-delivery-2026-10-13`, compiled implementation `e8fa396d71b40b3644a0fdc9cf201d7d5ffef497`. The isolated checkout is `/workspace/scratch/79a430135566/movefield`. Read `docs/transfer-compatibility-publication-2026-10-13.json`. Both brands are in scope, OG remains removed, compact layout/calendar/features remain, and normal reviewed pushes are already authorized.
+
+Both current Android test APKs are delivered: `Movefield_Android_Test_2026-10-13.apk` and `Grizzly_Android_Test_2026-10-13.apk`. Run `38448438111` compiled/linted/unit-tested both brands and passed actual optimized-resource, package/version, transport/backup/permission/component and historical test-certificate checks. Extracted APK hashes match their artifact receipts and the compiled evidence; both original CI archive digests and source/tree IDs were checked. They are development-signed arm64 test installers, not store-qualified releases. Movefield is the historical `com.ghinz32.movefield` update candidate; Grizzly is a separate prototype identity. The exact user-installed APK and old/new device acceptance remain unconfirmed. Never recommend uninstalling old records.
+
+Both current web previews are published from exact tree `c50544ed807f480f9bb17d30784ead3207ec112a` on Pages `5c77bb25fe526e2a83264121daec64a142f86c86`; deployment `38449872724` succeeded. Both published current JS bundles render the sample flows. All 307 selected served files match, including every one of 63 original-root files. Original modes and previously served compiled chunks are retained. The process polling transport reported cancellation, but the final completed HTTPS receipt was present and verified. This is selected-file verification, not a checksum claim for all 3799 image/archive paths.
+
+Older phone/web password-protected transfers now preview in Settings and require explicit replacement approval. Golden files from the unmodified original writer, fixed-cost authenticated parsing, future-field refusal, stale/active/setup/outbox guards and encrypted native rollback pass 32 cases; all 37 core groups and 26 historical upgrade groups pass. The native recovery screen still requires resolving unreadable old on-device records before this portable import. Current native bundles and complete 247-file source archives are retained separately from the actual APKs.
+
+Next: physical old/new upgrade and restart/storage/reminder/erasure qualification, iPhone/store gates, and the reviewed next-block/starting-baseline editor. Keep the canonical task register open. Connected-service, upstream native advisory and independent review gates remain. Preserve per-set RIR, unknown loads, source prescriptions, detailed equipment contexts, history, creator attribution, separate brands and the original Pages root.
+
+---
+
 # Current checkpoint · compatible backups and Android installer delivery · 13 October 2026
 
 Continue on remote `codex/native-delivery-2026-10-13`; isolated checkout `/workspace/scratch/79a430135566/movefield` retains local `codex/transfer-compatibility-2026-10-13` as a recoverable implementation. Work starts from exact pushed native checkpoint `08e079fd0c9b91c4e47b47d8059e6cf2376699db`. Both brands remain in scope. OG stays removed, the compact UI and clickable calendar stay intact, and original Pages root/older compiled chunks must be preserved. Normal reviewed source, preview publication and current test compilation are already authorized.
