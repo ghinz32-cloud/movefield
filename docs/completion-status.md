@@ -1,3 +1,9 @@
+## Current workout-library milestone · 13 October 2026
+
+Published to the existing [Movefield review](https://ghinz32-cloud.github.io/movefield/review/) and [Grizzly preview](https://ghinz32-cloud.github.io/movefield/grizzly/). Source `ad3eecd77ee01504c5554ef971d459843dfe680a`; Pages `f38c4bf980b2fa25f5153798be2723b2334c5cc2`. The user’s requested minimum of ten actual distinct workout structures per goal is implemented: 145 original definitions; bodybuilding 19, powerbuilding 16, powerlifting 12, strength 13, general fitness 14, calisthenics 10, hybrid 10, running 11 and sport preparation 11. Equipment, time, frequency, experience, running readiness and calendar choices determine the fitting subset. Scientific support and exact app recipe limits are disclosed per goal and per plan.
+
+Twenty-one shared verification groups pass with the disclosed unchanged targeted cloud-race rerun, 6,881 schedule/selection scenarios pass, both web builds and all four cleared-cache native exports pass, and 147 live HTTPS artifact hashes include all 63 preserved original-root files. This completes the requested catalog expansion. Fresh browser, installed-device, exact-routine trial, full literature and overall 72-section launch acceptance remain open. See `docs/science/goal-families-release-validation-2026-10-13.json` and the publication receipt. Historical publication-blocked notes are superseded by the user’s standing request to push changes as they come.
+
 ## Current source and effort continuation · 12 October 2026
 
 The recovered candidate has eight public strength versions and 125 original definitions. The newest milestone verifies GZCLP creator rules in a distinct accepted context, preserves older editions, shows saved RIR per set, and adds web/native RIR corrections. Scientific studies and creator sources have separate filters. See [the milestone report](science/continuation-source-rir-2026-10-12.md) and its validation receipt.
