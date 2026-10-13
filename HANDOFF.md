@@ -1,3 +1,30 @@
+# Completed checkpoint · reviewed loads and final app downloads · 13 October 2026
+
+The tested final release is live. Delivery source `fd158a0af5c228b9654d600079aadece4b2f6366`,
+Pages `9e9b6ff1167f34cd2c19a00ee10bee1abc281b12`, workflow `38467059386` succeeded.
+All 102 selected live files match, including all 63 original Movefield files and
+both public APK part distributions. Both current versions render on the public
+download page. Full receipts are in `docs/block-starting-loads-publication-2026-10-13.json`.
+
+Exact final phone source is `fc3d798d875633cebc8c2b441c9c77f173c967ac`, Android run
+`38462265676`. Movefield 0.1.3/versionCode 4 keeps its historical identity and
+certificate; Grizzly 0.1.2/versionCode 3 remains separate. Both installable files
+and public download parts are verified; saved file identities are preserved.
+All 40 core groups, 18 load cases and 4 actual interface callback journeys pass.
+The display regression for explicitly chosen weights on variations without
+automatic progression is fixed. Both brands retain compact UI, per-set RIR,
+clickable calendars, old records/source stages and previously served chunks.
+
+Continue the canonical task register and available physical-device gates.
+Actual old/new installation, platform stores/restart/reminders/erasure,
+iPhone signing/store, native upstream advisories and connected services remain
+open. Then finish individualized next-block volume/source reset review. Do not
+claim complete six-prompt qualification or suggest uninstalling old records.
+Normal source and existing preview pushes remain authorized. This final receipt
+checkpoint changes no application, installer or served bytes.
+
+---
+
 # Current checkpoint · final reviewed loads and current installers · 13 October 2026
 
 Continue on `codex/native-delivery-2026-10-13` from the exact receipts in

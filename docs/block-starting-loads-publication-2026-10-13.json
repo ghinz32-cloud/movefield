@@ -413,12 +413,758 @@
     "grizzly": "Published sample copy, full schedule and independent 135 lb opening bench review; other weights stay unknown.",
     "scope": "Synthetic samples only; no private vault creation/restore or phone installation. App-origin errors were not observed; browser extension metadata errors excluded."
   },
-  "websitePublication": "Exact final Pages/HTTPS receipts are appended after deployment. Keep the original Movefield root and prior served assets.",
+  "websitePublication": {
+    "checkedAt": "2026-10-13T21:02:13.256072+00:00",
+    "passed": true,
+    "files": 102,
+    "originalRootFiles": 63,
+    "scope": "Selected current resources, both complete verified APK part distributions and every original root file, compared to reviewed candidate bytes.",
+    "fileResults": [
+      {
+        "path": ".nojekyll",
+        "bytes": 0,
+        "passed": true,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "assets/account-security-BMvM1HMu.js",
+        "bytes": 745,
+        "passed": true,
+        "sha256": "2c74652456a55fc6fe62a0e9a2f0515f60d4272eccf8052783b09e4c1ce5e079",
+        "expected": "2c74652456a55fc6fe62a0e9a2f0515f60d4272eccf8052783b09e4c1ce5e079"
+      },
+      {
+        "path": "assets/account-sync-94JU-mmb.js",
+        "bytes": 4038,
+        "passed": true,
+        "sha256": "6ef0c6fc880662877b233aee77e2db5a7d63574bff53d42839faccd9887a37ea",
+        "expected": "6ef0c6fc880662877b233aee77e2db5a7d63574bff53d42839faccd9887a37ea"
+      },
+      {
+        "path": "assets/button-BZyDGPNM.js",
+        "bytes": 39978,
+        "passed": true,
+        "sha256": "5901fcc142fcc2cbab3e3a832b727516580f2b4e73163d99ca5b4f9eede97a99",
+        "expected": "5901fcc142fcc2cbab3e3a832b727516580f2b4e73163d99ca5b4f9eede97a99"
+      },
+      {
+        "path": "assets/cloud-envelope-C74ZEbMR.js",
+        "bytes": 3958,
+        "passed": true,
+        "sha256": "62bd66cb65b74c7a87b837d008334254796210d1bd991e58c7dcfb12be880c67",
+        "expected": "62bd66cb65b74c7a87b837d008334254796210d1bd991e58c7dcfb12be880c67"
+      },
+      {
+        "path": "assets/customize-CnMED5ja.js",
+        "bytes": 3892,
+        "passed": true,
+        "sha256": "35d5c979ffd33cdc5a3123a151adf53c87f3fe9a43b46990cdf7f00860dc49dd",
+        "expected": "35d5c979ffd33cdc5a3123a151adf53c87f3fe9a43b46990cdf7f00860dc49dd"
+      },
+      {
+        "path": "assets/daily-feedback-DyhRMtb8.js",
+        "bytes": 4724,
+        "passed": true,
+        "sha256": "06ec1e5372011cd33002f61091d12dce9272396489d4e84fcba2d033ca73d462",
+        "expected": "06ec1e5372011cd33002f61091d12dce9272396489d4e84fcba2d033ca73d462"
+      },
+      {
+        "path": "assets/equipment-limits-CpHvxzsM.js",
+        "bytes": 2626,
+        "passed": true,
+        "sha256": "8ce4ce386ec9f5179338ca82d59c729fea53b59a0060e71af98e6689edb7c8e0",
+        "expected": "8ce4ce386ec9f5179338ca82d59c729fea53b59a0060e71af98e6689edb7c8e0"
+      },
+      {
+        "path": "assets/exercise-substitutions-CiUmlXxS.js",
+        "bytes": 4114,
+        "passed": true,
+        "sha256": "70362ac867fc88585cd7fb16ca963fc5f553c8ea2acd82752883b7fb266e88e8",
+        "expected": "70362ac867fc88585cd7fb16ca963fc5f553c8ea2acd82752883b7fb266e88e8"
+      },
+      {
+        "path": "assets/index-COMBkNy7.css",
+        "bytes": 225242,
+        "passed": true,
+        "sha256": "7525288ce23f45dce3e2a3d2680eb4e0275c033c74e0670d606858282b22b618",
+        "expected": "7525288ce23f45dce3e2a3d2680eb4e0275c033c74e0670d606858282b22b618"
+      },
+      {
+        "path": "assets/index-CgajflZF.js",
+        "bytes": 646695,
+        "passed": true,
+        "sha256": "f0edcd8b5e79504fc3f0d1bee27c2cf7e5d204d76f87a330fe52572d4c715ea4",
+        "expected": "f0edcd8b5e79504fc3f0d1bee27c2cf7e5d204d76f87a330fe52572d4c715ea4"
+      },
+      {
+        "path": "assets/jsx-runtime-DUAcabCT.js",
+        "bytes": 1066,
+        "passed": true,
+        "sha256": "afa9863e5c6f7611685a66c3ed93ea9226a1af161256ae0e9339e1524204ee53",
+        "expected": "afa9863e5c6f7611685a66c3ed93ea9226a1af161256ae0e9339e1524204ee53"
+      },
+      {
+        "path": "assets/plan-customizer-BiKgyGE1.js",
+        "bytes": 8936,
+        "passed": true,
+        "sha256": "b00324d7bd75598f3128d36c53488feace0095cab5c45d12e89b58eb85ab091b",
+        "expected": "b00324d7bd75598f3128d36c53488feace0095cab5c45d12e89b58eb85ab091b"
+      },
+      {
+        "path": "assets/progress-dashboard-PXcHSRtU.js",
+        "bytes": 368543,
+        "passed": true,
+        "sha256": "3c6dab13341a585f6cf8f7eeba8f840be198239e9edb5e02cac2163291f5a40f",
+        "expected": "3c6dab13341a585f6cf8f7eeba8f840be198239e9edb5e02cac2163291f5a40f"
+      },
+      {
+        "path": "assets/qwen-model-files-DhOkYO_T.js",
+        "bytes": 193126,
+        "passed": true,
+        "sha256": "37042f0c382d85349f3c75efacaa2ef514d7a87e9a6023a701fb9d1494c59efa",
+        "expected": "37042f0c382d85349f3c75efacaa2ef514d7a87e9a6023a701fb9d1494c59efa"
+      },
+      {
+        "path": "assets/qwen-unavailable-IXSK3HSm.js",
+        "bytes": 461,
+        "passed": true,
+        "sha256": "3bd10437f03a9d63f02e37884b3e4a0b05c83c8d0da90aefea4c019d5d9bafe6",
+        "expected": "3bd10437f03a9d63f02e37884b3e4a0b05c83c8d0da90aefea4c019d5d9bafe6"
+      },
+      {
+        "path": "assets/react-dom-Ci36WYJj.js",
+        "bytes": 3580,
+        "passed": true,
+        "sha256": "405891fe4b8e9c1a5f464b147e0f1944bd8d911ef16a3047999ce82fbaa927ad",
+        "expected": "405891fe4b8e9c1a5f464b147e0f1944bd8d911ef16a3047999ce82fbaa927ad"
+      },
+      {
+        "path": "assets/research-library-YDRmiqP-.js",
+        "bytes": 4468,
+        "passed": true,
+        "sha256": "c6093c7f257e4a601e7b237dc270b26fe21955ad11fda12f5b6682a9401dc476",
+        "expected": "c6093c7f257e4a601e7b237dc270b26fe21955ad11fda12f5b6682a9401dc476"
+      },
+      {
+        "path": "assets/session-guide-3EUQPwSU.js",
+        "bytes": 4499,
+        "passed": true,
+        "sha256": "b7bdbfff25b0080ced636e1ced0965d8da1f8a7185752bc36b0df3c9ac7a94e4",
+        "expected": "b7bdbfff25b0080ced636e1ced0965d8da1f8a7185752bc36b0df3c9ac7a94e4"
+      },
+      {
+        "path": "assets/tracking-editor-DBo3vjNH.js",
+        "bytes": 9351,
+        "passed": true,
+        "sha256": "54a8a7a5279f1bff81b7bb8a21addd608890b356f462106e8132563ac5e7079d",
+        "expected": "54a8a7a5279f1bff81b7bb8a21addd608890b356f462106e8132563ac5e7079d"
+      },
+      {
+        "path": "assets/training-day-c54AaLBh.js",
+        "bytes": 4520,
+        "passed": true,
+        "sha256": "1feb1c76d75c3b435e5c96282137ccda17c9718a2eed2430ae07e2362f49c6cf",
+        "expected": "1feb1c76d75c3b435e5c96282137ccda17c9718a2eed2430ae07e2362f49c6cf"
+      },
+      {
+        "path": "assets/training-jn8H07LS.js",
+        "bytes": 794960,
+        "passed": true,
+        "sha256": "fdf0f3092f61218d5557af4d057e61c7a4a8933670c410d2de9161f6a846027c",
+        "expected": "fdf0f3092f61218d5557af4d057e61c7a4a8933670c410d2de9161f6a846027c"
+      },
+      {
+        "path": "assets/training-onboarding-DME_WJCO.js",
+        "bytes": 43238,
+        "passed": true,
+        "sha256": "3ff66aec1cd5845cb260cbcefa910fce6548fbc07bdf242111acad793e0fc9f6",
+        "expected": "3ff66aec1cd5845cb260cbcefa910fce6548fbc07bdf242111acad793e0fc9f6"
+      },
+      {
+        "path": "assets/transfer-bundle-yk--Q7cp.js",
+        "bytes": 23010,
+        "passed": true,
+        "sha256": "3100d84ecd2a5dc16d33e9e4e482a6d7a3438fc30e8c3ffd7024cedc2e528237",
+        "expected": "3100d84ecd2a5dc16d33e9e4e482a6d7a3438fc30e8c3ffd7024cedc2e528237"
+      },
+      {
+        "path": "assets/transfer-dialog-Bp-xjYnY.js",
+        "bytes": 6495,
+        "passed": true,
+        "sha256": "ccd66bb6ba178ae4a232903bd7b0ab851b7e12d6f7635d1248ff6a5f2b346c06",
+        "expected": "ccd66bb6ba178ae4a232903bd7b0ab851b7e12d6f7635d1248ff6a5f2b346c06"
+      },
+      {
+        "path": "assets/workout-coach-Cs9ADjQI.js",
+        "bytes": 27727,
+        "passed": true,
+        "sha256": "a403e3b7d8846e1c4d6ff5cb5cb029e07b5ff7905dafe9ed0438769f67488bb4",
+        "expected": "a403e3b7d8846e1c4d6ff5cb5cb029e07b5ff7905dafe9ed0438769f67488bb4"
+      },
+      {
+        "path": "assets/workout-coaching-CNi2ZBAe.js",
+        "bytes": 23981,
+        "passed": true,
+        "sha256": "c60393c44fb316d2215bd8cbc1e6993dfa323d7ca1dfe96dbf5617c886a5c3af",
+        "expected": "c60393c44fb316d2215bd8cbc1e6993dfa323d7ca1dfe96dbf5617c886a5c3af"
+      },
+      {
+        "path": "assets/workout-coaching-identity-CDHS7c86.js",
+        "bytes": 567,
+        "passed": true,
+        "sha256": "819adab6e423db2f8d7c2bcb25a9671ea7875b3a1158e776cf85565cf98b4a24",
+        "expected": "819adab6e423db2f8d7c2bcb25a9671ea7875b3a1158e776cf85565cf98b4a24"
+      },
+      {
+        "path": "assets/workout-review-FffrZHRw.js",
+        "bytes": 5525,
+        "passed": true,
+        "sha256": "ac42246020459c24af41949ab31dac92ea34910cbf1dbc4b1dc40596c9aee3b2",
+        "expected": "ac42246020459c24af41949ab31dac92ea34910cbf1dbc4b1dc40596c9aee3b2"
+      },
+      {
+        "path": "assets/x-CEXRaG68.js",
+        "bytes": 36473,
+        "passed": true,
+        "sha256": "fb079b3cf7898ed271ff80d2a7714fa0bae9c6da5331ba0c1448a3eea58222cf",
+        "expected": "fb079b3cf7898ed271ff80d2a7714fa0bae9c6da5331ba0c1448a3eea58222cf"
+      },
+      {
+        "path": "downloads/movefield-mobile-r14.zip",
+        "bytes": 2116908,
+        "passed": true,
+        "sha256": "c4739f89df0e4c868d96dad694539f62f13ce2fb86fb9a420d72e958f7eee57f",
+        "expected": "c4739f89df0e4c868d96dad694539f62f13ce2fb86fb9a420d72e958f7eee57f"
+      },
+      {
+        "path": "exercise-content.json",
+        "bytes": 521358,
+        "passed": true,
+        "sha256": "9a17a1c905fe80e7210803a7b1b466c0a207a40b702386f6e75fb891585b68bb",
+        "expected": "9a17a1c905fe80e7210803a7b1b466c0a207a40b702386f6e75fb891585b68bb"
+      },
+      {
+        "path": "exercise-guides.json",
+        "bytes": 2536044,
+        "passed": true,
+        "sha256": "62fa1d71ee08312f6e8809ce60e17e7df7e8a3a8d79f49bed15731592d0f7a38",
+        "expected": "62fa1d71ee08312f6e8809ce60e17e7df7e8a3a8d79f49bed15731592d0f7a38"
+      },
+      {
+        "path": "favicon.svg",
+        "bytes": 460,
+        "passed": true,
+        "sha256": "e60a09d8fe6ca9311ab14f0f9f05a5ed92cb2f74b3a41fc3680bde30f3a0b11e",
+        "expected": "e60a09d8fe6ca9311ab14f0f9f05a5ed92cb2f74b3a41fc3680bde30f3a0b11e"
+      },
+      {
+        "path": "fitness-research.json",
+        "bytes": 834506,
+        "passed": true,
+        "sha256": "437f2724162639849949aed8f6b47b0f8ab1eac88da1e0d4535920d2eebaa757",
+        "expected": "437f2724162639849949aed8f6b47b0f8ab1eac88da1e0d4535920d2eebaa757"
+      },
+      {
+        "path": "fonts/Atkinson-Hyperlegible-OFL.txt",
+        "bytes": 4603,
+        "passed": true,
+        "sha256": "e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18",
+        "expected": "e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18"
+      },
+      {
+        "path": "fonts/Barlow-Condensed-OFL.txt",
+        "bytes": 4377,
+        "passed": true,
+        "sha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+        "expected": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f"
+      },
+      {
+        "path": "fonts/Inter-OFL.txt",
+        "bytes": 4377,
+        "passed": true,
+        "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+        "expected": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+      },
+      {
+        "path": "fonts/Lexend-OFL.txt",
+        "bytes": 4436,
+        "passed": true,
+        "sha256": "5da8505887d0fa7fe963445fd58852707fda34adfeb65af25c99d152bab285bd",
+        "expected": "5da8505887d0fa7fe963445fd58852707fda34adfeb65af25c99d152bab285bd"
+      },
+      {
+        "path": "fonts/Nunito-OFL.txt",
+        "bytes": 4385,
+        "passed": true,
+        "sha256": "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65",
+        "expected": "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65"
+      },
+      {
+        "path": "fonts/Oswald-OFL.txt",
+        "bytes": 4388,
+        "passed": true,
+        "sha256": "23916cdee678823c3c517c699cb2e043088de0d46c959eeaa168b54bb84534df",
+        "expected": "23916cdee678823c3c517c699cb2e043088de0d46c959eeaa168b54bb84534df"
+      },
+      {
+        "path": "fonts/Saira-OFL.txt",
+        "bytes": 4386,
+        "passed": true,
+        "sha256": "f2665d4718b452b3818a877191355ac884a6b9b419d35408fe7ee487e9e8f30f",
+        "expected": "f2665d4718b452b3818a877191355ac884a6b9b419d35408fe7ee487e9e8f30f"
+      },
+      {
+        "path": "fonts/atkinson-hyperlegible-latin-400-normal.woff2",
+        "bytes": 17208,
+        "passed": true,
+        "sha256": "d64ba838ef5472bba248620ec4fd8b5aa7cf0db2908e0bb230600caf279ba7bc",
+        "expected": "d64ba838ef5472bba248620ec4fd8b5aa7cf0db2908e0bb230600caf279ba7bc"
+      },
+      {
+        "path": "fonts/atkinson-hyperlegible-latin-700-normal.woff2",
+        "bytes": 17524,
+        "passed": true,
+        "sha256": "140e2bd25a7315c8a062508391426b0d8c3297400c947b8d847be28f73a199f0",
+        "expected": "140e2bd25a7315c8a062508391426b0d8c3297400c947b8d847be28f73a199f0"
+      },
+      {
+        "path": "fonts/barlow-condensed-semibold.ttf",
+        "bytes": 109428,
+        "passed": true,
+        "sha256": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9",
+        "expected": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9"
+      },
+      {
+        "path": "fonts/inter-variable.ttf",
+        "bytes": 876576,
+        "passed": true,
+        "sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+        "expected": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031"
+      },
+      {
+        "path": "fonts/lexend-latin-400-normal.woff2",
+        "bytes": 14476,
+        "passed": true,
+        "sha256": "0601e0a909219a542cdd581e3f8f1ff8fb208978cbc9bca1c90df02fd8062bb1",
+        "expected": "0601e0a909219a542cdd581e3f8f1ff8fb208978cbc9bca1c90df02fd8062bb1"
+      },
+      {
+        "path": "fonts/lexend-latin-700-normal.woff2",
+        "bytes": 14808,
+        "passed": true,
+        "sha256": "52dcdaa127bac4a5ea4c39ee17a3f454ceacc18d9f2a45cc453eeab68d378588",
+        "expected": "52dcdaa127bac4a5ea4c39ee17a3f454ceacc18d9f2a45cc453eeab68d378588"
+      },
+      {
+        "path": "fonts/nunito-latin-400-normal.woff2",
+        "bytes": 16316,
+        "passed": true,
+        "sha256": "a5906e15ceb68f73d3b2c2076b4057c3f6ed401186d56283b45ce12944ca0735",
+        "expected": "a5906e15ceb68f73d3b2c2076b4057c3f6ed401186d56283b45ce12944ca0735"
+      },
+      {
+        "path": "fonts/nunito-latin-700-normal.woff2",
+        "bytes": 16228,
+        "passed": true,
+        "sha256": "fa89300b9bbb3bd0f60d6991aa055965d98e2ccca27bf8688fe0c39cdc796846",
+        "expected": "fa89300b9bbb3bd0f60d6991aa055965d98e2ccca27bf8688fe0c39cdc796846"
+      },
+      {
+        "path": "fonts/oswald-latin-600-normal.woff2",
+        "bytes": 12740,
+        "passed": true,
+        "sha256": "f6cb541f4d9794b86145c9c3e7d778ffb78c92f8180c577e245238991503da6f",
+        "expected": "f6cb541f4d9794b86145c9c3e7d778ffb78c92f8180c577e245238991503da6f"
+      },
+      {
+        "path": "fonts/oswald-latin-700-normal.woff2",
+        "bytes": 12672,
+        "passed": true,
+        "sha256": "aae665c75af89ea7cb7d8ccc8b0911ea72267442ebcd84f6e3efa041ad3b3c16",
+        "expected": "aae665c75af89ea7cb7d8ccc8b0911ea72267442ebcd84f6e3efa041ad3b3c16"
+      },
+      {
+        "path": "fonts/saira-latin-400-normal.woff2",
+        "bytes": 13876,
+        "passed": true,
+        "sha256": "f477825b1d839c775bda7708f78e933bd246c582e7186769e9a25e9b1a59b350",
+        "expected": "f477825b1d839c775bda7708f78e933bd246c582e7186769e9a25e9b1a59b350"
+      },
+      {
+        "path": "fonts/saira-latin-700-normal.woff2",
+        "bytes": 13732,
+        "passed": true,
+        "sha256": "07eb78fecb9cbc519e08a727d438389b2983a140a4d8651d000141ec55b8bacf",
+        "expected": "07eb78fecb9cbc519e08a727d438389b2983a140a4d8651d000141ec55b8bacf"
+      },
+      {
+        "path": "grizzly/downloads/android-download.js",
+        "bytes": 4138,
+        "passed": true,
+        "sha256": "2e31d302d5a4e35fb81646113ac8cc0b68805d71c994ba6554a4765f45db1933",
+        "expected": "2e31d302d5a4e35fb81646113ac8cc0b68805d71c994ba6554a4765f45db1933"
+      },
+      {
+        "path": "grizzly/downloads/android-installers.json",
+        "bytes": 3132,
+        "passed": true,
+        "sha256": "7bf76d513ac25ef5180cb759721a8594540297ea3041346db7148435fabd51fe",
+        "expected": "7bf76d513ac25ef5180cb759721a8594540297ea3041346db7148435fabd51fe"
+      },
+      {
+        "path": "grizzly/downloads/android.html",
+        "bytes": 4330,
+        "passed": true,
+        "sha256": "9e8edd6c7b2df9ca1c3013240a0c37c5adcbe2272ac4ef9d6d8c13bc617c308b",
+        "expected": "9e8edd6c7b2df9ca1c3013240a0c37c5adcbe2272ac4ef9d6d8c13bc617c308b"
+      },
+      {
+        "path": "grizzly/downloads/grizzly-fitness-native-source.zip",
+        "bytes": 8127267,
+        "passed": true,
+        "sha256": "5b18dbad8c7c83da0229a306d79d9f4d19732d8af9c97cab7eeda202f1e89508",
+        "expected": "5b18dbad8c7c83da0229a306d79d9f4d19732d8af9c97cab7eeda202f1e89508"
+      },
+      {
+        "path": "grizzly/downloads/movefield-native-current.zip",
+        "bytes": 8127267,
+        "passed": true,
+        "sha256": "1174c214098553ef3cc17c41ccc24395333d37b1511a21d393114517d5b3f99a",
+        "expected": "1174c214098553ef3cc17c41ccc24395333d37b1511a21d393114517d5b3f99a"
+      },
+      {
+        "path": "grizzly/downloads/native/grizzly/part-0.bin",
+        "bytes": 10485760,
+        "passed": true,
+        "sha256": "c12a0ad41af742168f0bb4d7c3edc01f4ce557e7d4693e7d3a11e5f98a6121c9",
+        "expected": "c12a0ad41af742168f0bb4d7c3edc01f4ce557e7d4693e7d3a11e5f98a6121c9"
+      },
+      {
+        "path": "grizzly/downloads/native/grizzly/part-1.bin",
+        "bytes": 10485760,
+        "passed": true,
+        "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+        "expected": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8"
+      },
+      {
+        "path": "grizzly/downloads/native/grizzly/part-2.bin",
+        "bytes": 10485760,
+        "passed": true,
+        "sha256": "a760b2854afc2bf157e9b410becc478a60c7b1279fe8bfb8e536fe9e30730ac8",
+        "expected": "a760b2854afc2bf157e9b410becc478a60c7b1279fe8bfb8e536fe9e30730ac8"
+      },
+      {
+        "path": "grizzly/downloads/native/grizzly/part-3.bin",
+        "bytes": 7902714,
+        "passed": true,
+        "sha256": "3b0aef900061ed41b0da1f0f48c08b1a0af772913648cc71fe74e65d3b1915bf",
+        "expected": "3b0aef900061ed41b0da1f0f48c08b1a0af772913648cc71fe74e65d3b1915bf"
+      },
+      {
+        "path": "grizzly/downloads/native/movefield/part-0.bin",
+        "bytes": 10485760,
+        "passed": true,
+        "sha256": "dc05d29932530378f5fb70798cded8d758818eb266035e8f8b6c4a0a34713025",
+        "expected": "dc05d29932530378f5fb70798cded8d758818eb266035e8f8b6c4a0a34713025"
+      },
+      {
+        "path": "grizzly/downloads/native/movefield/part-1.bin",
+        "bytes": 10485760,
+        "passed": true,
+        "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+        "expected": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8"
+      },
+      {
+        "path": "grizzly/downloads/native/movefield/part-2.bin",
+        "bytes": 10485760,
+        "passed": true,
+        "sha256": "efa3a567a7ba3742e4e787d0f5853eed8173dea5912832c75c467b6f02be2425",
+        "expected": "efa3a567a7ba3742e4e787d0f5853eed8173dea5912832c75c467b6f02be2425"
+      },
+      {
+        "path": "grizzly/downloads/native/movefield/part-3.bin",
+        "bytes": 7751456,
+        "passed": true,
+        "sha256": "3d433cb235fb7fbd9620a9bc142f2f4e8440a7d9ea5012f193948c4cdf0b9f46",
+        "expected": "3d433cb235fb7fbd9620a9bc142f2f4e8440a7d9ea5012f193948c4cdf0b9f46"
+      },
+      {
+        "path": "grizzly/grizzly-manifest.json",
+        "bytes": 225588,
+        "passed": true,
+        "sha256": "bc0f1d93b32748da8c56995344d7cd9c92cc227e182721aef79b71f34cbad6ae",
+        "expected": "bc0f1d93b32748da8c56995344d7cd9c92cc227e182721aef79b71f34cbad6ae"
+      },
+      {
+        "path": "grizzly/index.html",
+        "bytes": 1160,
+        "passed": true,
+        "sha256": "0102ec53b734b658b54673ae3af3c1e47948c1e6595af461acca41aac798857d",
+        "expected": "0102ec53b734b658b54673ae3af3c1e47948c1e6595af461acca41aac798857d"
+      },
+      {
+        "path": "grizzly/movefield-sw.js",
+        "bytes": 4265,
+        "passed": true,
+        "sha256": "8be9ba1ccef8648391367565ac06d467162ae33619074a86e7fc88151fb56224",
+        "expected": "8be9ba1ccef8648391367565ac06d467162ae33619074a86e7fc88151fb56224"
+      },
+      {
+        "path": "index.html",
+        "bytes": 60569,
+        "passed": true,
+        "sha256": "03e5b24917fca69179d0282fee294410fe037de2fc02ba076511f1353d253950",
+        "expected": "03e5b24917fca69179d0282fee294410fe037de2fc02ba076511f1353d253950"
+      },
+      {
+        "path": "pages-manifest.json",
+        "bytes": 7591,
+        "passed": true,
+        "sha256": "68e26cf6fe417f1a2914b90599bf8d8fc13a197e2f6d7510f8257af3a87de2d9",
+        "expected": "68e26cf6fe417f1a2914b90599bf8d8fc13a197e2f6d7510f8257af3a87de2d9"
+      },
+      {
+        "path": "privacy.html",
+        "bytes": 15042,
+        "passed": true,
+        "sha256": "8da3cb0250c57ff711634338934ec8e08c16fe7811448bef62cc2dbeb83fcd0b",
+        "expected": "8da3cb0250c57ff711634338934ec8e08c16fe7811448bef62cc2dbeb83fcd0b"
+      },
+      {
+        "path": "review/downloads/android-download.js",
+        "bytes": 4138,
+        "passed": true,
+        "sha256": "2e31d302d5a4e35fb81646113ac8cc0b68805d71c994ba6554a4765f45db1933",
+        "expected": "2e31d302d5a4e35fb81646113ac8cc0b68805d71c994ba6554a4765f45db1933"
+      },
+      {
+        "path": "review/downloads/android-installers.json",
+        "bytes": 3132,
+        "passed": true,
+        "sha256": "7bf76d513ac25ef5180cb759721a8594540297ea3041346db7148435fabd51fe",
+        "expected": "7bf76d513ac25ef5180cb759721a8594540297ea3041346db7148435fabd51fe"
+      },
+      {
+        "path": "review/downloads/android.html",
+        "bytes": 4330,
+        "passed": true,
+        "sha256": "9e8edd6c7b2df9ca1c3013240a0c37c5adcbe2272ac4ef9d6d8c13bc617c308b",
+        "expected": "9e8edd6c7b2df9ca1c3013240a0c37c5adcbe2272ac4ef9d6d8c13bc617c308b"
+      },
+      {
+        "path": "review/downloads/grizzly-fitness-native-source.zip",
+        "bytes": 8127267,
+        "passed": true,
+        "sha256": "5b18dbad8c7c83da0229a306d79d9f4d19732d8af9c97cab7eeda202f1e89508",
+        "expected": "5b18dbad8c7c83da0229a306d79d9f4d19732d8af9c97cab7eeda202f1e89508"
+      },
+      {
+        "path": "review/downloads/movefield-native-current.zip",
+        "bytes": 8127267,
+        "passed": true,
+        "sha256": "1174c214098553ef3cc17c41ccc24395333d37b1511a21d393114517d5b3f99a",
+        "expected": "1174c214098553ef3cc17c41ccc24395333d37b1511a21d393114517d5b3f99a"
+      },
+      {
+        "path": "review/downloads/native/grizzly/part-0.bin",
+        "bytes": 10485760,
+        "passed": true,
+        "sha256": "c12a0ad41af742168f0bb4d7c3edc01f4ce557e7d4693e7d3a11e5f98a6121c9",
+        "expected": "c12a0ad41af742168f0bb4d7c3edc01f4ce557e7d4693e7d3a11e5f98a6121c9"
+      },
+      {
+        "path": "review/downloads/native/grizzly/part-1.bin",
+        "bytes": 10485760,
+        "passed": true,
+        "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+        "expected": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8"
+      },
+      {
+        "path": "review/downloads/native/grizzly/part-2.bin",
+        "bytes": 10485760,
+        "passed": true,
+        "sha256": "a760b2854afc2bf157e9b410becc478a60c7b1279fe8bfb8e536fe9e30730ac8",
+        "expected": "a760b2854afc2bf157e9b410becc478a60c7b1279fe8bfb8e536fe9e30730ac8"
+      },
+      {
+        "path": "review/downloads/native/grizzly/part-3.bin",
+        "bytes": 7902714,
+        "passed": true,
+        "sha256": "3b0aef900061ed41b0da1f0f48c08b1a0af772913648cc71fe74e65d3b1915bf",
+        "expected": "3b0aef900061ed41b0da1f0f48c08b1a0af772913648cc71fe74e65d3b1915bf"
+      },
+      {
+        "path": "review/downloads/native/movefield/part-0.bin",
+        "bytes": 10485760,
+        "passed": true,
+        "sha256": "dc05d29932530378f5fb70798cded8d758818eb266035e8f8b6c4a0a34713025",
+        "expected": "dc05d29932530378f5fb70798cded8d758818eb266035e8f8b6c4a0a34713025"
+      },
+      {
+        "path": "review/downloads/native/movefield/part-1.bin",
+        "bytes": 10485760,
+        "passed": true,
+        "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+        "expected": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8"
+      },
+      {
+        "path": "review/downloads/native/movefield/part-2.bin",
+        "bytes": 10485760,
+        "passed": true,
+        "sha256": "efa3a567a7ba3742e4e787d0f5853eed8173dea5912832c75c467b6f02be2425",
+        "expected": "efa3a567a7ba3742e4e787d0f5853eed8173dea5912832c75c467b6f02be2425"
+      },
+      {
+        "path": "review/downloads/native/movefield/part-3.bin",
+        "bytes": 7751456,
+        "passed": true,
+        "sha256": "3d433cb235fb7fbd9620a9bc142f2f4e8440a7d9ea5012f193948c4cdf0b9f46",
+        "expected": "3d433cb235fb7fbd9620a9bc142f2f4e8440a7d9ea5012f193948c4cdf0b9f46"
+      },
+      {
+        "path": "review/index.html",
+        "bytes": 868,
+        "passed": true,
+        "sha256": "a2b29054b1e6fa0c97df4a0aacf670a102e8f9437b9dcbe9f8ab82ce27a0eb72",
+        "expected": "a2b29054b1e6fa0c97df4a0aacf670a102e8f9437b9dcbe9f8ab82ce27a0eb72"
+      },
+      {
+        "path": "review/movefield-sw.js",
+        "bytes": 3008,
+        "passed": true,
+        "sha256": "6633d3d2f03ae6d9e6d0411626dab09c7814fe058998679ba57cb8f2c465819f",
+        "expected": "6633d3d2f03ae6d9e6d0411626dab09c7814fe058998679ba57cb8f2c465819f"
+      },
+      {
+        "path": "review/review-manifest.json",
+        "bytes": 225680,
+        "passed": true,
+        "sha256": "7027a30cc276ebb4e94f9085db59c748893f8630aec9f7b31f3db885dc6895f9",
+        "expected": "7027a30cc276ebb4e94f9085db59c748893f8630aec9f7b31f3db885dc6895f9"
+      },
+      {
+        "path": "runtime/lib-C9O0qMAG.js",
+        "bytes": 4745911,
+        "passed": true,
+        "sha256": "125e6c1b74e73417f05b49c72c49580a5a511fc2d5b232658034de58f0dae5cf",
+        "expected": "125e6c1b74e73417f05b49c72c49580a5a511fc2d5b232658034de58f0dae5cf"
+      },
+      {
+        "path": "runtime/lib-DcORhR3s.js",
+        "bytes": 6194294,
+        "passed": true,
+        "sha256": "203134a3fd7bfc2b58e7ebf1ddb5d1516124cf348729e829ff9d16b77557e39b",
+        "expected": "203134a3fd7bfc2b58e7ebf1ddb5d1516124cf348729e829ff9d16b77557e39b"
+      },
+      {
+        "path": "runtime/qwen-worker.js",
+        "bytes": 26283,
+        "passed": true,
+        "sha256": "067f818c58c3d04cb617199337007237b5b1447819cf7baf040b65e8f7541b77",
+        "expected": "067f818c58c3d04cb617199337007237b5b1447819cf7baf040b65e8f7541b77"
+      },
+      {
+        "path": "runtime/training-C8u1q4KT.js",
+        "bytes": 1065507,
+        "passed": true,
+        "sha256": "afe700f6213488b4a8c4f0abebdd8a7a649a0f8657403fb136180c570564b78e",
+        "expected": "afe700f6213488b4a8c4f0abebdd8a7a649a0f8657403fb136180c570564b78e"
+      },
+      {
+        "path": "runtime/workout-coaching-worker.js",
+        "bytes": 18826,
+        "passed": true,
+        "sha256": "bbe260316abad93fae39387427e14c4e19ef1ed0eb7973fa3913a373968e3363",
+        "expected": "bbe260316abad93fae39387427e14c4e19ef1ed0eb7973fa3913a373968e3363"
+      },
+      {
+        "path": "sw.js",
+        "bytes": 9986,
+        "passed": true,
+        "sha256": "2e64fdca735affef93f0b0c424c752aadedbf7ee69533864a0e04bf7f5f4c158",
+        "expected": "2e64fdca735affef93f0b0c424c752aadedbf7ee69533864a0e04bf7f5f4c158"
+      },
+      {
+        "path": "review/favicon.svg",
+        "bytes": 460,
+        "passed": true,
+        "sha256": "e60a09d8fe6ca9311ab14f0f9f05a5ed92cb2f74b3a41fc3680bde30f3a0b11e",
+        "expected": "e60a09d8fe6ca9311ab14f0f9f05a5ed92cb2f74b3a41fc3680bde30f3a0b11e"
+      },
+      {
+        "path": "review/assets/index-CqVvuGch.js",
+        "bytes": 1701382,
+        "passed": true,
+        "sha256": "0789b32481425de14673530cb12a4161f2ed80319816f011567c024a412ab77c",
+        "expected": "0789b32481425de14673530cb12a4161f2ed80319816f011567c024a412ab77c"
+      },
+      {
+        "path": "review/assets/index-BlP9CUiQ.css",
+        "bytes": 220034,
+        "passed": true,
+        "sha256": "2ada6438d28d77c6ed5eb9e80c91df9951dc84746d2f96352c33344a25cf79b2",
+        "expected": "2ada6438d28d77c6ed5eb9e80c91df9951dc84746d2f96352c33344a25cf79b2"
+      },
+      {
+        "path": "grizzly/grizzly-favicon.svg",
+        "bytes": 73277,
+        "passed": true,
+        "sha256": "4742340bc977c2a8b028bfc3bc6985efb85ad7b8905fe1d3b9e96ac237d152a9",
+        "expected": "4742340bc977c2a8b028bfc3bc6985efb85ad7b8905fe1d3b9e96ac237d152a9"
+      },
+      {
+        "path": "grizzly/brand/wilderness/grizzly-hero-v1.jpg",
+        "bytes": 385671,
+        "passed": true,
+        "sha256": "eb45c5e512a5acd4ef9ce011c41b81aa02467914f215ef6ea0cc833865c237be",
+        "expected": "eb45c5e512a5acd4ef9ce011c41b81aa02467914f215ef6ea0cc833865c237be"
+      },
+      {
+        "path": "grizzly/assets/index-CgdKradc.js",
+        "bytes": 1704319,
+        "passed": true,
+        "sha256": "6095106639ce8677ac4043001a08921e5e636e5d30e1bda82550b4cddc976c2b",
+        "expected": "6095106639ce8677ac4043001a08921e5e636e5d30e1bda82550b4cddc976c2b"
+      },
+      {
+        "path": "grizzly/assets/index-CHOSEvKG.css",
+        "bytes": 267558,
+        "passed": true,
+        "sha256": "530d3a0606748febd82e291a2c1029a3fd8033746c07dd962e2f3a322c553461",
+        "expected": "530d3a0606748febd82e291a2c1029a3fd8033746c07dd962e2f3a322c553461"
+      }
+    ]
+  },
   "remaining": [
     "Physical old/new Android installation, storage/restart/notifications/erasure",
     "iPhone signing and physical/store validation",
     "Native upstream dependency advisories and connected-provider qualification",
     "Individualized next-block volume and creator terminal-stage reset review",
     "Full canonical six-prompt scope"
-  ]
+  ],
+  "completedAt": "2026-10-13T21:03:40.090339+00:00",
+  "deliverySource": "fd158a0af5c228b9654d600079aadece4b2f6366",
+  "deliveryTree": "75632813a34f75bda61842023be094122a51c279",
+  "pages": {
+    "pagesCommit": "9e9b6ff1167f34cd2c19a00ee10bee1abc281b12",
+    "pagesTree": "b5c021d0c9db1110a0e5120e1551190baf548e22",
+    "basePagesCommit": "f26ead07659664b00404c01660714cc7e4acc0c9",
+    "sourceCommit": "fd158a0af5c228b9654d600079aadece4b2f6366",
+    "sourceTree": "75632813a34f75bda61842023be094122a51c279",
+    "applicationSourceSHA256": "41d674766141b3cc4d88657b6c7fb71417f197378efe0e1b31592163c14211be",
+    "preservedOriginalFiles": 63,
+    "pagesRefUpdated": true,
+    "workflow": 38467059386,
+    "conclusion": "success"
+  },
+  "web": {
+    "movefield": "https://ghinz32-cloud.github.io/movefield/review/",
+    "grizzly": "https://ghinz32-cloud.github.io/movefield/grizzly/",
+    "androidDownloads": "https://ghinz32-cloud.github.io/movefield/review/downloads/android.html",
+    "versionsObserved": [
+      "Movefield 0.1.3",
+      "Grizzly 0.1.2"
+    ]
+  }
 }
