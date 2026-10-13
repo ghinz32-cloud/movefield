@@ -1,3 +1,27 @@
+# Current checkpoint · preserved Android upgrade candidate · 13 October 2026
+
+Continue on `codex/native-upgrade-2026-10-13`, isolated checkout `/workspace/scratch/69fe5a612a8d/movefield`, from the compact documentation checkpoint `0687bd95d0bac03cf6f7962f10e333d88cf12bb4`. Both brands remain in scope. Read `docs/native-upgrade-2026-10-13.md`, its validation/publication receipts and `mobile/ANDROID-UPGRADE.md`.
+
+The explicit legacy Movefield build targets `com.ghinz32.movefield`, versionCode 2, with the existing historical test certificate. Defaults/prototype IDs and Grizzly remain separate. The new read-only old-store reader resolves restore journals, authenticates split history, preserves older saved fields, stages originals encrypted, verifies current state/setup and resumes interrupted writes. Tombstones cannot resurrect stale caches. Missing/corrupt keys/records, unknown fields and conflicting profiles stop with originals intact. Recovery displays the actual error and offers retry/original sharing. Owner erasure covers both stores and keys.
+
+All 35 core groups and 26 migration groups passed, along with both static builds, five distinct Hermes exports, Android prebuild hardening and two 244-file native archives. Do not infer installed-phone acceptance from these checks. The new manual Android test-installer workflow compiles current reviewed source and inspects actual APK identity/backup/TLS/signature. Publication/build receipts below or in the matching docs pin the final result. Source and the two existing web preview pushes remain authorized. Preserve the original Pages root and all prior compiled chunks.
+
+Next: complete exact old/new APK installation and physical storage/restart/notification/erasure checks; add compatibility for older Argon2id transfer files; then resume next-block/starting-baseline editing and the canonical task register. Exact user-installed build, upstream native advisories, connected-provider qualification and store/device gates remain open.
+
+---
+
+# Current checkpoint · data-preserving Android update · 13 October 2026
+
+Continue in `codex/native-delivery-2026-10-13`, checkout `/workspace/scratch/3b87141f57ef/movefield`, based on recovered native checkpoint `d2cbc387c02adaee404393bc1275cf3ab1ea84de` and remote compact checkpoint `0687bd95d0bac03cf6f7962f10e333d88cf12bb4`. Another session committed the native checkpoint during validation, so this continuation uses its own worktree and preserves that checkout. Read `docs/native-upgrade-2026-10-13.md`, `docs/native-upgrade-validation-2026-10-13.json` and `mobile/ANDROID-UPGRADE.md`. The latest user request remains to continue the audit/repair of both brands, especially the downloaded app's spacing and missing features. OG Grizzly stays removed.
+
+Implemented: explicit Movefield historical build identity/version, preservation of original XChaCha20-Poly1305 records/keys, validated encrypted staging with resumable failures and receipt/readback, strict preservation of timestamps/notes/supersets/unknown loads/individual-set effort, recovery retry/original-file sharing, and explicit erasure of legacy records. Recovery controls now scroll on narrow phones. The default prototype and Grizzly identities remain separate. Source ZIPs are refreshed. All 35 core groups and 26 historical-migration scenarios pass; both generated Android packages/security rules and the historical template certificate pass. Distinct current brand exports and the historical Android export are recorded. OS keychain/files/notifications and actual old/new APK installation are not qualified.
+
+The new `Current Android test installers` workflow compiles both flavors from reviewed native-source pushes on this exact branch, with actual APK identity/signature/backup/transport/component checks and retained evidence. Normal source, existing preview publication and test compilation are already authorized. Finish source push, monitor this new workflow, refresh `/review/` and `/grizzly/` downloads, and append the exact publication/build receipt. Preserve all original Pages files and retained compiled assets. Do not offer the historical APK as the new update, describe Hermes/source archives as APKs, or suggest uninstalling existing workout records.
+
+Next after delivery: actual historical-APK upgrade acceptance, older Argon2id transfer compatibility, reviewed next-block/starting-baseline editing and the canonical full task register. This milestone does not complete the full six-prompt launch scope.
+
+---
+
 # Current checkpoint · compact UI and installed-build provenance · 13 October 2026
 
 Continue in `codex/compact-ui-2026-10-13`, checkout `/workspace/scratch/4b7d521a9744/movefield-density`, based on `7b489c929d7188e8cd8354116bc3ff1abfe84fb3`. The user reported excessive whitespace and missing prior features in a downloaded app. Repairs make current native Settings a single scroll surface, restore permanent Plan tools, reduce oversized native artwork/cards, put web RIR inline, restore visible Today actions, and reveal exercise loggers on selection/auto-advance. See `docs/ui-density-{native,web,feature-parity,download-provenance}-2026-10-13.md` and the matching publication receipt when present. Training, stored records, package identity and current progression were not changed.

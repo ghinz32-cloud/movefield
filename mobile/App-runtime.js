@@ -486,9 +486,11 @@ function TrainingApp() {
                 commit(initial);
                 setSaveStatus('On this device');
             }
-        }).catch(() => {
-            if (mounted)
+        }).catch(e => {
+            if (mounted) {
                 setReadError(true);
+                setError(e instanceof Error ? e.message : 'Saved training could not be opened. The original files are kept.');
+            }
         });
         return () => {
             mounted = false;
@@ -687,8 +689,9 @@ function TrainingApp() {
     if (!state)
         return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNativeSafeAreaContext.SafeAreaView, {
             style: [styles.safe, _srcSharedBrand.isGrizzly && appearance.p.grizzlyStyle === 'wild' && !appearance.p.contrast && {backgroundColor: 'transparent'}],
-            children: /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                style: styles.content,
+            children: /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.ScrollView, {
+                contentContainerStyle: styles.content,
+                keyboardShouldPersistTaps: "handled",
                 children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NativeDenHero, {compact: true}), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Heading, {
                         eyebrow: _srcSharedBrand.brand.name.toUpperCase(),
                         title: readError ? 'Saved data needs attention' : 'Opening your training',
@@ -696,11 +699,24 @@ function TrainingApp() {
                     }), readError ? /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.body,
-                                children: "The encrypted file is preserved. A missing device key requires your saved recovery key."
+                                children: "Your original files are kept. Retry opening training after a temporary storage failure, or use a verified recovery file and key."
                             }), error && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 accessibilityRole: "alert",
                                 style: styles.errorText,
                                 children: error
+                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                                label: "Retry opening training",
+                                onPress: () => {
+                                    if (resettingRef.current) return;
+                                    resettingRef.current = true;
+                                    void (0, _srcStorage.readLocalState)().then(saved => {
+                                        const initial = saved ?? (0, _srcMobileEngine.emptyDemo)();
+                                        storeRef.current = createStore(initial);
+                                        commit(initial);
+                                        setReadError(false);
+                                        setError('');
+                                    }).catch(e => setError(e instanceof Error ? e.message : 'Saved training could not be opened.')).finally(() => {resettingRef.current = false;});
+                                }
                             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.TextInput, {
                                 accessibilityLabel: "Device recovery key",
                                 style: styles.input,
@@ -779,7 +795,7 @@ function TrainingApp() {
                             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
                                 label: "Share the original saved file",
                                 onPress: () => {
-                                    void (0, _srcStorage.encryptedLocalBackup)().then(async (raw) => {
+                                    void (0, _srcStorage.originalSavedFile)().then(async (raw) => {
                                         if (raw)
                                             await (0, _srcFileTransfer.shareJsonFile)(raw, 'original-saved-file');
                                         else

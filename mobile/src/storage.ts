@@ -1,5 +1,5 @@
 import {nativeRecordBackend} from './record-backend';
-import {nativeStorageKey} from './shared/brand';
+import {isGrizzly,nativeStorageKey} from './shared/brand';
 import {createRecordStateStorage,decodeRecordBundle,encryptedRecordBundle} from './shared/record-state';
 import {cloudDigest} from './cloud-vault';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -55,6 +55,30 @@ async function decryptWith(k:KeyRecord,raw:string,purpose:'state'|'setup'){
 }
 function store(key:string,purpose:'state'|'setup',validate:(raw:string)=>unknown){return encryptedStorage({read:()=>AsyncStorage.getItem(key),write:raw=>AsyncStorage.setItem(key,raw),encrypt:raw=>encrypt(raw,purpose),decrypt:raw=>decrypt(raw,purpose),validate:raw=>{validate(raw)}})}
 const setup=store(SETUP_KEY,'setup',readSetupDraft);
+const legacyLineage=!isGrizzly&&process.env.EXPO_PUBLIC_NATIVE_LINEAGE==='legacy-movefield';
+let upgrade:Promise<void>|null=null;
+function ensureLegacyUpgrade():Promise<void>{
+ if(!legacyLineage)return Promise.resolve();
+ return upgrade??=(async()=>{
+  const {runLegacyUpgrade}=await import('./legacy-upgrade-native'),backend=await nativeRecordBackend();
+  const writer=createRecordStateStorage({backend,digest:cloudDigest,seal:raw=>encrypt(raw,'state'),open:raw=>decrypt(raw,'state'),legacyRead:async()=>null,legacyWrite:async()=>{}});
+  await runLegacyUpgrade({seal:raw=>encrypt(raw,'setup'),open:raw=>decrypt(raw,'setup')},{
+   hasTarget:async()=>await backend.root()!==null||!!(await AsyncStorage.getItem(SETUP_KEY))&&isVault((await AsyncStorage.getItem(SETUP_KEY))!),
+   install:async stage=>{
+    if(stage.state){const current=await writer.read();if(current&&JSON.stringify(current)!==JSON.stringify(stage.state))throw Error('The current profile conflicts with the staged upgrade. Both copies are retained.');if(!current)await writer.write(stage.state)}
+    else if(await backend.root()!==null)throw Error('A new profile appeared during upgrade. Both copies are retained.');
+    if(stage.setup){const raw=await AsyncStorage.getItem(SETUP_KEY);if(raw&&isVault(raw)&&JSON.stringify(readSetupDraft(await decrypt(raw,'setup')))!==JSON.stringify(stage.setup))throw Error('The current setup conflicts with the staged upgrade. Both copies are retained.');await setup.write(JSON.stringify(stage.setup))}
+    else await AsyncStorage.removeItem(SETUP_KEY);
+   },
+   verify:async stage=>{
+    if(JSON.stringify(await writer.read())!==JSON.stringify(stage.state))throw Error('The upgraded training could not be verified. The original records are kept.');
+    const raw=await setup.read();if(JSON.stringify(raw===null?null:readSetupDraft(raw))!==JSON.stringify(stage.setup))throw Error('The upgraded setup could not be verified. The original records are kept.');
+    const root=await backend.root();if(root!==null){await AsyncStorage.setItem(KEY,root);if(await AsyncStorage.getItem(KEY)!==root)throw Error('The upgraded index cache could not be verified. The original records are kept.')}
+    else {await AsyncStorage.removeItem(KEY);if(await AsyncStorage.getItem(KEY)!==null)throw Error('The retired legacy cache could not be cleared. The original database is kept.')}
+   },
+  });
+ })().catch(e=>{upgrade=null;throw e});
+}
 let records:Promise<ReturnType<typeof createRecordStateStorage>>|null=null;
 function recordPersonal(){return records??=nativeRecordBackend().then(backend=>createRecordStateStorage({backend,digest:cloudDigest,seal:raw=>encrypt(raw,'state'),open:raw=>decrypt(raw,'state'),legacyRead:()=>AsyncStorage.getItem(KEY),legacyWrite:raw=>AsyncStorage.setItem(KEY,raw)}))}
 async function flushPersonal(){if(records)await (await records).flush()}
@@ -62,16 +86,21 @@ let sampleWrites:Promise<void>=Promise.resolve();
 function sampleWrite(key:string,raw:string|null){const task=sampleWrites.catch(()=>undefined).then(()=>raw===null?AsyncStorage.removeItem(key):AsyncStorage.setItem(key,raw));sampleWrites=task;return task}
 export async function readLocalState(sample=false):Promise<State|null>{
  if(sample){await sampleWrites.catch(()=>undefined);const raw=await AsyncStorage.getItem(SAMPLE_KEY);return raw===null?null:readSavedState(raw)}
- const backend=await nativeRecordBackend(),local=await recordPersonal(),migrating=await backend.root()===null,state=await local.read();if(state&&migrating)await local.write(state);return state;
+ await ensureLegacyUpgrade();const backend=await nativeRecordBackend(),local=await recordPersonal(),migrating=await backend.root()===null,state=await local.read();if(state&&migrating)await local.write(state);return state;
 }
-export async function saveLocalState(state:State,sample=false):Promise<void>{const raw=JSON.stringify(state);readSavedState(raw);await (sample?sampleWrite(SAMPLE_KEY,raw):(await recordPersonal()).write(state));if(!sample)storageErased=false}
+export async function saveLocalState(state:State,sample=false):Promise<void>{const raw=JSON.stringify(state);readSavedState(raw);if(!sample)await ensureLegacyUpgrade();await (sample?sampleWrite(SAMPLE_KEY,raw):(await recordPersonal()).write(state));if(!sample)storageErased=false}
 export async function resetLocalState(sample=false):Promise<void>{await (sample?sampleWrites:flushPersonal()).catch(()=>undefined);if(!sample)throw Error('Personal records are preserved. Use a confirmed replacement backup or erase action.');await sampleWrite(SAMPLE_KEY,null);await sampleWrite(SAMPLE_SETUP,null)}
-export async function readLocalSetup(sample=false):Promise<ReturnType<typeof readSetupDraft>|null>{if(sample){await sampleWrites.catch(()=>undefined);const raw=await AsyncStorage.getItem(SAMPLE_SETUP);return raw===null?null:readSetupDraft(raw)}await setup.migrate();const raw=await setup.read();return raw===null?null:readSetupDraft(raw)}
-export function saveLocalSetup(draft:ReturnType<typeof readSetupDraft>,sample=false):Promise<void>{const raw=JSON.stringify(draft);readSetupDraft(raw);return sample?sampleWrite(SAMPLE_SETUP,raw):setup.write(raw)}
-export async function clearLocalSetup(sample=false):Promise<void>{if(sample)return sampleWrite(SAMPLE_SETUP,null);await setup.flush().catch(()=>undefined);await AsyncStorage.removeItem(SETUP_KEY)}
+export async function readLocalSetup(sample=false):Promise<ReturnType<typeof readSetupDraft>|null>{if(sample){await sampleWrites.catch(()=>undefined);const raw=await AsyncStorage.getItem(SAMPLE_SETUP);return raw===null?null:readSetupDraft(raw)}await ensureLegacyUpgrade();await setup.migrate();const raw=await setup.read();return raw===null?null:readSetupDraft(raw)}
+export async function saveLocalSetup(draft:ReturnType<typeof readSetupDraft>,sample=false):Promise<void>{const raw=JSON.stringify(draft);readSetupDraft(raw);if(!sample)await ensureLegacyUpgrade();return sample?sampleWrite(SAMPLE_SETUP,raw):setup.write(raw)}
+export async function clearLocalSetup(sample=false):Promise<void>{if(sample)return sampleWrite(SAMPLE_SETUP,null);await ensureLegacyUpgrade();await setup.flush().catch(()=>undefined);await AsyncStorage.removeItem(SETUP_KEY)}
 /** Explicit recovery material: show only on owner request, never log or put beside a backup. */
 export async function localRecoveryKey(){return JSON.stringify(await keyRecord())}
 export async function encryptedLocalBackup(){await flushPersonal().catch(()=>undefined);return encryptedRecordBundle(await nativeRecordBackend(),()=>AsyncStorage.getItem(KEY))}
+/** Owner-requested original recovery copy; never includes platform keys. */
+export async function originalSavedFile(){
+ if(legacyLineage){const source=await (await import('./legacy-upgrade-native')).readLegacySource();if(source)return JSON.stringify({format:'movefield-native-recovery-records-v2',revision:source.snapshot.revision,records:source.snapshot.records})}
+ return encryptedLocalBackup();
+}
 export async function previewLocalBackup(raw:string,recovery:string):Promise<State>{
  const k=validateKey(recovery);return decodeRecordBundle(raw,{digest:cloudDigest,open:cipher=>decryptWith(k,cipher,'state')});
 }
@@ -91,7 +120,7 @@ export async function restoreDeviceKey(recovery:string){const existing=await enc
 export async function flushLocalSetup(sample=false){await (sample?sampleWrites:setup.flush())}
 
 /** Owner-confirmed local erasure. Keep ciphertext decryptable if deletion fails. */
-export async function erasePrivateProfile(){storageGeneration++;storageErased=true;await flushPersonal().catch(()=>undefined);await setup.flush().catch(()=>undefined);await cloudWrites.catch(()=>undefined);await AsyncStorage.multiRemove([KEY,SETUP_KEY,CLOUD_OUTBOX]);if((await AsyncStorage.multiGet([KEY,SETUP_KEY,CLOUD_OUTBOX])).some(([,value])=>value!==null))throw Error('Some private files could not be erased. The recovery key is retained.');await (await nativeRecordBackend()).clear();if(records)(await records).reset();await SecureStore.deleteItemAsync(SECRET,secureOptions);pendingKey=null;knownKeys=new Map();}
+export async function erasePrivateProfile(){storageGeneration++;storageErased=true;await upgrade?.catch(()=>undefined);await flushPersonal().catch(()=>undefined);await setup.flush().catch(()=>undefined);await cloudWrites.catch(()=>undefined);if(legacyLineage)await (await import('./legacy-upgrade-native')).eraseLegacyUpgrade();await AsyncStorage.multiRemove([KEY,SETUP_KEY,CLOUD_OUTBOX]);if((await AsyncStorage.multiGet([KEY,SETUP_KEY,CLOUD_OUTBOX])).some(([,value])=>value!==null))throw Error('Some private files could not be erased. The recovery key is retained.');await (await nativeRecordBackend()).clear();if(records)(await records).reset();await SecureStore.deleteItemAsync(SECRET,secureOptions);pendingKey=null;knownKeys=new Map();upgrade=null;}
 
 export async function encryptedStateBackup(state:State){const raw=JSON.stringify(state);readSavedState(raw);return encrypt(raw,'state')}
 

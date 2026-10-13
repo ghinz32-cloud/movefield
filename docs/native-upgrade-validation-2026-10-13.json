@@ -1,0 +1,292 @@
+{
+  "checkedAt": "2026-10-13T17:56:23.186154+00:00",
+  "baselineSource": "0687bd95d0bac03cf6f7962f10e333d88cf12bb4",
+  "scope": "Current Movefield/Grizzly source with synthetic storage/OS boundaries and generated Android projects; no APK installation or physical-device acceptance.",
+  "core": {
+    "ran_at": "2026-10-13T17:49:08.376Z",
+    "scope": "Local synthetic domain/adapter and type checks; no device, connected provider or deployment qualification.",
+    "results": [
+      {
+        "name": "runtime module contracts",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 6399
+      },
+      {
+        "name": "production bundled training",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2876
+      },
+      {
+        "name": "complete training lifecycles",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 8517
+      },
+      {
+        "name": "web workout and setup controls",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1269
+      },
+      {
+        "name": "native interaction callbacks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1269
+      },
+      {
+        "name": "native compact layout and focus",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 340
+      },
+      {
+        "name": "offline update lifecycle",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 318
+      },
+      {
+        "name": "Grizzly appearance and retired preset migration",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 773
+      },
+      {
+        "name": "clickable web calendar",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1103
+      },
+      {
+        "name": "Grizzly daily context and local day changes",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1185
+      },
+      {
+        "name": "preview ownership and retained assets",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 545
+      },
+      {
+        "name": "Grizzly motion and licensed fonts",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 478
+      },
+      {
+        "name": "distinct goal families and flexible selection",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1730
+      },
+      {
+        "name": "creator-source and set-effort refinements",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 867
+      },
+      {
+        "name": "public source rules and scientific accounting",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1031
+      },
+      {
+        "name": "Today facts and actions",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 712
+      },
+      {
+        "name": "transactional encrypted records",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 8068
+      },
+      {
+        "name": "activity progress and comparison context",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1011
+      },
+      {
+        "name": "evidence/duration/calendar zones",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 6317
+      },
+      {
+        "name": "calendar and reusable blocks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1263
+      },
+      {
+        "name": "reusable block equipment guards",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1786
+      },
+      {
+        "name": "Cloudflare account/storage/coaching",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 5469
+      },
+      {
+        "name": "portable cloud vault and retry",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 3095
+      },
+      {
+        "name": "native SDK cookie transport",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1289
+      },
+      {
+        "name": "plan import",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 836
+      },
+      {
+        "name": "durability",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 913
+      },
+      {
+        "name": "vault and history",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1333
+      },
+      {
+        "name": "historical native upgrade preservation",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 29077
+      },
+      {
+        "name": "native encrypted adapter",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1544
+      },
+      {
+        "name": "native file transfer",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 325
+      },
+      {
+        "name": "security",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 785
+      },
+      {
+        "name": "data and calendar",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 772
+      },
+      {
+        "name": "web types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 9603
+      },
+      {
+        "name": "native types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 5115
+      },
+      {
+        "name": "native engine",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2362
+      }
+    ]
+  },
+  "historicalMigration": {
+    "checkedAt": "2026-10-13T17:48:47.792Z",
+    "groups": 26,
+    "passed": true,
+    "scope": "Historical XChaCha20-Poly1305 envelopes and actual adapter/storage code with real SQLite/AES-GCM; OS secure store and filesystem mocked. No old/new APK installation claim."
+  },
+  "generatedAndroidProjects": {
+    "movefield": {
+      "scope": "Generated Movefield Android upgrade project and template test signing certificate only; merged APK/lint/device acceptance remains unverified.",
+      "package": "com.ghinz32.movefield",
+      "versionCode": 2,
+      "templateCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+      "cleartextDenied": true,
+      "fullBackupDomainsExcluded": true
+    },
+    "grizzly": {
+      "scope": "Generated Grizzly Android project only; merged APK permissions, signature, lint and install remain CI/device checks.",
+      "package": "com.ghinz32.grizzlyfitness.prototype",
+      "versionCode": 1,
+      "cleartextDenied": true,
+      "fullBackupDomainsExcluded": true
+    }
+  },
+  "nativeExports": {
+    "checked_at": "2026-10-13T17:56:23.157124+00:00",
+    "scope": "Distinct cleared-cache Hermes exports, paired with native identity/module checks; no installed-device claim.",
+    "flavors": {
+      "movefield": {
+        "android": {
+          "path": "_expo/static/js/android/index-3d3531bbe4406fc82c964c9125808262.hbc",
+          "bytes": 4676880,
+          "sha256": "476adce841495f3403c566f7b7b14ce2af5d82e2e4c22f29b520f80ff17d1210"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-d7723829d5cf9f20724dc8265ad466eb.hbc",
+          "bytes": 4663517,
+          "sha256": "a95b855039dd8c143c87fe85a4f1fa08ec0c4f50479e526cdda43efbe009b137"
+        }
+      },
+      "grizzly": {
+        "android": {
+          "path": "_expo/static/js/android/index-5964474b6e896ff160b4a73541641992.hbc",
+          "bytes": 4676721,
+          "sha256": "3377f013e8ff55df2e45f717edc7c87381d420cd26381ec2cf7bdf761e156b11"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-1d8779dfb41cf620fbef337a41d4b225.hbc",
+          "bytes": 4663706,
+          "sha256": "df0050eb58940c643742a0002879d5ac1d3d3144dcf6f205d3b10bd08ab05b18"
+        }
+      }
+    }
+  },
+  "legacyAndroidExport": {
+    "sha256": "2fcd0d1d9a116bc00ad29d169465c847edf665882e84b40053846e4e61f196fc",
+    "bytes": 4676721,
+    "scope": "Cleared-cache Hermes export with legacy-movefield lineage; not an installer."
+  },
+  "remaining": [
+    "Compile and inspect both current test APKs from the pushed source.",
+    "Install the exact upgrade over the historical APK and verify history, setup, active workout/rest timer, offline restart and erasure.",
+    "Physical Android/iOS and notification lifecycle acceptance.",
+    "Older Argon2id movefield-transfer imports.",
+    "Canonical six-prompt task-register gates, connected services and upstream native-tooling advisories."
+  ],
+  "finalRecoveryLayoutChecks": {
+    "nativeDensity": "passed",
+    "nativeInteractionCallbacks": "passed",
+    "webWorkoutControls": "passed",
+    "scope": "Focused source/handler checks after placing the native recovery controls in a ScrollView; no rendered-device assertion."
+  }
+}

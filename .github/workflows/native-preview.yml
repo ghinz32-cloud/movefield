@@ -1,0 +1,111 @@
+name: Current Android test installers
+on:
+  push:
+    branches: [codex/native-upgrade-2026-10-13, codex/native-delivery-2026-10-13]
+    paths:
+      - '.github/workflows/native-preview.yml'
+      - 'mobile/**'
+      - 'lib/**'
+      - 'scripts/check-legacy-native-upgrade.cjs'
+      - 'scripts/check-native-preview-identity.py'
+      - 'scripts/extract-apk-rules.py'
+      - 'scripts/inspect-native-artifacts.py'
+  workflow_dispatch:
+    inputs:
+      app:
+        description: App to compile
+        type: choice
+        options: [both, movefield, grizzly]
+        default: both
+        required: true
+      source_ref:
+        description: Reviewed source branch or commit to compile
+        type: string
+        default: codex/native-delivery-2026-10-13
+        required: true
+permissions:
+  contents: read
+env:
+  CI: '1'
+  EXPO_NO_TELEMETRY: '1'
+jobs:
+  android:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        app: ${{ fromJSON(inputs.app == 'movefield' && '["movefield"]' || inputs.app == 'grizzly' && '["grizzly"]' || '["movefield","grizzly"]') }}
+    env:
+      EXPO_PUBLIC_APP_VARIANT: ${{ matrix.app }}
+      EXPO_PUBLIC_NATIVE_LINEAGE: ${{ matrix.app == 'movefield' && 'legacy-movefield' || '' }}
+      NATIVE_EXPECTED_PACKAGE: ${{ matrix.app == 'movefield' && 'com.ghinz32.movefield' || 'com.ghinz32.grizzlyfitness.prototype' }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          ref: ${{ inputs.source_ref || github.sha }}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Install locked sources
+        run: |
+          corepack enable && corepack prepare pnpm@11.25.0 --activate
+          pnpm install --frozen-lockfile --prod=false --ignore-scripts
+          cd mobile
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify current source and historical-record upgrade
+        run: |
+          node scripts/check-runtime-boundaries.mjs
+          node scripts/check-legacy-native-upgrade.cjs
+          cd mobile
+          npm run check
+      - name: Record exact installer source
+        run: |
+          mkdir -p native-preview/evidence
+          git rev-parse HEAD HEAD^{tree} > native-preview/evidence/source.txt
+      - name: Generate Android project
+        working-directory: mobile
+        run: node node_modules/expo/bin/cli prebuild --platform android --no-install
+      - name: Install Android toolchain
+        run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-36" "build-tools;36.0.0" "ndk;27.1.12297006" "cmake;3.30.5" "cmake;3.31.5"'
+      - name: Compile and lint release-variant test APK
+        working-directory: mobile/android
+        run: ./gradlew :app:assembleRelease :app:lintRelease :app:testReleaseUnitTest --no-daemon -PreactNativeArchitectures=arm64-v8a -Porg.gradle.jvmargs="-Xmx5g -XX:MaxMetaspaceSize=1g"
+      - name: Inspect actual APK identity, transport, backup rules and signature
+        run: |
+          apk=mobile/android/app/build/outputs/apk/release/app-release.apk
+          evidence=native-preview/evidence
+          "$ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer" manifest print "$apk" > "$evidence/manifest.xml"
+          "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump resources "$apk" > "$evidence/resources.txt"
+          python3 scripts/extract-apk-rules.py "$apk" "$evidence/manifest.xml" "$evidence/resources.txt" "$ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer" "$evidence"
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --print-certs "$apk" > "$evidence/signing.txt"
+          python3 scripts/inspect-native-artifacts.py android "$evidence/manifest.xml" "$evidence/backup.xml" "$evidence/extraction.xml" "$evidence/resources.txt" > "$evidence/inspection.json"
+          python3 scripts/check-native-preview-identity.py "$evidence/manifest.xml" "$evidence/signing.txt"
+      - name: Package test installer with evidence
+        env:
+          PREVIEW_APP: ${{ matrix.app }}
+        run: |
+          cp mobile/android/app/build/outputs/apk/release/app-release.apk "native-preview/$PREVIEW_APP-arm64-test.apk"
+          cd native-preview
+          sha256sum *.apk > SHA256SUMS
+      - name: Retain installable test APK
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ${{ matrix.app }}-arm64-current-test-only
+          path: native-preview
+          if-no-files-found: error
+          retention-days: 30
+      - name: Retain compilation and lint reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ${{ matrix.app }}-current-compilation-evidence
+          path: |
+            native-preview/evidence
+            mobile/android/app/build/reports
+          if-no-files-found: warn
