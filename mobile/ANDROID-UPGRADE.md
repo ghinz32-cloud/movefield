@@ -1,7 +1,7 @@
 # Android update candidate
 
 The `legacy-movefield` build targets the repository's October 9 test installer,
-`com.ghinz32.movefield`, with versionCode 3 (the earlier October 13 candidate used versionCode 2). It uses the existing Expo test
+`com.ghinz32.movefield`, with versionCode 4 (the earlier October 13 candidates used versionCodes 2 and 3). It uses the existing Expo test
 certificate. The default Movefield and Grizzly prototype identities remain
 separate. Do not uninstall the earlier app to install this candidate.
 

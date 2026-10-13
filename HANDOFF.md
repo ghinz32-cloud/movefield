@@ -13,8 +13,8 @@ zero, capacity and stale-review guards. Later loads retain normal progression;
 creator stages/editions, targets, supersets, saved blocks and history are kept.
 Failed writes retain drafts. Read `docs/block-starting-loads-2026-10-13.md`.
 
-Android candidates advance to historical Movefield versionCode 3 and separate
-Grizzly versionCode 2 using the same test certificate. Only exact compiled APK
+Android candidates advance to historical Movefield versionCode 4 and separate
+Grizzly versionCode 3 using the same test certificate. Only exact compiled APK
 receipts establish installer delivery; exports/source ZIPs do not establish a
 phone update. Physical upgrade/restart/storage/reminders/erasure, iPhone/store,
 upstream native advisories and provider gates remain open. Next: qualify those
