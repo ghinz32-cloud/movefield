@@ -1,12 +1,14 @@
 # On-device models for Movefield
 
+Current artifact/runtime verification: `docs/qwen-runtime-verification-2026-10-08.md` and `lib/qwen-assets.json` supersede the older sizes/API examples below where they differ. Seven selected Android/web candidates have immutable artifact metadata and exact-context qualification logic. No runtime inference or device qualification has run. Native 4B is a 2.693 GB selected download with a 2048-token export context; web Qwen3.5 9B is a separate 5.068 GB desktop candidate. The dated discussion below remains historical.
+
 Research checked 7 October 2026. This is an integration recommendation; no model is installed, included in the app download, or benchmarked on a phone yet.
 
 Start with short summaries of saved workouts. Keep the existing training rules responsible for exercises, loads, recovery holds, progression and dates. A model can explain verified results or turn a request into a proposed change; it must not apply a change itself. The app should remain fully usable without a model.
 
 ## Current product direction — Qwen tiers
 
-The requested direction is Qwen3 with optional 0.6B, 1.7B and 4B builds. Automatic should prefer 4B on qualified phones and step down to tested smaller builds when necessary. A phone being new or reporting a large total RAM value is not qualification. Test the exact model revision, runtime, OS/backend, peak process memory, response time, sustained temperature and battery impact. Ask before each download; allow cancellation, retry and deletion. The prototype currently saves this choice only.
+Current first model: Qwen3 0.6B (owner decision, October 2026; see `ai-feedback-plan.md` section 3). The longer-term direction is Qwen3 with optional 0.6B, 1.7B and 4B builds. Automatic should prefer 4B on qualified phones and step down to tested smaller builds when necessary. A phone being new or reporting a large total RAM value is not qualification. Test the exact model revision, runtime, OS/backend, peak process memory, response time, sustained temperature and battery impact. Ask before each download; allow cancellation, retry and deletion. The prototype currently saves this choice only.
 
 XNNPACK 4-bit model files are about 482 MB, 1.2 GB and 2.5 GB respectively, plus an approximately 10.9 MB tokenizer. Apple MLX builds are about 599 MB, 1.4 GB and 2.7 GB respectively. These are file sizes, not app RAM requirements. All tiers must preserve the same existing safety and change-approval rules.
 

@@ -1,0 +1,110 @@
+{
+  "milestone": "SCI1",
+  "timestamp": "2026-10-09T17:43:43.657802+00:00",
+  "regression": {
+    "mode": "full attempt plus exact repaired-suite reruns; not one all-green full run",
+    "fullPassed": 51,
+    "fullTotal": 53,
+    "repaired": {
+      "check-shared.cjs": "39 canonical/native shared hashes pass after final recipe sync",
+      "check-training.cjs": "29 checks pass after fixture switched to cached canonical TypeScript module graph"
+    },
+    "effectivePassingSuites": 53,
+    "newRuntimeFixAfterFullAttempt": false,
+    "nextCI": "Full 53-suite quality run on published source"
+  },
+  "production": {
+    "passed": 3,
+    "total": 3,
+    "finalFreshBuild": true
+  },
+  "webTypes": "pass",
+  "nativeTypes": "pass after final canonical sync",
+  "productLint": "pass",
+  "nativeEngine": "pass after final canonical sync",
+  "hermesExports": [
+    "android pass",
+    "ios pass"
+  ],
+  "artifactInspectorFixtures": 54,
+  "focusedScienceGroups": 16,
+  "peer": {
+    "scheduleProfiles": 51191,
+    "scheduleAccepted": 41832,
+    "scheduleUnavailable": 9359,
+    "scheduleInvariantFailures": 0,
+    "boundaries": 86,
+    "focusProfiles": 1125,
+    "focusAccepted": 527,
+    "focusRejected": 598,
+    "focusInvariantFailures": 0,
+    "additionalFocusCases": 2
+  },
+  "canonicalZipParity": 6,
+  "sourceSHA256": {
+    "lib/training.ts": "be27eb1bc30c2823df371d7712309264f109516f85f07e43ec5d1ad432b251d5",
+    "lib/training-focus.ts": "3e4a94e9a6a4ec4056e195e244edcf6dd6f365dbbb432e17d35f8e3f3babba39",
+    "lib/program-catalog.ts": "d5ab1eb1c61338dc58e8c06aa1899f967574a2c9c6102e6be7e783396018949c",
+    "lib/program-evidence.ts": "beaad36890c37d5de560cfdb0d26776e62b4e2cec21722e912a7dc57e0a313c4",
+    "lib/onboarding.ts": "eda6111409d23a9c54f334adb20e0a4b999755016ab10fc5a4b75325e48dcecc",
+    "lib/recipes.json": "a6b5f0e919cf0f3ba492e67db8164223e333dab70e24bfab830796136c02c175",
+    "app/page.tsx": "4c3fd9d87955ac15286503129ab96e229dbeefc37801cd459cf7cc4495437cfa",
+    "components/training-focus-picker.tsx": "f203a11e6c536096450ceed31f2ae9c7aef457804816cf8c3b8521b6a26f4e23",
+    "scripts/check-training.cjs": "c7bdcce0a26979a699aa84e14b1730daa7d5653bbd6dab7e284f6163658c56a1",
+    "scripts/check-workout-science.cjs": "c2de1eb2cb118efb9a07cd300d40790cc7fea1a8255d1218b18eaac3a1f0ff34",
+    "scripts/generate-workout-science.cjs": "6ab714e5a6354360111204827444d7d89121c4315e23f8a88264af92b6f4033e",
+    "mobile/docs/shared-snapshot.json": "1bb01c62c9fd27cd21a4f467076be20059614cb9aa08e3bdfc5a98c76bf64b9a",
+    ".github/workflows/native-builds.yml": "724286103ede120486fd29369f2a9e1c2cd68bea6da8116f6df9634bab6a1198",
+    ".github/workflows/quality.yml": "2bcde6c57f445a9fbb9ec6addcc5230654944bc3e8d0eb8825f55d177a1633f9"
+  },
+  "artifacts": {
+    "public/downloads/movefield-mobile-r14.zip": {
+      "bytes": 2071190,
+      "sha256": "2ce9965cb2d473b3c01a5aacaff93d627b32a471a8202ddc5795a4ffc6ef0327"
+    }
+  },
+  "logs": {
+    "sci1-regression-retry.log": {
+      "bytes": 60826,
+      "sha256": "6bd01eae579bfcbd582e0f6617cd056d911fdcd920b1b636da0357d311ddc917"
+    },
+    "sci1-training-recheck.log": {
+      "bytes": 3370,
+      "sha256": "7da4ad3e68b0670c988595821f51c3f0a2ee0f736be2b3092b034fc268503c27"
+    },
+    "sci1-shared-recheck.log": {
+      "bytes": 63,
+      "sha256": "785ce0714fd57492b556b9776e138435b04c51795de95864b00ad0713bb3ba20"
+    },
+    "sci1-final-build.log": {
+      "bytes": 3412,
+      "sha256": "410d7b7f37d9f423eae7edb775ef787e573933c09ff67ae3213c8e7240698cd3"
+    },
+    "sci1-final-production.log": {
+      "bytes": 1872,
+      "sha256": "18a66f7bae6ca96795a56df1e4ab152628fae79f6b088efe42345d2672f85205"
+    },
+    "sci1-final-mobile-export.log": {
+      "bytes": 2120,
+      "sha256": "c65b1e2d36c1c6868791b100e6dc252cfc170ac99de4a89dc636c418813fd042"
+    },
+    "sci1-peer-schedule.log": {
+      "bytes": 97,
+      "sha256": "416acb3b8771e4ff8582a3f13e6abe8f9664d9139d0c1677fc06cc74a27beedd"
+    },
+    "sci1-peer-boundaries.log": {
+      "bytes": 54,
+      "sha256": "f9df612d397760c407672854472ecb70d2d1bde3ce0faa299c2670231d2d7ebb"
+    },
+    "sci1-peer-focus.log": {
+      "bytes": 272,
+      "sha256": "bc882e3616450207c7fe861a59151e06e0e6483b95740b13bc123d1d9f6e57f9"
+    }
+  },
+  "limits": [
+    "No physical device, store signing, store approval or individualized clinical assessment",
+    "Zero independent outcome validations of exact Movefield templates; no optimality or guaranteed safety claim",
+    "Strict dependency release gate still blocks two unpatched high-advisory roots",
+    "SEC2 Android assembles but source removal-marker lint fails; NATIVE1 next scoped correction"
+  ]
+}

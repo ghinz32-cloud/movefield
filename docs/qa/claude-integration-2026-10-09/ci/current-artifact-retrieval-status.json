@@ -1,0 +1,32 @@
+{
+  "observed_at": "2026-10-09T21:25:08.927Z",
+  "attempts": [
+    {
+      "platform": "android",
+      "artifact_id": 11644933560,
+      "file_name": "android-arm64-preview-test-only.zip",
+      "connector_reference_created": true,
+      "materialization_attempts": 1,
+      "result": {
+        "status": "unavailable",
+        "error_type": "LibraryFileTransferError",
+        "error": "download failed with HTTP status 403"
+      },
+      "signed_download_url_retained": false
+    },
+    {
+      "platform": "ios",
+      "artifact_id": 11644643820,
+      "file_name": "ios-simulator-preview-test-only.zip",
+      "connector_reference_created": true,
+      "materialization_attempts": 1,
+      "result": {
+        "status": "unavailable",
+        "error_type": "LibraryFileTransferError",
+        "error": "download failed with HTTP status 403"
+      },
+      "signed_download_url_retained": false
+    }
+  ],
+  "scope": "Official metadata and upload logs prove retained artifacts. Both current binary materialization attempts returned HTTP 403. No local ZIP hash, APK signature/content inspection, simulator tar inspection, installation, physical-device validation, or independent artifact replay is claimed."
+}

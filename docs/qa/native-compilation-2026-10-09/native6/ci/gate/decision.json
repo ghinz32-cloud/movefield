@@ -1,0 +1,17 @@
+{
+  "before": "d740c61084f44505273e900f7672ac92bae1a218",
+  "changedPathCount": 26,
+  "compile": true,
+  "head": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf",
+  "nativeChangedPaths": [
+    ".github/workflows/native-builds.yml",
+    "mobile/plugins/withMovefieldSecurity.cjs",
+    "scripts/inspect-native-artifacts.py",
+    "scripts/native-change-gate.py",
+    "scripts/test-native-artifact-inspector.py",
+    "scripts/test-native-change-gate.py"
+  ],
+  "reason": "native-inputs-changed",
+  "schema": 1,
+  "sourceTree": "eec113576e18fc18d4976ceaa03b7e7ca464a930"
+}

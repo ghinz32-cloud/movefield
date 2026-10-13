@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "status": "trained-pilot",
+  "qualified": false,
+  "task": "reviewed-evidence-selection-only",
+  "baseModel": {
+    "repository": "Qwen/Qwen3-0.6B",
+    "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "weightsFile": "model.safetensors",
+    "weightsBytes": 1503300328,
+    "weightsSha256": "f47f71177f32bcd101b7573ec9171e6a57f4f4d31148d38e382306f42996874b",
+    "license": "Apache-2.0",
+    "modelCard": "https://huggingface.co/Qwen/Qwen3-0.6B/blob/c1899de289a04d12100db370d81485cdf75e47ca/README.md"
+  },
+  "datasetManifestSha256": "09b09b9fc6bda0c22015aae6876b4be064cbc94879c333f42647d05cfc71a848",
+  "corpusSha256": "4b802db8ac033ac6b1256376f9aa4ddf80ff049734a5583f0581e2bb03ed1c04",
+  "contractSha256": "544d6ab38b7da08cd903e22591e18268d1eb2425222d49705fb5e76e191cddd3",
+  "defaultPromptSha256": "ba9af147871afab36f6336b44b53b50f84d5a0fba3eb2f157a37ef5b435934d3",
+  "trainingSteps": 16,
+  "usedExamples": [
+    "adult-consistency-6",
+    "weekly-dose-6",
+    "hypertrophy-frequency-0",
+    "rest-intervals-1",
+    "periodization-context-6",
+    "short-sessions-5",
+    "unsupported-13",
+    "adult-activity-0",
+    "rest-intervals-2",
+    "adult-activity-3",
+    "superset-tradeoffs-4",
+    "rest-intervals-4",
+    "adult-activity-6",
+    "run-walk-4",
+    "regional-length-3",
+    "adult-consistency-5"
+  ],
+  "uniqueUsedExamples": 16,
+  "trainableParameters": 1146880,
+  "adapterBeforeSha256": "1f3e92d723124ae258cad738b99ebdcfb8820d3be738532c2196bed1ff1ac6be",
+  "adapterAfterSha256": "170b7cfab839d3e906e405c0c2be6adb4dcf231916365276a4d2bc8921bc105d",
+  "baselineValidation": {
+    "eval_loss": 0.08779414743185043,
+    "eval_model_preparation_time": 0.0063,
+    "eval_runtime": 10.7042,
+    "eval_samples_per_second": 0.374,
+    "eval_steps_per_second": 0.374,
+    "epoch": 0
+  },
+  "postTrainingValidation": {
+    "eval_loss": 0.0015141917392611504,
+    "eval_model_preparation_time": 0.0063,
+    "eval_runtime": 10.6807,
+    "eval_samples_per_second": 0.375,
+    "eval_steps_per_second": 0.375,
+    "epoch": 0.12121212121212122
+  },
+  "trainMetrics": {
+    "train_runtime": 131.9352,
+    "train_samples_per_second": 0.121,
+    "train_steps_per_second": 0.121,
+    "total_flos": 16891748352000.0,
+    "train_loss": 0.020880081849099952,
+    "epoch": 0.12121212121212122
+  },
+  "validationCases": 4,
+  "validationIsHeldoutQualification": false,
+  "maxPromptTokens": 394,
+  "maxTargetTokens": 59,
+  "elapsedSeconds": 188.06,
+  "peakProcessRssBytes": 5036859392,
+  "environment": {
+    "torch": "2.14.1+cpu",
+    "transformers": "5.18.0",
+    "peft": "0.21.2",
+    "device": "cpu",
+    "threads": 4
+  },
+  "artifacts": {
+    "adapter_model.safetensors": {
+      "bytes": 4602248,
+      "sha256": "eac8cfe3ec8b994293ad9b2d19f5361c9a9a3ae49f8196b7e0cad6fdf390b437"
+    },
+    "README.md": {
+      "bytes": 5184,
+      "sha256": "4fb01070dbf1c311649b741432747c286d5438547f54ccdea88930e6d7b47faa"
+    },
+    "adapter_config.json": {
+      "bytes": 1093,
+      "sha256": "2dae53e6e2860621a9e187c589c92fd14185c5b4b7e7dab88c3c6391251c3dab"
+    },
+    "tokenizer.json": {
+      "bytes": 11422650,
+      "sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506"
+    },
+    "tokenizer_config.json": {
+      "bytes": 694,
+      "sha256": "04b1682c59acbd057f4c9072297faa73d56fc9de053094c659cdb4c464f58f86"
+    },
+    "chat_template.jinja": {
+      "bytes": 4168,
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8"
+    }
+  },
+  "heldoutEvaluationRan": false,
+  "demoUsesThisAdapter": false,
+  "publishedModel": false,
+  "limits": "Small synthetic source-selection experiment. Loss is not accuracy, safety qualification or exercise-science training. Merge and compile a separately pinned MLC artifact only after independent evaluation."
+}

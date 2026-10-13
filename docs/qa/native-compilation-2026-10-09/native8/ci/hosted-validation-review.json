@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "repository": "ghinz32-cloud/movefield",
+  "scope": "NATIVE8 isolated hosted validation; GitHub connector reads and unattached Git blob retention only",
+  "source": {
+    "commit": "e85a1ad320ec23db29b337fdee10f41f1dc24962",
+    "tree": "890d598d36ee1f09a3ad67268275e2de16309a48",
+    "parent": "8abfca45f1f910155011516eabffbebdf070821b",
+    "validationBranch": "audit/2026-10-09-cmake-evidence",
+    "pullRequest": 2,
+    "unchangedMobileTree": "90f031f1d49ad590ad390f02a57fcf43ca85ab02",
+    "scriptBlobs": [
+      {
+        "path": "scripts/check-native-build-evidence.cjs",
+        "sha": "1301b82c4e84c6d3ec988f7b32622a62869fec79"
+      },
+      {
+        "path": "scripts/collect-native-build-evidence.py",
+        "sha": "30d45ecf8b5ead1777f52f9744e1a046ae97ffdb"
+      },
+      {
+        "path": "scripts/test-native-build-evidence.py",
+        "sha": "b9e81a8854e41ef89c25a2e3dc6d888871b809eb"
+      }
+    ],
+    "nativeWorkflowBlob": "3e4f51f61fc56de51e52997f420bc6ca60a1ce85"
+  },
+  "quality": {
+    "run": 37984196434,
+    "job": 114001944042,
+    "conclusion": "success",
+    "checkoutCommit": "d42921cc7a45be186895f408c56d2391aea1767a",
+    "checkoutTree": "890d598d36ee1f09a3ad67268275e2de16309a48",
+    "checkoutParents": [
+      "8abfca45f1f910155011516eabffbebdf070821b",
+      "e85a1ad320ec23db29b337fdee10f41f1dc24962"
+    ],
+    "exactSourceTreeEquality": true,
+    "rawLogAssertions": {
+      "readerFixtures": 31,
+      "readerResult": "OK",
+      "regressionSuites": "55/55",
+      "productionSuites": "3/3",
+      "artifactInspectorFixtures": 90,
+      "apkRuleExtractorFixtures": 9,
+      "nativeGateFixtures": 29
+    }
+  },
+  "native": {
+    "run": 37984196327,
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 114001943540,
+        "name": "native_changes",
+        "conclusion": "success",
+        "startedAt": "2026-10-09T20:01:39Z",
+        "completedAt": "2026-10-09T20:01:48Z"
+      },
+      {
+        "id": 114002023999,
+        "name": "android",
+        "conclusion": "success",
+        "startedAt": "2026-10-09T20:01:51Z",
+        "completedAt": "2026-10-09T20:12:48Z"
+      },
+      {
+        "id": 114002024138,
+        "name": "ios",
+        "conclusion": "success",
+        "startedAt": "2026-10-09T20:01:57Z",
+        "completedAt": "2026-10-09T20:09:33Z"
+      }
+    ],
+    "android": {
+      "assembleRelease": "success",
+      "lintRelease": "success",
+      "apkArtifactInspection": "success",
+      "strictSQLiteDefault3BuildEvidenceCollection": "success",
+      "releaseUnitTestTask": "NO-SOURCE",
+      "rawLogRetained": true
+    },
+    "ios": {
+      "unsignedReleaseSimulatorCompilation": "success",
+      "builtPrivacyAndTransportInspection": "success",
+      "strictSQLiteReleaseAndCompletePrivacyCollection": "success",
+      "fullJobLogRetained": false
+    }
+  },
+  "interpretation": "Exact-source hosted jobs successfully executed the pinned strict evidence reader, whose source checks remain enforced by the 31 passing fixtures and source review. This qualifies the collector repair on actual Android and iOS hosted compilation. The emitted native artifact files were not independently downloaded or replayed in this offline session.",
+  "artifacts": [
+    {
+      "id": 11643150177,
+      "name": "android-release-compilation-test-only",
+      "sizeInBytes": 344388,
+      "githubReportedDigest": "sha256:5822f17ae560c1726eec4102c91c5e918fefb7b57f00c54a4ec0488aa85e1d64",
+      "headSha": "e85a1ad320ec23db29b337fdee10f41f1dc24962",
+      "runId": 37984196327,
+      "expired": false,
+      "independentArchiveByteVerification": false
+    },
+    {
+      "id": 11641363510,
+      "name": "native-input-decision",
+      "sizeInBytes": 201,
+      "githubReportedDigest": "sha256:1f24600de239cc7ef89b533032e0a1f40d8a2bf973b7a70a63d844a836be9dd1",
+      "headSha": "e85a1ad320ec23db29b337fdee10f41f1dc24962",
+      "runId": 37984196327,
+      "expired": false,
+      "independentArchiveByteVerification": false
+    },
+    {
+      "id": 11641344792,
+      "name": "ios-release-simulator-compilation",
+      "sizeInBytes": 23246,
+      "githubReportedDigest": "sha256:9f5e8697d0f3541f243369298eed3ad80f652fd9264f56a008c51fe19ed05fc5",
+      "headSha": "e85a1ad320ec23db29b337fdee10f41f1dc24962",
+      "runId": 37984196327,
+      "expired": false,
+      "independentArchiveByteVerification": false
+    },
+    {
+      "id": 11642522406,
+      "name": "quality-results",
+      "sizeInBytes": 8004,
+      "githubReportedDigest": "sha256:643629f0021e665d78e090d7516709f935dc2e2fc815f808bfb9a6dc471d6e9a",
+      "headSha": "e85a1ad320ec23db29b337fdee10f41f1dc24962",
+      "runId": 37984196434,
+      "expired": false,
+      "independentArchiveByteVerification": false
+    }
+  ],
+  "limitations": [
+    "GitHub API and upload-reported artifact digests/sizes are metadata, not independently recomputed ZIP digests or CRC checks.",
+    "No fresh NATIVE8 artifact extraction, exact compiled receipt JSON readback, packaged manifest/privacy replay, APK signature replay, or binary disassembly occurred in this offline session.",
+    "One iOS full job log request failed with Transport closed; no retry was attempted. Final official iOS job/step and artifact metadata are retained.",
+    "Historical NATIVE7 failure evidence and separately qualified historical replay evidence remain distinct and are not rewritten by this validation.",
+    "Android release unit test task was NO-SOURCE, not a passing native unit test suite.",
+    "No physical-device lifecycle, power-loss, storage, native inference, developer-owned signing, store acceptance, clean dependency/SCA or complete embedded binary SBOM qualification is asserted."
+  ],
+  "retainedBlobs": [
+    {
+      "path": "native8/ci/quality-run.json",
+      "sha": "46749fe4d9fafc3e4748b2256c1dec6c81341edd",
+      "chars": 13460
+    },
+    {
+      "path": "native8/ci/quality-jobs.json",
+      "sha": "18e2b47f977650eba7463ef6f190b7dd10ea0834",
+      "chars": 3151
+    },
+    {
+      "path": "native8/ci/quality-artifacts.json",
+      "sha": "a94466bea80c42399c2684ebc83c15995ddca358",
+      "chars": 849
+    },
+    {
+      "path": "native8/ci/quality-job.log",
+      "sha": "c041c07194f4a3edeb132212ced524563ae1cec6",
+      "chars": 218043
+    },
+    {
+      "path": "native8/ci/source-commit.json",
+      "sha": "75bfe1408b2f2f72451f7c7fca1c65d12996877e",
+      "chars": 1446
+    },
+    {
+      "path": "native8/ci/quality-integration-commit.json",
+      "sha": "3ea2ddb82a7addb4d205a0710d19be8f47b04d5f",
+      "chars": 2644
+    },
+    {
+      "path": "native8/ci/source-tree.json",
+      "sha": "37ddbf43feffe38f412805c7509342c6793daca0",
+      "chars": 8775
+    },
+    {
+      "path": "native8/ci/native-change-gate-job.log",
+      "sha": "f5b754adbc14ba886c4db04afa8557561f4c737a",
+      "chars": 15815
+    },
+    {
+      "path": "native8/ci/native-run.json",
+      "sha": "bd45117fa6ca78fae75410f36a0e5e7b67cd2e4d",
+      "chars": 13470
+    },
+    {
+      "path": "native8/ci/native-jobs.json",
+      "sha": "ec129c902db5b0720186ad62c2e5c0752e886e60",
+      "chars": 9381
+    },
+    {
+      "path": "native8/ci/native-artifacts.json",
+      "sha": "b257a047d9bdcefed50d83e5a0e8c7b5ee4bfc79",
+      "chars": 2547
+    },
+    {
+      "path": "native8/ci/android-job.log",
+      "sha": "d36a6f74df8c1d1175d5e57a2036032389e05c03",
+      "chars": 135841
+    },
+    {
+      "path": "native8/ci/ios-job-log-collection.json",
+      "sha": "feedb6b70966fc6dcdfd71532b49e49ce901ca9c",
+      "chars": 291
+    },
+    {
+      "path": "native8/ci/quality-jobs-raw.json",
+      "sha": "78e24526fffd09772b98752094c6420fdf72eade",
+      "chars": 4031
+    },
+    {
+      "path": "native8/ci/source-scripts-tree.json",
+      "sha": "d518a91df0aca3296969ae91acad4effd2cf0c77",
+      "chars": 24435
+    },
+    {
+      "path": "native8/ci/source-native-builds.yml",
+      "sha": "3e4f51f61fc56de51e52997f420bc6ca60a1ce85",
+      "chars": 7940
+    },
+    {
+      "path": "native8/ci/source-quality.yml",
+      "sha": "15890f467fd1171421e3bb1e31bacd7de2da1415",
+      "chars": 2430
+    }
+  ]
+}

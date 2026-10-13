@@ -1,0 +1,791 @@
+{
+  "schema": 1,
+  "sourceCommit": "9cdcec081bee3525838ac334da1bb48de6690f13",
+  "pagesCommit": "831fc32e045736fb9bb907b4de772099ce201ad7",
+  "archiveBytes": 2116908,
+  "archiveSha256": "c4739f89df0e4c868d96dad694539f62f13ce2fb86fb9a420d72e958f7eee57f",
+  "crcPassed": true,
+  "allMembersMatch": true,
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 117,
+      "sha256": "ca6df0880092913b286a2b110e1be2e1bc292b4985d1714881cc63c76af3d71c",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "App.tsx",
+      "bytes": 92819,
+      "sha256": "c4974dcde73e501ae13b8093fe8b3f6acd2c68eb8707ef608577670916675ad4",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1106,
+      "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "README.md",
+      "bytes": 1233,
+      "sha256": "a0df5f5bdec8e41f25ec4662d14501921eecf0eea454e78f3e9ed6b332bbcbf6",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "START-HERE.md",
+      "bytes": 15645,
+      "sha256": "808b5c61bca9aad04dbddfe394affd2a8139a396dc2b7c875162ecd79f1f1e31",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "app.json",
+      "bytes": 3924,
+      "sha256": "f564757312da8579cca6194a31fb3ec16df9c7a6669815ae06e860f293de7346",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets.d.ts",
+      "bytes": 74,
+      "sha256": "b5d4fe332b830cb9d443e4b582bbc2fc0cadefd647986add242d7bc9207dd94d",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/android-icon-background.png",
+      "bytes": 3932,
+      "sha256": "d117f53aca6eecd18ee3eca65fe6025cae5d137dcaea54b8a1a2740e41d2f921",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/android-icon-foreground.png",
+      "bytes": 15018,
+      "sha256": "9e3765cfba9f572f2cd7903675923b077613eab5e3bf6832035f7635e6a26f0f",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/android-icon-monochrome.png",
+      "bytes": 7500,
+      "sha256": "3cf2546ec983c76c73b355f276b81ca382d9646f921f0e964c55e1a27857c0ad",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/content/exercise-content.json",
+      "bytes": 521358,
+      "sha256": "9a17a1c905fe80e7210803a7b1b466c0a207a40b702386f6e75fb891585b68bb",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/content/exercise-guides.json",
+      "bytes": 2536044,
+      "sha256": "62fa1d71ee08312f6e8809ce60e17e7df7e8a3a8d79f49bed15731592d0f7a38",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/content/fitness-research.json",
+      "bytes": 834506,
+      "sha256": "437f2724162639849949aed8f6b47b0f8ab1eac88da1e0d4535920d2eebaa757",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/favicon.png",
+      "bytes": 4277,
+      "sha256": "d9907ac2fa8392ff9d9267fe55730ca4c7c0512850e9ad9d9ca633efdead934c",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/fonts/AtkinsonHyperlegible_400Regular.ttf",
+      "bytes": 53504,
+      "sha256": "752bace0a9820236f24d65d680ac07aeb543c92dd903c871e09f6627261b812f",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/fonts/AtkinsonHyperlegible_700Bold.ttf",
+      "bytes": 54444,
+      "sha256": "9ebfea858a99e61e2fc299d194ba55b87de4884094f86fdcb6fa0d510b9d77da",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/fonts/Lexend_400Regular.ttf",
+      "bytes": 78356,
+      "sha256": "5f9ed62e28658e53a02cc8751566821e8515af753f18b02014669ed0341c9f5b",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/fonts/Lexend_700Bold.ttf",
+      "bytes": 78628,
+      "sha256": "db820d3ccf6b1175e9c96d03e4f093835cb7525e1ae3289702362e43f82b24b3",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/fonts/Nunito_400Regular.ttf",
+      "bytes": 132200,
+      "sha256": "b0885056b60511b29aa9f69198055fe3bad13e76ec8a9b9e37cd61da7b4ee1e5",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/fonts/Nunito_700Bold.ttf",
+      "bytes": 132148,
+      "sha256": "ad443e47990c5fc4b263693b3018b7807868263b8c42ccb1115e030158931960",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/fonts/Oswald_600SemiBold.ttf",
+      "bytes": 87604,
+      "sha256": "901c0d593fcb06080fd49d01262391254e472efd4e1d21734557e9ef869922d6",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/fonts/Oswald_700Bold.ttf",
+      "bytes": 87600,
+      "sha256": "21843a0ccca2e97030da1330961646510ed6e9b8bb39620974c1195b9803034a",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/fonts/Saira_400Regular.ttf",
+      "bytes": 83608,
+      "sha256": "50c4e76f9cd28369c7a5b62b06c6ac1f495c53c66950b0318fe5e07ebe71f33c",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/fonts/Saira_700Bold.ttf",
+      "bytes": 83468,
+      "sha256": "964c37fd0cf965e36fe7f216ce5a25c512d7d35d679002b9d6289b51bcffdf17",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/fonts/barlow-condensed-semibold.ttf",
+      "bytes": 109428,
+      "sha256": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/fonts/inter-variable.ttf",
+      "bytes": 876576,
+      "sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/icon.png",
+      "bytes": 56553,
+      "sha256": "d22fda4471b2c9ed71163390840c5a2fd2aeaca0d21c5a79b0497d798d61b427",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "assets/splash-icon.png",
+      "bytes": 13625,
+      "sha256": "28c2f67326a6457cc01e9309ad706c3e54981393599e27edd939250fb5f54f78",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/AI-COACHING.md",
+      "bytes": 10759,
+      "sha256": "6600ad97982fae0e001e92c7aa24e49f469c96bf9d32e652dba61a40a731284d",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/CONTINUATION.md",
+      "bytes": 3437,
+      "sha256": "15acef7a22efd862f96e628a0c0e5132e6e168e88526b36d4b089f38ac65ca5f",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/ON-DEVICE-MODELS.md",
+      "bytes": 8816,
+      "sha256": "1577857bad5edf5fe1d25d42edefc4dc2286b834716b89bfe49154375ed5b107",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/REVISION-10.md",
+      "bytes": 8356,
+      "sha256": "4b705a1824552ba3882750871b06a82d4580107af530963097b063e30bd1462d",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/REVISION-11.md",
+      "bytes": 11256,
+      "sha256": "d045e4d9896a1b43db61fb570e849f61e00b0f845efd1c8ae5b1bbb9900143db",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/REVISION-8.md",
+      "bytes": 4781,
+      "sha256": "39bafd7d276d3feaa993cb1c725ea6fa4583d0dacb3c9c3ca0a92fbc2690aa6e",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/VALIDATION.md",
+      "bytes": 6015,
+      "sha256": "ba69875d702103965583ef8aa5956eee6273b8e0a3ddd28734d68bb4f905f23a",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/ai-coaching-decision.md",
+      "bytes": 5515,
+      "sha256": "3b27fc0d94618d72f0431b6ba101953987f4b0fd5712207ae0cc29ed0aa96252",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/audit-acceptance-matrix.json",
+      "bytes": 21058,
+      "sha256": "12571c7c432f11a8e530f3a10d004d8ac89115515e27a5b5dd31c90bdeb8f257",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/deep-audit-2026-10-07.md",
+      "bytes": 27730,
+      "sha256": "d6913255c58940811391b6c852151611c7c9a6b3a34113762356b6a47285a005",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/exercise-library-LICENSE.txt",
+      "bytes": 1211,
+      "sha256": "6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/exercise-library-completion.json",
+      "bytes": 283417,
+      "sha256": "8676a4a76423f5876a4044ee10073b230add7f63041b8b5f52bd62f53852899b",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/exercise-library-provenance.json",
+      "bytes": 1729,
+      "sha256": "8471e9b317ad7296e6add7a4de215505c93130c70052ec3692d7ec08649d596e",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/font-licenses/Atkinson-Hyperlegible-OFL.txt",
+      "bytes": 4603,
+      "sha256": "e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/font-licenses/Barlow-Condensed-OFL.txt",
+      "bytes": 4377,
+      "sha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/font-licenses/Inter-OFL.txt",
+      "bytes": 4377,
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/font-licenses/Lexend-OFL.txt",
+      "bytes": 4436,
+      "sha256": "5da8505887d0fa7fe963445fd58852707fda34adfeb65af25c99d152bab285bd",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/font-licenses/Nunito-OFL.txt",
+      "bytes": 4385,
+      "sha256": "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/font-licenses/Oswald-OFL.txt",
+      "bytes": 4388,
+      "sha256": "23916cdee678823c3c517c699cb2e043088de0d46c959eeaa168b54bb84534df",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/font-licenses/Saira-OFL.txt",
+      "bytes": 4386,
+      "sha256": "f2665d4718b452b3818a877191355ac884a6b9b419d35408fe7ee487e9e8f30f",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/native-compilation-2026-10-09.md",
+      "bytes": 10600,
+      "sha256": "e35ac25cef4a0047828b0702b8e97231fa3162adcd8a85ce4d92e6e8d60b4eff",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/native-privacy-cleanup-2026-10-09.md",
+      "bytes": 8703,
+      "sha256": "a9f82acf5aa55accce3cf694de5b3eb204b3c8287c3e1880e66f64ee79bfb0d8",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/native-security-2026-10-09.md",
+      "bytes": 8480,
+      "sha256": "fad8a817bf86ba8b3f36c79f5fb4117994b77a407d2062f601e67dc5e19e23a5",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/product-requirements.md",
+      "bytes": 17885,
+      "sha256": "d9023d91adacd6343e2a8a87996efbe83cf361b277b816c337b624c038c891b3",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/revision-10-validation.json",
+      "bytes": 2679,
+      "sha256": "a6e21e93ebb9a5e8bda843224b65a8bae4c220362e38145be36e31bc29ef7d81",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/revision-9-program-depth.md",
+      "bytes": 12057,
+      "sha256": "e0bcb3c2d9e4ba1970fe0ca04269b30b2978dcd2e380ff3e3b73a3690268d2ec",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/security-review.md",
+      "bytes": 8598,
+      "sha256": "5fc3a57d7bb2d5040d02d6f58077fbeecdbe77246cd4182880a34b5cb72e437e",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "docs/shared-snapshot.json",
+      "bytes": 9244,
+      "sha256": "ee73a222f78a65b1f5cc29acf9818a44a1ea73849f6d11f4eade722a54511509",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "eas.json",
+      "bytes": 721,
+      "sha256": "f06de28ec93f1efd9afc3bea3e820b8768d5fe9063eff2cb342f0036a6137ba3",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "index.ts",
+      "bytes": 133,
+      "sha256": "7683613dc7ee2d226198219212aa3aa91b5cc7338cbc340a204efb05451720d7",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 260840,
+      "sha256": "bd5cc6eab3fb4f0a8434a16b0c33db08655be9aa07535fe737ef82879272cabf",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "package.json",
+      "bytes": 1585,
+      "sha256": "eea209fabd55a254c61c006be9635eca115146107f2d85b7d678e8cd5ccefbce",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "plugins/withMovefieldSecurity.cjs",
+      "bytes": 6120,
+      "sha256": "6c1437b59e33cd3e3f095c0e202dcbc0ee5bb860a41b81fc2a132af06a3212a0",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "scripts/check-engine.ts",
+      "bytes": 11869,
+      "sha256": "a36d6af0ac1635f5be35c07a9aafa68cbcc6facc9ba2a5eb1aeb3fac317abfcf",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "scripts/sync-shared.mjs",
+      "bytes": 3015,
+      "sha256": "bf8a8b6029f9cdbbe4c93b09502304ae23706eb4a26fe97fea0db1f15154d8ef",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/appearance.tsx",
+      "bytes": 5939,
+      "sha256": "f3dacedba592229d69334cac46288204140c0de2d7bb0ffaba07e905b24a875d",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/backup.tsx",
+      "bytes": 5241,
+      "sha256": "ac57c3fb6944215e09a791cfab20c4f8badb6a106547a759e8f57129c0944a06",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/content.ts",
+      "bytes": 1183,
+      "sha256": "fa21175590495dc6233fb1bbbf24bc842e9ae12de7a8553bcd910071d7dd80bc",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/local-crypto.ts",
+      "bytes": 4646,
+      "sha256": "c1c89de56787bb68ca2b50c011650844c5af59cd6fd2eeba717afb122fedb09d",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/mobile-engine.ts",
+      "bytes": 8316,
+      "sha256": "24f6ca8b417f3aeb05e6b2218fcee2d7386fe090b5f8280153d00e282020102a",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/model-files.tsx",
+      "bytes": 10077,
+      "sha256": "c00acc8750f4475584acbbb0c0a41bad084865530af7dfd36b15fb86fbc4eca0",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/named-programs.tsx",
+      "bytes": 3960,
+      "sha256": "91a136772979f627094dd959816bcd4e33d1123742d19380e405c7ddbcda8846",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/native-database.ts",
+      "bytes": 803,
+      "sha256": "ce7ac8f0b4cab11f5895a85cabd69007e8759b4553e18aaeb6bb237bb3635519",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/native-history.ts",
+      "bytes": 3472,
+      "sha256": "24a34447a2eb542944bb524e82f676bef963aa01c3ccaac3009bbc6c8931479e",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/native-record-store.ts",
+      "bytes": 29672,
+      "sha256": "bf10128ecde7b6f22bbc65da4d9ac10d20ec5b58b1c88c58a02f8376bd66bc62",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/native-sqlite-policy.ts",
+      "bytes": 1414,
+      "sha256": "b504deb11535ce4a63e8b72be9b5507a631bb508cd46e336f8fb341f765900f5",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/plan-setup.tsx",
+      "bytes": 14919,
+      "sha256": "c0a33a92c1bfbc377604fbd4e18bb23204785286409c409fa1acd28d5f82da6e",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/qwen-file-cache.ts",
+      "bytes": 19800,
+      "sha256": "c613df040476b30f0055295798d6866bab59b68bf82e2330753be33372842b5c",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/record-platform.ts",
+      "bytes": 152,
+      "sha256": "e4e097be85b7c1ecccd389ca055fa139e078825179628cad0c7dc1f497f4913f",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/research-library.tsx",
+      "bytes": 4273,
+      "sha256": "85d9a7d75976a49bcc79d42b6aaa3dba279a204d6ab5531dfd71a7885c829c66",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/rest-alerts.ts",
+      "bytes": 4264,
+      "sha256": "c5cf1d7a34d4d8af9363b5ba6fa24f13b2cc2a2267bacafa43df435d81a174fa",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/session-editor.tsx",
+      "bytes": 8361,
+      "sha256": "a17aa304401441f621d51b6a3c0617ae8ddc26e213374da7cfce0d5d14e63fbe",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/settings.tsx",
+      "bytes": 11772,
+      "sha256": "c6d4de00a4fb7fa805d195f88938ab702e316985cc556bc7279411aae48a37f2",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/app-preferences.ts",
+      "bytes": 6013,
+      "sha256": "4e13a9650d9c5a503a344fcd4a89dc682429db18988520d7c57c7f4355a0384b",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/brand.ts",
+      "bytes": 294,
+      "sha256": "bd01748eddce662edd225d141f40e055f996297eac92d52f9a0987f5e85efaed",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/customize.ts",
+      "bytes": 5024,
+      "sha256": "35b0273cc9c6ada9ebf4bb212db986da3168abf6d3c037c9ce01b82a60be63da",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/exercise-library.json",
+      "bytes": 750865,
+      "sha256": "255e51c2dad783a487d37ea4bbe3eb6942f6d7dfde497b7a432ec3bd54620040",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/exercise-video.ts",
+      "bytes": 1730,
+      "sha256": "fe8b0e22196436a4eca4fe379b5aba782f82f69dcc45f2c6726dd1c78fa3bac4",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/fitness-grounding.ts",
+      "bytes": 6879,
+      "sha256": "544d6ab38b7da08cd903e22591e18268d1eb2425222d49705fb5e76e191cddd3",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/fitness-reference.json",
+      "bytes": 22677,
+      "sha256": "4b802db8ac033ac6b1256376f9aa4ddf80ff049734a5583f0581e2bb03ed1c04",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/local-backup.ts",
+      "bytes": 1544,
+      "sha256": "597d4f2a1a1214e0ace44480722e5ae4c5957ce3ef9ca39841ac753d233d0d24",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/onboarding.ts",
+      "bytes": 10638,
+      "sha256": "8c55a8b2d593acfd8ced023bca7c2a001ba68f6c840f5aa4a5bafa653f36521a",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/presentation.ts",
+      "bytes": 24339,
+      "sha256": "4f4ce03e2e290dab44654479533107e8dd0f2aa1e83d9b6ad4e8b2e8b8377dbf",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/program-catalog.ts",
+      "bytes": 71099,
+      "sha256": "d5ab1eb1c61338dc58e8c06aa1899f967574a2c9c6102e6be7e783396018949c",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/program-evidence.ts",
+      "bytes": 3486,
+      "sha256": "beaad36890c37d5de560cfdb0d26776e62b4e2cec21722e912a7dc57e0a313c4",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/progress.ts",
+      "bytes": 4278,
+      "sha256": "e4c1c26753ab0c575b6466195cfa803a6373d69338583564b8fbacdd5ca81314",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/qwen-assets.json",
+      "bytes": 126382,
+      "sha256": "2794f6b673fa094d91d9bc8a406bb930f35374acbc17713007164c4c8828a547",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/qwen-catalog.ts",
+      "bytes": 3844,
+      "sha256": "bc40f5aa1d96622c412222dd94bd265ddddd897c6e3a27c164d1109abe5b01cb",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/qwen-evaluation-lock.json",
+      "bytes": 417,
+      "sha256": "f704870ed1cc19799abdf7f30cc2d67950e66224d054835380f1f6ee418881fc",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/qwen-native-files.ts",
+      "bytes": 19748,
+      "sha256": "a9694f3e98b67e4a2f4ca276934f937aff62eca1ddc7ba250f37a495c0bc7e47",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/recipes.json",
+      "bytes": 34462,
+      "sha256": "a6b5f0e919cf0f3ba492e67db8164223e333dab70e24bfab830796136c02c175",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/record-capacity.ts",
+      "bytes": 2050,
+      "sha256": "dc14ed9ba1e8ee45092456c5d73a513374628e66b1861852538ada94a1b76181",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/record-identity.ts",
+      "bytes": 2307,
+      "sha256": "1fd7f66d1e30e330ee405a7a58d689669a85240bc3c1213b606993f189278eca",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/research-library.ts",
+      "bytes": 1134,
+      "sha256": "fac5dbc8a09fb4c4ba80cf147b535cd9f003b0d968b202ec4bf230722b770d32",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/rest-timer.ts",
+      "bytes": 2931,
+      "sha256": "d58c1a694c20e4153f839ce69483720f2b767915161866cdc28977f6360795f7",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/safety-copy.ts",
+      "bytes": 1103,
+      "sha256": "dc5e7c7a733753d217328d95a76e8184ce73b0bccd35a6c5f9560793bdb18fef",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/saved-data.ts",
+      "bytes": 11814,
+      "sha256": "91063dcefb168a67d3bcaee221f0797aee853a43c23f165cf043dd640ca8143f",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/session-guide.ts",
+      "bytes": 4333,
+      "sha256": "b01214210929f222cac058d698970d148ecb64084fcbd6c1a8a0527f1a325485",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/set-metrics.ts",
+      "bytes": 993,
+      "sha256": "0efe2451baba1794e96c6672e41e1df0c7b2c748a9a2b1bac6be9564d8c65558",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/storage-capacity.ts",
+      "bytes": 720,
+      "sha256": "bbf650e4ced79ffe0df04177d76f09a6efb591c7e3921c3217817a1f23d2538d",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/substitutions.ts",
+      "bytes": 8282,
+      "sha256": "70b6076bcb5750709283b8cbf25fbb6d8f317869f7cab544032cac3acb852cc3",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/sync-outbox.ts",
+      "bytes": 17914,
+      "sha256": "81df726d2a10fdf3b2e36dace735ffc01c886806cd496cb3b63a7c2412c204eb",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/tracking.ts",
+      "bytes": 3778,
+      "sha256": "632d3158fee25f7f524856b8f68c974601527c7adaf41bec23c8c2c6fac1bf7e",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/training-day.ts",
+      "bytes": 6168,
+      "sha256": "98c99cb7835915ba0d9ed5eb58b3844518e66f534e098c8aff18e2c66bb8b729",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/training-focus.ts",
+      "bytes": 13954,
+      "sha256": "25c005d5940eacab1adfe599801b83aa545d22743b7ff87cce2e218827bfce7e",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/training-tools.ts",
+      "bytes": 7322,
+      "sha256": "e74300e7307dfe49dfc415272ca0796c24d5ad6f95ebadecd4efa63b00c38180",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/training.ts",
+      "bytes": 92356,
+      "sha256": "1b9dbf4232567f9cc00a54c1e1042b87fd257024c1afbf2afe5a6860d94de54b",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/transfer-bundle.ts",
+      "bytes": 9113,
+      "sha256": "951a37df48006dcca696dd34a361d1a84984c3856c9f389435c693f25bdac4f1",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/workout-coaching-identity.ts",
+      "bytes": 936,
+      "sha256": "b6dbe853785db9a6e26c74b9b13fc0d2b1248395a0f6f2fa315134b9660cb735",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/workout-coaching.ts",
+      "bytes": 34585,
+      "sha256": "ffc447d699cef9ac949475fe4f1d83a4c9f622f84ddbfadd1fbf72627b0bfcfa",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/workout-edit.ts",
+      "bytes": 3838,
+      "sha256": "6656ffab220e8f52291bf161a4d8907306a323a667f5ed26637d08436d76c12e",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/workout-log.ts",
+      "bytes": 3745,
+      "sha256": "250b6c5e933a0d54c864bcb7376ece3158b4eec875316a295b79462c56ec19ed",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/workout-navigation.ts",
+      "bytes": 2563,
+      "sha256": "9d69a1beed190736a3823b55a27787f3f0454df3bc1d3b6d9b60e55395b79cd5",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/workout-reminders.ts",
+      "bytes": 2182,
+      "sha256": "50e9fe8d123c8778165bc5547747ad02cf249a28eca7d2e20f508f6be8d2276e",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/shared/workout-review.ts",
+      "bytes": 7864,
+      "sha256": "ea8eabf95466f827114b1a8684a8bcebc2d6cda1119cf03cf376313097a8e21f",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/storage-capacity.ts",
+      "bytes": 1563,
+      "sha256": "65cdbf98f4437b7d7ad7742cc320f36057cc2dafd9f19a397dbb67057eaafb35",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/storage.ts",
+      "bytes": 23771,
+      "sha256": "3ba96db1ea04bb207ab1b6d9c86f93fccd5851f0f0a8590fa1d33969e85deec8",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/tools.tsx",
+      "bytes": 10206,
+      "sha256": "cda4795f9e480cd1a90eb9ed181d7b410a67a50a8b8d67b915706d635ffa666d",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/transfer.tsx",
+      "bytes": 5879,
+      "sha256": "fc0faf2af8060d15a3b12efe52e0879cbc31f5af0c833a8b6cc9f01deaf53817",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/workout-exercise-fields.tsx",
+      "bytes": 6409,
+      "sha256": "199493f6de091e96b0f6d185a697200825b887f3931658ffb1ad602e0260fd7e",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "src/workout-notifications.ts",
+      "bytes": 4961,
+      "sha256": "c71e8004cba19a92e7d1c9a10fb8541277895578c00a1b9223a9566bd01daa92",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 157,
+      "sha256": "b6d63fc2582c0485c0c5f973234cd31e0ea283b14d9306f417500ea35858c6a1",
+      "matchesCommittedSource": true
+    }
+  ]
+}

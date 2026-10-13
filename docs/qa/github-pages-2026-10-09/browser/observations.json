@@ -1,0 +1,156 @@
+{
+  "schema": 1,
+  "date": "2026-10-09",
+  "result": "bounded_live_desktop_browser_observations",
+  "siteUrl": "https://ghinz32-cloud.github.io/movefield/",
+  "provenance": {
+    "interactionObserver": "root agent",
+    "documentationMethod": "Recorded root agent actual live-browser observations; documentation agent copied and visually inspected the supplied screenshot without additional browser calls.",
+    "publishedReleaseReference": {
+      "pagesCommit": "4ab2b7ade02a431eb0798166149fbe882c893555",
+      "sourceCommit": "d740c61084f44505273e900f7672ac92bae1a218",
+      "manifestVersion": "26b641628dc88e99625d2422fb5d63c0ac74273ce465718e6f47e593fef01b10",
+      "receipt": "../page2/live-readback.json",
+      "scope": "Existing publication receipt identifies the live release; screenshot alone does not independently fingerprint loaded browser assets."
+    },
+    "browserVersion": "not recorded in the supplied observation summary",
+    "deviceScope": "desktop browser",
+    "dataScope": "synthetic QA profile and synthetic workout only"
+  },
+  "observations": [
+    {
+      "id": "B01",
+      "action": "Open exact live HTTPS app and complete profile setup",
+      "observed": {
+        "profile": "QA browser profile",
+        "setupStepsCompleted": 8
+      },
+      "evidence": "root live interaction observations"
+    },
+    {
+      "id": "B02",
+      "action": "Create plan and open workout",
+      "observed": {
+        "planSessions": 24,
+        "workoutMinutesShown": 20,
+        "workoutExercises": 3,
+        "workoutPlannedSets": 6
+      },
+      "evidence": "root live interaction observations"
+    },
+    {
+      "id": "B03",
+      "action": "Log one synthetic machine set",
+      "observed": {
+        "exercise": "Selectorized seated leg press",
+        "machineNote": "QA stack / seat 3",
+        "selectedStackLoadLb": 40,
+        "actualReps": 8,
+        "repsInReserve": 3,
+        "loggedSets": 1
+      },
+      "evidence": "root live interaction observations; exercise name and machine note also visible in screenshot"
+    },
+    {
+      "id": "B04",
+      "action": "Reload while workout is active",
+      "observed": {
+        "resumableWorkout": true,
+        "loggedSets": 1,
+        "plannedSets": 6,
+        "restDeadlineRetained": true
+      },
+      "evidence": "root live interaction observations",
+      "scope": "Normal page reload; no OS crash or process termination injected."
+    },
+    {
+      "id": "B05",
+      "action": "Save partial workout and reload history",
+      "observed": {
+        "unloggedSetsWarning": 5,
+        "savedWorkouts": 1,
+        "savedSets": 1,
+        "sameHistoryAfterReload": true
+      },
+      "evidence": "root live interaction observations; partial status and one completed set/exercise visible in screenshot"
+    },
+    {
+      "id": "B06",
+      "action": "Attempt protected transfer with mismatched password confirmation",
+      "observed": {
+        "rejected": true
+      },
+      "evidence": "root live interaction observations"
+    },
+    {
+      "id": "B07",
+      "action": "Create protected transfer with matching confirmation",
+      "observed": {
+        "actualBrowserDownload": true
+      },
+      "evidence": "root live interaction observations",
+      "scope": "Download contents, name and passwords are omitted; no independent file-content inspection claimed."
+    },
+    {
+      "id": "B08",
+      "action": "Attempt restore with wrong password",
+      "observed": {
+        "rejected": true,
+        "existingQaDataRetained": true
+      },
+      "evidence": "root live interaction observations"
+    },
+    {
+      "id": "B09",
+      "action": "Open correct-password restore preview",
+      "observed": {
+        "profiles": 1,
+        "workouts": 1,
+        "sets": 1,
+        "plans": 1
+      },
+      "evidence": "root live interaction observations"
+    },
+    {
+      "id": "B10",
+      "action": "Confirm replacement restore of the same synthetic QA data and reload",
+      "observed": {
+        "replacementCompleted": true,
+        "sameSyntheticQaDataRestored": true,
+        "preservedAfterReload": true
+      },
+      "evidence": "root live interaction observations",
+      "scope": "Same-data replacement; replacement of a different or larger existing dataset was not tested."
+    }
+  ],
+  "screenshot": {
+    "path": "workout-after-restore.png",
+    "bytes": 120536,
+    "sha256": "c35ef32f388dacb8c2e2626b1b15eb2863c3664cdca7fc23b47f79c43cb8a6a0",
+    "widthPx": 1363,
+    "heightPx": 936,
+    "independentlyVisuallyInspected": true,
+    "visible": [
+      "QA browser profile, saved on this device",
+      "Full body · Workout 1, partial workout",
+      "One completed set or interval and one exercise logged",
+      "Unfinished sets do not count as performed work",
+      "Review unfinished work before advancing; do not add catch-up sets",
+      "Selectorized seated leg press and QA stack / seat 3",
+      "Machine selected-stack caution and device-local badge",
+      "Fixed training rules disclosure; this review does not use an AI model"
+    ],
+    "notVisible": [
+      "The numeric 40 lb / 8 reps / RIR 3 set row is below the captured modal viewport; those values come from root interaction observations."
+    ]
+  },
+  "notQualified": [
+    "Offline browser loading, offline save/restore, or real service-worker update lifecycle",
+    "OS crash, process kill, power loss, disk-full recovery, or cross-device restore",
+    "Physical Android or iPhone execution",
+    "Accessibility conformance, screen-reader or keyboard testing, 200% zoom or phone reflow",
+    "Large history, multiple-profile transfer, different-dataset replacement, or concurrent tabs",
+    "Account authentication, cloud sync, or remote user-data storage",
+    "Real AI/model inference or model downloads"
+  ]
+}

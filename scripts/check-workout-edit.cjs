@@ -1,0 +1,56 @@
+const assert = require('node:assert/strict');
+const path = require('node:path');
+const {createTsxLoader} = require('./lib/component-hook-harness.cjs');
+const root = path.resolve(__dirname, '..'), loader = createTsxLoader(root);
+const E = loader.load(path.join(root, 'mobile/src/mobile-engine.ts'));
+const D = loader.load(path.join(root, 'lib/workout-edit.ts'));
+const N = loader.load(path.join(root, 'lib/workout-navigation.ts'));
+const S = loader.load(path.join(root, 'lib/saved-data.ts'));
+let state = E.adoptPlan(E.emptyDemo(), E.previewPlan(E.FOUNDATION).plan);
+state = E.startWorkout(state, state.plan.sessions[0].id);
+state.active.sets[0] = {...state.active.sets[0], reps: 8, done: true};
+const checkin = E.workoutCheckin(state);
+assert.throws(() => E.completeWorkoutCheckin(state, {...checkin, symptom: 'no'}), /Confirm the unfinished/);
+const acknowledgement = N.workoutCompletionSignature(state, state.active);
+const acknowledged = {...checkin, symptom: 'no', partialAcknowledgement: acknowledgement};
+const changed = {...state, active: {...state.active, sets: state.active.sets.map((set, i) => i === 1 ? {...set, reps: 8, done: true} : set)}};
+assert.throws(() => E.completeWorkoutCheckin(changed, acknowledged), /Confirm the unfinished/);
+state = E.completeWorkoutCheckin(state, acknowledged);
+const record = state.history[0], before = JSON.stringify(state);
+let edit = D.beginSavedWorkoutEdit(state, record.id);
+assert.equal(D.applySavedWorkoutEdit(state, edit), state);
+edit.draft.sets[0].rir = 2;
+assert.equal(JSON.stringify(state), before, 'Draft and original do not alias');
+assert.throws(() => D.applySavedWorkoutEdit(state, edit), /Confirm the unfinished/);
+let updated = D.applySavedWorkoutEdit(state, edit, N.workoutCompletionSignature(state, edit.draft));
+assert.equal(updated.history.length, 1); assert.equal(updated.history[0].sets[0].rir, 2);
+for (const field of ['id', 'sessionId', 'date', 'startedAt', 'finishedAt', 'timeZone', 'startedAtUtc', 'finishedAtUtc']) assert.equal(updated.history[0][field], record[field]);
+assert.throws(() => D.applySavedWorkoutEdit(updated, edit, N.workoutCompletionSignature(state, edit.draft)), /changed/);
+for (const mutation of [draft => {draft.date = '2020-01-01';}, draft => {draft.sets[0].set = 99;}, draft => {draft.targets[0].sets++;}]) {
+  const changed = D.beginSavedWorkoutEdit(state, record.id); mutation(changed.draft);
+  assert.throws(() => D.applySavedWorkoutEdit(state, changed), /cannot change/);
+}
+for (const mutation of [draft => {draft.extraField = true;}, draft => {draft.sets[0].metrics = {heartRate: 999};}, draft => {draft.sets[0].reps = 1.5;}, draft => {draft.sets.forEach(set => {set.done = false;});}]) {
+  const changed = D.beginSavedWorkoutEdit(state, record.id); mutation(changed.draft);
+  assert.throws(() => D.applySavedWorkoutEdit(state, changed, N.workoutCompletionSignature(state, changed.draft)));
+}
+const full = D.beginSavedWorkoutEdit(state, record.id);
+full.draft.sets = full.draft.sets.map(set => ({...set, reps: 8, done: true}));
+updated = D.applySavedWorkoutEdit(state, full);
+assert.equal(updated.history[0].partial, false); assert.equal(updated.plan.sessions[0].status, 'completed');
+const unrelated = E.startWorkout({...updated, plan: {...updated.plan, sessions: updated.plan.sessions.map((session, i) => i === 1 ? {...session, date: updated.plan.sessions[0].date} : session)}}, updated.plan.sessions[1].id);
+unrelated.restTimer = {id: 'rest', workoutId: unrelated.active.id, setKey: 'x:1', endAt: Date.now() + 1000, pausedSeconds: null, alerted: false};
+const correction = D.beginSavedWorkoutEdit(unrelated, record.id); correction.draft.sets[0].rir = 3;
+const corrected = D.applySavedWorkoutEdit(unrelated, correction);
+const sameSession={...state,active:{...state.history[0],id:'another-open-workout',finishedAt:undefined,finishedAtUtc:undefined},plan:{...state.plan,sessions:state.plan.sessions.map((session,i)=>i===0?{...session,status:'scheduled'}:session)}};
+const sameSessionEdit=D.beginSavedWorkoutEdit(sameSession,record.id);sameSessionEdit.draft.sets[0].rir=4;
+const sameSessionResult=D.applySavedWorkoutEdit(sameSession,sameSessionEdit,N.workoutCompletionSignature(sameSession,sameSessionEdit.draft));
+assert.equal(sameSessionResult.active,sameSession.active);assert.equal(sameSessionResult.plan.sessions[0].status,'scheduled');
+assert.equal(corrected.active, unrelated.active); assert.equal(corrected.restTimer, unrelated.restTimer);
+assert.deepEqual(S.readSavedState(JSON.stringify(updated)).history, updated.history);
+const archived = {...state, plan: null, saved: [state.plan], hold: true, proposals: [{id: 'pending', status: 'pending'}, {id: 'queued', status: 'queued'}, {id: 'accepted', status: 'accepted'}]};
+const archivedUpdate = D.applySavedWorkoutEdit(archived, full);
+assert.equal(archivedUpdate.saved[0].sessions[0].status, 'completed'); assert.equal(archivedUpdate.hold, true);
+assert.deepEqual(archivedUpdate.proposals.map(p => p.status), ['stale', 'stale', 'accepted']);
+assert.equal(JSON.stringify(state), before);
+console.log('PASS saved workout edits: explicit/stale partial consent, staged isolation, CAS/replay refusal, identity preservation, schema/metric bounds, partial-to-complete status, archived plans, proposal invalidation and independent active/timer preservation.');

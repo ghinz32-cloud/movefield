@@ -1,0 +1,62 @@
+{
+  "artifactId": 11637018804,
+  "archiveSHA256": "dda9b10cbe0adb139095c694ea724d3169124e39ca7d575d40777962658967eb",
+  "verified": true,
+  "files": [
+    {
+      "path": "native-evidence/android/backup.xml",
+      "bytes": 640,
+      "sha256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff"
+    },
+    {
+      "path": "native-evidence/android/extraction.xml",
+      "bytes": 1502,
+      "sha256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032"
+    },
+    {
+      "path": "native-evidence/android/inspection.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-evidence/android/manifest.xml",
+      "bytes": 14789,
+      "sha256": "1c824165bc679dcc5ab4c6bd2814c9b0c8c2726fd758b74b2b7cc8591fc81b86"
+    },
+    {
+      "path": "native-evidence/android/resources.txt",
+      "bytes": 1659610,
+      "sha256": "3621819dd6c62939bde7500a82fec39158035d7ab3f648293c86db89e0a89d57"
+    },
+    {
+      "path": "native-evidence/android/rule-paths.json",
+      "bytes": 773,
+      "sha256": "8989dfa2105fd1cc721b075e86a804e9b996c98e02fd683e7354044ef3112cf1"
+    },
+    {
+      "path": "native-evidence/android/signing.txt",
+      "bytes": 342,
+      "sha256": "a355997bae3e4812f3506ebb9f734b38d7fa78d5faaaaad4f038ab00c2f76ab6"
+    },
+    {
+      "path": "native-evidence/android/source.txt",
+      "bytes": 82,
+      "sha256": "8f36c582e3c1924e1eb9742996bab59fd529729d64b43e7479d3649f5bcd1041"
+    },
+    {
+      "path": "mobile/android/app/build/reports/lint-results-release.html",
+      "bytes": 134831,
+      "sha256": "aa99265580aed000a4f3619851b02ee5ad352823ac3c6e2e8c39e4d20f641379"
+    },
+    {
+      "path": "mobile/android/app/build/reports/lint-results-release.txt",
+      "bytes": 19785,
+      "sha256": "ccdba6081226d913c2d1226923bd136bbbb85d9105e2dbcd3256072ea3fa71bc"
+    },
+    {
+      "path": "mobile/android/app/build/reports/lint-results-release.xml",
+      "bytes": 41660,
+      "sha256": "cc3535028f03e0c59a50c6a173a3cc4c894961fce08f0ee4f26ed7235de6d531"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "assertions": 421,
+  "assets": 35,
+  "version": "f6c58a4e6449e490ce4bf2da6b78c7ed1ad728579e8531311b5092b58a7eb4e4",
+  "limits": [
+    "VM worker verification; no real browser/OS offline acceptance"
+  ]
+}

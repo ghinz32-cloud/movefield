@@ -1,0 +1,60 @@
+{
+  "page": "_next/static/chunks/page-CX7N7Efz.js",
+  "key": "app/page.tsx",
+  "bytes": 269539,
+  "gzipBytes": 80947,
+  "initialGzipBytes": 388537,
+  "initialLimitGzipBytes": 400000,
+  "chunks": [
+    {
+      "key": "app/page.tsx",
+      "bytes": 269539,
+      "gzipBytes": 80947
+    },
+    {
+      "key": "_rolldown-runtime-QTnfLwEv.js",
+      "bytes": 694,
+      "gzipBytes": 422
+    },
+    {
+      "key": "virtual:vinext-app-browser-entry",
+      "bytes": 193036,
+      "gzipBytes": 56023
+    },
+    {
+      "key": "_framework-JGc2HF7T.js",
+      "bytes": 190152,
+      "gzipBytes": 59097
+    },
+    {
+      "key": "components/app-preferences.tsx",
+      "bytes": 152860,
+      "gzipBytes": 48566
+    },
+    {
+      "key": "_button-CBvz_Igj.js",
+      "bytes": 32543,
+      "gzipBytes": 10650
+    },
+    {
+      "key": "_alert-dialog-CM0RP9fj.js",
+      "bytes": 6769,
+      "gzipBytes": 2269
+    },
+    {
+      "key": "_training-DJXfdpTg.js",
+      "bytes": 771238,
+      "gzipBytes": 107734
+    },
+    {
+      "key": "_local-backup-BsRyCazp.js",
+      "bytes": 64380,
+      "gzipBytes": 15615
+    },
+    {
+      "key": "_progress-BIHciO6D.js",
+      "bytes": 24893,
+      "gzipBytes": 7214
+    }
+  ]
+}

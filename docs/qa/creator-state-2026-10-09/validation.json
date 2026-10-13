@@ -1,0 +1,59 @@
+{
+  "passed": [
+    "Tracking ranges survive save/readback for coach and manual plans",
+    "One owner defines limits for each matching web/native workflow",
+    "A retained set reference edits the same set after reordering",
+    "Removed or replacement-workout set references reject without touching another set",
+    "Structured superset metadata survives save and replacement even when notes change",
+    "Imported note wording cannot create pairing or change replacement dose",
+    "Malformed structured pairs are rejected; legacy records retain existing targets",
+    "native editor keeps ranges and prevents duplicate same-render keep/save",
+    "native editor retries refused saves and rejects stale plans without crashing",
+    "native stale Remove callback never removes a different exercise after indices shift",
+    "native editing follows exercise identity when moving the draft",
+    "web editor keeps ranges and prevents duplicate same-render keep/save",
+    "web editor retries refused saves and rejects stale plans without crashing",
+    "web stale Remove callback never removes a different exercise after indices shift",
+    "web editing follows exercise identity when moving the draft",
+    "Web customizer prevents duplicate acceptance and keeps refused reviews retryable"
+  ],
+  "baseCommit": "8abfca45f1f910155011516eabffbebdf070821b",
+  "branch": "audit/2026-10-09-creator",
+  "worktree": "/workspace/scratch/a905d1d2368a/movefield-creator",
+  "sourceSha256": {
+    "components/plan-customizer.tsx": "e5f0f864493ea1fa678ce1f39c930b3209420eaf5c7ff34864e035b66ffa7136",
+    "components/tracking-editor.tsx": "97530f94b08d5c3f0a08361319b2dc88eec11a72e897211ced8dc8447599599b",
+    "lib/customize.ts": "35b0273cc9c6ada9ebf4bb212db986da3168abf6d3c037c9ce01b82a60be63da",
+    "lib/saved-data.ts": "e227cf934c0dec46b4a38a750f1d0f9ee4d70f6578d83fbcebc69541d86a4d5f",
+    "lib/substitutions.ts": "70b6076bcb5750709283b8cbf25fbb6d8f317869f7cab544032cac3acb852cc3",
+    "lib/tracking.ts": "632d3158fee25f7f524856b8f68c974601527c7adaf41bec23c8c2c6fac1bf7e",
+    "lib/training-focus.ts": "25c005d5940eacab1adfe599801b83aa545d22743b7ff87cce2e218827bfce7e",
+    "lib/training.ts": "5b444f52ca0f0e911c9f376055769a5221bfb17b76ee3c9bd542f0540c332e79",
+    "lib/workout-log.ts": "250b6c5e933a0d54c864bcb7376ece3158b4eec875316a295b79462c56ec19ed",
+    "mobile/scripts/sync-shared.mjs": "750f90402f741f89699651379df4592cd0e768a23886522fbec371cb1a374646",
+    "mobile/src/session-editor.tsx": "a17aa304401441f621d51b6a3c0617ae8ddc26e213374da7cfce0d5d14e63fbe",
+    "scripts/check-creator-state.cjs": "7a85018580c0202d26eb1f574a0f2652d565a1e6ff9a1306987dcad7730cb820"
+  },
+  "checks": {
+    "compiledCreatorAndStableSetScenarios": 16,
+    "revision10Groups": 35,
+    "programSelectionGroups": 18,
+    "focusGroups": 13,
+    "catalogGroups": 9,
+    "revision11Groups": 7,
+    "revision11Assertions": 428582,
+    "namedTemplateAssertions": 3582,
+    "targetedEslint": "exit0;0errors,0warnings",
+    "mobileTsc": "exit0",
+    "webTsc": "one expected integration error: app/page PlanCustomizer callback must return boolean; root owns fix",
+    "progressionRegressions": 30,
+    "deepAuditChecks": 11,
+    "trainingChecks": 29,
+    "nativeEngine": "78plans across7startingweekdays; actual set and substitution/save validation pass"
+  },
+  "limits": [
+    "No physical device/browser UI run",
+    "Root must integrate app/page.tsx and mobile/App.tsx stable-ref callers and latest-state finish",
+    "Legacy note-only grouping is not inferred from untrusted text; encoded sets/rest remain unchanged"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "artifactId": 11636498858,
+  "archiveSHA256": "61cffc63eeb187f45b9abf174d493494a4a5351f287f90bce07464462a5f1dd8",
+  "verified": true,
+  "files": [
+    {
+      "path": "Info.plist",
+      "bytes": 3553,
+      "sha256": "9f7d264fde03eb71e168a5d20ee366258c59e2abbadcb3c4b7a609d9346237e1"
+    },
+    {
+      "path": "Podfile.lock",
+      "bytes": 78675,
+      "sha256": "1d6e645a9a1eeb94d3b7a20e7874f38ca195f0fc47d85c61edef1f85cc263fe8"
+    },
+    {
+      "path": "PrivacyInfo.xcprivacy",
+      "bytes": 1274,
+      "sha256": "ab8e9be3d1713701eef605d660a79483ebfab512bc726a28b67c82663382b1fa"
+    },
+    {
+      "path": "inspection.json",
+      "bytes": 5986,
+      "sha256": "d64d584718318560dd8baca1657ecd399a7f7c933e023731319cabc82a22b7c7"
+    },
+    {
+      "path": "source.txt",
+      "bytes": 82,
+      "sha256": "8f36c582e3c1924e1eb9742996bab59fd529729d64b43e7479d3649f5bcd1041"
+    }
+  ]
+}

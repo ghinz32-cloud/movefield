@@ -1,0 +1,22 @@
+PASS Anonymous and synthetic native credentials cannot access account rows
+PASS CSRF, cross-site fetch, missing origin and invalid methods are denied
+PASS Malformed, plaintext, secret-bearing and duplicate identities are rejected before any save
+PASS Declared and streaming payload limits reject oversized and invalid UTF-8 bodies
+PASS Atomic encrypted record batch commits once and reads exact receipt
+PASS Tenant identities scope all pulls, writes, receipts and account revisions
+PASS Concurrent same-base clients preserve one committed revision and reject the loser
+PASS Concurrent identical mutation retries commit once and identify replay
+PASS D1 failure midway through batch rolls back records, account revision and receipt
+PASS Pagination preserves tied revisions and tombstones with bounded opaque cursors
+PASS Feedback provider absence and unapproved host fail unavailable without saving jobs
+PASS Feedback accepts only consented adult completed metric arrays without notes or profile
+PASS Generated text is absent from accepted response and visible only after actual database save
+PASS Feedback idempotency returns persisted completion and protects tenants and payload identity
+PASS Provider malformed or unsafe output fails closed and never returns generated text
+PASS Timeout aborts provider fetch, persists backoff and prevents simultaneous lease claims
+PASS Expired final attempt becomes terminal rather than a permanently processing job
+PASS Failed result persistence exposes no generated string and remains safely retryable
+PASS Sensitive APIs always return private no-store and no provider secrets in errors
+PASS Outstanding job limits are tenant-scoped and abandoned jobs release capacity explicitly
+PASS Rolling daily feedback limits reject new jobs without deleting completed results
+21 backend D1 integration groups passed

@@ -1,0 +1,22 @@
+{
+  "passed": 16,
+  "total": 16,
+  "failures": [],
+  "controlRef": null,
+  "controlPageSource": null,
+  "sourceInputs": [
+    {
+      "path": "app/page.tsx",
+      "sha256": "b19aefc2b0a8dfeb5bd116d7e41bd6e3b6239978d7fc2eeb63e4d9ae9b4cdda6"
+    },
+    {
+      "path": "mobile/App.tsx",
+      "sha256": "9c51332d8c6b56c2af7e2539e9a2176d7ca5a7416e3e6c569e39e6d962a0dad8"
+    },
+    {
+      "path": "components/rest-timer.tsx",
+      "sha256": "05022b63b3ec6aa7af1fae286c2c914ac9586eeaefbc1cd1efa7dda9583dc5aa"
+    }
+  ],
+  "scope": "Actual compiled TSX callbacks and real shared validators; simulated hooks/storage/DOM/notifications/timers; no physical device or browser acceptance."
+}

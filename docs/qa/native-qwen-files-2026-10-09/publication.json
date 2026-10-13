@@ -1,0 +1,15 @@
+{
+  "localImplementation": "63e7f97d8b7fc7b70ccd645ac1f85779672c7375",
+  "githubImplementation": "02a108cf69adee4c229bbde52d9e0e7e093339da",
+  "tree": "efe11584161ac2e543fce38ab16a4f5f2909ba90",
+  "branch": "audit/2026-10-08-quality",
+  "verifiedAt": "2026-10-09T16:04:03.437370+00:00",
+  "verified": [
+    "fresh GitHub head via fetch and ls-remote",
+    "exact local/remote tree equality",
+    "implementation report and validation artifact-hash readback",
+    "PR1 head and draft status"
+  ],
+  "mainUnchanged": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
+  "applicationChecksRepeatedForThisDocumentation": false
+}

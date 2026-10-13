@@ -1,0 +1,21 @@
+{
+  "apkSHA256": "57012598f8fd2211850c8434fdbe9009f6947d9fc7de95c946cb777a781b9922",
+  "manifestSHA256": "1c824165bc679dcc5ab4c6bd2814c9b0c8c2726fd758b74b2b7cc8591fc81b86",
+  "resourceTableSHA256": "3621819dd6c62939bde7500a82fec39158035d7ab3f648293c86db89e0a89d57",
+  "rules": [
+    {
+      "name": "movefield_backup_rules",
+      "identifier": 2132017157,
+      "file": "res/r1.xml",
+      "decodedFile": "backup.xml",
+      "decodedSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff"
+    },
+    {
+      "name": "movefield_data_extraction_rules",
+      "identifier": 2132017158,
+      "file": "res/zk.xml",
+      "decodedFile": "extraction.xml",
+      "decodedSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+PASS web finalization preserves same-tick latest metrics, feedback and unrelated changes
+PASS web retained finish callback is idempotent and keeps an existing history entry
+PASS web stale rendered rep callback edits its stable set after array reorder
+PASS web stale rendered rep/log controls cannot edit a replacement workout
+PASS web retained log control logs its stable set once and preserves original rest on repeat
+PASS web account preparation failures disconnect sync and still acknowledge the latest local save
+PASS web full account queue rolls back its combined save and retries locally without committing an upload
+PASS native rendered rep and log callbacks keep set identity after reordering and ignore duplicates
+PASS native rendered rep and log callbacks cannot mutate a replacement workout
+PASS native transient save failures retry twice then acknowledge only the successful save
+PASS native retries are bounded and open changes remain exportable after three failures
+PASS native queued retry is superseded by a newer edit and cannot write after unmount
+PASS native capacity errors do not retry the unchanged oversized payload
+PASS late rest alarm sends permitted notification when hidden and does not play a stale chime
+PASS late rest alarm sends permitted notification when visible and does not play a stale chime
+PASS rest alarm respects denied notification permission and cleans pending callbacks
+16/16 current log/save/alarm scenarios passed. Actual compiled TSX callbacks and real shared validators; simulated hooks, storage, DOM, notifications and timers. No browser throttling, OS interruption or physical-device acceptance.

@@ -1,0 +1,49 @@
+{
+  "milestone": "U12",
+  "baseline": "3681258a6095d977e67b0f1d8c6fadfd135fbff1",
+  "sourceSHA256": {
+    "app/page.tsx": "5a2ce6420345ce9295761e707be55f039267449b86535fe022262cd190fec485",
+    "app/globals.css": "21a667021ed7b1c6928821d89164403a8d6a7ef1165665b118c4eaa3c225afdc",
+    "components/training-onboarding.tsx": "febdc2b0cd6c4a0c4df455466dc3b2e6fdc84374acd2fdeb34ef2592c4a88c15",
+    "components/account-security.tsx": "73cf8d2cdc76777673eadfcd678f2400e5f3475d06786b8697c6f0b1b308b2af",
+    "mobile/App.tsx": "4ce6c4438c7b348c482fb30ab70c743ab558ff201fc4c483a89c357420b02a8e",
+    "mobile/src/plan-setup.tsx": "671c883f16d06621303861e078c9b76bbec2bd77f54214ed63f0c2bf9839cd30"
+  },
+  "passed": [
+    "web types",
+    "native types",
+    "lint",
+    "14 onboarding checks",
+    "29 security checks",
+    "36 shared hashes",
+    "native engine:78 plans x7 starting weekdays",
+    "production build",
+    "both production suites",
+    "iOS/Android Metro exports"
+  ],
+  "browser": {
+    "sample": true,
+    "start": "Today",
+    "falseRecoveryToast": false,
+    "setLogged": 1,
+    "reps": 5,
+    "navigateExerciseRetainsSet": true,
+    "partialSaveReturnsToday": true,
+    "profileAndSetupOpened": true,
+    "viewportWidth": 1348,
+    "scrollWidth": 1348,
+    "existingTextSize": 130,
+    "screenshotCaptured": true,
+    "screenshotLocalSync": "failed after bounded wait; no downloadable screenshot claim"
+  },
+  "limits": [
+    "HTTP preview retains real locked-record recovery",
+    "physical phone, secure persistence and account service untested/unavailable",
+    "no inference/training",
+    "no merge/deploy"
+  ],
+  "failedThenFixed": [
+    "Removed BookOpen import caused type failure; restored import",
+    "Raw ref used to select recovery screen flagged by lint; added hydrated hasStoredData state"
+  ]
+}

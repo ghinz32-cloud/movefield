@@ -1,0 +1,85 @@
+{
+  "BuildMachineOSBuild": "25G83",
+  "CADisableMinimumFrameDurationOnPhone": true,
+  "CFBundleDevelopmentRegion": "en",
+  "CFBundleDisplayName": "Movefield",
+  "CFBundleExecutable": "Movefield",
+  "CFBundleIcons": {
+    "CFBundlePrimaryIcon": {
+      "CFBundleIconFiles": [
+        "AppIcon60x60"
+      ],
+      "CFBundleIconName": "AppIcon"
+    }
+  },
+  "CFBundleIcons~ipad": {
+    "CFBundlePrimaryIcon": {
+      "CFBundleIconFiles": [
+        "AppIcon60x60",
+        "AppIcon76x76"
+      ],
+      "CFBundleIconName": "AppIcon"
+    }
+  },
+  "CFBundleIdentifier": "com.ghinz32.movefield",
+  "CFBundleInfoDictionaryVersion": "6.0",
+  "CFBundleName": "Movefield",
+  "CFBundlePackageType": "APPL",
+  "CFBundleShortVersionString": "0.1.0",
+  "CFBundleSignature": "????",
+  "CFBundleSupportedPlatforms": [
+    "iPhoneSimulator"
+  ],
+  "CFBundleURLTypes": [
+    {
+      "CFBundleURLSchemes": [
+        "com.ghinz32.movefield"
+      ]
+    },
+    {
+      "CFBundleURLSchemes": [
+        "exp+bigcheese3232"
+      ]
+    }
+  ],
+  "CFBundleVersion": "1",
+  "DTCompiler": "com.apple.compilers.llvm.clang.1_0",
+  "DTPlatformBuild": "23F81a",
+  "DTPlatformName": "iphonesimulator",
+  "DTPlatformVersion": "26.5",
+  "DTSDKBuild": "23F81a",
+  "DTSDKName": "iphonesimulator26.5",
+  "DTXcode": "2660",
+  "DTXcodeBuild": "17F113",
+  "LSMinimumSystemVersion": "12.0",
+  "LSRequiresIPhoneOS": true,
+  "MinimumOSVersion": "16.4",
+  "NSAppTransportSecurity": {
+    "NSAllowsArbitraryLoads": false,
+    "NSAllowsLocalNetworking": true
+  },
+  "RCTMetroPort": "",
+  "RCTNewArchEnabled": true,
+  "UIDeviceFamily": [
+    1,
+    2
+  ],
+  "UILaunchStoryboardName": "SplashScreen",
+  "UIRequiredDeviceCapabilities": [
+    "arm64"
+  ],
+  "UIRequiresFullScreen": false,
+  "UIStatusBarStyle": "UIStatusBarStyleDefault",
+  "UISupportedInterfaceOrientations": [
+    "UIInterfaceOrientationPortrait",
+    "UIInterfaceOrientationPortraitUpsideDown"
+  ],
+  "UISupportedInterfaceOrientations~ipad": [
+    "UIInterfaceOrientationPortrait",
+    "UIInterfaceOrientationPortraitUpsideDown",
+    "UIInterfaceOrientationLandscapeLeft",
+    "UIInterfaceOrientationLandscapeRight"
+  ],
+  "UIUserInterfaceStyle": "Automatic",
+  "UIViewControllerBasedStatusBarAppearance": false
+}

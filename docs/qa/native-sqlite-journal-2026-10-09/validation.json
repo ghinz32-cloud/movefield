@@ -1,0 +1,350 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-09T19:34:44.367890+00:00",
+  "repository": "https://github.com/ghinz32-cloud/movefield.git",
+  "branch": "audit/2026-10-09-sqlite",
+  "localBase": "8ee8319a143ec1e3001c7b9b011f1d0a9cc1db60",
+  "publication": "Pending root reconciliation/publication; this receipt describes tested local source fingerprints",
+  "regressions": {
+    "passed": 55,
+    "total": 55
+  },
+  "production": {
+    "passed": 3,
+    "total": 3
+  },
+  "commands": {
+    "npm run check": 0,
+    "cd mobile && npm run check": 0,
+    "npm run lint": 0,
+    "npm run build": 0,
+    "cd mobile && npm run test:engine": 0,
+    "cd mobile && EXPO_OFFLINE=1 EXPO_NO_TELEMETRY=1 npm run export:mobile": 0,
+    "python3 scripts/package-mobile.py": 0,
+    "node scripts/check-mobile-package.cjs": 0,
+    "node scripts/check-native-security-config.cjs": 0,
+    "python3 scripts/test-native-artifact-inspector.py": 0,
+    "python3 scripts/test-apk-rule-extractor.py": 0,
+    "python3 scripts/test-native-change-gate.py": 0,
+    "npm run test:regression": 0,
+    "npm run test:production": 0
+  },
+  "newStorageScenarios": 7,
+  "qwen": {
+    "status": "passed",
+    "scenarios": 25,
+    "assertions": 1364,
+    "actualModelDownloads": 0,
+    "inferenceRuns": 0,
+    "physicalDevicesQualified": 0,
+    "adapter": "actual compiled Expo adapter + mock filesystem/transport + real node:sqlite + real SHA-256"
+  },
+  "generatedConfig": {
+    "ok": true,
+    "checks": 275,
+    "kind": "isolated-expo-prebuild",
+    "nativeCompilation": false,
+    "storeAcceptance": false,
+    "physicalDevices": false,
+    "files": {
+      "manifest": "b8bd1f9d9b272855acf3b617d55258181cfc84b9ff5c7c40757b5d99a6a57600",
+      "legacyBackup": "b6d25f2b96cdd6b451a701a01ec246934538f89635a534d679e0825dd2f555ee",
+      "extraction": "9c0680166f549a448ff3b4acc76af3c08b854ccbb0e9278062fcf8f788504f1b",
+      "privacy": "8645807a79663255e71b973dc700b9aa53a471ca7958183bcb8d4107f7ee89b1",
+      "sqlite": {
+        "androidCustomBuildFlags": "expo.sqlite.customBuildFlags=-DSQLITE_DEFAULT_SYNCHRONOUS=3",
+        "iosCustomBuildFlags": "-DSQLITE_DEFAULT_SYNCHRONOUS=3",
+        "gradlePropertiesSha256": "464e15f84ec5d6494c7cb43a7a75997619592e797488a7199221e411b2c18936",
+        "podPropertiesSha256": "8e162f4dbba33704fb2ae0291f47f0e86d6f484080431433d98e86344e7895fa"
+      }
+    }
+  },
+  "readerFixtureTests": 20,
+  "nativeGateTests": 29,
+  "artifactInspectorFixtures": 90,
+  "apkRuleExtractorFixtures": 9,
+  "packagingFixtures": 12,
+  "package": {
+    "bytes": 2078044,
+    "sha256": "6874de8ada413e6f2dd1c48a676737fc3dcc33955124ab22a34e9a1c7ab8bb7c",
+    "entries": 118,
+    "allEntriesMatchCurrentSource": true
+  },
+  "hermesExports": {
+    "mobile/dist-mobile/_expo/static/js/android/index-8c78ce0ce791d177efa34f2dc42e9a33.hbc": {
+      "bytes": 4672094,
+      "sha256": "da854bf34f4e49b6e8f4d8f30fbc433fd4266ff052841844b13dd17dca829803"
+    },
+    "mobile/dist-mobile/_expo/static/js/ios/index-a5dc3923c785a0fb208186fe9515514f.hbc": {
+      "bytes": 4661660,
+      "sha256": "2431254a4b185adc928bb89849cc213685a0319b719be03f6ee0e8cff10fa425"
+    }
+  },
+  "canonicalScientificRuntimeChanges": [],
+  "sharedSnapshotHashesPassed": 39,
+  "sourceFingerprints": {
+    ".github/workflows/native-builds.yml": {
+      "bytes": 7849,
+      "sha256": "c0493759edb66ed26a582f7d22f7392dd3956990f53f0fdd59649c1ea2505ced"
+    },
+    "HANDOFF.md": {
+      "bytes": 138113,
+      "sha256": "e0732f101d03b9885f8b1dd24b47ce9ed10026d247ea746a90992b15a4ef6de8"
+    },
+    "TASKS.md": {
+      "bytes": 31790,
+      "sha256": "fcf90d6fef92554be2beaf65325d6d27bb887cd47cc75bffe9be1751964f6603"
+    },
+    "docs/native-sqlite-journal-2026-10-09.md": {
+      "bytes": 5836,
+      "sha256": "cb83e33f259a2c296dee59974ef719b566372ceb67f04928d3e1979a47a24ae9"
+    },
+    "mobile/README.md": {
+      "bytes": 1233,
+      "sha256": "a0df5f5bdec8e41f25ec4662d14501921eecf0eea454e78f3e9ed6b332bbcbf6"
+    },
+    "mobile/START-HERE.md": {
+      "bytes": 15645,
+      "sha256": "808b5c61bca9aad04dbddfe394affd2a8139a396dc2b7c875162ecd79f1f1e31"
+    },
+    "mobile/app.json": {
+      "bytes": 3924,
+      "sha256": "f564757312da8579cca6194a31fb3ec16df9c7a6669815ae06e860f293de7346"
+    },
+    "mobile/src/local-crypto.ts": {
+      "bytes": 4646,
+      "sha256": "c1c89de56787bb68ca2b50c011650844c5af59cd6fd2eeba717afb122fedb09d"
+    },
+    "mobile/src/native-record-store.ts": {
+      "bytes": 24261,
+      "sha256": "4b3c553c0a6022cbcc058a27e0f9522464405a08c38b5d0b252902df9afff6d9"
+    },
+    "mobile/src/native-sqlite-policy.ts": {
+      "bytes": 1414,
+      "sha256": "b504deb11535ce4a63e8b72be9b5507a631bb508cd46e336f8fb341f765900f5"
+    },
+    "mobile/src/qwen-file-cache.ts": {
+      "bytes": 19800,
+      "sha256": "c613df040476b30f0055295798d6866bab59b68bf82e2330753be33372842b5c"
+    },
+    "scripts/check-native-build-evidence.cjs": {
+      "bytes": 743,
+      "sha256": "3c81636ac54c972a8827994d758461f6bcfddd79efc9fe60852a6ba41a881b7a"
+    },
+    "scripts/check-native-qwen-files.cjs": {
+      "bytes": 34415,
+      "sha256": "0419fb84c1c56bc8850f9c80bfd99b2f7af615ec38026ec90f319cebfdb9c3c5"
+    },
+    "scripts/check-native-security-config.cjs": {
+      "bytes": 20428,
+      "sha256": "05bacce47d40399fc402d319f47ad23ad7f637e277e9660d9065d551355927b9"
+    },
+    "scripts/check-native-sqlite-policy.cjs": {
+      "bytes": 10436,
+      "sha256": "e10fc78ed13929a0fabbb179491fdc7bbc50422c22da8209d519aea6f33a8144"
+    },
+    "scripts/collect-native-build-evidence.py": {
+      "bytes": 14759,
+      "sha256": "f2076094615fe57ffbea6b7f22ce5ad03bb64d0de494207a9a393a732c2c3186"
+    },
+    "scripts/lib/native-sqlite.cjs": {
+      "bytes": 3794,
+      "sha256": "cb83d622213f2c322ca8cbf65d21284cf5e1db90634dd115c8701c3a2ee348a6"
+    },
+    "scripts/native-change-gate.py": {
+      "bytes": 4912,
+      "sha256": "435de97555d28576d94a59883966c054085be7fba475b2ce9a003f56010be39d"
+    },
+    "scripts/test-native-build-evidence.py": {
+      "bytes": 15150,
+      "sha256": "9b9e3c9dcdec35cd9a5d13c30de6bec924275c0227a4b2c53f2ea4c2d83efdba"
+    },
+    "scripts/test-native-change-gate.py": {
+      "bytes": 17303,
+      "sha256": "e087e681ac003fb872ea7327d29412967905c7a218f1a16986aa41b6a6520160"
+    }
+  },
+  "logs": {
+    "apk-extractor.log": {
+      "bytes": 107,
+      "sha256": "ca18ffc8e8fdc6b71e49e9b4fd64e04661daa3243fb767d57a64ce80ea2d7b63"
+    },
+    "artifact-inspector.log": {
+      "bytes": 10017,
+      "sha256": "c9feeb5461d8987ebbf8e6a787b729df0ac9262e9028bb32eb1a2de637d7d363"
+    },
+    "generated-security-config.log": {
+      "bytes": 793,
+      "sha256": "d6842e36b2ef5ce858ffbb084aa82e6fbe0f8c6d1d9a60fb3f51bb3816ac2161"
+    },
+    "mobile-exports.log": {
+      "bytes": 2121,
+      "sha256": "ca5d462127bbc225435178c920e77c5f4132c8532ffc8e67f6575295f2ef9c0a"
+    },
+    "mobile-package.log": {
+      "bytes": 76,
+      "sha256": "30240d677d20e2379678761ccfe6c5189da4547285b5cc38ddbd0b87e5977792"
+    },
+    "native-change-gate.log": {
+      "bytes": 3864,
+      "sha256": "1539a3c0b492114d06b18771703b4977adb2476ad9a6e8ef44907ebfddebe44c"
+    },
+    "native-engine.log": {
+      "bytes": 901,
+      "sha256": "76ed9686553bcd433fbc00af3350edc93ec5401af402db1ae6abccdb10689289"
+    },
+    "native-types.log": {
+      "bytes": 152,
+      "sha256": "79526980492b5a98ee7a7a6348d53746ff5eeece6d493df786d40c54b2059069"
+    },
+    "native7-build-evidence-fixtures.log": {
+      "bytes": 3264,
+      "sha256": "fd0a9639b486923da2985449835747708eaae3d9cfc03d32681ec914494f7c78"
+    },
+    "native7-build-evidence-validation.json": {
+      "bytes": 1175,
+      "sha256": "2ccbdc496a8d6051619e5d326c0dfa9194cb4480bf99e2aa53756cbfbc51ef56"
+    },
+    "native7-gate-fixtures.log": {
+      "bytes": 3864,
+      "sha256": "d3ab534424f874cc8f88c33eedf7fa3dd0f0f6880b82d5e60981a69f23118815"
+    },
+    "package-fixtures.log": {
+      "bytes": 974,
+      "sha256": "6a00015a9f2d27f833fa0fd0652b99418793e238c0f0947d36fe053e559a0d6e"
+    },
+    "product-lint.log": {
+      "bytes": 269,
+      "sha256": "f7f7b7440c8fc2066c8ab219ffd2ab4f76438d6e0694df7017aa4a252fa6dad2"
+    },
+    "production-checks.json": {
+      "bytes": 211,
+      "sha256": "87a93ad99dd7a7403ecc4f35139b2ed61fcec2b2b9d4c2de6e7abe1c8b38ab00"
+    },
+    "production-regressions.log": {
+      "bytes": 1935,
+      "sha256": "77745e1d22c9eb7ee7be357dda30bd9433c7376ef135fcd9ece22acbaa7706e5"
+    },
+    "program-depth-validation.json": {
+      "bytes": 86016,
+      "sha256": "01c7c5e47b0995275b64f1ed77cf93d5226c55fc7ce3e898ed2c64b407f73895"
+    },
+    "qwen-files-guarded.log": {
+      "bytes": 1846,
+      "sha256": "1346a0c61d601e989b9c4287886cf03f2441be27be5f78398051feb048123f52"
+    },
+    "regression-checks.json": {
+      "bytes": 3800,
+      "sha256": "55f9c55466f9708e26bd1d87e3cbbae42a9e32226381ac763866800355f535a2"
+    },
+    "regressions.log": {
+      "bytes": 67717,
+      "sha256": "e42a2e5e18c4208f8964affb74bf89d14f93981ade30a59e5921f30ba5efe88f"
+    },
+    "revision-10-validation.json": {
+      "bytes": 2679,
+      "sha256": "f25c43047cf922ccfbaf57152a5b8e47bd35046e75c1913ff10fcdd9785585bf"
+    },
+    "revision-11-validation.json": {
+      "bytes": 1093,
+      "sha256": "eea390049765e3a74807a19e1d5d41c8e08d89259b53083f29f9480bf6297b25"
+    },
+    "revision-13-validation.json": {
+      "bytes": 5769,
+      "sha256": "6d7a21b90301d12fdcb2df651f1bf88caef36c9cd8234851606f41e0bd13384b"
+    },
+    "sqlite-policy.log": {
+      "bytes": 1799,
+      "sha256": "06c80d998a2dcbe09d92079d63703db4b0f9912899ca59450cc3874b2a91bce2"
+    },
+    "web-build.log": {
+      "bytes": 3085,
+      "sha256": "9c9ab6bbac3957df817eff9bce53c00e79f66480a3da2a58ee9b7d29c20f61c1"
+    },
+    "web-types.log": {
+      "bytes": 157,
+      "sha256": "587aad3d6c5d54340729257adf0fdeb64de2b024077298654351bf80a4848175"
+    }
+  },
+  "transientFixtureCorrections": [
+    "Corrected initial expectation that an untracked historical legacy shadow would be removed; existing cleanup policy preserves it.",
+    "Concurrent Qwen rejection can have a complete committed pointer under existing postcommit acknowledgement semantics; test verifies integrity and recoverable retry instead of assuming no commit.",
+    "A preliminary Qwen fixture run exited0 without its final result; referenced suite deadline now prevents that false passing outcome. Final integrated run completes all25scenarios."
+  ],
+  "qualificationLimits": [
+    "Host node:sqlite locking/migration/file checks; harness explicitly models default3 before each fresh BEGIN EXCLUSIVE connection and queues transactions. It is not the native Expo deferred/concurrent scheduler.",
+    "Read-only mode guard tests include real unmodified host default2 refusal despite base3; no application callback SQL/legacy cleanup occurs in that refusal.",
+    "Fresh source stores/modules on the host harness are not physical OS/process/power-cut acceptance. Independent exact vendored C peer has separate Linux process-reopen tests.",
+    "Installed Expo generated Android and iOS property flags are verified; actual new-source platform compiler routes, objects, assembled metadata and CI remain pending.",
+    "Native evidence readers have synthetic fixtures. Their scoped flag/object/dependency/privacy records are not complete binary SCA or device macro/runtime proof.",
+    "No actual rare WAL corruption interleaving, power-cut, Android/iOS physical device, store submission, production signing or inference qualification.",
+    "Existing strict JavaScript dependency advisory blockers remain; canonical scientific templates have no new outcome validation or individual optimality claim."
+  ],
+  "rawLogFingerprints": {
+    "native-change-gate.log": {
+      "bytes": 3864,
+      "sha256": "1539a3c0b492114d06b18771703b4977adb2476ad9a6e8ef44907ebfddebe44c"
+    },
+    "web-types.log": {
+      "bytes": 158,
+      "sha256": "41d39cff24a2767fb623a40788a74db6700d2427f22215a1734981e58231bc25"
+    },
+    "artifact-inspector.log": {
+      "bytes": 10017,
+      "sha256": "c9feeb5461d8987ebbf8e6a787b729df0ac9262e9028bb32eb1a2de637d7d363"
+    },
+    "qwen-files-guarded.log": {
+      "bytes": 1846,
+      "sha256": "1346a0c61d601e989b9c4287886cf03f2441be27be5f78398051feb048123f52"
+    },
+    "generated-security-config.log": {
+      "bytes": 793,
+      "sha256": "d6842e36b2ef5ce858ffbb084aa82e6fbe0f8c6d1d9a60fb3f51bb3816ac2161"
+    },
+    "production-regressions.log": {
+      "bytes": 1935,
+      "sha256": "77745e1d22c9eb7ee7be357dda30bd9433c7376ef135fcd9ece22acbaa7706e5"
+    },
+    "native-types.log": {
+      "bytes": 153,
+      "sha256": "670d01d210acd2e995c8fa4949fa5481f8b3dde171e00650be865ae911fad166"
+    },
+    "sqlite-policy.log": {
+      "bytes": 1799,
+      "sha256": "06c80d998a2dcbe09d92079d63703db4b0f9912899ca59450cc3874b2a91bce2"
+    },
+    "mobile-exports.log": {
+      "bytes": 2121,
+      "sha256": "ca5d462127bbc225435178c920e77c5f4132c8532ffc8e67f6575295f2ef9c0a"
+    },
+    "regressions.log": {
+      "bytes": 67746,
+      "sha256": "88ab72a1eaf6fff392fcdd4a7fc1fcf846cf5b1ced802fff0464b4b216f222e7"
+    },
+    "package-fixtures.log": {
+      "bytes": 974,
+      "sha256": "6a00015a9f2d27f833fa0fd0652b99418793e238c0f0947d36fe053e559a0d6e"
+    },
+    "mobile-package.log": {
+      "bytes": 76,
+      "sha256": "30240d677d20e2379678761ccfe6c5189da4547285b5cc38ddbd0b87e5977792"
+    },
+    "product-lint.log": {
+      "bytes": 270,
+      "sha256": "5ba06a102cfaab767a3f313fba3e41c2800ec846ff0ef6364d6b943b2bf80f1a"
+    },
+    "native-engine.log": {
+      "bytes": 901,
+      "sha256": "76ed9686553bcd433fbc00af3350edc93ec5401af402db1ae6abccdb10689289"
+    },
+    "web-build.log": {
+      "bytes": 3086,
+      "sha256": "8c74051af754034a4b50b83bdb71a0a403c91a64b239c7497d13b50caed5b051"
+    },
+    "apk-extractor.log": {
+      "bytes": 107,
+      "sha256": "ca18ffc8e8fdc6b71e49e9b4fd64e04661daa3243fb767d57a64ce80ea2d7b63"
+    }
+  },
+  "savedLogNormalization": "Trailing whitespace and trailing blank lines removed only; raw local output fingerprints retained separately. No test result text removed."
+}

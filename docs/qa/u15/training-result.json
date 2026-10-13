@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "status": "trained-pilot",
+  "qualified": false,
+  "task": "reviewed-evidence-selection-only",
+  "baseModel": {
+    "repository": "Qwen/Qwen3-0.6B",
+    "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "weightsFile": "model.safetensors",
+    "weightsBytes": 1503300328,
+    "weightsSha256": "f47f71177f32bcd101b7573ec9171e6a57f4f4d31148d38e382306f42996874b",
+    "license": "Apache-2.0",
+    "modelCard": "https://huggingface.co/Qwen/Qwen3-0.6B/blob/c1899de289a04d12100db370d81485cdf75e47ca/README.md"
+  },
+  "datasetManifestSha256": "35ce4cacc84faa6dee160d13ded52563e9ca8f2c7a0ee839367177ed6b954836",
+  "corpusSha256": "4b802db8ac033ac6b1256376f9aa4ddf80ff049734a5583f0581e2bb03ed1c04",
+  "contractSha256": "544d6ab38b7da08cd903e22591e18268d1eb2425222d49705fb5e76e191cddd3",
+  "defaultPromptSha256": "ba9af147871afab36f6336b44b53b50f84d5a0fba3eb2f157a37ef5b435934d3",
+  "runtimePromptSha256": "92fe2bac62b254b2b2c5dbe274f749ce54968301315b95e5301cd55027f819b3",
+  "contract": {
+    "contextTokens": 1024,
+    "outputTokens": 192,
+    "thinking": false,
+    "assistantTargetsOnly": true,
+    "truncate": false,
+    "prompt": "exact-deployed-nonthinking-chatml"
+  },
+  "trainingSteps": 16,
+  "usedExamples": [
+    "adult-activity-4",
+    "short-sessions-6",
+    "unsupported-load-8",
+    "distractor-regional-length-0",
+    "failure-context-2",
+    "pair-short-sessions-1",
+    "periodization-context-2",
+    "superset-tradeoffs-6",
+    "pair-regional-length-2",
+    "concurrent-training-7",
+    "hypertrophy-frequency-4",
+    "adult-consistency-5",
+    "pair-adult-consistency-1",
+    "lengthened-partials-0",
+    "regional-length-5",
+    "regional-length-6"
+  ],
+  "uniqueUsedExamples": 16,
+  "trainableParameters": 1146880,
+  "adapterBeforeSha256": "2ba2a5cd2045230b13773da85fe71303c83a19c56a1183cf3fc31a8763ae30c0",
+  "adapterAfterSha256": "b9e7b5284ce81a112f3fc12fb2a0d25c36d868b0271bb40217c2817081c5af96",
+  "baselineValidation": {
+    "eval_loss": 0.08504779636859894,
+    "eval_model_preparation_time": 0.0067,
+    "eval_runtime": 5.7003,
+    "eval_samples_per_second": 0.702,
+    "eval_steps_per_second": 0.702,
+    "epoch": 0
+  },
+  "postTrainingValidation": {
+    "eval_loss": 0.0024558589793741703,
+    "eval_model_preparation_time": 0.0067,
+    "eval_runtime": 4.7617,
+    "eval_samples_per_second": 0.84,
+    "eval_steps_per_second": 0.84,
+    "epoch": 0.09876543209876543
+  },
+  "trainMetrics": {
+    "train_runtime": 86.4943,
+    "train_samples_per_second": 0.185,
+    "train_steps_per_second": 0.185,
+    "total_flos": 18510706507776.0,
+    "train_loss": 0.028306828335189493,
+    "epoch": 0.09876543209876543
+  },
+  "validationCases": 4,
+  "validationIsHeldoutQualification": false,
+  "maxPromptTokens": 503,
+  "maxTargetTokens": 66,
+  "elapsedSeconds": 99.63,
+  "peakProcessRssBytes": 2928914432,
+  "environment": {
+    "torch": "2.14.1+cpu",
+    "transformers": "5.18.0",
+    "peft": "0.21.2",
+    "device": "cpu",
+    "threads": 4,
+    "dtype": "torch.bfloat16"
+  },
+  "toolingSha256": {
+    "trainer": "9bc482923377bdfb9bc851a0b30fce7aed08a6e6da9217a73dde4e51f4e4d7da",
+    "exporter": "50c35473653d6c874497029c3473d78a43ba3be41f90ddc9c4c8b8f65aeb1ae3",
+    "requirements": "c7cab34308d0f40c0e7974911bb420e76c0447f70ff2d8b64fff85d48c9558b7"
+  },
+  "baseFilesSha256": {
+    "config.json": "660db3b73d788119c04535e48cf9be5f55bc3100841a718637ae695b442f27dd",
+    "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+  },
+  "downloadAllowed": false,
+  "artifacts": {
+    "adapter_model.safetensors": {
+      "bytes": 4602248,
+      "sha256": "5dad7bf080059ae8b69fa45a6bc133d442a3479f2e3897896f17433deaa3c90e"
+    },
+    "README.md": {
+      "bytes": 5184,
+      "sha256": "4fb01070dbf1c311649b741432747c286d5438547f54ccdea88930e6d7b47faa"
+    },
+    "adapter_config.json": {
+      "bytes": 1131,
+      "sha256": "b46da68ea8453fbfdf20bf74529ea0bd931fe6f5234e22a97cd85c6e375fc439"
+    },
+    "tokenizer.json": {
+      "bytes": 11422650,
+      "sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506"
+    },
+    "tokenizer_config.json": {
+      "bytes": 693,
+      "sha256": "c4f4c62b741ab2940841480f9942f378d7d3878d47c2babb862af7381c59b952"
+    },
+    "chat_template.jinja": {
+      "bytes": 4168,
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8"
+    }
+  },
+  "heldoutEvaluationRan": false,
+  "demoUsesThisAdapter": false,
+  "publishedModel": false,
+  "limits": "Small synthetic source-selection experiment. Loss is not accuracy, safety qualification or exercise-science training. Merge and compile a separately pinned MLC artifact only after independent evaluation."
+}

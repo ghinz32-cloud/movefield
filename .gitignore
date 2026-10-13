@@ -51,3 +51,16 @@ next-env.d.ts
 /mobile/dist-mobile/
 /mobile/dist-web/
 /mobile/*.tsbuildinfo
+
+# Reproducible TypeScript cache
+*.tsbuildinfo
+
+# Shipped photos require a rights record; recovered imports are withheld.
+/public/exercise-photos/
+# Generated from the current native tree during dev/build.
+/public/downloads/movefield-mobile-r14.zip
+# Rebuilt from pinned packages by scripts/run-framework.mjs.
+/public/runtime/
+__pycache__/
+
+/dist-pages/

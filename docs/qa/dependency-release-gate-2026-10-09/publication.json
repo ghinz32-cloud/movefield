@@ -1,0 +1,11 @@
+{
+  "localImplementation": "4473025302fc9db000fc06fc9f0e04393ca80b72",
+  "githubImplementation": "22b74b7ca53c173cf442f4303209478a2da6a6c7",
+  "tree": "6e00ee50c56028faa8dda6c3b44f56947ed9a672",
+  "branch": "audit/2026-10-08-quality",
+  "verified": [
+    "fresh remote head",
+    "exact local/remote tree equality",
+    "release-gate exit-code report readback"
+  ]
+}

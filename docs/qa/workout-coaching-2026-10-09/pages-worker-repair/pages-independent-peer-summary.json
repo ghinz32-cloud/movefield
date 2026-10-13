@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-10-09T23:06:09.996531+00:00",
+  "passed": true,
+  "localSourceCommit": "873b3e0e01c1ff4fb89d1698857650a57c0bda59",
+  "publishedSourceCommit": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+  "sourceTree": "0d84999d80c57c7731713aea85cec5901e54475c",
+  "publishedSourceTreeMatches": true,
+  "pagesVersion": "8c60686b3c01114959052f980441ce9b9da5c0ee309c50891542463fc51c5f6d",
+  "manifestAssetCount": 61,
+  "generatedFileCount": 63,
+  "workerTemplatePinned": true,
+  "workerPolicyCanonical": true,
+  "workerVersionIncludesTemplatePolicyAssets": true,
+  "generatedSwExactTemplateExpansion": true,
+  "allGeneratedAssetHashesMatch": true,
+  "completeAllowlistedInventory": true,
+  "symlinksAbsent": true,
+  "documentWasmAndBlobWorkerRefused": true,
+  "coachingWorkerBytesMatchBuiltEntry": true,
+  "sourceZip": {
+    "entries": 127,
+    "bytes": 2109850,
+    "sha256": "165da5ee0b3644c499d7ff4819af0fa3c21415b0ea2f6eff61559d9ab54139ed",
+    "exactPackagingAllowlist": true,
+    "exactLocalAndPublishedTreeSource": true,
+    "noDuplicateOrMissingEntries": true,
+    "ordinaryFiles": true,
+    "crcPassed": true,
+    "packagingCredentialPathAndKnownContentChecksPassed": true
+  },
+  "limits": [
+    "Read-only source, generated output, packaging and VM evidence only. No build, publish, browser, model download, GPU inference or OS offline acceptance performed by this peer.",
+    "Published source tree equivalence uses the parent-provided GitHub commit readback receipt; live output verification remains pending the Pages commit."
+  ],
+  "generatedTreeSha": "b122a28494878782f3a3eb9c199b02902f15aa9c",
+  "generatedBytes": 21808941,
+  "generatedTreeHashMatchesPublisher": true,
+  "pagesCheck": {
+    "command": "node scripts/check-pages.mjs",
+    "passed": true,
+    "assertions": 632,
+    "version": "8c60686b3c01114959052f980441ce9b9da5c0ee309c50891542463fc51c5f6d",
+    "scriptSha256": "cf1f70b64fc7fd6ff6678a26c2376c8756d95a995707c8d26622d0bea75a3d71"
+  },
+  "pagesPolicyTemplateBuildConfigUnchangedFrom": "d875e13762adb3b46aabfa47045cd5ffec317fb3",
+  "fullPeerReceiptSha256": "59ee6bbb2b066d5d0aa32544420d25edda592b389138bd811359c1556eb71ff6"
+}

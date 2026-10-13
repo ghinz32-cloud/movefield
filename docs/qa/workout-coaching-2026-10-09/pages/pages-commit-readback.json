@@ -1,0 +1,35 @@
+{
+  "sha": "de4ac3cbff1dd36b2144290044e1c7f6ada6428a",
+  "node_id": "C_kwDOVAFhB9oAKGRlNGFjM2NiZmYxZGQzNmIyMTQ0MjkwMDQ0ZTFjN2Y2YWRhNjQyOGE",
+  "url": "https://api.github.com/repos/ghinz32-cloud/movefield/git/commits/de4ac3cbff1dd36b2144290044e1c7f6ada6428a",
+  "html_url": "https://github.com/ghinz32-cloud/movefield/commit/de4ac3cbff1dd36b2144290044e1c7f6ada6428a",
+  "author": {
+    "name": "ghinz32-cloud",
+    "email": "ghinz32@gmail.com",
+    "date": "2026-10-09T22:33:26Z"
+  },
+  "committer": {
+    "name": "ghinz32-cloud",
+    "email": "ghinz32@gmail.com",
+    "date": "2026-10-09T22:33:26Z"
+  },
+  "tree": {
+    "sha": "bb1131468a371cd3cfee1ae13afd838f43c7bb36",
+    "url": "https://api.github.com/repos/ghinz32-cloud/movefield/git/trees/bb1131468a371cd3cfee1ae13afd838f43c7bb36"
+  },
+  "message": "Deploy consent-bound local Qwen3.5 coaching and verified Pages workers\n\nSource: 96496ffd4e94b32becccb5db61667fb4fea4ce01\nSource tree: 20397284f4c07cf0b8b5a1edc554b04d39ea0976\nLocal tested source: 39ceeeca78af18a6d12cfbac90602f8dbc4e3d8b\nPages manifest: d48a23a149ff26dd0cfb8a24739b7caf36f82f870885c1fa12645e15c3871a43\n63 exact generated files;632 Pages harness checks. Native starter matches127 committed source files. Experimental desktop models remain unqualified; no weights downloaded or GPU inference executed.",
+  "parents": [
+    {
+      "sha": "f3286afe4a68a4ea2f0c6d8b9531d6fdbd284414",
+      "url": "https://api.github.com/repos/ghinz32-cloud/movefield/git/commits/f3286afe4a68a4ea2f0c6d8b9531d6fdbd284414",
+      "html_url": "https://github.com/ghinz32-cloud/movefield/commit/f3286afe4a68a4ea2f0c6d8b9531d6fdbd284414"
+    }
+  ],
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  }
+}

@@ -1,6 +1,6 @@
 const fs=require('fs'),ts=require('typescript'),assert=require('node:assert/strict');
 const dir='.sites-runtime/focus-check';fs.mkdirSync(dir,{recursive:true});
-for(const file of ['program-catalog','training','training-focus'])fs.writeFileSync(dir+'/'+file+'.js',ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true,resolveJsonModule:true}}).outputText);
+for(const file of ['record-identity','program-catalog','program-evidence','training','training-focus'])fs.writeFileSync(dir+'/'+file+'.js',ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true,resolveJsonModule:true}}).outputText);
 fs.writeFileSync(dir+'/package.json','{"type":"commonjs"}');for(const file of ['recipes','exercise-library'])fs.copyFileSync('lib/'+file+'.json',dir+'/'+file+'.json');
 const T=require('../'+dir+'/training.js'),F=require('../'+dir+'/training-focus.js');let checks=0;
 const profile={...T.blankProfile,name:'Alex',start:'2026-10-12',goal:'general',minutes:90,days:[1,4],weeks:2,experience:'Some experience',focuses:[],jumpReady:true};

@@ -1,0 +1,8 @@
+# Integration candidates published at least seven days before 2026-10-09.
+torch==2.14.1
+transformers==5.18.0
+peft==0.21.2
+accelerate==1.15.0
+safetensors==0.8.0
+# Public downloads also work in environments with a SOCKS proxy.
+httpx[socks]==0.28.1

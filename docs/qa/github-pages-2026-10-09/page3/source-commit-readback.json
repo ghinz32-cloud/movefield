@@ -1,0 +1,16 @@
+{
+  "sha": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf",
+  "tree": {
+    "sha": "eec113576e18fc18d4976ceaa03b7e7ca464a930",
+    "url": "https://api.github.com/repos/ghinz32-cloud/movefield/git/trees/eec113576e18fc18d4976ceaa03b7e7ca464a930"
+  },
+  "parents": [
+    {
+      "sha": "d740c61084f44505273e900f7672ac92bae1a218",
+      "url": "https://api.github.com/repos/ghinz32-cloud/movefield/git/commits/d740c61084f44505273e900f7672ac92bae1a218",
+      "html_url": "https://github.com/ghinz32-cloud/movefield/commit/d740c61084f44505273e900f7672ac92bae1a218"
+    }
+  ],
+  "message": "Harden final native artifact policies, preserve CI builds and repair scoped SDK removal lint",
+  "html_url": "https://github.com/ghinz32-cloud/movefield/commit/ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf"
+}

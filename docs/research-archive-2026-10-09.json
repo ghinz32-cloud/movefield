@@ -1,0 +1,48 @@
+{
+  "milestone": "U13",
+  "baseline": "8da26f2fd8dc859947b0c29195ac8b3d5fc69501",
+  "checkedOn": "2026-10-09",
+  "indexedPapers": 855,
+  "firstPublished2025to2026": 718,
+  "queries": 18,
+  "reviewedOriginalNotesAdded": 7,
+  "archiveRecordsWithReviewedNotes": 9,
+  "forumThreads": 10,
+  "sources": {
+    "lib/research-library.ts": "fac5dbc8a09fb4c4ba80cf147b535cd9f003b0d968b202ec4bf230722b770d32",
+    "components/research-library.tsx": "266d1acb9465c6bff01b69b3036764c3b47e314f878426f1b56db6f52709bbe7",
+    "mobile/src/research-library.tsx": "85d9a7d75976a49bcc79d42b6aaa3dba279a204d6ab5531dfd71a7885c829c66",
+    "public/fitness-research.json": "437f2724162639849949aed8f6b47b0f8ab1eac88da1e0d4535920d2eebaa757",
+    "lib/fitness-reference.json": "4b802db8ac033ac6b1256376f9aa4ddf80ff049734a5583f0581e2bb03ed1c04",
+    "lib/program-evidence.ts": "164ca01cc460922089a9ddf0d681edd59a3aa8a9c69c210da9291687f9318860",
+    "docs/forum-feedback-2026-10-09.json": "470aff05bd3d9958ddca6027b1fcf56ba7b2274190591ead1a3bed7ac3282b3a",
+    "scripts/refresh-research-archive.py": "6ec4bb70ddca2046205e611e972822558e9fd4edd9cf6dbefcfcab0cc644c687"
+  },
+  "passed": [
+    "web and native TypeScript",
+    "lint",
+    "855-record metadata/deduplication/date/search/provenance checks",
+    "645 goal/evidence assertions",
+    "256 grounding assertions and 22 existing held-out contract cases (synthetic replies)",
+    "21 synthetic evaluator assertions",
+    "38 canonical/native snapshots",
+    "native engine 78 plans across 7 starting weekdays, 989 exercises/guides",
+    "managed production build",
+    "2 production suites, initial graph 386010 gzip bytes",
+    "Android/iOS Metro/Hermes exports (4.3 MB bundles)"
+  ],
+  "browser": [
+    "sample Sources opens 855-paper archive",
+    "PMID 39205815 returns one matching reviewed rest-interval record",
+    "2025\u20132026 filter excludes that 2024 record and displays zero-result guidance",
+    "existing sample workout stays resumable"
+  ],
+  "screenshot": "/workspace/scratch/movefield-research-u13-20261009.jpg",
+  "limits": [
+    "849 records came from 17 capped newest-first topic queries; 6 more unique records were added by an explicit 10-PMID query. This is not an exhaustive systematic review.",
+    "Search metadata/automated flags are not manual critical appraisal; selected primary abstracts are identified separately.",
+    "No source abstracts/full papers/paid programs or forum verbatim text are shipped.",
+    "The index is not Qwen context or a training corpus. Seven original notes update the separate corpus to v2; evaluation fingerprints refreshed, but no model inference, weight training or accuracy measured.",
+    "No physical-phone or secure-storage/account acceptance. Existing advisory/release and native SQLite blockers remain."
+  ]
+}

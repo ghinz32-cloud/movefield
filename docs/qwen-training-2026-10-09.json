@@ -1,0 +1,143 @@
+{
+  "schema": 1,
+  "milestone": "U15-approved-recovery",
+  "priorLocalCommit": "1df2471e74c33bb6c3aaa8e7b9736e4b29f97297",
+  "priorLocalCommitStatus": "Git metadata and scratch checkout removed by workspace maintenance; core source/data/results recovered exactly by saved fingerprints",
+  "preservedQwenCommit": "0597d5ebc46864bc3066d54ece13e645dd54dd41",
+  "remoteBaseline": "c390b1208869a746417cd35655f1d0ce3e2a268b",
+  "sourceRecovery": {
+    "trainerSha256": "9bc482923377bdfb9bc851a0b30fce7aed08a6e6da9217a73dde4e51f4e4d7da",
+    "exporterSha256": "50c35473653d6c874497029c3473d78a43ba3be41f90ddc9c4c8b8f65aeb1ae3",
+    "evaluatorSha256": "4bc93e97fa2b15a9ca3ff47de4d7206c5a71caabf5b21837416d5b2a8d9da026",
+    "datasetManifestSha256": "35ce4cacc84faa6dee160d13ded52563e9ca8f2c7a0ee839367177ed6b954836",
+    "allMatchSavedTrainingAndEvaluation": true
+  },
+  "dataset": {
+    "trainCases": 162,
+    "validationCases": 44
+  },
+  "training": {
+    "status": "trained-pilot",
+    "trainingSteps": 16,
+    "uniqueUsedExamples": 16,
+    "trainableParameters": 1146880,
+    "maxPromptTokens": 503,
+    "maxTargetTokens": 66,
+    "peakProcessRssBytes": 2928914432,
+    "elapsedSeconds": 99.63,
+    "environment": {
+      "torch": "2.14.1+cpu",
+      "transformers": "5.18.0",
+      "peft": "0.21.2",
+      "device": "cpu",
+      "threads": 4,
+      "dtype": "torch.bfloat16"
+    },
+    "qualified": false,
+    "heldoutEvaluationRan": false,
+    "demoUsesThisAdapter": false
+  },
+  "developmentEvaluation": {
+    "base": {
+      "train": {
+        "cases": 4,
+        "counts": {
+          "schemaCorrect": 0,
+          "identifiersCorrect": 0,
+          "suppliedNoteIdsCorrect": 0,
+          "acceptedByTaskContract": 0,
+          "taskCorrect": 0
+        },
+        "taskAccuracy": 0.0,
+        "meanGenerationSeconds": 2.7549924180002563,
+        "medianGenerationSeconds": 2.8522877915020217,
+        "maximumGenerationSeconds": 3.2350435129992547,
+        "totalGenerationSeconds": 11.019969672001025,
+        "generatedTokens": 76,
+        "incompleteCases": 0,
+        "maximumPromptTokens": 479
+      },
+      "validation": {
+        "cases": 4,
+        "counts": {
+          "schemaCorrect": 0,
+          "identifiersCorrect": 0,
+          "suppliedNoteIdsCorrect": 0,
+          "acceptedByTaskContract": 0,
+          "taskCorrect": 0
+        },
+        "taskAccuracy": 0.0,
+        "meanGenerationSeconds": 3.4951408782508224,
+        "medianGenerationSeconds": 3.379267540498404,
+        "maximumGenerationSeconds": 5.410376306004764,
+        "totalGenerationSeconds": 13.98056351300329,
+        "generatedTokens": 104,
+        "incompleteCases": 0,
+        "maximumPromptTokens": 480
+      }
+    },
+    "adapter": {
+      "train": {
+        "cases": 4,
+        "counts": {
+          "schemaCorrect": 4,
+          "identifiersCorrect": 4,
+          "suppliedNoteIdsCorrect": 4,
+          "acceptedByTaskContract": 4,
+          "taskCorrect": 3
+        },
+        "taskAccuracy": 0.75,
+        "meanGenerationSeconds": 7.217823608501931,
+        "medianGenerationSeconds": 6.956474941001943,
+        "maximumGenerationSeconds": 9.020988167001633,
+        "totalGenerationSeconds": 28.871294434007723,
+        "generatedTokens": 232,
+        "incompleteCases": 0,
+        "maximumPromptTokens": 479
+      },
+      "validation": {
+        "cases": 4,
+        "counts": {
+          "schemaCorrect": 4,
+          "identifiersCorrect": 4,
+          "suppliedNoteIdsCorrect": 4,
+          "acceptedByTaskContract": 4,
+          "taskCorrect": 3
+        },
+        "taskAccuracy": 0.75,
+        "meanGenerationSeconds": 6.607004347997645,
+        "medianGenerationSeconds": 6.541301087498141,
+        "maximumGenerationSeconds": 7.510485307997442,
+        "totalGenerationSeconds": 26.42801739199058,
+        "generatedTokens": 233,
+        "incompleteCases": 0,
+        "maximumPromptTokens": 480
+      }
+    }
+  },
+  "checks": {
+    "freshIntegrityAssertions": 650,
+    "freshEvaluatorTests": 4,
+    "freshRegressionSuites": 33,
+    "freshWebTypes": true,
+    "freshRestoredModuleLint": true
+  },
+  "publication": {
+    "authorized": true,
+    "target": "ghinz32-cloud/movefield:audit/2026-10-08-quality",
+    "expectedHead": "c390b1208869a746417cd35655f1d0ce3e2a268b",
+    "mainMerge": false,
+    "deployment": false,
+    "status": "auto-review-rejected",
+    "sourceCommit": "b40219119ecaf334cb7c72d0f515a9092e67693c",
+    "reason": "Trusted approval named prior original commits, not newly recovered/reconciled payload; no alternate route attempted",
+    "pushed": false
+  },
+  "limits": [
+    "Recovered1024/192 experiment is distinct from newer2048/256 browser runtime and separate132/34 CPU pilot.",
+    "Saved adapter remains disabled:6/8 correct with2 abstention failures.",
+    "No new training/inference/device acceptance runs claimed in recovery.",
+    "Old original Qwen source modules are retained for exact experiment provenance; app entry points continue to use newer runtime.",
+    "Historical dependency/security/account/storage/Android release limits remain."
+  ]
+}

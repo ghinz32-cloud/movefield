@@ -1,0 +1,67 @@
+{
+  "artifactId": 11637761584,
+  "archiveSHA256": "6e5249849a03634099a061f111fcc3472a07fbbf45ff75954e80ac191cd28440",
+  "verified": true,
+  "files": [
+    {
+      "path": ".sites-runtime/a03-progression-checks.json",
+      "bytes": 4357,
+      "sha256": "3d99c9d27963cf4b3956dcd211abd360510e12298365081ae5c42bd8c78245fd"
+    },
+    {
+      "path": ".sites-runtime/bundle-check.json",
+      "bytes": 1499,
+      "sha256": "c9309777a1f3d491992ed201a58452136fdfa86865968da6cf3f53fde5e03e98"
+    },
+    {
+      "path": ".sites-runtime/browser-qwen-cache-checks.json",
+      "bytes": 166,
+      "sha256": "ac66f38e49aa5f977c6bba6a4d744f3e3c119ca0ad82928147db931dfde4c8fb"
+    },
+    {
+      "path": ".sites-runtime/mobile-dependency-checks.json",
+      "bytes": 8512,
+      "sha256": "75646b32a16953564176096f266b5f4d2ea8b5c644f8a64eaaa620f3bfdcca18"
+    },
+    {
+      "path": ".sites-runtime/mobile-package-check-results.json",
+      "bytes": 1525,
+      "sha256": "c2722983dd40433ed5221171bebcfdd583160b385e266cded4c7791e677ff354"
+    },
+    {
+      "path": ".sites-runtime/production-checks.json",
+      "bytes": 211,
+      "sha256": "87a93ad99dd7a7403ecc4f35139b2ed61fcec2b2b9d4c2de6e7abe1c8b38ab00"
+    },
+    {
+      "path": ".sites-runtime/qwen-controls-checks.json",
+      "bytes": 135,
+      "sha256": "70c4ed4fac2de7b99f62546ed05e40236d734db242897f4d5b2179f64476e4c5"
+    },
+    {
+      "path": ".sites-runtime/qwen-download-checks.json",
+      "bytes": 219,
+      "sha256": "0652bd32ae845b640bd25eabdeb5fc9e55017cceb40b02b9d97529db5d51b79b"
+    },
+    {
+      "path": ".sites-runtime/regression-checks.json",
+      "bytes": 3649,
+      "sha256": "7ab1921c0adaaf1e3a4ca32a184bb1d669335232de997628760b450c6afee278"
+    },
+    {
+      "path": ".sites-runtime/security-check-results.json",
+      "bytes": 3358,
+      "sha256": "ce848c99b5d3363efe90bde73f27aab35c64d059a84a60f5285556ae49c729d0"
+    },
+    {
+      "path": ".sites-runtime/web-dependency-checks.json",
+      "bytes": 1127,
+      "sha256": "7b198fbdfb68fa9173a25e366ed5861743c0652e1db36305f526ff11d2ecb256"
+    },
+    {
+      "path": ".sites-runtime-quality-source.txt",
+      "bytes": 82,
+      "sha256": "0ef264c845c71a7d09cceb7688778e8163ccc83ca81825b4180a192ff6690fa3"
+    }
+  ]
+}

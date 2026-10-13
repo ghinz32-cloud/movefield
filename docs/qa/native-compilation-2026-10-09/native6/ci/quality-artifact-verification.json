@@ -1,0 +1,90 @@
+{
+  "artifact": {
+    "id": 11640500198,
+    "name": "quality-results",
+    "size_in_bytes": 7989,
+    "url": "https://api.github.com/repos/ghinz32-cloud/movefield/actions/artifacts/11640500198",
+    "archive_download_url": "https://api.github.com/repos/ghinz32-cloud/movefield/actions/artifacts/11640500198/zip",
+    "expired": false,
+    "created_at": "2026-10-09T19:13:42Z",
+    "expires_at": "2027-01-07T19:10:14Z",
+    "updated_at": "2026-10-09T19:13:42Z",
+    "digest": "sha256:bc100aac27c3c617ae57ebbb73f1c0bda14bbb9b3dbec1f1c9480473155bacef",
+    "workflow_run": {
+      "id": 37978371782,
+      "repository_id": 1409376519,
+      "head_repository_id": 1409376519,
+      "head_branch": "audit/2026-10-08-quality",
+      "head_sha": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf"
+    }
+  },
+  "archive": "archives/quality-results.zip",
+  "archiveSHA256": "bc100aac27c3c617ae57ebbb73f1c0bda14bbb9b3dbec1f1c9480473155bacef",
+  "officialDigestMatches": true,
+  "files": [
+    {
+      "path": ".sites-runtime/a03-progression-checks.json",
+      "bytes": 4357,
+      "sha256": "b3f4f74e560f1c17e9322ba3aa6ccd2ec31f3dace65be896c12d7a269a1f0955"
+    },
+    {
+      "path": ".sites-runtime/browser-qwen-cache-checks.json",
+      "bytes": 166,
+      "sha256": "ac66f38e49aa5f977c6bba6a4d744f3e3c119ca0ad82928147db931dfde4c8fb"
+    },
+    {
+      "path": ".sites-runtime/bundle-check.json",
+      "bytes": 1499,
+      "sha256": "de6cf6b3825277ff8b1744c3086477508585a10a77bbd55566cf9d5faf88593a"
+    },
+    {
+      "path": ".sites-runtime/mobile-dependency-checks.json",
+      "bytes": 8512,
+      "sha256": "75646b32a16953564176096f266b5f4d2ea8b5c644f8a64eaaa620f3bfdcca18"
+    },
+    {
+      "path": ".sites-runtime/mobile-package-check-results.json",
+      "bytes": 1525,
+      "sha256": "c2722983dd40433ed5221171bebcfdd583160b385e266cded4c7791e677ff354"
+    },
+    {
+      "path": ".sites-runtime/production-checks.json",
+      "bytes": 211,
+      "sha256": "87a93ad99dd7a7403ecc4f35139b2ed61fcec2b2b9d4c2de6e7abe1c8b38ab00"
+    },
+    {
+      "path": ".sites-runtime/qwen-controls-checks.json",
+      "bytes": 135,
+      "sha256": "70c4ed4fac2de7b99f62546ed05e40236d734db242897f4d5b2179f64476e4c5"
+    },
+    {
+      "path": ".sites-runtime/qwen-download-checks.json",
+      "bytes": 219,
+      "sha256": "0652bd32ae845b640bd25eabdeb5fc9e55017cceb40b02b9d97529db5d51b79b"
+    },
+    {
+      "path": ".sites-runtime/regression-checks.json",
+      "bytes": 3649,
+      "sha256": "7ab1921c0adaaf1e3a4ca32a184bb1d669335232de997628760b450c6afee278"
+    },
+    {
+      "path": ".sites-runtime/security-check-results.json",
+      "bytes": 3358,
+      "sha256": "ce848c99b5d3363efe90bde73f27aab35c64d059a84a60f5285556ae49c729d0"
+    },
+    {
+      "path": ".sites-runtime/web-dependency-checks.json",
+      "bytes": 1127,
+      "sha256": "7b198fbdfb68fa9173a25e366ed5861743c0652e1db36305f526ff11d2ecb256"
+    },
+    {
+      "path": ".sites-runtime-quality-source.txt",
+      "bytes": 82,
+      "sha256": "b1bb7e187a12b543a28b4a4dd7627ae52517e3863f707185c3c3c8b1f0877e58"
+    }
+  ],
+  "retrievedAt": "2026-10-09T19:14:42.355032+00:00",
+  "archiveKind": "official quality archive, uploaded after preceding checks",
+  "zipCRCValid": true,
+  "extractedBytesMatchArchive": true
+}

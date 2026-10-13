@@ -1,0 +1,27 @@
+{
+  "source": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf",
+  "tree": "eec113576e18fc18d4976ceaa03b7e7ca464a930",
+  "files": [
+    {
+      "path": "scripts/inspect-native-artifacts.py",
+      "sha256": "db33ac39abc5b1e49f37fc0802f4ff60555f42c0696e61fb66774a81e6caf0dc",
+      "gitBlob": "c8ce8193cf1d931ec9c66c8eb83e40c4298662ba"
+    },
+    {
+      "path": ".github/workflows/native-builds.yml",
+      "sha256": "7032c06f0402d88e6072c9263d0be5454f5479e2c8cb0369a34e924c84b082c4",
+      "gitBlob": "59c2d5f164eaeead3c531e967230865f295e539a"
+    },
+    {
+      "path": ".github/workflows/quality.yml",
+      "sha256": "276dbd9d38c64dc2cc975b71543a326cfb0690d56b1cb769e6a9ae3edd310728",
+      "gitBlob": "15890f467fd1171421e3bb1e31bacd7de2da1415"
+    },
+    {
+      "path": "scripts/native-change-gate.py",
+      "sha256": "02a4ae880a9f256978f753089df0f82172c27eefe81afe7c372121a0e0c2da06",
+      "gitBlob": "16c588cb32a11f73fef38de0d827ab99a9030892"
+    }
+  ],
+  "purpose": "Exact published source snapshots for inspector replay and evidence interpretation; no current checkout substitution."
+}

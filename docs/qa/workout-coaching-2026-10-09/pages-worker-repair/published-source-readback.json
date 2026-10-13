@@ -1,0 +1,35 @@
+{
+  "sha": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+  "node_id": "C_kwDOVAFhB9oAKGM2MGVlMjQzYmFhZjg4ZWI5YWE3ZGJkNGMxZGVhMTZhMDFhZjFkNTg",
+  "url": "https://api.github.com/repos/ghinz32-cloud/movefield/git/commits/c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+  "html_url": "https://github.com/ghinz32-cloud/movefield/commit/c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+  "author": {
+    "name": "ghinz32-cloud",
+    "email": "ghinz32@gmail.com",
+    "date": "2026-10-09T23:03:19Z"
+  },
+  "committer": {
+    "name": "ghinz32-cloud",
+    "email": "ghinz32@gmail.com",
+    "date": "2026-10-09T23:03:19Z"
+  },
+  "tree": {
+    "sha": "0d84999d80c57c7731713aea85cec5901e54475c",
+    "url": "https://api.github.com/repos/ghinz32-cloud/movefield/git/trees/0d84999d80c57c7731713aea85cec5901e54475c"
+  },
+  "message": "Verify current-build local coaching worker policy on both web hosts",
+  "parents": [
+    {
+      "sha": "96496ffd4e94b32becccb5db61667fb4fea4ce01",
+      "url": "https://api.github.com/repos/ghinz32-cloud/movefield/git/commits/96496ffd4e94b32becccb5db61667fb4fea4ce01",
+      "html_url": "https://github.com/ghinz32-cloud/movefield/commit/96496ffd4e94b32becccb5db61667fb4fea4ce01"
+    }
+  ],
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  }
+}

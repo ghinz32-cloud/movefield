@@ -1,0 +1,3 @@
+FAIL web: braces https://github.com/advisories/GHSA-vfj7-8cjw-p6xm (release-blocker)
+FAIL mobile: braces https://github.com/advisories/GHSA-vfj7-8cjw-p6xm (release-blocker)
+FAIL mobile: node-forge https://github.com/advisories/GHSA-86w9-cpqp-85rv (release-blocker)

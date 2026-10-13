@@ -7,6 +7,8 @@ export function EquipmentLimits({state,onChange,exercise}:{state:State;onChange:
  const setup=exercise&&requiresSetup(exercise)?state.loadContext?.[exercise.id]||'':'';
  const cap=exercise?state.equipmentCaps?.find(c=>c.exerciseId===exercise.id&&c.setup===setup)?.maxKg:state.profile.dumbbellMaxKg;
  const [draft,setDraft]=useState(''),[message,setMessage]=useState('');
+ // Switching equipment/setup/units starts a new editing context.
+ // eslint-disable-next-line react-hooks/set-state-in-effect
  useEffect(()=>{setDraft(cap===undefined?'':String(Math.round(cap*(state.profile.units==='lb'?2.2046226218:1)*100)/100));setMessage('')},[cap,exercise?.id,setup,state.profile.units]);
  const blocked=Boolean(state.active)||Boolean(exercise&&requiresSetup(exercise)&&!setup.trim());
  function save(){const n=draft.trim()===''?undefined:Number(draft),kg=n===undefined?undefined:toKg(n!,state.profile.units);if(kg!==undefined&&(!Number.isFinite(kg)||kg<0||kg>(exercise?1500:500))){setMessage('Enter a valid nonnegative weight, or leave it blank if unknown.');return}

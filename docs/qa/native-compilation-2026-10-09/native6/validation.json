@@ -1,0 +1,38 @@
+{
+  "milestone": "NATIVE6",
+  "passed": true,
+  "prebuildAssertions": 270,
+  "actualExpoPrebuildGenerations": 2,
+  "platformsGenerated": [
+    "android",
+    "ios"
+  ],
+  "rootInspectorFixtureRerun": 90,
+  "syntaxAndDiffChecksPassed": true,
+  "independentChangedCodeReview": "passed",
+  "observedAndroidFailure": {
+    "sourceCommit": "d740c61084f44505273e900f7672ac92bae1a218",
+    "runId": 37975669983,
+    "jobId": 113973617822,
+    "errorId": "MissingClass",
+    "errorCount": 8,
+    "sourceLines": [
+      46,
+      47,
+      48,
+      49,
+      62,
+      63,
+      64,
+      65
+    ]
+  },
+  "scope": "Only exact8 diagnosed tools:node=remove markers; ninth Expo marker remains unannotated; strict final APK component denials unchanged",
+  "fileSHA256": {
+    "mobile/plugins/withMovefieldSecurity.cjs": "6c1437b59e33cd3e3f095c0e202dcbc0ee5bb860a41b81fc2a132af06a3212a0",
+    "scripts/check-native-security-config.cjs": "74455927fc185c60415f0e6f0271e02eedf1484c375f0827345e12813c7b2176"
+  },
+  "actualAndroidSDKCompilationHere": false,
+  "physicalDeviceQualification": false,
+  "storeQualification": false
+}

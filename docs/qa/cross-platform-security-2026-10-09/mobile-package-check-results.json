@@ -1,0 +1,54 @@
+{
+  "passed": 12,
+  "total": 12,
+  "results": [
+    {
+      "name": "Current tracked working-tree source ships without requiring a commit",
+      "passed": true
+    },
+    {
+      "name": "Untracked source, native output, photos and credentials never enter the public starter",
+      "passed": true
+    },
+    {
+      "name": "Repeated packaging is byte-identical",
+      "passed": true
+    },
+    {
+      "name": "A referenced local Expo plugin must be tracked and packaged",
+      "passed": true
+    },
+    {
+      "name": "Local plugin traversal, absolute paths and untracked references fail closed",
+      "passed": true
+    },
+    {
+      "name": "Tracked generated native output and photo directories remain excluded",
+      "passed": true
+    },
+    {
+      "name": "Accidentally tracked credential filenames fail closed and preserve the prior archive",
+      "passed": true
+    },
+    {
+      "name": "Credential content hidden in a tracked source file fails without replacing the archive",
+      "passed": true
+    },
+    {
+      "name": "Tracked source symlinks cannot expose a file outside the starter",
+      "passed": true
+    },
+    {
+      "name": "Replacing a tracked source directory with a symlink fails closed",
+      "passed": true
+    },
+    {
+      "name": "Missing required tracked source fails and keeps the last usable download",
+      "passed": true
+    },
+    {
+      "name": "A source copy without its Git index cannot silently fall back to scanning local files",
+      "passed": true
+    }
+  ]
+}

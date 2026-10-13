@@ -1,0 +1,21 @@
+PASS Existing real WAL ciphertext migrates to DELETE without row, envelope or key changes; fresh store reads it
+PASS Real locked WAL conversion rejects before schema/application writes; original ciphertext and legacy stay readable after retry
+PASS Returned non-DELETE, absent and malformed conversion results fail closed before schema SQL
+PASS Base mode readback failure preserves data and rejects before schema/application writes
+PASS Fresh real SQLite default2 connection is refused despite base3; ciphertext, legacy and revision are unchanged
+PASS Fresh transaction non-DELETE/malformed mode refuses application SQL and leaves original generation
+PASS Mode assertions are read-only within a real begun transaction and rollback callback failure
+{
+  "status": "passed",
+  "scenarios": 7,
+  "evidence": [
+    "Existing real WAL ciphertext migrates to DELETE without row, envelope or key changes; fresh store reads it",
+    "Real locked WAL conversion rejects before schema/application writes; original ciphertext and legacy stay readable after retry",
+    "Returned non-DELETE, absent and malformed conversion results fail closed before schema SQL",
+    "Base mode readback failure preserves data and rejects before schema/application writes",
+    "Fresh real SQLite default2 connection is refused despite base3; ciphertext, legacy and revision are unchanged",
+    "Fresh transaction non-DELETE/malformed mode refuses application SQL and leaves original generation",
+    "Mode assertions are read-only within a real begun transaction and rollback callback failure"
+  ],
+  "limits": "Real host node:sqlite file/locking/rollback checks; native compile default3 is modeled in the transaction harness. No actual corruption reproduction, power-cut, Expo Go, Android/iOS device or store qualification."
+}

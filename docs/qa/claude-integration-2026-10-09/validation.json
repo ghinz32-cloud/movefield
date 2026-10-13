@@ -1,0 +1,465 @@
+{
+  "validatedAt": "2026-10-09T20:50:52.094121+00:00",
+  "baseline": "8abfca45f1f910155011516eabffbebdf070821b",
+  "regressions": [
+    {
+      "check": "check-audit.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-backend.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-backup.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-browser-history.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-browser-qwen-cache.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-browser-record-store.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-browser-storage-ui.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-browser-vault.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-catalog.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-cloud-client-ui.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-cloud-encryption.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-creator-state.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-current-log-controls.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-dependency-policy.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-equipment-capacity.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-export-cancellation.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-fitness-evaluation.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-fitness-grounding.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-focus.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-goals.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-history-capacity.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-library.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-mobile-package.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-named-programs.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-build-evidence.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-history.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-privacy-cleanup.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-privacy-ui.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-qwen-files.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-qwen-ui.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-record-batches.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-reminder-cleanup.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-security-config.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-sqlite-policy.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-sqlite.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-storage.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-sync-outbox.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-native-workflows.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-offline.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-onboarding.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-preferences.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-program-depth.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-program-design.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-program-selection.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-progression-regressions.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-qwen-assets.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-qwen-controls.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-qwen-download.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-qwen-runtime.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-qwen-training.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-research-library.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-review-reconciliation.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-revision-10.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-revision-11.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-saved-compatibility.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-security.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-setup-hydration.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-shared.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-sync-outbox.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-tools-boundaries.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-tools.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-training.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-transactional-browser-vault.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-transfer.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-workout-review.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-workout-science.cjs",
+      "passed": true
+    }
+  ],
+  "production": [
+    {
+      "check": "check-bundle.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-production-offline.cjs",
+      "passed": true
+    },
+    {
+      "check": "check-production-security.cjs",
+      "passed": true
+    }
+  ],
+  "bundle": {
+    "page": "_next/static/chunks/page-7YwUv3IV.js",
+    "key": "app/page.tsx",
+    "bytes": 175026,
+    "gzipBytes": 53012,
+    "initialGzipBytes": 396925,
+    "initialLimitGzipBytes": 400000,
+    "chunks": [
+      {
+        "key": "app/page.tsx",
+        "bytes": 175026,
+        "gzipBytes": 53012
+      },
+      {
+        "key": "_rolldown-runtime-QTnfLwEv.js",
+        "bytes": 694,
+        "gzipBytes": 422
+      },
+      {
+        "key": "virtual:vinext-app-browser-entry",
+        "bytes": 195034,
+        "gzipBytes": 56383
+      },
+      {
+        "key": "_framework-JGc2HF7T.js",
+        "bytes": 190152,
+        "gzipBytes": 59097
+      },
+      {
+        "key": "components/app-preferences.tsx",
+        "bytes": 117181,
+        "gzipBytes": 37223
+      },
+      {
+        "key": "_button-CBvz_Igj.js",
+        "bytes": 32543,
+        "gzipBytes": 10650
+      },
+      {
+        "key": "_x-BwYyVwnA.js",
+        "bytes": 36314,
+        "gzipBytes": 12471
+      },
+      {
+        "key": "_progress-DGBUA6nV.js",
+        "bytes": 13708,
+        "gzipBytes": 5518
+      },
+      {
+        "key": "_checkbox-G99tUMO5.js",
+        "bytes": 4716,
+        "gzipBytes": 2003
+      },
+      {
+        "key": "_browser-vault-Cj0BvtPc.js",
+        "bytes": 45231,
+        "gzipBytes": 14715
+      },
+      {
+        "key": "_training-jn8H07LS.js",
+        "bytes": 794960,
+        "gzipBytes": 114744
+      },
+      {
+        "key": "_storage-capacity-D23e07eH.js",
+        "bytes": 14207,
+        "gzipBytes": 5420
+      },
+      {
+        "key": "_types-n0CmVGHn.js",
+        "bytes": 56482,
+        "gzipBytes": 12831
+      },
+      {
+        "key": "_cloud-client-ZdGKBipk.js",
+        "bytes": 2673,
+        "gzipBytes": 1259
+      },
+      {
+        "key": "_local-backup-CHIuXnUR.js",
+        "bytes": 873,
+        "gzipBytes": 540
+      },
+      {
+        "key": "_presentation-BhurRxrE.js",
+        "bytes": 21851,
+        "gzipBytes": 6050
+      },
+      {
+        "key": "_progress-CI4fxsR3.js",
+        "bytes": 3126,
+        "gzipBytes": 1265
+      },
+      {
+        "key": "_public-path-Dnx1y3mw.js",
+        "bytes": 152,
+        "gzipBytes": 138
+      },
+      {
+        "key": "_safety-copy-BKXgRPRs.js",
+        "bytes": 844,
+        "gzipBytes": 506
+      },
+      {
+        "key": "_substitutions-M5QdKEMw.js",
+        "bytes": 6693,
+        "gzipBytes": 2678
+      }
+    ]
+  },
+  "logs": {
+    "full-integration-regression.log": {
+      "sha256": "3f46d7ea009aca62868e8e5b6fc663239232af307f2a8f58d21c776752b872b4",
+      "bytes": 82911
+    },
+    "production-final-checks.log": {
+      "sha256": "4cfdf59f43499f65bb370f1f56c7d43170f365d87430c5b9336cfa605a6f9381",
+      "bytes": 2255
+    },
+    "worker-final-build.log": {
+      "sha256": "8d6ec6a1702159d711537746abc74f488b6f68882412ec517218287cf87afba4",
+      "bytes": 3002
+    },
+    "native-combined-types.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "native-engine-integration.log": {
+      "sha256": "7b27fd0391ece0ca2ebf768ab3f955dbd14fda4915897be2a6061b58a6b183c7",
+      "bytes": 713
+    },
+    "native-hermes-integration.log": {
+      "sha256": "9ffabbc632ac62b802dcce6b8a051408948f0daad22d6143648bf3a0a74b04b4",
+      "bytes": 1902
+    },
+    "integration-lint.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "root-combined-types.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "root-last-bundle-lint.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "root-current-controls.log": {
+      "sha256": "8d89586e1a0e1f35b9dcb7d4b83709a4df21aa6e1a048a5532224abbe9500ab2",
+      "bytes": 1645
+    },
+    "root-browser-storage-controls.log": {
+      "sha256": "42c7f984ed426c2afb5ec48bc4d6ef9e43a6cb839e059ec88b9b485d4baaba40",
+      "bytes": 116
+    },
+    "cloud-client-ui.log": {
+      "sha256": "9069ae5018b423035adacf4df41367b0a25569574bdb9098689ce19cb1417f0a",
+      "bytes": 2163
+    },
+    "backend-current.log": {
+      "sha256": "bb3728d0db8a6ef39e92cae5a699186d6e76c632ac8d687a5c4b1e64e1c9f65c",
+      "bytes": 1940
+    },
+    "browser-history-integrated.log": {
+      "sha256": "1b8cb03d23d0799748b2693e7d36f9b7c40a1cda3022d1b5dcbec0e69d74245d",
+      "bytes": 1829
+    },
+    "pages-final-check.log": {
+      "sha256": "a9a129e19928ea0ec4ef81780d1ea6f1d361b35a7c6ae6eefccabe0b7f83bbf4",
+      "bytes": 226
+    },
+    "mobile-package-final.log": {
+      "sha256": "a81a4c4d987d19b89f656c0b3082225af7bab7f826bd0bca3654e89ec2310a57",
+      "bytes": 76
+    }
+  },
+  "limits": [
+    "Compiled component lifecycle fixtures and local Miniflare D1, IndexedDB and SQLite tests are not physical device acceptance.",
+    "Native Hermes exports are bundles; actual APK and iOS simulator compilation runs after source publication.",
+    "No model provider secret, native account authentication or Apple distribution credentials are present."
+  ]
+}

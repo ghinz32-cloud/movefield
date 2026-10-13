@@ -1,0 +1,38 @@
+{
+  "milestone": "NATIVE5",
+  "baseCommit": "872a93a082e1861cac0cce852fd0316e25daf6cb",
+  "passed": true,
+  "testMethods": 29,
+  "testLog": "gate-tests.log",
+  "largestChangedPathFixture": 3102,
+  "yamlParsedAndContractChecked": true,
+  "pythonCompilationChecked": true,
+  "diffCheck": true,
+  "fileSHA256": {
+    ".github/workflows/native-builds.yml": "7032c06f0402d88e6072c9263d0be5454f5479e2c8cb0369a34e924c84b082c4",
+    ".github/workflows/quality.yml": "276dbd9d38c64dc2cc975b71543a326cfb0690d56b1cb769e6a9ae3edd310728",
+    "scripts/native-change-gate.py": "02a4ae880a9f256978f753089df0f82172c27eefe81afe7c372121a0e0c2da06",
+    "scripts/test-native-change-gate.py": "819240d7ea18b31f71216ce6815bad4517e62733719682e11071cba4d8832419"
+  },
+  "skipBoundary": "Only valid exact-source pull_request synchronize before-to-head Git diff with no native input changes",
+  "conservativeCanonicalInputs": [
+    "lib/**",
+    "public/exercise-guides.json",
+    "public/exercise-content.json",
+    "public/fitness-research.json"
+  ],
+  "workflowConcurrencyRemoved": true,
+  "outerPRPathFiltersRemoved": true,
+  "qualityCancellationPreserved": true,
+  "hostedEventGateRunHere": false,
+  "actualNativeCompilationHere": false,
+  "limits": [
+    "Local real-Git/CLI fixtures and parsed workflow contracts; actual hosted event gate still requires CI",
+    "Input unchanged receipt is not a successful prior binary result or store qualification"
+  ],
+  "rootIndependentRerun": {
+    "command": "python3 scripts/test-native-change-gate.py",
+    "passed": true,
+    "testMethods": 29
+  }
+}

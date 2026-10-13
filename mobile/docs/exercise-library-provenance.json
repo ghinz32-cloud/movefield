@@ -33,5 +33,12 @@
     "cardio": 14,
     "olympic weightlifting": 35
   },
-  "completionManifest": "exercise-library-completion.json"
+  "completionManifest": "exercise-library-completion.json",
+  "imageRights": {
+    "status": "unresolved; imported photo files withheld from build",
+    "reviewedUTC": "2026-10-08",
+    "sourceMaintainerStatement": "https://github.com/yuhonas/free-exercise-db/issues/2#issuecomment-1609681281",
+    "followUp": "https://github.com/yuhonas/free-exercise-db/issues/13#issuecomment-5154712995",
+    "releaseRequirement": "Document rights or replace with owned/licensed demonstrations and review each exact movement."
+  }
 }

@@ -1,0 +1,8 @@
+{
+  "inspectorFixtures": 57,
+  "zipExtractorScenarios": 9,
+  "passed": true,
+  "actualSdkDecodeHere": false,
+  "actualCompiledArtifactQualification": "pending new-source CI",
+  "scope": "native inspection tooling/workflows; application code unchanged from PAGE1"
+}

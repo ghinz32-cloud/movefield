@@ -1,0 +1,206 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-09T18:01:18.841Z",
+  "repository": "ghinz32-cloud/movefield",
+  "publishedHead": "5eb847ec912287f17f93dc0777ac9b4dc68ec73d",
+  "publishedTree": "34b1958cce560a59015de2788c4b6ece1e7e03f3",
+  "run": {
+    "id": 37970188252,
+    "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/37970188252",
+    "headSha": "5eb847ec912287f17f93dc0777ac9b4dc68ec73d",
+    "tree": "34b1958cce560a59015de2788c4b6ece1e7e03f3",
+    "event": "pull_request",
+    "attempt": 1,
+    "status": "completed",
+    "conclusion": "failure"
+  },
+  "jobs": [
+    {
+      "id": 113954753575,
+      "name": "android",
+      "status": "in_progress",
+      "conclusion": null,
+      "run_id": 37970188252,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Record exact Android source commit and tree",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Run actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Install locked native source without dependency lifecycle scripts",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 6
+        },
+        {
+          "name": "Generate Android project",
+          "status": "pending",
+          "conclusion": null,
+          "number": 7
+        },
+        {
+          "name": "Install required Android toolchain",
+          "status": "pending",
+          "conclusion": null,
+          "number": 8
+        },
+        {
+          "name": "Compile and lint release test APK",
+          "status": "pending",
+          "conclusion": null,
+          "number": 9
+        },
+        {
+          "name": "Inspect the actual merged APK manifest",
+          "status": "pending",
+          "conclusion": null,
+          "number": 10
+        },
+        {
+          "name": "Retain native compilation evidence",
+          "status": "pending",
+          "conclusion": null,
+          "number": 11
+        },
+        {
+          "name": "Post Run actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961",
+          "status": "pending",
+          "conclusion": null,
+          "number": 20
+        },
+        {
+          "name": "Post Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
+          "status": "pending",
+          "conclusion": null,
+          "number": 21
+        },
+        {
+          "name": "Post Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "pending",
+          "conclusion": null,
+          "number": 22
+        }
+      ]
+    },
+    {
+      "id": 113954754037,
+      "name": "ios",
+      "status": "in_progress",
+      "conclusion": null,
+      "run_id": 37970188252,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Record exact iOS source commit and tree",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 4
+        },
+        {
+          "name": "Install locked native source without dependency lifecycle scripts",
+          "status": "pending",
+          "conclusion": null,
+          "number": 5
+        },
+        {
+          "name": "Generate iOS project and resolve Pods",
+          "status": "pending",
+          "conclusion": null,
+          "number": 6
+        },
+        {
+          "name": "Compile unsigned iOS Release simulator application",
+          "status": "pending",
+          "conclusion": null,
+          "number": 7
+        },
+        {
+          "name": "Inspect built iOS privacy and transport settings",
+          "status": "pending",
+          "conclusion": null,
+          "number": 8
+        },
+        {
+          "name": "Retain native compilation evidence",
+          "status": "pending",
+          "conclusion": null,
+          "number": 9
+        },
+        {
+          "name": "Post Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
+          "status": "pending",
+          "conclusion": null,
+          "number": 17
+        },
+        {
+          "name": "Post Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "pending",
+          "conclusion": null,
+          "number": 18
+        }
+      ]
+    }
+  ],
+  "artifacts": [],
+  "qualification": {
+    "actualBuiltSource": "5eb847ec/tree34b1958 exact metadata source artifacts verified",
+    "physicalDevices": 0,
+    "storeAcceptance": false,
+    "androidSigning": "not completed in NATIVE1; NATIVE2 signature is Android Debug",
+    "iosSigning": "unsigned Release simulator build; actual metadata pending",
+    "nativeUnitTests": "previous run NO-SOURCE/0 JUnit; preserve unless current logs establish otherwise"
+  },
+  "findings": [
+    "iOS actual unsigned simulator compile/inspection passed",
+    "Android assemble/lint passed, original backup filename decode failed"
+  ],
+  "limits": [
+    "In progress; no current build/metadata success claimed",
+    "Metadata/artifacts will be byte-hash/size verified; APK/.app binaries intentionally not retained"
+  ]
+}

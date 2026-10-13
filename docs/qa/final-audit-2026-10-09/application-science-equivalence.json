@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "review": "Fresh immutable GitHub object comparisons during final collector validation",
+  "source7": {
+    "commit": "8abfca45f1f910155011516eabffbebdf070821b",
+    "tree": "b8a0dc7b9c820a44f98fd13df75b2970984fcc26"
+  },
+  "validationSource": {
+    "commit": "e85a1ad320ec23db29b337fdee10f41f1dc24962",
+    "tree": "890d598d36ee1f09a3ad67268275e2de16309a48"
+  },
+  "unchangedApplicationTrees": [
+    {
+      "path": "mobile",
+      "source7Tree": "90f031f1d49ad590ad390f02a57fcf43ca85ab02",
+      "validationTree": "90f031f1d49ad590ad390f02a57fcf43ca85ab02",
+      "equal": true
+    },
+    {
+      "path": "lib",
+      "source7Tree": "d8ce8162de283ff6bf544c0aab1ab8841c3e0b68",
+      "validationTree": "d8ce8162de283ff6bf544c0aab1ab8841c3e0b68",
+      "equal": true
+    },
+    {
+      "path": "public",
+      "source7Tree": "cee6960fc9e574ab9f0b90b9dcc346f0b857b199",
+      "validationTree": "cee6960fc9e574ab9f0b90b9dcc346f0b857b199",
+      "equal": true
+    }
+  ],
+  "scienceCheckpoint": {
+    "commit": "5af4582fe4bc78e60a07952a3b0bf0eca3592c8f",
+    "tree": "4efd7bd8d72f503e47c26e451e8c5e5395635699",
+    "hostedQualityRun": 37969466143
+  },
+  "scienceCoreFiles": [
+    {
+      "path": "lib/training.ts",
+      "scienceGitBlob": "7042d6d5a6e77e4c8e4709196484ea247153eff9",
+      "currentGitBlob": "7042d6d5a6e77e4c8e4709196484ea247153eff9",
+      "equal": true
+    },
+    {
+      "path": "lib/training-focus.ts",
+      "scienceGitBlob": "af7123dab8c2beee66d31679cb62e6f447ca1eef",
+      "currentGitBlob": "af7123dab8c2beee66d31679cb62e6f447ca1eef",
+      "equal": true
+    },
+    {
+      "path": "lib/program-catalog.ts",
+      "scienceGitBlob": "8264aca090acbc56be7256fe9ab37f0db076c38c",
+      "currentGitBlob": "8264aca090acbc56be7256fe9ab37f0db076c38c",
+      "equal": true
+    },
+    {
+      "path": "lib/program-evidence.ts",
+      "scienceGitBlob": "222d609094207c8549e096027cb8dbbe0d3b8758",
+      "currentGitBlob": "222d609094207c8549e096027cb8dbbe0d3b8758",
+      "equal": true
+    },
+    {
+      "path": "lib/onboarding.ts",
+      "scienceGitBlob": "b7e00e49df6954dae654893b36839e978ab726b1",
+      "currentGitBlob": "b7e00e49df6954dae654893b36839e978ab726b1",
+      "equal": true
+    },
+    {
+      "path": "lib/recipes.json",
+      "scienceGitBlob": "91bb6a30f97a48e7bfb5190bc12bf48b27c0b2f5",
+      "currentGitBlob": "91bb6a30f97a48e7bfb5190bc12bf48b27c0b2f5",
+      "equal": true
+    }
+  ],
+  "scope": "Git content identity, not fresh runtime execution, reconstructed 124-check peer output, exact-template outcome validation or device proof. The final collector repair changes no application/mobile/lib/public source."
+}

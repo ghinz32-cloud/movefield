@@ -1,0 +1,24 @@
+{
+  "id": "appgdep_6ac95be5080c8191a169dfe88cb7b30e",
+  "project_id": "appgprj_6ac5a7c96d9481919df913f42a4a4353",
+  "title": "Training Studio",
+  "version_id": "appgprj_6ac5a7c96d9481919df913f42a4a4353~appgver_f31e532a47448191bde4cddf01a42bf8",
+  "type": "publish",
+  "status": "succeeded",
+  "url": "https://training-studio-prototype.bigcheese3232.chatgpt.site",
+  "has_mcp": false,
+  "screenshot_asset_pointer": null,
+  "provider_deployment_id": "site---6ac5a7c96d9481919df913f42a4a4353",
+  "failure_message": null,
+  "env_set_revision": 1,
+  "updated_at": "2026-10-09T21:26:06.633696+00:00",
+  "commit_sha": "b61ded3cddd7c976228042040c7ead58b6d3c8d2",
+  "source_tree": "0c89ceba9fe858d52eb60ac04d73ebd9ece546b9",
+  "local_web_copy_commit": "d6710d945889d7e10e8db772ae49ee3d0b56cfae",
+  "application_backend_native_base": "83b2f94cdc7cd697b9cb45f311794c4371ca4826",
+  "changes": [
+    "Correct account availability text in two web entry screens"
+  ],
+  "production_checks": "3/3 passed before source push and package",
+  "audience": "owner-private retained"
+}

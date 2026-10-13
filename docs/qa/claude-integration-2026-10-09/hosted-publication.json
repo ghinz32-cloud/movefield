@@ -1,0 +1,50 @@
+{
+  "project_id": "appgprj_6ac5a7c96d9481919df913f42a4a4353",
+  "commit_sha": "c58d423d3ff0ce30590be307c6fe828d33b01268",
+  "source_tree": "1c47d2b0343e0d1768deda6850e50be38cac6ad7",
+  "deployment": {
+    "id": "appgdep_6ac956ba08788191aecc5e95ed5229cf",
+    "version_id": "appgprj_6ac5a7c96d9481919df913f42a4a4353~appgver_95edca6b79b88191a6b5953e78a413df",
+    "status": "succeeded",
+    "url": "https://training-studio-prototype.bigcheese3232.chatgpt.site",
+    "env_set_revision": 1
+  },
+  "live_smoke": {
+    "checks": [
+      {
+        "path": "/",
+        "status": 200,
+        "bytes": 13717,
+        "cache": "private, no-store"
+      },
+      {
+        "path": "/privacy.html",
+        "status": 200,
+        "bytes": 11572,
+        "sha256": "3751ef5dbb3f22f949974808317f98b44d5f8e080c32169f304afa54897ab6e7"
+      },
+      {
+        "path": "/api/account",
+        "status": 401,
+        "error": "sign_in_required",
+        "authenticated_user_ingress": false
+      }
+    ]
+  },
+  "database": {
+    "bindings": [
+      "DB"
+    ],
+    "tables": [
+      "daily_ai_feedback",
+      "sync_accounts",
+      "sync_receipts",
+      "sync_records"
+    ]
+  },
+  "limits": [
+    "Provider credentials absent; no live LLM result tested",
+    "Native account auth unavailable",
+    "Owner-private audience preserved; dispatch token is not a signed-in account identity"
+  ]
+}

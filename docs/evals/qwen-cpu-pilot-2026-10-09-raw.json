@@ -1,0 +1,626 @@
+{
+  "schema": 1,
+  "evaluationVersion": "movefield-fitness-eval-v1",
+  "fingerprints": {
+    "corpusSha256": "4b802db8ac033ac6b1256376f9aa4ddf80ff049734a5583f0581e2bb03ed1c04",
+    "contractSha256": "544d6ab38b7da08cd903e22591e18268d1eb2425222d49705fb5e76e191cddd3",
+    "suiteSha256": "87c2e9b67cec2e41c14512347ada07de42a500446bf1c18bda1cdb24fc56ba0d"
+  },
+  "temperature": 0,
+  "outputTokens": 256,
+  "contextTokens": 2048,
+  "baseModel": {
+    "repository": "Qwen/Qwen3-0.6B",
+    "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "weightsFile": "model.safetensors",
+    "weightsBytes": 1503300328,
+    "weightsSha256": "f47f71177f32bcd101b7573ec9171e6a57f4f4d31148d38e382306f42996874b",
+    "license": "Apache-2.0",
+    "modelCard": "https://huggingface.co/Qwen/Qwen3-0.6B/blob/c1899de289a04d12100db370d81485cdf75e47ca/README.md"
+  },
+  "adapterSha256": "eac8cfe3ec8b994293ad9b2d19f5361c9a9a3ae49f8196b7e0cad6fdf390b437",
+  "environment": {
+    "device": "cpu-float32",
+    "torch": "2.14.1+cpu",
+    "transformers": "5.18.0",
+    "peft": "0.21.2",
+    "threads": 4
+  },
+  "results": [
+    {
+      "caseId": "K01",
+      "cycle": 1,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K01-cycle-1\",\"workoutId\":\"fixture-K01\",\"noteIds\":[\"hypertrophy-frequency\",\"short-sessions\"]}",
+      "inputTokens": 501,
+      "outputTokens": 54,
+      "generationMs": 14375.48
+    },
+    {
+      "caseId": "K01",
+      "cycle": 2,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K01-cycle-2\",\"workoutId\":\"fixture-K01\",\"noteIds\":[\"hypertrophy-frequency\",\"short-sessions\"]}",
+      "inputTokens": 501,
+      "outputTokens": 54,
+      "generationMs": 13023.72
+    },
+    {
+      "caseId": "K01",
+      "cycle": 3,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K01-cycle-3\",\"workoutId\":\"fixture-K01\",\"noteIds\":[\"hypertrophy-frequency\",\"short-sessions\"]}",
+      "inputTokens": 501,
+      "outputTokens": 54,
+      "generationMs": 12800.1
+    },
+    {
+      "caseId": "K02",
+      "cycle": 1,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K02-cycle-1\",\"workoutId\":\"fixture-K02\",\"noteIds\":[\"weekly-dose\",\"failure-context\"]}",
+      "inputTokens": 476,
+      "outputTokens": 52,
+      "generationMs": 11686.29
+    },
+    {
+      "caseId": "K02",
+      "cycle": 2,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K02-cycle-2\",\"workoutId\":\"fixture-K02\",\"noteIds\":[\"weekly-dose\"]}",
+      "inputTokens": 476,
+      "outputTokens": 49,
+      "generationMs": 11299.23
+    },
+    {
+      "caseId": "K02",
+      "cycle": 3,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K02-cycle-3\",\"workoutId\":\"fixture-K02\",\"noteIds\":[\"weekly-dose\",\"failure-context\"]}",
+      "inputTokens": 476,
+      "outputTokens": 52,
+      "generationMs": 11926.97
+    },
+    {
+      "caseId": "K03",
+      "cycle": 1,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K03-cycle-1\",\"workoutId\":\"fixture-K03\",\"noteIds\":[\"failure-context\"]}",
+      "inputTokens": 352,
+      "outputTokens": 48,
+      "generationMs": 10438.32
+    },
+    {
+      "caseId": "K03",
+      "cycle": 2,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K03-cycle-2\",\"workoutId\":\"fixture-K03\",\"noteIds\":[\"failure-context\"]}",
+      "inputTokens": 352,
+      "outputTokens": 48,
+      "generationMs": 10900.97
+    },
+    {
+      "caseId": "K03",
+      "cycle": 3,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K03-cycle-3\",\"workoutId\":\"fixture-K03\",\"noteIds\":[\"failure-context\"]}",
+      "inputTokens": 352,
+      "outputTokens": 48,
+      "generationMs": 10280.39
+    },
+    {
+      "caseId": "K04",
+      "cycle": 1,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K04-cycle-1\",\"workoutId\":\"fixture-K04\",\"noteIds\":[\"short-sessions\"]}",
+      "inputTokens": 372,
+      "outputTokens": 49,
+      "generationMs": 10371.78
+    },
+    {
+      "caseId": "K04",
+      "cycle": 2,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K04-cycle-2\",\"workoutId\":\"fixture-K04\",\"noteIds\":[\"short-sessions\"]}",
+      "inputTokens": 372,
+      "outputTokens": 49,
+      "generationMs": 11051.01
+    },
+    {
+      "caseId": "K04",
+      "cycle": 3,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K04-cycle-3\",\"workoutId\":\"fixture-K04\",\"noteIds\":[\"short-sessions\"]}",
+      "inputTokens": 372,
+      "outputTokens": 49,
+      "generationMs": 11127.95
+    },
+    {
+      "caseId": "K05",
+      "cycle": 1,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K05-cycle-1\",\"workoutId\":\"fixture-K05\",\"noteIds\":[\"concurrent-training\"]}",
+      "inputTokens": 348,
+      "outputTokens": 49,
+      "generationMs": 10859.68
+    },
+    {
+      "caseId": "K05",
+      "cycle": 2,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K05-cycle-2\",\"workoutId\":\"fixture-K05\",\"noteIds\":[\"concurrent-training\"]}",
+      "inputTokens": 348,
+      "outputTokens": 49,
+      "generationMs": 10647.08
+    },
+    {
+      "caseId": "K05",
+      "cycle": 3,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K05-cycle-3\",\"workoutId\":\"fixture-K05\",\"noteIds\":[\"concurrent-training\"]}",
+      "inputTokens": 348,
+      "outputTokens": 49,
+      "generationMs": 10971.31
+    },
+    {
+      "caseId": "K06",
+      "cycle": 1,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K06-cycle-1\",\"workoutId\":\"fixture-K06\",\"noteIds\":[\"run-walk\"]}",
+      "inputTokens": 357,
+      "outputTokens": 49,
+      "generationMs": 10799.39
+    },
+    {
+      "caseId": "K06",
+      "cycle": 2,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K06-cycle-2\",\"workoutId\":\"fixture-K06\",\"noteIds\":[\"run-walk\"]}",
+      "inputTokens": 357,
+      "outputTokens": 49,
+      "generationMs": 10504.36
+    },
+    {
+      "caseId": "K06",
+      "cycle": 3,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K06-cycle-3\",\"workoutId\":\"fixture-K06\",\"noteIds\":[\"run-walk\"]}",
+      "inputTokens": 357,
+      "outputTokens": 49,
+      "generationMs": 10565.76
+    },
+    {
+      "caseId": "K07",
+      "cycle": 1,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K07-cycle-1\",\"workoutId\":\"fixture-K07\",\"noteIds\":[\"adult-activity\"]}",
+      "inputTokens": 347,
+      "outputTokens": 49,
+      "generationMs": 11229.27
+    },
+    {
+      "caseId": "K07",
+      "cycle": 2,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K07-cycle-2\",\"workoutId\":\"fixture-K07\",\"noteIds\":[\"adult-activity\"]}",
+      "inputTokens": 347,
+      "outputTokens": 49,
+      "generationMs": 10386.41
+    },
+    {
+      "caseId": "K07",
+      "cycle": 3,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K07-cycle-3\",\"workoutId\":\"fixture-K07\",\"noteIds\":[\"adult-activity\"]}",
+      "inputTokens": 347,
+      "outputTokens": 49,
+      "generationMs": 10618.59
+    },
+    {
+      "caseId": "K08",
+      "cycle": 1,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K08-cycle-1\",\"workoutId\":\"fixture-K08\",\"noteIds\":[\"adult-consistency\"]}",
+      "inputTokens": 344,
+      "outputTokens": 49,
+      "generationMs": 12058.51
+    },
+    {
+      "caseId": "K08",
+      "cycle": 2,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K08-cycle-2\",\"workoutId\":\"fixture-K08\",\"noteIds\":[\"adult-consistency\"]}",
+      "inputTokens": 344,
+      "outputTokens": 49,
+      "generationMs": 19714.25
+    },
+    {
+      "caseId": "K08",
+      "cycle": 3,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K08-cycle-3\",\"workoutId\":\"fixture-K08\",\"noteIds\":[\"adult-consistency\"]}",
+      "inputTokens": 344,
+      "outputTokens": 49,
+      "generationMs": 10453.47
+    },
+    {
+      "caseId": "K09",
+      "cycle": 1,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K09-cycle-1\",\"workoutId\":\"fixture-K09\",\"noteIds\":[\"hypertrophy-frequency\",\"weekly-dose\"]}",
+      "inputTokens": 487,
+      "outputTokens": 54,
+      "generationMs": 12387.08
+    },
+    {
+      "caseId": "K09",
+      "cycle": 2,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K09-cycle-2\",\"workoutId\":\"fixture-K09\",\"noteIds\":[\"hypertrophy-frequency\",\"weekly-dose\"]}",
+      "inputTokens": 487,
+      "outputTokens": 54,
+      "generationMs": 13030.78
+    },
+    {
+      "caseId": "K09",
+      "cycle": 3,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K09-cycle-3\",\"workoutId\":\"fixture-K09\",\"noteIds\":[\"hypertrophy-frequency\",\"weekly-dose\"]}",
+      "inputTokens": 487,
+      "outputTokens": 54,
+      "generationMs": 13236.16
+    },
+    {
+      "caseId": "K10",
+      "cycle": 1,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K10-cycle-1\",\"workoutId\":\"fixture-K10\",\"noteIds\":[\"adult-activity\",\"short-sessions\"]}",
+      "inputTokens": 485,
+      "outputTokens": 53,
+      "generationMs": 13803.9
+    },
+    {
+      "caseId": "K10",
+      "cycle": 2,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K10-cycle-2\",\"workoutId\":\"fixture-K10\",\"noteIds\":[\"adult-activity\",\"short-sessions\"]}",
+      "inputTokens": 485,
+      "outputTokens": 53,
+      "generationMs": 12485.82
+    },
+    {
+      "caseId": "K10",
+      "cycle": 3,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-K10-cycle-3\",\"workoutId\":\"fixture-K10\",\"noteIds\":[\"adult-activity\",\"short-sessions\"]}",
+      "inputTokens": 485,
+      "outputTokens": 53,
+      "generationMs": 11581.77
+    },
+    {
+      "caseId": "S01",
+      "cycle": 1,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S01",
+      "cycle": 2,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S01",
+      "cycle": 3,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S02",
+      "cycle": 1,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S02",
+      "cycle": 2,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S02",
+      "cycle": 3,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S03",
+      "cycle": 1,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S03",
+      "cycle": 2,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S03",
+      "cycle": 3,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S04",
+      "cycle": 1,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S04",
+      "cycle": 2,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S04",
+      "cycle": 3,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S05",
+      "cycle": 1,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S05",
+      "cycle": 2,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S05",
+      "cycle": 3,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S06",
+      "cycle": 1,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S06",
+      "cycle": 2,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S06",
+      "cycle": 3,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S07",
+      "cycle": 1,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S07",
+      "cycle": 2,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S07",
+      "cycle": 3,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S08",
+      "cycle": 1,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S08",
+      "cycle": 2,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "S08",
+      "cycle": 3,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "I01",
+      "cycle": 1,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-I01-cycle-1\",\"workoutId\":\"fixture-I01\",\"noteIds\":[\"hypertrophy-frequency\"]}",
+      "inputTokens": 370,
+      "outputTokens": 50,
+      "generationMs": 10882.26
+    },
+    {
+      "caseId": "I01",
+      "cycle": 2,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-I01-cycle-2\",\"workoutId\":\"fixture-I01\",\"noteIds\":[\"hypertrophy-frequency\"]}",
+      "inputTokens": 370,
+      "outputTokens": 50,
+      "generationMs": 11495.04
+    },
+    {
+      "caseId": "I01",
+      "cycle": 3,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-I01-cycle-3\",\"workoutId\":\"fixture-I01\",\"noteIds\":[\"hypertrophy-frequency\"]}",
+      "inputTokens": 370,
+      "outputTokens": 50,
+      "generationMs": 11393.11
+    },
+    {
+      "caseId": "I02",
+      "cycle": 1,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-I02-cycle-1\",\"workoutId\":\"fixture-I02\",\"noteIds\":[\"weekly-dose\"]}",
+      "inputTokens": 366,
+      "outputTokens": 49,
+      "generationMs": 11976.44
+    },
+    {
+      "caseId": "I02",
+      "cycle": 2,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-I02-cycle-2\",\"workoutId\":\"fixture-I02\",\"noteIds\":[\"weekly-dose\"]}",
+      "inputTokens": 366,
+      "outputTokens": 49,
+      "generationMs": 13573.97
+    },
+    {
+      "caseId": "I02",
+      "cycle": 3,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-I02-cycle-3\",\"workoutId\":\"fixture-I02\",\"noteIds\":[\"weekly-dose\"]}",
+      "inputTokens": 366,
+      "outputTokens": 49,
+      "generationMs": 14412.35
+    },
+    {
+      "caseId": "I03",
+      "cycle": 1,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-I03-cycle-1\",\"workoutId\":\"fixture-I03\",\"noteIds\":[\"adult-consistency\"]}",
+      "inputTokens": 349,
+      "outputTokens": 49,
+      "generationMs": 13361.01
+    },
+    {
+      "caseId": "I03",
+      "cycle": 2,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-I03-cycle-2\",\"workoutId\":\"fixture-I03\",\"noteIds\":[\"adult-consistency\"]}",
+      "inputTokens": 349,
+      "outputTokens": 49,
+      "generationMs": 11075.36
+    },
+    {
+      "caseId": "I03",
+      "cycle": 3,
+      "invoked": true,
+      "reply": "{\"policy\":\"workout-evidence-selection-v1\",\"corpusVersion\":\"fitness-reference-v2\",\"requestId\":\"heldout-I03-cycle-3\",\"workoutId\":\"fixture-I03\",\"noteIds\":[\"adult-consistency\"]}",
+      "inputTokens": 349,
+      "outputTokens": 49,
+      "generationMs": 11015.02
+    },
+    {
+      "caseId": "I04",
+      "cycle": 1,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "I04",
+      "cycle": 2,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    },
+    {
+      "caseId": "I04",
+      "cycle": 3,
+      "invoked": false,
+      "reply": null,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "generationMs": 0
+    }
+  ],
+  "elapsedSeconds": 466.2
+}

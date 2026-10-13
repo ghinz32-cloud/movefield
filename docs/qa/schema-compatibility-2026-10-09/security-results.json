@@ -1,0 +1,145 @@
+{
+  "passed": 29,
+  "total": 29,
+  "results": [
+    {
+      "name": "initial state round trips without changed data",
+      "status": "pass"
+    },
+    {
+      "name": "fresh state round trips without changed data",
+      "status": "pass"
+    },
+    {
+      "name": "experienced sample state round trips without changed data",
+      "status": "pass"
+    },
+    {
+      "name": "valid active workout and rest timers round trip",
+      "status": "pass"
+    },
+    {
+      "name": "mismatched active session rejected",
+      "status": "pass"
+    },
+    {
+      "name": "active workout without a plan rejected",
+      "status": "pass"
+    },
+    {
+      "name": "unknown root, profile and workout fields rejected without a lossy save",
+      "status": "pass"
+    },
+    {
+      "name": "__proto__ in nested raw JSON rejected",
+      "status": "pass"
+    },
+    {
+      "name": "constructor in nested raw JSON rejected",
+      "status": "pass"
+    },
+    {
+      "name": "prototype in nested raw JSON rejected",
+      "status": "pass"
+    },
+    {
+      "name": "invalid state \"\" rejected",
+      "status": "pass"
+    },
+    {
+      "name": "invalid state \"null\" rejected",
+      "status": "pass"
+    },
+    {
+      "name": "invalid state \"[]\" rejected",
+      "status": "pass"
+    },
+    {
+      "name": "invalid state \"{\\\"schema\\\":2}\" rejected",
+      "status": "pass"
+    },
+    {
+      "name": "invalid state \"{\\\"schema\\\":2,\\\"profile\\\":{\\\"age\\\":1e400,\\\"goal\\\":\\\"strength\\\",\\\"e\" rejected",
+      "status": "pass"
+    },
+    {
+      "name": "oversized raw input rejected before parsing",
+      "status": "pass"
+    },
+    {
+      "name": "too many weekdays rejected",
+      "status": "pass"
+    },
+    {
+      "name": "invalid calendar date rejected",
+      "status": "pass"
+    },
+    {
+      "name": "invalid nested set value rejected",
+      "status": "pass"
+    },
+    {
+      "name": "oversized set count rejected",
+      "status": "pass"
+    },
+    {
+      "name": "normal unfinished setup round trips",
+      "status": "pass"
+    },
+    {
+      "name": "cleared numeric inputs persist in unfinished setup",
+      "status": "pass"
+    },
+    {
+      "name": "negative draft step rejected",
+      "status": "pass"
+    },
+    {
+      "name": "unfinished blank date survives reload",
+      "status": "pass"
+    },
+    {
+      "name": "legacy setup draft forces calendar review",
+      "status": "pass"
+    },
+    {
+      "name": "oversized import does not parse or create exercises",
+      "status": "pass"
+    },
+    {
+      "name": "request nonce cannot be supplied by a client and changes every request",
+      "status": "pass"
+    },
+    {
+      "name": "unused write and internal routes are closed",
+      "status": "pass"
+    },
+    {
+      "name": "response hardening preserves status and prevents nonce caching",
+      "status": "pass"
+    }
+  ],
+  "compatibility": [
+    {
+      "name": "Draft with cleared start-date input",
+      "accepted": true
+    },
+    {
+      "name": "Draft with typed negative age before validation",
+      "accepted": false,
+      "issues": [
+        {
+          "path": [
+            "profile",
+            "age"
+          ],
+          "message": "Number must be greater than or equal to 0"
+        }
+      ]
+    },
+    {
+      "name": "Legacy draft without baseEvents",
+      "accepted": true
+    }
+  ]
+}

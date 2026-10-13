@@ -2,7 +2,7 @@
 
 ## Start here
 
-Read `HANDOFF.md`, then `docs/product-requirements.md` and the revision 11–13 reports named in the handoff. This is an existing working product, not a request to scaffold a replacement.
+Read `AGENTS.md`, `TASKS.md`, the current `HANDOFF.md` section and `docs/branch-integration-2026-10-08.md`, then `docs/product-requirements.md` and the revision 11–13 reports named in the handoff. Follow the user's one-milestone-at-a-time checkpoint workflow. This is an existing working product, not a request to scaffold a replacement.
 
 The detailed requirements remain the contract. Newer explicit user decisions take precedence over historical documents. `HANDOFF.md` identifies superseded AI and branding recommendations. The handoff is a state summary, not a complete verbatim chat export.
 
@@ -10,7 +10,7 @@ The detailed requirements remain the contract. Newer explicit user decisions tak
 
 - Web: Vinext/React/TypeScript/Tailwind, local browser state, existing Sites/Cloudflare project.
 - Native: Expo SDK 57 / React Native, independent local AsyncStorage state.
-- No real app-owned accounts, web/mobile sync, cloud backups, paid AI calls, or installed on-device model.
+- No real app-owned accounts, web/mobile sync, automatic cloud backups, paid AI calls, or installed on-device model. Current local training is encrypted at rest; manual transfer files can be password protected.
 - Working brand: Movefield. Final name is undecided and no trademark clearance is claimed.
 - Revision 13 adds themes, accessibility controls, reminders and a saved future Qwen preference. It has NOT been successfully published.
 - Source ZIP is a portable working tree. It omits dependencies, runtime caches, credentials and `.git` history. Preserve the included lockfiles and non-secret `.openai/hosting.json`.
@@ -83,7 +83,7 @@ Outside ChatGPT Work, do not copy the old `.sites-runtime/execution-profile.json
 
 ## Model direction
 
-Current preference: Qwen3 0.6B / 1.7B / 4B / Automatic / Off. Prefer 4B only on benchmark-qualified hardware/runtime combinations. No model is currently installed or tested. Download sizes are not RAM requirements. Keep deterministic summaries and tracking fully usable without AI.
+Current preference: Qwen3 0.6B first (owner decision, October 2026), because it is the smallest Qwen3 model with a confirmed React Native ExecuTorch export. Qwen3 1.7B and 4B stay as later options and are offered only after device tests pass. Automatic uses the largest tested model; Off. Prefer 4B only on benchmark-qualified hardware/runtime combinations. No model is currently installed or tested. Download sizes are not RAM requirements. Keep deterministic summaries and tracking fully usable without AI.
 
 Use curated, licensed local reference snippets plus verified workout facts first. Fine-tuning is optional later. Do not train from scratch or upload user records without explicit authorization. Do not silently fall back to cloud inference. See `docs/on-device-models.md`.
 

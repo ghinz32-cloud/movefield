@@ -1,9 +1,10 @@
+import {recordUuid} from './record-identity';
 /** Rest is a deadline, not a count of interval callbacks. Alerts never log a set. */
 export type RestTimer={id:string;workoutId:string;setKey:string;endAt:number|null;pausedSeconds:number|null;alerted:boolean};
 export const restSeconds=(timer:RestTimer|null|undefined,now=Date.now())=>timer?.pausedSeconds??(timer?.endAt?Math.max(0,Math.ceil((timer.endAt-now)/1000)):0);
 export function startRest(workoutId:string,setKey:string,seconds:number,now=Date.now()):RestTimer|null{
  if(!workoutId||!setKey||!Number.isFinite(seconds)||seconds<=0||seconds>3600)return null;
- return {id:`${now}-${Math.random().toString(36).slice(2,10)}`,workoutId,setKey,endAt:now+seconds*1000,pausedSeconds:null,alerted:false};
+ return {id:recordUuid(),workoutId,setKey,endAt:now+seconds*1000,pausedSeconds:null,alerted:false};
 }
 export function pauseRest(t:RestTimer,now=Date.now()):RestTimer{return {...t,endAt:null,pausedSeconds:restSeconds(t,now)}}
 export function resumeRest(t:RestTimer,now=Date.now()):RestTimer{return {...t,endAt:now+restSeconds(t,now)*1000,pausedSeconds:null,alerted:false}}

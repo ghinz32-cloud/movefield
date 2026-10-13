@@ -1,0 +1,367 @@
+{
+  "timestamp": "2026-10-09T17:37:11.067Z",
+  "sourceSHA256": {
+    "lib/training.ts": "be27eb1bc30c2823df371d7712309264f109516f85f07e43ec5d1ad432b251d5",
+    "lib/training-focus.ts": "3e4a94e9a6a4ec4056e195e244edcf6dd6f365dbbb432e17d35f8e3f3babba39",
+    "lib/program-catalog.ts": "d5ab1eb1c61338dc58e8c06aa1899f967574a2c9c6102e6be7e783396018949c",
+    "lib/program-evidence.ts": "beaad36890c37d5de560cfdb0d26776e62b4e2cec21722e912a7dc57e0a313c4",
+    "lib/onboarding.ts": "eda6111409d23a9c54f334adb20e0a4b999755016ab10fc5a4b75325e48dcecc",
+    "lib/exercise-library.json": "255e51c2dad783a487d37ea4bbe3eb6942f6d7dfde497b7a432ec3bd54620040",
+    "lib/recipes.json": "a6b5f0e919cf0f3ba492e67db8164223e333dab70e24bfab830796136c02c175"
+  },
+  "scriptSHA256": "3d4ec5bb9aea935100a3f792f7938649f6406502c76b1368f2359aae0a199f7b",
+  "scenarios": 86,
+  "passed": 86,
+  "failed": 0,
+  "results": [
+    {
+      "name": "PL3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PL4 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PB3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PB4 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "BB3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "BB4 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "HY4 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "HY5 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "BBPPL6 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "BBARN6 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PLTX3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PLSL3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PLU3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PBPH4 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PBT4 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "ST2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "ST3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "GF2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "GFHOME2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "CAL2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "CAL3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "RNEASY3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PL2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PBSTART2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PBSTART3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PBDB3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "BB2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "BBDB3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "BBM3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "STGYM2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "STDB3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "GF3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "GFM2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "CALBUILD3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "CALBUILD2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "HYHOME4 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "HYDB4 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "RNBASE4 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "BBHOME3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "BBADV4 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PLW4 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PBW4 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "ST4 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QG2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QG3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QS2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QM2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QC2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QPB2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QSP2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QS3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QM3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QPB3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QC3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QSP3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QPL3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QHY4 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QR3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "SP2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QHY3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "HY3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "QR2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PLSTART3 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "GFSTAND2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "STSTAND2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "GFNOGROUND2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "GFNONE2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "STDBST2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "GFDBST2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "BBDBST2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "PBDBST2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "SPDBST2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "CALDB2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "HYDB2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "HYHOME2 eight-week commitments retain dose, order and spacing",
+      "status": "pass"
+    },
+    {
+      "name": "First-time general explicit recommendation fixture",
+      "status": "pass"
+    },
+    {
+      "name": "First-time strength explicit recommendation fixture",
+      "status": "pass"
+    },
+    {
+      "name": "First-time hypertrophy explicit recommendation fixture",
+      "status": "pass"
+    },
+    {
+      "name": "First-time powerbuilding explicit recommendation fixture",
+      "status": "pass"
+    },
+    {
+      "name": "First-time powerlifting explicit recommendation fixture",
+      "status": "pass"
+    },
+    {
+      "name": "First-time calisthenics explicit recommendation fixture",
+      "status": "pass"
+    },
+    {
+      "name": "First-time hybrid explicit recommendation fixture",
+      "status": "pass"
+    },
+    {
+      "name": "First-time running explicit recommendation fixture",
+      "status": "pass"
+    },
+    {
+      "name": "manual remains an empty tracking calendar without app dose evidence",
+      "status": "pass"
+    },
+    {
+      "name": "coach remains an empty tracking calendar without app dose evidence",
+      "status": "pass"
+    },
+    {
+      "name": "NHS missing prerequisite remains blocked without inventing readiness",
+      "status": "pass"
+    }
+  ],
+  "limits": [
+    "Deterministic source-level probes, not exercise outcomes, clinical assessment, physical device or guaranteed recovery evidence",
+    "Commitment tests use matching equipment/readiness, all seven available weekdays and eight-week blocks",
+    "First-time recommendation fixtures use full gym and all weekdays; they are product policy expectations, not scientific optimum assertions"
+  ]
+}

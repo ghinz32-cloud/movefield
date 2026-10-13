@@ -1,0 +1,49 @@
+{
+  "observed_at": "2026-10-09T21:08:29.494Z",
+  "helper": "Advertised library_file_transfer.py copied unchanged; current files attempted independently.",
+  "attempts": [
+    {
+      "kind": "ios-evidence",
+      "artifact_id": 11644458910,
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "336c24",
+          "wall_time_seconds": 1.001182583,
+          "exit_code": 1,
+          "original_token_count": 17,
+          "output": "library file transfer failed: download failed with HTTP status 403\n"
+        }
+      }
+    },
+    {
+      "kind": "ios-binary",
+      "artifact_id": 11644643820,
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "5be8f9",
+          "wall_time_seconds": 1.0014755,
+          "exit_code": 1,
+          "original_token_count": 17,
+          "output": "library file transfer failed: download failed with HTTP status 403\n"
+        }
+      }
+    },
+    {
+      "kind": "quality",
+      "artifact_id": 11644877901,
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "99f635",
+          "wall_time_seconds": 1.000488114,
+          "exit_code": 1,
+          "original_token_count": 17,
+          "output": "library file transfer failed: download failed with HTTP status 403\n"
+        }
+      }
+    }
+  ],
+  "scope": "Official connector returned reusable references. Current byte materialization failed HTTP 403, so artifact content/digest/package-receipt independent replay was not performed. No signed download URLs retained."
+}

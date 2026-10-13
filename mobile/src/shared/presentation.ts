@@ -4,7 +4,7 @@ import type {Plan, Session, State, Workout} from './training';
 // Display names never replace stored titles, load roles or progression keys.
 export function planName(plan: Plan): string {
   const source = programReferences.find(p => p.id === plan.profile.programId);
-  if (source) return `${source.name} by ${source.author} · tracking copy`;
+  if (source) return `${source.name} by ${source.author} · ${source.workouts?'manual template':'tracking calendar'}`;
   if (plan.profile.mode !== 'app') return plan.name;
   if (plan.template === 'RUN-WALK') return 'NHS Couch to 5K · run/walk plan';
   return programCatalog.find(p => p.id === plan.template)?.name ?? plan.name;
@@ -186,7 +186,7 @@ export function sessionName(session: Session, plan?: Plan | null): string {
     const originalMainExercisesRemain = slot.items.slice(0, 2).every(([id]) => session.items.some(item => item.exerciseId === id));
     // A replacement exercise can make a lift-specific title inaccurate.
     const title = !slot.kind && !originalMainExercisesRemain
-      ? `${slot.group === 'upper' ? 'Upper body' : slot.group === 'lower' ? 'Lower body' : 'Full body'} · Workout ${slotIndex + 1}`
+      ? `${['upper','push','pull','chestback','shouldersarms'].includes(slot.group) ? 'Upper body' : ['lower','legs'].includes(slot.group) ? 'Lower body' : 'Full body'} · Workout ${slotIndex + 1}`
       : workoutDisplayNames[base] ?? base;
     return title + (session.title.endsWith(' · review week') ? ' · lighter week' : '');
   }

@@ -1,0 +1,27 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'../..'),{createSourceLoader}=require(path.join(root,'scripts/lib/native-source-loader.cjs'));
+const L=createSourceLoader(root),T=L.load(path.join(root,'lib/training.ts')),C=L.load(path.join(root,'lib/program-catalog.ts')),O=L.load(path.join(root,'lib/onboarding.ts'));
+const files=['lib/training.ts','lib/training-focus.ts','lib/program-catalog.ts','lib/program-evidence.ts','lib/onboarding.ts','lib/exercise-library.json','lib/recipes.json'];
+const hash=f=>crypto.createHash('sha256').update(fs.readFileSync(path.join(root,f))).digest('hex');
+const sourceSHA256=Object.fromEntries(files.map(f=>[f,hash(f)])),results=[];
+const base=d=>({...T.blankProfile,age:d.youth?16:28,supervision:!!d.youth,experience:d.experience==='advanced'?'Experienced':'Some experience',establishedTraining:true,mode:'app',minutes:120,start:'2026-11-01',weeks:8,goal:d.goal,programId:d.id,equipment:C.programEquipment(d),runBase:true,runDays:4,runMinutes:120,days:[0,1,2,3,4,5,6]});
+function test(name,fn){try{fn();results.push({name,status:'pass'});}catch(e){results.push({name,status:'fail',error:e.message});}}
+for(const d of C.programCatalog)test(d.id+' eight-week commitments retain dose, order and spacing',()=>{
+ const p=base(d),before=T.buildPlan(p);assert.ok(before.plan,before.errors.join(' '));
+ const events=[{id:'off',name:'Fixed day off',kind:'Day off',date:before.plan.sessions[0].date,priority:'Normal',minutes:0,provisional:false},{id:'competition',name:'Fixed competition',kind:'Competition',date:before.plan.sessions[Math.floor(before.plan.sessions.length/2)].date,priority:'High',minutes:60,provisional:false}];
+ const after=T.buildPlan(p,events);assert.ok(after.plan,after.errors.join(' '));
+ const ss=after.plan.sessions;assert.equal(ss.length,before.plan.sessions.length);assert.equal(ss[0].title,before.plan.sessions[0].title);
+ for(let i=0;i<ss.length;i++){
+  const x=ss[i],old=before.plan.sessions[i];assert.deepEqual(x.items,old.items);assert.deepEqual(x.runSteps,old.runSteps);assert.equal(x.minutes,old.minutes);assert.equal(x.roleId,old.roleId);assert.equal(x.recoveryGroup,old.recoveryGroup);assert.equal(x.week,old.week);assert.ok(p.days.includes(new Date(x.date+'T12:00:00').getDay()));assert.ok(!events.some(e=>e.date===x.date));
+  if(i)assert.ok(T.dayDistance(ss[i-1].date,x.date)>=T.dayDistance(before.plan.sessions[i-1].date,old.date));
+  for(const dep of x.dependsOn||[]){const prior=ss.find(y=>y.id===dep);assert.ok(prior&&prior.date<x.date);}
+  assert.equal(T.competitionConflict(p,x.date,events),null);
+ }
+});
+const firstTime={...T.blankProfile,age:28,experience:'First time',mode:'app',start:'2026-11-02',weeks:8,minutes:120,days:[0,1,2,3,4,5,6],equipment:'Full gym',runBase:true,runDays:4,runMinutes:120};
+for(const [goal,expected] of [['general','QG2'],['strength','QS2'],['hypertrophy','QM2'],['powerbuilding','QPB2'],['powerlifting','PLSTART3'],['calisthenics','QC2'],['hybrid','QHY4'],['running','RUN-WALK']])test('First-time '+goal+' explicit recommendation fixture',()=>{const options=O.planOptions({...firstTime,goal},[]),chosen=options.filter(v=>v.recommended);assert.equal(chosen.length,1);assert.equal(chosen[0].id,expected);assert.equal(chosen[0].startHere,true);assert.ok(chosen[0].plan);if(goal!=='running'){assert.ok(chosen[0].notes.some(n=>n.includes('app preference')));assert.ok(chosen[0].notes.some(n=>n.includes('not a comfortable-feedback or recovery assessment')));}});
+for(const mode of ['manual','coach'])test(mode+' remains an empty tracking calendar without app dose evidence',()=>{const plan=T.buildPlan({...firstTime,mode,goal:'hypertrophy'}).plan;assert.ok(plan);assert.ok(plan.sessions.every(s=>!s.items.length));assert.deepEqual(plan.evidence,[]);assert.equal(T.makeProposal({...T.initialState(),profile:plan.profile,plan},'sets'),null);});
+test('NHS missing prerequisite remains blocked without inventing readiness',()=>{const plan=T.buildPlan({...firstTime,goal:'running',days:[1,3,5]}).plan;assert.ok(plan);const s={...T.initialState(),profile:plan.profile,plan,history:[],active:null,events:[]};assert.match(T.eligibility(s,plan.sessions[1]),/prerequisite/);assert.deepEqual(plan.evidence,['NHS-C25K','WHO-2020']);});
+const changed=files.filter(f=>hash(f)!==sourceSHA256[f]);if(changed.length)results.push({name:'Stable source fingerprints',status:'fail',error:changed.join(',')});
+const result={timestamp:new Date().toISOString(),sourceSHA256,scriptSHA256:hash('.sites-runtime/science-review/peer-boundaries.cjs'),scenarios:results.length,passed:results.filter(r=>r.status==='pass').length,failed:results.filter(r=>r.status==='fail').length,results,limits:['Deterministic source-level probes, not exercise outcomes, clinical assessment, physical device or guaranteed recovery evidence','Commitment tests use matching equipment/readiness, all seven available weekdays and eight-week blocks','First-time recommendation fixtures use full gym and all weekdays; they are product policy expectations, not scientific optimum assertions']};
+fs.writeFileSync(path.join(__dirname,'peer-boundaries-result.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({scenarios:result.scenarios,passed:result.passed,failed:result.failed,failures:results.filter(r=>r.status==='fail')}));if(result.failed)process.exitCode=1;

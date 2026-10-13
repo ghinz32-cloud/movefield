@@ -1,0 +1,129 @@
+{
+  "format": "movefield-ci-evidence-inventory-v1",
+  "evidence_phase": "historical-pre-service-worker-repair",
+  "source_sha": "96496ffd4e94b32becccb5db61667fb4fea4ce01",
+  "native_source_sha": "c0aab491084f2b1a7d2829925e4bba434d6d6148",
+  "scope": "Selected official receipts plus README. Inventory excludes itself; SHA256SUMS additionally covers inventory.json and excludes itself.",
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 2945,
+      "sha256": "10c892d35baec75c451e212868bcd2527be9278fffa7104bf99fefbdeac65d92",
+      "source_copy_unchanged": false
+    },
+    {
+      "file": "android-job-114053245360.log",
+      "bytes": 139519,
+      "sha256": "2fea4c0d14a498c083eb76089df19e9705294679e5e40f8575edc22372e2a41d",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "corrected-integration.json",
+      "bytes": 328,
+      "sha256": "e4b36ef04efd43a1368c42a3e4c77c619738943a96f5d9bdd1d2b082aae8f88e",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "corrected-native-gate-artifacts-final.json",
+      "bytes": 847,
+      "sha256": "103d3bf55edd5c4a376fe4ca5551ee330e94de6a507b9f1cd8d96550827e93bf",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "corrected-native-gate-job-114054754463.log",
+      "bytes": 15824,
+      "sha256": "2ec6bc3d35abf91e56685301768e67cd49c0591987239560db83d515ba7389f9",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "corrected-native-gate-jobs-final.json",
+      "bytes": 1638,
+      "sha256": "5f2f9f13950a7ca95133d10845c786830bee53ff3707617a8c064e82fd1973a1",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "corrected-native-gate-run-final.json",
+      "bytes": 14710,
+      "sha256": "13e36e4d66732c3c4bd4d99579677ee4c5d511f9b8adf0a1824f18625df1b69e",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "corrected-source.json",
+      "bytes": 1235,
+      "sha256": "bf39ee932771d399f3cb377f6dd40e90272735fcfc7553af09398dce9b84984b",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "current-artifact-retrieval-status.json",
+      "bytes": 1155,
+      "sha256": "2c206d883e4c6f99a83d3ad6645211ee684f70617e1a5a10d7e47ff881ec210c",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "final-quality-artifacts.json",
+      "bytes": 843,
+      "sha256": "eee03d8b6b0b72a9cb7549b4012c2f733f8ac1869c616e71df954560d1b176e2",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "final-quality-job-114054952762.log",
+      "bytes": 249448,
+      "sha256": "21857030d857ad687555b2be508e3c7bc3489ed19a0222d4163bd93e018697c2",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "final-quality-jobs.json",
+      "bytes": 3151,
+      "sha256": "4cf00da631c248861177ee641b2905314a0432413e9ae4b4525445a7ac80e241",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "final-quality-run.json",
+      "bytes": 14700,
+      "sha256": "27038fd98a3858de2805ac6c5a0d99d87f5d81f8ff58b69066e5a57fe1f45b11",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "final-summary.json",
+      "bytes": 7538,
+      "sha256": "cb8d57126688f5f19eeb3a1218d7643e82e882341b7189bd3089273fd458f215",
+      "source_copy_unchanged": false
+    },
+    {
+      "file": "integration.json",
+      "bytes": 328,
+      "sha256": "9db4600725c7e005b9f8cadb0f402d9d708c79ddc9f4b76cd654a21ed63b5a65",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "ios-log-retrieval-status.json",
+      "bytes": 506,
+      "sha256": "a932aa72ca0bf3d26cc43cd73f2149f43f070de82ce25cb933d3d0255f2c0950",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "native-artifacts-final.json",
+      "bytes": 4202,
+      "sha256": "b7084d4f13d39e97885687a46ea26775a55edef8a1f41a5b40ba8f1491e0ecaa",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "native-jobs-final.json",
+      "bytes": 14250,
+      "sha256": "a1d25b6ca976e7abdfc25027c8e61003481c7b5d548c995b9eaad856bb5c944f",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "native-run-final.json",
+      "bytes": 14715,
+      "sha256": "a5b159e69fc46c02d34122282adca60124ad54b0fb4fa8d4eafe728768b255e3",
+      "source_copy_unchanged": true
+    },
+    {
+      "file": "source.json",
+      "bytes": 280,
+      "sha256": "777cac7e8fb7058dbd113ae34635cdd0f53cf2fad48385e84f5386f5154a0a6b",
+      "source_copy_unchanged": true
+    }
+  ]
+}

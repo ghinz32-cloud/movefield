@@ -1,0 +1,34 @@
+{
+  "milestone": "backend-sync",
+  "baseline": "8abfca45f1f910155011516eabffbebdf070821b",
+  "verifiedAt": "2026-10-09T20:21:17.834050+00:00",
+  "database": "Actual ephemeral Miniflare D1",
+  "integrationGroupsPassed": 21,
+  "checks": {
+    "types": "tsc --noEmit --incremental false passed",
+    "lint": "eslint server app/api db cloudflare-env.d.ts passed",
+    "schema": "drizzle-kit generate --name backend_verify reports no changes",
+    "diff": "git diff --check passed"
+  },
+  "limits": [
+    "No provider credential or measured model evaluation",
+    "Native authentication unavailable",
+    "No hosting or account mutation in backend milestone",
+    "Integrated production build/deployment belongs to root checkpoint"
+  ],
+  "sha256": {
+    "app/api/account/route.ts": "1047d76a7e9048136b8bbc4c1233862993ef3657420a66fb69c9dd9b274642b3",
+    "app/api/daily-feedback/route.ts": "1fb11e40cea30340a2a89fc7f0272d5df629126c8758c4dcb23acccaca844044",
+    "app/api/sync/route.ts": "1fb11e40cea30340a2a89fc7f0272d5df629126c8758c4dcb23acccaca844044",
+    "db/schema.ts": "0c2498e116ca38b6ab154a03ec9461b08ed9a8783d0dc9a0982cdf479e3876d3",
+    "drizzle/0000_account_sync.sql": "d769776c78a1283a4a60f3a596c3ab3e36ada6d14ef42c5980f603d368d72732",
+    "drizzle/meta/0000_snapshot.json": "d1836ce75e7f89aba9ca9c80e9f4e5f7db1da9e786d5cadea466119043b2c33f",
+    "scripts/check-backend.cjs": "bbce9c2fda1795498890534c5b835beeba104f5b3da7fb167bcde4ddd6aa8c9f",
+    "server/api.ts": "57207559ec7a79f205f70584b5ec04d788f09ff4210c83381d2649a1c8caaa2a",
+    "server/auth.ts": "383cdf5f833adce6cd140bb71ae963f5d665a3ba267b285b10ef62f28edcae50",
+    "server/contracts.ts": "06bcb096b4218000db4a4e2358b4f78a7d7c87e48c21488d76b72b7d56eb932b",
+    "server/feedback.ts": "5187d7988411306d3d13355a3a461c7a3d9544b0a79dad94edb554933e1e61f8",
+    "server/runtime.ts": "178091cf671e4260a61792087b0c4a7bf8b4bb40c4e0746bd9196b036a4ef2f5",
+    "server/sync.ts": "52653fb8ec73c237e4cd843da5dff8eee9787bbec0c0666bd4679edb382cd865"
+  }
+}

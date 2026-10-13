@@ -1,6 +1,9 @@
+import {workoutTimeMetadata,workoutFinishedAtUtc} from './shared/record-identity';
+import {workoutCompletionSignature,workoutExerciseProgress} from './shared/workout-navigation';
 import { setMetricsSchema } from './shared/saved-data';
-import { blankProfile, buildPlan, day, eligibility, exFor, initialState, isLoadTracked, uid, type Exercise, type Plan, type Profile, type SetLog, type State, type Workout } from './shared/training';
+import { blankProfile, buildPlan, changed, day, eligibility, exFor, initialState, isLoadTracked, uid, type Exercise, type Plan, type Profile, type SetLog, type State, type Workout } from './shared/training';
 import { focusScheduleConflict } from './shared/training-focus';
+import { rirError, startingSets } from './shared/workout-log';
 import { programCatalog, programEquipment } from './shared/program-catalog';
 export const FOUNDATION = 'foundation';
 export const RUN_WALK = 'run-walk';
@@ -11,7 +14,7 @@ export function emptyDemo(): State {
 export function previewPlan(id: string, start = day()): {plan: Plan | null; errors: string[]} {
   const choice = programCatalog.find(x => x.id === id);
   if(!choice&&![FOUNDATION,RUN_WALK,SPORT_FOUNDATION].includes(id))return {plan:null,errors:['This program is unavailable. Choose a program from the selected training style.']};
-  const offsets = !choice ? (id===RUN_WALK?[0,2,4]:[0,3]) : choice.days===2 ? [0,3] : choice.id==='RNBASE4'?[0,2,4,6]:choice.days === 5 ? [0, 1, 3, 4, 6] : choice?.days === 4 ? [0, 1, 3, 4] : [0, 2, 4];
+  const offsets = !choice ? (id===RUN_WALK?[0,2,4]:[0,3]) : choice.days===2 ? [0,3] : choice.id==='RNBASE4'?[0,2,4,6]:choice.days === 6 ? [0, 1, 2, 3, 4, 5] : choice.days === 5 ? [0, 1, 3, 4, 6] : choice?.days === 4 ? [0, 1, 3, 4] : [0, 2, 4];
   const profile: Profile = { ...blankProfile, age: 28, name: 'Local demo', start, weeks: 4,
     goal: choice?.goal ?? (id===RUN_WALK?'running':id===SPORT_FOUNDATION?'sport':'general'), programId: choice?.id, experience: choice?.experience === 'advanced'?'Experienced':choice?.experience === 'some' ? 'Some experience' : 'First time',
     minutes: 120, equipment: choice ? programEquipment(choice) : 'Dumbbells',
@@ -33,9 +36,10 @@ export function startWorkout(state: State, sessionId: string): State {
   const blocked = eligibility(state, session);
   if (blocked) throw new Error(blocked);
   if (session.date !== day()) throw new Error('Review moving this workout to today before starting.');
-  const active: Workout = { id: uid('workout'), sessionId, title: session.title, date: day(), startedAt: Date.now(), demo: true,
+  const startedAt=Date.now();
+  const active: Workout = { id: uid('workout'), sessionId, title: session.title, date: day(), startedAt,...workoutTimeMetadata(startedAt),
     targets: session.items.map(x => ({ ...x })),
-    sets: session.items.flatMap(x => Array.from({ length: x.sets }, (_, i) => ({ exerciseId: x.exerciseId, set: i + 1, reps: 0, kg: null, done: false }))), loadContext: {...state.loadContext} };
+    sets: startingSets(state, session.items), loadContext: {...state.loadContext} };
   return { ...state, active };
 }
 export function editSet(state: State, index: number, patch: Partial<SetLog>): State {
@@ -45,6 +49,7 @@ export function editSet(state: State, index: number, patch: Partial<SetLog>): St
   if(exFor(updated.exerciseId,state.custom).metric==='reps'&&!Number.isInteger(updated.reps)) throw new Error('Enter whole-number reps.');
   if (updated.kg !== null && (!Number.isFinite(updated.kg) || updated.kg < 0 || updated.kg > 1500)) throw new Error('Enter a valid load.');
   if (updated.metrics && !setMetricsSchema.safeParse(updated.metrics).success) throw new Error('Optional measurements are outside the supported range.');
+  const rirProblem = rirError(updated.rir); if (rirProblem) throw new Error(rirProblem);
   if (updated.done && updated.reps <= 0) throw new Error('Enter the actual reps or time before marking the set done.');
   const sets = state.active.sets.map((x, i) => i === index ? updated : x);
   return { ...state, active: { ...state.active, sets } };
@@ -56,11 +61,41 @@ export function finishWorkout(state: State): State {
   if(state.history.some(x=>x.id===w.id)) throw new Error('This workout is already saved.');
   const done = w.sets.filter(x => x.done);
   if (!done.length) throw new Error('Log at least one completed set, or discard this workout.');
-  const partial = done.length < w.sets.length;
-  const recorded = { ...w, finishedAt: Date.now(), partial };
+  const partial = workoutExerciseProgress(state,w).some(entry=>!entry.complete);
+  const finishedAt=Date.now();
+  const recorded = { ...w, finishedAt,...workoutFinishedAtUtc(finishedAt), partial };
   return { ...state, active: null, history: [...state.history, recorded], loadContext:{...state.loadContext,...w.loadContext}, restTimer:null, plan: { ...state.plan, version: state.plan.version + 1,
     sessions: state.plan.sessions.map(x => x.id === w.sessionId ? { ...x, status: partial ? 'partial' : 'completed' } : x) } };
 }
 export function unknownLoads(w: Workout, custom: Exercise[] = []): number {
   return w.sets.filter(x => x.done && x.kg === null && isLoadTracked(exFor(x.exerciseId,custom))).length;
 }
+
+
+export type WorkoutCheckin = { workoutId: string; symptom: string; effort: string; partialAcknowledgement?:string };
+/** Seed the finish form with feedback already recorded in the active workout. */
+export function workoutCheckin(state: State): WorkoutCheckin | null {
+  const workout = state.active;
+  if (!workout) return null;
+  return {
+    workoutId: workout.id,
+    symptom: ['no', 'yes', 'unsure'].includes(workout.symptom ?? '') ? workout.symptom! : '',
+    effort: ['easier', 'right', 'harder'].includes(workout.effort ?? '') ? workout.effort! : '',
+  };
+}
+/** Validate the current workout and save feedback plus completion in one state change. */
+export function completeWorkoutCheckin(state: State, checkin: WorkoutCheckin): State {
+  const workout = state.active;
+  if (!workout || workout.id !== checkin.workoutId) throw Error('The active workout changed. Open its check-in again.');
+  if (!['no', 'yes', 'unsure'].includes(checkin.symptom)) throw Error('Choose whether you had pain or a concern before saving.');
+  if (!['', 'easier', 'right', 'harder'].includes(checkin.effort)) throw Error('Choose a supported effort answer, or skip it.');
+  const concern = checkin.symptom === 'yes' || checkin.symptom === 'unsure';
+  const done = workout.sets.filter(set => set.done).length;
+  if (!concern && done === 0) throw Error('Log at least one completed set, or discard this workout.');
+  if (done>0&&workoutExerciseProgress(state,workout).some(entry=>!entry.complete)&&checkin.partialAcknowledgement!==workoutCompletionSignature(state,workout)) throw Error('Confirm the unfinished exercises before saving a partial workout.');
+  let next: State = { ...state, active: { ...workout, symptom: checkin.symptom, effort: checkin.effort || undefined } };
+  if (concern) next = changed({ ...next, hold: true }, 'Automated recommendations held after a symptom report.');
+  if (concern && done === 0) return changed({ ...next, active: null, restTimer: null }, 'Concern saved. No completed sets were added.');
+  return finishWorkout(next);
+}
+export {setPlanPaused} from './shared/training';

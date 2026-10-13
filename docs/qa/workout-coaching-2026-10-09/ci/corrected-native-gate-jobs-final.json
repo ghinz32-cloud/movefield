@@ -1,0 +1,68 @@
+{
+  "jobs": [
+    {
+      "id": 114054754463,
+      "name": "native_changes",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 37999781136,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Decide from the exact synchronize source range",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Retain native input decision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Post Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        }
+      ]
+    },
+    {
+      "id": 114054812848,
+      "name": "android",
+      "status": "completed",
+      "conclusion": "skipped",
+      "run_id": 37999781136,
+      "logs_url": null,
+      "steps": null
+    },
+    {
+      "id": 114054813197,
+      "name": "ios",
+      "status": "completed",
+      "conclusion": "skipped",
+      "run_id": 37999781136,
+      "logs_url": null,
+      "steps": null
+    }
+  ]
+}

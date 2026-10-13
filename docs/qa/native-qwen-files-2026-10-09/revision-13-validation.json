@@ -1,0 +1,293 @@
+{
+  "groups": [
+    "Damaged and unsafe preferences fall back without changing training records",
+    "Model selection requires measured qualification and falls back without downloads",
+    "Reminder schedule deduplicates days and respects plan and workout state",
+    "Calendar export contains timed reminders and no workout or personal details",
+    "Every palette passes light and dark text and control contrast",
+    "Smallest and smaller text, spacing density and the added palettes are accepted; unknown values fall back"
+  ],
+  "checks": 98,
+  "contrast": [
+    {
+      "palette": "green",
+      "role": "light button",
+      "ratio": 7.15
+    },
+    {
+      "palette": "green",
+      "role": "light accent",
+      "ratio": 7.15
+    },
+    {
+      "palette": "green",
+      "role": "dark accent",
+      "ratio": 12.03
+    },
+    {
+      "palette": "green",
+      "role": "gradient start",
+      "ratio": 12.59
+    },
+    {
+      "palette": "green",
+      "role": "gradient end",
+      "ratio": 9.7
+    },
+    {
+      "palette": "ocean",
+      "role": "light button",
+      "ratio": 7.05
+    },
+    {
+      "palette": "ocean",
+      "role": "light accent",
+      "ratio": 7.05
+    },
+    {
+      "palette": "ocean",
+      "role": "dark accent",
+      "ratio": 10.62
+    },
+    {
+      "palette": "ocean",
+      "role": "gradient start",
+      "ratio": 11.12
+    },
+    {
+      "palette": "ocean",
+      "role": "gradient end",
+      "ratio": 7.21
+    },
+    {
+      "palette": "violet",
+      "role": "light button",
+      "ratio": 7.29
+    },
+    {
+      "palette": "violet",
+      "role": "light accent",
+      "ratio": 7.29
+    },
+    {
+      "palette": "violet",
+      "role": "dark accent",
+      "ratio": 9.23
+    },
+    {
+      "palette": "violet",
+      "role": "gradient start",
+      "ratio": 9.66
+    },
+    {
+      "palette": "violet",
+      "role": "gradient end",
+      "ratio": 7.32
+    },
+    {
+      "palette": "sunset",
+      "role": "light button",
+      "ratio": 6.72
+    },
+    {
+      "palette": "sunset",
+      "role": "light accent",
+      "ratio": 6.72
+    },
+    {
+      "palette": "sunset",
+      "role": "dark accent",
+      "ratio": 11.18
+    },
+    {
+      "palette": "sunset",
+      "role": "gradient start",
+      "ratio": 11.69
+    },
+    {
+      "palette": "sunset",
+      "role": "gradient end",
+      "ratio": 8.77
+    },
+    {
+      "palette": "rose",
+      "role": "light button",
+      "ratio": 6.77
+    },
+    {
+      "palette": "rose",
+      "role": "light accent",
+      "ratio": 6.77
+    },
+    {
+      "palette": "rose",
+      "role": "dark accent",
+      "ratio": 9.88
+    },
+    {
+      "palette": "rose",
+      "role": "gradient start",
+      "ratio": 10.34
+    },
+    {
+      "palette": "rose",
+      "role": "gradient end",
+      "ratio": 8.7
+    },
+    {
+      "palette": "teal",
+      "role": "light button",
+      "ratio": 6.78
+    },
+    {
+      "palette": "teal",
+      "role": "light accent",
+      "ratio": 6.78
+    },
+    {
+      "palette": "teal",
+      "role": "dark accent",
+      "ratio": 11.79
+    },
+    {
+      "palette": "teal",
+      "role": "gradient start",
+      "ratio": 12.34
+    },
+    {
+      "palette": "teal",
+      "role": "gradient end",
+      "ratio": 9.79
+    },
+    {
+      "palette": "ember",
+      "role": "light button",
+      "ratio": 7.51
+    },
+    {
+      "palette": "ember",
+      "role": "light accent",
+      "ratio": 7.51
+    },
+    {
+      "palette": "ember",
+      "role": "dark accent",
+      "ratio": 8.93
+    },
+    {
+      "palette": "ember",
+      "role": "gradient start",
+      "ratio": 9.35
+    },
+    {
+      "palette": "ember",
+      "role": "gradient end",
+      "ratio": 6.83
+    },
+    {
+      "palette": "crimson",
+      "role": "light button",
+      "ratio": 7.89
+    },
+    {
+      "palette": "crimson",
+      "role": "light accent",
+      "ratio": 7.89
+    },
+    {
+      "palette": "crimson",
+      "role": "dark accent",
+      "ratio": 9.52
+    },
+    {
+      "palette": "crimson",
+      "role": "gradient start",
+      "ratio": 9.97
+    },
+    {
+      "palette": "crimson",
+      "role": "gradient end",
+      "ratio": 6.78
+    },
+    {
+      "palette": "red",
+      "role": "light button",
+      "ratio": 8.02
+    },
+    {
+      "palette": "red",
+      "role": "light accent",
+      "ratio": 8.02
+    },
+    {
+      "palette": "red",
+      "role": "dark accent",
+      "ratio": 9.09
+    },
+    {
+      "palette": "red",
+      "role": "gradient start",
+      "ratio": 9.51
+    },
+    {
+      "palette": "red",
+      "role": "gradient end",
+      "ratio": 6.42
+    },
+    {
+      "palette": "amber",
+      "role": "light button",
+      "ratio": 7.48
+    },
+    {
+      "palette": "amber",
+      "role": "light accent",
+      "ratio": 7.48
+    },
+    {
+      "palette": "amber",
+      "role": "dark accent",
+      "ratio": 12.49
+    },
+    {
+      "palette": "amber",
+      "role": "gradient start",
+      "ratio": 13.07
+    },
+    {
+      "palette": "amber",
+      "role": "gradient end",
+      "ratio": 10.09
+    },
+    {
+      "palette": "graphite",
+      "role": "light button",
+      "ratio": 10.28
+    },
+    {
+      "palette": "graphite",
+      "role": "light accent",
+      "ratio": 10.28
+    },
+    {
+      "palette": "graphite",
+      "role": "dark accent",
+      "ratio": 11.6
+    },
+    {
+      "palette": "graphite",
+      "role": "gradient start",
+      "ratio": 12.14
+    },
+    {
+      "palette": "graphite",
+      "role": "gradient end",
+      "ratio": 7.87
+    }
+  ],
+  "limits": [
+    "Contrast calculations cover design tokens, not every rendered pixel.",
+    "Browser keyboard/reflow/screen-reader and physical-device notification tests are still required.",
+    "No model inference or performance benchmarks have been run."
+  ]
+}

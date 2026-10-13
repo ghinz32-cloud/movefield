@@ -1,0 +1,41 @@
+Starting Metro Bundler
+
+| (node:5) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:5) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:5) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:5) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:5) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:5) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+iOS Bundled 11186ms index.ts (835 modules)
+Android Bundled 19686ms index.ts (835 modules)
+
+› Assets (12):
+assets/fonts/AtkinsonHyperlegible_400Regular.ttf (54KB)
+assets/fonts/AtkinsonHyperlegible_700Bold.ttf (54KB)
+assets/fonts/barlow-condensed-semibold.ttf (109KB)
+assets/fonts/inter-variable.ttf (877KB)
+assets/fonts/Lexend_400Regular.ttf (78KB)
+assets/fonts/Lexend_700Bold.ttf (79KB)
+assets/fonts/Nunito_400Regular.ttf (132KB)
+assets/fonts/Nunito_700Bold.ttf (132KB)
+assets/fonts/Oswald_600SemiBold.ttf (88KB)
+assets/fonts/Oswald_700Bold.ttf (88KB)
+assets/fonts/Saira_400Regular.ttf (84KB)
+assets/fonts/Saira_700Bold.ttf (83KB)
+
+› ios bundles (1):
+_expo/static/js/ios/index-2fecfac351eb17a361df153a1207fdaa.hbc (4.8MB)
+
+› android bundles (1):
+_expo/static/js/android/index-381e219f2ca2d84e2e92bd70e8ca099c.hbc (4.8MB)
+
+› Files (1):
+metadata.json (1.8KB)
+
+Exported: dist-mobile

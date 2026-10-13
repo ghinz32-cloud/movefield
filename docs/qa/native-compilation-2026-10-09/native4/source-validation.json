@@ -1,0 +1,14 @@
+{
+  "milestone": "NATIVE4",
+  "fixtureTests": 90,
+  "previousFixtureTests": 65,
+  "rootIndependentRerun": true,
+  "sourceHashes": {
+    "scripts/inspect-native-artifacts.py": "db33ac39abc5b1e49f37fc0802f4ff60555f42c0696e61fb66774a81e6caf0dc",
+    "scripts/test-native-artifact-inspector.py": "afa38f4999bc1c277f556936fa2731f5f81482fa7c27cafd873fcb2e1edadfc2"
+  },
+  "actualNewSourceMetadataInspected": false,
+  "native3CanceledArtifacts": "Source receipts only, no assembled manifest/plist; not qualification",
+  "physicalDevicesQualified": 0,
+  "storesAccepted": false
+}

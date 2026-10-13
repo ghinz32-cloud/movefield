@@ -52,6 +52,9 @@ export default defineConfig(async ({ command }) => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    // The complete reference catalog is intentionally shared; gzip entry and
+    // dependency budgets are independently enforced by check-bundle.cjs.
+    build: { chunkSizeWarningLimit: 1000 },
     server: {
       ...(managedLinux
         ? { host: "0.0.0.0", allowedHosts: ["terminal.local"] }
@@ -62,7 +65,7 @@ export default defineConfig(async ({ command }) => {
     },
     plugins: [
       vinext(),
-      sites({ mockAuth: !managedLinux }),
+      sites({ mockAuth: process.env.MOVEFIELD_MOCK_AUTH === '1' && command === 'serve' }),
       connectorPreview(),
       cloudflare({
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },

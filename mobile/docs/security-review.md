@@ -1,5 +1,7 @@
 # Security review — 7 October 2026
 
+For the current Android/iOS configuration audit, encrypted persistence boundaries and pending native build/device evidence, see [native-security-2026-10-09.md](native-security-2026-10-09.md). The dated entries below are historical findings, including superseded plaintext-storage and dependency counts.
+
 This is a private, device-local prototype. The work below reduces specific risks; it is not a penetration test, compliance certification, or promise of complete security.
 
 ## Changes shipped

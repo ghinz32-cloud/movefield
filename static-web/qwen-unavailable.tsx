@@ -1,0 +1,1 @@
+export default function PagesQwenUnavailable(){return <section className="card"><h2>Local assistant</h2><p className="muted">Qwen is unavailable on this GitHub Pages prototype while its worker security and browser compatibility are being verified. No model download starts here. Your plans, logging and reviewed training sources remain available.</p></section>}

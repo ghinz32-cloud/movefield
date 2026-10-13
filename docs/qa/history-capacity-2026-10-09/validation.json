@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": 30,
+  "historyCount": 5000,
+  "plainChars": 8664825,
+  "plainUTF8Bytes": 8665143,
+  "protectedFileChars": 17330671,
+  "scope": "Actual validators, cryptography and SQLite host harness. Fresh module reads are not process/phone restarts; no physical throughput or capacity qualification."
+}

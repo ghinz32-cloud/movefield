@@ -1,0 +1,44 @@
+{
+  "coreNativeSource": "83b2f94cdc7cd697b9cb45f311794c4371ca4826",
+  "webCopySource": "d6710d945889d7e10e8db772ae49ee3d0b56cfae",
+  "webSiteSource": "b61ded3cddd7c976228042040c7ead58b6d3c8d2",
+  "onlyApplicationChanges": [
+    "components/account-security.tsx",
+    "components/training-onboarding.tsx"
+  ],
+  "nativeBackendSharedInputsUnchanged": true,
+  "checks": {
+    "webTypes": "pass",
+    "scopedProductLint": "pass with zero ESLint warnings",
+    "compiledSetupHydration": "pass",
+    "pagesAssertions": 541,
+    "hostedProductionSuites": "3/3 pass"
+  },
+  "logs": [
+    {
+      "path": ".sites-runtime/web-copy-typecheck.log",
+      "bytes": 158,
+      "sha256": "41d39cff24a2767fb623a40788a74db6700d2427f22215a1734981e58231bc25"
+    },
+    {
+      "path": ".sites-runtime/web-copy-lint.log",
+      "bytes": 99,
+      "sha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f"
+    },
+    {
+      "path": ".sites-runtime/web-copy-hydration.log",
+      "bytes": 1854,
+      "sha256": "738a5b9c5f66bc51f800e6994e22479b58e7ef9c89911eff71a07427b183f1ac"
+    },
+    {
+      "path": ".sites-runtime/pages-build-copy-final.log",
+      "bytes": 4611,
+      "sha256": "4eb270886ba1a7553e7408247baf01499ea6359a86317badcf2b29d9d1b490b0"
+    }
+  ],
+  "limits": [
+    "Web-only product text changed after native binary qualification",
+    "Environment/npm and CI/toolchain warnings remain separately recorded",
+    "No physical-device or signed-in account journey acceptance"
+  ]
+}

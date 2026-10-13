@@ -1,0 +1,62 @@
+{
+  "milestone": "strict dependency release gate",
+  "recordedAt": "2026-10-09T15:38:38.352404+00:00",
+  "baselineGitHub": "cbb39a4b04f7d9f8d3ba19bf44d20d72304bd73b",
+  "source": [
+    {
+      "path": "scripts/check-dependencies.mjs",
+      "bytes": 1811,
+      "sha256": "9bf773c6aa3477f221492492ffb4c2ef668ebee9a7d514397f6740f34a2e51cf"
+    },
+    {
+      "path": "scripts/lib/dependency-policy.cjs",
+      "bytes": 6131,
+      "sha256": "68c910ad83d89d93e1498ca5dda41cb186db6c31ea24f7c5abc44353f72cd012"
+    },
+    {
+      "path": "scripts/check-dependency-policy.cjs",
+      "bytes": 6129,
+      "sha256": "b361da6bc911723fc84e561ee1fed890306ab2322ea357e9e96915e519ad2184"
+    },
+    {
+      "path": "package.json",
+      "bytes": 2732,
+      "sha256": "87818ff18dc49436fbff19e9ae99fd50ebc34a9264ee688bee04e14c74084283"
+    }
+  ],
+  "scenarios": 7,
+  "exitCodes": [
+    {
+      "mode": "ci",
+      "exitCode": 0
+    },
+    {
+      "mode": "release",
+      "exitCode": 1
+    },
+    {
+      "mode": "invalid",
+      "exitCode": 1
+    }
+  ],
+  "logs": [
+    {
+      "path": ".sites-runtime/release-gate-ci.log",
+      "bytes": 382,
+      "sha256": "e9689033c42c267a04f75e144a29fe118080ad5752f9acfd722bcb794dbcb3bc"
+    },
+    {
+      "path": ".sites-runtime/release-gate-release.log",
+      "bytes": 265,
+      "sha256": "1e5f0bccd024533dd7bec88af0c1f94528ac060257c7d92f872b81d065edfce5"
+    },
+    {
+      "path": ".sites-runtime/release-gate-invalid.log",
+      "bytes": 55,
+      "sha256": "c11daf3d6498c451cd0b1651a33f57d9a92ddfe20c595bd12acc9d54782f6111"
+    }
+  ],
+  "applicationRetested": false,
+  "dependencyVersionsChanged": false,
+  "releaseAllowed": false
+}

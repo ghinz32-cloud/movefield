@@ -1,0 +1,22 @@
+{
+  "frozen": true,
+  "fixtureTests": 20,
+  "nativeGateTests": 29,
+  "sourceHashes": {
+    ".github/workflows/native-builds.yml": "c0493759edb66ed26a582f7d22f7392dd3956990f53f0fdd59649c1ea2505ced",
+    "scripts/collect-native-build-evidence.py": "f2076094615fe57ffbea6b7f22ce5ad03bb64d0de494207a9a393a732c2c3186",
+    "scripts/test-native-build-evidence.py": "9b9e3c9dcdec35cd9a5d13c30de6bec924275c0227a4b2c53f2ea4c2d83efdba",
+    "scripts/check-native-build-evidence.cjs": "3c81636ac54c972a8827994d758461f6bcfddd79efc9fe60852a6ba41a881b7a",
+    "scripts/native-change-gate.py": "435de97555d28576d94a59883966c054085be7fba475b2ce9a003f56010be39d",
+    "scripts/test-native-change-gate.py": "e087e681ac003fb872ea7327d29412967905c7a218f1a16986aa41b6a6520160"
+  },
+  "logs": [
+    ".sites-runtime/native7-build-evidence-fixtures.log",
+    ".sites-runtime/native7-gate-fixtures.log"
+  ],
+  "limits": [
+    "Synthetic portable reader fixtures only; no local native compilation",
+    "iOS evidence records resolved target flags and built C objects, not a per-file compiler invocation",
+    "No complete binary SCA, native API/device execution, signing or store qualification"
+  ]
+}

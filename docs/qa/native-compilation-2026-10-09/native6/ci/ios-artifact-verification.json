@@ -1,0 +1,55 @@
+{
+  "artifact": {
+    "id": 11640790804,
+    "name": "ios-release-simulator-compilation",
+    "size_in_bytes": 12009,
+    "url": "https://api.github.com/repos/ghinz32-cloud/movefield/actions/artifacts/11640790804",
+    "archive_download_url": "https://api.github.com/repos/ghinz32-cloud/movefield/actions/artifacts/11640790804/zip",
+    "expired": false,
+    "created_at": "2026-10-09T19:20:04Z",
+    "expires_at": "2027-01-07T19:10:14Z",
+    "updated_at": "2026-10-09T19:20:04Z",
+    "digest": "sha256:4015637095006ea5db9a5717f17df01099285e00f5ffa0c9a91490c972253598",
+    "workflow_run": {
+      "id": 37978371785,
+      "repository_id": 1409376519,
+      "head_repository_id": 1409376519,
+      "head_branch": "audit/2026-10-08-quality",
+      "head_sha": "ba8fec4f0a5cf54ccd7c2c7ed4de4fd976e514cf"
+    }
+  },
+  "archive": "archives/ios-release-simulator-compilation.zip",
+  "archiveSHA256": "4015637095006ea5db9a5717f17df01099285e00f5ffa0c9a91490c972253598",
+  "officialDigestMatches": true,
+  "zipCRCValid": true,
+  "files": [
+    {
+      "path": "Podfile.lock",
+      "bytes": 78675,
+      "sha256": "1d6e645a9a1eeb94d3b7a20e7874f38ca195f0fc47d85c61edef1f85cc263fe8"
+    },
+    {
+      "path": "Info.plist",
+      "bytes": 3553,
+      "sha256": "9f7d264fde03eb71e168a5d20ee366258c59e2abbadcb3c4b7a609d9346237e1"
+    },
+    {
+      "path": "PrivacyInfo.xcprivacy",
+      "bytes": 1274,
+      "sha256": "ab8e9be3d1713701eef605d660a79483ebfab512bc726a28b67c82663382b1fa"
+    },
+    {
+      "path": "inspection.json",
+      "bytes": 6171,
+      "sha256": "32270bd48f36decdddbbcf9b177e9f59014790b0528715cce9f91540bb216c01"
+    },
+    {
+      "path": "source.txt",
+      "bytes": 82,
+      "sha256": "7529c454facfebe260f5212c3bb3d43131ba36d295b3633e0c68f19c66f24d38"
+    }
+  ],
+  "retrievedAt": "2026-10-09T19:20:51.495851+00:00",
+  "archiveKind": "complete official evidence archive from successful iOS simulator job; full app and SDK privacy files not included",
+  "extractedBytesMatchArchive": true
+}

@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "scope": "Final documentation checkpoint verification; no new application or physical-device qualification",
+  "repository": "ghinz32-cloud/movefield",
+  "branch": "audit/2026-10-08-quality",
+  "verified_parent": {
+    "commit": "0a24091e0c61e774b42727470ff26f9d0e0ebc7d",
+    "tree": "3ec8c01d3bff2e4551893143ef506255b6050231"
+  },
+  "wording_correction": {
+    "path": "docs/audit-completion-2026-10-09.md",
+    "before": "Release exceptions expire 8 November 2026",
+    "after": "CI exceptions expire 8 November 2026",
+    "policy": "Strict release still blocks the two high advisory roots; CI exceptions do not waive release."
+  },
+  "quality": {
+    "id": 37986239637,
+    "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/37986239637",
+    "head_sha": "0a24091e0c61e774b42727470ff26f9d0e0ebc7d",
+    "status": "completed",
+    "conclusion": "success",
+    "updated_at": "2026-10-09T20:24:03Z",
+    "run_attempt": 1,
+    "job_id": 114008832327,
+    "integration_commit": "81bfb3ab1d07b6c099ebfe58794c9d29bb8a7627",
+    "integration_tree": "3ec8c01d3bff2e4551893143ef506255b6050231",
+    "tree_equal_to_parent": true,
+    "log_observations": {
+      "reader_tests": 31,
+      "regression_suites": "55/55",
+      "production_suites": "3/3"
+    },
+    "verification": "Official API job/step success plus direct hosted job-log counts and immutable Git commit tree comparison"
+  },
+  "native_documentation_gate": {
+    "id": 37986239620,
+    "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/37986239620",
+    "head_sha": "0a24091e0c61e774b42727470ff26f9d0e0ebc7d",
+    "status": "completed",
+    "conclusion": "success",
+    "updated_at": "2026-10-09T20:19:59Z",
+    "run_attempt": 1,
+    "jobs": [
+      {
+        "id": 114008832303,
+        "name": "native_changes",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114008900324,
+        "name": "android",
+        "status": "completed",
+        "conclusion": "skipped"
+      },
+      {
+        "id": 114008900501,
+        "name": "ios",
+        "status": "completed",
+        "conclusion": "skipped"
+      }
+    ],
+    "qualification": "Gate success and skipped platform jobs reflect a documentation update. The decision JSON archive was not independently extracted; no fresh native binary compilation is claimed."
+  },
+  "qualified_application_source": {
+    "commit": "e85a1ad320ec23db29b337fdee10f41f1dc24962",
+    "tree": "890d598d36ee1f09a3ad67268275e2de16309a48",
+    "native_run": 37984196327,
+    "android_job": 114002023999,
+    "ios_job": 114002024138
+  },
+  "unchanged_remote_refs": {
+    "main": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
+    "gh-pages": "b8fe5ea6b12ff460aba3f35dc7249f18b778dfe1"
+  },
+  "limits": [
+    "Executor disconnected; no new local application tests",
+    "No fresh native archive byte hashing, CRC, extraction or independent replay",
+    "No physical-device, signing, store or penetration-test acceptance",
+    "No exact-template clinical outcome validation or individual optimality"
+  ]
+}

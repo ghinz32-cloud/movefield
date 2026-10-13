@@ -1,0 +1,35 @@
+{
+  "sha": "96496ffd4e94b32becccb5db61667fb4fea4ce01",
+  "node_id": "C_kwDOVAFhB9oAKDk2NDk2ZmZkNGU5NGIzMmJlY2NjYjVkYjYxNjY3ZmI0ZmVhNGNlMDE",
+  "url": "https://api.github.com/repos/ghinz32-cloud/movefield/git/commits/96496ffd4e94b32becccb5db61667fb4fea4ce01",
+  "html_url": "https://github.com/ghinz32-cloud/movefield/commit/96496ffd4e94b32becccb5db61667fb4fea4ce01",
+  "author": {
+    "name": "ghinz32-cloud",
+    "email": "ghinz32@gmail.com",
+    "date": "2026-10-09T22:32:27Z"
+  },
+  "committer": {
+    "name": "ghinz32-cloud",
+    "email": "ghinz32@gmail.com",
+    "date": "2026-10-09T22:32:27Z"
+  },
+  "tree": {
+    "sha": "20397284f4c07cf0b8b5a1edc554b04d39ea0976",
+    "url": "https://api.github.com/repos/ghinz32-cloud/movefield/git/trees/20397284f4c07cf0b8b5a1edc554b04d39ea0976"
+  },
+  "message": "Bind each cloud coaching consent to its current context and request",
+  "parents": [
+    {
+      "sha": "c0aab491084f2b1a7d2829925e4bba434d6d6148",
+      "url": "https://api.github.com/repos/ghinz32-cloud/movefield/git/commits/c0aab491084f2b1a7d2829925e4bba434d6d6148",
+      "html_url": "https://github.com/ghinz32-cloud/movefield/commit/c0aab491084f2b1a7d2829925e4bba434d6d6148"
+    }
+  ],
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  }
+}

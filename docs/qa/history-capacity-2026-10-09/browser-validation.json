@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checks": 53,
+  "scenarios": [
+    "5000 histories save in individually encrypted rows and fresh vault reopens exact profile above the old ceiling",
+    "Warm profile edit reads and writes no history rows; one completion changes exactly one entity",
+    "Plain and whole-ciphertext legacy profiles migrate with unchanged key and source survives aborted entity transaction",
+    "Head/entity/outbox rollback is atomic and stale cross-tab saves preserve the installed generation",
+    "Missing/corrupt entity and missing/replaced key are detected; recovery copy includes every retained encrypted row",
+    "Explicit restore/reset retires all owned orphan rows, including missing-key orphans; unrelated records survive",
+    "Reviewed account rebase atomically compares full outbox and preserves unrelated accounts and stale receipts"
+  ],
+  "historyCount": 5000,
+  "plainChars": 8664825,
+  "scope": "Actual IndexedDB transaction adapter with fake-indexeddb, real WebCrypto, strict schema and fresh-vault reopen. No physical-browser/device memory, latency or OS restart acceptance."
+}

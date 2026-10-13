@@ -1,0 +1,35 @@
+{
+  "reviewedSourceCommit": "dab3685eb057765f486ee4aa2fcedb491e6f6d8a",
+  "sourceFileHashes": {
+    "inspect-native-artifacts.py": "0ccc14ab2170b9c351d034f74ccd941bf7d68434e9ee94563900ea36cab74d26",
+    "test-native-artifact-inspector.py": "9306557d63f8be497949f50c384c3c9a8d9efa8a50e3a767cb84a87d63d8bf7e",
+    "probe.py": "1f6e6e958f42f21961518f4cf199fd69d61dde53b1cb1ceeb2ce2c739abf6704"
+  },
+  "scope": "Copied inspector decoded-metadata fixtures only, no original repository writes; accepted probes demonstrate qualification gaps, not compiled NATIVE3 regressions.",
+  "probes": [
+    {
+      "probe": "missing-reminder-components-and-boot-permission",
+      "accepted": true,
+      "inputDirectory": "/workspace/scratch/a905d1d2368a/native-review-readonly/inputs/missing-reminder-components-and-boot-permission",
+      "platform": "android"
+    },
+    {
+      "probe": "unreviewed-androidx-startup-initializer",
+      "accepted": true,
+      "inputDirectory": "/workspace/scratch/a905d1d2368a/native-review-readonly/inputs/unreviewed-androidx-startup-initializer",
+      "platform": "android"
+    },
+    {
+      "probe": "ios-camera-and-microphone-declarations",
+      "accepted": true,
+      "inputDirectory": "/workspace/scratch/a905d1d2368a/native-review-readonly/inputs/ios-camera-and-microphone-declarations",
+      "platform": "ios"
+    },
+    {
+      "probe": "ios-faceid-and-direct-documents-exposure",
+      "accepted": true,
+      "inputDirectory": "/workspace/scratch/a905d1d2368a/native-review-readonly/inputs/ios-faceid-and-direct-documents-exposure",
+      "platform": "ios"
+    }
+  ]
+}

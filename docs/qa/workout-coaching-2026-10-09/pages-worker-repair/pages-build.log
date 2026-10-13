@@ -1,0 +1,48 @@
+vite v8.0.16 building client environment for production...
+[2Ktransforming...✓ 45 modules transformed.
+rendering chunks...
+computing gzip size...
+public/runtime/workout-coaching-worker.js     18.82 kB │ gzip:     6.71 kB
+public/runtime/qwen-worker.js                 26.28 kB │ gzip:     8.40 kB
+public/runtime/training-BicQG7jj.js        1,065.63 kB │ gzip:   139.80 kB
+public/runtime/lib-BQHvV-JG.js             4,745.91 kB │ gzip: 1,717.36 kB
+public/runtime/lib-2aWPZDmS.js             6,194.31 kB │ gzip: 2,183.11 kB
+
+✓ built in 660ms
+vite v8.0.16 building client environment for production...
+[2Ktransforming...✓ 2585 modules transformed.
+rendering chunks...
+computing gzip size...
+dist-pages/index.html                                      1.29 kB │ gzip:   0.57 kB
+dist-pages/assets/index-COMBkNy7.css                     225.24 kB │ gzip:  36.71 kB
+dist-pages/assets/qwen-unavailable-IXSK3HSm.js             0.46 kB │ gzip:   0.32 kB
+dist-pages/assets/workout-coaching-identity-CDHS7c86.js    0.56 kB │ gzip:   0.37 kB
+dist-pages/assets/account-security-BMvM1HMu.js             0.74 kB │ gzip:   0.41 kB
+dist-pages/assets/jsx-runtime-DUAcabCT.js                  1.06 kB │ gzip:   0.60 kB
+dist-pages/assets/equipment-limits-CpHvxzsM.js             2.62 kB │ gzip:   1.31 kB
+dist-pages/assets/react-dom-Ci36WYJj.js                    3.58 kB │ gzip:   1.36 kB
+dist-pages/assets/customize-CnMED5ja.js                    3.89 kB │ gzip:   1.76 kB
+dist-pages/assets/cloud-envelope-C74ZEbMR.js               3.95 kB │ gzip:   1.63 kB
+dist-pages/assets/account-sync-94JU-mmb.js                 4.03 kB │ gzip:   1.63 kB
+dist-pages/assets/exercise-substitutions-CiUmlXxS.js       4.11 kB │ gzip:   1.69 kB
+dist-pages/assets/research-library-YDRmiqP-.js             4.46 kB │ gzip:   1.82 kB
+dist-pages/assets/session-guide-3EUQPwSU.js                4.49 kB │ gzip:   1.96 kB
+dist-pages/assets/training-day-c54AaLBh.js                 4.52 kB │ gzip:   1.48 kB
+dist-pages/assets/daily-feedback-DyhRMtb8.js               4.72 kB │ gzip:   2.13 kB
+dist-pages/assets/workout-review-FffrZHRw.js               5.52 kB │ gzip:   2.36 kB
+dist-pages/assets/transfer-dialog-Bp-xjYnY.js              6.49 kB │ gzip:   2.36 kB
+dist-pages/assets/plan-customizer-BiKgyGE1.js              8.93 kB │ gzip:   3.39 kB
+dist-pages/assets/tracking-editor-DBo3vjNH.js              9.35 kB │ gzip:   3.51 kB
+dist-pages/assets/transfer-bundle-yk--Q7cp.js             23.01 kB │ gzip:   9.58 kB
+dist-pages/assets/workout-coaching-CNi2ZBAe.js            23.98 kB │ gzip:   8.67 kB
+dist-pages/assets/workout-coach-Cs9ADjQI.js               27.72 kB │ gzip:   9.73 kB
+dist-pages/assets/x-CEXRaG68.js                           36.47 kB │ gzip:  12.65 kB
+dist-pages/assets/button-BZyDGPNM.js                      39.97 kB │ gzip:  13.33 kB
+dist-pages/assets/training-onboarding-DME_WJCO.js         43.23 kB │ gzip:  13.41 kB
+dist-pages/assets/qwen-model-files-DhOkYO_T.js           193.12 kB │ gzip:  38.75 kB
+dist-pages/assets/progress-dashboard-PXcHSRtU.js         368.54 kB │ gzip: 108.48 kB
+dist-pages/assets/index-CgajflZF.js                      646.69 kB │ gzip: 195.84 kB
+dist-pages/assets/training-jn8H07LS.js                   794.96 kB │ gzip: 116.05 kB
+
+✓ built in 970ms
+Pages output: 61 allowlisted files; version 8c60686b3c01114959052f980441ce9b9da5c0ee309c50891542463fc51c5f6d

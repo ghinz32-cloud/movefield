@@ -1,0 +1,146 @@
+[
+  {
+    "path": "merges.txt",
+    "status": 200,
+    "finalOrigin": "https://huggingface.co",
+    "finalPath": "/api/resolve-cache/models/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/8c14ce481d4c692769976ad52afea453a102df19/merges.txt",
+    "cors": "https://huggingface.co",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  },
+  {
+    "path": "mlc-chat-config.json",
+    "status": 200,
+    "finalOrigin": "https://huggingface.co",
+    "finalPath": "/api/resolve-cache/models/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/8c14ce481d4c692769976ad52afea453a102df19/mlc-chat-config.json",
+    "cors": "https://huggingface.co",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  },
+  {
+    "path": "params_shard_0.bin",
+    "status": 200,
+    "finalOrigin": "https://us.aws.cdn.hf.co",
+    "finalPath": "/xet-bridge-us/681326eaef52a53ef9342a8f/285ac8ae81fbd7033933b8cd381792acd46a60657eac665161e309deaec9b7d2",
+    "cors": "*",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  },
+  {
+    "path": "params_shard_1.bin",
+    "status": 200,
+    "finalOrigin": "https://us.aws.cdn.hf.co",
+    "finalPath": "/xet-bridge-us/681326eaef52a53ef9342a8f/ea48655cb73f636fc54bcd07e07963ae5cff9a3b471900269a1f3cf85684dc6d",
+    "cors": "*",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  },
+  {
+    "path": "params_shard_2.bin",
+    "status": 200,
+    "finalOrigin": "https://us.aws.cdn.hf.co",
+    "finalPath": "/xet-bridge-us/681326eaef52a53ef9342a8f/2dd5ffe06435bfa3281d50b1692a102b162456bc228d1bdfc336144af65cd812",
+    "cors": "*",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  },
+  {
+    "path": "params_shard_3.bin",
+    "status": 200,
+    "finalOrigin": "https://us.aws.cdn.hf.co",
+    "finalPath": "/xet-bridge-us/681326eaef52a53ef9342a8f/a6e45b4b1a5215e9414c7b4088100017e2c147168c320b765bb5b5083658934c",
+    "cors": "*",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  },
+  {
+    "path": "params_shard_4.bin",
+    "status": 200,
+    "finalOrigin": "https://us.aws.cdn.hf.co",
+    "finalPath": "/xet-bridge-us/681326eaef52a53ef9342a8f/bfb78a4f983571e278979a57e05517f33b0279e539608499155b5e08ddba59d8",
+    "cors": "*",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  },
+  {
+    "path": "params_shard_5.bin",
+    "status": 200,
+    "finalOrigin": "https://us.aws.cdn.hf.co",
+    "finalPath": "/xet-bridge-us/681326eaef52a53ef9342a8f/81539121dffee5a3385094f1b2ba7626024d0c946d881d98cc095beaafb70402",
+    "cors": "*",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  },
+  {
+    "path": "params_shard_6.bin",
+    "status": 200,
+    "finalOrigin": "https://us.aws.cdn.hf.co",
+    "finalPath": "/xet-bridge-us/681326eaef52a53ef9342a8f/aced0aea0edd7161a5daf4f3384e2a7a083032638c6a178821d10e77b9c9e55b",
+    "cors": "*",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  },
+  {
+    "path": "params_shard_7.bin",
+    "status": 200,
+    "finalOrigin": "https://us.aws.cdn.hf.co",
+    "finalPath": "/xet-bridge-us/681326eaef52a53ef9342a8f/3ddd042a139e7bf963b748a0aa9f0785e002bba3fea96717fddbe31689995d69",
+    "cors": "*",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  },
+  {
+    "path": "params_shard_8.bin",
+    "status": 200,
+    "finalOrigin": "https://us.aws.cdn.hf.co",
+    "finalPath": "/xet-bridge-us/681326eaef52a53ef9342a8f/635f4abc31402b5f7a7e877a951ed0d9e637ae2e30478a18c76e5810512a7d08",
+    "cors": "*",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  },
+  {
+    "path": "tensor-cache.json",
+    "status": 200,
+    "finalOrigin": "https://huggingface.co",
+    "finalPath": "/api/resolve-cache/models/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/8c14ce481d4c692769976ad52afea453a102df19/tensor-cache.json",
+    "cors": "https://huggingface.co",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  },
+  {
+    "path": "tokenizer.json",
+    "status": 200,
+    "finalOrigin": "https://us.aws.cdn.hf.co",
+    "finalPath": "/xet-bridge-us/681326eaef52a53ef9342a8f/6aec39639a0a2d1ca966356b8c2b8426a484f80ff80731f44fa8482040713bdf",
+    "cors": "*",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  },
+  {
+    "path": "tokenizer_config.json",
+    "status": 200,
+    "finalOrigin": "https://huggingface.co",
+    "finalPath": "/api/resolve-cache/models/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/8c14ce481d4c692769976ad52afea453a102df19/tokenizer_config.json",
+    "cors": "https://huggingface.co",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  },
+  {
+    "path": "vocab.json",
+    "status": 200,
+    "finalOrigin": "https://huggingface.co",
+    "finalPath": "/api/resolve-cache/models/mlc-ai/Qwen3-0.6B-q4f16_1-MLC/8c14ce481d4c692769976ad52afea453a102df19/vocab.json",
+    "cors": "https://huggingface.co",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  },
+  {
+    "path": "Qwen3-0.6B-q4f16_1_cs1k-webgpu.wasm",
+    "status": 200,
+    "finalOrigin": "https://raw.githubusercontent.com",
+    "finalPath": "/mlc-ai/binary-mlc-llm-libs/025bcaf3780fa8254f5e5efd3bfea0a5397248f4/web-llm-models/v0_2_84/base/Qwen3-0.6B-q4f16_1_cs1k-webgpu.wasm",
+    "cors": "*",
+    "method": "HEAD",
+    "bodyBytesRead": 0
+  }
+]

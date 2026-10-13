@@ -1,0 +1,26 @@
+PASS catalog, frozen exact consent and no automatic network
+PASS actual Expo adapter, bounded hashes, real SQLite commit and reopen
+PASS integrity rejects mutate
+PASS integrity rejects truncate
+PASS integrity rejects extra
+PASS integrity rejects bad-progress
+PASS same-size damage is detected before runtime callback or reuse
+PASS cache eviction reports unavailable and explicit retry repairs it
+PASS free space includes complete new files and platform temporary space
+PASS cancel before start and while hashing never publishes
+PASS hung native cancel, late completion quarantine, bounded retries and delete
+PASS idle timeout isolates a hung native writer and no background resume claim
+PASS atomic replacement rollback preserves old model files
+PASS committed pointer survives failed readback acknowledgement
+PASS Cancel after atomic commit reports actual completed files
+PASS startup cleanup before and after pointer publication
+PASS load lease blocks same-runtime reload, download and deletion
+PASS metadata damage is preserved automatically and explicit Delete repairs it
+PASS bounded native read errors and cleanup failure remain recoverable
+PASS attempt identifier collision never replaces a previous model
+PASS explicit delete tombstone survives disk cleanup failure
+PASS unknown filesystem entries preserved, no model weights fetched by tests
+PASS existing WAL model metadata migrates without receipt or file rewrite
+PASS unqualified fresh model transaction refuses before pointer or existing file deletion
+PASS different model jobs preserve generations through rollback-journal contention and qualified retry
+{"status":"passed","scenarios":25,"assertions":1364,"actualModelDownloads":0,"inferenceRuns":0,"physicalDevicesQualified":0,"adapter":"actual compiled Expo adapter + mock filesystem/transport + real node:sqlite + real SHA-256"}

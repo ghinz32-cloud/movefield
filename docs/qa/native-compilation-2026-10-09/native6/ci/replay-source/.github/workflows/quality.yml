@@ -1,0 +1,71 @@
+name: Web and mobile quality
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      WRANGLER_SEND_METRICS: "false"
+      CI: "true"
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Record the tested pull-request integration commit and tree
+        run: git rev-parse HEAD HEAD^{tree} > .sites-runtime-quality-source.txt
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: "24"
+          package-manager-cache: false
+      - name: Install the pinned package manager
+        run: npm install --global pnpm@11.25.0 --ignore-scripts --no-audit --no-fund
+      - name: Install the locked web dependencies
+        run: npm run install:ci
+      - name: Web type and lint checks
+        run: |
+          npm run check
+          npm run lint
+      - name: Install the locked native dependencies
+        working-directory: mobile
+        run: npm ci --no-audit --no-fund --ignore-scripts
+      - name: Shared domain, storage and regression checks
+        run: |
+          npm run test:regression
+          python3 scripts/test-native-artifact-inspector.py
+          python3 scripts/test-apk-rule-extractor.py
+          python3 scripts/test-native-change-gate.py
+      - name: Native type and training checks
+        working-directory: mobile
+        run: |
+          npm run check
+          npm run test:engine
+      - name: Web production build and security checks
+        run: |
+          npm run build
+          npm run test:production
+          npm run build:pages
+          npm run check:pages
+      - name: Android and iOS bundle export
+        working-directory: mobile
+        run: npm run export:mobile
+      - name: Dependency advisories
+        run: node scripts/check-dependencies.mjs
+      - name: Keep test results for review
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: quality-results
+          path: |
+            .sites-runtime/*check*.json
+            .sites-runtime-quality-source.txt
+          include-hidden-files: true
+          if-no-files-found: ignore

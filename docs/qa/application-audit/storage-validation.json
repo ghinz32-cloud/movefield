@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-09T04:58:51.663884+00:00",
+  "baseCommit": "2c097ad37586cbcc6e9eb78449907bfd8cbb4db5",
+  "sqliteScenarios": 14,
+  "workouts": 2000,
+  "sets": 24000,
+  "encryptedBytes": 5082846,
+  "maxChunkChars": 131072,
+  "logs": {
+    "a02b-sqlite.log": "9164130b6f3d1be5b340e00ec6aff7fad62b92d6d687ee3e34b9cd0a439f7879",
+    "a02b-native-storage.log": "0ffc7085b312fd70f29528ec6c9fd62db398bf673e6dc561d12db19db1fe36e0",
+    "a02b-native-types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "a02b-web-types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "a02b-native-export.log": "9f146189870ca60eeb7486ba3cf1d223d2c594e359dba2b32af9c2fb81ef0600",
+    "a02b-engine.log": "095a989b178a573314ea8bec11259cb13cc772d183156c0f5dbf3dadf21a6691",
+    "a02b-shared.log": "98fcd8b06dc5a1af43ca8bcbae860a3f0b0f773b6b0b2c14a94ef1b469690f39"
+  },
+  "deviceAcceptance": false,
+  "publication": "blocked by automatic approval review"
+}

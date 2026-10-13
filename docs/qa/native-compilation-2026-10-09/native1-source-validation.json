@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "milestone": "NATIVE1 source annotation",
+  "timestamp": "2026-10-09T17:58:36.149588+00:00",
+  "repository": "https://github.com/ghinz32-cloud/movefield.git",
+  "branch": "audit/2026-10-08-quality",
+  "localBaselineCommit": "84c256381944c4ec753df65c66d97c94afbe251c",
+  "publishedBaselineSource": "5af4582fe4bc78e60a07952a3b0bf0eca3592c8f",
+  "publishedBaselineTree": "4efd7bd8d72f503e47c26e451e8c5e5395635699",
+  "status": "source validation passed; new actual native run pending",
+  "change": "Only CAMERA tools:node=remove gains tools:ignore=PermissionImpliesUnsupportedChromeOsHardware; prebuild checks reject broader suppression",
+  "checks": [
+    {
+      "command": [
+        "node",
+        "scripts/check-native-security-config.cjs"
+      ],
+      "exitCode": 0,
+      "assertions": 114,
+      "kind": "isolated-expo-prebuild",
+      "generatedHashes": {
+        "manifest": "ef3d1230286f03a0775262a13badcc708bba5f37516797f00ff65356f99fa84e",
+        "legacyBackup": "b6d25f2b96cdd6b451a701a01ec246934538f89635a534d679e0825dd2f555ee",
+        "extraction": "9c0680166f549a448ff3b4acc76af3c08b854ccbb0e9278062fcf8f788504f1b",
+        "privacy": "8645807a79663255e71b973dc700b9aa53a471ca7958183bcb8d4107f7ee89b1"
+      },
+      "nativeCompilation": false
+    },
+    {
+      "command": [
+        "python",
+        "scripts/test-native-artifact-inspector.py"
+      ],
+      "exitCode": 0,
+      "fixtures": 54,
+      "actualBinaryInspected": false
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "mobile/plugins/withMovefieldSecurity.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "scripts/check-native-security-config.cjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "sourceSHA256": {
+    "mobile/plugins/withMovefieldSecurity.cjs": "95a9770e0519ca151920fe9af2795b97fe2b8c16faca77fb31825ce9d768baf1",
+    "scripts/check-native-security-config.cjs": "bee18a96575a4bde5d2c3ca075f34427445c9968ad1817493139556f80e87e99",
+    "mobile/app.json": "c83355a8c96024115700e691c278a6ae872a328abae8c03567dd4f7ac3340e2a",
+    "mobile/package-lock.json": "bd5cc6eab3fb4f0a8434a16b0c33db08655be9aa07535fe737ef82879272cabf",
+    "scripts/inspect-native-artifacts.py": "50b56585c8d3402341fee9e8d87fb7e5683e225cc6d8c7dadec6c01cbcc7b70e",
+    "scripts/test-native-artifact-inspector.py": "b07e631bbba62db35a4fa2c0c6d1f4f529b4c86df685f5129153ebb77a92ea37",
+    "mobile/docs/native-compilation-2026-10-09.md": "bf8f07d95d30dd4c60c8fb47dae84fcc451ee64a0bf053a43949e4fed5a5cdf3"
+  },
+  "logs": {
+    "artifact-fixtures.stderr.log": {
+      "sha256": "2258cf1029c963a9c3e2972ddfdc26455011e163b0b60ee0c8f2ab297a9e16f4",
+      "text": "test_alias_resource_refused (__main__.Fixtures.test_alias_resource_refused) ... ok\ntest_alternate_os_rules_refused (__main__.Fixtures.test_alternate_os_rules_refused) ... ok\ntest_android_numeric_links_read_rules_and_hashes (__main__.Fixtures.test_android_numeric_links_read_rules_and_hashes) ... ok\ntest_backup_includes_refused_even_with_all_exclusions (__main__.Fixtures.test_backup_includes_refused_even_with_all_exclusions) ... ok\ntest_backup_unreviewed_attribute_refused (__main__.Fixtures.test_backup_unreviewed_attribute_refused) ... ok\ntest_cli_requires_all_decoded_android_inputs (__main__.Fixtures.test_cli_requires_all_decoded_android_inputs) ... ok\ntest_cli_success_and_poison_failure (__main__.Fixtures.test_cli_success_and_poison_failure) ... ok\ntest_cloud_section_is_required (__main__.Fixtures.test_cloud_section_is_required) ... ok\ntest_debuggable_release_refused (__main__.Fixtures.test_debuggable_release_refused) ... ok\ntest_decimal_and_hex_reference_forms (__main__.Fixtures.test_decimal_and_hex_reference_forms) ... ok\ntest_domain_forward_secrecy_downgrade_refused (__main__.Fixtures.test_domain_forward_secrecy_downgrade_refused) ... ok\ntest_domain_insecure_http_aliases_refused (__main__.Fixtures.test_domain_insecure_http_aliases_refused) ... ok\ntest_domain_tls_downgrade_refused (__main__.Fixtures.test_domain_tls_downgrade_refused) ... ok\ntest_duplicate_application_refused (__main__.Fixtures.test_duplicate_application_refused) ... ok\ntest_duplicate_extraction_section_refused (__main__.Fixtures.test_duplicate_extraction_section_refused) ... ok\ntest_duplicate_or_unknown_domain_refused (__main__.Fixtures.test_duplicate_or_unknown_domain_refused) ... ok\ntest_expired_required_permission_refused (__main__.Fixtures.test_expired_required_permission_refused) ... ok\ntest_flag_disabled_variant_refused (__main__.Fixtures.test_flag_disabled_variant_refused) ... ok\ntest_global_arbitrary_transport_flags_refused (__main__.Fixtures.test_global_arbitrary_transport_flags_refused) ... ok\ntest_ios_cli_success (__main__.Fixtures.test_ios_cli_success) ... ok\ntest_ios_real_binary_plists_truthful_scope (__main__.Fixtures.test_ios_real_binary_plists_truthful_scope) ... ok\ntest_malformed_boolean_transport_flag_refused (__main__.Fixtures.test_malformed_boolean_transport_flag_refused) ... ok\ntest_malformed_domain_config_refused (__main__.Fixtures.test_malformed_domain_config_refused) ... ok\ntest_malformed_permission_name_refused (__main__.Fixtures.test_malformed_permission_name_refused) ... ok\ntest_malformed_privacy_shapes_refused (__main__.Fixtures.test_malformed_privacy_shapes_refused) ... ok\ntest_malformed_reason_rows_refused (__main__.Fixtures.test_malformed_reason_rows_refused) ... ok\ntest_malformed_resource_row (__main__.Fixtures.test_malformed_resource_row) ... ok\ntest_malformed_transport_shapes_refused (__main__.Fixtures.test_malformed_transport_shapes_refused) ... ok\ntest_malformed_xml_is_not_success (__main__.Fixtures.test_malformed_xml_is_not_success) ... ok\ntest_mismatched_payload_path (__main__.Fixtures.test_mismatched_payload_path) ... ok\ntest_missing_link_is_refused (__main__.Fixtures.test_missing_link_is_refused) ... ok\ntest_missing_required_reason_refused (__main__.Fixtures.test_missing_required_reason_refused) ... ok\ntest_missing_resource_payload (__main__.Fixtures.test_missing_resource_payload) ... ok\ntest_named_and_package_qualified_links (__main__.Fixtures.test_named_and_package_qualified_links) ... ok\ntest_narrowed_exclusion_refused (__main__.Fixtures.test_narrowed_exclusion_refused) ... ok\ntest_nested_include_refused (__main__.Fixtures.test_nested_include_refused) ... ok\ntest_package_qualified_aapt_rows (__main__.Fixtures.test_package_qualified_aapt_rows) ... ok\ntest_poisoned_device_transfer_missing_domain (__main__.Fixtures.test_poisoned_device_transfer_missing_domain) ... ok\ntest_poisoned_legacy_backup_missing_domain (__main__.Fixtures.test_poisoned_legacy_backup_missing_domain) ... ok\ntest_privacy_root_not_dictionary_refused (__main__.Fixtures.test_privacy_root_not_dictionary_refused) ... ok\ntest_release_bonjour_declaration_refused (__main__.Fixtures.test_release_bonjour_declaration_refused) ... ok\ntest_resource_identity_collision (__main__.Fixtures.test_resource_identity_collision) ... ok\ntest_root_tracking_refused (__main__.Fixtures.test_root_tracking_refused) ... ok\ntest_sdk23_permission_tag_supported_above_minimum_os (__main__.Fixtures.test_sdk23_permission_tag_supported_above_minimum_os) ... ok\ntest_sdk_tracking_and_collection_refused (__main__.Fixtures.test_sdk_tracking_and_collection_refused) ... ok\ntest_secure_domain_exception_and_xml_sdk_accepted (__main__.Fixtures.test_secure_domain_exception_and_xml_sdk_accepted) ... ok\ntest_table_wrong_package (__main__.Fixtures.test_table_wrong_package) ... ok\ntest_unexpected_permission_refused (__main__.Fixtures.test_unexpected_permission_refused) ... ok\ntest_unknown_permission_tag_cannot_satisfy_required_permission (__main__.Fixtures.test_unknown_permission_tag_cannot_satisfy_required_permission) ... ok\ntest_unknown_transport_key_refused (__main__.Fixtures.test_unknown_transport_key_refused) ... ok\ntest_unreviewed_network_config_cannot_override_denial (__main__.Fixtures.test_unreviewed_network_config_cannot_override_denial) ... ok\ntest_wrong_manifest_resource_id (__main__.Fixtures.test_wrong_manifest_resource_id) ... ok\ntest_wrong_named_link (__main__.Fixtures.test_wrong_named_link) ... ok\ntest_xml_entity_declaration_refused (__main__.Fixtures.test_xml_entity_declaration_refused) ... ok\n\n----------------------------------------------------------------------\nRan 54 tests in 0.217s\n\nOK\n"
+    },
+    "artifact-fixtures.stdout.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "text": ""
+    },
+    "prebuild.stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "text": ""
+    },
+    "prebuild.stdout.log": {
+      "sha256": "9d08fc031c36f5266fde540c76ab9732ad89cc393f343c959487d5dc2f604e5e",
+      "text": "{\"ok\":true,\"checks\":114,\"kind\":\"isolated-expo-prebuild\",\"nativeCompilation\":false,\"storeAcceptance\":false,\"physicalDevices\":false,\"files\":{\"manifest\":\"ef3d1230286f03a0775262a13badcc708bba5f37516797f00ff65356f99fa84e\",\"legacyBackup\":\"b6d25f2b96cdd6b451a701a01ec246934538f89635a534d679e0825dd2f555ee\",\"extraction\":\"9c0680166f549a448ff3b4acc76af3c08b854ccbb0e9278062fcf8f788504f1b\",\"privacy\":\"8645807a79663255e71b973dc700b9aa53a471ca7958183bcb8d4107f7ee89b1\"}}\n"
+    }
+  },
+  "previousActualRun": {
+    "runId": 37965114809,
+    "source": "c9b6471f916f4a70e4b828cf54c6ad93040962f7",
+    "overall": "failure",
+    "ios": "unsigned Release simulator compile/assembled metadata inspection success",
+    "android": "APK assembled; lint failed on CAMERA removal marker; actual APK inspection skipped",
+    "nativeUnitTest": "NO-SOURCE; zero native JUnit tests"
+  },
+  "requiredFollowup": [
+    "New source-head native CI compile/lint and same-APK decoded manifest/rules/resource/signature inspection",
+    "Final CAMERA absence remains mandatory; no source annotation substitutes for final APK metadata",
+    "Preserve warnings and native NO-SOURCE limits"
+  ],
+  "references": [
+    "https://developer.android.com/studio/write/tool-attributes#toolsignore",
+    "https://developer.android.com/studio/write/lint#configure-lint-checking-in-xml"
+  ],
+  "limits": {
+    "newNativeCompilation": false,
+    "physicalDevices": false,
+    "storeAcceptance": false,
+    "releaseSigning": false,
+    "dependencyReleaseGate": "remains independently blocked"
+  },
+  "independentReadOnlyReview": {
+    "currentRegressionFound": false,
+    "scope": "Plugin/harness diff; marker-only annotation, permission denial and no current broad suppression changes verified",
+    "suggestedTestHardeningResolved": "Recursive XML assertion now requires the sole CAMERA removal annotation across all manifest elements"
+  }
+}

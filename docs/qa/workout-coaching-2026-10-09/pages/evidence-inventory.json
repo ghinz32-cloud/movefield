@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "publication": "de4ac3cbff1dd36b2144290044e1c7f6ada6428a",
+  "files": [
+    {
+      "path": "publication.json",
+      "bytes": 1476,
+      "sha256": "363aa81d4bcf8f538b19468c616340d1fbfc1548e55450074405d5f74f108569"
+    },
+    {
+      "path": "generated-inventory.json",
+      "bytes": 14348,
+      "sha256": "6109197c1eb44b15960d6adb2b09ea20b38d3bef552befae4aedeb54fde83998"
+    },
+    {
+      "path": "pages-build.log",
+      "bytes": 3446,
+      "sha256": "48b8b052cc1a52f0bd886248958fdc7829cc96be7d6a30a8dd8ad8d3d77277e1"
+    },
+    {
+      "path": "pages-check.log",
+      "bytes": 226,
+      "sha256": "993d114028f72d5a02e4c2ea3f02f11ea59b1cb64ea77af9e06ef07e30eec01f"
+    },
+    {
+      "path": "mobile-package.log",
+      "bytes": 76,
+      "sha256": "feb67558caddbfc41b12bf631693d294ee27d268b4b0bcb9a7feec5c2339c4e6"
+    },
+    {
+      "path": "pages-commit-readback.json",
+      "bytes": 1796,
+      "sha256": "ad8c3c36f2b841f53b7bc9ef8ae6e3681190066c38540242f2e3730d681e9f5c"
+    },
+    {
+      "path": "pages-tree-readback.json",
+      "bytes": 20324,
+      "sha256": "76f0739f35c94e94654d40f14a2c9922e8279c4ea38fbfab68c4fa9c4fad76f2"
+    },
+    {
+      "path": "published-source-readback.json",
+      "bytes": 1342,
+      "sha256": "4f5a0da949d5e0f25fa132b2a39998545edd271f78bca353289aea8f2ed0c9cc"
+    },
+    {
+      "path": "independent-git-tree-readback.json",
+      "bytes": 10465,
+      "sha256": "97e4e9f410b368a1b7324ae725883158cdfe10e1bad9199462df879506bc5c86"
+    },
+    {
+      "path": "deployment-run.json",
+      "bytes": 14410,
+      "sha256": "47ddca30740bd686c458ec772b11450e0819af8ce42a5667bcd4c1711a8cf7bf"
+    },
+    {
+      "path": "deployment-jobs.json",
+      "bytes": 2237,
+      "sha256": "79870841a7a2c8feda1b1f80997882c6b96fd56e7bc8d5b7277b2954908404a9"
+    },
+    {
+      "path": "live-readback.json",
+      "bytes": 61908,
+      "sha256": "96677b2c18afcbf7b39d2de78ab41a507e16b49a5beb776f1c37a25cdca9d0ad"
+    },
+    {
+      "path": "native-starter-readback.json",
+      "bytes": 25627,
+      "sha256": "5bf1a1c8da434f90ea08168a31c7a05e523f1ce56c1670ece207e39289e993a7"
+    },
+    {
+      "path": "controlled-worker-policy-verification.json",
+      "bytes": 1762,
+      "sha256": "c17835ab7ad5490c2e5fb78eef117de74a10c0dcbf121e21db92c8a784b83543"
+    },
+    {
+      "path": "workout-coaching-runtime-checks.json",
+      "bytes": 138,
+      "sha256": "b7d956940b4e4382f888e8fd7fb7206a5ab68b5480dc649a172b01c5637538c1"
+    },
+    {
+      "path": "workout-coaching-worker-policy-checks.json",
+      "bytes": 131,
+      "sha256": "2c0bf9f85ae161d502a270efdea5e6556a45243f3984c76e3b64037a380693e3"
+    },
+    {
+      "path": "verify-live-pages.py",
+      "bytes": 6618,
+      "sha256": "5080d647732fce7cc8b94cbae71cdcd64ee7641780b08f76e26706d6d0b67b20"
+    }
+  ],
+  "raw_http_payloads_retained": false,
+  "superseded_candidate_retained": false
+}

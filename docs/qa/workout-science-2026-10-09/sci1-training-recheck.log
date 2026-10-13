@@ -1,0 +1,122 @@
+{
+  "passed": 29,
+  "total": 29,
+  "results": [
+    {
+      "name": "New adult paths show ranges; youth remains supervised fixed progression",
+      "status": "pass"
+    },
+    {
+      "name": "Dates reject nonexistent values and accept leap day",
+      "status": "pass"
+    },
+    {
+      "name": "Calendar arithmetic remains whole days across DST",
+      "status": "pass"
+    },
+    {
+      "name": "Occupied date single move fails gracefully; cascade succeeds atomically",
+      "status": "pass"
+    },
+    {
+      "name": "One-day forward shift preserves every original gap and every target",
+      "status": "pass"
+    },
+    {
+      "name": "Later selected session shifts only its future tail",
+      "status": "pass"
+    },
+    {
+      "name": "Fixed event anywhere in cascade blocks all mutation",
+      "status": "pass"
+    },
+    {
+      "name": "An added commitment makes an existing date proposal stale",
+      "status": "pass"
+    },
+    {
+      "name": "Active target cannot queue or move offline",
+      "status": "pass"
+    },
+    {
+      "name": "Valid offline acceptance queues without changes; reconnect revalidates",
+      "status": "pass"
+    },
+    {
+      "name": "Accepted changes cannot apply twice",
+      "status": "pass"
+    },
+    {
+      "name": "Backward cascade cannot remove recovery or reverse order",
+      "status": "pass"
+    },
+    {
+      "name": "Whole block extension is disclosed; no session dropped",
+      "status": "pass"
+    },
+    {
+      "name": "Coach manual date changes remain possible without dose adaptation",
+      "status": "pass"
+    },
+    {
+      "name": "Exercise history retains partial sets, exact IDs and date ordering",
+      "status": "pass"
+    },
+    {
+      "name": "One comparable exposure suggests repeat load, never automatic increase",
+      "status": "pass"
+    },
+    {
+      "name": "Two top-of-range exposures can propose an available small load increase",
+      "status": "pass"
+    },
+    {
+      "name": "Unknown effort, unknown symptoms and changed rep range do not unlock increase",
+      "status": "pass"
+    },
+    {
+      "name": "Oversized equipment jumps remain unavailable instead of rounding",
+      "status": "pass"
+    },
+    {
+      "name": "Missing loads, partial work, hard feedback and stale history require recalibration",
+      "status": "pass"
+    },
+    {
+      "name": "A different machine/setup cannot inherit the previous load",
+      "status": "pass"
+    },
+    {
+      "name": "Youth and symptom holds cannot produce automatic adult loads",
+      "status": "pass"
+    },
+    {
+      "name": "Legacy rep targets remain unchanged until explicit range approval",
+      "status": "pass"
+    },
+    {
+      "name": "Skipping can be restored and invalidates existing proposals",
+      "status": "pass"
+    },
+    {
+      "name": "Malformed import remains rejected; authority fields stripped",
+      "status": "pass"
+    },
+    {
+      "name": "Strength accessory rep ranges stay stable across the block",
+      "status": "pass"
+    },
+    {
+      "name": "Load commit rejects a changed equipment increment",
+      "status": "pass"
+    },
+    {
+      "name": "An overdue active workout uses today for recovery checks",
+      "status": "pass"
+    },
+    {
+      "name": "Resolved proposals are capped at 50 and every open proposal is kept",
+      "status": "pass"
+    }
+  ]
+}

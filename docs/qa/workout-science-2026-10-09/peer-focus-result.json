@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-10-09T17:37:12.097Z",
+  "sourceSHA256": {
+    "lib/training.ts": "be27eb1bc30c2823df371d7712309264f109516f85f07e43ec5d1ad432b251d5",
+    "lib/training-focus.ts": "3e4a94e9a6a4ec4056e195e244edcf6dd6f365dbbb432e17d35f8e3f3babba39",
+    "lib/program-catalog.ts": "d5ab1eb1c61338dc58e8c06aa1899f967574a2c9c6102e6be7e783396018949c",
+    "lib/program-evidence.ts": "beaad36890c37d5de560cfdb0d26776e62b4e2cec21722e912a7dc57e0a313c4",
+    "lib/exercise-library.json": "255e51c2dad783a487d37ea4bbe3eb6942f6d7dfde497b7a432ec3bd54620040",
+    "lib/recipes.json": "a6b5f0e919cf0f3ba492e67db8164223e333dab70e24bfab830796136c02c175"
+  },
+  "scriptSHA256": "36fbf1940fe8af449137f6477f0731b8e2e9b8b49ce0a2dac3b90a571a0acb1f",
+  "catalogFocusProfiles": 1125,
+  "accepted": 527,
+  "rejected": 598,
+  "profileFailureCount": 0,
+  "profileFailures": [],
+  "additionalCases": [
+    {
+      "name": "Walking flat allowance cannot bypass canonical final time",
+      "status": "pass"
+    },
+    {
+      "name": "Manual interests cannot change targets or add prescription evidence",
+      "status": "pass"
+    }
+  ],
+  "limits": [
+    "Source-level final-time, input immutability, selected-dose and attribution invariants; not clinical or individualized readiness proof",
+    "Every catalog is tested with 15 nonempty focus selections, matching equipment/readiness, all weekdays, eight weeks and120-minute windows",
+    "Rejected profiles need a visible error but are not asserted intrinsically unsupported for every possible design",
+    "No physical exercise outcomes, UI layout or source-card network availability tested"
+  ]
+}

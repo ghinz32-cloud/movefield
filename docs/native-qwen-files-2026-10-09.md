@@ -1,0 +1,26 @@
+# U09a — optional verified native model files
+
+Phone Settings now has collapsed optional model-file controls. Opening them checks local status only. Downloading requires a separate review of the exact Qwen3 0.6B manifest and 517,117,480 bytes, followed by explicit confirmation. The review shows storage needs and tells users to keep the app open. Preferences, Automatic, Off, status and import never download weights. Native inference remains disconnected; ordinary training works without files.
+
+The canonical service supports the three pinned Android candidates, while this first UI exposes only 0.6B. It validates publisher URLs, immutable revisions, byte counts and hashes before a request. Files use opaque attempt/index paths under app-private evictable cache, separate from training, transfer and secure-key stores. A separate SQLite metadata database journals attempts and publishes a completion pointer only after all three files pass SHA-256 and exact-size checks. The previous pointer/files are retained until the replacement commits and verifies. Delete tombstones the pointer before reclaiming owned files; damaged offer/seal metadata can be removed explicitly without interpreting it as a file path.
+
+Hashing reads at most 256 KiB per chunk through read-only handles, closes each handle and yields to cancellation. No multi-gigabyte whole-file buffer or base64 copy is used. Files are fully rehashed before returning local runtime paths, under the same lease that excludes replacement/deletion until the consumer finishes. A saved receipt is file status, not device qualification or model availability for inference.
+
+Cancel, Off, background and unmount suppress late UI progress/results. Exact live confirmation tokens prevent old download/delete callbacks from acting after cancellation, a changed review or completion. A pointer transaction already started may finish before cancellation; the UI explains that boundary and provides an explicit local status check. The installed Android transport can leave cancellation promises unsettled. Its attempt stays quarantined, retry cannot accumulate new attempts while it remains unresolved, and restarting the app may be needed. Transparent background/process-kill resume is not promised.
+
+## Validation
+
+- 48/48 regressions, 3/3 production suites, web/native TypeScript, full product ESLint, native engine, production build and Android/iOS Hermes exports pass.
+- File manager/actual Expo adapter: 22 scenarios / 1,058 assertions with real node:sqlite exclusive transactions, real SHA-256 and independent fixture hashes. Expo filesystem/network APIs are stand-ins. Tests cover no implicit network, manifest/consent bounds, complete/reopened files, corruption/truncation/oversize, cancellation/hung/timeout/late completion, replacement CAS/rollback, ambiguous committed readback, startup cleanup, cache eviction, corrupt explicit deletion, load/delete leases and bounded handle closure.
+- Actual compiled UI: 21 scenarios / 96 assertions for frozen exact consent, stale/repeated confirmations, Off/background/unmount, late progress/status, cancellation recheck, error/retry and explicit deletion including damaged status/pending cleanup.
+- 39 canonical web/native files match their recorded snapshot hashes. No packages were added. Exact source/log/artifact hashes and fresh reports are in `docs/qa/native-qwen-files-2026-10-09/`.
+
+Actual model downloads: **0**. Native inference runs: **0**. Physical devices qualified: **0**. The cache may be cleared by the OS; status checks existence/size, while reuse/load verifies full hashes. Lifecycles coordinate module reloads within one JS runtime; separate OS processes/JS engines are unsupported. These tests do not establish real SDK download behavior, memory/latency, device reliability or model answer quality.
+
+## Continuation
+
+Strict release dependency policy was published and independently verified at `22b74b7ca53c173cf442f4303209478a2da6a6c7`, tree `6e00ee50c56028faa8dda6c3b44f56947ed9a672`. Its CI exit0 / strict release exit1 / invalid-flag exit1 reports were read back. No patched braces/node-forge versions were found; release remains blocked.
+
+Resolve this implementation commit with `git log -1 --format=%H -- docs/native-qwen-files-2026-10-09.md`. Save/verify `.sites-runtime/checkpoints/u09a-native-qwen-files.bundle`, publish to `audit/2026-10-08-quality`, and verify exact tree/head/report readback before reporting success. No main merge, deployment, new account service or distribution occurred.
+
+Next U09b needs an installable native development build and real Android hardware: exact ExecuTorch peers/backend, telemetry disabled, verified local paths, 2,048-token export ceiling, actual token counts, strict fictional source-selection acceptance, cancellation/disposal/offline behavior and measured memory/latency over three cycles. Java runtime exists here, but javac/Gradle/Android SDK/adb/emulator/EAS CLI and native project/build credentials are unavailable. Hermes exports are not APKs. Start qualification with 0.6B; larger tiers need their own final-artifact evidence. Accounts/cloud sync and real secure-browser/iPhone/Android storage/offline/transfer acceptance also remain.

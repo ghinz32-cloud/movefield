@@ -1,0 +1,14 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> site-creator-vinext-starter@0.1.0 check:pages
+> node scripts/check-pages.mjs
+
+{
+  "passed": true,
+  "assertions": 185,
+  "assets": 35,
+  "version": "ba283d5f5ae1701f021ae4c6a468d5f63d5fbf014093877dcd000bc7b010c3b9",
+  "limits": [
+    "VM worker verification; no real browser/OS offline acceptance"
+  ]
+}

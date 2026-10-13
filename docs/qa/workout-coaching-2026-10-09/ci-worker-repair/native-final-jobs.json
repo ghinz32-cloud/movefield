@@ -1,0 +1,401 @@
+{
+  "total_count": 3,
+  "jobs": [
+    {
+      "id": 114063577184,
+      "run_id": 38002481357,
+      "workflow_name": "Native release compilation",
+      "head_branch": "audit/2026-10-08-quality",
+      "run_url": "https://api.github.com/repos/ghinz32-cloud/movefield/actions/runs/38002481357",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVAFhB88AAAAajrgQYA",
+      "head_sha": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+      "url": "https://api.github.com/repos/ghinz32-cloud/movefield/actions/jobs/114063577184",
+      "html_url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38002481357/job/114063577184",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-09T23:03:27Z",
+      "started_at": "2026-10-09T23:03:30Z",
+      "completed_at": "2026-10-09T23:03:40Z",
+      "name": "native_changes",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-09T23:03:31Z",
+          "completed_at": "2026-10-09T23:03:31Z"
+        },
+        {
+          "name": "Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-09T23:03:31Z",
+          "completed_at": "2026-10-09T23:03:36Z"
+        },
+        {
+          "name": "Decide from the exact synchronize source range",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-09T23:03:36Z",
+          "completed_at": "2026-10-09T23:03:36Z"
+        },
+        {
+          "name": "Retain native input decision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-09T23:03:36Z",
+          "completed_at": "2026-10-09T23:03:37Z"
+        },
+        {
+          "name": "Post Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-09T23:03:37Z",
+          "completed_at": "2026-10-09T23:03:37Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-09T23:03:37Z",
+          "completed_at": "2026-10-09T23:03:37Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/ghinz32-cloud/movefield/check-runs/114063577184",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000000120,
+      "runner_name": "GitHub Actions 1000000120",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 114063633445,
+      "run_id": 38002481357,
+      "workflow_name": "Native release compilation",
+      "head_branch": "audit/2026-10-08-quality",
+      "run_url": "https://api.github.com/repos/ghinz32-cloud/movefield/actions/runs/38002481357",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVAFhB88AAAAajrjsJQ",
+      "head_sha": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+      "url": "https://api.github.com/repos/ghinz32-cloud/movefield/actions/jobs/114063633445",
+      "html_url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38002481357/job/114063633445",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-09T23:03:40Z",
+      "started_at": "2026-10-09T23:03:48Z",
+      "completed_at": "2026-10-09T23:11:29Z",
+      "name": "ios",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-09T23:03:48Z",
+          "completed_at": "2026-10-09T23:03:50Z"
+        },
+        {
+          "name": "Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-09T23:03:50Z",
+          "completed_at": "2026-10-09T23:03:53Z"
+        },
+        {
+          "name": "Record exact iOS source commit and tree",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-09T23:03:53Z",
+          "completed_at": "2026-10-09T23:03:53Z"
+        },
+        {
+          "name": "Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-09T23:03:53Z",
+          "completed_at": "2026-10-09T23:03:59Z"
+        },
+        {
+          "name": "Install locked native source without dependency lifecycle scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-09T23:03:59Z",
+          "completed_at": "2026-10-09T23:04:11Z"
+        },
+        {
+          "name": "Generate iOS project and resolve Pods",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-09T23:04:11Z",
+          "completed_at": "2026-10-09T23:05:13Z"
+        },
+        {
+          "name": "Compile unsigned iOS Release simulator application",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-09T23:05:13Z",
+          "completed_at": "2026-10-09T23:11:11Z"
+        },
+        {
+          "name": "Inspect built iOS privacy and transport settings",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-09T23:11:11Z",
+          "completed_at": "2026-10-09T23:11:12Z"
+        },
+        {
+          "name": "Retain SQLite Release flags and complete built privacy replay",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-09T23:11:12Z",
+          "completed_at": "2026-10-09T23:11:18Z"
+        },
+        {
+          "name": "Package verified iOS simulator application",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-09T23:11:18Z",
+          "completed_at": "2026-10-09T23:11:21Z"
+        },
+        {
+          "name": "Retain verified iOS simulator application",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-09T23:11:21Z",
+          "completed_at": "2026-10-09T23:11:23Z"
+        },
+        {
+          "name": "Retain native compilation evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-09T23:11:23Z",
+          "completed_at": "2026-10-09T23:11:24Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-09T23:11:24Z",
+          "completed_at": "2026-10-09T23:11:24Z"
+        },
+        {
+          "name": "Post Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-10-09T23:11:24Z",
+          "completed_at": "2026-10-09T23:11:24Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-10-09T23:11:24Z",
+          "completed_at": "2026-10-09T23:11:27Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/ghinz32-cloud/movefield/check-runs/114063633445",
+      "labels": [
+        "macos-26"
+      ],
+      "runner_id": 1000000121,
+      "runner_name": "GitHub Actions 1000000121",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 114063633528,
+      "run_id": 38002481357,
+      "workflow_name": "Native release compilation",
+      "head_branch": "audit/2026-10-08-quality",
+      "run_url": "https://api.github.com/repos/ghinz32-cloud/movefield/actions/runs/38002481357",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVAFhB88AAAAajrjseA",
+      "head_sha": "c60ee243baaf88eb9aa7dbd4c1dea16a01af1d58",
+      "url": "https://api.github.com/repos/ghinz32-cloud/movefield/actions/jobs/114063633528",
+      "html_url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38002481357/job/114063633528",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-09T23:03:40Z",
+      "started_at": "2026-10-09T23:03:43Z",
+      "completed_at": "2026-10-09T23:12:33Z",
+      "name": "android",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-09T23:03:44Z",
+          "completed_at": "2026-10-09T23:03:45Z"
+        },
+        {
+          "name": "Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-09T23:03:45Z",
+          "completed_at": "2026-10-09T23:03:48Z"
+        },
+        {
+          "name": "Record exact Android source commit and tree",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-09T23:03:48Z",
+          "completed_at": "2026-10-09T23:03:48Z"
+        },
+        {
+          "name": "Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-09T23:03:48Z",
+          "completed_at": "2026-10-09T23:03:52Z"
+        },
+        {
+          "name": "Run actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-09T23:03:52Z",
+          "completed_at": "2026-10-09T23:03:52Z"
+        },
+        {
+          "name": "Install locked native source without dependency lifecycle scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-09T23:03:52Z",
+          "completed_at": "2026-10-09T23:03:59Z"
+        },
+        {
+          "name": "Generate Android project",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-09T23:03:59Z",
+          "completed_at": "2026-10-09T23:04:00Z"
+        },
+        {
+          "name": "Install required Android toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-09T23:04:00Z",
+          "completed_at": "2026-10-09T23:04:37Z"
+        },
+        {
+          "name": "Compile and lint release test APK",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-09T23:04:37Z",
+          "completed_at": "2026-10-09T23:12:09Z"
+        },
+        {
+          "name": "Inspect the actual merged APK manifest",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-09T23:12:09Z",
+          "completed_at": "2026-10-09T23:12:13Z"
+        },
+        {
+          "name": "Retain resolved Android dependencies and actual SQLite C build route",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-09T23:12:13Z",
+          "completed_at": "2026-10-09T23:12:26Z"
+        },
+        {
+          "name": "Package verified Android test APK",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-09T23:12:26Z",
+          "completed_at": "2026-10-09T23:12:26Z"
+        },
+        {
+          "name": "Retain verified Android test APK",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-09T23:12:26Z",
+          "completed_at": "2026-10-09T23:12:28Z"
+        },
+        {
+          "name": "Retain native compilation evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-09T23:12:28Z",
+          "completed_at": "2026-10-09T23:12:30Z"
+        },
+        {
+          "name": "Post Run actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26,
+          "started_at": "2026-10-09T23:12:30Z",
+          "completed_at": "2026-10-09T23:12:30Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-10-09T23:12:30Z",
+          "completed_at": "2026-10-09T23:12:30Z"
+        },
+        {
+          "name": "Post Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-10-09T23:12:30Z",
+          "completed_at": "2026-10-09T23:12:30Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-10-09T23:12:30Z",
+          "completed_at": "2026-10-09T23:12:30Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/ghinz32-cloud/movefield/check-runs/114063633528",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000000122,
+      "runner_name": "GitHub Actions 1000000122",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

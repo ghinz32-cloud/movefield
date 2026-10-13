@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "milestone": "NATIVE8",
+  "repository": "ghinz32-cloud/movefield",
+  "branch": "audit/2026-10-08-quality",
+  "previousHead": "8abfca45f1f910155011516eabffbebdf070821b",
+  "publishedHead": "e85a1ad320ec23db29b337fdee10f41f1dc24962",
+  "publishedTree": "890d598d36ee1f09a3ad67268275e2de16309a48",
+  "publication": "Expected-head lease, force:false, then independent remote ref and collector text readback",
+  "validationPR": {
+    "number": 2,
+    "state": "closed",
+    "merged": false,
+    "base": "audit/2026-10-08-quality"
+  },
+  "draftReviewPR": {
+    "number": 1,
+    "state": "open",
+    "draft": true,
+    "base": "main",
+    "mainSHA": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81"
+  },
+  "quality": {
+    "run": 37984196434,
+    "conclusion": "success",
+    "readerFixtures": 31,
+    "regressionSuites": 55,
+    "productionSuites": 3,
+    "integrationCommit": "d42921cc7a45be186895f408c56d2391aea1767a",
+    "integrationTree": "890d598d36ee1f09a3ad67268275e2de16309a48"
+  },
+  "native": {
+    "run": 37984196327,
+    "conclusion": "success",
+    "androidJob": 114002023999,
+    "iosJob": 114002024138,
+    "strictCollectionBothPlatforms": "success"
+  },
+  "readerBlobs": {
+    "collector": "30d45ecf8b5ead1777f52f9744e1a046ae97ffdb",
+    "fixtures": "b9e81a8854e41ef89c25a2e3dc6d888871b809eb",
+    "workflow": "3e4f51f61fc56de51e52997f420bc6ca60a1ce85"
+  },
+  "unchangedTrees": {
+    "mobile": "90f031f1d49ad590ad390f02a57fcf43ca85ab02",
+    "lib": "d8ce8162de283ff6bf544c0aab1ab8841c3e0b68",
+    "public": "cee6960fc9e574ab9f0b90b9dcc346f0b857b199"
+  },
+  "pages": {
+    "commit": "b8fe5ea6b12ff460aba3f35dc7249f18b778dfe1",
+    "tree": "f2f84594f0d7f1f3dba578ee20f49c6049be2b70",
+    "deployRun": 37981704616,
+    "mobileZipMatchesUnchangedSource": true
+  },
+  "limits": [
+    "Aggregate-layout fixture reproduces the adjacent-cache assumption; original source7 candidate paths were not captured, so exact actual layout is not asserted.",
+    "Native source8 ZIP bytes/CRC/extraction/replay were unavailable after execution disconnected; official API/job/log evidence is retained.",
+    "No main merge, store submission, physical-device/signing/SCA/native-inference qualification."
+  ]
+}

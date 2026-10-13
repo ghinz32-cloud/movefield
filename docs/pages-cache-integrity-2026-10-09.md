@@ -1,0 +1,9 @@
+# PAGE2 cached-file integrity and update rollback
+
+The previous generated Pages worker verified network downloads before cache writes but served current-cache hits without rechecking their bytes. Its version also omitted worker-template bytes, so a worker-only failed install could reuse and delete the active cache. Reproductions came from independent read-only review.
+
+Every served pinned cached or network response now requires HTTP200 and its embedded SHA256. Corrupt cache entries are removed individually and replaced only by a verified fetch of the same pinned URL. Offline or invalid replacements reject; previous caches are never consulted. Version derivation includes the original worker-template SHA256 plus asset hashes, isolating failed candidate installs. Activation waits for existing clients to close. No training records are cached. These controls do not establish same-origin isolation or a separate worker-response CSP.
+
+The actual generated worker passes421 assertions across cached HTML/main JavaScript/lazy ZIP corruption, offline and invalid replacements, wrong statuses, previous-cache isolation and worker-only failed-install preservation. Root independently reran the generated worker checks. The isolated build required regeneration of the ignored mobile starter ZIP; final build passes with35 pinned assets. Source/output fingerprints and online desktop observations are in docs/qa/github-pages-2026-10-09/page2/validation.json. These VM tests do not qualify real browser offline installation/update or physical-device behavior.
+
+The owner update guide now specifies WSL/Linux prerequisites for Windows and precisely describes the CLI publisher's fast-forward and final-head checks. PAGE2 source and generated branch publication/live readback are recorded separately after success. No main merge or store submission.

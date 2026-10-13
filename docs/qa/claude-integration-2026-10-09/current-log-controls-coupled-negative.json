@@ -1,0 +1,31 @@
+{
+  "passed": 14,
+  "total": 16,
+  "failures": [
+    {
+      "name": "web account preparation failures disconnect sync and still acknowledge the latest local save",
+      "message": "account failure falls back to a single local-only persistence operation\n+ actual - expected\n\n  [\n    'prepare',\n-   'disconnect',\n-   'local-write'\n  ]\n"
+    },
+    {
+      "name": "web full account queue rolls back its combined save and retries locally without committing an upload",
+      "message": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    'prepare',\n    'atomic-write-rejected',\n-   'disconnect',\n-   'local-write'\n  ]\n"
+    }
+  ],
+  "controlRef": null,
+  "controlPageSource": ".sites-runtime/current-log-controls-coupling-mutant-page.tsx",
+  "sourceInputs": [
+    {
+      "path": "app/page.tsx",
+      "sha256": "aef0796d1d88ee690e5fcf88871727d631f8eca9f3a91be9393c0b7ca885d3b9"
+    },
+    {
+      "path": "mobile/App.tsx",
+      "sha256": "9c51332d8c6b56c2af7e2539e9a2176d7ca5a7416e3e6c569e39e6d962a0dad8"
+    },
+    {
+      "path": "components/rest-timer.tsx",
+      "sha256": "05022b63b3ec6aa7af1fae286c2c914ac9586eeaefbc1cd1efa7dda9583dc5aa"
+    }
+  ],
+  "scope": "Actual compiled TSX callbacks and real shared validators; simulated hooks/storage/DOM/notifications/timers; no physical device or browser acceptance."
+}

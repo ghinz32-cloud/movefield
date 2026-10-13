@@ -1,0 +1,13 @@
+{
+  "checks": 190,
+  "syntheticOnly": true,
+  "realWeightsDownloaded": false,
+  "actualDeviceQualification": false,
+  "boundaries": [
+    "begin",
+    "append",
+    "seal",
+    "commit"
+  ],
+  "maxWriteBytes": 262144
+}
