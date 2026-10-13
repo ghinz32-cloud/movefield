@@ -36,3 +36,5 @@ Resistance rows use Set / Load / Amount / RIR / Save. At widths up to 480px, fix
 - Shared component and guarded-handler review against the pinned baseline: no primary action removed.
 
 Production build and supported live browser verification are performed by the root task. No local browser or preview was launched for this repair, and no phone screenshot or device-runtime claim is made here. No commit or publication was performed by this implementation agent.
+
+Live desktop verification measured each unsaved row at 126 px versus 240.46875 px before the change. The first saved-state screenshot exposed a one-character Saved-label wrap; reduced icon spacing and a nonwrapping label fix that concrete issue without shrinking the touch target. Native narrow-screen rendering remains unverified.
