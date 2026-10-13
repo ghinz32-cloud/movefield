@@ -5,8 +5,8 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Published research-informed catalog source ad3eecd plus maximal Grizzly wilderness web/native design. Current themed source, native archives and both preview builds are preparing for publication.",
-  "completion_claim": "At least ten distinct generated original structures for each supported goal are audited at the catalog checkpoint. The themed web/native source milestone is implemented and checked. Fresh browser and installed-device acceptance and full six-prompt completion remain open.",
+  "active_checkpoint": "Research-informed catalog and maximal Grizzly wilderness source and both previews are published and served-file verified.",
+  "completion_claim": "The distinct catalog and maximal Grizzly design milestones are complete and pushed. Fresh browser/device acceptance and full six-prompt completion remain open.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
     "Saved environment network additions need activation for full-text research and repo.reactnative.dev Android artifact download. Current proxy denials are not bypassed.",
@@ -1822,7 +1822,25 @@
     "catalog_local_checkpoint": "bbdfad572a4e407170b1fec80645b313c7db4529",
     "catalog_receipt": "docs/science/goal-families-release-validation-2026-10-13.json",
     "design": "docs/grizzly-wilderness-design.md",
-    "publication": "pending matching source and two-preview publication",
-    "authorization": "User explicitly requested normal source/preview pushes and maximal bear/forest design; previous rejected publication text is superseded by later explicit authorization."
+    "publication": {
+      "pushed": true,
+      "source_commit": "f2c93404ff63979e920a93260db87519a07b356c",
+      "source_tree": "b8f1a709467fad4156b1640699d86515f64ac771",
+      "pages_commit": "e29b3a6907b2fc5177a5a43024a74a755792c605",
+      "pages_tree": "28c9b604c396ff1dac871bebee52ce8f436c3fe2",
+      "application_source_sha256": "3f7f79bb027853868a1a30658a7f1e8f74d59210f48874f4287049acde667e1c",
+      "served_files_verified": 161,
+      "original_root_files_preserved_and_verified": 63,
+      "live_receipt": "docs/grizzly-wilderness-publication-2026-10-13.json",
+      "verification_scope": "Captured HTTPS bytes checked against the immutable published Pages tree, with both source/application manifests re-fetched. No browser or installed-device acceptance."
+    },
+    "authorization": "User explicitly requested normal source/preview pushes and maximal bear/forest design; previous rejected publication text is superseded by later explicit authorization.",
+    "design_choices": [
+      "Original generated grizzly and old-growth forest artwork",
+      "Metal Mania / Pine forest / dark Wild preset; saved choices retained",
+      "Web mist and embers pause for hidden tabs and reduced motion",
+      "Native-driver atmosphere stops when inactive or reduced motion",
+      "Current native archives contain 197 verified source files each"
+    ]
   }
 }

@@ -1,6 +1,6 @@
 # Current direction · maximal wilderness · 13 October 2026
 
-The user requested the bear/forest aesthetic turned up to 11 on web and native. The new design is described in [grizzly-wilderness-design.md](grizzly-wilderness-design.md). Pine forest and Metal Mania are the new Wild preset. Large original bear art, a full forest environment, bronze and bark surfaces, mist, embers, claws and paws supersede the historical restrained styling below. Source/export/publication evidence is recorded separately; historical browser screenshots do not qualify the new release.
+The user requested the bear/forest aesthetic turned up to 11 on web and native. The new design is described in [grizzly-wilderness-design.md](grizzly-wilderness-design.md). Pine forest and Metal Mania are the new Wild preset. Large original bear art, a full forest environment, bronze and bark surfaces, mist, embers, claws and paws supersede the historical restrained styling below. Published source `f2c93404ff63979e920a93260db87519a07b356c`, Pages `e29b3a6907b2fc5177a5a43024a74a755792c605`. All 161 selected served files and all 63 original-root files passed immutable-tree comparison. See `grizzly-wilderness-publication-2026-10-13.json`; historical browser screenshots do not qualify the new release.
 
 ---
 

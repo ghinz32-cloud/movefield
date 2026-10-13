@@ -28,3 +28,5 @@ Use case: stylized-concept. Asset type: immersive full-screen background art for
 ## Verification boundary
 
 The associated release receipt records exact source and build hashes, type checks, preference/identity checks, native exports, archive verification and served-file checks. This managed session has no browser-control skill, so fresh browser layout, rendered accessibility, physical phone animation, battery and installed APK/IPA acceptance are unperformed. Older rendered checks describe older releases and are not reused as proof of this design. The earlier catalog's 6,881 scenario and per-plan scientific review results remain attached to their own unchanged checkpoint; exact original app recipes are research-informed and have no identified direct trial.
+
+Published at https://ghinz32-cloud.github.io/movefield/grizzly/ from source `f2c93404ff63979e920a93260db87519a07b356c` and Pages `e29b3a6907b2fc5177a5a43024a74a755792c605`. All 161 selected served files match the published tree; browser and installed-device visual acceptance remain unperformed.

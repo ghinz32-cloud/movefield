@@ -1,3 +1,11 @@
+# Current milestone · published catalog and maximal Grizzly wilderness
+
+The distinct research-informed catalog and maximal bear/forest UI milestones are complete and pushed. Grizzly source `f2c93404ff63979e920a93260db87519a07b356c` and Pages `e29b3a6907b2fc5177a5a43024a74a755792c605` are linked by both served manifests. All 161 selected HTTPS files and all 63 original-root files match the immutable published tree. Web/native types, targeted identity/preferences/file checks, both web builds, four distinct Hermes exports and 197-file native source archives passed.
+
+[Design and prompt record](grizzly-wilderness-design.md), [validation](grizzly-wilderness-validation-2026-10-13.json) and [publication evidence](grizzly-wilderness-publication-2026-10-13.json) describe the exact scope. Fresh rendered browser/accessibility, installed native devices, APK/IPA and full six-prompt launch acceptance remain unperformed. The task register retains the broader unfinished work. Historical validation below is specific to its own checkpoints.
+
+---
+
 ## Current workout-library milestone · 13 October 2026
 
 Published to the existing [Movefield review](https://ghinz32-cloud.github.io/movefield/review/) and [Grizzly preview](https://ghinz32-cloud.github.io/movefield/grizzly/). Source `ad3eecd77ee01504c5554ef971d459843dfe680a`; Pages `f38c4bf980b2fa25f5153798be2723b2334c5cc2`. The user’s requested minimum of ten actual distinct workout structures per goal is implemented: 145 original definitions; bodybuilding 19, powerbuilding 16, powerlifting 12, strength 13, general fitness 14, calisthenics 10, hybrid 10, running 11 and sport preparation 11. Equipment, time, frequency, experience, running readiness and calendar choices determine the fitting subset. Scientific support and exact app recipe limits are disclosed per goal and per plan.

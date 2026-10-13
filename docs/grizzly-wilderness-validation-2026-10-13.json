@@ -121,5 +121,16 @@
     "matches": []
   },
   "browser_reason": "Managed environment without control-browser skill; no preview server or alternative browser route used.",
-  "publication": "Pending source and matching two-preview publication; exact published identities recorded separately."
+  "publication": {
+    "pushed": true,
+    "source_commit": "f2c93404ff63979e920a93260db87519a07b356c",
+    "source_tree": "b8f1a709467fad4156b1640699d86515f64ac771",
+    "pages_commit": "e29b3a6907b2fc5177a5a43024a74a755792c605",
+    "pages_tree": "28c9b604c396ff1dac871bebee52ce8f436c3fe2",
+    "application_source_sha256": "3f7f79bb027853868a1a30658a7f1e8f74d59210f48874f4287049acde667e1c",
+    "served_files_verified": 161,
+    "original_root_files_preserved_and_verified": 63,
+    "live_receipt": "docs/grizzly-wilderness-publication-2026-10-13.json",
+    "verification_scope": "Captured HTTPS bytes checked against the immutable published Pages tree, with both source/application manifests re-fetched. No browser or installed-device acceptance."
+  }
 }
