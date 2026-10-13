@@ -5,8 +5,8 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "OG Grizzly removed from web/native; prominent clickable web calendar implemented with guarded workout/history callbacks and local-date keyboard/month navigation. Local verification passed; existing-preview publication is being finalized.",
-  "completion_claim": "This bounded theme/calendar milestone and the retained equipment guard are implemented. Full next-block/baseline editing, rendered/device acceptance and broader six-prompt launch gates remain open.",
+  "active_checkpoint": "OG Grizzly is removed from web/native and the prominent clickable calendar is published on both existing previews. All 257 selected served files and 63 original-root files verified. Broader next-block/baseline, browser/device and launch qualification remain open.",
+  "completion_claim": "This bounded theme/calendar milestone and the retained equipment guard are implemented, pushed and published. Full next-block/baseline editing, rendered/device acceptance and broader six-prompt launch gates remain open.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
     "Saved environment network additions need activation for full-text research and repo.reactnative.dev Android artifact download. Current proxy denials are not bypassed.",
@@ -1896,7 +1896,24 @@
       "Start/resume/history/add-event callbacks use existing action guards.",
       "Month/day keyboard navigation uses local dates and does not mutate training."
     ],
-    "publication": "pending",
+    "publication": {
+      "source_commit": "1d79ee07d9da359a321c90b432d3e0dc5a3d8e6a",
+      "source_tree": "640c49886fbe8fe6f3ccde7546f7905d644ad7a9",
+      "pages_commit": "0b373386ec2782484ffcdc46a94ba87971bdf570",
+      "pages_tree": "c725b033c131d80ebd29a3c5ca96f040bb10d147",
+      "application_source_sha256": "fe7a1d853aa25812c4b02f3ae81c3977ec411671889ea63938552f507112aab5",
+      "served_files_verified": 257,
+      "preserved_original_files": 63,
+      "deployment": {
+        "id": 38415050538,
+        "name": "pages build and deployment",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38415050538",
+        "head_sha": "0b373386ec2782484ffcdc46a94ba87971bdf570"
+      },
+      "receipt": "docs/grizzly-calendar-publication-2026-10-13.json"
+    },
     "limits": [
       "No browser/rendered accessibility or physical phone qualification.",
       "Full next-block/baseline editor and broader launch requirements remain open."

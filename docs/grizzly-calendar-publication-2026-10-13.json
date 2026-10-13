@@ -1,0 +1,2091 @@
+{
+  "pages_commit": "0b373386ec2782484ffcdc46a94ba87971bdf570",
+  "base_pages_commit": "ce9d2ad46940e6a35bc6eca618b377797e491b13",
+  "source_commit": "1d79ee07d9da359a321c90b432d3e0dc5a3d8e6a",
+  "application_source_sha256": "fe7a1d853aa25812c4b02f3ae81c3977ec411671889ea63938552f507112aab5",
+  "preserved_original_files": 63,
+  "verified_candidate_files": 3749,
+  "pushed": true,
+  "live_verified": true,
+  "local_draft_pages_commit": "14f3a788107d64952889a843ccd83d7307bfaac3",
+  "pages_tree": "c725b033c131d80ebd29a3c5ca96f040bb10d147",
+  "source_tree": "640c49886fbe8fe6f3ccde7546f7905d644ad7a9",
+  "source_branch": "codex/grizzly-calendar-2026-10-13",
+  "scope": "Bounded theme/calendar release and retained equipment guard; source/build/byte checks do not qualify browser/device or full launch acceptance.",
+  "deployment": {
+    "id": 38415050538,
+    "name": "pages build and deployment",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38415050538",
+    "head_sha": "0b373386ec2782484ffcdc46a94ba87971bdf570"
+  },
+  "verification": {
+    "checked_at": "2026-10-13T14:45:40.140936+00:00",
+    "pages_commit": "0b373386ec2782484ffcdc46a94ba87971bdf570",
+    "source_commit": "1d79ee07d9da359a321c90b432d3e0dc5a3d8e6a",
+    "application_source_sha256": "fe7a1d853aa25812c4b02f3ae81c3977ec411671889ea63938552f507112aab5",
+    "scope": "HTTPS byte verification only; no browser or installed-device acceptance.",
+    "root_files_checked": 63,
+    "passed": true,
+    "files": [
+      {
+        "path": ".nojekyll",
+        "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/account-security-BMvM1HMu.js",
+        "expected_sha256": "2c74652456a55fc6fe62a0e9a2f0515f60d4272eccf8052783b09e4c1ce5e079",
+        "actual_sha256": "2c74652456a55fc6fe62a0e9a2f0515f60d4272eccf8052783b09e4c1ce5e079",
+        "bytes": 745,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/account-sync-94JU-mmb.js",
+        "expected_sha256": "6ef0c6fc880662877b233aee77e2db5a7d63574bff53d42839faccd9887a37ea",
+        "actual_sha256": "6ef0c6fc880662877b233aee77e2db5a7d63574bff53d42839faccd9887a37ea",
+        "bytes": 4038,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/button-BZyDGPNM.js",
+        "expected_sha256": "5901fcc142fcc2cbab3e3a832b727516580f2b4e73163d99ca5b4f9eede97a99",
+        "actual_sha256": "5901fcc142fcc2cbab3e3a832b727516580f2b4e73163d99ca5b4f9eede97a99",
+        "bytes": 39978,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/cloud-envelope-C74ZEbMR.js",
+        "expected_sha256": "62bd66cb65b74c7a87b837d008334254796210d1bd991e58c7dcfb12be880c67",
+        "actual_sha256": "62bd66cb65b74c7a87b837d008334254796210d1bd991e58c7dcfb12be880c67",
+        "bytes": 3958,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/customize-CnMED5ja.js",
+        "expected_sha256": "35d5c979ffd33cdc5a3123a151adf53c87f3fe9a43b46990cdf7f00860dc49dd",
+        "actual_sha256": "35d5c979ffd33cdc5a3123a151adf53c87f3fe9a43b46990cdf7f00860dc49dd",
+        "bytes": 3892,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/daily-feedback-DyhRMtb8.js",
+        "expected_sha256": "06ec1e5372011cd33002f61091d12dce9272396489d4e84fcba2d033ca73d462",
+        "actual_sha256": "06ec1e5372011cd33002f61091d12dce9272396489d4e84fcba2d033ca73d462",
+        "bytes": 4724,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/equipment-limits-CpHvxzsM.js",
+        "expected_sha256": "8ce4ce386ec9f5179338ca82d59c729fea53b59a0060e71af98e6689edb7c8e0",
+        "actual_sha256": "8ce4ce386ec9f5179338ca82d59c729fea53b59a0060e71af98e6689edb7c8e0",
+        "bytes": 2626,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/exercise-substitutions-CiUmlXxS.js",
+        "expected_sha256": "70362ac867fc88585cd7fb16ca963fc5f553c8ea2acd82752883b7fb266e88e8",
+        "actual_sha256": "70362ac867fc88585cd7fb16ca963fc5f553c8ea2acd82752883b7fb266e88e8",
+        "bytes": 4114,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/index-COMBkNy7.css",
+        "expected_sha256": "7525288ce23f45dce3e2a3d2680eb4e0275c033c74e0670d606858282b22b618",
+        "actual_sha256": "7525288ce23f45dce3e2a3d2680eb4e0275c033c74e0670d606858282b22b618",
+        "bytes": 225242,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/index-CgajflZF.js",
+        "expected_sha256": "f0edcd8b5e79504fc3f0d1bee27c2cf7e5d204d76f87a330fe52572d4c715ea4",
+        "actual_sha256": "f0edcd8b5e79504fc3f0d1bee27c2cf7e5d204d76f87a330fe52572d4c715ea4",
+        "bytes": 646695,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/jsx-runtime-DUAcabCT.js",
+        "expected_sha256": "afa9863e5c6f7611685a66c3ed93ea9226a1af161256ae0e9339e1524204ee53",
+        "actual_sha256": "afa9863e5c6f7611685a66c3ed93ea9226a1af161256ae0e9339e1524204ee53",
+        "bytes": 1066,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/plan-customizer-BiKgyGE1.js",
+        "expected_sha256": "b00324d7bd75598f3128d36c53488feace0095cab5c45d12e89b58eb85ab091b",
+        "actual_sha256": "b00324d7bd75598f3128d36c53488feace0095cab5c45d12e89b58eb85ab091b",
+        "bytes": 8936,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/progress-dashboard-PXcHSRtU.js",
+        "expected_sha256": "3c6dab13341a585f6cf8f7eeba8f840be198239e9edb5e02cac2163291f5a40f",
+        "actual_sha256": "3c6dab13341a585f6cf8f7eeba8f840be198239e9edb5e02cac2163291f5a40f",
+        "bytes": 368543,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/qwen-model-files-DhOkYO_T.js",
+        "expected_sha256": "37042f0c382d85349f3c75efacaa2ef514d7a87e9a6023a701fb9d1494c59efa",
+        "actual_sha256": "37042f0c382d85349f3c75efacaa2ef514d7a87e9a6023a701fb9d1494c59efa",
+        "bytes": 193126,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/qwen-unavailable-IXSK3HSm.js",
+        "expected_sha256": "3bd10437f03a9d63f02e37884b3e4a0b05c83c8d0da90aefea4c019d5d9bafe6",
+        "actual_sha256": "3bd10437f03a9d63f02e37884b3e4a0b05c83c8d0da90aefea4c019d5d9bafe6",
+        "bytes": 461,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/react-dom-Ci36WYJj.js",
+        "expected_sha256": "405891fe4b8e9c1a5f464b147e0f1944bd8d911ef16a3047999ce82fbaa927ad",
+        "actual_sha256": "405891fe4b8e9c1a5f464b147e0f1944bd8d911ef16a3047999ce82fbaa927ad",
+        "bytes": 3580,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/research-library-YDRmiqP-.js",
+        "expected_sha256": "c6093c7f257e4a601e7b237dc270b26fe21955ad11fda12f5b6682a9401dc476",
+        "actual_sha256": "c6093c7f257e4a601e7b237dc270b26fe21955ad11fda12f5b6682a9401dc476",
+        "bytes": 4468,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/session-guide-3EUQPwSU.js",
+        "expected_sha256": "b7bdbfff25b0080ced636e1ced0965d8da1f8a7185752bc36b0df3c9ac7a94e4",
+        "actual_sha256": "b7bdbfff25b0080ced636e1ced0965d8da1f8a7185752bc36b0df3c9ac7a94e4",
+        "bytes": 4499,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/tracking-editor-DBo3vjNH.js",
+        "expected_sha256": "54a8a7a5279f1bff81b7bb8a21addd608890b356f462106e8132563ac5e7079d",
+        "actual_sha256": "54a8a7a5279f1bff81b7bb8a21addd608890b356f462106e8132563ac5e7079d",
+        "bytes": 9351,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/training-day-c54AaLBh.js",
+        "expected_sha256": "1feb1c76d75c3b435e5c96282137ccda17c9718a2eed2430ae07e2362f49c6cf",
+        "actual_sha256": "1feb1c76d75c3b435e5c96282137ccda17c9718a2eed2430ae07e2362f49c6cf",
+        "bytes": 4520,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/training-jn8H07LS.js",
+        "expected_sha256": "fdf0f3092f61218d5557af4d057e61c7a4a8933670c410d2de9161f6a846027c",
+        "actual_sha256": "fdf0f3092f61218d5557af4d057e61c7a4a8933670c410d2de9161f6a846027c",
+        "bytes": 794960,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/training-onboarding-DME_WJCO.js",
+        "expected_sha256": "3ff66aec1cd5845cb260cbcefa910fce6548fbc07bdf242111acad793e0fc9f6",
+        "actual_sha256": "3ff66aec1cd5845cb260cbcefa910fce6548fbc07bdf242111acad793e0fc9f6",
+        "bytes": 43238,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/transfer-bundle-yk--Q7cp.js",
+        "expected_sha256": "3100d84ecd2a5dc16d33e9e4e482a6d7a3438fc30e8c3ffd7024cedc2e528237",
+        "actual_sha256": "3100d84ecd2a5dc16d33e9e4e482a6d7a3438fc30e8c3ffd7024cedc2e528237",
+        "bytes": 23010,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/transfer-dialog-Bp-xjYnY.js",
+        "expected_sha256": "ccd66bb6ba178ae4a232903bd7b0ab851b7e12d6f7635d1248ff6a5f2b346c06",
+        "actual_sha256": "ccd66bb6ba178ae4a232903bd7b0ab851b7e12d6f7635d1248ff6a5f2b346c06",
+        "bytes": 6495,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/workout-coach-Cs9ADjQI.js",
+        "expected_sha256": "a403e3b7d8846e1c4d6ff5cb5cb029e07b5ff7905dafe9ed0438769f67488bb4",
+        "actual_sha256": "a403e3b7d8846e1c4d6ff5cb5cb029e07b5ff7905dafe9ed0438769f67488bb4",
+        "bytes": 27727,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/workout-coaching-CNi2ZBAe.js",
+        "expected_sha256": "c60393c44fb316d2215bd8cbc1e6993dfa323d7ca1dfe96dbf5617c886a5c3af",
+        "actual_sha256": "c60393c44fb316d2215bd8cbc1e6993dfa323d7ca1dfe96dbf5617c886a5c3af",
+        "bytes": 23981,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/workout-coaching-identity-CDHS7c86.js",
+        "expected_sha256": "819adab6e423db2f8d7c2bcb25a9671ea7875b3a1158e776cf85565cf98b4a24",
+        "actual_sha256": "819adab6e423db2f8d7c2bcb25a9671ea7875b3a1158e776cf85565cf98b4a24",
+        "bytes": 567,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/workout-review-FffrZHRw.js",
+        "expected_sha256": "ac42246020459c24af41949ab31dac92ea34910cbf1dbc4b1dc40596c9aee3b2",
+        "actual_sha256": "ac42246020459c24af41949ab31dac92ea34910cbf1dbc4b1dc40596c9aee3b2",
+        "bytes": 5525,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "assets/x-CEXRaG68.js",
+        "expected_sha256": "fb079b3cf7898ed271ff80d2a7714fa0bae9c6da5331ba0c1448a3eea58222cf",
+        "actual_sha256": "fb079b3cf7898ed271ff80d2a7714fa0bae9c6da5331ba0c1448a3eea58222cf",
+        "bytes": 36473,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "downloads/movefield-mobile-r14.zip",
+        "expected_sha256": "c4739f89df0e4c868d96dad694539f62f13ce2fb86fb9a420d72e958f7eee57f",
+        "actual_sha256": "c4739f89df0e4c868d96dad694539f62f13ce2fb86fb9a420d72e958f7eee57f",
+        "bytes": 2116908,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "exercise-content.json",
+        "expected_sha256": "9a17a1c905fe80e7210803a7b1b466c0a207a40b702386f6e75fb891585b68bb",
+        "actual_sha256": "9a17a1c905fe80e7210803a7b1b466c0a207a40b702386f6e75fb891585b68bb",
+        "bytes": 521358,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "exercise-guides.json",
+        "expected_sha256": "62fa1d71ee08312f6e8809ce60e17e7df7e8a3a8d79f49bed15731592d0f7a38",
+        "actual_sha256": "62fa1d71ee08312f6e8809ce60e17e7df7e8a3a8d79f49bed15731592d0f7a38",
+        "bytes": 2536044,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "favicon.svg",
+        "expected_sha256": "e60a09d8fe6ca9311ab14f0f9f05a5ed92cb2f74b3a41fc3680bde30f3a0b11e",
+        "actual_sha256": "e60a09d8fe6ca9311ab14f0f9f05a5ed92cb2f74b3a41fc3680bde30f3a0b11e",
+        "bytes": 460,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fitness-research.json",
+        "expected_sha256": "437f2724162639849949aed8f6b47b0f8ab1eac88da1e0d4535920d2eebaa757",
+        "actual_sha256": "437f2724162639849949aed8f6b47b0f8ab1eac88da1e0d4535920d2eebaa757",
+        "bytes": 834506,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/Atkinson-Hyperlegible-OFL.txt",
+        "expected_sha256": "e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18",
+        "actual_sha256": "e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18",
+        "bytes": 4603,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/Barlow-Condensed-OFL.txt",
+        "expected_sha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+        "actual_sha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+        "bytes": 4377,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/Inter-OFL.txt",
+        "expected_sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+        "actual_sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+        "bytes": 4377,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/Lexend-OFL.txt",
+        "expected_sha256": "5da8505887d0fa7fe963445fd58852707fda34adfeb65af25c99d152bab285bd",
+        "actual_sha256": "5da8505887d0fa7fe963445fd58852707fda34adfeb65af25c99d152bab285bd",
+        "bytes": 4436,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/Nunito-OFL.txt",
+        "expected_sha256": "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65",
+        "actual_sha256": "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65",
+        "bytes": 4385,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/Oswald-OFL.txt",
+        "expected_sha256": "23916cdee678823c3c517c699cb2e043088de0d46c959eeaa168b54bb84534df",
+        "actual_sha256": "23916cdee678823c3c517c699cb2e043088de0d46c959eeaa168b54bb84534df",
+        "bytes": 4388,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/Saira-OFL.txt",
+        "expected_sha256": "f2665d4718b452b3818a877191355ac884a6b9b419d35408fe7ee487e9e8f30f",
+        "actual_sha256": "f2665d4718b452b3818a877191355ac884a6b9b419d35408fe7ee487e9e8f30f",
+        "bytes": 4386,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/atkinson-hyperlegible-latin-400-normal.woff2",
+        "expected_sha256": "d64ba838ef5472bba248620ec4fd8b5aa7cf0db2908e0bb230600caf279ba7bc",
+        "actual_sha256": "d64ba838ef5472bba248620ec4fd8b5aa7cf0db2908e0bb230600caf279ba7bc",
+        "bytes": 17208,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/atkinson-hyperlegible-latin-700-normal.woff2",
+        "expected_sha256": "140e2bd25a7315c8a062508391426b0d8c3297400c947b8d847be28f73a199f0",
+        "actual_sha256": "140e2bd25a7315c8a062508391426b0d8c3297400c947b8d847be28f73a199f0",
+        "bytes": 17524,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/barlow-condensed-semibold.ttf",
+        "expected_sha256": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9",
+        "actual_sha256": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9",
+        "bytes": 109428,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/inter-variable.ttf",
+        "expected_sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+        "actual_sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+        "bytes": 876576,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/lexend-latin-400-normal.woff2",
+        "expected_sha256": "0601e0a909219a542cdd581e3f8f1ff8fb208978cbc9bca1c90df02fd8062bb1",
+        "actual_sha256": "0601e0a909219a542cdd581e3f8f1ff8fb208978cbc9bca1c90df02fd8062bb1",
+        "bytes": 14476,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/lexend-latin-700-normal.woff2",
+        "expected_sha256": "52dcdaa127bac4a5ea4c39ee17a3f454ceacc18d9f2a45cc453eeab68d378588",
+        "actual_sha256": "52dcdaa127bac4a5ea4c39ee17a3f454ceacc18d9f2a45cc453eeab68d378588",
+        "bytes": 14808,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/nunito-latin-400-normal.woff2",
+        "expected_sha256": "a5906e15ceb68f73d3b2c2076b4057c3f6ed401186d56283b45ce12944ca0735",
+        "actual_sha256": "a5906e15ceb68f73d3b2c2076b4057c3f6ed401186d56283b45ce12944ca0735",
+        "bytes": 16316,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/nunito-latin-700-normal.woff2",
+        "expected_sha256": "fa89300b9bbb3bd0f60d6991aa055965d98e2ccca27bf8688fe0c39cdc796846",
+        "actual_sha256": "fa89300b9bbb3bd0f60d6991aa055965d98e2ccca27bf8688fe0c39cdc796846",
+        "bytes": 16228,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/oswald-latin-600-normal.woff2",
+        "expected_sha256": "f6cb541f4d9794b86145c9c3e7d778ffb78c92f8180c577e245238991503da6f",
+        "actual_sha256": "f6cb541f4d9794b86145c9c3e7d778ffb78c92f8180c577e245238991503da6f",
+        "bytes": 12740,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/oswald-latin-700-normal.woff2",
+        "expected_sha256": "aae665c75af89ea7cb7d8ccc8b0911ea72267442ebcd84f6e3efa041ad3b3c16",
+        "actual_sha256": "aae665c75af89ea7cb7d8ccc8b0911ea72267442ebcd84f6e3efa041ad3b3c16",
+        "bytes": 12672,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/saira-latin-400-normal.woff2",
+        "expected_sha256": "f477825b1d839c775bda7708f78e933bd246c582e7186769e9a25e9b1a59b350",
+        "actual_sha256": "f477825b1d839c775bda7708f78e933bd246c582e7186769e9a25e9b1a59b350",
+        "bytes": 13876,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "fonts/saira-latin-700-normal.woff2",
+        "expected_sha256": "07eb78fecb9cbc519e08a727d438389b2983a140a4d8651d000141ec55b8bacf",
+        "actual_sha256": "07eb78fecb9cbc519e08a727d438389b2983a140a4d8651d000141ec55b8bacf",
+        "bytes": 13732,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/cloud-account-2N9_QY4D.js",
+        "expected_sha256": "4157eb917f87f14ae3698f8d2fb010d81709ed467cb8b1da42d73e275f73d9da",
+        "actual_sha256": "4157eb917f87f14ae3698f8d2fb010d81709ed467cb8b1da42d73e275f73d9da",
+        "bytes": 52929,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/cloud-account-BflL0AFu.js",
+        "expected_sha256": "cf4d40abe1f240950bffc8c268138d9dc016297ebb18ae27c589f890c64e0d65",
+        "actual_sha256": "cf4d40abe1f240950bffc8c268138d9dc016297ebb18ae27c589f890c64e0d65",
+        "bytes": 52929,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/cloud-account-CezSz5cG.js",
+        "expected_sha256": "2956f0244335953d980a4c0bb61298d0b9ce2628dbbd1ebd28e5730fd1b79eb4",
+        "actual_sha256": "2956f0244335953d980a4c0bb61298d0b9ce2628dbbd1ebd28e5730fd1b79eb4",
+        "bytes": 52929,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/cloud-account-_pqxJAZe.js",
+        "expected_sha256": "b3c715c2abc57b5172a8bb043e2265fa724e8a56f51fd17fbec928010e0a5b6d",
+        "actual_sha256": "b3c715c2abc57b5172a8bb043e2265fa724e8a56f51fd17fbec928010e0a5b6d",
+        "bytes": 52929,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/index-7WXWUBoA.css",
+        "expected_sha256": "e264811a637baff6eb858bccf6a9ed6057968ca9ef05c52ad64dc27c17dc5c59",
+        "actual_sha256": "e264811a637baff6eb858bccf6a9ed6057968ca9ef05c52ad64dc27c17dc5c59",
+        "bytes": 240571,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/index-B1NQ8cI2.js",
+        "expected_sha256": "662d97faee3e1aef4387c5961bb5493207c70056f84e2ace71979c2d5b9ca6ec",
+        "actual_sha256": "662d97faee3e1aef4387c5961bb5493207c70056f84e2ace71979c2d5b9ca6ec",
+        "bytes": 1671504,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/index-BRey9YPQ.css",
+        "expected_sha256": "0cd9c21e859582c7e3d8a413ac6ee289975ebe63eb07aecaaf4830f66137d13e",
+        "actual_sha256": "0cd9c21e859582c7e3d8a413ac6ee289975ebe63eb07aecaaf4830f66137d13e",
+        "bytes": 226611,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/index-CLb2LO5Z.css",
+        "expected_sha256": "3ba5778d6bb89c8dc76faed582b1237c8c921f590b183df67044ae756288038f",
+        "actual_sha256": "3ba5778d6bb89c8dc76faed582b1237c8c921f590b183df67044ae756288038f",
+        "bytes": 267908,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/index-CxD_YCcT.js",
+        "expected_sha256": "4eed865765be44c06eef0cce9d62cdb723bb1de7a9ab35d8b570b9e87cd402ac",
+        "actual_sha256": "4eed865765be44c06eef0cce9d62cdb723bb1de7a9ab35d8b570b9e87cd402ac",
+        "bytes": 1669201,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/index-D6I6cLAb.js",
+        "expected_sha256": "e4e82c045ea62f535288c25362ba6a4074c2662018ce80eaefd38b39d64ac392",
+        "actual_sha256": "e4e82c045ea62f535288c25362ba6a4074c2662018ce80eaefd38b39d64ac392",
+        "bytes": 1692900,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/index-MSUZAmaI.js",
+        "expected_sha256": "92bc0d50ca04b028484575eb6148ef32ab53ea55709a53c9c6fa98fa0cc78681",
+        "actual_sha256": "92bc0d50ca04b028484575eb6148ef32ab53ea55709a53c9c6fa98fa0cc78681",
+        "bytes": 1691456,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/index-yN_ac8dF.css",
+        "expected_sha256": "4d6562bdda66f6984a588942aa8864168054cdee4e036e790b425e7f3cd73ced",
+        "actual_sha256": "4d6562bdda66f6984a588942aa8864168054cdee4e036e790b425e7f3cd73ced",
+        "bytes": 258708,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/progress-dashboard-CPUztcEl.js",
+        "expected_sha256": "ebbec5864f5f1106038f854243be3e110d0de3a0504fd34463cb47c60ba8bc81",
+        "actual_sha256": "ebbec5864f5f1106038f854243be3e110d0de3a0504fd34463cb47c60ba8bc81",
+        "bytes": 371892,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/progress-dashboard-D-0-NeCs.js",
+        "expected_sha256": "349cbc9043a688ff18d5d159eabede724841eebab67cd0885956687157d36d1e",
+        "actual_sha256": "349cbc9043a688ff18d5d159eabede724841eebab67cd0885956687157d36d1e",
+        "bytes": 371892,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/progress-dashboard-W-qGzrKp.js",
+        "expected_sha256": "b22ffe45ddfe5bce9c2e6ecfa2331e4c23f3c525b4160ad35489e6b682ef2173",
+        "actual_sha256": "b22ffe45ddfe5bce9c2e6ecfa2331e4c23f3c525b4160ad35489e6b682ef2173",
+        "bytes": 371892,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/assets/progress-dashboard-rD40_Ks8.js",
+        "expected_sha256": "b8a18654c767ee1be910e929bf71b366f0ad435576e8e37a852c29e5baedb298",
+        "actual_sha256": "b8a18654c767ee1be910e929bf71b366f0ad435576e8e37a852c29e5baedb298",
+        "bytes": 371892,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/brand/grizzly-fitness-logo.jpg",
+        "expected_sha256": "8b97ad7dd972812b066cd5b919ff96d90d961ad00230230eb1faebd6e222b0f5",
+        "actual_sha256": "8b97ad7dd972812b066cd5b919ff96d90d961ad00230230eb1faebd6e222b0f5",
+        "bytes": 54782,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/brand/wilderness/grizzly-forest-v1.jpg",
+        "expected_sha256": "65c139bdfd30fb876738fa0fe17cf011bde06df9602c12c964df7a90456d121d",
+        "actual_sha256": "65c139bdfd30fb876738fa0fe17cf011bde06df9602c12c964df7a90456d121d",
+        "bytes": 328745,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/brand/wilderness/grizzly-hero-v1.jpg",
+        "expected_sha256": "eb45c5e512a5acd4ef9ce011c41b81aa02467914f215ef6ea0cc833865c237be",
+        "actual_sha256": "eb45c5e512a5acd4ef9ce011c41b81aa02467914f215ef6ea0cc833865c237be",
+        "bytes": 385671,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/downloads/grizzly-fitness-native-source.zip",
+        "expected_sha256": "7f32068f51404f759a7117fd3149df6aca8046501364a413199c7a23ff5d4c3d",
+        "actual_sha256": "7f32068f51404f759a7117fd3149df6aca8046501364a413199c7a23ff5d4c3d",
+        "bytes": 8100769,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/downloads/movefield-native-current.zip",
+        "expected_sha256": "1b3608ad80f1f3af6f821f84a6d1a5622fe84c6cd27b4e73d849af14685bbbc1",
+        "actual_sha256": "1b3608ad80f1f3af6f821f84a6d1a5622fe84c6cd27b4e73d849af14685bbbc1",
+        "bytes": 8100773,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/exercise-content.json",
+        "expected_sha256": "999a040100f84df75326c7bff31a91f27c72fd76f908a00baca88ee5f0a6c620",
+        "actual_sha256": "999a040100f84df75326c7bff31a91f27c72fd76f908a00baca88ee5f0a6c620",
+        "bytes": 522911,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/exercise-guides.json",
+        "expected_sha256": "db8db5147f52812961098086a887867d0ff958b514154e71cc78ea64dc868fbb",
+        "actual_sha256": "db8db5147f52812961098086a887867d0ff958b514154e71cc78ea64dc868fbb",
+        "bytes": 2553054,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/Barlow-Condensed-OFL.txt",
+        "expected_sha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+        "actual_sha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+        "bytes": 4377,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/Bungee-OFL.txt",
+        "expected_sha256": "d5787a50dde5be6c6daecab9ed459939b1bc37cff0d0e00257eaf1ec2cf4c16c",
+        "actual_sha256": "d5787a50dde5be6c6daecab9ed459939b1bc37cff0d0e00257eaf1ec2cf4c16c",
+        "bytes": 4473,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/Inter-OFL.txt",
+        "expected_sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+        "actual_sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+        "bytes": 4377,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/almendradisplay-OFL.txt",
+        "expected_sha256": "b7eae5e3c3447f70caa14e0c43f5e0d953f54ee59df406f6362863bcee1a0a95",
+        "actual_sha256": "b7eae5e3c3447f70caa14e0c43f5e0d953f54ee59df406f6362863bcee1a0a95",
+        "bytes": 4400,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/almendradisplay-heading.ttf",
+        "expected_sha256": "04b543a9e7bfe39262e47d47ae7ec6a04166ce2d05383a911b256cfcb783383f",
+        "actual_sha256": "04b543a9e7bfe39262e47d47ae7ec6a04166ce2d05383a911b256cfcb783383f",
+        "bytes": 39264,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/barlow-condensed-semibold.ttf",
+        "expected_sha256": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9",
+        "actual_sha256": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9",
+        "bytes": 109428,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/bitter-OFL.txt",
+        "expected_sha256": "152a1e283e23b42c4940da4c72f2f5bebaa17969cb77c76d7af05903846006f1",
+        "actual_sha256": "152a1e283e23b42c4940da4c72f2f5bebaa17969cb77c76d7af05903846006f1",
+        "bytes": 4424,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/bitter-heading.ttf",
+        "expected_sha256": "ef2b9a711fb02f1e5823b34da1b7450e0fc76793b7d733a8b41006e24916d4a7",
+        "actual_sha256": "ef2b9a711fb02f1e5823b34da1b7450e0fc76793b7d733a8b41006e24916d4a7",
+        "bytes": 328636,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/blackopsone-OFL.txt",
+        "expected_sha256": "f67ca4a200424868ee8fcd5464d7b35ac1cbf7723f6bfdbd19a8524689fab9a8",
+        "actual_sha256": "f67ca4a200424868ee8fcd5464d7b35ac1cbf7723f6bfdbd19a8524689fab9a8",
+        "bytes": 4411,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/blackopsone-heading.ttf",
+        "expected_sha256": "282a825b5f294377387e3969f765408157dbea8da0f5d0aae68c6bc704b145b3",
+        "actual_sha256": "282a825b5f294377387e3969f765408157dbea8da0f5d0aae68c6bc704b145b3",
+        "bytes": 166532,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/bungee-regular.ttf",
+        "expected_sha256": "c4f5361ce120af3e6b9156d0bf379fa19cda2ea0cd18ac01fd99596c6bf66e3f",
+        "actual_sha256": "c4f5361ce120af3e6b9156d0bf379fa19cda2ea0cd18ac01fd99596c6bf66e3f",
+        "bytes": 118996,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/butcherman-OFL.txt",
+        "expected_sha256": "a0369b1d5f654110f2fe101db56a02d02806f1e609ab233368bc573ec45050e5",
+        "actual_sha256": "a0369b1d5f654110f2fe101db56a02d02806f1e609ab233368bc573ec45050e5",
+        "bytes": 4372,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/butcherman-heading.ttf",
+        "expected_sha256": "b8cee5e2cdc71f44e6806dc0db1090a3ce2e48ca727072073700bf646b0ce6b5",
+        "actual_sha256": "b8cee5e2cdc71f44e6806dc0db1090a3ce2e48ca727072073700bf646b0ce6b5",
+        "bytes": 66100,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/creepster-OFL.txt",
+        "expected_sha256": "c09e3b81d9cfeec46bc29a3374000e8ad013d694bdf24a288088491dd4cd5c69",
+        "actual_sha256": "c09e3b81d9cfeec46bc29a3374000e8ad013d694bdf24a288088491dd4cd5c69",
+        "bytes": 4399,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/creepster-heading.ttf",
+        "expected_sha256": "402aeb734586c74aecd3dbdc454589b1fb12e2e1c71f782fd019ae68066d9f44",
+        "actual_sha256": "402aeb734586c74aecd3dbdc454589b1fb12e2e1c71f782fd019ae68066d9f44",
+        "bytes": 62724,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/eater-OFL.txt",
+        "expected_sha256": "5946eec3a7d3bda02825930156e4716198e7753641dd3303a3e8c386c8011909",
+        "actual_sha256": "5946eec3a7d3bda02825930156e4716198e7753641dd3303a3e8c386c8011909",
+        "bytes": 4368,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/eater-heading.ttf",
+        "expected_sha256": "df2744af0f58592c4ff13e8205e62a56f7bdf915b3e31c9def075668c42a2b3f",
+        "actual_sha256": "df2744af0f58592c4ff13e8205e62a56f7bdf915b3e31c9def075668c42a2b3f",
+        "bytes": 83928,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/frijole-OFL.txt",
+        "expected_sha256": "c2368518f12463a93cfed44e1460f36085dc60df06f415ee9b0319809987ccce",
+        "actual_sha256": "c2368518f12463a93cfed44e1460f36085dc60df06f415ee9b0319809987ccce",
+        "bytes": 4415,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/frijole-heading.ttf",
+        "expected_sha256": "e182bbad0e1ba7eb06d93edb1c97a71f5b7d56e27433fb375f5f7138399ab72c",
+        "actual_sha256": "e182bbad0e1ba7eb06d93edb1c97a71f5b7d56e27433fb375f5f7138399ab72c",
+        "bytes": 227860,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/inter-variable.ttf",
+        "expected_sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+        "actual_sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+        "bytes": 876576,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/jollylodger-OFL.txt",
+        "expected_sha256": "28c6d2887c3dfa42488c5418c6c16ead580d33ff0afe60c05159689201f9ec63",
+        "actual_sha256": "28c6d2887c3dfa42488c5418c6c16ead580d33ff0afe60c05159689201f9ec63",
+        "bytes": 4395,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/jollylodger-heading.ttf",
+        "expected_sha256": "64d3e628ae2f3ebcb34eed029e90cb6674e9e74ed4e76e72effbf53b93b2dbf9",
+        "actual_sha256": "64d3e628ae2f3ebcb34eed029e90cb6674e9e74ed4e76e72effbf53b93b2dbf9",
+        "bytes": 39800,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/lacquer-OFL.txt",
+        "expected_sha256": "7dcb8031db2b0f39d41c3ec93a3cd77ccc53fb4ab3f691095ca6c51a06a52cb6",
+        "actual_sha256": "7dcb8031db2b0f39d41c3ec93a3cd77ccc53fb4ab3f691095ca6c51a06a52cb6",
+        "bytes": 4388,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/lacquer-heading.ttf",
+        "expected_sha256": "140c21f71907a16952926ee354c81081092c90d599c89fe8b4557baeaebbbe83",
+        "actual_sha256": "140c21f71907a16952926ee354c81081092c90d599c89fe8b4557baeaebbbe83",
+        "bytes": 294060,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/metal-mania-OFL.txt",
+        "expected_sha256": "4e66943af352059c059dd658774f25fbc831f1ad478f9f0890c06ecc2dd324c7",
+        "actual_sha256": "4e66943af352059c059dd658774f25fbc831f1ad478f9f0890c06ecc2dd324c7",
+        "bytes": 4494,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/metal-mania-regular.ttf",
+        "expected_sha256": "4b95f0e55b291990c26a7b68818b20c1b728a8be05a34982b7bb4736c46c19ea",
+        "actual_sha256": "4b95f0e55b291990c26a7b68818b20c1b728a8be05a34982b7bb4736c46c19ea",
+        "bytes": 254568,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/newrocker-OFL.txt",
+        "expected_sha256": "942d51cf079299e83e9dd7a9a37eb92260524e8d1d576b2f0b3f7ca207c53f8e",
+        "actual_sha256": "942d51cf079299e83e9dd7a9a37eb92260524e8d1d576b2f0b3f7ca207c53f8e",
+        "bytes": 4656,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/newrocker-heading.ttf",
+        "expected_sha256": "28a499ce5b8bcf0652f8b2e25135183eaddf0c3c8c3e251259b075c71d1ef14c",
+        "actual_sha256": "28a499ce5b8bcf0652f8b2e25135183eaddf0c3c8c3e251259b075c71d1ef14c",
+        "bytes": 173224,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/nosifer-OFL.txt",
+        "expected_sha256": "b41b99f35b507564e54f6b2f5162ad1c21f94a16837c632da6632b376a341f42",
+        "actual_sha256": "b41b99f35b507564e54f6b2f5162ad1c21f94a16837c632da6632b376a341f42",
+        "bytes": 4369,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/nosifer-heading.ttf",
+        "expected_sha256": "09c5ac35e34dc7a397d5f698b703c5640b59cf93d4d343ebae4f16f3859d09b8",
+        "actual_sha256": "09c5ac35e34dc7a397d5f698b703c5640b59cf93d4d343ebae4f16f3859d09b8",
+        "bytes": 43272,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/oswald-OFL.txt",
+        "expected_sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+        "actual_sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+        "bytes": 4483,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/oswald-heading.ttf",
+        "expected_sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+        "actual_sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+        "bytes": 172088,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/pirataone-OFL.txt",
+        "expected_sha256": "e8ad3f3de5baeff6bac6e711d8c406e0a6b8a61d2944741532d8965d893a2681",
+        "actual_sha256": "e8ad3f3de5baeff6bac6e711d8c406e0a6b8a61d2944741532d8965d893a2681",
+        "bytes": 4427,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/pirataone-heading.ttf",
+        "expected_sha256": "5347a2e155589ecf667d4b766613c8ee003edde9f83717fd24c09599a4b1ecc0",
+        "actual_sha256": "5347a2e155589ecf667d4b766613c8ee003edde9f83717fd24c09599a4b1ecc0",
+        "bytes": 56316,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rajdhani-OFL.txt",
+        "expected_sha256": "f62ef357d3a1c3d27edd35a6e1ba350e8a8d13499797964eeadefbf0b3b15d1f",
+        "actual_sha256": "f62ef357d3a1c3d27edd35a6e1ba350e8a8d13499797964eeadefbf0b3b15d1f",
+        "bytes": 4373,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rajdhani-heading.ttf",
+        "expected_sha256": "691470dd3286a14e9677940d0bf75796179841ba5215cbda1a2c8910a3226afd",
+        "actual_sha256": "691470dd3286a14e9677940d0bf75796179841ba5215cbda1a2c8910a3226afd",
+        "bytes": 400680,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/roadrage-OFL.txt",
+        "expected_sha256": "b926569d7ff2c695dab9d771f3d9c3ded162f7a5bbac4aaf390d89f1ce0e1a5c",
+        "actual_sha256": "b926569d7ff2c695dab9d771f3d9c3ded162f7a5bbac4aaf390d89f1ce0e1a5c",
+        "bytes": 4392,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/roadrage-heading.ttf",
+        "expected_sha256": "b25b8113340bd83520f92a32a13d8d2e39c46fcc595cf39e8ae9e9a4b6332eb8",
+        "actual_sha256": "b25b8113340bd83520f92a32a13d8d2e39c46fcc595cf39e8ae9e9a4b6332eb8",
+        "bytes": 427472,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikburned-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikburned-heading.ttf",
+        "expected_sha256": "149705177b7fe352b54227b05121c030520a55e1cc8a4cdd7f8d0af324e6f00d",
+        "actual_sha256": "149705177b7fe352b54227b05121c030520a55e1cc8a4cdd7f8d0af324e6f00d",
+        "bytes": 605348,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikdirt-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikdirt-heading.ttf",
+        "expected_sha256": "9de3d928e434a47ec85d759012c8a0ebfeab0860076eea4e3989a47c5e213123",
+        "actual_sha256": "9de3d928e434a47ec85d759012c8a0ebfeab0860076eea4e3989a47c5e213123",
+        "bytes": 1492292,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikdistressed-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikdistressed-heading.ttf",
+        "expected_sha256": "64a9962c862451507b5d8dbc1c4bf023ddbcad701bc73d277eae46723718327a",
+        "actual_sha256": "64a9962c862451507b5d8dbc1c4bf023ddbcad701bc73d277eae46723718327a",
+        "bytes": 892544,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikmarkerhatch-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikmarkerhatch-heading.ttf",
+        "expected_sha256": "8d91e401dfaf5c93b26fc717b27c262c829be6804f7be7a6db7a20f4ff09c09b",
+        "actual_sha256": "8d91e401dfaf5c93b26fc717b27c262c829be6804f7be7a6db7a20f4ff09c09b",
+        "bytes": 363876,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikmicrobe-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikmicrobe-heading.ttf",
+        "expected_sha256": "af2360aa13ce3a068142dedded39d2d831615d8bbe370bc086e95192f2e528d7",
+        "actual_sha256": "af2360aa13ce3a068142dedded39d2d831615d8bbe370bc086e95192f2e528d7",
+        "bytes": 1444176,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikpuddles-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikpuddles-heading.ttf",
+        "expected_sha256": "ac690b0790b890a24c54997cfc66bde14d4648cb1a914e9b8754e9023bb0d342",
+        "actual_sha256": "ac690b0790b890a24c54997cfc66bde14d4648cb1a914e9b8754e9023bb0d342",
+        "bytes": 404956,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikspraypaint-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikspraypaint-heading.ttf",
+        "expected_sha256": "e608af93c514f2ba78c9ecfb08e90a206a6f5fd4fc3afbd2db1e65bc65129ca1",
+        "actual_sha256": "e608af93c514f2ba78c9ecfb08e90a206a6f5fd4fc3afbd2db1e65bc65129ca1",
+        "bytes": 941576,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikstorm-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikstorm-heading.ttf",
+        "expected_sha256": "0ccc7b5901c6ad6908dfc0125f12ef0dc2647c8b8641c6dd70328df86108229c",
+        "actual_sha256": "0ccc7b5901c6ad6908dfc0125f12ef0dc2647c8b8641c6dd70328df86108229c",
+        "bytes": 795704,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikwetpaint-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rubikwetpaint-heading.ttf",
+        "expected_sha256": "3f35d1c77219c5219826b23c2f0c72dd0eed46425a0d4fff21b8827cdce61693",
+        "actual_sha256": "3f35d1c77219c5219826b23c2f0c72dd0eed46425a0d4fff21b8827cdce61693",
+        "bytes": 442628,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rye-OFL.txt",
+        "expected_sha256": "399b33eb38cdfc76b8665defa5f81d52e8193d630ad5858c893db6bc20031bc9",
+        "actual_sha256": "399b33eb38cdfc76b8665defa5f81d52e8193d630ad5858c893db6bc20031bc9",
+        "bytes": 4393,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/rye-heading.ttf",
+        "expected_sha256": "b7edee5e615ae1b6b07e9d030c1309152bf3672a0e8a2a46293e273730f5adba",
+        "actual_sha256": "b7edee5e615ae1b6b07e9d030c1309152bf3672a0e8a2a46293e273730f5adba",
+        "bytes": 183244,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/sairastencilone-OFL.txt",
+        "expected_sha256": "fc7c16a0d286a351a7de245a0bd661275e9d393de8955c7fa37ef3c8b85b7e3e",
+        "actual_sha256": "fc7c16a0d286a351a7de245a0bd661275e9d393de8955c7fa37ef3c8b85b7e3e",
+        "bytes": 4405,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/sairastencilone-heading.ttf",
+        "expected_sha256": "781496fdaf8e04cf6741b31025f6b4ba84f66021b097a8e0d85cbea2180cf223",
+        "actual_sha256": "781496fdaf8e04cf6741b31025f6b4ba84f66021b097a8e0d85cbea2180cf223",
+        "bytes": 109944,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/sedgwickavedisplay-OFL.txt",
+        "expected_sha256": "f323edc1e5a6d8fa16120aa15367cdfb15468474cc621f9bda1a2f73c5d08d73",
+        "actual_sha256": "f323edc1e5a6d8fa16120aa15367cdfb15468474cc621f9bda1a2f73c5d08d73",
+        "bytes": 4396,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/sedgwickavedisplay-heading.ttf",
+        "expected_sha256": "3b9c295a146bafb93c8a12c1dde38a2fe47512777daf1458825e291752469a38",
+        "actual_sha256": "3b9c295a146bafb93c8a12c1dde38a2fe47512777daf1458825e291752469a38",
+        "bytes": 140148,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/shojumaru-OFL.txt",
+        "expected_sha256": "ee81f11dd1970e9749afd2a572256f8eefce65532872762a4d7a3d5daa0812c8",
+        "actual_sha256": "ee81f11dd1970e9749afd2a572256f8eefce65532872762a4d7a3d5daa0812c8",
+        "bytes": 4432,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/shojumaru-heading.ttf",
+        "expected_sha256": "8607110ef45da664861c72d95fb804c3609169ebfd2a380cb47b353a7b241c75",
+        "actual_sha256": "8607110ef45da664861c72d95fb804c3609169ebfd2a380cb47b353a7b241c75",
+        "bytes": 71672,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/stardosstencil-OFL.txt",
+        "expected_sha256": "88d3abd47414e7912d0d2eb44ca89e0b1bd7c43cc2ebe58a8a75281ad75a0f60",
+        "actual_sha256": "88d3abd47414e7912d0d2eb44ca89e0b1bd7c43cc2ebe58a8a75281ad75a0f60",
+        "bytes": 4424,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/stardosstencil-heading.ttf",
+        "expected_sha256": "6b15f50b1b358512d922b5f11937af17e90704587e1d7fb009f1715d2d5dfa74",
+        "actual_sha256": "6b15f50b1b358512d922b5f11937af17e90704587e1d7fb009f1715d2d5dfa74",
+        "bytes": 33044,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/tradewinds-OFL.txt",
+        "expected_sha256": "018d17b5e04c0a217a21979fa6b6d77bd5a143a5f06ea2ea102e427abd1ebfa2",
+        "actual_sha256": "018d17b5e04c0a217a21979fa6b6d77bd5a143a5f06ea2ea102e427abd1ebfa2",
+        "bytes": 4419,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/tradewinds-heading.ttf",
+        "expected_sha256": "bbc4c9a17927d6c5076a1957b0b165fae6c835c1bfa0fb8c07053243097e495b",
+        "actual_sha256": "bbc4c9a17927d6c5076a1957b0b165fae6c835c1bfa0fb8c07053243097e495b",
+        "bytes": 85380,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/unifrakturcook-OFL.txt",
+        "expected_sha256": "99d2f30e282d6174af8ff68597f58bb53c0dcb2b104a4c1b8d19da49021d00d3",
+        "actual_sha256": "99d2f30e282d6174af8ff68597f58bb53c0dcb2b104a4c1b8d19da49021d00d3",
+        "bytes": 4413,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/fonts/unifrakturcook-heading.ttf",
+        "expected_sha256": "ea002fa9c65f1a612af100e00d87ab65f16381f450020ec3d021f3dbf79a6dcd",
+        "actual_sha256": "ea002fa9c65f1a612af100e00d87ab65f16381f450020ec3d021f3dbf79a6dcd",
+        "bytes": 42688,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/grizzly-manifest.json",
+        "expected_sha256": "49e156e3b98edaea29a237c08e6121eb04d349909074839caa3a7216a8ab7f77",
+        "actual_sha256": "49e156e3b98edaea29a237c08e6121eb04d349909074839caa3a7216a8ab7f77",
+        "bytes": 219333,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/index.html",
+        "expected_sha256": "b4a9f2dc57dd2e33b11d1c2208dea304fc536277672c96c5982aa275a37ef0b9",
+        "actual_sha256": "b4a9f2dc57dd2e33b11d1c2208dea304fc536277672c96c5982aa275a37ef0b9",
+        "bytes": 1160,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "grizzly/movefield-sw.js",
+        "expected_sha256": "01ff494a3743e1857ef9e750d1898ab7346bfcb2d1ea1275904ad85e6d955503",
+        "actual_sha256": "01ff494a3743e1857ef9e750d1898ab7346bfcb2d1ea1275904ad85e6d955503",
+        "bytes": 4171,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "index.html",
+        "expected_sha256": "03e5b24917fca69179d0282fee294410fe037de2fc02ba076511f1353d253950",
+        "actual_sha256": "03e5b24917fca69179d0282fee294410fe037de2fc02ba076511f1353d253950",
+        "bytes": 60569,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "pages-manifest.json",
+        "expected_sha256": "68e26cf6fe417f1a2914b90599bf8d8fc13a197e2f6d7510f8257af3a87de2d9",
+        "actual_sha256": "68e26cf6fe417f1a2914b90599bf8d8fc13a197e2f6d7510f8257af3a87de2d9",
+        "bytes": 7591,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "privacy.html",
+        "expected_sha256": "8da3cb0250c57ff711634338934ec8e08c16fe7811448bef62cc2dbeb83fcd0b",
+        "actual_sha256": "8da3cb0250c57ff711634338934ec8e08c16fe7811448bef62cc2dbeb83fcd0b",
+        "bytes": 15042,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/cloud-account-5gpte600.js",
+        "expected_sha256": "e903f786af43b7fc99e48ede2e101df5b777860302a0f5438307a92368f692df",
+        "actual_sha256": "e903f786af43b7fc99e48ede2e101df5b777860302a0f5438307a92368f692df",
+        "bytes": 52947,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/cloud-account-9Nfj2f_p.js",
+        "expected_sha256": "1ab30aec1820fe9993956b82b8b74ec46124e42719d8fe2583b0287fecc9e42f",
+        "actual_sha256": "1ab30aec1820fe9993956b82b8b74ec46124e42719d8fe2583b0287fecc9e42f",
+        "bytes": 52947,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/cloud-account-Ce4ykieQ.js",
+        "expected_sha256": "4ca60668030cb749ef75f6e0c5a10d2b9b7770e2aa27051355780214b944f78b",
+        "actual_sha256": "4ca60668030cb749ef75f6e0c5a10d2b9b7770e2aa27051355780214b944f78b",
+        "bytes": 52947,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/cloud-account-CjYVVNQT.js",
+        "expected_sha256": "0de0935442839fab094c5d7f386aab87712a8411f21101e516d0b98f513c5490",
+        "actual_sha256": "0de0935442839fab094c5d7f386aab87712a8411f21101e516d0b98f513c5490",
+        "bytes": 52947,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/cloud-account-TdGVX07c.js",
+        "expected_sha256": "c0497552b41e6a06db8db2dc3f6851cba9c7d503cb0004de1ec737344614aafd",
+        "actual_sha256": "c0497552b41e6a06db8db2dc3f6851cba9c7d503cb0004de1ec737344614aafd",
+        "bytes": 52947,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/index-1aX1GSVY.css",
+        "expected_sha256": "2b66a9396d1fb2ffe7d5a2922d1d2b2c71320de2c86c4fb7cd5f36b979501777",
+        "actual_sha256": "2b66a9396d1fb2ffe7d5a2922d1d2b2c71320de2c86c4fb7cd5f36b979501777",
+        "bytes": 211931,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/index-2ujxWL0B.js",
+        "expected_sha256": "cd741cbc1a7f11e659b2cb9900c97e7f3f0bb6119248a0cca821750e6f3e391a",
+        "actual_sha256": "cd741cbc1a7f11e659b2cb9900c97e7f3f0bb6119248a0cca821750e6f3e391a",
+        "bytes": 1688289,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/index-BDixOWIn.css",
+        "expected_sha256": "57471cd06469a9669a174dc10252d1ee2140b68d4bcbcfe9f24db76917904545",
+        "actual_sha256": "57471cd06469a9669a174dc10252d1ee2140b68d4bcbcfe9f24db76917904545",
+        "bytes": 207729,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/index-Bseq8SLb.js",
+        "expected_sha256": "0a070d488c964d68c5ddbd5284fd44686e19aaa2b42d7493959beef247da5a24",
+        "actual_sha256": "0a070d488c964d68c5ddbd5284fd44686e19aaa2b42d7493959beef247da5a24",
+        "bytes": 1671661,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/index-Bz-5tHOF.js",
+        "expected_sha256": "f4df9ffebc9979148087b05a08f114bce82b4096876fc681ac79d9b9f38d7e4d",
+        "actual_sha256": "f4df9ffebc9979148087b05a08f114bce82b4096876fc681ac79d9b9f38d7e4d",
+        "bytes": 1671662,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/index-CWhJzsjU.js",
+        "expected_sha256": "79c72c19ff0d7cec9a6b63cebf175fb1537b461a7e94cb500f1a67fafe6fc9ee",
+        "actual_sha256": "79c72c19ff0d7cec9a6b63cebf175fb1537b461a7e94cb500f1a67fafe6fc9ee",
+        "bytes": 1670123,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/index-DamYvCEN.css",
+        "expected_sha256": "d8179d8e2bce86e18948408fc08c2145a87061c463887521cb266c79b3d0ec3a",
+        "actual_sha256": "d8179d8e2bce86e18948408fc08c2145a87061c463887521cb266c79b3d0ec3a",
+        "bytes": 207385,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/index-d8oXdVcE.js",
+        "expected_sha256": "3c812b6676750d77f5e82d7811f60363540a7ba8d7a8f7c8d2c3b35e2f29a150",
+        "actual_sha256": "3c812b6676750d77f5e82d7811f60363540a7ba8d7a8f7c8d2c3b35e2f29a150",
+        "bytes": 1689963,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/progress-dashboard-B-d1Q-vO.js",
+        "expected_sha256": "48f033c2c37ebb1f762142c3730fa8ba3579ee8ad06c56b2eb84f26f5256a458",
+        "actual_sha256": "48f033c2c37ebb1f762142c3730fa8ba3579ee8ad06c56b2eb84f26f5256a458",
+        "bytes": 371892,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/progress-dashboard-BqoXL9Wa.js",
+        "expected_sha256": "aa477802b3fc6bcb917bb4ef0719befc29520dd970827127ae4abdfe6194f137",
+        "actual_sha256": "aa477802b3fc6bcb917bb4ef0719befc29520dd970827127ae4abdfe6194f137",
+        "bytes": 371892,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/progress-dashboard-CF1xRKDV.js",
+        "expected_sha256": "c9d1df8512e257e79093cf6ca72483ce6e3e04a6b6a12f77b3846c4b04297ca7",
+        "actual_sha256": "c9d1df8512e257e79093cf6ca72483ce6e3e04a6b6a12f77b3846c4b04297ca7",
+        "bytes": 371892,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/progress-dashboard-DlXzQzZ2.js",
+        "expected_sha256": "4f1e39578760b674caa160cc6bad4acbbd913248eb60950584d9f8496c50d02c",
+        "actual_sha256": "4f1e39578760b674caa160cc6bad4acbbd913248eb60950584d9f8496c50d02c",
+        "bytes": 371892,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/assets/progress-dashboard-fGpRgGaJ.js",
+        "expected_sha256": "974d8f7f15d2cb2d93e98d4288c53dfff34152fcf7f0bc689a5ab9ab15211600",
+        "actual_sha256": "974d8f7f15d2cb2d93e98d4288c53dfff34152fcf7f0bc689a5ab9ab15211600",
+        "bytes": 371892,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/brand/grizzly-fitness-logo.jpg",
+        "expected_sha256": "8b97ad7dd972812b066cd5b919ff96d90d961ad00230230eb1faebd6e222b0f5",
+        "actual_sha256": "8b97ad7dd972812b066cd5b919ff96d90d961ad00230230eb1faebd6e222b0f5",
+        "bytes": 54782,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/brand/wilderness/grizzly-forest-v1.jpg",
+        "expected_sha256": "65c139bdfd30fb876738fa0fe17cf011bde06df9602c12c964df7a90456d121d",
+        "actual_sha256": "65c139bdfd30fb876738fa0fe17cf011bde06df9602c12c964df7a90456d121d",
+        "bytes": 328745,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/brand/wilderness/grizzly-hero-v1.jpg",
+        "expected_sha256": "eb45c5e512a5acd4ef9ce011c41b81aa02467914f215ef6ea0cc833865c237be",
+        "actual_sha256": "eb45c5e512a5acd4ef9ce011c41b81aa02467914f215ef6ea0cc833865c237be",
+        "bytes": 385671,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/downloads/grizzly-fitness-native-source.zip",
+        "expected_sha256": "7f32068f51404f759a7117fd3149df6aca8046501364a413199c7a23ff5d4c3d",
+        "actual_sha256": "7f32068f51404f759a7117fd3149df6aca8046501364a413199c7a23ff5d4c3d",
+        "bytes": 8100769,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/downloads/movefield-native-current.zip",
+        "expected_sha256": "1b3608ad80f1f3af6f821f84a6d1a5622fe84c6cd27b4e73d849af14685bbbc1",
+        "actual_sha256": "1b3608ad80f1f3af6f821f84a6d1a5622fe84c6cd27b4e73d849af14685bbbc1",
+        "bytes": 8100773,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/exercise-content.json",
+        "expected_sha256": "999a040100f84df75326c7bff31a91f27c72fd76f908a00baca88ee5f0a6c620",
+        "actual_sha256": "999a040100f84df75326c7bff31a91f27c72fd76f908a00baca88ee5f0a6c620",
+        "bytes": 522911,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/exercise-guides.json",
+        "expected_sha256": "db8db5147f52812961098086a887867d0ff958b514154e71cc78ea64dc868fbb",
+        "actual_sha256": "db8db5147f52812961098086a887867d0ff958b514154e71cc78ea64dc868fbb",
+        "bytes": 2553054,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/Barlow-Condensed-OFL.txt",
+        "expected_sha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+        "actual_sha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+        "bytes": 4377,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/Bungee-OFL.txt",
+        "expected_sha256": "d5787a50dde5be6c6daecab9ed459939b1bc37cff0d0e00257eaf1ec2cf4c16c",
+        "actual_sha256": "d5787a50dde5be6c6daecab9ed459939b1bc37cff0d0e00257eaf1ec2cf4c16c",
+        "bytes": 4473,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/Inter-OFL.txt",
+        "expected_sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+        "actual_sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+        "bytes": 4377,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/almendradisplay-OFL.txt",
+        "expected_sha256": "b7eae5e3c3447f70caa14e0c43f5e0d953f54ee59df406f6362863bcee1a0a95",
+        "actual_sha256": "b7eae5e3c3447f70caa14e0c43f5e0d953f54ee59df406f6362863bcee1a0a95",
+        "bytes": 4400,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/almendradisplay-heading.ttf",
+        "expected_sha256": "04b543a9e7bfe39262e47d47ae7ec6a04166ce2d05383a911b256cfcb783383f",
+        "actual_sha256": "04b543a9e7bfe39262e47d47ae7ec6a04166ce2d05383a911b256cfcb783383f",
+        "bytes": 39264,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/barlow-condensed-semibold.ttf",
+        "expected_sha256": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9",
+        "actual_sha256": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9",
+        "bytes": 109428,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/bitter-OFL.txt",
+        "expected_sha256": "152a1e283e23b42c4940da4c72f2f5bebaa17969cb77c76d7af05903846006f1",
+        "actual_sha256": "152a1e283e23b42c4940da4c72f2f5bebaa17969cb77c76d7af05903846006f1",
+        "bytes": 4424,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/bitter-heading.ttf",
+        "expected_sha256": "ef2b9a711fb02f1e5823b34da1b7450e0fc76793b7d733a8b41006e24916d4a7",
+        "actual_sha256": "ef2b9a711fb02f1e5823b34da1b7450e0fc76793b7d733a8b41006e24916d4a7",
+        "bytes": 328636,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/blackopsone-OFL.txt",
+        "expected_sha256": "f67ca4a200424868ee8fcd5464d7b35ac1cbf7723f6bfdbd19a8524689fab9a8",
+        "actual_sha256": "f67ca4a200424868ee8fcd5464d7b35ac1cbf7723f6bfdbd19a8524689fab9a8",
+        "bytes": 4411,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/blackopsone-heading.ttf",
+        "expected_sha256": "282a825b5f294377387e3969f765408157dbea8da0f5d0aae68c6bc704b145b3",
+        "actual_sha256": "282a825b5f294377387e3969f765408157dbea8da0f5d0aae68c6bc704b145b3",
+        "bytes": 166532,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/bungee-regular.ttf",
+        "expected_sha256": "c4f5361ce120af3e6b9156d0bf379fa19cda2ea0cd18ac01fd99596c6bf66e3f",
+        "actual_sha256": "c4f5361ce120af3e6b9156d0bf379fa19cda2ea0cd18ac01fd99596c6bf66e3f",
+        "bytes": 118996,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/butcherman-OFL.txt",
+        "expected_sha256": "a0369b1d5f654110f2fe101db56a02d02806f1e609ab233368bc573ec45050e5",
+        "actual_sha256": "a0369b1d5f654110f2fe101db56a02d02806f1e609ab233368bc573ec45050e5",
+        "bytes": 4372,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/butcherman-heading.ttf",
+        "expected_sha256": "b8cee5e2cdc71f44e6806dc0db1090a3ce2e48ca727072073700bf646b0ce6b5",
+        "actual_sha256": "b8cee5e2cdc71f44e6806dc0db1090a3ce2e48ca727072073700bf646b0ce6b5",
+        "bytes": 66100,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/creepster-OFL.txt",
+        "expected_sha256": "c09e3b81d9cfeec46bc29a3374000e8ad013d694bdf24a288088491dd4cd5c69",
+        "actual_sha256": "c09e3b81d9cfeec46bc29a3374000e8ad013d694bdf24a288088491dd4cd5c69",
+        "bytes": 4399,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/creepster-heading.ttf",
+        "expected_sha256": "402aeb734586c74aecd3dbdc454589b1fb12e2e1c71f782fd019ae68066d9f44",
+        "actual_sha256": "402aeb734586c74aecd3dbdc454589b1fb12e2e1c71f782fd019ae68066d9f44",
+        "bytes": 62724,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/eater-OFL.txt",
+        "expected_sha256": "5946eec3a7d3bda02825930156e4716198e7753641dd3303a3e8c386c8011909",
+        "actual_sha256": "5946eec3a7d3bda02825930156e4716198e7753641dd3303a3e8c386c8011909",
+        "bytes": 4368,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/eater-heading.ttf",
+        "expected_sha256": "df2744af0f58592c4ff13e8205e62a56f7bdf915b3e31c9def075668c42a2b3f",
+        "actual_sha256": "df2744af0f58592c4ff13e8205e62a56f7bdf915b3e31c9def075668c42a2b3f",
+        "bytes": 83928,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/frijole-OFL.txt",
+        "expected_sha256": "c2368518f12463a93cfed44e1460f36085dc60df06f415ee9b0319809987ccce",
+        "actual_sha256": "c2368518f12463a93cfed44e1460f36085dc60df06f415ee9b0319809987ccce",
+        "bytes": 4415,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/frijole-heading.ttf",
+        "expected_sha256": "e182bbad0e1ba7eb06d93edb1c97a71f5b7d56e27433fb375f5f7138399ab72c",
+        "actual_sha256": "e182bbad0e1ba7eb06d93edb1c97a71f5b7d56e27433fb375f5f7138399ab72c",
+        "bytes": 227860,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/inter-variable.ttf",
+        "expected_sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+        "actual_sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+        "bytes": 876576,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/jollylodger-OFL.txt",
+        "expected_sha256": "28c6d2887c3dfa42488c5418c6c16ead580d33ff0afe60c05159689201f9ec63",
+        "actual_sha256": "28c6d2887c3dfa42488c5418c6c16ead580d33ff0afe60c05159689201f9ec63",
+        "bytes": 4395,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/jollylodger-heading.ttf",
+        "expected_sha256": "64d3e628ae2f3ebcb34eed029e90cb6674e9e74ed4e76e72effbf53b93b2dbf9",
+        "actual_sha256": "64d3e628ae2f3ebcb34eed029e90cb6674e9e74ed4e76e72effbf53b93b2dbf9",
+        "bytes": 39800,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/lacquer-OFL.txt",
+        "expected_sha256": "7dcb8031db2b0f39d41c3ec93a3cd77ccc53fb4ab3f691095ca6c51a06a52cb6",
+        "actual_sha256": "7dcb8031db2b0f39d41c3ec93a3cd77ccc53fb4ab3f691095ca6c51a06a52cb6",
+        "bytes": 4388,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/lacquer-heading.ttf",
+        "expected_sha256": "140c21f71907a16952926ee354c81081092c90d599c89fe8b4557baeaebbbe83",
+        "actual_sha256": "140c21f71907a16952926ee354c81081092c90d599c89fe8b4557baeaebbbe83",
+        "bytes": 294060,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/metal-mania-OFL.txt",
+        "expected_sha256": "4e66943af352059c059dd658774f25fbc831f1ad478f9f0890c06ecc2dd324c7",
+        "actual_sha256": "4e66943af352059c059dd658774f25fbc831f1ad478f9f0890c06ecc2dd324c7",
+        "bytes": 4494,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/metal-mania-regular.ttf",
+        "expected_sha256": "4b95f0e55b291990c26a7b68818b20c1b728a8be05a34982b7bb4736c46c19ea",
+        "actual_sha256": "4b95f0e55b291990c26a7b68818b20c1b728a8be05a34982b7bb4736c46c19ea",
+        "bytes": 254568,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/newrocker-OFL.txt",
+        "expected_sha256": "942d51cf079299e83e9dd7a9a37eb92260524e8d1d576b2f0b3f7ca207c53f8e",
+        "actual_sha256": "942d51cf079299e83e9dd7a9a37eb92260524e8d1d576b2f0b3f7ca207c53f8e",
+        "bytes": 4656,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/newrocker-heading.ttf",
+        "expected_sha256": "28a499ce5b8bcf0652f8b2e25135183eaddf0c3c8c3e251259b075c71d1ef14c",
+        "actual_sha256": "28a499ce5b8bcf0652f8b2e25135183eaddf0c3c8c3e251259b075c71d1ef14c",
+        "bytes": 173224,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/nosifer-OFL.txt",
+        "expected_sha256": "b41b99f35b507564e54f6b2f5162ad1c21f94a16837c632da6632b376a341f42",
+        "actual_sha256": "b41b99f35b507564e54f6b2f5162ad1c21f94a16837c632da6632b376a341f42",
+        "bytes": 4369,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/nosifer-heading.ttf",
+        "expected_sha256": "09c5ac35e34dc7a397d5f698b703c5640b59cf93d4d343ebae4f16f3859d09b8",
+        "actual_sha256": "09c5ac35e34dc7a397d5f698b703c5640b59cf93d4d343ebae4f16f3859d09b8",
+        "bytes": 43272,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/oswald-OFL.txt",
+        "expected_sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+        "actual_sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+        "bytes": 4483,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/oswald-heading.ttf",
+        "expected_sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+        "actual_sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+        "bytes": 172088,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/pirataone-OFL.txt",
+        "expected_sha256": "e8ad3f3de5baeff6bac6e711d8c406e0a6b8a61d2944741532d8965d893a2681",
+        "actual_sha256": "e8ad3f3de5baeff6bac6e711d8c406e0a6b8a61d2944741532d8965d893a2681",
+        "bytes": 4427,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/pirataone-heading.ttf",
+        "expected_sha256": "5347a2e155589ecf667d4b766613c8ee003edde9f83717fd24c09599a4b1ecc0",
+        "actual_sha256": "5347a2e155589ecf667d4b766613c8ee003edde9f83717fd24c09599a4b1ecc0",
+        "bytes": 56316,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rajdhani-OFL.txt",
+        "expected_sha256": "f62ef357d3a1c3d27edd35a6e1ba350e8a8d13499797964eeadefbf0b3b15d1f",
+        "actual_sha256": "f62ef357d3a1c3d27edd35a6e1ba350e8a8d13499797964eeadefbf0b3b15d1f",
+        "bytes": 4373,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rajdhani-heading.ttf",
+        "expected_sha256": "691470dd3286a14e9677940d0bf75796179841ba5215cbda1a2c8910a3226afd",
+        "actual_sha256": "691470dd3286a14e9677940d0bf75796179841ba5215cbda1a2c8910a3226afd",
+        "bytes": 400680,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/roadrage-OFL.txt",
+        "expected_sha256": "b926569d7ff2c695dab9d771f3d9c3ded162f7a5bbac4aaf390d89f1ce0e1a5c",
+        "actual_sha256": "b926569d7ff2c695dab9d771f3d9c3ded162f7a5bbac4aaf390d89f1ce0e1a5c",
+        "bytes": 4392,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/roadrage-heading.ttf",
+        "expected_sha256": "b25b8113340bd83520f92a32a13d8d2e39c46fcc595cf39e8ae9e9a4b6332eb8",
+        "actual_sha256": "b25b8113340bd83520f92a32a13d8d2e39c46fcc595cf39e8ae9e9a4b6332eb8",
+        "bytes": 427472,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikburned-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikburned-heading.ttf",
+        "expected_sha256": "149705177b7fe352b54227b05121c030520a55e1cc8a4cdd7f8d0af324e6f00d",
+        "actual_sha256": "149705177b7fe352b54227b05121c030520a55e1cc8a4cdd7f8d0af324e6f00d",
+        "bytes": 605348,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikdirt-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikdirt-heading.ttf",
+        "expected_sha256": "9de3d928e434a47ec85d759012c8a0ebfeab0860076eea4e3989a47c5e213123",
+        "actual_sha256": "9de3d928e434a47ec85d759012c8a0ebfeab0860076eea4e3989a47c5e213123",
+        "bytes": 1492292,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikdistressed-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikdistressed-heading.ttf",
+        "expected_sha256": "64a9962c862451507b5d8dbc1c4bf023ddbcad701bc73d277eae46723718327a",
+        "actual_sha256": "64a9962c862451507b5d8dbc1c4bf023ddbcad701bc73d277eae46723718327a",
+        "bytes": 892544,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikmarkerhatch-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikmarkerhatch-heading.ttf",
+        "expected_sha256": "8d91e401dfaf5c93b26fc717b27c262c829be6804f7be7a6db7a20f4ff09c09b",
+        "actual_sha256": "8d91e401dfaf5c93b26fc717b27c262c829be6804f7be7a6db7a20f4ff09c09b",
+        "bytes": 363876,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikmicrobe-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikmicrobe-heading.ttf",
+        "expected_sha256": "af2360aa13ce3a068142dedded39d2d831615d8bbe370bc086e95192f2e528d7",
+        "actual_sha256": "af2360aa13ce3a068142dedded39d2d831615d8bbe370bc086e95192f2e528d7",
+        "bytes": 1444176,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikpuddles-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikpuddles-heading.ttf",
+        "expected_sha256": "ac690b0790b890a24c54997cfc66bde14d4648cb1a914e9b8754e9023bb0d342",
+        "actual_sha256": "ac690b0790b890a24c54997cfc66bde14d4648cb1a914e9b8754e9023bb0d342",
+        "bytes": 404956,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikspraypaint-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikspraypaint-heading.ttf",
+        "expected_sha256": "e608af93c514f2ba78c9ecfb08e90a206a6f5fd4fc3afbd2db1e65bc65129ca1",
+        "actual_sha256": "e608af93c514f2ba78c9ecfb08e90a206a6f5fd4fc3afbd2db1e65bc65129ca1",
+        "bytes": 941576,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikstorm-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikstorm-heading.ttf",
+        "expected_sha256": "0ccc7b5901c6ad6908dfc0125f12ef0dc2647c8b8641c6dd70328df86108229c",
+        "actual_sha256": "0ccc7b5901c6ad6908dfc0125f12ef0dc2647c8b8641c6dd70328df86108229c",
+        "bytes": 795704,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikwetpaint-OFL.txt",
+        "expected_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "actual_sha256": "f9e2d4498ea80d38bac7b8841d68af68c132fa67e1552e7c05717e6987de1d74",
+        "bytes": 4406,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rubikwetpaint-heading.ttf",
+        "expected_sha256": "3f35d1c77219c5219826b23c2f0c72dd0eed46425a0d4fff21b8827cdce61693",
+        "actual_sha256": "3f35d1c77219c5219826b23c2f0c72dd0eed46425a0d4fff21b8827cdce61693",
+        "bytes": 442628,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rye-OFL.txt",
+        "expected_sha256": "399b33eb38cdfc76b8665defa5f81d52e8193d630ad5858c893db6bc20031bc9",
+        "actual_sha256": "399b33eb38cdfc76b8665defa5f81d52e8193d630ad5858c893db6bc20031bc9",
+        "bytes": 4393,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/rye-heading.ttf",
+        "expected_sha256": "b7edee5e615ae1b6b07e9d030c1309152bf3672a0e8a2a46293e273730f5adba",
+        "actual_sha256": "b7edee5e615ae1b6b07e9d030c1309152bf3672a0e8a2a46293e273730f5adba",
+        "bytes": 183244,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/sairastencilone-OFL.txt",
+        "expected_sha256": "fc7c16a0d286a351a7de245a0bd661275e9d393de8955c7fa37ef3c8b85b7e3e",
+        "actual_sha256": "fc7c16a0d286a351a7de245a0bd661275e9d393de8955c7fa37ef3c8b85b7e3e",
+        "bytes": 4405,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/sairastencilone-heading.ttf",
+        "expected_sha256": "781496fdaf8e04cf6741b31025f6b4ba84f66021b097a8e0d85cbea2180cf223",
+        "actual_sha256": "781496fdaf8e04cf6741b31025f6b4ba84f66021b097a8e0d85cbea2180cf223",
+        "bytes": 109944,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/sedgwickavedisplay-OFL.txt",
+        "expected_sha256": "f323edc1e5a6d8fa16120aa15367cdfb15468474cc621f9bda1a2f73c5d08d73",
+        "actual_sha256": "f323edc1e5a6d8fa16120aa15367cdfb15468474cc621f9bda1a2f73c5d08d73",
+        "bytes": 4396,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/sedgwickavedisplay-heading.ttf",
+        "expected_sha256": "3b9c295a146bafb93c8a12c1dde38a2fe47512777daf1458825e291752469a38",
+        "actual_sha256": "3b9c295a146bafb93c8a12c1dde38a2fe47512777daf1458825e291752469a38",
+        "bytes": 140148,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/shojumaru-OFL.txt",
+        "expected_sha256": "ee81f11dd1970e9749afd2a572256f8eefce65532872762a4d7a3d5daa0812c8",
+        "actual_sha256": "ee81f11dd1970e9749afd2a572256f8eefce65532872762a4d7a3d5daa0812c8",
+        "bytes": 4432,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/shojumaru-heading.ttf",
+        "expected_sha256": "8607110ef45da664861c72d95fb804c3609169ebfd2a380cb47b353a7b241c75",
+        "actual_sha256": "8607110ef45da664861c72d95fb804c3609169ebfd2a380cb47b353a7b241c75",
+        "bytes": 71672,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/stardosstencil-OFL.txt",
+        "expected_sha256": "88d3abd47414e7912d0d2eb44ca89e0b1bd7c43cc2ebe58a8a75281ad75a0f60",
+        "actual_sha256": "88d3abd47414e7912d0d2eb44ca89e0b1bd7c43cc2ebe58a8a75281ad75a0f60",
+        "bytes": 4424,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/stardosstencil-heading.ttf",
+        "expected_sha256": "6b15f50b1b358512d922b5f11937af17e90704587e1d7fb009f1715d2d5dfa74",
+        "actual_sha256": "6b15f50b1b358512d922b5f11937af17e90704587e1d7fb009f1715d2d5dfa74",
+        "bytes": 33044,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/tradewinds-OFL.txt",
+        "expected_sha256": "018d17b5e04c0a217a21979fa6b6d77bd5a143a5f06ea2ea102e427abd1ebfa2",
+        "actual_sha256": "018d17b5e04c0a217a21979fa6b6d77bd5a143a5f06ea2ea102e427abd1ebfa2",
+        "bytes": 4419,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/tradewinds-heading.ttf",
+        "expected_sha256": "bbc4c9a17927d6c5076a1957b0b165fae6c835c1bfa0fb8c07053243097e495b",
+        "actual_sha256": "bbc4c9a17927d6c5076a1957b0b165fae6c835c1bfa0fb8c07053243097e495b",
+        "bytes": 85380,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/unifrakturcook-OFL.txt",
+        "expected_sha256": "99d2f30e282d6174af8ff68597f58bb53c0dcb2b104a4c1b8d19da49021d00d3",
+        "actual_sha256": "99d2f30e282d6174af8ff68597f58bb53c0dcb2b104a4c1b8d19da49021d00d3",
+        "bytes": 4413,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/fonts/unifrakturcook-heading.ttf",
+        "expected_sha256": "ea002fa9c65f1a612af100e00d87ab65f16381f450020ec3d021f3dbf79a6dcd",
+        "actual_sha256": "ea002fa9c65f1a612af100e00d87ab65f16381f450020ec3d021f3dbf79a6dcd",
+        "bytes": 42688,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/index.html",
+        "expected_sha256": "74ddf6b4b18bff11802e029b560eaba6e93e1a0fb7aaf537cf4d26a0bba72670",
+        "actual_sha256": "74ddf6b4b18bff11802e029b560eaba6e93e1a0fb7aaf537cf4d26a0bba72670",
+        "bytes": 868,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/movefield-sw.js",
+        "expected_sha256": "f9d27dedf8871f374a9c5688375cc4063b9f8ff7be6ea151c8f897733477f5d7",
+        "actual_sha256": "f9d27dedf8871f374a9c5688375cc4063b9f8ff7be6ea151c8f897733477f5d7",
+        "bytes": 2916,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "review/review-manifest.json",
+        "expected_sha256": "265f1a03ae9ca0c2cbde1eda08b7bf8e359704398cceff7c1b5ab20a9a402a30",
+        "actual_sha256": "265f1a03ae9ca0c2cbde1eda08b7bf8e359704398cceff7c1b5ab20a9a402a30",
+        "bytes": 219425,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "runtime/lib-C9O0qMAG.js",
+        "expected_sha256": "125e6c1b74e73417f05b49c72c49580a5a511fc2d5b232658034de58f0dae5cf",
+        "actual_sha256": "125e6c1b74e73417f05b49c72c49580a5a511fc2d5b232658034de58f0dae5cf",
+        "bytes": 4745911,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "runtime/lib-DcORhR3s.js",
+        "expected_sha256": "203134a3fd7bfc2b58e7ebf1ddb5d1516124cf348729e829ff9d16b77557e39b",
+        "actual_sha256": "203134a3fd7bfc2b58e7ebf1ddb5d1516124cf348729e829ff9d16b77557e39b",
+        "bytes": 6194294,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "runtime/qwen-worker.js",
+        "expected_sha256": "067f818c58c3d04cb617199337007237b5b1447819cf7baf040b65e8f7541b77",
+        "actual_sha256": "067f818c58c3d04cb617199337007237b5b1447819cf7baf040b65e8f7541b77",
+        "bytes": 26283,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "runtime/training-C8u1q4KT.js",
+        "expected_sha256": "afe700f6213488b4a8c4f0abebdd8a7a649a0f8657403fb136180c570564b78e",
+        "actual_sha256": "afe700f6213488b4a8c4f0abebdd8a7a649a0f8657403fb136180c570564b78e",
+        "bytes": 1065507,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "runtime/workout-coaching-worker.js",
+        "expected_sha256": "bbe260316abad93fae39387427e14c4e19ef1ed0eb7973fa3913a373968e3363",
+        "actual_sha256": "bbe260316abad93fae39387427e14c4e19ef1ed0eb7973fa3913a373968e3363",
+        "bytes": 18826,
+        "attempts": 1,
+        "passed": true
+      },
+      {
+        "path": "sw.js",
+        "expected_sha256": "2e64fdca735affef93f0b0c424c752aadedbf7ee69533864a0e04bf7f5f4c158",
+        "actual_sha256": "2e64fdca735affef93f0b0c424c752aadedbf7ee69533864a0e04bf7f5f4c158",
+        "bytes": 9986,
+        "attempts": 1,
+        "passed": true
+      }
+    ]
+  },
+  "verified_at": "2026-10-13T14:47:15.793310+00:00"
+}
