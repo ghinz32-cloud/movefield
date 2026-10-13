@@ -1854,6 +1854,7 @@
       "wild_preset": "Frijole"
     },
     "validation": "docs/grizzly-extreme-validation-2026-10-13.json",
-    "next_action": "Incorporate observed design feedback; then resume next-block/baseline editor and original remaining requirements. Reuse currently needs detailed-inventory revalidation; retain current source-program stages and separate assessed baselines."
+    "next_action": "Incorporate observed design feedback; then resume next-block/baseline editor and original remaining requirements. Reuse currently needs detailed-inventory revalidation; retain current source-program stages and separate assessed baselines.",
+    "publication_preparation": "Five actual isolated Git fixtures; four earlier unmanifested compiled assets retained exactly, all 63 original-root files retained, and unknown noncompiled/missing/tampered paths still reject."
   }
 }

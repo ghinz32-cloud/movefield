@@ -16,16 +16,28 @@ for folder in ['review','grizzly']:
  target=candidate/folder;name=folder+'-manifest.json';previous=json.loads((target/name).read_text())
  if previous.get('schema')!=1 or previous.get('base')!='/movefield/'+folder+'/':raise RuntimeError('Unexpected ownership manifest: '+folder)
  actual={str(p.relative_to(target)) for p in target.rglob('*') if p.is_file()}
- if actual!=set(previous['files'])|{name}:raise RuntimeError('Unexpected files in owned directory: '+folder)
+ expected=set(previous['files'])|{name}
+ if expected-actual:raise RuntimeError('Missing files in owned directory: '+folder)
+ # Older publication left four hashed chunks outside its manifest. Preserve
+ # unlisted compiled assets rather than deleting an unclaimed file. All other
+ # unexpected paths still fail closed, and previously retained chunks stay.
+ legacy=sorted(set(previous.get('retained_legacy_files',[]))|(actual-expected))
+ if any(not re.fullmatch(r'assets/[A-Za-z0-9._-]+-[A-Za-z0-9_-]{8,}\.(?:js|css)',path) or path not in actual for path in legacy):raise RuntimeError('Unexpected noncompiled files in owned directory: '+folder)
+ legacy_bytes={path:(target/path).read_bytes() for path in legacy}
  for path,expected in previous['files'].items():
   p=target/path
   if p.is_symlink() or '..' in pathlib.PurePosixPath(path).parts or not p.resolve().is_relative_to(target.resolve()) or sha(p)!=expected:raise RuntimeError('Owned artifact differs: '+path)
  shutil.rmtree(target);shutil.copytree(RUNTIME/('github-pages-'+folder),target)
+ for path,data in legacy_bytes.items():
+  retained=target/path
+  if retained.exists() and retained.read_bytes()!=data:raise RuntimeError('Compiled asset name collision: '+path)
+  retained.parent.mkdir(parents=True,exist_ok=True);retained.write_bytes(data)
  for extra in ['_headers','.assetsignore']:
   if (target/extra).exists():(target/extra).unlink()
  (target/'.nojekyll').write_text('')
  files={str(p.relative_to(target)):sha(p) for p in sorted(target.rglob('*')) if p.is_file()}
  manifest={'schema':1,'base':'/movefield/'+folder+'/','brand':'Grizzly Fitness Wautoma' if folder=='grizzly' else 'Movefield','profile_scope':'Separate brand profile, database, preferences and offline cache. Training code is shared.','application_source_sha256':source['application_source_sha256'],'source_commit':commit,'files':files}
+ if legacy:manifest['retained_legacy_files']=legacy
  if folder=='grizzly':manifest.update(official_logo_retrieved=False,logo_supplied_by_user=True,logo_source='User-supplied JPEG, unchanged.',logo_sha256=sha(target/'brand/grizzly-fitness-logo.jpg'))
  (target/name).write_text(json.dumps(manifest,indent=2)+'\n')
 if any(p.is_symlink() for p in candidate.rglob('*')):raise RuntimeError('No symlink may be published.')
