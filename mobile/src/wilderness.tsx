@@ -33,6 +33,10 @@ export function NativeDenHero({compact=false,message}:{compact?:boolean;message?
  const {p,fonts,headingFamily}=useNativeAppearance();
  if(!isGrizzly||p.grizzlyStyle==='clean')return null;
  const copy=message||{title:'Wake the grizzly.',body:'Your den. Your discipline. Your next strong day.'};
+ if(compact)return <View style={{minHeight:112,backgroundColor:'#0d2116',borderWidth:1,borderColor:'#aa915e',borderLeftWidth:4,borderRadius:5,overflow:'hidden'}}>
+  <View style={{position:'absolute',right:0,top:0,bottom:0,width:'44%'}} accessible={false} importantForAccessibility="no-hide-descendants" pointerEvents="none"><Image source={heroArt} resizeMode="cover" style={StyleSheet.absoluteFill} accessible={false}/><LinearGradient colors={['#0d2116','#0d211622']} start={{x:0,y:0}} end={{x:1,y:0}} style={StyleSheet.absoluteFill}/></View>
+  <View style={{padding:12,paddingRight:'27%',gap:4}}><Text accessibilityRole="header" style={{fontFamily:fonts?headingFamily:undefined,fontWeight:fonts?'400':'700',color:'#f4e4bf',fontSize:22*p.textSize/100,lineHeight:28*p.textSize/100}}>{copy.title}</Text><Text style={{fontFamily:fonts?'Inter':undefined,color:'#d0d8c2',fontSize:14*p.textSize/100,lineHeight:20*p.textSize/100}}>{copy.body}</Text></View>
+ </View>;
  return <View style={{backgroundColor:'#0d2116',borderWidth:1,borderColor:'#aa915e',borderTopWidth:4,borderTopColor:'#d6b77c',borderRadius:5,overflow:'hidden'}}>
   <View style={{height:compact?168:230}} accessible={false} importantForAccessibility="no-hide-descendants" pointerEvents="none">
    <Image source={heroArt} resizeMode="cover" style={StyleSheet.absoluteFill} accessible={false}/>

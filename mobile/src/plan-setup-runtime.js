@@ -29,7 +29,7 @@ var baseStyles = _reactNative.StyleSheet.create({
         color: c.ink
     },
     title: {
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: '700',
         color: c.ink
     },
@@ -58,8 +58,8 @@ var baseStyles = _reactNative.StyleSheet.create({
         borderWidth: 1,
         borderColor: c.line,
         borderRadius: 12,
-        padding: 16,
-        gap: 12
+        padding: 12,
+        gap: 8
     }
 });
 function Choice({ label, selected, onPress, disabled = false }) {
@@ -203,7 +203,7 @@ function PlanSetup({ state, onAccept, sample = false, sourceChoice }) {
     return /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(NativeWildReveal, {
         sceneKey: `setup-${step}-${selected?.id || 'choices'}`,
         style: {
-            gap: 16
+            gap: 10
         },
         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                 style: styles.title,

@@ -356,3 +356,11 @@
 :root[data-brand=grizzly][data-heading-font=unifrakturcook]{--grizzly-heading:'UnifrakturCook';--grizzly-heading-weight:700}
 @font-face{font-family:'Sedgwick Ave Display';src:url('/fonts/sedgwickavedisplay-heading.ttf') format('truetype');font-weight:400;font-display:swap}
 :root[data-brand=grizzly][data-heading-font=sedgwickavedisplay]{--grizzly-heading:'Sedgwick Ave Display';--grizzly-heading-weight:400}
+
+/* Keep the bear artwork and daily message while bringing workout actions into view. */
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature{min-height:0;padding:20px 20px 26px}
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature>.grizzly-hero-art{height:185px}
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature>.split{margin-top:140px}
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature .grizzly-claws{height:170px}
+[data-brand=grizzly][data-grizzly-style=wild] .session-feature h2{margin-top:12px}
+@media(max-width:680px){[data-brand=grizzly][data-grizzly-style=wild] .session-feature{padding:16px 16px 24px}[data-brand=grizzly][data-grizzly-style=wild] .session-feature>.grizzly-hero-art{height:145px}[data-brand=grizzly][data-grizzly-style=wild] .session-feature>.split{margin-top:105px}[data-brand=grizzly][data-grizzly-style=wild] .session-feature .grizzly-claws{height:135px}}

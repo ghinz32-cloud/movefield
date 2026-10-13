@@ -13,9 +13,9 @@ function field(nodes,label){const node=nodes.find(node=>node.props?.['aria-label
  await test('Set core columns align with headers and each set owns its effort and extra measurements',()=>{
   const log={exerciseId:'squat',set:2,reps:8,kg:null,done:false,rir:null},exercise=T.exFor('squat');
   const row=WorkoutSetRow({exercise,log,units:'lb',busy:false,onChange:()=>{},onLog:()=>{}}),children=row.props.children;
-  assert.deepEqual(children.slice(0,4).map(node=>node.type),['span','Input','Input','Button']);
-  assert.match(children[1].props['aria-label'],/set 2 load$/);assert.match(children[2].props['aria-label'],/set 2 reps$/);assert.match(children[3].props['aria-label'],/^Log .* set 2$/);
-  assert.equal(children[4].props.className,'field set-rir-field');
+  assert.deepEqual(children.slice(0,5).map(node=>node.type),['span','Input','Input','label','Button']);
+  assert.match(children[1].props['aria-label'],/set 2 load$/);assert.match(children[2].props['aria-label'],/set 2 reps$/);assert.match(children[4].props['aria-label'],/^Log .* set 2$/);
+  assert.equal(children[3].props.className,'set-rir-field');assert.match(row.props.className,/has-rir/);
   const details=flatten(children[5]);assert.equal(details.find(node=>node.type==='SetMetricsFields').props.set,2);
  });
  await test('Actual set controls preserve unknown, zero and per-set RIR without touching another set',()=>{
@@ -24,7 +24,7 @@ function field(nodes,label){const node=nodes.find(node=>node.props?.['aria-label
   const loadField=field(nodes,`${exercise.name} set 1 load`);loadField.props.onChange({target:{value:'135'}});assert.equal(state.active.sets[0].kg,T.toKg(135,'lb'));
   loadField.props.onChange({target:{value:''}});assert.equal(state.active.sets[0].kg,null);loadField.props.onChange({target:{value:'0'}});assert.equal(state.active.sets[0].kg,0);
   loadField.props.onChange({target:{value:'-5'}});assert.equal(state.active.sets[0].kg,0);
-  const rir=field(nodes,`${exercise.name} set 1 reps left`);rir.props.onChange({target:{value:'3'}});assert.equal(state.active.sets[0].rir,3);rir.props.onChange({target:{value:'0'}});assert.equal(state.active.sets[0].rir,0);rir.props.onChange({target:{value:'unknown'}});assert.equal(state.active.sets[0].rir,null);
+  const rir=field(nodes,`${exercise.name} set 1 reps left`);rir.props.onChange({target:{value:'3'}});assert.equal(state.active.sets[0].rir,3);rir.props.onChange({target:{value:'0'}});assert.equal(state.active.sets[0].rir,0);rir.props.onChange({target:{value:'5'}});assert.equal(state.active.sets[0].rir,5);rir.props.onChange({target:{value:'unknown'}});assert.equal(state.active.sets[0].rir,null);
   assert.equal(JSON.stringify(state.active.sets.slice(1)),before);
  });
  await test('Busy sets block every input and saved sets retain the undo path',()=>{

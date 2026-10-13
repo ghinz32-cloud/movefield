@@ -1,0 +1,71 @@
+{
+  "checked_at": "2026-10-13T16:51:53.746072+00:00",
+  "base_commit": "7b489c929d7188e8cd8354116bc3ff1abfe84fb3",
+  "application_source_sha256": "5d8b727d2a6028fa3dd0ef30b94281d791f96838abfdfc187ac31462dd41608e",
+  "scope": "Focused UI repair; training/storage/package identities unchanged. No native installed-device or narrow-viewport rendered acceptance claim.",
+  "checks": {
+    "workout_ui_callback_groups": 6,
+    "onboarding_cases": 12,
+    "native_interaction_callbacks": "passed",
+    "native_compact_structure_and_focus": "passed",
+    "grizzly_preferences_groups": 4,
+    "grizzly_motion_and_fonts_groups": 5,
+    "today_facts_and_actions": "passed",
+    "runtime_module_boundaries": "passed",
+    "web_types": "passed",
+    "native_types": "passed",
+    "runtime_no_undef": "passed",
+    "diff_whitespace": "passed"
+  },
+  "web_builds": {
+    "movefield": "passed",
+    "grizzly": "passed"
+  },
+  "native_exports": {
+    "checked_at": "2026-10-13T16:51:19.731495+00:00",
+    "scope": "Distinct cleared-cache Hermes exports, paired with native identity/module checks; no installed-device claim.",
+    "flavors": {
+      "movefield": {
+        "android": {
+          "path": "_expo/static/js/android/index-db7a098af354e470f63bcce62cc88f9f.hbc",
+          "bytes": 4601455,
+          "sha256": "47a60efe70e440e7eab773b98e0696819398494014e83898bde3a77bd4d9a466"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-e9ff71e2a1ebc59733b53f86e9308afd.hbc",
+          "bytes": 4588846,
+          "sha256": "d0d2bb70a621fa9e5af32d965f5f2199744911bd8b892f102e8212dd1cf6a8b5"
+        }
+      },
+      "grizzly": {
+        "android": {
+          "path": "_expo/static/js/android/index-412e11982744afb6e42057ba5ccb3257.hbc",
+          "bytes": 4601574,
+          "sha256": "c74d47b9db3852389817a38f96c2ca84088282654131098ca05d0c4bf5161d3f"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-678c056ccb87fb3e401824f711ab926d.hbc",
+          "bytes": 4588600,
+          "sha256": "a3109a1b9cf4202c9d958bd59a14787211bfb1343e5b90fdf4e8abcd39c921a6"
+        }
+      }
+    }
+  },
+  "native_source_archives": {
+    "public/downloads/movefield-native-current.zip": "2b2d90a4250f6425c3a182561de88239307da3c76e9710fb36cc79657e24c2c0",
+    "public/downloads/grizzly-fitness-native-source.zip": "64631197fb965d47218a24a8185aa3e18fb785ff6f8fab1a3f7b6282515b6108"
+  },
+  "credential_pattern_scan": {
+    "ran_at": "2026-10-13T16:51:53.702235+00:00",
+    "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed.",
+    "files": 6037,
+    "zip_members": 2172,
+    "matches": []
+  },
+  "known_limits": [
+    "The last actual Android APK remains on a different historical branch, package identity and encrypted storage format; these source exports do not update it.",
+    "The exact user-installed build and particular missing feature remain unconfirmed.",
+    "No physical device, mobile screen reader, installed APK/IPA or legacy data migration test.",
+    "Existing upstream native advisory and connected-service gates remain open."
+  ]
+}

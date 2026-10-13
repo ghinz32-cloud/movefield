@@ -1,3 +1,13 @@
+# Current checkpoint · compact UI and installed-build provenance · 13 October 2026
+
+Continue in `codex/compact-ui-2026-10-13`, checkout `/workspace/scratch/4b7d521a9744/movefield-density`, based on `7b489c929d7188e8cd8354116bc3ff1abfe84fb3`. The user reported excessive whitespace and missing prior features in a downloaded app. Repairs make current native Settings a single scroll surface, restore permanent Plan tools, reduce oversized native artwork/cards, put web RIR inline, restore visible Today actions, and reveal exercise loggers on selection/auto-advance. See `docs/ui-density-{native,web,feature-parity,download-provenance}-2026-10-13.md` and the matching publication receipt when present. Training, stored records, package identity and current progression were not changed.
+
+Important newly confirmed gap: last actual Android installer is the Oct 9 Chicago-time test artifact from run `38007809566`, source `9cdcec081bee3525838ac334da1bb48de6690f13` on `audit/2026-10-08-quality`. It uses `com.ghinz32.movefield` with different native encryption/database/transfer formats. Current source uses the `.prototype` identity. Merely changing the package ID would strand old records. The matching historical test certificate exists in the current Expo template, but a preservation-first storage reconciliation and old-APK upgrade test remain necessary. Do not describe source ZIP/Hermes updates as installed-phone updates, rerun old jobs as if they build current source, or suggest uninstalling the old app before verified recovery. The exact user-installed build is still unconfirmed.
+
+Normal source and existing `/review/` and `/grizzly/` preview pushes remain authorized. Preserve original Pages root and older compiled chunks. Source/workspace Git metadata and dependency symlinks at the older checkout disappeared between turns, so this clean clone is authoritative. Next native milestone should reconcile the installed APK lineage and data-preserving update before further appearance features. Keep existing comprehensive task-register gates open.
+
+---
+
 # Current checkpoint · full Movefield and Grizzly audit · 13 October 2026
 
 Continue in `codex/full-app-audit-2026-10-13`, checkout `/workspace/scratch/4b7d521a9744/movefield`, starting from remote `00559e36850233c54adcfaa95ca4f5c13a0aa93d`. Both Movefield and Grizzly are explicitly in scope. The user authorizes normal source and existing preview pushes. The latest audit supersedes older claims that no managed browser is available: this session uses the supported cloud browser for direct published-site sample interactions, with no local preview server.

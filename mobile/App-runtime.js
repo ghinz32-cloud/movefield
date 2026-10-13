@@ -102,10 +102,11 @@ function Pill({ label, selected, onPress }) {
         })
     });
 }
-function Card({ children, dark = false, grow = false }) {
+function Card({ children, dark = false, grow = false, onLayout }) {
     var styles = (0, _srcAppearance.useThemedStyles)(baseStyles), { colors: COLORS, reduceMotion } = (0, _srcAppearance.useNativeAppearance)();
     return /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
         style: [styles.card, dark && styles.darkCard, grow && styles.flex],
+        onLayout,
         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcBearDecoration.NativeBearDecoration, {}), children]
     });
 }
@@ -428,11 +429,27 @@ function TrainingApp() {
     var storeRef = (0, _react.useRef)(null);
     var [savingAction, setSavingAction] = (0, _react.useState)(false);
     var [focusedExercise, renderFocus] = (0, _react.useState)(null);
-    var focusRef = (0, _react.useRef)(null);
+    var focusRef = (0, _react.useRef)(null), workoutScrollPending = (0, _react.useRef)(false), workoutSectionY = (0, _react.useRef)(0);
     var setFocusedExercise = id => {
+        if (focusRef.current !== id) workoutScrollPending.current = !!stateRef.current?.active;
         focusRef.current = id;
         renderFocus(id);
     };
+    var revealWorkoutSection = () => {
+        if (!workoutScrollPending.current) return;
+        workoutScrollPending.current = false;
+        todayScroll.current?.scrollTo({y:loggerPosition.current + workoutSectionY.current,animated:!appearance.reduceMotion});
+    };
+    var scrollToWorkoutSection = event => {
+        workoutSectionY.current = event.nativeEvent.layout.y;
+        if (workoutScrollPending.current) requestAnimationFrame(revealWorkoutSection);
+    };
+    (0, _react.useEffect)(() => {
+        if (!workoutScrollPending.current || !state?.active) return;
+        // Focus is the trigger, not a timer tick or set-field edit. Cached layout also covers equal-height cards.
+        var frame = requestAnimationFrame(revealWorkoutSection);
+        return () => cancelAnimationFrame(frame);
+    }, [focusedExercise, state?.active?.id]);
     var createStore = initial => (0, _srcSharedDurableState.createDurableState)({
         initial,
         validate: next => {
@@ -845,12 +862,15 @@ function TrainingApp() {
         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Heading, {
                 eyebrow: (0, _srcSharedTraining.niceDate)((0, _srcSharedTraining.day)()).toUpperCase(),
                 title: "Today",
-                detail: "Your workout, calendar and saved progress."
+                detail: undefined
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcTodayHero.NativeTodayHero, {
                 state: state,
                 sample: sampleMode,
                 busy: savingAction,
-                onStart: target => void persistChange(s => (0, _srcMobileEngine.startWorkout)(s, target.id, sampleRef.current)),
+                onStart: target => {
+                    workoutScrollPending.current = true;
+                    void persistChange(s => (0, _srcMobileEngine.startWorkout)(s, target.id, sampleRef.current)).then(saved => { if(saved) setFocusedExercise(null); else workoutScrollPending.current = false; });
+                },
                 onPreview: target => {
                     setCalendarDate(target.date);
                     setCalendarOpen(true);
@@ -1071,19 +1091,7 @@ function TrainingApp() {
                 style: {
                     gap: 14
                 },
-                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                        dark: true,
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.darkEyebrow,
-                                children: "WORKOUT IN PROGRESS"
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.darkTitle,
-                                children: (0, _srcSharedPresentation.workoutName)(active, state)
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                style: styles.darkBody,
-                                children: [active.sets.filter(x => x.done).length, " / ", active.sets.length, " sets saved \xB7 enter what you completed"]
-                            })]
-                    }), active && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                children: [active && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.sectionTitle,
                                 children: remaining === null ? 'Rest timer' : remaining === 0 ? 'Rest is over. Start when ready.' : `Rest ${state.restTimer?.pausedSeconds !== null ? 'paused · ' : ''}${Math.floor(remaining / 60)}:${String(remaining % 60).padStart(2, '0')}`
@@ -1153,6 +1161,7 @@ function TrainingApp() {
                                 children: [i + 1, ". ", step.label, " \xB7 ", step.seconds / 60, " min"]
                             }, i))]
                     }), !focusedExercise && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                        onLayout: scrollToWorkoutSection,
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.sectionTitle,
                                 children: active.sets.every(x => x.done) ? 'Workout complete' : 'Exercises in this workout'
@@ -1172,6 +1181,7 @@ function TrainingApp() {
                         var e = (0, _srcSharedTraining.exFor)(target.exerciseId, state.custom);
                         var tracked = (0, _srcSharedTraining.isLoadTracked)(e);
                         return /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                            onLayout: scrollToWorkoutSection,
                             children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
                                     style: styles.row,
                                     children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
@@ -1424,22 +1434,24 @@ function TrainingApp() {
     var planView = tab === 'Plan' && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.ScrollView, {
         contentContainerStyle: styles.content,
         keyboardShouldPersistTaps: "handled",
-        children: [planSection === 'saved' && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                secondary: true,
-                label: "Import a saved plan",
-                disabled: !!active,
-                onPress: () => setPlanImportOpen(true)
-            }), planSection === 'saved' && state.plan && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                secondary: true,
-                label: "Share plan (plaintext)",
-                onPress: () => {
-                    var snapshot = stateRef.current;
-                    void (0, _srcFileTransfer.shareJsonFile)(JSON.stringify(snapshot.plan), 'plaintext-plan', () => !resettingRef.current && stateRef.current === snapshot).catch(e => setError(e.message));
-                }
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Heading, {
-                eyebrow: "FIND YOUR FOCUS",
-                title: "Find your next plan.",
-                detail: "See the workouts, equipment and experience needed before choosing a plan."
+        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Heading, {
+                eyebrow: "YOUR TRAINING",
+                title: "Plans",
+            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
+                style: styles.tools,
+                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                    secondary: true, label: "Build plan", disabled: !!active,
+                    onPress: () => { setSourceChoice(undefined); setPersonalSetup(true); }
+                }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                    secondary: true, label: "Import plan", disabled: !!active,
+                    onPress: () => setPlanImportOpen(true)
+                }), state.plan && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                    secondary: true, label: "Export plan",
+                    onPress: () => {
+                        var snapshot = stateRef.current;
+                        void (0, _srcFileTransfer.shareJsonFile)(JSON.stringify(snapshot.plan), 'plaintext-plan', () => !resettingRef.current && stateRef.current === snapshot).catch(e => setError(e.message));
+                    }
+                })]
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
                 style: [styles.row, {
                         flexWrap: 'wrap'
@@ -1869,8 +1881,8 @@ function TrainingApp() {
                 style: styles.brandBar,
                 children: [_srcSharedBrand.isGrizzly && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
                         style: {
-                            width: 64,
-                            height: 64,
+                            width: 40,
+                            height: 40,
                             overflow: 'hidden',
                             backgroundColor: '#000',
                             borderRadius: 10,
@@ -1880,11 +1892,11 @@ function TrainingApp() {
                             source: __dependency49.default,
                             resizeMode: "contain",
                             style: {
-                                width: 117,
-                                height: 55,
+                                width: 74,
+                                height: 35,
                                 position: 'absolute',
-                                left: -26.5,
-                                top: 4.5
+                                left: -17,
+                                top: 2.5
                             },
                             accessible: false
                         })
@@ -1904,7 +1916,7 @@ function TrainingApp() {
                         style: styles.demoBadge,
                         children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                             style: styles.demoText,
-                            children: "LOCAL DEMO"
+                            children: sampleMode ? "SAMPLE" : "ON DEVICE"
                         })
                     })]
             }), error ? /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
@@ -1919,13 +1931,13 @@ function TrainingApp() {
                         children: "Tap to dismiss"
                     })]
             }) : null, /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                style: styles.row,
+                style: styles.profileBar,
                 children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.small,
-                        children: sampleMode ? 'SAMPLE TRAINING · synthetic records' : 'PRIVATE PROFILE · encrypted on this device'
+                        style: [styles.small, styles.flex],
+                        children: sampleMode ? 'Sample profile · synthetic' : 'My profile · encrypted'
                     }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
                         secondary: true,
-                        label: sampleMode ? 'Return to my profile' : 'Explore sample training',
+                        label: sampleMode ? 'My profile' : 'Try sample',
                         onPress: () => void switchDataset(!sampleMode)
                     })]
             }), resetting && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
@@ -1935,18 +1947,17 @@ function TrainingApp() {
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.KeyboardAvoidingView, {
                 style: styles.flex,
                 behavior: undefined,
-                children: tab === 'Today' ? todayView : tab === 'Plan' ? planView : tab === 'Library' ? libraryView : tab === 'Settings' ? /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
-                    children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcSettings.NativeSettings, {
-                            reminderMessage: workoutReminderMessage,
-                            children: !sampleMode && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcCloudAccount.NativeCloudAccount, {
+                children: tab === 'Today' ? todayView : tab === 'Plan' ? planView : tab === 'Library' ? libraryView : tab === 'Settings' ? /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcSettings.NativeSettings, {
+                    reminderMessage: workoutReminderMessage,
+                    children: !sampleMode && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcCloudAccount.NativeCloudAccount, {
                                 state: state,
                                 onRestore: (next, expected) => persistChange(s => {
                                     if (s !== expected || s.active || sampleRef.current)
                                         throw Error('The profile changed. Review the cloud backup again.');
                                     return next;
                                 })
-                            })
-                        }), !sampleMode && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                            }),
+                    footer: !sampleMode && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
                             children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                     style: styles.sectionTitle,
                                     children: "Backup and recovery"
@@ -2078,12 +2089,13 @@ function TrainingApp() {
                                             children: "Finish or discard the active workout before replacing the private profile."
                                         })]
                                 })]
-                        })]
+                        })
                 }) : historyView
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
                 disabled: !saveStatus.startsWith('Save failed'),
                 accessibilityRole: "button",
                 accessibilityLabel: "Retry saving on this device",
+                style: saveStatus.startsWith('Save failed') ? { minHeight: 48, justifyContent: 'center' } : undefined,
                 onPress: async () => await persistChange(s => ({
                     ...s
                 })),
@@ -2140,8 +2152,10 @@ function TrainingApp() {
                     onStart: async (id) => {
                         var saved = await persistChange(v => (0, _srcMobileEngine.startWorkout)(v, id, sampleRef.current));
                         if (saved) {
+                            workoutScrollPending.current = true;
                             setCalendarOpen(false);
                             setTab('Today');
+                            setFocusedExercise(null);
                         }
                         return saved;
                     },
@@ -2712,13 +2726,13 @@ var baseStyles = _reactNative.StyleSheet.create({
         flex: 1
     },
     content: {
-        padding: 22,
-        gap: 16,
-        paddingBottom: 34
+        padding: 14,
+        gap: 10,
+        paddingBottom: 20
     },
     brandBar: {
-        paddingHorizontal: 22,
-        paddingVertical: 14,
+        paddingHorizontal: 14,
+        paddingVertical: 8,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -2750,9 +2764,9 @@ var baseStyles = _reactNative.StyleSheet.create({
         fontWeight: '800'
     },
     heading: {
-        gap: 9,
-        marginTop: 7,
-        marginBottom: 2
+        gap: 3,
+        marginTop: 0,
+        marginBottom: 0
     },
     eyebrow: {
         color: COLORS.green,
@@ -2761,8 +2775,8 @@ var baseStyles = _reactNative.StyleSheet.create({
         fontWeight: '800'
     },
     title: {
-        fontSize: 34,
-        lineHeight: 39,
+        fontSize: 28,
+        lineHeight: 33,
         color: COLORS.ink,
         fontWeight: '800',
         letterSpacing: -1.1
@@ -2770,7 +2784,7 @@ var baseStyles = _reactNative.StyleSheet.create({
     body: {
         color: COLORS.ink,
         fontSize: 16,
-        lineHeight: 24
+        lineHeight: 22
     },
     small: {
         color: COLORS.muted,
@@ -2785,16 +2799,16 @@ var baseStyles = _reactNative.StyleSheet.create({
     },
     card: {
         backgroundColor: COLORS.white,
-        padding: 20,
-        gap: 12,
-        borderRadius: 18,
+        padding: 14,
+        gap: 8,
+        borderRadius: 12,
         borderWidth: 1,
         borderColor: COLORS.line
     },
     darkCard: {
         backgroundColor: COLORS.green,
         borderColor: COLORS.green,
-        padding: 24
+        padding: 14
     },
     darkEyebrow: {
         color: '#D4E3C6',
@@ -2803,8 +2817,8 @@ var baseStyles = _reactNative.StyleSheet.create({
         fontWeight: '800'
     },
     darkTitle: {
-        fontSize: 29,
-        lineHeight: 34,
+        fontSize: 25,
+        lineHeight: 30,
         fontWeight: '800',
         color: COLORS.onAccent,
         letterSpacing: -0.7
@@ -2822,9 +2836,9 @@ var baseStyles = _reactNative.StyleSheet.create({
     },
     button: {
         backgroundColor: COLORS.green,
-        paddingHorizontal: 18,
-        paddingVertical: 15,
-        minHeight: 50,
+        paddingHorizontal: 12,
+        paddingVertical: 10,
+        minHeight: 48,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 12
@@ -2842,13 +2856,26 @@ var baseStyles = _reactNative.StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        gap: 12
+        gap: 8
+    },
+    tools: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        gap: 8
+    },
+    profileBar: {
+        paddingHorizontal: 14,
+        paddingVertical: 4,
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8
     },
     exerciseRow: {
-        paddingVertical: 18,
+        paddingVertical: 10,
+        minHeight: 48,
         paddingHorizontal: 4,
         flexDirection: 'row',
-        gap: 14,
+        gap: 8,
         alignItems: 'center',
         borderBottomWidth: 1,
         borderBottomColor: COLORS.line
@@ -2858,7 +2885,7 @@ var baseStyles = _reactNative.StyleSheet.create({
         fontWeight: '700',
         lineHeight: 22,
         color: COLORS.ink,
-        marginBottom: 4
+        marginBottom: 2
     },
     link: {
         color: COLORS.green,
@@ -2877,9 +2904,9 @@ var baseStyles = _reactNative.StyleSheet.create({
         fontWeight: '700'
     },
     input: {
-        paddingHorizontal: 16,
-        paddingVertical: 14,
-        minHeight: 49,
+        paddingHorizontal: 12,
+        paddingVertical: 10,
+        minHeight: 48,
         color: COLORS.ink,
         backgroundColor: COLORS.white,
         borderWidth: 1,
@@ -2991,16 +3018,16 @@ var baseStyles = _reactNative.StyleSheet.create({
         color: COLORS.muted,
         fontSize: 12,
         textAlign: 'center',
-        paddingVertical: 14
+        paddingVertical: 4
     },
     modalHeader: {
-        padding: 20,
+        padding: 12,
         borderBottomWidth: 1,
         borderBottomColor: COLORS.line,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        gap: 20
+        gap: 12
     },
     modalTitle: {
         flex: 1,

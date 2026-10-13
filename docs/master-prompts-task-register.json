@@ -5,14 +5,14 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Full Movefield and Grizzly engineering/evidence audit: production plan-loading crash and native setup/preview defects fixed; 154 complete-plan lifecycle and production bundle gates added. Publication receipt docs/full-app-audit-publication-2026-10-13.json is authoritative. Original Pages root preserved.",
-  "completion_claim": "Broad cross-domain audit and concrete fixes; this does not close every product requirement, installed-device/signing, upstream advisory or connected-service gate.",
+  "active_checkpoint": "Compact UI and feature discoverability repair for both brands after user-reported regression. Native Settings scrolling, visible Plan tools, inline web RIR and compact layout are corrected. See docs/ui-density-publication-2026-10-13.json when present. Current native source is not an update for the old installed APK.",
+  "completion_claim": "Focused layout/control fixes with relevant checks and current source exports; no installed APK update or full product/device acceptance claim.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
     "Saved environment network additions need activation for full-text research and repo.reactnative.dev Android artifact download. Current proxy denials are not bypassed.",
     "Mac/iOS toolchain, owner signing/update configuration and installed physical Android/iPhone device matrix; broad coverage target does not certify old/unpatched devices.",
     "Independent security/crypto/privacy/science/rights reviews and compatible native upstream advisory remediation. Remaining code is separately retained below.",
-    "GitHub API build metadata remains denied; actual Pages delivery is independently confirmed by live manifest/asset/browser evidence. Remaining native/research domains need activation."
+    "Current source and last actual Android test APK come from different app identities, encrypted database formats and branches. A preservation-first migration or retained compatible storage must pass old-APK upgrade checks before publishing an in-place phone update. GitHub build/artifact metadata was available and inspected on October 13."
   ],
   "requirements": [
     {
@@ -1925,5 +1925,14 @@
     "branch": "codex/full-app-audit-2026-10-13",
     "validation": "docs/full-app-audit-validation-2026-10-13.json",
     "publication": "docs/full-app-audit-publication-2026-10-13.json"
+  },
+  "latest_ui_repair": {
+    "branch": "codex/compact-ui-2026-10-13",
+    "base": "7b489c929d7188e8cd8354116bc3ff1abfe84fb3",
+    "native": "docs/ui-density-native-2026-10-13.md",
+    "web": "docs/ui-density-web-2026-10-13.md",
+    "feature_parity": "docs/ui-density-feature-parity-2026-10-13.md",
+    "download_provenance": "docs/ui-density-download-provenance-2026-10-13.md",
+    "installed_android_update": "Open: reconcile old com.ghinz32.movefield APK storage/transfer format with current prototype before any in-place update; preserve records and matching debug certificate."
   }
 }

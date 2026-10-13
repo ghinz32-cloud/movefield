@@ -1,0 +1,30 @@
+// Source/handler regression for native layout composition. Not a rendered-device test.
+const assert=require('node:assert/strict'),fs=require('node:fs'),ts=require('typescript');
+const raw=fs.readFileSync('mobile/App-runtime.js','utf8'),source=ts.createSourceFile('App-runtime.js',raw,ts.ScriptTarget.Latest,true,ts.ScriptKind.JS);
+const nodes=[];function visit(node){nodes.push(node);ts.forEachChild(node,visit)}visit(source);
+const variable=name=>nodes.find(node=>ts.isVariableDeclaration(node)&&node.name.getText(source)===name)?.initializer;
+const properties=node=>new Map(node.properties.map(item=>[item.name.getText(source),item.initializer]));
+const settings=nodes.find(node=>ts.isCallExpression(node)&&node.arguments[0]?.getText(source)==='_srcSettings.NativeSettings');
+assert.ok(settings,'Settings remains a reachable screen');
+const settingProps=properties(settings.arguments[1]);
+assert.match(settingProps.get('children').getText(source),/NativeCloudAccount/,'account remains in Settings scroll content');
+assert.match(settingProps.get('footer').getText(source),/Export encrypted backup/,'backup belongs to Settings scroll content');
+assert.match(settingProps.get('footer').getText(source),/Preview backup restore/,'restore remains available');
+const settingsSource=fs.readFileSync('mobile/src/settings.tsx','utf8');
+assert.ok(settingsSource.indexOf('{footer}')>settingsSource.indexOf('<ScrollView')&&settingsSource.indexOf('{footer}')<settingsSource.indexOf('</ScrollView>'),'backup footer must live inside the scroll surface');
+const plan=variable('planView').getText(source);
+for(const label of ['Build plan','Import plan','Export plan','Saved & previous'])assert.ok(plan.includes(label),'Plan keeps '+label+' discoverable');
+assert.ok(!plan.includes("planSection === 'saved' && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button"),'toolbar actions cannot depend on Saved subtab');
+const style=variable('baseStyles').arguments[0].getText(source),styles=new Function('COLORS','return ('+style+')')({});
+for(const key of ['button','pill','exerciseRow','numberInput','check','tab'])assert.ok(styles[key].minHeight>=44,key+' keeps a usable minimum touch target');
+
+const calls=[],frames=[],focusRef={current:null},pending={current:false},stateRef={current:{active:{id:'active'}}},position={current:100},section={current:40};let rendered;
+const env={focusRef,workoutScrollPending:pending,stateRef,renderFocus:id=>{rendered=id},todayScroll:{current:{scrollTo:options=>calls.push(options)}},loggerPosition:position,workoutSectionY:section,appearance:{reduceMotion:false},requestAnimationFrame:fn=>{frames.push(fn);return frames.length}};
+const create=(name,extras={})=>{const values={...env,...extras};return new Function(...Object.keys(values),'return ('+variable(name).getText(source)+')')(...Object.values(values))};
+const setFocus=create('setFocusedExercise'),reveal=create('revealWorkoutSection'),layout=create('scrollToWorkoutSection',{revealWorkoutSection:reveal});
+setFocus('bench');assert.equal(rendered,'bench');assert.equal(pending.current,true);layout({nativeEvent:{layout:{y:60}}});frames.splice(0).forEach(fn=>fn());assert.equal(calls.at(-1).y,160);
+setFocus('bench');assert.equal(pending.current,false);layout({nativeEvent:{layout:{y:60}}});assert.equal(frames.length,0,'same-exercise editing does not request a new scroll');
+setFocus('row');reveal();assert.equal(calls.length,2,'same-height focus transition can reveal using cached layout');assert.equal(calls.at(-1).y,160);
+env.appearance.reduceMotion=true;setFocus(null);reveal();assert.equal(calls.at(-1).animated,false,'reduced motion keeps section navigation immediate');
+assert.match(raw,/\[focusedExercise, state\?\.active\?\.id\]/,'focus effect uses workout/exercise identity, not timers or field values');
+console.log('PASS native density structure: settings/account/backup share one scroll surface; Plan tools remain visible; touch targets preserved; focus scroll uses cached layout without moving during same-exercise edits. No rendered-device claim.');
