@@ -1,10 +1,10 @@
 /* Local-only app shell; stores code/guides, never decrypted records or API responses. */
-const REVISION = "7df2a4c1ac5c92f7a560";
-const BASE = "/movefield/grizzly/";
-const STATIC_REVIEW = true;
-const ASSETS = ["/movefield/grizzly/assets/cloud-account-CezSz5cG.js","/movefield/grizzly/assets/index-7WXWUBoA.css","/movefield/grizzly/assets/index-B1NQ8cI2.js","/movefield/grizzly/assets/progress-dashboard-rD40_Ks8.js"];
-const CACHE_PREFIX = "grizzly-fitness-shell-";
-const EXTRA_STATIC = ["fonts/inter-variable.ttf","fonts/barlow-condensed-semibold.ttf","fonts/oswald-heading.ttf","fonts/bitter-heading.ttf","fonts/rajdhani-heading.ttf","fonts/newrocker-heading.ttf","fonts/blackopsone-heading.ttf","fonts/rubikdirt-heading.ttf","fonts/metal-mania-regular.ttf","fonts/bungee-regular.ttf","fonts/sairastencilone-heading.ttf","fonts/stardosstencil-heading.ttf","fonts/pirataone-heading.ttf","fonts/eater-heading.ttf","fonts/nosifer-heading.ttf","brand/grizzly-fitness-logo.jpg","grizzly-favicon.svg","grizzly-paw.svg","brand/wilderness/grizzly-hero-v1.jpg","brand/wilderness/grizzly-forest-v1.jpg"];
+const REVISION = 'DEVELOPMENT_DISABLED';
+const BASE = '/';
+const STATIC_REVIEW = false;
+const ASSETS = /* BUILD_ASSETS */ [];
+const CACHE_PREFIX = 'movefield-shell-';
+const EXTRA_STATIC = /* BRAND_ASSETS */ [];
 const CACHE = CACHE_PREFIX + REVISION;
 const STATIC = new Set([...ASSETS, ...['exercise-guides.json', 'exercise-content.json', 'fonts/inter-variable.ttf', 'fonts/barlow-condensed-semibold.ttf',...EXTRA_STATIC].map(path=>BASE+path)]);
 async function safeShell(response) { if(!response.ok||!response.headers.get('Content-Type')?.includes('text/html')||response.headers.has('Set-Cookie'))return false;return STATIC_REVIEW?(await response.clone().text()).includes('<meta name="movefield-static-review" content="true">'):response.headers.get('X-Movefield-Offline-Shell') === 'local-v1'; }
