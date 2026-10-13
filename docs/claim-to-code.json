@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checked_at": "2026-10-11",
+  "checked_at": "2026-10-13",
   "qualification": "Executable map of current important rules; source review and full claim coverage remain incomplete.",
   "rules": [
     {
@@ -88,6 +88,60 @@
         "scripts/check-program-depth.cjs"
       ],
       "claim": "Combined time and recovery are checked. This is not proof that every add-on combination achieves the intended sport outcome."
+    },
+    {
+      "id": "goal-evidence-v1",
+      "title": "Goal-specific research and workout choices",
+      "classification": "Evidence-informed principles; exact original recipes are product choices",
+      "sources": [
+        "SPLIT-FULLBODY",
+        "PERIODIZATION",
+        "AUTOREGULATION",
+        "EQUIPMENT-SPECIFICITY",
+        "RUNNING-STRENGTH",
+        "ENDURANCE-DISTRIBUTION",
+        "RUNNING-TID-TRIAL",
+        "PLYOMETRIC-REVIEW",
+        "ACSM-2026",
+        "RT-PRESCRIPTION",
+        "RT-DOSE",
+        "CONCURRENT"
+      ],
+      "implementation": "lib/goal-evidence.ts#goalResearch",
+      "tests": [
+        "scripts/check-researched-families.cjs",
+        "scripts/review-program-science.cjs"
+      ],
+      "claim": "Each goal has distinct generated structures with relevant support and scope limits. Identical repeated sessions or extra easy walks do not create another unique structure. Evidence does not validate exact app combinations."
+    },
+    {
+      "id": "timed-run-stages-v2",
+      "title": "Explicit easy / controlled moderate running prescriptions",
+      "classification": "Product prescription and readiness policy informed by endurance research",
+      "sources": [
+        "WHO-ACTIVITY",
+        "ENDURANCE-DISTRIBUTION",
+        "RUNNING-TID-TRIAL"
+      ],
+      "implementation": "lib/training-runtime.js#buildCatalogPlan",
+      "tests": [
+        "scripts/check-researched-families.cjs"
+      ],
+      "claim": "Timed bouts are explicit; one controlled moderate day requires recent running readiness. Two-week longer-jogging stages wait for comfortable completed work. Fixed doses and recent-base cutoffs are app choices, not laboratory zones or universal percentages."
+    },
+    {
+      "id": "landing-practice-v2",
+      "title": "Fixed small landing practice in sport preparation",
+      "classification": "Product skill-practice dose within broad power principles",
+      "sources": [
+        "ACSM-2026",
+        "PLYOMETRIC-REVIEW"
+      ],
+      "implementation": "lib/training-focus.ts#applyTrainingFocus",
+      "tests": [
+        "scripts/check-researched-families.cjs"
+      ],
+      "claim": "Existing landing practice counts before an optional jump add-on. Six small reset jumps stay fixed, have recovery/readiness checks and do not use RIR or automatic load/rep increases. No tested athletic-performance or injury-prevention dose is claimed."
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checked_at": "2026-10-12",
+  "checked_at": "2026-10-13",
   "scope": "Historical inventories/access probes are preserved. Current reviews distinguish creator instructions, scientific abstracts, selected primary full-text sections and exact-routine qualification. Access varies by source; a successful connector retrieval does not certify a numerical app policy.",
   "archive_inventory": {
     "linked_sources": 15,
@@ -11,7 +11,7 @@
   "sources": [
     {
       "id": "TIME-EFFICIENT",
-      "title": "Iversen et al. \u00b7 Time-efficient strength training",
+      "title": "Iversen et al. · Time-efficient strength training",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -49,7 +49,7 @@
     },
     {
       "id": "REP-PROGRESSION",
-      "title": "Plotkin et al. \u00b7 Repetition versus load progression",
+      "title": "Plotkin et al. · Repetition versus load progression",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -90,7 +90,7 @@
     },
     {
       "id": "SEX-RESPONSE",
-      "title": "Roberts et al. \u00b7 Sex differences in resistance training",
+      "title": "Roberts et al. · Sex differences in resistance training",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -129,7 +129,7 @@
     },
     {
       "id": "OLDER-ADULT",
-      "title": "NSCA \u00b7 Resistance training for older adults",
+      "title": "NSCA · Resistance training for older adults",
       "authors": [
         "Maren S. Fragala",
         "Eduardo L. Cadore",
@@ -153,8 +153,8 @@
       "quantitative_findings": [],
       "limitations": [
         "Healthy adult options are not treatment for frailty, chronic disease or unstable medical conditions.",
-        "The source\u2019s clinical contraindications are not turned into diagnosis or automatic clearance by the app.",
-        "Six-day split distribution is an app choice; the statement describes 2\u20133 weekly resistance-training sessions and does not test these exact app splits."
+        "The source’s clinical contraindications are not turned into diagnosis or automatic clearance by the app.",
+        "Six-day split distribution is an app choice; the statement describes 2–3 weekly resistance-training sessions and does not test these exact app splits."
       ],
       "date_checked": "2026-10-12",
       "access": "Official full PDF retrieved and text extracted on 2026-10-12",
@@ -178,7 +178,7 @@
     },
     {
       "id": "AAP-2020",
-      "title": "AAP \u00b7 Resistance Training for Children and Adolescents",
+      "title": "AAP · Resistance Training for Children and Adolescents",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -216,7 +216,7 @@
     },
     {
       "id": "NSCA-YOUTH",
-      "title": "NSCA \u00b7 Youth resistance training position statement",
+      "title": "NSCA · Youth resistance training position statement",
       "authors": [
         "Avery D. Faigenbaum",
         "William J. Kraemer",
@@ -240,13 +240,13 @@
       "quantitative_findings": [],
       "limitations": [
         "A 2009 position statement; newer AAP/IOC sources could not be retrieved in this session.",
-        "The app uses conservative practice sets and supervisor selection; the document does not validate the app\u2019s precise progression algorithm."
+        "The app uses conservative practice sets and supervisor selection; the document does not validate the app’s precise progression algorithm."
       ],
       "date_checked": "2026-10-12",
       "access": "Official full PDF retrieved and text extracted on 2026-10-12",
       "review_depth": "Selected sections of the official full-text statement reviewed.",
       "existing_summary": "A broad strength foundation, dynamic warm-up, nonconsecutive training, and appropriate rest.",
-      "claim_supported": "Qualified supervision; technique first; dynamic warm-up; balanced upper/lower/core work; start with 2\u20133 nonconsecutive strength days.",
+      "claim_supported": "Qualified supervision; technique first; dynamic warm-up; balanced upper/lower/core work; start with 2–3 nonconsecutive strength days.",
       "applicability": "Youth daily-habit options use two supervised strength sessions plus easy walking. Adult six-day lifting splits and automatic adult load increases remain unavailable.",
       "rule_ids": [
         "youth-path-v1"
@@ -266,11 +266,25 @@
     },
     {
       "id": "ACSM-2026",
-      "title": "ACSM \u00b7 Resistance Training Prescription, 2026",
-      "authors": [],
-      "authors_verification": "pending original metadata",
+      "title": "ACSM · Resistance Training Prescription, 2026",
+      "authors": [
+        "Brad S. Currier",
+        "Alysha C. D’Souza",
+        "M. F. Fiatarone Singh",
+        "Caroline Lowisz",
+        "Eric S. Rawson",
+        "B. Schoenfeld",
+        "Abbie E. Smith-Ryan",
+        "Jeremy P. Steen",
+        "Gwendolyn A. Thomas",
+        "N. Triplett",
+        "Tyrone A. Washington",
+        "Timothy J. Werner",
+        "Stuart M. Phillips"
+      ],
+      "authors_verification": "Consensus-fetched original metadata; abbreviated names retained without guessing",
       "year": 2026,
-      "doi": null,
+      "doi": "10.1249/MSS.0000000000003897",
       "pmid": null,
       "canonical_link": "https://acsm.org/resistance-training-guidelines-update-2026/",
       "source_type": "Official public summary of a position stand",
@@ -282,7 +296,7 @@
       "quantitative_findings": [
         {
           "claim": "Strength emphasis",
-          "public_guidance": "Heavier resistance, about 80% 1RM; 2\u20133 sets per exercise.",
+          "public_guidance": "Heavier resistance, about 80% 1RM; 2–3 sets per exercise.",
           "use": "No percentage-based starting loads or 1RM tests are assigned."
         },
         {
@@ -302,11 +316,14 @@
       ],
       "date_checked": "2026-10-12",
       "access": "Official ACSM 2026 public guidance retrieved; publisher full position stand returned HTTP 402. No paywall bypass.",
-      "review_depth": "Official public summary and fetched research abstract reviewed; full position stand not reviewed.",
+      "review_depth": "Official public summary and Consensus-fetched original research abstract reviewed. Complete position-stand methods/figures not qualified.",
       "existing_summary": "Adult guidance distinguishes strength, hypertrophy and power outcomes. Consistent progressive training matters; failure is not essential.",
       "claim_supported": "Regular individualized training; major muscle groups at least twice weekly; goal-specific strength, hypertrophy and power emphasis; bands/bodyweight/home can be effective.",
       "applicability": "Adult original templates. Six total training days with muscle groups repeated twice is an app distribution choice; seven-day choices include easy activity, not seven hard sessions.",
-      "rule_ids": [],
+      "rule_ids": [
+        "goal-evidence-v1",
+        "landing-practice-v2"
+      ],
       "conflicts": [],
       "corrections_retractions": "not checked",
       "status": "Public principles reviewed; exact app dosing remains an implementation decision",
@@ -322,7 +339,7 @@
     },
     {
       "id": "ACSM-2009",
-      "title": "ACSM \u00b7 Historical progression statement (2009)",
+      "title": "ACSM · Historical progression statement (2009)",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": "2009",
@@ -361,7 +378,7 @@
     },
     {
       "id": "IOC-YOUTH",
-      "title": "IOC \u00b7 Youth athletic development consensus",
+      "title": "IOC · Youth athletic development consensus",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -400,7 +417,7 @@
     },
     {
       "id": "PL-EXPERT",
-      "title": "Powerlifting program architecture \u00b7 Barbell Medicine",
+      "title": "Powerlifting program architecture · Barbell Medicine",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -439,7 +456,7 @@
     },
     {
       "id": "PB-EXPERT",
-      "title": "Powerbuilding architecture \u00b7 Barbell Medicine",
+      "title": "Powerbuilding architecture · Barbell Medicine",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -478,7 +495,7 @@
     },
     {
       "id": "HYP-EXPERT",
-      "title": "Hypertrophy program examples \u00b7 Jeff Nippard",
+      "title": "Hypertrophy program examples · Jeff Nippard",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -517,7 +534,7 @@
     },
     {
       "id": "CONCURRENT",
-      "title": "Concurrent training \u00b7 systematic review and meta-analysis",
+      "title": "Concurrent training · systematic review and meta-analysis",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -541,7 +558,8 @@
       "claim_supported": null,
       "applicability": "pending source review",
       "rule_ids": [
-        "training-focus-v1"
+        "training-focus-v1",
+        "goal-evidence-v1"
       ],
       "conflicts": [],
       "corrections_retractions": "not checked",
@@ -555,7 +573,7 @@
     },
     {
       "id": "EXERCISE-DATA",
-      "title": "Exercise reference catalog \u00b7 public-domain dataset",
+      "title": "Exercise reference catalog · public-domain dataset",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -588,13 +606,13 @@
         "status": 200,
         "bytes": 332235,
         "sha256": "938c37daf4e675406504332cf174355fc83462ea150956adc38a54efdea83c1d",
-        "title": "GitHub - yuhonas/free-exercise-db: Open Public Domain Exercise Dataset in JSON format, over 800 exercises with a browsable public searchable frontend \u00b7 GitHub",
+        "title": "GitHub - yuhonas/free-exercise-db: Open Public Domain Exercise Dataset in JSON format, over 800 exercises with a browsable public searchable frontend · GitHub",
         "checked_at": "2026-10-12"
       }
     },
     {
       "id": "NHS-C25K",
-      "title": "NHS \u00b7 Couch to 5K",
+      "title": "NHS · Couch to 5K",
       "authors": [],
       "authors_verification": "pending original metadata",
       "year": null,
@@ -610,7 +628,7 @@
       "quantitative_findings": [],
       "limitations": [
         "Thirty running minutes do not guarantee a 5 km distance.",
-        "The separately labeled short walk\u2013run and hybrid introductions are app-authored and do not reproduce the NHS nine-stage plan.",
+        "The separately labeled short walk–run and hybrid introductions are app-authored and do not reproduce the NHS nine-stage plan.",
         "The app adds a scheduling buffer, not additional mandatory running work."
       ],
       "date_checked": "2026-10-12",
@@ -637,33 +655,37 @@
     },
     {
       "id": "WHO-ACTIVITY",
-      "title": "WHO \u00b7 Adult physical activity recommendations",
+      "title": "WHO · Adult physical activity recommendations",
       "canonical_link": "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
       "source_type": "Official public-health summary",
       "authors": [],
       "doi": null,
       "year": null,
       "limitations": [],
-      "rule_ids": [],
+      "rule_ids": [
+        "timed-run-stages-v2"
+      ],
       "review_depth": "Official public adult recommendations reviewed; the full guideline evidence review was not accessed. Exact running schedules are app choices.",
       "date_checked": "2026-10-12"
     },
     {
       "id": "RT-DOSE",
-      "title": "Pelland et al. \u00b7 Volume and frequency dose response",
+      "title": "Pelland et al. · Volume and frequency dose response",
       "canonical_link": "https://doi.org/10.1007/s40279-025-02344-w",
       "source_type": "Official public-health summary",
       "authors": [],
       "doi": null,
       "year": null,
       "limitations": [],
-      "rule_ids": [],
+      "rule_ids": [
+        "goal-evidence-v1"
+      ],
       "review_depth": "Fetched research abstract and metadata reviewed; full-paper qualification remains incomplete.",
       "date_checked": "2026-10-12"
     },
     {
       "id": "RIR-RESEARCH",
-      "title": "Robinson et al. \u00b7 Proximity to failure",
+      "title": "Robinson et al. · Proximity to failure",
       "canonical_link": "https://doi.org/10.1007/s40279-024-02069-2",
       "source_type": "Official public-health summary",
       "authors": [
@@ -687,7 +709,7 @@
     },
     {
       "id": "REST-INTERVALS",
-      "title": "Singer et al. \u00b7 Rest intervals and hypertrophy",
+      "title": "Singer et al. · Rest intervals and hypertrophy",
       "canonical_link": "https://doi.org/10.3389/fspor.2024.1429789",
       "source_type": "Official public-health summary",
       "authors": [],
@@ -700,20 +722,22 @@
     },
     {
       "id": "RT-PRESCRIPTION",
-      "title": "Currier et al. \u00b7 Resistance-training prescriptions",
+      "title": "Currier et al. · Resistance-training prescriptions",
       "canonical_link": "https://doi.org/10.1136/bjsports-2023-106807",
       "source_type": "Official public-health summary",
       "authors": [],
       "doi": null,
       "year": null,
       "limitations": [],
-      "rule_ids": [],
+      "rule_ids": [
+        "goal-evidence-v1"
+      ],
       "review_depth": "Fetched research abstract and metadata reviewed; full-paper qualification remains incomplete.",
       "date_checked": "2026-10-12"
     },
     {
       "id": "src-sl5x5-3",
-      "title": "Stronglifts 5\u00d75 \u00b7 3 days \u00b7 Mehdi / Stronglifts",
+      "title": "Stronglifts 5×5 · 3 days · Mehdi / Stronglifts",
       "canonical_link": "https://stronglifts.com/stronglifts-5x5/workout-program/",
       "source_type": "Public creator/community routine facts",
       "authors": [
@@ -734,7 +758,7 @@
     },
     {
       "id": "src-sl5x5-2",
-      "title": "Stronglifts 5\u00d75 \u00b7 2 days \u00b7 Mehdi / Stronglifts",
+      "title": "Stronglifts 5×5 · 2 days · Mehdi / Stronglifts",
       "canonical_link": "https://stronglifts.com/stronglifts-5x5/workout-program/",
       "source_type": "Public creator/community routine facts",
       "authors": [
@@ -755,7 +779,7 @@
     },
     {
       "id": "src-gzclp-3",
-      "title": "GZCLP \u00b7 3-day base \u00b7 Cody Lefever; public r/gzcl base template",
+      "title": "GZCLP · 3-day base · Cody Lefever; public r/gzcl base template",
       "canonical_link": "https://swoleateveryheight.blogspot.com/2016/02/gzcl-applications-adaptations.html",
       "source_type": "Public creator/community routine facts",
       "authors": [
@@ -790,7 +814,7 @@
     },
     {
       "id": "src-gzclp-4",
-      "title": "GZCLP \u00b7 4-day base \u00b7 Cody Lefever; public r/gzcl base template",
+      "title": "GZCLP · 4-day base · Cody Lefever; public r/gzcl base template",
       "canonical_link": "https://swoleateveryheight.blogspot.com/2016/02/gzcl-applications-adaptations.html",
       "source_type": "Public creator/community routine facts",
       "authors": [
@@ -825,7 +849,7 @@
     },
     {
       "id": "src-fitness-basic",
-      "title": "r/Fitness Basic Beginner \u00b7 barbell module \u00b7 r/Fitness / The Fitness Wiki",
+      "title": "r/Fitness Basic Beginner · barbell module · r/Fitness / The Fitness Wiki",
       "canonical_link": "https://thefitness.wiki/routines/r-fitness-basic-beginner-routine/",
       "source_type": "Public creator/community routine facts",
       "authors": [
@@ -836,7 +860,7 @@
       "limitations": [
         "A short introduction for up to three months. The source also asks for two conditioning sessions; this entry preloads its barbell module only and does not claim to deliver the full conditioning prescription.",
         "The author-listed lat pulldown alternative is used for chinups.",
-        "A/B alternation continues across weeks. Two-minute rests are within the source 2\u20133-minute range.",
+        "A/B alternation continues across weeks. Two-minute rests are within the source 2–3-minute range.",
         "The public page specifies pounds. In kg mode the app uses rounded 1.25 kg upper / 2.5 kg lower increments, rather than presenting those as separately published metric prescriptions.",
         "No exact-routine trial identified by this targeted review."
       ],
@@ -847,7 +871,7 @@
     },
     {
       "id": "src-phul",
-      "title": "PHUL \u00b7 published four-day routine \u00b7 Brandon Campbell / Muscle & Strength",
+      "title": "PHUL · published four-day routine · Brandon Campbell / Muscle & Strength",
       "canonical_link": "https://www.muscleandstrength.com/workouts/phul-workout",
       "source_type": "Public creator/community routine facts",
       "authors": [
@@ -869,7 +893,7 @@
     },
     {
       "id": "src-reddit-ppl",
-      "title": "Reddit PPL \u00b7 six-day linear progression \u00b7 u/Metallicadpa / r/Fitness; Fitness Wiki archive",
+      "title": "Reddit PPL · six-day linear progression · u/Metallicadpa / r/Fitness; Fitness Wiki archive",
       "canonical_link": "https://thefitness.wiki/reddit-archive/a-linear-progression-based-ppl-program-for-beginners/",
       "source_type": "Public creator/community routine facts",
       "authors": [
@@ -892,7 +916,7 @@
     },
     {
       "id": "src-db-stopgap",
-      "title": "Dumbbell Stopgap \u00b7 public A/B routine \u00b7 r/Fitness community / Fitness Wiki archive",
+      "title": "Dumbbell Stopgap · public A/B routine · r/Fitness community / Fitness Wiki archive",
       "canonical_link": "https://thefitness.wiki/reddit-archive/dumbbell-stopgap/",
       "source_type": "Public creator/community routine facts",
       "authors": [
@@ -935,7 +959,7 @@
       "quantitative_findings": [],
       "date_checked": "2026-10-12",
       "review_depth": "Consensus original abstract and metadata; full paper not reviewed",
-      "claim_supported": "Similar quadriceps growth with failure and 1\u20132 RIR; failure produced greater acute fatigue.",
+      "claim_supported": "Similar quadriceps growth with failure and 1–2 RIR; failure produced greater acute fatigue.",
       "limitations": [
         "Small trained-adult sample and two lower-body exercises.",
         "No universal RIR target or whole-program efficacy established.",
@@ -988,6 +1012,387 @@
       "conflicts": [],
       "corrections_retractions": "No comprehensive correction/retraction sweep performed; Wiley metadata did not mark the 2025 record retracted.",
       "status": "Limited principle support; no new universal numerical policy"
+    },
+    {
+      "id": "SPLIT-FULLBODY",
+      "title": "Ramos-Campo et al. · Split versus full-body training, 2024",
+      "authors": [
+        "Domingo J. Ramos-Campo",
+        "Pedro J. Benito-Peinado",
+        "Luis Andreu-Caravaca",
+        "Miguel A. Rojo-Tirado",
+        "Jacobo A. Rubio-Arias"
+      ],
+      "authors_verification": "Returned original metadata; abbreviations retained where full names were not independently checked",
+      "year": 2024,
+      "doi": "10.1519/JSC.0000000000004774",
+      "pmid": "38595233",
+      "canonical_link": "https://doi.org/10.1519/JSC.0000000000004774",
+      "source_type": "Primary research publication (trial or evidence synthesis)",
+      "population": "Healthy adults in 14 studies (392 participants)",
+      "training_status": "Mixed resistance-training status",
+      "exposure": "Volume-equated split and full-body resistance routines",
+      "comparator": "As described in exposure",
+      "outcomes": [
+        "Strength / hypertrophy"
+      ],
+      "quantitative_findings": [],
+      "limitations": [
+        "Does not establish equivalence for unequal doses, every exercise choice or every individual.",
+        "No controlled trial of the exact shipped app recipe was identified."
+      ],
+      "date_checked": "2026-10-13",
+      "access": "Original abstract/metadata fetched through Consensus; primary DOI/PubMed metadata checked. Full paper not qualified.",
+      "review_depth": "Original abstract/metadata fetched through Consensus; primary DOI/PubMed metadata checked. Full paper not qualified.",
+      "existing_summary": "Similar average strength and muscle growth with volume equated.",
+      "claim_supported": "Similar average strength and muscle growth with volume equated.",
+      "applicability": {
+        "goals": [
+          "hypertrophy",
+          "powerbuilding",
+          "strength",
+          "calisthenics"
+        ],
+        "use": "Goal-specific principles, scope limits and reviewed choices; numerical recipe and readiness cutoffs remain app policies"
+      },
+      "rule_ids": [
+        "goal-evidence-v1"
+      ],
+      "conflicts": [],
+      "corrections_retractions": "Independent correction/retraction screening not completed",
+      "status": "Targeted source review; exact app recipe unvalidated"
+    },
+    {
+      "id": "PERIODIZATION",
+      "title": "Moesgaard et al. · Volume-equated periodization, 2022",
+      "authors": [
+        "Lukas Moesgaard",
+        "M. Beck",
+        "L. Christiansen",
+        "P. Aagaard",
+        "J. Lundbye-Jensen"
+      ],
+      "authors_verification": "Returned original metadata; abbreviations retained where full names were not independently checked",
+      "year": 2022,
+      "doi": "10.1007/s40279-021-01636-1",
+      "pmid": "35044672",
+      "canonical_link": "https://doi.org/10.1007/s40279-021-01636-1",
+      "source_type": "Primary research publication (trial or evidence synthesis)",
+      "population": "Resistance-training participants in 35 studies",
+      "training_status": "Trained and untrained subgroups",
+      "exposure": "Volume-equated periodized versus non-periodized; linear versus undulating routines",
+      "comparator": "As described in exposure",
+      "outcomes": [
+        "Strength / hypertrophy"
+      ],
+      "quantitative_findings": [],
+      "limitations": [
+        "Trained subgroup precision was limited. Broad 2026 guidance finds periodization effects inconsistent across outcomes.",
+        "No controlled trial of the exact shipped app recipe was identified."
+      ],
+      "date_checked": "2026-10-13",
+      "access": "Consensus-fetched original abstract/metadata and primary indexed abstract reviewed. Full methods/tables not qualified.",
+      "review_depth": "Consensus-fetched original abstract/metadata and primary indexed abstract reviewed. Full methods/tables not qualified.",
+      "existing_summary": "Average maximal-strength advantages favored periodization; growth differences were not established.",
+      "claim_supported": "Average maximal-strength advantages favored periodization; growth differences were not established.",
+      "applicability": {
+        "goals": [
+          "powerlifting",
+          "powerbuilding",
+          "strength",
+          "sport"
+        ],
+        "use": "Goal-specific principles, scope limits and reviewed choices; numerical recipe and readiness cutoffs remain app policies"
+      },
+      "rule_ids": [
+        "goal-evidence-v1"
+      ],
+      "conflicts": [],
+      "corrections_retractions": "Independent correction/retraction screening not completed",
+      "status": "Targeted source review; exact app recipe unvalidated"
+    },
+    {
+      "id": "AUTOREGULATION",
+      "title": "Hickmott et al. · Load and volume autoregulation, 2022",
+      "authors": [
+        "Landyn M. Hickmott",
+        "Philip D. Chilibeck",
+        "Keely A. Shaw",
+        "Scotty J. Butcher"
+      ],
+      "authors_verification": "Returned original metadata; abbreviations retained where full names were not independently checked",
+      "year": 2022,
+      "doi": "10.1186/s40798-021-00404-9",
+      "pmid": "35038063",
+      "canonical_link": "https://doi.org/10.1186/s40798-021-00404-9",
+      "source_type": "Primary research publication (trial or evidence synthesis)",
+      "population": "Resistance-trained participants; 15 studies in pooled analyses",
+      "training_status": "Predominantly young trained participants",
+      "exposure": "Autoregulated versus standardized loads; velocity-loss volume thresholds",
+      "comparator": "As described in exposure",
+      "outcomes": [
+        "Strength / hypertrophy"
+      ],
+      "quantitative_findings": [],
+      "limitations": [
+        "Velocity loss is not a direct equivalent of RIR. Small biased samples and limited hypertrophy outcomes restrict transfer.",
+        "No controlled trial of the exact shipped app recipe was identified."
+      ],
+      "date_checked": "2026-10-13",
+      "access": "Consensus abstract and selected primary publisher methods/results/limitations reviewed; complete figures/supplements not qualified.",
+      "review_depth": "Consensus abstract and selected primary publisher methods/results/limitations reviewed; complete figures/supplements not qualified.",
+      "existing_summary": "No clear average strength difference between load-prescription methods.",
+      "claim_supported": "No clear average strength difference between load-prescription methods.",
+      "applicability": {
+        "goals": [
+          "powerlifting",
+          "powerbuilding"
+        ],
+        "use": "Goal-specific principles, scope limits and reviewed choices; numerical recipe and readiness cutoffs remain app policies"
+      },
+      "rule_ids": [
+        "goal-evidence-v1"
+      ],
+      "conflicts": [],
+      "corrections_retractions": "Independent correction/retraction screening not completed",
+      "status": "Targeted source review; exact app recipe unvalidated"
+    },
+    {
+      "id": "EQUIPMENT-SPECIFICITY",
+      "title": "Haugen et al. · Free weights and machines, 2023",
+      "authors": [
+        "Markus E. Haugen",
+        "Fredrik T. Vårvik",
+        "Stian Larsen",
+        "Arvid S. Haugen",
+        "Roland van den Tillaar",
+        "Thomas Bjørnsen"
+      ],
+      "authors_verification": "Returned original metadata; abbreviations retained where full names were not independently checked",
+      "year": 2023,
+      "doi": "10.1186/s13102-023-00713-4",
+      "pmid": "37582807",
+      "canonical_link": "https://doi.org/10.1186/s13102-023-00713-4",
+      "source_type": "Primary research publication (trial or evidence synthesis)",
+      "population": "Adults in 13 studies",
+      "training_status": "Trained and untrained; no competitive athlete studies",
+      "exposure": "Free-weight versus machine resistance training",
+      "comparator": "As described in exposure",
+      "outcomes": [
+        "Strength / hypertrophy"
+      ],
+      "quantitative_findings": [],
+      "limitations": [
+        "Few growth studies, different measures, sensitivity to individual studies and incompletely matched protocols limit certainty.",
+        "No controlled trial of the exact shipped app recipe was identified."
+      ],
+      "date_checked": "2026-10-13",
+      "access": "Selected primary publisher methods/results/limitations reviewed. All underlying trials and figures not independently checked.",
+      "review_depth": "Selected primary publisher methods/results/limitations reviewed. All underlying trials and figures not independently checked.",
+      "existing_summary": "Strength is specific to the tested movement; direct modality comparisons did not establish different muscle growth.",
+      "claim_supported": "Strength is specific to the tested movement; direct modality comparisons did not establish different muscle growth.",
+      "applicability": {
+        "goals": [
+          "hypertrophy",
+          "powerlifting",
+          "strength",
+          "general",
+          "sport"
+        ],
+        "use": "Goal-specific principles, scope limits and reviewed choices; numerical recipe and readiness cutoffs remain app policies"
+      },
+      "rule_ids": [
+        "goal-evidence-v1"
+      ],
+      "conflicts": [],
+      "corrections_retractions": "Independent correction/retraction screening not completed",
+      "status": "Targeted source review; exact app recipe unvalidated"
+    },
+    {
+      "id": "RUNNING-STRENGTH",
+      "title": "Llanos-Lagos et al. · Strength work and running economy, 2024",
+      "authors": [
+        "Cristian Llanos-Lagos",
+        "Rodrigo Ramirez-Campillo",
+        "Jason Moran",
+        "Eduardo Sáez de Villarreal"
+      ],
+      "authors_verification": "Returned original metadata; abbreviations retained where full names were not independently checked",
+      "year": 2024,
+      "doi": "10.1007/s40279-023-01978-y",
+      "pmid": "38165636",
+      "canonical_link": "https://doi.org/10.1007/s40279-023-01978-y",
+      "source_type": "Primary research publication (trial or evidence synthesis)",
+      "population": "Middle- and long-distance runners in 31 studies (652 participants)",
+      "training_status": "Moderately to highly trained runners",
+      "exposure": "Heavy, submaximal, plyometric, isometric or combined strength added to endurance work",
+      "comparator": "As described in exposure",
+      "outcomes": [
+        "Endurance or physical performance"
+      ],
+      "quantitative_findings": [],
+      "limitations": [
+        "Aggregate plyometric effect differed by speed; no universal benefit from every strength method. Novice low-dose transfer not established.",
+        "No controlled trial of the exact shipped app recipe was identified."
+      ],
+      "date_checked": "2026-10-13",
+      "access": "Primary publisher abstract and selected methods/results/limitations reviewed. Complete supplements and forest plots not qualified.",
+      "review_depth": "Primary publisher abstract and selected methods/results/limitations reviewed. Complete supplements and forest plots not qualified.",
+      "existing_summary": "Heavy and combined methods can improve economy; effects depend on method and assessment speed.",
+      "claim_supported": "Heavy and combined methods can improve economy; effects depend on method and assessment speed.",
+      "applicability": {
+        "goals": [
+          "hybrid"
+        ],
+        "use": "Goal-specific principles, scope limits and reviewed choices; numerical recipe and readiness cutoffs remain app policies"
+      },
+      "rule_ids": [
+        "goal-evidence-v1"
+      ],
+      "conflicts": [],
+      "corrections_retractions": "Independent correction/retraction screening not completed",
+      "status": "Targeted source review; exact app recipe unvalidated"
+    },
+    {
+      "id": "ENDURANCE-DISTRIBUTION",
+      "title": "Oliveira, Boppre & Fonseca · Endurance intensity distribution, 2024",
+      "authors": [
+        "Pedro Silva Oliveira",
+        "Giorjines Boppre",
+        "Hélder Fonseca"
+      ],
+      "authors_verification": "Returned original metadata; abbreviations retained where full names were not independently checked",
+      "year": 2024,
+      "doi": "10.1007/s40279-024-02034-z",
+      "pmid": "38717713",
+      "canonical_link": "https://doi.org/10.1007/s40279-024-02034-z",
+      "source_type": "Primary research publication (trial or evidence synthesis)",
+      "population": "Endurance athletes in 17 studies (437 participants)",
+      "training_status": "Trained and highly trained; multiple endurance sports",
+      "exposure": "Polarized versus other intensity distributions",
+      "comparator": "As described in exposure",
+      "outcomes": [
+        "Endurance or physical performance"
+      ],
+      "quantitative_findings": [],
+      "limitations": [
+        "Training level and duration effects overlap. Under-reported intensity distributions and varied tests restrict exact-ratio conclusions.",
+        "No controlled trial of the exact shipped app recipe was identified."
+      ],
+      "date_checked": "2026-10-13",
+      "access": "Consensus abstract and primary publisher selected methods/results/subgroup text/limitations reviewed. Complete supplementary protocols not qualified.",
+      "review_depth": "Consensus abstract and primary publisher selected methods/results/subgroup text/limitations reviewed. Complete supplementary protocols not qualified.",
+      "existing_summary": "Small aerobic-power advantage mainly in shorter studies and highly trained athletes; other performance outcomes were similar.",
+      "claim_supported": "Small aerobic-power advantage mainly in shorter studies and highly trained athletes; other performance outcomes were similar.",
+      "applicability": {
+        "goals": [
+          "running"
+        ],
+        "use": "Goal-specific principles, scope limits and reviewed choices; numerical recipe and readiness cutoffs remain app policies"
+      },
+      "rule_ids": [
+        "goal-evidence-v1",
+        "timed-run-stages-v2"
+      ],
+      "conflicts": [],
+      "corrections_retractions": "Independent correction/retraction screening not completed",
+      "status": "Targeted source review; exact app recipe unvalidated"
+    },
+    {
+      "id": "RUNNING-TID-TRIAL",
+      "title": "Filipas et al. · Pyramidal and polarized running trial, 2022",
+      "authors": [
+        "L. Filipas",
+        "M. Bonato",
+        "G. Gallo",
+        "R. Codella"
+      ],
+      "authors_verification": "Returned original metadata; abbreviations retained where full names were not independently checked",
+      "year": 2022,
+      "doi": "10.1111/sms.14101",
+      "pmid": null,
+      "canonical_link": "https://doi.org/10.1111/sms.14101",
+      "source_type": "Primary research publication (trial or evidence synthesis)",
+      "population": "60 well-trained male endurance runners",
+      "training_status": "Six weekly sessions and high recent training volume",
+      "exposure": "Four 16-week pyramidal/polarized sequences, with workload controlled",
+      "comparator": "As described in exposure",
+      "outcomes": [
+        "Endurance or physical performance"
+      ],
+      "quantitative_findings": [],
+      "limitations": [
+        "Elite-style volume and physiological zones cannot be copied to novice app plans. Online publication 18 November 2021; journal issue 2022.",
+        "No controlled trial of the exact shipped app recipe was identified."
+      ],
+      "date_checked": "2026-10-13",
+      "access": "Wiley Scholar Gateway primary abstract, methods/Table 1 and perspective passages reviewed. Original full figures/supplements not qualified.",
+      "review_depth": "Wiley Scholar Gateway primary abstract, methods/Table 1 and perspective passages reviewed. Original full figures/supplements not qualified.",
+      "existing_summary": "Different arrangements improved measured endurance outcomes; switching order affected average response.",
+      "claim_supported": "Different arrangements improved measured endurance outcomes; switching order affected average response.",
+      "applicability": {
+        "goals": [
+          "running"
+        ],
+        "use": "Goal-specific principles, scope limits and reviewed choices; numerical recipe and readiness cutoffs remain app policies"
+      },
+      "rule_ids": [
+        "goal-evidence-v1",
+        "timed-run-stages-v2"
+      ],
+      "conflicts": [],
+      "corrections_retractions": "Independent correction/retraction screening not completed",
+      "status": "Targeted source review; exact app recipe unvalidated"
+    },
+    {
+      "id": "PLYOMETRIC-REVIEW",
+      "title": "Kons et al. · Plyometric training umbrella review, 2023",
+      "authors": [
+        "Rafael L. Kons",
+        "Lucas B. R. Orssatto",
+        "Jonathan Ache-Dias",
+        "Kevin De Pauw",
+        "Romain Meeusen",
+        "Gabriel S. Trajano",
+        "Juliano Dal Pupo",
+        "Daniele Detanico"
+      ],
+      "authors_verification": "Returned original metadata; abbreviations retained where full names were not independently checked",
+      "year": 2023,
+      "doi": "10.1186/s40798-022-00550-8",
+      "pmid": "36625965",
+      "canonical_link": "https://doi.org/10.1186/s40798-022-00550-8",
+      "source_type": "Primary research publication (trial or evidence synthesis)",
+      "population": "Athletes and healthy non-athletes across age groups",
+      "training_status": "Mixed",
+      "exposure": "29 meta-analyses of plyometric training",
+      "comparator": "As described in exposure",
+      "outcomes": [
+        "Endurance or physical performance"
+      ],
+      "quantitative_findings": [],
+      "limitations": [
+        "Most included reviews pooled before/after changes rather than controls; exact six-jump app practice is not a tested performance dose.",
+        "No controlled trial of the exact shipped app recipe was identified."
+      ],
+      "date_checked": "2026-10-13",
+      "access": "Primary publisher abstract and selected methods/results/limitations reviewed. Complete individual reviews and figures not qualified.",
+      "review_depth": "Primary publisher abstract and selected methods/results/limitations reviewed. Complete individual reviews and figures not qualified.",
+      "existing_summary": "Plyometric work can support performance-related outcomes.",
+      "claim_supported": "Plyometric work can support performance-related outcomes.",
+      "applicability": {
+        "goals": [
+          "sport"
+        ],
+        "use": "Goal-specific principles, scope limits and reviewed choices; numerical recipe and readiness cutoffs remain app policies"
+      },
+      "rule_ids": [
+        "goal-evidence-v1",
+        "landing-practice-v2"
+      ],
+      "conflicts": [],
+      "corrections_retractions": "Independent correction/retraction screening not completed",
+      "status": "Targeted source review; exact app recipe unvalidated"
     }
   ],
   "current_audit_started": "2026-10-12",
@@ -1023,6 +1428,23 @@
         "Two Refalo reports derive from the same intervention, not independent replication.",
         "Complete figures/supplements and all-paper review remain incomplete.",
         "Fresh browser and installed-device qualification remain unperformed."
+      ]
+    },
+    "goal_families_2026_10_13": {
+      "scope": "Goal-specific interpretation and actual generated prescriptions for all nine catalog goals",
+      "new_scientific_references": 8,
+      "new_original_definitions": 20,
+      "primary_papers_with_selected_full_text_review": 5,
+      "complete_scientific_papers_independently_qualified": 0,
+      "exact_app_recipe_trials_identified": 0,
+      "consensus": "Targeted searches and original record fetches used; not a systematic review of the whole corpus",
+      "wiley": "Broad screening plus targeted Filipas query: 4 passages / 2 articles; 3 relevant passages from 1 article. Unrelated disease/plyometric passages excluded.",
+      "current_catalog_review": "docs/science/program-review-2026-10-13.json",
+      "actual_structure_audit": "docs/science/goal-family-validation-2026-10-13.json",
+      "limits": [
+        "Scientific principles, creator rules and app heuristics stay separate.",
+        "No exact optimal dose, universal 80/20 ratio or sensor-derived velocity model is assigned.",
+        "Fresh browser and installed-device acceptance remain unperformed."
       ]
     }
   }

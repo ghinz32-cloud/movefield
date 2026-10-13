@@ -4,7 +4,7 @@
     {
       "source": "lib/training-runtime.js",
       "target": "src/shared/training-runtime.js",
-      "sha256": "a3a0a1b81417cb1890c657fed6fcbf923dd343d662a0daabfda6ed838117c744"
+      "sha256": "cf5e6b90202d8521144c7e910a94d9627c9f39c1e0376a8998f80a035378b0f8"
     },
     {
       "source": "lib/training-runtime.d.ts",
@@ -24,17 +24,17 @@
     {
       "source": "lib/program-catalog-runtime.js",
       "target": "src/shared/program-catalog-runtime.js",
-      "sha256": "b79042e6e7c3413f5ec88040f354c870b71456a57206a0132fbace486cf44098"
+      "sha256": "31ea955b211a497a3d1027611dbfa5f7b00fe12ef2b4b6a08a246ed895dd0ad5"
     },
     {
       "source": "lib/program-catalog-runtime.d.ts",
       "target": "src/shared/program-catalog-runtime.d.ts",
-      "sha256": "e2f6c6207fa574d27dd7baa45bbd916f758b45757e6a4a798f848ec31cbdbad8"
+      "sha256": "e22a78e288a400c283d9a0b4c2920a2e43aa5fce1df25827f5f7fec9a63517bd"
     },
     {
       "source": "lib/onboarding-runtime.js",
       "target": "src/shared/onboarding-runtime.js",
-      "sha256": "7c589f19490aabf54c6f1310679df1fac50b4a43ba3fd35446b841f04a1f9f96"
+      "sha256": "30f1589dc76326a4b27f475ea078d49009bb4e34bf89bc7b32a99ea95c02ba6b"
     },
     {
       "source": "lib/onboarding-runtime.d.ts",
@@ -54,7 +54,7 @@
     {
       "source": "lib/evidence-sources-runtime.js",
       "target": "src/shared/evidence-sources-runtime.js",
-      "sha256": "3d9ead4ca1b37c1ac493592511d4f7a8d77579ee6a54ec4825effee95e3f5933"
+      "sha256": "7b483f4e5f85f898e721763377c611de8cd09d81dbfba168d120ee7767691208"
     },
     {
       "source": "lib/evidence-sources-runtime.d.ts",
@@ -104,7 +104,7 @@
     {
       "source": "lib/session-guide-runtime.js",
       "target": "src/shared/session-guide-runtime.js",
-      "sha256": "0c171462f811b28b4dbb0606997541f59518eee72c47b73fb2e1954cb4890f48"
+      "sha256": "6d594396891ec4b5bbf467dcc70603a2e27445e9ab53c98a74024cce3375d105"
     },
     {
       "source": "lib/session-guide-runtime.d.ts",
@@ -164,7 +164,7 @@
     {
       "source": "lib/program-science-runtime.js",
       "target": "src/shared/program-science-runtime.js",
-      "sha256": "2c99f68d4cdf6c3f6596d3abacf3b1fb949b9a9b3c5908ebe446ee6149550070"
+      "sha256": "bfcccd8098202441f10a3cf4ec39ccc4219b99e9eedf1d0b07eaf7e03dc08e3c"
     },
     {
       "source": "lib/program-science-runtime.d.ts",
@@ -180,6 +180,16 @@
       "source": "lib/paired-sets-runtime.d.ts",
       "target": "src/shared/paired-sets-runtime.d.ts",
       "sha256": "5bda11294bf94cb9315e3a0aad937ffebf62c5517fa600e156a50de03b03c58c"
+    },
+    {
+      "source": "lib/researched-programs.ts",
+      "target": "src/shared/researched-programs.ts",
+      "sha256": "8145809a1d2ca71f9c2c04e3f68186d9fef3e63a6f03f3918155bddba41edeb7"
+    },
+    {
+      "source": "lib/goal-evidence.ts",
+      "target": "src/shared/goal-evidence.ts",
+      "sha256": "36f034bd64bc57bac6a49902d72bb9f83038cf7706bfb36def31987afbb0bc10"
     },
     {
       "source": "lib/source-programs.ts",
@@ -359,7 +369,7 @@
     {
       "source": "lib/training-focus.ts",
       "target": "src/shared/training-focus.ts",
-      "sha256": "4f386aed730b7c78f055ed0a7b917687b890be00d514ed0973fde6bb3e2f4cb8"
+      "sha256": "d2eee6b7f006ee393475c2c617087c1053fe4d640048c594d9e20ac56176bb94"
     },
     {
       "source": "lib/program-catalog.ts",
@@ -409,7 +419,7 @@
     {
       "source": "docs/evidence-ledger.json",
       "target": "docs/evidence-ledger.json",
-      "sha256": "029bb377257a90938f012d6add7575b79d8f37165d3597d148e77e228923409b"
+      "sha256": "1e11addf9d18583a330d9684d744230734ca1220a9ac26593acc7f884d4ff6f9"
     },
     {
       "source": "docs/cloudflare-implementation.md",

@@ -9,7 +9,7 @@ function sessionGuide(plan, session) {
         ...guide,
         effort: !manual && plan.progressionModel === 'source' ? `Use this routine’s published effort and rest instructions. ${strength.some(i => i.sourceRule?.minRir === 1) ? 'Keep at least one good rep left. ' : ''}${strength.some(i => i.sourceRule?.amrapLast) ? 'Quality AMRAPs stop when control changes. ' : ''}RIR stays specific to each repetition set.` : guide.effort,
         order,
-        progression
+        progression: [...progression, ...(!manual && session.items.some(i=>i.exerciseId==='lib-small-jump-reset') ? ['Landing practice stays at the listed small jumps, with a full reset and no RIR, extra height, load or automatic rep progression.'] : []), ...(!manual && !strength.length && session.runSteps ? [plan.progression] : [])]
     };
 }
 function baseGuide(plan, session) {
@@ -29,7 +29,7 @@ function baseGuide(plan, session) {
     if (run)
         return {
             warmup: session.runSteps.map(s => `${s.label}: ${s.seconds >= 60 ? Math.round(s.seconds / 6) / 10 + ' min' : s.seconds + ' sec'}`),
-            effort: 'Keep an easy pace that lets you talk in full sentences. Walk when needed. Do not add speed to make up a missed run.',
+            effort: session.runSteps.some(s=>s.label.startsWith('Controlled moderate')) ? 'Keep warm-up, recovery and closing steps easy. Only the listed moderate bouts use a controlled effort where short phrases remain possible; never all-out. Walk or keep the whole session easy if needed. No automatic pace increase.' : 'Keep an easy pace that lets you talk in full sentences. Walk when needed. Do not add speed to make up a missed run.',
             finish: 'Include the closing walk when you log your time. Finish this workout before moving to the next stage.'
         };
     if (session.timeProfile === 'brief')

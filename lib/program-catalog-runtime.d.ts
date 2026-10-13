@@ -1,7 +1,10 @@
+export type RunStage = {label:string; seconds:number}[];
 export type ProgramSlot = {
     title: string;
     group: 'full' | 'upper' | 'lower' | 'run' | 'push' | 'pull' | 'activity';
-    kind?: 'walkrun' | 'easy' | 'brief-run' | 'recovery-walk';
+    kind?: 'walkrun' | 'easy' | 'brief-run' | 'recovery-walk' | 'timed-run';
+    runStages?: RunStage[];
+    runIntensity?: 'easy' | 'moderate';
     conditioning?: 'walkrun';
     items: [string, number, number, number, number][];
 };
@@ -22,6 +25,12 @@ export type ProgramDefinition = {
     youth?: boolean;
     equipment: 'gym' | 'dumbbells' | 'bodyweight-band' | 'flexible' | 'none';
     runBase?: boolean;
+    runMinimumDays?: number;
+    runMinimumMinutes?: number;
+    allowAdjacentEasyRuns?: boolean;
+    jumpPractice?: boolean;
+    evidenceSources?: string[];
+    rationale?: string;
     source: string;
     slots: ProgramSlot[];
 };

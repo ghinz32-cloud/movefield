@@ -13,7 +13,7 @@ export function TrainingFocusPicker({profile,onChange}:{profile:Profile;onChange
    <Checkbox checked={selected.includes(choice.id)} onCheckedChange={v=>toggle(choice.id,Boolean(v))} aria-label={choice.title}/>
    <div><b>{choice.title}</b><p>{choice.description}</p></div>
   </label>)}</div>
-  {selected.includes('jumping')&&<div className="notice blue"><div><p>Jumps need a clear, non-slip landing area. Start with a few small jumps and a full reset. There are no automatic height or load increases.</p>
+  {(selected.includes('jumping')||profile.goal==='sport')&&<div className="notice blue"><div><p>Jump options need a clear, non-slip landing area and comfortable landing control. This readiness also enables the sport plan with fixed landing practice. Strength-only plans remain available without it.</p>
    <label className="check-line"><Checkbox checked={!!profile.jumpReady} onCheckedChange={v=>onChange({jumpReady:Boolean(v)})}/>I have room to land safely and can land comfortably with control.</label>
    {(profile.age<18||profile.experience==='First time')&&<label className="check-line"><Checkbox checked={profile.supervision} onCheckedChange={v=>onChange({supervision:Boolean(v)})}/>Qualified instruction and supervision are available for jump practice.</label>}
   </div></div>}

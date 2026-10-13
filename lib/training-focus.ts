@@ -63,9 +63,13 @@ export function applyTrainingFocus(input:Plan,events:Event[]=[]):{plan:Plan|null
  for(const [week,sessions] of byWeek){
   const lifts=sessions.filter(strength),weekErrors:string[]=[];
   if(focuses.includes('jumping')){
+   const existing=lifts.find(s=>s.items.some(i=>i.exerciseId==='lib-small-jump-reset'));
+   if(existing){totals.jumping++;}
+   else {
    const eligible=lifts.find(s=>fits(s,5)&&!plan.sessions.some(other=>other.id!==s.id&&daysApart(other.date,s.date)<2)&&!events.some(e=>daysApart(e.date,s.date)<(e.kind==='Competition'?3:2)));
    if(!eligible)weekErrors.push(`Week ${week}: jump practice needs five spare minutes and at least 48 hours from another planned session or training commitment (72 hours from competition). Change the selection or schedule; no day was moved.`);
    else {eligible.items.unshift({exerciseId:'lib-small-jump-reset',sets:p.age<18?1:2,reps:3,rest:120,kg:null,note:`${PREFIX} Jump practice after the warm-up, before lifting: ${p.age<18?'1':'2'} × 3 small, controlled jumps. Land softly and reset fully between reps. Stop for pain, poor balance or slower landings. No height, load or automatic increase in sets or reps.`});eligible.minutes+=5;totals.jumping++;}
+   }
   }
   if(focuses.includes('core')){
    const existing=lifts.filter(s=>s.items.some(i=>['deadbug','plank'].includes(i.exerciseId)));

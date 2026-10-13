@@ -1,0 +1,2826 @@
+{
+  "checkedAt": "2026-10-13",
+  "scope": "Current static preview builds, shared synthetic domain/adapter checks, native types/engine, four cleared-cache Hermes exports and manifest-verified source archives. No new browser, installed phone, APK/IPA, live account or exact-routine efficacy qualification.",
+  "applicationSourceSha256": "66ad2b19a15a04a401a307eb586a5417c2381fd950bc12a1c9d523cd42864ae0",
+  "webScope": "Current static Movefield and Grizzly previews only; older production server output excluded.",
+  "core": {
+    "ran_at": "2026-10-13T00:23:22.709Z",
+    "scope": "Local synthetic domain/adapter and type checks; no device, connected provider or deployment qualification.",
+    "results": [
+      {
+        "name": "distinct goal families and flexible selection",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1336
+      },
+      {
+        "name": "creator-source and set-effort refinements",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 750
+      },
+      {
+        "name": "public source rules and scientific accounting",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 901
+      },
+      {
+        "name": "Today facts and actions",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 588
+      },
+      {
+        "name": "transactional encrypted records",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 6021
+      },
+      {
+        "name": "activity progress and comparison context",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 623
+      },
+      {
+        "name": "evidence/duration/calendar zones",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 3562
+      },
+      {
+        "name": "calendar and reusable blocks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 642
+      },
+      {
+        "name": "Cloudflare account/storage/coaching",
+        "status": "failed",
+        "exit": 1,
+        "duration_ms": 1614
+      },
+      {
+        "name": "portable cloud vault and retry",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2398
+      },
+      {
+        "name": "native SDK cookie transport",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1131
+      },
+      {
+        "name": "plan import",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 648
+      },
+      {
+        "name": "durability",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 733
+      },
+      {
+        "name": "vault and history",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1072
+      },
+      {
+        "name": "native encrypted adapter",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1084
+      },
+      {
+        "name": "native file transfer",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 267
+      },
+      {
+        "name": "security",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 685
+      },
+      {
+        "name": "data and calendar",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 630
+      },
+      {
+        "name": "web types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 8718
+      },
+      {
+        "name": "native types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 4492
+      },
+      {
+        "name": "native engine",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1943
+      }
+    ]
+  },
+  "targetedReruns": [
+    {
+      "group": "Cloudflare account/storage/coaching",
+      "result": "passed",
+      "initialFailure": "One concurrent local write returned 503 rather than the expected 409. The unchanged targeted check passed on rerun.",
+      "logSha256": "a064153b0708100a889cf23e971d8c9d7a4b33473d409a9ace28a078cadd83df"
+    }
+  ],
+  "catalogMatrix": {
+    "checkedAt": "2026-10-13T00:19:42.612Z",
+    "programs": 145,
+    "scenarios": 6881,
+    "assertions": 5458044,
+    "coverage": {
+      "strength|First time|Full gym|15|2": 0,
+      "strength|First time|Full gym|15|3": 0,
+      "strength|First time|Full gym|15|7": 2,
+      "strength|First time|Full gym|20|2": 1,
+      "strength|First time|Full gym|20|3": 2,
+      "strength|First time|Full gym|20|7": 6,
+      "strength|First time|Full gym|30|2": 1,
+      "strength|First time|Full gym|30|3": 2,
+      "strength|First time|Full gym|30|7": 8,
+      "strength|First time|Full gym|45|2": 1,
+      "strength|First time|Full gym|45|3": 2,
+      "strength|First time|Full gym|45|7": 8,
+      "strength|First time|Full gym|60|2": 3,
+      "strength|First time|Full gym|60|3": 7,
+      "strength|First time|Full gym|60|7": 13,
+      "strength|First time|Full gym|90|2": 6,
+      "strength|First time|Full gym|90|3": 12,
+      "strength|First time|Full gym|90|7": 19,
+      "strength|First time|Full gym|120|2": 6,
+      "strength|First time|Full gym|120|3": 12,
+      "strength|First time|Full gym|120|7": 19,
+      "strength|First time|Dumbbells|15|2": 0,
+      "strength|First time|Dumbbells|15|3": 0,
+      "strength|First time|Dumbbells|15|7": 2,
+      "strength|First time|Dumbbells|20|2": 1,
+      "strength|First time|Dumbbells|20|3": 2,
+      "strength|First time|Dumbbells|20|7": 6,
+      "strength|First time|Dumbbells|30|2": 1,
+      "strength|First time|Dumbbells|30|3": 2,
+      "strength|First time|Dumbbells|30|7": 8,
+      "strength|First time|Dumbbells|45|2": 1,
+      "strength|First time|Dumbbells|45|3": 2,
+      "strength|First time|Dumbbells|45|7": 8,
+      "strength|First time|Dumbbells|60|2": 2,
+      "strength|First time|Dumbbells|60|3": 6,
+      "strength|First time|Dumbbells|60|7": 12,
+      "strength|First time|Dumbbells|90|2": 4,
+      "strength|First time|Dumbbells|90|3": 10,
+      "strength|First time|Dumbbells|90|7": 17,
+      "strength|First time|Dumbbells|120|2": 4,
+      "strength|First time|Dumbbells|120|3": 10,
+      "strength|First time|Dumbbells|120|7": 17,
+      "strength|First time|Bodyweight + band|15|2": 0,
+      "strength|First time|Bodyweight + band|15|3": 0,
+      "strength|First time|Bodyweight + band|15|7": 2,
+      "strength|First time|Bodyweight + band|20|2": 1,
+      "strength|First time|Bodyweight + band|20|3": 2,
+      "strength|First time|Bodyweight + band|20|7": 6,
+      "strength|First time|Bodyweight + band|30|2": 1,
+      "strength|First time|Bodyweight + band|30|3": 2,
+      "strength|First time|Bodyweight + band|30|7": 8,
+      "strength|First time|Bodyweight + band|45|2": 1,
+      "strength|First time|Bodyweight + band|45|3": 2,
+      "strength|First time|Bodyweight + band|45|7": 8,
+      "strength|First time|Bodyweight + band|60|2": 2,
+      "strength|First time|Bodyweight + band|60|3": 6,
+      "strength|First time|Bodyweight + band|60|7": 12,
+      "strength|First time|Bodyweight + band|90|2": 3,
+      "strength|First time|Bodyweight + band|90|3": 8,
+      "strength|First time|Bodyweight + band|90|7": 14,
+      "strength|First time|Bodyweight + band|120|2": 3,
+      "strength|First time|Bodyweight + band|120|3": 8,
+      "strength|First time|Bodyweight + band|120|7": 14,
+      "strength|Some experience|Full gym|15|2": 0,
+      "strength|Some experience|Full gym|15|3": 0,
+      "strength|Some experience|Full gym|15|7": 2,
+      "strength|Some experience|Full gym|20|2": 1,
+      "strength|Some experience|Full gym|20|3": 2,
+      "strength|Some experience|Full gym|20|7": 6,
+      "strength|Some experience|Full gym|30|2": 1,
+      "strength|Some experience|Full gym|30|3": 2,
+      "strength|Some experience|Full gym|30|7": 8,
+      "strength|Some experience|Full gym|45|2": 1,
+      "strength|Some experience|Full gym|45|3": 2,
+      "strength|Some experience|Full gym|45|7": 10,
+      "strength|Some experience|Full gym|60|2": 3,
+      "strength|Some experience|Full gym|60|3": 7,
+      "strength|Some experience|Full gym|60|7": 16,
+      "strength|Some experience|Full gym|90|2": 6,
+      "strength|Some experience|Full gym|90|3": 13,
+      "strength|Some experience|Full gym|90|7": 23,
+      "strength|Some experience|Full gym|120|2": 6,
+      "strength|Some experience|Full gym|120|3": 13,
+      "strength|Some experience|Full gym|120|7": 23,
+      "strength|Some experience|Dumbbells|15|2": 0,
+      "strength|Some experience|Dumbbells|15|3": 0,
+      "strength|Some experience|Dumbbells|15|7": 2,
+      "strength|Some experience|Dumbbells|20|2": 1,
+      "strength|Some experience|Dumbbells|20|3": 2,
+      "strength|Some experience|Dumbbells|20|7": 6,
+      "strength|Some experience|Dumbbells|30|2": 1,
+      "strength|Some experience|Dumbbells|30|3": 2,
+      "strength|Some experience|Dumbbells|30|7": 8,
+      "strength|Some experience|Dumbbells|45|2": 1,
+      "strength|Some experience|Dumbbells|45|3": 2,
+      "strength|Some experience|Dumbbells|45|7": 10,
+      "strength|Some experience|Dumbbells|60|2": 2,
+      "strength|Some experience|Dumbbells|60|3": 6,
+      "strength|Some experience|Dumbbells|60|7": 15,
+      "strength|Some experience|Dumbbells|90|2": 4,
+      "strength|Some experience|Dumbbells|90|3": 10,
+      "strength|Some experience|Dumbbells|90|7": 20,
+      "strength|Some experience|Dumbbells|120|2": 4,
+      "strength|Some experience|Dumbbells|120|3": 10,
+      "strength|Some experience|Dumbbells|120|7": 20,
+      "strength|Some experience|Bodyweight + band|15|2": 0,
+      "strength|Some experience|Bodyweight + band|15|3": 0,
+      "strength|Some experience|Bodyweight + band|15|7": 2,
+      "strength|Some experience|Bodyweight + band|20|2": 1,
+      "strength|Some experience|Bodyweight + band|20|3": 2,
+      "strength|Some experience|Bodyweight + band|20|7": 6,
+      "strength|Some experience|Bodyweight + band|30|2": 1,
+      "strength|Some experience|Bodyweight + band|30|3": 2,
+      "strength|Some experience|Bodyweight + band|30|7": 8,
+      "strength|Some experience|Bodyweight + band|45|2": 1,
+      "strength|Some experience|Bodyweight + band|45|3": 2,
+      "strength|Some experience|Bodyweight + band|45|7": 10,
+      "strength|Some experience|Bodyweight + band|60|2": 2,
+      "strength|Some experience|Bodyweight + band|60|3": 6,
+      "strength|Some experience|Bodyweight + band|60|7": 15,
+      "strength|Some experience|Bodyweight + band|90|2": 3,
+      "strength|Some experience|Bodyweight + band|90|3": 8,
+      "strength|Some experience|Bodyweight + band|90|7": 17,
+      "strength|Some experience|Bodyweight + band|120|2": 3,
+      "strength|Some experience|Bodyweight + band|120|3": 8,
+      "strength|Some experience|Bodyweight + band|120|7": 17,
+      "strength|Experienced|Full gym|15|2": 0,
+      "strength|Experienced|Full gym|15|3": 0,
+      "strength|Experienced|Full gym|15|7": 2,
+      "strength|Experienced|Full gym|20|2": 1,
+      "strength|Experienced|Full gym|20|3": 2,
+      "strength|Experienced|Full gym|20|7": 6,
+      "strength|Experienced|Full gym|30|2": 1,
+      "strength|Experienced|Full gym|30|3": 2,
+      "strength|Experienced|Full gym|30|7": 8,
+      "strength|Experienced|Full gym|45|2": 1,
+      "strength|Experienced|Full gym|45|3": 2,
+      "strength|Experienced|Full gym|45|7": 10,
+      "strength|Experienced|Full gym|60|2": 3,
+      "strength|Experienced|Full gym|60|3": 7,
+      "strength|Experienced|Full gym|60|7": 16,
+      "strength|Experienced|Full gym|90|2": 6,
+      "strength|Experienced|Full gym|90|3": 13,
+      "strength|Experienced|Full gym|90|7": 24,
+      "strength|Experienced|Full gym|120|2": 6,
+      "strength|Experienced|Full gym|120|3": 13,
+      "strength|Experienced|Full gym|120|7": 24,
+      "strength|Experienced|Dumbbells|15|2": 0,
+      "strength|Experienced|Dumbbells|15|3": 0,
+      "strength|Experienced|Dumbbells|15|7": 2,
+      "strength|Experienced|Dumbbells|20|2": 1,
+      "strength|Experienced|Dumbbells|20|3": 2,
+      "strength|Experienced|Dumbbells|20|7": 6,
+      "strength|Experienced|Dumbbells|30|2": 1,
+      "strength|Experienced|Dumbbells|30|3": 2,
+      "strength|Experienced|Dumbbells|30|7": 8,
+      "strength|Experienced|Dumbbells|45|2": 1,
+      "strength|Experienced|Dumbbells|45|3": 2,
+      "strength|Experienced|Dumbbells|45|7": 10,
+      "strength|Experienced|Dumbbells|60|2": 2,
+      "strength|Experienced|Dumbbells|60|3": 6,
+      "strength|Experienced|Dumbbells|60|7": 15,
+      "strength|Experienced|Dumbbells|90|2": 4,
+      "strength|Experienced|Dumbbells|90|3": 10,
+      "strength|Experienced|Dumbbells|90|7": 20,
+      "strength|Experienced|Dumbbells|120|2": 4,
+      "strength|Experienced|Dumbbells|120|3": 10,
+      "strength|Experienced|Dumbbells|120|7": 20,
+      "strength|Experienced|Bodyweight + band|15|2": 0,
+      "strength|Experienced|Bodyweight + band|15|3": 0,
+      "strength|Experienced|Bodyweight + band|15|7": 2,
+      "strength|Experienced|Bodyweight + band|20|2": 1,
+      "strength|Experienced|Bodyweight + band|20|3": 2,
+      "strength|Experienced|Bodyweight + band|20|7": 6,
+      "strength|Experienced|Bodyweight + band|30|2": 1,
+      "strength|Experienced|Bodyweight + band|30|3": 2,
+      "strength|Experienced|Bodyweight + band|30|7": 8,
+      "strength|Experienced|Bodyweight + band|45|2": 1,
+      "strength|Experienced|Bodyweight + band|45|3": 2,
+      "strength|Experienced|Bodyweight + band|45|7": 10,
+      "strength|Experienced|Bodyweight + band|60|2": 2,
+      "strength|Experienced|Bodyweight + band|60|3": 6,
+      "strength|Experienced|Bodyweight + band|60|7": 15,
+      "strength|Experienced|Bodyweight + band|90|2": 3,
+      "strength|Experienced|Bodyweight + band|90|3": 8,
+      "strength|Experienced|Bodyweight + band|90|7": 17,
+      "strength|Experienced|Bodyweight + band|120|2": 3,
+      "strength|Experienced|Bodyweight + band|120|3": 8,
+      "strength|Experienced|Bodyweight + band|120|7": 17,
+      "hypertrophy|First time|Full gym|15|2": 0,
+      "hypertrophy|First time|Full gym|15|3": 0,
+      "hypertrophy|First time|Full gym|15|7": 2,
+      "hypertrophy|First time|Full gym|20|2": 1,
+      "hypertrophy|First time|Full gym|20|3": 2,
+      "hypertrophy|First time|Full gym|20|7": 6,
+      "hypertrophy|First time|Full gym|30|2": 1,
+      "hypertrophy|First time|Full gym|30|3": 2,
+      "hypertrophy|First time|Full gym|30|7": 6,
+      "hypertrophy|First time|Full gym|45|2": 1,
+      "hypertrophy|First time|Full gym|45|3": 2,
+      "hypertrophy|First time|Full gym|45|7": 6,
+      "hypertrophy|First time|Full gym|60|2": 2,
+      "hypertrophy|First time|Full gym|60|3": 7,
+      "hypertrophy|First time|Full gym|60|7": 11,
+      "hypertrophy|First time|Full gym|90|2": 3,
+      "hypertrophy|First time|Full gym|90|3": 12,
+      "hypertrophy|First time|Full gym|90|7": 16,
+      "hypertrophy|First time|Full gym|120|2": 3,
+      "hypertrophy|First time|Full gym|120|3": 12,
+      "hypertrophy|First time|Full gym|120|7": 16,
+      "hypertrophy|First time|Dumbbells|15|2": 0,
+      "hypertrophy|First time|Dumbbells|15|3": 0,
+      "hypertrophy|First time|Dumbbells|15|7": 2,
+      "hypertrophy|First time|Dumbbells|20|2": 1,
+      "hypertrophy|First time|Dumbbells|20|3": 2,
+      "hypertrophy|First time|Dumbbells|20|7": 6,
+      "hypertrophy|First time|Dumbbells|30|2": 1,
+      "hypertrophy|First time|Dumbbells|30|3": 2,
+      "hypertrophy|First time|Dumbbells|30|7": 6,
+      "hypertrophy|First time|Dumbbells|45|2": 1,
+      "hypertrophy|First time|Dumbbells|45|3": 2,
+      "hypertrophy|First time|Dumbbells|45|7": 6,
+      "hypertrophy|First time|Dumbbells|60|2": 2,
+      "hypertrophy|First time|Dumbbells|60|3": 5,
+      "hypertrophy|First time|Dumbbells|60|7": 9,
+      "hypertrophy|First time|Dumbbells|90|2": 2,
+      "hypertrophy|First time|Dumbbells|90|3": 6,
+      "hypertrophy|First time|Dumbbells|90|7": 10,
+      "hypertrophy|First time|Dumbbells|120|2": 2,
+      "hypertrophy|First time|Dumbbells|120|3": 6,
+      "hypertrophy|First time|Dumbbells|120|7": 10,
+      "hypertrophy|First time|Bodyweight + band|15|2": 0,
+      "hypertrophy|First time|Bodyweight + band|15|3": 0,
+      "hypertrophy|First time|Bodyweight + band|15|7": 2,
+      "hypertrophy|First time|Bodyweight + band|20|2": 1,
+      "hypertrophy|First time|Bodyweight + band|20|3": 2,
+      "hypertrophy|First time|Bodyweight + band|20|7": 6,
+      "hypertrophy|First time|Bodyweight + band|30|2": 1,
+      "hypertrophy|First time|Bodyweight + band|30|3": 2,
+      "hypertrophy|First time|Bodyweight + band|30|7": 6,
+      "hypertrophy|First time|Bodyweight + band|45|2": 1,
+      "hypertrophy|First time|Bodyweight + band|45|3": 2,
+      "hypertrophy|First time|Bodyweight + band|45|7": 6,
+      "hypertrophy|First time|Bodyweight + band|60|2": 1,
+      "hypertrophy|First time|Bodyweight + band|60|3": 4,
+      "hypertrophy|First time|Bodyweight + band|60|7": 8,
+      "hypertrophy|First time|Bodyweight + band|90|2": 1,
+      "hypertrophy|First time|Bodyweight + band|90|3": 5,
+      "hypertrophy|First time|Bodyweight + band|90|7": 9,
+      "hypertrophy|First time|Bodyweight + band|120|2": 1,
+      "hypertrophy|First time|Bodyweight + band|120|3": 5,
+      "hypertrophy|First time|Bodyweight + band|120|7": 9,
+      "hypertrophy|Some experience|Full gym|15|2": 0,
+      "hypertrophy|Some experience|Full gym|15|3": 0,
+      "hypertrophy|Some experience|Full gym|15|7": 2,
+      "hypertrophy|Some experience|Full gym|20|2": 1,
+      "hypertrophy|Some experience|Full gym|20|3": 2,
+      "hypertrophy|Some experience|Full gym|20|7": 6,
+      "hypertrophy|Some experience|Full gym|30|2": 1,
+      "hypertrophy|Some experience|Full gym|30|3": 2,
+      "hypertrophy|Some experience|Full gym|30|7": 6,
+      "hypertrophy|Some experience|Full gym|45|2": 1,
+      "hypertrophy|Some experience|Full gym|45|3": 2,
+      "hypertrophy|Some experience|Full gym|45|7": 8,
+      "hypertrophy|Some experience|Full gym|60|2": 2,
+      "hypertrophy|Some experience|Full gym|60|3": 7,
+      "hypertrophy|Some experience|Full gym|60|7": 13,
+      "hypertrophy|Some experience|Full gym|90|2": 3,
+      "hypertrophy|Some experience|Full gym|90|3": 12,
+      "hypertrophy|Some experience|Full gym|90|7": 22,
+      "hypertrophy|Some experience|Full gym|120|2": 4,
+      "hypertrophy|Some experience|Full gym|120|3": 13,
+      "hypertrophy|Some experience|Full gym|120|7": 24,
+      "hypertrophy|Some experience|Dumbbells|15|2": 0,
+      "hypertrophy|Some experience|Dumbbells|15|3": 0,
+      "hypertrophy|Some experience|Dumbbells|15|7": 2,
+      "hypertrophy|Some experience|Dumbbells|20|2": 1,
+      "hypertrophy|Some experience|Dumbbells|20|3": 2,
+      "hypertrophy|Some experience|Dumbbells|20|7": 6,
+      "hypertrophy|Some experience|Dumbbells|30|2": 1,
+      "hypertrophy|Some experience|Dumbbells|30|3": 2,
+      "hypertrophy|Some experience|Dumbbells|30|7": 6,
+      "hypertrophy|Some experience|Dumbbells|45|2": 1,
+      "hypertrophy|Some experience|Dumbbells|45|3": 2,
+      "hypertrophy|Some experience|Dumbbells|45|7": 8,
+      "hypertrophy|Some experience|Dumbbells|60|2": 2,
+      "hypertrophy|Some experience|Dumbbells|60|3": 5,
+      "hypertrophy|Some experience|Dumbbells|60|7": 11,
+      "hypertrophy|Some experience|Dumbbells|90|2": 2,
+      "hypertrophy|Some experience|Dumbbells|90|3": 6,
+      "hypertrophy|Some experience|Dumbbells|90|7": 14,
+      "hypertrophy|Some experience|Dumbbells|120|2": 2,
+      "hypertrophy|Some experience|Dumbbells|120|3": 6,
+      "hypertrophy|Some experience|Dumbbells|120|7": 15,
+      "hypertrophy|Some experience|Bodyweight + band|15|2": 0,
+      "hypertrophy|Some experience|Bodyweight + band|15|3": 0,
+      "hypertrophy|Some experience|Bodyweight + band|15|7": 2,
+      "hypertrophy|Some experience|Bodyweight + band|20|2": 1,
+      "hypertrophy|Some experience|Bodyweight + band|20|3": 2,
+      "hypertrophy|Some experience|Bodyweight + band|20|7": 6,
+      "hypertrophy|Some experience|Bodyweight + band|30|2": 1,
+      "hypertrophy|Some experience|Bodyweight + band|30|3": 2,
+      "hypertrophy|Some experience|Bodyweight + band|30|7": 6,
+      "hypertrophy|Some experience|Bodyweight + band|45|2": 1,
+      "hypertrophy|Some experience|Bodyweight + band|45|3": 2,
+      "hypertrophy|Some experience|Bodyweight + band|45|7": 8,
+      "hypertrophy|Some experience|Bodyweight + band|60|2": 1,
+      "hypertrophy|Some experience|Bodyweight + band|60|3": 4,
+      "hypertrophy|Some experience|Bodyweight + band|60|7": 10,
+      "hypertrophy|Some experience|Bodyweight + band|90|2": 1,
+      "hypertrophy|Some experience|Bodyweight + band|90|3": 5,
+      "hypertrophy|Some experience|Bodyweight + band|90|7": 12,
+      "hypertrophy|Some experience|Bodyweight + band|120|2": 1,
+      "hypertrophy|Some experience|Bodyweight + band|120|3": 5,
+      "hypertrophy|Some experience|Bodyweight + band|120|7": 13,
+      "hypertrophy|Experienced|Full gym|15|2": 0,
+      "hypertrophy|Experienced|Full gym|15|3": 0,
+      "hypertrophy|Experienced|Full gym|15|7": 2,
+      "hypertrophy|Experienced|Full gym|20|2": 1,
+      "hypertrophy|Experienced|Full gym|20|3": 2,
+      "hypertrophy|Experienced|Full gym|20|7": 6,
+      "hypertrophy|Experienced|Full gym|30|2": 1,
+      "hypertrophy|Experienced|Full gym|30|3": 2,
+      "hypertrophy|Experienced|Full gym|30|7": 6,
+      "hypertrophy|Experienced|Full gym|45|2": 1,
+      "hypertrophy|Experienced|Full gym|45|3": 2,
+      "hypertrophy|Experienced|Full gym|45|7": 8,
+      "hypertrophy|Experienced|Full gym|60|2": 2,
+      "hypertrophy|Experienced|Full gym|60|3": 7,
+      "hypertrophy|Experienced|Full gym|60|7": 13,
+      "hypertrophy|Experienced|Full gym|90|2": 3,
+      "hypertrophy|Experienced|Full gym|90|3": 12,
+      "hypertrophy|Experienced|Full gym|90|7": 22,
+      "hypertrophy|Experienced|Full gym|120|2": 4,
+      "hypertrophy|Experienced|Full gym|120|3": 13,
+      "hypertrophy|Experienced|Full gym|120|7": 25,
+      "hypertrophy|Experienced|Dumbbells|15|2": 0,
+      "hypertrophy|Experienced|Dumbbells|15|3": 0,
+      "hypertrophy|Experienced|Dumbbells|15|7": 2,
+      "hypertrophy|Experienced|Dumbbells|20|2": 1,
+      "hypertrophy|Experienced|Dumbbells|20|3": 2,
+      "hypertrophy|Experienced|Dumbbells|20|7": 6,
+      "hypertrophy|Experienced|Dumbbells|30|2": 1,
+      "hypertrophy|Experienced|Dumbbells|30|3": 2,
+      "hypertrophy|Experienced|Dumbbells|30|7": 6,
+      "hypertrophy|Experienced|Dumbbells|45|2": 1,
+      "hypertrophy|Experienced|Dumbbells|45|3": 2,
+      "hypertrophy|Experienced|Dumbbells|45|7": 8,
+      "hypertrophy|Experienced|Dumbbells|60|2": 2,
+      "hypertrophy|Experienced|Dumbbells|60|3": 5,
+      "hypertrophy|Experienced|Dumbbells|60|7": 11,
+      "hypertrophy|Experienced|Dumbbells|90|2": 2,
+      "hypertrophy|Experienced|Dumbbells|90|3": 6,
+      "hypertrophy|Experienced|Dumbbells|90|7": 14,
+      "hypertrophy|Experienced|Dumbbells|120|2": 2,
+      "hypertrophy|Experienced|Dumbbells|120|3": 6,
+      "hypertrophy|Experienced|Dumbbells|120|7": 15,
+      "hypertrophy|Experienced|Bodyweight + band|15|2": 0,
+      "hypertrophy|Experienced|Bodyweight + band|15|3": 0,
+      "hypertrophy|Experienced|Bodyweight + band|15|7": 2,
+      "hypertrophy|Experienced|Bodyweight + band|20|2": 1,
+      "hypertrophy|Experienced|Bodyweight + band|20|3": 2,
+      "hypertrophy|Experienced|Bodyweight + band|20|7": 6,
+      "hypertrophy|Experienced|Bodyweight + band|30|2": 1,
+      "hypertrophy|Experienced|Bodyweight + band|30|3": 2,
+      "hypertrophy|Experienced|Bodyweight + band|30|7": 6,
+      "hypertrophy|Experienced|Bodyweight + band|45|2": 1,
+      "hypertrophy|Experienced|Bodyweight + band|45|3": 2,
+      "hypertrophy|Experienced|Bodyweight + band|45|7": 8,
+      "hypertrophy|Experienced|Bodyweight + band|60|2": 1,
+      "hypertrophy|Experienced|Bodyweight + band|60|3": 4,
+      "hypertrophy|Experienced|Bodyweight + band|60|7": 10,
+      "hypertrophy|Experienced|Bodyweight + band|90|2": 1,
+      "hypertrophy|Experienced|Bodyweight + band|90|3": 5,
+      "hypertrophy|Experienced|Bodyweight + band|90|7": 12,
+      "hypertrophy|Experienced|Bodyweight + band|120|2": 1,
+      "hypertrophy|Experienced|Bodyweight + band|120|3": 5,
+      "hypertrophy|Experienced|Bodyweight + band|120|7": 13,
+      "powerbuilding|First time|Full gym|15|2": 0,
+      "powerbuilding|First time|Full gym|15|3": 0,
+      "powerbuilding|First time|Full gym|15|7": 2,
+      "powerbuilding|First time|Full gym|20|2": 1,
+      "powerbuilding|First time|Full gym|20|3": 2,
+      "powerbuilding|First time|Full gym|20|7": 6,
+      "powerbuilding|First time|Full gym|30|2": 1,
+      "powerbuilding|First time|Full gym|30|3": 2,
+      "powerbuilding|First time|Full gym|30|7": 6,
+      "powerbuilding|First time|Full gym|45|2": 1,
+      "powerbuilding|First time|Full gym|45|3": 2,
+      "powerbuilding|First time|Full gym|45|7": 6,
+      "powerbuilding|First time|Full gym|60|2": 2,
+      "powerbuilding|First time|Full gym|60|3": 5,
+      "powerbuilding|First time|Full gym|60|7": 9,
+      "powerbuilding|First time|Full gym|90|2": 4,
+      "powerbuilding|First time|Full gym|90|3": 10,
+      "powerbuilding|First time|Full gym|90|7": 14,
+      "powerbuilding|First time|Full gym|120|2": 4,
+      "powerbuilding|First time|Full gym|120|3": 10,
+      "powerbuilding|First time|Full gym|120|7": 14,
+      "powerbuilding|First time|Dumbbells|15|2": 0,
+      "powerbuilding|First time|Dumbbells|15|3": 0,
+      "powerbuilding|First time|Dumbbells|15|7": 2,
+      "powerbuilding|First time|Dumbbells|20|2": 1,
+      "powerbuilding|First time|Dumbbells|20|3": 2,
+      "powerbuilding|First time|Dumbbells|20|7": 6,
+      "powerbuilding|First time|Dumbbells|30|2": 1,
+      "powerbuilding|First time|Dumbbells|30|3": 2,
+      "powerbuilding|First time|Dumbbells|30|7": 6,
+      "powerbuilding|First time|Dumbbells|45|2": 1,
+      "powerbuilding|First time|Dumbbells|45|3": 2,
+      "powerbuilding|First time|Dumbbells|45|7": 6,
+      "powerbuilding|First time|Dumbbells|60|2": 2,
+      "powerbuilding|First time|Dumbbells|60|3": 5,
+      "powerbuilding|First time|Dumbbells|60|7": 9,
+      "powerbuilding|First time|Dumbbells|90|2": 3,
+      "powerbuilding|First time|Dumbbells|90|3": 8,
+      "powerbuilding|First time|Dumbbells|90|7": 12,
+      "powerbuilding|First time|Dumbbells|120|2": 3,
+      "powerbuilding|First time|Dumbbells|120|3": 8,
+      "powerbuilding|First time|Dumbbells|120|7": 12,
+      "powerbuilding|First time|Bodyweight + band|15|2": 0,
+      "powerbuilding|First time|Bodyweight + band|15|3": 0,
+      "powerbuilding|First time|Bodyweight + band|15|7": 2,
+      "powerbuilding|First time|Bodyweight + band|20|2": 0,
+      "powerbuilding|First time|Bodyweight + band|20|3": 0,
+      "powerbuilding|First time|Bodyweight + band|20|7": 4,
+      "powerbuilding|First time|Bodyweight + band|30|2": 0,
+      "powerbuilding|First time|Bodyweight + band|30|3": 0,
+      "powerbuilding|First time|Bodyweight + band|30|7": 4,
+      "powerbuilding|First time|Bodyweight + band|45|2": 0,
+      "powerbuilding|First time|Bodyweight + band|45|3": 0,
+      "powerbuilding|First time|Bodyweight + band|45|7": 4,
+      "powerbuilding|First time|Bodyweight + band|60|2": 0,
+      "powerbuilding|First time|Bodyweight + band|60|3": 2,
+      "powerbuilding|First time|Bodyweight + band|60|7": 6,
+      "powerbuilding|First time|Bodyweight + band|90|2": 1,
+      "powerbuilding|First time|Bodyweight + band|90|3": 4,
+      "powerbuilding|First time|Bodyweight + band|90|7": 8,
+      "powerbuilding|First time|Bodyweight + band|120|2": 1,
+      "powerbuilding|First time|Bodyweight + band|120|3": 4,
+      "powerbuilding|First time|Bodyweight + band|120|7": 8,
+      "powerbuilding|Some experience|Full gym|15|2": 0,
+      "powerbuilding|Some experience|Full gym|15|3": 0,
+      "powerbuilding|Some experience|Full gym|15|7": 2,
+      "powerbuilding|Some experience|Full gym|20|2": 1,
+      "powerbuilding|Some experience|Full gym|20|3": 2,
+      "powerbuilding|Some experience|Full gym|20|7": 6,
+      "powerbuilding|Some experience|Full gym|30|2": 1,
+      "powerbuilding|Some experience|Full gym|30|3": 2,
+      "powerbuilding|Some experience|Full gym|30|7": 6,
+      "powerbuilding|Some experience|Full gym|45|2": 1,
+      "powerbuilding|Some experience|Full gym|45|3": 2,
+      "powerbuilding|Some experience|Full gym|45|7": 8,
+      "powerbuilding|Some experience|Full gym|60|2": 2,
+      "powerbuilding|Some experience|Full gym|60|3": 5,
+      "powerbuilding|Some experience|Full gym|60|7": 12,
+      "powerbuilding|Some experience|Full gym|90|2": 4,
+      "powerbuilding|Some experience|Full gym|90|3": 11,
+      "powerbuilding|Some experience|Full gym|90|7": 24,
+      "powerbuilding|Some experience|Full gym|120|2": 4,
+      "powerbuilding|Some experience|Full gym|120|3": 11,
+      "powerbuilding|Some experience|Full gym|120|7": 25,
+      "powerbuilding|Some experience|Dumbbells|15|2": 0,
+      "powerbuilding|Some experience|Dumbbells|15|3": 0,
+      "powerbuilding|Some experience|Dumbbells|15|7": 2,
+      "powerbuilding|Some experience|Dumbbells|20|2": 1,
+      "powerbuilding|Some experience|Dumbbells|20|3": 2,
+      "powerbuilding|Some experience|Dumbbells|20|7": 6,
+      "powerbuilding|Some experience|Dumbbells|30|2": 1,
+      "powerbuilding|Some experience|Dumbbells|30|3": 2,
+      "powerbuilding|Some experience|Dumbbells|30|7": 6,
+      "powerbuilding|Some experience|Dumbbells|45|2": 1,
+      "powerbuilding|Some experience|Dumbbells|45|3": 2,
+      "powerbuilding|Some experience|Dumbbells|45|7": 8,
+      "powerbuilding|Some experience|Dumbbells|60|2": 2,
+      "powerbuilding|Some experience|Dumbbells|60|3": 5,
+      "powerbuilding|Some experience|Dumbbells|60|7": 12,
+      "powerbuilding|Some experience|Dumbbells|90|2": 3,
+      "powerbuilding|Some experience|Dumbbells|90|3": 8,
+      "powerbuilding|Some experience|Dumbbells|90|7": 17,
+      "powerbuilding|Some experience|Dumbbells|120|2": 3,
+      "powerbuilding|Some experience|Dumbbells|120|3": 8,
+      "powerbuilding|Some experience|Dumbbells|120|7": 18,
+      "powerbuilding|Some experience|Bodyweight + band|15|2": 0,
+      "powerbuilding|Some experience|Bodyweight + band|15|3": 0,
+      "powerbuilding|Some experience|Bodyweight + band|15|7": 2,
+      "powerbuilding|Some experience|Bodyweight + band|20|2": 0,
+      "powerbuilding|Some experience|Bodyweight + band|20|3": 0,
+      "powerbuilding|Some experience|Bodyweight + band|20|7": 4,
+      "powerbuilding|Some experience|Bodyweight + band|30|2": 0,
+      "powerbuilding|Some experience|Bodyweight + band|30|3": 0,
+      "powerbuilding|Some experience|Bodyweight + band|30|7": 4,
+      "powerbuilding|Some experience|Bodyweight + band|45|2": 0,
+      "powerbuilding|Some experience|Bodyweight + band|45|3": 0,
+      "powerbuilding|Some experience|Bodyweight + band|45|7": 6,
+      "powerbuilding|Some experience|Bodyweight + band|60|2": 0,
+      "powerbuilding|Some experience|Bodyweight + band|60|3": 2,
+      "powerbuilding|Some experience|Bodyweight + band|60|7": 9,
+      "powerbuilding|Some experience|Bodyweight + band|90|2": 1,
+      "powerbuilding|Some experience|Bodyweight + band|90|3": 4,
+      "powerbuilding|Some experience|Bodyweight + band|90|7": 12,
+      "powerbuilding|Some experience|Bodyweight + band|120|2": 1,
+      "powerbuilding|Some experience|Bodyweight + band|120|3": 4,
+      "powerbuilding|Some experience|Bodyweight + band|120|7": 13,
+      "powerbuilding|Experienced|Full gym|15|2": 0,
+      "powerbuilding|Experienced|Full gym|15|3": 0,
+      "powerbuilding|Experienced|Full gym|15|7": 2,
+      "powerbuilding|Experienced|Full gym|20|2": 1,
+      "powerbuilding|Experienced|Full gym|20|3": 2,
+      "powerbuilding|Experienced|Full gym|20|7": 6,
+      "powerbuilding|Experienced|Full gym|30|2": 1,
+      "powerbuilding|Experienced|Full gym|30|3": 2,
+      "powerbuilding|Experienced|Full gym|30|7": 6,
+      "powerbuilding|Experienced|Full gym|45|2": 1,
+      "powerbuilding|Experienced|Full gym|45|3": 2,
+      "powerbuilding|Experienced|Full gym|45|7": 8,
+      "powerbuilding|Experienced|Full gym|60|2": 2,
+      "powerbuilding|Experienced|Full gym|60|3": 5,
+      "powerbuilding|Experienced|Full gym|60|7": 12,
+      "powerbuilding|Experienced|Full gym|90|2": 4,
+      "powerbuilding|Experienced|Full gym|90|3": 11,
+      "powerbuilding|Experienced|Full gym|90|7": 25,
+      "powerbuilding|Experienced|Full gym|120|2": 4,
+      "powerbuilding|Experienced|Full gym|120|3": 11,
+      "powerbuilding|Experienced|Full gym|120|7": 26,
+      "powerbuilding|Experienced|Dumbbells|15|2": 0,
+      "powerbuilding|Experienced|Dumbbells|15|3": 0,
+      "powerbuilding|Experienced|Dumbbells|15|7": 2,
+      "powerbuilding|Experienced|Dumbbells|20|2": 1,
+      "powerbuilding|Experienced|Dumbbells|20|3": 2,
+      "powerbuilding|Experienced|Dumbbells|20|7": 6,
+      "powerbuilding|Experienced|Dumbbells|30|2": 1,
+      "powerbuilding|Experienced|Dumbbells|30|3": 2,
+      "powerbuilding|Experienced|Dumbbells|30|7": 6,
+      "powerbuilding|Experienced|Dumbbells|45|2": 1,
+      "powerbuilding|Experienced|Dumbbells|45|3": 2,
+      "powerbuilding|Experienced|Dumbbells|45|7": 8,
+      "powerbuilding|Experienced|Dumbbells|60|2": 2,
+      "powerbuilding|Experienced|Dumbbells|60|3": 5,
+      "powerbuilding|Experienced|Dumbbells|60|7": 12,
+      "powerbuilding|Experienced|Dumbbells|90|2": 3,
+      "powerbuilding|Experienced|Dumbbells|90|3": 8,
+      "powerbuilding|Experienced|Dumbbells|90|7": 17,
+      "powerbuilding|Experienced|Dumbbells|120|2": 3,
+      "powerbuilding|Experienced|Dumbbells|120|3": 8,
+      "powerbuilding|Experienced|Dumbbells|120|7": 18,
+      "powerbuilding|Experienced|Bodyweight + band|15|2": 0,
+      "powerbuilding|Experienced|Bodyweight + band|15|3": 0,
+      "powerbuilding|Experienced|Bodyweight + band|15|7": 2,
+      "powerbuilding|Experienced|Bodyweight + band|20|2": 0,
+      "powerbuilding|Experienced|Bodyweight + band|20|3": 0,
+      "powerbuilding|Experienced|Bodyweight + band|20|7": 4,
+      "powerbuilding|Experienced|Bodyweight + band|30|2": 0,
+      "powerbuilding|Experienced|Bodyweight + band|30|3": 0,
+      "powerbuilding|Experienced|Bodyweight + band|30|7": 4,
+      "powerbuilding|Experienced|Bodyweight + band|45|2": 0,
+      "powerbuilding|Experienced|Bodyweight + band|45|3": 0,
+      "powerbuilding|Experienced|Bodyweight + band|45|7": 6,
+      "powerbuilding|Experienced|Bodyweight + band|60|2": 0,
+      "powerbuilding|Experienced|Bodyweight + band|60|3": 2,
+      "powerbuilding|Experienced|Bodyweight + band|60|7": 9,
+      "powerbuilding|Experienced|Bodyweight + band|90|2": 1,
+      "powerbuilding|Experienced|Bodyweight + band|90|3": 4,
+      "powerbuilding|Experienced|Bodyweight + band|90|7": 12,
+      "powerbuilding|Experienced|Bodyweight + band|120|2": 1,
+      "powerbuilding|Experienced|Bodyweight + band|120|3": 4,
+      "powerbuilding|Experienced|Bodyweight + band|120|7": 13,
+      "hybrid|First time|Full gym|15|2": 0,
+      "hybrid|First time|Full gym|15|3": 0,
+      "hybrid|First time|Full gym|15|7": 0,
+      "hybrid|First time|Full gym|20|2": 0,
+      "hybrid|First time|Full gym|20|3": 1,
+      "hybrid|First time|Full gym|20|7": 2,
+      "hybrid|First time|Full gym|30|2": 0,
+      "hybrid|First time|Full gym|30|3": 1,
+      "hybrid|First time|Full gym|30|7": 2,
+      "hybrid|First time|Full gym|45|2": 0,
+      "hybrid|First time|Full gym|45|3": 1,
+      "hybrid|First time|Full gym|45|7": 2,
+      "hybrid|First time|Full gym|60|2": 1,
+      "hybrid|First time|Full gym|60|3": 3,
+      "hybrid|First time|Full gym|60|7": 7,
+      "hybrid|First time|Full gym|90|2": 2,
+      "hybrid|First time|Full gym|90|3": 4,
+      "hybrid|First time|Full gym|90|7": 9,
+      "hybrid|First time|Full gym|120|2": 2,
+      "hybrid|First time|Full gym|120|3": 4,
+      "hybrid|First time|Full gym|120|7": 9,
+      "hybrid|First time|Dumbbells|15|2": 0,
+      "hybrid|First time|Dumbbells|15|3": 0,
+      "hybrid|First time|Dumbbells|15|7": 0,
+      "hybrid|First time|Dumbbells|20|2": 0,
+      "hybrid|First time|Dumbbells|20|3": 1,
+      "hybrid|First time|Dumbbells|20|7": 2,
+      "hybrid|First time|Dumbbells|30|2": 0,
+      "hybrid|First time|Dumbbells|30|3": 1,
+      "hybrid|First time|Dumbbells|30|7": 2,
+      "hybrid|First time|Dumbbells|45|2": 0,
+      "hybrid|First time|Dumbbells|45|3": 1,
+      "hybrid|First time|Dumbbells|45|7": 2,
+      "hybrid|First time|Dumbbells|60|2": 0,
+      "hybrid|First time|Dumbbells|60|3": 2,
+      "hybrid|First time|Dumbbells|60|7": 5,
+      "hybrid|First time|Dumbbells|90|2": 1,
+      "hybrid|First time|Dumbbells|90|3": 3,
+      "hybrid|First time|Dumbbells|90|7": 7,
+      "hybrid|First time|Dumbbells|120|2": 1,
+      "hybrid|First time|Dumbbells|120|3": 3,
+      "hybrid|First time|Dumbbells|120|7": 7,
+      "hybrid|First time|Bodyweight + band|15|2": 0,
+      "hybrid|First time|Bodyweight + band|15|3": 0,
+      "hybrid|First time|Bodyweight + band|15|7": 0,
+      "hybrid|First time|Bodyweight + band|20|2": 0,
+      "hybrid|First time|Bodyweight + band|20|3": 1,
+      "hybrid|First time|Bodyweight + band|20|7": 2,
+      "hybrid|First time|Bodyweight + band|30|2": 0,
+      "hybrid|First time|Bodyweight + band|30|3": 1,
+      "hybrid|First time|Bodyweight + band|30|7": 2,
+      "hybrid|First time|Bodyweight + band|45|2": 0,
+      "hybrid|First time|Bodyweight + band|45|3": 1,
+      "hybrid|First time|Bodyweight + band|45|7": 2,
+      "hybrid|First time|Bodyweight + band|60|2": 1,
+      "hybrid|First time|Bodyweight + band|60|3": 2,
+      "hybrid|First time|Bodyweight + band|60|7": 4,
+      "hybrid|First time|Bodyweight + band|90|2": 1,
+      "hybrid|First time|Bodyweight + band|90|3": 2,
+      "hybrid|First time|Bodyweight + band|90|7": 4,
+      "hybrid|First time|Bodyweight + band|120|2": 1,
+      "hybrid|First time|Bodyweight + band|120|3": 2,
+      "hybrid|First time|Bodyweight + band|120|7": 4,
+      "hybrid|Some experience|Full gym|15|2": 0,
+      "hybrid|Some experience|Full gym|15|3": 0,
+      "hybrid|Some experience|Full gym|15|7": 0,
+      "hybrid|Some experience|Full gym|20|2": 0,
+      "hybrid|Some experience|Full gym|20|3": 1,
+      "hybrid|Some experience|Full gym|20|7": 2,
+      "hybrid|Some experience|Full gym|30|2": 0,
+      "hybrid|Some experience|Full gym|30|3": 1,
+      "hybrid|Some experience|Full gym|30|7": 2,
+      "hybrid|Some experience|Full gym|45|2": 0,
+      "hybrid|Some experience|Full gym|45|3": 1,
+      "hybrid|Some experience|Full gym|45|7": 2,
+      "hybrid|Some experience|Full gym|60|2": 1,
+      "hybrid|Some experience|Full gym|60|3": 4,
+      "hybrid|Some experience|Full gym|60|7": 8,
+      "hybrid|Some experience|Full gym|90|2": 2,
+      "hybrid|Some experience|Full gym|90|3": 5,
+      "hybrid|Some experience|Full gym|90|7": 11,
+      "hybrid|Some experience|Full gym|120|2": 2,
+      "hybrid|Some experience|Full gym|120|3": 5,
+      "hybrid|Some experience|Full gym|120|7": 11,
+      "hybrid|Some experience|Dumbbells|15|2": 0,
+      "hybrid|Some experience|Dumbbells|15|3": 0,
+      "hybrid|Some experience|Dumbbells|15|7": 0,
+      "hybrid|Some experience|Dumbbells|20|2": 0,
+      "hybrid|Some experience|Dumbbells|20|3": 1,
+      "hybrid|Some experience|Dumbbells|20|7": 2,
+      "hybrid|Some experience|Dumbbells|30|2": 0,
+      "hybrid|Some experience|Dumbbells|30|3": 1,
+      "hybrid|Some experience|Dumbbells|30|7": 2,
+      "hybrid|Some experience|Dumbbells|45|2": 0,
+      "hybrid|Some experience|Dumbbells|45|3": 1,
+      "hybrid|Some experience|Dumbbells|45|7": 2,
+      "hybrid|Some experience|Dumbbells|60|2": 0,
+      "hybrid|Some experience|Dumbbells|60|3": 2,
+      "hybrid|Some experience|Dumbbells|60|7": 5,
+      "hybrid|Some experience|Dumbbells|90|2": 1,
+      "hybrid|Some experience|Dumbbells|90|3": 3,
+      "hybrid|Some experience|Dumbbells|90|7": 7,
+      "hybrid|Some experience|Dumbbells|120|2": 1,
+      "hybrid|Some experience|Dumbbells|120|3": 3,
+      "hybrid|Some experience|Dumbbells|120|7": 7,
+      "hybrid|Some experience|Bodyweight + band|15|2": 0,
+      "hybrid|Some experience|Bodyweight + band|15|3": 0,
+      "hybrid|Some experience|Bodyweight + band|15|7": 0,
+      "hybrid|Some experience|Bodyweight + band|20|2": 0,
+      "hybrid|Some experience|Bodyweight + band|20|3": 1,
+      "hybrid|Some experience|Bodyweight + band|20|7": 2,
+      "hybrid|Some experience|Bodyweight + band|30|2": 0,
+      "hybrid|Some experience|Bodyweight + band|30|3": 1,
+      "hybrid|Some experience|Bodyweight + band|30|7": 2,
+      "hybrid|Some experience|Bodyweight + band|45|2": 0,
+      "hybrid|Some experience|Bodyweight + band|45|3": 1,
+      "hybrid|Some experience|Bodyweight + band|45|7": 2,
+      "hybrid|Some experience|Bodyweight + band|60|2": 1,
+      "hybrid|Some experience|Bodyweight + band|60|3": 2,
+      "hybrid|Some experience|Bodyweight + band|60|7": 4,
+      "hybrid|Some experience|Bodyweight + band|90|2": 1,
+      "hybrid|Some experience|Bodyweight + band|90|3": 2,
+      "hybrid|Some experience|Bodyweight + band|90|7": 4,
+      "hybrid|Some experience|Bodyweight + band|120|2": 1,
+      "hybrid|Some experience|Bodyweight + band|120|3": 2,
+      "hybrid|Some experience|Bodyweight + band|120|7": 4,
+      "hybrid|Experienced|Full gym|15|2": 0,
+      "hybrid|Experienced|Full gym|15|3": 0,
+      "hybrid|Experienced|Full gym|15|7": 0,
+      "hybrid|Experienced|Full gym|20|2": 0,
+      "hybrid|Experienced|Full gym|20|3": 1,
+      "hybrid|Experienced|Full gym|20|7": 2,
+      "hybrid|Experienced|Full gym|30|2": 0,
+      "hybrid|Experienced|Full gym|30|3": 1,
+      "hybrid|Experienced|Full gym|30|7": 2,
+      "hybrid|Experienced|Full gym|45|2": 0,
+      "hybrid|Experienced|Full gym|45|3": 1,
+      "hybrid|Experienced|Full gym|45|7": 2,
+      "hybrid|Experienced|Full gym|60|2": 1,
+      "hybrid|Experienced|Full gym|60|3": 4,
+      "hybrid|Experienced|Full gym|60|7": 8,
+      "hybrid|Experienced|Full gym|90|2": 2,
+      "hybrid|Experienced|Full gym|90|3": 5,
+      "hybrid|Experienced|Full gym|90|7": 11,
+      "hybrid|Experienced|Full gym|120|2": 2,
+      "hybrid|Experienced|Full gym|120|3": 5,
+      "hybrid|Experienced|Full gym|120|7": 11,
+      "hybrid|Experienced|Dumbbells|15|2": 0,
+      "hybrid|Experienced|Dumbbells|15|3": 0,
+      "hybrid|Experienced|Dumbbells|15|7": 0,
+      "hybrid|Experienced|Dumbbells|20|2": 0,
+      "hybrid|Experienced|Dumbbells|20|3": 1,
+      "hybrid|Experienced|Dumbbells|20|7": 2,
+      "hybrid|Experienced|Dumbbells|30|2": 0,
+      "hybrid|Experienced|Dumbbells|30|3": 1,
+      "hybrid|Experienced|Dumbbells|30|7": 2,
+      "hybrid|Experienced|Dumbbells|45|2": 0,
+      "hybrid|Experienced|Dumbbells|45|3": 1,
+      "hybrid|Experienced|Dumbbells|45|7": 2,
+      "hybrid|Experienced|Dumbbells|60|2": 0,
+      "hybrid|Experienced|Dumbbells|60|3": 2,
+      "hybrid|Experienced|Dumbbells|60|7": 5,
+      "hybrid|Experienced|Dumbbells|90|2": 1,
+      "hybrid|Experienced|Dumbbells|90|3": 3,
+      "hybrid|Experienced|Dumbbells|90|7": 7,
+      "hybrid|Experienced|Dumbbells|120|2": 1,
+      "hybrid|Experienced|Dumbbells|120|3": 3,
+      "hybrid|Experienced|Dumbbells|120|7": 7,
+      "hybrid|Experienced|Bodyweight + band|15|2": 0,
+      "hybrid|Experienced|Bodyweight + band|15|3": 0,
+      "hybrid|Experienced|Bodyweight + band|15|7": 0,
+      "hybrid|Experienced|Bodyweight + band|20|2": 0,
+      "hybrid|Experienced|Bodyweight + band|20|3": 1,
+      "hybrid|Experienced|Bodyweight + band|20|7": 2,
+      "hybrid|Experienced|Bodyweight + band|30|2": 0,
+      "hybrid|Experienced|Bodyweight + band|30|3": 1,
+      "hybrid|Experienced|Bodyweight + band|30|7": 2,
+      "hybrid|Experienced|Bodyweight + band|45|2": 0,
+      "hybrid|Experienced|Bodyweight + band|45|3": 1,
+      "hybrid|Experienced|Bodyweight + band|45|7": 2,
+      "hybrid|Experienced|Bodyweight + band|60|2": 1,
+      "hybrid|Experienced|Bodyweight + band|60|3": 2,
+      "hybrid|Experienced|Bodyweight + band|60|7": 4,
+      "hybrid|Experienced|Bodyweight + band|90|2": 1,
+      "hybrid|Experienced|Bodyweight + band|90|3": 2,
+      "hybrid|Experienced|Bodyweight + band|90|7": 4,
+      "hybrid|Experienced|Bodyweight + band|120|2": 1,
+      "hybrid|Experienced|Bodyweight + band|120|3": 2,
+      "hybrid|Experienced|Bodyweight + band|120|7": 4,
+      "running|First time|Full gym|15|2": 0,
+      "running|First time|Full gym|15|3": 0,
+      "running|First time|Full gym|15|7": 0,
+      "running|First time|Full gym|20|2": 1,
+      "running|First time|Full gym|20|3": 2,
+      "running|First time|Full gym|20|7": 2,
+      "running|First time|Full gym|30|2": 3,
+      "running|First time|Full gym|30|3": 4,
+      "running|First time|Full gym|30|7": 4,
+      "running|First time|Full gym|45|2": 4,
+      "running|First time|Full gym|45|3": 11,
+      "running|First time|Full gym|45|7": 12,
+      "running|First time|Full gym|60|2": 4,
+      "running|First time|Full gym|60|3": 12,
+      "running|First time|Full gym|60|7": 14,
+      "running|First time|Full gym|90|2": 4,
+      "running|First time|Full gym|90|3": 12,
+      "running|First time|Full gym|90|7": 14,
+      "running|First time|Full gym|120|2": 4,
+      "running|First time|Full gym|120|3": 12,
+      "running|First time|Full gym|120|7": 14,
+      "running|First time|Dumbbells|15|2": 0,
+      "running|First time|Dumbbells|15|3": 0,
+      "running|First time|Dumbbells|15|7": 0,
+      "running|First time|Dumbbells|20|2": 1,
+      "running|First time|Dumbbells|20|3": 2,
+      "running|First time|Dumbbells|20|7": 2,
+      "running|First time|Dumbbells|30|2": 3,
+      "running|First time|Dumbbells|30|3": 4,
+      "running|First time|Dumbbells|30|7": 4,
+      "running|First time|Dumbbells|45|2": 4,
+      "running|First time|Dumbbells|45|3": 11,
+      "running|First time|Dumbbells|45|7": 12,
+      "running|First time|Dumbbells|60|2": 4,
+      "running|First time|Dumbbells|60|3": 12,
+      "running|First time|Dumbbells|60|7": 14,
+      "running|First time|Dumbbells|90|2": 4,
+      "running|First time|Dumbbells|90|3": 12,
+      "running|First time|Dumbbells|90|7": 14,
+      "running|First time|Dumbbells|120|2": 4,
+      "running|First time|Dumbbells|120|3": 12,
+      "running|First time|Dumbbells|120|7": 14,
+      "running|First time|Bodyweight + band|15|2": 0,
+      "running|First time|Bodyweight + band|15|3": 0,
+      "running|First time|Bodyweight + band|15|7": 0,
+      "running|First time|Bodyweight + band|20|2": 1,
+      "running|First time|Bodyweight + band|20|3": 2,
+      "running|First time|Bodyweight + band|20|7": 2,
+      "running|First time|Bodyweight + band|30|2": 3,
+      "running|First time|Bodyweight + band|30|3": 4,
+      "running|First time|Bodyweight + band|30|7": 4,
+      "running|First time|Bodyweight + band|45|2": 4,
+      "running|First time|Bodyweight + band|45|3": 11,
+      "running|First time|Bodyweight + band|45|7": 12,
+      "running|First time|Bodyweight + band|60|2": 4,
+      "running|First time|Bodyweight + band|60|3": 12,
+      "running|First time|Bodyweight + band|60|7": 14,
+      "running|First time|Bodyweight + band|90|2": 4,
+      "running|First time|Bodyweight + band|90|3": 12,
+      "running|First time|Bodyweight + band|90|7": 14,
+      "running|First time|Bodyweight + band|120|2": 4,
+      "running|First time|Bodyweight + band|120|3": 12,
+      "running|First time|Bodyweight + band|120|7": 14,
+      "running|Some experience|Full gym|15|2": 0,
+      "running|Some experience|Full gym|15|3": 0,
+      "running|Some experience|Full gym|15|7": 0,
+      "running|Some experience|Full gym|20|2": 1,
+      "running|Some experience|Full gym|20|3": 2,
+      "running|Some experience|Full gym|20|7": 2,
+      "running|Some experience|Full gym|30|2": 3,
+      "running|Some experience|Full gym|30|3": 4,
+      "running|Some experience|Full gym|30|7": 4,
+      "running|Some experience|Full gym|45|2": 4,
+      "running|Some experience|Full gym|45|3": 11,
+      "running|Some experience|Full gym|45|7": 12,
+      "running|Some experience|Full gym|60|2": 4,
+      "running|Some experience|Full gym|60|3": 12,
+      "running|Some experience|Full gym|60|7": 14,
+      "running|Some experience|Full gym|90|2": 4,
+      "running|Some experience|Full gym|90|3": 12,
+      "running|Some experience|Full gym|90|7": 14,
+      "running|Some experience|Full gym|120|2": 4,
+      "running|Some experience|Full gym|120|3": 12,
+      "running|Some experience|Full gym|120|7": 14,
+      "running|Some experience|Dumbbells|15|2": 0,
+      "running|Some experience|Dumbbells|15|3": 0,
+      "running|Some experience|Dumbbells|15|7": 0,
+      "running|Some experience|Dumbbells|20|2": 1,
+      "running|Some experience|Dumbbells|20|3": 2,
+      "running|Some experience|Dumbbells|20|7": 2,
+      "running|Some experience|Dumbbells|30|2": 3,
+      "running|Some experience|Dumbbells|30|3": 4,
+      "running|Some experience|Dumbbells|30|7": 4,
+      "running|Some experience|Dumbbells|45|2": 4,
+      "running|Some experience|Dumbbells|45|3": 11,
+      "running|Some experience|Dumbbells|45|7": 12,
+      "running|Some experience|Dumbbells|60|2": 4,
+      "running|Some experience|Dumbbells|60|3": 12,
+      "running|Some experience|Dumbbells|60|7": 14,
+      "running|Some experience|Dumbbells|90|2": 4,
+      "running|Some experience|Dumbbells|90|3": 12,
+      "running|Some experience|Dumbbells|90|7": 14,
+      "running|Some experience|Dumbbells|120|2": 4,
+      "running|Some experience|Dumbbells|120|3": 12,
+      "running|Some experience|Dumbbells|120|7": 14,
+      "running|Some experience|Bodyweight + band|15|2": 0,
+      "running|Some experience|Bodyweight + band|15|3": 0,
+      "running|Some experience|Bodyweight + band|15|7": 0,
+      "running|Some experience|Bodyweight + band|20|2": 1,
+      "running|Some experience|Bodyweight + band|20|3": 2,
+      "running|Some experience|Bodyweight + band|20|7": 2,
+      "running|Some experience|Bodyweight + band|30|2": 3,
+      "running|Some experience|Bodyweight + band|30|3": 4,
+      "running|Some experience|Bodyweight + band|30|7": 4,
+      "running|Some experience|Bodyweight + band|45|2": 4,
+      "running|Some experience|Bodyweight + band|45|3": 11,
+      "running|Some experience|Bodyweight + band|45|7": 12,
+      "running|Some experience|Bodyweight + band|60|2": 4,
+      "running|Some experience|Bodyweight + band|60|3": 12,
+      "running|Some experience|Bodyweight + band|60|7": 14,
+      "running|Some experience|Bodyweight + band|90|2": 4,
+      "running|Some experience|Bodyweight + band|90|3": 12,
+      "running|Some experience|Bodyweight + band|90|7": 14,
+      "running|Some experience|Bodyweight + band|120|2": 4,
+      "running|Some experience|Bodyweight + band|120|3": 12,
+      "running|Some experience|Bodyweight + band|120|7": 14,
+      "running|Experienced|Full gym|15|2": 0,
+      "running|Experienced|Full gym|15|3": 0,
+      "running|Experienced|Full gym|15|7": 0,
+      "running|Experienced|Full gym|20|2": 1,
+      "running|Experienced|Full gym|20|3": 2,
+      "running|Experienced|Full gym|20|7": 2,
+      "running|Experienced|Full gym|30|2": 3,
+      "running|Experienced|Full gym|30|3": 4,
+      "running|Experienced|Full gym|30|7": 4,
+      "running|Experienced|Full gym|45|2": 4,
+      "running|Experienced|Full gym|45|3": 11,
+      "running|Experienced|Full gym|45|7": 12,
+      "running|Experienced|Full gym|60|2": 4,
+      "running|Experienced|Full gym|60|3": 12,
+      "running|Experienced|Full gym|60|7": 14,
+      "running|Experienced|Full gym|90|2": 4,
+      "running|Experienced|Full gym|90|3": 12,
+      "running|Experienced|Full gym|90|7": 14,
+      "running|Experienced|Full gym|120|2": 4,
+      "running|Experienced|Full gym|120|3": 12,
+      "running|Experienced|Full gym|120|7": 14,
+      "running|Experienced|Dumbbells|15|2": 0,
+      "running|Experienced|Dumbbells|15|3": 0,
+      "running|Experienced|Dumbbells|15|7": 0,
+      "running|Experienced|Dumbbells|20|2": 1,
+      "running|Experienced|Dumbbells|20|3": 2,
+      "running|Experienced|Dumbbells|20|7": 2,
+      "running|Experienced|Dumbbells|30|2": 3,
+      "running|Experienced|Dumbbells|30|3": 4,
+      "running|Experienced|Dumbbells|30|7": 4,
+      "running|Experienced|Dumbbells|45|2": 4,
+      "running|Experienced|Dumbbells|45|3": 11,
+      "running|Experienced|Dumbbells|45|7": 12,
+      "running|Experienced|Dumbbells|60|2": 4,
+      "running|Experienced|Dumbbells|60|3": 12,
+      "running|Experienced|Dumbbells|60|7": 14,
+      "running|Experienced|Dumbbells|90|2": 4,
+      "running|Experienced|Dumbbells|90|3": 12,
+      "running|Experienced|Dumbbells|90|7": 14,
+      "running|Experienced|Dumbbells|120|2": 4,
+      "running|Experienced|Dumbbells|120|3": 12,
+      "running|Experienced|Dumbbells|120|7": 14,
+      "running|Experienced|Bodyweight + band|15|2": 0,
+      "running|Experienced|Bodyweight + band|15|3": 0,
+      "running|Experienced|Bodyweight + band|15|7": 0,
+      "running|Experienced|Bodyweight + band|20|2": 1,
+      "running|Experienced|Bodyweight + band|20|3": 2,
+      "running|Experienced|Bodyweight + band|20|7": 2,
+      "running|Experienced|Bodyweight + band|30|2": 3,
+      "running|Experienced|Bodyweight + band|30|3": 4,
+      "running|Experienced|Bodyweight + band|30|7": 4,
+      "running|Experienced|Bodyweight + band|45|2": 4,
+      "running|Experienced|Bodyweight + band|45|3": 11,
+      "running|Experienced|Bodyweight + band|45|7": 12,
+      "running|Experienced|Bodyweight + band|60|2": 4,
+      "running|Experienced|Bodyweight + band|60|3": 12,
+      "running|Experienced|Bodyweight + band|60|7": 14,
+      "running|Experienced|Bodyweight + band|90|2": 4,
+      "running|Experienced|Bodyweight + band|90|3": 12,
+      "running|Experienced|Bodyweight + band|90|7": 14,
+      "running|Experienced|Bodyweight + band|120|2": 4,
+      "running|Experienced|Bodyweight + band|120|3": 12,
+      "running|Experienced|Bodyweight + band|120|7": 14,
+      "sport|First time|Full gym|15|2": 0,
+      "sport|First time|Full gym|15|3": 0,
+      "sport|First time|Full gym|15|7": 2,
+      "sport|First time|Full gym|20|2": 1,
+      "sport|First time|Full gym|20|3": 2,
+      "sport|First time|Full gym|20|7": 6,
+      "sport|First time|Full gym|30|2": 1,
+      "sport|First time|Full gym|30|3": 2,
+      "sport|First time|Full gym|30|7": 8,
+      "sport|First time|Full gym|45|2": 1,
+      "sport|First time|Full gym|45|3": 2,
+      "sport|First time|Full gym|45|7": 8,
+      "sport|First time|Full gym|60|2": 2,
+      "sport|First time|Full gym|60|3": 4,
+      "sport|First time|Full gym|60|7": 10,
+      "sport|First time|Full gym|90|2": 3,
+      "sport|First time|Full gym|90|3": 5,
+      "sport|First time|Full gym|90|7": 12,
+      "sport|First time|Full gym|120|2": 3,
+      "sport|First time|Full gym|120|3": 5,
+      "sport|First time|Full gym|120|7": 12,
+      "sport|First time|Dumbbells|15|2": 0,
+      "sport|First time|Dumbbells|15|3": 0,
+      "sport|First time|Dumbbells|15|7": 2,
+      "sport|First time|Dumbbells|20|2": 1,
+      "sport|First time|Dumbbells|20|3": 2,
+      "sport|First time|Dumbbells|20|7": 6,
+      "sport|First time|Dumbbells|30|2": 1,
+      "sport|First time|Dumbbells|30|3": 2,
+      "sport|First time|Dumbbells|30|7": 8,
+      "sport|First time|Dumbbells|45|2": 1,
+      "sport|First time|Dumbbells|45|3": 2,
+      "sport|First time|Dumbbells|45|7": 8,
+      "sport|First time|Dumbbells|60|2": 2,
+      "sport|First time|Dumbbells|60|3": 3,
+      "sport|First time|Dumbbells|60|7": 9,
+      "sport|First time|Dumbbells|90|2": 3,
+      "sport|First time|Dumbbells|90|3": 4,
+      "sport|First time|Dumbbells|90|7": 11,
+      "sport|First time|Dumbbells|120|2": 3,
+      "sport|First time|Dumbbells|120|3": 4,
+      "sport|First time|Dumbbells|120|7": 11,
+      "sport|First time|Bodyweight + band|15|2": 0,
+      "sport|First time|Bodyweight + band|15|3": 0,
+      "sport|First time|Bodyweight + band|15|7": 2,
+      "sport|First time|Bodyweight + band|20|2": 1,
+      "sport|First time|Bodyweight + band|20|3": 2,
+      "sport|First time|Bodyweight + band|20|7": 6,
+      "sport|First time|Bodyweight + band|30|2": 1,
+      "sport|First time|Bodyweight + band|30|3": 2,
+      "sport|First time|Bodyweight + band|30|7": 8,
+      "sport|First time|Bodyweight + band|45|2": 1,
+      "sport|First time|Bodyweight + band|45|3": 2,
+      "sport|First time|Bodyweight + band|45|7": 8,
+      "sport|First time|Bodyweight + band|60|2": 1,
+      "sport|First time|Bodyweight + band|60|3": 2,
+      "sport|First time|Bodyweight + band|60|7": 8,
+      "sport|First time|Bodyweight + band|90|2": 2,
+      "sport|First time|Bodyweight + band|90|3": 3,
+      "sport|First time|Bodyweight + band|90|7": 10,
+      "sport|First time|Bodyweight + band|120|2": 2,
+      "sport|First time|Bodyweight + band|120|3": 3,
+      "sport|First time|Bodyweight + band|120|7": 10,
+      "sport|Some experience|Full gym|15|2": 0,
+      "sport|Some experience|Full gym|15|3": 0,
+      "sport|Some experience|Full gym|15|7": 2,
+      "sport|Some experience|Full gym|20|2": 1,
+      "sport|Some experience|Full gym|20|3": 2,
+      "sport|Some experience|Full gym|20|7": 6,
+      "sport|Some experience|Full gym|30|2": 1,
+      "sport|Some experience|Full gym|30|3": 2,
+      "sport|Some experience|Full gym|30|7": 8,
+      "sport|Some experience|Full gym|45|2": 1,
+      "sport|Some experience|Full gym|45|3": 2,
+      "sport|Some experience|Full gym|45|7": 8,
+      "sport|Some experience|Full gym|60|2": 2,
+      "sport|Some experience|Full gym|60|3": 4,
+      "sport|Some experience|Full gym|60|7": 10,
+      "sport|Some experience|Full gym|90|2": 5,
+      "sport|Some experience|Full gym|90|3": 8,
+      "sport|Some experience|Full gym|90|7": 15,
+      "sport|Some experience|Full gym|120|2": 5,
+      "sport|Some experience|Full gym|120|3": 8,
+      "sport|Some experience|Full gym|120|7": 15,
+      "sport|Some experience|Dumbbells|15|2": 0,
+      "sport|Some experience|Dumbbells|15|3": 0,
+      "sport|Some experience|Dumbbells|15|7": 2,
+      "sport|Some experience|Dumbbells|20|2": 1,
+      "sport|Some experience|Dumbbells|20|3": 2,
+      "sport|Some experience|Dumbbells|20|7": 6,
+      "sport|Some experience|Dumbbells|30|2": 1,
+      "sport|Some experience|Dumbbells|30|3": 2,
+      "sport|Some experience|Dumbbells|30|7": 8,
+      "sport|Some experience|Dumbbells|45|2": 1,
+      "sport|Some experience|Dumbbells|45|3": 2,
+      "sport|Some experience|Dumbbells|45|7": 8,
+      "sport|Some experience|Dumbbells|60|2": 2,
+      "sport|Some experience|Dumbbells|60|3": 3,
+      "sport|Some experience|Dumbbells|60|7": 9,
+      "sport|Some experience|Dumbbells|90|2": 5,
+      "sport|Some experience|Dumbbells|90|3": 6,
+      "sport|Some experience|Dumbbells|90|7": 13,
+      "sport|Some experience|Dumbbells|120|2": 5,
+      "sport|Some experience|Dumbbells|120|3": 6,
+      "sport|Some experience|Dumbbells|120|7": 13,
+      "sport|Some experience|Bodyweight + band|15|2": 0,
+      "sport|Some experience|Bodyweight + band|15|3": 0,
+      "sport|Some experience|Bodyweight + band|15|7": 2,
+      "sport|Some experience|Bodyweight + band|20|2": 1,
+      "sport|Some experience|Bodyweight + band|20|3": 2,
+      "sport|Some experience|Bodyweight + band|20|7": 6,
+      "sport|Some experience|Bodyweight + band|30|2": 1,
+      "sport|Some experience|Bodyweight + band|30|3": 2,
+      "sport|Some experience|Bodyweight + band|30|7": 8,
+      "sport|Some experience|Bodyweight + band|45|2": 1,
+      "sport|Some experience|Bodyweight + band|45|3": 2,
+      "sport|Some experience|Bodyweight + band|45|7": 8,
+      "sport|Some experience|Bodyweight + band|60|2": 1,
+      "sport|Some experience|Bodyweight + band|60|3": 2,
+      "sport|Some experience|Bodyweight + band|60|7": 8,
+      "sport|Some experience|Bodyweight + band|90|2": 2,
+      "sport|Some experience|Bodyweight + band|90|3": 3,
+      "sport|Some experience|Bodyweight + band|90|7": 10,
+      "sport|Some experience|Bodyweight + band|120|2": 2,
+      "sport|Some experience|Bodyweight + band|120|3": 3,
+      "sport|Some experience|Bodyweight + band|120|7": 10,
+      "sport|Experienced|Full gym|15|2": 0,
+      "sport|Experienced|Full gym|15|3": 0,
+      "sport|Experienced|Full gym|15|7": 2,
+      "sport|Experienced|Full gym|20|2": 1,
+      "sport|Experienced|Full gym|20|3": 2,
+      "sport|Experienced|Full gym|20|7": 6,
+      "sport|Experienced|Full gym|30|2": 1,
+      "sport|Experienced|Full gym|30|3": 2,
+      "sport|Experienced|Full gym|30|7": 8,
+      "sport|Experienced|Full gym|45|2": 1,
+      "sport|Experienced|Full gym|45|3": 2,
+      "sport|Experienced|Full gym|45|7": 8,
+      "sport|Experienced|Full gym|60|2": 2,
+      "sport|Experienced|Full gym|60|3": 4,
+      "sport|Experienced|Full gym|60|7": 10,
+      "sport|Experienced|Full gym|90|2": 5,
+      "sport|Experienced|Full gym|90|3": 8,
+      "sport|Experienced|Full gym|90|7": 15,
+      "sport|Experienced|Full gym|120|2": 5,
+      "sport|Experienced|Full gym|120|3": 8,
+      "sport|Experienced|Full gym|120|7": 15,
+      "sport|Experienced|Dumbbells|15|2": 0,
+      "sport|Experienced|Dumbbells|15|3": 0,
+      "sport|Experienced|Dumbbells|15|7": 2,
+      "sport|Experienced|Dumbbells|20|2": 1,
+      "sport|Experienced|Dumbbells|20|3": 2,
+      "sport|Experienced|Dumbbells|20|7": 6,
+      "sport|Experienced|Dumbbells|30|2": 1,
+      "sport|Experienced|Dumbbells|30|3": 2,
+      "sport|Experienced|Dumbbells|30|7": 8,
+      "sport|Experienced|Dumbbells|45|2": 1,
+      "sport|Experienced|Dumbbells|45|3": 2,
+      "sport|Experienced|Dumbbells|45|7": 8,
+      "sport|Experienced|Dumbbells|60|2": 2,
+      "sport|Experienced|Dumbbells|60|3": 3,
+      "sport|Experienced|Dumbbells|60|7": 9,
+      "sport|Experienced|Dumbbells|90|2": 5,
+      "sport|Experienced|Dumbbells|90|3": 6,
+      "sport|Experienced|Dumbbells|90|7": 13,
+      "sport|Experienced|Dumbbells|120|2": 5,
+      "sport|Experienced|Dumbbells|120|3": 6,
+      "sport|Experienced|Dumbbells|120|7": 13,
+      "sport|Experienced|Bodyweight + band|15|2": 0,
+      "sport|Experienced|Bodyweight + band|15|3": 0,
+      "sport|Experienced|Bodyweight + band|15|7": 2,
+      "sport|Experienced|Bodyweight + band|20|2": 1,
+      "sport|Experienced|Bodyweight + band|20|3": 2,
+      "sport|Experienced|Bodyweight + band|20|7": 6,
+      "sport|Experienced|Bodyweight + band|30|2": 1,
+      "sport|Experienced|Bodyweight + band|30|3": 2,
+      "sport|Experienced|Bodyweight + band|30|7": 8,
+      "sport|Experienced|Bodyweight + band|45|2": 1,
+      "sport|Experienced|Bodyweight + band|45|3": 2,
+      "sport|Experienced|Bodyweight + band|45|7": 8,
+      "sport|Experienced|Bodyweight + band|60|2": 1,
+      "sport|Experienced|Bodyweight + band|60|3": 2,
+      "sport|Experienced|Bodyweight + band|60|7": 8,
+      "sport|Experienced|Bodyweight + band|90|2": 2,
+      "sport|Experienced|Bodyweight + band|90|3": 3,
+      "sport|Experienced|Bodyweight + band|90|7": 10,
+      "sport|Experienced|Bodyweight + band|120|2": 2,
+      "sport|Experienced|Bodyweight + band|120|3": 3,
+      "sport|Experienced|Bodyweight + band|120|7": 10,
+      "general|First time|Full gym|15|2": 0,
+      "general|First time|Full gym|15|3": 0,
+      "general|First time|Full gym|15|7": 2,
+      "general|First time|Full gym|20|2": 2,
+      "general|First time|Full gym|20|3": 3,
+      "general|First time|Full gym|20|7": 9,
+      "general|First time|Full gym|30|2": 2,
+      "general|First time|Full gym|30|3": 3,
+      "general|First time|Full gym|30|7": 11,
+      "general|First time|Full gym|45|2": 2,
+      "general|First time|Full gym|45|3": 3,
+      "general|First time|Full gym|45|7": 11,
+      "general|First time|Full gym|60|2": 6,
+      "general|First time|Full gym|60|3": 9,
+      "general|First time|Full gym|60|7": 17,
+      "general|First time|Full gym|90|2": 8,
+      "general|First time|Full gym|90|3": 11,
+      "general|First time|Full gym|90|7": 20,
+      "general|First time|Full gym|120|2": 8,
+      "general|First time|Full gym|120|3": 11,
+      "general|First time|Full gym|120|7": 20,
+      "general|First time|Dumbbells|15|2": 0,
+      "general|First time|Dumbbells|15|3": 0,
+      "general|First time|Dumbbells|15|7": 2,
+      "general|First time|Dumbbells|20|2": 2,
+      "general|First time|Dumbbells|20|3": 3,
+      "general|First time|Dumbbells|20|7": 9,
+      "general|First time|Dumbbells|30|2": 2,
+      "general|First time|Dumbbells|30|3": 3,
+      "general|First time|Dumbbells|30|7": 11,
+      "general|First time|Dumbbells|45|2": 2,
+      "general|First time|Dumbbells|45|3": 3,
+      "general|First time|Dumbbells|45|7": 11,
+      "general|First time|Dumbbells|60|2": 3,
+      "general|First time|Dumbbells|60|3": 6,
+      "general|First time|Dumbbells|60|7": 14,
+      "general|First time|Dumbbells|90|2": 4,
+      "general|First time|Dumbbells|90|3": 7,
+      "general|First time|Dumbbells|90|7": 16,
+      "general|First time|Dumbbells|120|2": 4,
+      "general|First time|Dumbbells|120|3": 7,
+      "general|First time|Dumbbells|120|7": 16,
+      "general|First time|Bodyweight + band|15|2": 0,
+      "general|First time|Bodyweight + band|15|3": 0,
+      "general|First time|Bodyweight + band|15|7": 2,
+      "general|First time|Bodyweight + band|20|2": 2,
+      "general|First time|Bodyweight + band|20|3": 3,
+      "general|First time|Bodyweight + band|20|7": 9,
+      "general|First time|Bodyweight + band|30|2": 2,
+      "general|First time|Bodyweight + band|30|3": 3,
+      "general|First time|Bodyweight + band|30|7": 11,
+      "general|First time|Bodyweight + band|45|2": 2,
+      "general|First time|Bodyweight + band|45|3": 3,
+      "general|First time|Bodyweight + band|45|7": 11,
+      "general|First time|Bodyweight + band|60|2": 4,
+      "general|First time|Bodyweight + band|60|3": 6,
+      "general|First time|Bodyweight + band|60|7": 14,
+      "general|First time|Bodyweight + band|90|2": 4,
+      "general|First time|Bodyweight + band|90|3": 6,
+      "general|First time|Bodyweight + band|90|7": 14,
+      "general|First time|Bodyweight + band|120|2": 4,
+      "general|First time|Bodyweight + band|120|3": 6,
+      "general|First time|Bodyweight + band|120|7": 14,
+      "general|Some experience|Full gym|15|2": 0,
+      "general|Some experience|Full gym|15|3": 0,
+      "general|Some experience|Full gym|15|7": 2,
+      "general|Some experience|Full gym|20|2": 2,
+      "general|Some experience|Full gym|20|3": 3,
+      "general|Some experience|Full gym|20|7": 9,
+      "general|Some experience|Full gym|30|2": 2,
+      "general|Some experience|Full gym|30|3": 3,
+      "general|Some experience|Full gym|30|7": 11,
+      "general|Some experience|Full gym|45|2": 2,
+      "general|Some experience|Full gym|45|3": 3,
+      "general|Some experience|Full gym|45|7": 11,
+      "general|Some experience|Full gym|60|2": 6,
+      "general|Some experience|Full gym|60|3": 9,
+      "general|Some experience|Full gym|60|7": 17,
+      "general|Some experience|Full gym|90|2": 8,
+      "general|Some experience|Full gym|90|3": 11,
+      "general|Some experience|Full gym|90|7": 20,
+      "general|Some experience|Full gym|120|2": 8,
+      "general|Some experience|Full gym|120|3": 11,
+      "general|Some experience|Full gym|120|7": 20,
+      "general|Some experience|Dumbbells|15|2": 0,
+      "general|Some experience|Dumbbells|15|3": 0,
+      "general|Some experience|Dumbbells|15|7": 2,
+      "general|Some experience|Dumbbells|20|2": 2,
+      "general|Some experience|Dumbbells|20|3": 3,
+      "general|Some experience|Dumbbells|20|7": 9,
+      "general|Some experience|Dumbbells|30|2": 2,
+      "general|Some experience|Dumbbells|30|3": 3,
+      "general|Some experience|Dumbbells|30|7": 11,
+      "general|Some experience|Dumbbells|45|2": 2,
+      "general|Some experience|Dumbbells|45|3": 3,
+      "general|Some experience|Dumbbells|45|7": 11,
+      "general|Some experience|Dumbbells|60|2": 3,
+      "general|Some experience|Dumbbells|60|3": 6,
+      "general|Some experience|Dumbbells|60|7": 14,
+      "general|Some experience|Dumbbells|90|2": 4,
+      "general|Some experience|Dumbbells|90|3": 7,
+      "general|Some experience|Dumbbells|90|7": 16,
+      "general|Some experience|Dumbbells|120|2": 4,
+      "general|Some experience|Dumbbells|120|3": 7,
+      "general|Some experience|Dumbbells|120|7": 16,
+      "general|Some experience|Bodyweight + band|15|2": 0,
+      "general|Some experience|Bodyweight + band|15|3": 0,
+      "general|Some experience|Bodyweight + band|15|7": 2,
+      "general|Some experience|Bodyweight + band|20|2": 2,
+      "general|Some experience|Bodyweight + band|20|3": 3,
+      "general|Some experience|Bodyweight + band|20|7": 9,
+      "general|Some experience|Bodyweight + band|30|2": 2,
+      "general|Some experience|Bodyweight + band|30|3": 3,
+      "general|Some experience|Bodyweight + band|30|7": 11,
+      "general|Some experience|Bodyweight + band|45|2": 2,
+      "general|Some experience|Bodyweight + band|45|3": 3,
+      "general|Some experience|Bodyweight + band|45|7": 11,
+      "general|Some experience|Bodyweight + band|60|2": 4,
+      "general|Some experience|Bodyweight + band|60|3": 6,
+      "general|Some experience|Bodyweight + band|60|7": 14,
+      "general|Some experience|Bodyweight + band|90|2": 4,
+      "general|Some experience|Bodyweight + band|90|3": 6,
+      "general|Some experience|Bodyweight + band|90|7": 14,
+      "general|Some experience|Bodyweight + band|120|2": 4,
+      "general|Some experience|Bodyweight + band|120|3": 6,
+      "general|Some experience|Bodyweight + band|120|7": 14,
+      "general|Experienced|Full gym|15|2": 0,
+      "general|Experienced|Full gym|15|3": 0,
+      "general|Experienced|Full gym|15|7": 2,
+      "general|Experienced|Full gym|20|2": 2,
+      "general|Experienced|Full gym|20|3": 3,
+      "general|Experienced|Full gym|20|7": 9,
+      "general|Experienced|Full gym|30|2": 2,
+      "general|Experienced|Full gym|30|3": 3,
+      "general|Experienced|Full gym|30|7": 11,
+      "general|Experienced|Full gym|45|2": 2,
+      "general|Experienced|Full gym|45|3": 3,
+      "general|Experienced|Full gym|45|7": 11,
+      "general|Experienced|Full gym|60|2": 6,
+      "general|Experienced|Full gym|60|3": 9,
+      "general|Experienced|Full gym|60|7": 17,
+      "general|Experienced|Full gym|90|2": 8,
+      "general|Experienced|Full gym|90|3": 11,
+      "general|Experienced|Full gym|90|7": 20,
+      "general|Experienced|Full gym|120|2": 8,
+      "general|Experienced|Full gym|120|3": 11,
+      "general|Experienced|Full gym|120|7": 20,
+      "general|Experienced|Dumbbells|15|2": 0,
+      "general|Experienced|Dumbbells|15|3": 0,
+      "general|Experienced|Dumbbells|15|7": 2,
+      "general|Experienced|Dumbbells|20|2": 2,
+      "general|Experienced|Dumbbells|20|3": 3,
+      "general|Experienced|Dumbbells|20|7": 9,
+      "general|Experienced|Dumbbells|30|2": 2,
+      "general|Experienced|Dumbbells|30|3": 3,
+      "general|Experienced|Dumbbells|30|7": 11,
+      "general|Experienced|Dumbbells|45|2": 2,
+      "general|Experienced|Dumbbells|45|3": 3,
+      "general|Experienced|Dumbbells|45|7": 11,
+      "general|Experienced|Dumbbells|60|2": 3,
+      "general|Experienced|Dumbbells|60|3": 6,
+      "general|Experienced|Dumbbells|60|7": 14,
+      "general|Experienced|Dumbbells|90|2": 4,
+      "general|Experienced|Dumbbells|90|3": 7,
+      "general|Experienced|Dumbbells|90|7": 16,
+      "general|Experienced|Dumbbells|120|2": 4,
+      "general|Experienced|Dumbbells|120|3": 7,
+      "general|Experienced|Dumbbells|120|7": 16,
+      "general|Experienced|Bodyweight + band|15|2": 0,
+      "general|Experienced|Bodyweight + band|15|3": 0,
+      "general|Experienced|Bodyweight + band|15|7": 2,
+      "general|Experienced|Bodyweight + band|20|2": 2,
+      "general|Experienced|Bodyweight + band|20|3": 3,
+      "general|Experienced|Bodyweight + band|20|7": 9,
+      "general|Experienced|Bodyweight + band|30|2": 2,
+      "general|Experienced|Bodyweight + band|30|3": 3,
+      "general|Experienced|Bodyweight + band|30|7": 11,
+      "general|Experienced|Bodyweight + band|45|2": 2,
+      "general|Experienced|Bodyweight + band|45|3": 3,
+      "general|Experienced|Bodyweight + band|45|7": 11,
+      "general|Experienced|Bodyweight + band|60|2": 4,
+      "general|Experienced|Bodyweight + band|60|3": 6,
+      "general|Experienced|Bodyweight + band|60|7": 14,
+      "general|Experienced|Bodyweight + band|90|2": 4,
+      "general|Experienced|Bodyweight + band|90|3": 6,
+      "general|Experienced|Bodyweight + band|90|7": 14,
+      "general|Experienced|Bodyweight + band|120|2": 4,
+      "general|Experienced|Bodyweight + band|120|3": 6,
+      "general|Experienced|Bodyweight + band|120|7": 14,
+      "calisthenics|First time|Full gym|15|2": 0,
+      "calisthenics|First time|Full gym|15|3": 0,
+      "calisthenics|First time|Full gym|15|7": 2,
+      "calisthenics|First time|Full gym|20|2": 1,
+      "calisthenics|First time|Full gym|20|3": 2,
+      "calisthenics|First time|Full gym|20|7": 6,
+      "calisthenics|First time|Full gym|30|2": 1,
+      "calisthenics|First time|Full gym|30|3": 2,
+      "calisthenics|First time|Full gym|30|7": 8,
+      "calisthenics|First time|Full gym|45|2": 1,
+      "calisthenics|First time|Full gym|45|3": 2,
+      "calisthenics|First time|Full gym|45|7": 8,
+      "calisthenics|First time|Full gym|60|2": 3,
+      "calisthenics|First time|Full gym|60|3": 5,
+      "calisthenics|First time|Full gym|60|7": 12,
+      "calisthenics|First time|Full gym|90|2": 3,
+      "calisthenics|First time|Full gym|90|3": 5,
+      "calisthenics|First time|Full gym|90|7": 12,
+      "calisthenics|First time|Full gym|120|2": 3,
+      "calisthenics|First time|Full gym|120|3": 5,
+      "calisthenics|First time|Full gym|120|7": 12,
+      "calisthenics|First time|Dumbbells|15|2": 0,
+      "calisthenics|First time|Dumbbells|15|3": 0,
+      "calisthenics|First time|Dumbbells|15|7": 2,
+      "calisthenics|First time|Dumbbells|20|2": 0,
+      "calisthenics|First time|Dumbbells|20|3": 0,
+      "calisthenics|First time|Dumbbells|20|7": 4,
+      "calisthenics|First time|Dumbbells|30|2": 0,
+      "calisthenics|First time|Dumbbells|30|3": 0,
+      "calisthenics|First time|Dumbbells|30|7": 6,
+      "calisthenics|First time|Dumbbells|45|2": 0,
+      "calisthenics|First time|Dumbbells|45|3": 0,
+      "calisthenics|First time|Dumbbells|45|7": 6,
+      "calisthenics|First time|Dumbbells|60|2": 1,
+      "calisthenics|First time|Dumbbells|60|3": 1,
+      "calisthenics|First time|Dumbbells|60|7": 7,
+      "calisthenics|First time|Dumbbells|90|2": 1,
+      "calisthenics|First time|Dumbbells|90|3": 1,
+      "calisthenics|First time|Dumbbells|90|7": 7,
+      "calisthenics|First time|Dumbbells|120|2": 1,
+      "calisthenics|First time|Dumbbells|120|3": 1,
+      "calisthenics|First time|Dumbbells|120|7": 7,
+      "calisthenics|First time|Bodyweight + band|15|2": 0,
+      "calisthenics|First time|Bodyweight + band|15|3": 0,
+      "calisthenics|First time|Bodyweight + band|15|7": 2,
+      "calisthenics|First time|Bodyweight + band|20|2": 1,
+      "calisthenics|First time|Bodyweight + band|20|3": 2,
+      "calisthenics|First time|Bodyweight + band|20|7": 6,
+      "calisthenics|First time|Bodyweight + band|30|2": 1,
+      "calisthenics|First time|Bodyweight + band|30|3": 2,
+      "calisthenics|First time|Bodyweight + band|30|7": 8,
+      "calisthenics|First time|Bodyweight + band|45|2": 1,
+      "calisthenics|First time|Bodyweight + band|45|3": 2,
+      "calisthenics|First time|Bodyweight + band|45|7": 8,
+      "calisthenics|First time|Bodyweight + band|60|2": 2,
+      "calisthenics|First time|Bodyweight + band|60|3": 4,
+      "calisthenics|First time|Bodyweight + band|60|7": 11,
+      "calisthenics|First time|Bodyweight + band|90|2": 2,
+      "calisthenics|First time|Bodyweight + band|90|3": 4,
+      "calisthenics|First time|Bodyweight + band|90|7": 11,
+      "calisthenics|First time|Bodyweight + band|120|2": 2,
+      "calisthenics|First time|Bodyweight + band|120|3": 4,
+      "calisthenics|First time|Bodyweight + band|120|7": 11,
+      "calisthenics|Some experience|Full gym|15|2": 0,
+      "calisthenics|Some experience|Full gym|15|3": 0,
+      "calisthenics|Some experience|Full gym|15|7": 2,
+      "calisthenics|Some experience|Full gym|20|2": 1,
+      "calisthenics|Some experience|Full gym|20|3": 2,
+      "calisthenics|Some experience|Full gym|20|7": 6,
+      "calisthenics|Some experience|Full gym|30|2": 1,
+      "calisthenics|Some experience|Full gym|30|3": 2,
+      "calisthenics|Some experience|Full gym|30|7": 8,
+      "calisthenics|Some experience|Full gym|45|2": 1,
+      "calisthenics|Some experience|Full gym|45|3": 2,
+      "calisthenics|Some experience|Full gym|45|7": 8,
+      "calisthenics|Some experience|Full gym|60|2": 3,
+      "calisthenics|Some experience|Full gym|60|3": 5,
+      "calisthenics|Some experience|Full gym|60|7": 13,
+      "calisthenics|Some experience|Full gym|90|2": 4,
+      "calisthenics|Some experience|Full gym|90|3": 7,
+      "calisthenics|Some experience|Full gym|90|7": 15,
+      "calisthenics|Some experience|Full gym|120|2": 4,
+      "calisthenics|Some experience|Full gym|120|3": 7,
+      "calisthenics|Some experience|Full gym|120|7": 15,
+      "calisthenics|Some experience|Dumbbells|15|2": 0,
+      "calisthenics|Some experience|Dumbbells|15|3": 0,
+      "calisthenics|Some experience|Dumbbells|15|7": 2,
+      "calisthenics|Some experience|Dumbbells|20|2": 0,
+      "calisthenics|Some experience|Dumbbells|20|3": 0,
+      "calisthenics|Some experience|Dumbbells|20|7": 4,
+      "calisthenics|Some experience|Dumbbells|30|2": 0,
+      "calisthenics|Some experience|Dumbbells|30|3": 0,
+      "calisthenics|Some experience|Dumbbells|30|7": 6,
+      "calisthenics|Some experience|Dumbbells|45|2": 0,
+      "calisthenics|Some experience|Dumbbells|45|3": 0,
+      "calisthenics|Some experience|Dumbbells|45|7": 6,
+      "calisthenics|Some experience|Dumbbells|60|2": 1,
+      "calisthenics|Some experience|Dumbbells|60|3": 1,
+      "calisthenics|Some experience|Dumbbells|60|7": 7,
+      "calisthenics|Some experience|Dumbbells|90|2": 1,
+      "calisthenics|Some experience|Dumbbells|90|3": 1,
+      "calisthenics|Some experience|Dumbbells|90|7": 7,
+      "calisthenics|Some experience|Dumbbells|120|2": 1,
+      "calisthenics|Some experience|Dumbbells|120|3": 1,
+      "calisthenics|Some experience|Dumbbells|120|7": 7,
+      "calisthenics|Some experience|Bodyweight + band|15|2": 0,
+      "calisthenics|Some experience|Bodyweight + band|15|3": 0,
+      "calisthenics|Some experience|Bodyweight + band|15|7": 2,
+      "calisthenics|Some experience|Bodyweight + band|20|2": 1,
+      "calisthenics|Some experience|Bodyweight + band|20|3": 2,
+      "calisthenics|Some experience|Bodyweight + band|20|7": 6,
+      "calisthenics|Some experience|Bodyweight + band|30|2": 1,
+      "calisthenics|Some experience|Bodyweight + band|30|3": 2,
+      "calisthenics|Some experience|Bodyweight + band|30|7": 8,
+      "calisthenics|Some experience|Bodyweight + band|45|2": 1,
+      "calisthenics|Some experience|Bodyweight + band|45|3": 2,
+      "calisthenics|Some experience|Bodyweight + band|45|7": 8,
+      "calisthenics|Some experience|Bodyweight + band|60|2": 2,
+      "calisthenics|Some experience|Bodyweight + band|60|3": 4,
+      "calisthenics|Some experience|Bodyweight + band|60|7": 12,
+      "calisthenics|Some experience|Bodyweight + band|90|2": 3,
+      "calisthenics|Some experience|Bodyweight + band|90|3": 6,
+      "calisthenics|Some experience|Bodyweight + band|90|7": 14,
+      "calisthenics|Some experience|Bodyweight + band|120|2": 3,
+      "calisthenics|Some experience|Bodyweight + band|120|3": 6,
+      "calisthenics|Some experience|Bodyweight + band|120|7": 14,
+      "calisthenics|Experienced|Full gym|15|2": 0,
+      "calisthenics|Experienced|Full gym|15|3": 0,
+      "calisthenics|Experienced|Full gym|15|7": 2,
+      "calisthenics|Experienced|Full gym|20|2": 1,
+      "calisthenics|Experienced|Full gym|20|3": 2,
+      "calisthenics|Experienced|Full gym|20|7": 6,
+      "calisthenics|Experienced|Full gym|30|2": 1,
+      "calisthenics|Experienced|Full gym|30|3": 2,
+      "calisthenics|Experienced|Full gym|30|7": 8,
+      "calisthenics|Experienced|Full gym|45|2": 1,
+      "calisthenics|Experienced|Full gym|45|3": 2,
+      "calisthenics|Experienced|Full gym|45|7": 8,
+      "calisthenics|Experienced|Full gym|60|2": 3,
+      "calisthenics|Experienced|Full gym|60|3": 5,
+      "calisthenics|Experienced|Full gym|60|7": 13,
+      "calisthenics|Experienced|Full gym|90|2": 4,
+      "calisthenics|Experienced|Full gym|90|3": 7,
+      "calisthenics|Experienced|Full gym|90|7": 15,
+      "calisthenics|Experienced|Full gym|120|2": 4,
+      "calisthenics|Experienced|Full gym|120|3": 7,
+      "calisthenics|Experienced|Full gym|120|7": 15,
+      "calisthenics|Experienced|Dumbbells|15|2": 0,
+      "calisthenics|Experienced|Dumbbells|15|3": 0,
+      "calisthenics|Experienced|Dumbbells|15|7": 2,
+      "calisthenics|Experienced|Dumbbells|20|2": 0,
+      "calisthenics|Experienced|Dumbbells|20|3": 0,
+      "calisthenics|Experienced|Dumbbells|20|7": 4,
+      "calisthenics|Experienced|Dumbbells|30|2": 0,
+      "calisthenics|Experienced|Dumbbells|30|3": 0,
+      "calisthenics|Experienced|Dumbbells|30|7": 6,
+      "calisthenics|Experienced|Dumbbells|45|2": 0,
+      "calisthenics|Experienced|Dumbbells|45|3": 0,
+      "calisthenics|Experienced|Dumbbells|45|7": 6,
+      "calisthenics|Experienced|Dumbbells|60|2": 1,
+      "calisthenics|Experienced|Dumbbells|60|3": 1,
+      "calisthenics|Experienced|Dumbbells|60|7": 7,
+      "calisthenics|Experienced|Dumbbells|90|2": 1,
+      "calisthenics|Experienced|Dumbbells|90|3": 1,
+      "calisthenics|Experienced|Dumbbells|90|7": 7,
+      "calisthenics|Experienced|Dumbbells|120|2": 1,
+      "calisthenics|Experienced|Dumbbells|120|3": 1,
+      "calisthenics|Experienced|Dumbbells|120|7": 7,
+      "calisthenics|Experienced|Bodyweight + band|15|2": 0,
+      "calisthenics|Experienced|Bodyweight + band|15|3": 0,
+      "calisthenics|Experienced|Bodyweight + band|15|7": 2,
+      "calisthenics|Experienced|Bodyweight + band|20|2": 1,
+      "calisthenics|Experienced|Bodyweight + band|20|3": 2,
+      "calisthenics|Experienced|Bodyweight + band|20|7": 6,
+      "calisthenics|Experienced|Bodyweight + band|30|2": 1,
+      "calisthenics|Experienced|Bodyweight + band|30|3": 2,
+      "calisthenics|Experienced|Bodyweight + band|30|7": 8,
+      "calisthenics|Experienced|Bodyweight + band|45|2": 1,
+      "calisthenics|Experienced|Bodyweight + band|45|3": 2,
+      "calisthenics|Experienced|Bodyweight + band|45|7": 8,
+      "calisthenics|Experienced|Bodyweight + band|60|2": 2,
+      "calisthenics|Experienced|Bodyweight + band|60|3": 4,
+      "calisthenics|Experienced|Bodyweight + band|60|7": 12,
+      "calisthenics|Experienced|Bodyweight + band|90|2": 3,
+      "calisthenics|Experienced|Bodyweight + band|90|3": 6,
+      "calisthenics|Experienced|Bodyweight + band|90|7": 14,
+      "calisthenics|Experienced|Bodyweight + band|120|2": 3,
+      "calisthenics|Experienced|Bodyweight + band|120|3": 6,
+      "calisthenics|Experienced|Bodyweight + band|120|7": 14,
+      "powerlifting|First time|Full gym|15|2": 0,
+      "powerlifting|First time|Full gym|15|3": 0,
+      "powerlifting|First time|Full gym|15|7": 0,
+      "powerlifting|First time|Full gym|20|2": 0,
+      "powerlifting|First time|Full gym|20|3": 0,
+      "powerlifting|First time|Full gym|20|7": 0,
+      "powerlifting|First time|Full gym|30|2": 0,
+      "powerlifting|First time|Full gym|30|3": 0,
+      "powerlifting|First time|Full gym|30|7": 2,
+      "powerlifting|First time|Full gym|45|2": 0,
+      "powerlifting|First time|Full gym|45|3": 1,
+      "powerlifting|First time|Full gym|45|7": 3,
+      "powerlifting|First time|Full gym|60|2": 0,
+      "powerlifting|First time|Full gym|60|3": 2,
+      "powerlifting|First time|Full gym|60|7": 4,
+      "powerlifting|First time|Full gym|90|2": 2,
+      "powerlifting|First time|Full gym|90|3": 6,
+      "powerlifting|First time|Full gym|90|7": 8,
+      "powerlifting|First time|Full gym|120|2": 2,
+      "powerlifting|First time|Full gym|120|3": 6,
+      "powerlifting|First time|Full gym|120|7": 8,
+      "powerlifting|First time|Dumbbells|15|2": 0,
+      "powerlifting|First time|Dumbbells|15|3": 0,
+      "powerlifting|First time|Dumbbells|15|7": 0,
+      "powerlifting|First time|Dumbbells|20|2": 0,
+      "powerlifting|First time|Dumbbells|20|3": 0,
+      "powerlifting|First time|Dumbbells|20|7": 0,
+      "powerlifting|First time|Dumbbells|30|2": 0,
+      "powerlifting|First time|Dumbbells|30|3": 0,
+      "powerlifting|First time|Dumbbells|30|7": 0,
+      "powerlifting|First time|Dumbbells|45|2": 0,
+      "powerlifting|First time|Dumbbells|45|3": 0,
+      "powerlifting|First time|Dumbbells|45|7": 0,
+      "powerlifting|First time|Dumbbells|60|2": 0,
+      "powerlifting|First time|Dumbbells|60|3": 1,
+      "powerlifting|First time|Dumbbells|60|7": 1,
+      "powerlifting|First time|Dumbbells|90|2": 1,
+      "powerlifting|First time|Dumbbells|90|3": 3,
+      "powerlifting|First time|Dumbbells|90|7": 3,
+      "powerlifting|First time|Dumbbells|120|2": 1,
+      "powerlifting|First time|Dumbbells|120|3": 3,
+      "powerlifting|First time|Dumbbells|120|7": 3,
+      "powerlifting|First time|Bodyweight + band|15|2": 0,
+      "powerlifting|First time|Bodyweight + band|15|3": 0,
+      "powerlifting|First time|Bodyweight + band|15|7": 0,
+      "powerlifting|First time|Bodyweight + band|20|2": 0,
+      "powerlifting|First time|Bodyweight + band|20|3": 0,
+      "powerlifting|First time|Bodyweight + band|20|7": 0,
+      "powerlifting|First time|Bodyweight + band|30|2": 0,
+      "powerlifting|First time|Bodyweight + band|30|3": 0,
+      "powerlifting|First time|Bodyweight + band|30|7": 0,
+      "powerlifting|First time|Bodyweight + band|45|2": 0,
+      "powerlifting|First time|Bodyweight + band|45|3": 0,
+      "powerlifting|First time|Bodyweight + band|45|7": 0,
+      "powerlifting|First time|Bodyweight + band|60|2": 0,
+      "powerlifting|First time|Bodyweight + band|60|3": 1,
+      "powerlifting|First time|Bodyweight + band|60|7": 1,
+      "powerlifting|First time|Bodyweight + band|90|2": 1,
+      "powerlifting|First time|Bodyweight + band|90|3": 3,
+      "powerlifting|First time|Bodyweight + band|90|7": 3,
+      "powerlifting|First time|Bodyweight + band|120|2": 1,
+      "powerlifting|First time|Bodyweight + band|120|3": 3,
+      "powerlifting|First time|Bodyweight + band|120|7": 3,
+      "powerlifting|Some experience|Full gym|15|2": 0,
+      "powerlifting|Some experience|Full gym|15|3": 0,
+      "powerlifting|Some experience|Full gym|15|7": 0,
+      "powerlifting|Some experience|Full gym|20|2": 0,
+      "powerlifting|Some experience|Full gym|20|3": 1,
+      "powerlifting|Some experience|Full gym|20|7": 1,
+      "powerlifting|Some experience|Full gym|30|2": 0,
+      "powerlifting|Some experience|Full gym|30|3": 1,
+      "powerlifting|Some experience|Full gym|30|7": 3,
+      "powerlifting|Some experience|Full gym|45|2": 0,
+      "powerlifting|Some experience|Full gym|45|3": 2,
+      "powerlifting|Some experience|Full gym|45|7": 5,
+      "powerlifting|Some experience|Full gym|60|2": 1,
+      "powerlifting|Some experience|Full gym|60|3": 5,
+      "powerlifting|Some experience|Full gym|60|7": 10,
+      "powerlifting|Some experience|Full gym|90|2": 3,
+      "powerlifting|Some experience|Full gym|90|3": 10,
+      "powerlifting|Some experience|Full gym|90|7": 16,
+      "powerlifting|Some experience|Full gym|120|2": 3,
+      "powerlifting|Some experience|Full gym|120|3": 10,
+      "powerlifting|Some experience|Full gym|120|7": 16,
+      "powerlifting|Some experience|Dumbbells|15|2": 0,
+      "powerlifting|Some experience|Dumbbells|15|3": 0,
+      "powerlifting|Some experience|Dumbbells|15|7": 0,
+      "powerlifting|Some experience|Dumbbells|20|2": 0,
+      "powerlifting|Some experience|Dumbbells|20|3": 0,
+      "powerlifting|Some experience|Dumbbells|20|7": 0,
+      "powerlifting|Some experience|Dumbbells|30|2": 0,
+      "powerlifting|Some experience|Dumbbells|30|3": 0,
+      "powerlifting|Some experience|Dumbbells|30|7": 0,
+      "powerlifting|Some experience|Dumbbells|45|2": 0,
+      "powerlifting|Some experience|Dumbbells|45|3": 0,
+      "powerlifting|Some experience|Dumbbells|45|7": 0,
+      "powerlifting|Some experience|Dumbbells|60|2": 0,
+      "powerlifting|Some experience|Dumbbells|60|3": 1,
+      "powerlifting|Some experience|Dumbbells|60|7": 2,
+      "powerlifting|Some experience|Dumbbells|90|2": 1,
+      "powerlifting|Some experience|Dumbbells|90|3": 3,
+      "powerlifting|Some experience|Dumbbells|90|7": 4,
+      "powerlifting|Some experience|Dumbbells|120|2": 1,
+      "powerlifting|Some experience|Dumbbells|120|3": 3,
+      "powerlifting|Some experience|Dumbbells|120|7": 4,
+      "powerlifting|Some experience|Bodyweight + band|15|2": 0,
+      "powerlifting|Some experience|Bodyweight + band|15|3": 0,
+      "powerlifting|Some experience|Bodyweight + band|15|7": 0,
+      "powerlifting|Some experience|Bodyweight + band|20|2": 0,
+      "powerlifting|Some experience|Bodyweight + band|20|3": 0,
+      "powerlifting|Some experience|Bodyweight + band|20|7": 0,
+      "powerlifting|Some experience|Bodyweight + band|30|2": 0,
+      "powerlifting|Some experience|Bodyweight + band|30|3": 0,
+      "powerlifting|Some experience|Bodyweight + band|30|7": 0,
+      "powerlifting|Some experience|Bodyweight + band|45|2": 0,
+      "powerlifting|Some experience|Bodyweight + band|45|3": 0,
+      "powerlifting|Some experience|Bodyweight + band|45|7": 0,
+      "powerlifting|Some experience|Bodyweight + band|60|2": 0,
+      "powerlifting|Some experience|Bodyweight + band|60|3": 1,
+      "powerlifting|Some experience|Bodyweight + band|60|7": 2,
+      "powerlifting|Some experience|Bodyweight + band|90|2": 1,
+      "powerlifting|Some experience|Bodyweight + band|90|3": 3,
+      "powerlifting|Some experience|Bodyweight + band|90|7": 4,
+      "powerlifting|Some experience|Bodyweight + band|120|2": 1,
+      "powerlifting|Some experience|Bodyweight + band|120|3": 3,
+      "powerlifting|Some experience|Bodyweight + band|120|7": 4,
+      "powerlifting|Experienced|Full gym|15|2": 0,
+      "powerlifting|Experienced|Full gym|15|3": 0,
+      "powerlifting|Experienced|Full gym|15|7": 0,
+      "powerlifting|Experienced|Full gym|20|2": 0,
+      "powerlifting|Experienced|Full gym|20|3": 1,
+      "powerlifting|Experienced|Full gym|20|7": 1,
+      "powerlifting|Experienced|Full gym|30|2": 0,
+      "powerlifting|Experienced|Full gym|30|3": 1,
+      "powerlifting|Experienced|Full gym|30|7": 3,
+      "powerlifting|Experienced|Full gym|45|2": 0,
+      "powerlifting|Experienced|Full gym|45|3": 2,
+      "powerlifting|Experienced|Full gym|45|7": 5,
+      "powerlifting|Experienced|Full gym|60|2": 1,
+      "powerlifting|Experienced|Full gym|60|3": 5,
+      "powerlifting|Experienced|Full gym|60|7": 10,
+      "powerlifting|Experienced|Full gym|90|2": 3,
+      "powerlifting|Experienced|Full gym|90|3": 10,
+      "powerlifting|Experienced|Full gym|90|7": 17,
+      "powerlifting|Experienced|Full gym|120|2": 3,
+      "powerlifting|Experienced|Full gym|120|3": 10,
+      "powerlifting|Experienced|Full gym|120|7": 17,
+      "powerlifting|Experienced|Dumbbells|15|2": 0,
+      "powerlifting|Experienced|Dumbbells|15|3": 0,
+      "powerlifting|Experienced|Dumbbells|15|7": 0,
+      "powerlifting|Experienced|Dumbbells|20|2": 0,
+      "powerlifting|Experienced|Dumbbells|20|3": 0,
+      "powerlifting|Experienced|Dumbbells|20|7": 0,
+      "powerlifting|Experienced|Dumbbells|30|2": 0,
+      "powerlifting|Experienced|Dumbbells|30|3": 0,
+      "powerlifting|Experienced|Dumbbells|30|7": 0,
+      "powerlifting|Experienced|Dumbbells|45|2": 0,
+      "powerlifting|Experienced|Dumbbells|45|3": 0,
+      "powerlifting|Experienced|Dumbbells|45|7": 0,
+      "powerlifting|Experienced|Dumbbells|60|2": 0,
+      "powerlifting|Experienced|Dumbbells|60|3": 1,
+      "powerlifting|Experienced|Dumbbells|60|7": 2,
+      "powerlifting|Experienced|Dumbbells|90|2": 1,
+      "powerlifting|Experienced|Dumbbells|90|3": 3,
+      "powerlifting|Experienced|Dumbbells|90|7": 4,
+      "powerlifting|Experienced|Dumbbells|120|2": 1,
+      "powerlifting|Experienced|Dumbbells|120|3": 3,
+      "powerlifting|Experienced|Dumbbells|120|7": 4,
+      "powerlifting|Experienced|Bodyweight + band|15|2": 0,
+      "powerlifting|Experienced|Bodyweight + band|15|3": 0,
+      "powerlifting|Experienced|Bodyweight + band|15|7": 0,
+      "powerlifting|Experienced|Bodyweight + band|20|2": 0,
+      "powerlifting|Experienced|Bodyweight + band|20|3": 0,
+      "powerlifting|Experienced|Bodyweight + band|20|7": 0,
+      "powerlifting|Experienced|Bodyweight + band|30|2": 0,
+      "powerlifting|Experienced|Bodyweight + band|30|3": 0,
+      "powerlifting|Experienced|Bodyweight + band|30|7": 0,
+      "powerlifting|Experienced|Bodyweight + band|45|2": 0,
+      "powerlifting|Experienced|Bodyweight + band|45|3": 0,
+      "powerlifting|Experienced|Bodyweight + band|45|7": 0,
+      "powerlifting|Experienced|Bodyweight + band|60|2": 0,
+      "powerlifting|Experienced|Bodyweight + band|60|3": 1,
+      "powerlifting|Experienced|Bodyweight + band|60|7": 2,
+      "powerlifting|Experienced|Bodyweight + band|90|2": 1,
+      "powerlifting|Experienced|Bodyweight + band|90|3": 3,
+      "powerlifting|Experienced|Bodyweight + band|90|7": 4,
+      "powerlifting|Experienced|Bodyweight + band|120|2": 1,
+      "powerlifting|Experienced|Bodyweight + band|120|3": 3,
+      "powerlifting|Experienced|Bodyweight + band|120|7": 4
+    }
+  },
+  "families": {
+    "checkedAt": "2026-10-13T00:22:44.179Z",
+    "scope": "Actual eight-week generated prescriptions. Deduplicated titles/IDs, repeated same-session frequencies and added easy walks. Software fit/evidence mapping, not independent physiological validation.",
+    "originals": 145,
+    "minimumUniquePerGoal": 10,
+    "coverage": {
+      "powerlifting": {
+        "entries": 13,
+        "uniqueStructures": 12,
+        "structures": [
+          {
+            "signatureSha256": "4d6be466e3740e9484d7604aca151264d721c2854878b9c6005d7cffd57d6d52",
+            "ids": [
+              "PL3"
+            ]
+          },
+          {
+            "signatureSha256": "5040c72e2538c811127253f5244887f5931487afa8c0f5d88febbd08aac54b50",
+            "ids": [
+              "PL4"
+            ]
+          },
+          {
+            "signatureSha256": "4c60af9c4ac21148aa8ed65e95d2bc2d9963a0c6b074bdd3f44910e889c573f6",
+            "ids": [
+              "PLU3"
+            ]
+          },
+          {
+            "signatureSha256": "37b943e525310a2e49614773fadbc7e8282f1e0388b3ef6b33246ede1f9ccc16",
+            "ids": [
+              "PL2"
+            ]
+          },
+          {
+            "signatureSha256": "eacf93aceae8226a9c578bb059401fa5d4f3eaaab150e35e3096b9639f58665b",
+            "ids": [
+              "PLW4"
+            ]
+          },
+          {
+            "signatureSha256": "20418fd2770fb81b194d12af3321a2eda12cbb58d73cdab21cfb3361df4d8808",
+            "ids": [
+              "QPL3"
+            ]
+          },
+          {
+            "signatureSha256": "eab33bddaff6204fb5eb0744638c04b538f4a0cb7d9804660cbc08a3e2c12d95",
+            "ids": [
+              "PLSTART3"
+            ]
+          },
+          {
+            "signatureSha256": "6964bfe70b838fb79a28d6bef9bb309a144804d28dda12c3402aff99d7de89cf",
+            "ids": [
+              "D6-SBD",
+              "D7-SBD"
+            ]
+          },
+          {
+            "signatureSha256": "4ec46c1e581003e127e7cedc7c151abe8e7c24a9b0fb5c2c10dd28b0b0f21e69",
+            "ids": [
+              "PLCOMPACT2"
+            ]
+          },
+          {
+            "signatureSha256": "05d6f9ae2a861fa99e1b84146467ac11789c6b1bf5afadef7745ce57ca2e269d",
+            "ids": [
+              "PLBENCH3"
+            ]
+          },
+          {
+            "signatureSha256": "a7e226e4d3c698713beb2503c299154be1333d39a1ea415169fe5b607ea19b23",
+            "ids": [
+              "PLINTVOL4"
+            ]
+          },
+          {
+            "signatureSha256": "bc353c3aa11d982605ca66876bad4b8b64d72e4b47db7247a40ca3be97e46e95",
+            "ids": [
+              "PLDISTRIBUTED4"
+            ]
+          }
+        ],
+        "duplicateGroups": [
+          [
+            "D6-SBD",
+            "D7-SBD"
+          ]
+        ]
+      },
+      "powerbuilding": {
+        "entries": 19,
+        "uniqueStructures": 16,
+        "structures": [
+          {
+            "signatureSha256": "8b5badf6c732947e813202566ab673c05cbb3a44423489c2a086a88e83aaec52",
+            "ids": [
+              "PB3"
+            ]
+          },
+          {
+            "signatureSha256": "ec6256e8bb2a390ffa90f822692bf934e542f493d213535f004f0b94b30c747b",
+            "ids": [
+              "PB4"
+            ]
+          },
+          {
+            "signatureSha256": "3a1185a798ddcdbeef8cbe01b7d550b63b67fb18bc7b229c2703194146b5a616",
+            "ids": [
+              "PBPH4"
+            ]
+          },
+          {
+            "signatureSha256": "017bef07bb2e3abeaf0ee24c6049e545cb979026626a5895c1c0feec156b3384",
+            "ids": [
+              "PBT4"
+            ]
+          },
+          {
+            "signatureSha256": "9227799270d9ca394f3ec3ab0273cb0c44091f8c3b7207a6b8baa567c1ed06bc",
+            "ids": [
+              "PBSTART2"
+            ]
+          },
+          {
+            "signatureSha256": "4b4a0473857f4c2fc7d69bb44bece5fa2dabe577d2b2554c138751c5cdc31cfc",
+            "ids": [
+              "PBSTART3"
+            ]
+          },
+          {
+            "signatureSha256": "0567ee36be21aa7e467e0399e0f0e16bdafbf3ec2905cda5ee7aebdbed00f8cb",
+            "ids": [
+              "PBDB3"
+            ]
+          },
+          {
+            "signatureSha256": "21c21b8ecc2bd51314e53bbc01a1481b4333522a95d0bd032dca16d37ac5b1c4",
+            "ids": [
+              "PBW4"
+            ]
+          },
+          {
+            "signatureSha256": "a30649e494a0208b35f2fd11e6f6721e96070a4869b0cfa646f2110602a1c010",
+            "ids": [
+              "QPB2"
+            ]
+          },
+          {
+            "signatureSha256": "71c7630fa063a826db181edcf07f388fcec0f28c7fbd20073612acd4c99e35b2",
+            "ids": [
+              "QPB3"
+            ]
+          },
+          {
+            "signatureSha256": "1e5b522ba4568c76c09fb67351d404b576d62b9e2b269b16a80176bbe003d50c",
+            "ids": [
+              "PBDBST2"
+            ]
+          },
+          {
+            "signatureSha256": "be7f50d30951cc43bf1050e06ee1173228e3a977cccea6b0f937e30ef9f01ed5",
+            "ids": [
+              "D6-powerbuilding-START",
+              "D7-powerbuilding-START"
+            ]
+          },
+          {
+            "signatureSha256": "fc18420491c519b85f0a4e81f8463873445964bf5a311ab3f951c2a44c1b7396",
+            "ids": [
+              "D6-powerbuilding-BUILD",
+              "D7-powerbuilding-BUILD"
+            ]
+          },
+          {
+            "signatureSha256": "c0fce2f339ee1b82a5cfc7a2de3198196c41b24899f0c1091efb2af0289c0927",
+            "ids": [
+              "D6-powerbuilding-MICRO",
+              "D7-powerbuilding-MICRO"
+            ]
+          },
+          {
+            "signatureSha256": "1aa3bbbb7c232a0b0c57ac084ad0a50a14f05504954df45864a5acd7bfad6309",
+            "ids": [
+              "PBDB4"
+            ]
+          },
+          {
+            "signatureSha256": "f795176f1087876ac5692663ae8b596562ed678b54a3ea51f94235c8c0868054",
+            "ids": [
+              "PB5"
+            ]
+          }
+        ],
+        "duplicateGroups": [
+          [
+            "D6-powerbuilding-START",
+            "D7-powerbuilding-START"
+          ],
+          [
+            "D6-powerbuilding-BUILD",
+            "D7-powerbuilding-BUILD"
+          ],
+          [
+            "D6-powerbuilding-MICRO",
+            "D7-powerbuilding-MICRO"
+          ]
+        ]
+      },
+      "hypertrophy": {
+        "entries": 22,
+        "uniqueStructures": 19,
+        "structures": [
+          {
+            "signatureSha256": "2995cc7c0303744d43e9a9ec87f55a5037c454252866321cd8d0a9a2e2c34e0a",
+            "ids": [
+              "BB3"
+            ]
+          },
+          {
+            "signatureSha256": "7bcbc3e313dab583f96bd52ae71a1984c8b17f1fbc507eaa9a3d3de2b212219e",
+            "ids": [
+              "BB4"
+            ]
+          },
+          {
+            "signatureSha256": "c8dbbb476a4de796ed7d82598debd6bd8fe8af14e793a9bfd1c36b6efec50a12",
+            "ids": [
+              "BB2"
+            ]
+          },
+          {
+            "signatureSha256": "45fc86a23129e8289287b29e10d978353cef44e4728da488829cac64c870e687",
+            "ids": [
+              "BBDB3"
+            ]
+          },
+          {
+            "signatureSha256": "dfd8889f3e6d18efe9d30df4a7364f15273defbd552137b118f9741907091301",
+            "ids": [
+              "BBM3"
+            ]
+          },
+          {
+            "signatureSha256": "49e6a926aea3f24f6f7e1029c74447b362686008d7bd81aca5fa406392d1064d",
+            "ids": [
+              "BBHOME3"
+            ]
+          },
+          {
+            "signatureSha256": "67aabf65423ebe70d95c322f481590bc1c72d2d12c2f9495d63e6909ff61b0dd",
+            "ids": [
+              "BBADV4"
+            ]
+          },
+          {
+            "signatureSha256": "d910dfd48ecfaa2ffcbc84000e9419e668feb66b5e52a58809149ecccda0f32a",
+            "ids": [
+              "QM2"
+            ]
+          },
+          {
+            "signatureSha256": "a2289dc2086bdac29243e2bd6d037e509282d831e79a215f23844c914895baf4",
+            "ids": [
+              "QM3"
+            ]
+          },
+          {
+            "signatureSha256": "3401a95a422e033b2c3960f63c150d7083bf8f6b702ec2a5e3bf54d96f3a7492",
+            "ids": [
+              "BBDBST2"
+            ]
+          },
+          {
+            "signatureSha256": "83a3fe56f20a2e56dc541dc7f86e4a5997c2a6b96aac2fecc3f74f9611eb89b0",
+            "ids": [
+              "D6-hypertrophy-START",
+              "D7-hypertrophy-START"
+            ]
+          },
+          {
+            "signatureSha256": "fd3de5feeef3095d322d2580ddd5da7ac28c7b38a8ee059ea6ea8097cdec8e03",
+            "ids": [
+              "D6-hypertrophy-BUILD",
+              "D7-hypertrophy-BUILD"
+            ]
+          },
+          {
+            "signatureSha256": "c0fce2f339ee1b82a5cfc7a2de3198196c41b24899f0c1091efb2af0289c0927",
+            "ids": [
+              "D6-hypertrophy-MICRO",
+              "D7-hypertrophy-MICRO"
+            ]
+          },
+          {
+            "signatureSha256": "3c599376b1dafcbed5468c5bc737d1e5919a3dd121fa54e97811da0a0236931e",
+            "ids": [
+              "BBDB4"
+            ]
+          },
+          {
+            "signatureSha256": "1079a22fbc613e4db80f0274ee451586d04d95a8b22d6f6f9925bc08cc49da09",
+            "ids": [
+              "BB5"
+            ]
+          },
+          {
+            "signatureSha256": "d1ddd8093f7ccbcea539a83c9a8ef0bcaa1af58d868cbb48cfa119d10ce917e5",
+            "ids": [
+              "BB2BUILD"
+            ]
+          },
+          {
+            "signatureSha256": "579ac0b2d709e003f50cf09f59e819932081c8c1b6a3558573c8b8dcbeddbdf7",
+            "ids": [
+              "BBF3"
+            ]
+          },
+          {
+            "signatureSha256": "0503c20885f21409e277166d39205bd8cde2857e00420a8cb2a2b66cd9ab98a2",
+            "ids": [
+              "BBFDB3"
+            ]
+          },
+          {
+            "signatureSha256": "9907f4bc84850605a096662f4004f75294d436cfb6c81acceac4dd0d63c4f643",
+            "ids": [
+              "BBFHOME3"
+            ]
+          }
+        ],
+        "duplicateGroups": [
+          [
+            "D6-hypertrophy-START",
+            "D7-hypertrophy-START"
+          ],
+          [
+            "D6-hypertrophy-BUILD",
+            "D7-hypertrophy-BUILD"
+          ],
+          [
+            "D6-hypertrophy-MICRO",
+            "D7-hypertrophy-MICRO"
+          ]
+        ]
+      },
+      "hybrid": {
+        "entries": 11,
+        "uniqueStructures": 10,
+        "structures": [
+          {
+            "signatureSha256": "927f1337f9429f97b6c81b3d8ff9ff8c11da4bf2d9255afd53fcd869a978a33a",
+            "ids": [
+              "HY4"
+            ]
+          },
+          {
+            "signatureSha256": "8531b329fc1eff453fd0be405e7f0f63a6c29bc580662dacdcbcfc8cf2234b8c",
+            "ids": [
+              "HY5"
+            ]
+          },
+          {
+            "signatureSha256": "b57e8629606596703102698aaedb21a73ce569c783e9881a96ee0e8963da13b6",
+            "ids": [
+              "HYHOME4"
+            ]
+          },
+          {
+            "signatureSha256": "9f753992211cc535587d1e988e1760a5841d9f92b62c7d90397b12c1c9f8f3ca",
+            "ids": [
+              "HYDB4"
+            ]
+          },
+          {
+            "signatureSha256": "2e0ffa4e9e827dc5ea92e9fe58fde2be443c2b6f525c6fba3a65bb49ff3dc21c",
+            "ids": [
+              "QHY4",
+              "QHY3"
+            ]
+          },
+          {
+            "signatureSha256": "85641b20d92462db92611ad0fcf057c114810276f5cff0f220ca00024ab704b6",
+            "ids": [
+              "HY3"
+            ]
+          },
+          {
+            "signatureSha256": "04eb138b7d606ab706e09615dee19cf022b356b522e6697e6bb06fc863171c79",
+            "ids": [
+              "HYDB2"
+            ]
+          },
+          {
+            "signatureSha256": "4f4efb4de19de4653bf63ec393b326b49dc05608a592608ca7ef95ef40973262",
+            "ids": [
+              "HYHOME2"
+            ]
+          },
+          {
+            "signatureSha256": "d840c294b27d68394df9e559f3542b7e7c3d46f926b33bb233fd98c6a8208b83",
+            "ids": [
+              "HYBAR3BASE"
+            ]
+          },
+          {
+            "signatureSha256": "0341d4368c99e905aa01ebd06daf629b7aed782562091ffb3be892fd15c03e19",
+            "ids": [
+              "HYDB5BASE"
+            ]
+          }
+        ],
+        "duplicateGroups": [
+          [
+            "QHY4",
+            "QHY3"
+          ]
+        ]
+      },
+      "strength": {
+        "entries": 18,
+        "uniqueStructures": 13,
+        "structures": [
+          {
+            "signatureSha256": "6ec3e83d6a356e6a245966d4e4bd995de9e65680a55c488a233da2824b17436b",
+            "ids": [
+              "ST2",
+              "ST5"
+            ]
+          },
+          {
+            "signatureSha256": "e3b87ef50e395c6589258229afee59231e8c2f981d3d9542608dba7025d52c9d",
+            "ids": [
+              "ST3"
+            ]
+          },
+          {
+            "signatureSha256": "b2da9373d7bc7c1da4bbe857b6bb9da098809d34cf75b5443d1044dbc0948d0f",
+            "ids": [
+              "STGYM2"
+            ]
+          },
+          {
+            "signatureSha256": "7f9e61c49729ea501a0153ae6fa2b62062b29b69e4b2bedec093bcb3c83d903c",
+            "ids": [
+              "STDB3"
+            ]
+          },
+          {
+            "signatureSha256": "eacf93aceae8226a9c578bb059401fa5d4f3eaaab150e35e3096b9639f58665b",
+            "ids": [
+              "ST4"
+            ]
+          },
+          {
+            "signatureSha256": "d910dfd48ecfaa2ffcbc84000e9419e668feb66b5e52a58809149ecccda0f32a",
+            "ids": [
+              "QS2"
+            ]
+          },
+          {
+            "signatureSha256": "a2289dc2086bdac29243e2bd6d037e509282d831e79a215f23844c914895baf4",
+            "ids": [
+              "QS3"
+            ]
+          },
+          {
+            "signatureSha256": "6646a352caae5e5dfd036e8096e0c693b0b63342ac1181337318c41a2486d3e4",
+            "ids": [
+              "STSTAND2"
+            ]
+          },
+          {
+            "signatureSha256": "3df10e13b388c9123d7b3c11d2354d62fad2cd7bf18f273c416503acd82989fb",
+            "ids": [
+              "STDBST2"
+            ]
+          },
+          {
+            "signatureSha256": "be7f50d30951cc43bf1050e06ee1173228e3a977cccea6b0f937e30ef9f01ed5",
+            "ids": [
+              "D6-strength-START",
+              "D7-strength-START"
+            ]
+          },
+          {
+            "signatureSha256": "fc18420491c519b85f0a4e81f8463873445964bf5a311ab3f951c2a44c1b7396",
+            "ids": [
+              "D6-strength-BUILD",
+              "D7-strength-BUILD"
+            ]
+          },
+          {
+            "signatureSha256": "c0fce2f339ee1b82a5cfc7a2de3198196c41b24899f0c1091efb2af0289c0927",
+            "ids": [
+              "D6-strength-MICRO",
+              "D7-strength-MICRO"
+            ]
+          },
+          {
+            "signatureSha256": "a43610b3b0466cdf41988a76098b9e4964c88e4c5ab5154afabd8095df7b3bf1",
+            "ids": [
+              "D6-strength-HABIT",
+              "D7-strength-HABIT"
+            ]
+          }
+        ],
+        "duplicateGroups": [
+          [
+            "ST2",
+            "ST5"
+          ],
+          [
+            "D6-strength-START",
+            "D7-strength-START"
+          ],
+          [
+            "D6-strength-BUILD",
+            "D7-strength-BUILD"
+          ],
+          [
+            "D6-strength-MICRO",
+            "D7-strength-MICRO"
+          ],
+          [
+            "D6-strength-HABIT",
+            "D7-strength-HABIT"
+          ]
+        ]
+      },
+      "general": {
+        "entries": 19,
+        "uniqueStructures": 14,
+        "structures": [
+          {
+            "signatureSha256": "597edb28b4ab8b9742704ebe72a9657c962e94bcd096f718b70e657632ebfafd",
+            "ids": [
+              "GF2",
+              "GF5"
+            ]
+          },
+          {
+            "signatureSha256": "8f248a254aced38981d7402fcd689ec42b99f5411ab4513e2c6b1a478b3bf680",
+            "ids": [
+              "GFHOME2"
+            ]
+          },
+          {
+            "signatureSha256": "1dfaa10ef5730f741b072afeafd9d277a7f9cfef77ec95f20a159532bd4a6643",
+            "ids": [
+              "GF3"
+            ]
+          },
+          {
+            "signatureSha256": "5e72538c82e3f48bf6fc42d36a6bb129f020b3894ce2dbf3471baa9d4c8199fc",
+            "ids": [
+              "GFM2"
+            ]
+          },
+          {
+            "signatureSha256": "d910dfd48ecfaa2ffcbc84000e9419e668feb66b5e52a58809149ecccda0f32a",
+            "ids": [
+              "QG2"
+            ]
+          },
+          {
+            "signatureSha256": "a2289dc2086bdac29243e2bd6d037e509282d831e79a215f23844c914895baf4",
+            "ids": [
+              "QG3"
+            ]
+          },
+          {
+            "signatureSha256": "6646a352caae5e5dfd036e8096e0c693b0b63342ac1181337318c41a2486d3e4",
+            "ids": [
+              "GFSTAND2"
+            ]
+          },
+          {
+            "signatureSha256": "d2d9067dca7508837aae495a729c603be1c727a758b3fe0db276ecfc875fc865",
+            "ids": [
+              "GFNOGROUND2"
+            ]
+          },
+          {
+            "signatureSha256": "b68be613c4a9b88f16bd9d5d75948c9c72844431b1f33e6f2fb4a7be8464b85b",
+            "ids": [
+              "GFNONE2"
+            ]
+          },
+          {
+            "signatureSha256": "3401a95a422e033b2c3960f63c150d7083bf8f6b702ec2a5e3bf54d96f3a7492",
+            "ids": [
+              "GFDBST2"
+            ]
+          },
+          {
+            "signatureSha256": "83a3fe56f20a2e56dc541dc7f86e4a5997c2a6b96aac2fecc3f74f9611eb89b0",
+            "ids": [
+              "D6-general-START",
+              "D7-general-START"
+            ]
+          },
+          {
+            "signatureSha256": "c0fce2f339ee1b82a5cfc7a2de3198196c41b24899f0c1091efb2af0289c0927",
+            "ids": [
+              "D6-general-MICRO",
+              "D7-general-MICRO"
+            ]
+          },
+          {
+            "signatureSha256": "e09949b2f116686a377214d8ee927b0972faaaf3df3a128eff6f4964e9a859bd",
+            "ids": [
+              "D6-general-NONE",
+              "D7-general-NONE"
+            ]
+          },
+          {
+            "signatureSha256": "a43610b3b0466cdf41988a76098b9e4964c88e4c5ab5154afabd8095df7b3bf1",
+            "ids": [
+              "D6-general-HABIT",
+              "D7-general-HABIT"
+            ]
+          }
+        ],
+        "duplicateGroups": [
+          [
+            "GF2",
+            "GF5"
+          ],
+          [
+            "D6-general-START",
+            "D7-general-START"
+          ],
+          [
+            "D6-general-MICRO",
+            "D7-general-MICRO"
+          ],
+          [
+            "D6-general-NONE",
+            "D7-general-NONE"
+          ],
+          [
+            "D6-general-HABIT",
+            "D7-general-HABIT"
+          ]
+        ]
+      },
+      "calisthenics": {
+        "entries": 15,
+        "uniqueStructures": 10,
+        "structures": [
+          {
+            "signatureSha256": "a64d9b1b2c05870ead77efb8be284bb9455e7773e9d195ab3b742b714fd8832d",
+            "ids": [
+              "CAL2",
+              "CAL5"
+            ]
+          },
+          {
+            "signatureSha256": "2dac79ea9550544d78ecae5ef722e591b6714381485d01f87aff381038753774",
+            "ids": [
+              "CAL3"
+            ]
+          },
+          {
+            "signatureSha256": "49e6a926aea3f24f6f7e1029c74447b362686008d7bd81aca5fa406392d1064d",
+            "ids": [
+              "CALBUILD3",
+              "CALBUILD2"
+            ]
+          },
+          {
+            "signatureSha256": "d910dfd48ecfaa2ffcbc84000e9419e668feb66b5e52a58809149ecccda0f32a",
+            "ids": [
+              "QC2"
+            ]
+          },
+          {
+            "signatureSha256": "a2289dc2086bdac29243e2bd6d037e509282d831e79a215f23844c914895baf4",
+            "ids": [
+              "QC3"
+            ]
+          },
+          {
+            "signatureSha256": "a90ae5a4bb201a91eed308508a3fea90186087138a03117062dc372b84b840c3",
+            "ids": [
+              "CALDB2"
+            ]
+          },
+          {
+            "signatureSha256": "8836c1dca80b4a05131e0923437d3c9e0c0b294f0d5df5d7a320c655e75d7d26",
+            "ids": [
+              "D6-calisthenics-START",
+              "D7-calisthenics-START"
+            ]
+          },
+          {
+            "signatureSha256": "c0fce2f339ee1b82a5cfc7a2de3198196c41b24899f0c1091efb2af0289c0927",
+            "ids": [
+              "D6-calisthenics-MICRO",
+              "D7-calisthenics-MICRO"
+            ]
+          },
+          {
+            "signatureSha256": "a43610b3b0466cdf41988a76098b9e4964c88e4c5ab5154afabd8095df7b3bf1",
+            "ids": [
+              "D6-calisthenics-HABIT",
+              "D7-calisthenics-HABIT"
+            ]
+          },
+          {
+            "signatureSha256": "66370dd47f5dfef64899f29289bd1601d13ea4d074bbb1e939d83b214b98936d",
+            "ids": [
+              "CALUL4"
+            ]
+          }
+        ],
+        "duplicateGroups": [
+          [
+            "CAL2",
+            "CAL5"
+          ],
+          [
+            "CALBUILD3",
+            "CALBUILD2"
+          ],
+          [
+            "D6-calisthenics-START",
+            "D7-calisthenics-START"
+          ],
+          [
+            "D6-calisthenics-MICRO",
+            "D7-calisthenics-MICRO"
+          ],
+          [
+            "D6-calisthenics-HABIT",
+            "D7-calisthenics-HABIT"
+          ]
+        ]
+      },
+      "running": {
+        "entries": 13,
+        "uniqueStructures": 11,
+        "structures": [
+          {
+            "signatureSha256": "679e06ddbc5f881fb966d3bc21591481674cf204fd64bf17e4561295a2dad2be",
+            "ids": [
+              "RNEASY3",
+              "RNBASE4"
+            ]
+          },
+          {
+            "signatureSha256": "c874055a8c03a6a665a6088858bd74d928950ed9ae4ce06d874e29dc97aa0831",
+            "ids": [
+              "QR3",
+              "QR2"
+            ]
+          },
+          {
+            "signatureSha256": "e3fd0fd16cc7e7485165bb21554542f558f1ac4d33851c1dc1ef1298c3b8c6cc",
+            "ids": [
+              "RNRECOVERY2"
+            ]
+          },
+          {
+            "signatureSha256": "c35c3bbbc378853e87506b70f544916ed194a8d8156d31a5a24c3d382aa136e8",
+            "ids": [
+              "RNGRADUAL3"
+            ]
+          },
+          {
+            "signatureSha256": "829497708a243658fd6ce35dfdf2342b06b859aae445f3f689dcc890029aa13c",
+            "ids": [
+              "RNLONGBOUT2"
+            ]
+          },
+          {
+            "signatureSha256": "6e2927ff4c38acc5cff623f00a67d4d31eebd0d02c2e6b8c2a262e697dfc714a",
+            "ids": [
+              "RNEASY2"
+            ]
+          },
+          {
+            "signatureSha256": "d423f588417efd73617a697b188dd9dae1f2646bf800e95e5a5c0b06fbcd62fa",
+            "ids": [
+              "RNVARY3"
+            ]
+          },
+          {
+            "signatureSha256": "2c0b914186108f500063e867772bdd518a9d7781d4f50af896e4f9706448c076",
+            "ids": [
+              "RNFARTLEK3"
+            ]
+          },
+          {
+            "signatureSha256": "9964307816e6903d0dd080acbbb9007f7cfd5cc4e45359abc30c97e1f0868e5e",
+            "ids": [
+              "RNCRUISE3"
+            ]
+          },
+          {
+            "signatureSha256": "530f1c6c1bedd077c6ae66d8054ea9d61028049878f3fc5d9168b6f609bc4825",
+            "ids": [
+              "RNSTEADY3"
+            ]
+          },
+          {
+            "signatureSha256": "48f2f91cdbf8802ef1669bcf2cad8d9b0dfd0722bc705013a422a87c35f54a20",
+            "ids": [
+              "RNEASYREC4"
+            ]
+          }
+        ],
+        "duplicateGroups": [
+          [
+            "RNEASY3",
+            "RNBASE4"
+          ],
+          [
+            "QR3",
+            "QR2"
+          ]
+        ]
+      },
+      "sport": {
+        "entries": 15,
+        "uniqueStructures": 11,
+        "structures": [
+          {
+            "signatureSha256": "d910dfd48ecfaa2ffcbc84000e9419e668feb66b5e52a58809149ecccda0f32a",
+            "ids": [
+              "QSP2"
+            ]
+          },
+          {
+            "signatureSha256": "a2289dc2086bdac29243e2bd6d037e509282d831e79a215f23844c914895baf4",
+            "ids": [
+              "QSP3"
+            ]
+          },
+          {
+            "signatureSha256": "5a67d44979fbc237af8d2cec9b61f4177a4c0f39c120381a152fe84b0a3b41f1",
+            "ids": [
+              "SP2",
+              "SP5"
+            ]
+          },
+          {
+            "signatureSha256": "3401a95a422e033b2c3960f63c150d7083bf8f6b702ec2a5e3bf54d96f3a7492",
+            "ids": [
+              "SPDBST2"
+            ]
+          },
+          {
+            "signatureSha256": "83a3fe56f20a2e56dc541dc7f86e4a5997c2a6b96aac2fecc3f74f9611eb89b0",
+            "ids": [
+              "D6-sport-START",
+              "D7-sport-START"
+            ]
+          },
+          {
+            "signatureSha256": "c0fce2f339ee1b82a5cfc7a2de3198196c41b24899f0c1091efb2af0289c0927",
+            "ids": [
+              "D6-sport-MICRO",
+              "D7-sport-MICRO"
+            ]
+          },
+          {
+            "signatureSha256": "a43610b3b0466cdf41988a76098b9e4964c88e4c5ab5154afabd8095df7b3bf1",
+            "ids": [
+              "D6-sport-HABIT",
+              "D7-sport-HABIT"
+            ]
+          },
+          {
+            "signatureSha256": "6ab027917daacaebfdc8cfe425d3c0331a9d62c2dde84b8c78794fcdaf8e677d",
+            "ids": [
+              "SPUNILATERAL2"
+            ]
+          },
+          {
+            "signatureSha256": "d5c6bb88fa8bb3ac9986b72a2297b8d8ad4c399fc5178e613d15759f9ef07a79",
+            "ids": [
+              "SPBAR3"
+            ]
+          },
+          {
+            "signatureSha256": "b1a92266a9060851a9dd395d3e0d7297e18092a8549a9478cf271aa3870e5068",
+            "ids": [
+              "SPMACHINE3"
+            ]
+          },
+          {
+            "signatureSha256": "ecaf618b05d9a25ca1c3a0c3efab367e6b75709851f7b675f211e2bbb0ae5e98",
+            "ids": [
+              "SPJUMP2"
+            ]
+          }
+        ],
+        "duplicateGroups": [
+          [
+            "SP2",
+            "SP5"
+          ],
+          [
+            "D6-sport-START",
+            "D7-sport-START"
+          ],
+          [
+            "D6-sport-MICRO",
+            "D7-sport-MICRO"
+          ],
+          [
+            "D6-sport-HABIT",
+            "D7-sport-HABIT"
+          ]
+        ]
+      }
+    },
+    "newDefinitions": [
+      "PLCOMPACT2",
+      "PLBENCH3",
+      "PLINTVOL4",
+      "PLDISTRIBUTED4",
+      "SPUNILATERAL2",
+      "SPBAR3",
+      "SPMACHINE3",
+      "SPJUMP2",
+      "RNRECOVERY2",
+      "RNGRADUAL3",
+      "RNLONGBOUT2",
+      "RNEASY2",
+      "RNVARY3",
+      "RNFARTLEK3",
+      "RNCRUISE3",
+      "RNSTEADY3",
+      "RNEASYREC4",
+      "HYBAR3BASE",
+      "HYDB5BASE",
+      "CALUL4"
+    ],
+    "fittingScenarios": 420,
+    "successfulFits": 139,
+    "passed": true
+  },
+  "programReviews": 154,
+  "lint": {
+    "errors": 0,
+    "warnings": 71
+  },
+  "builds": [
+    "Movefield static review",
+    "Grizzly static preview"
+  ],
+  "exports": "See artifact SHA values for the four current metadata-selected bundles.",
+  "artifacts": {
+    "public/downloads/movefield-native-current.zip": "592e055005dae269b7b538f47786409d22f346e094a1f8515df5ac1981cd857c",
+    "public/downloads/grizzly-fitness-native-source.zip": "0f1dab533886efa247d2022120ef031180a7070bc1ef6010c6b0801fa72aa46f",
+    "mobile/dist-mobile/_expo/static/js/android/index-be1a32e5334fab40e75b37f422078bdb.hbc": "b314b2f35f6ee064062d05689be7176df723efd58c41201c1368c22082e9dc0c",
+    "mobile/dist-mobile/_expo/static/js/ios/index-43a6a7474b9cf54dbe413e49525ef13a.hbc": "316e5e65d5122ea8169b6f3a03612372c241aa7c98df4b16f824c2f9434d5e87",
+    "mobile/dist-grizzly/_expo/static/js/android/index-a2f901b20931ac87c969feb754371175.hbc": "e9e1f255e8181e9dcbce50f50d09efe6b3f317102d0449ecb221c46562467b93",
+    "mobile/dist-grizzly/_expo/static/js/ios/index-49848b122b48f920fb03a937e23e47be.hbc": "cb175321c269a58427be449e6b054abde7da970433a66598b949f3d635d113d4"
+  },
+  "secretScan": {
+    "ran_at": "2026-10-13T00:25:35.693740+00:00",
+    "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed.",
+    "files": 5843,
+    "zip_members": 1896,
+    "matches": []
+  }
+}

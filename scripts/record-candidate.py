@@ -3,9 +3,10 @@
 Run after builds, exports and checks. This receipt is evidence of file identity,
 not proof of correctness, deployability, billing eligibility or device behavior.
 """
-import datetime,hashlib,json,pathlib,re,subprocess,zipfile
+import datetime,hashlib,json,pathlib,re,subprocess,zipfile,sys
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 RUNTIME=ROOT/'.sites-runtime'
+PREVIEWS_ONLY='--previews-only' in sys.argv
 paths=subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','-z'],cwd=ROOT).decode().split('\0')
 prefixes=('grizzly/','github-pages/','app/','build/','components/','lib/','scripts/','db/','drizzle/','public/','mobile/src/','mobile/scripts/','mobile/assets/','.github/')
 configs={'vite.grizzly.config.ts','eslint.config.mjs','.gitignore','components.json','package.json','pnpm-lock.yaml','tsconfig.json','vite.config.ts','cloudflare-env.d.ts','drizzle.config.ts','wrangler.cloud.example.jsonc','wrangler.workers-dev.example.jsonc','wrangler.pages.example.jsonc','vite.github-pages.config.ts'}
@@ -16,8 +17,9 @@ def source(path):
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def tree(records):return hashlib.sha256(''.join(path+'\0'+sha+'\n' for path,sha in sorted(records.items())).encode()).hexdigest()
 files={p:digest(ROOT/p) for p in sorted(set(paths)) if p and source(p) and (ROOT/p).is_file()}
-web={str(p.relative_to(ROOT)):digest(p) for p in sorted((ROOT/'dist').rglob('*')) if p.is_file()}
-artifacts={p:digest(ROOT/p) for p in ['dist/server/index.js','dist/client/movefield-sw.js','public/downloads/movefield-native-current.zip','public/downloads/grizzly-fitness-native-source.zip'] if (ROOT/p).is_file()}
+web={} if PREVIEWS_ONLY else {str(p.relative_to(ROOT)):digest(p) for p in sorted((ROOT/'dist').rglob('*')) if p.is_file()}
+artifact_paths=([] if PREVIEWS_ONLY else ['dist/server/index.js','dist/client/movefield-sw.js'])+['public/downloads/movefield-native-current.zip','public/downloads/grizzly-fitness-native-source.zip']
+artifacts={p:digest(ROOT/p) for p in artifact_paths if (ROOT/p).is_file()}
 review={str(p.relative_to(ROOT)):digest(p) for p in sorted((RUNTIME/'github-pages-review').rglob('*')) if p.is_file()}
 web.update(review)
 web.update({str(p.relative_to(ROOT)):digest(p) for p in sorted((RUNTIME/'github-pages-grizzly').rglob('*')) if p.is_file()})
@@ -47,6 +49,7 @@ now=datetime.datetime.now(datetime.timezone.utc).isoformat()
 scan={'ran_at':now,'scope':'Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed.','files':len(scanned),'zip_members':zip_members,'matches':matches}
 (RUNTIME/'secret-scan-current.json').write_text(json.dumps(scan,indent=2)+'\n')
 receipt={'ran_at':now,'application_source_sha256':tree(files),'hash_method':'SHA256 of sorted relative path + NUL + content SHA256 + newline; application code/tests/config/static/native assets and ZIP. Documentation outside the ZIP and ignored runtime/credentials excluded.','source_files':files,'artifact_sha256':artifacts,'web_artifact_tree_sha256':tree(web),'not_qualified':['Full six-prompt completion','Live Cloudflare/Google/provider/privacy/$0 budget qualification or deployment','Automatic per-record/background sync, stronger factor enrollment or general AI coaching','Physical native keychain/callback/install/erase/performance qualification','Independent security/crypto, evidence/rights and comprehensive accessibility/update acceptance','Native upstream tooling advisory remediation']}
+receipt['web_scope']='Current static Movefield and Grizzly previews only; older production server output excluded.' if PREVIEWS_ONLY else 'Production server/client and static previews when present.'
 (RUNTIME/'candidate-receipt-current.json').write_text(json.dumps(receipt,indent=2)+'\n')
 print(json.dumps({'application_source_sha256':receipt['application_source_sha256'],'source_files':len(files),'web_artifact_tree_sha256':receipt['web_artifact_tree_sha256'],'scan_files':len(scanned),'zip_members':zip_members,'scan_matches':len(matches)}))
 if matches:raise SystemExit('Credential-pattern scan found candidate files; inspect locally without printing secret values.')

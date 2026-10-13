@@ -369,7 +369,7 @@ function PlanSetup({ state, onAccept, sample = false }) {
                                 style: styles.body,
                                 children: f.description
                             })]
-                    }, f.id)), p.focuses?.includes('jumping') && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
+                    }, f.id)), (p.focuses?.includes('jumping') || p.goal === 'sport') && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
                         label: "Clear landing area and comfortable landing skill",
                         selected: p.jumpReady,
                         onPress: () => set('jumpReady', !p.jumpReady)

@@ -294,7 +294,7 @@ function matchesExercise(e, query) {
     return normalize(query).split(/\s+/).filter(Boolean).every(t => text.includes(aliases[t] || t));
 }
 var sports = ['Football', 'Flag football', 'Basketball', 'Baseball', 'Softball', 'Soccer', 'Volleyball', 'Track and field', 'Cross country', 'Swimming', 'Diving', 'Wrestling', 'Lacrosse', 'Field hockey', 'Ice hockey', 'Tennis', 'Golf', 'Cheer', 'Dance', 'Gymnastics', 'Bowling', 'Other sport'];
-var goals = [['strength', 'Strength'], ['hypertrophy', 'Build muscle'], ['powerbuilding', 'Powerbuilding'], ['hybrid', 'Hybrid · strength + running'], ['running', 'Start running'], ['sport', 'Sport performance'], ['general', 'General fitness'], ['calisthenics', 'Calisthenics'], ['powerlifting', 'Powerlifting']];
+var goals = [['strength', 'Strength'], ['hypertrophy', 'Build muscle'], ['powerbuilding', 'Powerbuilding'], ['hybrid', 'Hybrid · strength + running'], ['running', 'Running'], ['sport', 'Sport performance'], ['general', 'General fitness'], ['calisthenics', 'Calisthenics'], ['powerlifting', 'Powerlifting']];
 var blankProfile = {
     age: 28,
     goal: 'hybrid',
@@ -440,6 +440,11 @@ function buildPlan(p, events = []) {
         result = addEasyActivityDays(result, p, protectedEvents);
     if (result.plan)
         result = (0, _trainingFocus.applyTrainingFocus)(result.plan, events);
+    if (result.plan && p.mode === 'app')
+        for (var session of result.plan.sessions) {
+            var jumpIssue = (0, _trainingFocus.focusScheduleConflict)(result.plan, events, session);
+            if (jumpIssue) return {plan:null, errors:[jumpIssue]};
+        }
     if (result.plan && p.mode === 'app' && p.inventory?.confirmed)
         for (var session of result.plan.sessions) {
             var error = resolveInventory(session.items, p);
@@ -934,6 +939,10 @@ function eligibility(s, target) {
             return {
                 v: 'The earlier workout’s targets are unfinished. Review a repeat or an easier target before moving on.'
             };
+        if (target.progressionStep?.startsWith('Two-week walk–run stages') &&
+            target.week > expected.week && JSON.stringify(target.runSteps) !== JSON.stringify(expected.runSteps) &&
+            (!['right', 'easier'].includes(work.effort) || work.symptom !== 'no'))
+            return {v: 'A longer jogging stage waits for comfortable completed work and no reported symptoms. Review a repeat when that feedback is missing or the earlier stage was too hard.'};
     }, _ret4;
     for (var dep of target.dependsOn || []) {
         _ret4 = _loop4(dep);
@@ -1805,7 +1814,7 @@ function checkSchedule(s, changes) {
             for (var y of all.filter(y => y.id !== _x.id && y.status !== 'missed')) {
                 var full = !_x.recoveryGroup && !y.recoveryGroup && s.plan.template !== 'AT02', sameRegion = _x.recoveryGroup && y.recoveryGroup ? (0, _equipment.recoveryGroupsOverlap)(_x.recoveryGroup, y.recoveryGroup) : _x.title.split(' ')[0] === y.title.split(' ')[0];
                 var actual = (s.active?.sessionId === y.id ? s.active.date : undefined) || latestSessionRecord(s, y.id)?.date || y.date;
-                if (!(s.plan.template === 'RNBASE4' && _x.recoveryGroup === 'run' && y.recoveryGroup === 'run') && (full || sameRegion) && Math.abs(dayDistance(_x.date, actual)) < 2)
+                if (!allowsAdjacentEasyRuns(s.plan, _x, y) && (full || sameRegion) && Math.abs(dayDistance(_x.date, actual)) < 2)
                     return {
                         v: 'The move would remove the recovery day between comparable sessions. Shift later workouts together or choose a more separated date.'
                     };
@@ -1941,6 +1950,11 @@ function changeSessionStatus(s, id, status) {
     };
 }
 ;
+function allowsAdjacentEasyRuns(plan, a, b) {
+    return ['RNBASE4', 'RNEASYREC4'].includes(plan.template) &&
+        a.recoveryGroup === 'run' && b.recoveryGroup === 'run' &&
+        [a, b].every(s => s.runSteps?.length && !s.runSteps.some(x => /moderate|sprint|hard|threshold/i.test(x.label)));
+}
 function catalogDays(p, d, events = []) {
     var eventDates = new Set(events.map(e => e.date));
     var available = [...new Set(p.days)].sort((a, b) => a - b), combos = [];
@@ -1958,7 +1972,7 @@ function catalogDays(p, d, events = []) {
     var _loop12 = function () {
         var assigned = combo.slice().sort((a, b) => (a - startDay + 7) % 7 - (b - startDay + 7) % 7);
         var groups = d.slots.map(x => x.group);
-        var fits = groups.every((g, i) => groups.every((h, j) => i === j || d.id === 'RNBASE4' && g === 'run' && h === 'run' || !(0, _equipment.recoveryGroupsOverlap)(g, h) || ![1, 6].includes(Math.abs(assigned[i] - assigned[j]))));
+        var fits = groups.every((g, i) => groups.every((h, j) => i === j || (d.id === 'RNBASE4' || d.allowAdjacentEasyRuns) && g === 'run' && h === 'run' && [d.slots[i], d.slots[j]].every(s => s.runIntensity !== 'moderate') || !(0, _equipment.recoveryGroupsOverlap)(g, h) || ![1, 6].includes(Math.abs(assigned[i] - assigned[j]))));
         if (fits && !Array.from({
             length: p.weeks * 7
         }, (_, n) => addDays(p.start, n)).some(date => assigned.includes(new Date(date + 'T12:00:00').getDay()) && eventDates.has(date)))
@@ -2018,10 +2032,12 @@ function buildCatalogPlan(p, events) {
     if (def.runBase && !p.runBase)
         errors.push('Confirm an existing comfortable 30-minute running base, or choose Lift + run base. Lifting experience does not establish running readiness.');
     if (def.runBase) {
-        var requiredDays = def.id === 'RNBASE4' ? 4 : def.id === 'HYDB4' ? 2 : 3, requiredMinutes = def.id === 'RNBASE4' ? 100 : def.id === 'HYDB4' ? 50 : 70;
+        var requiredDays = def.runMinimumDays ?? (def.id === 'RNBASE4' ? 4 : def.id === 'HYDB4' ? 2 : 3), requiredMinutes = def.runMinimumMinutes ?? (def.id === 'RNBASE4' ? 100 : def.id === 'HYDB4' ? 50 : 70);
         if ((p.runDays ?? 0) < requiredDays || (p.runMinutes ?? 0) < requiredMinutes)
             errors.push(`This running base needs at least ${requiredDays} recent running days and ${requiredMinutes} easy running minutes per week. Enter your current base or choose walk–run.`);
     }
+    if (def.jumpPractice && (!p.jumpReady || p.noFloor))
+        errors.push('This landing-practice plan needs a clear landing area and already comfortable landing skill. Confirm readiness in setup, or choose a strength-only sport plan.');
     if (p.days.length < def.days)
         errors.push(`This template uses ${def.days} training days. Add availability or choose another template.`);
     if (p.age < 18 && p.season === 'In-season')
@@ -2045,14 +2061,14 @@ function buildCatalogPlan(p, events) {
             var band = strengthWave ? [[5, 7], [4, 6], [3, 5], [6, 8]][(week - 1) % 4] : [lo, hi];
             return {
                 exerciseId,
-                sets: deload ? Math.max(1, Math.ceil(sets / 2)) : p.experience === 'First time' && week <= 2 ? Math.min(sets, 2) : sets,
+                sets: exerciseId === 'lib-small-jump-reset' ? sets : deload ? Math.max(1, Math.ceil(sets / 2)) : p.experience === 'First time' && week <= 2 ? Math.min(sets, 2) : sets,
                 reps: band[0],
                 repMin: band[0],
                 repMax: band[1],
                 rest,
                 kg: null,
                 loadRole: spec.title + ' / ' + (strengthWave ? 'wave ' + (week - 1) % 4 : 'work'),
-                note: strengthWave ? 'The rep range changes this week. Choose a weight that leaves about 2–3 good reps left at the end of each set.' : exerciseId === 'bench' && spec.title.includes('practice') ? 'Use a lighter weight for this practice set. We track these weights separately from your heavier bench work.' : 'Finish each set with about 2–3 good reps left (RIR). Start light while learning and stop if you lose control of the movement.'
+                note: exerciseId === 'lib-small-jump-reset' ? 'After the warm-up and before lifting: six small jumps in two sets of three. Land softly and reset fully between reps; rest two minutes between sets. Stop for pain, loss of balance or worsening landing control. No added height, load, sets or reps; this practice does not use RIR or automatic load progression.' : strengthWave ? 'The rep range changes this week. Choose a weight that leaves about 2–3 good reps left at the end of each set.' : exerciseId === 'bench' && spec.title.includes('practice') ? 'Use a lighter weight for this practice set. We track these weights separately from your heavier bench work.' : 'Finish each set with about 2–3 good reps left (RIR). Start light while learning and stop if you lose control of the movement.'
             };
         });
         if (!p.inventory?.confirmed && !def.distributed && (def.equipment === 'flexible' || def.brief && def.equipment === 'bodyweight-band'))
@@ -2091,7 +2107,12 @@ function buildCatalogPlan(p, events) {
                 }
             };
         var runSteps;
-        if (spec.kind === 'recovery-walk') {
+        if (spec.kind === 'timed-run') {
+            if (!spec.runStages?.length || spec.runStages.some(t => !t.length || t.some(x => !Number.isInteger(x.seconds) || x.seconds <= 0 || !x.label)))
+                return {v: {plan:null, errors:['This running prescription needs a valid reviewed interval sequence.']}};
+            runSteps = spec.runStages[Math.min(spec.runStages.length - 1, Math.floor((week - 1) / 2))].map(x => ({...x}));
+        }
+        else if (spec.kind === 'recovery-walk') {
             runSteps = [{
                     label: 'Comfortable recovery walk · conversational, no pace target',
                     seconds: Math.min(p.minutes - 5, 20) * 60
@@ -2189,7 +2210,7 @@ function buildCatalogPlan(p, events) {
                     reps: runSteps.reduce((n, x) => n + x.seconds, 0) / 60,
                     rest: 0,
                     kg: null,
-                    note: 'Log your total time. Repeat this workout if it still feels too hard or you have not recovered. Keep an easy pace.'
+                    note: spec.runIntensity === 'moderate' ? 'Keep the opening, closing and recovery work easy. Only the listed middle bouts use controlled moderate effort: short phrases remain possible, never all-out. Walk or make the whole session easy when needed. Log actual total time and feedback; there is no automatic pace or intensity increase.' : 'Log your total time. Repeat this workout if it still feels too hard or you have not recovered. Keep an easy pace.'
                 }];
         var finalInventoryError = resolveInventory(items, p);
         if (finalInventoryError)
@@ -2221,7 +2242,7 @@ function buildCatalogPlan(p, events) {
             items,
             runSteps: spec.kind === 'recovery-walk' ? undefined : runSteps,
             dependsOn: spec.kind === 'recovery-walk' ? [] : previous[key] ? [previous[key]] : [],
-            progressionStep: spec.kind === 'recovery-walk' ? 'Easy activity; record actual minutes without a pace target' : p.age < 18 ? 'One supervised work set per exercise; progression stays with the supervisor' : runSteps ? 'Accepted easy-duration sequence; repeat when needed' : 'Rep ranges with approved load changes; review-week volume is preplanned',
+            progressionStep: spec.kind === 'recovery-walk' ? 'Easy activity; record actual minutes without a pace target' : p.age < 18 ? 'One supervised work set per exercise; progression stays with the supervisor' : spec.runStages?.length > 1 ? 'Two-week walk–run stages; longer jogging waits for comfortable complete work and no reported symptoms' : runSteps ? spec.runIntensity === 'moderate' ? 'Fixed controlled-moderate bouts; no automatic pace or intensity progression' : 'Accepted easy-duration sequence; repeat when needed' : 'Rep ranges with approved load changes; review-week volume is preplanned',
             status: 'scheduled'
         });
         previous[key] = sessionId;
@@ -2246,6 +2267,12 @@ function buildCatalogPlan(p, events) {
         notes.push('Exercises were matched to your confirmed equipment at this location. Any swap is visible in the exercise notes. Machine loads and new variations keep separate histories. Fixed dumbbells need rep or variation changes, not a fictitious weight increase.');
     if (def.brief)
         notes.push('Short plans include fewer work sets. The time estimate includes preparation and rest, but learning an exercise may take longer. Keep the listed rest and skip catch-up sets. You do not need to fill every available minute.');
+    if (def.rationale)
+        notes.push('Why this arrangement: ' + def.rationale);
+    if (def.jumpPractice)
+        notes.push('The fixed landing practice needs at least 48 hours from another session or training commitment and 72 hours from competition. These are app review buffers, not a guarantee of recovery. Sport skill practice outside this calendar must also be reviewed.');
+    if (def.slots.some(s => s.runIntensity === 'moderate'))
+        notes.push('Only one running session each week includes controlled moderate bouts. These are not measured threshold zones, sprints or a validated polarized intensity ratio. Durations and intensity stay fixed; prefer easy work if recovery or control changes.');
     if (p.age < 18) {
         notes.splice(notes.findIndex(n => n.startsWith('First-time lifters')), 1, 'Youth brief sessions use one controlled work set per movement. The supervisor guides rep and resistance changes. This block does not automatically add load or adult set progressions.');
     }
@@ -2272,9 +2299,9 @@ function buildCatalogPlan(p, events) {
             acceptedAt: null,
             sessions,
             phases: catalogPhases(p, !!def.wave, !!def.brief),
-            evidence: p.age < 18 ? ['NSCA-YOUTH', def.source] : ['ACSM-2026', def.source],
+            evidence: p.age < 18 ? ['NSCA-YOUTH', def.source] : [...new Set([...(p.goal === 'running' ? ['WHO-ACTIVITY'] : ['ACSM-2026']), def.source, ...(def.evidenceSources || [])])],
             notes,
-            progression: p.age < 18 ? 'Complete the displayed supervised practice. Your qualified supervisor chooses any change in reps or resistance. No maximum tests, adult automatic load increases or catch-up work.' : (p.goal === 'running' ? 'Keep the displayed easy durations. Repeat or reduce after feedback; increases need review.' : RANGE_PROGRESSION) + (p.goal === 'hybrid' ? ' Running follows its own displayed sequence; no universal weekly percentage increase.' : ''),
+            progression: p.age < 18 ? 'Complete the displayed supervised practice. Your qualified supervisor chooses any change in reps or resistance. No maximum tests, adult automatic load increases or catch-up work.' : (p.goal === 'running' ? def.slots.some(s=>s.runStages?.length>1) ? 'Follow the displayed two-week walk–run stages. Longer jogging waits for comfortable complete earlier work with no reported symptoms. Review a repeat if it was too hard; no weekly percentage or pace increase is inferred.' : 'Keep the displayed timed steps and effort. Repeat or reduce after feedback; duration or intensity increases need review.' : RANGE_PROGRESSION) + (p.goal === 'hybrid' ? ' Running follows its own displayed sequence; no universal weekly percentage increase.' : '') + (def.jumpPractice ? ' Landing practice stays at six small reset jumps without RIR, added load or automatic rep increases.' : ''),
             template: def.id,
             paused: false
         }
