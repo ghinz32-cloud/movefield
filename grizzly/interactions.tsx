@@ -26,9 +26,8 @@ export function GrizzlyInteractions(){
    const rect=target.getBoundingClientRect();if(!rect.width||!rect.height)return;
    const point=event instanceof PointerEvent?impactPoint(event.clientX,event.clientY,innerWidth,innerHeight):impactPoint(rect.left+rect.width/2,rect.top+rect.height/2,innerWidth,innerHeight);
    setImpacts(old=>[...old.slice(-2),{id:++serial.current,...point}]);
-   const og=p.grizzlyStyle==='og';
-   play(target,[{scale:'1',rotate:'0deg'},{scale:og?'.96':'.91',rotate:og?'-.5deg':'-1.8deg',offset:.18},{scale:og?'1.018':'1.045',rotate:og?'.2deg':'.8deg',offset:.52},{scale:'1',rotate:'0deg'}],{duration:og?290:460,easing:'cubic-bezier(.2,.85,.25,1)'});
-   const forest=og?null:document.querySelector('.grizzly-forest-image');if(forest)play(forest,[{translate:'0 0'},{translate:'-4px 2px',offset:.18},{translate:'3px -1px',offset:.4},{translate:'0 0'}],{duration:360,easing:'ease-out'});
+   play(target,[{scale:'1',rotate:'0deg'},{scale:'.91',rotate:'-1.8deg',offset:.18},{scale:'1.045',rotate:'.8deg',offset:.52},{scale:'1',rotate:'0deg'}],{duration:460,easing:'cubic-bezier(.2,.85,.25,1)'});
+   const forest=document.querySelector('.grizzly-forest-image');if(forest)play(forest,[{translate:'0 0'},{translate:'-4px 2px',offset:.18},{translate:'3px -1px',offset:.4},{translate:'0 0'}],{duration:360,easing:'ease-out'});
   };
   const visibility=()=>{if(!allowed())clear()};
   document.addEventListener('pointerdown',strike,true);document.addEventListener('keydown',strike,true);
@@ -38,6 +37,6 @@ export function GrizzlyInteractions(){
  return <div className="grizzly-impact-layer" data-impact-style={p.grizzlyStyle} aria-hidden="true">{impacts.map(impact=><div className="grizzly-impact" key={impact.id} style={{left:impact.x,top:impact.y}} onAnimationEnd={event=>{if(event.target===event.currentTarget)setImpacts(old=>old.filter(x=>x.id!==impact.id))}}>
   <div className="grizzly-impact-ring"/><div className="grizzly-impact-paw"><GrizzlyPaw/></div>
   <svg className="grizzly-impact-rake" viewBox="0 0 160 150" fill="none">{[0,1,2,3,4].map(n=><path key={n} d={`M${32+n*22} 9 Q${15+n*22} 61 ${18+n*19} 141`} stroke="currentColor" strokeWidth={5-n*.4} strokeLinecap="round" pathLength="1"/>)}</svg>
-  {impactParticles.slice(0,p.grizzlyStyle==='og'?5:10).map((particle,n)=><i key={n} className={particle.leaf?'grizzly-impact-leaf':'grizzly-impact-ember'} style={{'--burst-x':particle.x+'px','--burst-y':particle.y+'px','--burst-turn':particle.turn+'deg'} as CSSProperties}/>)}
+  {impactParticles.map((particle,n)=><i key={n} className={particle.leaf?'grizzly-impact-leaf':'grizzly-impact-ember'} style={{'--burst-x':particle.x+'px','--burst-y':particle.y+'px','--burst-turn':particle.turn+'deg'} as CSSProperties}/>)}
  </div>)}</div>;
 }

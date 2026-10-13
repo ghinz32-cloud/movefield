@@ -1,6 +1,6 @@
 /** Decoration never delays, intercepts, or changes a training action. */
 export function wildMotionAllowed(style:string,reduceMotion:boolean,contrast:boolean,systemReduce:boolean,hidden:boolean){
- return (style==='wild'||style==='og')&&!reduceMotion&&!contrast&&!systemReduce&&!hidden;
+ return style==='wild'&&!reduceMotion&&!contrast&&!systemReduce&&!hidden;
 }
 export function impactPoint(x:number,y:number,width:number,height:number){
  return {x:Math.max(0,Math.min(width,Number.isFinite(x)?x:width/2)),y:Math.max(0,Math.min(height,Number.isFinite(y)?y:height/2))};

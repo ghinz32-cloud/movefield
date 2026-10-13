@@ -5,8 +5,8 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "OG Grizzly and 72 daily context messages are published on both existing previews. All 249 selected served files and 63 original-root files verified; browser/physical-device and broader launch qualification remain open.",
-  "completion_claim": "The distinct catalog and maximal Grizzly design milestones are complete and pushed. Fresh browser/device acceptance and full six-prompt completion remain open.",
+  "active_checkpoint": "OG Grizzly removed from web/native; prominent clickable web calendar implemented with guarded workout/history callbacks and local-date keyboard/month navigation. Local verification passed; existing-preview publication is being finalized.",
+  "completion_claim": "This bounded theme/calendar milestone and the retained equipment guard are implemented. Full next-block/baseline editing, rendered/device acceptance and broader six-prompt launch gates remain open.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
     "Saved environment network additions need activation for full-text research and repo.reactnative.dev Android artifact download. Current proxy denials are not bypassed.",
@@ -74,13 +74,20 @@
       "requirement": "Every selectable plan needs its purpose, eligibility, prerequisites, schedule, equipment, realistic time range, complete cycle, start-load procedure, next-session rules, recovery structure, and next-block route. Preserve the author's actual cycle length for named routines; original plans should contain their complete intended blocks, not one sample week endlessly relabeled.\n\nFor each exercise prescribe the appropriate fields: stable exercise/variant ID, order, warmup or work-set status, sets, rep range or duration/distance, load rule, effort target, rest/recovery, priority, progression role, equipment constraints, substitutions, and necessary cues. Distinguish total versus per-hand/per-side resistance, assisted versus added resistance, timed versus repetition work, and actual versus estimated performance.\n\nShow weekly distributions by movement and relevant muscles, with a documented direct/indirect-set convention. Do not count every compound exercise as a full set for every muscle or present an estimated \u201ceffective sets\u201d metric as physiological ground truth. Analyze overlapping stress across lifting, sprinting, jumping, conditioning, sport practice, and competition.\n\nMake beginner plans genuinely teachable and complete without unnecessary exercise churn. Intermediate plans need progression beyond blindly adding weight forever. Advanced/elite options need sport/lift specificity, fatigue management, individual constraints, appropriate testing/tapering, and editable structure\u2014not simply extra sets and harder labels.\n\nPreserve custom plans and meaningful mix-and-match options. A jump, sprint, conditioning, or core add-on must recheck the combined week; it cannot be appended independently without considering total time and competing demands. Support maintenance and a sensible transition after a block ends.",
       "acceptance": "Implement and verify the applicable behaviors described in this requirement; retain unavailable checks explicitly.",
       "dependencies": [],
-      "test_commands": [],
+      "test_commands": [
+        "node scripts/check-reusable-equipment.cjs",
+        "node scripts/check-training.cjs"
+      ],
       "evidence": [
         {
           "checked_at": "2026-10-12T03:28:50.064991+00:00",
           "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
           "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
           "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        },
+        {
+          "path": "docs/reusable-block-validation-2026-10-13.json",
+          "result": "Current inventory guard and preserved reuse/history boundaries verified; full cycle/next-block acceptance is not complete."
         }
       ],
       "next_action": "Qualify complete cycles, stress distributions and next-block transitions across supported modalities; reusable blocks preserve prescriptions/history but do not certify each plan."
@@ -1736,6 +1743,11 @@
       "id": "DEPLOYMENT",
       "status": "blocked",
       "finding": "Manual-dispatch-only pinned verification workflow added; never dispatched externally. Hosting/CI quota and deployment triggers not qualified. No push, deployment, signing or spending performed. Reusable setup/start draft saved, requiring environment-settings activation; fresh-task local-commit restoration unverified."
+    },
+    {
+      "id": "REUSE-INVENTORY",
+      "status": "verified",
+      "finding": "Saved app blocks recheck current confirmed detailed equipment and timed routes before reuse. Preview/acceptance preserves source/history and rejects changed equipment; coach/manual/legacy authority retained. Ten focused cases pass, including actual native entrypoint. Full next-block editor remains open."
     }
   ],
   "tested_application_source_sha256": "dc2b3b210c46f927fd55c97563ccf226b96ac63488aad346739c7f05c3825a33",
@@ -1873,5 +1885,21 @@
       "url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38399464192"
     },
     "scope": "Presentation release and HTTPS byte verification; browser/device/store acceptance remains unperformed."
+  },
+  "grizzly_calendar_2026_10_13": {
+    "status": "verified",
+    "scope": "Retired preset migration and web calendar parity; current reusable-equipment guard retained.",
+    "acceptance_criteria": [
+      "Only Wild and Clean selectable on web/native; removed assets not shipped.",
+      "Saved OG preferences reopen as Wild with default Pine/Frijole migration while custom preferences/history remain.",
+      "Calendar is visible before setup cards; clicked dates open actual workouts, recorded sessions and events.",
+      "Start/resume/history/add-event callbacks use existing action guards.",
+      "Month/day keyboard navigation uses local dates and does not mutate training."
+    ],
+    "publication": "pending",
+    "limits": [
+      "No browser/rendered accessibility or physical phone qualification.",
+      "Full next-block/baseline editor and broader launch requirements remain open."
+    ]
   }
 }

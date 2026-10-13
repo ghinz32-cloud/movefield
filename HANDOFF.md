@@ -1,3 +1,33 @@
+# Current checkpoint · Grizzly theme retirement and clickable web calendar · 13 October 2026
+
+The user's latest instruction removes OG Grizzly entirely and requests a clickable website calendar like the app. This supersedes the older OG design directions. Work is isolated on `codex/grizzly-calendar-2026-10-13` at `/workspace/scratch/1862f22c73cf/movefield`. Starting local checkpoint is `9054324d58f642a1f3bd4f2fd8d03325fb6ccbe2`; verified remote baseline is `6ab6afdc1c4f74c5d7504b7904c6f75a18d88c60` on `codex/og-grizzly-2026-10-13`, and Pages baseline is `ce9d2ad46940e6a35bc6eca618b377797e491b13`. The prior equipment guard was local at resume and is retained in this publication rather than discarded.
+
+Implemented: OG controls, palette, monochrome CSS, cartoon bears and OG-specific web/native effects are removed. Saved OG styles fall back to Wild, the removed palette to Pine, and its default Bungee heading to Frijole. Explicit custom fonts, display mode, accessibility/reminders and other profiles remain. Clean and Wild, forest artwork, the supplied gym logo, 35 heading choices, 17 palettes and the rotating Today messages remain.
+
+The website Calendar now leads with a large clickable month and selected-day panel. Dates open scheduled, skipped, saved/partial and event details. Start/resume and review/history callbacks use the existing guarded actions. Add-event preselects the chosen date. Month navigation clamps shorter months, adjacent dates update the displayed month, Today returns to the local date, and arrow/Home/End/Page keys retain a single focused date. Full schedule/event controls are collapsed below. Calendar browsing does not alter dates, history, accepted prescriptions or the active workout/timer.
+
+Local types, 27 core groups, both-brand appearance/interaction checks and calendar checks in Chicago/Auckland passed. Four cleared-cache Android/iOS Hermes exports are distinct by brand. Both static web builds and two complete 240-file native archives passed. Focused lint has zero errors/seven existing warnings; a packaging regression verifies that current and older compiled chunks survive for open workout windows. See `docs/grizzly-calendar-validation-2026-10-13.json` for exact checks and limitations. No browser/rendered accessibility, installed phone/APK/IPA or full launch acceptance is claimed; this managed session lacks the required control-browser skill. No preview server or improvised browser was started.
+
+Normal tested source and the two existing `/movefield/grizzly/` and `/movefield/review/` publications remain explicitly authorized. Preserve the original Pages root, old compiled assets and ignored owner configuration. The local null-binding `.openai/hosting.json` supports types only and is not an owner configuration deliverable. Publication is being finalized; its receipt will pin pushed source/Pages trees and served-byte verification.
+
+Next: resume the reviewed next-block/starting-baseline editor and the canonical task register. Preserve unknown loads until review, per-set RIR, equipment/load contexts, creator stages, source attribution, accepted targets/history and brand-separated storage. Work one tested milestone at a time and push a recoverable checkpoint.
+
+---
+
+# Current checkpoint · reusable-block equipment guard · 13 October 2026
+
+Continue from remote documentation checkpoint `6ab6afdc1c4f74c5d7504b7904c6f75a18d88c60` in `ghinz32-cloud/movefield`, branch `codex/og-grizzly-2026-10-13`. Current checkout is `/workspace/scratch/4740597ee9cf/movefield`; local branch retains recovered/snapshot history. The OG Grizzly release below is live and its exact publication receipt is retained.
+
+Implemented the next bounded fix: saved app-directed blocks now recheck every exercise against the current confirmed detailed inventory, including single/pair dumbbells, floor-transfer restrictions and timed-session routes. An unchanged broad preset cannot hide removed equipment. The preview reports the missing requirement without changing saved prescriptions/history. Existing profile signatures invalidate acceptance after equipment changes. Coach/manual authority and legacy profiles without a detailed survey retain their existing paths. Canonical `lib/` and the native shared snapshot agree.
+
+The old standalone training harness now uses the real dependency loader. Its synthetic fixtures explicitly choose dumbbells, record individual-set RIR, and pin ST3 accessory prescriptions; the previous empty accessory assertion is replaced with a nonempty exact-range check. No load rule or researched prescription was changed. Before-fix failures and correction rounds remain in `docs/reusable-block-validation-2026-10-13.json`.
+
+Validation passed: 10 actual reusable-equipment scenarios (including the native entrypoint), 28 standalone training regressions, 26 core groups, both static previews, four distinct cleared-cache Hermes exports, native identity and two complete 241-file source archives. Secret-pattern scan found no matches. Existing bundle/native-tooling warnings remain. Browser/rendered accessibility, installed phones/APK/IPA and broader task-register gates remain unperformed. Source and existing preview publication are being finalized; the following receipt will pin the exact source/Pages trees and served bytes.
+
+Next: finish the reviewed next-block/starting-baseline editor and the original task register. Preserve unknown loads until explicit review, creator source versions/stages, recent compatible history, per-set RIR, equipment/load contexts, accepted targets and brand-separated storage. This inventory guard is complete locally; it does not complete the whole editor or launch scope. Normal tested source and the two existing preview pushes are already authorized. Preserve the original Pages root and ignored owner configuration.
+
+---
+
 # Current checkpoint · OG Grizzly and daily bear messages · 13 October 2026
 
 This section supersedes older visual continuation instructions. Work starts at `16c09ca62f1637d0d1c68081d1a6c37bd2c0c2ca` and is isolated on `codex/og-grizzly-2026-10-13` in `ghinz32-cloud/movefield`, because another session had edits in the previous checkout. Those inspected presentation edits were retained and completed. Current recovered checkout is `/workspace/scratch/4740597ee9cf/movefield`. The earlier worktree lost its Git metadata; its source was restored onto the verified remote baseline. Use this checkout for continuation.

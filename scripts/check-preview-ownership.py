@@ -16,12 +16,14 @@ with tempfile.TemporaryDirectory(prefix='grizzly-preview-ownership-') as directo
   new=runtime/('github-pages-'+folder);new.mkdir();(new/'index.html').write_text('Synthetic new '+folder)
   (new/'brand').mkdir();(new/'brand/grizzly-fitness-logo.jpg').write_bytes(b'Synthetic asset bytes, never rendered')
  legacy='assets/earlier-A1234567.js';(root/'grizzly/assets').mkdir();(root/'grizzly'/legacy).write_text('Synthetic earlier compiled chunk')
+ owned='assets/current-B1234567.js';(root/'grizzly'/owned).write_text('Synthetic current compiled chunk')
+ m=json.loads((root/'grizzly/grizzly-manifest.json').read_text());m['files'][owned]=digest((root/'grizzly'/owned).read_bytes());(root/'grizzly/grizzly-manifest.json').write_text(json.dumps(m))
  git('init','-q');base=commit()
  def prepare(ref):return subprocess.run(['python3','scripts/prepare-shared-fitness-pages.py','--base-commit',ref],cwd=root,capture_output=True,text=True)
  result=prepare(base);assert result.returncode==0,result.stderr
  candidate=runtime/'fitness-pages-candidate';m=json.loads((candidate/'grizzly/grizzly-manifest.json').read_text())
- assert m['retained_legacy_files']==[legacy];assert (candidate/'grizzly'/legacy).read_bytes()==(root/'grizzly'/legacy).read_bytes();assert (candidate/'index.html').read_bytes()==(root/'index.html').read_bytes()
- checks.append('Unmanifested hashed compiled asset is retained exactly; original-root bytes stay unchanged')
+ assert m['retained_legacy_files']==sorted([legacy,owned]);assert (candidate/'grizzly'/owned).read_bytes()==(root/'grizzly'/owned).read_bytes();assert (candidate/'grizzly'/legacy).read_bytes()==(root/'grizzly'/legacy).read_bytes();assert (candidate/'index.html').read_bytes()==(root/'index.html').read_bytes()
+ checks.append('Previously current and unmanifested hashed chunks survive exactly for open windows; original-root bytes stay unchanged')
  # Turn the accepted candidate into the next synthetic Pages base.
  import shutil
  for folder in ['review','grizzly']:shutil.rmtree(root/folder);shutil.copytree(candidate/folder,root/folder)

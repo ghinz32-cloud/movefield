@@ -4,7 +4,6 @@ import App from '../app/page';
 import {AppPreferencesProvider} from '../components/app-preferences';
 import '../app/globals.css';
 import './grizzly.css';
-import './og-grizzly.css';
 import {GrizzlyMark} from './grizzly-mark';
 import {GrizzlyCustomize} from './customize';
 import {GrizzlyEnvironment} from './forest-scene';

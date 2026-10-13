@@ -1,25 +1,15 @@
-# Maximal wilderness design
+# Grizzly Fitness app
 
-The current Grizzly flavor includes a large original grizzly hero, bundled forest imagery, Metal Mania headings, bronze panels and native mist/ember animation. Wild Grizzly in Settings selects the full Pine forest theme. Clean, larger text, contrast and reduced motion remain available. Native atmosphere pauses while the app is inactive. No network request is required for the new images.
+Grizzly is a separate app identity for every gym location, built from the shared training code. The supplied logo JPEG remains unchanged. The bear/forest imagery, colors and animations are custom app styling.
 
-This source release includes checked Android and iOS JavaScript exports. It is not an installed APK/IPA, store release or physical-device acceptance. The supplied gym logo remains unchanged.
+Fresh appearance and the Wild preset use dark Pine forest and Frijole headings. Settings also offers Clean & readable, 35 licensed heading fonts (five readable and 30 Wild), 17 palettes, larger text, contrast and reduced motion. Body text, workout values and controls use clear text. Forest mist and embers pause when the app is inactive. Today messages rotate by local day and the actual workout/recovery/review context. The image assets are bundled for offline use.
 
----
+OG Grizzly was removed at the user's request on 13 October 2026. Saved OG preferences return to Wild, the removed palette to Pine, and the preset's default Bungee heading to Frijole. Explicit other fonts, display modes, accessibility and reminders remain. Workout history, plans, active logging and timers are not changed. Existing retired Beast/unversioned New Rocker migration remains; explicit later New Rocker choices are preserved.
 
-# Grizzly Fitness Wautoma flavor
+After `npm ci`, use `npm run start:grizzly` for Expo preview or `npm run export:grizzly` for Android/iOS JavaScript exports. For native compilation, set `EXPO_PUBLIC_APP_VARIANT=grizzly` before `npm run android` / `npm run ios`. Clear Metro with `--clear` when switching flavors. Default commands select Movefield.
 
-This is a separate app identity built from the same training code. The user supplied the Grizzly Fitness logo. `assets/grizzly-fitness-logo.jpg` preserves the uploaded JPEG unchanged; the Expo asset compiler renders the whole source onto square black launcher canvases. The amber colors are a custom app theme. Gym website: https://www.fitnessgrizzly.com/.
+Grizzly retains `com.ghinz32.grizzlyfitness.prototype`, the `grizzlyfitness` URL scheme and separate AsyncStorage/SecureStore keys, SQLite database, preferences and offline namespace. Movefield identifiers and record formats remain stable. No automatic profile transfer occurs. Explicit backup import uses the same portable encrypted format.
 
-After `npm ci`, use `npm run start:grizzly` for the Expo preview or `npm run export:grizzly` for Android/iOS JavaScript exports. For native compilation, set `EXPO_PUBLIC_APP_VARIANT=grizzly` in the terminal before `npm run android` / `npm run ios`. Clear Metro with `--clear` when switching flavors. Default commands continue to select Movefield.
+Cloud sign-in stays off unless its own `EXPO_PUBLIC_GRIZZLY_API_URL` and `EXPO_PUBLIC_GRIZZLY_NATIVE_AUTH_VERIFIED=true` are supplied after callback/server qualification. Movefield's API setting is not reused.
 
-Grizzly uses `com.ghinz32.grizzlyfitness.prototype`, the `grizzlyfitness` URL scheme, its own AsyncStorage/SecureStore keys, SQLite filename and preferences. Existing Movefield identifiers and record formats stay stable. No automatic profile migration occurs. An explicitly imported backup uses the same portable encrypted format.
-
-Fresh Grizzly appearance starts with Wild, dark Arctic frost and Rubik Beastly headings. Settings offers Clean & readable plus Beast, Metal, Bungee, Barlow and Inter heading choices. Body text and controls use Inter. Claw/rip decoration is removed by Clean; saved mode/colors are respected. Both font licenses accompany the source. Sample data, deterministic training rules, plan review and privacy controls remain shared. An installed device test is still needed to qualify each platform's keychain, notifications, fonts and layout; an Expo export is not an APK/IPA.
-
-Grizzly cloud sign-in stays off unless its own `EXPO_PUBLIC_GRIZZLY_API_URL` and `EXPO_PUBLIC_GRIZZLY_NATIVE_AUTH_VERIFIED=true` are supplied after callback/server qualification. Movefield's API setting is not reused.
-
-
-Current outdoor collection: fresh Wild uses New Rocker. The five readable choices are Inter, Barlow Condensed, Oswald, Bitter and Rajdhani; ten wild faces include New Rocker, Black Ops One, Rubik Dirt, Metal Mania, Bungee, Saira Stencil One, Stardos Stencil, Pirata One, Eater and Nosifer. Font and palette selectors expand on demand. Ten outdoor themes supplement the seven existing colors. The hero now displays a five-talon bear print compiled from the authored web vector. The official gym JPEG is unchanged. Saved Beast selections migrate to New Rocker when read; workout data is untouched. Browser/native-source verification is not installed-phone qualification.
-
-
-Latest correction: Metal Mania is now the fresh/Wild default. Old unversioned Beast/New Rocker defaults migrate once; explicit choices saved with headingFontVersion 2 persist. The Today paw now uses five visibly long pointed claws and a larger native image compiled from the updated vector. The original gym JPEG remains unchanged.
+This source release has local type/domain checks and distinct cleared-cache Android/iOS Hermes exports. It is not an installed APK/IPA, store release, rendered accessibility audit or physical-device acceptance. Keychain, notifications, layout, fonts and performance still need installed-device qualification.

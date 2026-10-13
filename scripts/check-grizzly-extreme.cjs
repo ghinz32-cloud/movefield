@@ -18,8 +18,8 @@ test('Every new face is pinned, licensed, and byte-identical on web and native',
   assert.deepEqual(license,fs.readFileSync('mobile/assets/fonts/'+font.notice));
  }
 });
-test('Wild and OG respect quiet styles, both motion preferences, contrast and hidden state',()=>{
- for(const style of ['wild','og','clean','unknown'])for(const reduce of [false,true])for(const contrast of [false,true])for(const system of [false,true])for(const hidden of [false,true])assert.equal(policy.wildMotionAllowed(style,reduce,contrast,system,hidden),['wild','og'].includes(style)&&!reduce&&!contrast&&!system&&!hidden);
+test('Wild respects quiet and retired styles, both motion preferences, contrast and hidden state',()=>{
+ for(const style of ['wild','og','clean','unknown'])for(const reduce of [false,true])for(const contrast of [false,true])for(const system of [false,true])for(const hidden of [false,true])assert.equal(policy.wildMotionAllowed(style,reduce,contrast,system,hidden),style==='wild'&&!reduce&&!contrast&&!system&&!hidden);
  assert.deepEqual(policy.impactPoint(-1,999,320,600),{x:0,y:600});assert.deepEqual(policy.impactPoint(NaN,Infinity,320,600),{x:160,y:300});
  assert.equal(policy.impactParticles.length,10);assert.ok(policy.impactParticles.every(p=>Number.isFinite(p.x)&&Number.isFinite(p.y)&&Math.abs(p.x)<100&&Math.abs(p.y)<100));
 });
@@ -43,7 +43,7 @@ test('Actual delegated controller caps effects, skips disabled/repeated actions 
   pointer(new PointerEvent(new Element()));assert.equal(impacts.length,0);for(const cleanup of cleanups)cleanup();assert.equal(listeners.size,0);assert.equal(mediaListeners.size,0);
  }finally{for(const [key,value] of original){if(value===undefined)delete global[key];else global[key]=value}}
 });
-test('Actual native Wild and OG wrappers preserve actions, transforms, ref, roles and quiet paths',()=>{
+test('Actual native Wild wrappers preserve actions, transforms, ref, roles and quiet paths',()=>{
  let appearance={p:{grizzlyStyle:'wild',contrast:false},reduceMotion:false,active:true,colors:{effect:'#b20f25'}},calls=[],timings=[];
  class Value{constructor(value){this.value=value}stopAnimation(){}setValue(value){this.value=value}interpolate(){return 1}}
  const Native={Pressable:'NativePressable',View:'NativeView',StyleSheet:{create:v=>v,absoluteFill:{position:'absolute'},flatten:v=>Array.isArray(v)?Object.assign({},...v):v},Animated:{Value,View:'AnimatedView',timing:(v,opts)=>{timings.push(opts);return {start:()=>{}}}},Easing:{out:v=>v,cubic:()=>{},back:()=>{}}};
@@ -51,7 +51,7 @@ test('Actual native Wild and OG wrappers preserve actions, transforms, ref, role
  const C=compile('mobile/src/wild-interactions.tsx',{'react':R,'react-native':Native,'./shared/brand':{isGrizzly:true},'./appearance':{useNativeAppearance:()=>appearance}});
  const event={nativeEvent:{locationX:10,locationY:12}},ref={current:null},press=e=>calls.push(e),pressIn=()=>{},pressOut=()=>{};
  const style={transform:[{translateX:7}],padding:12};
- for(const grizzlyStyle of ['wild','og']){
+ for(const grizzlyStyle of ['wild']){
   appearance={...appearance,p:{grizzlyStyle,contrast:false},reduceMotion:false,active:true};
   const outer=C.GrizzlyPressable({onPress:press,onPressIn:pressIn,onPressOut:pressOut,style,accessibilityRole:'button',children:'Save'},ref),inner=outer.type(outer.props);
   assert.equal(inner.props.ref,ref);assert.equal(inner.props.accessibilityRole,'button');assert.equal(inner.props.onPressIn,pressIn);assert.equal(inner.props.onPressOut,pressOut);
@@ -67,7 +67,7 @@ test('Actual native Wild and OG wrappers preserve actions, transforms, ref, role
    const count=timings.length,disabled=C.GrizzlyPressable({...props,onPress:press},ref);disabled.type(disabled.props).props.onPress(event);assert.equal(timings.length,count);
   }
  }
- assert.equal(timings.length,2);assert.ok(timings[1].duration<timings[0].duration,'OG uses a shorter impact than Wild');
+ assert.equal(timings.length,1);
  appearance={...appearance,p:{grizzlyStyle:'clean',contrast:false}};const clean=C.GrizzlyPressable({onPress:press},ref);assert.equal(clean.type,'NativePressable');assert.equal(clean.props.onPress,press);
  const move=compile('mobile/src/wild-interactions.tsx',{'react':R,'react-native':Native,'./shared/brand':{isGrizzly:false},'./appearance':{useNativeAppearance:()=>({...appearance,p:{grizzlyStyle:'og',contrast:false}})}}).GrizzlyPressable({onPress:press,accessibilityRole:'button'},ref);assert.equal(move.type,'NativePressable');assert.equal(move.props.ref,ref);assert.equal(move.props.onPress,press);
 });

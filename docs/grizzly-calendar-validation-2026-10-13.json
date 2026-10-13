@@ -1,0 +1,262 @@
+{
+  "checked_at": "2026-10-13T14:27:23.193243+00:00",
+  "base_source_commit": "6ab6afdc1c4f74c5d7504b7904c6f75a18d88c60",
+  "application_source_sha256": "fe7a1d853aa25812c4b02f3ae81c3977ec411671889ea63938552f507112aab5",
+  "scope": "Remove OG Grizzly and implement prominent clickable web calendar using existing guarded workout/history actions; retain the prior reusable-equipment guard.",
+  "correction_rounds": [
+    "The calendar harness initially treated icon-plus-text resume labels as plain strings; its text extraction was corrected and all actual component scenarios passed in Chicago/Auckland.",
+    "The packaging regression initially had a fixture indentation error; corrected and all five ownership scenarios passed."
+  ],
+  "checks": {
+    "core": {
+      "ran_at": "2026-10-13T14:17:44.419Z",
+      "scope": "Local synthetic domain/adapter and type checks; no device, connected provider or deployment qualification.",
+      "results": [
+        {
+          "name": "Grizzly appearance and retired preset migration",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 668
+        },
+        {
+          "name": "clickable web calendar",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 852
+        },
+        {
+          "name": "Grizzly daily context and local day changes",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 998
+        },
+        {
+          "name": "preview ownership and retained assets",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 358
+        },
+        {
+          "name": "Grizzly motion and licensed fonts",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 378
+        },
+        {
+          "name": "distinct goal families and flexible selection",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1275
+        },
+        {
+          "name": "creator-source and set-effort refinements",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 763
+        },
+        {
+          "name": "public source rules and scientific accounting",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 989
+        },
+        {
+          "name": "Today facts and actions",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 650
+        },
+        {
+          "name": "transactional encrypted records",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 6119
+        },
+        {
+          "name": "activity progress and comparison context",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 707
+        },
+        {
+          "name": "evidence/duration/calendar zones",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 4413
+        },
+        {
+          "name": "calendar and reusable blocks",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 835
+        },
+        {
+          "name": "reusable block equipment guards",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1102
+        },
+        {
+          "name": "Cloudflare account/storage/coaching",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 3752
+        },
+        {
+          "name": "portable cloud vault and retry",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 3045
+        },
+        {
+          "name": "native SDK cookie transport",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1188
+        },
+        {
+          "name": "plan import",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 753
+        },
+        {
+          "name": "durability",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 839
+        },
+        {
+          "name": "vault and history",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1238
+        },
+        {
+          "name": "native encrypted adapter",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1557
+        },
+        {
+          "name": "native file transfer",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 356
+        },
+        {
+          "name": "security",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 838
+        },
+        {
+          "name": "data and calendar",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 760
+        },
+        {
+          "name": "web types",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 9724
+        },
+        {
+          "name": "native types",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 5277
+        },
+        {
+          "name": "native engine",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 2311
+        }
+      ]
+    },
+    "calendar": {
+      "checkedAt": "2026-10-13T14:16:54.163Z",
+      "timezone": "America/New_York",
+      "scope": "Actual React component handlers and shared calendar with synthetic hook/storage boundaries. No browser layout, keyboard-device or rendered accessibility qualification.",
+      "cases": [
+        "Month navigation clamps local dates across leap years, DST and December boundaries",
+        "Actual date clicks reveal scheduled, saved, partial and event records without mutating training",
+        "Actual month controls, Today and keyboard navigation preserve one focused date",
+        "Actual start and resume actions use the selected session and enforce current eligibility",
+        "Actual workspace places the calendar before setup cards and routes review/history/date callbacks"
+      ]
+    },
+    "additional_calendar_timezone": "America/Chicago also passed all five groups; opposite-date Pacific/Auckland run retained.",
+    "preferences_both_brands": "4 actual migration/control/storage/native groups passed for each brand.",
+    "motion_both_brands": "5 actual policy/controller/native wrapper/font groups passed for each brand.",
+    "daily_messages": "6 context/rotation/local-day/foreground groups passed in core.",
+    "preview_ownership": "5 actual preparer scenarios passed; preserve prior/current chunks for open windows, refuse unexpected/unowned/tampered paths.",
+    "focused_lint": {
+      "errors": 0,
+      "warnings": 7,
+      "scope": "Changed frontend/native source files; existing image/memo/context warnings retained."
+    },
+    "web_builds": [
+      "pnpm build:github-pages passed",
+      "pnpm build:grizzly passed"
+    ],
+    "built_artifact_inspection": "Both builds contain the actual date-click calendar and current native archives; no selectable OG label is present.",
+    "native_exports": {
+      "checked_at": "2026-10-13T14:23:40.829724+00:00",
+      "scope": "Distinct cleared-cache Hermes exports, paired with native identity/module checks; no installed-device claim.",
+      "flavors": {
+        "movefield": {
+          "android": {
+            "path": "_expo/static/js/android/index-f13f1cb052040d9f9895bbee481e1693.hbc",
+            "bytes": 4593283,
+            "sha256": "253c4d062667773171c7623f108d198d54c49c0c353dbb5d56477699f24872ba"
+          },
+          "ios": {
+            "path": "_expo/static/js/ios/index-285564b16203240220139f4585a4e292.hbc",
+            "bytes": 4578349,
+            "sha256": "1063368307287687d728758769b6c93bf6f9f749262e5f1a1181d264e91cff27"
+          }
+        },
+        "grizzly": {
+          "android": {
+            "path": "_expo/static/js/android/index-9c28dc1580e3fed826db00bbc0c7372b.hbc",
+            "bytes": 4593280,
+            "sha256": "2acd85affd6d7a3d9e484585d667c662432631efeed613cbc371188d975bf08d"
+          },
+          "ios": {
+            "path": "_expo/static/js/ios/index-24dfbbdea37ec76fd37a53df61046a2f.hbc",
+            "bytes": 4578350,
+            "sha256": "d7eab9a41c066f793fe1678fb32254637b77ad6c82a71635cd18709cd047345f"
+          }
+        }
+      }
+    },
+    "native_identity": "node scripts/check-grizzly-native.cjs passed",
+    "native_archives": {
+      "movefield-native-current.zip": {
+        "files": 240,
+        "bytes": 8100773,
+        "sha256": "1b3608ad80f1f3af6f821f84a6d1a5622fe84c6cd27b4e73d849af14685bbbc1"
+      },
+      "grizzly-fitness-native-source.zip": {
+        "files": 240,
+        "bytes": 8100769,
+        "sha256": "7f32068f51404f759a7117fd3149df6aca8046501364a413199c7a23ff5d4c3d"
+      }
+    },
+    "credential_pattern_scan": {
+      "ran_at": "2026-10-13T14:27:08.208684+00:00",
+      "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed.",
+      "files": 6026,
+      "zip_members": 2172,
+      "matches": []
+    }
+  },
+  "limits": [
+    "No browser, rendered accessibility, actual screen reader, installed phone/APK/IPA or full launch qualification. Required managed control-browser skill is unavailable; no preview server or improvised browser was started.",
+    "Existing web chunk-size/native tooling warnings remain.",
+    "Full next-block/starting-baseline editor and broader task-register gates remain open."
+  ]
+}

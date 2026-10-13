@@ -1,0 +1,365 @@
+{
+  "checked_at": "2026-10-13T12:59:27.038673+00:00",
+  "base_source_commit": "6ab6afdc1c4f74c5d7504b7904c6f75a18d88c60",
+  "application_source_sha256": "0be2a27711f2dfe39d62b58f4863e797b6bba8884d36e715650aab65eff2efa9",
+  "scope": "Saved-block current-equipment revalidation in actual web/native shared entrypoints; no new training prescription or research rule. Full next-block/baseline editor remains open.",
+  "before_fix": [
+    {
+      "check": "node scripts/check-reusable-equipment.cjs",
+      "result": "failed: missing expected exception when confirmed inventory removes dumbbells but preset is unchanged"
+    },
+    {
+      "check": "node scripts/check-training.cjs",
+      "result": "blocked by stale copied dependency list: MODULE_NOT_FOUND for the newer researched-program module"
+    },
+    {
+      "check": "Repaired training-loader fixture runs",
+      "result": "25/28, then 26/28, then 27/28 while replacing obsolete fixture assumptions; final 28/28 passed. Fixtures now name equipment explicitly, record per-set RIR and pin ST3 accessory range. Legacy exercise feedback remains insufficient for progression."
+    }
+  ],
+  "checks": {
+    "reusable_equipment": {
+      "command": "node scripts/check-reusable-equipment.cjs",
+      "passed": 10,
+      "scope": "Missing/no/one dumbbell, noFloor, floor/route removal, allowed acceptance, changed-profile stale acceptance, coach/manual authority, legacy survey path and actual native entrypoint"
+    },
+    "standalone_training": {
+      "command": "node scripts/check-training.cjs",
+      "passed": 28,
+      "results": [
+        {
+          "name": "New adult paths show ranges; youth remains supervised fixed progression",
+          "status": "pass"
+        },
+        {
+          "name": "Dates reject nonexistent values and accept leap day",
+          "status": "pass"
+        },
+        {
+          "name": "Calendar arithmetic remains whole days across DST",
+          "status": "pass"
+        },
+        {
+          "name": "Occupied date single move fails gracefully; cascade succeeds atomically",
+          "status": "pass"
+        },
+        {
+          "name": "One-day forward shift preserves every original gap and every target",
+          "status": "pass"
+        },
+        {
+          "name": "Later selected session shifts only its future tail",
+          "status": "pass"
+        },
+        {
+          "name": "Fixed event anywhere in cascade blocks all mutation",
+          "status": "pass"
+        },
+        {
+          "name": "An added commitment makes an existing date proposal stale",
+          "status": "pass"
+        },
+        {
+          "name": "Active target cannot queue or move offline",
+          "status": "pass"
+        },
+        {
+          "name": "Valid offline acceptance queues without changes; reconnect revalidates",
+          "status": "pass"
+        },
+        {
+          "name": "Accepted changes cannot apply twice",
+          "status": "pass"
+        },
+        {
+          "name": "Backward cascade cannot remove recovery or reverse order",
+          "status": "pass"
+        },
+        {
+          "name": "Whole block extension is disclosed; no session dropped",
+          "status": "pass"
+        },
+        {
+          "name": "Coach manual date changes remain possible without dose adaptation",
+          "status": "pass"
+        },
+        {
+          "name": "Exercise history retains partial sets, exact IDs and date ordering",
+          "status": "pass"
+        },
+        {
+          "name": "One comparable exposure suggests repeat load, never automatic increase",
+          "status": "pass"
+        },
+        {
+          "name": "Two top-of-range exposures can propose an available small load increase",
+          "status": "pass"
+        },
+        {
+          "name": "Unknown effort, unknown symptoms and changed rep range do not unlock increase",
+          "status": "pass"
+        },
+        {
+          "name": "Oversized equipment jumps remain unavailable instead of rounding",
+          "status": "pass"
+        },
+        {
+          "name": "Missing loads, partial work, hard feedback and stale history require recalibration",
+          "status": "pass"
+        },
+        {
+          "name": "A different machine/setup cannot inherit the previous load",
+          "status": "pass"
+        },
+        {
+          "name": "Youth and symptom holds cannot produce automatic adult loads",
+          "status": "pass"
+        },
+        {
+          "name": "Legacy rep targets remain unchanged until explicit range approval",
+          "status": "pass"
+        },
+        {
+          "name": "Skipping can be restored and invalidates existing proposals",
+          "status": "pass"
+        },
+        {
+          "name": "Malformed import remains rejected; authority fields stripped",
+          "status": "pass"
+        },
+        {
+          "name": "Strength accessory rep ranges stay stable across the block",
+          "status": "pass"
+        },
+        {
+          "name": "Load commit rejects a changed equipment increment",
+          "status": "pass"
+        },
+        {
+          "name": "An overdue active workout uses today for recovery checks",
+          "status": "pass"
+        }
+      ]
+    },
+    "core": {
+      "ran_at": "2026-10-13T12:56:22.003Z",
+      "scope": "Local synthetic domain/adapter and type checks; no device, connected provider or deployment qualification.",
+      "results": [
+        {
+          "name": "OG Grizzly preferences and interaction boundaries",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 371
+        },
+        {
+          "name": "Grizzly daily context and local day changes",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1118
+        },
+        {
+          "name": "preview ownership and retained assets",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 376
+        },
+        {
+          "name": "Grizzly motion and licensed fonts",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 458
+        },
+        {
+          "name": "distinct goal families and flexible selection",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 2693
+        },
+        {
+          "name": "creator-source and set-effort refinements",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 834
+        },
+        {
+          "name": "public source rules and scientific accounting",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1081
+        },
+        {
+          "name": "Today facts and actions",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1027
+        },
+        {
+          "name": "transactional encrypted records",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 7281
+        },
+        {
+          "name": "activity progress and comparison context",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 773
+        },
+        {
+          "name": "evidence/duration/calendar zones",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 4779
+        },
+        {
+          "name": "calendar and reusable blocks",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 728
+        },
+        {
+          "name": "reusable block equipment guards",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1058
+        },
+        {
+          "name": "Cloudflare account/storage/coaching",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 3452
+        },
+        {
+          "name": "portable cloud vault and retry",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 3519
+        },
+        {
+          "name": "native SDK cookie transport",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1270
+        },
+        {
+          "name": "plan import",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 911
+        },
+        {
+          "name": "durability",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1122
+        },
+        {
+          "name": "vault and history",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1592
+        },
+        {
+          "name": "native encrypted adapter",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1554
+        },
+        {
+          "name": "native file transfer",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 391
+        },
+        {
+          "name": "security",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1061
+        },
+        {
+          "name": "data and calendar",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1005
+        },
+        {
+          "name": "web types",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 10637
+        },
+        {
+          "name": "native types",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 5728
+        },
+        {
+          "name": "native engine",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 2580
+        }
+      ]
+    },
+    "native_identity": "node scripts/check-grizzly-native.cjs: passed",
+    "native_exports": {
+      "checked_at": "2026-10-13T12:57:44.860378+00:00",
+      "scope": "Distinct cleared-cache Hermes exports, paired with native identity/module checks; no installed-device claim.",
+      "flavors": {
+        "movefield": {
+          "android": {
+            "path": "_expo/static/js/android/index-656e8ae080d3484efbcf78d126cc9886.hbc",
+            "bytes": 4598045,
+            "sha256": "91ebb0068c012fa9fe4e7cff15db6aace02e5bd1a90cb0fd1267a5466fb9aae3"
+          },
+          "ios": {
+            "path": "_expo/static/js/ios/index-eea2c0884a8742bd855a9ab13bc85242.hbc",
+            "bytes": 4585740,
+            "sha256": "462ac771d9db33e83c7111dbbefaec4a8120e0b435fc61eaa7f1452eecc33aee"
+          }
+        },
+        "grizzly": {
+          "android": {
+            "path": "_expo/static/js/android/index-26c5bcb90ec21c5077c0d1e48088ec47.hbc",
+            "bytes": 4598137,
+            "sha256": "8b4950ff0cd17066b987fde7b5f148e849b6ee6c6b6011a9a2e4e8ec34bf8e7d"
+          },
+          "ios": {
+            "path": "_expo/static/js/ios/index-9207fba4d742226c049f95c02291d7e3.hbc",
+            "bytes": 4585568,
+            "sha256": "83eab4c2293a1d85954d3814d2750f3e15bd17e6f611dd279d021f325cb55717"
+          }
+        }
+      }
+    },
+    "static_builds": {
+      "movefield": "pnpm run build:github-pages: passed",
+      "grizzly": "pnpm run build:grizzly: passed"
+    },
+    "native_source_archives": {
+      "files_each": 241,
+      "artifact_sha256": {
+        "public/downloads/movefield-native-current.zip": "44180641877ac4607cdc6b1ea9b1853c1b988430b16eb2ce93ab4102e75a32b5",
+        "public/downloads/grizzly-fitness-native-source.zip": "4aebf6640c03aea3b6748d253bc029f0348f0ea45918538461b13e0f90b76173"
+      }
+    }
+  },
+  "warnings": [
+    "Existing large static bundle warnings and native NO_COLOR/FORCE_COLOR warnings remain."
+  ],
+  "credential_pattern_scan": {
+    "ran_at": "2026-10-13T12:58:19.248764+00:00",
+    "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed.",
+    "files": 6034,
+    "zip_members": 2178,
+    "matches": []
+  },
+  "not_qualified": [
+    "Fresh rendered browser/accessibility acceptance",
+    "Physical phone/battery/installed APK/IPA acceptance",
+    "Full next-block and starting-baseline editor",
+    "Broader launch/security/provider/evidence/rights gates in canonical task register"
+  ]
+}

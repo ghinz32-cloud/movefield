@@ -40,6 +40,15 @@ export function monthDates(date:string,weekStart:0|1=0):string[]{
  const start=addDays(first,-((weekday-weekStart+7)%7));
  return Array.from({length:42},(_,i)=>addDays(start,i));
 }
+/** Keep the selected day when browsing months, clamping short months locally. */
+export function calendarMonthDate(date:string,offset:number):string{
+ if(!validDay(date)||!Number.isInteger(offset)||Math.abs(offset)>1200)throw Error('Choose a valid calendar month.');
+ const first=new Date(date.slice(0,8)+'01T12:00:00');first.setMonth(first.getMonth()+offset);
+ const last=new Date(first.getFullYear(),first.getMonth()+1,0,12).getDate();
+ first.setDate(Math.min(Number(date.slice(-2)),last));
+ const result=day(first);if(!validDay(result))throw Error('Choose a valid calendar month.');
+ return result;
+}
 export function calendarDay(s:State,date:string,today=day()){
  if(!validDay(date)||!validDay(today))throw Error('Choose a valid calendar date.');
  const sessions=(s.plan?.sessions||[]).filter(x=>x.date===date),events=s.events.filter(e=>e.date===date),records=s.history.filter(w=>w.finishedAt&&w.date===date);

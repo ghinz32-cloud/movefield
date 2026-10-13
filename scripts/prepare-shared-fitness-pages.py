@@ -19,9 +19,10 @@ for folder in ['review','grizzly']:
  expected=set(previous['files'])|{name}
  if expected-actual:raise RuntimeError('Missing files in owned directory: '+folder)
  # Older publication left four hashed chunks outside its manifest. Preserve
- # unlisted compiled assets rather than deleting an unclaimed file. All other
+ # unlisted and previously current compiled assets so open workout windows can
+ # still load their earlier chunks. All other
  # unexpected paths still fail closed, and previously retained chunks stay.
- legacy=sorted(set(previous.get('retained_legacy_files',[]))|(actual-expected))
+ legacy=sorted(set(previous.get('retained_legacy_files',[]))|(actual-expected)|{path for path in previous['files'] if re.fullmatch(r'assets/[A-Za-z0-9._-]+-[A-Za-z0-9_-]{8,}\.(?:js|css)',path)})
  if any(not re.fullmatch(r'assets/[A-Za-z0-9._-]+-[A-Za-z0-9_-]{8,}\.(?:js|css)',path) or path not in actual for path in legacy):raise RuntimeError('Unexpected noncompiled files in owned directory: '+folder)
  legacy_bytes={path:(target/path).read_bytes() for path in legacy}
  for path,expected in previous['files'].items():
