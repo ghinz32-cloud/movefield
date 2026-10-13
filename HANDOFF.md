@@ -1,3 +1,15 @@
+# Current checkpoint · verified Android files and public download pages · 13 October 2026
+
+Continue on remote `codex/native-delivery-2026-10-13` from `docs/android-installer-publication-2026-10-13.json`. Reviewed implementation is `48d7512f54d2615c8133b5717e182612ed6812a1`; installer-delivery source is `1b4a12873aad9559e94f995bea92ab7e4a59d9e6`. This isolated continuation is `/workspace/scratch/69fe5a612a8d/movefield-delivery`. Both brands remain in scope. Preserve compact UI, per-set RIR, legacy encrypted records/transfers, reviewed starting weights, original Pages root and retained compiled assets. OG stays removed. Normal reviewed source, existing preview publication and test builds remain authorized.
+
+Current exact arm64 test files are `Movefield_Android_Test_2026-10-13.apk` (0.1.2, versionCode 3, historical `com.ghinz32.movefield`) and `Grizzly_Android_Test_2026-10-13.apk` (0.1.1, versionCode 2, separate `com.ghinz32.grizzlyfitness.prototype`). Successful run `38454580248` compiled, linted, unit-tested and inspected both actual APKs with the historical development certificate. The direct files match its exact sizes and SHA256 values. Source ZIPs and Hermes exports remain source qualification.
+
+Public Android pages assemble and check both exact APKs without GitHub sign-in: `/movefield/review/downloads/android.html?app=movefield` and `/movefield/grizzly/downloads/android.html?app=grizzly`. Pages `f26ead07659664b00404c01660714cc7e4acc0c9`, tree `948cf452906066d3d44c8e1c5b36469a45175cf0`, deployment `38458766109` succeeded. All 27 selected live files match: every new download file and both manifests, the two current web indexes and original root index. The exact tree diff preserves all other paths/modes. Both browser preparations reached File checked; the cloud browser canceled Movefield Save and blocks internal download diagnostics, so completed browser Save is not claimed. Direct APK files were verified separately. Both web entry points render normally.
+
+Read `docs/android-installer-delivery-2026-10-13.md` and its publication receipt. This delivery preserves the newer backup and starting-weight work. Physical old/new upgrade, restart/storage/reminders/erasure, exact installed-build identification, iPhone/store signing and remaining launch gates remain open. Never recommend uninstalling old workout records. Next: qualify available device gates, individualized next-block volume/source-reset review and the remaining canonical task register. Compilation does not establish store or physical-device acceptance.
+
+---
+
 # Current checkpoint · reviewed block starting weights · 13 October 2026
 
 Continue on `codex/native-delivery-2026-10-13`, isolated checkout

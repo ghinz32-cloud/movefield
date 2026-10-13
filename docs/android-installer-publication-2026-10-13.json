@@ -1,0 +1,324 @@
+{
+  "checkedAt": "2026-10-13T20:09:58.015Z",
+  "deliverySourceCommit": "1b4a12873aad9559e94f995bea92ab7e4a59d9e6",
+  "deliverySourceTree": "ecaa52da048d3f3264065caa9f747ecfc06c85a4",
+  "compiledAppSourceCommit": "48d7512f54d2615c8133b5717e182612ed6812a1",
+  "compiledAppSourceTree": "01c8175f53298e53ddde813a3e73a5cb687e3b9b",
+  "nativeBuild": {
+    "run": 38454580248,
+    "status": "completed",
+    "conclusion": "success",
+    "inspection": "Both actual compiled APK identity, manifest, transport, backup, component and certificate checks passed.",
+    "signingCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  },
+  "apps": [
+    {
+      "app": "grizzly",
+      "filename": "Grizzly_Android_Test_2026-10-13.apk",
+      "package": "com.ghinz32.grizzlyfitness.prototype",
+      "versionCode": 2,
+      "bytes": 39359826,
+      "sha256": "86ba301f2ebe9073b7e73b21db11555bc47b5f348cfe30aa5acf2cd4f15cb90a",
+      "artifactId": 11843405826,
+      "directFileVerified": true
+    },
+    {
+      "app": "movefield",
+      "filename": "Movefield_Android_Test_2026-10-13.apk",
+      "package": "com.ghinz32.movefield",
+      "versionCode": 3,
+      "bytes": 39208568,
+      "sha256": "a62605b3c3a8a4bc5f9afcdacec6dda20a032fc539c1486725547ee4918db84b",
+      "artifactId": 11841959383,
+      "directFileVerified": true
+    }
+  ],
+  "pages": {
+    "commit": "f26ead07659664b00404c01660714cc7e4acc0c9",
+    "tree": "948cf452906066d3d44c8e1c5b36469a45175cf0",
+    "priorCommit": "5ba5798e96afeca8ce181c8245d8f781c6212482",
+    "deploymentRun": 38458766109,
+    "conclusion": "success",
+    "changedPaths": 24,
+    "preservation": "Exact tree diff adds 22 download files and updates two provenance manifests. Every other existing Pages path and file mode is retained."
+  },
+  "httpsVerification": {
+    "checkedAt": "2026-10-13T19:58:36.658994+00:00",
+    "scope": "Every newly published Android download file and both provenance manifests, plus the current preview indexes and original root index. Not a checksum claim for all retained image/archive/bundle files.",
+    "pagesBase": "5ba5798e96afeca8ce181c8245d8f781c6212482",
+    "pagesTree": "948cf452906066d3d44c8e1c5b36469a45175cf0",
+    "deliverySource": "1b4a12873aad9559e94f995bea92ab7e4a59d9e6",
+    "files": [
+      {
+        "path": "review/downloads/android-download.js",
+        "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/android-download.js",
+        "status": 200,
+        "bytes": 4138,
+        "sha256": "2e31d302d5a4e35fb81646113ac8cc0b68805d71c994ba6554a4765f45db1933",
+        "expectedSHA256": "2e31d302d5a4e35fb81646113ac8cc0b68805d71c994ba6554a4765f45db1933",
+        "matched": true
+      },
+      {
+        "path": "review/downloads/android-installers.json",
+        "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/android-installers.json",
+        "status": 200,
+        "bytes": 3072,
+        "sha256": "28983da48db4c589413077a5f0eaad1e3f0cd49665fd52009a499ade1b542c0f",
+        "expectedSHA256": "28983da48db4c589413077a5f0eaad1e3f0cd49665fd52009a499ade1b542c0f",
+        "matched": true
+      },
+      {
+        "path": "review/downloads/android.html",
+        "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/android.html",
+        "status": 200,
+        "bytes": 4330,
+        "sha256": "32d3a8a9201892d3a2387eb902827561841896ef81cd6857e93c61513f52a525",
+        "expectedSHA256": "32d3a8a9201892d3a2387eb902827561841896ef81cd6857e93c61513f52a525",
+        "matched": true
+      },
+      {
+        "path": "review/downloads/native/grizzly/part-0.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/native/grizzly/part-0.bin",
+        "status": 200,
+        "bytes": 10485760,
+        "sha256": "f11311120bfce87137f73e4cdec5993eb9e6c74035da8731f443c14340bbec6e",
+        "expectedSHA256": "f11311120bfce87137f73e4cdec5993eb9e6c74035da8731f443c14340bbec6e",
+        "matched": true
+      },
+      {
+        "path": "review/downloads/native/grizzly/part-1.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/native/grizzly/part-1.bin",
+        "status": 200,
+        "bytes": 10485760,
+        "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+        "expectedSHA256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+        "matched": true
+      },
+      {
+        "path": "review/downloads/native/grizzly/part-2.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/native/grizzly/part-2.bin",
+        "status": 200,
+        "bytes": 10485760,
+        "sha256": "d44ac12ee6e27dea6925dc45e229adc64e5b9e8a92e3d59ecebe37f7a3887a7d",
+        "expectedSHA256": "d44ac12ee6e27dea6925dc45e229adc64e5b9e8a92e3d59ecebe37f7a3887a7d",
+        "matched": true
+      },
+      {
+        "path": "review/downloads/native/grizzly/part-3.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/native/grizzly/part-3.bin",
+        "status": 200,
+        "bytes": 7902546,
+        "sha256": "78b21c8bb6d23942094948e0f657c145cbb68f8a4465d37953981ee7faac921a",
+        "expectedSHA256": "78b21c8bb6d23942094948e0f657c145cbb68f8a4465d37953981ee7faac921a",
+        "matched": true
+      },
+      {
+        "path": "review/downloads/native/movefield/part-0.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/native/movefield/part-0.bin",
+        "status": 200,
+        "bytes": 10485760,
+        "sha256": "99556140239065c61af22a223f9cf9bcf2184434a99ea06b506e6706661a7060",
+        "expectedSHA256": "99556140239065c61af22a223f9cf9bcf2184434a99ea06b506e6706661a7060",
+        "matched": true
+      },
+      {
+        "path": "review/downloads/native/movefield/part-1.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/native/movefield/part-1.bin",
+        "status": 200,
+        "bytes": 10485760,
+        "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+        "expectedSHA256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+        "matched": true
+      },
+      {
+        "path": "review/downloads/native/movefield/part-2.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/native/movefield/part-2.bin",
+        "status": 200,
+        "bytes": 10485760,
+        "sha256": "25244153948b2af491e816873b75e34af7e381e6c35cec49e61568eaed7f944c",
+        "expectedSHA256": "25244153948b2af491e816873b75e34af7e381e6c35cec49e61568eaed7f944c",
+        "matched": true
+      },
+      {
+        "path": "review/downloads/native/movefield/part-3.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/native/movefield/part-3.bin",
+        "status": 200,
+        "bytes": 7751288,
+        "sha256": "8b5106d1a104c8b2ff7ea135ea702e04dc677ed73648ff21eca73a7ba5bf7466",
+        "expectedSHA256": "8b5106d1a104c8b2ff7ea135ea702e04dc677ed73648ff21eca73a7ba5bf7466",
+        "matched": true
+      },
+      {
+        "path": "review/review-manifest.json",
+        "url": "https://ghinz32-cloud.github.io/movefield/review/review-manifest.json",
+        "status": 200,
+        "bytes": 225460,
+        "sha256": "b440f426d08fa964302f41e5ada6784cfdbcd727ca7691cb1dc3012509ceaa54",
+        "expectedSHA256": "b440f426d08fa964302f41e5ada6784cfdbcd727ca7691cb1dc3012509ceaa54",
+        "matched": true
+      },
+      {
+        "path": "review/index.html",
+        "url": "https://ghinz32-cloud.github.io/movefield/review/index.html",
+        "status": 200,
+        "bytes": 868,
+        "sha256": "bad73b0f035c571b16e5cff484eb316899fe1bd26c8fae2119178e533ad64e23",
+        "expectedSHA256": "bad73b0f035c571b16e5cff484eb316899fe1bd26c8fae2119178e533ad64e23",
+        "matched": true
+      },
+      {
+        "path": "grizzly/downloads/android-download.js",
+        "url": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/android-download.js",
+        "status": 200,
+        "bytes": 4138,
+        "sha256": "2e31d302d5a4e35fb81646113ac8cc0b68805d71c994ba6554a4765f45db1933",
+        "expectedSHA256": "2e31d302d5a4e35fb81646113ac8cc0b68805d71c994ba6554a4765f45db1933",
+        "matched": true
+      },
+      {
+        "path": "grizzly/downloads/android-installers.json",
+        "url": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/android-installers.json",
+        "status": 200,
+        "bytes": 3072,
+        "sha256": "28983da48db4c589413077a5f0eaad1e3f0cd49665fd52009a499ade1b542c0f",
+        "expectedSHA256": "28983da48db4c589413077a5f0eaad1e3f0cd49665fd52009a499ade1b542c0f",
+        "matched": true
+      },
+      {
+        "path": "grizzly/downloads/android.html",
+        "url": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/android.html",
+        "status": 200,
+        "bytes": 4330,
+        "sha256": "32d3a8a9201892d3a2387eb902827561841896ef81cd6857e93c61513f52a525",
+        "expectedSHA256": "32d3a8a9201892d3a2387eb902827561841896ef81cd6857e93c61513f52a525",
+        "matched": true
+      },
+      {
+        "path": "grizzly/downloads/native/grizzly/part-0.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/native/grizzly/part-0.bin",
+        "status": 200,
+        "bytes": 10485760,
+        "sha256": "f11311120bfce87137f73e4cdec5993eb9e6c74035da8731f443c14340bbec6e",
+        "expectedSHA256": "f11311120bfce87137f73e4cdec5993eb9e6c74035da8731f443c14340bbec6e",
+        "matched": true
+      },
+      {
+        "path": "grizzly/downloads/native/grizzly/part-1.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/native/grizzly/part-1.bin",
+        "status": 200,
+        "bytes": 10485760,
+        "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+        "expectedSHA256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+        "matched": true
+      },
+      {
+        "path": "grizzly/downloads/native/grizzly/part-2.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/native/grizzly/part-2.bin",
+        "status": 200,
+        "bytes": 10485760,
+        "sha256": "d44ac12ee6e27dea6925dc45e229adc64e5b9e8a92e3d59ecebe37f7a3887a7d",
+        "expectedSHA256": "d44ac12ee6e27dea6925dc45e229adc64e5b9e8a92e3d59ecebe37f7a3887a7d",
+        "matched": true
+      },
+      {
+        "path": "grizzly/downloads/native/grizzly/part-3.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/native/grizzly/part-3.bin",
+        "status": 200,
+        "bytes": 7902546,
+        "sha256": "78b21c8bb6d23942094948e0f657c145cbb68f8a4465d37953981ee7faac921a",
+        "expectedSHA256": "78b21c8bb6d23942094948e0f657c145cbb68f8a4465d37953981ee7faac921a",
+        "matched": true
+      },
+      {
+        "path": "grizzly/downloads/native/movefield/part-0.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/native/movefield/part-0.bin",
+        "status": 200,
+        "bytes": 10485760,
+        "sha256": "99556140239065c61af22a223f9cf9bcf2184434a99ea06b506e6706661a7060",
+        "expectedSHA256": "99556140239065c61af22a223f9cf9bcf2184434a99ea06b506e6706661a7060",
+        "matched": true
+      },
+      {
+        "path": "grizzly/downloads/native/movefield/part-1.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/native/movefield/part-1.bin",
+        "status": 200,
+        "bytes": 10485760,
+        "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+        "expectedSHA256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+        "matched": true
+      },
+      {
+        "path": "grizzly/downloads/native/movefield/part-2.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/native/movefield/part-2.bin",
+        "status": 200,
+        "bytes": 10485760,
+        "sha256": "25244153948b2af491e816873b75e34af7e381e6c35cec49e61568eaed7f944c",
+        "expectedSHA256": "25244153948b2af491e816873b75e34af7e381e6c35cec49e61568eaed7f944c",
+        "matched": true
+      },
+      {
+        "path": "grizzly/downloads/native/movefield/part-3.bin",
+        "url": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/native/movefield/part-3.bin",
+        "status": 200,
+        "bytes": 7751288,
+        "sha256": "8b5106d1a104c8b2ff7ea135ea702e04dc677ed73648ff21eca73a7ba5bf7466",
+        "expectedSHA256": "8b5106d1a104c8b2ff7ea135ea702e04dc677ed73648ff21eca73a7ba5bf7466",
+        "matched": true
+      },
+      {
+        "path": "grizzly/grizzly-manifest.json",
+        "url": "https://ghinz32-cloud.github.io/movefield/grizzly/grizzly-manifest.json",
+        "status": 200,
+        "bytes": 225368,
+        "sha256": "3f2b66b964274a84b6f12707f2abf8484506d691f16c30a90b6d5dd275d7a72b",
+        "expectedSHA256": "3f2b66b964274a84b6f12707f2abf8484506d691f16c30a90b6d5dd275d7a72b",
+        "matched": true
+      },
+      {
+        "path": "grizzly/index.html",
+        "url": "https://ghinz32-cloud.github.io/movefield/grizzly/index.html",
+        "status": 200,
+        "bytes": 1160,
+        "sha256": "e6a71f6254e4ae7c895680a037c6b1f05b12decc736d42e884abf2f33f038496",
+        "expectedSHA256": "e6a71f6254e4ae7c895680a037c6b1f05b12decc736d42e884abf2f33f038496",
+        "matched": true
+      },
+      {
+        "path": "index.html",
+        "url": "https://ghinz32-cloud.github.io/movefield/index.html",
+        "status": 200,
+        "bytes": 60569,
+        "sha256": "03e5b24917fca69179d0282fee294410fe037de2fc02ba076511f1353d253950",
+        "expectedSHA256": "03e5b24917fca69179d0282fee294410fe037de2fc02ba076511f1353d253950",
+        "matched": true
+      }
+    ],
+    "passed": true
+  },
+  "downloadChecks": {
+    "command": "node scripts/check-android-downloads.cjs",
+    "passed": true,
+    "scope": "Both exact APK reconstructions and SHA256; altered data, external URL and cancellation rejection; private storage/cookie reads rejected."
+  },
+  "browser": {
+    "movefield": "File checked. Tap Save to download your app.",
+    "grizzly": "File checked. Tap Save to download your app.",
+    "movefieldSaveEvent": "Cloud browser reported download cancellation; no completed browser Save file claimed.",
+    "diagnostics": "Cloud browser URL policy blocks chrome://downloads; no workaround attempted.",
+    "directAPKFiles": "Both direct attached files matched the compiled APK sizes and SHA256 values.",
+    "webEntryPointsRendered": true,
+    "screenshot": "docs/browser/android-download-browser-2026-10-13-1791921838004.jpg"
+  },
+  "credentialPatternScan": {
+    "files": 2411,
+    "zipMembers": 744,
+    "matches": 0,
+    "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed."
+  },
+  "remaining": [
+    "Exact installed old-APK identity and physical old-to-current upgrade/restart/storage/reminder/erasure",
+    "Physical iPhone, iOS signing and production App Store/Play qualification",
+    "Upstream native advisories, independent review and connected-provider gates",
+    "Individualized next-block volume/source-reset review and the remaining canonical task register"
+  ]
+}

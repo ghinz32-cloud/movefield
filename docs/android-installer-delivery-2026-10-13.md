@@ -29,3 +29,7 @@ The APKs include the current compact layouts, per-set RIR, guarded historical-da
 These are arm64 development-signed test builds. Compilation and inspection do not qualify physical-device upgrades, native keychain behavior, notifications, TalkBack, or performance. A real old-APK-to-current-APK phone upgrade still needs testing; retain the earlier app and an export. iOS signing, App Store/Play production release, provider deployment and complete launch acceptance remain open.
 
 The `.bin` files are transport fragments, not individually installable apps. `android-installers.json` pins their sizes/hashes and the compiled provenance. Use the page to produce the verified APK. Source ZIP downloads remain source archives.
+
+## Publication result
+
+Pages `f26ead07659664b00404c01660714cc7e4acc0c9` deployed successfully in run `38458766109`. All 27 selected live files matched. Both browser preparations reached **File checked**; both direct attached APKs matched the build hashes. The cloud browser canceled Movefield Save and blocks internal downloads diagnostics, so completed browser Save is not claimed. Exact checks and remaining limits are in `android-installer-publication-2026-10-13.json`.
