@@ -5,7 +5,7 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Research-informed catalog and maximal Grizzly wilderness source and both previews are published and served-file verified.",
+  "active_checkpoint": "Extreme Grizzly interactions and 35 fonts are published on the existing previews; all 249 selected served files and 63 original-root files verified. Browser/phone visual and broader launch qualification remain open.",
   "completion_claim": "The distinct catalog and maximal Grizzly design milestones are complete and pushed. Fresh browser/device acceptance and full six-prompt completion remain open.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
@@ -1855,6 +1855,10 @@
     },
     "validation": "docs/grizzly-extreme-validation-2026-10-13.json",
     "next_action": "Incorporate observed design feedback; then resume next-block/baseline editor and original remaining requirements. Reuse currently needs detailed-inventory revalidation; retain current source-program stages and separate assessed baselines.",
-    "publication_preparation": "Five actual isolated Git fixtures; four earlier unmanifested compiled assets retained exactly, all 63 original-root files retained, and unknown noncompiled/missing/tampered paths still reject."
+    "publication_preparation": "Five actual isolated Git fixtures; four earlier unmanifested compiled assets retained exactly, all 63 original-root files retained, and unknown noncompiled/missing/tampered paths still reject.",
+    "published_source_commit": "cc9d8cd7c11b5cb4f329e53c6a29a2748cfba24d",
+    "published_pages_commit": "6ec9e3d5dae425d1747487a48804d9d2ea594c7b",
+    "publication_receipt": "docs/grizzly-extreme-publication-2026-10-13.json",
+    "served_files_verified": 249
   }
 }
