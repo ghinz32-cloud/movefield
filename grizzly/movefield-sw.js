@@ -1,8 +1,8 @@
 /* Local-only app shell; stores code/guides, never decrypted records or API responses. */
-const REVISION = "33f38fc5278e45adce2c";
+const REVISION = "f617325dd5ce90839228";
 const BASE = "/movefield/grizzly/";
 const STATIC_REVIEW = true;
-const ASSETS = ["/movefield/grizzly/assets/cloud-account-DxgXX3jU.js","/movefield/grizzly/assets/index-BRey9YPQ.css","/movefield/grizzly/assets/index-FRl5NJ_f.js","/movefield/grizzly/assets/progress-dashboard-RVOy07VR.js"];
+const ASSETS = ["/movefield/grizzly/assets/cloud-account-BflL0AFu.js","/movefield/grizzly/assets/index-BRey9YPQ.css","/movefield/grizzly/assets/index-CxD_YCcT.js","/movefield/grizzly/assets/progress-dashboard-D-0-NeCs.js"];
 const CACHE_PREFIX = "grizzly-fitness-shell-";
 const EXTRA_STATIC = ["fonts/inter-variable.ttf","fonts/barlow-condensed-semibold.ttf","fonts/oswald-heading.ttf","fonts/bitter-heading.ttf","fonts/rajdhani-heading.ttf","fonts/newrocker-heading.ttf","fonts/blackopsone-heading.ttf","fonts/rubikdirt-heading.ttf","fonts/metal-mania-regular.ttf","fonts/bungee-regular.ttf","fonts/sairastencilone-heading.ttf","fonts/stardosstencil-heading.ttf","fonts/pirataone-heading.ttf","fonts/eater-heading.ttf","fonts/nosifer-heading.ttf","brand/grizzly-fitness-logo.jpg","grizzly-favicon.svg","grizzly-paw.svg"];
 const CACHE = CACHE_PREFIX + REVISION;
