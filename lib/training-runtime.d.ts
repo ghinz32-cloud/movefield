@@ -58,6 +58,8 @@ export type SourceRule = {
     publishedSetsMax?: number;
 };
 export type Item = {
+    supersetGroup?: string;
+    supersetPosition?: 1 | 2;
     exerciseId: string;
     sets: number;
     reps: number;
@@ -141,6 +143,10 @@ export type SetLog = {
     metrics?: SetMetrics;
 };
 export type Workout = {
+    timeZone?: string;
+    startedAtUtc?: string;
+    finishedAtUtc?: string;
+    details?: Record<string, {notes?: string}>;
     revision?: number;
     id: string;
     sessionId: string;
@@ -163,7 +169,7 @@ export type Proposal = {
     id: string;
     title: string;
     reason: string;
-    type: 'sets' | 'move' | 'return' | 'load' | 'substitute' | 'ranges' | 'capacity';
+    type: 'sets' | 'move' | 'return' | 'load' | 'substitute' | 'ranges' | 'capacity' | 'review';
     changes?: {
         sessionId: string;
         beforeDate?: string;
@@ -192,6 +198,7 @@ export type Event = {
     provisional: boolean;
 };
 export type State = {
+    videoPromptsAnswered?: string[];
     restTimer?: RestTimer | null;
     restAlerts?: boolean;
     restSound?: boolean;

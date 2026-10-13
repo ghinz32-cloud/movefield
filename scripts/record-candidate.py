@@ -8,7 +8,7 @@ ROOT=pathlib.Path(__file__).resolve().parents[1]
 RUNTIME=ROOT/'.sites-runtime'
 PREVIEWS_ONLY='--previews-only' in sys.argv
 paths=subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','-z'],cwd=ROOT).decode().split('\0')
-prefixes=('grizzly/','github-pages/','app/','build/','components/','lib/','scripts/','db/','drizzle/','public/','mobile/src/','mobile/scripts/','mobile/assets/','.github/')
+prefixes=('grizzly/','github-pages/','app/','build/','components/','lib/','scripts/','db/','drizzle/','public/','mobile/src/','mobile/scripts/','mobile/assets/','mobile/plugins/','.github/')
 configs={'vite.grizzly.config.ts','eslint.config.mjs','.gitignore','components.json','package.json','pnpm-lock.yaml','tsconfig.json','vite.config.ts','cloudflare-env.d.ts','drizzle.config.ts','wrangler.cloud.example.jsonc','wrangler.workers-dev.example.jsonc','wrangler.pages.example.jsonc','vite.github-pages.config.ts'}
 def source(path):
     if path.startswith(prefixes):return True

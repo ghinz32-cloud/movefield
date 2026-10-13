@@ -69,7 +69,7 @@ declare let eventSchema: z.ZodObject<{
     provisional: boolean;
 }>;
 declare function parseSafeJson(raw: string, max?: number): unknown;
-declare function readSavedState(raw: string): State & {
+declare function readSavedState(raw: string, options?: {maxChars?: number}): State & {
     restEnd?: number | null;
     restPaused?: number | null;
 };

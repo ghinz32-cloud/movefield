@@ -67,14 +67,16 @@ test('Actual native Today clock resumes with the foreground and selects review c
  try{
   Object.assign(global,{Date:FakeDate,setTimeout:(callback,delay)=>{const id=++nextTimer;timers.set(id,{callback,delay});return id},clearTimeout:id=>timers.delete(id)});
   const React={useState:init=>{if(currentDay===undefined)currentDay=init();return [currentDay,value=>currentDay=value]},useEffect:effect=>{if(cleanup)cleanup();cleanup=effect()}};
-  const C=compile('mobile/src/today-hero.tsx',{'react':React,'react-native':{View:'View',Text:'Text',StyleSheet:{create:x=>x}},'./appearance':{useThemedStyles:base=>base,useNativeAppearance:()=>({p:{grizzlyStyle:'wild'},colors:{},active:appActive})},'./shared/today-view':{todayView},'./shared/training':load('lib/training.ts'),'./shared/presentation':load('lib/presentation.ts'),'./shared/session-duration':load('lib/session-duration.ts'),'./shared/grizzly-messages':M,'./shared/brand':{isGrizzly:true},'./account-button':{NativeAccountButton:'Button'},'./bear-decoration':{NativeBearDecoration:'Bear',NativeGrizzlyPaw:'Paw'},'./wilderness':{NativeDenHero:'NativeDenHero'}});
+  const C=compile('mobile/src/today-hero.tsx',{'react':React,'react-native':{View:'View',Text:'Text',StyleSheet:{create:x=>x}},'./appearance':{useThemedStyles:base=>base,useNativeAppearance:()=>({p:{grizzlyStyle:'clean'},colors:{},active:appActive})},'./shared/today-view':{todayView},'./shared/training':load('lib/training.ts'),'./shared/presentation':load('lib/presentation.ts'),'./shared/session-duration':load('lib/session-duration.ts'),'./shared/grizzly-messages':M,'./shared/brand':{isGrizzly:true},'./account-button':{NativeAccountButton:'Button'},'./bear-decoration':{NativeBearDecoration:'Bear',NativeGrizzlyPaw:'Paw'},'./wilderness':{NativeDenHero:'NativeDenHero'}});
   const render=s=>C.NativeTodayHero({state:s,sample:false,onStart:()=>{},onPreview:()=>{},onTargets:()=>{},onPlan:()=>{},onResume:()=>{},onCalendar:()=>{},onResetSampleHold:()=>{}});
-  let tree=render(state);assert.deepEqual(tree.props.children[0].props.message,M.getGrizzlyDailyMessage('active','2026-10-12'));assert.equal([...timers.values()][0].delay,125);
+  const texts=tree=>Array.isArray(tree)?tree.flatMap(texts):tree&&typeof tree==='object'?[...(tree.type==='Text'&&typeof tree.props.children==='string'?[tree.props.children]:[]),...texts(tree.props?.children)]:[];
+  const assertMessage=(tree,context,date)=>{const message=M.getGrizzlyDailyMessage(context,date),content=texts(tree);assert.ok(content.includes(message.title));assert.ok(content.includes(message.body))};
+  let tree=render(state);assert.equal(tree.props.children[0],false,'active workout keeps the compact header');assertMessage(tree,'active','2026-10-12');assert.equal([...timers.values()][0].delay,125);
   now+=125;[...timers.values()][0].callback();assert.equal(currentDay,'2026-10-13');
-  tree=render({...state,hold:true});assert.deepEqual(tree.props.children[0].props.message,M.getGrizzlyDailyMessage('review','2026-10-13'));
+  tree=render({...state,hold:true});assertMessage(tree,'review','2026-10-13');
   appActive=false;render(state);assert.equal(timers.size,0);
   now=new RealDate(2026,9,16,13).getTime();appActive=true;render(state);assert.equal(currentDay,'2026-10-16');assert.equal(timers.size,1);
-  tree=render(state);assert.deepEqual(tree.props.children[0].props.message,M.getGrizzlyDailyMessage('active','2026-10-16'));
+  tree=render(state);assertMessage(tree,'active','2026-10-16');
   cleanup();assert.equal(timers.size,0);
  }finally{for(const [key,value] of original)value===undefined?delete global[key]:global[key]=value}
 });
