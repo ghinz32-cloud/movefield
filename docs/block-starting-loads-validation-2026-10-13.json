@@ -1,249 +1,249 @@
 {
-  "checkedAt": "2026-10-13T19:20:37.938744+00:00",
+  "checkedAt": "2026-10-13T20:06:19.230368+00:00",
   "baselineSource": "22ee8337738353c86c84896ddff7dfeca1153685",
-  "applicationSourceSHA256": "e0d71d1b9f4edb700b6b0112d810056b6af9d5f11a7954465b57f9e74a979e46",
+  "applicationSourceSHA256": "43edb25b219c6a5a733b060c3e7e82e601b61336fb3b35d162e856fa43dfd029",
   "core": {
-    "ran_at": "2026-10-13T19:13:21.128Z",
+    "ran_at": "2026-10-13T20:00:48.489Z",
     "scope": "Local synthetic domain/adapter and type checks; no device, connected provider or deployment qualification.",
     "results": [
       {
         "name": "runtime module contracts",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 4294
+        "duration_ms": 4436
       },
       {
         "name": "production bundled training",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 2323
+        "duration_ms": 2196
       },
       {
         "name": "complete training lifecycles",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 6331
+        "duration_ms": 6419
       },
       {
         "name": "web workout and setup controls",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 922
+        "duration_ms": 968
       },
       {
         "name": "native interaction callbacks",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 1188
+        "duration_ms": 1124
       },
       {
         "name": "native compact layout and focus",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 420
+        "duration_ms": 308
       },
       {
         "name": "offline update lifecycle",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 352
+        "duration_ms": 259
       },
       {
         "name": "Grizzly appearance and retired preset migration",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 1097
+        "duration_ms": 672
       },
       {
         "name": "clickable web calendar",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 1454
+        "duration_ms": 928
       },
       {
         "name": "Grizzly daily context and local day changes",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 1383
+        "duration_ms": 1028
       },
       {
         "name": "preview ownership and retained assets",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 368
+        "duration_ms": 425
       },
       {
         "name": "Grizzly motion and licensed fonts",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 402
+        "duration_ms": 409
       },
       {
         "name": "distinct goal families and flexible selection",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 1985
+        "duration_ms": 1471
       },
       {
         "name": "creator-source and set-effort refinements",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 759
+        "duration_ms": 771
       },
       {
         "name": "public source rules and scientific accounting",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 1007
+        "duration_ms": 947
       },
       {
         "name": "Today facts and actions",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 639
+        "duration_ms": 694
       },
       {
         "name": "transactional encrypted records",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 6363
+        "duration_ms": 5920
       },
       {
         "name": "activity progress and comparison context",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 679
+        "duration_ms": 585
       },
       {
         "name": "evidence/duration/calendar zones",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 4296
+        "duration_ms": 3856
       },
       {
         "name": "calendar and reusable blocks",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 915
+        "duration_ms": 695
       },
       {
         "name": "reusable block equipment guards",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 1248
+        "duration_ms": 1045
       },
       {
         "name": "next-block starting weights",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 1187
+        "duration_ms": 1100
       },
       {
         "name": "starting-weight interface callbacks",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 1004
+        "duration_ms": 1088
       },
       {
         "name": "Cloudflare account/storage/coaching",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 4115
+        "duration_ms": 4176
       },
       {
         "name": "portable cloud vault and retry",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 2736
+        "duration_ms": 2772
       },
       {
         "name": "native SDK cookie transport",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 1234
+        "duration_ms": 1191
       },
       {
         "name": "plan import",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 786
+        "duration_ms": 658
       },
       {
         "name": "durability",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 809
+        "duration_ms": 676
       },
       {
         "name": "vault and history",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 1145
+        "duration_ms": 1012
       },
       {
         "name": "historical native upgrade preservation",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 25462
+        "duration_ms": 24236
       },
       {
         "name": "older password-protected transfers",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 6921
+        "duration_ms": 6837
       },
       {
         "name": "compiled native component boundaries",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 59
+        "duration_ms": 54
       },
       {
         "name": "native encrypted adapter",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 1419
+        "duration_ms": 1284
       },
       {
         "name": "native file transfer",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 281
+        "duration_ms": 295
       },
       {
         "name": "security",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 755
+        "duration_ms": 727
       },
       {
         "name": "data and calendar",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 724
+        "duration_ms": 705
       },
       {
         "name": "web types",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 9238
+        "duration_ms": 8910
       },
       {
         "name": "native types",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 5088
+        "duration_ms": 5243
       },
       {
         "name": "native engine",
         "status": "passed",
         "exit": 0,
-        "duration_ms": 2495
+        "duration_ms": 2531
       }
     ]
   },
   "startingLoadChecks": {
-    "checkedAt": "2026-10-13T19:18:05.346Z",
+    "checkedAt": "2026-10-13T19:59:46.071Z",
     "scope": "Shared domain on synthetic records; no physical device or rendering claim.",
     "cases": [
       "Blank preview keeps every load unknown and preserves saved blocks and history",
@@ -262,11 +262,12 @@
       "Changing a drafted machine label clears the weight from every role for that exercise",
       "Coach/manual authority is kept and reference weights do not imply app progression",
       "Creator source stages, rep targets, supersets and edition roles survive the load review",
+      "An explicitly reviewed weight is displayed even when automatic progression is disabled",
       "Native shared entrypoint applies the same first-only and stale-history boundaries"
     ]
   },
   "interfaceChecks": {
-    "checkedAt": "2026-10-13T19:18:06.528Z",
+    "checkedAt": "2026-10-13T19:59:47.160Z",
     "scope": "Actual web/native JSX callbacks with deterministic hook/OS boundaries, not rendered accessibility or installed-device acceptance.",
     "cases": [
       "Web entry requires review after editing and retains the same draft after a failed write",
@@ -278,26 +279,26 @@
   "nativeExports": {
     "movefield": {
       "android": {
-        "bundle": "mobile/dist-mobile/_expo/static/js/android/index-1b70bbf7db0a585de9458e58d9a3482d.hbc",
-        "bytes": 4732419,
-        "sha256": "29f8c48c9bfb6d4b7e95b61724e67b999bccade53474e220ef82d67427939e78"
+        "bundle": "mobile/dist-mobile/_expo/static/js/android/index-67e1aaf399ab666f67c67f71ed86c1ea.hbc",
+        "bytes": 4732695,
+        "sha256": "0bd041ba3d3bc2e0480ca8b3eff8abe5d1bedebc9370b94a03d25077493dacbd"
       },
       "ios": {
-        "bundle": "mobile/dist-mobile/_expo/static/js/ios/index-71b1efc355810a4ece27378a7bb63d52.hbc",
-        "bytes": 4719991,
-        "sha256": "7da112d2c03bb9000eef295a17165940e43fe2c4e2e74a8782a4a1198817bbed"
+        "bundle": "mobile/dist-mobile/_expo/static/js/ios/index-4a564a6154eb6647afdb083825670803.hbc",
+        "bytes": 4720119,
+        "sha256": "08cfd92ab75fa705adccd7dfac439c7d7d7c3f5f226cfb2372a350cd95f5b243"
       }
     },
     "grizzly": {
       "android": {
-        "bundle": "mobile/dist-grizzly/_expo/static/js/android/index-e63e089ea1ec207351b3420ed63336ba.hbc",
-        "bytes": 4732418,
-        "sha256": "961e49e3b2ffda52f7206c2c81b6cb7998f89e800f4636e56ea311e2b3e3ab79"
+        "bundle": "mobile/dist-grizzly/_expo/static/js/android/index-0dafb55d1c0cbe5e6b634b8ee11d71c3.hbc",
+        "bytes": 4732695,
+        "sha256": "6cb74f060d20377a88c670aaa58324260e020ad17dc513a33cae51de23057659"
       },
       "ios": {
-        "bundle": "mobile/dist-grizzly/_expo/static/js/ios/index-798ff35dc12dc936c8ce9e74e2ca82bb.hbc",
-        "bytes": 4719991,
-        "sha256": "f4a00e751c9bbe56eff774a8035533fed8ad616816bff6e9cdd669d3a9d933f3"
+        "bundle": "mobile/dist-grizzly/_expo/static/js/ios/index-93f5605cba264e3def80e797830684bb.hbc",
+        "bytes": 4720119,
+        "sha256": "d012f265cd879811488d20caf8b1fac75fa25120eb4c33450048f36c2c592fff"
       }
     }
   },
@@ -312,13 +313,13 @@
   ],
   "nativeSourceArchives": {
     "grizzly-fitness-native-source.zip": {
-      "sha256": "1f490793f0a4379389e8df18a8777dceb96c885d204432126445a3390a022f27",
-      "bytes": 8127223,
+      "sha256": "5b18dbad8c7c83da0229a306d79d9f4d19732d8af9c97cab7eeda202f1e89508",
+      "bytes": 8127267,
       "files": 250
     },
     "movefield-native-current.zip": {
-      "sha256": "80903fc14bf8dfdad13b240c64944fb2d62cd9453acbf28712e244156b377e3f",
-      "bytes": 8127224,
+      "sha256": "1174c214098553ef3cc17c41ccc24395333d37b1511a21d393114517d5b3f99a",
+      "bytes": 8127267,
       "files": 250
     }
   },
@@ -329,5 +330,13 @@
     "Individualized next-block volume and creator terminal-stage reset review",
     "Full six-prompt qualification and connected providers"
   ],
-  "verificationScope": "Synthetic actual domain/callbacks, production web builds, current Hermes exports and archive identity. No physical-device, live provider or full research review claim."
+  "verificationScope": "Synthetic actual domain/callbacks, production web builds, current Hermes exports and archive identity. No physical-device, live provider or full research review claim.",
+  "finalRegression": {
+    "before": "Chosen 12 kg on an exercise with automatic progression disabled was hidden: actual null, expected 12.",
+    "after": "The explicitly reviewed weight is displayed, with no automatic increase or readiness inferred. Regression and all 39 core groups pass."
+  },
+  "verifiedImplementationCommit": "c4318e92eabf2516df09eb66ebe2eadda49ae6d9",
+  "verifiedImplementationTree": "defc56705822b9fdce8aa23b13097cee9e7618e2",
+  "integrationBase": "cdcf8387f85d0a634b4200f0e47bb50b2958d6f7",
+  "integrationScope": "Preserve the concurrent verified public APK delivery files and packaging exclusions. The training fix, native identity changes and 39-group qualification match the immutable tested implementation; merged packaging is checked separately."
 }

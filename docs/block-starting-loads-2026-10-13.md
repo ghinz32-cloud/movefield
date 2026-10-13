@@ -26,8 +26,8 @@ calendar and profile changes invalidate an earlier block review. Directly
 modified target previews are rejected. The shared implementation is retained
 in the native snapshot and verified in both entrypoints.
 
-Android preview versions advance to Movefield 0.1.2/versionCode 3 and Grizzly
-0.1.1/versionCode 2. Movefield keeps the historical package and test certificate;
+Android preview versions advance to Movefield 0.1.3/versionCode 4 and Grizzly
+0.1.2/versionCode 3. Movefield keeps the historical package and test certificate;
 Grizzly keeps its separate identity. Physical old/new installation and platform
 storage/restart/notifications remain unperformed. The existing upstream native
 advisories, signing/store and connected-provider gates stay open.
@@ -36,3 +36,8 @@ This is a bounded next-block load review. It does not implement individualized
 next-block volume or a creator-specific terminal-stage reset, and does not
 complete the six-prompt task register. Exact checks and publication/build
 receipts are recorded beside this document.
+
+A final regression reproduced a hidden chosen weight on an exercise with
+automatic progression disabled. The logger now displays that explicitly
+reviewed weight while leaving automatic increases unavailable. The case is
+retained in the shared gate. The prior 0.1.2/0.1.1 APKs are superseded.

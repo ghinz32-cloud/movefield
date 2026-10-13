@@ -1,3 +1,11 @@
+# Current checkpoint · final starting weight guard · 13 October 2026
+
+The tested follow-up fixes the hidden explicitly reviewed weight on exercises with automatic progression disabled. All 39 core groups, 18 starting-weight cases, 4 actual UI callback journeys and current native exports passed. The immutable qualified implementation is `c4318e92eabf2516df09eb66ebe2eadda49ae6d9`, tree `defc56705822b9fdce8aa23b13097cee9e7618e2`. It is reconciled onto `cdcf8387f85d0a634b4200f0e47bb50b2958d6f7` while preserving the concurrent public Android download pages and APK part delivery.
+
+The next installers advance Movefield to 0.1.3/versionCode 4 and Grizzly to 0.1.2/versionCode 3. Finish exact CI inspection and update the public download parts/provenance before calling those installers delivered. Keep original root files, prior served assets, archived receipt history, local records, source stages and separate brands. Source/preview publication and test compilation stay authorized. Physical old/new upgrade, iPhone/store, upstream advisories and provider gates remain open. Pin final receipts in `docs/block-starting-loads-publication-2026-10-13.json`.
+
+---
+
 # Current checkpoint · verified Android files and public download pages · 13 October 2026
 
 Continue on remote `codex/native-delivery-2026-10-13` from `docs/android-installer-publication-2026-10-13.json`. Reviewed implementation is `48d7512f54d2615c8133b5717e182612ed6812a1`; installer-delivery source is `1b4a12873aad9559e94f995bea92ab7e4a59d9e6`. This isolated continuation is `/workspace/scratch/69fe5a612a8d/movefield-delivery`. Both brands remain in scope. Preserve compact UI, per-set RIR, legacy encrypted records/transfers, reviewed starting weights, original Pages root and retained compiled assets. OG stays removed. Normal reviewed source, existing preview publication and test builds remain authorized.
