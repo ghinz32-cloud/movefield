@@ -24,7 +24,7 @@ on:
       source_ref:
         description: Reviewed source branch or commit to compile
         type: string
-        default: codex/transfer-compatibility-2026-10-13
+        default: codex/native-delivery-2026-10-13
         required: true
 permissions:
   contents: read
