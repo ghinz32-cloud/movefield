@@ -59,3 +59,6 @@ next-env.d.ts
 /mobile/android/
 /mobile/ios/
 mobile/dist-grizzly/
+
+# Python verification helpers
+__pycache__/

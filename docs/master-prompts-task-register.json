@@ -5,14 +5,14 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Compact UI and feature discoverability repair for both brands after user-reported regression. Native Settings scrolling, visible Plan tools, inline web RIR and compact layout are corrected. See docs/ui-density-publication-2026-10-13.json when present. Current native source is not an update for the old installed APK.",
-  "completion_claim": "Focused layout/control fixes with relevant checks and current source exports; no installed APK update or full product/device acceptance claim.",
+  "active_checkpoint": "Older password-protected web/phone transfer imports and current Android delivery. Both brand profiles retain the compact UI fixes. Exact old-writer fixtures, preserved fields, encrypted rollback and component/permission inspection are qualified locally; physical old/new APK acceptance and the next-block/baseline editor remain open. See docs/transfer-compatibility-publication-2026-10-13.json when present.",
+  "completion_claim": "Bounded compatibility and installer delivery milestone; no full six-prompt completion, store release or physical-device claim.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
     "Saved environment network additions need activation for full-text research and repo.reactnative.dev Android artifact download. Current proxy denials are not bypassed.",
     "Mac/iOS toolchain, owner signing/update configuration and installed physical Android/iPhone device matrix; broad coverage target does not certify old/unpatched devices.",
     "Independent security/crypto/privacy/science/rights reviews and compatible native upstream advisory remediation. Remaining code is separately retained below.",
-    "Current source and last actual Android test APK come from different app identities, encrypted database formats and branches. A preservation-first migration or retained compatible storage must pass old-APK upgrade checks before publishing an in-place phone update. GitHub build/artifact metadata was available and inspected on October 13."
+    "Data-preserving historical Android lineage and version 1 Argon2id transfer imports are implemented and tested with original-writer fixtures and SQLite/crypto adapters. Exact compiled manifest/signature checks and old/new APK physical upgrade acceptance remain distinct gates."
   ],
   "requirements": [
     {

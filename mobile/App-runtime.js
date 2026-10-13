@@ -48,6 +48,7 @@ import * as _srcSharedSubstitutions from "./src/shared/substitutions";
 import * as _srcContent from "./src/content";
 import * as _srcMobileEngine from "./src/mobile-engine";
 import * as _srcStorage from "./src/storage";
+import * as _srcSharedLegacyTransfer from "./src/shared/legacy-transfer";
 import * as _reactJsxRuntime from "react/jsx-runtime";
 import * as __dependency49 from "./assets/grizzly-fitness-logo.jpg";
 import {NativeWildernessShell,NativeDenHero} from "./src/wilderness";
@@ -365,6 +366,7 @@ function TrainingApp() {
     var [resetting, setResetting] = (0, _react.useState)(false);
     var stateRef = (0, _react.useRef)(null), personalState = (0, _react.useRef)(null), sampleRef = (0, _react.useRef)(false);
     var [sampleMode, setSampleMode] = (0, _react.useState)(false), [recoveryInput, setRecoveryInput] = (0, _react.useState)(''), [recoveryKey, setRecoveryKey] = (0, _react.useState)(''), [backupInput, setBackupInput] = (0, _react.useState)(''), [backupPreview, setBackupPreview] = (0, _react.useState)(null);
+    var transferBackup = (0, _react.useMemo)(() => (0, _srcSharedLegacyTransfer.isLegacyTransfer)(backupInput), [backupInput]);
     var resettingRef = (0, _react.useRef)(false), backupGeneration = (0, _react.useRef)(0);
     var changeBackupInput = raw => {
         backupGeneration.current++;
@@ -377,15 +379,19 @@ function TrainingApp() {
         setBackupPreview(null);
     };
     var previewBackup = async () => {
-        var token = ++backupGeneration.current, raw = backupInput, key = recoveryInput;
+        var token = ++backupGeneration.current, raw = backupInput, key = recoveryInput, expected = stateRef.current;
         setBackupPreview(null);
         try {
-            var _next = await (0, _srcStorage.previewLocalBackup)(raw, key);
+            if (transferBackup && !expected)
+                throw Error('Reopen or recover your saved profile before importing an older transfer file. Original records are kept.');
+            var _next = transferBackup ? await (0, _srcSharedLegacyTransfer.openLegacyTransfer)(raw, key) : await (0, _srcStorage.previewLocalBackup)(raw, key);
             if (token === backupGeneration.current && !resettingRef.current && !sampleRef.current)
                 setBackupPreview({
                     state: _next,
                     raw,
-                    key
+                    key,
+                    transfer: transferBackup,
+                    expected
                 });
         }
         catch (e) {
@@ -397,7 +403,7 @@ function TrainingApp() {
         var token = ++backupGeneration.current;
         setBackupPreview(null);
         try {
-            var raw = await (0, _srcFileTransfer.pickJsonFile)(33554432);
+            var raw = await (0, _srcFileTransfer.pickJsonFile)(_srcSharedLegacyTransfer.LEGACY_TRANSFER_MAX_BYTES);
             if (raw !== null && token === backupGeneration.current && !resettingRef.current && !sampleRef.current)
                 changeBackupInput(raw);
         }
@@ -759,7 +765,7 @@ function TrainingApp() {
                                         minHeight: 80
                                     }],
                                 multiline: true,
-                                maxLength: 33554432,
+                                maxLength: _srcSharedLegacyTransfer.LEGACY_TRANSFER_MAX_BYTES,
                                 value: backupInput,
                                 onChangeText: changeBackupInput,
                                 autoCapitalize: "none",
@@ -2042,7 +2048,7 @@ function TrainingApp() {
                                     children: "Restore an encrypted backup"
                                 }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                     style: styles.small,
-                                    children: "Export your current profile first. Preview and explicitly accept a replacement. Sample data is kept."
+                                    children: "Export your current profile first. Older password-protected transfer files are also supported. Preview and explicitly accept a replacement. Sample data is kept."
                                 }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
                                     secondary: true,
                                     label: "Choose encrypted backup file",
@@ -2055,15 +2061,17 @@ function TrainingApp() {
                                             minHeight: 80
                                         }],
                                     multiline: true,
-                                    maxLength: 33554432,
+                                    maxLength: _srcSharedLegacyTransfer.LEGACY_TRANSFER_MAX_BYTES,
                                     value: backupInput,
                                     onChangeText: changeBackupInput,
                                     autoCapitalize: "none",
                                     autoCorrect: false
                                 }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.TextInput, {
-                                    accessibilityLabel: "Backup recovery key",
+                                    accessibilityLabel: transferBackup ? "Older transfer file password" : "Backup recovery key",
+                                    placeholder: transferBackup ? "Original transfer password" : "Separately saved recovery key",
                                     style: styles.input,
                                     secureTextEntry: true,
+                                    maxLength: 2048,
                                     value: recoveryInput,
                                     onChangeText: changeRecoveryInput,
                                     autoCapitalize: "none",
@@ -2079,14 +2087,14 @@ function TrainingApp() {
                                             style: styles.body,
                                             children: [backupPreview.state.history.length, " saved workouts \xB7 ", backupPreview.state.active ? 'active workout included' : 'no active workout', ". Accepting replaces this private profile."]
                                         }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                                            disabled: !!active || resetting,
+                                            disabled: !!active || resetting || backupPreview.expected !== state,
                                             label: "Replace private profile with this backup",
                                             onPress: () => {
-                                                if (stateRef.current?.active || resettingRef.current || storeRef.current?.busy())
+                                                if (stateRef.current?.active || resettingRef.current || storeRef.current?.busy() || stateRef.current !== backupPreview.expected)
                                                     return;
                                                 resettingRef.current = true;
                                                 backupGeneration.current++;
-                                                void storeRef.current?.flush().then(() => (0, _srcStorage.restoreLocalBackup)(backupPreview.raw, backupPreview.key)).then(initial => {
+                                                void storeRef.current?.flush().then(() => backupPreview.transfer ? (0, _srcStorage.restorePasswordTransfer)(backupPreview.state, backupPreview.expected) : (0, _srcStorage.restoreLocalBackup)(backupPreview.raw, backupPreview.key)).then(initial => {
                                                     if (initial) {
                                                         storeRef.current = createStore(initial);
                                                         commit(initial);

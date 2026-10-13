@@ -3,6 +3,7 @@ import {sha256} from '@noble/hashes/sha2.js';
 import {hex,unhex} from './shared/vault-format';
 import {parseSafeJson,readSavedState,readSetupDraft} from './shared/saved-data';
 import type {State} from './shared/training';
+import {assertPreservedFields as preserved} from './shared/preserved-state';
 
 export const LEGACY_STATE='training-studio:mobile-local-demo:v1';
 export const LEGACY_SETUP='training-studio:mobile-setup:v1';
@@ -24,11 +25,6 @@ export function legacyOpen(raw:string,secret:string|null,slot:string):string{
 }
 // Reject any field the current validator would discard. Schema 2 becomes 3;
 // amounts, unknown loads, targets, IDs, dates and effort remain untouched.
-function preserved(before:unknown,after:unknown,path='profile'):void{
- if(Array.isArray(before)){if(!Array.isArray(after)||before.length!==after.length)throw fail('An old '+path+' cannot be preserved.');before.forEach((v,n)=>preserved(v,after[n],path+'.'+n));return}
- if(before&&typeof before==='object'){if(!after||typeof after!=='object')throw fail('An old '+path+' cannot be preserved.');for(const [k,v]of Object.entries(before)){if(path==='profile'&&k==='schema'&&v===2&&(after as {schema?:number}).schema===3)continue;if(!Object.prototype.hasOwnProperty.call(after,k))throw fail('This build cannot preserve the old field '+path+'.'+k+'.');preserved(v,(after as Record<string,unknown>)[k],path+'.'+k)}return}
- if(before!==after)throw fail('This build cannot preserve the old field '+path+'.');
-}
 function restoreChoice(snapshot:LegacySnapshot,keys:LegacyKeys):{secret:string|null;skipSetup:boolean}{
  key(keys.active);const journalRaw=snapshot.records[LEGACY_JOURNAL]??null;
  if(keys.restore===null){if(journalRaw!==null)throw fail('The old restore recovery keys are missing.');return {secret:keys.active,skipSetup:false}}

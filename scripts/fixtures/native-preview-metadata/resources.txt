@@ -1,0 +1,5 @@
+Package name=com.ghinz32.movefield id=7f
+    resource 0x7f140006 xml/movefield_backup_rules
+      () (file) res/r1.xml type=XML
+    resource 0x7f140007 xml/movefield_data_extraction_rules
+      () (file) res/zk.xml type=XML

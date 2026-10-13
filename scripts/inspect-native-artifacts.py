@@ -22,6 +22,7 @@ DOMAINS = {'root', 'file', 'database', 'sharedpref', 'external',
 RULE_NAMES = ('movefield_backup_rules', 'movefield_data_extraction_rules')
 NOTIFICATION_RECEIVER = 'expo.modules.notifications.service.NotificationsService'
 NOTIFICATION_FORWARDER = 'expo.modules.notifications.service.NotificationForwarderActivity'
+WEB_BROWSER_PROXY = 'expo.modules.webbrowser.BrowserProxyActivity'
 NOTIFICATION_ACTIONS = {
     'expo.modules.notifications.NOTIFICATION_EVENT',
     'android.intent.action.BOOT_COMPLETED', 'android.intent.action.REBOOT',
@@ -191,6 +192,7 @@ def android(path, backup, extraction, resources):
         'expo.modules.sharing.SharingFileProvider': 'provider',
         NOTIFICATION_RECEIVER: 'receiver',
         NOTIFICATION_FORWARDER: 'activity',
+        WEB_BROWSER_PROXY: 'activity',
         STARTUP_PROVIDER: 'provider',
         'androidx.profileinstaller.ProfileInstallReceiver': 'receiver',
     }
@@ -230,6 +232,13 @@ def android(path, backup, extraction, resources):
         'Local reminder receiver must retain notification/boot/update intent topology')
     check(not components[NOTIFICATION_FORWARDER].findall('intent-filter'),
           'Internal notification forwarder must not gain intent filters')
+    if WEB_BROWSER_PROXY in components:
+        proxy = components[WEB_BROWSER_PROXY]
+        check(proxy.get(ns + 'enabled', 'true') == 'true' and
+              proxy.get(ns + 'launchMode') in {'singleTop', '1'} and
+              proxy.get(ns + 'taskAffinity') == '.webContainer',
+              'Browser proxy must retain its reviewed internal custom-tab task boundary')
+        check(not list(proxy), 'Internal browser proxy must not gain intent filters or child declarations')
     initializers = set()
     if STARTUP_PROVIDER in components:
         provider = components[STARTUP_PROVIDER]
@@ -279,6 +288,7 @@ def android(path, backup, extraction, resources):
             'extractionRulesSHA256': sha(extraction), 'resourceTableSHA256': sha(resources),
             'cleartextDenied': True, 'remoteSdkStartupDisabled': True, 'componentBoundariesChecked': True,
             'localReminderDeclarationsChecked': True, 'reviewedStartupInitializers': sorted(initializers),
+            'internalBrowserProxyChecked': WEB_BROWSER_PROXY in components,
             'reminderInspectionScope': 'manifest components/intent topology/permissions; native delivery and lifecycle not verified',
             'signing': 'uninspected; inspect the APK certificate separately',
             'physicalDeviceTested': False, 'storeAccepted': False}

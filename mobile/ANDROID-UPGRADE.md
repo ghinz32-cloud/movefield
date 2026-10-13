@@ -35,6 +35,11 @@ rest timing, restarting offline, and checking device notifications/erasure.
 The user's exact installed APK is still unconfirmed. Grizzly is a separate
 installation and does not import Movefield records.
 
-Older Argon2id password-protected `movefield-transfer` files remain a separate
-compatibility task. This milestone migrates on-device records and does not claim
-that the current backup screen reads those older transfer files.
+Settings can also preview version 1 Argon2id/XChaCha password-protected
+`movefield-transfer` files from the historical phone or website. Enter the
+original transfer password instead of a recovery key. Only explicit acceptance
+replaces the current profile. Active workouts, unfinished setup, pending uploads
+and records changed since preview block replacement. Unsupported fields and
+failed writes leave the current records intact. This import uses the current
+device vault and does not merge the two brands automatically. See
+`docs/transfer-compatibility-2026-10-13.md` for verification and limits.

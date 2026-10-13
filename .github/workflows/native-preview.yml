@@ -1,7 +1,7 @@
 name: Current Android test installers
 on:
   push:
-    branches: [codex/native-upgrade-2026-10-13, codex/native-delivery-2026-10-13]
+    branches: [codex/native-upgrade-2026-10-13, codex/native-delivery-2026-10-13, codex/transfer-compatibility-2026-10-13]
     paths:
       - '.github/workflows/native-preview.yml'
       - 'mobile/**'
@@ -10,6 +10,9 @@ on:
       - 'scripts/check-native-preview-identity.py'
       - 'scripts/extract-apk-rules.py'
       - 'scripts/inspect-native-artifacts.py'
+      - 'scripts/check-native-inspection.py'
+      - 'scripts/check-legacy-transfer.cjs'
+      - 'scripts/fixtures/**'
   workflow_dispatch:
     inputs:
       app:
@@ -21,7 +24,7 @@ on:
       source_ref:
         description: Reviewed source branch or commit to compile
         type: string
-        default: codex/native-delivery-2026-10-13
+        default: codex/transfer-compatibility-2026-10-13
         required: true
 permissions:
   contents: read
@@ -62,6 +65,8 @@ jobs:
         run: |
           node scripts/check-runtime-boundaries.mjs
           node scripts/check-legacy-native-upgrade.cjs
+          node scripts/check-legacy-transfer.cjs
+          python3 scripts/check-native-inspection.py
           cd mobile
           npm run check
       - name: Record exact installer source

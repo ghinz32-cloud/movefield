@@ -9,6 +9,7 @@ import {readSavedState,readSetupDraft} from './shared/saved-data';
 import {type State} from './shared/training';
 import {hex,unhex,isVault,readEnvelope,vaultAAD,type VaultEnvelope} from './shared/vault-format';
 import {encryptedStorage} from './shared/encrypted-storage';
+import {readPreservedState} from './shared/preserved-state';
 const KEY=nativeStorageKey('training-studio:mobile-local-demo:v1'),SETUP_KEY=nativeStorageKey('training-studio:mobile-setup:v1');
 const SAMPLE_KEY=nativeStorageKey('movefield:mobile-sample:v1'),SAMPLE_SETUP=nativeStorageKey('movefield:mobile-sample-setup:v1');
 const SECRET=nativeStorageKey('movefield.local-vault-key.v1');
@@ -116,6 +117,22 @@ export async function restoreLocalBackup(raw:string,recovery:string,unchangedKey
  if(!unchangedKeyRecovery){const writer=createRecordStateStorage({backend:await nativeRecordBackend(),digest:cloudDigest,seal:plain=>encryptWith(k,plain,'state'),open:cipher=>decryptWith(k,cipher,'state'),legacyRead:()=>AsyncStorage.getItem(KEY),legacyWrite:cipher=>AsyncStorage.setItem(KEY,cipher)});await writer.write(state)}pendingKey=null;knownKeys=new Map();if(records)(await records).reset();return state;
 }
 export async function restoreDeviceKey(recovery:string){const existing=await encryptedLocalBackup();if(!existing)throw Error('Restore an encrypted file first.');await restoreLocalBackup(existing,recovery,true);}
+
+/** Explicitly reviewed portable import. Uses this device's current vault key. */
+export async function restorePasswordTransfer(incoming:State,expected:State):Promise<State>{
+ await ensureLegacyUpgrade();await flushPersonal();await setup.flush();await cloudWrites;
+ const generation=storageGeneration,state=readPreservedState(JSON.stringify(incoming)),backend=await nativeRecordBackend();
+ const writer=createRecordStateStorage({backend:{...backend,commit:async(before,root,rows)=>{
+  if(generation!==storageGeneration||storageErased)throw Error('The private profile changed during restore. Current records are kept.');
+  await backend.commit(before,root,rows);
+ }},digest:cloudDigest,seal:raw=>encrypt(raw,'state'),open:raw=>decrypt(raw,'state'),legacyRead:()=>AsyncStorage.getItem(KEY),legacyWrite:raw=>AsyncStorage.setItem(KEY,raw)});
+ const current=await writer.read();
+ if(!current||JSON.stringify(current)!==JSON.stringify(expected))throw Error('Your records changed after this preview. Review the backup again.');
+ if(current.active)throw Error('Finish or discard the current workout before replacing this profile.');
+ if(await AsyncStorage.getItem(CLOUD_OUTBOX))throw Error('Retry or discard the queued cloud upload before restoring this backup.');
+ if(await AsyncStorage.getItem(SETUP_KEY))throw Error('Finish or discard your saved plan setup before restoring this backup.');
+ await writer.write(state);if(records)(await records).reset();return state;
+}
 
 export async function flushLocalSetup(sample=false){await (sample?sampleWrites:setup.flush())}
 

@@ -302,6 +302,16 @@
       "sha256": "2b19bf797fecc2a632e24412f54862890fd05849f317c67e45cf9b863fc48d0c"
     },
     {
+      "source": "lib/legacy-transfer.ts",
+      "target": "src/shared/legacy-transfer.ts",
+      "sha256": "ac72097a9525055309914a1baf915912b2f9a1c714cdea2578674f3ca8b3683e"
+    },
+    {
+      "source": "lib/preserved-state.ts",
+      "target": "src/shared/preserved-state.ts",
+      "sha256": "01dc59d51bd7d6b373f25b8f5d38ce379a9d95c9e3684bd5b111653e8705bcd8"
+    },
+    {
       "source": "lib/vault-format.ts",
       "target": "src/shared/vault-format.ts",
       "sha256": "a7d505954959a17ca9389f5550ff202f075693882091c25728a9dc68329dc393"
@@ -415,6 +425,11 @@
       "source": "lib/recipes.json",
       "target": "src/shared/recipes.json",
       "sha256": "667a3b8678ffc458d725a50ae9bd5372f8dcc3b4f6f7dfb1f4f7148ac17dde8d"
+    },
+    {
+      "source": "docs/transfer-compatibility-2026-10-13.md",
+      "target": "docs/transfer-compatibility-2026-10-13.md",
+      "sha256": "19983edef508115df4b36466b42003b12e7dd384ebf89be097423277ac910ed8"
     },
     {
       "source": "docs/fitness-audit/README.md",

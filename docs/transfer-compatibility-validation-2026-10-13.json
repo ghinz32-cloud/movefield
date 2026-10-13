@@ -1,0 +1,287 @@
+{
+  "checkedAt": "2026-10-13T18:25:03.847014+00:00",
+  "baselineSource": "08e079fd0c9b91c4e47b47d8059e6cf2376699db",
+  "core": {
+    "ran_at": "2026-10-13T18:22:22.896Z",
+    "scope": "Local synthetic domain/adapter and type checks; no device, connected provider or deployment qualification.",
+    "results": [
+      {
+        "name": "runtime module contracts",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 4982
+      },
+      {
+        "name": "production bundled training",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2501
+      },
+      {
+        "name": "complete training lifecycles",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 7200
+      },
+      {
+        "name": "web workout and setup controls",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1103
+      },
+      {
+        "name": "native interaction callbacks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1155
+      },
+      {
+        "name": "native compact layout and focus",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 305
+      },
+      {
+        "name": "offline update lifecycle",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 230
+      },
+      {
+        "name": "Grizzly appearance and retired preset migration",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 660
+      },
+      {
+        "name": "clickable web calendar",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 912
+      },
+      {
+        "name": "Grizzly daily context and local day changes",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 994
+      },
+      {
+        "name": "preview ownership and retained assets",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 361
+      },
+      {
+        "name": "Grizzly motion and licensed fonts",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 352
+      },
+      {
+        "name": "distinct goal families and flexible selection",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1399
+      },
+      {
+        "name": "creator-source and set-effort refinements",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 815
+      },
+      {
+        "name": "public source rules and scientific accounting",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 924
+      },
+      {
+        "name": "Today facts and actions",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 679
+      },
+      {
+        "name": "transactional encrypted records",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 7930
+      },
+      {
+        "name": "activity progress and comparison context",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 786
+      },
+      {
+        "name": "evidence/duration/calendar zones",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 4528
+      },
+      {
+        "name": "calendar and reusable blocks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1025
+      },
+      {
+        "name": "reusable block equipment guards",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1165
+      },
+      {
+        "name": "Cloudflare account/storage/coaching",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 4640
+      },
+      {
+        "name": "portable cloud vault and retry",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2295
+      },
+      {
+        "name": "native SDK cookie transport",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1220
+      },
+      {
+        "name": "plan import",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 707
+      },
+      {
+        "name": "durability",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 790
+      },
+      {
+        "name": "vault and history",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1327
+      },
+      {
+        "name": "historical native upgrade preservation",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 23228
+      },
+      {
+        "name": "older password-protected transfers",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 6962
+      },
+      {
+        "name": "compiled native component boundaries",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 50
+      },
+      {
+        "name": "native encrypted adapter",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1267
+      },
+      {
+        "name": "native file transfer",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 296
+      },
+      {
+        "name": "security",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 832
+      },
+      {
+        "name": "data and calendar",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 764
+      },
+      {
+        "name": "web types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 10639
+      },
+      {
+        "name": "native types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 5402
+      },
+      {
+        "name": "native engine",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2479
+      }
+    ]
+  },
+  "olderTransfer": {
+    "checkedAt": "2026-10-13T18:22:01.144Z",
+    "passed": true,
+    "checks": 32,
+    "fixtureWriterCommit": "9cdcec081bee3525838ac334da1bb48de6690f13",
+    "fixtureWriterBlob": "e5b0cbefa4a32d6113252d952f123fc1dac38455",
+    "scope": "Original writer golden phone/web backups, real Argon2id/XChaCha and native adapter/SQLite/AES-GCM with mocked OS stores. No installed-device or browser UI claim."
+  },
+  "androidInspection": {
+    "originalRun": 38443547677,
+    "compiledBoth": true,
+    "originalFailure": "Unlisted internal Expo browser proxy followed by unused ACCESS_WIFI_STATE permission.",
+    "actualMetadataFixture": {
+      "manifestSHA256": "71f5353cf589c11f775b8e06a9cb5b4921e4388bf6e144a0fc2d71285c984dcc",
+      "fullResourceTableSHA256": "111351553030630fe939f6faa2a53ffab50e6b4568d3a49c03216724c42ff6a2"
+    },
+    "localRegressionPassed": true,
+    "freshCompiledAPK": "pending"
+  },
+  "remaining": [
+    "Physical old/new Android upgrade, OS stores/restart/notification/erasure",
+    "Physical iPhone and store qualification",
+    "Reviewed next-block and starting-baseline editor",
+    "Canonical task register and upstream native advisories/connected-provider gates"
+  ],
+  "nativeExports": {
+    "checked_at": "2026-10-13T18:29:15.132086+00:00",
+    "scope": "Distinct cleared-cache Hermes exports, paired with native identity/module checks; no installed-device claim.",
+    "flavors": {
+      "movefield": {
+        "android": {
+          "path": "_expo/static/js/android/index-6386e48245984bd2d12fdf063004a281.hbc",
+          "bytes": 4714155,
+          "sha256": "27ab89bf46f3ec10b2163165525925bc674936d19f26888b9d66281262dabafe"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-771c07617853d38fd37fabdf60b9b5bd.hbc",
+          "bytes": 4701682,
+          "sha256": "ffe2b29b6090a5224657114558bd65c6f6393979220121e31301f6c5cd6d1a9a"
+        }
+      },
+      "grizzly": {
+        "android": {
+          "path": "_expo/static/js/android/index-1a27cb0744f6478f5cfb8a0d2fce9a83.hbc",
+          "bytes": 4713832,
+          "sha256": "17801b32e347328ad5f67a4a3dd8113841b9e4670da435cd0734067e8980cf71"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-9bfb64ee40a843378108c6529799cc78.hbc",
+          "bytes": 4701268,
+          "sha256": "74e7f417297ae782bf8c1eb6e5b0763e7851bad117faaa2fab8316cff2910f4e"
+        }
+      }
+    }
+  }
+}
