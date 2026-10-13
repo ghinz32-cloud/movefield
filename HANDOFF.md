@@ -1,3 +1,13 @@
+# Current checkpoint · publication approved and live verification complete · 13 October 2026
+
+The user explicitly approved pushes in this conversation. The exact prepared fixes and Android files are already live from the newer source checkpoint `b9efe97eea755ffe53114626e17457115a804548`, delivery source `fd158a0af5c228b9654d600079aadece4b2f6366`, Pages `9e9b6ff1167f34cd2c19a00ee10bee1abc281b12`. Successful Pages run `38467059386` is confirmed. Do not restore the superseded unpushed candidate over this newer release.
+
+Fresh public browser checks show Movefield 0.1.3/versionCode 4 and Grizzly 0.1.2/versionCode 3. Both complete APK preparations reached File checked. Both web sample launches reached Today with the training controls and all 34 synthetic history records visible. Application code under app/components/lib/mobile is unchanged from the actual compiled source `fc3d798d875633cebc8c2b441c9c77f173c967ac`. Read `docs/approved-release-verification-2026-10-13.json` and the final release receipt below. This documentation checkpoint changes no application, installer or website bytes.
+
+Continue on `codex/native-delivery-2026-10-13` from the pushed verification checkpoint. The isolated checkout is `/workspace/scratch/e7ed9e1e9154/movefield`, local `codex/approved-release-2026-10-13`. Current ordinary reviewed source and existing preview pushes are authorized. Preserve both brands, compact UI, per-set RIR, historical records and transfer compatibility, source stages and unknown weights, original Pages root and retained chunks. OG stays removed. Physical-device/store/provider, individualized next-block volume/source-reset and canonical task-register gates remain open; compilation/download verification does not close them.
+
+---
+
 # Completed checkpoint · reviewed loads and final app downloads · 13 October 2026
 
 The tested final release is live. Delivery source `fd158a0af5c228b9654d600079aadece4b2f6366`,

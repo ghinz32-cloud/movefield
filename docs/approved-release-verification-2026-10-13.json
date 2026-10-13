@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-10-13T22:58:13.795934+00:00",
+  "authorization": {
+    "userStatement": "I approve pushes",
+    "scope": "Prepared source, Android APK assets and audit documentation to ghinz32-cloud/movefield, codex/native-delivery-2026-10-13 and gh-pages."
+  },
+  "existingSourceHead": "b9efe97eea755ffe53114626e17457115a804548",
+  "publishedSource": "fd158a0af5c228b9654d600079aadece4b2f6366",
+  "publishedPages": "9e9b6ff1167f34cd2c19a00ee10bee1abc281b12",
+  "pagesDeployment": {
+    "run": 38467059386,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "compiledSource": "fc3d798d875633cebc8c2b441c9c77f173c967ac",
+  "nativeBuild": {
+    "run": 38462265676,
+    "conclusion": "success"
+  },
+  "applicationCodeDifferenceFromCompiledSource": [],
+  "priorQualification": {
+    "coreGroups": 40,
+    "allPassed": true,
+    "selectedLiveFiles": 102,
+    "allLiveChecksPassed": true,
+    "originalRootFiles": 63,
+    "receipt": "docs/block-starting-loads-publication-2026-10-13.json"
+  },
+  "freshBrowser": {
+    "movefield": {
+      "web": "https://ghinz32-cloud.github.io/movefield/review/",
+      "download": "https://ghinz32-cloud.github.io/movefield/review/downloads/android.html?app=movefield",
+      "version": "0.1.3",
+      "versionCode": 4,
+      "sha256": "4d51058e4c95c8ab9f6596260d6788521f85be24936d8fab874f05fdaccd0ab8",
+      "downloadPreparation": "File checked. Tap Save to download your app.",
+      "sampleLaunch": "Today, Start workout, Session details, Calendar and 34 synthetic history sessions visible."
+    },
+    "grizzly": {
+      "web": "https://ghinz32-cloud.github.io/movefield/grizzly/",
+      "download": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/android.html?app=grizzly",
+      "version": "0.1.2",
+      "versionCode": 3,
+      "sha256": "b44a0cbb9a94d41087e091fd8ec2b5d6a0395eb50e4ecdf4be861f226bccf8c7",
+      "downloadPreparation": "File checked. Tap Save to download your app.",
+      "sampleLaunch": "Today, Start workout, Session details, Calendar and 34 synthetic history sessions visible."
+    }
+  },
+  "scope": "Public site and download preparation verification; completed browser Save and installed-device qualification not claimed. No user private profile data edited.",
+  "publicationStatus": "The exact prepared app and installers were published by the newer checkpoint before this verification. This following commit records current approval and verification; it changes no application, installer or served bytes.",
+  "remaining": [
+    "Physical old/new Android installation, restart/storage/reminders/erasure",
+    "iPhone signing and physical/store validation",
+    "Native upstream advisories and connected-provider qualification",
+    "Individualized next-block volume/source-reset review and remaining canonical task register"
+  ]
+}
