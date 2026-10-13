@@ -1,7 +1,7 @@
 {
   "checked_at": "2026-10-13T16:51:53.746072+00:00",
   "base_commit": "7b489c929d7188e8cd8354116bc3ff1abfe84fb3",
-  "application_source_sha256": "5d8b727d2a6028fa3dd0ef30b94281d791f96838abfdfc187ac31462dd41608e",
+  "application_source_sha256": "80ec8a74d270bbe0d6971d7fecd2072fbba1f6507437ccb7d3071e73d6e83678",
   "scope": "Focused UI repair; training/storage/package identities unchanged. No native installed-device or narrow-viewport rendered acceptance claim.",
   "checks": {
     "workout_ui_callback_groups": 6,
@@ -56,7 +56,7 @@
     "public/downloads/grizzly-fitness-native-source.zip": "64631197fb965d47218a24a8185aa3e18fb785ff6f8fab1a3f7b6282515b6108"
   },
   "credential_pattern_scan": {
-    "ran_at": "2026-10-13T16:51:53.702235+00:00",
+    "ran_at": "2026-10-13T17:12:09.444925+00:00",
     "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed.",
     "files": 6037,
     "zip_members": 2172,
@@ -67,5 +67,13 @@
     "The exact user-installed build and particular missing feature remain unconfirmed.",
     "No physical device, mobile screen reader, installed APK/IPA or legacy data migration test.",
     "Existing upstream native advisory and connected-service gates remain open."
-  ]
+  ],
+  "publication_receipt": "docs/ui-density-publication-2026-10-13.json",
+  "final_css_polish": {
+    "change": "Saved-label no-wrap/4px icon gap followed by position: static on the compact rest card to remove the observed 36px overlap. No training, storage or native-source changes.",
+    "label_polish_live_byte_checks": "16/16 passed; workflow 38435350829 succeeded.",
+    "latest_live_verification": "pending",
+    "note": "Final workflow 38436830052 succeeded; all 16 selected live files match; final live browser shows a 16px gap and no timer overlap. See publication receipt for exact scope.",
+    "live_verification": "passed"
+  }
 }

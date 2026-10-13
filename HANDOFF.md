@@ -6,6 +6,8 @@ Important newly confirmed gap: last actual Android installer is the Oct 9 Chicag
 
 Normal source and existing `/review/` and `/grizzly/` preview pushes remain authorized. Preserve original Pages root and older compiled chunks. Source/workspace Git metadata and dependency symlinks at the older checkout disappeared between turns, so this clean clone is authoritative. Next native milestone should reconcile the installed APK lineage and data-preserving update before further appearance features. Keep existing comprehensive task-register gates open.
 
+Published compact source `9d01b18df2ca2a4485450dc74132e29c47704b36` and final Pages `af70de390d937db669322e9214c4ebc8b66cef8e`. Workflow `38436830052` succeeded; all 16 final selected live checks passed. Observed Movefield set rows shrank from 240.47px to 126px, both brands expose all six Today actions, Saved stays on one line, and the rest timer no longer overlaps the next card (16px live gap). Exact evidence and screenshot are in `docs/ui-density-publication-2026-10-13.json`. Native exports are source qualification only; the historical APK migration remains the next critical milestone.
+
 ---
 
 # Current checkpoint · full Movefield and Grizzly audit · 13 October 2026

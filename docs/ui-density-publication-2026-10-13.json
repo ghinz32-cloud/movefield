@@ -1,0 +1,572 @@
+{
+  "format_version": 1,
+  "date": "2026-10-13",
+  "scope": "Compact UI and restored discoverability in both existing web previews and current native source. No update to an installed APK/IPA is claimed.",
+  "source": {
+    "branch": "codex/compact-ui-2026-10-13",
+    "commit": "9d01b18df2ca2a4485450dc74132e29c47704b36",
+    "tree": "ebc4c1597799fe1b1feaeb810e5b7ea61d937991",
+    "application_source_sha256": "80ec8a74d270bbe0d6971d7fecd2072fbba1f6507437ccb7d3071e73d6e83678"
+  },
+  "pages": {
+    "commit": "af70de390d937db669322e9214c4ebc8b66cef8e",
+    "tree": "5ec71aecd575fce829bce3ebed2eb6900c6ce1b9",
+    "workflow_run_id": 38436830052,
+    "workflow_status": "completed",
+    "workflow_conclusion": "success"
+  },
+  "apps": {
+    "movefield": "https://ghinz32-cloud.github.io/movefield/review/",
+    "grizzly": "https://ghinz32-cloud.github.io/movefield/grizzly/",
+    "original_preserved": "https://ghinz32-cloud.github.io/movefield/"
+  },
+  "initial_release": {
+    "workflow_run_id": 38434250624,
+    "workflow_status": "completed",
+    "workflow_conclusion": "success",
+    "live_files_selected": 20,
+    "live_files_matched": 20,
+    "live_evidence": {
+      "checked_at": "2026-10-13T16:55:32.620560+00:00",
+      "scope": "All changed deployed files plus unchanged original index and manifest. Single request per file; no installed-device claim.",
+      "files": [
+        {
+          "path": "grizzly/assets/cloud-account-Dh7gk3sJ.js",
+          "expected_sha256": "9c3ce72b5487b61004e578b1c20c16754b54d2e6c69405c6d5cdca450483f9fc",
+          "actual_sha256": "9c3ce72b5487b61004e578b1c20c16754b54d2e6c69405c6d5cdca450483f9fc",
+          "passed": true,
+          "bytes": 52929
+        },
+        {
+          "path": "grizzly/assets/index-CM93GhWw.css",
+          "expected_sha256": "964ccd8bdf6b697a48c09840b63f8740a12c09e6258c1a88692e176be98a6589",
+          "actual_sha256": "964ccd8bdf6b697a48c09840b63f8740a12c09e6258c1a88692e176be98a6589",
+          "passed": true,
+          "bytes": 266405
+        },
+        {
+          "path": "grizzly/assets/index-DLoRIrdA.js",
+          "expected_sha256": "4e8264daa7937d65872e2aa092bcad5fc953e293f16e276553c621bbe5f517a8",
+          "actual_sha256": "4e8264daa7937d65872e2aa092bcad5fc953e293f16e276553c621bbe5f517a8",
+          "passed": true,
+          "bytes": 1690038
+        },
+        {
+          "path": "grizzly/assets/progress-dashboard-BJY4VRuK.js",
+          "expected_sha256": "73e7a8d80f18a9285c1ca49a3ddbbd4221a3032e94b9017e006fa788ccf4699d",
+          "actual_sha256": "73e7a8d80f18a9285c1ca49a3ddbbd4221a3032e94b9017e006fa788ccf4699d",
+          "passed": true,
+          "bytes": 371520
+        },
+        {
+          "path": "grizzly/downloads/grizzly-fitness-native-source.zip",
+          "expected_sha256": "64631197fb965d47218a24a8185aa3e18fb785ff6f8fab1a3f7b6282515b6108",
+          "actual_sha256": "64631197fb965d47218a24a8185aa3e18fb785ff6f8fab1a3f7b6282515b6108",
+          "passed": true,
+          "bytes": 8103366
+        },
+        {
+          "path": "grizzly/downloads/movefield-native-current.zip",
+          "expected_sha256": "2b2d90a4250f6425c3a182561de88239307da3c76e9710fb36cc79657e24c2c0",
+          "actual_sha256": "2b2d90a4250f6425c3a182561de88239307da3c76e9710fb36cc79657e24c2c0",
+          "passed": true,
+          "bytes": 8103371
+        },
+        {
+          "path": "grizzly/grizzly-manifest.json",
+          "expected_sha256": "d995ff9a24ca3910cde3abac75c294f19c367d104448a5d6aae84e6cf8dabc2a",
+          "actual_sha256": "d995ff9a24ca3910cde3abac75c294f19c367d104448a5d6aae84e6cf8dabc2a",
+          "passed": true,
+          "bytes": 220477
+        },
+        {
+          "path": "grizzly/index.html",
+          "expected_sha256": "b164024df4a8b5e40c5ad73a08654caad69b461f2e95069df61a14e01ec769a7",
+          "actual_sha256": "b164024df4a8b5e40c5ad73a08654caad69b461f2e95069df61a14e01ec769a7",
+          "passed": true,
+          "bytes": 1160
+        },
+        {
+          "path": "grizzly/movefield-sw.js",
+          "expected_sha256": "80842b281c5d949bfb83b00c64a47bdd8b330a1c9584cfac55889838163b1aef",
+          "actual_sha256": "80842b281c5d949bfb83b00c64a47bdd8b330a1c9584cfac55889838163b1aef",
+          "passed": true,
+          "bytes": 4171
+        },
+        {
+          "path": "review/assets/cloud-account-PAlK_SOh.js",
+          "expected_sha256": "03fe5be8836ba56362c6fb979b873c610a2683cb9c6565f513ed96b6b1ac608c",
+          "actual_sha256": "03fe5be8836ba56362c6fb979b873c610a2683cb9c6565f513ed96b6b1ac608c",
+          "passed": true,
+          "bytes": 52947
+        },
+        {
+          "path": "review/assets/index-BCq4QZMY.css",
+          "expected_sha256": "ec8595a8001ab13be5b643a98486834eb3c1a9b34bb4ac896a0bd4250846491e",
+          "actual_sha256": "ec8595a8001ab13be5b643a98486834eb3c1a9b34bb4ac896a0bd4250846491e",
+          "passed": true,
+          "bytes": 218881
+        },
+        {
+          "path": "review/assets/index-Cjsn2jrv.js",
+          "expected_sha256": "164170979fd0776e6444c1a8577ca81d13840cd548c575fac2f710e89353869d",
+          "actual_sha256": "164170979fd0776e6444c1a8577ca81d13840cd548c575fac2f710e89353869d",
+          "passed": true,
+          "bytes": 1687101
+        },
+        {
+          "path": "review/assets/progress-dashboard-poy8VLTZ.js",
+          "expected_sha256": "df150ac904fb3707a7f9dfa61575010be09d9432d4f76c6ebbd40e5bd40c191a",
+          "actual_sha256": "df150ac904fb3707a7f9dfa61575010be09d9432d4f76c6ebbd40e5bd40c191a",
+          "passed": true,
+          "bytes": 371520
+        },
+        {
+          "path": "review/downloads/grizzly-fitness-native-source.zip",
+          "expected_sha256": "64631197fb965d47218a24a8185aa3e18fb785ff6f8fab1a3f7b6282515b6108",
+          "actual_sha256": "64631197fb965d47218a24a8185aa3e18fb785ff6f8fab1a3f7b6282515b6108",
+          "passed": true,
+          "bytes": 8103366
+        },
+        {
+          "path": "review/downloads/movefield-native-current.zip",
+          "expected_sha256": "2b2d90a4250f6425c3a182561de88239307da3c76e9710fb36cc79657e24c2c0",
+          "actual_sha256": "2b2d90a4250f6425c3a182561de88239307da3c76e9710fb36cc79657e24c2c0",
+          "passed": true,
+          "bytes": 8103371
+        },
+        {
+          "path": "review/index.html",
+          "expected_sha256": "fd069b2841d04ec6cf66f18753f2b98ef95c1637fd412d425f979344f2a01d63",
+          "actual_sha256": "fd069b2841d04ec6cf66f18753f2b98ef95c1637fd412d425f979344f2a01d63",
+          "passed": true,
+          "bytes": 868
+        },
+        {
+          "path": "review/movefield-sw.js",
+          "expected_sha256": "2cfb86067cbbdb778eb38d2ac9f70bbd295950ef87d4a1890e716b61b8795362",
+          "actual_sha256": "2cfb86067cbbdb778eb38d2ac9f70bbd295950ef87d4a1890e716b61b8795362",
+          "passed": true,
+          "bytes": 2916
+        },
+        {
+          "path": "review/review-manifest.json",
+          "expected_sha256": "01355275b079a28f069158d6327116a1eb3ec976dab3d330cb8ad00cacad8a15",
+          "actual_sha256": "01355275b079a28f069158d6327116a1eb3ec976dab3d330cb8ad00cacad8a15",
+          "passed": true,
+          "bytes": 220569
+        },
+        {
+          "path": "index.html",
+          "expected_sha256": "03e5b24917fca69179d0282fee294410fe037de2fc02ba076511f1353d253950",
+          "actual_sha256": "03e5b24917fca69179d0282fee294410fe037de2fc02ba076511f1353d253950",
+          "passed": true,
+          "bytes": 60569
+        },
+        {
+          "path": "pages-manifest.json",
+          "expected_sha256": "68e26cf6fe417f1a2914b90599bf8d8fc13a197e2f6d7510f8257af3a87de2d9",
+          "actual_sha256": "68e26cf6fe417f1a2914b90599bf8d8fc13a197e2f6d7510f8257af3a87de2d9",
+          "passed": true,
+          "bytes": 7591
+        }
+      ],
+      "passed": true
+    },
+    "source_commit": "50680055641193b438e2cb83f31074e662224826",
+    "pages_commit": "c6f34637897dbb4d7361a1a839072fef84d43717"
+  },
+  "final_release_live_verification": {
+    "status": "passed",
+    "selected_checks": 16,
+    "matched_checks": 16,
+    "full_evidence": {
+      "checked_at": "2026-10-13T17:14:43.593055+00:00",
+      "scope": "All changed deployed files plus unchanged original index and manifest. Single request per file; no installed-device claim.",
+      "files": [
+        {
+          "path": "grizzly/assets/cloud-account-CVbnkDcX.js",
+          "expected_sha256": "28974dc8b90fef31fd8c637ab4253ed018ec3cbd6d0014d973972d6c9ead3e89",
+          "actual_sha256": "28974dc8b90fef31fd8c637ab4253ed018ec3cbd6d0014d973972d6c9ead3e89",
+          "passed": true,
+          "bytes": 52929
+        },
+        {
+          "path": "grizzly/assets/index-D03wRdOU.css",
+          "expected_sha256": "38ce7f436a18ffff6b880ea145adeb3ad41e94ba9f3b32e44ca9cdef647e8ea9",
+          "actual_sha256": "38ce7f436a18ffff6b880ea145adeb3ad41e94ba9f3b32e44ca9cdef647e8ea9",
+          "passed": true,
+          "bytes": 266521
+        },
+        {
+          "path": "grizzly/assets/index-NZMzh8AV.js",
+          "expected_sha256": "be2c416412e3e878974000e472c64d0c945e72ec5454b4412c63b72c06487166",
+          "actual_sha256": "be2c416412e3e878974000e472c64d0c945e72ec5454b4412c63b72c06487166",
+          "passed": true,
+          "bytes": 1690038
+        },
+        {
+          "path": "grizzly/assets/progress-dashboard-DrZOcSS9.js",
+          "expected_sha256": "67d81573993cb8ac33017808c95b2dc687421a4e976e9eb77803a82c7d562b40",
+          "actual_sha256": "67d81573993cb8ac33017808c95b2dc687421a4e976e9eb77803a82c7d562b40",
+          "passed": true,
+          "bytes": 371520
+        },
+        {
+          "path": "grizzly/grizzly-manifest.json",
+          "expected_sha256": "748d83cc3464868ce4ee98b542925d668c8b3b2b295796b8e5cb9ec55d42e3a4",
+          "actual_sha256": "748d83cc3464868ce4ee98b542925d668c8b3b2b295796b8e5cb9ec55d42e3a4",
+          "passed": true,
+          "bytes": 221621
+        },
+        {
+          "path": "grizzly/index.html",
+          "expected_sha256": "51369fe5c02af8f89fc311dabc180b0114f03ab69dabe66194c0f40cdcb1ade4",
+          "actual_sha256": "51369fe5c02af8f89fc311dabc180b0114f03ab69dabe66194c0f40cdcb1ade4",
+          "passed": true,
+          "bytes": 1160
+        },
+        {
+          "path": "grizzly/movefield-sw.js",
+          "expected_sha256": "1e04a43c66246d37c654733f35d6c51002d09750cf32697c862fb9dcdba22c98",
+          "actual_sha256": "1e04a43c66246d37c654733f35d6c51002d09750cf32697c862fb9dcdba22c98",
+          "passed": true,
+          "bytes": 4171
+        },
+        {
+          "path": "review/assets/cloud-account-Cp-v19YS.js",
+          "expected_sha256": "967a9f30cf3a306b102aee34abba90f178334086d89d0e79f18f9d354ec632de",
+          "actual_sha256": "967a9f30cf3a306b102aee34abba90f178334086d89d0e79f18f9d354ec632de",
+          "passed": true,
+          "bytes": 52947
+        },
+        {
+          "path": "review/assets/index-D-AesoQk.js",
+          "expected_sha256": "2d333a77c5468825082ea298b1141305ea29781f44bb0128254038553aa9cc94",
+          "actual_sha256": "2d333a77c5468825082ea298b1141305ea29781f44bb0128254038553aa9cc94",
+          "passed": true,
+          "bytes": 1687101
+        },
+        {
+          "path": "review/assets/index-E9vwYLmm.css",
+          "expected_sha256": "cf6968afcf0f7ad76979349e36c634116a03021db2bcd7dce38920a82ec09fc6",
+          "actual_sha256": "cf6968afcf0f7ad76979349e36c634116a03021db2bcd7dce38920a82ec09fc6",
+          "passed": true,
+          "bytes": 218997
+        },
+        {
+          "path": "review/assets/progress-dashboard-BtZVAx8I.js",
+          "expected_sha256": "ae445ce09454abf3311e8f2094bbc765ead5da277e83002fe3e983bddfa00a75",
+          "actual_sha256": "ae445ce09454abf3311e8f2094bbc765ead5da277e83002fe3e983bddfa00a75",
+          "passed": true,
+          "bytes": 371520
+        },
+        {
+          "path": "review/index.html",
+          "expected_sha256": "7e62b4ed4f7ad4a5eca2fbead09bcf4b4a6e29ef1f065fb689d8953f3f106153",
+          "actual_sha256": "7e62b4ed4f7ad4a5eca2fbead09bcf4b4a6e29ef1f065fb689d8953f3f106153",
+          "passed": true,
+          "bytes": 868
+        },
+        {
+          "path": "review/movefield-sw.js",
+          "expected_sha256": "a06e31d818ed7f9f659aa20f8b601f42122a6dc4461d87ff9daa83ecd7e0e0b0",
+          "actual_sha256": "a06e31d818ed7f9f659aa20f8b601f42122a6dc4461d87ff9daa83ecd7e0e0b0",
+          "passed": true,
+          "bytes": 2916
+        },
+        {
+          "path": "review/review-manifest.json",
+          "expected_sha256": "c94ca00cf5e0f1175b10b2412173fc4f83aa83457ea3866c83f024cb4ee49ba1",
+          "actual_sha256": "c94ca00cf5e0f1175b10b2412173fc4f83aa83457ea3866c83f024cb4ee49ba1",
+          "passed": true,
+          "bytes": 221713
+        },
+        {
+          "path": "index.html",
+          "expected_sha256": "03e5b24917fca69179d0282fee294410fe037de2fc02ba076511f1353d253950",
+          "actual_sha256": "03e5b24917fca69179d0282fee294410fe037de2fc02ba076511f1353d253950",
+          "passed": true,
+          "bytes": 60569
+        },
+        {
+          "path": "pages-manifest.json",
+          "expected_sha256": "68e26cf6fe417f1a2914b90599bf8d8fc13a197e2f6d7510f8257af3a87de2d9",
+          "actual_sha256": "68e26cf6fe417f1a2914b90599bf8d8fc13a197e2f6d7510f8257af3a87de2d9",
+          "passed": true,
+          "bytes": 7591
+        }
+      ],
+      "passed": true
+    },
+    "note": "Final rest-card release: all 14 changed deployed files and both selected original-root files match the reviewed bytes."
+  },
+  "preservation": {
+    "original_root_files_unchanged": 63,
+    "basis": "Published tree comparison supplied by the root publication audit. Initial live checks also verified the unchanged original index and Pages manifest.",
+    "old_compiled_chunks_retained": true
+  },
+  "direct_browser_acceptance": {
+    "scope": "Synthetic sample journeys on both compact web previews; final Movefield release also reloaded and checked through sample start, bench selection, suggested load, set save, saved label and sidebar non-overlap.",
+    "movefield": {
+      "today_adjustment_actions_visible": 6,
+      "journey": [
+        "Sample Today",
+        "Start workout",
+        "Bench press"
+      ],
+      "unsaved_set_row_measurements": {
+        "same_viewport": true,
+        "before": {
+          "height_px": 240.46875,
+          "width_px": 658.25
+        },
+        "after": {
+          "height_px": 126,
+          "width_px": 677.25
+        }
+      },
+      "set_saved": {
+        "weight_lb": 132.5,
+        "reps": 5,
+        "set_rir": 3,
+        "saved_sets": 1,
+        "total_workout_sets": 12
+      },
+      "rest_timer_pause_worked": true,
+      "final_timer_geometry": {
+        "rest_position": "static",
+        "rest_bottom_px": 472.921875,
+        "concern_top_px": 488.921875,
+        "gap_px": 16,
+        "overlap_px": 0
+      },
+      "final_saved_label_white_space": "nowrap"
+    },
+    "grizzly": {
+      "today_adjustment_actions_visible": 6,
+      "move_workout_dialog_opened_directly": true,
+      "move_workout_dialog_closed": true
+    },
+    "observed_application_console_errors": 0,
+    "console_exclusions": "Browser-extension logs.",
+    "final_screenshots": {
+      "status": "captured_and_visually_verified",
+      "files": [
+        "docs/evidence/movefield-compact-logger-2026-10-13.jpg"
+      ],
+      "sha256": "81e71627fe2d77b78c996e16dc38c342c83a5646b6add0f49f99b0e03f267541"
+    }
+  },
+  "final_css_polish": {
+    "finding": "The sticky rest card overlapped the Something changed card by 36px during direct browser inspection.",
+    "observed_overlap_px": 36,
+    "change": "Set the compact rest card to position: static so it stays in normal document flow; retain its pause/resume, extension, end and alert controls.",
+    "source_change_included": true,
+    "live_render_verification": "passed",
+    "observed_final_gap_px": 16
+  },
+  "native_exports": {
+    "checked_at": "2026-10-13T16:51:19.731495+00:00",
+    "scope": "Distinct cleared-cache Hermes exports, paired with native identity/module checks; no installed-device claim.",
+    "flavors": {
+      "movefield": {
+        "android": {
+          "path": "_expo/static/js/android/index-db7a098af354e470f63bcce62cc88f9f.hbc",
+          "bytes": 4601455,
+          "sha256": "47a60efe70e440e7eab773b98e0696819398494014e83898bde3a77bd4d9a466"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-e9ff71e2a1ebc59733b53f86e9308afd.hbc",
+          "bytes": 4588846,
+          "sha256": "d0d2bb70a621fa9e5af32d965f5f2199744911bd8b892f102e8212dd1cf6a8b5"
+        }
+      },
+      "grizzly": {
+        "android": {
+          "path": "_expo/static/js/android/index-412e11982744afb6e42057ba5ccb3257.hbc",
+          "bytes": 4601574,
+          "sha256": "c74d47b9db3852389817a38f96c2ca84088282654131098ca05d0c4bf5161d3f"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-678c056ccb87fb3e401824f711ab926d.hbc",
+          "bytes": 4588600,
+          "sha256": "a3109a1b9cf4202c9d958bd59a14787211bfb1343e5b90fdf4e8abcd39c921a6"
+        }
+      }
+    }
+  },
+  "native_source_archives": {
+    "public/downloads/movefield-native-current.zip": "2b2d90a4250f6425c3a182561de88239307da3c76e9710fb36cc79657e24c2c0",
+    "public/downloads/grizzly-fitness-native-source.zip": "64631197fb965d47218a24a8185aa3e18fb785ff6f8fab1a3f7b6282515b6108"
+  },
+  "credential_pattern_scan": {
+    "ran_at": "2026-10-13T17:12:09.444925+00:00",
+    "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed.",
+    "files": 6037,
+    "zip_members": 2172,
+    "matches": []
+  },
+  "installed_android_lineage": {
+    "last_known_installer_workflow_run_id": 38007809566,
+    "historical_source_commit": "9cdcec081bee3525838ac334da1bb48de6690f13",
+    "historical_branch": "audit/2026-10-08-quality",
+    "historical_package_id": "com.ghinz32.movefield",
+    "current_source_package_id": "com.ghinz32.movefield.prototype",
+    "exact_user_installed_build_confirmed": false,
+    "upgrade_status": "Blocked on preservation-first storage reconciliation and old-APK upgrade testing.",
+    "note": "Historical and current native encryption, database and transfer formats differ. Merely changing the package identity could strand prior records. Source ZIPs and Hermes exports do not update the installed phone app; do not uninstall the old app before verified recovery."
+  },
+  "related_records": {
+    "validation": "docs/ui-density-validation-2026-10-13.json",
+    "feature_parity": "docs/ui-density-feature-parity-2026-10-13.md",
+    "download_provenance": "docs/ui-density-download-provenance-2026-10-13.md",
+    "native": "docs/ui-density-native-2026-10-13.md",
+    "web": "docs/ui-density-web-2026-10-13.md"
+  },
+  "limits": [
+    "No installed Android/iPhone, signed APK/IPA, physical touch, native screen-reader or old-record migration acceptance.",
+    "Direct browser measurements cover the observed desktop viewport, not a complete narrow-screen or accessibility matrix.",
+    "The exact downloaded or installed app used by the user remains unconfirmed.",
+    "Existing upstream native dependency advisories, connected-service qualification and broader product task-register gates remain open."
+  ],
+  "checkpoint_note": "Documentation checkpoint after final successful deployment, byte verification and browser acceptance. Application and native bytes unchanged by this checkpoint.",
+  "label_polish_release": {
+    "source": {
+      "branch": "codex/compact-ui-2026-10-13",
+      "commit": "680cd911c5913b6e4670a0ce1dbd2be6a8302bea",
+      "tree": "8d813b9f8b56c1c0d162d394784994ce46881852",
+      "application_source_sha256": "532146c930f55bb3383066960b5dafd62c5f548ae29fa91192e0c81cf11fbac9"
+    },
+    "pages": {
+      "commit": "e31786a78a76759881bac0502a4978a0562f321d",
+      "tree": "2feaddfd190919c881bbff92ebef40d7344c9825",
+      "workflow_run_id": 38435350829,
+      "workflow_status": "completed",
+      "workflow_conclusion": "success"
+    },
+    "live_files_selected": 16,
+    "live_files_matched": 16,
+    "live_evidence": {
+      "checked_at": "2026-10-13T17:05:20.162631+00:00",
+      "scope": "All changed deployed files plus unchanged original index and manifest. Single request per file; no installed-device claim.",
+      "files": [
+        {
+          "path": "grizzly/assets/cloud-account-u__csUs3.js",
+          "expected_sha256": "9eba2e358e92bc31723769fbf0fdcba6a5741b811cbdb9a517b02a3f83353303",
+          "actual_sha256": "9eba2e358e92bc31723769fbf0fdcba6a5741b811cbdb9a517b02a3f83353303",
+          "passed": true,
+          "bytes": 52929
+        },
+        {
+          "path": "grizzly/assets/index-CEhsGys0.css",
+          "expected_sha256": "db0186d7203efa5c74a068697f01e466753f356009fbf841700fec5c2280cdd2",
+          "actual_sha256": "db0186d7203efa5c74a068697f01e466753f356009fbf841700fec5c2280cdd2",
+          "passed": true,
+          "bytes": 266530
+        },
+        {
+          "path": "grizzly/assets/index-eyy-gNW2.js",
+          "expected_sha256": "b993f39fdbb8eedc098b1c67377be408202a541278589bd96a9c6b9359dbfbfa",
+          "actual_sha256": "b993f39fdbb8eedc098b1c67377be408202a541278589bd96a9c6b9359dbfbfa",
+          "passed": true,
+          "bytes": 1690038
+        },
+        {
+          "path": "grizzly/assets/progress-dashboard-9LSHXT7I.js",
+          "expected_sha256": "051c83efc3d77c14f324dd221aa01d8dc7ce8da172441cd405bbee7802173629",
+          "actual_sha256": "051c83efc3d77c14f324dd221aa01d8dc7ce8da172441cd405bbee7802173629",
+          "passed": true,
+          "bytes": 371520
+        },
+        {
+          "path": "grizzly/grizzly-manifest.json",
+          "expected_sha256": "78f32be2f7a749a28ea93d0e0e47d8f13c095fe44830d46cf5ad3e99270a4df7",
+          "actual_sha256": "78f32be2f7a749a28ea93d0e0e47d8f13c095fe44830d46cf5ad3e99270a4df7",
+          "passed": true,
+          "bytes": 221049
+        },
+        {
+          "path": "grizzly/index.html",
+          "expected_sha256": "cf8017e0c6348b7c5c2fe6ce313adb29ee3adecc91d0e54caeff3589baa190a2",
+          "actual_sha256": "cf8017e0c6348b7c5c2fe6ce313adb29ee3adecc91d0e54caeff3589baa190a2",
+          "passed": true,
+          "bytes": 1160
+        },
+        {
+          "path": "grizzly/movefield-sw.js",
+          "expected_sha256": "5dec81e20c5478fc8011c724a1cec254bb18fd6817aa9346c0cb11a675787453",
+          "actual_sha256": "5dec81e20c5478fc8011c724a1cec254bb18fd6817aa9346c0cb11a675787453",
+          "passed": true,
+          "bytes": 4171
+        },
+        {
+          "path": "review/assets/cloud-account-CcLUvcaS.js",
+          "expected_sha256": "7fd333508e5607812a74ed36f62f325e3bd31416449b390f46c617233c4a33c3",
+          "actual_sha256": "7fd333508e5607812a74ed36f62f325e3bd31416449b390f46c617233c4a33c3",
+          "passed": true,
+          "bytes": 52947
+        },
+        {
+          "path": "review/assets/index-C7lIsnQU.css",
+          "expected_sha256": "3c5f6c1bf6cf9fa7eda3ecc1c2c8072c49bf508940531f31819ad9ae109754ee",
+          "actual_sha256": "3c5f6c1bf6cf9fa7eda3ecc1c2c8072c49bf508940531f31819ad9ae109754ee",
+          "passed": true,
+          "bytes": 219006
+        },
+        {
+          "path": "review/assets/index-DCSTD2R0.js",
+          "expected_sha256": "96790882daf87c3499161e8bdd07cfaebba93fdea49c234bca16324f3bfbf9ef",
+          "actual_sha256": "96790882daf87c3499161e8bdd07cfaebba93fdea49c234bca16324f3bfbf9ef",
+          "passed": true,
+          "bytes": 1687101
+        },
+        {
+          "path": "review/assets/progress-dashboard-C-UTjOlb.js",
+          "expected_sha256": "e7916c4571e32cf944a7bc96bd51afc139f2ad0109387587f196e59626d0ea6f",
+          "actual_sha256": "e7916c4571e32cf944a7bc96bd51afc139f2ad0109387587f196e59626d0ea6f",
+          "passed": true,
+          "bytes": 371520
+        },
+        {
+          "path": "review/index.html",
+          "expected_sha256": "639bb72bea1301803123a7a9b3c87e1c168cba7eb9225800e5f4ac8b3108dbf7",
+          "actual_sha256": "639bb72bea1301803123a7a9b3c87e1c168cba7eb9225800e5f4ac8b3108dbf7",
+          "passed": true,
+          "bytes": 868
+        },
+        {
+          "path": "review/movefield-sw.js",
+          "expected_sha256": "b9c34e5e489951bc3a60362c6e842d4c15edf4d34cfe1b178e17a39042fe3eed",
+          "actual_sha256": "b9c34e5e489951bc3a60362c6e842d4c15edf4d34cfe1b178e17a39042fe3eed",
+          "passed": true,
+          "bytes": 2916
+        },
+        {
+          "path": "review/review-manifest.json",
+          "expected_sha256": "82dd4cd1ed4851d0c58364b8992b05cae1a9542df887a30ddabd8d9722f57d0d",
+          "actual_sha256": "82dd4cd1ed4851d0c58364b8992b05cae1a9542df887a30ddabd8d9722f57d0d",
+          "passed": true,
+          "bytes": 221141
+        },
+        {
+          "path": "index.html",
+          "expected_sha256": "03e5b24917fca69179d0282fee294410fe037de2fc02ba076511f1353d253950",
+          "actual_sha256": "03e5b24917fca69179d0282fee294410fe037de2fc02ba076511f1353d253950",
+          "passed": true,
+          "bytes": 60569
+        },
+        {
+          "path": "pages-manifest.json",
+          "expected_sha256": "68e26cf6fe417f1a2914b90599bf8d8fc13a197e2f6d7510f8257af3a87de2d9",
+          "actual_sha256": "68e26cf6fe417f1a2914b90599bf8d8fc13a197e2f6d7510f8257af3a87de2d9",
+          "passed": true,
+          "bytes": 7591
+        }
+      ],
+      "passed": true
+    },
+    "change": "Saved-label no-wrap and 4px icon gap.",
+    "followup_finding": "Direct browser inspection subsequently found the sticky rest card overlapping the Something changed card by 36px."
+  }
+}
