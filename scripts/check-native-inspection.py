@@ -11,6 +11,10 @@ inspector=importlib.util.module_from_spec(spec);spec.loader.exec_module(inspecto
 fixture=ROOT/'scripts/fixtures/native-preview-metadata'
 ns='{http://schemas.android.com/apk/res/android}'
 original=ET.parse(fixture/'manifest.xml')
+# This golden compilation belongs to Movefield regardless of the CI flavor.
+# The separate actual-APK inspector still uses NATIVE_EXPECTED_PACKAGE.
+assert original.getroot().get('package')=='com.ghinz32.movefield'
+inspector.PACKAGE='com.ghinz32.movefield'
 with tempfile.TemporaryDirectory() as directory:
  path=Path(directory)/'manifest.xml'
  def inspect(tree):
