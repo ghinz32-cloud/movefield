@@ -1,10 +1,10 @@
 /* Local-only app shell; stores code/guides, never decrypted records or API responses. */
-const REVISION = 'DEVELOPMENT_DISABLED';
-const BASE = '/';
-const STATIC_REVIEW = false;
-const ASSETS = /* BUILD_ASSETS */ [];
-const CACHE_PREFIX = 'movefield-shell-';
-const EXTRA_STATIC = /* BRAND_ASSETS */ [];
+const REVISION = "79091c5050030481b184";
+const BASE = "/movefield/grizzly/";
+const STATIC_REVIEW = true;
+const ASSETS = ["/movefield/grizzly/assets/cloud-account-_pqxJAZe.js","/movefield/grizzly/assets/index-CLb2LO5Z.css","/movefield/grizzly/assets/index-MSUZAmaI.js","/movefield/grizzly/assets/progress-dashboard-CPUztcEl.js"];
+const CACHE_PREFIX = "grizzly-fitness-shell-";
+const EXTRA_STATIC = ["fonts/roadrage-heading.ttf","fonts/rubikdistressed-heading.ttf","fonts/rubikburned-heading.ttf","fonts/rubikmarkerhatch-heading.ttf","fonts/rubikwetpaint-heading.ttf","fonts/rubikspraypaint-heading.ttf","fonts/rubikstorm-heading.ttf","fonts/lacquer-heading.ttf","fonts/frijole-heading.ttf","fonts/shojumaru-heading.ttf","fonts/tradewinds-heading.ttf","fonts/rubikmicrobe-heading.ttf","fonts/rubikpuddles-heading.ttf","fonts/butcherman-heading.ttf","fonts/creepster-heading.ttf","fonts/jollylodger-heading.ttf","fonts/almendradisplay-heading.ttf","fonts/rye-heading.ttf","fonts/unifrakturcook-heading.ttf","fonts/sedgwickavedisplay-heading.ttf","fonts/inter-variable.ttf","fonts/barlow-condensed-semibold.ttf","fonts/oswald-heading.ttf","fonts/bitter-heading.ttf","fonts/rajdhani-heading.ttf","fonts/newrocker-heading.ttf","fonts/blackopsone-heading.ttf","fonts/rubikdirt-heading.ttf","fonts/metal-mania-regular.ttf","fonts/bungee-regular.ttf","fonts/sairastencilone-heading.ttf","fonts/stardosstencil-heading.ttf","fonts/pirataone-heading.ttf","fonts/eater-heading.ttf","fonts/nosifer-heading.ttf","brand/grizzly-fitness-logo.jpg","grizzly-favicon.svg","grizzly-paw.svg","brand/wilderness/grizzly-hero-v1.jpg","brand/wilderness/grizzly-forest-v1.jpg"];
 const CACHE = CACHE_PREFIX + REVISION;
 const STATIC = new Set([...ASSETS, ...['exercise-guides.json', 'exercise-content.json', 'fonts/inter-variable.ttf', 'fonts/barlow-condensed-semibold.ttf',...EXTRA_STATIC].map(path=>BASE+path)]);
 async function safeShell(response) { if(!response.ok||!response.headers.get('Content-Type')?.includes('text/html')||response.headers.has('Set-Cookie'))return false;return STATIC_REVIEW?(await response.clone().text()).includes('<meta name="movefield-static-review" content="true">'):response.headers.get('X-Movefield-Offline-Shell') === 'local-v1'; }
