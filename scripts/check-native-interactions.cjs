@@ -60,4 +60,5 @@ async function notificationJourney(){
   }
  }
 }
-(async()=>{await setupJourney();await setupJourney({id:'PLCOMPACT2',goal:'powerlifting'});await setupJourney({id:'src-sl5x5-2',goal:'powerlifting'});await calendarJourney();await editReorderJourney();await notificationJourney();console.log('PASS native callback journeys: default/catalog/source setup, focused plan review, failed-save retry and profile preservation; calendar adjacent-month/date-seeded commitment/direct resume; reorder during target editing preserves identities; both brands permit only current foreground reminders. Hook and OS boundaries mocked; no device claim.');})().catch(e=>{console.error(e);process.exitCode=1});
+module.exports={harness};
+if(require.main===module)(async()=>{await setupJourney();await setupJourney({id:'PLCOMPACT2',goal:'powerlifting'});await setupJourney({id:'src-sl5x5-2',goal:'powerlifting'});await calendarJourney();await editReorderJourney();await notificationJourney();console.log('PASS native callback journeys: default/catalog/source setup, focused plan review, failed-save retry and profile preservation; calendar adjacent-month/date-seeded commitment/direct resume; reorder during target editing preserves identities; both brands permit only current foreground reminders. Hook and OS boundaries mocked; no device claim.');})().catch(e=>{console.error(e);process.exitCode=1});

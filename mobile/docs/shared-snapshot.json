@@ -4,7 +4,7 @@
     {
       "source": "lib/training-runtime.js",
       "target": "src/shared/training-runtime.js",
-      "sha256": "68b3164cb6c3eba549c5d88084e929088a0998f3d86b44ffbf3ffa6d66f50ac6"
+      "sha256": "e181809f5da6ce7c35b2f28d1afcdfebb95d7bbdad7f3d04693acc15a18aca6f"
     },
     {
       "source": "lib/training-runtime.d.ts",
@@ -84,12 +84,12 @@
     {
       "source": "lib/reusable-plan-runtime.js",
       "target": "src/shared/reusable-plan-runtime.js",
-      "sha256": "fd19048620a98e2135c28c628b45df36fcf524e3207ca2d462fb80715fcab2d1"
+      "sha256": "11b26015906f593628b6520c99c861519604a1ca0eb258c8fb9aa2628859d8cf"
     },
     {
       "source": "lib/reusable-plan-runtime.d.ts",
       "target": "src/shared/reusable-plan-runtime.d.ts",
-      "sha256": "f7364e83c09e01e46efbfc2e1830e0782396abdfbfc2a1ca628c221b386b6820"
+      "sha256": "a5ee69dc8e9b6e7f7f02593be23a7e94c0aa76d627d93182100b30bc7ab285f5"
     },
     {
       "source": "lib/session-duration-runtime.js",
@@ -475,6 +475,11 @@
       "source": "docs/exercise-library-completion.json",
       "target": "docs/exercise-library-completion.json",
       "sha256": "aface77b991eda9cb28e84fb48dc00627b9958b2b852c5a940d00271e64c44e1"
+    },
+    {
+      "source": "lib/block-starting-loads.ts",
+      "target": "src/shared/block-starting-loads.ts",
+      "sha256": "d9e1c084931ebde5975a426066581dfbe0eb55817b58739481956a7cb98b15df"
     }
   ]
 }

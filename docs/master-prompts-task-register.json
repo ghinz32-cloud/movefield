@@ -5,7 +5,7 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Delivered current development-signed Android installers for both brands, exact-source compilation/inspection and published compatible-backup previews. See docs/transfer-compatibility-publication-2026-10-13.json. Physical old/new upgrade/iPhone/store, next-block/baseline editor and canonical product gates remain open.",
+  "active_checkpoint": "Reviewed starting-weight editor for reused blocks, both web/native brands; explicit first-exposure weights, matching actual-history references, machine contexts, capacity and stale-preview guards. Exact publication/build receipt is docs/block-starting-loads-publication-2026-10-13.json. Physical upgrade, individualized next-block volume/source resets and other canonical gates remain open.",
   "completion_claim": "Verified bounded Android delivery and older-transfer compatibility milestone; no installed-device, store or full six-prompt completion claim.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
@@ -88,6 +88,10 @@
         {
           "path": "docs/reusable-block-validation-2026-10-13.json",
           "result": "Current inventory guard and preserved reuse/history boundaries verified; full cycle/next-block acceptance is not complete."
+        },
+        {
+          "path": "docs/block-starting-loads-validation-2026-10-13.json",
+          "result": "First-exposure weight review preserves history, source stages and future progression; this is not full next-block programming or physical-device qualification."
         }
       ],
       "next_action": "Qualify complete cycles, stress distributions and next-block transitions across supported modalities; reusable blocks preserve prescriptions/history but do not certify each plan."
@@ -108,6 +112,10 @@
           "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
           "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
           "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        },
+        {
+          "path": "docs/block-starting-loads-validation-2026-10-13.json",
+          "result": "First-exposure weight review preserves history, source stages and future progression; this is not full next-block programming or physical-device qualification."
         }
       ],
       "next_action": "Finish versioned progression state mechanisms and exhaustive runtime outcomes; existing equipment/effort/partial/custom regression checks are partial evidence."

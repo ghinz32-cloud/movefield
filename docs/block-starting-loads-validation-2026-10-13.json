@@ -1,0 +1,333 @@
+{
+  "checkedAt": "2026-10-13T19:20:37.938744+00:00",
+  "baselineSource": "22ee8337738353c86c84896ddff7dfeca1153685",
+  "applicationSourceSHA256": "e0d71d1b9f4edb700b6b0112d810056b6af9d5f11a7954465b57f9e74a979e46",
+  "core": {
+    "ran_at": "2026-10-13T19:13:21.128Z",
+    "scope": "Local synthetic domain/adapter and type checks; no device, connected provider or deployment qualification.",
+    "results": [
+      {
+        "name": "runtime module contracts",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 4294
+      },
+      {
+        "name": "production bundled training",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2323
+      },
+      {
+        "name": "complete training lifecycles",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 6331
+      },
+      {
+        "name": "web workout and setup controls",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 922
+      },
+      {
+        "name": "native interaction callbacks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1188
+      },
+      {
+        "name": "native compact layout and focus",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 420
+      },
+      {
+        "name": "offline update lifecycle",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 352
+      },
+      {
+        "name": "Grizzly appearance and retired preset migration",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1097
+      },
+      {
+        "name": "clickable web calendar",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1454
+      },
+      {
+        "name": "Grizzly daily context and local day changes",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1383
+      },
+      {
+        "name": "preview ownership and retained assets",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 368
+      },
+      {
+        "name": "Grizzly motion and licensed fonts",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 402
+      },
+      {
+        "name": "distinct goal families and flexible selection",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1985
+      },
+      {
+        "name": "creator-source and set-effort refinements",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 759
+      },
+      {
+        "name": "public source rules and scientific accounting",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1007
+      },
+      {
+        "name": "Today facts and actions",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 639
+      },
+      {
+        "name": "transactional encrypted records",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 6363
+      },
+      {
+        "name": "activity progress and comparison context",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 679
+      },
+      {
+        "name": "evidence/duration/calendar zones",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 4296
+      },
+      {
+        "name": "calendar and reusable blocks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 915
+      },
+      {
+        "name": "reusable block equipment guards",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1248
+      },
+      {
+        "name": "next-block starting weights",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1187
+      },
+      {
+        "name": "starting-weight interface callbacks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1004
+      },
+      {
+        "name": "Cloudflare account/storage/coaching",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 4115
+      },
+      {
+        "name": "portable cloud vault and retry",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2736
+      },
+      {
+        "name": "native SDK cookie transport",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1234
+      },
+      {
+        "name": "plan import",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 786
+      },
+      {
+        "name": "durability",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 809
+      },
+      {
+        "name": "vault and history",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1145
+      },
+      {
+        "name": "historical native upgrade preservation",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 25462
+      },
+      {
+        "name": "older password-protected transfers",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 6921
+      },
+      {
+        "name": "compiled native component boundaries",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 59
+      },
+      {
+        "name": "native encrypted adapter",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1419
+      },
+      {
+        "name": "native file transfer",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 281
+      },
+      {
+        "name": "security",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 755
+      },
+      {
+        "name": "data and calendar",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 724
+      },
+      {
+        "name": "web types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 9238
+      },
+      {
+        "name": "native types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 5088
+      },
+      {
+        "name": "native engine",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2495
+      }
+    ]
+  },
+  "startingLoadChecks": {
+    "checkedAt": "2026-10-13T19:18:05.346Z",
+    "scope": "Shared domain on synthetic records; no physical device or rendering claim.",
+    "cases": [
+      "Blank preview keeps every load unknown and preserves saved blocks and history",
+      "Reviewed weight changes the opening exposure only; future progression remains available",
+      "Clearing an entered weight restores unknown; explicit zero stays distinct",
+      "Pounds convert once; invalid and negative input cannot alter a preview",
+      "Actual recent matching weight is offered as a reference without filling any targets",
+      "Changed reps, sets, role and source stage never qualify as matching history",
+      "Latest partial, concern, missing-feedback, assisted and unequal-load records block older successes",
+      "Stale and future history does not establish a baseline",
+      "History, setup, caps and custom exercise changes invalidate an existing review",
+      "Equipment limits reject impossible weights with the original state and preview kept",
+      "Nonopening sessions, duplicate selections and unconfigured fields are rejected",
+      "Tampered numeric targets remain rejected even when a display signature is rewritten",
+      "Machine setup is explicit, retained at acceptance and never borrowed from a different machine",
+      "Changing a drafted machine label clears the weight from every role for that exercise",
+      "Coach/manual authority is kept and reference weights do not imply app progression",
+      "Creator source stages, rep targets, supersets and edition roles survive the load review",
+      "Native shared entrypoint applies the same first-only and stale-history boundaries"
+    ]
+  },
+  "interfaceChecks": {
+    "checkedAt": "2026-10-13T19:18:06.528Z",
+    "scope": "Actual web/native JSX callbacks with deterministic hook/OS boundaries, not rendered accessibility or installed-device acceptance.",
+    "cases": [
+      "Web entry requires review after editing and retains the same draft after a failed write",
+      "Web date edits discard prior weights and force a fresh schedule review",
+      "Native parent reviews chosen weights before persistence and preserves a failed-save draft",
+      "Native expandable controls use the real numeric and recorded-weight callbacks"
+    ]
+  },
+  "nativeExports": {
+    "movefield": {
+      "android": {
+        "bundle": "mobile/dist-mobile/_expo/static/js/android/index-1b70bbf7db0a585de9458e58d9a3482d.hbc",
+        "bytes": 4732419,
+        "sha256": "29f8c48c9bfb6d4b7e95b61724e67b999bccade53474e220ef82d67427939e78"
+      },
+      "ios": {
+        "bundle": "mobile/dist-mobile/_expo/static/js/ios/index-71b1efc355810a4ece27378a7bb63d52.hbc",
+        "bytes": 4719991,
+        "sha256": "7da112d2c03bb9000eef295a17165940e43fe2c4e2e74a8782a4a1198817bbed"
+      }
+    },
+    "grizzly": {
+      "android": {
+        "bundle": "mobile/dist-grizzly/_expo/static/js/android/index-e63e089ea1ec207351b3420ed63336ba.hbc",
+        "bytes": 4732418,
+        "sha256": "961e49e3b2ffda52f7206c2c81b6cb7998f89e800f4636e56ea311e2b3e3ab79"
+      },
+      "ios": {
+        "bundle": "mobile/dist-grizzly/_expo/static/js/ios/index-798ff35dc12dc936c8ce9e74e2ca82bb.hbc",
+        "bytes": 4719991,
+        "sha256": "f4a00e751c9bbe56eff774a8035533fed8ad616816bff6e9cdd669d3a9d933f3"
+      }
+    }
+  },
+  "webBuilds": [
+    "Movefield production static build passed",
+    "Grizzly production static build passed"
+  ],
+  "postCoreChecks": [
+    "Updated version-code migration assertions passed all 26 historical groups",
+    "Final numeric-input and busy-date changes passed 17 domain and 4 callback journeys, web/native types",
+    "Focused ESLint passed without errors or warnings"
+  ],
+  "nativeSourceArchives": {
+    "grizzly-fitness-native-source.zip": {
+      "sha256": "1f490793f0a4379389e8df18a8777dceb96c885d204432126445a3390a022f27",
+      "bytes": 8127223,
+      "files": 250
+    },
+    "movefield-native-current.zip": {
+      "sha256": "80903fc14bf8dfdad13b240c64944fb2d62cd9453acbf28712e244156b377e3f",
+      "bytes": 8127224,
+      "files": 250
+    }
+  },
+  "remaining": [
+    "Physical old/new Android install, storage/restart/notifications/erasure",
+    "Signed iPhone installation and store acceptance",
+    "Native upstream dependency advisories",
+    "Individualized next-block volume and creator terminal-stage reset review",
+    "Full six-prompt qualification and connected providers"
+  ],
+  "verificationScope": "Synthetic actual domain/callbacks, production web builds, current Hermes exports and archive identity. No physical-device, live provider or full research review claim."
+}

@@ -1,3 +1,28 @@
+# Current checkpoint · reviewed block starting weights · 13 October 2026
+
+Continue on `codex/native-delivery-2026-10-13`, isolated checkout
+`/workspace/scratch/35645034c040/movefield`, from the pinned source and publication
+receipts in `docs/block-starting-loads-{validation,publication}-2026-10-13.json`.
+Both brands remain in scope. OG stays removed; compact UI, per-set RIR, clickable
+calendars, original Pages root and older chunks remain preserved. Normal source,
+existing preview publication and current test compilation are already authorized.
+
+The saved-block review now accepts optional first-exposure starting weights with
+actual recent matching history references, explicit machine contexts, unknown vs
+zero, capacity and stale-review guards. Later loads retain normal progression;
+creator stages/editions, targets, supersets, saved blocks and history are kept.
+Failed writes retain drafts. Read `docs/block-starting-loads-2026-10-13.md`.
+
+Android candidates advance to historical Movefield versionCode 3 and separate
+Grizzly versionCode 2 using the same test certificate. Only exact compiled APK
+receipts establish installer delivery; exports/source ZIPs do not establish a
+phone update. Physical upgrade/restart/storage/reminders/erasure, iPhone/store,
+upstream native advisories and provider gates remain open. Next: qualify those
+available device gates, then individualized next-block volume/source-reset
+review and the remaining canonical task register. Preserve original records.
+
+---
+
 # Current checkpoint · delivered Android installers and compatible backups · 13 October 2026
 
 Continue from remote `codex/native-delivery-2026-10-13`, compiled implementation `e8fa396d71b40b3644a0fdc9cf201d7d5ffef497`. The isolated checkout is `/workspace/scratch/79a430135566/movefield`. Read `docs/transfer-compatibility-publication-2026-10-13.json`. Both brands are in scope, OG remains removed, compact layout/calendar/features remain, and normal reviewed pushes are already authorized.

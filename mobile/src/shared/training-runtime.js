@@ -1466,6 +1466,12 @@ function loadSuggestion(s, i) {
             kg: null,
             reason: fit.reason + ' Choose an available substitute or review equipment; past records stay intact.'
         };
+    if (s.profile.mode !== 'app' && i.kg !== null && isLoadTracked(ex) && ex.metric === 'reps') {
+        var ownerLimit = equipmentLimit(s, i.exerciseId);
+        if (s.hold || s.profile.age < 18 || !Number.isFinite(i.kg) || i.kg < 0 || ownerLimit !== undefined && (ownerLimit === 0 || i.kg > ownerLimit + 1e-6) || requiresSetup(ex) && (!i.loadContext || i.loadContext !== s.loadContext?.[i.exerciseId]))
+            return {kg: null, reason: 'Reassess this starting weight with the current setup and equipment before using it.'};
+        return {kg: i.kg, reason: 'Starting weight reviewed for your tracking plan. You or your coach decide what to perform and when to change it.'};
+    }
     if (s.plan?.progressionModel === 'source')
         return (0, _sourcePrograms.sourceLoadSuggestion)(s, i);
     if (!ex.progressionEnabled || ex.metric !== 'reps' || !isLoadTracked(ex))

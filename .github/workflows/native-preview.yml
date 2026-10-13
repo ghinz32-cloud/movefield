@@ -66,6 +66,8 @@ jobs:
           node scripts/check-runtime-boundaries.mjs
           node scripts/check-legacy-native-upgrade.cjs
           node scripts/check-legacy-transfer.cjs
+          node scripts/check-block-starting-loads.cjs
+          node scripts/check-block-starting-loads-ui.cjs
           python3 scripts/check-native-inspection.py
           cd mobile
           npm run check
