@@ -38,7 +38,9 @@ compiled=[re.compile(p) for p in patterns];scanned=set();matches=[];zip_members=
 for name in sorted(set(files)|set(web)|set(artifacts)):
     scanned.add(name);path=ROOT/name;data=path.read_bytes()
     if any(pattern.search(data) for pattern in compiled):matches.append(name)
-    if zipfile.is_zipfile(path):
+    # An APK tail segment contains ZIP end markers but lacks earlier entries.
+    # Only complete packaged artifacts can be enumerated as ZIP containers.
+    if path.suffix in {'.zip','.apk'} and zipfile.is_zipfile(path):
         with zipfile.ZipFile(path) as archive:
             for member in archive.infolist():
                 if member.is_dir():continue
