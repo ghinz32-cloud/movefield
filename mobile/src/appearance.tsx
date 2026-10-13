@@ -25,14 +25,21 @@ export function NativeAppearanceProvider({children}:{children:React.ReactNode}){
 export function useNativeAppearance(){
  const context=useContext(Context),{dark,p}=context;
  const palette=palettes.find(x=>x.id===p.palette)!;
- const colors={bg:isGrizzly?(dark?'#171a16':'#f6f3ec'):(dark?'#10191d':'#f4f6f7'),ink:dark?'#edf3f5':'#192b30',muted:p.contrast?(dark?'#e4eef3':'#253b44'):(dark?'#b4c7cf':'#4c616a'),green:dark?palette.from:palette.strong,line:p.contrast?(dark?'#a4bbc6':'#637982'):(dark?'#7d949e':'#71858e'),pale:dark?'#293c44':'#e8edef',white:isGrizzly?(dark?'#232820':'#fffefa'):(dark?'#19262c':'#ffffff'),danger:dark?'#ffadb6':'#b62d3b',onAccent:dark?'#132325':'#ffffff',from:palette.from,to:palette.to};
+ const colors={bg:isGrizzly?(dark?'#171a16':'#f6f3ec'):(dark?'#10191d':'#f4f6f7'),ink:dark?'#edf3f5':'#192b30',muted:p.contrast?(dark?'#e4eef3':'#253b44'):(dark?'#b4c7cf':'#4c616a'),green:(dark?palette.from:palette.strong) as string,line:p.contrast?(dark?'#a4bbc6':'#637982'):(dark?'#7d949e':'#71858e'),pale:dark?'#293c44':'#e8edef',white:isGrizzly?(dark?'#232820':'#fffefa'):(dark?'#19262c':'#ffffff'),danger:dark?'#ffadb6':'#b62d3b',onAccent:dark?'#132325':'#ffffff',from:palette.from as string,to:palette.to as string,effect:'#d6b77c'};
  if(isGrizzly&&p.grizzlyStyle==='wild'){colors.bg=dark?'#07130e':'#f6f0e3';colors.white=dark?'#132219':'#fffaf0';colors.pale=dark?'#293a2b':'#e6e9d5';colors.ink=dark?'#f5f1e3':'#263626';colors.muted=p.contrast?(dark?'#f5f1e3':'#243122'):(dark?'#c0cbb7':'#4d6049');colors.line=p.contrast?(dark?'#d4d9bc':'#56603b'):(dark?'#9e956c':'#82724c');}
+ if(isGrizzly&&p.grizzlyStyle==='og'){
+  colors.bg=dark?'#000000':'#f7f7f7';colors.white=dark?'#101010':'#ffffff';colors.pale=dark?'#202020':'#ededed';
+  colors.ink=dark?'#ffffff':'#111111';colors.muted=p.contrast?(dark?'#ffffff':'#111111'):(dark?'#c2c2c2':'#555555');
+  colors.green=dark?'#ffffff':'#111111';colors.onAccent=dark?'#000000':'#ffffff';
+  colors.line=p.contrast?(dark?'#ffffff':'#111111'):(dark?'#737373':'#777777');
+  colors.danger=dark?'#ff8190':'#b5122d';colors.effect=dark?'#ff5c68':'#b20f25';colors.from='#ffffff';colors.to='#bdbdbd';
+ }
  return {...context,colors,headingFamily:isGrizzly&&context.loadedHeading===headingFonts.find(x=>x.id===p.headingFont)!.family?context.loadedHeading:'Barlow Condensed'};
 }
 export function useThemedStyles<T extends Record<string,ViewStyle|TextStyle|ImageStyle>>(base:T):T{
  const {p,dark,fonts,colors:c,headingFamily}=useNativeAppearance();
  return useMemo(()=>{
-  const mapping:Record<string,string>={'#f6f5ef':c.bg,'#19362d':c.ink,'#66746b':c.muted,'#214d3a':c.green,'#dce1d7':c.line,'#e6eddd':c.pale,'#933c2d':c.danger,'#eff3e8':c.pale,'#f6e3dc':dark?'#39262b':'#fff0ef'};
+  const mapping:Record<string,string>={'#f6f5ef':c.bg,'#19362d':c.ink,'#66746b':c.muted,'#214d3a':c.green,'#dce1d7':c.line,'#e6eddd':c.pale,'#933c2d':c.danger,'#eff3e8':c.pale,'#f6e3dc':isGrizzly&&p.grizzlyStyle==='og'?c.pale:dark?'#39262b':'#fff0ef'};
   const result:Record<string,ViewStyle|TextStyle|ImageStyle>={};
   for(const [key,value] of Object.entries(base)){
    const style=Object.fromEntries(Object.entries(value).map(([prop,v])=>{
@@ -43,6 +50,8 @@ export function useThemedStyles<T extends Record<string,ViewStyle|TextStyle|Imag
    if(isGrizzly&&['title','darkTitle','brand'].includes(key)){style.fontWeight=String(Math.round(headingFonts.find(x=>x.id===p.headingFont)!.weight/100)*100) as TextStyle['fontWeight'];}
    if(isGrizzly&&p.grizzlyStyle==='wild'&&['card','darkCard'].includes(key)){style.borderRadius=5;style.borderTopWidth=3;style.borderTopColor='#af9761';style.borderColor=c.line;style.shadowColor='#000000';style.shadowOffset={width:3,height:5};style.shadowOpacity=.22;style.shadowRadius=8;style.elevation=3;}
    if(isGrizzly&&p.grizzlyStyle==='wild'&&['button','secondaryButton'].includes(key)){style.borderRadius=5;style.borderBottomWidth=3;style.borderBottomColor=key==='button'?'#64754b':c.line;}
+   if(isGrizzly&&p.grizzlyStyle==='og'&&['card','darkCard'].includes(key)){style.borderRadius=18;style.borderTopWidth=2;style.borderTopColor=key==='darkCard'?c.onAccent:c.ink;style.borderColor=c.line;}
+   if(isGrizzly&&p.grizzlyStyle==='og'&&['button','secondaryButton'].includes(key)){style.borderRadius=12;style.borderBottomWidth=2;style.borderBottomColor=p.contrast?c.line:c.effect;}
    if(isGrizzly&&key==='brand'){style.fontSize=16*(p.textSize/100);style.letterSpacing=0;style.fontWeight='400';}
    if(style.lineHeight)style.lineHeight*=p.textSize/100;
    if(key==='input'&&!style.color)style.color=c.ink;

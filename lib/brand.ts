@@ -5,7 +5,7 @@ export const isGrizzly = typeof __MOVEFIELD_APP_VARIANT__ === 'string'
   : typeof process !== 'undefined' && process.env.EXPO_PUBLIC_APP_VARIANT === 'grizzly';
 export const brand = isGrizzly ? {
   name: 'Grizzly Fitness',
-  tagline: 'Wautoma · Your training, day by day.',
+  tagline: 'Your den. Your next strong day.',
   description: 'Plan your training, log each workout and follow your progress.',
   ink: '#24221d', accent: '#f5cb79',
 } as const : {

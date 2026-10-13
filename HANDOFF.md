@@ -1,3 +1,17 @@
+# Current checkpoint · OG Grizzly and daily bear messages · 13 October 2026
+
+This section supersedes older visual continuation instructions. Work starts at `16c09ca62f1637d0d1c68081d1a6c37bd2c0c2ca` and is isolated on `codex/og-grizzly-2026-10-13` in `ghinz32-cloud/movefield`, because another session had edits in the previous checkout. Those inspected presentation edits were retained and completed. Current recovered checkout is `/workspace/scratch/4740597ee9cf/movefield`. The earlier worktree lost its Git metadata; its source was restored onto the verified remote baseline. Use this checkout for continuation.
+
+The user requested OG Grizzly as an additional black-and-white theme with red claw effects and a calmer cartoon bear, removal of Wautoma-only branding, better UI/animation and rotating Today messages. Implemented on web and native: OG preset, monochrome controls/cards, original gym logo, code-native cartoon mascot, restrained red impacts/reveals and fixed-color explanation. Wild/Clean, saved explicit choices and all training/storage identity remain. 72 context-aware messages rotate by local day and refresh Today facts at midnight/foreground. Holds and pauses receive review copy. No activity, load or completion is invented.
+
+Read `docs/og-grizzly-design-2026-10-13.md` and `docs/og-grizzly-validation-2026-10-13.json`. Both-brand OG/extreme/preference checks, six daily-message groups, Today actions, root/native types, focused lint, native encrypted-storage/files, both static builds, four distinct cleared-cache Hermes exports and two 241-file native archives passed. A low-contrast light border and two type-narrowing issues were caught and fixed; passing reruns are recorded. Fresh browser/rendered accessibility, installed phones/battery and APK/IPA acceptance remain unperformed. This is a presentation milestone, not full launch acceptance.
+
+Normal tested source and the two existing `/movefield/grizzly/` and `/movefield/review/` preview pushes remain explicitly authorized. Preserve the original Pages root, retained compiled assets and untracked owner configuration. Internal Expo slug/crypto/storage identifiers remain stable. The `.openai/` stub and dependency symlinks in this checkout are not source deliverables. The continuation fixed OG palette parity and neutral recovery copy, passed all 25 core groups, both-brand presentation checks, both static builds, four cleared-cache native exports, and complete 241-file archives. Publication is being finalized; the following receipt will record exact remote source/Pages trees and served-byte verification.
+
+Next: incorporate observed design feedback, then resume the reviewed next-block/baseline editor and the original task register. Preserve per-set RIR, researched family minimums, source attribution, accepted targets/history and brand-separated records. The old equipment-inventory revalidation gap described below remains separate unfinished work.
+
+---
+
 # Current checkpoint · extreme Grizzly interactions and fonts · 13 October 2026
 
 This section supersedes the older visual checkpoint. The user requested more extreme dropdown/button animation and many wilder Grizzly fonts, and reaffirmed permission to push all changes. Continue on `codex/grizzly-wilderness-2026-10-13` in `ghinz32-cloud/movefield`; only the existing `/movefield/grizzly/` and `/movefield/review/` previews are publishing targets. Preserve all original-root Pages files and the ignored/untracked owner configuration.

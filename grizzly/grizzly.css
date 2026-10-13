@@ -71,6 +71,7 @@
 :root[data-brand=grizzly][data-heading-font=barlow]{--grizzly-heading:'Barlow Condensed';--grizzly-heading-weight:600}
 :root[data-brand=grizzly][data-heading-font=inter]{--grizzly-heading:Inter;--grizzly-heading-weight:650}
 :root[data-brand=grizzly][data-palette=frost]{--brand-from:#b7e6f2;--brand-to:#a9c9e1;--brand-deep:#28586e}
+:root[data-brand=grizzly][data-palette=og]{--brand-from:#ffffff;--brand-to:#d8d8d8;--brand-deep:#171717}
 :root[data-brand=grizzly][data-grizzly-style=wild]{--background:#eef3f5;--foreground:#182732;--card:#f9fcfd;--muted:#e3ebee;--secondary:#dbe5ea;--muted-foreground:#4d5f6c;--border:#9fafba;--input:#677d8d;--sidebar:#090f15;--sidebar-accent:#25343f;--sidebar-border:#566773;--ink:#0c161f}
 :root[data-brand=grizzly][data-grizzly-style=wild].dark{--background:color-mix(in srgb,var(--brand-from) 4%,#05080b);--foreground:#edf5fa;--card:color-mix(in srgb,var(--brand-from) 7%,#091118);--muted:#1c2c38;--secondary:#263746;--muted-foreground:#b1c6d3;--border:#526979;--input:#8ba5b5;--warning-bg:#362c1e;--warning-text:#ffe0a9}
 :root[data-brand=grizzly][data-grizzly-style=wild] body{background-image:radial-gradient(ellipse at 90% 0%,color-mix(in srgb,var(--brand-from) 14%,transparent),transparent 52%),repeating-linear-gradient(125deg,transparent 0 140px,color-mix(in srgb,var(--brand-from) 4%,transparent) 140px 142px,transparent 142px 200px);background-attachment:fixed}

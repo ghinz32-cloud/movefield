@@ -324,7 +324,12 @@
     {
       "source": "lib/app-preferences.ts",
       "target": "src/shared/app-preferences.ts",
-      "sha256": "6c0adfd2ac5191f1e4b828d54972011494c27bd4df09c98929181f0b0d8c81f0"
+      "sha256": "9488fedbadb0752255425af825b01dee6ba9eeae246feefb37e302479a4ae485"
+    },
+    {
+      "source": "lib/grizzly-messages.ts",
+      "target": "src/shared/grizzly-messages.ts",
+      "sha256": "3303aeae50e64175a6ebd1f5b27e49e2c6c836b8bc60fe664cfbc80e9464d897"
     },
     {
       "source": "lib/workout-reminders.ts",
@@ -334,7 +339,7 @@
     {
       "source": "lib/brand.ts",
       "target": "src/shared/brand.ts",
-      "sha256": "be1c917ff5528f20cab1b3fb313a937c9c0bb6691e5a472d2c53331310d2f6d4"
+      "sha256": "209cc6d935c25f811fcfec635aaa0aee5680592e843e42967dae69dec87bf475"
     },
     {
       "source": "lib/presentation.ts",

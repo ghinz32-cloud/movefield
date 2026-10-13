@@ -16,7 +16,7 @@ original={str(p.relative_to(candidate)):digest(p) for p in candidate.rglob('*') 
 if (candidate/'grizzly').exists():
  if not args.replace_existing:raise RuntimeError('Existing Grizzly files require --replace-existing after inspection')
  previous=json.loads((candidate/'grizzly/grizzly-manifest.json').read_text())
- if previous.get('schema')!=1 or previous.get('base')!='/movefield/grizzly/' or previous.get('brand')!='Grizzly Fitness Wautoma':raise RuntimeError('Existing directory is not this Grizzly build')
+ if previous.get('schema')!=1 or previous.get('base')!='/movefield/grizzly/' or previous.get('brand') not in {'Grizzly Fitness Wautoma','Grizzly Fitness'}:raise RuntimeError('Existing directory is not this Grizzly build')
  owned=set(previous['files'])|{'grizzly-manifest.json'}
  actual={str(p.relative_to(candidate/'grizzly')) for p in (candidate/'grizzly').rglob('*') if p.is_file()}
  if owned!=actual:raise RuntimeError('Existing Grizzly directory contains unexpected/unowned files')
@@ -32,7 +32,7 @@ for name in ['_headers','.assetsignore']:
 files={str(p.relative_to(candidate/'grizzly')):digest(p) for p in sorted((candidate/'grizzly').rglob('*')) if p.is_file()}
 if any(p.is_symlink() for p in candidate.rglob('*')):raise RuntimeError('No symlinks may be published')
 source=json.loads((RUNTIME/'candidate-receipt-current.json').read_text());commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
-gym_manifest={'schema':1,'base':'/movefield/grizzly/','brand':'Grizzly Fitness Wautoma','official_logo_retrieved':False,'logo_supplied_by_user':True,'logo_source':'User-supplied JPEG, unchanged; not retrieved from the gym website.','logo_sha256':digest(candidate/'grizzly/brand/grizzly-fitness-logo.jpg'),'profile_scope':'Separate Grizzly profile, database, preferences and offline cache. Training code is shared.','application_source_sha256':source['application_source_sha256'],'source_commit':commit,'files':files}
+gym_manifest={'schema':1,'base':'/movefield/grizzly/','brand':'Grizzly Fitness','official_logo_retrieved':False,'logo_supplied_by_user':True,'logo_source':'User-supplied JPEG, unchanged; not retrieved from the gym website.','logo_sha256':digest(candidate/'grizzly/brand/grizzly-fitness-logo.jpg'),'profile_scope':'Separate Grizzly profile, database, preferences and offline cache. Training code is shared.','application_source_sha256':source['application_source_sha256'],'source_commit':commit,'files':files}
 (candidate/'grizzly/grizzly-manifest.json').write_text(json.dumps(gym_manifest,indent=2)+'\n')
 html=(candidate/'index.html').read_text()
 linked='id="grizzly-review-link"' in html

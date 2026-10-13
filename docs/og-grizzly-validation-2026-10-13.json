@@ -1,0 +1,1605 @@
+{
+  "checked_at": "2026-10-13T04:54:09.164795+00:00",
+  "base_commit": "16c09ca62f1637d0d1c68081d1a6c37bd2c0c2ca",
+  "source_branch": "codex/og-grizzly-2026-10-13",
+  "application_source_sha256": "afc55dab4007b01d112864db8645415a38efd209e28f0a9f313d5468302116b1",
+  "tests": {
+    "og_grizzly_under_both_brands": "passed",
+    "extreme_motion_and_font_checks_under_both_brands": "passed",
+    "daily_messages": "passed, six synthetic groups",
+    "today_facts_and_actions": "passed",
+    "preferences_under_both_brands": "passed",
+    "web_and_native_types": "passed",
+    "native_encrypted_storage_and_files": "passed",
+    "affected_frontend_lint": "passed, zero errors and six warnings",
+    "two_static_builds": "passed",
+    "four_distinct_cleared_cache_native_exports": "passed",
+    "two_native_archives": "passed, 241 source files each"
+  },
+  "og": {
+    "grizzly": {
+      "checkedAt": "2026-10-13T04:51:35.428Z",
+      "brand": "Grizzly Fitness",
+      "scope": "Actual preference parser/browser persistence helper, preset callbacks and delegated interaction controller with synthetic storage/DOM; extracted CSS token calculations. No rendered/browser, installed-device, pixel contrast or assistive-technology acceptance.",
+      "cases": [
+        "Saved styles remain explicit and older automatic fonts retain their existing migration",
+        "Actual appearance actions persist through the browser helper without touching training or other profiles",
+        "Actual OG root tokens stay grayscale and meet text, control and focus contrast in four states",
+        "Actual OG delegated effects leave actions untouched, skip forest shake and stop at quiet boundaries",
+        "Displayed app names and current frontend sources no longer name one gym location"
+      ],
+      "contrast": [
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "foreground",
+          "background": "background",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "foreground",
+          "background": "card",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "muted-foreground",
+          "background": "background",
+          "ratio": 8.063,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "muted-foreground",
+          "background": "card",
+          "ratio": 8.063,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "primary-foreground",
+          "background": "primary",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "sidebar-foreground",
+          "background": "sidebar",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "sidebar-accent-foreground",
+          "background": "sidebar-accent",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "warning-text",
+          "background": "warning-bg",
+          "ratio": 16.57,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "destructive",
+          "background": "card",
+          "ratio": 7.028,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "input",
+          "background": "card",
+          "ratio": 4.952,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "border",
+          "background": "card",
+          "ratio": 3.545,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "ring",
+          "background": "background",
+          "ratio": 6.06,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "ring",
+          "background": "card",
+          "ratio": 6.06,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "foreground",
+          "background": "background",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "foreground",
+          "background": "card",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "muted-foreground",
+          "background": "background",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "muted-foreground",
+          "background": "card",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "primary-foreground",
+          "background": "primary",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "sidebar-foreground",
+          "background": "sidebar",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "sidebar-accent-foreground",
+          "background": "sidebar-accent",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "warning-text",
+          "background": "warning-bg",
+          "ratio": 16.57,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "destructive",
+          "background": "card",
+          "ratio": 7.028,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "input",
+          "background": "card",
+          "ratio": 9.74,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "border",
+          "background": "card",
+          "ratio": 9.74,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "ring",
+          "background": "background",
+          "ratio": 6.06,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "ring",
+          "background": "card",
+          "ratio": 6.06,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "foreground",
+          "background": "background",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "foreground",
+          "background": "card",
+          "ratio": 19.028,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "muted-foreground",
+          "background": "background",
+          "ratio": 12.422,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "muted-foreground",
+          "background": "card",
+          "ratio": 11.256,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "primary-foreground",
+          "background": "primary",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "sidebar-foreground",
+          "background": "sidebar",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "sidebar-accent-foreground",
+          "background": "sidebar-accent",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "warning-text",
+          "background": "warning-bg",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "destructive",
+          "background": "card",
+          "ratio": 6.03,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "input",
+          "background": "card",
+          "ratio": 6.115,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "border",
+          "background": "card",
+          "ratio": 4.249,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "ring",
+          "background": "background",
+          "ratio": 6.655,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "ring",
+          "background": "card",
+          "ratio": 6.03,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "foreground",
+          "background": "background",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "foreground",
+          "background": "card",
+          "ratio": 19.028,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "muted-foreground",
+          "background": "background",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "muted-foreground",
+          "background": "card",
+          "ratio": 19.028,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "primary-foreground",
+          "background": "primary",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "sidebar-foreground",
+          "background": "sidebar",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "sidebar-accent-foreground",
+          "background": "sidebar-accent",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "warning-text",
+          "background": "warning-bg",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "destructive",
+          "background": "card",
+          "ratio": 6.03,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "input",
+          "background": "card",
+          "ratio": 14.009,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "border",
+          "background": "card",
+          "ratio": 9.912,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "ring",
+          "background": "background",
+          "ratio": 6.655,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "ring",
+          "background": "card",
+          "ratio": 6.03,
+          "required": 3
+        }
+      ],
+      "displayedFilesChecked": 328,
+      "identityException": "The existing internal Expo slug is retained. Displayed app names and current frontend source contain no single-location branding."
+    },
+    "movefield": {
+      "checkedAt": "2026-10-13T04:51:35.829Z",
+      "brand": "Movefield",
+      "scope": "Actual preference parser/browser persistence helper, preset callbacks and delegated interaction controller with synthetic storage/DOM; extracted CSS token calculations. No rendered/browser, installed-device, pixel contrast or assistive-technology acceptance.",
+      "cases": [
+        "Saved styles remain explicit and older automatic fonts retain their existing migration",
+        "Actual appearance actions persist through the browser helper without touching training or other profiles",
+        "Actual OG root tokens stay grayscale and meet text, control and focus contrast in four states",
+        "Actual OG delegated effects leave actions untouched, skip forest shake and stop at quiet boundaries",
+        "Displayed app names and current frontend sources no longer name one gym location"
+      ],
+      "contrast": [
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "foreground",
+          "background": "background",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "foreground",
+          "background": "card",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "muted-foreground",
+          "background": "background",
+          "ratio": 8.063,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "muted-foreground",
+          "background": "card",
+          "ratio": 8.063,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "primary-foreground",
+          "background": "primary",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "sidebar-foreground",
+          "background": "sidebar",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "sidebar-accent-foreground",
+          "background": "sidebar-accent",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "warning-text",
+          "background": "warning-bg",
+          "ratio": 16.57,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "destructive",
+          "background": "card",
+          "ratio": 7.028,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "input",
+          "background": "card",
+          "ratio": 4.952,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "border",
+          "background": "card",
+          "ratio": 3.545,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "ring",
+          "background": "background",
+          "ratio": 6.06,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "ring",
+          "background": "card",
+          "ratio": 6.06,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "foreground",
+          "background": "background",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "foreground",
+          "background": "card",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "muted-foreground",
+          "background": "background",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "muted-foreground",
+          "background": "card",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "primary-foreground",
+          "background": "primary",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "sidebar-foreground",
+          "background": "sidebar",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "sidebar-accent-foreground",
+          "background": "sidebar-accent",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "warning-text",
+          "background": "warning-bg",
+          "ratio": 16.57,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "destructive",
+          "background": "card",
+          "ratio": 7.028,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "input",
+          "background": "card",
+          "ratio": 9.74,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "border",
+          "background": "card",
+          "ratio": 9.74,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "ring",
+          "background": "background",
+          "ratio": 6.06,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "ring",
+          "background": "card",
+          "ratio": 6.06,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "foreground",
+          "background": "background",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "foreground",
+          "background": "card",
+          "ratio": 19.028,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "muted-foreground",
+          "background": "background",
+          "ratio": 12.422,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "muted-foreground",
+          "background": "card",
+          "ratio": 11.256,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "primary-foreground",
+          "background": "primary",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "sidebar-foreground",
+          "background": "sidebar",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "sidebar-accent-foreground",
+          "background": "sidebar-accent",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "warning-text",
+          "background": "warning-bg",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "destructive",
+          "background": "card",
+          "ratio": 6.03,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "input",
+          "background": "card",
+          "ratio": 6.115,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "border",
+          "background": "card",
+          "ratio": 4.249,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "ring",
+          "background": "background",
+          "ratio": 6.655,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "ring",
+          "background": "card",
+          "ratio": 6.03,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "foreground",
+          "background": "background",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "foreground",
+          "background": "card",
+          "ratio": 19.028,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "muted-foreground",
+          "background": "background",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "muted-foreground",
+          "background": "card",
+          "ratio": 19.028,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "primary-foreground",
+          "background": "primary",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "sidebar-foreground",
+          "background": "sidebar",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "sidebar-accent-foreground",
+          "background": "sidebar-accent",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "warning-text",
+          "background": "warning-bg",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "destructive",
+          "background": "card",
+          "ratio": 6.03,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "input",
+          "background": "card",
+          "ratio": 14.009,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "border",
+          "background": "card",
+          "ratio": 9.912,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "ring",
+          "background": "background",
+          "ratio": 6.655,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "ring",
+          "background": "card",
+          "ratio": 6.03,
+          "required": 3
+        }
+      ],
+      "displayedFilesChecked": 328,
+      "identityException": "The existing internal Expo slug is retained. Displayed app names and current frontend source contain no single-location branding."
+    }
+  },
+  "messages": {
+    "checkedAt": "2026-10-13T04:50:46.465Z",
+    "scope": "Synthetic shared-message selection, real Today actions, Chicago DST arithmetic and actual web clock lifecycle. Browser styling and physical-device behavior are covered separately.",
+    "cases": [
+      "32 ready-day messages preserve the original bear text and all 72 entries stay concise",
+      "Each local date is deterministic across rendering, month/year changes and the full rotation",
+      "Actual Today actions choose active/ready/recovery/review without changing the saved workout",
+      "Local midnight follows Chicago 23/25-hour days and opposite UTC date boundaries",
+      "Actual web clock schedules midnight, catches foreground date changes and cleans up resources",
+      "Actual native Today clock resumes with the foreground and selects review copy for a hold"
+    ]
+  },
+  "native_exports": {
+    "checked_at": "2026-10-13T04:51:57.879768+00:00",
+    "scope": "Distinct cleared-cache Hermes exports, paired with native identity/module checks; no installed-device claim.",
+    "flavors": {
+      "movefield": {
+        "android": {
+          "path": "_expo/static/js/android/index-adcc96b4c735d7b95585164bfae1ad3b.hbc",
+          "bytes": 4599614,
+          "sha256": "17e66c71460232baa1773293f61f52b88a20903f2bd031b89d846530af63bcdf"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-41688adecf5e322efc6a734a1eff6189.hbc",
+          "bytes": 4584818,
+          "sha256": "442c1a594cda02a053d540dca682fd91736bfec7be7f2876a538c305cd012bbd"
+        }
+      },
+      "grizzly": {
+        "android": {
+          "path": "_expo/static/js/android/index-7b4fa5d182e4298e1a50f784bc5a4b5a.hbc",
+          "bytes": 4599612,
+          "sha256": "3813b366a3d913d4b4b052796ea6f67d35329b3a471fd17d3634b2696b430dae"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-e578c9b5bbda15cce8de12b5f481a8d9.hbc",
+          "bytes": 4584820,
+          "sha256": "70b715b4b2735584d2ee0e158fa9012575d22e40b78ae3532e20afa290ad7fc8"
+        }
+      }
+    }
+  },
+  "artifact_sha256": {
+    "public/downloads/movefield-native-current.zip": "21040eb9678ccbbfb0b599cb433f8675053b7b1f70c05ec58927cb15baf9801d",
+    "public/downloads/grizzly-fitness-native-source.zip": "cff95ae383b091bdfe5c8e01f8eacf0f2e173ac126023db3c6f6cf745d4edd20",
+    "mobile/dist-mobile/_expo/static/js/android/index-adcc96b4c735d7b95585164bfae1ad3b.hbc": "17e66c71460232baa1773293f61f52b88a20903f2bd031b89d846530af63bcdf",
+    "mobile/dist-mobile/_expo/static/js/ios/index-41688adecf5e322efc6a734a1eff6189.hbc": "442c1a594cda02a053d540dca682fd91736bfec7be7f2876a538c305cd012bbd",
+    "mobile/dist-grizzly/_expo/static/js/android/index-7b4fa5d182e4298e1a50f784bc5a4b5a.hbc": "3813b366a3d913d4b4b052796ea6f67d35329b3a471fd17d3634b2696b430dae",
+    "mobile/dist-grizzly/_expo/static/js/ios/index-e578c9b5bbda15cce8de12b5f481a8d9.hbc": "70b715b4b2735584d2ee0e158fa9012575d22e40b78ae3532e20afa290ad7fc8"
+  },
+  "credential_pattern_scan": {
+    "ran_at": "2026-10-13T04:53:50.388568+00:00",
+    "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed.",
+    "files": 6027,
+    "zip_members": 2178,
+    "matches": []
+  },
+  "resolved_findings": [
+    "New OG contrast regression caught light border #999 at 2.849:1; changed to #888 and both brand runs pass.",
+    "Native literal palette inference was widened to string for monochrome overrides; typecheck passes.",
+    "Web early return for fixed OG colors left an unreachable style comparison; removed and web typecheck passes."
+  ],
+  "warnings": [
+    "Existing large-client-chunk build warning.",
+    "Focused frontend lint includes existing image/unused-parameter/hook-dependency warnings."
+  ],
+  "not_qualified": [
+    "Rendered browser layout/accessibility: required control-browser skill unavailable in managed environment.",
+    "Installed phones, battery/performance, APK/IPA binaries and store acceptance.",
+    "Broader task register and launch completion."
+  ],
+  "continuation_release": {
+    "checked_at": "2026-10-13T11:52:24.671312+00:00",
+    "recovered_checkout": "/workspace/scratch/4740597ee9cf/movefield",
+    "base_commit": "16c09ca62f1637d0d1c68081d1a6c37bd2c0c2ca",
+    "fixes": [
+      "OG palette matches browser and native after style transitions",
+      "Recovery copy makes no unearned logging claim"
+    ],
+    "core": {
+      "ran_at": "2026-10-13T11:49:42.874Z",
+      "scope": "Local synthetic domain/adapter and type checks; no device, connected provider or deployment qualification.",
+      "results": [
+        {
+          "name": "OG Grizzly preferences and interaction boundaries",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 392
+        },
+        {
+          "name": "Grizzly daily context and local day changes",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 989
+        },
+        {
+          "name": "preview ownership and retained assets",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 375
+        },
+        {
+          "name": "Grizzly motion and licensed fonts",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 418
+        },
+        {
+          "name": "distinct goal families and flexible selection",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1342
+        },
+        {
+          "name": "creator-source and set-effort refinements",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 712
+        },
+        {
+          "name": "public source rules and scientific accounting",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 853
+        },
+        {
+          "name": "Today facts and actions",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 618
+        },
+        {
+          "name": "transactional encrypted records",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 6305
+        },
+        {
+          "name": "activity progress and comparison context",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 589
+        },
+        {
+          "name": "evidence/duration/calendar zones",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 4068
+        },
+        {
+          "name": "calendar and reusable blocks",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 782
+        },
+        {
+          "name": "Cloudflare account/storage/coaching",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 3253
+        },
+        {
+          "name": "portable cloud vault and retry",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 2505
+        },
+        {
+          "name": "native SDK cookie transport",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1146
+        },
+        {
+          "name": "plan import",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 620
+        },
+        {
+          "name": "durability",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 716
+        },
+        {
+          "name": "vault and history",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1167
+        },
+        {
+          "name": "native encrypted adapter",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1526
+        },
+        {
+          "name": "native file transfer",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 335
+        },
+        {
+          "name": "security",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 946
+        },
+        {
+          "name": "data and calendar",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1093
+        },
+        {
+          "name": "web types",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 14045
+        },
+        {
+          "name": "native types",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 5297
+        },
+        {
+          "name": "native engine",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 2183
+        }
+      ]
+    },
+    "grizzly_og": {
+      "checkedAt": "2026-10-13T11:49:45.401Z",
+      "brand": "Grizzly Fitness",
+      "scope": "Actual preference parser/browser persistence helper, preset callbacks and delegated interaction controller with synthetic storage/DOM; extracted CSS token calculations. No rendered/browser, installed-device, pixel contrast or assistive-technology acceptance.",
+      "cases": [
+        "Saved styles remain explicit and older automatic fonts retain their existing migration",
+        "Actual appearance actions persist through the browser helper without touching training or other profiles",
+        "Actual OG root tokens stay grayscale and meet text, control and focus contrast in four states",
+        "Actual OG delegated effects leave actions untouched, skip forest shake and stop at quiet boundaries",
+        "Displayed app names and current frontend sources no longer name one gym location"
+      ],
+      "contrast": [
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "foreground",
+          "background": "background",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "foreground",
+          "background": "card",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "muted-foreground",
+          "background": "background",
+          "ratio": 8.063,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "muted-foreground",
+          "background": "card",
+          "ratio": 8.063,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "primary-foreground",
+          "background": "primary",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "sidebar-foreground",
+          "background": "sidebar",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "sidebar-accent-foreground",
+          "background": "sidebar-accent",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "warning-text",
+          "background": "warning-bg",
+          "ratio": 16.57,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "destructive",
+          "background": "card",
+          "ratio": 7.028,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "input",
+          "background": "card",
+          "ratio": 4.952,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "border",
+          "background": "card",
+          "ratio": 3.545,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "ring",
+          "background": "background",
+          "ratio": 6.06,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": false,
+          "foreground": "ring",
+          "background": "card",
+          "ratio": 6.06,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "foreground",
+          "background": "background",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "foreground",
+          "background": "card",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "muted-foreground",
+          "background": "background",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "muted-foreground",
+          "background": "card",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "primary-foreground",
+          "background": "primary",
+          "ratio": 18.883,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "sidebar-foreground",
+          "background": "sidebar",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "sidebar-accent-foreground",
+          "background": "sidebar-accent",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "warning-text",
+          "background": "warning-bg",
+          "ratio": 16.57,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "destructive",
+          "background": "card",
+          "ratio": 7.028,
+          "required": 4.5
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "input",
+          "background": "card",
+          "ratio": 9.74,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "border",
+          "background": "card",
+          "ratio": 9.74,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "ring",
+          "background": "background",
+          "ratio": 6.06,
+          "required": 3
+        },
+        {
+          "mode": "light",
+          "highContrast": true,
+          "foreground": "ring",
+          "background": "card",
+          "ratio": 6.06,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "foreground",
+          "background": "background",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "foreground",
+          "background": "card",
+          "ratio": 19.028,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "muted-foreground",
+          "background": "background",
+          "ratio": 12.422,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "muted-foreground",
+          "background": "card",
+          "ratio": 11.256,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "primary-foreground",
+          "background": "primary",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "sidebar-foreground",
+          "background": "sidebar",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "sidebar-accent-foreground",
+          "background": "sidebar-accent",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "warning-text",
+          "background": "warning-bg",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "destructive",
+          "background": "card",
+          "ratio": 6.03,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "input",
+          "background": "card",
+          "ratio": 6.115,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "border",
+          "background": "card",
+          "ratio": 4.249,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "ring",
+          "background": "background",
+          "ratio": 6.655,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": false,
+          "foreground": "ring",
+          "background": "card",
+          "ratio": 6.03,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "foreground",
+          "background": "background",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "foreground",
+          "background": "card",
+          "ratio": 19.028,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "muted-foreground",
+          "background": "background",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "muted-foreground",
+          "background": "card",
+          "ratio": 19.028,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "primary-foreground",
+          "background": "primary",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "sidebar-foreground",
+          "background": "sidebar",
+          "ratio": 21,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "sidebar-accent-foreground",
+          "background": "sidebar-accent",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "warning-text",
+          "background": "warning-bg",
+          "ratio": 15.91,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "destructive",
+          "background": "card",
+          "ratio": 6.03,
+          "required": 4.5
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "input",
+          "background": "card",
+          "ratio": 14.009,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "border",
+          "background": "card",
+          "ratio": 9.912,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "ring",
+          "background": "background",
+          "ratio": 6.655,
+          "required": 3
+        },
+        {
+          "mode": "dark",
+          "highContrast": true,
+          "foreground": "ring",
+          "background": "card",
+          "ratio": 6.03,
+          "required": 3
+        }
+      ],
+      "displayedFilesChecked": 328,
+      "identityException": "The existing internal Expo slug is retained. Displayed app names and current frontend source contain no single-location branding."
+    },
+    "messages": {
+      "checkedAt": "2026-10-13T11:49:46.749Z",
+      "scope": "Synthetic shared-message selection, real Today actions, Chicago DST arithmetic and actual web clock lifecycle. Browser styling and physical-device behavior are covered separately.",
+      "cases": [
+        "32 ready-day messages preserve the original bear text and all 72 entries stay concise",
+        "Each local date is deterministic across rendering, month/year changes and the full rotation",
+        "Actual Today actions choose active/ready/recovery/review without changing the saved workout",
+        "Local midnight follows Chicago 23/25-hour days and opposite UTC date boundaries",
+        "Actual web clock schedules midnight, catches foreground date changes and cleans up resources",
+        "Actual native Today clock resumes with the foreground and selects review copy for a hold"
+      ]
+    },
+    "native": {
+      "checked_at": "2026-10-13T11:51:07.312883+00:00",
+      "scope": "Distinct cleared-cache Hermes exports, paired with native identity/module checks; no installed-device claim.",
+      "flavors": {
+        "movefield": {
+          "android": {
+            "path": "_expo/static/js/android/index-bce803ff76e7af1f3de7bd8465e4bf91.hbc",
+            "bytes": 4599664,
+            "sha256": "6a1bde521eefcc2abec37b5132923ab3dcc99ed688a1f687e5f825f41e8ddaa2"
+          },
+          "ios": {
+            "path": "_expo/static/js/ios/index-3d7c4112faf6467dd7e02823a62ffcfc.hbc",
+            "bytes": 4584697,
+            "sha256": "ffb8b05e0b3524fec99c70f9d5064c40c9a6887d956848868c65cd3585295a99"
+          }
+        },
+        "grizzly": {
+          "android": {
+            "path": "_expo/static/js/android/index-49c57eb2cf88fd6512df6a4cbd11c39c.hbc",
+            "bytes": 4599665,
+            "sha256": "d24a25edccc1a6709b73a5b7eb890a789e58d892e83a572ec1fc497ec835c0d1"
+          },
+          "ios": {
+            "path": "_expo/static/js/ios/index-9cc655c8d0835371e6d8132061ed57e2.hbc",
+            "bytes": 4584699,
+            "sha256": "a858e2e22d410d813861f984f8212efbd061000895c18c97dfe50b45cfce7eb4"
+          }
+        }
+      }
+    },
+    "artifacts": {
+      "public/downloads/movefield-native-current.zip": "ef842869ca3ab122c1fa92dbe69b9a12b29fee9e9541521e4248c7bf5642855b",
+      "public/downloads/grizzly-fitness-native-source.zip": "94db786cdbd45f90224c6892d3f0d41633583422b3d9b592b4085af08abbbe95",
+      "mobile/dist-mobile/_expo/static/js/android/index-bce803ff76e7af1f3de7bd8465e4bf91.hbc": "6a1bde521eefcc2abec37b5132923ab3dcc99ed688a1f687e5f825f41e8ddaa2",
+      "mobile/dist-mobile/_expo/static/js/ios/index-3d7c4112faf6467dd7e02823a62ffcfc.hbc": "ffb8b05e0b3524fec99c70f9d5064c40c9a6887d956848868c65cd3585295a99",
+      "mobile/dist-grizzly/_expo/static/js/android/index-49c57eb2cf88fd6512df6a4cbd11c39c.hbc": "d24a25edccc1a6709b73a5b7eb890a789e58d892e83a572ec1fc497ec835c0d1",
+      "mobile/dist-grizzly/_expo/static/js/ios/index-9cc655c8d0835371e6d8132061ed57e2.hbc": "a858e2e22d410d813861f984f8212efbd061000895c18c97dfe50b45cfce7eb4"
+    },
+    "interrupted_checks": "Two concurrent review runs were canceled when older source snapshots appeared. Only the later single-owner completed run is qualified.",
+    "archive_repair": "Final sequential packaging regenerated both complete 241-file archives after a transient incomplete archive was observed. Both previews were rebuilt and archive hashes matched."
+  }
+}

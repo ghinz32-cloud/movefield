@@ -36,7 +36,7 @@ for folder in ['review','grizzly']:
   if (target/extra).exists():(target/extra).unlink()
  (target/'.nojekyll').write_text('')
  files={str(p.relative_to(target)):sha(p) for p in sorted(target.rglob('*')) if p.is_file()}
- manifest={'schema':1,'base':'/movefield/'+folder+'/','brand':'Grizzly Fitness Wautoma' if folder=='grizzly' else 'Movefield','profile_scope':'Separate brand profile, database, preferences and offline cache. Training code is shared.','application_source_sha256':source['application_source_sha256'],'source_commit':commit,'files':files}
+ manifest={'schema':1,'base':'/movefield/'+folder+'/','brand':'Grizzly Fitness' if folder=='grizzly' else 'Movefield','profile_scope':'Separate brand profile, database, preferences and offline cache. Training code is shared.','application_source_sha256':source['application_source_sha256'],'source_commit':commit,'files':files}
  if legacy:manifest['retained_legacy_files']=legacy
  if folder=='grizzly':manifest.update(official_logo_retrieved=False,logo_supplied_by_user=True,logo_source='User-supplied JPEG, unchanged.',logo_sha256=sha(target/'brand/grizzly-fitness-logo.jpg'))
  (target/name).write_text(json.dumps(manifest,indent=2)+'\n')

@@ -4,7 +4,7 @@ The user requested the bear/forest aesthetic turned up to 11 on web and native. 
 
 ---
 
-# Grizzly Fitness Wautoma
+# Grizzly Fitness
 
 User request, 12 October 2026: a separate Grizzly Fitness app with the same training features and a different UI. The official website supplied by the user is https://www.fitnessgrizzly.com/. Its homepage returned an explicit proxy destination denial in this environment. Domain additions were saved using the supported environment configuration workflow; that save does not activate access. The user subsequently uploaded the gym logo, so site access is no longer a prerequisite for branding. No membership details, gym services or official color palette have been inferred.
 
