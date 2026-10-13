@@ -1,0 +1,82 @@
+{
+  "format": "fitness-android-downloads-v1",
+  "workflowRun": 38448193258,
+  "sourceCommit": "c4939198cec6d11e2b2e9164b8ad1592ddf4a283",
+  "signingCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+  "apps": [
+    {
+      "app": "movefield",
+      "name": "Movefield",
+      "filename": "movefield-arm64-current-test.apk",
+      "bytes": 39170480,
+      "sha256": "8cf447d182edf8d523082efe1bf7b8eca6655090f8b3c9368b543532c606d0fa",
+      "package": "com.ghinz32.movefield",
+      "versionCode": 2,
+      "sourceCommit": "c4939198cec6d11e2b2e9164b8ad1592ddf4a283",
+      "artifactId": 11839797069,
+      "parts": [
+        {
+          "file": "native/movefield/part-0.bin",
+          "bytes": 10485760,
+          "sha256": "82efb3b2d6a2699b3fde7ba642c40b22110f7ef306c2533056535f98d01b4814",
+          "sha": "51554e2f1f93ccbaac732159294bb9e96ab8467b"
+        },
+        {
+          "file": "native/movefield/part-1.bin",
+          "bytes": 10485760,
+          "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+          "sha": "e2f763cbb9e6036f6c6672efe89d28074c102830"
+        },
+        {
+          "file": "native/movefield/part-2.bin",
+          "bytes": 10485760,
+          "sha256": "86462a5d4bad4e8b0a8ad39bc36c43a01aa637a0583c13d70edbb5227666c277",
+          "sha": "1271c54cd8ca681842c9bd0a3996cc7c4511ac4a"
+        },
+        {
+          "file": "native/movefield/part-3.bin",
+          "bytes": 7713200,
+          "sha256": "71fcedf04fd1bd89505822dea7269f31c2e1c252777bd3d9e917943eb20f6589",
+          "sha": "ed258dcd148755161a557bfd652439511a4bcd2f"
+        }
+      ]
+    },
+    {
+      "app": "grizzly",
+      "name": "Grizzly Fitness",
+      "filename": "grizzly-arm64-current-test.apk",
+      "bytes": 39321738,
+      "sha256": "0de2002fb41befcaf2e7fd6b6e52c7ddd835f778d1e89aae717211b7715eda17",
+      "package": "com.ghinz32.grizzlyfitness.prototype",
+      "versionCode": 1,
+      "sourceCommit": "c4939198cec6d11e2b2e9164b8ad1592ddf4a283",
+      "artifactId": 11839653369,
+      "parts": [
+        {
+          "file": "native/grizzly/part-0.bin",
+          "bytes": 10485760,
+          "sha256": "e317f4129761c3b96cd8322ddd4714a9c6889e194d017ed36f658df9223b47b1",
+          "sha": "69993b5dc35731071723a0d1fbb68ffc9b294c42"
+        },
+        {
+          "file": "native/grizzly/part-1.bin",
+          "bytes": 10485760,
+          "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+          "sha": "e2f763cbb9e6036f6c6672efe89d28074c102830"
+        },
+        {
+          "file": "native/grizzly/part-2.bin",
+          "bytes": 10485760,
+          "sha256": "a6fd3a643094c49c35a4dff2b077b5ccb56d57645106f2c7c8d99279db202824",
+          "sha": "200cfd18f84ddadd5a3bde93cf469e11f4abea1d"
+        },
+        {
+          "file": "native/grizzly/part-3.bin",
+          "bytes": 7864458,
+          "sha256": "e64fbfe81afcb995d0eb221256beee0bc490fbfe8b69bcc7c171f0331c2f4b52",
+          "sha": "477497c9513845421568ffbc478207678eba6335"
+        }
+      ]
+    }
+  ]
+}
