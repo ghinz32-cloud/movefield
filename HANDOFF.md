@@ -8,6 +8,8 @@ Final checks, source/Pages publication and live post-release browser results are
 
 Next: use the exact publication receipt as the continuation baseline; finish next-block/starting-baseline editing and original task-register gates. Remaining device/signing, upstream native advisories and connected-provider gates remain explicit. No repeat push permission is needed.
 
+Published source `db306df66ea207771cea67db580a2dea66bc646f` and Pages `db4a4ecba351be5c95d0ecfc5c825a3676804559`; workflow `38424156587` succeeded. Post-release Movefield/Grizzly plan and logging journeys passed, including Movefield partial-save accounting. HTTPS verification matched 261/265 files with four proxy-403 fetch failures, no hash mismatches, and all 63 original-root files intact. See `docs/full-app-audit-publication-2026-10-13.json`.
+
 ---
 
 # Current checkpoint · Grizzly theme retirement and clickable web calendar · 13 October 2026

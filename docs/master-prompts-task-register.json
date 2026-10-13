@@ -5,7 +5,7 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Full Movefield and Grizzly engineering/evidence audit: production plan-loading crash and native setup/preview defects fixed; 154 complete-plan lifecycle and production bundle gates added. Publication receipt is authoritative. Original Pages root preserved.",
+  "active_checkpoint": "Full Movefield and Grizzly engineering/evidence audit: production plan-loading crash and native setup/preview defects fixed; 154 complete-plan lifecycle and production bundle gates added. Publication receipt docs/full-app-audit-publication-2026-10-13.json is authoritative. Original Pages root preserved.",
   "completion_claim": "Broad cross-domain audit and concrete fixes; this does not close every product requirement, installed-device/signing, upstream advisory or connected-service gate.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
@@ -1923,6 +1923,7 @@
     "date": "2026-10-13",
     "report": "docs/full-app-audit-2026-10-13.md",
     "branch": "codex/full-app-audit-2026-10-13",
-    "validation": "docs/full-app-audit-validation-2026-10-13.json"
+    "validation": "docs/full-app-audit-validation-2026-10-13.json",
+    "publication": "docs/full-app-audit-publication-2026-10-13.json"
   }
 }

@@ -1,0 +1,162 @@
+{
+  "format_version": 1,
+  "date": "2026-10-13",
+  "scope": "Publication and direct post-release synthetic browser acceptance for both existing app previews; original Pages root retained.",
+  "source": {
+    "branch": "codex/full-app-audit-2026-10-13",
+    "commit": "db306df66ea207771cea67db580a2dea66bc646f",
+    "tree": "a9de1ad1a22230f18875400e2c7218f14d06a56b",
+    "application_source_sha256": "2eaa202418136737ad9db8f53a684da64effd3d5654caa06a2e15bb6edf8a99a"
+  },
+  "pages": {
+    "commit": "db4a4ecba351be5c95d0ecfc5c825a3676804559",
+    "tree": "23960b17c3b350d9e7731d57bac1fe64f7eae214",
+    "workflow_run_id": 38424156587,
+    "workflow_status": "completed",
+    "workflow_conclusion": "success"
+  },
+  "apps": {
+    "movefield": "https://ghinz32-cloud.github.io/movefield/review/",
+    "grizzly": "https://ghinz32-cloud.github.io/movefield/grizzly/",
+    "original_preserved": "https://ghinz32-cloud.github.io/movefield/"
+  },
+  "https_byte_verification": {
+    "checked_at": "2026-10-13T15:47:40.512691+00:00",
+    "local_receipt": "docs/full-app-audit-live-2026-10-13.json",
+    "files_selected": 265,
+    "files_matched": 261,
+    "hash_mismatches": [],
+    "transport_failures": [
+      {
+        "path": "review/assets/index-vmBVMufz.css",
+        "passed": false,
+        "attempts": 3,
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      },
+      {
+        "path": "review/assets/progress-dashboard-B-d1Q-vO.js",
+        "passed": false,
+        "attempts": 3,
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      },
+      {
+        "path": "review/assets/progress-dashboard-BSG3RAde.js",
+        "passed": false,
+        "attempts": 3,
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      },
+      {
+        "path": "review/assets/progress-dashboard-BqoXL9Wa.js",
+        "passed": false,
+        "attempts": 3,
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    ],
+    "all_selected_files_verified": false,
+    "original_root_files_checked": 63,
+    "original_root_files_matched": 63,
+    "result": "261 of 265 selected files matched their expected hashes. Four review asset requests failed after three attempts with proxy tunnel HTTP 403 errors. No hash mismatch was observed. All 63 original-root files matched. The byte-verification receipt remains incomplete rather than an all-files pass."
+  },
+  "post_release_browser_acceptance": {
+    "method": "Direct supported cloud-browser interaction with published URLs, using synthetic sample records only.",
+    "urls_verified": [
+      "https://ghinz32-cloud.github.io/movefield/review/",
+      "https://ghinz32-cloud.github.io/movefield/grizzly/",
+      "https://ghinz32-cloud.github.io/movefield/"
+    ],
+    "grizzly": {
+      "status": "passed_observed_journeys",
+      "plan_selection": [
+        "Goal",
+        "Review saved equipment",
+        "Confirm",
+        "Commitments",
+        "Nine matching plans",
+        "Machines and cables",
+        "Review",
+        "Start"
+      ],
+      "plan_result": {
+        "weeks": 8,
+        "workouts": 24,
+        "formerly_crashing_selection_now_successful": true
+      },
+      "logging_result": {
+        "exercise": "Chest press",
+        "weight_lb": 50,
+        "reps": 10,
+        "set_rir": 2,
+        "typed_machine_setup_label_preserved": true,
+        "saved_sets": 1,
+        "workout_sets": 18,
+        "current_exercise": 2,
+        "workout_exercises": 7
+      },
+      "screenshot": "docs/evidence/full-audit-grizzly-logger-2026-10-13.jpg"
+    },
+    "movefield": {
+      "status": "passed_observed_journeys",
+      "independent_brand_state": {
+        "starting_sample_records": 34,
+        "plan": "Original three-day powerlifting sample",
+        "remained_separate_from_grizzly_bodybuilding_selection": true
+      },
+      "logging_result": {
+        "exercise": "Bench press",
+        "weight_lb": 132.5,
+        "reps": 5,
+        "set_rir": 3,
+        "saved_sets": 1,
+        "workout_sets": 12,
+        "current_exercise": 2,
+        "workout_exercises": 5,
+        "rest_timer_started": true
+      },
+      "partial_finish_result": {
+        "unlogged_sets_shown": 11,
+        "action": "Skip & save",
+        "returned_to": "Today",
+        "sessions_after_save": 35,
+        "recorded_today": 1,
+        "completed_sets_in_summary": 1,
+        "completed_exercises_in_summary": 1,
+        "partial_workout_explicit": true,
+        "unfinished_sets_counted": false,
+        "catch_up_sets_added": false
+      },
+      "screenshot": "docs/evidence/full-audit-movefield-logger-2026-10-13.jpg",
+      "progress_result": {
+        "lazy_view_loaded": true,
+        "sessions_recorded": 35,
+        "recorded_sets_tasks": 367,
+        "exercise_chart": "Barbell bench press",
+        "heaviest_recorded_set_lb": 132.5,
+        "latest_history_entry": "one-set partial workout"
+      }
+    },
+    "original_root": {
+      "status": "functional_sample_demo_observed",
+      "original_assets_preserved": true
+    },
+    "console": {
+      "observed_application_errors": 0,
+      "scope": "Both updated app journeys; browser-extension logs excluded."
+    }
+  },
+  "related_records": {
+    "audit": "docs/full-app-audit-2026-10-13.md",
+    "validation": "docs/full-app-audit-validation-2026-10-13.json",
+    "task_register": "docs/master-prompts-task-register.json"
+  },
+  "limits": [
+    "Broad engineering and evidence audit with bounded observed journeys; no claim of certification for every button, state, device or user profile.",
+    "Browser interactions used synthetic samples only; no private profile passphrase, live connected account, real workout record or paid provider was used.",
+    "Installed Android/iPhone acceptance, signed APK/IPA delivery, comprehensive rendered accessibility, and physical notification/keychain testing remain open. Existing mobile downloads are source ZIPs, not signed installable binaries.",
+    "Native dependency scans retain two unpatched upstream tooling advisories across 15 affected entries. Web production dependencies scan clean.",
+    "Connected account/provider operation remains disabled pending the existing qualification gates.",
+    "Next-block and starting-baseline editing, specialized sport/race capabilities, and broader task-register product requirements remain unfinished.",
+    "Exact app-authored exercise routines have not each undergone a controlled trial; synthetic functional checks do not establish human training outcomes.",
+    "Running logs record total duration, not the performance of each jogging interval. Duration alone does not establish objective running readiness; guidance asks users to repeat a stage if walking replaced prescribed jogging."
+  ],
+  "checkpoint_note": "This receipt and associated handoff/task-register updates are documentation only and do not change the published application, native exports or archives."
+}

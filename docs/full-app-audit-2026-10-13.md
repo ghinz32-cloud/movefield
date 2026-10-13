@@ -37,3 +37,13 @@ Running logs currently record total duration rather than performance of each jog
 ## Continuing
 
 Use `scripts/verify-core.mjs`, now including production bundling, runtime contracts, complete training lifecycles, actual web/native control callbacks and offline lifecycle checks. Sync canonical `lib/` to native before final builds. Preserve source provenance, unknown loads, per-set RIR, reviewed progression, old compiled assets and the original Pages app. Publish only the existing two preview directories unless an explicit migration is designed and approved.
+
+## Published result and browser verification
+
+The existing Movefield review and Grizzly previews are live. See [the publication receipt](full-app-audit-publication-2026-10-13.json) for pinned source/Pages commits, deployment, live byte checks and post-release sample journeys. Both brands successfully saved a set with its own effort rating. Movefield also saved an explicitly partial workout without counting unfinished sets. The previously crashing Grizzly bodybuilding setup successfully selected, reviewed and started a matching plan. The original Movefield demo remains available.
+
+Live byte verification matched 261 of 265 selected files, including all 63 original-root files; four requests were blocked by the runner's network proxy. Those four bytes are unverified, not reported as matching. Direct browser rendering and sample actions succeeded.
+
+![Movefield saved set and effort rating](evidence/full-audit-movefield-logger-2026-10-13.jpg)
+
+![Grizzly machine setup, saved set and effort rating](evidence/full-audit-grizzly-logger-2026-10-13.jpg)
