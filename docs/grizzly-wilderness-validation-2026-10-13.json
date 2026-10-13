@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-10-13T00:44:50.890988+00:00",
+  "checked_at": "2026-10-13T00:51:59.845270+00:00",
   "scope": "Maximal Grizzly web/native design and packaged static previews. Fresh browser, rendered accessibility, physical-phone animation and APK/IPA acceptance are unperformed.",
-  "application_source_sha256": "a5a8d5ea6004ca78a94ae881e08421b1010c8ff83983ca47800bd24f5674bde4",
+  "application_source_sha256": "3f7f79bb027853868a1a30658a7f1e8f74d59210f48874f4287049acde667e1c",
   "catalog_checkpoint": {
     "source_commit": "ad3eecd77ee01504c5554ef971d459843dfe680a",
     "local_checkpoint": "bbdfad572a4e407170b1fec80645b313c7db4529",
@@ -53,6 +53,11 @@
     {
       "name": "current subpath image/JS/CSS references and offline art inclusion",
       "result": "passed"
+    },
+    {
+      "name": "mobile web hero word spacing",
+      "result": "passed",
+      "scope": "Explicit JSX word boundary retained when the responsive line break is hidden; both static previews rebuilt. Native source/exports unchanged."
     }
   ],
   "native_exports": {
@@ -109,9 +114,9 @@
   },
   "native_archive_files_each": 197,
   "secret_scan": {
-    "ran_at": "2026-10-13T00:43:59.502659+00:00",
+    "ran_at": "2026-10-13T00:51:29.801983+00:00",
     "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed.",
-    "files": 5856,
+    "files": 5853,
     "zip_members": 1914,
     "matches": []
   },

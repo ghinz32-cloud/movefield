@@ -16,7 +16,7 @@ export function GrizzlyEnvironment(){
 export function GrizzlyHeroArt(){return <div className="grizzly-hero-art" aria-hidden="true"><img src={publicPath('/brand/wilderness/grizzly-hero-v1.jpg')} alt="" width="1536" height="1024" fetchPriority="high"/><span/></div>}
 export function GrizzlyDenHero(){
  return <section className="grizzly-den-hero" aria-label="Welcome to Grizzly Fitness">
-  <GrizzlyHeroArt/><div className="grizzly-den-copy"><span className="grizzly-expedition-label">WAUTOMA, WISCONSIN · GRIZZLY FITNESS</span><h2>Wake the<br/><em>grizzly.</em></h2><p>Your den. Your discipline.<br/>Your next strong day.</p><div className="grizzly-den-seal"><GrizzlyPaw/><span>BUILT FOR<br/><b>THE LONG HAUL</b></span></div></div>
+  <GrizzlyHeroArt/><div className="grizzly-den-copy"><span className="grizzly-expedition-label">WAUTOMA, WISCONSIN · GRIZZLY FITNESS</span><h2>Wake the <br/><em>grizzly.</em></h2><p>Your den. Your discipline.<br/>Your next strong day.</p><div className="grizzly-den-seal"><GrizzlyPaw/><span>BUILT FOR<br/><b>THE LONG HAUL</b></span></div></div>
   <div className="grizzly-den-foot"><span>STRENGTH / MUSCLE / MOMENTUM</span><span>EST. EVERY DAY</span></div>
  </section>;
 }
