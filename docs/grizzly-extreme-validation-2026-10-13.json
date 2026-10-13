@@ -1,0 +1,214 @@
+{
+  "checked_at": "2026-10-13T03:27:22.487399+00:00",
+  "starting_commit": "1ea7edc8cb4e9c5348933c6d18ee34b3f4b81529",
+  "application_source_sha256": "27833daddc37cd9c62beb50f6c69d24de9cc94ae37a87edfe242f9c5b07b027a",
+  "scope": "Local domain, controller and native adapter checks with synthetic DOM/OS/animation boundaries, actual TypeScript and built artifacts. No fresh browser or physical-device render qualification.",
+  "interaction_checks": {
+    "checkedAt": "2026-10-13T03:17:19.095Z",
+    "scope": "Actual shared policy/controller/native wrapper with synthetic DOM and OS/animation boundaries; immutable font/license bytes. No browser layout, physical phone, screen-reader or battery qualification.",
+    "cases": [
+      "35 unique choices retain all 15 older persisted font IDs",
+      "Every new face is pinned, licensed, and byte-identical on web and native",
+      "Quiet styles, both motion preferences, contrast and hidden state suppress impacts",
+      "Actual delegated controller caps effects, skips disabled/repeated actions and releases listeners",
+      "Actual native wrapper preserves press callbacks, ref, roles and direct quiet primitive"
+    ]
+  },
+  "core_checks": [
+    {
+      "name": "Grizzly motion and licensed fonts",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 403
+    },
+    {
+      "name": "distinct goal families and flexible selection",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1528
+    },
+    {
+      "name": "creator-source and set-effort refinements",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 904
+    },
+    {
+      "name": "public source rules and scientific accounting",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1214
+    },
+    {
+      "name": "Today facts and actions",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 757
+    },
+    {
+      "name": "transactional encrypted records",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 6867
+    },
+    {
+      "name": "activity progress and comparison context",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 688
+    },
+    {
+      "name": "evidence/duration/calendar zones",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 3970
+    },
+    {
+      "name": "calendar and reusable blocks",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 659
+    },
+    {
+      "name": "Cloudflare account/storage/coaching",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 8249
+    },
+    {
+      "name": "portable cloud vault and retry",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 2464
+    },
+    {
+      "name": "native SDK cookie transport",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1146
+    },
+    {
+      "name": "plan import",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 649
+    },
+    {
+      "name": "durability",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 640
+    },
+    {
+      "name": "vault and history",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1126
+    },
+    {
+      "name": "native encrypted adapter",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1257
+    },
+    {
+      "name": "native file transfer",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 270
+    },
+    {
+      "name": "security",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 708
+    },
+    {
+      "name": "data and calendar",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 715
+    },
+    {
+      "name": "web types",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 8994
+    },
+    {
+      "name": "native types",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 5076
+    },
+    {
+      "name": "native engine",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 2233
+    }
+  ],
+  "focused_lint": {
+    "errors": 0,
+    "warnings": 7
+  },
+  "native_exports": {
+    "checked_at": "2026-10-13T03:19:19.099637+00:00",
+    "scope": "Distinct cleared-cache Hermes exports, paired with native identity/module checks; no installed-device claim.",
+    "flavors": {
+      "movefield": {
+        "android": {
+          "path": "_expo/static/js/android/index-c9a3116ec411979a23fe9236e45c9874.hbc",
+          "bytes": 4578693,
+          "sha256": "83f0ee7ddfbd5433c612ecca6bfa8ddd4a6850eb4f02c86cb2143cd5201f9bd4"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-d89e9ff5761dfe6d3cd1a27c2c5ac5b6.hbc",
+          "bytes": 4566321,
+          "sha256": "7b506a0600ab3d195ea0ee52e3c339b7f7dae0b54d8d628c8ff70593a4f2c693"
+        }
+      },
+      "grizzly": {
+        "android": {
+          "path": "_expo/static/js/android/index-d34706a13125335542666d0f0017ebff.hbc",
+          "bytes": 4578757,
+          "sha256": "3f6ff37a6a93c5346329b298e373af9c6b132082035396889344507b8a578ed7"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-f7fa71abcd8816ce1530fa2778dc6bb9.hbc",
+          "bytes": 4566533,
+          "sha256": "21b8bfdf10456355b5c84f79aad30d10752cef3f33092f226e644e1ee591e4a7"
+        }
+      }
+    }
+  },
+  "archives": {
+    "movefield-native-current.zip": {
+      "bytes": 8096273,
+      "sha256": "e857e066b1d46da9bce9188b55402e3ec57e1940fffe02af19d16d0b1f5d7f7f",
+      "verified_source_files": 239
+    },
+    "grizzly-fitness-native-source.zip": {
+      "bytes": 8096269,
+      "sha256": "693485fc76d430532bd2a39519a360f9ae7234e5f30b9118e1d14400e0306174",
+      "verified_source_files": 239
+    }
+  },
+  "font_inventory": {
+    "all": 35,
+    "wild": 30,
+    "new": 20,
+    "new_bytes": 7571220,
+    "pinned_repository_revision": "66928797f271fed5ee428544e7229685e2d90127"
+  },
+  "initial_findings": [
+    "The first broad native lint found both new and existing React-hook issues; the changed animation values/font-loading effects and forest lifecycle were corrected, then focused lint passed with zero errors.",
+    "A generated Movefield source archive was found incomplete during the independent artifact check. It was regenerated, all 239 members verified, and both web previews rebuilt.",
+    "The existing standalone check-training.cjs baseline fails because its copied module list omits researched-programs. The domain-loader-based core checks pass; repairing that older harness remains separate work."
+  ],
+  "not_qualified": [
+    "Fresh browser/visual/axe/screen-reader acceptance: managed control-browser skill unavailable",
+    "Physical phone animation, touch, battery and installed APK/IPA acceptance",
+    "Full original product/research/security/backend/store acceptance"
+  ]
+}

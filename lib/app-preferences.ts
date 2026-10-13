@@ -23,7 +23,30 @@ export const palettes = [
 ] as const;
 export type PaletteId=typeof palettes[number]['id'];
 export type ModelChoice='auto'|'off'|'0.6b'|'1.7b'|'4b';
+export const extremeHeadingFonts=[
+ {"id": "roadrage", "name": "Road Rage", "family": "Road Rage", "group": "wild", "file": "roadrage-heading.ttf", "weight": 400, "vibe": "Claw-cut brush"},
+ {"id": "rubikdistressed", "name": "Rubik Distressed", "family": "Rubik Distressed", "group": "wild", "file": "rubikdistressed-heading.ttf", "weight": 400, "vibe": "Weathered bark"},
+ {"id": "rubikburned", "name": "Rubik Burned", "family": "Rubik Burned", "group": "wild", "file": "rubikburned-heading.ttf", "weight": 400, "vibe": "Scorched timber"},
+ {"id": "rubikmarkerhatch", "name": "Rubik Marker Hatch", "family": "Rubik Marker Hatch", "group": "wild", "file": "rubikmarkerhatch-heading.ttf", "weight": 400, "vibe": "Crosshatched claws"},
+ {"id": "rubikwetpaint", "name": "Rubik Wet Paint", "family": "Rubik Wet Paint", "group": "wild", "file": "rubikwetpaint-heading.ttf", "weight": 400, "vibe": "Molten sap"},
+ {"id": "rubikspraypaint", "name": "Rubik Spray Paint", "family": "Rubik Spray Paint", "group": "wild", "file": "rubikspraypaint-heading.ttf", "weight": 400, "vibe": "Trail grit"},
+ {"id": "rubikstorm", "name": "Rubik Storm", "family": "Rubik Storm", "group": "wild", "file": "rubikstorm-heading.ttf", "weight": 400, "vibe": "Storm-torn"},
+ {"id": "lacquer", "name": "Lacquer", "family": "Lacquer", "group": "wild", "file": "lacquer-heading.ttf", "weight": 400, "vibe": "Splintered wood"},
+ {"id": "frijole", "name": "Frijole", "family": "Frijole", "group": "wild", "file": "frijole-heading.ttf", "weight": 400, "vibe": "Feral heavyweight"},
+ {"id": "shojumaru", "name": "Shojumaru", "family": "Shojumaru", "group": "wild", "file": "shojumaru-heading.ttf", "weight": 400, "vibe": "Bear-force brush"},
+ {"id": "tradewinds", "name": "Trade Winds", "family": "Trade Winds", "group": "wild", "file": "tradewinds-heading.ttf", "weight": 400, "vibe": "Wild expedition"},
+ {"id": "rubikmicrobe", "name": "Rubik Microbe", "family": "Rubik Microbe", "group": "wild", "file": "rubikmicrobe-heading.ttf", "weight": 400, "vibe": "Fur-textured"},
+ {"id": "rubikpuddles", "name": "Rubik Puddles", "family": "Rubik Puddles", "group": "wild", "file": "rubikpuddles-heading.ttf", "weight": 400, "vibe": "Rain-eroded"},
+ {"id": "butcherman", "name": "Butcherman", "family": "Butcherman", "group": "wild", "file": "butcherman-heading.ttf", "weight": 400, "vibe": "Ragged beast"},
+ {"id": "creepster", "name": "Creepster", "family": "Creepster", "group": "wild", "file": "creepster-heading.ttf", "weight": 400, "vibe": "Creature feature"},
+ {"id": "jollylodger", "name": "Jolly Lodger", "family": "Jolly Lodger", "group": "wild", "file": "jollylodger-heading.ttf", "weight": 400, "vibe": "Carved lodge"},
+ {"id": "almendradisplay", "name": "Almendra Display", "family": "Almendra Display", "group": "wild", "file": "almendradisplay-heading.ttf", "weight": 400, "vibe": "Ancient woodland"},
+ {"id": "rye", "name": "Rye", "family": "Rye", "group": "wild", "file": "rye-heading.ttf", "weight": 400, "vibe": "Timberline woodtype"},
+ {"id": "unifrakturcook", "name": "UnifrakturCook", "family": "UnifrakturCook", "group": "wild", "file": "unifrakturcook-heading.ttf", "weight": 700, "vibe": "Ironwood gothic"},
+ {"id": "sedgwickavedisplay", "name": "Sedgwick Ave Display", "family": "Sedgwick Ave Display", "group": "wild", "file": "sedgwickavedisplay-heading.ttf", "weight": 400, "vibe": "Scratch-tagged"},
+] as const;
 export const headingFonts=[
+ ...extremeHeadingFonts,
  {id:'inter',name:'Inter',family:'Inter',group:'readable',file:'inter-variable.ttf',weight:650},
  {id:'barlow',name:'Barlow Condensed',family:'Barlow Condensed',group:'readable',file:'barlow-condensed-semibold.ttf',weight:600},
  {id:'oswald',name:'Oswald',family:'Oswald',group:'readable',file:'oswald-heading.ttf',weight:600},
@@ -42,7 +65,7 @@ export const headingFonts=[
 ] as const;
 export type HeadingFont=typeof headingFonts[number]['id'];
 export type AppPreferences={mode:'system'|'light'|'dark';palette:PaletteId;grizzlyStyle:'wild'|'clean';headingFont:HeadingFont;headingFontVersion:2;textSize:100|115|130;contrast:boolean;reduceMotion:boolean;underlineLinks:boolean;reminders:boolean;reminderTime:string;model:ModelChoice};
-export const defaultPreferences:AppPreferences={mode:isGrizzly?'dark':'system',palette:isGrizzly?'pine':'green',grizzlyStyle:isGrizzly?'wild':'clean',headingFont:isGrizzly?'metal':'barlow',headingFontVersion:2,textSize:100,contrast:false,reduceMotion:false,underlineLinks:false,reminders:false,reminderTime:'18:00',model:'auto'};
+export const defaultPreferences:AppPreferences={mode:isGrizzly?'dark':'system',palette:isGrizzly?'pine':'green',grizzlyStyle:isGrizzly?'wild':'clean',headingFont:isGrizzly?'frijole':'barlow',headingFontVersion:2,textSize:100,contrast:false,reduceMotion:false,underlineLinks:false,reminders:false,reminderTime:'18:00',model:'auto'};
 export const preferenceKey=isGrizzly?'grizzly-fitness:preferences:v1':'training-studio:preferences:v1';
 export function readPreferences(raw:string|null):AppPreferences {
   if(!raw)return {...defaultPreferences};

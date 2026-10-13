@@ -1,5 +1,6 @@
 import React,{useEffect,useRef,useState} from 'react';
-import {Pressable,Text,View,StyleSheet,Linking} from 'react-native';
+import {Text,View,StyleSheet,Linking} from 'react-native';
+import {GrizzlyPressable as Pressable} from './wild-interactions';
 import {useNativeAppearance,useThemedStyles} from './appearance';
 import {readSessionList,type SessionList,type AccountSession} from './shared/account-sessions';
 const baseStyles=StyleSheet.create({body:{fontSize:16,lineHeight:24,color:'#19362D'},button:{minHeight:48,borderWidth:1,borderColor:'#DCE1D7',borderRadius:8,padding:12,justifyContent:'center'},card:{padding:14,borderWidth:1,borderColor:'#DCE1D7',borderRadius:10,gap:10}});

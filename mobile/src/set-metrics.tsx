@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
-import {Text,TextInput,View,Pressable} from 'react-native';
+import {Text,TextInput,View} from 'react-native';
+import {GrizzlyPressable as Pressable} from './wild-interactions';
 import {useNativeAppearance} from './appearance';
 import {SET_METRIC_FIELDS} from './shared/set-metric-fields';
 import {type SetMetrics} from './shared/training';

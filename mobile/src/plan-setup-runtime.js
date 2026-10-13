@@ -1,3 +1,4 @@
+import {GrizzlyPressable} from './wild-interactions';
 // Recovered executed implementation; typed public contract is in the adjacent declaration.
 import * as __dependency0 from "./shared/plan-fit";
 import * as __dependency1 from "./equipment-survey";
@@ -78,7 +79,7 @@ var baseStyles = _reactNative.StyleSheet.create({
 });
 function Choice({ label, selected, onPress }) {
     var styles = (0, _appearance.useThemedStyles)(baseStyles), { colors: c } = (0, _appearance.useNativeAppearance)();
-    return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Pressable, {
+    return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
         accessibilityRole: "button",
         accessibilityState: {
             selected

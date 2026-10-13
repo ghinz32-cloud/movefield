@@ -1,3 +1,4 @@
+import {GrizzlyPressable} from './src/wild-interactions';
 // Recovered executed implementation; typed public contract is in the adjacent declaration.
 import * as __dependency0 from "./src/shared/paired-sets";
 import * as __dependency1 from "./src/shared/source-programs";
@@ -113,7 +114,7 @@ var COLORS = {
 };
 function Button({ label, onPress, secondary = false, disabled = false }) {
     var styles = (0, _srcAppearance.useThemedStyles)(baseStyles), { colors: COLORS, reduceMotion } = (0, _srcAppearance.useNativeAppearance)();
-    return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Pressable, {
+    return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
         accessibilityRole: "button",
         accessibilityState: {
             disabled
@@ -135,7 +136,7 @@ function Button({ label, onPress, secondary = false, disabled = false }) {
 }
 function Pill({ label, selected, onPress }) {
     var styles = (0, _srcAppearance.useThemedStyles)(baseStyles), { colors: COLORS, reduceMotion } = (0, _srcAppearance.useNativeAppearance)();
-    return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Pressable, {
+    return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
         accessibilityRole: "button",
         accessibilityState: {
             selected
@@ -250,7 +251,7 @@ function ModalFrame({ visible, close, title, children }) {
                     children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                             style: styles.modalTitle,
                             children: title
-                        }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Pressable, {
+                        }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
                             accessibilityRole: "button",
                             onPress: close,
                             hitSlop: 12,
@@ -1040,7 +1041,7 @@ function TrainingApp() {
                     }), next?.items.map(i => {
                         var e = (0, _srcSharedTraining.exFor)(i.exerciseId, state.custom);
                         return /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                            children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Pressable, {
+                            children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
                                     accessibilityRole: "button",
                                     onPress: () => setExercise(e),
                                     style: styles.exerciseRow,
@@ -1191,7 +1192,7 @@ function TrainingApp() {
                                     children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                             style: [styles.sectionTitle, styles.flex],
                                             children: e.name
-                                        }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Pressable, {
+                                        }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
                                             accessibilityRole: "button",
                                             onPress: () => setExercise(e),
                                             children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
@@ -1296,7 +1297,7 @@ function TrainingApp() {
                                             onChange: rir => updateSet(index, {
                                                 rir
                                             })
-                                        }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Pressable, {
+                                        }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
                                             accessibilityRole: "button",
                                             disabled: set.done || savingAction,
                                             accessibilityState: {
@@ -1514,7 +1515,7 @@ function TrainingApp() {
                 children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                         style: styles.sectionTitle,
                         children: "Every session in this block"
-                    }), state.plan.sessions.slice(0, planSessionLimit).map(x => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Pressable, {
+                    }), state.plan.sessions.slice(0, planSessionLimit).map(x => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
                         accessibilityRole: "button",
                         onPress: () => {
                             setCalendarDate(x.date);
@@ -1736,7 +1737,7 @@ function TrainingApp() {
                             }
                         })]
                 }),
-                renderItem: ({ item }) => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Pressable, {
+                renderItem: ({ item }) => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
                     accessibilityRole: "button",
                     accessibilityLabel: `Open ${item.name} guide`,
                     onPress: () => setExercise(item),
@@ -1812,7 +1813,7 @@ function TrainingApp() {
                                 label: "Back to Today",
                                 onPress: () => setTab('Today')
                             })]
-                    }), state.history.slice().reverse().map(w => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Pressable, {
+                    }), state.history.slice().reverse().map(w => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
                         accessibilityRole: "button",
                         style: styles.exerciseRow,
                         onPress: () => {
@@ -1920,7 +1921,7 @@ function TrainingApp() {
                             children: "LOCAL DEMO"
                         })
                     })]
-            }), error ? /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Pressable, {
+            }), error ? /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
                 accessibilityRole: "button",
                 onPress: () => setError(''),
                 style: styles.error,
@@ -2093,7 +2094,7 @@ function TrainingApp() {
                                 })]
                         })]
                 }) : historyView
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Pressable, {
+            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
                 disabled: !saveStatus.startsWith('Save failed'),
                 accessibilityRole: "button",
                 accessibilityLabel: "Retry saving on this device",
@@ -2107,7 +2108,7 @@ function TrainingApp() {
                 })
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
                 style: styles.tabs,
-                children: ['Today', 'Plan', 'Library', 'History', 'Settings'].map((label, i) => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Pressable, {
+                children: ['Today', 'Plan', 'Library', 'History', 'Settings'].map((label, i) => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
                     accessibilityRole: "tab",
                     accessibilityLabel: label,
                     accessibilityState: {
@@ -2343,7 +2344,7 @@ function TrainingApp() {
                             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.small,
                                 children: guide?.capability ?? 'Instruction only; the app cannot assess your form.'
-                            }), (guide?.sourceURLs ?? [externalMedia?.sourceUrl, exercise.source].filter(x => !!x)).filter(url => (0, _srcContent.safeWebUrl)(url)).map((url, i) => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Pressable, {
+                            }), (guide?.sourceURLs ?? [externalMedia?.sourceUrl, exercise.source].filter(x => !!x)).filter(url => (0, _srcContent.safeWebUrl)(url)).map((url, i) => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
                                 accessibilityRole: "link",
                                 onPress: () => {
                                     void openUrl(url);

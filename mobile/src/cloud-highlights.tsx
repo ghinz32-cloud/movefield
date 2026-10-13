@@ -1,6 +1,7 @@
 import {NativeAccountButton} from './account-button';
 import React,{useEffect,useLayoutEffect,useRef,useState} from 'react';
-import {Text,View,Pressable,Switch} from 'react-native';
+import {Text,View,Switch} from 'react-native';
+import {GrizzlyPressable as Pressable} from './wild-interactions';
 import {useNativeAppearance} from './appearance';
 import {coachingInput,coachingFacts,validateHighlights,type HighlightSelection} from './shared/coaching-facts';
 import type {CloudTransport} from './shared/cloud-sync';

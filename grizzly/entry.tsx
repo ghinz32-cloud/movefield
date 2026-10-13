@@ -7,4 +7,5 @@ import './grizzly.css';
 import {GrizzlyMark} from './grizzly-mark';
 import {GrizzlyCustomize} from './customize';
 import {GrizzlyEnvironment} from './forest-scene';
-createRoot(document.getElementById('root')!).render(<AppPreferencesProvider><GrizzlyEnvironment/><div className="grizzly-preview-banner"><span className="grizzly-preview-title"><GrizzlyMark/><span><b>Grizzly Fitness · Wautoma</b><small>ENTER THE WILDERNESS</small></span></span><GrizzlyCustomize/></div><App/></AppPreferencesProvider>);
+import {GrizzlyInteractions} from './interactions';
+createRoot(document.getElementById('root')!).render(<AppPreferencesProvider><GrizzlyEnvironment/><GrizzlyInteractions/><div className="grizzly-preview-banner"><span className="grizzly-preview-title"><GrizzlyMark/><span><b>Grizzly Fitness · Wautoma</b><small>ENTER THE WILDERNESS</small></span></span><GrizzlyCustomize/></div><App/></AppPreferencesProvider>);

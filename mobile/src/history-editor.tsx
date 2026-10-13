@@ -1,7 +1,8 @@
 import {NativeSetMetrics} from './set-metrics';
 import {NativeSetRir} from './set-rir';
 import React,{useState} from 'react';
-import {View,Text,TextInput,Pressable} from 'react-native';
+import {View,Text,TextInput} from 'react-native';
+import {GrizzlyPressable as Pressable} from './wild-interactions';
 import {type State,exFor,isLoadTracked,toKg} from './shared/training';
 import {beginHistoryEdit,applyHistoryEdit,type HistoryEdit} from './shared/history-edit';
 import {useNativeAppearance} from './appearance';

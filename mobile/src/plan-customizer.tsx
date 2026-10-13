@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
-import {Pressable,Text,TextInput,View,StyleSheet} from 'react-native';
+import {Text,TextInput,View,StyleSheet} from 'react-native';
+import {GrizzlyPressable as Pressable} from './wild-interactions';
 import {useNativeAppearance,useThemedStyles} from './appearance';
 import {type State,type Exercise,exercises,exFor,matchesExercise,uid,requiresSetup,niceDate} from './shared/training';
 import {type Addition,previewAddition,applyAddition} from './shared/customize';

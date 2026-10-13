@@ -1,4 +1,5 @@
 import React from 'react';
-import {View,Text,Pressable} from 'react-native';
+import {View,Text} from 'react-native';
+import {GrizzlyPressable as Pressable} from './wild-interactions';
 import {useNativeAppearance} from './appearance';
 export function NativeSetRir({name,set,value,disabled,onChange}:{name:string;set:number;value?:number|null;disabled?:boolean;onChange:(n:number|null)=>void}){const {colors:c}=useNativeAppearance();return <View style={{gap:6}}><Text style={{color:c.ink}}>Good reps left · set {set}</Text><View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>{[null,0,1,2,3,4,5].map(n=><Pressable key={String(n)} disabled={disabled} accessibilityRole="button" accessibilityState={{selected:(value??null)===n,disabled}} accessibilityLabel={`${name} set ${set} reps left: ${n===null?'not recorded':n===5?'5 or more':n}`} onPress={()=>onChange(n)} style={{padding:10,minHeight:44,borderRadius:8,borderWidth:1,borderColor:c.green,backgroundColor:(value??null)===n?c.green:c.bg}}><Text style={{color:(value??null)===n?c.onAccent:c.ink}}>{n===null?'Unknown':n===5?'5+':n}</Text></Pressable>)}</View></View>}

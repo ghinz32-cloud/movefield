@@ -1,7 +1,8 @@
 import {useNativeAppearance,useThemedStyles} from './appearance';
 import {planName,sessionName,workoutName} from './shared/presentation';
 import React,{useState} from 'react';
-import {View,Text,TextInput,Pressable,StyleSheet} from 'react-native';
+import {View,Text,TextInput,StyleSheet} from 'react-native';
+import {GrizzlyPressable as Pressable} from './wild-interactions';
 import {type State,type Item,exercises,exFor,matchesExercise,niceDate} from './shared/training';
 import {type TrackingEdit,previewTrackingEdit} from './shared/tracking';
 const baseStyles=StyleSheet.create({body:{fontSize:16,lineHeight:24,color:'#19362D'},input:{fontSize:16,padding:12,minHeight:48,borderWidth:1,borderColor:'#DCE1D7',borderRadius:8},button:{padding:12,minHeight:48,borderRadius:8,backgroundColor:'#E6EDDD',justifyContent:'center'},row:{flexDirection:'row',flexWrap:'wrap',gap:8},card:{gap:8,padding:12,borderWidth:1,borderColor:'#DCE1D7',borderRadius:10}});

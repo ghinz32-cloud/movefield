@@ -1,39 +1,33 @@
 import React,{createContext,useContext,useEffect,useMemo,useRef,useState} from 'react';
 import {AccessibilityInfo,useColorScheme,type ViewStyle,type TextStyle,type ImageStyle} from 'react-native';
-import interFont from '../assets/fonts/inter-variable.ttf';
-import headingFont from '../assets/fonts/barlow-condensed-semibold.ttf';
-import grizzlyHeadingFont from '../assets/fonts/bungee-regular.ttf';
-import oswaldFont from '../assets/fonts/oswald-heading.ttf';
-import bitterFont from '../assets/fonts/bitter-heading.ttf';
-import rajdhaniFont from '../assets/fonts/rajdhani-heading.ttf';
-import newrockerFont from '../assets/fonts/newrocker-heading.ttf';
-import blackopsoneFont from '../assets/fonts/blackopsone-heading.ttf';
-import sairastenciloneFont from '../assets/fonts/sairastencilone-heading.ttf';
-import stardosstencilFont from '../assets/fonts/stardosstencil-heading.ttf';
-import pirataoneFont from '../assets/fonts/pirataone-heading.ttf';
-import eaterFont from '../assets/fonts/eater-heading.ttf';
-import nosiferFont from '../assets/fonts/nosifer-heading.ttf';
-import rubikdirtFont from '../assets/fonts/rubikdirt-heading.ttf';
-import metalFont from '../assets/fonts/metal-mania-regular.ttf';
 import {isGrizzly} from './shared/brand';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useFonts} from 'expo-font';
+import {useFonts,loadAsync} from 'expo-font';
+import {grizzlyFontAssets} from './grizzly-font-assets';
+import {AppState} from 'react-native';
 import {defaultPreferences,palettes,headingFonts,preferenceKey,readPreferences,type AppPreferences} from './shared/app-preferences';
-const Context=createContext({p:defaultPreferences,ready:false,update:(_patch:Partial<AppPreferences>)=>{},error:'',dark:false,reduceMotion:false,fonts:false});
+const Context=createContext({p:defaultPreferences,ready:false,update:(_patch:Partial<AppPreferences>)=>{},error:'',dark:false,reduceMotion:false,fonts:false,active:true,loadedHeading:''});
 export function NativeAppearanceProvider({children}:{children:React.ReactNode}){
  const [p,setP]=useState(defaultPreferences),[ready,setReady]=useState(false),[error,setError]=useState(''),[systemReduce,setSystemReduce]=useState(false);
  const current=useRef(p),writes=useRef(Promise.resolve()),scheme=useColorScheme();
- const [fonts]=useFonts({Inter:interFont,'Barlow Condensed':headingFont,...(isGrizzly?{Bungee:grizzlyHeadingFont,'Metal Mania':metalFont,'Oswald':oswaldFont,'Bitter':bitterFont,'Rajdhani':rajdhaniFont,'New Rocker':newrockerFont,'Black Ops One':blackopsoneFont,'Saira Stencil One':sairastenciloneFont,'Stardos Stencil':stardosstencilFont,'Pirata One':pirataoneFont,'Eater':eaterFont,'Nosifer':nosiferFont,'Rubik Dirt':rubikdirtFont}:{})});
+ const [active,setActive]=useState(AppState.currentState!=='background'&&AppState.currentState!=='inactive');
+ useEffect(()=>{const listener=AppState.addEventListener('change',state=>setActive(state==='active'));return()=>listener.remove()},[]);
+ const [fonts]=useFonts({Inter:grizzlyFontAssets.Inter,'Barlow Condensed':grizzlyFontAssets['Barlow Condensed']});
+ const [loadedHeading,setLoadedHeading]=useState(''),[fontError,setFontError]=useState('');
+ useEffect(()=>{if(!isGrizzly)return;let live=true;const family=headingFonts.find(f=>f.id===p.headingFont)!.family;
+  loadAsync({[family]:grizzlyFontAssets[family as keyof typeof grizzlyFontAssets]}).then(()=>{if(live){setLoadedHeading(family);setFontError('')}}).catch(()=>{if(live)setFontError('The heading font could not be opened. Clear lettering stays available. Choose another font or reopen the app.')});
+  return()=>{live=false};
+ },[p.headingFont]);
  useEffect(()=>{let live=true;AsyncStorage.getItem(preferenceKey).then(raw=>{if(live){current.current=readPreferences(raw);setP(current.current)}}).catch(()=>{if(live)setError('Your preferences could not be opened. Try reopening the app.')}).finally(()=>{if(live)setReady(true)});AccessibilityInfo.isReduceMotionEnabled().then(v=>{if(live)setSystemReduce(v)});const listener=AccessibilityInfo.addEventListener('reduceMotionChanged',setSystemReduce);return()=>{live=false;listener.remove()}},[]);
  const update=(patch:Partial<AppPreferences>)=>{const next=readPreferences(JSON.stringify({...current.current,...patch}));current.current=next;setP(next);writes.current=writes.current.catch(()=>{}).then(()=>AsyncStorage.setItem(preferenceKey,JSON.stringify(next))).then(()=>setError('')).catch(()=>setError('Preferences apply now but could not be saved.'))};
- return <Context.Provider value={{p,ready,error,update,dark:p.mode==='dark'||p.mode==='system'&&scheme==='dark',reduceMotion:p.reduceMotion||systemReduce,fonts}}>{children}</Context.Provider>;
+ return <Context.Provider value={{p,ready,error:fontError||error,update,dark:p.mode==='dark'||p.mode==='system'&&scheme==='dark',reduceMotion:p.reduceMotion||systemReduce,fonts,active,loadedHeading}}>{children}</Context.Provider>;
 }
 export function useNativeAppearance(){
  const context=useContext(Context),{dark,p}=context;
  const palette=palettes.find(x=>x.id===p.palette)!;
  const colors={bg:isGrizzly?(dark?'#171a16':'#f6f3ec'):(dark?'#10191d':'#f4f6f7'),ink:dark?'#edf3f5':'#192b30',muted:p.contrast?(dark?'#e4eef3':'#253b44'):(dark?'#b4c7cf':'#4c616a'),green:dark?palette.from:palette.strong,line:p.contrast?(dark?'#a4bbc6':'#637982'):(dark?'#7d949e':'#71858e'),pale:dark?'#293c44':'#e8edef',white:isGrizzly?(dark?'#232820':'#fffefa'):(dark?'#19262c':'#ffffff'),danger:dark?'#ffadb6':'#b62d3b',onAccent:dark?'#132325':'#ffffff',from:palette.from,to:palette.to};
  if(isGrizzly&&p.grizzlyStyle==='wild'){colors.bg=dark?'#07130e':'#f6f0e3';colors.white=dark?'#132219':'#fffaf0';colors.pale=dark?'#293a2b':'#e6e9d5';colors.ink=dark?'#f5f1e3':'#263626';colors.muted=p.contrast?(dark?'#f5f1e3':'#243122'):(dark?'#c0cbb7':'#4d6049');colors.line=p.contrast?(dark?'#d4d9bc':'#56603b'):(dark?'#9e956c':'#82724c');}
- return {...context,colors,headingFamily:isGrizzly?headingFonts.find(x=>x.id===p.headingFont)!.family:'Barlow Condensed'};
+ return {...context,colors,headingFamily:isGrizzly&&context.loadedHeading===headingFonts.find(x=>x.id===p.headingFont)!.family?context.loadedHeading:'Barlow Condensed'};
 }
 export function useThemedStyles<T extends Record<string,ViewStyle|TextStyle|ImageStyle>>(base:T):T{
  const {p,dark,fonts,colors:c,headingFamily}=useNativeAppearance();

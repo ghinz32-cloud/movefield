@@ -1,20 +1,19 @@
-import React,{useEffect,useRef,useState} from 'react';
-import {Animated,AppState,Image,StyleSheet,Text,View} from 'react-native';
+import React,{useEffect,useState} from 'react';
+import {Animated,Image,StyleSheet,Text,View} from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
 import {isGrizzly} from './shared/brand';
 import {useNativeAppearance} from './appearance';
 import heroArt from '../assets/wilderness/grizzly-hero-v1.jpg';
 import forestArt from '../assets/wilderness/grizzly-forest-v1.jpg';
+import {NativeWildReveal} from './wild-interactions';
 
 /** One native-driver loop; stop it when hidden, reduced-motion, or Clean. */
 function useForestDrift(enabled:boolean){
- const drift=useRef(new Animated.Value(0)).current;
- const [active,setActive]=useState(AppState.currentState!=='background'&&AppState.currentState!=='inactive');
- useEffect(()=>{if(!enabled)return;const listener=AppState.addEventListener('change',state=>setActive(state==='active'));setActive(AppState.currentState!=='background'&&AppState.currentState!=='inactive');return()=>listener.remove()},[enabled]);
+ const [drift]=useState(()=>new Animated.Value(0)),{active}=useNativeAppearance();
  useEffect(()=>{if(!enabled||!active){drift.stopAnimation();drift.setValue(0);return}const loop=Animated.loop(Animated.sequence([Animated.timing(drift,{toValue:1,duration:14000,useNativeDriver:true,isInteraction:false}),Animated.timing(drift,{toValue:0,duration:14000,useNativeDriver:true,isInteraction:false})]));loop.start();return()=>{loop.stop();drift.stopAnimation()}},[drift,enabled,active]);
  return drift;
 }
-export function NativeWildernessShell({children}:{children:React.ReactNode}){
+export function NativeWildernessShell({children,sceneKey}:{children:React.ReactNode;sceneKey?:string}){
  const {p,colors,dark,reduceMotion}=useNativeAppearance(),wild=isGrizzly&&p.grizzlyStyle==='wild'&&!p.contrast;
  const drift=useForestDrift(wild&&!reduceMotion);
  if(!wild)return <View style={{flex:1,backgroundColor:colors.bg}}>{children}</View>;
@@ -27,7 +26,7 @@ export function NativeWildernessShell({children}:{children:React.ReactNode}){
    </Animated.View>
    {[0,1,2,3,4].map(n=><Animated.View key={n} style={{position:'absolute',left:`${12+n*18}%`,bottom:'18%',width:3,height:3,borderRadius:2,backgroundColor:'#d5b777',opacity:drift.interpolate({inputRange:[0,.5,1],outputRange:[0,.65,0]}),transform:[{translateY:drift.interpolate({inputRange:[0,1],outputRange:[20,-240-n*28]})}]}}/>)}
   </View>
-  {children}
+  <NativeWildReveal style={{flex:1}} sceneKey={sceneKey}>{children}</NativeWildReveal>
  </View>;
 }
 export function NativeDenHero({compact=false}:{compact?:boolean}){

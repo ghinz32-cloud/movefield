@@ -242,6 +242,65 @@
 [data-brand=grizzly][data-grizzly-style=clean] .grizzly-training-callout{display:none}
 @keyframes grizzly-mist-drift{from{transform:translate3d(-3%,0,0) scale(1)}to{transform:translate3d(9%,-2%,0) scale(1.04)}}
 @keyframes grizzly-ember-rise{0%{transform:translate3d(0,0,0);opacity:0}12%{opacity:.55}70%{opacity:.32}100%{transform:translate3d(35px,-85vh,0);opacity:0}}
+
+/* FERAL INTERACTIONS — paw impacts, pine shrapnel and claw-raked reveals. */
+.grizzly-impact-layer{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:1000;contain:strict}
+.grizzly-impact{position:absolute;width:1px;height:1px;animation:grizzly-impact-lifetime .82s linear both;color:#e8c58a;pointer-events:none}
+.grizzly-impact-ring{position:absolute;width:90px;height:90px;left:-45px;top:-45px;border:3px solid #b8c890;border-radius:50%;box-shadow:0 0 20px #d5c28555,inset 0 0 12px #ceb77533;animation:grizzly-groundshock .72s cubic-bezier(.1,.65,.22,1) both}
+.grizzly-impact-paw{position:absolute;width:62px;height:72px;left:-31px;top:-36px;animation:grizzly-stamp .68s ease-out both;filter:drop-shadow(0 2px 3px #0008)}
+.grizzly-impact-paw svg{width:100%;height:100%}
+.grizzly-impact-rake{position:absolute;width:126px;height:126px;top:-62px;left:-63px;rotate:20deg;filter:drop-shadow(0 0 5px #e5ad6c44);animation:grizzly-rake-fade .75s ease-out both}
+.grizzly-impact-rake path{stroke-dasharray:1;stroke-dashoffset:1;animation:grizzly-rake-draw .45s cubic-bezier(.18,.75,.24,1) both}
+.grizzly-impact-rake path:nth-child(2){animation-delay:20ms}.grizzly-impact-rake path:nth-child(3){animation-delay:40ms}.grizzly-impact-rake path:nth-child(4){animation-delay:60ms}.grizzly-impact-rake path:nth-child(5){animation-delay:80ms}
+.grizzly-impact i{position:absolute;left:-3px;top:-6px;width:7px;height:14px;animation:grizzly-pine-burst .76s cubic-bezier(.12,.65,.26,1) both}
+.grizzly-impact-leaf{background:linear-gradient(135deg,#d3d48c,#68824d);clip-path:polygon(50% 0,100% 66%,62% 100%,0 65%);box-shadow:0 1px 3px #0005}
+.grizzly-impact-ember{width:4px!important;height:4px!important;background:#e5b774;border-radius:50%;box-shadow:0 0 10px #eeb47488}
+[data-brand=grizzly][data-grizzly-style=wild] :is(button,[role=button],summary,[role=tab]){transition:box-shadow .18s,border-color .18s,background-color .18s;touch-action:manipulation}
+[data-brand=grizzly][data-grizzly-style=wild] button[data-slot=button]:not(:disabled):hover{box-shadow:0 5px 0 #0006,0 0 0 1px #d4ba7855,0 8px 24px #bca16733;border-color:#d7be83}
+[data-brand=grizzly][data-grizzly-style=wild] :is([data-slot=select-trigger],summary){border-left:3px solid #ae9461}
+[data-brand=grizzly][data-grizzly-style=wild] [data-slot=select-trigger][data-state=open]{box-shadow:0 0 0 2px #c7ad7055,0 5px 20px #9bb26d33}
+[data-brand=grizzly][data-grizzly-style=wild] [data-slot=select-trigger] svg{transition:rotate .3s cubic-bezier(.15,.85,.2,1.4)}
+[data-brand=grizzly][data-grizzly-style=wild] [data-slot=select-trigger][data-state=open] svg{rotate:180deg}
+[data-brand=grizzly][data-grizzly-style=wild] :is([data-slot=select-content],[data-slot=dropdown-menu-content],[data-slot=popover-content]){border:2px solid #ae9562;border-top:5px solid #d4ba80;background:var(--card);color:var(--foreground);border-radius:2px 18px 3px 8px;box-shadow:8px 10px 0 #0003,0 22px 45px #0005;transform-origin:top center}
+[data-brand=grizzly][data-grizzly-style=wild] :is([data-slot=select-content],[data-slot=dropdown-menu-content],[data-slot=popover-content])[data-state=open]{animation:grizzly-canopy-open .48s cubic-bezier(.12,.8,.22,1) both}
+[data-brand=grizzly][data-grizzly-style=wild] :is([data-slot=select-content],[data-slot=dropdown-menu-content],[data-slot=popover-content])[data-state=closed]{animation:grizzly-canopy-close .18s ease-in both}
+[data-brand=grizzly][data-grizzly-style=wild] :is([data-slot=select-item],[data-slot=dropdown-menu-item]){min-height:40px;border-radius:2px 9px 2px 4px;border-left:3px solid transparent}
+[data-brand=grizzly][data-grizzly-style=wild] :is([data-slot=select-item],[data-slot=dropdown-menu-item])[data-highlighted]{border-left-color:#dcc18a;background:var(--soft-accent);color:var(--foreground)}
+[data-brand=grizzly][data-grizzly-style=wild] :is([data-slot=dialog-content],[data-slot=sheet-content]){border-top:5px solid #c8ad73;box-shadow:0 0 0 1px #6e784c,12px 15px 0 #0003,0 35px 90px #0008}
+[data-brand=grizzly][data-grizzly-style=wild] [data-slot=dialog-content][data-state=open]{animation:grizzly-den-open .52s cubic-bezier(.16,.8,.22,1) both}
+[data-brand=grizzly][data-grizzly-style=wild] [data-slot=sheet-content][data-state=open]{animation:grizzly-trail-open .5s cubic-bezier(.16,.8,.22,1) both}
+[data-brand=grizzly][data-grizzly-style=wild] [data-slot=dialog-overlay][data-state=open]{animation:grizzly-fog-roll .4s ease-out both}
+[data-brand=grizzly][data-grizzly-style=wild] details{border-left:2px solid #9c905822;padding-left:12px}
+[data-brand=grizzly][data-grizzly-style=wild] summary{position:relative;padding-left:10px;padding-right:35px}
+[data-brand=grizzly][data-grizzly-style=wild] summary::after{content:'';position:absolute;right:10px;top:50%;width:17px;height:23px;margin-top:-11px;background:#aaad73;clip-path:polygon(50% 0,84% 35%,67% 35%,96% 68%,65% 68%,65% 100%,35% 100%,35% 68%,4% 68%,33% 35%,16% 35%);transition:rotate .4s cubic-bezier(.15,.85,.2,1.4)}
+[data-brand=grizzly][data-grizzly-style=wild] details[open]>summary::after{rotate:12deg}
+[data-brand=grizzly][data-grizzly-style=wild] details[open]>:not(summary){animation:grizzly-underbrush-open .48s cubic-bezier(.16,.8,.22,1) both}
+[data-brand=grizzly][data-grizzly-style=wild] [data-slot=accordion-content][data-state=open]{animation:grizzly-underbrush-open .48s cubic-bezier(.16,.8,.22,1) both}
+[data-brand=grizzly][data-grizzly-style=wild] [data-slot=tabs-content]{animation:grizzly-trail-open .4s ease-out both}
+[data-brand=grizzly][data-grizzly-style=wild] .grizzly-font-grid button{position:relative;overflow:hidden;border-radius:2px 20px 3px 8px;border-bottom-width:4px;background:linear-gradient(125deg,#b69b6212,transparent 55%),var(--card)}
+[data-brand=grizzly][data-grizzly-style=wild] .grizzly-font-grid button[aria-pressed=true]{border-color:#c8b076;box-shadow:inset 0 0 28px #bac58a18,5px 5px 0 #0003}
+.grizzly-font-vibe{display:block;color:var(--muted-foreground);font:.72rem/1.5 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.grizzly-font-sample{overflow-wrap:anywhere;min-height:4.8rem;line-height:1.6!important;font-size:clamp(1.8rem,4vw,2.6rem)!important}
+@keyframes grizzly-impact-lifetime{0%,90%{opacity:1}100%{opacity:0}}
+@keyframes grizzly-groundshock{0%{scale:.25;opacity:.7;rotate:-12deg}100%{scale:2;opacity:0;rotate:12deg}}
+@keyframes grizzly-stamp{0%{scale:1.5;rotate:-30deg;opacity:0}16%{scale:.82;rotate:-15deg;opacity:.45}40%{scale:1;opacity:.3}100%{scale:1.1;opacity:0;rotate:-10deg}}
+@keyframes grizzly-rake-draw{to{stroke-dashoffset:0}}
+@keyframes grizzly-rake-fade{0%{opacity:0}20%{opacity:.85}65%{opacity:.5}100%{opacity:0}}
+@keyframes grizzly-pine-burst{0%{transform:translate(0,0) rotate(0);opacity:0}12%{opacity:.9}100%{transform:translate(var(--burst-x),var(--burst-y)) rotate(var(--burst-turn));opacity:0}}
+@keyframes grizzly-canopy-open{0%{opacity:0;scale:.87 .72;rotate:-2deg;clip-path:polygon(0 0,100% 0,100% 12%,85% 5%,70% 15%,55% 4%,40% 14%,25% 3%,10% 13%,0 6%)}55%{opacity:1;scale:1.02 1.03;rotate:.5deg;clip-path:polygon(0 0,100% 0,100% 100%,85% 100%,70% 100%,55% 100%,40% 100%,25% 100%,10% 100%,0 100%)}100%{opacity:1;scale:1;rotate:0deg;clip-path:polygon(0 0,100% 0,100% 100%,85% 100%,70% 100%,55% 100%,40% 100%,25% 100%,10% 100%,0 100%)}}
+@keyframes grizzly-canopy-close{to{opacity:0;scale:.95 .82;rotate:-1deg}}
+@keyframes grizzly-den-open{0%{opacity:0;scale:.85;rotate:-1.6deg}60%{opacity:1;scale:1.025;rotate:.35deg}100%{opacity:1;scale:1;rotate:0deg}}
+@keyframes grizzly-trail-open{from{opacity:0;translate:16px 18px}to{opacity:1;translate:0 0}}
+@keyframes grizzly-underbrush-open{0%{opacity:0;translate:0 16px;clip-path:inset(0 0 80% 0)}65%{opacity:1;clip-path:inset(0)}100%{opacity:1;translate:0 0;clip-path:inset(0)}}
+@keyframes grizzly-fog-roll{from{opacity:0}to{opacity:1}}
+/* Motion is opt-out by preference/device, and never plays in the quiet styles. */
+:root[data-brand=grizzly][data-grizzly-style=clean] .grizzly-impact-layer,
+:root[data-brand=grizzly][data-reduce-motion=true] .grizzly-impact-layer,
+:root[data-brand=grizzly][data-contrast=true] .grizzly-impact-layer{display:none}
+:root[data-brand=grizzly][data-reduce-motion=true] :is([data-slot],details>*),
+:root[data-brand=grizzly][data-contrast=true] :is([data-slot],details>*),
+:root[data-brand=grizzly][data-grizzly-style=clean] :is([data-slot],details>*){animation:none!important}
+@media(prefers-reduced-motion:reduce){[data-brand=grizzly] .grizzly-impact-layer{display:none}[data-brand=grizzly] :is([data-slot],details>*,summary::after){animation:none!important;transition:none!important}}
 @media(max-width:1050px){[data-brand=grizzly][data-grizzly-style=wild] .recovery-page{grid-template-columns:minmax(0,1fr);max-width:750px;gap:28px}.grizzly-den-copy{max-width:58%}[data-brand=grizzly][data-grizzly-style=wild] .grizzly-den-hero{min-height:520px}}
 @media(max-width:680px){[data-brand=grizzly][data-grizzly-style=wild] .recovery-page{padding:24px 16px;gap:24px}[data-brand=grizzly][data-grizzly-style=wild] .recovery-page>.card{padding:22px}[data-brand=grizzly][data-grizzly-style=wild] .grizzly-den-hero{min-height:470px;border-radius:2px 24px 3px 8px}.grizzly-den-copy{padding:255px 22px 54px;max-width:none}.grizzly-den-copy h2 br{display:none}[data-brand=grizzly] .grizzly-den-copy h2{font-size:3rem;margin:14px 0 10px}.grizzly-den-copy>p{font-size:.9rem}.grizzly-den-seal{display:none}.grizzly-den-hero .grizzly-hero-art span{background:linear-gradient(0deg,#06130fff 10%,#06130fdd 37%,transparent 73%)}.grizzly-den-hero .grizzly-hero-art img{object-position:72% 15%}.grizzly-den-foot{padding:14px 18px;font-size:.5rem;letter-spacing:.1em}.grizzly-den-foot span:last-child{display:none}[data-brand=grizzly][data-grizzly-style=wild] .grizzly-preview-title b{font-size:1.1rem}.grizzly-preview-title .grizzly-logo-frame{width:38px;height:38px}.grizzly-preview-banner{padding:12px 16px}.grizzly-preview-title small{max-width:130px}[data-brand=grizzly][data-grizzly-style=wild] .session-feature{padding:22px}.grizzly-fog{height:30%;opacity:.1}.grizzly-embers i:nth-child(n+7){display:none}}
 @media(prefers-reduced-motion:reduce){.grizzly-environment *{animation:none!important;will-change:auto!important}[data-brand=grizzly][data-grizzly-style=wild] button[data-slot=button]{transition:none}[data-brand=grizzly][data-grizzly-style=wild] button[data-slot=button]:active{transform:none}}
@@ -255,3 +314,45 @@
 [data-brand=grizzly][data-grizzly-style=wild] .section-heading{position:relative;padding-bottom:18px;border-bottom:1px solid #a88c554f}
 [data-brand=grizzly][data-grizzly-style=wild] .section-heading::after{content:"";position:absolute;right:0;bottom:-6px;width:38px;height:42px;background:url('/grizzly-paw.svg') center/contain no-repeat;opacity:.24;pointer-events:none;transform:rotate(-12deg)}
 [data-brand=grizzly][data-grizzly-style=wild] .session-index{background:linear-gradient(125deg,#b49b6528,#07130e);color:#d4c28f;border:1px solid #8d815c;border-radius:2px 10px 2px 5px}
+
+/* Pinned, unmodified OFL faces: docs/grizzly-extreme-fonts-2026-10-13.json. */
+@font-face{font-family:'Road Rage';src:url('/fonts/roadrage-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=roadrage]{--grizzly-heading:'Road Rage';--grizzly-heading-weight:400}
+@font-face{font-family:'Rubik Distressed';src:url('/fonts/rubikdistressed-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=rubikdistressed]{--grizzly-heading:'Rubik Distressed';--grizzly-heading-weight:400}
+@font-face{font-family:'Rubik Burned';src:url('/fonts/rubikburned-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=rubikburned]{--grizzly-heading:'Rubik Burned';--grizzly-heading-weight:400}
+@font-face{font-family:'Rubik Marker Hatch';src:url('/fonts/rubikmarkerhatch-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=rubikmarkerhatch]{--grizzly-heading:'Rubik Marker Hatch';--grizzly-heading-weight:400}
+@font-face{font-family:'Rubik Wet Paint';src:url('/fonts/rubikwetpaint-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=rubikwetpaint]{--grizzly-heading:'Rubik Wet Paint';--grizzly-heading-weight:400}
+@font-face{font-family:'Rubik Spray Paint';src:url('/fonts/rubikspraypaint-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=rubikspraypaint]{--grizzly-heading:'Rubik Spray Paint';--grizzly-heading-weight:400}
+@font-face{font-family:'Rubik Storm';src:url('/fonts/rubikstorm-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=rubikstorm]{--grizzly-heading:'Rubik Storm';--grizzly-heading-weight:400}
+@font-face{font-family:'Lacquer';src:url('/fonts/lacquer-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=lacquer]{--grizzly-heading:'Lacquer';--grizzly-heading-weight:400}
+@font-face{font-family:'Frijole';src:url('/fonts/frijole-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=frijole]{--grizzly-heading:'Frijole';--grizzly-heading-weight:400}
+@font-face{font-family:'Shojumaru';src:url('/fonts/shojumaru-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=shojumaru]{--grizzly-heading:'Shojumaru';--grizzly-heading-weight:400}
+@font-face{font-family:'Trade Winds';src:url('/fonts/tradewinds-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=tradewinds]{--grizzly-heading:'Trade Winds';--grizzly-heading-weight:400}
+@font-face{font-family:'Rubik Microbe';src:url('/fonts/rubikmicrobe-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=rubikmicrobe]{--grizzly-heading:'Rubik Microbe';--grizzly-heading-weight:400}
+@font-face{font-family:'Rubik Puddles';src:url('/fonts/rubikpuddles-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=rubikpuddles]{--grizzly-heading:'Rubik Puddles';--grizzly-heading-weight:400}
+@font-face{font-family:'Butcherman';src:url('/fonts/butcherman-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=butcherman]{--grizzly-heading:'Butcherman';--grizzly-heading-weight:400}
+@font-face{font-family:'Creepster';src:url('/fonts/creepster-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=creepster]{--grizzly-heading:'Creepster';--grizzly-heading-weight:400}
+@font-face{font-family:'Jolly Lodger';src:url('/fonts/jollylodger-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=jollylodger]{--grizzly-heading:'Jolly Lodger';--grizzly-heading-weight:400}
+@font-face{font-family:'Almendra Display';src:url('/fonts/almendradisplay-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=almendradisplay]{--grizzly-heading:'Almendra Display';--grizzly-heading-weight:400}
+@font-face{font-family:'Rye';src:url('/fonts/rye-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=rye]{--grizzly-heading:'Rye';--grizzly-heading-weight:400}
+@font-face{font-family:'UnifrakturCook';src:url('/fonts/unifrakturcook-heading.ttf') format('truetype');font-weight:700;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=unifrakturcook]{--grizzly-heading:'UnifrakturCook';--grizzly-heading-weight:700}
+@font-face{font-family:'Sedgwick Ave Display';src:url('/fonts/sedgwickavedisplay-heading.ttf') format('truetype');font-weight:400;font-display:swap}
+:root[data-brand=grizzly][data-heading-font=sedgwickavedisplay]{--grizzly-heading:'Sedgwick Ave Display';--grizzly-heading-weight:400}

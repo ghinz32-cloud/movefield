@@ -1842,5 +1842,18 @@
       "Native-driver atmosphere stops when inactive or reduced motion",
       "Current native archives contain 197 verified source files each"
     ]
+  },
+  "extreme_wilderness_2026_10_13": {
+    "status": "verified",
+    "scope": "Bounded source/controller/font/build milestone; visual and device acceptance remain unperformed.",
+    "request": "User requests extreme bear/outdoor dropdown and button animations and many wilder fonts; explicitly reauthorizes all source and existing preview pushes.",
+    "fonts": {
+      "total": 35,
+      "wild": 30,
+      "new": 20,
+      "wild_preset": "Frijole"
+    },
+    "validation": "docs/grizzly-extreme-validation-2026-10-13.json",
+    "next_action": "Incorporate observed design feedback; then resume next-block/baseline editor and original remaining requirements. Reuse currently needs detailed-inventory revalidation; retain current source-program stages and separate assessed baselines."
   }
 }

@@ -1,6 +1,7 @@
 import {durationText} from './shared/session-duration';
 import React,{useState} from 'react';
-import {Pressable,Text,TextInput,View,StyleSheet,ScrollView,useWindowDimensions} from 'react-native';
+import {Text,TextInput,View,StyleSheet,ScrollView,useWindowDimensions} from 'react-native';
+import {GrizzlyPressable as Pressable} from './wild-interactions';
 import {useNativeAppearance,useThemedStyles} from './appearance';
 import {calendarDay,monthDates,previewCommitment,acceptCommitment,removeCommitment,commitmentKinds,commitmentPriorities,type CommitmentPreview,type CommitmentInput} from './shared/calendar';
 import {day,niceDate,makeMoveProposal,changeSessionStatus,eligibility,exFor,targetText,type State,type Proposal,type Workout,type Session} from './shared/training';

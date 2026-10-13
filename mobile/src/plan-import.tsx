@@ -1,6 +1,7 @@
 import {pickJsonFile} from './file-transfer';
 import React,{useState} from 'react';
-import {View,Text,TextInput,Pressable} from 'react-native';
+import {View,Text,TextInput} from 'react-native';
+import {GrizzlyPressable as Pressable} from './wild-interactions';
 import {useNativeAppearance} from './appearance';
 import {type State,day,niceDate} from './shared/training';
 import {previewPlanImport,type PlanImport} from './shared/plan-import';

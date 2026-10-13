@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
-import {Pressable,Text,TextInput,View,StyleSheet} from 'react-native';
+import {Text,TextInput,View,StyleSheet} from 'react-native';
+import {GrizzlyPressable as Pressable} from './wild-interactions';
 import {useNativeAppearance,useThemedStyles} from './appearance';
 import {previewReusablePlan,acceptReusablePlan,savePlanCopy,type ReusablePlanPreview} from './shared/reusable-plan';
 import {day,niceDate,exFor,targetText,type State,type Plan} from './shared/training';

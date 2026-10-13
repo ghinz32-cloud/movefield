@@ -1,5 +1,6 @@
 import React from 'react';
-import {Pressable,Text,type TextStyle} from 'react-native';
+import {Text,type TextStyle} from 'react-native';
+import {GrizzlyPressable as Pressable} from './wild-interactions';
 import type {useNativeAppearance} from './appearance';
 
 export function NativeAccountButton({label,onPress,disabled=false,colors,text}:{label:string;onPress:()=>void;disabled?:boolean;colors:ReturnType<typeof useNativeAppearance>['colors'];text:TextStyle}){
