@@ -1,0 +1,114 @@
+{
+  "scope": "Training/catalog portion of 2026-10-13 audit; synthetic and production-bundle checks, not device or physiological qualification",
+  "baseline": "00559e3",
+  "receipts": {
+    "stage_before": {
+      "baseline": true,
+      "scope": "Synthetic actual native workout actions with canonical shared engine; no rendered UI or physical device claim.",
+      "plans": 0,
+      "sessions": 0,
+      "sets": 0,
+      "roundTrips": 0,
+      "results": [
+        {
+          "name": "NHS intraweek longer run waits even when total session time falls",
+          "status": "fail",
+          "error": "The \"string\" argument must be of type string. Received type object (null)"
+        },
+        {
+          "name": "Every staged original run and hybrid introduction checks comfortable feedback",
+          "status": "fail",
+          "error": "HY4"
+        },
+        {
+          "name": "Long-bout introduction starts shorter and preserves the last accepted stage",
+          "status": "fail",
+          "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n-   60,\n-   120,\n-   180,\n    240,\n    240,\n    240,\n+   240,\n+   240,\n+   240\n  ]\n"
+        },
+        {
+          "name": "Running phases and notes describe running without inherited strength instructions",
+          "status": "fail",
+          "error": "RNEASY3"
+        },
+        {
+          "name": "Fixed short/long easy base run layouts are not mistaken for rising stages",
+          "status": "pass"
+        }
+      ],
+      "passed": false
+    },
+    "stage_after": {
+      "baseline": false,
+      "scope": "Synthetic actual native workout actions with canonical shared engine; no rendered UI or physical device claim.",
+      "plans": 154,
+      "sessions": 4899,
+      "sets": 31550,
+      "roundTrips": 1387,
+      "results": [
+        {
+          "name": "NHS intraweek longer run waits even when total session time falls",
+          "status": "pass"
+        },
+        {
+          "name": "Every staged original run and hybrid introduction checks comfortable feedback",
+          "status": "pass"
+        },
+        {
+          "name": "Long-bout introduction starts shorter and preserves the last accepted stage",
+          "status": "pass"
+        },
+        {
+          "name": "Running phases and notes describe running without inherited strength instructions",
+          "status": "pass"
+        },
+        {
+          "name": "Fixed short/long easy base run layouts are not mistaken for rising stages",
+          "status": "pass"
+        },
+        {
+          "name": "Every original, public-source and NHS plan completes its full accepted block",
+          "status": "pass"
+        }
+      ],
+      "passed": true
+    },
+    "production_before": {
+      "scope": "Executed optimized Vite library bundles using the actual onboarding, source, storage and training graph; no browser or physical-device claim.",
+      "results": [
+        {
+          "minify": false,
+          "status": "fail",
+          "error": "Cannot read properties of undefined (reading 'uid')"
+        },
+        {
+          "minify": true,
+          "status": "fail",
+          "error": "Cannot read properties of undefined (reading 'uid')"
+        }
+      ]
+    },
+    "production_after": {
+      "scope": "Executed optimized Vite library bundles using the actual onboarding, source, storage and training graph; no browser or physical-device claim.",
+      "results": [
+        {
+          "minify": false,
+          "status": "pass",
+          "wizardOptions": 26,
+          "wizardFitting": 9,
+          "built": 201,
+          "accepted": 201,
+          "sourceBuilds": 56
+        },
+        {
+          "minify": true,
+          "status": "pass",
+          "wizardOptions": 26,
+          "wizardFitting": 9,
+          "built": 201,
+          "accepted": 201,
+          "sourceBuilds": 56
+        }
+      ]
+    }
+  }
+}

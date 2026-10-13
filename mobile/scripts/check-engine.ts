@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import { adoptPlan, editSet, emptyDemo, finishWorkout, FOUNDATION, RUN_WALK, SPORT_FOUNDATION, previewPlan, startWorkout } from '../src/mobile-engine';
-import { programCatalog, programEquipment } from '../src/shared/program-catalog';
+import { programCatalog } from '../src/shared/program-catalog';
 import { readSavedState } from '../src/shared/saved-data';
-import { addDays, blankProfile, buildPlan, day, exercises, type State } from '../src/shared/training';
+import { addDays, day, exercises, type State } from '../src/shared/training';
 import { guides, safeWebUrl } from '../src/content';
 
 import {applySubstitution} from '../src/shared/substitutions';
@@ -11,16 +11,29 @@ assert.equal(previewPlan('missing-program').plan,null);
 const choices = [FOUNDATION, RUN_WALK, SPORT_FOUNDATION, ...programCatalog.map(x => x.id)];
 for (const id of choices) for (let offset = 0; offset < 7; offset++) {
   const start = addDays(day(), offset);
-  const choice=programCatalog.find(x=>x.id===id);
-  // Explicit synthetic readiness; do not infer it for actual users in previewPlan.
-  const result = choice ? buildPlan({...blankProfile,name:'Synthetic native catalog',age:28,goal:choice.goal,programId:id,
-    equipment:programEquipment(choice),experience:'Experienced',establishedTraining:true,jumpReady:true,runBase:true,
-    runDays:7,runMinutes:300,days:[0,1,2,3,4,5,6],trainingDays:choice.days,minutes:120,weeks:4,start}) : previewPlan(id, start);
+  // Exercise the same public preview entry point as the native button, including its sample prerequisites.
+  const result = previewPlan(id, start);
   assert.ok(result.plan, `${id}: ${result.errors.join(' ')}`);
   assert.ok(result.plan!.sessions.length > 0);
   assert.equal(result.plan!.sessions[0].date, start, `${id}: first session must be available today`);
   readSavedState(JSON.stringify(adoptPlan(emptyDemo(), result.plan!)));
 }
+for (const id of choices) {
+  let current = adoptPlan(emptyDemo(), previewPlan(id).plan!);
+  current = startWorkout(current, current.plan!.sessions[0].id, true);
+  const targets = current.active!.targets!;
+  for (let index = 0; index < current.active!.sets.length; index++) {
+    const set = current.active!.sets[index], target = targets.find(item=>item.exerciseId===set.exerciseId)!;
+    const exercise = exercises.find(item=>item.id===set.exerciseId)!;
+    current = editSet(current,index,{reps:target.reps,kg:exercise.loadTracked?10:null,rir:exercise.metric==='reps'?2:undefined,done:true});
+  }
+  current = readSavedState(JSON.stringify(finishWorkout(current)));
+  assert.equal(current.active,null,id+': finishing clears active logging');
+  assert.equal(current.history.length,1,id+': first session can be saved and reloaded');
+  assert.equal(current.history[0].partial,false,id+': every required set was logged');
+  for (const set of current.history[0].sets) if(exercises.find(item=>item.id===set.exerciseId)?.metric==='reps') assert.equal(set.rir,2,id+': each set retains RIR');
+}
+console.log(`PASS: native actual preview→start→log every required set→finish→reload for ${choices.length} catalog/shortcut plans; original targets and individual-set RIR retained.`);
 let state: State = adoptPlan(emptyDemo(), previewPlan(FOUNDATION).plan!);
 state = startWorkout(state, state.plan!.sessions[0].id);
 assert.equal(state.active!.demo, false, 'A private workout must not be tagged as sample data');

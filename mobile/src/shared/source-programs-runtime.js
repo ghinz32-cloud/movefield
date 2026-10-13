@@ -1,9 +1,7 @@
 // Recovered executed implementation; typed public contract is in the adjacent declaration.
 // Function bodies/data recovered from the successful 12 October export after scratch cleanup.
-import * as __dependency0 from "./training";
-import * as __dependency1 from "./equipment";
-var _training = __dependency0;
-var _equipment = __dependency1;
+import * as _training from "./training";
+import * as _equipment from "./equipment";
 var ruleItem = (exerciseId, sets, lo, hi, rest, kind, extra = {}) => ({
     exerciseId,
     sets,

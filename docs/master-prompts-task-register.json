@@ -5,8 +5,8 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "OG Grizzly is removed from web/native and the prominent clickable calendar is published on both existing previews. All 257 selected served files and 63 original-root files verified. Broader next-block/baseline, browser/device and launch qualification remain open.",
-  "completion_claim": "This bounded theme/calendar milestone and the retained equipment guard are implemented, pushed and published. Full next-block/baseline editing, rendered/device acceptance and broader six-prompt launch gates remain open.",
+  "active_checkpoint": "Full Movefield and Grizzly engineering/evidence audit: production plan-loading crash and native setup/preview defects fixed; 154 complete-plan lifecycle and production bundle gates added. Publication receipt is authoritative. Original Pages root preserved.",
+  "completion_claim": "Broad cross-domain audit and concrete fixes; this does not close every product requirement, installed-device/signing, upstream advisory or connected-service gate.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
     "Saved environment network additions need activation for full-text research and repo.reactnative.dev Android artifact download. Current proxy denials are not bypassed.",
@@ -1918,5 +1918,11 @@
       "No browser/rendered accessibility or physical phone qualification.",
       "Full next-block/baseline editor and broader launch requirements remain open."
     ]
+  },
+  "latest_audit": {
+    "date": "2026-10-13",
+    "report": "docs/full-app-audit-2026-10-13.md",
+    "branch": "codex/full-app-audit-2026-10-13",
+    "validation": "docs/full-app-audit-validation-2026-10-13.json"
   }
 }

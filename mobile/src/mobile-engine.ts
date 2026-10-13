@@ -15,7 +15,10 @@ export function previewPlan(id: string, start = day()): {plan: Plan | null; erro
   const profile: Profile = { ...blankProfile, age: 28, name: '', start, weeks: 4,
     goal: choice?.goal ?? (id===RUN_WALK?'running':id===SPORT_FOUNDATION?'sport':'general'), programId: choice?.id, experience: choice?.experience === 'advanced'?'Experienced':choice?.experience === 'some' ? 'Some experience' : 'First time',
     minutes: 120, equipment: choice ? programEquipment(choice) : 'Dumbbells',
-    days: offsets.map(n => (new Date(start + 'T12:00:00').getDay() + n) % 7).sort(), runBase: choice?.runBase ?? false,runDays:choice?.id==='RNBASE4'?4:3,runMinutes:100,establishedTraining:true };
+    days: offsets.map(n => (new Date(start + 'T12:00:00').getDay() + n) % 7).sort(), runBase: choice?.runBase ?? false,
+    // Samples explicitly model the catalog prerequisites; personal acceptance goes through setup.
+    runDays:choice?.runMinimumDays ?? (choice?.id==='RNBASE4'?4:3),runMinutes:choice?.runMinimumMinutes ?? 100,
+    jumpReady:!!choice?.jumpPractice,establishedTraining:true };
   const result=buildPlan(profile);if(result.plan)result.plan.profile.minutes=Math.max(...result.plan.sessions.map(x=>x.minutes));return result;
 }
 export function adoptPlan(state: State, plan: Plan): State {

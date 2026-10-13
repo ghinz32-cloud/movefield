@@ -116,6 +116,15 @@ try{
  await check('account deletion requires fresh verification before tombstoning or removing data',async()=>{
   await db.prepare('UPDATE auth_session SET created_at=? WHERE user_id=?').bind(Date.now()-700000,bobId).run();const deleted=await call('/api/cloud/account','DELETE',undefined,bobCookie);assert.ok([400,401,403].includes(deleted.status));assert.ok(await db.prepare('SELECT id FROM auth_user WHERE id=?').bind(bobId).first());assert.equal(await db.prepare('SELECT deleted_at FROM cloud_profile WHERE owner_id=?').bind(bobId).first(),null);await db.prepare('UPDATE auth_session SET created_at=? WHERE user_id=?').bind(Date.now(),bobId).run();
  })();
+ await check('exhausted provider budgets cannot create unbounded jobs and accepted retries remain available',async()=>{
+  const initial=(await db.prepare('SELECT COUNT(*) AS n FROM coaching_job WHERE owner_id=?').bind(aliceId).first()).n;
+  for(let n=initial;n<10;n++)assert.equal((await call('/api/cloud/coaching','POST',{revision:2,consentVersion,context:{...context,workout:{...context.workout,id:'synthetic-storage-budget-'+n}}},aliceCookie)).status,202);
+  assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM coaching_job WHERE owner_id=?').bind(aliceId).first()).n,10);
+  assert.equal((await call('/api/cloud/coaching','POST',{revision:2,consentVersion,context:{...context,workout:{...context.workout,id:'synthetic-storage-over-budget'}}},aliceCookie)).status,429);
+  assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM coaching_job WHERE owner_id=?').bind(aliceId).first()).n,10);
+  assert.equal((await call('/api/cloud/coaching','POST',{revision:2,consentVersion,context:{...context,workout:{...context.workout,id:'synthetic-over-budget'}}},aliceCookie)).status,202);
+  assert.equal(providerCalls,3);assert.equal((await db.prepare("SELECT COUNT(*) AS n FROM coaching_job WHERE owner_id=? AND input<>''").bind(aliceId).first()).n,0);
+ })();
  await check('fresh-session deletion revokes auth, removes cloud objects and blocks late writes',async()=>{
   const oldCookie=aliceCookie;const deleted=await call('/api/cloud/account','DELETE',undefined,aliceCookie);assert.equal(deleted.status,200);assert.equal(await db.prepare('SELECT id FROM auth_user WHERE id=?').bind(aliceId).first(),null);assert.ok((await db.prepare('SELECT deleted_at FROM cloud_profile WHERE owner_id=?').bind(aliceId).first()).deleted_at);assert.equal((await bucket.list()).objects.length,0);
   assert.equal((await call('/api/cloud/profile','POST',{...operation,expectedRevision:2},oldCookie)).status,401);assert.equal((await call('/api/cloud/profile','GET',undefined,bobCookie)).status,200);
@@ -135,6 +144,18 @@ try{
    assert.equal((await invoke('/api/cloud/profile','GET',undefined,cookie,{'X-Movefield-Account':value.user.id})).status,200);
    assert.equal((await invoke('/api/auth/sign-out','POST',{},cookie,{'X-Movefield-Account':value.user.id})).status,200);assert.equal((await invoke('/api/cloud/profile','GET',undefined,cookie,{'X-Movefield-Account':value.user.id})).status,401);
   }finally{await production.dispose()}
+ })();
+ await check('qualified native schemes match the deployment brand and reject cross-brand return addresses',async()=>{
+  for(const [variant,scheme,other] of [['movefield','movefield://','grizzlyfitness://'],['grizzly','grizzlyfitness://','movefield://']]){
+   const nativeOrigin='https://synthetic-'+variant+'.example';
+   const native=new Miniflare({modules:[{type:'ESModule',path:'.sites-runtime/cloud-check/worker.mjs'}],compatibilityDate:'2026-05-15',compatibilityFlags:['nodejs_compat'],d1Databases:['DB'],r2Buckets:['BUCKET'],bindings:{APP_ORIGIN:nativeOrigin,APP_VARIANT:variant,AUTH_SECRET:secret,GOOGLE_CLIENT_ID:'synthetic-client',GOOGLE_CLIENT_SECRET:'synthetic-only',MOVEFIELD_CLOUD_ENABLED:'true',FREE_ALLOWANCE_VERIFIED:'true',NATIVE_AUTH_VERIFIED:'true'},fetchMock:mock});
+   try{
+    const database=await native.getD1Database('DB');for(const file of (await readdir('drizzle')).filter(f=>f.endsWith('.sql')).sort())for(const statement of (await readFile('drizzle/'+file,'utf8')).split('--> statement-breakpoint'))if(statement.trim())await database.prepare(statement).run();
+    const begin=(callbackURL,expoOrigin=scheme,client='native')=>native.dispatchFetch(nativeOrigin+'/api/auth/sign-in/social',{method:'POST',headers:{'Content-Type':'application/json','expo-origin':expoOrigin,'x-movefield-client':client},body:JSON.stringify({provider:'google',callbackURL})});
+    const accepted=await begin(scheme);assert.equal(accepted.status,200);assert.equal(new URL((await accepted.json()).url).origin,'https://accounts.google.com');
+    assert.equal((await begin(other)).status,400);assert.equal((await begin(scheme,other)).status,403);assert.equal((await begin(scheme,scheme+'attacker')).status,403);assert.equal((await begin(scheme,scheme,'')).status,403);
+   }finally{await native.dispose()}
+  }
  })();
  await writeFile('.sites-runtime/cloud-check/results.json',JSON.stringify({checkedAt:new Date().toISOString(),scope:'Local Miniflare D1/R2 and actual Better Auth SDK; synthetic users, mocked external OAuth transport; no live account/device qualification.',passed},null,2)+'\n');
 }finally{await mf.dispose()}

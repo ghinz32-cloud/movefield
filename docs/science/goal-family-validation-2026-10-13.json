@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-13T12:55:29.591Z",
+  "checkedAt": "2026-10-13T15:34:53.267Z",
   "scope": "Actual eight-week generated prescriptions. Deduplicated titles/IDs, repeated same-session frequencies and added easy walks. Software fit/evidence mapping, not independent physiological validation.",
   "originals": 145,
   "minimumUniquePerGoal": 10,
@@ -770,7 +770,7 @@
           ]
         },
         {
-          "signatureSha256": "829497708a243658fd6ce35dfdf2342b06b859aae445f3f689dcc890029aa13c",
+          "signatureSha256": "3f7a3bdffc6172ab7d56807d170638e8a87b6628571719c9296e1e2c9200fcd4",
           "ids": [
             "RNLONGBOUT2"
           ]

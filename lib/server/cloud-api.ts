@@ -1,6 +1,7 @@
 import {cloudReady,createAuth} from './auth';
 import {hex,readEnvelope} from '../vault-format';
 import {coachingApi} from './coaching';
+import {nativeCallback} from './native-auth';
 
 export class ApiError extends Error{constructor(readonly status:number,message:string){super(message)}}
 export const json=(body:unknown,status=200)=>Response.json(body,{status,headers:{'Cache-Control':'private, no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer'}});
@@ -9,7 +10,8 @@ export async function ownerPrefix(owner:string){return `profiles/${await sha256(
 export function assertOrigin(request:Request,env:Cloudflare.Env){
  const origin=request.headers.get('origin');
  if(origin===env.APP_ORIGIN)return;
- if(!origin&&request.headers.get('expo-origin')==='movefield://'&&request.headers.get('x-movefield-client')==='native')return;
+ const callback=nativeCallback(env);
+ if(!origin&&callback&&request.headers.get('expo-origin')===callback&&request.headers.get('x-movefield-client')==='native')return;
  throw new ApiError(403,'Open this action from your signed-in app.');
 }
 export async function readJson(request:Request,max=10_050_000):Promise<Record<string,unknown>>{
@@ -82,7 +84,7 @@ export async function cloudApi(request:Request,env:Cloudflare.Env,ctx?:Pick<Exec
     const body=await readJson(request,4096);if(body.provider!=='google'||Object.keys(body).some(k=>!['provider','callbackURL','errorCallbackURL','newUserCallbackURL','disableRedirect','requestSignUp'].includes(k)))throw new ApiError(400,'Use the supported Google sign-in flow.');
     for(const field of ['callbackURL','errorCallbackURL','newUserCallbackURL'])if(body[field]!==undefined){
      if(typeof body[field]!=='string')throw new ApiError(400,'Invalid sign-in return address.');
-     const value=body[field] as string;if(value==='movefield://'){if(env.NATIVE_AUTH_VERIFIED!=='true')throw new ApiError(503,'Native sign-in callbacks have not been qualified for this installation.');continue;}
+     const value=body[field] as string;if(value==='movefield://'||value==='grizzlyfitness://'){const callback=nativeCallback(env);if(!callback)throw new ApiError(503,'Native sign-in callbacks have not been qualified for this installation.');if(value!==callback)throw new ApiError(400,'Use this app’s own sign-in return address.');continue;}
      const target:URL=new URL(value,env.APP_ORIGIN);if(target.origin!==env.APP_ORIGIN||target.username||target.password||target.pathname!=='/'||target.search||target.hash)throw new ApiError(400,'Use the app’s own sign-in return address.');
     }
     request=new Request(request.url,{method:request.method,headers:request.headers,body:JSON.stringify(body)});

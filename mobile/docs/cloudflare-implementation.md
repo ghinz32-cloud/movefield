@@ -37,9 +37,11 @@ No account IDs, domain, database, bucket, Google client or provider model have b
 | Setting | Purpose |
 | --- | --- |
 | `APP_ORIGIN` | Exact owned HTTPS origin, without trailing slash/path. Native uses the same origin. |
+| `APP_VARIANT` | `movefield` (default) or `grizzly`. A qualified deployment trusts only that brand's native return scheme. Use separate deployment resources for separately owned app records. |
 | `AUTH_SECRET` | Secret, at least 32 characters of secure random material; stable across restarts. |
 | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | Owner's Google OAuth web application; callback is `APP_ORIGIN/api/auth/callback/google`. |
 | `NATIVE_AUTH_VERIFIED`, `EXPO_PUBLIC_NATIVE_AUTH_VERIFIED` | Separate server/app switches; enable only after installed callback/security qualification. |
+| `EXPO_PUBLIC_GRIZZLY_API_URL`, `EXPO_PUBLIC_GRIZZLY_NATIVE_AUTH_VERIFIED` | Grizzly's separate public endpoint and installed-app qualification switch; its server must use `APP_VARIANT=grizzly`. |
 | `MOVEFIELD_CLOUD_ENABLED` | Set `true` only for the reviewed connected installation. |
 | `FREE_ALLOWANCE_VERIFIED` | Owner verification flag, not a billing hard cap or proof of entitlement. |
 | `AI_PROVIDER_VERIFIED`, `AI_API_KEY`, `AI_MODEL` | Separate optional provider gate and owner's verified eligible model/key. No model ID is assumed. |
@@ -48,7 +50,7 @@ No account IDs, domain, database, bucket, Google client or provider model have b
 
 Use secure application-secret bindings for `AUTH_SECRET`, Google secret and optional AI key. They must be actual runtime values, not a proxy's synthetic outbound credential marker. The Cloudflare management token, if later supplied for authorized console/API work, is a separate credential. Do not paste any keys into chat, tracked configuration or client bundles. Ignored `.dev.vars*` can hold disposable local settings; do not use real-user records in fixtures.
 
-The task authorizes **$0 new spending**. R2 enrollment, paid Workers plans, provider billing, CI quotas, retention and overage behavior must be inspected against the actual owner account before activation. Marketing free-tier allowances and this flag are not evidence of a hard spending limit. Current application limits are 20 uploads and 100 downloads per owner/day, 200 uploads service-wide/day, 3 model dispatches per owner/day and 20 service-wide/day. Failed dispatches consume reservations. Snapshots are at most 5 MB plaintext / about 10 MB encoded ciphertext; provider output is limited to 256 tokens and 32 KiB response bytes. These limits reduce usage but do not prevent all hosting/auth/storage charges or denial-of-service costs. No paid fallback or provisioning automation is included.
+The task authorizes **$0 new spending**. R2 enrollment, paid Workers plans, provider billing, CI quotas, retention and overage behavior must be inspected against the actual owner account before activation. Marketing free-tier allowances and this flag are not evidence of a hard spending limit. Current application limits are 20 uploads and 100 downloads per owner/day, 200 uploads service-wide/day, 3 model dispatches per owner/day and 20 service-wide/day. New coaching-job records are separately limited to 10 per owner/day and 100 service-wide/day, including jobs refused after the provider budget is exhausted. Existing accepted retries do not consume another creation reservation. Failed dispatches consume reservations. Snapshots are at most 5 MB plaintext / about 10 MB encoded ciphertext; provider output is limited to 256 tokens and 32 KiB response bytes. These limits reduce usage but do not prevent all hosting/auth/storage charges or denial-of-service costs. No paid fallback or provisioning automation is included.
 
 ## Reproduce local verification
 

@@ -4,7 +4,7 @@
     {
       "source": "lib/training-runtime.js",
       "target": "src/shared/training-runtime.js",
-      "sha256": "cf5e6b90202d8521144c7e910a94d9627c9f39c1e0376a8998f80a035378b0f8"
+      "sha256": "68b3164cb6c3eba549c5d88084e929088a0998f3d86b44ffbf3ffa6d66f50ac6"
     },
     {
       "source": "lib/training-runtime.d.ts",
@@ -34,7 +34,7 @@
     {
       "source": "lib/onboarding-runtime.js",
       "target": "src/shared/onboarding-runtime.js",
-      "sha256": "30f1589dc76326a4b27f475ea078d49009bb4e34bf89bc7b32a99ea95c02ba6b"
+      "sha256": "5b0b07db89ec24538645ecacad4f976bfb82dfc86af2347dc70f9756971dbfea"
     },
     {
       "source": "lib/onboarding-runtime.d.ts",
@@ -44,7 +44,7 @@
     {
       "source": "lib/plan-fit-runtime.js",
       "target": "src/shared/plan-fit-runtime.js",
-      "sha256": "7331d479cb4408500277155b8ddfcbe64e82d6f9d854abbf3373b63ed68b4997"
+      "sha256": "ce4498a4c86c17ac0e484e04111d04c9c79ac78eaf74aa0dd43dae8b52eb921c"
     },
     {
       "source": "lib/plan-fit-runtime.d.ts",
@@ -54,7 +54,7 @@
     {
       "source": "lib/evidence-sources-runtime.js",
       "target": "src/shared/evidence-sources-runtime.js",
-      "sha256": "7b483f4e5f85f898e721763377c611de8cd09d81dbfba168d120ee7767691208"
+      "sha256": "8bba67b8920f986932181972514ce4b6de3adacce007e235a7f770c6d1731ac5"
     },
     {
       "source": "lib/evidence-sources-runtime.d.ts",
@@ -64,7 +64,7 @@
     {
       "source": "lib/saved-data-runtime.js",
       "target": "src/shared/saved-data-runtime.js",
-      "sha256": "2023bdf3973b1a3ebcb7a89e90120c82d85f74cd451ce4c7e8113bebfb517345"
+      "sha256": "b545b6770ec652fcd1d2883ccd6ee56c4c5a7fe7f50812c1ac3f01600b2be759"
     },
     {
       "source": "lib/saved-data-runtime.d.ts",
@@ -74,7 +74,7 @@
     {
       "source": "lib/plan-import-runtime.js",
       "target": "src/shared/plan-import-runtime.js",
-      "sha256": "2dc1444b19e9e71ca6432803fc0af862e963f5a1571c1b1b2bd71da6e031a7c4"
+      "sha256": "2afdd3f47bc0dbdedec32ad1b1f47e2f7395127ef88b87bf837f1e501d06ee2a"
     },
     {
       "source": "lib/plan-import-runtime.d.ts",
@@ -84,7 +84,7 @@
     {
       "source": "lib/reusable-plan-runtime.js",
       "target": "src/shared/reusable-plan-runtime.js",
-      "sha256": "b58bde71f9c8bbd34ef4d9f0532c5b71b73af8738ed83397c0dc24fedbbcaa22"
+      "sha256": "fd19048620a98e2135c28c628b45df36fcf524e3207ca2d462fb80715fcab2d1"
     },
     {
       "source": "lib/reusable-plan-runtime.d.ts",
@@ -94,7 +94,7 @@
     {
       "source": "lib/session-duration-runtime.js",
       "target": "src/shared/session-duration-runtime.js",
-      "sha256": "4589cd023f1542de2800ccc3e1472e10e8766ef9178755a2d83aec17de57f787"
+      "sha256": "771407825df852f838cc6174ef3762b05f8c5b6c59b26ba0779d21c2013e0db8"
     },
     {
       "source": "lib/session-duration-runtime.d.ts",
@@ -104,7 +104,7 @@
     {
       "source": "lib/session-guide-runtime.js",
       "target": "src/shared/session-guide-runtime.js",
-      "sha256": "6d594396891ec4b5bbf467dcc70603a2e27445e9ab53c98a74024cce3375d105"
+      "sha256": "9faa66a9b30962ad89438284169ee84a474ed43b7daf4c1e86c78d9bbf225c40"
     },
     {
       "source": "lib/session-guide-runtime.d.ts",
@@ -114,7 +114,7 @@
     {
       "source": "lib/workout-log-runtime.js",
       "target": "src/shared/workout-log-runtime.js",
-      "sha256": "89245940e268e21f2ff16a311d85694797aafcb011306d152fbb448ac512fec6"
+      "sha256": "fdc1114c04c6a431a8cd0a6227062164a3f966b7b5690099ca4871afc1a2d7c7"
     },
     {
       "source": "lib/workout-log-runtime.d.ts",
@@ -124,7 +124,7 @@
     {
       "source": "lib/progress-runtime.js",
       "target": "src/shared/progress-runtime.js",
-      "sha256": "6b55443e2ad5caf0119f45e281ac6d8a54094f81390f2180a5a90d77062b697b"
+      "sha256": "3ecb758d9f03d6e013b42e7ba781a7a314ee3839e77ae816e70994ce3f30b70d"
     },
     {
       "source": "lib/progress-runtime.d.ts",
@@ -134,7 +134,7 @@
     {
       "source": "lib/history-edit-runtime.js",
       "target": "src/shared/history-edit-runtime.js",
-      "sha256": "e56e0aba41154a2995cd690c70ea4ebf740d2119b7429aedd2c311bb4420815f"
+      "sha256": "6307cf8b5e75fbb0a7f25466432089f6486f58b607b3dbb2a6043d6bd74886f0"
     },
     {
       "source": "lib/history-edit-runtime.d.ts",
@@ -144,7 +144,7 @@
     {
       "source": "lib/source-programs-runtime.js",
       "target": "src/shared/source-programs-runtime.js",
-      "sha256": "c39be4845bd4323a06205b781c6ff427a75362e4bbb49f98396d90691c915da6"
+      "sha256": "a4b33c334dcdcd35a8e76353fb10163db427218f40ec87a0a48c7f2b0767d69a"
     },
     {
       "source": "lib/source-programs-runtime.d.ts",
@@ -154,7 +154,7 @@
     {
       "source": "lib/muscle-work-runtime.js",
       "target": "src/shared/muscle-work-runtime.js",
-      "sha256": "525a5ab2980737224f373447eac244bacc20717e419919be562aa8abe05578fc"
+      "sha256": "4b7c6d700887b3b256b14bde85cfc1533ae810f4966b92ba1fd3a5494cd6c450"
     },
     {
       "source": "lib/muscle-work-runtime.d.ts",
@@ -164,7 +164,7 @@
     {
       "source": "lib/program-science-runtime.js",
       "target": "src/shared/program-science-runtime.js",
-      "sha256": "bfcccd8098202441f10a3cf4ec39ccc4219b99e9eedf1d0b07eaf7e03dc08e3c"
+      "sha256": "a2dc579be59c922188eb50110b673a6e8400dcb100ea22f0cdcde967c29a6fce"
     },
     {
       "source": "lib/program-science-runtime.d.ts",
@@ -174,7 +174,7 @@
     {
       "source": "lib/paired-sets-runtime.js",
       "target": "src/shared/paired-sets-runtime.js",
-      "sha256": "8380f80cafa9aa4f31570e2fbfc48529e8ab114f714b5fae05165892736c8e9b"
+      "sha256": "170afd5ca0ca75be46d5eeaa6cc864daa8917ba450365819a5e4b2ac15dda1fc"
     },
     {
       "source": "lib/paired-sets-runtime.d.ts",
@@ -184,7 +184,7 @@
     {
       "source": "lib/researched-programs.ts",
       "target": "src/shared/researched-programs.ts",
-      "sha256": "8145809a1d2ca71f9c2c04e3f68186d9fef3e63a6f03f3918155bddba41edeb7"
+      "sha256": "a5aaad7f573fb57b1d6855652352513dac15ce7c91c6b58434de08b2d4614d4d"
     },
     {
       "source": "lib/goal-evidence.ts",
@@ -429,7 +429,7 @@
     {
       "source": "docs/cloudflare-implementation.md",
       "target": "docs/cloudflare-implementation.md",
-      "sha256": "217844f271873434194cc732470551b3c2875727685a846c8fc8f78377c1ec37"
+      "sha256": "11d60689e27e399298988ddf5faa0be6ef8b36329be32935d6f07f583ec98840"
     },
     {
       "source": "public/exercise-guides.json",

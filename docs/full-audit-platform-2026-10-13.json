@@ -1,0 +1,67 @@
+{
+  "checked_at": "2026-10-13T15:25:58.059091+00:00",
+  "scope": "Synthetic platform checks and registry audits; no installed device, live provider, deployment or security certification.",
+  "dependency_audits": {
+    "web_production": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "web_all": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 1,
+      "critical": 0
+    },
+    "native_production": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 15,
+      "critical": 0,
+      "total": 15
+    },
+    "native_all": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 15,
+      "critical": 0,
+      "total": 15
+    }
+  },
+  "cloud_sdk_groups": [
+    "real SDK Google OAuth state, PKCE, signed ID token and persistent session (mocked Google transport)",
+    "verified provider subject preserves ownership across email changes and rejects implicit linking",
+    "unqualified native callbacks and unsupported direct-token sign-in stay closed",
+    "signed OAuth tokens with wrong signature, algorithm, issuer, audience or lifetime cannot create a session",
+    "owner-isolated session metadata and fresh revocation never expose other tokens",
+    "unauthenticated, forged cookies, foreign origins and unsupported auth paths fail closed",
+    "consent, owner isolation, upload acknowledgement and idempotent replay",
+    "simultaneous writes preserve exactly one head and remove the losing object",
+    "malformed/oversized envelopes and unsupported fields preserve current head",
+    "optional coaching consent, durable deduplication and strictly selected facts",
+    "invented model advice is refused and never returned",
+    "revoking consent cancels an in-flight provider request and prevents late publication",
+    "daily budget reservation blocks a fourth provider dispatch without a fallback",
+    "account deletion requires fresh verification before tombstoning or removing data",
+    "exhausted provider budgets cannot create unbounded jobs and accepted retries remain available",
+    "fresh-session deletion revokes auth, removes cloud objects and blocks late writes",
+    "sign-out invalidates the persistent session",
+    "HTTPS SDK cookies use host-only Secure/HttpOnly/SameSite attributes and preserve session revocation",
+    "qualified native schemes match the deployment brand and reject cross-brand return addresses"
+  ],
+  "security_checks_passed": 29,
+  "native_auth_brands": [
+    "movefield",
+    "grizzly"
+  ],
+  "unchanged_release_age_minutes": 10080,
+  "advisories": [
+    "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+    "https://github.com/advisories/GHSA-86w9-cpqp-85rv"
+  ]
+}

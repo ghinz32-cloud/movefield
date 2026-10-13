@@ -3,6 +3,7 @@ declare namespace Cloudflare {
     DB?: D1Database;
     BUCKET?: R2Bucket;
     APP_ORIGIN?: string;
+    APP_VARIANT?: 'movefield' | 'grizzly';
     AUTH_SECRET?: string;
     NATIVE_AUTH_VERIFIED?: string;
     GOOGLE_CLIENT_ID?: string;

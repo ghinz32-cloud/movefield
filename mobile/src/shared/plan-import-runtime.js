@@ -1,8 +1,6 @@
 // Recovered executed implementation; typed public contract is in the adjacent declaration.
-import * as __dependency0 from "./training";
-import * as __dependency1 from "./saved-data";
-var _training = __dependency0;
-var _savedData = __dependency1;
+import * as _training from "./training";
+import * as _savedData from "./saved-data";
 var signature = s => JSON.stringify([s.plan?.id, s.plan?.version, s.active?.id, s.events, s.profile, s.custom]);
 function previewPlanImport(state, raw, options) {
     var credit = options.credit.trim();

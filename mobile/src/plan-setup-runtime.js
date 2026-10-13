@@ -1,37 +1,22 @@
-import {GrizzlyPressable} from './wild-interactions';
+import {GrizzlyPressable,NativeWildReveal} from './wild-interactions';
+import {programCatalog} from './shared/program-catalog';
 // Recovered executed implementation; typed public contract is in the adjacent declaration.
-import * as __dependency0 from "./shared/plan-fit";
-import * as __dependency1 from "./equipment-survey";
-import * as __dependency2 from "./shared/source-programs";
-import * as __dependency3 from "./shared/equipment";
-import * as __dependency4 from "./science";
-import * as __dependency5 from "./shared/session-duration";
-import * as __dependency6 from "./shared/session-guide";
-import * as __dependency7 from "./appearance";
-import * as __dependency8 from "./shared/presentation";
-import * as __dependency9 from "react";
-import * as __dependency10 from "react-native";
-import * as __dependency11 from "./shared/training";
-import * as __dependency12 from "./shared/onboarding";
-import * as __dependency13 from "./storage";
-import * as __dependency14 from "./shared/training-focus";
-import * as __dependency15 from "react/jsx-runtime";
-var _sharedPlanFit = __dependency0;
-var _equipmentSurvey = __dependency1;
-var _sharedSourcePrograms = __dependency2;
-var _sharedEquipment = __dependency3;
-var _science = __dependency4;
-var _sharedSessionDuration = __dependency5;
-var _sharedSessionGuide = __dependency6;
-var _appearance = __dependency7;
-var _sharedPresentation = __dependency8;
-var _react = __dependency9;
-var _reactNative = __dependency10;
-var _sharedTraining = __dependency11;
-var _sharedOnboarding = __dependency12;
-var _storage = __dependency13;
-var _sharedTrainingFocus = __dependency14;
-var _reactJsxRuntime = __dependency15;
+import * as _sharedPlanFit from "./shared/plan-fit";
+import * as _equipmentSurvey from "./equipment-survey";
+import * as _sharedSourcePrograms from "./shared/source-programs";
+import * as _sharedEquipment from "./shared/equipment";
+import * as _science from "./science";
+import * as _sharedSessionDuration from "./shared/session-duration";
+import * as _sharedSessionGuide from "./shared/session-guide";
+import * as _appearance from "./appearance";
+import * as _sharedPresentation from "./shared/presentation";
+import * as _react from "react";
+import * as _reactNative from "react-native";
+import * as _sharedTraining from "./shared/training";
+import * as _sharedOnboarding from "./shared/onboarding";
+import * as _storage from "./storage";
+import * as _sharedTrainingFocus from "./shared/training-focus";
+import * as _reactJsxRuntime from "react/jsx-runtime";
 var c = {
     ink: '#19362D',
     green: '#214D3A',
@@ -77,13 +62,15 @@ var baseStyles = _reactNative.StyleSheet.create({
         gap: 12
     }
 });
-function Choice({ label, selected, onPress }) {
+function Choice({ label, selected, onPress, disabled = false }) {
     var styles = (0, _appearance.useThemedStyles)(baseStyles), { colors: c } = (0, _appearance.useNativeAppearance)();
     return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
         accessibilityRole: "button",
         accessibilityState: {
-            selected
+            selected,
+            disabled
         },
+        disabled,
         onPress: onPress,
         style: [styles.button, selected && {
                 backgroundColor: c.green
@@ -115,7 +102,7 @@ function Field({ label, value, onChange, numeric = false }) {
             })]
     });
 }
-function PlanSetup({ state, onAccept, sample = false }) {
+function PlanSetup({ state, onAccept, sample = false, sourceChoice }) {
     var styles = (0, _appearance.useThemedStyles)(baseStyles), { colors: c } = (0, _appearance.useNativeAppearance)();
     var [p, setP] = (0, _react.useState)({
         ...state.profile,
@@ -126,12 +113,13 @@ function PlanSetup({ state, onAccept, sample = false }) {
         ...(sourceChoice ? {
             goal: sourceChoice.goal,
             mode: 'app',
-            programId: sourceChoice.id,
-            trainingDays: (0, _sharedSourcePrograms.sourceProgram)(sourceChoice.id)?.days
+            programId: sourceChoice.id || undefined,
+            trainingDays: (0, _sharedSourcePrograms.sourceProgram)(sourceChoice.id)?.days ?? programCatalog.find(x => x.id === sourceChoice.id)?.days
         } : {})
     }), [step, setStep] = (0, _react.useState)(0), [selected, setSelected] = (0, _react.useState)(null), [error, setError] = (0, _react.useState)(''), [showAll, setShowAll] = (0, _react.useState)(false);
     var [loaded, setLoaded] = (0, _react.useState)(false), [saveNote, setSaveNote] = (0, _react.useState)('Opening saved setup…'), [draftBlocked, setDraftBlocked] = (0, _react.useState)(false);
-    var accepted = (0, _react.useRef)(false), write = (0, _react.useRef)(0);
+    var accepted = (0, _react.useRef)(false), write = (0, _react.useRef)(0), accepting = (0, _react.useRef)(false);
+    var [saving, setSaving] = (0, _react.useState)(false);
     (0, _react.useEffect)(() => {
         var live = true;
         (0, _storage.readLocalSetup)(sample).then(d => {
@@ -143,8 +131,8 @@ function PlanSetup({ state, onAccept, sample = false }) {
                     ...(sourceChoice ? {
                         goal: sourceChoice.goal,
                         mode: 'app',
-                        programId: sourceChoice.id,
-                        trainingDays: (0, _sharedSourcePrograms.sourceProgram)(sourceChoice.id)?.days
+                        programId: sourceChoice.id || undefined,
+                        trainingDays: (0, _sharedSourcePrograms.sourceProgram)(sourceChoice.id)?.days ?? programCatalog.find(x => x.id === sourceChoice.id)?.days
                     } : {})
                 });
                 setStep(sourceChoice ? 0 : d.profile.mode === 'app' && !d.profile.inventory ? Math.min(2, d.step) : d.baseEvents === JSON.stringify(state.events) ? Math.min(3, d.step) : 1);
@@ -188,7 +176,7 @@ function PlanSetup({ state, onAccept, sample = false }) {
             live = false;
         };
     }, [p, step, loaded, state.plan?.id, state.events, draftBlocked]);
-    var options = (0, _react.useMemo)(() => step === 3 ? (0, _sharedOnboarding.planOptions)(p, state.events).sort((a, b) => Number(b.id === sourceChoice?.id && p.goal === sourceChoice.goal) - Number(a.id === sourceChoice?.id && p.goal === sourceChoice.goal)) : [], [step, p, state.events, sourceChoice]);
+    var options = (0, _react.useMemo)(() => step === 3 ? (0, _sharedOnboarding.planOptions)(p, state.events).sort((a, b) => Number(!!sourceChoice && b.id === sourceChoice.id && p.goal === sourceChoice.goal) - Number(!!sourceChoice && a.id === sourceChoice.id && p.goal === sourceChoice.goal)) : [], [step, p, state.events, sourceChoice]);
     var set = (key, value) => {
         setP(v => ({
             ...v,
@@ -212,7 +200,8 @@ function PlanSetup({ state, onAccept, sample = false }) {
             style: styles.body,
             children: "Opening saved setup\u2026"
         });
-    return /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
+    return /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(NativeWildReveal, {
+        sceneKey: `setup-${step}-${selected?.id || 'choices'}`,
         style: {
             gap: 16
         },
@@ -413,7 +402,7 @@ function PlanSetup({ state, onAccept, sample = false }) {
                                 style: styles.body,
                                 children: e
                             }, e))]
-                    }), options.filter(o => o.plan).map(o => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
+                    }), options.filter(o => o.plan && (!selected || selected.id === o.id)).map(o => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
                         style: styles.card,
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.title,
@@ -425,10 +414,11 @@ function PlanSetup({ state, onAccept, sample = false }) {
                                 style: styles.body,
                                 children: [o.plan.sessions.length, " sessions \xB7 ends ", (0, _sharedTraining.niceDate)(o.plan.sessions.at(-1).date)]
                             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                                label: selected?.id === o.id ? 'Selected' : 'Review this plan',
+                                label: selected?.id === o.id ? 'Choose another plan' : 'Review this plan',
                                 selected: selected?.id === o.id,
                                 onPress: () => {
-                                    setSelected(o);
+                                    setSelected(current => current?.id === o.id ? null : o);
+                                    setError('');
                                     setShowAll(false);
                                 }
                             })]
@@ -474,18 +464,28 @@ function PlanSetup({ state, onAccept, sample = false }) {
                                 style: styles.body,
                                 children: n
                             }, n)), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                                label: "Start this plan",
+                                label: saving ? "Saving plan…" : "Start this plan",
+                                disabled: saving,
                                 onPress: async () => {
+                                    if (accepting.current || accepted.current) return;
                                     if (draftBlocked) {
                                         setError('Resolve the preserved setup draft first.');
                                         return;
                                     }
-                                    var message = await onAccept(selected.profile, selected.plan, state.events);
-                                    if (message)
-                                        setError(message);
-                                    else {
-                                        accepted.current = true;
-                                        await (0, _storage.clearLocalSetup)(sample);
+                                    accepting.current = true;
+                                    setSaving(true);
+                                    try {
+                                        var message = await onAccept(selected.profile, selected.plan, state.events);
+                                        if (message) setError(message);
+                                        else {
+                                            accepted.current = true;
+                                            await (0, _storage.clearLocalSetup)(sample);
+                                        }
+                                    } catch (e) {
+                                        setError(accepted.current ? 'Your plan is saved, but its setup draft could not be cleared. Your accepted workouts are kept.' : e instanceof Error ? e.message : 'This plan could not be saved. Your setup is kept for retry.');
+                                    } finally {
+                                        accepting.current = false;
+                                        setSaving(false);
                                     }
                                 }
                             })]

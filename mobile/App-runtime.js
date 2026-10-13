@@ -1,105 +1,56 @@
 import {GrizzlyPressable} from './src/wild-interactions';
 // Recovered executed implementation; typed public contract is in the adjacent declaration.
-import * as __dependency0 from "./src/shared/paired-sets";
-import * as __dependency1 from "./src/shared/source-programs";
-import * as __dependency2 from "./src/set-rir";
-import * as __dependency3 from "./src/shared/training";
-import * as __dependency4 from "./src/equipment-survey";
-import * as __dependency5 from "./src/today-hero";
-import * as __dependency6 from "./src/bear-decoration";
-import * as __dependency7 from "./src/progress";
-import * as __dependency8 from "./src/science";
-import * as __dependency9 from "./src/shared/session-duration";
-import * as __dependency10 from "./src/plan-customizer";
-import * as __dependency11 from "./src/calendar";
-import * as __dependency12 from "./src/saved-plans";
-import * as __dependency13 from "./src/shared/reusable-plan";
-import * as __dependency14 from "./src/appearance";
-import * as __dependency15 from "./src/file-transfer";
-import * as __dependency16 from "./src/plan-import";
-import * as __dependency17 from "./src/shared/plan-import";
-import * as __dependency18 from "./src/set-metrics";
-import * as __dependency19 from "./src/history-editor";
-import * as __dependency20 from "./src/shared/history-edit";
-import * as __dependency21 from "./src/cloud-account";
-import * as __dependency22 from "./src/settings";
-import * as __dependency23 from "./src/shared/experienced-demo";
-import * as __dependency24 from "./src/shared/durable-state";
-import * as __dependency25 from "./src/shared/workout-flow";
-import * as __dependency26 from "./src/workout-notifications";
-import * as __dependency27 from "./src/shared/presentation";
-import * as __dependency28 from "./src/shared/brand";
-import * as __dependency29 from "./src/shared/workout-log";
-import * as __dependency30 from "./src/plan-setup";
-import * as __dependency31 from "./src/session-editor";
-import * as __dependency32 from "./src/shared/tracking";
-import * as __dependency33 from "./src/shared/onboarding";
-import * as __dependency34 from "./src/rest-alerts";
-import * as __dependency35 from "./src/shared/rest-timer";
-import * as __dependency36 from "./src/shared/saved-data";
-import * as __dependency37 from "./src/shared/session-guide";
-import * as __dependency38 from "./src/shared/workout-review";
-import * as __dependency39 from "react";
-import * as __dependency40 from "react-native";
-import * as __dependency41 from "react-native-safe-area-context";
-import * as __dependency42 from "expo-status-bar";
-import * as __dependency43 from "./src/shared/program-catalog";
-import * as __dependency44 from "./src/shared/substitutions";
-import * as __dependency45 from "./src/content";
-import * as __dependency46 from "./src/mobile-engine";
-import * as __dependency47 from "./src/storage";
-import * as __dependency48 from "react/jsx-runtime";
+import * as _srcSharedPairedSets from "./src/shared/paired-sets";
+import * as _srcSharedSourcePrograms from "./src/shared/source-programs";
+import * as _srcSetRir from "./src/set-rir";
+import * as _srcSharedTraining from "./src/shared/training";
+import * as _srcEquipmentSurvey from "./src/equipment-survey";
+import * as _srcTodayHero from "./src/today-hero";
+import * as _srcBearDecoration from "./src/bear-decoration";
+import * as _srcProgress from "./src/progress";
+import * as _srcScience from "./src/science";
+import * as _srcSharedSessionDuration from "./src/shared/session-duration";
+import * as _srcPlanCustomizer from "./src/plan-customizer";
+import * as _srcCalendar from "./src/calendar";
+import * as _srcSavedPlans from "./src/saved-plans";
+import * as _srcSharedReusablePlan from "./src/shared/reusable-plan";
+import * as _srcAppearance from "./src/appearance";
+import * as _srcFileTransfer from "./src/file-transfer";
+import * as _srcPlanImport from "./src/plan-import";
+import * as _srcSharedPlanImport from "./src/shared/plan-import";
+import * as _srcSetMetrics from "./src/set-metrics";
+import * as _srcHistoryEditor from "./src/history-editor";
+import * as _srcSharedHistoryEdit from "./src/shared/history-edit";
+import * as _srcCloudAccount from "./src/cloud-account";
+import * as _srcSettings from "./src/settings";
+import * as _srcSharedExperiencedDemo from "./src/shared/experienced-demo";
+import * as _srcSharedDurableState from "./src/shared/durable-state";
+import * as _srcSharedWorkoutFlow from "./src/shared/workout-flow";
+import * as _srcWorkoutNotifications from "./src/workout-notifications";
+import * as _srcSharedPresentation from "./src/shared/presentation";
+import * as _srcSharedBrand from "./src/shared/brand";
+import * as _srcSharedWorkoutLog from "./src/shared/workout-log";
+import * as _srcPlanSetup from "./src/plan-setup";
+import * as _srcSessionEditor from "./src/session-editor";
+import * as _srcSharedTracking from "./src/shared/tracking";
+import * as _srcSharedOnboarding from "./src/shared/onboarding";
+import * as _srcRestAlerts from "./src/rest-alerts";
+import * as _srcSharedRestTimer from "./src/shared/rest-timer";
+import * as _srcSharedSavedData from "./src/shared/saved-data";
+import * as _srcSharedSessionGuide from "./src/shared/session-guide";
+import * as _srcSharedWorkoutReview from "./src/shared/workout-review";
+import * as _react from "react";
+import * as _reactNative from "react-native";
+import * as _reactNativeSafeAreaContext from "react-native-safe-area-context";
+import * as _expoStatusBar from "expo-status-bar";
+import * as _srcSharedProgramCatalog from "./src/shared/program-catalog";
+import * as _srcSharedSubstitutions from "./src/shared/substitutions";
+import * as _srcContent from "./src/content";
+import * as _srcMobileEngine from "./src/mobile-engine";
+import * as _srcStorage from "./src/storage";
+import * as _reactJsxRuntime from "react/jsx-runtime";
 import * as __dependency49 from "./assets/grizzly-fitness-logo.jpg";
 import {NativeWildernessShell,NativeDenHero} from "./src/wilderness";
-var _srcSharedPairedSets = __dependency0;
-var _srcSharedSourcePrograms = __dependency1;
-var _srcSetRir = __dependency2;
-var _srcSharedTraining = __dependency3;
-var _srcEquipmentSurvey = __dependency4;
-var _srcTodayHero = __dependency5;
-var _srcBearDecoration = __dependency6;
-var _srcProgress = __dependency7;
-var _srcScience = __dependency8;
-var _srcSharedSessionDuration = __dependency9;
-var _srcPlanCustomizer = __dependency10;
-var _srcCalendar = __dependency11;
-var _srcSavedPlans = __dependency12;
-var _srcSharedReusablePlan = __dependency13;
-var _srcAppearance = __dependency14;
-var _srcFileTransfer = __dependency15;
-var _srcPlanImport = __dependency16;
-var _srcSharedPlanImport = __dependency17;
-var _srcSetMetrics = __dependency18;
-var _srcHistoryEditor = __dependency19;
-var _srcSharedHistoryEdit = __dependency20;
-var _srcCloudAccount = __dependency21;
-var _srcSettings = __dependency22;
-var _srcSharedExperiencedDemo = __dependency23;
-var _srcSharedDurableState = __dependency24;
-var _srcSharedWorkoutFlow = __dependency25;
-var _srcWorkoutNotifications = __dependency26;
-var _srcSharedPresentation = __dependency27;
-var _srcSharedBrand = __dependency28;
-var _srcSharedWorkoutLog = __dependency29;
-var _srcPlanSetup = __dependency30;
-var _srcSessionEditor = __dependency31;
-var _srcSharedTracking = __dependency32;
-var _srcSharedOnboarding = __dependency33;
-var _srcRestAlerts = __dependency34;
-var _srcSharedRestTimer = __dependency35;
-var _srcSharedSavedData = __dependency36;
-var _srcSharedSessionGuide = __dependency37;
-var _srcSharedWorkoutReview = __dependency38;
-var _react = __dependency39;
-var _reactNative = __dependency40;
-var _reactNativeSafeAreaContext = __dependency41;
-var _expoStatusBar = __dependency42;
-var _srcSharedProgramCatalog = __dependency43;
-var _srcSharedSubstitutions = __dependency44;
-var _srcContent = __dependency45;
-var _srcMobileEngine = __dependency46;
-var _srcStorage = __dependency47;
-var _reactJsxRuntime = __dependency48;
 var COLORS = {
     bg: '#F6F5EF',
     ink: '#19362D',
@@ -253,8 +204,9 @@ function ModalFrame({ visible, close, title, children }) {
                             children: title
                         }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
                             accessibilityRole: "button",
+                            accessibilityLabel: "Close " + title,
                             onPress: close,
-                            hitSlop: 12,
+                            style: { minWidth: 48, minHeight: 48, alignItems: 'center', justifyContent: 'center' },
                             children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.link,
                                 children: "Close"
@@ -262,6 +214,8 @@ function ModalFrame({ visible, close, title, children }) {
                         })]
                 }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.ScrollView, {
                     contentContainerStyle: styles.content,
+                    keyboardShouldPersistTaps: "handled",
+                    keyboardDismissMode: "on-drag",
                     children: children
                 })]
         })
@@ -524,9 +478,33 @@ function TrainingApp() {
         };
     }, []);
     (0, _react.useEffect)(() => {
-        var timer = setInterval(() => setNow(Date.now()), 500);
+        if (!appearance.active) return;
+        // Deadline-based rest keeps time while backgrounded; repaint only while it is visible and running.
+        var endAt = state?.restTimer?.endAt;
+        if (tab !== 'Today' || !endAt || endAt <= Date.now()) return;
+        var timer = setInterval(() => {
+            var time = Date.now();
+            setNow(time);
+            if (time >= endAt) clearInterval(timer);
+        }, 500);
         return () => clearInterval(timer);
-    }, []);
+    }, [appearance.active, tab, state?.restTimer?.endAt]);
+    (0, _react.useEffect)(() => {
+        if (!appearance.active) return;
+        var timer;
+        var refresh = () => {
+            var time = new Date(), midnight = new Date(time);
+            midnight.setHours(24, 0, 0, 25);
+            setNow(time.getTime());
+            timer = setTimeout(refresh, midnight.getTime() - time.getTime());
+        };
+        refresh();
+        return () => clearTimeout(timer);
+    }, [appearance.active]);
+    var catalogDay = (0, _srcSharedTraining.day)(new Date(now));
+    var visibleCatalog = (0, _react.useMemo)(() => tab === 'Plan' && planSection === 'explore'
+        ? _srcSharedProgramCatalog.programCatalog.filter(p => p.goal === planGoal).map(p => ({definition:p,preview:(0, _srcMobileEngine.previewPlan)(p.id,catalogDay)}))
+        : [], [tab, planSection, planGoal, catalogDay]);
     var workoutReminderMessage = (0, _srcWorkoutNotifications.useNativeWorkoutReminders)(sampleMode ? null : state, appearance.p, appearance.ready);
     var restAlertMessage = (0, _srcRestAlerts.useNativeRestAlerts)(state?.restTimer, state?.active?.id, !!state?.restAlerts, !!state && !sampleMode);
     var [alertMessage, setAlertMessage] = (0, _react.useState)('');
@@ -638,6 +616,13 @@ function TrainingApp() {
             setHistoryItem(null);
             setPersonalSetup(false);
             setSourceChoice(undefined);
+            setCalendarOpen(false);
+            setTrackingSession('');
+            setCustomizeSession('');
+            setSubstitution(null);
+            setChangePreview(null);
+            setScienceOpen(false);
+            setEditingHistory(false);
             setPlanImportOpen(false);
             setExercise(null);
             setPreview(null);
@@ -1436,14 +1421,15 @@ function TrainingApp() {
                 children: "Workouts save on this device. Optional account and encrypted manual backup are in Settings."
             })]
     });
-    var planView = /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.ScrollView, {
+    var planView = tab === 'Plan' && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.ScrollView, {
         contentContainerStyle: styles.content,
-        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+        keyboardShouldPersistTaps: "handled",
+        children: [planSection === 'saved' && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
                 secondary: true,
                 label: "Import a saved plan",
                 disabled: !!active,
                 onPress: () => setPlanImportOpen(true)
-            }), state.plan && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+            }), planSection === 'saved' && state.plan && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
                 secondary: true,
                 label: "Share plan (plaintext)",
                 onPress: () => {
@@ -1594,7 +1580,7 @@ function TrainingApp() {
                                 secondary: true,
                                 onPress: () => openPreview(_srcMobileEngine.SPORT_FOUNDATION)
                             })]
-                    }), _srcSharedProgramCatalog.programCatalog.filter(p => p.goal === planGoal).map(p => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                    }), visibleCatalog.map(({definition:p,preview:sample}) => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.eyebrow,
                                 children: "APP PLAN"
@@ -1606,7 +1592,7 @@ function TrainingApp() {
                                 children: p.description
                             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
                                 style: styles.small,
-                                children: [p.days, " days \xB7 ", Math.max(...((0, _srcMobileEngine.previewPlan)(p.id).plan?.sessions.map(x => x.minutes) || [p.minutes])), "-minute sample window \xB7 ", p.goal === 'running' ? 'Suitable running route' : p.equipment === 'flexible' ? 'Home / dumbbell / gym options; this sample uses dumbbells' : (0, _srcSharedProgramCatalog.programEquipment)(p)]
+                                children: [p.days, " days \xB7 ", Math.max(...(sample.plan?.sessions.map(x => x.minutes) || [p.minutes])), "-minute sample window \xB7 ", p.goal === 'running' ? 'Suitable running route' : p.equipment === 'flexible' ? 'Home / dumbbell / gym options; this sample uses dumbbells' : (0, _srcSharedProgramCatalog.programEquipment)(p)]
                             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
                                 style: styles.small,
                                 children: [p.experience === 'advanced' ? 'Needs established technique and consistent recent training. ' : p.experience === 'some' ? p.goal === 'running' ? 'Needs the stated recent running base.' : 'Assumes established lifting experience.' : 'Starts with time to learn the exercises.', p.runBase ? ' Assumes comfortable continuous running for 30 minutes.' : '']
@@ -2164,6 +2150,10 @@ function TrainingApp() {
                         setEditingHistory(false);
                         setHistoryItem(w);
                     },
+                    onResume: () => {
+                        setCalendarOpen(false);
+                        setTab('Today');
+                    },
                     onEdit: id => {
                         setCalendarOpen(false);
                         if (state.plan?.profile.mode === 'app')
@@ -2379,7 +2369,10 @@ function TrainingApp() {
                                     children: ["Adult age 28 \xB7 ", preview.profile.experience, " \xB7 ", preview.profile.equipment, " \xB7 up to ", preview.profile.minutes, " minutes"]
                                 }), preview.profile.runBase && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                     style: styles.body,
-                                    children: "An existing comfortable 30-minute running base is assumed."
+                                    children: `Assumes comfortable continuous running for 30 minutes, ${preview.profile.runDays} recent running days and ${preview.profile.runMinutes} easy running minutes each week.`
+                                }), preview.profile.jumpReady && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                                    style: styles.body,
+                                    children: "Assumes a clear landing area and already comfortable landing skill."
                                 }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                     style: styles.small,
                                     children: "The app has not assessed your readiness. These values are a demo configuration; Use Build my plan to enter your own choices."
@@ -2412,8 +2405,14 @@ function TrainingApp() {
                             children: (0, _srcSharedPresentation.trainingCopy)(preview.progression)
                         }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
                             disabled: !!active,
-                            label: state.plan ? 'Use this sample plan · keep history' : 'Use this sample plan',
+                            label: sampleMode ? state.plan ? 'Use this sample plan · keep history' : 'Use this sample plan' : 'Build this plan for me',
                             onPress: async () => {
+                                if (!sampleMode) {
+                                    setSourceChoice({id:preview.profile.programId || '',goal:preview.profile.goal});
+                                    setPreview(null);
+                                    setPersonalSetup(true);
+                                    return;
+                                }
                                 if (await persistChange(s => (0, _srcMobileEngine.adoptPlan)(s, preview))) {
                                     setPreview(null);
                                     setTab('Today');

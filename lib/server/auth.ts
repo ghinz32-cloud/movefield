@@ -5,21 +5,24 @@ import {drizzle} from 'drizzle-orm/d1';
 import {createRemoteJWKSet,jwtVerify} from 'jose';
 import type {GoogleProfile} from 'better-auth/social-providers';
 import * as schema from '../../db/schema';
+import {nativeCallback} from './native-auth';
 
 // The provider's code-exchange getUserInfo path decodes by default. Verify the
 // returned ID token before deriving account identity, using a fixed trusted JWKS.
 const googleKeys=createRemoteJWKSet(new URL('https://www.googleapis.com/oauth2/v3/certs'),{timeoutDuration:5000,cooldownDuration:30000,cacheMaxAge:3600000});
 
 export function cloudReady(env:Cloudflare.Env){
+ if(env.APP_VARIANT&&env.APP_VARIANT!=='movefield'&&env.APP_VARIANT!=='grizzly')return false;
  if(env.MOVEFIELD_CLOUD_ENABLED!=='true'||env.FREE_ALLOWANCE_VERIFIED!=='true'||!env.DB||!env.BUCKET||!env.AUTH_SECRET||env.AUTH_SECRET.length<32||!env.GOOGLE_CLIENT_ID||!env.GOOGLE_CLIENT_SECRET)return false;
  try{const u=new URL(env.APP_ORIGIN||'');if(u.origin!==env.APP_ORIGIN)return false;return env.MOVEFIELD_LOCAL_TEST==='true'?u.protocol==='http:'&&['127.0.0.1','localhost'].includes(u.hostname):u.protocol==='https:'}catch{return false}
 }
 export function createAuth(env:Cloudflare.Env){
  if(!cloudReady(env))throw Error('Account connections are unavailable.');
+ const callback=nativeCallback(env);
  return betterAuth({
-  appName:'Movefield',baseURL:env.APP_ORIGIN!,basePath:'/api/auth',secret:env.AUTH_SECRET!,
+  appName:env.APP_VARIANT==='grizzly'?'Grizzly Fitness':'Movefield',baseURL:env.APP_ORIGIN!,basePath:'/api/auth',secret:env.AUTH_SECRET!,
   database:drizzleAdapter(drizzle(env.DB!),{provider:'sqlite',schema,transaction:false}),
-  trustedOrigins:[env.APP_ORIGIN!,...(env.NATIVE_AUTH_VERIFIED==='true'?['movefield://']:[])],plugins:[expo()],
+  trustedOrigins:[env.APP_ORIGIN!,...(callback?[callback]:[])],plugins:[expo()],
   emailAndPassword:{enabled:false},
   socialProviders:{google:{clientId:env.GOOGLE_CLIENT_ID!,clientSecret:env.GOOGLE_CLIENT_SECRET!,prompt:'select_account',getUserInfo:async tokens=>{
    try{

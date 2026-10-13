@@ -1,0 +1,270 @@
+{
+  "date": "2026-10-13T15:38:04.548999+00:00",
+  "base_commit": "00559e36850233c54adcfaa95ca4f5c13a0aa93d",
+  "application_source_sha256": "2eaa202418136737ad9db8f53a684da64effd3d5654caa06a2e15bb6edf8a99a",
+  "scope": "Both Movefield and Grizzly; synthetic functional tests, actual compiled bundles, static web builds, distinct Hermes exports and direct published sample UI checks. Not installed-device or connected-service qualification.",
+  "core": {
+    "ran_at": "2026-10-13T15:35:40.632Z",
+    "scope": "Local synthetic domain/adapter and type checks; no device, connected provider or deployment qualification.",
+    "results": [
+      {
+        "name": "runtime module contracts",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 5217
+      },
+      {
+        "name": "production bundled training",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2515
+      },
+      {
+        "name": "complete training lifecycles",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 6983
+      },
+      {
+        "name": "web workout and setup controls",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 970
+      },
+      {
+        "name": "native interaction callbacks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1187
+      },
+      {
+        "name": "offline update lifecycle",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 250
+      },
+      {
+        "name": "Grizzly appearance and retired preset migration",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 627
+      },
+      {
+        "name": "clickable web calendar",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 877
+      },
+      {
+        "name": "Grizzly daily context and local day changes",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 946
+      },
+      {
+        "name": "preview ownership and retained assets",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 390
+      },
+      {
+        "name": "Grizzly motion and licensed fonts",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 463
+      },
+      {
+        "name": "distinct goal families and flexible selection",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1487
+      },
+      {
+        "name": "creator-source and set-effort refinements",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 842
+      },
+      {
+        "name": "public source rules and scientific accounting",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 973
+      },
+      {
+        "name": "Today facts and actions",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 618
+      },
+      {
+        "name": "transactional encrypted records",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 5846
+      },
+      {
+        "name": "activity progress and comparison context",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 652
+      },
+      {
+        "name": "evidence/duration/calendar zones",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 4020
+      },
+      {
+        "name": "calendar and reusable blocks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 788
+      },
+      {
+        "name": "reusable block equipment guards",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 978
+      },
+      {
+        "name": "Cloudflare account/storage/coaching",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 4194
+      },
+      {
+        "name": "portable cloud vault and retry",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2788
+      },
+      {
+        "name": "native SDK cookie transport",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1255
+      },
+      {
+        "name": "plan import",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 770
+      },
+      {
+        "name": "durability",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 896
+      },
+      {
+        "name": "vault and history",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1207
+      },
+      {
+        "name": "native encrypted adapter",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1403
+      },
+      {
+        "name": "native file transfer",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 346
+      },
+      {
+        "name": "security",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 813
+      },
+      {
+        "name": "data and calendar",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 707
+      },
+      {
+        "name": "web types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 10331
+      },
+      {
+        "name": "native types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 5370
+      },
+      {
+        "name": "native engine",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2540
+      }
+    ]
+  },
+  "web_builds": {
+    "movefield": "passed",
+    "grizzly": "passed"
+  },
+  "native_exports": {
+    "checked_at": "2026-10-13T15:36:23.945595+00:00",
+    "scope": "Distinct cleared-cache Hermes exports, paired with native identity/module checks; no installed-device claim.",
+    "flavors": {
+      "movefield": {
+        "android": {
+          "path": "_expo/static/js/android/index-a91e80c694325f9ccc33b286d378dc54.hbc",
+          "bytes": 4599021,
+          "sha256": "90ec64f6718c142c87712f0e4ebcbef44bd86706e59150e8eff11d0a2bd3ddf7"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-7e53902b91eaf7146d2756148dd2f069.hbc",
+          "bytes": 4589274,
+          "sha256": "2e8aad12e7c46c707493763c9783ace907c17c375811c6b11765c08da417947d"
+        }
+      },
+      "grizzly": {
+        "android": {
+          "path": "_expo/static/js/android/index-e3fe7c668c6cf7d5559f604349d375b9.hbc",
+          "bytes": 4599093,
+          "sha256": "a722c8172f0d039e510b50fdab085f0dadb7f498c63f2ca7418e082308a0649c"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-4d9d3145b88b4f8719e00501a49005e6.hbc",
+          "bytes": 4589111,
+          "sha256": "43eb584840cd7697b336c677965f8bb4813315f16989ff27ea655630a566aaa4"
+        }
+      }
+    }
+  },
+  "native_source_archives": {
+    "public/downloads/movefield-native-current.zip": "d106a3d232830a33518f63c4fa1cc0e18260fcdf3701ac3ecc71a31c57b437cd",
+    "public/downloads/grizzly-fitness-native-source.zip": "dbfd495e249080b0ba0536f00d7ca42d3bf282b500d529dcef6faa408cb2d135"
+  },
+  "focused_lint": "0 errors, 22 existing warnings",
+  "credential_pattern_scan": {
+    "ran_at": "2026-10-13T15:36:56.123777+00:00",
+    "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed.",
+    "files": 6036,
+    "zip_members": 2172,
+    "matches": []
+  },
+  "observed_before_fix": [
+    "Production bodybuilding wizard undefined.uid crash, reproduced in both optimized and minified code",
+    "Native setup undeclared sourceChoice and two unsupported demo previews",
+    "Web set-column mismatch, exercise ordinal and focused substitution defects",
+    "Running stage prerequisites and explanation defects"
+  ],
+  "browser_post_publication": "Pending; see later publication receipt.",
+  "remaining_gates": [
+    "Physical Android/iOS installed-device and signed-binary acceptance",
+    "Native two unpatched upstream tooling advisories",
+    "Connected provider/resource/identity qualification",
+    "Comprehensive rendered accessibility and exhaustive every-state button coverage",
+    "Canonical next-block/baseline and other task-register scope"
+  ]
+}

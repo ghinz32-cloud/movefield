@@ -12,5 +12,5 @@
   "d1_databases": [{"binding":"DB","database_name":"movefield-owner-reviewed","database_id":"00000000-0000-4000-8000-000000000000","migrations_dir":"drizzle"}],
   "r2_buckets": [{"binding":"BUCKET","bucket_name":"movefield-owner-reviewed"}],
   "triggers": {"crons":["0 * * * *"]},
-  "vars": {"MOVEFIELD_CLOUD_ENABLED":"false","FREE_ALLOWANCE_VERIFIED":"false","AI_PROVIDER_VERIFIED":"false","NATIVE_AUTH_VERIFIED":"false","APP_ORIGIN":"https://your-owned-domain.example"}
+  "vars": {"APP_VARIANT":"movefield","MOVEFIELD_CLOUD_ENABLED":"false","FREE_ALLOWANCE_VERIFIED":"false","AI_PROVIDER_VERIFIED":"false","NATIVE_AUTH_VERIFIED":"false","APP_ORIGIN":"https://your-owned-domain.example"}
 }

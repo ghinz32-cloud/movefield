@@ -139,7 +139,7 @@
 | SPJUMP2 | Sport preparation · Landing practice + strength 2 | Original app definition | 64 | 3 |
 | RNRECOVERY2 | Running · Short walk–run recovery | Original app definition | 27 | 2 |
 | RNGRADUAL3 | Running · Gradual walk–run intervals | Original app definition | 33 | 2 |
-| RNLONGBOUT2 | Running · Longer walk–run bouts | Original app definition | 33 | 2 |
+| RNLONGBOUT2 | Running · Build longer walk–run bouts | Original app definition | 33 | 2 |
 | RNEASY2 | Running · Two short continuous runs | Original app definition | 30 | 2 |
 | RNVARY3 | Running · Easy short / medium / longer | Original app definition | 55 | 2 |
 | RNFARTLEK3 | Running · Controlled one-minute changes | Original app definition | 38 | 2 |
@@ -155,6 +155,6 @@
 | src-gzclp-4 | GZCLP · 4-day base by Cody Lefever | Credited public strength version | 60 | 1 |
 | src-fitness-basic | r/Fitness Basic Beginner · barbell module by r/Fitness / The Fitness Wiki | Credited public strength version | 49 | 2 |
 | src-phul | PHUL · published four-day routine by Brandon Campbell / Muscle & Strength | Credited public strength version | 85 | 1 |
-| src-reddit-ppl | Reddit PPL · six-day linear progression by u/Metallicadpa / r/Fitness; Fitness Wiki archive | Credited public strength version | 92 | 1 |
+| src-reddit-ppl | Reddit PPL · six-day linear progression by u/Metallicadpa / r/Fitness; Fitness Wiki archive | Credited public strength version | 92 | 2 |
 | src-db-stopgap | Dumbbell Stopgap · public A/B routine by r/Fitness community / Fitness Wiki archive | Credited public strength version | 48 | 2 |
 | RUN-WALK | Beginner run/walk | NHS source sequence | 45 | 1 |

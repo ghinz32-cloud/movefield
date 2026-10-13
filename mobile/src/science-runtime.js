@@ -1,18 +1,11 @@
 // Recovered executed implementation; typed public contract is in the adjacent declaration.
-import * as __dependency0 from "react";
-import * as __dependency1 from "react-native";
-import * as __dependency2 from "./appearance";
-import * as __dependency3 from "./shared/evidence-sources";
-import * as __dependency4 from "./shared/program-science";
-import * as __dependency5 from "./shared/program-catalog";
-import * as __dependency6 from "react/jsx-runtime";
-var _react = __dependency0;
-var _reactNative = __dependency1;
-var _appearance = __dependency2;
-var _sharedEvidenceSources = __dependency3;
-var _sharedProgramScience = __dependency4;
-var _sharedProgramCatalog = __dependency5;
-var _reactJsxRuntime = __dependency6;
+import * as _react from "react";
+import * as _reactNative from "react-native";
+import * as _appearance from "./appearance";
+import * as _sharedEvidenceSources from "./shared/evidence-sources";
+import * as _sharedProgramScience from "./shared/program-science";
+import * as _sharedProgramCatalog from "./shared/program-catalog";
+import * as _reactJsxRuntime from "react/jsx-runtime";
 var baseStyles = _reactNative.StyleSheet.create({
     body: {
         fontSize: 16,

@@ -1,3 +1,15 @@
+# Current checkpoint · full Movefield and Grizzly audit · 13 October 2026
+
+Continue in `codex/full-app-audit-2026-10-13`, checkout `/workspace/scratch/4b7d521a9744/movefield`, starting from remote `00559e36850233c54adcfaa95ca4f5c13a0aa93d`. Both Movefield and Grizzly are explicitly in scope. The user authorizes normal source and existing preview pushes. The latest audit supersedes older claims that no managed browser is available: this session uses the supported cloud browser for direct published-site sample interactions, with no local preview server.
+
+Read `docs/full-app-audit-2026-10-13.md` and its linked domain audits. A live bodybuilding setup crash was traced to eager namespace snapshots in cyclic recovered modules, reproduced in optimized/minified Vite bundles, and fixed with live imports. New permanent gates cover these production bundles, all 154 complete-plan lifecycles, runtime contracts, actual web/native callbacks, and service-worker lifecycle. The audit also fixes native setup/previews/profile retention/calendar/reminders, web logging/history/setup flow, running prerequisites and explanations, cloud origin/callback and job-creation bounds. OG remains removed. Native data and brand identities are preserved.
+
+Final checks, source/Pages publication and live post-release browser results are recorded in the matching `docs/full-app-audit-validation-2026-10-13.json` and publication receipt when present. Do not infer physical native acceptance from Hermes exports. Existing source downloads are ZIPs, not APK/IPA binaries. Original `/movefield/` files and old compiled chunks stay unchanged. Current app URLs are `/movefield/review/` and `/movefield/grizzly/`.
+
+Next: use the exact publication receipt as the continuation baseline; finish next-block/starting-baseline editing and original task-register gates. Remaining device/signing, upstream native advisories and connected-provider gates remain explicit. No repeat push permission is needed.
+
+---
+
 # Current checkpoint · Grizzly theme retirement and clickable web calendar · 13 October 2026
 
 The user's latest instruction removes OG Grizzly entirely and requests a clickable website calendar like the app. This supersedes the older OG design directions. Continue on remote `codex/grizzly-calendar-2026-10-13` at `/workspace/scratch/1862f22c73cf/movefield`; local tested/publication snapshots are retained separately. Starting local checkpoint is `9054324d58f642a1f3bd4f2fd8d03325fb6ccbe2`; verified remote baseline is `6ab6afdc1c4f74c5d7504b7904c6f75a18d88c60` on `codex/og-grizzly-2026-10-13`, and Pages baseline is `ce9d2ad46940e6a35bc6eca618b377797e491b13`. The prior equipment guard was local at resume and is now included in the verified published release.

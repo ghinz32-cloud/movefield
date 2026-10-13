@@ -3,10 +3,11 @@ import {AppState,Platform} from 'react-native';
 import * as Notifications from 'expo-notifications';
 import {createRestAlertQueue,type RestTimer,validRest} from './shared/rest-timer';
 import {isWorkoutNotificationAllowed,hasNotificationPermission} from './workout-notifications';
+import {workoutReminderKind} from './shared/workout-reminders';
 const CHANNEL='training-rest';
 let currentId:string|null=null;
 if(Platform.OS!=='web')Notifications.setNotificationHandler({handleNotification:async notification=>{
- const allowed=notification.request.identifier===currentId||notification.request.content.data?.kind==='training-workout'&&isWorkoutNotificationAllowed(notification.request.identifier);
+ const allowed=notification.request.identifier===currentId||notification.request.content.data?.kind===workoutReminderKind&&isWorkoutNotificationAllowed(notification.request.identifier);
  return {shouldShowBanner:allowed,shouldShowList:allowed,shouldPlaySound:allowed,shouldSetBadge:false};
 }});
 const queue=createRestAlertQueue({

@@ -1,12 +1,9 @@
 // Recovered executed implementation; typed public contract is in the adjacent declaration.
 // Function bodies/data recovered from the successful 12 October export after scratch cleanup.
-import * as __dependency0 from "./program-catalog";
-import * as __dependency1 from "./source-programs";
-import * as __dependency2 from "./muscle-work";
+import * as _programCatalog from "./program-catalog";
+import * as _sourcePrograms from "./source-programs";
+import * as _muscleWork from "./muscle-work";
 import {goalEvidence} from './goal-evidence';
-var _programCatalog = __dependency0;
-var _sourcePrograms = __dependency1;
-var _muscleWork = __dependency2;
 function programScience(plan) {
     var named = (0, _sourcePrograms.sourceProgram)(plan.template), def = _programCatalog.programCatalog.find(d => d.id === plan.template), work = (0, _muscleWork.muscleWork)(plan), adult = plan.profile.age >= 18;
     // Accepted plan notes retain provenance; a catalog edit cannot relabel old prescriptions.
@@ -44,6 +41,7 @@ function programScience(plan) {
     var scope = plan.profile.mode !== 'app' ? 'Owner-directed targets' : nhs ? 'NHS Couch to 5K public run/walk sequence' : named ? named.scope : def?.description ? 'Original app routine: ' + def.description : runningOnly ? 'Easy running base or walk/run introduction' : def?.brief && !def?.distributed ? 'Brief practice with deliberately less weekly work' : 'Original app routine';
     var limits = [...(editedSource ? ['This accepted plan contains changes to the published baseline. The source describes the preloaded version; it does not certify your reviewed customizations.'] : []), ...(runningOnly && !nhs ? ['WHO supports general aerobic activity, not this exact running prescription. This running block alone does not claim to meet the complete weekly aerobic and muscle-strengthening recommendations.'] : []), ...(gaps.length ? [`${gaps.join(', ')} receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.`] : []), ...(plan.profile.goal === 'hypertrophy' && work.rows.some(r => ['Chest', 'Back', 'Quadriceps', 'Hamstrings'].includes(r.name) && r.primarySets < 10) ? ['This is a lower-volume muscle starting block, not a maximum-volume growth prescription.'] : []), ...(plan.profile.goal === 'sport' ? ['This is general strength preparation, not a validated position-specific sport program.'] : []), ...(!work.completeCycle ? ['The chosen block does not include a complete source rotation; displayed averages cover only the available weeks.'] : []), ...(work.unclassified.length ? ['Some exercises have no reviewed primary/secondary allocation. They are not silently converted into muscle-dose equivalents.'] : [])];
     limits.push(...goalSupport.limits);
+    if (named?.id === 'src-reddit-ppl') limits.push('This six-day routine has a high total workload. Match it to your recent training and recovery, and compare a lower-volume option if you are returning or building consistency. More sets do not guarantee better results.');
     if (def?.jumpPractice) limits.push('The six fixed small jumps are landing practice. Plyometric studies used different training doses; this tiny app block does not claim their sport-performance benefits.');
     return {
         label: plan.profile.mode === 'app' ? 'Evidence-informed principles' : 'Source support not assessed',

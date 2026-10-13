@@ -1,7 +1,6 @@
 // Recovered executed implementation; typed public contract is in the adjacent declaration.
 // Function bodies/data recovered from the successful 12 October export after scratch cleanup.
-import * as __dependency0 from "./source-programs";
-var _sourcePrograms = __dependency0;
+import * as _sourcePrograms from "./source-programs";
 /** Existing linked references. Their presence is not a claim of current full-text review. */
 var evidenceLinks = {
     'SPLIT-FULLBODY': {

@@ -1,6 +1,5 @@
 // Recovered executed implementation; typed public contract is in the adjacent declaration.
-import * as __dependency0 from "./training";
-var _training = __dependency0;
+import * as _training from "./training";
 function volume(s, w) {
     var kg = 0, count = 0, excluded = 0;
     for (var x of w.sets.filter(x => x.done)) {

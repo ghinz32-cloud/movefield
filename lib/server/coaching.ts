@@ -40,7 +40,16 @@ export async function coachingApi(request:Request,env:Cloudflare.Env,owner:strin
  const body=await readJson(request,32_768);exact(body,['revision','consentVersion','context']);if(body.revision!==p.revision||body.consentVersion!==p.consent_version||p.revision<1)throw new ApiError(409,'The cloud profile or consent changed. Review it again.');
  const parsed=coachingInputSchema.safeParse(body.context);if(!parsed.success)throw new ApiError(400,'This workout context is unsupported.');try{coachingFacts(parsed.data)}catch{throw new ApiError(403,'This workout needs its deterministic review first.')}
  const input=JSON.stringify(parsed.data),digest=await sha256(input),id=crypto.randomUUID(),now=Date.now();
- await env.DB!.prepare("INSERT INTO coaching_job(id,owner_id,context_digest,revision,consent_version,status,input,created_at,updated_at) SELECT ?,?,?,?,?,'queued',?,?,? WHERE EXISTS(SELECT 1 FROM cloud_profile WHERE owner_id=? AND revision=? AND consent_version=? AND ai_consent=1 AND deleted_at IS NULL) ON CONFLICT(owner_id,context_digest,revision,consent_version) DO NOTHING").bind(id,owner,digest,p.revision,p.consent_version,input,now,now,owner,p.revision,p.consent_version).run();
- const job=await env.DB!.prepare('SELECT id,status FROM coaching_job WHERE owner_id=? AND context_digest=? AND revision=? AND consent_version=?').bind(owner,digest,p.revision,p.consent_version).first<{id:string;status:string}>();if(!job)throw new ApiError(409,'Consent changed while requesting highlights.');
+ const findJob=()=>env.DB!.prepare('SELECT id,status FROM coaching_job WHERE owner_id=? AND context_digest=? AND revision=? AND consent_version=?').bind(owner,digest,p.revision,p.consent_version).first<{id:string;status:string}>();
+ let job=await findJob();
+ if(!job){
+  // Dispatch budgets alone do not bound storage: otherwise changing a workout ID
+  // can keep inserting failed jobs after the provider quota has been exhausted.
+  // Existing idempotent retries remain available without another reservation.
+  await quota(env,owner,'coaching-job',10);await quota(env,'_service','coaching-job',100);
+  await env.DB!.prepare("INSERT INTO coaching_job(id,owner_id,context_digest,revision,consent_version,status,input,created_at,updated_at) SELECT ?,?,?,?,?,'queued',?,?,? WHERE EXISTS(SELECT 1 FROM cloud_profile WHERE owner_id=? AND revision=? AND consent_version=? AND ai_consent=1 AND deleted_at IS NULL) ON CONFLICT(owner_id,context_digest,revision,consent_version) DO NOTHING").bind(id,owner,digest,p.revision,p.consent_version,input,now,now,owner,p.revision,p.consent_version).run();
+  job=await findJob();
+ }
+ if(!job)throw new ApiError(409,'Consent changed while requesting highlights.');
  if(job.status==='queued'){if(ctx)ctx.waitUntil(runCoachingJob(env,job.id));else await runCoachingJob(env,job.id)}return json({id:job.id,status:job.status,contextDigest:digest},202);
 }
