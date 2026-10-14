@@ -441,7 +441,46 @@
   },
   "application_source_sha256": "8bea2d618ec923be471ccb72b43e425be399e722edb9c0cabad50279822801b3",
   "publication": {
-    "status": "prepared; publication/live receipt follows"
+    "pages_commit": "bcb83882963b6dea68db3a1e56b9822372be0d79",
+    "base_pages_commit": "9e9b6ff1167f34cd2c19a00ee10bee1abc281b12",
+    "source_commit": "7f2bad90356ec4ea57957fb0b35fc1fe0bdbc93a",
+    "application_source_sha256": "8bea2d618ec923be471ccb72b43e425be399e722edb9c0cabad50279822801b3",
+    "preserved_original_files": 63,
+    "verified_candidate_files": 3847,
+    "pushed": true,
+    "live_verified": true,
+    "github_pages_run": 38499671712,
+    "github_pages_conclusion": "success",
+    "live_assets_checked": 333,
+    "status": "published and live verified",
+    "movefield_url": "https://ghinz32-cloud.github.io/movefield/review/",
+    "grizzly_url": "https://ghinz32-cloud.github.io/movefield/grizzly/",
+    "live_browser": {
+      "checkedAt": "2026-10-14T02:16:02.183Z",
+      "results": [
+        {
+          "folder": "review",
+          "passed": [
+            "public HTTPS sample launch",
+            "actual focused logger and detailed guide",
+            "sample set saved through extracted guarded logger",
+            "320px reflow without page errors"
+          ],
+          "scope": "Fresh public browser context, sample-only local writes, no personal profile/account/provider or physical-device interaction."
+        },
+        {
+          "folder": "grizzly",
+          "passed": [
+            "public HTTPS sample launch",
+            "actual focused logger and detailed guide",
+            "sample set saved through extracted guarded logger",
+            "320px reflow without page errors"
+          ],
+          "scope": "Fresh public browser context, sample-only local writes, no personal profile/account/provider or physical-device interaction."
+        }
+      ]
+    },
+    "verification_scope": "333 HTTPS asset hashes including all 63 original-root files; both source-bound public browser sample flows. Initial verification while deployment was in progress showed old bytes and was rerun after successful deployment. Existing APK release bytes are preserved."
   },
   "remaining_gates": [
     "New signed installers built from this source; existing public APKs remain previous release",
