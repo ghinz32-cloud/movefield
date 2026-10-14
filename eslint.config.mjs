@@ -22,9 +22,9 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
   ]),
   {
-    files: ["scripts/**/*.cjs"],
+    files: ["scripts/**/*.cjs", "mobile/plugins/**/*.cjs"],
     rules: {
-      // These Node verification programs intentionally use CommonJS loaders.
+      // Node verification programs and Expo config plugins run with CommonJS loaders.
       "@typescript-eslint/no-require-imports": "off",
       "@next/next/no-assign-module-variable": "off",
     },

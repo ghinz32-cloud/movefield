@@ -7,6 +7,7 @@ function harness(filename,props,extra={}){
  const slots=[],effects=[];let cursor=0,dirty=true,tree;
  const changed=(a,b)=>!a||a.length!==b?.length||a.some((x,i)=>!Object.is(x,b[i]));
  const react={useState(initial){const n=cursor++;if(!(n in slots))slots[n]=typeof initial==='function'?initial():initial;return [slots[n],v=>{const next=typeof v==='function'?v(slots[n]):v;if(!Object.is(next,slots[n])){slots[n]=next;dirty=true}}]},useRef(initial){const n=cursor++;if(!(n in slots))slots[n]={current:initial};return slots[n]},useMemo(fn,deps){const n=cursor++;if(!slots[n]||changed(slots[n].deps,deps))slots[n]={value:fn(),deps};return slots[n].value},useEffect(fn,deps){const n=cursor++;if(!slots[n]||changed(slots[n].deps,deps)){slots[n]?.cleanup?.();slots[n]={deps};effects.push(()=>{slots[n].cleanup=fn()})}}};
+ react.useLayoutEffect=(fn,deps)=>react.useEffect(fn,deps);
  const jsx=(type,props,key)=>({type,props:props||{},key});
  const rn={View:'View',Text:'Text',TextInput:'TextInput',ScrollView:'ScrollView',StyleSheet:{create:x=>x},useWindowDimensions:()=>({width:390,height:844}),Alert:{alert(){}}};
  const mocks={'react':{...react,default:react,__esModule:true},'react/jsx-runtime':{jsx,jsxs:jsx,Fragment:'Fragment'},'react-native':rn,

@@ -25,7 +25,7 @@ globalThis.fetch=async(input,options={})=>{
 };
 try{
  for(const [variant,scheme] of [['movefield','movefield'],['grizzly','grizzlyfitness']]){
- const native=require(directory+'/'+variant+'-true.cjs'),auth=native.nativeAuth();assert.equal(native.nativeAuthEnabled,true);calls.length=0;
+ const native=require(directory+'/'+variant+'-true.cjs'),auth=native.nativeAuth();assert.equal(native.nativeAuthEnabled,true);assert.equal(native.nativeCallbackURL,scheme+'://');calls.length=0;
  const signed=await auth.getSession();assert.equal(signed.data.user.id,'synthetic-native-owner');assert.equal(signed.data.session.token,undefined);assert.match(await auth.getCookie(),/__Host-better-auth\.session_token=synthetic-native-cookie/);
  await native.nativeCloudRequest('/api/cloud/profile','GET',undefined,'synthetic-native-owner');const api=calls.find(c=>c.path==='/api/cloud/profile');assert.equal(api.headers.get('X-Movefield-Account'),'synthetic-native-owner');assert.equal(api.headers.get('expo-origin'),scheme+'://');assert.match(api.headers.get('Cookie'),/__Host-better-auth\.session_token=synthetic-native-cookie/);
  await auth.signOut({fetchOptions:{headers:{'X-Movefield-Account':'synthetic-native-owner'}}});assert.equal(await auth.getCookie(),'');

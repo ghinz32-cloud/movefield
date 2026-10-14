@@ -1,3 +1,4 @@
+import {NativeTabBar} from './src/tab-bar';
 import {GrizzlyPressable} from './src/wild-interactions';
 // Recovered executed implementation; typed public contract is in the adjacent declaration.
 import * as _srcSharedPairedSets from "./src/shared/paired-sets";
@@ -120,6 +121,7 @@ function Heading({ eyebrow, title, detail }) {
                 children: eyebrow
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                 style: styles.title,
+                accessibilityRole: 'header',
                 children: title
             }), detail && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                 style: styles.body,
@@ -203,6 +205,7 @@ function ModalFrame({ visible, close, title, children }) {
                     style: styles.modalHeader,
                     children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                             style: styles.modalTitle,
+                            accessibilityRole: 'header',
                             children: title
                         }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
                             accessibilityRole: "button",
@@ -214,11 +217,15 @@ function ModalFrame({ visible, close, title, children }) {
                                 children: "Close"
                             })
                         })]
-                }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.ScrollView, {
-                    contentContainerStyle: styles.content,
-                    keyboardShouldPersistTaps: "handled",
-                    keyboardDismissMode: "on-drag",
-                    children: children
+                }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.KeyboardAvoidingView, {
+                    style: styles.flex,
+                    behavior: _reactNative.Platform.OS === 'ios' ? 'padding' : undefined,
+                    children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.ScrollView, {
+                        contentContainerStyle: styles.content,
+                        keyboardShouldPersistTaps: "handled",
+                        keyboardDismissMode: "on-drag",
+                        children: children
+                    })
                 })]
         })
     });
@@ -349,6 +356,7 @@ function NativeEquipmentLimit({ state, exercise, onSave }) {
     });
 }
 function TrainingApp() {
+    var viewport = (0, _reactNative.useWindowDimensions)();
     var styles = (0, _srcAppearance.useThemedStyles)(baseStyles), appearance = (0, _srcAppearance.useNativeAppearance)(), COLORS = appearance.colors;
     var [state, setState] = (0, _react.useState)(null);
     var [readError, setReadError] = (0, _react.useState)(false);
@@ -1923,10 +1931,10 @@ function TrainingApp() {
                             accessible: false
                         })
                     }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                        style: _srcSharedBrand.isGrizzly ? {
+                        style: {
                             flex: 1,
                             minWidth: 0
-                        } : undefined,
+                        },
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.brand,
                                 children: _srcSharedBrand.brand.name
@@ -1934,7 +1942,7 @@ function TrainingApp() {
                                 style: styles.brandSub,
                                 children: _srcSharedBrand.brand.tagline
                             })]
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
+                    }), viewport.width >= 390 && appearance.p.textSize === 100 && viewport.fontScale <= 1.15 && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
                         style: styles.demoBadge,
                         children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                             style: styles.demoText,
@@ -1968,7 +1976,7 @@ function TrainingApp() {
                 children: "Resetting local data\u2026"
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.KeyboardAvoidingView, {
                 style: styles.flex,
-                behavior: undefined,
+                behavior: _reactNative.Platform.OS === 'ios' ? 'padding' : undefined,
                 children: tab === 'Today' ? todayView : tab === 'Plan' ? planView : tab === 'Library' ? libraryView : tab === 'Settings' ? /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcSettings.NativeSettings, {
                     reminderMessage: workoutReminderMessage,
                     children: !sampleMode && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcCloudAccount.NativeCloudAccount, {
@@ -2128,32 +2136,9 @@ function TrainingApp() {
                     style: styles.saveStatus,
                     children: saveStatus
                 })
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
-                style: styles.tabs,
-                children: ['Today', 'Plan', 'Library', 'History', 'Settings'].map((label, i) => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
-                    accessibilityRole: "tab",
-                    accessibilityLabel: label,
-                    accessibilityState: {
-                        selected: tab === label
-                    },
-                    onPress: () => {
-                        setTab(label);
-                        setError('');
-                    },
-                    style: [styles.tab, tab === label && styles.activeTab],
-                    children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                            style: [styles.tabIcon, tab === label && {
-                                    color: COLORS.green
-                                }],
-                            children: ['◉', '▤', '⌕', '◷', '⚙'][i]
-                        }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                            style: [styles.tabLabel, tab === label && {
-                                    color: COLORS.green,
-                                    fontWeight: '800'
-                                }],
-                            children: label
-                        })]
-                }, label))
+            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NativeTabBar, {
+                selected: tab,
+                onSelect: label => { setTab(label); setError(''); }
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(ModalFrame, {
                 visible: scienceOpen,
                 close: () => setScienceOpen(false),

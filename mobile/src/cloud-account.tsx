@@ -1,3 +1,4 @@
+import {brand} from './shared/brand';
 import {NativeAccountButton} from './account-button';
 import {NativeAccountSessions} from './account-sessions';
 import Constants from 'expo-constants';
@@ -6,7 +7,7 @@ import {Text,View,TextInput,Switch} from 'react-native';
 import {GrizzlyPressable as Pressable} from './wild-interactions';
 import {randomUUID} from 'expo-crypto';
 import {useNativeAppearance} from './appearance';
-import {nativeAuthEnabled,nativeAuth,nativeCloudRequest} from './cloud-client';
+import {nativeAuthEnabled,nativeAuth,nativeCloudRequest,nativeCallbackURL} from './cloud-client';
 import {NativeCloudVault,cloudDigest} from './cloud-vault';
 import {NativeCloudHighlights} from './cloud-highlights';
 import {nativeOutbox} from './storage';
@@ -23,7 +24,7 @@ export function NativeCloudAccount({state,onRestore}:{state:State;onRestore:(nex
  // Every server request validates its SDK session against this visible owner.
  const accountApi=async(path:string,method?:string,body?:unknown)=>{if(!user)throw Error('Sign in before using this account.');return nativeCloudRequest(path,method,body,user.id)};
  const inputStyle={...text,minHeight:48,padding:12,borderWidth:1,borderColor:c.line,borderRadius:10};
- return <View style={{padding:20,gap:14,borderWidth:1,borderColor:c.line,borderRadius:16,backgroundColor:c.white}}><Text accessibilityRole="header" style={[text,{fontSize:26}]}>Account and cloud backup</Text>{available===null?<Text style={text}>Checking account availability…</Text>:!available?<Text style={text}>Cloud accounts are not configured for this app. Encrypted local tracking and downloaded backups remain available.</Text>:!user?<><Text style={text}>Sign in with Google to use the same account on web and phone. This callback needs an installed app build with the Movefield scheme.</Text>{<NativeAccountButton label={'Sign in with Google'} onPress={()=>void run(async token=>{const signed=await nativeAuth().signIn.social({provider:'google',callbackURL:'movefield://'});if(signed.error)throw Error(signed.error.message);await refresh(token)})} disabled={busy||(Constants.executionEnvironment==='storeClient')} colors={c} text={text}/>}{<NativeAccountButton label={'Refresh account status'} onPress={()=>void run(refresh)} disabled={busy} colors={c} text={text}/>}</>:<>
+ return <View style={{padding:20,gap:14,borderWidth:1,borderColor:c.line,borderRadius:16,backgroundColor:c.white}}><Text accessibilityRole="header" style={[text,{fontSize:26}]}>Account and cloud backup</Text>{available===null?<Text style={text}>Checking account availability…</Text>:!available?<Text style={text}>Cloud accounts are not configured for this app. Encrypted local tracking and downloaded backups remain available.</Text>:!user?<><Text style={text}>Sign in with Google to use the same account on web and phone. This sign-in needs an installed {brand.name} app.</Text>{<NativeAccountButton label={'Sign in with Google'} onPress={()=>void run(async token=>{const signed=await nativeAuth().signIn.social({provider:'google',callbackURL:nativeCallbackURL});if(signed.error)throw Error(signed.error.message);await refresh(token)})} disabled={busy||(Constants.executionEnvironment==='storeClient')} colors={c} text={text}/>}{<NativeAccountButton label={'Refresh account status'} onPress={()=>void run(refresh)} disabled={busy} colors={c} text={text}/>}</>:<>
  {<NativeAccountButton label={'Refresh account status'} onPress={()=>void run(refresh)} disabled={busy} colors={c} text={text}/>}<Text style={text}>Signed in as {user.email}. Backup is manual: saved workouts stay on this device until you choose to upload them.</Text><Text style={text}>Cloud encryption uses a separate recovery passphrase. Google recovery cannot recover that passphrase. Keep it separately from your device recovery key.</Text>
  <View style={{flexDirection:'row',gap:12,alignItems:'center'}}><Text style={[text,{flex:1}]}>I am 18 or older and consent to encrypted cloud backup.</Text><Switch accessibilityLabel="Adult encrypted cloud backup consent" value={consent} disabled={busy} onValueChange={setConsent}/></View>
  <TextInput accessibilityLabel="Cloud recovery passphrase" secureTextEntry autoCapitalize="none" autoCorrect={false} maxLength={1024} value={pass} editable={!busy} style={inputStyle} onChangeText={v=>{setPass(v);vault.current=null;setSnapshot(null);setPreview(null)}}/>

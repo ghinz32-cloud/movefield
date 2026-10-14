@@ -1,0 +1,454 @@
+{
+  "checked_at": "2026-10-14T02:06:55.732525+00:00",
+  "baseline_source_commit": "562dc53c9d081a6909dc464323b9d7fbdd51f450",
+  "source_branch": "codex/ux-platform-audit-2026-10-13",
+  "core": {
+    "ran_at": "2026-10-14T02:02:02.365Z",
+    "scope": "Local synthetic domain/adapter and type checks; no device, connected provider or deployment qualification.",
+    "results": [
+      {
+        "name": "runtime module contracts",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 14782
+      },
+      {
+        "name": "production bundled training",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 8544
+      },
+      {
+        "name": "complete training lifecycles",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 10522
+      },
+      {
+        "name": "web workout and setup controls",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1599
+      },
+      {
+        "name": "native interaction callbacks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2246
+      },
+      {
+        "name": "native compact layout and focus",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 577
+      },
+      {
+        "name": "offline update lifecycle",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1371
+      },
+      {
+        "name": "Grizzly appearance and retired preset migration",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1134
+      },
+      {
+        "name": "clickable web calendar",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1186
+      },
+      {
+        "name": "Grizzly daily context and local day changes",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1131
+      },
+      {
+        "name": "preview ownership and retained assets",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 509
+      },
+      {
+        "name": "verified Android download preparation",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1103
+      },
+      {
+        "name": "Grizzly motion and licensed fonts",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 606
+      },
+      {
+        "name": "distinct goal families and flexible selection",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2613
+      },
+      {
+        "name": "creator-source and set-effort refinements",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1383
+      },
+      {
+        "name": "public source rules and scientific accounting",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1594
+      },
+      {
+        "name": "Today facts and actions",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2257
+      },
+      {
+        "name": "transactional encrypted records",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 11738
+      },
+      {
+        "name": "activity progress and comparison context",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2016
+      },
+      {
+        "name": "evidence/duration/calendar zones",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 16853
+      },
+      {
+        "name": "calendar and reusable blocks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1261
+      },
+      {
+        "name": "reusable block equipment guards",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2000
+      },
+      {
+        "name": "next-block starting weights",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 2209
+      },
+      {
+        "name": "starting-weight interface callbacks",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1953
+      },
+      {
+        "name": "Cloudflare account/storage/coaching",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 11921
+      },
+      {
+        "name": "portable cloud vault and retry",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 4364
+      },
+      {
+        "name": "native SDK cookie transport",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1333
+      },
+      {
+        "name": "plan import",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 920
+      },
+      {
+        "name": "durability",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1103
+      },
+      {
+        "name": "vault and history",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1672
+      },
+      {
+        "name": "historical native upgrade preservation",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 40768
+      },
+      {
+        "name": "older password-protected transfers",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 10211
+      },
+      {
+        "name": "compiled native component boundaries",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 74
+      },
+      {
+        "name": "native encrypted adapter",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1834
+      },
+      {
+        "name": "native file transfer",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 353
+      },
+      {
+        "name": "security",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1033
+      },
+      {
+        "name": "data and calendar",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 925
+      },
+      {
+        "name": "web types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 15843
+      },
+      {
+        "name": "native types",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 9813
+      },
+      {
+        "name": "native engine",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 3531
+      },
+      {
+        "name": "native decimal editing, callbacks and keyboard configuration",
+        "status": "passed",
+        "exit": 0,
+        "duration_ms": 1008
+      }
+    ]
+  },
+  "encrypted_browser_journeys": 19,
+  "web_reference_and_workout_checks": {
+    "checkedAt": "2026-10-14T02:01:07.954Z",
+    "scope": "Actual minified web apps, synthetic sample data, Chromium phone viewport/touch emulation; service workers blocked to isolate direct UI fetches. No Safari, physical phone, or native keyboard claim.",
+    "results": [
+      {
+        "brand": "movefield",
+        "requests": [
+          "/movefield/review/exercise-guides.json",
+          "/movefield/review/exercise-content.json",
+          "/movefield/review/exercise-guides.json"
+        ],
+        "axeViolations": 0,
+        "workoutAxe": [
+          {
+            "state": "overview",
+            "violations": 0
+          },
+          {
+            "state": "focused logger",
+            "violations": 0
+          }
+        ],
+        "guideRetryPreservesData": true,
+        "narrowGuideReflow": true
+      },
+      {
+        "brand": "grizzly",
+        "requests": [
+          "/movefield/grizzly/exercise-guides.json",
+          "/movefield/grizzly/exercise-content.json",
+          "/movefield/grizzly/exercise-guides.json"
+        ],
+        "axeViolations": 0,
+        "workoutAxe": [
+          {
+            "state": "overview",
+            "violations": 0
+          },
+          {
+            "state": "focused logger",
+            "violations": 0
+          }
+        ],
+        "guideRetryPreservesData": true,
+        "narrowGuideReflow": true
+      }
+    ]
+  },
+  "native_app_rendering": {
+    "checkedAt": "2026-10-14T01:57:46.586Z",
+    "results": [
+      {
+        "variant": "movefield",
+        "passed": [
+          "actual app shell and five tabs at 320px",
+          "main logger failed-write preservation and retry",
+          "guide modal close with new heading semantics",
+          "130% app text in settings"
+        ],
+        "scope": "Executed native App runtime rendered through RN Web; synthetic JSON writer, font loader, file IO, notifications and disabled cloud boundary mocked. Not an installed phone or OS keyboard test."
+      },
+      {
+        "variant": "grizzly",
+        "passed": [
+          "actual app shell and five tabs at 320px",
+          "main logger failed-write preservation and retry",
+          "guide modal close with new heading semantics",
+          "130% app text in settings"
+        ],
+        "scope": "Executed native App runtime rendered through RN Web; synthetic JSON writer, font loader, file IO, notifications and disabled cloud boundary mocked. Not an installed phone or OS keyboard test."
+      }
+    ]
+  },
+  "native_component_workflows": [
+    {
+      "checkedAt": "2026-10-14T01:30:56.413Z",
+      "grizzly": false,
+      "scope": "Real React Native components rendered via React Native Web in sandboxed Chromium. Synthetic durable JSON writer with injected failure; font loading and OS notification boundaries stubbed; no reminder action exercised. No native crypto, installed OS, TalkBack/VoiceOver or physical-device claim.",
+      "passed": [
+        "commitment range preview, failed-write preservation and durable retry",
+        "custom movement and addition preserve active workout and history",
+        "saved block full preview and accepted new unperformed sessions",
+        "320px region containment, app text scaling and 48px date targets",
+        "recorded progress period/exercise filtering",
+        "plan evidence disclosure and searchable research references",
+        "Today concern sample-only reset, future preview, active callback preservation and busy start guard"
+      ]
+    },
+    {
+      "checkedAt": "2026-10-14T01:38:23.826Z",
+      "grizzly": true,
+      "scope": "Real React Native components rendered via React Native Web in sandboxed Chromium. Synthetic durable JSON writer with injected failure; font loading and OS notification boundaries stubbed; no reminder action exercised. No native crypto, installed OS, TalkBack/VoiceOver or physical-device claim.",
+      "passed": [
+        "commitment range preview, failed-write preservation and durable retry",
+        "custom movement and addition preserve active workout and history",
+        "saved block full preview and accepted new unperformed sessions",
+        "320px region containment, app text scaling and 48px date targets",
+        "recorded progress period/exercise filtering",
+        "plan evidence disclosure and searchable research references",
+        "Today concern sample-only reset, future preview, active callback preservation and busy start guard",
+        "native 35-font selection, outdoor palette and Clean preserve actual workout state at 320px"
+      ]
+    }
+  ],
+  "web_accessibility": {
+    "mode_verified": true,
+    "rendered_states": 70,
+    "scope": "32 actual light/dark states per brand plus final workout overview, focused logger and guide per brand. Automated checks; not full WCAG conformance or native screen-reader acceptance."
+  },
+  "native_exports": {
+    "checked_at": "2026-10-14T02:01:58.734422+00:00",
+    "scope": "Distinct cleared-cache Hermes exports, paired with native identity/module checks; no installed-device claim.",
+    "flavors": {
+      "movefield": {
+        "android": {
+          "path": "_expo/static/js/android/index-863979139da78240d5696b5750c2ff5e.hbc",
+          "bytes": 4736605,
+          "sha256": "0f821fbd017db9a276040bf6a787b49873a5fc5f6efcc0ddefa932489d9fc820"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-e81095bedf5762e31d2061e4e1b93962.hbc",
+          "bytes": 4724318,
+          "sha256": "6a18785abad64dffdcc4cb825a056fe96204f504673a85b9aa14640998b4fcf4"
+        }
+      },
+      "grizzly": {
+        "android": {
+          "path": "_expo/static/js/android/index-cdff19504e52e60dc4f2a2d233289f7b.hbc",
+          "bytes": 4736604,
+          "sha256": "9a166c3f31ae7b87e4fc54456de22cab909eba8f93d5230eb14ce868db514013"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-d86317ffb16b0c923d71bd8240e564ba.hbc",
+          "bytes": 4724318,
+          "sha256": "0f20d141e469ebd8eb3cd1d95ebd46a2dadc863266362fd8d46330086cc78cf7"
+        }
+      }
+    }
+  },
+  "native_source_archives": {
+    "movefield": {
+      "files": 252,
+      "bytes": 8129255,
+      "sha256": "6ccd8c3acaed67ef97bcd80d35519bba26feb0a250b8cd6b2f3bb0b45841df84"
+    },
+    "grizzly": {
+      "files": 252,
+      "bytes": 8129255,
+      "sha256": "b27f4fade7ab02523df79c247ad6f38c5ffa3d12da9065445ffc661650714c72"
+    }
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 82
+  },
+  "dependency_audit": {
+    "root_production": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "native_production": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 43,
+      "critical": 0,
+      "total": 43
+    },
+    "underlying_native_advisories": [
+      "GHSA-vfj7-8cjw-p6xm",
+      "GHSA-86w9-cpqp-85rv"
+    ],
+    "native_patched_version_available": false
+  },
+  "finite_credential_pattern_scan": {
+    "ran_at": "2026-10-14T02:06:54.802643+00:00",
+    "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed.",
+    "files": 8030,
+    "zip_members": 2988,
+    "matches": []
+  },
+  "application_source_sha256": "8bea2d618ec923be471ccb72b43e425be399e722edb9c0cabad50279822801b3",
+  "publication": {
+    "status": "prepared; publication/live receipt follows"
+  },
+  "remaining_gates": [
+    "New signed installers built from this source; existing public APKs remain previous release",
+    "Installed Android/iPhone upgrades, keyboards, OS crypto/keychain, notifications, erasure, performance",
+    "VoiceOver/TalkBack, Safari and other engines, comprehensive accessibility/field performance",
+    "Native upstream dependency advisories",
+    "Connected owner/provider/privacy and zero-spend gates",
+    "Canonical product backlog and full six-master-prompt acceptance"
+  ]
+}

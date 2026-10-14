@@ -1,0 +1,43 @@
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {resolve,dirname,extname} from 'node:path';
+import {createServer} from 'node:http';
+import {chromium} from 'playwright-core';
+const require=createRequire(import.meta.url),{load,workoutFixture}=require('./domain-test-loader.cjs');
+const mobile=createRequire(resolve('mobile/package.json')),{build}=createRequire(import.meta.resolve('wrangler'))('esbuild');
+const fixture=workoutFixture(),name=load('lib/training.ts').exFor(fixture.active.targets[0].exerciseId).name;
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',chromiumSandbox:true,args:['--disable-setuid-sandbox'],env:{...process.env,XDG_CONFIG_HOME:resolve('.sites-runtime/config'),XDG_CACHE_HOME:resolve('.sites-runtime/cache')}}),results=[];
+try{
+ for(const variant of ['movefield','grizzly']){
+  const dir=resolve('.sites-runtime/ux-native-app-'+variant);await mkdir(dir,{recursive:true});
+  const stateStub=`let state=${JSON.stringify(fixture)};window.nativeUiState=()=>structuredClone(state);export async function readLocalState(){return structuredClone(state)}export async function saveLocalState(next){if(window.failNativeUiWrite)throw Error('Synthetic native write failure');state=structuredClone(next)}export async function readLocalSetup(){return null}export async function saveLocalSetup(){}export async function clearLocalSetup(){}export async function flushLocalSetup(){}export const nativeOutbox={read:async()=>null};export const originalSavedFile=async()=>null,resetLocalState=async()=>{},localRecoveryKey=async()=>'',encryptedLocalBackup=async()=>null,restoreDeviceKey=async()=>{},previewLocalBackup=async()=>{},restoreLocalBackup=async()=>{},erasePrivateProfile=async()=>{},encryptedStateBackup=async()=>'',restorePasswordTransfer=async()=>{};`;
+  const mocks={
+   storage:stateStub,'file-transfer':"export const shareJsonFile=async()=>{},pickJsonFile=async()=>null,cleanExportFiles=async()=>{};",
+   'rest-alerts':"export const enableRestAlerts=async()=>({enabled:false,message:'OS boundary mocked'}),useNativeRestAlerts=()=>'';",
+   'workout-notifications':"export const useNativeWorkoutReminders=()=>'',enableWorkoutReminders=async()=>({enabled:false,message:'OS boundary mocked'});",
+   'cloud-account':"export const NativeCloudAccount=()=>null;",
+  };
+  await build({stdin:{contents:"import React from 'react';import {createRoot} from 'react-dom/client';import App from './mobile/App';createRoot(document.getElementById('root')).render(<App/>);",resolveDir:process.cwd(),loader:'tsx'},bundle:true,platform:'browser',format:'esm',outfile:resolve(dir,'app.js'),jsx:'automatic',resolveExtensions:['.web.tsx','.web.ts','.web.js','.tsx','.ts','.jsx','.js','.json'],define:{global:'globalThis',__DEV__:'false',__MOVEFIELD_APP_VARIANT__:JSON.stringify(variant),'process.env.NODE_ENV':'"production"','process.env.EXPO_PUBLIC_APP_VARIANT':JSON.stringify(variant)},alias:{'react-native':mobile.resolve('react-native-web'),'react':dirname(mobile.resolve('react/package.json')),'react-dom':dirname(mobile.resolve('react-dom/package.json'))},loader:{'.ttf':'file','.png':'file','.jpg':'file'},plugins:[{name:'documented-native-os-boundaries',setup(build){
+   build.onResolve({filter:/\/(storage|file-transfer|rest-alerts|workout-notifications|cloud-account)$/},args=>({path:args.path.split('/').pop(),namespace:'native-os'}));build.onLoad({filter:/.*/,namespace:'native-os'},args=>({contents:mocks[args.path]}));
+   build.onResolve({filter:/^expo-(font|status-bar)$/},args=>({path:args.path,namespace:'native-os-expo'}));build.onLoad({filter:/.*/,namespace:'native-os-expo'},args=>({contents:args.path==='expo-font'?"export const useFonts=()=>[false];export async function loadAsync(){}":"export const StatusBar=()=>null;"}));
+  }}],logLevel:'warning'});
+  await writeFile(resolve(dir,'index.html'),'<!doctype html><html lang="en"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body,#root{height:100%;width:100%;margin:0}#root{display:flex}</style><div id="root"></div><script type="module" src="/app.js"></script></html>');
+  const server=createServer(async(req,res)=>{try{const path=new URL(req.url,'http://local').pathname,file=resolve(dir,'.'+(path==='/'?'/index.html':path));if(!file.startsWith(dir+'/'))throw Error();const bytes=await readFile(file);res.writeHead(200,{'Content-Type':extname(file)==='.js'?'text/javascript':extname(file)==='.html'?'text/html':'application/octet-stream'});res.end(bytes)}catch{res.writeHead(404);res.end()}});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+  const page=await browser.newPage({viewport:{width:320,height:568},reducedMotion:'reduce'}),errors=[];page.on('pageerror',error=>errors.push(error.stack||error.message));
+  try{
+   await page.goto('http://127.0.0.1:'+server.address().port);await page.getByRole('heading',{name:'Today',exact:true}).waitFor();assert.ok(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight+1),'App root supplies a bounded native-style viewport');
+   for(const tab of ['Plan','Library','History','Settings','Today']){await page.getByRole('tab',{name:tab,exact:true}).click();assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),variant+' '+tab+' fits a small phone');}
+   await page.getByRole('button').filter({hasText:new RegExp('^1\\. '+name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'))}).first().click();
+   const amount=page.getByLabel(name+' set 1 actual reps',{exact:true});await amount.fill('8');
+   await page.evaluate(()=>window.failNativeUiWrite=true);await page.getByRole('button',{name:'Log '+name+' set 1',exact:true}).click();await page.getByText('Synthetic native write failure',{exact:true}).waitFor();assert.equal((await page.evaluate(()=>window.nativeUiState())).active.sets[0].done,false);
+   await page.evaluate(()=>window.failNativeUiWrite=false);await page.getByRole('button',{name:'Log '+name+' set 1',exact:true}).click();await page.waitForFunction(()=>window.nativeUiState().active.sets[0].done);assert.deepEqual((await page.evaluate(()=>window.nativeUiState())).history,fixture.history);
+   await page.getByRole('tab',{name:'Library',exact:true}).click();await page.getByLabel('Search exercise library',{exact:true}).fill(name);await page.getByRole('button').filter({hasText:name}).first().click();await page.getByRole('button',{name:'Close Exercise guide',exact:true}).waitFor();
+   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Native guide modal fits a small phone');await page.getByRole('button',{name:'Close Exercise guide',exact:true}).click();await page.getByRole('tab',{name:'Settings',exact:true}).click();await page.getByRole('button',{name:'130%',exact:true}).click();assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Native Settings fits larger app text');
+   for(const label of ['Today','Plan','Library','History','Settings']){const tab=page.getByRole('tab',{name:label,exact:true}),hit=await tab.boundingBox(),text=await tab.getByText(label,{exact:true}).boundingBox();assert.ok(text.width<=hit.width+1,'Larger tab label stays within its own target: '+label)}
+   const selected=await page.getByRole('tab',{name:'Settings',exact:true}).boundingBox();assert.ok(selected.x>=-1&&selected.x+selected.width<=321,'Selected larger-text tab remains visible');
+   await page.screenshot({path:resolve(dir,'settings-phone.png'),fullPage:true});assert.deepEqual(errors,[]);results.push({variant,passed:['actual app shell and five tabs at 320px','main logger failed-write preservation and retry','guide modal close with new heading semantics','130% app text in settings'],scope:'Executed native App runtime rendered through RN Web; synthetic JSON writer, font loader, file IO, notifications and disabled cloud boundary mocked. Not an installed phone or OS keyboard test.'});
+  }catch(error){await page.screenshot({path:resolve(dir,'failure.png'),fullPage:true});await writeFile(resolve(dir,'failure.json'),JSON.stringify({error:String(error),errors,body:await page.locator('body').innerText()},null,2));throw error}finally{await page.close();await new Promise(resolve=>server.close(resolve))}
+ }
+ await writeFile('.sites-runtime/ux-native-app-results.json',JSON.stringify({checkedAt:new Date().toISOString(),results},null,2)+'\n');console.log('PASS actual native App runtime via RN Web: both brands, five tabs, small-phone layout, failed logging/retry, guide modal and larger settings text');
+}finally{await browser.close()}

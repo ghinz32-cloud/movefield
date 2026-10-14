@@ -3,6 +3,7 @@ import {expoClient} from '@better-auth/expo/client';
 import * as SecureStore from 'expo-secure-store';
 import {isGrizzly} from './shared/brand';
 const scheme=isGrizzly?'grizzlyfitness':'movefield';
+export const nativeCallbackURL=scheme+'://';
 const rawOrigin=isGrizzly?process.env.EXPO_PUBLIC_GRIZZLY_API_URL:process.env.EXPO_PUBLIC_MOVEFIELD_API_URL;
 export const apiOrigin=(()=>{try{const url=new URL(rawOrigin||'');return url.protocol==='https:'&&url.origin===rawOrigin?url.origin:null}catch{return null}})();
 export const nativeAuthEnabled=!!apiOrigin&&(isGrizzly?process.env.EXPO_PUBLIC_GRIZZLY_NATIVE_AUTH_VERIFIED:process.env.EXPO_PUBLIC_NATIVE_AUTH_VERIFIED)==='true';

@@ -1,3 +1,15 @@
+# Current UX/platform audit checkpoint · 13 October 2026
+
+Continue on `codex/ux-platform-audit-2026-10-13`, based on the latest combined published `562dc53` checkpoint. Read `docs/ux-platform-audit-2026-10-13.md` and its validation JSON. Both brands' newer researched workouts, compact UI, per-set RIR, calendars, reviewed weights, source stages, upgrade compatibility and current Android distributions are retained.
+
+Fixed deferred/duplicate web guide requests and retry, isolated the guarded logger presentation, Grizzly's actual native callback, iOS keyboard avoidance, decimal/sign drafts, header and large-text tab layout, bounded forest effects, heading semantics and survey/measurement scaling. Corrected stale font, brand-mode, transfer-size and RN Web host assumptions in tests. All 41 core groups, 19 real encrypted Worker browser journeys, both actual static web recovery/logging scans, both focused and complete native RN Web app flavors, four distinct cleared-cache Hermes exports, builds/types/security checks and lint passed; lint retains 82 warnings. Seventy automated rendered accessibility states passed. Native tooling remains two unpatched underlying advisories, now 43 high affected chain entries. No installed phone/OS/VoiceOver/TalkBack/Safari/full-launch qualification is implied.
+
+Both source ZIPs contain 252 manifest-verified files. They contain the fixes, while public APKs remain their previously verified binary release; no new signed installer/IPA was created. Ordinary reviewed source and existing preview pushes are authorized. Preserve the original root, prior chunks, owner `.openai/`, brand namespaces and current verified phone downloads. After rebuilding, start a fresh local Worker and verify bootstrap assets before browser tests; module reload alone can retain a stale local asset snapshot. Publication receipt follows in the validation JSON.
+
+Earlier handoffs below are historical where this section differs.
+
+---
+
 # Current checkpoint · publication approved and live verification complete · 13 October 2026
 
 The user explicitly approved pushes in this conversation. The exact prepared fixes and Android files are already live from the newer source checkpoint `b9efe97eea755ffe53114626e17457115a804548`, delivery source `fd158a0af5c228b9654d600079aadece4b2f6366`, Pages `9e9b6ff1167f34cd2c19a00ee10bee1abc281b12`. Successful Pages run `38467059386` is confirmed. Do not restore the superseded unpushed candidate over this newer release.

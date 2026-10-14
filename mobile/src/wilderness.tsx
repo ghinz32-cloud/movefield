@@ -17,7 +17,7 @@ export function NativeWildernessShell({children,sceneKey}:{children:React.ReactN
  const {p,colors,dark,reduceMotion}=useNativeAppearance(),wild=isGrizzly&&p.grizzlyStyle==='wild'&&!p.contrast;
  const drift=useForestDrift(wild&&!reduceMotion);
  if(!wild)return <View style={{flex:1,backgroundColor:colors.bg}}>{children}</View>;
- return <View style={{flex:1,backgroundColor:colors.bg}}>
+ return <View style={{flex:1,backgroundColor:colors.bg,overflow:'hidden'}}>
   <View style={StyleSheet.absoluteFill} pointerEvents="none" accessible={false} importantForAccessibility="no-hide-descendants">
    <Image source={forestArt} resizeMode="cover" style={[StyleSheet.absoluteFill,{opacity:dark?.65:.3}]} accessible={false}/>
    <View style={[StyleSheet.absoluteFill,{backgroundColor:colors.bg,opacity:dark?.5:.68}]}/>
