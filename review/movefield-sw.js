@@ -1,8 +1,8 @@
 /* Local-only app shell; stores code/guides, never decrypted records or API responses. */
-const REVISION = "90211ebe3cc4165e508f";
+const REVISION = "d97d4ebe644e0652f820";
 const BASE = "/movefield/review/";
 const STATIC_REVIEW = true;
-const ASSETS = ["/movefield/review/assets/argon2-CYp2YzQ3.js","/movefield/review/assets/chacha-TjjJ4993.js","/movefield/review/assets/cloud-account-DbbPfiul.js","/movefield/review/assets/index-BfBriJt5.js","/movefield/review/assets/index-BlP9CUiQ.css","/movefield/review/assets/progress-dashboard-CU0XeoLg.js"];
+const ASSETS = ["/movefield/review/assets/argon2-CYp2YzQ3.js","/movefield/review/assets/chacha-TjjJ4993.js","/movefield/review/assets/cloud-account-CDm-Mtt0.js","/movefield/review/assets/index-B4Yfyd8_.js","/movefield/review/assets/index-D-oRXzvv.css","/movefield/review/assets/progress-dashboard-Wb-yOEO-.js"];
 const CACHE_PREFIX = "movefield-review-shell-";
 const EXTRA_STATIC = [];
 const CACHE = CACHE_PREFIX + REVISION;
