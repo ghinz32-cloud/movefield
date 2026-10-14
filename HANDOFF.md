@@ -1,3 +1,13 @@
+# Current native download delivery · 13 October 2026
+
+Movefield 0.1.4/versionCode 5 and Grizzly Fitness 0.1.3/versionCode 4 now compile the latest UX-audited shared code into ARM64 Android test APKs. Read `docs/native-downloads-2026-10-13.md` and its validation JSON. Compiled source `08c6844d0fb4092cda1672498e3afc7dcd4149a6`, tree `3845d6bda30eda8f76cfcefded90dfe1830338d6`; build run `38511959235` and verified release publisher run `38513335617` succeeded. Exact release: https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-08c6844d0fb4. Both direct release downloads and independent local APK/source/signature/manifest inspections pass. Existing historical certificate and separate app identities are retained. The Pages download replacement is prepared; publication receipt below will be finalized after deployment and actual browser Save checks.
+
+The owner answered **No Apple setup yet**. iPhone code and distinct exports are available, but no signed IPA/TestFlight exists; read `mobile/IOS-DISTRIBUTION.md`. Updated source ZIPs each contain 253 manifest-verified files. Physical devices, stores, two native tooling advisories and broader launch gates remain unqualified. These are development-signed test apps. Preserve the earlier installed app and records. Preserve owner `.openai/`, original Pages root, previous chunks and brand namespaces. Ordinary source/Pages pushes and delivering these requested test APKs are already authorized. The publishing workflow can reverify an existing successful run and publish a new source-tagged GitHub prerelease; it never overwrites releases/assets and never claims iPhone/store acceptance.
+
+Earlier sections below are historical where this section differs.
+
+---
+
 # Current UX/platform audit checkpoint · 13 October 2026
 
 Continue on `codex/ux-platform-audit-2026-10-13`, based on the latest combined published `562dc53` checkpoint. Read `docs/ux-platform-audit-2026-10-13.md` and its validation JSON. Both brands' newer researched workouts, compact UI, per-set RIR, calendars, reviewed weights, source stages, upgrade compatibility and current Android distributions are retained.

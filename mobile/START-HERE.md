@@ -4,7 +4,11 @@ Private history now uses encrypted SQLite records, with SecureStore keys and a s
 
 This source contains Expo SDK 57, `expo-sqlite` and `expo-system-ui`. Install with `npm ci`, then run `npm run check`, `npm run test:engine` and `npm start`. Google sign-in requires an installed native build and owner configuration; it remains disabled in Expo Go and until both server/app native-auth qualification switches are explicitly enabled. `npm run android` / `npm run ios` generate and run native builds using the required local platform toolchains. The provisional development ID is `com.ghinz32.movefield.prototype`.
 
-No APK/IPA or phone qualification is included. Current local Android compilation is blocked by the managed network denial for `repo.reactnative.dev`; the environment draft contains the required domain but must be published. Native dependencies still have two unresolved upstream advisories (`braces`, `node-forge`). See the repository's `docs/android-build.md`, `docs/record-storage.md` and `docs/completion-status.md`. Full six-prompt acceptance remains incomplete.
+This ZIP is source code. Current Android test APKs are delivered separately through the repository's verified public download pages. Movefield's update build uses `EXPO_PUBLIC_NATIVE_LINEAGE=legacy-movefield` for both prebuild and compilation, preserving the historical Android package and signing certificate; the unqualified default prototype package is a separate install. Read `ANDROID-UPGRADE.md` before building an update.
+
+The current source includes the web/phone UX audit fixes: brand-specific sign-in callbacks, iOS keyboard avoidance, editable decimal measurements and large-text tab navigation. Native upstream tooling still has two unresolved advisories (`braces`, `node-forge`). Actual installed-phone upgrades, secure storage, notifications, accessibility and performance still require device checks. No final App Store/Play release is claimed.
+
+There is no signed iPhone installer in this ZIP. Read `IOS-DISTRIBUTION.md` for the Apple signing and build prerequisites. A Hermes JavaScript export cannot be installed as an iPhone app. The working web apps can be opened in Safari in the meantime.
 
 ---
 

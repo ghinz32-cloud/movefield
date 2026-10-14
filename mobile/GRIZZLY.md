@@ -12,4 +12,4 @@ Grizzly retains `com.ghinz32.grizzlyfitness.prototype`, the `grizzlyfitness` URL
 
 Cloud sign-in stays off unless its own `EXPO_PUBLIC_GRIZZLY_API_URL` and `EXPO_PUBLIC_GRIZZLY_NATIVE_AUTH_VERIFIED=true` are supplied after callback/server qualification. Movefield's API setting is not reused.
 
-This source release has local type/domain checks and distinct cleared-cache Android/iOS Hermes exports. It is not an installed APK/IPA, store release, rendered accessibility audit or physical-device acceptance. Keychain, notifications, layout, fonts and performance still need installed-device qualification.
+This source release has local type/domain checks, rendered browser/RN Web UX checks and distinct cleared-cache Android/iOS Hermes exports. Android test APKs are distributed separately through the verified public download pages. This ZIP is source, not an APK/IPA or store release. Read `IOS-DISTRIBUTION.md` for iPhone signing/build prerequisites. Keychain, notifications, VoiceOver/TalkBack, upgrades and performance still need installed-device qualification.

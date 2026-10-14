@@ -1,0 +1,234 @@
+{
+  "checkedAt": "2026-10-14T04:53:02.159009+00:00",
+  "compiledSource": "08c6844d0fb4092cda1672498e3afc7dcd4149a6",
+  "compiledSourceTree": "3845d6bda30eda8f76cfcefded90dfe1830338d6",
+  "buildRun": 38511959235,
+  "publisherRun": 38513335617,
+  "release": {
+    "id": 412347323,
+    "tag": "android-ux-preview-08c6844d0fb4",
+    "url": "https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-08c6844d0fb4",
+    "publisherRun": 38513335617
+  },
+  "compiledAPKs": [
+    {
+      "app": "movefield",
+      "artifactId": 11870622182,
+      "archiveSHA256": "19b402002db131f526171b23dab53adc921b9ef5756faab9549c18a251dcec0d",
+      "sourceCommit": "08c6844d0fb4092cda1672498e3afc7dcd4149a6",
+      "sourceTree": "3845d6bda30eda8f76cfcefded90dfe1830338d6",
+      "apk": ".sites-runtime/current-native-installers/movefield/movefield-arm64-test.apk",
+      "bytes": 39211712,
+      "sha256": "158660c17f56812ffa01b06d229ce78abcfbcc4ae1c836bfe3ec8e3f32c7e700",
+      "directDownloadURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-08c6844d0fb4/movefield-0.1.4-arm64.apk",
+      "package": "com.ghinz32.movefield",
+      "versionCode": 5,
+      "versionName": "0.1.4",
+      "minimumSDK": 24,
+      "architectures": [
+        "arm64-v8a"
+      ],
+      "applicationBundleSHA256": "d1901b5773f0537f3504629716dfbf4fee18f5dd6911d5c1059c9f2196101d6c",
+      "nativeInspection": {
+        "passed": true,
+        "platform": "android",
+        "package": "com.ghinz32.movefield",
+        "permissions": [
+          "android.permission.ACCESS_NETWORK_STATE",
+          "android.permission.INTERNET",
+          "android.permission.POST_NOTIFICATIONS",
+          "android.permission.RECEIVE_BOOT_COMPLETED",
+          "android.permission.VIBRATE",
+          "com.ghinz32.movefield.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        ],
+        "manifestSHA256": "13410e610e90874a65bc3ac095d5c22f2d45c8a12595172ee4fb80c1f8f72f13",
+        "backupRulesLinked": true,
+        "backupDomainsExcluded": [
+          "database",
+          "device_database",
+          "device_file",
+          "device_root",
+          "device_sharedpref",
+          "external",
+          "file",
+          "root",
+          "sharedpref"
+        ],
+        "cloudBackupAndDeviceTransferExcluded": true,
+        "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+        "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+        "resourceTableSHA256": "989b8618da032312ec754fdf458f6932fcee0ad3d5065045f8051b2f990fd3f0",
+        "cleartextDenied": true,
+        "remoteSdkStartupDisabled": true,
+        "componentBoundariesChecked": true,
+        "localReminderDeclarationsChecked": true,
+        "reviewedStartupInitializers": [
+          "androidx.emoji2.text.EmojiCompatInitializer",
+          "androidx.lifecycle.ProcessLifecycleInitializer",
+          "androidx.profileinstaller.ProfileInstallerInitializer"
+        ],
+        "internalBrowserProxyChecked": true,
+        "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+        "signing": "uninspected; inspect the APK certificate separately",
+        "physicalDeviceTested": false,
+        "storeAccepted": false
+      },
+      "credentialPatternScan": {
+        "members": 1236,
+        "matches": 0,
+        "scope": "Finite recognized patterns; no security certification or absence-of-secrets guarantee."
+      },
+      "identityAndSignaturePassed": true
+    },
+    {
+      "app": "grizzly",
+      "artifactId": 11869927993,
+      "archiveSHA256": "ef4cc78368d147834bd63473a209c7dc789e9f17bf6e71bb4dbdbb689e6d3193",
+      "sourceCommit": "08c6844d0fb4092cda1672498e3afc7dcd4149a6",
+      "sourceTree": "3845d6bda30eda8f76cfcefded90dfe1830338d6",
+      "apk": ".sites-runtime/current-native-installers/grizzly/grizzly-arm64-test.apk",
+      "bytes": 39362970,
+      "sha256": "77caf459179345b564517949fd640432b84240c426c3332c30c8d128c6244709",
+      "directDownloadURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-08c6844d0fb4/grizzly-fitness-0.1.3-arm64.apk",
+      "package": "com.ghinz32.grizzlyfitness.prototype",
+      "versionCode": 4,
+      "versionName": "0.1.3",
+      "minimumSDK": 24,
+      "architectures": [
+        "arm64-v8a"
+      ],
+      "applicationBundleSHA256": "c81fc2ca4f2926612f6182d6f15d024198616c6028c993b4a617695b156b52ad",
+      "nativeInspection": {
+        "passed": true,
+        "platform": "android",
+        "package": "com.ghinz32.grizzlyfitness.prototype",
+        "permissions": [
+          "android.permission.ACCESS_NETWORK_STATE",
+          "android.permission.INTERNET",
+          "android.permission.POST_NOTIFICATIONS",
+          "android.permission.RECEIVE_BOOT_COMPLETED",
+          "android.permission.VIBRATE",
+          "com.ghinz32.grizzlyfitness.prototype.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        ],
+        "manifestSHA256": "e8ef7f4f8dff9a43f5e4639568487c56a9d6f6a27d25a99faf9a0a8136074263",
+        "backupRulesLinked": true,
+        "backupDomainsExcluded": [
+          "database",
+          "device_database",
+          "device_file",
+          "device_root",
+          "device_sharedpref",
+          "external",
+          "file",
+          "root",
+          "sharedpref"
+        ],
+        "cloudBackupAndDeviceTransferExcluded": true,
+        "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+        "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+        "resourceTableSHA256": "183fe679132a2ccf7f229cf284e0db9999d76055e2bce7b8044fecb609a0dbb4",
+        "cleartextDenied": true,
+        "remoteSdkStartupDisabled": true,
+        "componentBoundariesChecked": true,
+        "localReminderDeclarationsChecked": true,
+        "reviewedStartupInitializers": [
+          "androidx.emoji2.text.EmojiCompatInitializer",
+          "androidx.lifecycle.ProcessLifecycleInitializer",
+          "androidx.profileinstaller.ProfileInstallerInitializer"
+        ],
+        "internalBrowserProxyChecked": true,
+        "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+        "signing": "uninspected; inspect the APK certificate separately",
+        "physicalDeviceTested": false,
+        "storeAccepted": false
+      },
+      "credentialPatternScan": {
+        "members": 1226,
+        "matches": 0,
+        "scope": "Finite recognized patterns; no security certification or absence-of-secrets guarantee."
+      },
+      "identityAndSignaturePassed": true
+    }
+  ],
+  "sourceZIPs": {
+    "movefield-native-current.zip": {
+      "bytes": 8131362,
+      "sha256": "1974d2a02926dece56ec73d94e2d7b7549ce0cece5d277f7eba44de198796ee4",
+      "manifestFiles": 253
+    },
+    "grizzly-fitness-native-source.zip": {
+      "bytes": 8131361,
+      "sha256": "c994216f7dfa34e2455083a4752e5f74672361d624bdf114325a6e859d017526",
+      "manifestFiles": 253
+    }
+  },
+  "exports": {
+    "checked_at": "2026-10-14T04:37:37.781317+00:00",
+    "scope": "Distinct cleared-cache Hermes exports, paired with native identity/module checks; no installed-device claim.",
+    "flavors": {
+      "movefield": {
+        "android": {
+          "path": "_expo/static/js/android/index-863979139da78240d5696b5750c2ff5e.hbc",
+          "bytes": 4736605,
+          "sha256": "0cbe97d71abdcb809981abc44eb22de04de694b6bc18f5ff7c0154161d51cc56"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-e81095bedf5762e31d2061e4e1b93962.hbc",
+          "bytes": 4724319,
+          "sha256": "65e6f95fb900087fb355cd5522fa6e67850f479408ddc71d8d5df06d71530c3f"
+        }
+      },
+      "grizzly": {
+        "android": {
+          "path": "_expo/static/js/android/index-cdff19504e52e60dc4f2a2d233289f7b.hbc",
+          "bytes": 4736603,
+          "sha256": "fdc9e89c70a9c106679e356fc21122ced65ff8a6e05c46806547a43a73ed05af"
+        },
+        "ios": {
+          "path": "_expo/static/js/ios/index-d86317ffb16b0c923d71bd8240e564ba.hbc",
+          "bytes": 4724319,
+          "sha256": "52a7cb9256692b11c372a1c95f0173b436aeaad3dbb01a91dc15fdbd244c7bfa"
+        }
+      }
+    }
+  },
+  "availablePlatforms": {
+    "checkedAt": "2026-10-14T04:39:44.606493+00:00",
+    "ios": {
+      "ownerAnswer": "No Apple setup yet",
+      "host": "Linux",
+      "xcodeAvailable": false,
+      "signingConfigured": false,
+      "ipaDelivered": false,
+      "testFlightAvailable": false,
+      "sourceInstructions": "mobile/IOS-DISTRIBUTION.md"
+    },
+    "android": {
+      "workflowRun": 38511959235,
+      "expectedSource": "08c6844d0fb4092cda1672498e3afc7dcd4149a6",
+      "architecture": "arm64-v8a",
+      "releaseQualification": "Development-signed test APK; installed-device and store qualification remain pending"
+    }
+  },
+  "localChecks": [
+    "Native types",
+    "26 historical encrypted-record upgrade groups",
+    "Grizzly separate identity/encrypted-profile isolation",
+    "Native compiled-metadata inspector regression",
+    "Both exact APKs independently inspected locally after HTTPS download",
+    "Downloader reconstructs exact APKs; rejects corruption/external part URLs; cancellation; no account/profile access",
+    "Both static web builds",
+    "Four distinct cleared-cache native Hermes exports",
+    "253 files in each hash-verified source archive"
+  ],
+  "pagesPublication": {
+    "state": "Prepared; deployment and public browser checks pending"
+  },
+  "remaining": [
+    "iPhone signing/build access; owner confirmed no Apple setup yet",
+    "Physical Android/iPhone installation, update, keychain, notifications, accessibility and performance",
+    "Play/App Store qualification",
+    "Two native upstream tooling advisories and remaining broader launch gates"
+  ],
+  "scope": "Latest audited implementation delivered as development-signed Android test APKs. Source/export/build checks do not establish final production or physical-device acceptance."
+}
