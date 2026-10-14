@@ -11,7 +11,7 @@ Build https://github.com/ghinz32-cloud/movefield/actions/runs/38511959235 and pu
 
 Both APKs target ARM64 Android phones, API 24 / Android 7.0+, and use the historical development certificate `fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`. Movefield retains `com.ghinz32.movefield`; Grizzly remains separately installed as `com.ghinz32.grizzlyfitness.prototype`. Keep an explicit encrypted backup and update over the existing app; do not uninstall records to solve a package/signature conflict.
 
-The existing Pages downloader is updated with these exact APKs and verifies every transport part plus the final file before offering Save. Direct release links avoid part assembly. Pages deployment/live browser results are recorded in the validation JSON after verification.
+The existing Pages downloader is updated with these exact APKs and verifies every transport part plus the final file before offering Save. Direct release links avoid part assembly. Pages `1d245e9383f9a2b421f3df02d3a25f0da17b6c58` deployed successfully in run `38513895225`. All 341 selected shared-app/root HTTPS files and 22 download files match; all 63 original root files remain unchanged. Both APKs reconstruct from both live brand directories. Sandboxed Chromium completed actual Save for both apps, and the saved files match their compiled hashes. Complete receipts are in the validation JSON.
 
 Both source ZIPs contain 253 manifest-verified files, updated Android/iPhone build instructions and the current app code. Four distinct Android/iOS Hermes exports pass; these exports and ZIPs are not phone installers.
 
