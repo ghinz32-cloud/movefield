@@ -26,6 +26,11 @@ on:
         type: string
         default: codex/native-delivery-2026-10-13
         required: true
+      publish_run:
+        description: Successful installer run to publish as an Android test release (empty compiles)
+        type: string
+        default: ''
+        required: false
 permissions:
   contents: read
 env:
@@ -33,6 +38,7 @@ env:
   EXPO_NO_TELEMETRY: '1'
 jobs:
   android:
+    if: ${{ !inputs.publish_run }}
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     strategy:
@@ -116,3 +122,26 @@ jobs:
             native-preview/evidence
             mobile/android/app/build/reports
           if-no-files-found: warn
+  publish_android:
+    if: ${{ inputs.publish_run }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      actions: read
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Install APK verification tools
+        run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "build-tools;36.0.0"'
+      - name: Verify both exact artifacts and publish Android test downloads
+        env:
+          NATIVE_PUBLISH_TOKEN: ${{ github.token }}
+          NATIVE_PUBLISH_RUN: ${{ inputs.publish_run }}
+          NATIVE_PUBLISH_SOURCE: ${{ inputs.source_ref }}
+        run: python3 scripts/publish-native-previews.py
