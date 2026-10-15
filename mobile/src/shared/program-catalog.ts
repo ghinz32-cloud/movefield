@@ -1,3 +1,4 @@
+import {routineLibrary} from './routine-library';
 export type ProgramSlot={title:string;group:'full'|'upper'|'lower'|'run'|'push'|'pull'|'legs'|'chestback'|'shouldersarms';kind?:'walkrun'|'easy'|'brief-run';conditioning?:'walkrun';items:[string,number,number,number,number][]};
 export type ProgramDefinition={id:string;goal:string;name:string;description:string;days:number;minutes:number;experience:'all'|'some'|'advanced';level?:'foundation'|'build'|'advanced';requirements?:string[];wave?:boolean;noFloor?:boolean;brief?:boolean;youth?:boolean;equipment:'gym'|'dumbbells'|'bodyweight-band'|'flexible'|'none';runBase?:boolean;source:string;slots:ProgramSlot[]};
 export const weightGoals=['strength','hypertrophy','powerbuilding','powerlifting','calisthenics'];
@@ -317,4 +318,5 @@ const programDisplayNames: Record<string,string> = {
   "HYDB2": "Strength + running · 2 days · Dumbbells and a run",
   "HYHOME2": "Strength + running · 2 days · Home lifting and walk-runs"
 };
+programCatalog.push(...routineLibrary);
 for (const program of programCatalog) program.name = programDisplayNames[program.id] ?? program.name;

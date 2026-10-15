@@ -59,7 +59,12 @@
     {
       "source": "lib/program-catalog.ts",
       "target": "src/shared/program-catalog.ts",
-      "sha256": "2d8aebb17dfbad23ad72881cd6dca501c4dcc386c4a4c342698578c8bfc98dae"
+      "sha256": "905e01144f3c2962fa1340f50edca3c64cb0dddd677f2bb006440ca76b1e7e4c"
+    },
+    {
+      "source": "lib/routine-library.ts",
+      "target": "src/shared/routine-library.ts",
+      "sha256": "7affbe346a76f281b228c7331c615811ca637d3881830f7e1e4b973d58c2fa71"
     },
     {
       "source": "lib/substitutions.ts",

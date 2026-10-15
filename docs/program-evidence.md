@@ -186,3 +186,12 @@ These changed the words users see on the Sources page and the source mapping. Ca
 - `docs/workout-evidence.json` is the research record as it stood on 8 October. It is not rewritten, so it still lists TIME-EFFICIENT and IOC-YOUTH as reused keys. This document supersedes it where they differ.
 
 Still open: the program design items (chest work once a week in ST2 and GF2, which needs a second press or a stated gap), the Schumann same-session note for HYDB2 and HYHOME2, the Lopez 2021 citation for load claims, and the 1×8 starting-week label for new plans. These are program or engine changes and are tracked separately.
+
+## Routine library (October 2026)
+
+- `lib/routine-library.ts` adds 30 families with 6 session lengths each (15 to 120 minutes). 125 of the 180 combinations are offered. The other 55 are not offered because they fail a rule the app applies, and the app does not show a known-gap exemption for them. Short sessions (15 and 30 minutes) are marked brief and carry less weekly work than longer ones.
+- Every routine's `source` is a key that already exists in `SOURCE_LINKS`. Earlier draft citations that were not in the Sources list were removed, not added. Those included Mikula 2025, Lopez 2021, Currier 2023, Petre 2021, Kang 2022, Saez 2012, Held 2026, Guimaraes 2025 and similar author-year tags. Their DOIs were not verified (Crossref was blocked in this environment).
+- Session minutes use the engine's own estimate (`estimateSessionMinutes`, mirrored in the library builder). A session is only offered when it fits its window. The design checker confirms that the engine's built minutes stay within the stated time.
+- Not offered by rule: powerlifting brief 30 min (R4/R5, a squat, bench and deadlift cannot all fit); muscle-building 45 minutes and longer where R1 (10 weighted sets a week per major group) or R2 (two sessions a week per group) fails, in HY1, HY2, HY3, HY4, HY5, PB1, PB2, PB3, PB4 and PB5.
+- Sprint, jump and drill numbers (SP and HB5 families) are design choices, not figures from a named trial. Sprint and jump drill durations are read as seconds by the engine.
+- Still open: whether Schoenfeld 2019 changes the R2 reading (this document still cites 2016 only); the Lopez 2021 load citation; the taper and block-periodization statements; WHO 150 to 300 minutes is cited from the WHO-2020 entry as general guidance.
