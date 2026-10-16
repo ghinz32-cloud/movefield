@@ -1,5 +1,7 @@
 import {NativeTabBar} from './src/tab-bar';
 import {NativeProgramFilters,matchesProgram} from './src/program-filters';
+import {NativeWorkoutCoaching} from './src/workout-coaching';
+import {beforeWorkoutCoaching,afterWorkoutCoaching} from './src/shared/workout-coaching';
 import {GrizzlyPressable} from './src/wild-interactions';
 // Recovered executed implementation; typed public contract is in the adjacent declaration.
 import * as _srcSharedPairedSets from "./src/shared/paired-sets";
@@ -40,7 +42,6 @@ import * as _srcRestAlerts from "./src/rest-alerts";
 import * as _srcSharedRestTimer from "./src/shared/rest-timer";
 import * as _srcSharedSavedData from "./src/shared/saved-data";
 import * as _srcSharedSessionGuide from "./src/shared/session-guide";
-import * as _srcSharedWorkoutReview from "./src/shared/workout-review";
 import * as _react from "react";
 import * as _reactNative from "react-native";
 import * as _reactNativeSafeAreaContext from "react-native-safe-area-context";
@@ -193,12 +194,13 @@ function RecordedMetrics({ metrics }) {
             })]
     });
 }
-function ModalFrame({ visible, close, title, children }) {
+function ModalFrame({ visible, close, title, children, onDismiss }) {
     var styles = (0, _srcAppearance.useThemedStyles)(baseStyles), { colors: COLORS, reduceMotion } = (0, _srcAppearance.useNativeAppearance)();
     return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Modal, {
         visible: visible,
         animationType: reduceMotion ? "none" : "slide",
         onRequestClose: close,
+        onDismiss,
         presentationStyle: "pageSheet",
         children: /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNativeSafeAreaContext.SafeAreaView, {
             style: styles.safe,
@@ -367,6 +369,8 @@ function TrainingApp() {
     var [exercise, setExercise] = (0, _react.useState)(null);
     var [editingHistory, setEditingHistory] = (0, _react.useState)(false);
     var [historyItem, setHistoryItem] = (0, _react.useState)(null);
+    var [coaching, setCoaching] = (0, _react.useState)(null);
+    var coachingTransition = (0, _react.useRef)({waiting:false,pending:null});
     var [historySection, setHistorySection] = (0, _react.useState)('history');
     var [historyLimit, setHistoryLimit] = (0, _react.useState)(20);
     var [confirm, setConfirm] = (0, _react.useState)(null);
@@ -492,6 +496,79 @@ function TrainingApp() {
         finally {
             setSavingAction(false);
         }
+    };
+    var coachingCurrent = coaching && coaching.store === storeRef.current && coaching.base === storeRef.current?.get() && coaching.sample === sampleRef.current && coaching.day === (0, _srcSharedTraining.day)() && appearance.p.coaching !== 'off';
+    (0, _react.useEffect)(() => {
+        if (coaching && !coachingCurrent) setCoaching(null);
+    }, [coaching, coachingCurrent]);
+    var completeCoachingTransition = () => {
+        var pending = coachingTransition.current.pending;
+        coachingTransition.current = {waiting:false,pending:null};
+        if (!pending) return;
+        var request = pending.request;
+        if (request.store !== storeRef.current || request.base !== storeRef.current?.get() || request.sample !== sampleRef.current || request.day !== (0, _srcSharedTraining.day)()) return;
+        if (pending.kind === 'record') {
+            var record = request.base.history.find(w => w.id === request.workoutId);
+            if(record){setEditingHistory(false);setHistoryItem(record);}
+        } else if (appearance.p.coaching !== 'off') setCoaching(request);
+    };
+    var presentCoaching = request => {
+        // UIKit must finish dismissing the current sheet before presenting another.
+        if (_reactNative.Platform.OS === 'ios' && (calendarOpen || historyItem || coachingTransition.current.waiting)) {
+            coachingTransition.current = {waiting:true,pending:{kind:'coaching',request}};
+            setCalendarOpen(false);
+            setHistoryItem(null);
+        } else {
+            setCalendarOpen(false);
+            setHistoryItem(null);
+            setCoaching(request);
+        }
+    };
+    var startReviewedWorkout = async request => {
+        if (!request || request.store !== storeRef.current || request.sample !== sampleRef.current || request.day !== (0, _srcSharedTraining.day)()) {
+            setCoaching(null);
+            setError('Your profile changed. Review this workout again.');
+            return false;
+        }
+        var saved = await persistChange(s => {
+            if (s !== request.base) throw Error('Your training changed. Review this workout again.');
+            return (0, _srcMobileEngine.startWorkout)(s, request.sessionId, request.sample);
+        });
+        if (saved) {
+            workoutScrollPending.current = true;
+            setCoaching(null);
+            setCalendarOpen(false);
+            setTab('Today');
+            setFocusedExercise(null);
+        }
+        return saved;
+    };
+    var reviewBeforeWorkout = (sessionId, startRequested = false) => {
+        var store = storeRef.current, base = store?.get(), target = base?.plan?.sessions.find(x => x.id === sessionId);
+        if (!base || !target || resettingRef.current || store.busy()) return Promise.resolve(false);
+        if (startRequested) {
+            var blocked = (0, _srcSharedTraining.eligibility)(base, target);
+            if (base.active || blocked || target.date !== (0, _srcSharedTraining.day)()) {
+                setError(base.active ? 'A workout is already open.' : blocked || 'Review moving this workout to today before starting.');
+                return Promise.resolve(false);
+            }
+        }
+        if (!startRequested && appearance.p.coaching === 'off') return Promise.resolve(false);
+        var sample = sampleRef.current, summary = beforeWorkoutCoaching(base, target, {brand: _srcSharedBrand.isGrizzly ? 'grizzly' : 'movefield', sample});
+        var request = {store, base, sample, sessionId, phase:'before', summary, day:(0, _srcSharedTraining.day)()};
+        if (startRequested && appearance.p.coaching !== 'auto') return startReviewedWorkout(request);
+        if (!summary) return startRequested ? startReviewedWorkout(request) : Promise.resolve(false);
+        setError('');
+        presentCoaching(request);
+        return Promise.resolve(false);
+    };
+    var reviewAfterWorkout = workoutId => {
+        var store = storeRef.current, base = store?.get();
+        if (!base || appearance.p.coaching === 'off') return;
+        var summary = afterWorkoutCoaching(base, workoutId, {brand: _srcSharedBrand.isGrizzly ? 'grizzly' : 'movefield'});
+        if (!summary) return;
+        setError('');
+        presentCoaching({store, base, sample:sampleRef.current, phase:'after', workoutId, summary, day:(0, _srcSharedTraining.day)()});
     };
     (0, _react.useEffect)(() => {
         var mounted = true;
@@ -714,9 +791,13 @@ function TrainingApp() {
     if (!state)
         return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNativeSafeAreaContext.SafeAreaView, {
             style: [styles.safe, _srcSharedBrand.isGrizzly && appearance.p.grizzlyStyle === 'wild' && !appearance.p.contrast && {backgroundColor: 'transparent'}],
-            children: /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.ScrollView, {
+            children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.KeyboardAvoidingView, {
+                style: styles.flex,
+                behavior: _reactNative.Platform.OS === 'ios' ? 'padding' : undefined,
+                children: /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.ScrollView, {
                 contentContainerStyle: styles.content,
                 keyboardShouldPersistTaps: "handled",
+                keyboardDismissMode: "on-drag",
                 children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NativeDenHero, {compact: true}), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Heading, {
                         eyebrow: _srcSharedBrand.brand.name.toUpperCase(),
                         title: readError ? 'Saved data needs attention' : 'Opening your training',
@@ -835,6 +916,7 @@ function TrainingApp() {
                         color: COLORS.green
                     }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(ModalFrame, {
                         visible: !!confirm,
+                        onDismiss: completeCoachingTransition,
                         close: () => setConfirm(null),
                         title: confirm?.title ?? '',
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
@@ -849,6 +931,7 @@ function TrainingApp() {
                                 }
                             })]
                     })]
+                })
             })
         });
     var next = (0, _srcSharedTraining.nextSession)(state);
@@ -862,7 +945,7 @@ function TrainingApp() {
         var w = stateRef.current?.active;
         if (!w)
             return;
-        var expected = (0, _srcSharedWorkoutFlow.workoutConfirmation)(w), done = w.sets.filter(x => x.done).length, unknown = (0, _srcMobileEngine.unknownLoads)(w, stateRef.current.custom);
+        var expected = (0, _srcSharedWorkoutFlow.workoutConfirmation)(w), done = w.sets.filter(x => x.done).length, unknown = (0, _srcMobileEngine.unknownLoads)(w, stateRef.current.custom), finishingStore = storeRef.current, finishingSample = sampleRef.current;
         setConfirm({
             title: done < w.sets.length ? 'Save a partial workout?' : 'Finish this workout?',
             message: `${done} of ${w.sets.length} sets logged. Only logged sets count toward your record.${unknown ? ` ${unknown} loaded sets have unknown weight.` : ''}`,
@@ -872,8 +955,10 @@ function TrainingApp() {
                     (0, _srcSharedWorkoutFlow.assertWorkoutConfirmation)(s, expected);
                     return (0, _srcMobileEngine.finishWorkout)(s);
                 }).then(saved => {
-                    if (saved)
+                    if (saved) {
                         setFocusedExercise(null);
+                        if (finishingStore === storeRef.current && finishingSample === sampleRef.current && appearance.p.coaching === 'auto') reviewAfterWorkout(w.id);
+                    }
                 });
             }
         });
@@ -899,6 +984,7 @@ function TrainingApp() {
     var todayView = /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.ScrollView, {
         ref: todayScroll,
         keyboardShouldPersistTaps: "handled",
+        keyboardDismissMode: "on-drag",
         contentContainerStyle: styles.content,
         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Heading, {
                 eyebrow: (0, _srcSharedTraining.niceDate)((0, _srcSharedTraining.day)()).toUpperCase(),
@@ -908,10 +994,7 @@ function TrainingApp() {
                 state: state,
                 sample: sampleMode,
                 busy: savingAction,
-                onStart: target => {
-                    workoutScrollPending.current = true;
-                    void persistChange(s => (0, _srcMobileEngine.startWorkout)(s, target.id, sampleRef.current)).then(saved => { if(saved) setFocusedExercise(null); else workoutScrollPending.current = false; });
-                },
+                onStart: target => { void reviewBeforeWorkout(target.id, true); },
                 onPreview: target => {
                     setCalendarDate(target.date);
                     setCalendarOpen(true);
@@ -994,26 +1077,16 @@ function TrainingApp() {
                         style: styles.body,
                         children: "Your training is saved on this device. Review private backup and optional account settings when you need them."
                     })]
-            }), [...state.history].filter(w => w.finishedAt).sort((a, b) => (b.finishedAt || 0) - (a.finishedAt || 0)).slice(0, 1).map(w => {
-                var r = (0, _srcSharedWorkoutReview.reviewWorkout)(state, w.id);
-                return r ? /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                    children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                            style: styles.eyebrow,
-                            children: "WORKOUT SUMMARY"
-                        }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                            style: styles.sectionTitle,
-                            children: r.summary
-                        }), r.facts.map(f => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                            style: styles.body,
-                            children: f.text
-                        }, f.id)), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                            style: styles.body,
-                            children: ["Next step: ", r.next]
-                        }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                            style: styles.small,
-                            children: "This summary uses your saved workout and the app\u2019s training rules. No AI model is connected and nothing is sent to an AI service."
-                        })]
-                }, w.id) : null;
+            }), !active && appearance.p.coaching !== 'off' && (next || state.history.some(w => w.finishedAt)) && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                children: [next && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                    secondary: true,
+                    label: 'Review workout guidance',
+                    onPress: () => { void reviewBeforeWorkout(next.id); }
+                }), [...state.history].filter(w => w.finishedAt).sort((a,b) => (b.finishedAt || 0) - (a.finishedAt || 0)).slice(0,1).map(w => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                    secondary: true,
+                    label: 'Review last workout feedback',
+                    onPress: () => reviewAfterWorkout(w.id)
+                }, w.id))]
             }), state.plan && !active && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
                 children: [blocked && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
@@ -1475,6 +1548,7 @@ function TrainingApp() {
     var planView = tab === 'Plan' && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.ScrollView, {
         contentContainerStyle: styles.content,
         keyboardShouldPersistTaps: "handled",
+        keyboardDismissMode: "on-drag",
         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Heading, {
                 eyebrow: "YOUR TRAINING",
                 title: "Plans",
@@ -1765,6 +1839,7 @@ function TrainingApp() {
                         paddingTop: 4
                     }],
                 keyboardShouldPersistTaps: "handled",
+                keyboardDismissMode: "on-drag",
                 initialNumToRender: 15,
                 ListEmptyComponent: /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
                     children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
@@ -2158,12 +2233,37 @@ function TrainingApp() {
                 selected: tab,
                 onSelect: label => { setTab(label); setError(''); }
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(ModalFrame, {
+                visible: !!coachingCurrent,
+                onDismiss: completeCoachingTransition,
+                close: () => setCoaching(null),
+                title: coaching?.phase === 'before' ? 'Before your workout' : 'Workout feedback',
+                children: coachingCurrent && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
+                    children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NativeWorkoutCoaching, {summary:coaching.summary}),
+                        error && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {accessibilityRole:'alert',style:styles.errorText,children:error}),
+                        coaching.phase === 'before' && coaching.base.plan?.sessions.some(s => s.id === coaching.sessionId && s.date === (0, _srcSharedTraining.day)() && !(0, _srcSharedTraining.eligibility)(coaching.base,s)) && !coaching.base.active && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                            label:'Start reviewed workout',disabled:savingAction,onPress:() => { void startReviewedWorkout(coaching); }
+                        }),
+                        coaching.phase === 'after' && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                            label:'View saved workout',secondary:true,onPress:() => {
+                                var request = coaching;
+                                setCoaching(null);
+                                if (_reactNative.Platform.OS === 'ios') coachingTransition.current = {waiting:true,pending:{kind:'record',request}};
+                                else {
+                                    var record = stateRef.current?.history.find(w => w.id === request.workoutId);
+                                    if(record){setEditingHistory(false);setHistoryItem(record);}
+                                }
+                            }
+                        }),
+                        /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {label:coaching.phase === 'before' ? 'Not now' : 'Done',secondary:true,onPress:() => setCoaching(null)})]
+                })
+            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(ModalFrame, {
                 visible: scienceOpen,
                 close: () => setScienceOpen(false),
                 title: "Science and sources",
                 children: scienceOpen && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcScience.NativeScienceLibrary, {})
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(ModalFrame, {
                 visible: calendarOpen,
+                onDismiss: completeCoachingTransition,
                 close: () => setCalendarOpen(false),
                 title: "Calendar and commitments",
                 children: calendarOpen && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcCalendar.NativeCalendar, {
@@ -2176,16 +2276,7 @@ function TrainingApp() {
                             setCalendarOpen(false);
                         return saved;
                     },
-                    onStart: async (id) => {
-                        var saved = await persistChange(v => (0, _srcMobileEngine.startWorkout)(v, id, sampleRef.current));
-                        if (saved) {
-                            workoutScrollPending.current = true;
-                            setCalendarOpen(false);
-                            setTab('Today');
-                            setFocusedExercise(null);
-                        }
-                        return saved;
-                    },
+                    onStart: id => reviewBeforeWorkout(id, true),
                     onHistory: w => {
                         setCalendarOpen(false);
                         setEditingHistory(false);
@@ -2466,6 +2557,7 @@ function TrainingApp() {
                 })
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(ModalFrame, {
                 visible: !!historyItem,
+                onDismiss: completeCoachingTransition,
                 close: () => setHistoryItem(null),
                 title: "Workout record",
                 children: historyItem && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
@@ -2485,6 +2577,8 @@ function TrainingApp() {
                             secondary: true,
                             label: "Edit saved workout",
                             onPress: () => setEditingHistory(true)
+                        }), !editingHistory && appearance.p.coaching !== 'off' && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                            label:'Review workout feedback',secondary:true,onPress:() => reviewAfterWorkout(historyItem.id)
                         }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                             style: styles.title,
                             children: (0, _srcSharedPresentation.workoutName)(historyItem, state)
@@ -2717,6 +2811,7 @@ function TrainingApp() {
                 })
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(ModalFrame, {
                 visible: !!confirm,
+                onDismiss: completeCoachingTransition,
                 close: () => setConfirm(null),
                 title: confirm?.title ?? '',
                 children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
@@ -2726,6 +2821,7 @@ function TrainingApp() {
                         label: confirm?.label ?? 'Continue',
                         onPress: () => {
                             var action = confirm?.action;
+                            if (_reactNative.Platform.OS === 'ios') coachingTransition.current.waiting = true;
                             setConfirm(null);
                             action?.();
                         }

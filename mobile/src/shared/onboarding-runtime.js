@@ -23,7 +23,8 @@ function freshState() {
             equipment: 'Full gym',
             inventory: (0, _equipment.defaultInventory)()
         },
-        plan: null
+        plan: null,
+        events: []
     };
 }
 function setupErrors(p, step) {

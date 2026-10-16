@@ -1,0 +1,214 @@
+{
+  "checkedAt": "2026-10-16T16:55:41.110493+00:00",
+  "passed": true,
+  "sourceSHA256": {
+    "mobile/App-runtime.js": "e4143d993f57a149523d06b99085faf18b3af28d397d07915ab6b4bde84efb4d",
+    "mobile/src/workout-coaching.tsx": "c4028ecf9d8210fbeefa23944d886dbd7fd8aed0e426a43942a6b6e75038b923",
+    "mobile/src/settings.tsx": "aa5baed1acc948ea6df881b3618c43176cbf23b7f4b81306a068d049d980b4ee",
+    "mobile/src/calendar.tsx": "fc83d93d83a3eefd525fb947245d6cd8bf42181a4fd0dff99fc63cbf61f6946a",
+    "mobile/app.config.js": "ad912fbad4c2a10192a408ee7eef250302a33bc1b7ee953ea3a628d3390ea3af",
+    "mobile/app.json": "c43eb2417a99229fdf19339b4b4cde7bca643f9893df97cdebe2f0a17a429088",
+    "mobile/src/shared/workout-coaching.ts": "bc08251cdeb80de82f57d5641f639c15e60b75e0bc530ad9e4005dc5c960e857",
+    "mobile/src/shared/workout-coaching-library.ts": "2bc97bb8cd15e7aadc13dbca5a0b0182df4a228d030a11e2bcbddaf2779f4ba0",
+    "mobile/src/shared/app-preferences.ts": "426305bdb61da2d4371d17743562745354acfac3e71593b3ea0de1635d287241",
+    "scripts/check-native-coaching-ui.mjs": "7e151a1f4a31ae944ede459c4daf4e4bd4387fba3c5f2eefdf0e4ea21af664bf"
+  },
+  "scope": "Actual native App/components via RN Web in sandboxed Chromium with documented storage/font/file/notification/cloud mocks. The iOS callback run sets Platform.OS=ios; it does not simulate UIKit or OS keyboard behavior. No physical device, native OS compilation, signing or store-acceptance claim.",
+  "checks": [
+    {
+      "command": "node scripts/check-native-coaching-ui.mjs",
+      "result": "PASS both brands on final frozen shared snapshot; immediate previous-sheet dismissal fix included"
+    },
+    {
+      "command": "node scripts/check-native-coaching-ui.mjs --ios-transitions",
+      "result": "PASS both brands; iOS onDismiss callback branch; the later immediate non-iOS branch fix is exercised by the ordinary run"
+    },
+    {
+      "command": "npm run check",
+      "cwd": "mobile",
+      "result": "PASS"
+    },
+    {
+      "command": "npx eslint mobile/src/workout-coaching.tsx mobile/src/calendar.tsx mobile/src/settings.tsx",
+      "result": "PASS"
+    },
+    {
+      "command": "node scripts/check-native-interactions.cjs",
+      "result": "PASS"
+    },
+    {
+      "command": "node scripts/check-native-density.cjs",
+      "result": "PASS"
+    },
+    {
+      "command": "git diff --check -- <changed native sources, tests and docs>",
+      "result": "PASS"
+    }
+  ],
+  "receipts": {
+    "coaching": {
+      "checkedAt": "2026-10-16T16:55:14.223Z",
+      "results": [
+        {
+          "variant": "movefield",
+          "iosTransitionBranchEmulated": false,
+          "passed": [
+            "automatic Today/Calendar pre-start popup; close/cancel/reopen are read-only",
+            "failed start retains preview; successful reviewed start reuses current engine eligibility and targets",
+            "post popup only after durable workout save; failed-save preservation and retry",
+            "engine messages and collapsed explanation rendered unchanged",
+            "read-only Today/history reopen; auto/manual/off survives reload",
+            "320px layout at 130% app text",
+            "sample/personal workout isolation and stale popup dismissal",
+            "read failure exposes usable recovery fields and retry"
+          ],
+          "scope": "Actual native App runtime through React Native Web; synthetic per-profile JSON writes, file APIs, font loading, notifications and disabled cloud boundary mocked. No installed device, OS keyboard, secure-store or screen-reader claim."
+        },
+        {
+          "variant": "grizzly",
+          "iosTransitionBranchEmulated": false,
+          "passed": [
+            "automatic Today/Calendar pre-start popup; close/cancel/reopen are read-only",
+            "failed start retains preview; successful reviewed start reuses current engine eligibility and targets",
+            "post popup only after durable workout save; failed-save preservation and retry",
+            "engine messages and collapsed explanation rendered unchanged",
+            "read-only Today/history reopen; auto/manual/off survives reload",
+            "320px layout at 130% app text",
+            "sample/personal workout isolation and stale popup dismissal",
+            "read failure exposes usable recovery fields and retry"
+          ],
+          "scope": "Actual native App runtime through React Native Web; synthetic per-profile JSON writes, file APIs, font loading, notifications and disabled cloud boundary mocked. No installed device, OS keyboard, secure-store or screen-reader claim."
+        }
+      ]
+    },
+    "iosTransitionCallbacks": {
+      "checkedAt": "2026-10-16T16:53:53.638Z",
+      "results": [
+        {
+          "variant": "movefield",
+          "iosTransitionBranchEmulated": true,
+          "passed": [
+            "automatic Today/Calendar pre-start popup; close/cancel/reopen are read-only",
+            "failed start retains preview; successful reviewed start reuses current engine eligibility and targets",
+            "post popup only after durable workout save; failed-save preservation and retry",
+            "engine messages and collapsed explanation rendered unchanged",
+            "read-only Today/history reopen; auto/manual/off survives reload",
+            "320px layout at 130% app text",
+            "sample/personal workout isolation and stale popup dismissal",
+            "read failure exposes usable recovery fields and retry"
+          ],
+          "scope": "Actual native App runtime through React Native Web with Platform.OS=ios only to exercise the onDismiss queue; UIKit is not simulated.; synthetic per-profile JSON writes, file APIs, font loading, notifications and disabled cloud boundary mocked. No installed device, OS keyboard, secure-store or screen-reader claim."
+        },
+        {
+          "variant": "grizzly",
+          "iosTransitionBranchEmulated": true,
+          "passed": [
+            "automatic Today/Calendar pre-start popup; close/cancel/reopen are read-only",
+            "failed start retains preview; successful reviewed start reuses current engine eligibility and targets",
+            "post popup only after durable workout save; failed-save preservation and retry",
+            "engine messages and collapsed explanation rendered unchanged",
+            "read-only Today/history reopen; auto/manual/off survives reload",
+            "320px layout at 130% app text",
+            "sample/personal workout isolation and stale popup dismissal",
+            "read failure exposes usable recovery fields and retry"
+          ],
+          "scope": "Actual native App runtime through React Native Web with Platform.OS=ios only to exercise the onDismiss queue; UIKit is not simulated.; synthetic per-profile JSON writes, file APIs, font loading, notifications and disabled cloud boundary mocked. No installed device, OS keyboard, secure-store or screen-reader claim."
+        }
+      ]
+    },
+    "configuration": {
+      "checkedAt": "2026-10-16T16:46:24.080Z",
+      "passed": true,
+      "scope": "Resolved source app configuration, not compiled packages or signing",
+      "records": [
+        {
+          "variant": "movefield",
+          "lineage": "prototype",
+          "version": "0.1.6",
+          "iosBuild": "7",
+          "androidCode": 7,
+          "iosBundle": "com.ghinz32.movefield.prototype",
+          "androidPackage": "com.ghinz32.movefield.prototype"
+        },
+        {
+          "variant": "movefield",
+          "lineage": "legacy-movefield",
+          "version": "0.1.6",
+          "iosBuild": "7",
+          "androidCode": 7,
+          "iosBundle": "com.ghinz32.movefield.prototype",
+          "androidPackage": "com.ghinz32.movefield"
+        },
+        {
+          "variant": "grizzly",
+          "lineage": "prototype",
+          "version": "0.1.5",
+          "iosBuild": "6",
+          "androidCode": 6,
+          "iosBundle": "com.ghinz32.grizzlyfitness.prototype",
+          "androidPackage": "com.ghinz32.grizzlyfitness.prototype"
+        }
+      ]
+    },
+    "existingActualApp": {
+      "checkedAt": "2026-10-16T16:47:20.855Z",
+      "results": [
+        {
+          "variant": "movefield",
+          "passed": [
+            "actual app shell and five tabs at 320px",
+            "comma-decimal load entry, main logger failed-write preservation and retry",
+            "guide modal close and reachable Library at 130% app text",
+            "130% app text in settings and navigation",
+            "paginated samples, source-name search, empty recovery and six/seven-day filters",
+            "45-record history pages, scaled corrections and canceled draft preservation",
+            "read-only plan browsing preserves active workout and history"
+          ],
+          "scope": "Executed native App runtime rendered through RN Web; synthetic JSON writer, font loader, file IO, notifications and disabled cloud boundary mocked. Not an installed phone or OS keyboard test."
+        },
+        {
+          "variant": "grizzly",
+          "passed": [
+            "actual app shell and five tabs at 320px",
+            "comma-decimal load entry, main logger failed-write preservation and retry",
+            "guide modal close and reachable Library at 130% app text",
+            "130% app text in settings and navigation",
+            "paginated samples, source-name search, empty recovery and six/seven-day filters",
+            "45-record history pages, scaled corrections and canceled draft preservation",
+            "read-only plan browsing preserves active workout and history"
+          ],
+          "scope": "Executed native App runtime rendered through RN Web; synthetic JSON writer, font loader, file IO, notifications and disabled cloud boundary mocked. Not an installed phone or OS keyboard test."
+        }
+      ]
+    },
+    "movefieldFocusedWorkflows": {
+      "checkedAt": "2026-10-16T16:48:02.159Z",
+      "grizzly": false,
+      "scope": "Real React Native components rendered via React Native Web in sandboxed Chromium. Synthetic durable JSON writer with injected failure; font loading and OS notification boundaries stubbed; no reminder action exercised. No native crypto, installed OS, TalkBack/VoiceOver or physical-device claim.",
+      "passed": [
+        "commitment range preview, failed-write preservation and durable retry",
+        "custom movement and addition preserve active workout and history",
+        "saved block full preview and accepted new unperformed sessions",
+        "320px region containment, app text scaling and 48px date targets",
+        "recorded progress period/exercise filtering",
+        "plan evidence disclosure and searchable research references",
+        "Today concern sample-only reset, future preview, active callback preservation and busy start guard"
+      ]
+    },
+    "grizzlyFocusedWorkflows": {
+      "checkedAt": "2026-10-16T16:51:18.019Z",
+      "grizzly": true,
+      "scope": "Real React Native components rendered via React Native Web in sandboxed Chromium. Synthetic durable JSON writer with injected failure; font loading and OS notification boundaries stubbed; no reminder action exercised. No native crypto, installed OS, TalkBack/VoiceOver or physical-device claim.",
+      "passed": [
+        "commitment range preview, failed-write preservation and durable retry",
+        "custom movement and addition preserve active workout and history",
+        "saved block full preview and accepted new unperformed sessions",
+        "320px region containment, app text scaling and 48px date targets",
+        "recorded progress period/exercise filtering",
+        "plan evidence disclosure and searchable research references",
+        "Today concern sample-only reset, future preview, active callback preservation and busy start guard",
+        "native 35-font selection, outdoor palette and Clean preserve actual workout state at 320px"
+      ]
+    }
+  }
+}

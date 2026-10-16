@@ -6,7 +6,7 @@ export const FOUNDATION = 'foundation';
 export const RUN_WALK = 'run-walk';
 export const SPORT_FOUNDATION = 'sport-foundation';
 export function emptyDemo(): State {
-  return { ...initialState(), plan: null, history: [], active: null, saved: [], profile: { ...blankProfile, name: '', age: 28 } };
+  return { ...initialState(), plan: null, history: [], active: null, saved: [], events: [], profile: { ...blankProfile, name: '', age: 28 } };
 }
 export function previewPlan(id: string, start = day()): {plan: Plan | null; errors: string[]} {
   const choice = programCatalog.find(x => x.id === id);

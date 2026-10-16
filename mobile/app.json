@@ -2,13 +2,14 @@
   "expo": {
     "name": "Movefield",
     "slug": "garret-hinz-training-studio",
-    "version": "0.1.0",
+    "version": "0.1.6",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.ghinz32.movefield.prototype"
+      "bundleIdentifier": "com.ghinz32.movefield.prototype",
+      "buildNumber": "7"
     },
     "android": {
       "adaptiveIcon": {
@@ -19,6 +20,7 @@
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.ghinz32.movefield.prototype",
+      "versionCode": 7,
       "allowBackup": false,
       "blockedPermissions": [
         "android.permission.SYSTEM_ALERT_WINDOW",

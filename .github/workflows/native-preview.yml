@@ -79,6 +79,9 @@ jobs:
           node scripts/check-routine-library.cjs
           node scripts/check-library-equipment.cjs
           node scripts/check-substitution-integrity.cjs
+          node scripts/check-onboarding.cjs
+          node scripts/check-workout-coaching.cjs
+          node scripts/check-coaching-selection.cjs
           node scripts/check-legacy-native-upgrade.cjs
           node scripts/check-legacy-transfer.cjs
           node scripts/check-block-starting-loads.cjs

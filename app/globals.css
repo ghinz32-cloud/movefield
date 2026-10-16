@@ -266,3 +266,32 @@ input,textarea,select,[data-slot=select-trigger]{color:var(--foreground);border-
  .set-row .set-save-label{display:inline}
  .set-row-details{grid-column:1 / -1}
 }
+
+/* Coaching stays short in the main flow; evidence and context open on demand. */
+.coaching-shortcut { margin: 18px 0; }
+.coaching-messages { display: grid; gap: 12px; margin: 14px 0; padding: 0; list-style: none; line-height: 1.65; }
+.coaching-messages li { padding-left: 14px; border-left: 3px solid var(--accent-strong); overflow-wrap: anywhere; }
+.workout-coaching-copy details p { font-size: .9rem; line-height: 1.65; margin: 10px 0; }
+.workout-coaching-dialog { max-height: calc(100dvh - 2rem); overflow-y: auto; overscroll-behavior: contain; }
+.workout-coaching-dialog [data-slot=dialog-title] { padding-right: 24px; line-height: 1.3; }
+.workout-coaching-dialog .dialog-actions { flex-wrap: wrap; }
+
+/* Keep setup navigation visible when the brand and enlarged labels need another row. */
+@media (max-width: 680px) {
+ .setup-header { flex-wrap: wrap; gap: 12px; }
+ .setup-header > button { height: auto; min-height: 44px; white-space: normal; }
+}
+
+/* Sonner's light rich-color defaults miss text contrast on saved/error notices. */
+[data-sonner-toaster][data-sonner-theme=light] [data-sonner-toast] {
+ --success-text: #006b24;
+ --info-text: #005caa;
+ --warning-text: #8a4600;
+ --error-text: #b40000;
+}
+
+/* Settings cards need room for readable choices beside the tablet sidebar. */
+.settings-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+.preference-settings .button-row > button { max-width: 100%; height: auto; min-height: 44px; white-space: normal; }
+.preference-settings .field [data-slot=select-trigger] { height: auto; min-height: 44px; }
+.preference-settings [data-slot=select-value] { -webkit-line-clamp: unset; white-space: normal; }

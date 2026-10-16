@@ -1,17 +1,18 @@
 # Android update candidate
 
 The `legacy-movefield` build targets the repository's October 9 test installer,
-`com.ghinz32.movefield`, with versionCode 5 (Movefield version 0.1.4; the previous release used versionCode 4). It uses the existing Expo test
+`com.ghinz32.movefield`, with versionCode 7 (Movefield version 0.1.6; the previous published release used versionCode 6). It uses the existing Expo test
 certificate. The default Movefield and Grizzly prototype identities remain
-separate. Do not uninstall the earlier app to install this candidate.
+separate. This source configures Grizzly 0.1.5/code 6; a version declaration is not
+a compiled or published installer. Do not uninstall the earlier app to install this candidate.
 
 `EXPO_PUBLIC_NATIVE_LINEAGE=legacy-movefield` must be set for both Expo prebuild
 and the Gradle/Metro compilation. It cannot be combined with the Grizzly variant.
 The repository's **Current Android test installers** workflow sets both values
 and records the exact checked-out source, compiled manifest and signing digest.
-Reviewed native-source pushes on the `codex/native-upgrade-2026-10-13` and
-`codex/native-delivery-2026-10-13` branches compile both flavors from that exact
-pushed commit. Manual builds accept a reviewed exact source commit through `source_ref`. Root documentation-only checkpoints do not rebuild installers.
+The workflow configuration identifies branches whose native-source pushes compile
+both flavors from that exact pushed commit. Manual builds accept a reviewed exact
+source commit through `source_ref`. Root documentation-only checkpoints do not rebuild installers.
 This public repository uses standard hosted Linux runners.
 
 On first opening, the upgrade reads the previous chunked SQLite database and

@@ -34,7 +34,7 @@
     {
       "source": "lib/onboarding-runtime.js",
       "target": "src/shared/onboarding-runtime.js",
-      "sha256": "5b0b07db89ec24538645ecacad4f976bfb82dfc86af2347dc70f9756971dbfea"
+      "sha256": "21edd12e320a1b7a0b7f0085c61eee13d49a12354363a87ca19197c6866b959c"
     },
     {
       "source": "lib/onboarding-runtime.d.ts",
@@ -277,6 +277,21 @@
       "sha256": "cefeff01cdf00e6183c36ae0f6a0c3533b01dfb5f7149b577e6ff816e9399d06"
     },
     {
+      "source": "lib/workout-coaching.ts",
+      "target": "src/shared/workout-coaching.ts",
+      "sha256": "bc08251cdeb80de82f57d5641f639c15e60b75e0bc530ad9e4005dc5c960e857"
+    },
+    {
+      "source": "lib/workout-coaching-library.ts",
+      "target": "src/shared/workout-coaching-library.ts",
+      "sha256": "2bc97bb8cd15e7aadc13dbca5a0b0182df4a228d030a11e2bcbddaf2779f4ba0"
+    },
+    {
+      "source": "lib/coaching-selection.ts",
+      "target": "src/shared/coaching-selection.ts",
+      "sha256": "a92f7e9b443145636198eb8b04231c5a28ef09f59153e78ce6406fbebacc1230"
+    },
+    {
       "source": "lib/cloud-sync.ts",
       "target": "src/shared/cloud-sync.ts",
       "sha256": "434045258e92236a7d11b59a30b93f3b132a2da1e765e1b86c3f35c790f07e91"
@@ -299,7 +314,7 @@
     {
       "source": "lib/experienced-demo.ts",
       "target": "src/shared/experienced-demo.ts",
-      "sha256": "2b19bf797fecc2a632e24412f54862890fd05849f317c67e45cf9b863fc48d0c"
+      "sha256": "cd87b12cdf987f8b7bc63a2a1fb506969520a12aa14e6bec7ad5d18f576ba0d5"
     },
     {
       "source": "lib/legacy-transfer.ts",
@@ -334,7 +349,7 @@
     {
       "source": "lib/app-preferences.ts",
       "target": "src/shared/app-preferences.ts",
-      "sha256": "ede118b5aeada6c047567d3fbdfa84783d37d6cedda4044b44e7bb4234e308f9"
+      "sha256": "426305bdb61da2d4371d17743562745354acfac3e71593b3ea0de1635d287241"
     },
     {
       "source": "lib/grizzly-messages.ts",
