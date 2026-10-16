@@ -1,7 +1,7 @@
 {
   "format": "comprehensive-app-audit-v1",
-  "updatedAt": "2026-10-16T19:37:39.714623+00:00",
-  "status": "source_qualified_release_pending",
+  "updatedAt": "2026-10-16T19:57:17.495059+00:00",
+  "status": "android_published_and_inspected_pages_pending",
   "branch": "codex/native-focused-screens-2026-10-16",
   "priorVerifiedDelivery": {
     "nativeSource": "f0130487760aa03d64b22f23002da5423da7ff4e",
@@ -51,14 +51,15 @@
     "finalCore": "passed_composite_58_groups_plus_final_affected_rechecks",
     "finalLint": "passed_zero_errors_80_warnings_initial_plus_zero_errors_final_affected",
     "fourHermesExports": "passed_four_distinct_bundles_unchanged_265_native_files",
-    "sourceCommitPush": "pending",
-    "compiledAndroidBoth": "pending",
-    "inspectedPublishedAndroidBoth": "pending",
+    "sourceCommitPush": "passed_exact_remote_ref",
+    "compiledAndroidBoth": "passed_first_attempt",
+    "inspectedPublishedAndroidBoth": "passed_source_identity_signature_security_markers_window_and_16kib",
     "finalPages": "pending",
     "newPhysicalDevices": "unverified_external",
     "signedIos": "unavailable_owner_setup",
     "liveServices": "disabled_unqualified",
-    "originalRoot": "preserved_with_separate_findings"
+    "originalRoot": "preserved_with_separate_findings",
+    "finalWorkerBuildAndBrowser": "passed_build_and_19_local_encrypted_offline_journeys"
   },
   "limitations": [
     "Chromium and RNWeb checks do not establish physical Android/iOS, screen reader or hinge behavior.",
@@ -299,5 +300,514 @@
     ],
     "publicDownloadsUnchanged": true,
     "scope": "Four actual cleared-cache Hermes exports with correct brand/platform identities, unchanged native source, and20 reviewed copy markers. Marker inclusion does not verify UI/rotation behavior. Two ignored source archives are internally hashed against the same captured files. No native APK/IPA compile/signing/install or remote publication."
+  },
+  "sourceQualification": {
+    "sourceCommit": "81f66fe49e5a9f5c1f04fae799bd491cac1c5aca",
+    "sourceTree": "d440eb77b94fac179d3109e3c3278e4dc69e4235",
+    "nativeSourceSnapshotSHA256": "b58cdd028e9383c0a028386e97e6f656f7f22211ff3b3934a8ccc5027cd2d9fb",
+    "sourceFiles": 265
+  },
+  "finalEvidenceDigests": [
+    {
+      "path": ".sites-runtime/native-adaptive-ui/results.json",
+      "sha256": "b16fbaa2f917329130fed0d51dcd64de23bfa38857010e32bc6ffc7655e03855"
+    },
+    {
+      "path": ".sites-runtime/comprehensive-2026-10-16-web/qualified-static-publication-preparation.json",
+      "sha256": "fd14c240b897deb56541264ec3c95add3a3cc9fcc6c8e35bee1e6e65f45e3e8c"
+    },
+    {
+      "path": ".sites-runtime/comprehensive-2026-10-16-web/final-source-output-semantic-comparison.json",
+      "sha256": "35443773a20ac691562a97eb3a8c5334283d906690296d0d3ff0a6de421a9795"
+    },
+    {
+      "path": ".sites-runtime/comprehensive-release-2026-10-16/final-worker-build.json",
+      "sha256": "ea98ada959ad565d601824829601d2be2f5ef7c7eccb5bc068a60b115261c004"
+    },
+    {
+      "path": ".sites-runtime/comprehensive-release-2026-10-16/native-export-summary.json",
+      "sha256": "4df5021a19316342a5732ab4b3927cf4fb467b49d48bd09d2a2447ca4123acfb"
+    },
+    {
+      "path": ".sites-runtime/comprehensive-release-2026-10-16/worker-workout-browser-receipt.json",
+      "sha256": "8c1b8205106f31f3106a1a6ce02736cbd4575274c9b8e63e894c78a4dd6a91ee"
+    }
+  ],
+  "practicalAcceptance": "See report checklist: verified off-device recovery, no automatic cross-client sync, physical workout/assistive technology/fold transitions, privacy/support/media rights, performance/battery budgets and assigned maintenance owners.",
+  "finalWorkerVerification": {
+    "startedAt": "2026-10-16T19:44:05.652249+00:00",
+    "sourceCommitBefore": "81f66fe49e5a9f5c1f04fae799bd491cac1c5aca",
+    "command": {
+      "server": "node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js dev --config dist/server/wrangler.json --local --persist-to .sites-runtime/comprehensive-release-2026-10-16/worker-state --ip 127.0.0.1 --port 8867 --inspector-port 0",
+      "test": "MOVEFIELD_BASE_URL=http://127.0.0.1:8867 MOVEFIELD_TEST_OFFLINE=1 node scripts/check-workout-browser.cjs"
+    },
+    "scope": "Fresh local Worker only, synthetic browser records, no configured remote services. Chromium sandbox retained. All dist/server and dist/client files hashed; selected actual web source/config/test files and public assets excluding delivery downloads hashed before/after.",
+    "freshServerProbe": {
+      "status": 200,
+      "htmlSha256": "d8aa85b77a2eec486aacd2102b4f0542a312563cf04154df0db111c809b112fe",
+      "scripts": [
+        {
+          "url": "http://127.0.0.1:8867/_next/static/chunks/rolldown-runtime-QTnfLwEv.js",
+          "status": 200,
+          "servedSha256": "5db5ba82eef00d1dee7e86e663098c9427d01183a88d357437daff295aec3e75",
+          "localPath": "dist/client/_next/static/chunks/rolldown-runtime-QTnfLwEv.js",
+          "localSha256": "5db5ba82eef00d1dee7e86e663098c9427d01183a88d357437daff295aec3e75"
+        },
+        {
+          "url": "http://127.0.0.1:8867/_next/static/chunks/framework-JGc2HF7T.js",
+          "status": 200,
+          "servedSha256": "51eeab1516fa74a7a401a24514cf16d409e4c478b29fc99f7bc909066afefc9a",
+          "localPath": "dist/client/_next/static/chunks/framework-JGc2HF7T.js",
+          "localSha256": "51eeab1516fa74a7a401a24514cf16d409e4c478b29fc99f7bc909066afefc9a"
+        },
+        {
+          "url": "http://127.0.0.1:8867/_next/static/chunks/index-COrvE4Z8.js",
+          "status": 200,
+          "servedSha256": "aaa1196cf226fab75354baf6947b7da081a51ecfbde63311151f670df9e0bfd1",
+          "localPath": "dist/client/_next/static/chunks/index-COrvE4Z8.js",
+          "localSha256": "aaa1196cf226fab75354baf6947b7da081a51ecfbde63311151f670df9e0bfd1"
+        }
+      ]
+    },
+    "initialFailureReceipt": "initial-worker-workout-browser-failure.json",
+    "diagnosticReceipt": "worker-finish-diagnostic.json",
+    "testExpectationRepair": {
+      "file": "scripts/check-workout-browser.cjs",
+      "reason": "Successful saves open automatic after-workout coaching; assert one dialog and one saved record, then dismiss and verify record stability. Failed saves must not open coaching; reload must not replay dismissed coaching.",
+      "applicationSourceChanges": [],
+      "changedSourcePathsSinceInitialFailure": [
+        "scripts/check-workout-browser.cjs"
+      ]
+    },
+    "testExitCode": 0,
+    "testFinishedAt": "2026-10-16T19:45:25.950321+00:00",
+    "sourceCommitAfter": "81f66fe49e5a9f5c1f04fae799bd491cac1c5aca",
+    "sourceMismatches": [],
+    "buildMismatches": [],
+    "newBuildPaths": [],
+    "passingGroups": [
+      "First offline installation does not announce a replacement update",
+      "Actual quota failure keeps the set unfinished, focused, and recoverable",
+      "Partial finish cannot appear saved when the real storage write fails",
+      "Delayed save respects deliberate navigation back to the remaining list",
+      "Full completion saves exactly one workout with the original workout identity and date",
+      "A second tab changes the snapshot without being overwritten by a stale command",
+      "Sample actions and reset leave the personal snapshot byte-for-byte unchanged",
+      "Encrypted reload rejects a wrong passphrase without overwriting the saved file",
+      "History corrections preserve another active workout and timer through encrypted reload",
+      "Migration quota failure leaves the original plaintext file intact until retry",
+      "Encrypted backup is previewed and restored through the actual settings flow",
+      "Built app reopens offline, unlocks and saves without caching private records",
+      "Passphrase change and explicit locking keep records and reject the old passphrase",
+      "Encrypted export includes a staged input after device storage fails",
+      "Full tracking-plan import retains saved history and creates no completed workouts",
+      "Private erasure removes state and draft while retaining sample records",
+      "Recovered static assets and narrow exercise overview render in the actual app",
+      "Today reviews future and overdue sessions without changing their dates or records",
+      "Today keeps a private concern on hold and offers plan review"
+    ],
+    "stdoutSha256": "fbdf28d77a84da8256e815ba0174b3780904e2b62b5de21dbd17e3e36616fb93",
+    "finishedAt": "2026-10-16T19:45:47.562812+00:00",
+    "outcome": "PASS:19 actual local Worker browser journeys, including offline. Original failure was an outdated coaching-modal test expectation; no application change.",
+    "ownedWorkerStopped": true,
+    "workerLogSha256": "ddb8ee79d27203a81dbbc466b17f1516fcecb4937df57c24a7fc2382f26071df",
+    "sourceHashesBeforeSummary": {
+      "entries": 2050,
+      "sha256OfCanonicalJSON": "ca92a3d24ba1a696130ae8178d52e8a5f39b09c71aaa444609549a0e68bf2345"
+    },
+    "buildHashesBeforeSummary": {
+      "entries": 1919,
+      "sha256OfCanonicalJSON": "f28fabefcacc21136e7eb27f7788fdd70701607a34048352fc661d7281637657"
+    },
+    "sourceHashesAfterSummary": {
+      "entries": 2050,
+      "sha256OfCanonicalJSON": "ca92a3d24ba1a696130ae8178d52e8a5f39b09c71aaa444609549a0e68bf2345"
+    },
+    "buildHashesAfterSummary": {
+      "entries": 1919,
+      "sha256OfCanonicalJSON": "f28fabefcacc21136e7eb27f7788fdd70701607a34048352fc661d7281637657"
+    }
+  },
+  "nativePublication": {
+    "format": "comprehensive-native-publication-v1",
+    "checkedAt": "2026-10-16T19:53:14.114580+00:00",
+    "sourceCommit": "81f66fe49e5a9f5c1f04fae799bd491cac1c5aca",
+    "sourceTree": "d440eb77b94fac179d3109e3c3278e4dc69e4235",
+    "build": {
+      "id": 38956403750,
+      "head_sha": "81f66fe49e5a9f5c1f04fae799bd491cac1c5aca",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38956403750"
+    },
+    "publisher": {
+      "id": 38957941934,
+      "head_sha": "81f66fe49e5a9f5c1f04fae799bd491cac1c5aca",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38957941934"
+    },
+    "release": {
+      "id": 415326610,
+      "tag": "android-ux-preview-81f66fe49e5a",
+      "url": "https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-81f66fe49e5a",
+      "publisherRun": 38957941934
+    },
+    "selectedJobOutcomes": [
+      {
+        "id": 117160266718,
+        "name": "android (movefield)",
+        "run_attempt": 1,
+        "head_sha": "81f66fe49e5a9f5c1f04fae799bd491cac1c5aca",
+        "started_at": "2026-10-16T19:38:34Z",
+        "completed_at": "2026-10-16T19:49:44Z"
+      },
+      {
+        "id": 117160266611,
+        "name": "android (grizzly)",
+        "run_attempt": 1,
+        "head_sha": "81f66fe49e5a9f5c1f04fae799bd491cac1c5aca",
+        "started_at": "2026-10-16T19:38:35Z",
+        "completed_at": "2026-10-16T19:48:55Z"
+      }
+    ],
+    "newEmptyDraftFallbackUsed": false,
+    "priorPublisherAttempts": [],
+    "apps": [
+      {
+        "app": "movefield",
+        "filename": "movefield-0.1.8-arm64.apk",
+        "versionName": "0.1.8",
+        "versionCode": 9,
+        "package": "com.ghinz32.movefield",
+        "bytes": 39346124,
+        "sha256": "ea2b9fbe5aae91d5c8d70ea3f3c6db2bba7e163647d623123183c7b273ee01c9",
+        "applicationBundleSHA256": "a908d0314127c4c90e9fd5acca720848654e04c7abe6726a1401916c5b93392f",
+        "sourceCommit": "81f66fe49e5a9f5c1f04fae799bd491cac1c5aca",
+        "sourceTree": "d440eb77b94fac179d3109e3c3278e4dc69e4235",
+        "artifactId": 12072075344,
+        "archiveSHA256": "05aaf70cea83d5a6994ed00a10002b0e4236247f1773d45784ff16186eff9d63",
+        "directDownloadURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-81f66fe49e5a/movefield-0.1.8-arm64.apk",
+        "signingCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+        "minimumSDK": 24,
+        "architectures": [
+          "arm64-v8a"
+        ],
+        "identityAndSignaturePassed": true,
+        "nativeInspection": {
+          "passed": true,
+          "platform": "android",
+          "package": "com.ghinz32.movefield",
+          "permissions": [
+            "android.permission.ACCESS_NETWORK_STATE",
+            "android.permission.INTERNET",
+            "android.permission.POST_NOTIFICATIONS",
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            "android.permission.VIBRATE",
+            "com.ghinz32.movefield.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+          ],
+          "manifestSHA256": "aa421fb5921f4f1d20088483006ca86e5c90d42cede0e2555249a44f05b64d13",
+          "backupRulesLinked": true,
+          "backupDomainsExcluded": [
+            "database",
+            "device_database",
+            "device_file",
+            "device_root",
+            "device_sharedpref",
+            "external",
+            "file",
+            "root",
+            "sharedpref"
+          ],
+          "cloudBackupAndDeviceTransferExcluded": true,
+          "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+          "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+          "resourceTableSHA256": "695b7ce666e5a9693be722aeddf822ea049aafa2891350f8d455f3804706b62e",
+          "cleartextDenied": true,
+          "remoteSdkStartupDisabled": true,
+          "componentBoundariesChecked": true,
+          "localReminderDeclarationsChecked": true,
+          "reviewedStartupInitializers": [
+            "androidx.emoji2.text.EmojiCompatInitializer",
+            "androidx.lifecycle.ProcessLifecycleInitializer",
+            "androidx.profileinstaller.ProfileInstallerInitializer"
+          ],
+          "internalBrowserProxyChecked": true,
+          "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+          "signing": "uninspected; inspect the APK certificate separately",
+          "physicalDeviceTested": false,
+          "storeAccepted": false
+        },
+        "coachingBundleMarkers": [
+          "workout-coaching-v1",
+          "BEFORE YOUR WORKOUT",
+          "AFTER YOUR WORKOUT",
+          "Why this pre-workout guidance",
+          "Why this workout feedback",
+          "These messages are selected from local reviewed text and saved facts. They do not change targets, schedule or load."
+        ],
+        "focusedUiBundleMarkers": [
+          "Continue next exercise",
+          "Review finish",
+          "Finish & save workout",
+          "Profile & equipment",
+          "Learn the movement",
+          "Workout guidance",
+          "Warm-up, effort, order and progression",
+          "This saved workout is not linked to a current plan session. Follow the guidance from your own plan or coach."
+        ],
+        "adaptiveSessionBundleMarkers": [
+          "Workout exercises",
+          "controls in Options",
+          "Workout instructions: ",
+          "Hide workout instructions",
+          "Planned run / walk sequence",
+          "These are planned steps. Log only the time and work you actually perform."
+        ],
+        "bundleMarkerEncodings": {
+          "workout-coaching-v1": "utf-8",
+          "BEFORE YOUR WORKOUT": "utf-8",
+          "AFTER YOUR WORKOUT": "utf-8",
+          "Why this pre-workout guidance": "utf-8",
+          "Why this workout feedback": "utf-8",
+          "These messages are selected from local reviewed text and saved facts. They do not change targets, schedule or load.": "utf-8",
+          "Continue next exercise": "utf-8",
+          "Review finish": "utf-8",
+          "Finish & save workout": "utf-8",
+          "Profile & equipment": "utf-8",
+          "Learn the movement": "utf-8",
+          "Workout guidance": "utf-8",
+          "Warm-up, effort, order and progression": "utf-8",
+          "This saved workout is not linked to a current plan session. Follow the guidance from your own plan or coach.": "utf-8",
+          "Workout exercises": "utf-8",
+          "controls in Options": "utf-16-le",
+          "Workout instructions: ": "utf-8",
+          "Hide workout instructions": "utf-8",
+          "Planned run / walk sequence": "utf-8",
+          "These are planned steps. Log only the time and work you actually perform.": "utf-8"
+        },
+        "credentialPatternScan": {
+          "members": 1236,
+          "matches": 0,
+          "scope": "Finite recognized patterns; no security certification or absence-of-secrets guarantee."
+        },
+        "pageAlignment16KiB": {
+          "zipalignExitCode": 0,
+          "zipAlignedFor16KiB": true,
+          "nativeLibraryCount": 17,
+          "allNativeElfLoadSegmentsAlignedFor16KiB": true
+        },
+        "compiledActivityWindowPolicy": {
+          "app": "movefield",
+          "apkSHA256": "ea2b9fbe5aae91d5c8d70ea3f3c6db2bba7e163647d623123183c7b273ee01c9",
+          "activity": "com.ghinz32.movefield.MainActivity",
+          "screenOrientation": "-1",
+          "activityResizeableActivity": null,
+          "applicationResizeableActivity": null,
+          "targetSDK": 36,
+          "minimumSDK": 24,
+          "configChanges": "0x80000fb0",
+          "doesNotForceOrientation": true,
+          "manifestResizeableActivityEffective": true,
+          "resizePolicyBasis": "Android target SDK >=24 default true",
+          "scope": "Static compiled manifest declarations and documented target-SDK resizing default. Android-version/window-manager policies can override declarations; no rotation, multiwindow, hinge, posture or physical-device behavior was executed."
+        }
+      },
+      {
+        "app": "grizzly",
+        "filename": "grizzly-fitness-0.1.7-arm64.apk",
+        "versionName": "0.1.7",
+        "versionCode": 8,
+        "package": "com.ghinz32.grizzlyfitness.prototype",
+        "bytes": 39497386,
+        "sha256": "d4fcd4f30fe2803c8eb545e13570e432503e868c3a776430f871b6c2fa5e8058",
+        "applicationBundleSHA256": "3f1499711813394feb9c4266899574f19deb52c5bb78b0abc655e5ce0ba6b578",
+        "sourceCommit": "81f66fe49e5a9f5c1f04fae799bd491cac1c5aca",
+        "sourceTree": "d440eb77b94fac179d3109e3c3278e4dc69e4235",
+        "artifactId": 12071910393,
+        "archiveSHA256": "0a8477c95bb56e0b5489d0acd04eeda870afeb69bcd33e7319fd17d578231d1b",
+        "directDownloadURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-81f66fe49e5a/grizzly-fitness-0.1.7-arm64.apk",
+        "signingCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+        "minimumSDK": 24,
+        "architectures": [
+          "arm64-v8a"
+        ],
+        "identityAndSignaturePassed": true,
+        "nativeInspection": {
+          "passed": true,
+          "platform": "android",
+          "package": "com.ghinz32.grizzlyfitness.prototype",
+          "permissions": [
+            "android.permission.ACCESS_NETWORK_STATE",
+            "android.permission.INTERNET",
+            "android.permission.POST_NOTIFICATIONS",
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            "android.permission.VIBRATE",
+            "com.ghinz32.grizzlyfitness.prototype.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+          ],
+          "manifestSHA256": "a24d54fd01fd6a10cab28d5b745da8e753b94ace6f485a37913a5b2d726c4a06",
+          "backupRulesLinked": true,
+          "backupDomainsExcluded": [
+            "database",
+            "device_database",
+            "device_file",
+            "device_root",
+            "device_sharedpref",
+            "external",
+            "file",
+            "root",
+            "sharedpref"
+          ],
+          "cloudBackupAndDeviceTransferExcluded": true,
+          "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+          "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+          "resourceTableSHA256": "b48129ca827456e7cd2104216e788f1a127424b1f92f422f33fecdfda3dfb9f7",
+          "cleartextDenied": true,
+          "remoteSdkStartupDisabled": true,
+          "componentBoundariesChecked": true,
+          "localReminderDeclarationsChecked": true,
+          "reviewedStartupInitializers": [
+            "androidx.emoji2.text.EmojiCompatInitializer",
+            "androidx.lifecycle.ProcessLifecycleInitializer",
+            "androidx.profileinstaller.ProfileInstallerInitializer"
+          ],
+          "internalBrowserProxyChecked": true,
+          "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+          "signing": "uninspected; inspect the APK certificate separately",
+          "physicalDeviceTested": false,
+          "storeAccepted": false
+        },
+        "coachingBundleMarkers": [
+          "workout-coaching-v1",
+          "BEFORE YOUR WORKOUT",
+          "AFTER YOUR WORKOUT",
+          "Why this pre-workout guidance",
+          "Why this workout feedback",
+          "These messages are selected from local reviewed text and saved facts. They do not change targets, schedule or load."
+        ],
+        "focusedUiBundleMarkers": [
+          "Continue next exercise",
+          "Review finish",
+          "Finish & save workout",
+          "Profile & equipment",
+          "Learn the movement",
+          "Workout guidance",
+          "Warm-up, effort, order and progression",
+          "This saved workout is not linked to a current plan session. Follow the guidance from your own plan or coach."
+        ],
+        "adaptiveSessionBundleMarkers": [
+          "Workout exercises",
+          "controls in Options",
+          "Workout instructions: ",
+          "Hide workout instructions",
+          "Planned run / walk sequence",
+          "These are planned steps. Log only the time and work you actually perform."
+        ],
+        "bundleMarkerEncodings": {
+          "workout-coaching-v1": "utf-8",
+          "BEFORE YOUR WORKOUT": "utf-8",
+          "AFTER YOUR WORKOUT": "utf-8",
+          "Why this pre-workout guidance": "utf-8",
+          "Why this workout feedback": "utf-8",
+          "These messages are selected from local reviewed text and saved facts. They do not change targets, schedule or load.": "utf-8",
+          "Continue next exercise": "utf-8",
+          "Review finish": "utf-8",
+          "Finish & save workout": "utf-8",
+          "Profile & equipment": "utf-8",
+          "Learn the movement": "utf-8",
+          "Workout guidance": "utf-8",
+          "Warm-up, effort, order and progression": "utf-8",
+          "This saved workout is not linked to a current plan session. Follow the guidance from your own plan or coach.": "utf-8",
+          "Workout exercises": "utf-8",
+          "controls in Options": "utf-16-le",
+          "Workout instructions: ": "utf-8",
+          "Hide workout instructions": "utf-8",
+          "Planned run / walk sequence": "utf-8",
+          "These are planned steps. Log only the time and work you actually perform.": "utf-8"
+        },
+        "credentialPatternScan": {
+          "members": 1226,
+          "matches": 0,
+          "scope": "Finite recognized patterns; no security certification or absence-of-secrets guarantee."
+        },
+        "pageAlignment16KiB": {
+          "zipalignExitCode": 0,
+          "zipAlignedFor16KiB": true,
+          "nativeLibraryCount": 17,
+          "allNativeElfLoadSegmentsAlignedFor16KiB": true
+        },
+        "compiledActivityWindowPolicy": {
+          "app": "grizzly",
+          "apkSHA256": "d4fcd4f30fe2803c8eb545e13570e432503e868c3a776430f871b6c2fa5e8058",
+          "activity": "com.ghinz32.grizzlyfitness.prototype.MainActivity",
+          "screenOrientation": "-1",
+          "activityResizeableActivity": null,
+          "applicationResizeableActivity": null,
+          "targetSDK": 36,
+          "minimumSDK": 24,
+          "configChanges": "0x80000fb0",
+          "doesNotForceOrientation": true,
+          "manifestResizeableActivityEffective": true,
+          "resizePolicyBasis": "Android target SDK >=24 default true",
+          "scope": "Static compiled manifest declarations and documented target-SDK resizing default. Android-version/window-manager policies can override declarations; no rotation, multiwindow, hinge, posture or physical-device behavior was executed."
+        }
+      }
+    ],
+    "inspectionOrder": [
+      "CI compiled APK identity/security/signature checks",
+      "Exact successful run/job/artifact metadata gate",
+      "Normal direct CI artifact transport unavailable; no bypass",
+      "Reviewed publisher independently rechecks archive digest/source/tree/APK identity/security/signature before source-tagged prerelease upload",
+      "Independent public release byte/signature/source/window/20-marker/16KiB checks before applying Pages installer files"
+    ],
+    "directCiArtifactTransport": {
+      "checkedAt": "2026-10-16T19:50:20.495252+00:00",
+      "run": 38956403750,
+      "attempts": [
+        {
+          "app": "movefield",
+          "artifactId": 12072075344,
+          "returnCode": 1,
+          "httpStatuses": [],
+          "errorHosts": [
+            "productionresultssa6.blob.core.windows.net"
+          ],
+          "receivedBytes": 0,
+          "downloaded": false
+        }
+      ],
+      "completed": false,
+      "scope": "Ordinary gh API artifact transport. No raw error body, signed URL or token is retained."
+    },
+    "pageAlignmentReceipt": ".sites-runtime/comprehensive-release-2026-10-16/native-installers/page-alignment.json",
+    "downloadCandidate": {
+      "path": ".sites-runtime/comprehensive-release-2026-10-16/native-downloads-candidate",
+      "fileCount": 10,
+      "receipt": ".sites-runtime/comprehensive-release-2026-10-16/native-package.json",
+      "appliedToPublic": true
+    },
+    "scope": "Verified development-signed Android ARM64 release bytes and actual APK ZIP/ELF/source/identity/security inspections. No installation/upgrade of these new versions on a physical phone, native OS lifecycle, store acceptance, signed iPhone build or TestFlight qualification."
+  },
+  "candidate": {
+    "applicationSourceSHA256": "9ae88f8180bf24def064549f2df109091b0cbb3f443eff637ed36dcb65593c5c",
+    "webArtifactTreeSHA256": "8f569a750872a75e45968675c6e2e5fb2cdc76aa2cc8c45bf2da1fe5e26fa3b3",
+    "artifactSHA256": {
+      "public/downloads/movefield-native-current.zip": "492c2ec1679cb88c224dc805ed7d235fce7c3707f41efae1b75a2304ee9e4387",
+      "public/downloads/grizzly-fitness-native-source.zip": "96be677cba4080e2f777553adb7ab0152f8e160adbecdf1c7254670837139e78",
+      "mobile/dist-mobile/_expo/static/js/android/index-ef20c42c847305ce7f0ff103e4b5484a.hbc": "ebf9139e2607813e3150e6d2ab178102000323f0afaba776253b6f41ecac57be",
+      "mobile/dist-mobile/_expo/static/js/ios/index-c4227e3a0e871dca44fb6a5a8bb1f807.hbc": "42895a0ca57c9da382b1016d901ffbca8a99eb560df822c6621ac639e1dcb904",
+      "mobile/dist-grizzly/_expo/static/js/android/index-d2794e1611bb83aa9b74a395cd5f79c9.hbc": "dadf04c96c9c857a1600986749bff404ea2cbff7a5a88d1bbc4986ea4e101b52",
+      "mobile/dist-grizzly/_expo/static/js/ios/index-8252d6883af6643820364f532299c65d.hbc": "e92178274ab32eeabc88355417e523e721052cd52ecbae9eb40a5b1fdbf7ee19"
+    },
+    "sourceFileCount": 2468,
+    "finiteCredentialPatternScan": {
+      "ran_at": "2026-10-16T19:55:45.821910+00:00",
+      "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed.",
+      "files": 6158,
+      "zip_members": 2316,
+      "matches": []
+    }
   }
 }

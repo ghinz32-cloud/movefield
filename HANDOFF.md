@@ -1,3 +1,17 @@
+# Current comprehensive audit delivery · 16 October 2026
+
+Continue on `codex/native-focused-screens-2026-10-16`. Read [the comprehensive audit](docs/comprehensive-app-audit-2026-10-16.md) and its JSON receipt. Audited native/application source `81f66fe49e5a9f5c1f04fae799bd491cac1c5aca`, tree `d440eb77b94fac179d3109e3c3278e4dc69e4235`, is frozen. Build `38956403750` and publisher `38957941934` passed first attempt. Movefield **0.1.8/code9** and Grizzly **0.1.7/code8** are published and independently checked for identity, historical certificate, source/security,20 bundle markers, default window policy and16KiB ZIP/ELF alignment. Native sources and archives remain unchanged after export qualification. No installation of these new versions is claimed.
+
+Final static application outputs and10 inspected Android installer delivery files are staged in both standard preview directories. Both source ZIPs are refreshed. The next gate is final Pages publication against existing `481b781308e03804c78a50ceec703af715dabdf5`, followed by exact served-file checks, APK browser Saves/ranges and both live synthetic app flows. Use `.sites-runtime/comprehensive-release-2026-10-16/` receipts/helpers; do not reuse the earlier publication index or relabel failed historical tests.
+
+The audit repaired prescribed-target loss, schedule/substitution/history issues, reminder opt-out, setup numbers, backup/concurrency/rotation, initial/offline loading and adaptive layouts. Final native180states/240clippingchecks,58 core groups with documented corrected-assertion reruns,19 actual Worker browser journeys, all100 shared snapshot files and four clean Hermes exports pass within their stated scopes. Both final static outputs have a documented unused-CSS-only generation difference and six fresh browser states. See the reports for full evidence and unresolved usability, performance, content and launch gates.
+
+Never read, stage or export owner `.openai/`. Preserve all63originalPagesrootfiles, old served chunks, brand/store namespaces and historical update/transfer lineage. No paid services or store submissions are authorized. No signed iPhone installer exists without Apple setup. Physical foldables, OS keyboards/screen readers, broader browsers, clinical/media-rights review and live services remain unqualified. All72 master requirements retain their prior status.
+
+Earlier sections below are historical where this checkpoint differs.
+
+---
+
 # Current focused-phone delivery and comprehensive follow-up · 16 October 2026
 
 Continue on `codex/native-focused-screens-2026-10-16`. Focused-phone Android previews are delivered: native source `f0130487760aa03d64b22f23002da5423da7ff4e`, delivery source `920a73621d9f2ab15bbddcd00139c9cebd155238`, Pages `481b781308e03804c78a50ceec703af715dabdf5`, successful deployment `38952414814`. Movefield **0.1.7/code8** and Grizzly **0.1.6/code7** retain their package IDs and historical signing certificate. Both live browser Saves, exact hashes/lengths/MIME/ranges and all357 selected served files (including63originalrootfiles) passed. See [release report](docs/native-focused-release-2026-10-16.md) and its JSON receipt. Physical acceptance of these versions remains open; prior S24 acceptance applies only to Movefield0.1.6.

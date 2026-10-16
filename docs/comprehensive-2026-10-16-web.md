@@ -116,6 +116,18 @@ The offline/browser receipt at19:19:10Z uses Movefield main JS `e80225a0…bdf94
 
 Security's actual-browser rotation repair also passed on these isolated builds: old-key rows are gone, complete synthetic state including known/unknown loads is preserved, and the new passphrase unlocks after reload. See `.sites-runtime/security-repairs/web-vault-rotation.json` and the security report for its scope. Setup draft-conflict repair remains owned and validated separately by the parent workstream. These are local validation results, not publication or physical-device claims.
 
+### Final source qualification and staging
+
+Source commit `81f66fe` was rebuilt into a separate directory before release staging. The first strict byte comparison correctly stopped the copy: a newly written native audit document contains a token that Tailwind treats as a utility candidate. Repository-wide scanning consequently emitted one unused CSS rule. This is an input-scoping/build reproducibility issue, not a detected change to web training behavior.
+
+For each brand, **1,820 of1,826 non-download files remain exactly identical** to the prior qualified output. All three changed JavaScript chunks are exactly equal after replacing only their hashed asset-reference filenames. HTML has only the corresponding reference changes. CSS is exactly equal after removing that single added utility rule; no matching class token occurs in the web application/component/hook/library/entry sources. The worker is exactly equal after normalizing its release revision, hashed references and ordering of its asset Set. The comparison is retained in `.sites-runtime/comprehensive-2026-10-16-web/final-source-output-semantic-comparison.json` and the initial refusal log remains available.
+
+A focused smoke against the fresh final-source outputs passed **six additional axe/layout states**, zero page errors and zero outer overflow: both brands' Today at320/200%, Progress and Settings at390/130%. The changed CSS class is unused in each observed DOM. Actual lazy Progress loading and guide opening succeed; the guide Close remains at least44px. These are the finite final-byte checks in `final-source-smoke.json`, not a claim that all earlier journeys were rerun. The application's changed chunk references returned200 in these journeys.
+
+The preparation receipt `qualified-static-publication-preparation.json` binds the explicit web-source fingerprint, final application file hashes, copied output trees and preserved download identities. Previous standard outputs are archived under `standard-output-before-qualified-copy/`. Release downloads remain unchanged during this transfer and are qualified separately by the release workstream. No publication is performed by this step.
+
+Follow-up: explicitly scope Tailwind's build inputs to intended UI sources so unrelated audit documentation/native source does not change generated web CSS. Until then, include repository content-scanning inputs when reasoning about reproducibility; the explicit web-source fingerprint alone is not the full set of Tailwind inputs. The compiled artifact hashes still identify the exact output. Avoid changing those scanner rules in the already-frozen release without a separate build comparison and relevant checks.
+
 ## Remaining compatibility and novice-use gates
 
 | Area | Required next acceptance |

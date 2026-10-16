@@ -15,7 +15,7 @@ for name, digest in files.items():
         tasks[name] = digest
         continue
     rel = name.split('/', 1)[1]
-    if (rel in ['index.html', 'review-manifest.json', 'grizzly-manifest.json',
+    if (rel in ['index.html', 'app-loading.js', 'review-manifest.json', 'grizzly-manifest.json',
                 'brand/grizzly-fitness-logo.jpg', 'exercise-guides.json', 'exercise-content.json',
                 'downloads/movefield-native-current.zip', 'downloads/grizzly-fitness-native-source.zip']
             or rel.endswith('sw.js') or rel.startswith(('assets/', 'fonts/', 'brand/wilderness/'))):
