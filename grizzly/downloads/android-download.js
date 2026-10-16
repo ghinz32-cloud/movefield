@@ -6,8 +6,8 @@ const digest=async bytes=>hex(await crypto.subtle.digest('SHA-256',bytes));
 const items=new Map();let manifestPromise;
 function loadManifest(){return manifestPromise??=fetch('android-installers.json',{cache:'no-store'}).then(async response=>{if(!response.ok)throw Error('Download information is unavailable.');const value=await response.json();if(value.format!=='fitness-android-downloads-v1'||!Array.isArray(value.apps))throw Error('Download information could not be verified.');return value}).catch(error=>{manifestPromise=null;throw error})}
 for(const card of document.querySelectorAll('[data-app]')){
- const app=card.dataset.app,button=card.querySelector('[data-download]'),cancel=card.querySelector('.cancel'),progress=card.querySelector('progress'),status=card.querySelector('.status'),save=card.querySelector('.save');let controller=null,url=null;
- items.set(app,{card,button,status});
+ const app=card.dataset.app,button=card.querySelector('[data-download]'),direct=card.querySelector('[data-direct]'),cancel=card.querySelector('.cancel'),progress=card.querySelector('progress'),status=card.querySelector('.status'),save=card.querySelector('.save');let controller=null,url=null;
+ items.set(app,{card,button,direct,status});
  cancel.addEventListener('click',()=>controller?.abort());
  button.addEventListener('click',async()=>{
   if(controller)return;controller=new AbortController();const signal=controller.signal;button.disabled=true;cancel.hidden=false;progress.hidden=false;progress.value=0;save.hidden=true;if(url){URL.revokeObjectURL(url);url=null}status.textContent='Preparing your Android app…';
@@ -30,7 +30,7 @@ for(const card of document.querySelectorAll('[data-app]')){
   finally{controller=null;button.disabled=false;cancel.hidden=true;progress.hidden=true}
  });
 }
-const focus=new URLSearchParams(location.search).get('app');if(items.has(focus))items.get(focus).button.focus();
+const focus=new URLSearchParams(location.search).get('app');if(items.has(focus))(items.get(focus).direct||items.get(focus).button).focus();
 const grizzly=location.pathname.includes('/grizzly/');if(grizzly){document.getElementById('web-grizzly').href='../index.html';document.getElementById('web-movefield').href='../../review/'}
 addEventListener('pagehide',()=>{for(const card of document.querySelectorAll('[data-app]')){const save=card.querySelector('.save');if(save.href.startsWith('blob:'))URL.revokeObjectURL(save.href)}});
 })();
