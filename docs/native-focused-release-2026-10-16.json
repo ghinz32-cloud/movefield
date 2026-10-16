@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-16T18:48:07.894313+00:00",
-  "status": "android_published_verified_pages_pending",
+  "updatedAt": "2026-10-16T19:10:06.018713+00:00",
+  "status": "published_pages_downloads_verified_comprehensive_followup_in_progress",
   "repository": "ghinz32-cloud/movefield",
   "branch": "codex/native-focused-screens-2026-10-16",
   "baseCommit": "7ab35a251c60900e08a707f82c0a4f2dfc01d438",
@@ -3560,13 +3560,13 @@
     },
     {
       "id": "downloadPackagingAndPagesCandidate",
-      "status": "parts_applied_candidate_pending",
-      "detail": "Ten verified delivery files copied into public and both static builds. Full APK generation remains candidate-only; original63rootfiles preserved by preparer."
+      "status": "passed",
+      "detail": "Candidate generated only approved complete APKs from inspected parts; all63 originalrootfiles and previous served hashed chunks preserved."
     },
     {
       "id": "pagesDeploymentAndLiveByteSaveVerification",
-      "status": "pending",
-      "detail": "Require successful exact Pages deployment, served hashes/MIME/length/ranges and actual browser Saves."
+      "status": "passed",
+      "detail": "Exact Pages481b781 deployment38952414814 succeeded. All357 served hashes including63originalrootfiles match; both exact-length/MIME HEAD, first/last206ranges, and sandboxed320px browserSave/download hashes passed."
     },
     {
       "id": "newPhysicalDeviceAcceptance",
@@ -5119,6 +5119,141 @@
       "previousManifestSHA256": "21f22ece903ce6424ca660d6273a753457b701cacaa9d67393169d35afa1ffd7",
       "appliedToStaticBuilds": true,
       "appliedAt": "2026-10-16T18:56:49.020450+00:00"
+    },
+    "pages": {
+      "commit": "481b781308e03804c78a50ceec703af715dabdf5",
+      "source": "920a73621d9f2ab15bbddcd00139c9cebd155238",
+      "deployment": 38952414814,
+      "status": "success",
+      "files": 357,
+      "originalRootFiles": 63,
+      "bothBrowserSavesVerified": true,
+      "bothHeadAndRangesVerified": true,
+      "live-files.json": {
+        "checked_at": "2026-10-16T19:08:20.015598+00:00",
+        "pages_commit": "481b781308e03804c78a50ceec703af715dabdf5",
+        "source_commit": "920a73621d9f2ab15bbddcd00139c9cebd155238",
+        "application_source_sha256": "9b921df8b7412f1871390305568b654ec12aaffd945954a9408ec30330d1a30d",
+        "scope": "HTTPS byte verification only; no browser or installed-device acceptance.",
+        "root_files_checked": 63,
+        "passed": true
+      },
+      "live-pages-download/headers.json": {
+        "checkedAt": "2026-10-16T19:08:00.710164+00:00",
+        "expectedNativeSource": "f0130487760aa03d64b22f23002da5423da7ff4e",
+        "results": [
+          {
+            "app": "movefield",
+            "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/movefield-0.1.7-arm64.apk",
+            "sourceCommit": "f0130487760aa03d64b22f23002da5423da7ff4e",
+            "head": {
+              "status": 200,
+              "contentType": "application/vnd.android.package-archive",
+              "contentLength": 39335972,
+              "contentDisposition": null,
+              "acceptRanges": "bytes",
+              "noRedirect": true
+            },
+            "rangeRequests": [
+              {
+                "segment": "first",
+                "requestRange": "bytes=0-4095",
+                "status": 206,
+                "contentRange": "bytes 0-4095/39335972",
+                "contentLength": 4096,
+                "verifiedBytes": 4096,
+                "sha256": "e1c009107b2a6a5cb0e76c30006ab8c200c1a64a829ae9b961ab4f69be607612"
+              },
+              {
+                "segment": "last",
+                "requestRange": "bytes=39331876-39335971",
+                "status": 206,
+                "contentRange": "bytes 39331876-39335971/39335972",
+                "contentLength": 4096,
+                "verifiedBytes": 4096,
+                "sha256": "f2da952fad3cf67010e7e17d5179e456bbc308d78e8880c8e2c174a55fec6597"
+              }
+            ],
+            "passed": true
+          },
+          {
+            "app": "grizzly",
+            "url": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/grizzly-fitness-0.1.6-arm64.apk",
+            "sourceCommit": "f0130487760aa03d64b22f23002da5423da7ff4e",
+            "head": {
+              "status": 200,
+              "contentType": "application/vnd.android.package-archive",
+              "contentLength": 39487234,
+              "contentDisposition": null,
+              "acceptRanges": "bytes",
+              "noRedirect": true
+            },
+            "rangeRequests": [
+              {
+                "segment": "first",
+                "requestRange": "bytes=0-4095",
+                "status": 206,
+                "contentRange": "bytes 0-4095/39487234",
+                "contentLength": 4096,
+                "verifiedBytes": 4096,
+                "sha256": "a7a114fb8c4fdf20377b69c1b1f365776391f298df4743c845993397ee906ea8"
+              },
+              {
+                "segment": "last",
+                "requestRange": "bytes=39483138-39487233",
+                "status": 206,
+                "contentRange": "bytes 39483138-39487233/39487234",
+                "contentLength": 4096,
+                "verifiedBytes": 4096,
+                "sha256": "48a838a0c14c7ecd9d7f3da28c614d77f0ab15ccffad452b5624b44cc9e83ad8"
+              }
+            ],
+            "passed": true
+          }
+        ],
+        "passed": true,
+        "scope": "Read-only live Pages response/header and byte-range checks. Complete saved-file hashes are checked separately by the browser helper."
+      },
+      "live-pages-download/results.json": {
+        "checkedAt": "2026-10-16T19:08:17.404Z",
+        "completed": true,
+        "expectedNativeSource": "f0130487760aa03d64b22f23002da5423da7ff4e",
+        "manifestSHA256": "df70d01610d3288b12d4259d0d73ae8f314b6a4aab9f186db9fb6f02c24a1562",
+        "results": [
+          {
+            "app": "movefield",
+            "version": "0.1.7",
+            "versionCode": 8,
+            "sourceCommit": "f0130487760aa03d64b22f23002da5423da7ff4e",
+            "manifestSHA256": "df70d01610d3288b12d4259d0d73ae8f314b6a4aab9f186db9fb6f02c24a1562",
+            "at320FromStart": true,
+            "bytes": 39335972,
+            "sha256": "1f3d387b5ff05b20a2e5f341bd515f6cf4a56b7d8293aa31a0eceb9dfc624759",
+            "primaryDownloadURL": "https://ghinz32-cloud.github.io/movefield/review/downloads/movefield-0.1.7-arm64.apk",
+            "githubFallbackURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-f0130487760a/movefield-0.1.7-arm64.apk",
+            "savedFilename": "movefield-0.1.7-arm64.apk",
+            "primaryDownloadPassed": true,
+            "passed": true,
+            "scope": "Live same-origin Pages primary link in sandboxed Chromium: actual completed browser Save and exact file hash, no release redirect, primary focus/touch target, alternative initially collapsed and 320px layout; no Samsung browser or Android installation claim."
+          },
+          {
+            "app": "grizzly",
+            "version": "0.1.6",
+            "versionCode": 7,
+            "sourceCommit": "f0130487760aa03d64b22f23002da5423da7ff4e",
+            "manifestSHA256": "df70d01610d3288b12d4259d0d73ae8f314b6a4aab9f186db9fb6f02c24a1562",
+            "at320FromStart": true,
+            "bytes": 39487234,
+            "sha256": "aafb36100ec149bacbeb4cd9d62921012c95e277e61c31f4dfa3777f255d159e",
+            "primaryDownloadURL": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/grizzly-fitness-0.1.6-arm64.apk",
+            "githubFallbackURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-f0130487760a/grizzly-fitness-0.1.6-arm64.apk",
+            "savedFilename": "grizzly-fitness-0.1.6-arm64.apk",
+            "primaryDownloadPassed": true,
+            "passed": true,
+            "scope": "Live same-origin Pages primary link in sandboxed Chromium: actual completed browser Save and exact file hash, no release redirect, primary focus/touch target, alternative initially collapsed and 320px layout; no Samsung browser or Android installation claim."
+          }
+        ]
+      }
     }
   },
   "limitations": [

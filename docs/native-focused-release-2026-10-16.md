@@ -1,6 +1,6 @@
 # Focused phone release audit · 16 October 2026
 
-**Android previews published and independently inspected; GitHub Pages delivery verification is pending.** The companion [validation receipt](native-focused-release-2026-10-16.json) separates completed source/component checks, prior integration runs and pending final release gates. No HANDOFF or canonical task-register completion is implied.
+**Android previews published and independently inspected; GitHub Pages delivery and both browser downloads are verified.** The companion [validation receipt](native-focused-release-2026-10-16.json) separates completed source/component checks, prior integration runs and pending final release gates. The wider audit and foldable follow-up remains in progress; this release does not complete every master-prompt requirement.
 
 The working branch is `codex/native-focused-screens-2026-10-16`, based on `7ab35a251c60900e08a707f82c0a4f2dfc01d438`. The qualified source is committed as `f0130487760aa03d64b22f23002da5423da7ff4e`, tree `9c322c9d1f465c5e9157b76b67e97c0b65dc2104`; source push and Android CI completion have been verified. Published Android identities are Movefield **0.1.7 / code 8**, package `com.ghinz32.movefield`, and Grizzly **0.1.6 / code 7**, package `com.ghinz32.grizzlyfitness.prototype`. Their historical signing certificate remains unchanged. Build `38949459698` and publisher `38950874024` passed on their first attempts. Both actual public installers were independently downloaded and inspected. Release: https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-f0130487760a.
 
@@ -55,7 +55,7 @@ The public Movefield APK is 39,335,972 bytes, SHA256 `1f3d387b5ff05b20a2e5f341bd
 
 The ten verified manifest/page/part files are applied to public downloads and both fresh static builds. Full APKs are generated only in the Pages candidate. The two updated source archives add only Android/iPhone documentation corrections to their frozen counterparts; all application code/assets remain identical.
 
-1. Build and inspect the final Pages candidate, preserve the original root and retained assets, deploy, then verify actual served hashes, APK MIME/length/ranges and both browser Save results.
+1. **Passed:** delivery source `920a73621d9f2ab15bbddcd00139c9cebd155238`, Pages `481b781308e03804c78a50ceec703af715dabdf5`, successful deployment `38952414814`. All 357 selected served files matched, including all 63 original-root files. Both APKs returned correct MIME, full length and first/last HTTP 206 ranges; both sandboxed browser Saves completed at 320px and matched the inspected hashes.
 2. Obtain acceptance of the new installed builds on the user’s device. Physical keyboard, platform screen reader, reminders, restart/storage, inset and performance behavior remain separate device gates.
 
 The user’s earlier S24 Ultra confirmation applies to **Movefield 0.1.6**, including saved workouts being present. It does not establish installation, record retention or usability for the new redesigned Movefield 0.1.7 or Grizzly 0.1.6. Do not ask the user to uninstall existing records to resolve an update problem.

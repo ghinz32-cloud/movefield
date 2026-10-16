@@ -5,8 +5,8 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Published adaptive local coaching and UI/compatibility audit, 16 October 2026. Coaching/native source de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c; final web delivery source df3dd721c29704f53bd4cfebacf3b7125058a9c1; Pages f577d1401ccacac6fad6ce5caea61a92f0f44d46; successful deployment 38942872482. Before/after history-aware coaching, blank new calendars, preserved obligations and compact accessible controls are live in both shared previews and compiled Android releases. Both Pages APK transfers independently verified; owner confirms Movefield download/update/opening and saved workouts on S24 Ultra. Grizzly phone acceptance, broader device matrix, Apple signing, live AI/providers and broad launch gates remain open. Exact evidence: docs/coaching-ux-audit-2026-10-16-validation.json.",
-  "completion_claim": "Audited shared web/native coaching milestone with separately verified website and Android preview delivery; no full six-prompt, clinical efficacy, installed-device or store qualification claim.",
+  "active_checkpoint": "Focused-phone Android previews published and verified: native f0130487760aa03d64b22f23002da5423da7ff4e; delivery920a73621d9f2ab15bbddcd00139c9cebd155238; Pages481b781308e03804c78a50ceec703af715dabdf5; deployment38952414814. Movefield0.1.7/code8, Grizzly0.1.6/code7. New comprehensive/foldable audit repairs in progress, not yet published.",
+  "completion_claim": "Verified focused-phone preview delivery; comprehensive repairs underway. No full master-prompt, physical-device, clinical or store qualification claim.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
     "Some full-text research and browser-runtime installation endpoints are denied by the configured proxy. Current Android compilation uses the existing verified CI/toolchain; browser/device coverage remains explicitly scoped.",
@@ -2091,5 +2091,14 @@
     "feature_parity": "docs/ui-density-feature-parity-2026-10-13.md",
     "download_provenance": "docs/ui-density-download-provenance-2026-10-13.md",
     "installed_android_update": "Open: reconcile old com.ghinz32.movefield APK storage/transfer format with current prototype before any in-place update; preserve records and matching debug certificate."
+  },
+  "focused_phone_2026_10_16": {
+    "report": "docs/native-focused-release-2026-10-16.md",
+    "receipt": "docs/native-focused-release-2026-10-16.json",
+    "pages": "481b781308e03804c78a50ceec703af715dabdf5",
+    "verifiedServedFiles": 357,
+    "originalRootFiles": 63,
+    "newPhysicalDeviceAcceptance": false,
+    "comprehensiveFollowup": "in_progress"
   }
 }

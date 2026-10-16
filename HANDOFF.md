@@ -1,3 +1,15 @@
+# Current focused-phone delivery and comprehensive follow-up · 16 October 2026
+
+Continue on `codex/native-focused-screens-2026-10-16`. Focused-phone Android previews are delivered: native source `f0130487760aa03d64b22f23002da5423da7ff4e`, delivery source `920a73621d9f2ab15bbddcd00139c9cebd155238`, Pages `481b781308e03804c78a50ceec703af715dabdf5`, successful deployment `38952414814`. Movefield **0.1.7/code8** and Grizzly **0.1.6/code7** retain their package IDs and historical signing certificate. Both live browser Saves, exact hashes/lengths/MIME/ranges and all357 selected served files (including63originalrootfiles) passed. See [release report](docs/native-focused-release-2026-10-16.md) and its JSON receipt. Physical acceptance of these versions remains open; prior S24 acceptance applies only to Movefield0.1.6.
+
+The user expanded the active task to a comprehensive audit and foldable support. New baseline reports are `docs/comprehensive-2026-10-16-{native,product,security,web,foldables}.md`. Source repairs are underway after the frozen delivery; do not mistake changing working-tree code for the published APKs. Work covers encrypted backup/rotation/concurrency, preserved prescriptions/ratings/history, reminder opt-out, offline failure recovery, enlarged text and stable adaptive phone/tablet/foldable layouts. Preserve original failure evidence and qualify final fixes on their exact source.
+
+Never read, stage or export owner `.openai/`. Preserve all63originalPagesrootfiles, served oldchunks, brand/storage namespaces, historical signing/update lineage and canonical sharedsource. Use `lib/` as canonical and explicitly sync mobile snapshots. No signed iPhone delivery without owner Apple setup; no paid-service or store authorization. Full master-prompt requirements remain open where unimplemented or unverified.
+
+Earlier sections below are historical where this checkpoint differs.
+
+---
+
 # Current coaching and UX checkpoint · 16 October 2026
 
 Continue on `codex/adaptive-coaching-2026-10-16`. Read [the coaching audit](docs/coaching-ux-audit-2026-10-16.md), [its validation receipt](docs/coaching-ux-audit-2026-10-16-validation.json), and the linked web/native/research reports. The application/native candidate is `de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c`, tree `2831460f6e90b3374ac7e5e5db629f7a51eca25c`. Native source is frozen. Run `38936451848` and publisher `38938205085` passed for Movefield 0.1.6/code 7 and Grizzly 0.1.5/code 6. Both public APKs were independently downloaded and inspected against their source, package, historical certificate, hashes and compiled coaching markers. Release: https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-de6c7abf2438. Final delivery source `df3dd721c29704f53bd4cfebacf3b7125058a9c1`, Pages `f577d1401ccacac6fad6ce5caea61a92f0f44d46`, deployment `38942872482` passed. All 357 selected HTTPS files (including 63 original-root files), 22 download files and four APK reconstructions passed. Both full Pages APKs completed actual browser Saves with matching hashes and valid first/last HTTP 206 ranges. Exact receipts are in the validation JSON.
