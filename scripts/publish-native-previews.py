@@ -6,10 +6,27 @@ import os
 from pathlib import Path, PurePosixPath
 import re
 import subprocess
+import sys
+import traceback
 import urllib.error
 import urllib.parse
 import urllib.request
 import zipfile
+
+
+def report_failure(kind, error, trace):
+    # Actions annotations remain readable when the log storage is unavailable.
+    # Include only our filename/line and exception class, never signed URLs,
+    # request headers, environment variables or arbitrary exception messages.
+    frames = [frame for frame in traceback.extract_tb(trace)
+              if Path(frame.filename).name == Path(__file__).name]
+    line = frames[-1].lineno if frames else 1
+    print(f'::error file=scripts/publish-native-previews.py,line={line}::'
+          f'Android publisher stopped: {kind.__name__} at source line {line}.', flush=True)
+    sys.__excepthook__(kind, error, trace)
+
+
+sys.excepthook = report_failure
 
 REPOSITORY = 'ghinz32-cloud/movefield'
 API = 'https://api.github.com/repos/' + REPOSITORY
