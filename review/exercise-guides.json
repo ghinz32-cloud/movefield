@@ -4605,9 +4605,9 @@
     "safety": "Choose a load you can lift and set down. Stop for pain or loss of balance.",
     "loadConvention": "Load per dumbbell with two matching dumbbells. Record total simultaneous repetitions; multiplier 2 counts both weights.",
     "sourceURLs": [
-      "https://www.acefitness.org/resources/everyone/exercise-library/12/bent-over-row/"
+      "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Seated_Bent-Over_Rear_Delt_Raise.json"
     ],
-    "sourceNote": "Draft guide. The references cover related movements; this variation and setup have not been independently reviewed.",
+    "sourceNote": "The linked Free Exercise DB record describes a seated bent-over rear-delt raise with the same wide arm arc and steady elbow bend. This app variation uses a standing hip hinge; follow the written setup here. These are draft app instructions, not an independently reviewed exact-variation demonstration.",
     "quickCues": [
       "Hold hinge position",
       "Wide arm arc",
@@ -4792,9 +4792,9 @@
     "safety": "Choose a load you can lift and set down. Stop for pain or loss of balance.",
     "loadConvention": "Load per dumbbell with two matching dumbbells. Record repetitions per side for equal work on both sides; multiplier 4 counts two weights across two sides. Log sides separately if their work differs.",
     "sourceURLs": [
-      "https://www.acefitness.org/resources/pros/expert-articles/5269/how-to-get-started-with-kettlebells/"
+      "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Split_Squat_with_Dumbbells.json"
     ],
-    "sourceNote": "Draft guide. The references cover related movements; this variation and setup have not been independently reviewed.",
+    "sourceNote": "The linked Free Exercise DB record describes a rear-foot-elevated split squat with two dumbbells. The app variation keeps the rear toes on the floor; follow the written setup here. These are draft app instructions, not an independently reviewed exact-variation demonstration.",
     "quickCues": [
       "Feet stay in place",
       "Front foot flat",
@@ -47336,9 +47336,9 @@
     "safety": "Choose a stable stance and support. A heavier dumbbell is useful only when balance and range remain controlled.",
     "loadConvention": "One dumbbell total; repetitions per side. Do both sides before Done; enter the single weight and per-side rep count once.",
     "sourceURLs": [
-      "https://www.acefitness.org/resources/pros/expert-articles/5269/how-to-get-started-with-kettlebells/"
+      "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Split_Squat_with_Dumbbells.json"
     ],
-    "sourceNote": "Original app instructions for this explicitly named variation. Linked sources describe the parent movement or general technique; they are not a verified video of this exact variation. The app cannot assess your form.",
+    "sourceNote": "The linked Free Exercise DB record describes a rear-foot-elevated split squat with two dumbbells. The app variation uses one dumbbell and keeps the rear toes on the floor; follow the written setup and logging convention here. These original app instructions are not an independently reviewed exact-variation demonstration.",
     "quickCues": [
       "Bend both knees to lower through a comfortable range while keeping the front foot supported.",
       "Stand by pressing through your feet without changing the foot positions.",
