@@ -13,8 +13,8 @@ function field(nodes,label){const node=nodes.find(node=>node.props?.['aria-label
  await test('Set core columns align with headers and each set owns its effort and extra measurements',()=>{
   const log={exerciseId:'squat',set:2,reps:8,kg:null,done:false,rir:null},exercise=T.exFor('squat');
   const row=WorkoutSetRow({exercise,log,units:'lb',busy:false,onChange:()=>{},onLog:()=>{}}),children=row.props.children;
-  assert.deepEqual(children.slice(0,5).map(node=>node.type),['span','Input','Input','label','Button']);
-  assert.match(children[1].props['aria-label'],/set 2 load$/);assert.match(children[2].props['aria-label'],/set 2 reps$/);assert.match(children[4].props['aria-label'],/^Log .* set 2$/);
+  assert.deepEqual(children.slice(0,5).map(node=>node.type),['span','label','label','label','Button']);
+  assert.match(flatten(children[1]).find(node=>node.type==='Input').props['aria-label'],/set 2 load$/);assert.match(flatten(children[2]).find(node=>node.type==='Input').props['aria-label'],/set 2 reps$/);assert.match(children[4].props['aria-label'],/^Log .* set 2$/);
   assert.equal(children[3].props.className,'set-rir-field');assert.match(row.props.className,/has-rir/);
   const details=flatten(children[5]);assert.equal(details.find(node=>node.type==='SetMetricsFields').props.set,2);
  });

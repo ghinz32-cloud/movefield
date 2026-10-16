@@ -148,4 +148,6 @@ jobs:
           NATIVE_PUBLISH_TOKEN: ${{ github.token }}
           NATIVE_PUBLISH_RUN: ${{ inputs.publish_run }}
           NATIVE_PUBLISH_SOURCE: ${{ inputs.source_ref }}
-        run: python3 scripts/publish-native-previews.py
+        run: |
+          python3 scripts/check-native-preview-publisher.py
+          python3 scripts/publish-native-previews.py

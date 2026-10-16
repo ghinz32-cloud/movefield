@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-16T15:56:38.256091+00:00",
+  "scope": "Final narrow logger component and current production Worker. Synthetic browser profiles only; no live provider or physical-phone claim.",
+  "core": {
+    "receipt": "core-validation.json",
+    "groups": 46,
+    "status": "passed",
+    "sourceCheckpoint": "88cf9517898486b9f310918caf731604361feb40"
+  },
+  "afterResponsiveLoggerChange": {
+    "rootTypes": "passed",
+    "changedFilesLint": "passed",
+    "actualWorkoutControlGroups": 6,
+    "productionBuild": "passed",
+    "productionHeadersNonceAndBootstrap": "passed",
+    "encryptedWorkerBrowserJourneys": 18,
+    "cloudBrowserSnapshotFlow": "passed before presentation-only logger change"
+  },
+  "fullLint": {
+    "errors": 0,
+    "warnings": 82
+  },
+  "publisherGateCases": 78
+}

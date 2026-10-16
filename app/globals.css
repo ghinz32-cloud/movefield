@@ -252,3 +252,17 @@ input,textarea,select,[data-slot=select-trigger]{color:var(--foreground);border-
 .load-guidance .load-guidance-reason{font-size:.875rem;margin:.35rem 0 0}.exercise-log h2,.workout-overview-heading{scroll-margin-top:6rem}
 
 .reuse-block-dialog{max-width:680px!important}.block-starting-loads{border:1px solid var(--border);border-radius:10px;padding:10px 12px}.block-starting-loads summary{cursor:pointer;min-height:28px;font-weight:650}.block-starting-loads>p{font-size:.875rem;line-height:1.5;margin:8px 0}.block-starting-load-row{display:grid;gap:6px;padding:12px 0;border-top:1px solid var(--border)}.block-starting-load-row p{font-size:.875rem;line-height:1.5;margin:2px 0}.block-starting-load-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}.block-starting-load-controls>.field{flex:1;min-width:110px}.block-starting-load-controls button{min-height:44px;height:auto;white-space:normal}.reuse-block-schedule>div{padding:10px 12px;border-bottom:1px solid var(--border)}.reuse-block-schedule p{font-size:.875rem;line-height:1.5;margin-top:4px}
+
+/* Keep complete weight values and their labels visible on narrow workout logs. */
+.set-data-field{display:contents}.set-field-label{display:none}
+@media(max-width:480px){
+ .set-head,.set-head.has-rir{display:none}
+ .set-row,.set-row.has-rir{grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;padding:.75rem 0}
+ .set-number{grid-column:1 / -1;font-weight:700}.set-number .set-field-label{display:inline}
+ .set-data-field,.set-rir-field{display:flex;flex-direction:column;gap:.25rem;min-width:0}
+ .set-field-label{display:block;font-size:.875rem;line-height:1.4}
+ .set-row input,.set-row select{width:100%;min-height:44px}
+ .set-row .log-set-button{grid-column:2;align-self:end;min-height:44px;width:100%}
+ .set-row .set-save-label{display:inline}
+ .set-row-details{grid-column:1 / -1}
+}

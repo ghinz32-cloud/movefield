@@ -44,7 +44,7 @@ Every one of the remaining 109 unique external guide URLs was inventoried: 69 re
 - Existing source-program regression: 20 groups passed; historical report writes redirected into runtime.
 - Root TypeScript check passed during integration; parent runs final shared/native/build checks after synchronizing canonical data.
 
-Full per-exercise rows, input hashes and counts: `.sites-runtime/audit-2026-10-16-library-report.json`. HTTP responses: `.sites-runtime/audit-2026-10-16-library/all-reference-network.json`. Existing fitness audit output was redirected to runtime and historical tracked reports were not overwritten.
+Full per-exercise rows, input hashes and counts: [individual exercise rows](exercise-library.json). HTTP responses: [reference-network.json](reference-network.json). Existing fitness audit output was redirected to runtime and historical tracked reports were not overwritten.
 
 ## Final preference and equipment matrix
 

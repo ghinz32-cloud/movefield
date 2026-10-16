@@ -1,0 +1,282 @@
+{
+  "ran_at": "2026-10-16T15:42:50.424Z",
+  "scope": "Local synthetic domain/adapter and type checks; no device, connected provider or deployment qualification.",
+  "results": [
+    {
+      "name": "runtime module contracts",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 21828
+    },
+    {
+      "name": "production bundled training",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 5885
+    },
+    {
+      "name": "complete training lifecycles",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 17401
+    },
+    {
+      "name": "web workout and setup controls",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1455
+    },
+    {
+      "name": "native interaction callbacks",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1958
+    },
+    {
+      "name": "native compact layout and focus",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 416
+    },
+    {
+      "name": "offline update lifecycle",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 397
+    },
+    {
+      "name": "Grizzly appearance and retired preset migration",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1019
+    },
+    {
+      "name": "clickable web calendar",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1386
+    },
+    {
+      "name": "Grizzly daily context and local day changes",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1453
+    },
+    {
+      "name": "preview ownership and retained assets",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 546
+    },
+    {
+      "name": "verified Android download preparation",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1367
+    },
+    {
+      "name": "Grizzly motion and licensed fonts",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 694
+    },
+    {
+      "name": "distinct goal families and flexible selection",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 2330
+    },
+    {
+      "name": "creator-source and set-effort refinements",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1201
+    },
+    {
+      "name": "public source rules and scientific accounting",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1375
+    },
+    {
+      "name": "Today facts and actions",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 940
+    },
+    {
+      "name": "transactional encrypted records",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 9102
+    },
+    {
+      "name": "activity progress and comparison context",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1117
+    },
+    {
+      "name": "evidence/duration/calendar zones",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 7636
+    },
+    {
+      "name": "calendar and reusable blocks",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1287
+    },
+    {
+      "name": "reusable block equipment guards",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1511
+    },
+    {
+      "name": "next-block starting weights",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1829
+    },
+    {
+      "name": "starting-weight interface callbacks",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1754
+    },
+    {
+      "name": "Cloudflare account/storage/coaching",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 12535
+    },
+    {
+      "name": "portable cloud vault and retry",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 4410
+    },
+    {
+      "name": "native SDK cookie transport",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1414
+    },
+    {
+      "name": "plan import",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1233
+    },
+    {
+      "name": "durability",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1259
+    },
+    {
+      "name": "vault and history",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 2612
+    },
+    {
+      "name": "historical native upgrade preservation",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 134109
+    },
+    {
+      "name": "older password-protected transfers",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 29484
+    },
+    {
+      "name": "compiled native component boundaries",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 108
+    },
+    {
+      "name": "native encrypted adapter",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 2866
+    },
+    {
+      "name": "native file transfer",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 492
+    },
+    {
+      "name": "security",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1528
+    },
+    {
+      "name": "data and calendar",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1417
+    },
+    {
+      "name": "web types",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 57030
+    },
+    {
+      "name": "native types",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 23061
+    },
+    {
+      "name": "native engine",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 9279
+    },
+    {
+      "name": "native decimal editing, callbacks and keyboard configuration",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1632
+    },
+    {
+      "name": "canonical and native snapshot byte parity",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 96
+    },
+    {
+      "name": "precached guide and font update versioning",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 741
+    },
+    {
+      "name": "reviewed routine-library generation and plan qualification",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 4168
+    },
+    {
+      "name": "library equipment and movement semantics",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1049
+    },
+    {
+      "name": "substitution notes and source progression integrity",
+      "status": "passed",
+      "exit": 0,
+      "duration_ms": 1288
+    }
+  ]
+}

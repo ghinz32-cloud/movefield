@@ -1,0 +1,345 @@
+{
+  "checked_at": "2026-10-16T15:43:27.189315+00:00",
+  "scope": "Literal presence in each actual Hermes .hbc export (UTF-8, UTF-16LE, or JSON-escaped representation). Confirms expected catalog IDs, corrected reference URLs and UI strings occur in the compiled bundle; does not establish installed-device execution, native signing or external-link availability.",
+  "source_sha256": {
+    "mobile/App-runtime.js": "40ae8ab22c2ca5280d8ec05048d2179540c736052c9a5fbdde8ed4fe5533ed98",
+    "mobile/src/program-filters.tsx": "536533e06d50282e5408d51f3ce65c6b2fe3157e6174a43da56f93d907470a27",
+    "mobile/src/mobile-engine.ts": "4ef92fe9f64865bdcb949d75b08e079acb3333accc64d563d4c55463a583ca08",
+    "mobile/src/shared/program-catalog-runtime.js": "2c28ab3c2d38a1ecb4354fe20e2bf28e5f833ce4db0ef71e0373c8b52a2c32ce",
+    "mobile/src/shared/training-runtime.js": "a64688d281671fbd9a21324bf6f87ebeed72f56900d145c8a81c077ebc099c89",
+    "mobile/assets/content/exercise-content.json": "4e500f0b8393c2651f8f92ff8085e11ab8bc742dde202e909f1f75c23597ed1a",
+    "mobile/assets/content/exercise-guides.json": "005e15b8ada060238fe4e3f388fc9c110b257c6920c521261fb73112cfdff7b5"
+  },
+  "bundles": [
+    {
+      "flavor": "movefield",
+      "platform": "android",
+      "file": "mobile/dist-mobile/_expo/static/js/android/index-2e3cccdfc85e4e1a69a8cae542b99a22.hbc",
+      "bytes": 4799860,
+      "sha256": "e6d89c24adf3587fe55a11a39ff1926b8ee13bfdb41e8661949f2aabb6367cd0",
+      "checks": {
+        "appProgramIds": {
+          "expected": 213,
+          "present": 171,
+          "notPresentAsLiteral": [
+            "D6-general-START",
+            "D7-general-START",
+            "D6-strength-START",
+            "D6-strength-BUILD",
+            "D7-strength-START",
+            "D7-strength-BUILD",
+            "D6-hypertrophy-START",
+            "D6-hypertrophy-BUILD",
+            "D7-hypertrophy-START",
+            "D7-hypertrophy-BUILD",
+            "D6-powerbuilding-START",
+            "D6-powerbuilding-BUILD",
+            "D7-powerbuilding-START",
+            "D7-powerbuilding-BUILD",
+            "D6-calisthenics-START",
+            "D7-calisthenics-START",
+            "D6-sport-START",
+            "D7-sport-START",
+            "D6-SBD",
+            "D7-SBD",
+            "D6-general-MICRO",
+            "D7-general-MICRO",
+            "D6-strength-MICRO",
+            "D7-strength-MICRO",
+            "D6-hypertrophy-MICRO",
+            "D7-hypertrophy-MICRO",
+            "D6-powerbuilding-MICRO",
+            "D7-powerbuilding-MICRO",
+            "D6-calisthenics-MICRO",
+            "D7-calisthenics-MICRO",
+            "D6-sport-MICRO",
+            "D7-sport-MICRO",
+            "D6-general-NONE",
+            "D7-general-NONE",
+            "D6-general-HABIT",
+            "D7-general-HABIT",
+            "D6-strength-HABIT",
+            "D7-strength-HABIT",
+            "D6-calisthenics-HABIT",
+            "D7-calisthenics-HABIT",
+            "D6-sport-HABIT",
+            "D7-sport-HABIT"
+          ],
+          "requiredLiteralCheck": false
+        },
+        "addedRoutineIds": {
+          "expected": 68,
+          "present": 68,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        },
+        "sourceRoutineIds": {
+          "expected": 8,
+          "present": 8,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        },
+        "correctedReferenceURLs": {
+          "expected": 2,
+          "present": 2,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        },
+        "newNativeLabels": {
+          "expected": 5,
+          "present": 5,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        }
+      }
+    },
+    {
+      "flavor": "movefield",
+      "platform": "ios",
+      "file": "mobile/dist-mobile/_expo/static/js/ios/index-a50aa59d0973c116a1dcff08fdaf5443.hbc",
+      "bytes": 4787360,
+      "sha256": "8856d03fd3e344a7f19836753a9ed2667244264380fb49e3e20f88c15390c3c4",
+      "checks": {
+        "appProgramIds": {
+          "expected": 213,
+          "present": 171,
+          "notPresentAsLiteral": [
+            "D6-general-START",
+            "D7-general-START",
+            "D6-strength-START",
+            "D6-strength-BUILD",
+            "D7-strength-START",
+            "D7-strength-BUILD",
+            "D6-hypertrophy-START",
+            "D6-hypertrophy-BUILD",
+            "D7-hypertrophy-START",
+            "D7-hypertrophy-BUILD",
+            "D6-powerbuilding-START",
+            "D6-powerbuilding-BUILD",
+            "D7-powerbuilding-START",
+            "D7-powerbuilding-BUILD",
+            "D6-calisthenics-START",
+            "D7-calisthenics-START",
+            "D6-sport-START",
+            "D7-sport-START",
+            "D6-SBD",
+            "D7-SBD",
+            "D6-general-MICRO",
+            "D7-general-MICRO",
+            "D6-strength-MICRO",
+            "D7-strength-MICRO",
+            "D6-hypertrophy-MICRO",
+            "D7-hypertrophy-MICRO",
+            "D6-powerbuilding-MICRO",
+            "D7-powerbuilding-MICRO",
+            "D6-calisthenics-MICRO",
+            "D7-calisthenics-MICRO",
+            "D6-sport-MICRO",
+            "D7-sport-MICRO",
+            "D6-general-NONE",
+            "D7-general-NONE",
+            "D6-general-HABIT",
+            "D7-general-HABIT",
+            "D6-strength-HABIT",
+            "D7-strength-HABIT",
+            "D6-calisthenics-HABIT",
+            "D7-calisthenics-HABIT",
+            "D6-sport-HABIT",
+            "D7-sport-HABIT"
+          ],
+          "requiredLiteralCheck": false
+        },
+        "addedRoutineIds": {
+          "expected": 68,
+          "present": 68,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        },
+        "sourceRoutineIds": {
+          "expected": 8,
+          "present": 8,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        },
+        "correctedReferenceURLs": {
+          "expected": 2,
+          "present": 2,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        },
+        "newNativeLabels": {
+          "expected": 5,
+          "present": 5,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        }
+      }
+    },
+    {
+      "flavor": "grizzly",
+      "platform": "android",
+      "file": "mobile/dist-grizzly/_expo/static/js/android/index-5b920b7ede1a3c15fbccf45886135340.hbc",
+      "bytes": 4799632,
+      "sha256": "8f24e4276dc727616d2e06a09ff954a87abdd94b2baff401fc1be26b23c176da",
+      "checks": {
+        "appProgramIds": {
+          "expected": 213,
+          "present": 171,
+          "notPresentAsLiteral": [
+            "D6-general-START",
+            "D7-general-START",
+            "D6-strength-START",
+            "D6-strength-BUILD",
+            "D7-strength-START",
+            "D7-strength-BUILD",
+            "D6-hypertrophy-START",
+            "D6-hypertrophy-BUILD",
+            "D7-hypertrophy-START",
+            "D7-hypertrophy-BUILD",
+            "D6-powerbuilding-START",
+            "D6-powerbuilding-BUILD",
+            "D7-powerbuilding-START",
+            "D7-powerbuilding-BUILD",
+            "D6-calisthenics-START",
+            "D7-calisthenics-START",
+            "D6-sport-START",
+            "D7-sport-START",
+            "D6-SBD",
+            "D7-SBD",
+            "D6-general-MICRO",
+            "D7-general-MICRO",
+            "D6-strength-MICRO",
+            "D7-strength-MICRO",
+            "D6-hypertrophy-MICRO",
+            "D7-hypertrophy-MICRO",
+            "D6-powerbuilding-MICRO",
+            "D7-powerbuilding-MICRO",
+            "D6-calisthenics-MICRO",
+            "D7-calisthenics-MICRO",
+            "D6-sport-MICRO",
+            "D7-sport-MICRO",
+            "D6-general-NONE",
+            "D7-general-NONE",
+            "D6-general-HABIT",
+            "D7-general-HABIT",
+            "D6-strength-HABIT",
+            "D7-strength-HABIT",
+            "D6-calisthenics-HABIT",
+            "D7-calisthenics-HABIT",
+            "D6-sport-HABIT",
+            "D7-sport-HABIT"
+          ],
+          "requiredLiteralCheck": false
+        },
+        "addedRoutineIds": {
+          "expected": 68,
+          "present": 68,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        },
+        "sourceRoutineIds": {
+          "expected": 8,
+          "present": 8,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        },
+        "correctedReferenceURLs": {
+          "expected": 2,
+          "present": 2,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        },
+        "newNativeLabels": {
+          "expected": 5,
+          "present": 5,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        }
+      }
+    },
+    {
+      "flavor": "grizzly",
+      "platform": "ios",
+      "file": "mobile/dist-grizzly/_expo/static/js/ios/index-171c8684c45ed007db0eeca47074b0a3.hbc",
+      "bytes": 4786710,
+      "sha256": "2a9c66e014633c05786f9c6bd8c32ee2ad36787add77eb9f98a4e66694083c1f",
+      "checks": {
+        "appProgramIds": {
+          "expected": 213,
+          "present": 171,
+          "notPresentAsLiteral": [
+            "D6-general-START",
+            "D7-general-START",
+            "D6-strength-START",
+            "D6-strength-BUILD",
+            "D7-strength-START",
+            "D7-strength-BUILD",
+            "D6-hypertrophy-START",
+            "D6-hypertrophy-BUILD",
+            "D7-hypertrophy-START",
+            "D7-hypertrophy-BUILD",
+            "D6-powerbuilding-START",
+            "D6-powerbuilding-BUILD",
+            "D7-powerbuilding-START",
+            "D7-powerbuilding-BUILD",
+            "D6-calisthenics-START",
+            "D7-calisthenics-START",
+            "D6-sport-START",
+            "D7-sport-START",
+            "D6-SBD",
+            "D7-SBD",
+            "D6-general-MICRO",
+            "D7-general-MICRO",
+            "D6-strength-MICRO",
+            "D7-strength-MICRO",
+            "D6-hypertrophy-MICRO",
+            "D7-hypertrophy-MICRO",
+            "D6-powerbuilding-MICRO",
+            "D7-powerbuilding-MICRO",
+            "D6-calisthenics-MICRO",
+            "D7-calisthenics-MICRO",
+            "D6-sport-MICRO",
+            "D7-sport-MICRO",
+            "D6-general-NONE",
+            "D7-general-NONE",
+            "D6-general-HABIT",
+            "D7-general-HABIT",
+            "D6-strength-HABIT",
+            "D7-strength-HABIT",
+            "D6-calisthenics-HABIT",
+            "D7-calisthenics-HABIT",
+            "D6-sport-HABIT",
+            "D7-sport-HABIT"
+          ],
+          "requiredLiteralCheck": false
+        },
+        "addedRoutineIds": {
+          "expected": 68,
+          "present": 68,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        },
+        "sourceRoutineIds": {
+          "expected": 8,
+          "present": 8,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        },
+        "correctedReferenceURLs": {
+          "expected": 2,
+          "present": 2,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        },
+        "newNativeLabels": {
+          "expected": 5,
+          "present": 5,
+          "notPresentAsLiteral": [],
+          "requiredLiteralCheck": true
+        }
+      }
+    }
+  ],
+  "passed": true,
+  "literalLimit": "The full catalog additionally creates 42 D6-/D7- IDs at runtime from template strings in program-catalog-runtime.js. Those are reported separately as not present as complete literals and are covered by the native engine catalog execution, not inferred absent from the app."
+}

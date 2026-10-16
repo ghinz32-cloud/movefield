@@ -1,0 +1,1550 @@
+{
+  "checkedAt": "2026-10-16T15:56:15.683Z",
+  "status": "Local web audit complete; public release qualification handled separately",
+  "scope": "Movefield review and Grizzly built static apps using disposable encrypted and sample data in sandboxed Chromium on localhost; no owner records modified.",
+  "findings": [
+    {
+      "id": "WEB-01",
+      "severity": "high",
+      "status": "fixed; real offline-plugin invalidation test passed",
+      "summary": "Guide/media-only updates could leave cache-first exercise instructions stale"
+    },
+    {
+      "id": "WEB-02",
+      "severity": "low",
+      "status": "fixed; both actual brand installer URLs and 320px/130% Settings passed",
+      "summary": "Android previews were undiscoverable from app Settings"
+    },
+    {
+      "id": "WEB-03",
+      "severity": "test coverage",
+      "status": "corrected harnesses; current brand, preference, palette and lifecycle tests passed",
+      "summary": "Historical defaults, Worker-only preference keys and transition races limited browser verification"
+    },
+    {
+      "id": "WEB-04",
+      "severity": "medium",
+      "status": "shared literal-or-alias fix by library agent; actual exact-name search passed for both brands",
+      "summary": "Searching Selectorized pec deck fly discarded literal pec token"
+    },
+    {
+      "id": "WEB-05",
+      "severity": "medium",
+      "status": "fixed; both final built loggers and six control groups passed",
+      "summary": "Narrow five-column logger clipped multi-digit weights at 320px/130%"
+    }
+  ],
+  "renderedAxeScans": 111,
+  "renderedAxeViolations": 0,
+  "finalBuilds": [
+    {
+      "brand": "review",
+      "revision": "93103ec0e00dc1d094fd",
+      "hashScope": "Current static HTML, worker and precached JS/CSS only. Separately packaged Android/source downloads excluded. Applies to final guide/logger, new-routine and Grizzly-style runs; earlier run hashes were not captured.",
+      "files": [
+        {
+          "file": "index.html",
+          "sha256": "50ff9ced75096a83ea57716b2910f9bbbe371e3f9dfa46d40da0fc2b893bebb4"
+        },
+        {
+          "file": "movefield-sw.js",
+          "sha256": "e44f9724c61904e92b02d17b142c452f81fade3364080b54b7012d632c06f145"
+        },
+        {
+          "file": "assets/argon2-CYp2YzQ3.js",
+          "sha256": "bb84ed9ccfe438904aefe6f0e3cd92d99a2e5ac9fa1b5015bfa3a4eb67f3b0ab"
+        },
+        {
+          "file": "assets/chacha-TjjJ4993.js",
+          "sha256": "81d821a3edcac4dfacee74c93d238bdb0426fa9b55129c97b2b56ba24c79a4e2"
+        },
+        {
+          "file": "assets/cloud-account-DclorfQz.js",
+          "sha256": "5735306a080c847c57dd5b8ac12eaf6ca09562491e64c674dffba3a749f78441"
+        },
+        {
+          "file": "assets/index-BLG-tRA0.css",
+          "sha256": "51d1a3b3d0393bf0f15bc6e8e488f3908e06ba388f962a92782fcf799e6cb4ea"
+        },
+        {
+          "file": "assets/index-WYktGQ8-.js",
+          "sha256": "8849ffcd79d1e70cadaa7ddf2870666e15a23f7514b5afb8927c750c5d7ee681"
+        },
+        {
+          "file": "assets/progress-dashboard-Rzb_KTM6.js",
+          "sha256": "c274891b3e1b1057a4c484f52919f3ed18ccd01a05ad4942da290f948f9a139a"
+        }
+      ]
+    },
+    {
+      "brand": "grizzly",
+      "revision": "74ce1d43e6524bfee66b",
+      "hashScope": "Current static HTML, worker and precached JS/CSS only. Separately packaged Android/source downloads excluded. Applies to final guide/logger, new-routine and Grizzly-style runs; earlier run hashes were not captured.",
+      "files": [
+        {
+          "file": "index.html",
+          "sha256": "a8ba13918ed8d28681af577cf117e46d750f399aa70275b6305d7cfcabed3655"
+        },
+        {
+          "file": "movefield-sw.js",
+          "sha256": "a28c0308beffaf790c995efc3cf91694d6ee69ebd5b45184ef14bdac806f277a"
+        },
+        {
+          "file": "assets/argon2-CYp2YzQ3.js",
+          "sha256": "bb84ed9ccfe438904aefe6f0e3cd92d99a2e5ac9fa1b5015bfa3a4eb67f3b0ab"
+        },
+        {
+          "file": "assets/chacha-TjjJ4993.js",
+          "sha256": "81d821a3edcac4dfacee74c93d238bdb0426fa9b55129c97b2b56ba24c79a4e2"
+        },
+        {
+          "file": "assets/cloud-account-Fni61yil.js",
+          "sha256": "4a1caffa10171fce030ee0797d02b203fa1d3f8e0a43b818b4142135aaafeeab"
+        },
+        {
+          "file": "assets/index-BSLWDkCi.js",
+          "sha256": "ca5b3141110b8fb8674cea254da5346a1fdd132af1ae09c651d73cc0e95ad80c"
+        },
+        {
+          "file": "assets/index-DlPKplP8.css",
+          "sha256": "6a65952441c54ebb0b0e84eae6e429137acd80b3f8a3a1ed8b0187aed3b5b6a1"
+        },
+        {
+          "file": "assets/progress-dashboard-BkO0cBZP.js",
+          "sha256": "d2f8b023935635a76696a2db419fdd563cd7808871f7a319a980ac84b494881f"
+        }
+      ]
+    }
+  ],
+  "offlinePrecache": {
+    "checkedAt": "2026-10-16T15:53:56.312Z",
+    "scope": "Final narrow-logger static builds; exact precache static files, local uncompressed bytes. HTML shell and HTTP compression excluded.",
+    "results": [
+      {
+        "brand": "review",
+        "revision": "93103ec0e00dc1d094fd",
+        "files": 10,
+        "uncompressedBytes": 6544041,
+        "guidesBytes": 3077066,
+        "fontsBytes": 986004,
+        "fontCount": 2,
+        "assets": [
+          {
+            "path": "/movefield/review/assets/argon2-CYp2YzQ3.js",
+            "bytes": 13021
+          },
+          {
+            "path": "/movefield/review/assets/chacha-TjjJ4993.js",
+            "bytes": 13657
+          },
+          {
+            "path": "/movefield/review/assets/cloud-account-DclorfQz.js",
+            "bytes": 52947
+          },
+          {
+            "path": "/movefield/review/assets/index-BLG-tRA0.css",
+            "bytes": 220736
+          },
+          {
+            "path": "/movefield/review/assets/index-WYktGQ8-.js",
+            "bytes": 1809090
+          },
+          {
+            "path": "/movefield/review/assets/progress-dashboard-Rzb_KTM6.js",
+            "bytes": 371520
+          },
+          {
+            "path": "/movefield/review/exercise-guides.json",
+            "bytes": 2553519
+          },
+          {
+            "path": "/movefield/review/exercise-content.json",
+            "bytes": 523547
+          },
+          {
+            "path": "/movefield/review/fonts/inter-variable.ttf",
+            "bytes": 876576
+          },
+          {
+            "path": "/movefield/review/fonts/barlow-condensed-semibold.ttf",
+            "bytes": 109428
+          }
+        ]
+      },
+      {
+        "brand": "grizzly",
+        "revision": "74ce1d43e6524bfee66b",
+        "files": 48,
+        "uncompressedBytes": 18442509,
+        "guidesBytes": 3077066,
+        "fontsBytes": 11990744,
+        "fontCount": 35,
+        "assets": [
+          {
+            "path": "/movefield/grizzly/assets/argon2-CYp2YzQ3.js",
+            "bytes": 13021
+          },
+          {
+            "path": "/movefield/grizzly/assets/chacha-TjjJ4993.js",
+            "bytes": 13657
+          },
+          {
+            "path": "/movefield/grizzly/assets/cloud-account-Fni61yil.js",
+            "bytes": 52929
+          },
+          {
+            "path": "/movefield/grizzly/assets/index-BSLWDkCi.js",
+            "bytes": 1811992
+          },
+          {
+            "path": "/movefield/grizzly/assets/index-DlPKplP8.css",
+            "bytes": 268260
+          },
+          {
+            "path": "/movefield/grizzly/assets/progress-dashboard-BkO0cBZP.js",
+            "bytes": 371520
+          },
+          {
+            "path": "/movefield/grizzly/exercise-guides.json",
+            "bytes": 2553519
+          },
+          {
+            "path": "/movefield/grizzly/exercise-content.json",
+            "bytes": 523547
+          },
+          {
+            "path": "/movefield/grizzly/fonts/inter-variable.ttf",
+            "bytes": 876576
+          },
+          {
+            "path": "/movefield/grizzly/fonts/barlow-condensed-semibold.ttf",
+            "bytes": 109428
+          },
+          {
+            "path": "/movefield/grizzly/fonts/roadrage-heading.ttf",
+            "bytes": 427472
+          },
+          {
+            "path": "/movefield/grizzly/fonts/rubikdistressed-heading.ttf",
+            "bytes": 892544
+          },
+          {
+            "path": "/movefield/grizzly/fonts/rubikburned-heading.ttf",
+            "bytes": 605348
+          },
+          {
+            "path": "/movefield/grizzly/fonts/rubikmarkerhatch-heading.ttf",
+            "bytes": 363876
+          },
+          {
+            "path": "/movefield/grizzly/fonts/rubikwetpaint-heading.ttf",
+            "bytes": 442628
+          },
+          {
+            "path": "/movefield/grizzly/fonts/rubikspraypaint-heading.ttf",
+            "bytes": 941576
+          },
+          {
+            "path": "/movefield/grizzly/fonts/rubikstorm-heading.ttf",
+            "bytes": 795704
+          },
+          {
+            "path": "/movefield/grizzly/fonts/lacquer-heading.ttf",
+            "bytes": 294060
+          },
+          {
+            "path": "/movefield/grizzly/fonts/frijole-heading.ttf",
+            "bytes": 227860
+          },
+          {
+            "path": "/movefield/grizzly/fonts/shojumaru-heading.ttf",
+            "bytes": 71672
+          },
+          {
+            "path": "/movefield/grizzly/fonts/tradewinds-heading.ttf",
+            "bytes": 85380
+          },
+          {
+            "path": "/movefield/grizzly/fonts/rubikmicrobe-heading.ttf",
+            "bytes": 1444176
+          },
+          {
+            "path": "/movefield/grizzly/fonts/rubikpuddles-heading.ttf",
+            "bytes": 404956
+          },
+          {
+            "path": "/movefield/grizzly/fonts/butcherman-heading.ttf",
+            "bytes": 66100
+          },
+          {
+            "path": "/movefield/grizzly/fonts/creepster-heading.ttf",
+            "bytes": 62724
+          },
+          {
+            "path": "/movefield/grizzly/fonts/jollylodger-heading.ttf",
+            "bytes": 39800
+          },
+          {
+            "path": "/movefield/grizzly/fonts/almendradisplay-heading.ttf",
+            "bytes": 39264
+          },
+          {
+            "path": "/movefield/grizzly/fonts/rye-heading.ttf",
+            "bytes": 183244
+          },
+          {
+            "path": "/movefield/grizzly/fonts/unifrakturcook-heading.ttf",
+            "bytes": 42688
+          },
+          {
+            "path": "/movefield/grizzly/fonts/sedgwickavedisplay-heading.ttf",
+            "bytes": 140148
+          },
+          {
+            "path": "/movefield/grizzly/fonts/oswald-heading.ttf",
+            "bytes": 172088
+          },
+          {
+            "path": "/movefield/grizzly/fonts/bitter-heading.ttf",
+            "bytes": 328636
+          },
+          {
+            "path": "/movefield/grizzly/fonts/rajdhani-heading.ttf",
+            "bytes": 400680
+          },
+          {
+            "path": "/movefield/grizzly/fonts/newrocker-heading.ttf",
+            "bytes": 173224
+          },
+          {
+            "path": "/movefield/grizzly/fonts/blackopsone-heading.ttf",
+            "bytes": 166532
+          },
+          {
+            "path": "/movefield/grizzly/fonts/rubikdirt-heading.ttf",
+            "bytes": 1492292
+          },
+          {
+            "path": "/movefield/grizzly/fonts/metal-mania-regular.ttf",
+            "bytes": 254568
+          },
+          {
+            "path": "/movefield/grizzly/fonts/bungee-regular.ttf",
+            "bytes": 118996
+          },
+          {
+            "path": "/movefield/grizzly/fonts/sairastencilone-heading.ttf",
+            "bytes": 109944
+          },
+          {
+            "path": "/movefield/grizzly/fonts/stardosstencil-heading.ttf",
+            "bytes": 33044
+          },
+          {
+            "path": "/movefield/grizzly/fonts/pirataone-heading.ttf",
+            "bytes": 56316
+          },
+          {
+            "path": "/movefield/grizzly/fonts/eater-heading.ttf",
+            "bytes": 83928
+          },
+          {
+            "path": "/movefield/grizzly/fonts/nosifer-heading.ttf",
+            "bytes": 43272
+          },
+          {
+            "path": "/movefield/grizzly/brand/grizzly-fitness-logo.jpg",
+            "bytes": 54782
+          },
+          {
+            "path": "/movefield/grizzly/grizzly-favicon.svg",
+            "bytes": 73277
+          },
+          {
+            "path": "/movefield/grizzly/grizzly-paw.svg",
+            "bytes": 845
+          },
+          {
+            "path": "/movefield/grizzly/brand/wilderness/grizzly-hero-v1.jpg",
+            "bytes": 385671
+          },
+          {
+            "path": "/movefield/grizzly/brand/wilderness/grizzly-forest-v1.jpg",
+            "bytes": 328745
+          }
+        ]
+      }
+    ]
+  },
+  "nonBrowserChecks": [
+    "Real offline plugin invalidation regression passed",
+    "Offline registration lifecycle boundaries passed",
+    "Calendar component/date behavior: five groups passed",
+    "Workout control behavior: six groups passed",
+    "Final scoped ESLint passed",
+    "Both final static builds passed"
+  ],
+  "parentReportedFinalChecks": [
+    "Root production build passed after logger fix",
+    "Root TypeScript and changed-file ESLint passed after logger fix",
+    "Production security/bootstrap passed",
+    "18 encrypted Worker browser journeys passed"
+  ],
+  "runs": [
+    {
+      "name": "movefield-accessibility",
+      "receipt": "web-accessibility-movefield-2026-10-16.json",
+      "axeStates": 32,
+      "buildScope": "Current routine-containing presentation build before final shared search/machine and narrow logger corrections; exact binary hash not captured.",
+      "result": {
+        "ran_at": "2026-10-16T15:32:42.967Z",
+        "scope": "Actual local built web UI, axe WCAG-tag automated findings and viewport reflow. This does not establish WCAG conformance or native screen-reader behavior.",
+        "results": [
+          {
+            "name": "light gate",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Today",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Calendar",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Plans",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Progress",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light saved-workout dialog",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light history-edit dialog",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Exercises",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Coaching",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Sources",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Profile & settings",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Settings 320",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "light Settings 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "light Today 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "light Calendar 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "light Sources 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "dark gate",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Today",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Calendar",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Plans",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Progress",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark saved-workout dialog",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark history-edit dialog",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Exercises",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Coaching",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Sources",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Profile & settings",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Settings 320",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Settings 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Today 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Calendar 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Sources 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "grizzly-accessibility",
+      "receipt": "web-accessibility-grizzly-2026-10-16.json",
+      "axeStates": 32,
+      "buildScope": "Refreshed search/machine build before narrow logger correction; exact binary hash not captured.",
+      "result": {
+        "ran_at": "2026-10-16T15:42:11.515Z",
+        "scope": "Actual local built web UI, axe WCAG-tag automated findings and viewport reflow. This does not establish WCAG conformance or native screen-reader behavior.",
+        "results": [
+          {
+            "name": "light gate",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Today",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Calendar",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Plans",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Progress",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light saved-workout dialog",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light history-edit dialog",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Exercises",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Coaching",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Sources",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Profile & settings",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "light Settings 320",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "light Settings 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "light Today 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "light Calendar 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "light Sources 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "dark gate",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Today",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Calendar",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Plans",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Progress",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark saved-workout dialog",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark history-edit dialog",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Exercises",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Coaching",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Sources",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Profile & settings",
+            "reflow": {
+              "outer": 1280,
+              "width": 1280
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Settings 320",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Settings 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Today 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Calendar 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          },
+          {
+            "name": "dark Sources 320 text130",
+            "reflow": {
+              "outer": 320,
+              "width": 320
+            },
+            "violations": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "guide-logger-ux",
+      "receipt": "ux-browser/results.json",
+      "axeStates": 6,
+      "buildScope": "Final narrow-logger builds; hashes in finalBuilds.",
+      "result": {
+        "checkedAt": "2026-10-16T15:50:09.887Z",
+        "scope": "Actual minified web apps, synthetic sample data, Chromium phone viewport/touch emulation; service workers blocked to isolate direct UI fetches. No Safari, physical phone, or native keyboard claim.",
+        "results": [
+          {
+            "brand": "movefield",
+            "requests": [
+              "/movefield/review/exercise-guides.json",
+              "/movefield/review/exercise-content.json",
+              "/movefield/review/exercise-guides.json"
+            ],
+            "axeViolations": 0,
+            "workoutAxe": [
+              {
+                "state": "overview",
+                "violations": 0
+              },
+              {
+                "state": "focused logger",
+                "violations": 0
+              }
+            ],
+            "guideRetryPreservesData": true,
+            "narrowGuideReflow": true
+          },
+          {
+            "brand": "grizzly",
+            "requests": [
+              "/movefield/grizzly/exercise-guides.json",
+              "/movefield/grizzly/exercise-content.json",
+              "/movefield/grizzly/exercise-guides.json"
+            ],
+            "axeViolations": 0,
+            "workoutAxe": [
+              {
+                "state": "overview",
+                "violations": 0
+              },
+              {
+                "state": "focused logger",
+                "violations": 0
+              }
+            ],
+            "guideRetryPreservesData": true,
+            "narrowGuideReflow": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "movefield-preferences",
+      "receipt": "browser-preferences/movefield-review-results.json",
+      "axeStates": 0,
+      "buildScope": "Presentation build before final shared search/machine and narrow logger corrections; exact binary hash not captured.",
+      "result": {
+        "brand": "movefield-review",
+        "preferenceKey": "movefield-review-training-studio:preferences:v1",
+        "checkedAt": "2026-10-16T15:31:05.216Z",
+        "scope": "Actual freshly built web UI in sandboxed Chromium, disposable preferences and injected quota failure; no personal data or native OS qualification.",
+        "checks": [
+          "Appearance change persists and reaches a second tab",
+          "Second-tab update retains the previously saved palette",
+          "Failed write stays visible in this tab and preserves the stored/other-tab preferences",
+          "Successful retry clears the save error and reaches both tabs",
+          "Fresh document hydration restores the saved preference snapshot",
+          "Cross-tab preference removal returns to system/default appearance"
+        ]
+      }
+    },
+    {
+      "name": "grizzly-preferences",
+      "receipt": "browser-preferences/grizzly-results.json",
+      "axeStates": 0,
+      "buildScope": "Presentation build before final shared search/machine and narrow logger corrections; exact binary hash not captured.",
+      "result": {
+        "brand": "grizzly",
+        "preferenceKey": "grizzly-fitness:preferences:v1",
+        "checkedAt": "2026-10-16T15:31:51.977Z",
+        "scope": "Actual freshly built web UI in sandboxed Chromium, disposable preferences and injected quota failure; no personal data or native OS qualification.",
+        "checks": [
+          "Appearance change persists and reaches a second tab",
+          "Second-tab update retains the previously saved palette",
+          "Failed write stays visible in this tab and preserves the stored/other-tab preferences",
+          "Successful retry clears the save error and reaches both tabs",
+          "Fresh document hydration restores the saved preference snapshot",
+          "Cross-tab preference removal returns to system/default appearance"
+        ]
+      }
+    },
+    {
+      "name": "grizzly-font-palette-collection",
+      "receipt": "grizzly-collection-checks.json",
+      "axeStates": 35,
+      "buildScope": "Presentation build before final shared search/machine and narrow logger corrections; exact binary hash not captured.",
+      "result": {
+        "checkedAt": "2026-10-16T15:35:44.247Z",
+        "scope": "Built local static app in sandboxed Chromium, synthetic active workout. Thirty-four palette light/dark rendered axe states plus narrow font gallery; all actual font loads checked offline. No physical-device, clinical or comprehensive font-legibility qualification.",
+        "fonts": [
+          {
+            "family": "Road Rage",
+            "loaded": true
+          },
+          {
+            "family": "Rubik Distressed",
+            "loaded": true
+          },
+          {
+            "family": "Rubik Burned",
+            "loaded": true
+          },
+          {
+            "family": "Rubik Marker Hatch",
+            "loaded": true
+          },
+          {
+            "family": "Rubik Wet Paint",
+            "loaded": true
+          },
+          {
+            "family": "Rubik Spray Paint",
+            "loaded": true
+          },
+          {
+            "family": "Rubik Storm",
+            "loaded": true
+          },
+          {
+            "family": "Lacquer",
+            "loaded": true
+          },
+          {
+            "family": "Frijole",
+            "loaded": true
+          },
+          {
+            "family": "Shojumaru",
+            "loaded": true
+          },
+          {
+            "family": "Trade Winds",
+            "loaded": true
+          },
+          {
+            "family": "Rubik Microbe",
+            "loaded": true
+          },
+          {
+            "family": "Rubik Puddles",
+            "loaded": true
+          },
+          {
+            "family": "Butcherman",
+            "loaded": true
+          },
+          {
+            "family": "Creepster",
+            "loaded": true
+          },
+          {
+            "family": "Jolly Lodger",
+            "loaded": true
+          },
+          {
+            "family": "Almendra Display",
+            "loaded": true
+          },
+          {
+            "family": "Rye",
+            "loaded": true
+          },
+          {
+            "family": "UnifrakturCook",
+            "loaded": true
+          },
+          {
+            "family": "Sedgwick Ave Display",
+            "loaded": true
+          },
+          {
+            "family": "Inter",
+            "loaded": true
+          },
+          {
+            "family": "Barlow Condensed",
+            "loaded": true
+          },
+          {
+            "family": "Oswald",
+            "loaded": true
+          },
+          {
+            "family": "Bitter",
+            "loaded": true
+          },
+          {
+            "family": "Rajdhani",
+            "loaded": true
+          },
+          {
+            "family": "New Rocker",
+            "loaded": true
+          },
+          {
+            "family": "Black Ops One",
+            "loaded": true
+          },
+          {
+            "family": "Rubik Dirt",
+            "loaded": true
+          },
+          {
+            "family": "Metal Mania",
+            "loaded": true
+          },
+          {
+            "family": "Bungee",
+            "loaded": true
+          },
+          {
+            "family": "Saira Stencil One",
+            "loaded": true
+          },
+          {
+            "family": "Stardos Stencil",
+            "loaded": true
+          },
+          {
+            "family": "Pirata One",
+            "loaded": true
+          },
+          {
+            "family": "Eater",
+            "loaded": true
+          },
+          {
+            "family": "Nosifer",
+            "loaded": true
+          }
+        ],
+        "outdoorPalettes": [
+          "Pine forest",
+          "Moss & stone",
+          "Campfire",
+          "Canyon clay",
+          "Alpine lake",
+          "Midnight ridge",
+          "Autumn trail",
+          "Desert dunes",
+          "Wildflower meadow",
+          "Northern lights"
+        ],
+        "allPalettes": [
+          "Pine forest",
+          "Moss & stone",
+          "Campfire",
+          "Canyon clay",
+          "Alpine lake",
+          "Midnight ridge",
+          "Autumn trail",
+          "Desert dunes",
+          "Wildflower meadow",
+          "Northern lights",
+          "Arctic frost",
+          "Grizzly amber",
+          "Ocean blue",
+          "Iris violet",
+          "Sunset",
+          "Berry pink",
+          "Glacier teal"
+        ],
+        "axeStates": [
+          {
+            "label": "Pine forest dark",
+            "violations": []
+          },
+          {
+            "label": "Moss & stone dark",
+            "violations": []
+          },
+          {
+            "label": "Campfire dark",
+            "violations": []
+          },
+          {
+            "label": "Canyon clay dark",
+            "violations": []
+          },
+          {
+            "label": "Alpine lake dark",
+            "violations": []
+          },
+          {
+            "label": "Midnight ridge dark",
+            "violations": []
+          },
+          {
+            "label": "Autumn trail dark",
+            "violations": []
+          },
+          {
+            "label": "Desert dunes dark",
+            "violations": []
+          },
+          {
+            "label": "Wildflower meadow dark",
+            "violations": []
+          },
+          {
+            "label": "Northern lights dark",
+            "violations": []
+          },
+          {
+            "label": "Arctic frost dark",
+            "violations": []
+          },
+          {
+            "label": "Grizzly amber dark",
+            "violations": []
+          },
+          {
+            "label": "Ocean blue dark",
+            "violations": []
+          },
+          {
+            "label": "Iris violet dark",
+            "violations": []
+          },
+          {
+            "label": "Sunset dark",
+            "violations": []
+          },
+          {
+            "label": "Berry pink dark",
+            "violations": []
+          },
+          {
+            "label": "Glacier teal dark",
+            "violations": []
+          },
+          {
+            "label": "Pine forest light",
+            "violations": []
+          },
+          {
+            "label": "Moss & stone light",
+            "violations": []
+          },
+          {
+            "label": "Campfire light",
+            "violations": []
+          },
+          {
+            "label": "Canyon clay light",
+            "violations": []
+          },
+          {
+            "label": "Alpine lake light",
+            "violations": []
+          },
+          {
+            "label": "Midnight ridge light",
+            "violations": []
+          },
+          {
+            "label": "Autumn trail light",
+            "violations": []
+          },
+          {
+            "label": "Desert dunes light",
+            "violations": []
+          },
+          {
+            "label": "Wildflower meadow light",
+            "violations": []
+          },
+          {
+            "label": "Northern lights light",
+            "violations": []
+          },
+          {
+            "label": "Arctic frost light",
+            "violations": []
+          },
+          {
+            "label": "Grizzly amber light",
+            "violations": []
+          },
+          {
+            "label": "Ocean blue light",
+            "violations": []
+          },
+          {
+            "label": "Iris violet light",
+            "violations": []
+          },
+          {
+            "label": "Sunset light",
+            "violations": []
+          },
+          {
+            "label": "Berry pink light",
+            "violations": []
+          },
+          {
+            "label": "Glacier teal light",
+            "violations": []
+          },
+          {
+            "label": "Font comparison at 320px / 130%",
+            "violations": []
+          }
+        ],
+        "activeWorkoutPreserved": true,
+        "legacyBeastChangedToMetal": true
+      }
+    },
+    {
+      "name": "seven-day-single-weight-inventory",
+      "receipt": "fitness-browser/results.json",
+      "axeStates": 2,
+      "buildScope": "Refreshed search/machine build before narrow logger correction; exact binary hash not captured.",
+      "result": {
+        "checkedAt": "2026-10-16T15:40:19.975Z",
+        "scope": "Actual static Movefield review and Grizzly in sandboxed Chromium with disposable synthetic encrypted profiles. No physical-device, publisher-playback or exercise-form assessment.",
+        "results": [
+          {
+            "brand": "movefield",
+            "passed": [
+              "real encrypted setup, inventory confirmation gate, 7-day single-weight plan",
+              "320px inventory layout and axe checks",
+              "regional planned work table and 21-session acceptance",
+              "available same-function substitute preserves dose, rest, dates and history",
+              "encrypted state reopens with exact accepted substitution",
+              "prominent safe form reference, including a guide without a media record"
+            ],
+            "surveyAxe": 0
+          },
+          {
+            "brand": "grizzly",
+            "passed": [
+              "real encrypted setup, inventory confirmation gate, 7-day single-weight plan",
+              "320px inventory layout and axe checks",
+              "regional planned work table and 21-session acceptance",
+              "available same-function substitute preserves dose, rest, dates and history",
+              "encrypted state reopens with exact accepted substitution",
+              "prominent safe form reference, including a guide without a media record"
+            ],
+            "surveyAxe": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "grizzly-brand-isolation-offline",
+      "receipt": "grizzly-brand-checks.json",
+      "axeStates": 0,
+      "buildScope": "Refreshed search/machine build before narrow logger correction; exact binary hash not captured.",
+      "result": {
+        "checkedAt": "2026-10-16T15:41:05.415Z",
+        "scope": "Sandboxed Chromium; synthetic disposable profiles. Supplied JPEG identity and rendered loading verified; physical phones and independent brand-rights verification not qualified.",
+        "passed": [
+          "uploaded logo SHA and 1280×593 source retained; welcome/header render and reopen offline",
+          "Frijole heading font loaded; dark Pine forest default",
+          "phone primary and detail actions fit with non-overlapping touch targets",
+          "both Movefield localStorage, drafts, preferences, queues, IndexedDB roots and caches preserved through Grizzly migration/erasure",
+          "Grizzly preferences have their own key",
+          "system and in-app reduced motion stop paw animation",
+          "separate offline shell and heading font reopen offline"
+        ]
+      }
+    },
+    {
+      "name": "new-routine-integration",
+      "receipt": "routine-library-browser/results.json",
+      "axeStates": 0,
+      "buildScope": "Final narrow-logger builds; hashes in finalBuilds.",
+      "result": {
+        "checkedAt": "2026-10-16T15:50:16.035Z",
+        "scope": "Current built static apps in sandboxed Chromium; disposable encrypted profiles, real onboarding/plan acceptance/calendar/library/logging/reopen. No external source playback, Safari or physical phone qualification.",
+        "results": [
+          {
+            "brand": "movefield",
+            "program": "LIB-PL3-60",
+            "name": "Powerlifting · Low-Volume Lift Practice · up to 60 min",
+            "plannedSessions": 9,
+            "guideCoverage": [
+              {
+                "id": "lib-stack-pec-deck",
+                "name": "Selectorized pec deck fly",
+                "reference": "https://www.precor.com/en-US/strength/selectorized/vitality"
+              },
+              {
+                "id": "lib-db-chest-supported-row",
+                "name": "Chest-supported dumbbell row",
+                "reference": "https://www.acefitness.org/resources/everyone/exercise-library/12/bent-over-row/"
+              },
+              {
+                "id": "lib-cable-face-pull",
+                "name": "Cable face pull",
+                "reference": "https://www.nasm.org/resource-center/exercise-library/face-pull"
+              }
+            ],
+            "calendarBrowsePreserved": true,
+            "unknownWeightPreserved": true,
+            "encryptedSetReload": true,
+            "settings130Reflow": true,
+            "androidLink": true,
+            "decimalLoadGeometry": {
+              "width": 117.40625,
+              "text": 63.883270263671875,
+              "available": 74.19999999999999
+            },
+            "visibleNarrowLabels": true
+          },
+          {
+            "brand": "grizzly",
+            "program": "LIB-PL3-60",
+            "name": "Powerlifting · Low-Volume Lift Practice · up to 60 min",
+            "plannedSessions": 9,
+            "guideCoverage": [
+              {
+                "id": "lib-stack-pec-deck",
+                "name": "Selectorized pec deck fly",
+                "reference": "https://www.precor.com/en-US/strength/selectorized/vitality"
+              },
+              {
+                "id": "lib-db-chest-supported-row",
+                "name": "Chest-supported dumbbell row",
+                "reference": "https://www.acefitness.org/resources/everyone/exercise-library/12/bent-over-row/"
+              },
+              {
+                "id": "lib-cable-face-pull",
+                "name": "Cable face pull",
+                "reference": "https://www.nasm.org/resource-center/exercise-library/face-pull"
+              }
+            ],
+            "calendarBrowsePreserved": true,
+            "unknownWeightPreserved": true,
+            "encryptedSetReload": true,
+            "settings130Reflow": true,
+            "androidLink": true,
+            "decimalLoadGeometry": {
+              "width": 117.40625,
+              "text": 63.883270263671875,
+              "available": 74.19999999999999
+            },
+            "visibleNarrowLabels": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "grizzly-style",
+      "receipt": "grizzly-style-checks.json",
+      "axeStates": 4,
+      "buildScope": "Final narrow-logger Grizzly build; hashes in finalBuilds.",
+      "result": {
+        "renderedAxeStates": [
+          {
+            "name": "new visitor Wild dark Pine forest gate",
+            "violations": []
+          },
+          {
+            "name": "Wild dark Pine forest with an active workout",
+            "violations": []
+          },
+          {
+            "name": "Clean with an active workout",
+            "violations": []
+          },
+          {
+            "name": "Customize at 320px and 130% text",
+            "violations": []
+          }
+        ],
+        "checkedAt": "2026-10-16T15:51:40.120Z",
+        "scope": "Actual built static Grizzly in sandboxed Chromium; fresh disposable context and in-progress synthetic sample workout. No physical-device or comprehensive readability claim.",
+        "passed": [
+          "new visitor defaults to dark Pine forest, Frijole font and Wild style",
+          "Customize opens before creating a vault; clean preset is one click",
+          "font/style changes reach a second tab and persist on reload",
+          "wild claws shown and removed by Clean",
+          "active workout/timer snapshot is byte-for-byte unchanged",
+          "other Movefield preferences remain untouched",
+          "320px/130% customization stays inside viewport; closing restores focus"
+        ]
+      }
+    },
+    {
+      "name": "workout-control-behavior",
+      "receipt": "workout-ui-checks.json",
+      "axeStates": 0,
+      "buildScope": "Final source JSX callbacks and domain boundaries, not a rendered browser test.",
+      "result": {
+        "checkedAt": "2026-10-16T15:54:38.084Z",
+        "scope": "Actual JSX control handlers and domain update boundaries. Synthetic hook dependencies for history editor. No browser layout or rendered accessibility claim.",
+        "cases": [
+          "Set core columns align with headers and each set owns its effort and extra measurements",
+          "Actual set controls preserve unknown, zero and per-set RIR without touching another set",
+          "Busy sets block every input and saved sets retain the undo path",
+          "Timed tasks allow decimal amounts and omit resistance-only RIR",
+          "History groups show one exercise first, preserve partial sets and save only reviewed corrections",
+          "Returning setup skips repeated profile clicks but still blocks unconfirmed equipment and invalid coaching"
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Automated axe results do not establish comprehensive WCAG or screen-reader conformance",
+    "Chromium phone viewport and touch emulation do not qualify Safari, physical iPhone/Android, native keyboards or all device performance",
+    "External exercise reference playback, live publisher content and exercise technique were not evaluated by this UI audit",
+    "Earlier broad presentation scans predate the final narrow logger edit; final affected logger and integration flows were rerun, not the entire unchanged matrix",
+    "Final source/archive/APK installation and publicly served release hashes belong to release/native audit",
+    "Grizzly precaches about18.44MB uncompressed of static assets, including35fonts; initial network/storage costs are measured, not removed or qualified on phones"
+  ]
+}

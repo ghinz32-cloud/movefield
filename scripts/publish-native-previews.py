@@ -39,21 +39,72 @@ def request_json(endpoint, payload=None, method=None):
         return json.load(response)
 
 
+def verify_android_build_jobs(jobs, run_id, workflow_head, run_attempt):
+    """Require the latest attempt of each app; an older green job cannot win."""
+    expected = ('android (movefield)', 'android (grizzly)')
+    if type(run_attempt) is not int or run_attempt < 1:
+        raise ValueError('Invalid workflow run attempt')
+    seen, job_ids, latest = set(), set(), {}
+    for job in jobs:
+        name, attempt, job_id = job.get('name'), job.get('run_attempt'), job.get('id')
+        if name not in (*expected, 'publish_android'):
+            raise ValueError('Unexpected installer workflow job: ' + str(name))
+        if job.get('run_id') != run_id or job.get('head_sha') != workflow_head:
+            raise ValueError('Installer job belongs to a different run or workflow head')
+        if type(attempt) is not int or not 1 <= attempt <= run_attempt:
+            raise ValueError('Installer job attempt is outside the verified run')
+        if type(job_id) is not int or job_id < 1 or job_id in job_ids:
+            raise ValueError('Invalid or duplicate installer job ID')
+        job_ids.add(job_id)
+        if (name, attempt) in seen:
+            raise ValueError('Duplicate installer job within one attempt: ' + name)
+        seen.add((name, attempt))
+        if name in expected:
+            if name not in latest or attempt > latest[name]['run_attempt']:
+                latest[name] = job
+        elif job.get('status') != 'completed' or job.get('conclusion') != 'skipped':
+            raise ValueError('The source build run must not execute its publisher')
+    if set(latest) != set(expected):
+        raise ValueError('Both Android installer jobs are required')
+    selected = [latest[name] for name in expected]
+    if max(job['run_attempt'] for job in selected) != run_attempt:
+        raise ValueError('Latest workflow attempt is missing from the job list')
+    for job in selected:
+        if job.get('status') != 'completed' or job.get('conclusion') != 'success':
+            raise ValueError('Latest Android installer job did not succeed: ' + job['name'])
+    return selected
+
+
+def verify_apk_artifacts(artifacts):
+    selected = {}
+    for app in ('movefield', 'grizzly'):
+        matches = [a for a in artifacts if a.get('name') == app + '-arm64-current-test-only']
+        if len(matches) != 1 or matches[0].get('expired') is not False:
+            raise ValueError('Expected exactly one available APK artifact for ' + app)
+        selected[app] = matches[0]
+    return selected
+
+
 run = request_json('/actions/runs/' + RUN)
-assert run['conclusion'] == 'success' and run['workflow_id'] == 383503934
+assert run['status'] == 'completed' and run['conclusion'] == 'success' and run['workflow_id'] == 383503934
 assert run['repository']['full_name'] == REPOSITORY
-jobs = request_json('/actions/runs/' + RUN + '/jobs')['jobs']
-assert {j['name'] for j in jobs} == {'android (movefield)', 'android (grizzly)'}
-assert all(j['conclusion'] == 'success' for j in jobs)
-artifacts = request_json('/actions/runs/' + RUN + '/artifacts')['artifacts']
+assert run['id'] == int(RUN) and re.fullmatch(r'[a-f0-9]{40}', run['head_sha'])
+job_list = request_json('/actions/runs/' + RUN + '/jobs?filter=all&per_page=100')
+assert job_list['total_count'] == len(job_list['jobs']), 'Incomplete installer job listing'
+# Workflow execution can check out a separate reviewed source_ref. Job heads
+# bind the workflow snapshot; each APK's source.txt independently binds SOURCE.
+selected_jobs = verify_android_build_jobs(job_list['jobs'], int(RUN), run['head_sha'], run['run_attempt'])
+artifact_list = request_json('/actions/runs/' + RUN + '/artifacts?per_page=100')
+assert artifact_list['total_count'] == len(artifact_list['artifacts']), 'Incomplete installer artifact listing'
+artifacts = verify_apk_artifacts(artifact_list['artifacts'])
 sdk = Path(os.environ['ANDROID_HOME'])
 records = []
 for app, package, version, code, filename in [
     ('movefield', 'com.ghinz32.movefield', '0.1.5', 6, 'movefield-0.1.5-arm64.apk'),
     ('grizzly', 'com.ghinz32.grizzlyfitness.prototype', '0.1.4', 5, 'grizzly-fitness-0.1.4-arm64.apk'),
 ]:
-    artifact = next(a for a in artifacts if a['name'] == app + '-arm64-current-test-only')
-    assert not artifact['expired']
+    artifact = artifacts[app]
+    build_job = next(job for job in selected_jobs if job['name'] == 'android (' + app + ')')
     api_request = urllib.request.Request(API + '/actions/artifacts/' + str(artifact['id']) + '/zip',
         headers={'Authorization': 'Bearer ' + TOKEN})
     try:
@@ -120,6 +171,8 @@ for app, package, version, code, filename in [
     published = DESTINATION / filename
     published.write_bytes(original.read_bytes())
     records.append({'app': app, 'filename': filename, 'artifactId': artifact['id'],
+        'verifiedJobId': build_job['id'], 'verifiedJobAttempt': build_job['run_attempt'],
+        'artifactCreatedAt': artifact['created_at'],
         'archiveSHA256': archive_sha, 'sourceCommit': SOURCE, 'sourceTree': source[1],
         'package': package, 'versionName': version, 'versionCode': code,
         'bytes': published.stat().st_size, 'sha256': apk_sha, 'architecture': 'arm64-v8a',
@@ -147,6 +200,14 @@ release = request_json('/releases', {'tag_name': TAG, 'target_commitish': SOURCE
     'name': 'Movefield & Grizzly — current Android test apps', 'body': notes,
     'draft': True, 'prerelease': True, 'make_latest': 'false'}, 'POST')
 receipt = {'format': 'fitness-native-release-v1', 'workflowRun': int(RUN),
+    'workflowRunAttempt': run['run_attempt'],
+    'workflowHeadCommit': run['head_sha'],
+    'selectedJobOutcomes': [{key: job[key] for key in
+                            ['id', 'name', 'run_attempt', 'head_sha', 'started_at', 'completed_at']}
+                           for job in selected_jobs],
+    'jobOutcomeScope': 'GitHub may carry a successful execution into a later run attempt. '
+        'Verified job attempts identify accepted API outcomes, not necessarily a new compilation. '
+        'Artifact creation times, archive digests and independently checked source/tree IDs identify the delivered bytes.',
     'sourceCommit': SOURCE, 'sourceTree': records[0]['sourceTree'], 'apps': records,
     'scope': 'Verified development-signed Android APK delivery; no iPhone/store/physical-device qualification.'}
 (DESTINATION / 'native-build-evidence.json').write_text(json.dumps(receipt, indent=2) + '\n')

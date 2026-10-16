@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-10-16T15:43:24.100470+00:00",
+  "scope": "Distinct cleared-cache Hermes exports, paired with native identity/module checks; no installed-device claim.",
+  "flavors": {
+    "movefield": {
+      "android": {
+        "path": "_expo/static/js/android/index-2e3cccdfc85e4e1a69a8cae542b99a22.hbc",
+        "bytes": 4799860,
+        "sha256": "e6d89c24adf3587fe55a11a39ff1926b8ee13bfdb41e8661949f2aabb6367cd0"
+      },
+      "ios": {
+        "path": "_expo/static/js/ios/index-a50aa59d0973c116a1dcff08fdaf5443.hbc",
+        "bytes": 4787360,
+        "sha256": "8856d03fd3e344a7f19836753a9ed2667244264380fb49e3e20f88c15390c3c4"
+      }
+    },
+    "grizzly": {
+      "android": {
+        "path": "_expo/static/js/android/index-5b920b7ede1a3c15fbccf45886135340.hbc",
+        "bytes": 4799632,
+        "sha256": "8f24e4276dc727616d2e06a09ff954a87abdd94b2baff401fc1be26b23c176da"
+      },
+      "ios": {
+        "path": "_expo/static/js/ios/index-171c8684c45ed007db0eeca47074b0a3.hbc",
+        "bytes": 4786710,
+        "sha256": "2a9c66e014633c05786f9c6bd8c32ee2ad36787add77eb9f98a4e66694083c1f"
+      }
+    }
+  }
+}
