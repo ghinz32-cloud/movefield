@@ -5,8 +5,8 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Comprehensive source audit qualified at81f66fe49e5a9f5c1f04fae799bd491cac1c5aca. Movefield0.1.8/code9 and Grizzly0.1.7/code8 published and independently inspected; final shared Pages staging complete, deployment and live checks pending.",
-  "completion_claim": "Comprehensive bounded audit and preview repairs qualified; no full master-prompt, physical-device, clinical, live-service or store qualification claim.",
+  "active_checkpoint": "Comprehensive audited preview update delivered: native81f66fe49e5a9f5c1f04fae799bd491cac1c5aca; deliveryc99abf9b3d1bb62cca0776dd3d02bb17871e8122; Pages174bd04f5892cd76052bd98419ae8e708ea8cd89; deployment38958889193. Movefield0.1.8/code9, Grizzly0.1.7/code8. Both APK Saves/hashes/ranges,367 selected served files including63 original-root files, and both live encrypted app/coaching flows passed.",
+  "completion_claim": "Completed comprehensive bounded audit, repairs and verified preview publication. Physical-device, signed iPhone, clinical/media-rights, live-service and full master-prompt gates remain open.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
     "Some full-text research and browser-runtime installation endpoints are denied by the configured proxy. Current Android compilation uses the existing verified CI/toolchain; browser/device coverage remains explicitly scoped.",
@@ -2107,9 +2107,12 @@
     "receipt": "docs/comprehensive-app-audit-2026-10-16.json",
     "build": 38956403750,
     "publisher": 38957941934,
-    "pages": "pending",
+    "pages": "174bd04f5892cd76052bd98419ae8e708ea8cd89",
     "physical_devices": "unverified_for_new_versions",
     "signed_ios": "unavailable_owner_setup",
-    "requirements_preserved_sha256": "2d4cfe61700716e42bdebcfa7686ad7ebef46bd7180b11e1667377333209fe2d"
+    "requirements_preserved_sha256": "2d4cfe61700716e42bdebcfa7686ad7ebef46bd7180b11e1667377333209fe2d",
+    "deliverySource": "c99abf9b3d1bb62cca0776dd3d02bb17871e8122",
+    "pagesRun": 38958889193,
+    "liveVerified": true
   }
 }

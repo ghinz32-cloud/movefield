@@ -1,8 +1,8 @@
 # Movefield and Grizzly: comprehensive application audit
 
-**16 October 2026 — source audit and repairs qualified; final delivery pending.** This report covers the current shared Movefield and Grizzly websites, Android/iOS source applications, offline storage and optional service implementation. It also identifies the older original GitHub Pages application separately. Findings below are tied to reproduced behavior or source inspection; browser checks, native component simulations, compiled installers and physical devices are different levels of evidence.
+**16 October 2026 — comprehensive audit and tested preview update delivered.** This report covers the current shared Movefield and Grizzly websites, Android/iOS source applications, offline storage and optional service implementation. It also identifies the older original GitHub Pages application separately. Findings below are tied to reproduced behavior or source inspection; browser checks, native component simulations, compiled installers and physical devices are different levels of evidence.
 
-The focused-phone release is already delivered: Movefield **0.1.7/code8**, Grizzly **0.1.6/code7**, native source `f0130487760aa03d64b22f23002da5423da7ff4e`, delivery source `920a73621d9f2ab15bbddcd00139c9cebd155238`, Pages `481b781308e03804c78a50ceec703af715dabdf5`. Its exact installers and website bytes were verified. Repairs described in this new audit are subsequent source changes and must pass the release gates below before being described as live.
+The audited updates are live: Movefield **0.1.8/code9** and Grizzly **0.1.7/code8**, native source `81f66fe49e5a9f5c1f04fae799bd491cac1c5aca`, delivery source `c99abf9b3d1bb62cca0776dd3d02bb17871e8122`, Pages `174bd04f5892cd76052bd98419ae8e708ea8cd89`. Deployment `38958889193` succeeded. Both complete APK browser downloads, all 367 selected website files (including 63 preserved original files), and both live encrypted profile/workout/coaching flows passed. Physical installation of these new versions remains a separate gate; the owner's earlier S24 Ultra confirmation applies only to Movefield 0.1.6.
 
 ## What was reviewed
 
@@ -94,9 +94,9 @@ These are outstanding acceptance tasks, not results already obtained. Keep them 
 
 ## Verification and delivery status
 
-The final repair receipt will record exact source/tree, shared snapshot parity, core and focused tests, browser asset hashes, native exports, installer signatures/versions, Pages commit and actual download verification. Reproductions asserting a previous defect remain historical evidence; they are not relabeled as passing regression tests.
+The companion JSON receipt records exact source/tree, shared snapshot parity, core and focused tests, browser asset hashes, native exports, installer signatures/versions, Pages commit and actual download verification. Reproductions asserting a previous defect remain historical evidence; they are not relabeled as passing regression tests.
 
-No full six-master-prompt completion, all-device compatibility, medical validation or store approval is claimed. The current goal is a tested, data-preserving preview with clear outstanding requirements and directly downloadable Android builds. Final release results will be appended here after qualification.
+No full six-master-prompt completion, all-device compatibility, medical validation or store approval is claimed. The current goal is a tested, data-preserving preview with clear outstanding requirements and directly downloadable Android builds. Final release results are recorded below.
 
 ### Final source qualification
 
@@ -104,7 +104,7 @@ All 58 core groups are covered by passing results: the initial run passed 57 and
 
 The final native browser-renderer gate passed 180 states across both brands and three text settings, including 240 ancestor-clipping checks, six reduced-parent scenarios and six delayed validation-correction focus checks. The 200% setting is a test-only appearance stress case, not a physical OS font-size test. Final web repairs passed the documented offline, accessibility, enlarged-text and resize cases. Actual two-tab setup and passphrase-rotation browser tests passed for both brands; their recorded assets precede the final CSS-only mini-stat refinement.
 
-Four clean Hermes exports passed with 20 reviewed markers and all 265 captured native files unchanged. Two source archives match that snapshot. Android compilation, signed-installer inspection and final Pages publication remain the next release gates.
+Four clean Hermes exports passed with 20 reviewed markers and all 265 captured native files unchanged. Two source archives match that snapshot. The subsequent compiled-installer and live-delivery checks below complete this preview release.
 
 The final static rebuild was also compared to the earlier browser-qualified files. All application JavaScript was identical after normalizing only generated filename references. A documentation token caused Tailwind to emit one unused blur utility, changing CSS filenames and the worker revision. Both final outputs passed six fresh layout/accessibility/lazy-panel smoke states. Restricting style scanning to intended application inputs is a maintenance follow-up for reproducible builds.
 
@@ -112,13 +112,30 @@ The fresh local Worker build also passed 19 real encrypted browser journeys with
 
 ### Android preview qualification
 
-Native source `81f66fe49e5a9f5c1f04fae799bd491cac1c5aca`, tree `d440eb77b94fac179d3109e3c3278e4dc69e4235`, passed build `38956403750` and publisher `38957941934` on their first attempts. [Source-tagged prerelease](https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-81f66fe49e5a) contains Movefield **0.1.8/code9** and Grizzly **0.1.7/code8**, both ARM64 Android7+ development-signed previews. The existing package identities and signing certificate are unchanged.
+Native source `81f66fe49e5a9f5c1f04fae799bd491cac1c5aca`, tree `d440eb77b94fac179d3109e3c3278e4dc69e4235`, passed build `38956403750` and publisher `38957941934` on their first attempts. [Source-tagged prerelease](https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-81f66fe49e5a) contains Movefield **0.1.8/code9** and Grizzly **0.1.7/code8**, both ARM64 Android 7+ development-signed previews. The existing package identities and signing certificate are unchanged.
 
-Both public APKs independently passed source/version/signature/security checks, all20 reviewed bundle markers, ZIP16KiB alignment and all17 native libraries' ELF alignment. Actual MainActivity orientation is unspecified (`-1`); absent resizing overrides use the targetSDK36 platform default. These compiled settings do not establish real hinge or rotation behavior. Normal direct CI artifact transport was unavailable; the publisher verified the archives before upload, and the additional independent public-byte/window/alignment inspections completed before applying any Pages installer files. No network restriction was bypassed.
+Both public APKs independently passed source/version/signature/security checks, all 20 reviewed bundle markers, ZIP 16 KiB alignment and all 17 native libraries' ELF alignment. Actual MainActivity orientation is unspecified (`-1`); absent resizing overrides use the target SDK 36 platform default. These compiled settings do not establish real hinge or rotation behavior. Normal direct CI artifact transport was unavailable; the publisher verified the archives before upload, and the additional independent public-byte/window/alignment inspections completed before applying any Pages installer files. No network restriction was bypassed.
 
 | App | Bytes | SHA-256 |
 |---|---:|---|
 | movefield | 39,346,124 | `ea2b9fbe5aae91d5c8d70ea3f3c6db2bba7e163647d623123183c7b273ee01c9` |
 | grizzly | 39,497,386 | `d4fcd4f30fe2803c8eb545e13570e432503e868c3a776430f871b6c2fa5e8058` |
 
-The final GitHub Pages delivery and completed live download checks are recorded below once published. Physical installation of these new versions is still open.
+The final GitHub Pages delivery and completed live download checks are recorded below. Physical installation of these new versions is still open.
+
+### Verified live delivery
+
+| Surface | Current link and result |
+|---|---|
+| Movefield Android | [Download 0.1.8](https://ghinz32-cloud.github.io/movefield/review/downloads/movefield-0.1.8-arm64.apk). Complete browser Save and exact SHA-256 passed. |
+| Grizzly Android | [Download 0.1.7](https://ghinz32-cloud.github.io/movefield/grizzly/downloads/grizzly-fitness-0.1.7-arm64.apk). Complete browser Save and exact SHA-256 passed. |
+| Movefield web | [Current shared app](https://ghinz32-cloud.github.io/movefield/review/). Exact served assets and live synthetic encrypted flows passed. |
+| Grizzly web | [Current shared app](https://ghinz32-cloud.github.io/movefield/grizzly/). Exact served assets and live synthetic encrypted flows passed. |
+
+Both download pages were tested at 320 px. The primary links stay on the Pages origin, receive focus and provide usable touch targets; optional browser assembly stays collapsed. HEAD lengths/MIME and the first and last 4,096-byte HTTP 206 ranges match the independently inspected files. Both source archives are refreshed. Open the APK links directly in Chrome rather than an embedded app browser; preserve existing app records when updating.
+
+The live application check created blank encrypted profiles and exercised before-workout cancellation/start, unknown-load set logging, harder-than-expected partial completion, after-workout coaching, encrypted reload and manual reopening. Saved values, targets and coaching authority remain unchanged. Its first Node-only preflight encountered a DNS error; honoring the environment's configured proxy resolved it without changing assertions or application code. All remote test traffic remained read-only; synthetic records stayed in disposable browser profiles.
+
+The published candidate has 3,883 files totaling 613,944,412 bytes across the older root, both websites, retained chunks, media, source ZIPs, mirrored installer parts and full APKs. This is the entire hosted footprint; startup loads a smaller subset. Include hosting/repository size and retained-asset policy in maintenance reviews while preserving open-window and historical-data compatibility.
+
+The audit is complete for its stated scope. The remaining-work table and acceptance checklist stay open where actual hardware, Apple signing, independent content/privacy review or live-service operation has not been qualified. This release does not imply full master-prompt completion or public-store readiness.
