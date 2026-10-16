@@ -1091,6 +1091,218 @@
           }
         }
       }
+    },
+    "liveCoachingBeforeHostingFollowup": {
+      "checkedAt": "2026-10-16T17:42:28.097Z",
+      "expectedSource": "7a01f7e79c0bad7796ee4489150d61099bad3aa3",
+      "expectedPagesCommit": "56e5569c00fb2fec98707088bae6a5e93cf636d7",
+      "pagesCommitScope": "Deployment identity supplied by the parent after its GitHub run verification; served brand manifests independently verify source identity.",
+      "scope": "Actual public Pages assets and sandboxed Chromium; disposable synthetic encrypted local profiles only. Browser interception permits same-site GET/HEAD static requests only and rejects API calls and non-read methods. No provider, cloud account, remote mutation or installed-device qualification.",
+      "builds": [
+        {
+          "brand": "movefield",
+          "base": "https://ghinz32-cloud.github.io/movefield/review/",
+          "sourceCommit": "7a01f7e79c0bad7796ee4489150d61099bad3aa3",
+          "manifestSHA256": "1b6ded1382adff85f14e4e3568ecd7d30c48612454575dcd690c40de3ecb0cc6",
+          "files": [
+            {
+              "path": "index.html",
+              "sha256": "7324f0f2868507c2ca1128a43d568c6ffb5c0ba82e451790ba56f53b8e065f70"
+            },
+            {
+              "path": "assets/index-Cbvqaehl.js",
+              "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+            },
+            {
+              "path": "assets/index-DPAY41Tk.css",
+              "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+            }
+          ],
+          "headers": {
+            "etag": "W/\"6ad260ce-364\"",
+            "lastModified": "Fri, 16 Oct 2026 17:37:18 GMT"
+          }
+        },
+        {
+          "brand": "grizzly",
+          "base": "https://ghinz32-cloud.github.io/movefield/grizzly/",
+          "sourceCommit": "7a01f7e79c0bad7796ee4489150d61099bad3aa3",
+          "manifestSHA256": "06fe71b8ec44664cc78e2d5889b65bd7d2b407ee98a1145ba97fd2f4ddb05854",
+          "files": [
+            {
+              "path": "index.html",
+              "sha256": "18a87be5a34d329fcf70bf259a538eaf6068a7b080e8ea50dae105a1ad7d7154"
+            },
+            {
+              "path": "assets/index-BlpAb5Is.js",
+              "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+            },
+            {
+              "path": "assets/index-CJG9R_vC.css",
+              "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+            }
+          ],
+          "headers": {
+            "etag": "W/\"6ad260ce-488\"",
+            "lastModified": "Fri, 16 Oct 2026 17:37:18 GMT"
+          }
+        }
+      ],
+      "results": [
+        {
+          "brand": "movefield",
+          "check": "Fresh encrypted personal profile starts with no fabricated events, plan or workout history",
+          "passed": true,
+          "loaded": [
+            {
+              "path": "index.html",
+              "sha256": "7324f0f2868507c2ca1128a43d568c6ffb5c0ba82e451790ba56f53b8e065f70"
+            },
+            {
+              "path": "assets/index-DPAY41Tk.css",
+              "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+            },
+            {
+              "path": "assets/index-Cbvqaehl.js",
+              "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+            }
+          ],
+          "requests": 6,
+          "blocked": []
+        },
+        {
+          "brand": "movefield",
+          "check": "Before cancel/start; actual unknown-load set; harder partial save once; after dialog; encrypted reload without replay and manual reopening",
+          "passed": true,
+          "completedSets": 1,
+          "unknownLoadPreserved": true,
+          "historyRecords": 1,
+          "targetsUnchanged": true,
+          "manualReviewFactsPolicyAuthorityStable": true,
+          "phrasesMatchCurrentEngine": true,
+          "messages": [
+            "Recorded for this session: 1 of 12 targeted sets or activity entries.",
+            "Unfinished sets stay unfinished. The next decision can be a reviewed repeat or a different plan step.",
+            "You can give yourself room to review."
+          ],
+          "reopened": [
+            "Saved: 1 of 12 planned sets or activity entries.",
+            "Some planned work is unfinished. Keep the actual log and review the next step without catch-up sets.",
+            "You can give the next decision some time."
+          ],
+          "keyOrderChanges": [
+            "state.history.0"
+          ],
+          "canonicalStateSHA256": "ee67718a2ca93b11780171adfcc432088fcd0aa7a98987d118cb68f49cf771b1",
+          "facts": {
+            "completedSets": 1,
+            "targetSets": 12,
+            "knownLoadSets": 0,
+            "unknownLoadSets": 1
+          },
+          "policyIds": [
+            "partial"
+          ],
+          "contexts": [
+            "workout-coaching-v1:7f2ebfccb360c3a7",
+            "workout-coaching-v1:fc7990c5d6e68763"
+          ],
+          "testAssumptionCorrection": "The first run required identical editorial wording across encrypted reload. Persistence normalizes object key order; this rerun instead verifies complete canonical state, facts, policies, details, required guards and authority unchanged, with exact visible wording equal to the local engine for each current rendered state.",
+          "loaded": [
+            {
+              "path": "index.html",
+              "sha256": "7324f0f2868507c2ca1128a43d568c6ffb5c0ba82e451790ba56f53b8e065f70"
+            },
+            {
+              "path": "assets/index-DPAY41Tk.css",
+              "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+            },
+            {
+              "path": "assets/index-Cbvqaehl.js",
+              "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+            }
+          ],
+          "requests": 18,
+          "blocked": []
+        },
+        {
+          "brand": "grizzly",
+          "check": "Fresh encrypted personal profile starts with no fabricated events, plan or workout history",
+          "passed": true,
+          "loaded": [
+            {
+              "path": "index.html",
+              "sha256": "18a87be5a34d329fcf70bf259a538eaf6068a7b080e8ea50dae105a1ad7d7154"
+            },
+            {
+              "path": "assets/index-CJG9R_vC.css",
+              "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+            },
+            {
+              "path": "assets/index-BlpAb5Is.js",
+              "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+            }
+          ],
+          "requests": 9,
+          "blocked": []
+        },
+        {
+          "brand": "grizzly",
+          "check": "Before cancel/start; actual unknown-load set; harder partial save once; after dialog; encrypted reload without replay and manual reopening",
+          "passed": true,
+          "completedSets": 1,
+          "unknownLoadPreserved": true,
+          "historyRecords": 1,
+          "targetsUnchanged": true,
+          "manualReviewFactsPolicyAuthorityStable": true,
+          "phrasesMatchCurrentEngine": true,
+          "messages": [
+            "This workout saved 1 of 12 planned sets or activity entries.",
+            "Unfinished sets stay unfinished. The next decision can be a reviewed repeat or a different plan step.",
+            "There is room for a careful next step."
+          ],
+          "reopened": [
+            "Your log contains 1 of 12 planned sets or activity entries.",
+            "Review the remaining work and choose what fits next; there is no debt of missed sets.",
+            "You can give the next decision some time."
+          ],
+          "keyOrderChanges": [
+            "state.history.0"
+          ],
+          "canonicalStateSHA256": "6af18497f56ebc8e7ade4acebe218bed3f7ec234feeec8ff2cb7779454c32d5f",
+          "facts": {
+            "completedSets": 1,
+            "targetSets": 12,
+            "knownLoadSets": 0,
+            "unknownLoadSets": 1
+          },
+          "policyIds": [
+            "partial"
+          ],
+          "contexts": [
+            "workout-coaching-v1:3143b41b339b5ec4",
+            "workout-coaching-v1:1fd809659577ea95"
+          ],
+          "testAssumptionCorrection": "The first run required identical editorial wording across encrypted reload. Persistence normalizes object key order; this rerun instead verifies complete canonical state, facts, policies, details, required guards and authority unchanged, with exact visible wording equal to the local engine for each current rendered state.",
+          "loaded": [
+            {
+              "path": "index.html",
+              "sha256": "18a87be5a34d329fcf70bf259a538eaf6068a7b080e8ea50dae105a1ad7d7154"
+            },
+            {
+              "path": "assets/index-CJG9R_vC.css",
+              "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+            },
+            {
+              "path": "assets/index-BlpAb5Is.js",
+              "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+            }
+          ],
+          "requests": 29,
+          "blocked": []
+        }
+      ],
+      "finishedAt": "2026-10-16T17:42:45.735Z"
     }
   },
   "independentBrowserSafety": {
@@ -2227,9 +2439,9 @@
     "reportedStage": "Webpage while preparing or saving the previous APK",
     "reportedPhone": "Samsung S24 Ultra with existing Movefield",
     "phoneReproduced": false,
-    "phoneRetest": "pending",
+    "phoneRetest": "Owner reports transfer reaches roughly39MB then stalls with Pause/Resume controls and no error/status change. Explicit external-browser confirmation is still absent. Same-site single-file route is being prepared; phone success not established.",
     "confirmedDefect": "Direct fallback URLs pointed to older APK releases despite current version labels.",
-    "change": "Ordinary current official APK links are primary and work without JavaScript; checked browser assembly remains optional.",
+    "change": "Primary ordinary APK links point to versioned full files on the existing Pages site, with current GitHub fallback and optional checked assembly. Full APKs are reconstructed only inside the Pages candidate.",
     "apkBytesChanged": false,
     "verifiedFreezeCause": false,
     "localRegressionAndUi": {
@@ -2358,7 +2570,45 @@
         "public/downloads/android-download.js": "02b2076018ba3607a87f3b1619940ea4fc80b7f248f4e6c1bd73d4de801ad6d9",
         "scripts/check-android-downloads.cjs": "2de0883a65cd962a4f40f5eadc3e973cb486780174f6e6b1f14fb751ff76602d"
       },
-      "scopeNote": "Eight browser states precede the final short embedded-browser guidance line; that line receives a scoped final layout/axe check. APK direct-download and assembly code unchanged between these passes."
+      "scopeNote": "Eight download flow/layout states followed by two scoped final embedded-browser guidance states; exact source hashes recorded for each receipt.",
+      "finalGuidance": {
+        "checkedAt": "2026-10-16T17:33:59.407Z",
+        "scope": "Final embedded-browser guidance addition only; sandboxed Chromium touch emulation at 320px / 130%. Real APK download and cancellation checks are recorded separately in results.json.",
+        "checks": [
+          {
+            "app": "movefield",
+            "passed": true,
+            "viewport": 320,
+            "textScale": 1.3,
+            "guidancePresentAndUnclipped": true,
+            "primaryFocusPreserved": true,
+            "geometry": {
+              "width": 320,
+              "scrollWidth": 320
+            },
+            "axeViolations": []
+          },
+          {
+            "app": "grizzly",
+            "passed": true,
+            "viewport": 320,
+            "textScale": 1.3,
+            "guidancePresentAndUnclipped": true,
+            "primaryFocusPreserved": true,
+            "geometry": {
+              "width": 320,
+              "scrollWidth": 320
+            },
+            "axeViolations": []
+          }
+        ],
+        "sourceHashes": {
+          "public/downloads/android.html": "34eb830c5747c41c0419c91faf8d11baff017892a643bec7cbf6f971ab804aff",
+          "public/downloads/android-download.js": "02b2076018ba3607a87f3b1619940ea4fc80b7f248f4e6c1bd73d4de801ad6d9",
+          "scripts/check-android-downloads.cjs": "2de0883a65cd962a4f40f5eadc3e973cb486780174f6e6b1f14fb751ff76602d"
+        }
+      },
+      "axeStates": 10
     },
     "liveDirectAndAlternativeSaves": "pending",
     "reportedBrowser": "Page opened inside ChatGPT or another app; exact embedded implementation unverified",
@@ -2374,6 +2624,215 @@
         "cross-brand filename rejected"
       ],
       "scope": "Pure function from ignored package helper; old fallback markup and new primary data-direct markup. Fixture source/version only; no generation/publication."
+    },
+    "phoneIssueResolved": false,
+    "sameSiteFeasibility": {
+      "checkedAt": "2026-10-16",
+      "pagesCommit": "56e5569c00fb2fec98707088bae6a5e93cf636d7",
+      "readOnly": true,
+      "currentTree": {
+        "files": 3871,
+        "bytes": 529846355,
+        "apkFiles": 0
+      },
+      "verifiedAPKBytes": {
+        "movefield": 39313208,
+        "grizzly": 39464470
+      },
+      "projectedSiteBytes": {
+        "twoTotalAPKPaths": 608624033,
+        "bothAPKsUnderBothBrandDownloadDirectories": 687401711
+      },
+      "officialLimits": {
+        "publishedSiteBytes": 1000000000,
+        "gitFileMaxBytes": 104857600,
+        "gitFileWarningBytes": 52428800,
+        "browserUploadMaxBytes": 26214400,
+        "softMonthlyBandwidthBytes": 100000000000,
+        "sourceRepositoryRecommendedBytes": 1000000000
+      },
+      "sources": [
+        {
+          "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
+          "verifiedVia": "https://api.github.com/repos/github/docs/contents/content/pages/getting-started-with-github-pages/github-pages-limits.md",
+          "blob": "11deb15321243020e4f73a754b56e6f70aa86a5d"
+        },
+        {
+          "url": "https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github",
+          "verifiedVia": "https://api.github.com/repos/github/docs/contents/content/repositories/working-with-files/managing-large-files/about-large-files-on-github.md",
+          "blob": "6e9cc1d4840343e63976e0dc493db4876c657853"
+        },
+        {
+          "url": "https://github.com/github/docs/blob/main/data/variables/large_files.yml",
+          "blob": "95cb9c1eff04c9b88d15ff694e870cd5893c74e6"
+        }
+      ],
+      "feasibleBySize": true,
+      "recommendedImplementation": "Materialize the exact inspected APKs only inside the ignored final Pages candidate, reconstructed from checked parts and bound to manifest source/bytes/SHA. Keep full APK files out of public/ and Worker asset staging. Ordinary same-origin versioned .apk links with download filename, plus separate verified GitHub release fallback, avoid Blob preparation and GitHub release redirects. No native rebuild required.",
+      "mimeEvidence": "No .apk files exist in the inspected current Pages tree, so this repository provides no production .apk Content-Type sample. Verify actual live response status, Content-Type, Content-Length/no truncation and completed browser Save/hash after deployment. Do not assert MIME or Samsung support before this check.",
+      "scope": "Read-only feasibility, no Pages/source mutation or publication. Actual phone installation and the user-reported failure remain unverified. Pages docs origin blocked by environment; official source read successfully through normal GitHub API."
+    },
+    "sameSiteLocalUi": {
+      "checkedAt": "2026-10-16T17:44:24.948Z",
+      "completed": true,
+      "scope": "Local shared download HTML in sandboxed Chromium with touch/mobile emulation. Ordinary link DOM and no-JavaScript availability verified. No requests to unpublished APK routes; actual Pages responses and browser Save require postdeployment verification. No physical Android installation claim.",
+      "checks": [
+        {
+          "app": "movefield",
+          "case": "Primary and GitHub fallback visible with JavaScript disabled; exact URLs/filename and collapsed optional assembly",
+          "passed": true,
+          "direct": "https://ghinz32-cloud.github.io/movefield/review/downloads/movefield-0.1.6-arm64.apk",
+          "github": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-de6c7abf2438/movefield-0.1.6-arm64.apk",
+          "filename": "movefield-0.1.6-arm64.apk"
+        },
+        {
+          "app": "movefield",
+          "case": "Primary focus without automatic download; both ordinary links have 44px touch targets; optional details operate with touch",
+          "passed": true
+        },
+        {
+          "app": "grizzly",
+          "case": "Primary and GitHub fallback visible with JavaScript disabled; exact URLs/filename and collapsed optional assembly",
+          "passed": true,
+          "direct": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/grizzly-fitness-0.1.5-arm64.apk",
+          "github": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-de6c7abf2438/grizzly-fitness-0.1.5-arm64.apk",
+          "filename": "grizzly-fitness-0.1.5-arm64.apk"
+        },
+        {
+          "app": "grizzly",
+          "case": "Primary focus without automatic download; both ordinary links have 44px touch targets; optional details operate with touch",
+          "passed": true
+        }
+      ],
+      "scans": [
+        {
+          "app": "movefield",
+          "state": "alternative collapsed",
+          "viewport": 320,
+          "textScale": 1.3,
+          "geometry": {
+            "width": 320,
+            "scrollWidth": 320
+          },
+          "violations": []
+        },
+        {
+          "app": "movefield",
+          "state": "alternative expanded",
+          "viewport": 320,
+          "textScale": 1.3,
+          "geometry": {
+            "width": 320,
+            "scrollWidth": 320
+          },
+          "violations": []
+        },
+        {
+          "app": "grizzly",
+          "state": "alternative collapsed",
+          "viewport": 320,
+          "textScale": 1.3,
+          "geometry": {
+            "width": 320,
+            "scrollWidth": 320
+          },
+          "violations": []
+        },
+        {
+          "app": "grizzly",
+          "state": "alternative expanded",
+          "viewport": 320,
+          "textScale": 1.3,
+          "geometry": {
+            "width": 320,
+            "scrollWidth": 320
+          },
+          "violations": []
+        }
+      ],
+      "errors": [],
+      "downloadRequests": [],
+      "sourceHashes": {
+        "public/downloads/android.html": "cca5fbf8d25ed98486564c9e5d30b70cc367292284faa2ebc3c38b0b6f0a0ee6",
+        "public/downloads/android-download.js": "02b2076018ba3607a87f3b1619940ea4fc80b7f248f4e6c1bd73d4de801ad6d9",
+        "scripts/check-android-downloads.cjs": "cbc3bad67b0ebfc886a41ba18835d781640a6ba1d2f824e32a1b355fe12272a0"
+      }
+    },
+    "pagesAssembly": {
+      "ownershipScenarios": 25,
+      "passed": true,
+      "result": "PASS: 25 actual preview-ownership scenarios\nPASS: Previously current and unmanifested hashed chunks survive exactly for open windows; original-root bytes stay unchanged\nPASS: A manifested retained asset also survives the next publication\nPASS: Both exact APKs assemble only into their owned Pages folder and ownership manifest; static input and original root stay unchanged\nPASS: A subsequent publication verifies and replaces its already-owned APKs without accumulating files\nPASS: Download page without manifest fails closed\nPASS: Unexpected manifest format fails closed\nPASS: Missing APK part fails closed\nPASS: Corrupted part bytes fail their SHA256\nPASS: A mislabeled complete SHA256 cannot publish a file\nPASS: A truncated part cannot publish a file\nPASS: Source commit mismatch fails identity validation\nPASS: App filename mismatch fails identity validation\nPASS: A misidentified package fails validation\nPASS: Unsafe version names fail validation\nPASS: Oversized APK metadata fails before allocation\nPASS: Oversized part metadata fails before reading\nPASS: Incorrect total part bytes fail before assembly\nPASS: Part traversal cannot read or write outside ownership\nPASS: Duplicate or reordered parts fail identity validation\nPASS: A static-input symlink is rejected before copy\nPASS: Full APK in static input is rejected\nPASS: Assembler refuses a destination outside the two owned brand folders\nPASS: Unexpected noncompiled paths still fail closed\nPASS: Changed bytes in an owned manifest still fail closed\nPASS: Missing owned paths still fail closed",
+      "actualAssembly": {
+        "passed": true,
+        "scope": "Temporary Pages-only byte assembly; Android signature validation was performed separately for the unchanged compiled artifacts. No publication or native build.",
+        "apps": [
+          {
+            "file": "downloads/movefield-0.1.6-arm64.apk",
+            "app": "movefield",
+            "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+            "version_name": "0.1.6",
+            "version_code": 7,
+            "bytes": 39313208,
+            "sha256": "e0c31e216b5f56263d3d9c7dce858757bc4949fc489034236df089109f98d97f"
+          },
+          {
+            "file": "downloads/grizzly-fitness-0.1.5-arm64.apk",
+            "app": "grizzly",
+            "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+            "version_name": "0.1.5",
+            "version_code": 6,
+            "bytes": 39464470,
+            "sha256": "e32a37ddb9b6087db625aac2b24ff9d5fde4515d77b96284eb83ab2ddc90d992"
+          }
+        ]
+      },
+      "sourceSHA256": {
+        "scripts/prepare-shared-fitness-pages.py": "075c8caea185162facd5ea29d61a0b9508a2765d14713422e71000996b2ef2a0",
+        "scripts/materialize_pages_apk.py": "34b83632256f9c6751aca8e1e69f9f1a26125917efd96b47986b26c6e549eb4c",
+        "scripts/check-preview-ownership.py": "61c85e1a02111733a0483df1d6136d4dfadd95ce0a00a7c246bef6014e973836"
+      }
+    },
+    "githubDirectLive": {
+      "checkedAt": "2026-10-16T17:40:33.309Z",
+      "completed": true,
+      "expectedNativeSource": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+      "manifestSHA256": "21f22ece903ce6424ca660d6273a753457b701cacaa9d67393169d35afa1ffd7",
+      "results": [
+        {
+          "app": "movefield",
+          "version": "0.1.6",
+          "versionCode": 7,
+          "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "manifestSHA256": "21f22ece903ce6424ca660d6273a753457b701cacaa9d67393169d35afa1ffd7",
+          "at320FromStart": true,
+          "bytes": 39313208,
+          "sha256": "e0c31e216b5f56263d3d9c7dce858757bc4949fc489034236df089109f98d97f",
+          "directDownloadURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-de6c7abf2438/movefield-0.1.6-arm64.apk",
+          "savedFilename": "movefield-0.1.6-arm64.apk",
+          "primaryDownloadPassed": true,
+          "checkedAssemblySavePassed": true,
+          "checkedSavedFilename": "movefield-arm64-current-test.apk",
+          "passed": true,
+          "scope": "Live Pages in sandboxed Chromium: primary release link and optional in-page preparation both completed actual browser Save with exact file hashes, initial primary focus, touch target, alternative collapsed initially, 320px layout; no Samsung browser or Android installation claim."
+        },
+        {
+          "app": "grizzly",
+          "version": "0.1.5",
+          "versionCode": 6,
+          "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "manifestSHA256": "21f22ece903ce6424ca660d6273a753457b701cacaa9d67393169d35afa1ffd7",
+          "at320FromStart": true,
+          "bytes": 39464470,
+          "sha256": "e32a37ddb9b6087db625aac2b24ff9d5fde4515d77b96284eb83ab2ddc90d992",
+          "directDownloadURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-de6c7abf2438/grizzly-fitness-0.1.5-arm64.apk",
+          "savedFilename": "grizzly-fitness-0.1.5-arm64.apk",
+          "primaryDownloadPassed": true,
+          "checkedAssemblySavePassed": true,
+          "checkedSavedFilename": "grizzly-arm64-current-test.apk",
+          "passed": true,
+          "scope": "Live Pages in sandboxed Chromium: primary release link and optional in-page preparation both completed actual browser Save with exact file hashes, initial primary focus, touch target, alternative collapsed initially, 320px layout; no Samsung browser or Android installation claim."
+        }
+      ]
     }
   }
 }

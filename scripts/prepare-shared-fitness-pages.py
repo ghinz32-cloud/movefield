@@ -1,5 +1,6 @@
 """Replace both owned shared-app previews; preserve the original Movefield app."""
 import argparse,datetime,hashlib,io,json,pathlib,re,shutil,subprocess,tarfile
+from materialize_pages_apk import materialize
 ROOT=pathlib.Path(__file__).resolve().parents[1];RUNTIME=ROOT/'.sites-runtime'
 parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--base-commit',required=True);args=parser.parse_args()
 if not re.fullmatch(r'[a-f0-9]{40}',args.base_commit):parser.error('Use the inspected full Pages commit.')
@@ -28,7 +29,10 @@ for folder in ['review','grizzly']:
  for path,expected in previous['files'].items():
   p=target/path
   if p.is_symlink() or '..' in pathlib.PurePosixPath(path).parts or not p.resolve().is_relative_to(target.resolve()) or sha(p)!=expected:raise RuntimeError('Owned artifact differs: '+path)
- shutil.rmtree(target);shutil.copytree(RUNTIME/('github-pages-'+folder),target)
+ static=RUNTIME/('github-pages-'+folder)
+ if static.is_symlink() or any(p.is_symlink() for p in static.rglob('*')):raise RuntimeError('Static input contains a symlink: '+folder)
+ if any(p.is_file() for p in static.rglob('*.apk')):raise RuntimeError('Full APKs belong only in the Pages candidate: '+folder)
+ shutil.rmtree(target);shutil.copytree(static,target)
  for path,data in legacy_bytes.items():
   retained=target/path
   if retained.exists() and retained.read_bytes()!=data:raise RuntimeError('Compiled asset name collision: '+path)
@@ -36,9 +40,11 @@ for folder in ['review','grizzly']:
  for extra in ['_headers','.assetsignore']:
   if (target/extra).exists():(target/extra).unlink()
  (target/'.nojekyll').write_text('')
+ apk=materialize(candidate,folder)
  files={str(p.relative_to(target)):sha(p) for p in sorted(target.rglob('*')) if p.is_file()}
  manifest={'schema':1,'base':'/movefield/'+folder+'/','brand':'Grizzly Fitness' if folder=='grizzly' else 'Movefield','profile_scope':'Separate brand profile, database, preferences and offline cache. Training code is shared.','application_source_sha256':source['application_source_sha256'],'source_commit':commit,'files':files}
  if legacy:manifest['retained_legacy_files']=legacy
+ if apk:manifest['android_download']=apk
  if folder=='grizzly':manifest.update(official_logo_retrieved=False,logo_supplied_by_user=True,logo_source='User-supplied JPEG, unchanged.',logo_sha256=sha(target/'brand/grizzly-fitness-logo.jpg'))
  (target/name).write_text(json.dumps(manifest,indent=2)+'\n')
 if any(p.is_symlink() for p in candidate.rglob('*')):raise RuntimeError('No symlink may be published.')

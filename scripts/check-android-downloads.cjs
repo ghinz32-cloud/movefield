@@ -10,9 +10,16 @@ function verifyDirectLinks(page){
   const card=[...page.matchAll(/<article\b([^>]*)>([\s\S]*?)<\/article>/g)].find(row=>row[1].includes('data-app="'+app.app+'"'));assert.ok(card,'Missing app download card');
   const primary=[...card[2].matchAll(/<a\b([^>]*\bdata-direct\b[^>]*)>([\s\S]*?)<\/a>/g)];assert.equal(primary.length,1,'One ordinary primary download link per app');
   const href=primary[0][1].match(/\bhref="([^"]+)"/);assert.ok(href,'Primary download must work without JavaScript');
-  const expected='https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-'+manifest.sourceCommit.slice(0,12)+'/'+basename+'-'+app.versionName+'-arm64.apk';
-  assert.equal(href[1],expected,'Primary APK must match the manifest release source and version');
-  assert.doesNotMatch(primary[0][1],/\s(?:onclick|hidden|download)(?:\s*=|\s|$)/,'Use the release server’s ordinary attachment response');
+  const filename=basename+'-'+app.versionName+'-arm64.apk',folder=app.app==='movefield'?'review':'grizzly';
+  const expectedPages='https://ghinz32-cloud.github.io/movefield/'+folder+'/downloads/'+filename;
+  assert.equal(href[1],expectedPages,'Primary APK must match the canonical Pages URL and manifest version');
+  assert.equal(primary[0][1].match(/\sdownload="([^"]+)"/)?.[1],filename,'Same-origin download must use the exact versioned APK filename');
+  assert.doesNotMatch(primary[0][1].replace(/="[^"]*"/g,'=""'),/\s(?:onclick|hidden|target)(?:\s*=|\s|$)/,'Primary download must use an ordinary link without scripted navigation');
+  const fallback=[...card[2].matchAll(/<a\b([^>]*\bdata-github-download\b[^>]*)>([\s\S]*?)<\/a>/g)];assert.equal(fallback.length,1,'One visible GitHub fallback per app');
+  const expectedRelease='https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-'+manifest.sourceCommit.slice(0,12)+'/'+filename;
+  assert.equal(fallback[0][1].match(/\bhref="([^"]+)"/)?.[1],expectedRelease,'GitHub fallback must match the manifest release source and version');
+  assert.equal(fallback[0][2],'Try GitHub download');
+  assert.doesNotMatch(fallback[0][1].replace(/="[^"]*"/g,'=""'),/\s(?:onclick|hidden|download|target)(?:\s*=|\s|$)/,'GitHub fallback must use the release server’s ordinary attachment response');
   assert.ok(card[2].indexOf('data-direct')<card[2].indexOf('data-download'),'Direct download is the first action');
   assert.match(card[2],/<details class="checked-download">[\s\S]*data-download=/,'Browser preparation remains an optional collapsed alternative');
  }
@@ -34,10 +41,13 @@ function harness({corrupt=false,cancel=false,invalid=false,focus=''}={}){
 (async()=>{
  verifyDirectLinks(html);
  const release='android-ux-preview-'+manifest.sourceCommit.slice(0,12);assert.throws(()=>verifyDirectLinks(html.replace(release,'android-ux-preview-000000000000')),/manifest release source and version/,'A stale release URL must fail qualification');
- const first=manifest.apps[0],current={movefield:'movefield',grizzly:'grizzly-fitness'}[first.app]+'-'+first.versionName+'-arm64.apk';assert.throws(()=>verifyDirectLinks(html.replace(current,current.replace(first.versionName,'0.0.0'))),/manifest release source and version/,'A stale APK version must fail qualification');
+ const first=manifest.apps[0],current={movefield:'movefield',grizzly:'grizzly-fitness'}[first.app]+'-'+first.versionName+'-arm64.apk';assert.throws(()=>verifyDirectLinks(html.replace(current,current.replace(first.versionName,'0.0.0'))),/canonical Pages URL and manifest version/,'A stale Pages APK version must fail qualification');
+ assert.throws(()=>verifyDirectLinks(html.replace('https://ghinz32-cloud.github.io/movefield/','https://unexpected.example/movefield/')),/canonical Pages URL/,'A foreign primary host must fail qualification');
+ assert.throws(()=>verifyDirectLinks(html.replace('download="'+current+'"','download="old.apk"')),/exact versioned APK filename/,'An incorrect saved filename must fail qualification');
+ assert.throws(()=>verifyDirectLinks(html.replace(release+'/'+current,release+'/'+current.replace(first.versionName,'0.0.0'))),/manifest release source and version/,'A stale GitHub APK version must fail qualification');
  for(const app of manifest.apps){const h=harness({focus:app.app}),card=h.cards.find(c=>c.dataset.app===app.app);assert.equal(card.fields['[data-direct]'].focused,true);assert.equal(card.fields['[data-download]'].focused,undefined);assert.equal(card.fields['[data-direct]'].listeners.click,undefined);assert.equal(h.requests.length,0,'Focusing the primary link must not start an assembler or download')}
  for(const app of manifest.apps){const h=harness(),card=h.cards.find(c=>c.dataset.app===app.app);await card.fields['[data-download]'].listeners.click();assert.equal(card.fields['.save'].hidden,false);assert.equal(card.fields['.save'].download,app.filename);assert.equal(h.blobs.length,1);const raw=Buffer.from(await h.blobs[0].arrayBuffer());assert.equal(raw.length,app.bytes);assert.equal(digest(raw),app.sha256);assert.equal(card.fields['[data-download]'].disabled,false)}
  for(const options of [{corrupt:true},{invalid:true}]){const h=harness(options),card=h.cards[0];await card.fields['[data-download]'].listeners.click();assert.equal(card.fields['.save'].hidden,true);assert.equal(h.blobs.length,0);assert.ok(card.fields['.status'].textContent.includes('invalid')||card.fields['.status'].textContent.includes('file check'));assert.equal(card.fields['[data-download]'].disabled,false)}
  const h=harness({cancel:true}),card=h.cards[0],task=card.fields['[data-download]'].listeners.click();await h.started;card.fields['.cancel'].listeners.click();await task;assert.equal(card.fields['.status'].textContent,'Download cancelled.');assert.equal(h.blobs.length,0);assert.equal(card.fields['[data-download]'].disabled,false);
- console.log('PASS current-version ordinary primary links, stale source/version rejection and primary-link focus without automatic download. Both exact compiled APKs reconstruct and match SHA256; altered data, external part URLs and cancellation cannot produce a download; no account/profile storage is read. Browser download/save UI remains separately checked.');
+ console.log('PASS exact current Pages primary URLs and filenames, matching GitHub fallbacks, stale/foreign URL rejection and primary-link focus without automatic download. Both exact compiled APKs reconstruct and match SHA256; altered data, external part URLs and cancellation cannot produce a download; no account/profile storage is read. Live same-site APK serving and actual browser Save remain separately checked.');
 })().catch(error=>{console.error(error);process.exitCode=1});
