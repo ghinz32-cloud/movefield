@@ -1,6 +1,6 @@
 # Workout coaching and UI/compatibility audit — October 16, 2026
 
-This change adds local before/after workout coaching to Movefield and Grizzly and removes the generated day off from new calendars. Existing obligations and workout history stay intact. Local verification is complete within the scopes below; compiled Android release checks and live publication verification remain separate pending steps.
+This change adds local before/after workout coaching to Movefield and Grizzly and removes the generated day off from new calendars. Existing obligations and workout history stay intact. Both shared websites and compiled Android previews are published and verified within the scopes below. The owner confirmed the new Movefield Pages download completes on the Samsung S24 Ultra after the Chrome/paste instructions, then installs and opens with saved workouts present. Broader device testing, Grizzly phone installation and signed iPhone distribution remain open.
 
 ## User flow
 
@@ -24,7 +24,7 @@ Research and wording limitations: [coaching research](coaching-research-2026-10-
 | Surface | Implementation and remaining qualification |
 | --- | --- |
 | Shared websites | Same coaching module, local/offline operation, keyboard-operated dialogs and disclosures, responsive layouts and stored preferences. Build baseline is Chromium/Edge 111, Firefox 114 and Safari/iOS 16.4; exact browser verification is listed separately below. |
-| Android previews | Shared snapshot, native coaching controls, encrypted saving and separate package identities. New preview versions are Movefield 0.1.6/code 7 and Grizzly 0.1.5/code 6. Installer identity and artifact receipts must pass before publication. |
+| Android previews | Shared snapshot, native coaching controls, encrypted saving and separate package identities. Movefield 0.1.6/code 7 and Grizzly 0.1.5/code 6 passed compilation and independent installer inspection, and are published. The owner confirms a successful Movefield update with saved workouts on one S24 Ultra; other device/brand acceptance remains separate. |
 | iPhone preparation | Separate bundle identities, explicit version/build settings, iOS 16.4 deployment floor and native keyboard/safe-area support. Unsigned iOS Hermes exports do not constitute an Xcode build, signed installer or TestFlight release. Apple signing and physical-device testing remain outstanding. |
 | Future AI | Strict, unconnected selection adapter permits only current canonical message IDs and retains mandatory notices. It rejects stale contexts, unknown IDs and arbitrary prose/target proposals. Current cloud-v1 consent, budgets and minimized payload remain separate and unchanged. No new AI service is enabled. |
 
@@ -55,7 +55,7 @@ The primary web JavaScript grew by about 34.5 KB per brand, approximately 11.2 K
 
 The local Node timing probe took approximately 12/10 ms before/after with 1,000 records and 172/170 ms with 10,000 records. These are single environment measurements, not phone performance guarantees. Native results are detailed in the [native receipt](audit-2026-10-16/native-coaching-results.json).
 
-Firefox/WebKit installation endpoints were denied by the configured network policy. Safari, physical Android/iPhone use, installed-app upgrades, OS keyboard behavior, VoiceOver and TalkBack remain unqualified. Finite axe states and emulated viewports do not establish complete WCAG conformance, every font/palette combination or real-device usability. Apple build/signing and TestFlight are not configured; there is no signed iPhone installer from this work.
+Firefox/WebKit installation endpoints were denied by the configured network policy. Safari, the broader physical Android/iPhone matrix, OS keyboard behavior, VoiceOver and TalkBack remain unqualified. The owner separately reported one successful Movefield update/opening with saved workouts present on an S24 Ultra; this does not qualify every record, feature or device. Finite axe states and emulated viewports do not establish complete WCAG conformance, every font/palette combination or real-device usability. Apple build/signing and TestFlight are not configured; there is no signed iPhone installer from this work.
 
 ## Publication and compiled release verification
 
@@ -64,11 +64,14 @@ Firefox/WebKit installation endpoints were denied by the configured network poli
 | Frozen application source | `de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c`; source/tree identity verified locally. |
 | Android build workflow | Run `38936451848` passed both brands: compilation, lint, unit tests and artifact checks. Publisher `38938205085` passed on its first attempt. |
 | Android download release | [Verified Android preview release](https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-de6c7abf2438): Movefield 0.1.6/code 7 and Grizzly 0.1.5/code 6. Both public APKs passed independent signature, package, version, source, manifest, backup, transport and coaching-marker inspection; ARM64, Android 7+. |
-| GitHub Pages publication | Pending exact Pages commit/workflow and live HTTP/asset checks for both brands. |
+| GitHub Pages publication | Source `df3dd721c29704f53bd4cfebacf3b7125058a9c1`, Pages `f577d1401ccacac6fad6ce5caea61a92f0f44d46`; deployment [38942872482](https://github.com/ghinz32-cloud/movefield/actions/runs/38942872482) succeeded. All 357 selected public files matched, including all 63 original-root files. All 22 download files matched and four APK reconstructions passed. |
+| Complete APKs hosted on Pages | Both actual browser Saves completed with the inspected file hashes. HEAD returned HTTP 200, exact file lengths and Android APK MIME; first and last 4,096-byte ranges returned HTTP 206 with correct totals and matching bytes. There were no release redirects. The owner separately confirmed the Movefield download completes after the Chrome/paste instructions and the update opens with saved workouts present on the reported phone. |
 | Signed iPhone distribution | Not configured; Apple build/signing and physical-device qualification remain required. |
 
-The release owner will fill these publication fields and the matching JSON section after exact release/live receipts are available. Local passing checks and export files alone do not establish that the public site or downloaded installers contain this candidate.
+The final delivery application SHA256 is `ea7436b00723ea2d64fb33ff661f890c930c7fd2d55f61208c36d7de4db4a30e`. Final delivery changes the download routes and publication tooling; the six application JavaScript/CSS assets per brand and compiled native code remain unchanged. Both live encrypted coaching flows passed at the preceding Pages checkpoint; final asset identity verification is recorded separately, without relabeling the earlier flow test.
+
+Live sites: [Movefield](https://ghinz32-cloud.github.io/movefield/review/) and [Grizzly](https://ghinz32-cloud.github.io/movefield/grizzly/). Complete Android preview files: [Movefield 0.1.6](https://ghinz32-cloud.github.io/movefield/review/downloads/movefield-0.1.6-arm64.apk) and [Grizzly 0.1.5](https://ghinz32-cloud.github.io/movefield/grizzly/downloads/grizzly-fitness-0.1.5-arm64.apk). The original `/movefield/` root remains the separate older application.
 
 ## Android download follow-up
 
-A reported S24 Ultra freeze occurred in the webpage preparation/save step. The page now offers ordinary current APK links as its primary action, with checked browser assembly optional. The audit also corrected stale fallback URLs that pointed to older releases. The APK bytes and native code are unchanged. [The follow-up report](android-download-repair-2026-10-16.md) distinguishes the confirmed link defect from the unconfirmed freeze cause and records the outstanding phone retest.
+A reported S24 Ultra freeze occurred in the webpage preparation/save step. The page now offers ordinary current APK links as its primary action, with checked browser assembly optional. The audit also corrected stale fallback URLs that pointed to older releases. The APK bytes and native code are unchanged. [The follow-up report](android-download-repair-2026-10-16.md) distinguishes the confirmed stale-link defect and successful new-route phone download from the unconfirmed cause of the previous stall. The owner confirmed installation/opening with saved workouts present for Movefield on this S24 Ultra; Grizzly and broader installed-device acceptance remain open.

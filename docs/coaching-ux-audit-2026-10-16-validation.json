@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "checkedAt": "2026-10-16T17:12:21.714350+00:00",
+  "checkedAt": "2026-10-16T17:58:38.803349+00:00",
   "candidate": {
     "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
     "sourceTree": "2831460f6e90b3374ac7e5e5db629f7a51eca25c",
@@ -9,9 +9,10 @@
   },
   "status": {
     "localVerification": "passed_with_documented_limits_and_lint_warnings",
-    "publication": "pending",
+    "publication": "published_and_live_verified",
     "compiledAndroidArtifacts": "passed_and_published",
-    "signedIosDistribution": "not_configured"
+    "signedIosDistribution": "not_configured",
+    "ownerReportedMovefieldPhoneAcceptance": "download_update_open_and_saved_workouts_confirmed"
   },
   "shared": {
     "core": {
@@ -330,7 +331,7 @@
         "encouragementPhrasesPerBrand": 32,
         "normalBeforeCombinationsPerBrand": 3072,
         "normalAfterCombinationsPerBrand": 3072,
-        "counting": "Distinct editorial frame \u00d7 suggestion \u00d7 encouragement combinations, not independent coaching policies; personalized numbers and dates are not included in the count."
+        "counting": "Distinct editorial frame × suggestion × encouragement combinations, not independent coaching policies; personalized numbers and dates are not included in the count."
       },
       "diversity": {
         "contextsPerPhase": 40000,
@@ -374,7 +375,7 @@
         "encouragementPhrasesPerBrand": 32,
         "normalBeforeCombinationsPerBrand": 3072,
         "normalAfterCombinationsPerBrand": 3072,
-        "counting": "Distinct editorial frame \u00d7 suggestion \u00d7 encouragement combinations, not independent coaching policies; personalized numbers and dates are not included in the count."
+        "counting": "Distinct editorial frame × suggestion × encouragement combinations, not independent coaching policies; personalized numbers and dates are not included in the count."
       },
       "actualVariationProbes": [
         {
@@ -957,7 +958,7 @@
         "id": "setup-header-overflow",
         "severity": "medium",
         "status": "fixed",
-        "details": "320px/130% Save & exit overflow349px fixed by wrapping narrow setup header and keeping complete \u226544px action."
+        "details": "320px/130% Save & exit overflow349px fixed by wrapping narrow setup header and keeping complete ≥44px action."
       },
       {
         "id": "success-toast-contrast",
@@ -986,7 +987,7 @@
         "engine": "Firefox",
         "pinnedVersion": "151.0 / Playwright revision 1532",
         "availability": "not installed; official download hosts denied by current proxy",
-        "coverage": "Not run. Stock Firefox is not a drop-in replacement for Playwright\u2019s instrumented Firefox."
+        "coverage": "Not run. Stock Firefox is not a drop-in replacement for Playwright’s instrumented Firefox."
       },
       {
         "engine": "WebKit",
@@ -1303,6 +1304,101 @@
         }
       ],
       "finishedAt": "2026-10-16T17:42:45.735Z"
+    },
+    "finalLiveIdentity": {
+      "checkedAt": "2026-10-16T17:56:36.359Z",
+      "expectedSource": "df3dd721c29704f53bd4cfebacf3b7125058a9c1",
+      "expectedPagesCommit": "f577d1401ccacac6fad6ce5caea61a92f0f44d46",
+      "workflow": "38942872482",
+      "pagesCommitScope": "Successful workflow and Pages commit supplied by root; source independently verified from served manifests.",
+      "scope": "Final identity-only verification with read-only same-site requests and sandboxed Chromium. No repeated workout flow, account activity, cloud/provider access or physical-device qualification.",
+      "behavioralEvidence": {
+        "file": ".sites-runtime/coaching-safety/live-results.json",
+        "source": "7a01f7e79c0bad7796ee4489150d61099bad3aa3",
+        "pages": "56e5569c00fb2fec98707088bae6a5e93cf636d7",
+        "checkedAt": "2026-10-16T17:42:28.097Z",
+        "finishedAt": "2026-10-16T17:42:45.735Z",
+        "passedChecks": 4
+      },
+      "builds": [
+        {
+          "brand": "movefield",
+          "base": "https://ghinz32-cloud.github.io/movefield/review/",
+          "sourceCommit": "df3dd721c29704f53bd4cfebacf3b7125058a9c1",
+          "manifestSHA256": "5779bbe244648ab1653333e8730fb0d74182abee28dd2c93ceb8fe0dbd47270f",
+          "files": [
+            {
+              "path": "index.html",
+              "sha256": "7324f0f2868507c2ca1128a43d568c6ffb5c0ba82e451790ba56f53b8e065f70"
+            },
+            {
+              "path": "assets/index-Cbvqaehl.js",
+              "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+            },
+            {
+              "path": "assets/index-DPAY41Tk.css",
+              "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+            }
+          ],
+          "loaded": [
+            {
+              "path": "index.html",
+              "sha256": "7324f0f2868507c2ca1128a43d568c6ffb5c0ba82e451790ba56f53b8e065f70"
+            },
+            {
+              "path": "assets/index-DPAY41Tk.css",
+              "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+            },
+            {
+              "path": "assets/index-Cbvqaehl.js",
+              "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+            }
+          ],
+          "requests": 6,
+          "blocked": [],
+          "pageErrors": [],
+          "unchangedFromBehavioralCheck": true
+        },
+        {
+          "brand": "grizzly",
+          "base": "https://ghinz32-cloud.github.io/movefield/grizzly/",
+          "sourceCommit": "df3dd721c29704f53bd4cfebacf3b7125058a9c1",
+          "manifestSHA256": "b70abcf7c5a081d21bdab33cd2b3ea3221fac05139d4d85478d0e2697cb64b48",
+          "files": [
+            {
+              "path": "index.html",
+              "sha256": "18a87be5a34d329fcf70bf259a538eaf6068a7b080e8ea50dae105a1ad7d7154"
+            },
+            {
+              "path": "assets/index-BlpAb5Is.js",
+              "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+            },
+            {
+              "path": "assets/index-CJG9R_vC.css",
+              "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+            }
+          ],
+          "loaded": [
+            {
+              "path": "index.html",
+              "sha256": "18a87be5a34d329fcf70bf259a538eaf6068a7b080e8ea50dae105a1ad7d7154"
+            },
+            {
+              "path": "assets/index-CJG9R_vC.css",
+              "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+            },
+            {
+              "path": "assets/index-BlpAb5Is.js",
+              "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+            }
+          ],
+          "requests": 9,
+          "blocked": [],
+          "pageErrors": [],
+          "unchangedFromBehavioralCheck": true
+        }
+      ],
+      "finishedAt": "2026-10-16T17:56:43.240Z"
     }
   },
   "independentBrowserSafety": {
@@ -2346,20 +2442,377 @@
           "allNativeLibrariesStoredAndZip16KBAligned": true
         }
       ]
+    },
+    "ownerReportedPhoneAcceptance": {
+      "recordedAt": "2026-10-16T17:58:38.803349+00:00",
+      "evidenceType": "Owner replies in this conversation; not agent-observed device automation",
+      "device": "Samsung S24 Ultra",
+      "firmware": "Owner estimated One UI 8.1; exact Android/firmware build not verified",
+      "app": "Movefield",
+      "version": "0.1.6",
+      "versionCode": 7,
+      "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+      "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/movefield-0.1.6-arm64.apk",
+      "browserInstruction": "Open Chrome directly from the home screen and paste the Pages URL into its address bar",
+      "downloadReply": "It finishes downloading",
+      "installationReply": "It installs and my workouts are present",
+      "downloadCompleted": true,
+      "updateInstalledAndOpened": true,
+      "savedWorkoutsPresent": true,
+      "limits": [
+        "One owner-reported device and update path; not a complete data-integrity, OS-feature or device-matrix test.",
+        "Grizzly phone download/installation not yet confirmed.",
+        "Cause of the previous stalled route remains unconfirmed."
+      ]
     }
   },
   "publication": {
-    "status": "android_release_published_pages_pending",
+    "status": "published_and_live_verified",
     "sourceBranch": "codex/adaptive-coaching-2026-10-16",
-    "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
-    "pagesWorkflowRunId": null,
-    "pagesCommit": null,
+    "sourceCommit": "df3dd721c29704f53bd4cfebacf3b7125058a9c1",
+    "nativeSourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+    "applicationSourceSHA256": "ea7436b00723ea2d64fb33ff661f890c930c7fd2d55f61208c36d7de4db4a30e",
+    "pagesWorkflowRunId": 38942872482,
+    "pagesCommit": "f577d1401ccacac6fad6ce5caea61a92f0f44d46",
     "releaseUrl": "https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-de6c7abf2438",
-    "liveChecks": [],
-    "note": "Android public release independently verified. Final website delivery commit, Pages deployment and live checks are pending."
+    "reviewUrl": "https://ghinz32-cloud.github.io/movefield/review/",
+    "grizzlyUrl": "https://ghinz32-cloud.github.io/movefield/grizzly/",
+    "delivery": {
+      "pages_commit": "f577d1401ccacac6fad6ce5caea61a92f0f44d46",
+      "base_pages_commit": "56e5569c00fb2fec98707088bae6a5e93cf636d7",
+      "source_commit": "df3dd721c29704f53bd4cfebacf3b7125058a9c1",
+      "application_source_sha256": "ea7436b00723ea2d64fb33ff661f890c930c7fd2d55f61208c36d7de4db4a30e",
+      "preserved_original_files": 63,
+      "verified_candidate_files": 3873,
+      "pushed": true,
+      "live_verified": true,
+      "remote_head": "f577d1401ccacac6fad6ce5caea61a92f0f44d46",
+      "source_remote_head_at_publication": "df3dd721c29704f53bd4cfebacf3b7125058a9c1",
+      "pages_workflow_run_id": 38942872482,
+      "verified_at": "2026-10-16T17:58:38.803349+00:00",
+      "review_url": "https://ghinz32-cloud.github.io/movefield/review/",
+      "grizzly_url": "https://ghinz32-cloud.github.io/movefield/grizzly/",
+      "live_check_status": "357 selected HTTPS files including all 63 root files, 22 download files, four APK reconstructions, both complete Pages browser Saves/hashes, HEAD/first+last range checks and final loaded app identity passed. Movefield download/update/opening/workout preservation separately owner-confirmed on S24 Ultra."
+    },
+    "deployment": {
+      "checkedAt": "2026-10-16T17:52:49.917493+00:00",
+      "run": {
+        "id": 38942872482,
+        "name": "pages build and deployment",
+        "head_sha": "f577d1401ccacac6fad6ce5caea61a92f0f44d46",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38942872482",
+        "created_at": "2026-10-16T17:51:20Z",
+        "updated_at": "2026-10-16T17:52:34Z"
+      }
+    },
+    "deliveryBuildIdentity": {
+      "checkedAt": "2026-10-16T17:48:56.469302+00:00",
+      "sourceCommit": "df3dd721c29704f53bd4cfebacf3b7125058a9c1",
+      "passed": true,
+      "brands": {
+        "movefield": {
+          "applicationAssetsUnchanged": true,
+          "assetCount": 6,
+          "finalDownloadPageAndScriptCopied": true,
+          "fullApksInStaticInputs": 0
+        },
+        "grizzly": {
+          "applicationAssetsUnchanged": true,
+          "assetCount": 6,
+          "finalDownloadPageAndScriptCopied": true,
+          "fullApksInStaticInputs": 0
+        }
+      }
+    },
+    "credentialPatternScan": {
+      "ran_at": "2026-10-16T17:49:01.324201+00:00",
+      "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed.",
+      "files": 6131,
+      "zip_members": 2286,
+      "matches": []
+    },
+    "liveChecks": [
+      {
+        "checked_at": "2026-10-16T17:55:28.787587+00:00",
+        "pages_commit": "f577d1401ccacac6fad6ce5caea61a92f0f44d46",
+        "source_commit": "df3dd721c29704f53bd4cfebacf3b7125058a9c1",
+        "application_source_sha256": "ea7436b00723ea2d64fb33ff661f890c930c7fd2d55f61208c36d7de4db4a30e",
+        "scope": "HTTPS byte verification only; no browser or installed-device acceptance.",
+        "root_files_checked": 63,
+        "passed": true,
+        "filesChecked": 357,
+        "receipt": ".sites-runtime/coaching-2026-10-16/live-http.json"
+      },
+      {
+        "checkedAt": "2026-10-16T17:55:12.916955+00:00",
+        "pagesCommit": "f577d1401ccacac6fad6ce5caea61a92f0f44d46",
+        "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+        "passed": true,
+        "scope": "Exact live download-page/manifest/script/part bytes and reconstruction of both APKs from both served brand directories; no phone installation claim.",
+        "reconstructedAPKs": [
+          {
+            "folder": "review",
+            "app": "movefield",
+            "version": "0.1.6",
+            "bytes": 39313208,
+            "sha256": "e0c31e216b5f56263d3d9c7dce858757bc4949fc489034236df089109f98d97f",
+            "passed": true
+          },
+          {
+            "folder": "review",
+            "app": "grizzly",
+            "version": "0.1.5",
+            "bytes": 39464470,
+            "sha256": "e32a37ddb9b6087db625aac2b24ff9d5fde4515d77b96284eb83ab2ddc90d992",
+            "passed": true
+          },
+          {
+            "folder": "grizzly",
+            "app": "movefield",
+            "version": "0.1.6",
+            "bytes": 39313208,
+            "sha256": "e0c31e216b5f56263d3d9c7dce858757bc4949fc489034236df089109f98d97f",
+            "passed": true
+          },
+          {
+            "folder": "grizzly",
+            "app": "grizzly",
+            "version": "0.1.5",
+            "bytes": 39464470,
+            "sha256": "e32a37ddb9b6087db625aac2b24ff9d5fde4515d77b96284eb83ab2ddc90d992",
+            "passed": true
+          }
+        ],
+        "filesChecked": 22,
+        "receipt": ".sites-runtime/coaching-2026-10-16/native-live-downloads.json"
+      },
+      {
+        "receipt": ".sites-runtime/coaching-safety/final-live-identity.json",
+        "result": {
+          "checkedAt": "2026-10-16T17:56:36.359Z",
+          "expectedSource": "df3dd721c29704f53bd4cfebacf3b7125058a9c1",
+          "expectedPagesCommit": "f577d1401ccacac6fad6ce5caea61a92f0f44d46",
+          "workflow": "38942872482",
+          "pagesCommitScope": "Successful workflow and Pages commit supplied by root; source independently verified from served manifests.",
+          "scope": "Final identity-only verification with read-only same-site requests and sandboxed Chromium. No repeated workout flow, account activity, cloud/provider access or physical-device qualification.",
+          "behavioralEvidence": {
+            "file": ".sites-runtime/coaching-safety/live-results.json",
+            "source": "7a01f7e79c0bad7796ee4489150d61099bad3aa3",
+            "pages": "56e5569c00fb2fec98707088bae6a5e93cf636d7",
+            "checkedAt": "2026-10-16T17:42:28.097Z",
+            "finishedAt": "2026-10-16T17:42:45.735Z",
+            "passedChecks": 4
+          },
+          "builds": [
+            {
+              "brand": "movefield",
+              "base": "https://ghinz32-cloud.github.io/movefield/review/",
+              "sourceCommit": "df3dd721c29704f53bd4cfebacf3b7125058a9c1",
+              "manifestSHA256": "5779bbe244648ab1653333e8730fb0d74182abee28dd2c93ceb8fe0dbd47270f",
+              "files": [
+                {
+                  "path": "index.html",
+                  "sha256": "7324f0f2868507c2ca1128a43d568c6ffb5c0ba82e451790ba56f53b8e065f70"
+                },
+                {
+                  "path": "assets/index-Cbvqaehl.js",
+                  "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+                },
+                {
+                  "path": "assets/index-DPAY41Tk.css",
+                  "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+                }
+              ],
+              "loaded": [
+                {
+                  "path": "index.html",
+                  "sha256": "7324f0f2868507c2ca1128a43d568c6ffb5c0ba82e451790ba56f53b8e065f70"
+                },
+                {
+                  "path": "assets/index-DPAY41Tk.css",
+                  "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+                },
+                {
+                  "path": "assets/index-Cbvqaehl.js",
+                  "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+                }
+              ],
+              "requests": 6,
+              "blocked": [],
+              "pageErrors": [],
+              "unchangedFromBehavioralCheck": true
+            },
+            {
+              "brand": "grizzly",
+              "base": "https://ghinz32-cloud.github.io/movefield/grizzly/",
+              "sourceCommit": "df3dd721c29704f53bd4cfebacf3b7125058a9c1",
+              "manifestSHA256": "b70abcf7c5a081d21bdab33cd2b3ea3221fac05139d4d85478d0e2697cb64b48",
+              "files": [
+                {
+                  "path": "index.html",
+                  "sha256": "18a87be5a34d329fcf70bf259a538eaf6068a7b080e8ea50dae105a1ad7d7154"
+                },
+                {
+                  "path": "assets/index-BlpAb5Is.js",
+                  "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+                },
+                {
+                  "path": "assets/index-CJG9R_vC.css",
+                  "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+                }
+              ],
+              "loaded": [
+                {
+                  "path": "index.html",
+                  "sha256": "18a87be5a34d329fcf70bf259a538eaf6068a7b080e8ea50dae105a1ad7d7154"
+                },
+                {
+                  "path": "assets/index-CJG9R_vC.css",
+                  "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+                },
+                {
+                  "path": "assets/index-BlpAb5Is.js",
+                  "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+                }
+              ],
+              "requests": 9,
+              "blocked": [],
+              "pageErrors": [],
+              "unchangedFromBehavioralCheck": true
+            }
+          ],
+          "finishedAt": "2026-10-16T17:56:43.240Z"
+        }
+      },
+      {
+        "receipt": ".sites-runtime/coaching-2026-10-16/live-pages-download/headers.json",
+        "result": {
+          "checkedAt": "2026-10-16T17:55:02.218879+00:00",
+          "expectedNativeSource": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "results": [
+            {
+              "app": "movefield",
+              "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/movefield-0.1.6-arm64.apk",
+              "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+              "head": {
+                "status": 200,
+                "contentType": "application/vnd.android.package-archive",
+                "contentLength": 39313208,
+                "contentDisposition": null,
+                "acceptRanges": "bytes",
+                "noRedirect": true
+              },
+              "rangeRequests": [
+                {
+                  "segment": "first",
+                  "requestRange": "bytes=0-4095",
+                  "status": 206,
+                  "contentRange": "bytes 0-4095/39313208",
+                  "contentLength": 4096,
+                  "verifiedBytes": 4096,
+                  "sha256": "75ca81288e669b433a1dca0c601f3b9d07aac0bd3d713d0a1ca65f3824dff3a6"
+                },
+                {
+                  "segment": "last",
+                  "requestRange": "bytes=39309112-39313207",
+                  "status": 206,
+                  "contentRange": "bytes 39309112-39313207/39313208",
+                  "contentLength": 4096,
+                  "verifiedBytes": 4096,
+                  "sha256": "5ac7549597af86753e5f5e467b769d54a16d427d87d349b921d8078b75563bdd"
+                }
+              ],
+              "passed": true
+            },
+            {
+              "app": "grizzly",
+              "url": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/grizzly-fitness-0.1.5-arm64.apk",
+              "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+              "head": {
+                "status": 200,
+                "contentType": "application/vnd.android.package-archive",
+                "contentLength": 39464470,
+                "contentDisposition": null,
+                "acceptRanges": "bytes",
+                "noRedirect": true
+              },
+              "rangeRequests": [
+                {
+                  "segment": "first",
+                  "requestRange": "bytes=0-4095",
+                  "status": 206,
+                  "contentRange": "bytes 0-4095/39464470",
+                  "contentLength": 4096,
+                  "verifiedBytes": 4096,
+                  "sha256": "01e27d6f27931ae1b15a221eb460fcc2b6e4c57299bb65bb4fa92f9c1032618b"
+                },
+                {
+                  "segment": "last",
+                  "requestRange": "bytes=39460374-39464469",
+                  "status": 206,
+                  "contentRange": "bytes 39460374-39464469/39464470",
+                  "contentLength": 4096,
+                  "verifiedBytes": 4096,
+                  "sha256": "f74f5197ceca70d38068547fb7050dd6e0065e52fcff0ad548b0721bfec436e7"
+                }
+              ],
+              "passed": true
+            }
+          ],
+          "passed": true,
+          "scope": "Read-only live Pages response/header and byte-range checks. Complete saved-file hashes are checked separately by the browser helper."
+        }
+      },
+      {
+        "receipt": ".sites-runtime/coaching-2026-10-16/live-pages-download/results.json",
+        "result": {
+          "checkedAt": "2026-10-16T17:55:12.835Z",
+          "completed": true,
+          "expectedNativeSource": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "manifestSHA256": "21f22ece903ce6424ca660d6273a753457b701cacaa9d67393169d35afa1ffd7",
+          "results": [
+            {
+              "app": "movefield",
+              "version": "0.1.6",
+              "versionCode": 7,
+              "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+              "manifestSHA256": "21f22ece903ce6424ca660d6273a753457b701cacaa9d67393169d35afa1ffd7",
+              "at320FromStart": true,
+              "bytes": 39313208,
+              "sha256": "e0c31e216b5f56263d3d9c7dce858757bc4949fc489034236df089109f98d97f",
+              "primaryDownloadURL": "https://ghinz32-cloud.github.io/movefield/review/downloads/movefield-0.1.6-arm64.apk",
+              "githubFallbackURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-de6c7abf2438/movefield-0.1.6-arm64.apk",
+              "savedFilename": "movefield-0.1.6-arm64.apk",
+              "primaryDownloadPassed": true,
+              "passed": true,
+              "scope": "Live same-origin Pages primary link in sandboxed Chromium: actual completed browser Save and exact file hash, no release redirect, primary focus/touch target, alternative initially collapsed and 320px layout; no Samsung browser or Android installation claim."
+            },
+            {
+              "app": "grizzly",
+              "version": "0.1.5",
+              "versionCode": 6,
+              "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+              "manifestSHA256": "21f22ece903ce6424ca660d6273a753457b701cacaa9d67393169d35afa1ffd7",
+              "at320FromStart": true,
+              "bytes": 39464470,
+              "sha256": "e32a37ddb9b6087db625aac2b24ff9d5fde4515d77b96284eb83ab2ddc90d992",
+              "primaryDownloadURL": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/grizzly-fitness-0.1.5-arm64.apk",
+              "githubFallbackURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-de6c7abf2438/grizzly-fitness-0.1.5-arm64.apk",
+              "savedFilename": "grizzly-fitness-0.1.5-arm64.apk",
+              "primaryDownloadPassed": true,
+              "passed": true,
+              "scope": "Live same-origin Pages primary link in sandboxed Chromium: actual completed browser Save and exact file hash, no release redirect, primary focus/touch target, alternative initially collapsed and 320px layout; no Samsung browser or Android installation claim."
+            }
+          ]
+        }
+      }
+    ],
+    "note": "Published web delivery adds Pages-only complete APKs without changing the audited application JS/CSS or compiled native code. Prior live behavioral results retain their original source/Pages scope; final loaded assets match them. Phone acceptance is a separately recorded owner report."
   },
   "limits": [
-    "No physical Android or iPhone, native OS keyboard, TalkBack or VoiceOver acceptance was performed.",
+    "No agent-operated physical Android/iPhone or native OS keyboard, TalkBack or VoiceOver acceptance was performed. Owner separately confirmed Movefield download, update/opening and saved-workout presence on one S24 Ultra; this does not qualify other devices, all records/features or Grizzly installation.",
     "The iOS callback branch was executed through React Native Web with Platform.OS=ios; UIKit was not simulated.",
     "Firefox/WebKit download hosts were denied by the configured proxy; Safari was unavailable. No bypass was used.",
     "Axe results cover finite tested Chromium states, not complete WCAG certification or every palette/font combination.",
@@ -2432,6 +2885,66 @@
       "path": ".sites-runtime/coaching-2026-10-16/audited-application-assets.json",
       "bytes": 1554,
       "sha256": "c1ecc4707c362da82b453ee6f618070a5b448b8cb1f14352673cda94974fbb5e"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/pages-publication.json",
+      "bytes": 1114,
+      "sha256": "c2053eb121bbfeab8feb047140129eafc2c45ac496ac9b40d0ae4d1b1dddeed9"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/pages-deployment.json",
+      "bytes": 421,
+      "sha256": "4a5767952ad287067e71caf8ea02b0fdda5a33d883c2da50e1aade3b6ef2cfcb"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/live-http.json",
+      "bytes": 112391,
+      "sha256": "383aa099b728dca7bc16c274436a9b88ce6bd19c7ad923f90da154f7c1228d48"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/native-live-downloads.json",
+      "bytes": 5709,
+      "sha256": "6af17b000e9e40000baf0cc3e966feae04aa63001ec2642f55b04d69b8e48010"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/delivery-build-identity.json",
+      "bytes": 496,
+      "sha256": "06e461640864c5123fdc91243fa4940a86551fe9f9599f63ca9adc2f09341c38"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/secret-scan.json",
+      "bytes": 337,
+      "sha256": "715b421a4c1f8370a76a2cc52a26ada80f3b74cdf9700f4a718c1080e1e51ea3"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/candidate-receipt.json",
+      "bytes": 297278,
+      "sha256": "9215333e6c70c92fae9da0b229ee7f832a452e58cc64459e5345cf3645500a0b"
+    },
+    {
+      "path": ".sites-runtime/coaching-safety/live-results.json",
+      "bytes": 8428,
+      "sha256": "b74b9daeb5240555d2a386734374da99d7f7f6ac740938244c0e44799df38f8c"
+    },
+    {
+      "path": ".sites-runtime/coaching-safety/final-live-identity.json",
+      "bytes": 3578,
+      "sha256": "9f2cceed3a1950b975572c7ce23c6afc897d34c4a7af7ec0640d909b96d292b8"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/live-pages-download/headers.json",
+      "bytes": 2653,
+      "sha256": "e9ecfbe12e4f4784c99e29cb202a878500836b757fb84341b3b18ff5aba1abdc"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/live-pages-download/results.json",
+      "bytes": 2337,
+      "sha256": "76544c6d12306af8def9ce248ab0ec47a55488c559e61bdccfc4d9e9a066e04f"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/phone-acceptance.json",
+      "bytes": 1074,
+      "sha256": "cee604922b47b7f87611819d7d788bebf74742c58dd1b8867004fc1e2b28e2c0"
     }
   ],
   "downloadFollowup": {
@@ -2439,7 +2952,7 @@
     "reportedStage": "Webpage while preparing or saving the previous APK",
     "reportedPhone": "Samsung S24 Ultra with existing Movefield",
     "phoneReproduced": false,
-    "phoneRetest": "Owner reports transfer reaches roughly39MB then stalls with Pause/Resume controls and no error/status change. Explicit external-browser confirmation is still absent. Same-site single-file route is being prepared; phone success not established.",
+    "phoneRetest": "Owner confirms the new Pages-hosted Movefield file finishes downloading after explicit Chrome/paste instructions, then installs and opens with saved workouts present.",
     "confirmedDefect": "Direct fallback URLs pointed to older APK releases despite current version labels.",
     "change": "Primary ordinary APK links point to versioned full files on the existing Pages site, with current GitHub fallback and optional checked assembly. Full APKs are reconstructed only inside the Pages candidate.",
     "apkBytesChanged": false,
@@ -2615,17 +3128,19 @@
     "generatorRegression": {
       "passed": true,
       "checks": [
-        "old markup movefield updates full source/version/filename URL",
-        "old markup grizzly updates full source/version/filename URL",
-        "primary markup movefield updates full source/version/filename URL",
-        "primary markup grizzly updates full source/version/filename URL",
+        "old movefield updates full source/version URLs and applicable download filename",
+        "old grizzly updates full source/version URLs and applicable download filename",
+        "github-primary movefield updates full source/version URLs and applicable download filename",
+        "github-primary grizzly updates full source/version URLs and applicable download filename",
+        "pages-primary movefield updates full source/version URLs and applicable download filename",
+        "pages-primary grizzly updates full source/version URLs and applicable download filename",
         "non-release inspected URL rejected",
         "stale version rejected",
         "cross-brand filename rejected"
       ],
-      "scope": "Pure function from ignored package helper; old fallback markup and new primary data-direct markup. Fixture source/version only; no generation/publication."
+      "scope": "Actual pure function from ignored package helper; old fallback, GitHub primary and current Pages primary markup. Fixture source/version only; no generation/publication."
     },
-    "phoneIssueResolved": false,
+    "phoneIssueResolved": true,
     "sameSiteFeasibility": {
       "checkedAt": "2026-10-16",
       "pagesCommit": "56e5569c00fb2fec98707088bae6a5e93cf636d7",
@@ -2831,6 +3346,145 @@
           "checkedSavedFilename": "grizzly-arm64-current-test.apk",
           "passed": true,
           "scope": "Live Pages in sandboxed Chromium: primary release link and optional in-page preparation both completed actual browser Save with exact file hashes, initial primary focus, touch target, alternative collapsed initially, 320px layout; no Samsung browser or Android installation claim."
+        }
+      ]
+    },
+    "phoneIssueResolvedScope": "Reported Movefield download/install path on one S24 Ultra; original stall cause and Grizzly phone acceptance remain unconfirmed.",
+    "phoneAcceptance": {
+      "recordedAt": "2026-10-16T17:58:38.803349+00:00",
+      "evidenceType": "Owner replies in this conversation; not agent-observed device automation",
+      "device": "Samsung S24 Ultra",
+      "firmware": "Owner estimated One UI 8.1; exact Android/firmware build not verified",
+      "app": "Movefield",
+      "version": "0.1.6",
+      "versionCode": 7,
+      "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+      "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/movefield-0.1.6-arm64.apk",
+      "browserInstruction": "Open Chrome directly from the home screen and paste the Pages URL into its address bar",
+      "downloadReply": "It finishes downloading",
+      "installationReply": "It installs and my workouts are present",
+      "downloadCompleted": true,
+      "updateInstalledAndOpened": true,
+      "savedWorkoutsPresent": true,
+      "limits": [
+        "One owner-reported device and update path; not a complete data-integrity, OS-feature or device-matrix test.",
+        "Grizzly phone download/installation not yet confirmed.",
+        "Cause of the previous stalled route remains unconfirmed."
+      ]
+    },
+    "sameSiteLiveHeaders": {
+      "checkedAt": "2026-10-16T17:55:02.218879+00:00",
+      "expectedNativeSource": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+      "results": [
+        {
+          "app": "movefield",
+          "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/movefield-0.1.6-arm64.apk",
+          "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "head": {
+            "status": 200,
+            "contentType": "application/vnd.android.package-archive",
+            "contentLength": 39313208,
+            "contentDisposition": null,
+            "acceptRanges": "bytes",
+            "noRedirect": true
+          },
+          "rangeRequests": [
+            {
+              "segment": "first",
+              "requestRange": "bytes=0-4095",
+              "status": 206,
+              "contentRange": "bytes 0-4095/39313208",
+              "contentLength": 4096,
+              "verifiedBytes": 4096,
+              "sha256": "75ca81288e669b433a1dca0c601f3b9d07aac0bd3d713d0a1ca65f3824dff3a6"
+            },
+            {
+              "segment": "last",
+              "requestRange": "bytes=39309112-39313207",
+              "status": 206,
+              "contentRange": "bytes 39309112-39313207/39313208",
+              "contentLength": 4096,
+              "verifiedBytes": 4096,
+              "sha256": "5ac7549597af86753e5f5e467b769d54a16d427d87d349b921d8078b75563bdd"
+            }
+          ],
+          "passed": true
+        },
+        {
+          "app": "grizzly",
+          "url": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/grizzly-fitness-0.1.5-arm64.apk",
+          "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "head": {
+            "status": 200,
+            "contentType": "application/vnd.android.package-archive",
+            "contentLength": 39464470,
+            "contentDisposition": null,
+            "acceptRanges": "bytes",
+            "noRedirect": true
+          },
+          "rangeRequests": [
+            {
+              "segment": "first",
+              "requestRange": "bytes=0-4095",
+              "status": 206,
+              "contentRange": "bytes 0-4095/39464470",
+              "contentLength": 4096,
+              "verifiedBytes": 4096,
+              "sha256": "01e27d6f27931ae1b15a221eb460fcc2b6e4c57299bb65bb4fa92f9c1032618b"
+            },
+            {
+              "segment": "last",
+              "requestRange": "bytes=39460374-39464469",
+              "status": 206,
+              "contentRange": "bytes 39460374-39464469/39464470",
+              "contentLength": 4096,
+              "verifiedBytes": 4096,
+              "sha256": "f74f5197ceca70d38068547fb7050dd6e0065e52fcff0ad548b0721bfec436e7"
+            }
+          ],
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "scope": "Read-only live Pages response/header and byte-range checks. Complete saved-file hashes are checked separately by the browser helper."
+    },
+    "sameSiteLiveSaves": {
+      "checkedAt": "2026-10-16T17:55:12.835Z",
+      "completed": true,
+      "expectedNativeSource": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+      "manifestSHA256": "21f22ece903ce6424ca660d6273a753457b701cacaa9d67393169d35afa1ffd7",
+      "results": [
+        {
+          "app": "movefield",
+          "version": "0.1.6",
+          "versionCode": 7,
+          "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "manifestSHA256": "21f22ece903ce6424ca660d6273a753457b701cacaa9d67393169d35afa1ffd7",
+          "at320FromStart": true,
+          "bytes": 39313208,
+          "sha256": "e0c31e216b5f56263d3d9c7dce858757bc4949fc489034236df089109f98d97f",
+          "primaryDownloadURL": "https://ghinz32-cloud.github.io/movefield/review/downloads/movefield-0.1.6-arm64.apk",
+          "githubFallbackURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-de6c7abf2438/movefield-0.1.6-arm64.apk",
+          "savedFilename": "movefield-0.1.6-arm64.apk",
+          "primaryDownloadPassed": true,
+          "passed": true,
+          "scope": "Live same-origin Pages primary link in sandboxed Chromium: actual completed browser Save and exact file hash, no release redirect, primary focus/touch target, alternative initially collapsed and 320px layout; no Samsung browser or Android installation claim."
+        },
+        {
+          "app": "grizzly",
+          "version": "0.1.5",
+          "versionCode": 6,
+          "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "manifestSHA256": "21f22ece903ce6424ca660d6273a753457b701cacaa9d67393169d35afa1ffd7",
+          "at320FromStart": true,
+          "bytes": 39464470,
+          "sha256": "e32a37ddb9b6087db625aac2b24ff9d5fde4515d77b96284eb83ab2ddc90d992",
+          "primaryDownloadURL": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/grizzly-fitness-0.1.5-arm64.apk",
+          "githubFallbackURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-de6c7abf2438/grizzly-fitness-0.1.5-arm64.apk",
+          "savedFilename": "grizzly-fitness-0.1.5-arm64.apk",
+          "primaryDownloadPassed": true,
+          "passed": true,
+          "scope": "Live same-origin Pages primary link in sandboxed Chromium: actual completed browser Save and exact file hash, no release redirect, primary focus/touch target, alternative initially collapsed and 320px layout; no Samsung browser or Android installation claim."
         }
       ]
     }
