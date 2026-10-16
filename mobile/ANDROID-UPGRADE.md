@@ -1,10 +1,13 @@
 # Android update candidate
 
 The `legacy-movefield` build targets the repository's October 9 test installer,
-`com.ghinz32.movefield`, with versionCode 8 (Movefield version 0.1.7; the previous published release used versionCode 7). It uses the existing Expo test
+`com.ghinz32.movefield`, with versionCode 9 (Movefield version 0.1.8; the previous published release used versionCode 8). It uses the existing Expo test
 certificate. The default Movefield and Grizzly prototype identities remain
-separate. This source configures Grizzly 0.1.6/code 7; a version declaration is not
-a compiled or published installer. Do not uninstall the earlier app to install this candidate.
+separate. This source configures Grizzly 0.1.7/code 8; the preceding release used
+0.1.6/code 7. A source version declaration does not establish compilation or
+publication. Use the currently
+verified files on the [Android download page](https://ghinz32-cloud.github.io/movefield/review/downloads/android.html).
+Do not uninstall the earlier app to install this candidate.
 
 `EXPO_PUBLIC_NATIVE_LINEAGE=legacy-movefield` must be set for both Expo prebuild
 and the Gradle/Metro compilation. It cannot be combined with the Grizzly variant.
@@ -35,8 +38,16 @@ over the exact old APK, verifying synthetic history, active workout, setup and
 rest timing, restarting offline, and checking device notifications/erasure.
 The owner confirmed that the previous Movefield 0.1.6 Pages download installed
 on a Samsung S24 Ultra and opened with saved workouts present. This does not
-qualify the redesigned 0.1.7 build, complete record integrity or other devices.
+qualify Movefield 0.1.7 or 0.1.8, complete record integrity or other devices.
 Grizzly is a separate installation and does not import Movefield records.
+
+This source enables rotation and adapts to available window space.
+Check keyboard-open logging, rotation, cover/inner-display transitions and split
+windows without losing staged fields or recorded history. Each new APK still
+needs its own merged permission/backup-rule, signature, ABI and 16 KiB alignment
+inspection; an earlier artifact's pass does not transfer to a new build. See the
+[native audit and device gates](../docs/comprehensive-2026-10-16-native.md) in the
+full repository (outside the mobile-only source ZIP).
 
 Settings can also preview version 1 Argon2id/XChaCha password-protected
 `movefield-transfer` files from the historical phone or website. Enter the
@@ -45,4 +56,4 @@ replaces the current profile. Active workouts, unfinished setup, pending uploads
 and records changed since preview block replacement. Unsupported fields and
 failed writes leave the current records intact. This import uses the current
 device vault and does not merge the two brands automatically. See
-`docs/transfer-compatibility-2026-10-13.md` for verification and limits.
+[transfer compatibility](../docs/transfer-compatibility-2026-10-13.md) for verification and limits.

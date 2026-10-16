@@ -41,7 +41,17 @@ for(const kind of ['set note','load','effort','setup']){
  if(kind==='setup')state.active.loadContext={[request.from]:'Retain this setup'};
  assert.match(applySubstitution(state,request).error,/already has entered/,kind);
 }
+for(const rir of [0,2,6,10]){
+ const {state,request}=fixture();state.active.sets.find(set=>set.exerciseId===request.from).rir=rir;
+ const restored=readSavedState(JSON.stringify(state)),before=JSON.stringify(restored),result=applySubstitution(restored,request);
+ assert.match(result.error,/already has entered.*reps left/);assert.strictEqual(result.state,restored);assert.equal(JSON.stringify(restored),before,'A per-set RIR, including zero, is entered data.');
+}
+for(const rir of [null,undefined]){
+ const {state,request}=fixture();state.active.sets.find(set=>set.exerciseId===request.from).rir=rir;
+ assert.equal(applySubstitution(state,request).error,undefined,'An unknown per-set rating does not block an untouched substitution.');
+}
 console.log('PASS substitution integrity: restored legacy exercise notes, untouched/empty details, existing set notes, explicit zero load/effort, setup, history and dates');
+console.log('PASS per-set substitution protection: saved RIR 0/2/6/10 preserved on rejection; null and missing ratings remain unknown');
 
 function sourceFixture(to='lib-db-flat-bench-press'){
  const profile={...T.blankProfile,name:'Synthetic source substitution',age:30,units:'kg',experience:'Some experience',days:[0,1,2,3,4,5,6],weeks:4,minutes:120,start:T.day(),goal:'strength',programId:'src-sl5x5-3',trainingDays:3,inventory:{...E.defaultInventory(),confirmed:true}};

@@ -295,3 +295,55 @@ input,textarea,select,[data-slot=select-trigger]{color:var(--foreground);border-
 .preference-settings .button-row > button { max-width: 100%; height: auto; min-height: 44px; white-space: normal; }
 .preference-settings .field [data-slot=select-trigger] { height: auto; min-height: 44px; }
 .preference-settings [data-slot=select-value] { -webkit-line-clamp: unset; white-space: normal; }
+
+/* Layout follows usable content width, including text enlargement and multiwindow. */
+.workspace{container-type:inline-size;container-name:workspace;min-width:0}
+.workout-layout>div{container-type:inline-size;container-name:workout-log;min-width:0}
+.workout-aside{min-width:0;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr))}
+.rest-card>strong{white-space:nowrap;font-variant-numeric:tabular-nums}
+.today-shortcuts{flex-wrap:wrap}
+.today-shortcuts>div{min-width:0;max-width:100%}
+.today-shortcuts .button-row{flex:1 1 auto}
+.today-shortcuts .button-row>button{max-width:100%;height:auto;min-height:44px;white-space:normal;text-align:left}
+.security-method{min-width:0;flex-wrap:wrap}
+.security-method>div{min-width:0;flex:1 1 12rem}
+.security-method>button{max-width:100%;margin-left:0;height:auto;min-height:44px;white-space:normal;overflow-wrap:anywhere}
+.security-actions>button,.security-preview .button-row>button{max-width:100%;height:auto;min-height:44px;white-space:normal;overflow-wrap:anywhere}
+.mobile-navigation-scroll{overscroll-behavior:contain;scroll-padding-block:1rem}
+.mobile-navigation-scroll>[data-slot=sidebar-header],.mobile-navigation-scroll>[data-slot=sidebar-footer],.mobile-navigation-scroll>[data-slot=sidebar-content]{flex:0 0 auto;min-height:auto;overflow:visible}
+.mobile-navigation-scroll [data-slot=sidebar-menu-button]{height:auto;min-height:44px;white-space:normal}
+.mobile-navigation-scroll [data-slot=sidebar-menu-button]>span:last-child{white-space:normal;overflow:visible;text-overflow:clip}
+@container workout-log (max-width:34rem){
+ .set-head,.set-head.has-rir{display:none}
+ .set-row,.set-row.has-rir{grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;padding:.75rem 0}
+ .set-number{grid-column:1 / -1;font-weight:700}.set-number .set-field-label{display:inline}
+ .set-data-field,.set-rir-field{display:flex;flex-direction:column;gap:.25rem;min-width:0}
+ .set-field-label{display:block;font-size:.875rem;line-height:1.4}
+ .set-row input,.set-row select{width:100%;min-height:44px}
+ .set-row .log-set-button{grid-column:2;align-self:end;min-height:44px;width:100%}
+ .set-row .set-save-label{display:inline}
+ .set-row-details{grid-column:1 / -1}
+}
+@container workout-log (max-width:18rem){
+ .set-row,.set-row.has-rir{grid-template-columns:minmax(0,1fr)}
+ .set-row .log-set-button{grid-column:1}
+ .set-row-details{flex-wrap:wrap}
+}
+@container workspace (max-width:42rem){
+ .workout-layout{grid-template-columns:minmax(0,1fr)}
+ .workout-aside{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr))}
+ .security-method>div{flex-basis:100%}
+ .security-method>button{margin-left:0}
+}
+
+/* Large text keeps every Today action and day label in the available card. */
+.section-heading{flex-wrap:wrap;gap:.75rem}
+.section-heading>*{min-width:0;max-width:100%}
+.section-heading>button{height:auto;min-height:44px;white-space:normal;overflow-wrap:anywhere}
+.weekly-schedule{container-type:inline-size;container-name:weekly-schedule}
+.weekly-schedule .week-bars>div{min-width:0}
+.weekly-schedule .week-bars b{white-space:nowrap}
+@container weekly-schedule (max-width:16rem){
+ .weekly-schedule .week-bars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem .5rem}
+ .weekly-schedule .mini-stats{grid-template-columns:minmax(0,1fr);gap:.75rem}
+}

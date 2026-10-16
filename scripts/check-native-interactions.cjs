@@ -13,7 +13,7 @@ function harness(filename,props,extra={}){
  const rn={View:'View',Text:'Text',TextInput:'TextInput',ScrollView:'ScrollView',StyleSheet:{create:x=>x},useWindowDimensions:()=>({width:390,height:844,fontScale:1}),Alert:{alert(){}},Keyboard:{dismiss(){}}};
  const mocks={'react':{...react,default:react,__esModule:true},'react/jsx-runtime':{jsx,jsxs:jsx,Fragment:'Fragment'},'react-native':rn,
   './wild-interactions':{GrizzlyPressable:'Pressable',NativeWildReveal:'Reveal'},'./appearance':{useThemedStyles:x=>x,useNativeAppearance:()=>({p:{textSize:100},colors:{ink:'#111',green:'#070',line:'#aaa',onAccent:'#fff',white:'#fff',danger:'#900'}})},
-  './phone-ui':{NativeFlowScreen:'FlowScreen',NativeActionFooter:'ActionFooter'},'./equipment-survey':{NativeEquipmentSurvey:'EquipmentSurvey'},'./science':{NativePlanEvidence:'Evidence'},...extra};
+  './phone-ui':{NativeFlowScreen:'FlowScreen',NativeActionFooter:'ActionFooter'},'./equipment-survey':{NativeEquipmentSurvey:'EquipmentSurvey'},'./numeric-input':{NativeNumericInput:'NumericInput'},'./session-instructions':{NativeSessionInstructions:'SessionInstructions'},'./science':{NativePlanEvidence:'Evidence'},...extra};
  const module={exports:{}};
  const code=ts.transpileModule(fs.readFileSync(filename,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true}}).outputText;
  new Function('require','module','exports',code)(name=>mocks[name]||domain.load(path.resolve(path.dirname(filename),name)+(path.extname(name)?'':'.ts')),module,module.exports);

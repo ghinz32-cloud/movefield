@@ -11,6 +11,7 @@ import {workoutExercises} from './shared/workout-flow';
 import {trainingCopy} from './shared/presentation';
 import {sessionGuide} from './shared/session-guide';
 import {NativeActionFooter,NativeFlowScreen,NativeSettingsRow} from './phone-ui';
+import {nativeWindowLayout} from './adaptive-layout';
 
 export type NativeWorkoutScreenProps={
  state:State;
@@ -18,6 +19,12 @@ export type NativeWorkoutScreenProps={
  busy:boolean;
  remaining:number|null;
  restMessage?:string;
+ compact?:boolean;
+ onAvailableHeight?:(height:number)=>void;
+ sampleMode?:boolean;
+ saveStatus?:string;
+ saveError?:string;
+ onRetrySave?:()=>void;
  onFocusExercise:(id:string|null)=>void;
  onChangeSet:(index:number,patch:Partial<SetLog>)=>void;
  onLogSet:(index:number,restSeconds:number)=>Promise<boolean>;
@@ -53,12 +60,14 @@ export function NativeWorkoutScreen(props:NativeWorkoutScreenProps){
  const sets=active.sets.map((set,index)=>({set,index})).filter(row=>row.set.exerciseId===focusedExercise);
  const current=sets.find(row=>row.index===selectedSet)??sets.find(row=>!row.set.done)??sets[sets.length-1];
  const session=state.plan?.sessions.find(s=>s.id===active.sessionId),scale=p.textSize/100;
+ const dimensions=nativeWindowLayout(window.width,window.height,p.textSize,window.fontScale),layout={...dimensions,compactHeight:props.compact??dimensions.compactHeight};
  const text={fontSize:16*scale,lineHeight:23*scale,color:c.ink},small={fontSize:14*scale,lineHeight:20*scale,color:c.muted};
  const stacked=window.width<300||scale>1.25||window.fontScale>1.25;
  const button=(label:string,onPress:()=>void,selected?:boolean)=><Pressable accessibilityRole="button" accessibilityState={{disabled,selected}} disabled={disabled} onPress={onPress} style={{minHeight:48,padding:12,borderRadius:12,borderWidth:1,borderColor:c.line,backgroundColor:selected?c.green:c.white,justifyContent:'center'}}><Text style={{...text,color:selected?c.onAccent:c.ink}}>{label}</Text></Pressable>;
  const choice=(label:string,onPress:()=>void,selected?:boolean)=><NativeSettingsRow label={label} disabled={disabled} selected={selected} onPress={onPress}/>;
  const focus=(id:string|null)=>{setSelectedSet(null);setError('');setRoute(id?'set':'list');props.onFocusExercise(id)};
  const go=(next:Route)=>{setRoute(next);setError('')};
+ const optionsButton=layout.compactHeight?<Pressable accessibilityRole="button" accessibilityLabel="Options" accessibilityState={{disabled}} disabled={disabled} onPress={()=>go('options')} style={{width:48,minHeight:48,alignItems:'center',justifyContent:'center',borderWidth:1,borderColor:c.line,borderRadius:12}}><Text accessible={false} style={{fontSize:28,lineHeight:34,color:c.ink}}>⋯</Text></Pressable>:button('Options',()=>go('options'));
  const back=()=>{
   if(disabled)return;
   if(route==='list'){props.onExit();return}
@@ -72,8 +81,13 @@ export function NativeWorkoutScreen(props:NativeWorkoutScreenProps){
  const restLabel=remaining===null?'':remaining===0?'Rest complete · continue when ready':`Rest ${state.restTimer?.pausedSeconds!==null?'paused · ':''}${Math.floor(remaining/60)}:${String(remaining%60).padStart(2,'0')}`;
  const concern=state.hold||['yes','unsure'].includes(active.symptom||'');
  const notice=concern?<Text accessibilityRole="alert" style={{...small,color:c.danger}}>A concern is recorded. Stop the affected activity; recording and partial save remain available.</Text>:null;
- const footer=(label:string,onPress:()=>void,blocked=false,accessibilityLabel?:string)=><NativeActionFooter primary={{label,onPress,disabled:disabled||blocked,...(accessibilityLabel?{accessibilityLabel}:{})}}>{!!restLabel&&<Text style={small}>{restLabel}</Text>}</NativeActionFooter>;
- const screen=(title:string,children:React.ReactNode,action:React.ReactNode,options:{subtitle?:string;trailing?:React.ReactNode;backLabel?:string;compactBack?:boolean}={})=><NativeFlowScreen title={title} subtitle={options.subtitle} onBack={back} backLabel={options.backLabel??'Back'} compactBack={options.compactBack} trailing={options.trailing} handleHardwareBack footer={action}><View onLayout={props.onLayout} style={{gap:16}}>{children}</View></NativeFlowScreen>;
+ const footer=(label:string,onPress:()=>void,blocked=false,accessibilityLabel?:string)=><NativeActionFooter compact={layout.compactHeight} primary={{label,onPress,disabled:disabled||blocked,...(accessibilityLabel?{accessibilityLabel}:{})}}>{!!restLabel&&!layout.compactHeight&&<Text style={small}>{restLabel}</Text>}</NativeActionFooter>;
+ const exerciseList=<><Text accessibilityRole="header" style={{...text,fontWeight:'700'}}>Workout exercises</Text><Text style={small}>{done} of {total} entries logged</Text>{rows.map(({target:row,done:count,total:expected,complete},index)=><NativeSettingsRow key={row.exerciseId} label={`${index+1}. ${exFor(row.exerciseId,state.custom).name}`} value={`${count}/${expected} logged${complete?' · Complete':''}`} selected={row.exerciseId===focusedExercise} onPress={()=>focus(row.exerciseId)} disabled={disabled}/>)}</>;
+ const screen=(title:string,children:React.ReactNode,action:React.ReactNode,options:{subtitle?:string;trailing?:React.ReactNode;backLabel?:string;compactBack?:boolean;compactTitle?:string}={})=><NativeFlowScreen title={title} compactTitle={options.compactTitle} compact={layout.compactHeight} onAvailableHeight={props.onAvailableHeight} subtitle={[layout.compactHeight&&props.sampleMode?'Sample workout':undefined,options.subtitle].filter(Boolean).join(' · ')||undefined} onBack={back} backLabel={options.backLabel??'Back'} compactBack={options.compactBack} trailing={options.trailing} handleHardwareBack footer={action} sidePanel={route==='set'&&target?exerciseList:undefined}><View onLayout={props.onLayout} style={{gap:16}}>
+  {layout.compactHeight&&!!props.saveError&&<Text accessibilityRole="alert" style={{...text,color:c.danger}}>{props.saveError}</Text>}
+  {layout.compactHeight&&props.saveStatus?.startsWith('Save failed')&&<>{<Text accessibilityRole="alert" style={{...small,color:c.danger}}>{props.saveStatus}</Text>}{props.onRetrySave&&button('Retry saving on this device',props.onRetrySave)}</>}
+  {children}
+ </View></NativeFlowScreen>;
  const feedback=(patch:Partial<Pick<Workout,'effort'|'symptom'|'supervisorConfirmed'>>)=>props.onChangeFeedback(patch);
 
  if(route==='effort')return screen('How did it feel?',<>
@@ -132,7 +146,7 @@ export function NativeWorkoutScreen(props:NativeWorkoutScreenProps){
  if(!target||!exercise||route==='list')return screen('Your workout',<>
   <Text style={small}>{done} of {total} sets or activity entries logged</Text>
   {rows.map(({target:row,done:count,total:expected,complete},index)=><NativeSettingsRow key={row.exerciseId} label={`${index+1}. ${exFor(row.exerciseId,state.custom).name}`} value={`${count}/${expected} logged${complete?' · Complete':''}`} onPress={()=>focus(row.exerciseId)} disabled={disabled}/>)}
- </>,done===total?footer('Review finish',()=>go('effort')):footer('Continue next exercise',()=>{const next=rows.find(row=>!row.complete);if(next)focus(next.target.exerciseId)},!rows.some(row=>!row.complete)),{backLabel:'Today',trailing:button('Options',()=>go('options'))});
+ </>,done===total?footer('Review finish',()=>go('effort')):footer('Continue next exercise',()=>{const next=rows.find(row=>!row.complete);if(next)focus(next.target.exerciseId)},!rows.some(row=>!row.complete)),{backLabel:'Today',trailing:optionsButton});
 
  const tracked=isLoadTracked(exercise);
  if(route==='sets')return screen('Sets / edit previous',<>
@@ -167,6 +181,7 @@ export function NativeWorkoutScreen(props:NativeWorkoutScreenProps){
  };
  return screen(current?`Set ${current.set.set} of ${sets.length}`:'Workout set',<>
   <View style={{gap:6}}><Text style={small}>Exercise {rows.findIndex(row=>row.target.exerciseId===focusedExercise)+1} of {rows.length}</Text><Text accessibilityRole="header" style={{...text,fontSize:25*scale,lineHeight:31*scale,fontWeight:'700'}}>{exercise.name}</Text><Text style={text}>{targetText(target)} {exercise.metric} · {target.rest}s rest</Text></View>
+  {layout.compactHeight&&!!restLabel&&<Text accessibilityLiveRegion="none" style={small}>{restLabel} · controls in Options</Text>}
   {notice}
   {exercise.requiresSetup&&<View style={{gap:6}}><Text style={small}>Machine / attachment / seat setting</Text><TextInput style={{...text,minHeight:48,padding:12,borderWidth:1,borderColor:c.line,borderRadius:10}} accessibilityLabel={`${exercise.name} machine setup`} placeholder="Your machine setup" placeholderTextColor={c.muted} value={active.loadContext?.[exercise.id]??''} maxLength={200} editable={!disabled&&!active.sets.some(x=>x.exerciseId===exercise.id&&x.done)} onChangeText={value=>props.onChangeSetup(exercise.id,value)}/></View>}
   {current?<View key={active.id+':'+current.index} style={{gap:12}}>
@@ -176,6 +191,6 @@ export function NativeWorkoutScreen(props:NativeWorkoutScreenProps){
    {current.set.done&&button(`Undo saved set ${current.set.set}`,()=>props.onChangeSet(current.index,{done:false}))}
   </View>:<Text style={text}>No set entries are available. Review the remaining workout.</Text>}
   {error&&<Text accessibilityRole="alert" style={{...text,color:c.danger}}>{error}</Text>}
- </>,footer(current?.set.done?'Saved':pending?'Saving…':'Log set',()=>{void log()},!current||!!current.set.done,current?`${current.set.done?'Saved':'Log'} ${exercise.name} set ${current.set.set}`:undefined),{backLabel:'Workout',compactBack:true,trailing:button('Options',()=>go('options'))});
+ </>,footer(current?.set.done?'Saved':pending?'Saving…':'Log set',()=>{void log()},!current||!!current.set.done,current?`${current.set.done?'Saved':'Log'} ${exercise.name} set ${current.set.set}`:undefined),{backLabel:'Workout',compactBack:true,compactTitle:current?`Set ${current.set.set}`:undefined,trailing:optionsButton});
 }
 

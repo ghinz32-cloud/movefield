@@ -1,8 +1,10 @@
 import React,{useEffect,useMemo,useRef,useState} from 'react';
-import {Alert,Keyboard,StyleSheet,Text,TextInput,View} from 'react-native';
+import {Alert,Keyboard,StyleSheet,Text,TextInput,View,useWindowDimensions} from 'react-native';
 import {GrizzlyPressable} from './wild-interactions';
 import {NativeFlowScreen,NativeActionFooter} from './phone-ui';
 import {NativeEquipmentSurvey} from './equipment-survey';
+import {NativeNumericInput} from './numeric-input';
+import {NativeSessionInstructions} from './session-instructions';
 import {useThemedStyles,useNativeAppearance} from './appearance';
 import {programCatalog} from './shared/program-catalog';
 import {sourceProgram} from './shared/source-programs';
@@ -12,7 +14,6 @@ import {day,validDay,goals,weekdays,niceDate,exFor,targetText,toKg} from './shar
 import {focusChoices} from './shared/training-focus';
 import {planName,sessionName,trainingCopy} from './shared/presentation';
 import {durationText} from './shared/session-duration';
-import {sessionGuide} from './shared/session-guide';
 import {planFit} from './shared/plan-fit';
 import {NativePlanEvidence} from './science';
 import {readLocalSetup,saveLocalSetup,clearLocalSetup} from './storage';
@@ -32,9 +33,9 @@ function Choice({label,selected,onPress,disabled=false,expanded}){
  const styles=useThemedStyles(baseStyles),{colors:c}=useNativeAppearance();
  return React.createElement(GrizzlyPressable,{accessibilityRole:'button',accessibilityState:{selected,disabled,...(expanded===undefined?{}:{expanded})},disabled,onPress,style:[styles.button,selected&&{backgroundColor:c.green}]},React.createElement(Text,{style:[styles.body,selected&&{color:c.onAccent}]},label));
 }
-function Field({label,value,onChange,numeric=false}){
+function Field({label,value,onChange,numeric=false,nullable=false,max=9999}){
  const styles=useThemedStyles(baseStyles);
- return React.createElement(View,{style:{gap:8}},React.createElement(Text,{style:styles.body},label),React.createElement(TextInput,{accessibilityLabel:label,value,onChangeText:onChange,maxLength:100,keyboardType:numeric?'decimal-pad':'default',style:styles.input}));
+ return React.createElement(View,{style:{gap:8}},React.createElement(Text,{style:styles.body},label),numeric?React.createElement(NativeNumericInput,{accessibilityLabel:label,value,onValueChange:onChange,nullable,max,style:styles.input}):React.createElement(TextInput,{accessibilityLabel:label,value,onChangeText:onChange,maxLength:100,style:styles.input}));
 }
 function Details({label,children}){
  const [open,setOpen]=useState(false);
@@ -42,7 +43,8 @@ function Details({label,children}){
 }
 function sourcePatch(sourceChoice){return sourceChoice?{goal:sourceChoice.goal,mode:'app',programId:sourceChoice.id||undefined,trainingDays:sourceProgram(sourceChoice.id)?.days??programCatalog.find(x=>x.id===sourceChoice.id)?.days}:{}}
 function PlanSetup({state,onAccept,sample=false,sourceChoice,onRegisterBack}){
- const styles=useThemedStyles(baseStyles),{colors:c}=useNativeAppearance();
+ const styles=useThemedStyles(baseStyles),{colors:c}=useNativeAppearance(),viewport=useWindowDimensions();
+ const [availableHeight,setAvailableHeight]=useState(null),compact=viewport.height<500||availableHeight!==null&&availableHeight<420;
  const [origin]=useState(()=>({sample,sourceChoice,basePlanId:state.plan?.id||null,baseEvents:JSON.stringify(state.events)}));
  const [p,setP]=useState(()=>({...state.profile,start:day(),programId:undefined,inventory:hydrateSetupProfile(state.profile).inventory,name:state.profile.name==='Local demo'?'':state.profile.name,...sourcePatch(sourceChoice)}));
  const [screen,setScreen]=useState('about'),[selected,setSelected]=useState(null),[candidate,setCandidate]=useState(0),[error,setError]=useState('');
@@ -106,7 +108,7 @@ function PlanSetup({state,onAccept,sample=false,sourceChoice,onRegisterBack}){
   finally{accepting.current=false;setSaving(false)}
  };
  const text=(value,key=value)=>React.createElement(Text,{key,style:styles.body},value);
- const field=(label,key,numeric=false)=>React.createElement(Field,{key,label,value:String(p[key]??''),numeric,onChange:v=>update(key,numeric?Number(v):v)});
+ const field=(label,key,numeric=false)=>React.createElement(Field,{key,label,value:numeric?p[key]??0:String(p[key]??''),numeric,onChange:v=>update(key,v)});
  const choice=(label,selected,onPress,key=label)=>React.createElement(Choice,{key,label,selected,onPress});
  const choices=(values,key)=>values.map(v=>choice(v,p[key]===v,()=>update(key,v)));
  let body;
@@ -121,7 +123,7 @@ function PlanSetup({state,onAccept,sample=false,sourceChoice,onRegisterBack}){
   case 'time':body=[field('Minutes per session · 15–120','minutes',true),React.createElement(View,{key:'time',style:styles.row},[20,30,45,60,90].map(n=>choice(`${n} min`,p.minutes===n,()=>update('minutes',n)))),text('Include warm-up, rest and any extra work.')];break;
   case 'dates':body=[field('Start date · YYYY-MM-DD','start'),field('Training weeks · 2–12','weeks',true),text(state.events.length?'Your saved commitments will be included in the preview.':'You can add time off later in Calendar.')];break;
   case 'location':body=[text('Choose a starting equipment list. You’ll check the exact items next.'),...['Full gym','Dumbbells','Bodyweight + band','No equipment'].map(x=>choice(x,p.equipment===x,()=>{update('equipment',x);update('inventory',defaultInventory(x))}))];break;
-  case 'dumbbells':body=[React.createElement(NativeEquipmentSurvey,{key:'dumbbells',profile:p,section:'dumbbells',onChange:v=>update('inventory',v)}),p.inventory?.dumbbells!=='none'&&React.createElement(Field,{key:'max',label:`Heaviest ONE dumbbell (${p.units}) · optional`,numeric:true,value:p.dumbbellMaxKg===undefined?'':String(Math.round(p.dumbbellMaxKg*(p.units==='lb'?2.2046226218:1)*100)/100),onChange:v=>update('dumbbellMaxKg',v===''?undefined:toKg(Number(v),p.units))})];break;
+  case 'dumbbells':body=[React.createElement(NativeEquipmentSurvey,{key:'dumbbells',profile:p,section:'dumbbells',onChange:v=>update('inventory',v)}),p.inventory?.dumbbells!=='none'&&React.createElement(Field,{key:'max',label:`Heaviest ONE dumbbell (${p.units}) · optional`,numeric:true,nullable:true,max:500*(p.units==='lb'?2.2046226218:1),value:p.dumbbellMaxKg===undefined?null:Math.round(p.dumbbellMaxKg*(p.units==='lb'?2.2046226218:1)*100)/100,onChange:v=>update('dumbbellMaxKg',v===null?undefined:toKg(v,p.units))})];break;
   case 'inventory':body=React.createElement(NativeEquipmentSurvey,{profile:p,section:'equipment',onChange:v=>update('inventory',v)});break;
   case 'access':body=[choice('Standing or seated exercises only',!!p.noFloor,()=>update('noFloor',!p.noFloor)),text('Leave this off if floor exercises are comfortable for you.')];break;
   case 'extras':body=[text('Optional. You can continue without adding anything.'),...focusChoices.map(f=>choice(f.title,!!p.focuses?.includes(f.id),()=>update('focuses',p.focuses?.includes(f.id)?p.focuses.filter(x=>x!==f.id):[...(p.focuses||[]),f.id]))),React.createElement(Details,{key:'focus-help',label:'What do these add?'},focusChoices.map(f=>text(`${f.title}: ${f.description}`,f.id)))];break;
@@ -131,13 +133,16 @@ function PlanSetup({state,onAccept,sample=false,sourceChoice,onRegisterBack}){
   case 'review':{
    if(!selected?.plan){body=text('Choose a plan to review.');break}
    const plan=selected.plan,fit=planFit(plan);
-   const sessions=list=>list.map(x=>React.createElement(View,{key:x.id,style:styles.stack},React.createElement(Text,{style:[styles.body,{fontWeight:'700'}]},`${niceDate(x.date)} · ${sessionName(x,plan)} · ${durationText(x,state.custom)}`),...x.items.map(i=>text(`${exFor(i.exerciseId).name} · ${i.sets} × ${targetText(i)} · ${i.rest}s rest`,`${x.id}-${i.exerciseId}`))));
-   body=[React.createElement(Text,{key:'name',style:styles.heading},planName(plan)),text(`${plan.sessions.length} workouts · ${niceDate(plan.sessions[0].date)} to ${niceDate(plan.sessions.at(-1).date)}`),text(`${fit.strengthDays} strength days · ${fit.runningDays} running days · ${fit.easyDays} easy days in week ${fit.week}. Combined workouts count in both categories.`),React.createElement(Details,{key:'week',label:'View first week'},sessions(plan.sessions.filter(x=>x.week===1))),React.createElement(Details,{key:'all',label:'View all workouts'},sessions(plan.sessions)),React.createElement(Details,{key:'notes',label:'Instructions, notes and evidence'},React.createElement(Choice,{label:'Workout instructions and progression',onPress:()=>{const x=plan.sessions[0],guide=sessionGuide(plan,x);Alert.alert(sessionName(x,plan),[...guide.warmup,guide.effort,...guide.order,...guide.progression,guide.finish].join('\n\n'))}}),text(trainingCopy(plan.progression)),...plan.notes.filter(n=>n.startsWith('[Focus]')||n.startsWith('Days off')||n.startsWith('Competition')).map(n=>text(n,n)),React.createElement(Choice,{label:'Show regional work counts',onPress:()=>Alert.alert('Planned weekly work',fit.regions.map(r=>`${r.name}: ${r.sets} sets involving this region across ${r.days} days`).join('\n')+'\nCompound work can appear in multiple regions. These are planned counts, not equivalent isolation sets or guaranteed results.')}),React.createElement(NativePlanEvidence,{plan,key:plan.id})),React.createElement(Choice,{key:'another',label:'Choose another plan',onPress:()=>go('choose')})];break;
+   const sessions=list=>list.map(x=>React.createElement(View,{key:x.id,style:styles.stack},
+    React.createElement(Text,{style:[styles.body,{fontWeight:'700'}]},`${niceDate(x.date)} · ${sessionName(x,plan)} · ${durationText(x,state.custom)}`),
+    ...x.items.map(i=>text(`${exFor(i.exerciseId).name} · ${i.sets} × ${targetText(i)} · ${i.rest}s rest`,`${x.id}-${i.exerciseId}`)),
+    React.createElement(NativeSessionInstructions,{plan,session:x})));
+   body=[React.createElement(Text,{key:'name',style:styles.heading},planName(plan)),text(`${plan.sessions.length} workouts · ${niceDate(plan.sessions[0].date)} to ${niceDate(plan.sessions.at(-1).date)}`),text(`${fit.strengthDays} strength days · ${fit.runningDays} running days · ${fit.easyDays} easy days in week ${fit.week}. Combined workouts count in both categories.`),React.createElement(Details,{key:'week',label:'View first week'},sessions(plan.sessions.filter(x=>x.week===1))),React.createElement(Details,{key:'all',label:'View all workouts'},sessions(plan.sessions)),React.createElement(Details,{key:'notes',label:'Instructions, notes and evidence'},text(trainingCopy(plan.progression)),...plan.notes.filter(n=>n.startsWith('[Focus]')||n.startsWith('Days off')||n.startsWith('Competition')).map(n=>text(n,n)),React.createElement(Choice,{label:'Show regional work counts',onPress:()=>Alert.alert('Planned weekly work',fit.regions.map(r=>`${r.name}: ${r.sets} sets involving this region across ${r.days} days`).join('\n')+'\nCompound work can appear in multiple regions. These are planned counts, not equivalent isolation sets or guaranteed results.')}),React.createElement(NativePlanEvidence,{plan,key:plan.id})),React.createElement(Choice,{key:'another',label:'Choose another plan',onPress:()=>go('choose')})];break;
   }
  }
  if(!loaded)return React.createElement(Text,{style:styles.body},'Opening saved setup…');
  const nextNames={goal:'goal',sport:'sport',experience:'experience',authority:'guidance',days:'availability',frequency:'frequency',time:'workout time',dates:'training dates',location:'equipment',dumbbells:'dumbbells',inventory:'equipment list',access:'movement',extras:'extras',readiness:'readiness',running:'running base'};
  const primary=screen==='review'?{label:saving?'Saving plan…':'Start this plan',onPress:start,disabled:saving||draftBlocked||!selected}:screen==='choose'?{label:'Review this plan',disabled:!option||draftBlocked,onPress:()=>{const errors=allErrors();if(errors.length){setError(errors[0]);return}setSelected(option);go('review')}}:{label:steps[index+1]?.[0]==='choose'?'See my plans':`Continue to ${nextNames[steps[index+1]?.[0]]}`,onPress:next,disabled:draftBlocked};
- return React.createElement(NativeFlowScreen,{title:current[1],subtitle:`Step ${index+1} of ${steps.length}`,onBack:index>0?back:undefined,footer:React.createElement(NativeActionFooter,{primary},!!error&&React.createElement(Text,{accessibilityRole:'alert',style:[styles.body,{color:c.danger}]},error))},draftBlocked?React.createElement(View,{style:styles.stack},text(saveNote),React.createElement(Choice,{label:'Retry saved setup',onPress:()=>{setLoaded(false);setReadAttempt(readAttempt+1)}})):React.createElement(View,{style:styles.stack},body,(error||planStep)&&React.createElement(Details,{label:'Edit setup choices'},steps.filter(s=>s[2]<3).map(([id,label])=>React.createElement(Choice,{key:id,label,onPress:()=>go(id)})))),React.createElement(Text,{accessibilityLiveRegion:'polite',style:[styles.body,{color:c.muted}]},saveNote));
+ return React.createElement(NativeFlowScreen,{title:current[1],compact,compactTitle:'Setup',onAvailableHeight:setAvailableHeight,scrollResetKey:compact?error||undefined:undefined,subtitle:compact?undefined:`Step ${index+1} of ${steps.length}`,onBack:index>0?back:undefined,footer:React.createElement(NativeActionFooter,{primary,compact},!compact&&!!error&&React.createElement(Text,{accessibilityRole:'alert',style:[styles.body,{color:c.danger}]},error))},draftBlocked?React.createElement(View,{style:styles.stack},text(saveNote),React.createElement(Choice,{label:'Retry saved setup',onPress:()=>{setLoaded(false);setReadAttempt(readAttempt+1)}})):React.createElement(View,{style:styles.stack},compact&&!!error&&React.createElement(Text,{accessibilityRole:'alert',style:[styles.body,{color:c.danger}]},error),compact&&text(`Step ${index+1} of ${steps.length} · ${current[1]}`,'step-progress'),body,(error||planStep)&&React.createElement(Details,{label:'Edit setup choices'},steps.filter(s=>s[2]<3).map(([id,label])=>React.createElement(Choice,{key:id,label,onPress:()=>go(id)})))),React.createElement(Text,{accessibilityLiveRegion:'polite',style:[styles.body,{color:c.muted}]},saveNote));
 }
 export {PlanSetup};

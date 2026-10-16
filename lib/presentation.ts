@@ -1,6 +1,12 @@
 import {programCatalog, programReferences} from './program-catalog';
 import type {Plan, Session, State, Workout} from './training';
 
+/** Display order only. Backups and stored record order remain unchanged. */
+export function newestFirstWorkouts(history: readonly Workout[]): Workout[] {
+  return [...history].sort((a,b) => b.date.localeCompare(a.date) ||
+    (b.finishedAt ?? b.startedAt) - (a.finishedAt ?? a.startedAt) || a.id.localeCompare(b.id));
+}
+
 // Display names never replace stored titles, load roles or progression keys.
 export function planName(plan: Plan): string {
   const source = programReferences.find(p => p.id === plan.profile.programId);

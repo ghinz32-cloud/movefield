@@ -42,13 +42,23 @@ export async function decodeRecordState(raw:string,io:Pick<CryptoIO,'open'|'dige
 export function createRecordStateStorage(options:CryptoIO&{backend:RecordBackend;legacyRead:()=>Promise<string|null>;legacyWrite:(raw:string)=>Promise<void>}){
  let expected:string|null|undefined,tail:Promise<void>=Promise.resolve(),cache=new Map<string,{plain:string;ref:HistoryRef}>(),cacheVault='';
  const read=async()=>{
-  await tail.catch(()=>undefined);const root=await options.backend.root();expected=root;const raw=root??await options.legacyRead();if(raw===null)return null;
-  const state=await decodeRecordState(raw,options,keys=>options.backend.rows(keys));
-  if(isVault(raw)){
-   const idx=indexOf(parseSafeJson(await options.open(raw)));cacheVault=readEnvelope(raw).vaultId;
-   if(idx)state.history.forEach((w,n)=>cache.set(w.id,{plain:stable(w),ref:idx.history[n]}));
+  await tail.catch(()=>undefined);
+  // A second writer can prune an old row after we capture its root. Retry only
+  // when the stored root actually changed; a stable damaged archive stays closed.
+  for(let attempt=0;attempt<3;attempt++){
+   const root=await options.backend.root(),raw=root??await options.legacyRead();
+   try{
+    if(raw===null){expected=root;cache=new Map();cacheVault='';return null}
+    const state=await decodeRecordState(raw,options,keys=>options.backend.rows(keys));
+    let nextVault='';const nextCache=new Map<string,{plain:string;ref:HistoryRef}>();
+    if(isVault(raw)){
+     const idx=indexOf(parseSafeJson(await options.open(raw)));nextVault=readEnvelope(raw).vaultId;
+     if(idx)state.history.forEach((w,n)=>nextCache.set(w.id,{plain:stable(w),ref:idx.history[n]}));
+    }
+    expected=root;cacheVault=nextVault;cache=nextCache;return state;
+   }catch(error){if(await options.backend.root()===root)throw error}
   }
-  return state;
+  throw Error('The encrypted record store kept changing while opening. Reopen the current profile; saved records are kept.');
  };
  async function persist(state:State){
   readSavedState(JSON.stringify(state));
@@ -91,15 +101,15 @@ export async function encryptedRecordBundle(backend:RecordBackend,legacyRead:()=
  return JSON.stringify({format:'movefield-record-bundle',version:1,root,rows:rows.sort((a,b)=>a.key.localeCompare(b.key)),...(legacy&&legacy!==root?{originalIndexCache:legacy}:{})});
 }
 export function recordBundleRoot(raw:string):string{
- if(isVault(raw))return raw;
- const value=parseSafeJson(raw,32*1024*1024) as {format:string;version:number;root:string};
- if(value.format!=='movefield-record-bundle'||value.version!==1||typeof value.root!=='string')throw Error('This encrypted record bundle is invalid.');
+ const value=parseSafeJson(raw,32*1024*1024) as {format?:string;version?:number;root?:string}|null;
+ if(value?.format==='movefield-vault'){readEnvelope(raw);return raw}
+ if(value?.format!=='movefield-record-bundle'||value.version!==1||typeof value.root!=='string')throw Error('This encrypted record bundle is invalid.');
  readEnvelope(value.root);return value.root;
 }
 export async function decodeRecordBundle(raw:string,io:Pick<CryptoIO,'open'|'digest'>):Promise<State>{
- if(isVault(raw))return decodeRecordState(raw,io,async keys=>{if(!keys.length)return [];throw Error('This index needs its encrypted records. Choose the complete backup bundle.')});
- const bundle=parseSafeJson(raw,32*1024*1024) as {format:string;version:number;root:string;rows:CipherRow[]};
- if(bundle.format!=='movefield-record-bundle'||bundle.version!==1||typeof bundle.root!=='string'||!Array.isArray(bundle.rows)||bundle.rows.length>10000||bundle.rows.some(r=>!r||typeof r.key!=='string'||typeof r.raw!=='string'||typeof r.vaultId!=='string'))throw Error('This encrypted record bundle is invalid.');
+ const bundle=parseSafeJson(raw,32*1024*1024) as {format?:string;version?:number;root?:string;rows?:CipherRow[]}|null;
+ if(bundle?.format==='movefield-vault'){readEnvelope(raw);return decodeRecordState(raw,io,async keys=>{if(!keys.length)return [];throw Error('This index needs its encrypted records. Choose the complete backup bundle.')})}
+ if(bundle?.format!=='movefield-record-bundle'||bundle.version!==1||typeof bundle.root!=='string'||!Array.isArray(bundle.rows)||bundle.rows.length>10000||bundle.rows.some(r=>!r||typeof r.key!=='string'||typeof r.raw!=='string'||typeof r.vaultId!=='string'))throw Error('This encrypted record bundle is invalid.');
  const map=new Map(bundle.rows.map(r=>[r.key,r]));if(map.size!==bundle.rows.length)throw Error('The bundle contains duplicate records.');
  return decodeRecordState(bundle.root,io,async keys=>keys.map(k=>map.get(k)||null));
 }

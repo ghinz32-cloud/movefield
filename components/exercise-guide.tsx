@@ -3,7 +3,7 @@ import {publicPath} from '@/lib/public-path';
 import {useState} from 'react';
 import {type Exercise,loadConvention} from '@/lib/training';
 import {ExternalLink,BookOpen} from 'lucide-react';
-export type ExerciseMedia={videoUrl?:string;sourceUrl?:string;hasVideo?:boolean;referenceScope?:string;images?:unknown[]};
+export type ExerciseMedia={videoUrl?:string;sourceUrl?:string;hasVideo?:boolean;referenceScope?:string;verification?:string;images?:unknown[]};
 export type MovementGuide={variant:string;summary?:string;equipment?:string[];setup:string[];execution:string[];finish?:string[];breathing:string[];commonErrors:string[];easierOption:string;safety:string;loadConvention:string;sourceURLs?:string[];sourceNote?:string;quickCues?:string[];terms?:{term:string;meaning:string}[]};
 function safeLink(url:unknown){try{const u=new URL(String(url));return u.protocol==='https:'&&!u.username&&!u.password?u.href:null}catch{return null}}
 const TERMS=[{term:'Rep',meaning:'One full movement, from the start and back again.'},{term:'Set',meaning:'A group of reps done before a rest.'},{term:'Load',meaning:'The weight or resistance used for an exercise.'},{term:'RIR · reps in reserve',meaning:'How many more reps you think you could do with the same form.'},{term:'1RM',meaning:'The most weight you can lift for one full rep. An estimated 1RM is a guess from a lighter set.'}];
@@ -20,6 +20,6 @@ export function ExerciseGuide({exercise:e,guide:g,media,custom=[],loading=false}
  <section className="record-guide"><h3>What to record</h3><p>{g?.loadConvention||loadConvention(e.id,custom)}</p><p>A blank load means it was not recorded. It does not mean zero.</p></section>
  {g&&<><details className="guide-extra"><summary>Common mistakes</summary><ul>{g.commonErrors.map((x,i)=><li key={i}>{x}</li>)}</ul></details><details className="guide-extra"><summary>Make the movement easier</summary><p>{g.easierOption}</p></details><div className="guide-safety"><h3>Before you start</h3><p>{g.safety}</p><p>This guide describes the movement. The app cannot see or check your form.</p></div></>}
  <details className="guide-extra"><summary>Workout terms</summary><dl>{[...(g?.terms||[]),...TERMS].filter((x,i,a)=>a.findIndex(y=>y.term===x.term)===i).map(x=><div key={x.term}><dt>{x.term}</dt><dd>{x.meaning}</dd></div>)}</dl></details>
- <details className="guide-extra"><summary>Sources</summary><p>{g?.sourceNote||'No source note is saved for this custom movement.'}</p>{sourceURLs.map((url,i)=><a href={url} key={i} className="instruction-source" target="_blank" rel="noopener noreferrer">Source {i+1}<ExternalLink size={14}/></a>)}<p>Source links open another site.</p></details>
+ <details className="guide-extra"><summary>Sources</summary><p>{g?.sourceNote||'No source note is saved for this custom movement.'}</p>{media?.verification&&<p>{media.verification}</p>}{sourceURLs.map((url,i)=><a href={url} key={i} className="instruction-source" target="_blank" rel="noopener noreferrer">Source {i+1}<ExternalLink size={14}/></a>)}<p>Source links open another site.</p></details>
  </div>;
 }

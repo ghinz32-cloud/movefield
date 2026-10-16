@@ -27,7 +27,10 @@ assert.match(today,/phonePage === 'workout' && active \? h\(NativeWorkoutScreen/
 assert.match(today,/onFocusExercise:setFocusedExercise/,'the focused workout delegates exercise identity to App');
 const workoutSource=fs.readFileSync('mobile/src/workout-screen.tsx','utf8');
 assert.match(workoutSource,/<NativeFlowScreen[^>]*footer=\{action\}/,'workout screens place the action in the shared fixed footer');
-assert.match(workoutSource,/<NativeActionFooter primary=/,'logging retains one explicit primary action');
+const workoutTree=ts.createSourceFile('workout-screen.tsx',workoutSource,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX),actionFooters=[];
+function visitWorkout(node){if((ts.isJsxSelfClosingElement(node)||ts.isJsxOpeningElement(node))&&node.tagName.getText(workoutTree)==='NativeActionFooter')actionFooters.push(node);ts.forEachChild(node,visitWorkout)}visitWorkout(workoutTree);
+assert.equal(actionFooters.length,1,'logging uses one shared primary-action footer');
+assert.ok(actionFooters[0].attributes.properties.some(attribute=>ts.isJsxAttribute(attribute)&&attribute.name.getText(workoutTree)==='primary'),'logging retains an explicit primary action independently of attribute ordering');
 for(const obsolete of ['todayScroll','loggerPosition','revealWorkoutSection','scrollToWorkoutSection','workoutScrollPending'])assert.equal(variable(obsolete),undefined,'old long-page scroll machinery is removed: '+obsolete);
 const focusRef={current:null};let rendered;
 const setFocus=new Function('focusRef','renderFocus','return ('+variable('setFocusedExercise').getText(source)+')')(focusRef,id=>{rendered=id});

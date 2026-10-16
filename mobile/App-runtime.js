@@ -2,6 +2,7 @@ import {NativeExerciseGuideScreen} from './src/exercise-guide-screen';
 import {NativeFlowScreen,NativeSettingsRow,NativeSection,NativeActionFooter} from './src/phone-ui';
 import {NativeWorkoutScreen} from './src/workout-screen';
 import {NativeTabBar} from './src/tab-bar';
+import {nativeWindowLayout} from './src/adaptive-layout';
 import {NativeProgramFilters,matchesProgram} from './src/program-filters';
 import {NativeWorkoutCoaching} from './src/workout-coaching';
 import {beforeWorkoutCoaching,afterWorkoutCoaching} from './src/shared/workout-coaching';
@@ -153,7 +154,7 @@ function RecordedMetrics({ metrics }) {
             })]
     });
 }
-function ModalFrame({ visible, close, title, children, onDismiss, scroll = true, requestClose, error, closeLabel = "Close", closeDisabled = false }) {
+function ModalFrame({ visible, close, title, children, onDismiss, scroll = true, requestClose, error, closeLabel = "Close", closeDisabled = false, compactChrome = false }) {
     var styles = (0, _srcAppearance.useThemedStyles)(baseStyles), { colors: COLORS, reduceMotion } = (0, _srcAppearance.useNativeAppearance)();
     return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Modal, {
         visible: visible,
@@ -164,8 +165,8 @@ function ModalFrame({ visible, close, title, children, onDismiss, scroll = true,
         children: /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNativeSafeAreaContext.SafeAreaView, {
             style: styles.safe,
             children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                    style: styles.modalHeader,
-                    children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                    style: [styles.modalHeader, compactChrome && {paddingVertical:4,justifyContent:"flex-end"}],
+                    children: [!compactChrome && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                             style: scroll ? styles.modalTitle : styles.small,
                             accessibilityRole: 'header',
                             children: title
@@ -321,12 +322,15 @@ function NativeEquipmentLimit({ state, exercise, onSave }) {
 }
 function TrainingApp() {
     var styles = (0, _srcAppearance.useThemedStyles)(baseStyles), appearance = (0, _srcAppearance.useNativeAppearance)(), COLORS = appearance.colors;
+    var viewport = (0, _reactNative.useWindowDimensions)();
     var [state, setState] = (0, _react.useState)(null);
     var [readError, setReadError] = (0, _react.useState)(false);
     var [saveStatus, setSaveStatus] = (0, _react.useState)('Loading local data…');
     var [error, setError] = (0, _react.useState)('');
     var [tab, setTab] = (0, _react.useState)('Today');
     var [phonePage,setPhonePage] = (0,_react.useState)('home');
+    var [constrainedWorkout,setConstrainedWorkout] = (0,_react.useState)(false);
+    var compactWorkout = !!state?.active && tab === 'Today' && phonePage === 'workout' && (constrainedWorkout || nativeWindowLayout(viewport.width,viewport.height,appearance.p.textSize,viewport.fontScale).compactHeight);
     var setupBack = (0,_react.useRef)(null), guideBack = (0,_react.useRef)(null);
     var [exercise, setExercise] = (0, _react.useState)(null);
     var [editingHistory, setEditingHistory] = (0, _react.useState)(false);
@@ -950,6 +954,7 @@ function TrainingApp() {
     };
     var todayView = phonePage === 'workout' && active ? h(NativeWorkoutScreen, {
         state, focusedExercise, busy:savingAction, remaining, restMessage:restAlertMessage || alertMessage,
+        sampleMode,saveStatus,saveError:error,compact:compactWorkout,onAvailableHeight:height=>setConstrainedWorkout(previous=>height<320?true:height>560?false:previous),onRetrySave:()=>{void persistChange(s=>({...s}));},
         onExit:()=>setPhonePage('home'), onFocusExercise:setFocusedExercise,
         onChangeSet:(index,patch)=>modify(s=>{if(s.active?.id!==active.id)throw Error('This workout changed. Reopen it before editing.');return (0,_srcSharedWorkoutLog.changeWorkoutSet)(s,index,patch);}),
         onLogSet:(index,seconds)=>saveSet(index,seconds,Date.now()),
@@ -1550,7 +1555,7 @@ h(NativeSettingsRow, {label:"Profile", onPress:()=>{void switchDataset(!sampleMo
                                 onPress: () => setTab('Today')
                             })]
                     }),
-state.history.slice().reverse().slice(0, historyLimit).map(w => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
+(0,_srcSharedPresentation.newestFirstWorkouts)(state.history).slice(0, historyLimit).map(w => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
                         accessibilityRole: "button",
                         style: styles.exerciseRow,
                         onPress: () => {
@@ -1576,7 +1581,7 @@ state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(B
                     })]});
     return /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNativeSafeAreaContext.SafeAreaView, {
         style: [styles.safe, _srcSharedBrand.isGrizzly && appearance.p.grizzlyStyle === 'wild' && !appearance.p.contrast && {backgroundColor: 'transparent'}],
-        edges: ['top', 'bottom'],
+        edges: ['top', 'bottom', 'left', 'right'],
         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_expoStatusBar.StatusBar, {
                 style: appearance.dark ? "light" : "dark"
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
@@ -1618,7 +1623,7 @@ state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(B
                             children: sampleMode ? "SAMPLE" : "ON DEVICE"
                         })
                     })]
-            }), error ? /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
+            }), error && !compactWorkout ? /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
                 accessibilityRole: "button",
                 onPress: () => setError(''),
                 style: styles.error,
@@ -1636,6 +1641,7 @@ state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(B
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.KeyboardAvoidingView, {
                 style: styles.flex,
                 behavior: _reactNative.Platform.OS === 'ios' ? 'padding' : undefined,
+                testID: 'native-primary-content',
                 children: tab === 'Today' ? todayView : tab === 'Plan' ? planView : tab === 'Library' ? libraryView : tab === 'Settings' ? /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcSettings.NativeSettings, {
                     reminderMessage: workoutReminderMessage,
                     profile: profileView,
@@ -1783,7 +1789,7 @@ state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(B
                                 })]
                         })
                 }) : historyView
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
+            }), !compactWorkout && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
                 disabled: !saveStatus.startsWith('Save failed'),
                 accessibilityRole: "button",
                 accessibilityLabel: "Retry saving on this device",
@@ -1796,7 +1802,7 @@ state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(B
                     style: styles.saveStatus,
                     children: sampleMode && !saveStatus.startsWith('Sample') ? 'Sample · ' + saveStatus : saveStatus
                 })
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NativeTabBar, {
+            }), !compactWorkout && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NativeTabBar, {
                 selected: tab,
                 onSelect: label => { setTab(label); setPhonePage('home'); setError(''); }
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(ModalFrame, {
@@ -1910,6 +1916,7 @@ state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(B
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(ModalFrame, {
                 visible: personalSetup,
                 scroll: false,
+                compactChrome: viewport.height < 500,
                 error: error,
                 closeLabel: "Save & close",
                 closeDisabled: savingAction,

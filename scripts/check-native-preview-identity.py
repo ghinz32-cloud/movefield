@@ -10,8 +10,8 @@ ns = '{http://schemas.android.com/apk/res/android}'
 package = os.environ['NATIVE_EXPECTED_PACKAGE']
 assert root.get('package') == package, 'Wrong native app identity'
 versions = {
-    'com.ghinz32.movefield': ('8', '0.1.7'),
-    'com.ghinz32.grizzlyfitness.prototype': ('7', '0.1.6'),
+    'com.ghinz32.movefield': ('9', '0.1.8'),
+    'com.ghinz32.grizzlyfitness.prototype': ('8', '0.1.7'),
 }
 assert package in versions, 'Unreviewed native identity'
 version_code, version_name = versions[package]

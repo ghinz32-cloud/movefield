@@ -47,8 +47,9 @@ function previewPlanImport(state, raw, options) {
         throw Error('An imported workout falls outside your available weekdays. Review the starting date or availability first.');
     if (new Set(sessions.map(s => s.date)).size !== sessions.length)
         throw Error('This importer supports one workout per calendar date. Review overlapping sessions before importing.');
-    if (sessions.some(s => state.events.some(e => e.date === s.date && (e.kind === 'Day off' || e.kind === 'Vacation'))))
-        throw Error('This schedule conflicts with fixed time off. Choose another starting date or review your calendar first.');
+    var conflicts = sessions.filter(s => state.events.some(e => e.date === s.date));
+    if (conflicts.length)
+        throw Error(`This schedule conflicts with fixed commitments on ${[...new Set(conflicts.map(s => s.date))].join(', ')}. Choose another starting date or review your calendar first. No workout or commitment was moved.`);
     var profile = {
         ...state.profile,
         goal: source.profile.goal,

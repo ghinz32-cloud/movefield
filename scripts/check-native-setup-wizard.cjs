@@ -11,7 +11,7 @@ async function advance(c){await c.press(primary(c).props.label)}
 async function reach(c,target){for(let n=0;n<24&&title(c)!==target;n++)await advance(c);assert.equal(title(c),target)}
 // Field is an actual local component boundary in this hook harness, so exercise
 // its onChange callback directly; full TextInput interaction is in RN Web tests.
-async function input(c,label,value){const node=c.find(x=>x.props.label===label&&x.props.onChange);assert.ok(node,label);node.props.onChange(value);await c.flush()}
+async function input(c,label,value){const node=c.find(x=>x.props.label===label&&x.props.onChange);assert.ok(node,label);if(node.props.numeric){const numeric=harness('mobile/src/numeric-input.tsx',{value:node.props.value,nullable:node.props.nullable??false,max:node.props.max??9999,onValueChange:node.props.onChange});await numeric.flush();numeric.find(x=>x.type==='TextInput').props.onChangeText(value);await numeric.flush()}else node.props.onChange(value);await c.flush()}
 async function journey(){
  const state=fresh();let draft,back,accepts=0;
  const c=harness('mobile/src/plan-setup-runtime.js',{state,onAccept:()=>{accepts++},onRegisterBack:v=>{back=v}},{'./storage':{readLocalSetup:async()=>null,saveLocalSetup:async v=>{S.readSetupDraft(JSON.stringify(v));draft=structuredClone(v)},clearLocalSetup:async()=>{draft=null}}});

@@ -21,8 +21,13 @@ export function useNativeWorkoutReminders(state:State|null,p:AppPreferences,read
  // Reconcile only for schedule-related changes, not each saved repetition.
  const signature=JSON.stringify({plan:state?.plan?.id,paused:state?.plan?.paused,hold:state?.hold,sessions:state?.plan?.sessions.map(s=>[s.id,s.date,s.status]),finished:state?.history.filter(w=>w.finishedAt).map(w=>w.sessionId),active:state?.active?.sessionId,events:state?.events.map(e=>e.date),enabled:p.reminders,time:p.reminderTime,zone:Intl.DateTimeFormat().resolvedOptions().timeZone});
  useEffect(()=>{
-  if(!ready||!state||Platform.OS==='web')return;
-  let live=true;const version=++generation;const desired=workoutReminders(state,p);allowedIds=new Set(desired.map(x=>x.id));
+  if(!ready||Platform.OS==='web')return;
+  // Sample mode has no personal State. Keep existing personal reminders while
+  // enabled, including an already authorized reconciliation still in flight.
+  // An explicit opt-out must cancel them and invalidate pending scheduling.
+  if(!state&&p.reminders)return;
+  const version=++generation;
+  let live=true;const desired=state?workoutReminders(state,p):[];allowedIds=new Set(desired.map(x=>x.id));
   const task=serial.catch(()=>{}).then(async()=>{
    if(version!==generation)return;
    const [scheduled,shown]=await Promise.all([Notifications.getAllScheduledNotificationsAsync(),Notifications.getPresentedNotificationsAsync()]);

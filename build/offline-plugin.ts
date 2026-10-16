@@ -10,7 +10,7 @@ export function offlineShell(base='/',staticReview=false,cachePrefix=staticRevie
   hash.update(workerTemplate);
   // Keep this list aligned with the worker's STATIC public resources. Guides and
   // photos metadata are cache-first, so their bytes must also identify a release.
-  const publicAssets=[...new Set(['exercise-guides.json','exercise-content.json','fonts/inter-variable.ttf','fonts/barlow-condensed-semibold.ttf',...brandAssets])];
+  const publicAssets=[...new Set(['app-loading.js','exercise-guides.json','exercise-content.json','fonts/inter-variable.ttf','fonts/barlow-condensed-semibold.ttf',...brandAssets])];
   for(const name of publicAssets.sort())hash.update(name).update(readFileSync(new URL('../public/'+name,import.meta.url)));
   const source=workerTemplate
    .replace("'DEVELOPMENT_DISABLED'",JSON.stringify(hash.digest('hex').slice(0,20)))

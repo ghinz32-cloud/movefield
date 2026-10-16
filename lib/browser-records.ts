@@ -1,7 +1,7 @@
 import {createRecordStateStorage,encryptedRecordBundle,type RecordBackend,type CipherRow} from './record-state';
 import {BrowserVault} from './browser-vault';
 import {PERSONAL_STATE_KEY,StorageConflict} from './browser-state';
-import {hex} from './vault-format';
+import {hex,readEnvelope} from './vault-format';
 const name='movefield-private-records-v1';
 const request=<T>(r:IDBRequest<T>)=>new Promise<T>((resolve,reject)=>{r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});
 function connection(){return new Promise<IDBDatabase>((resolve,reject)=>{const r=indexedDB.open(name,1);r.onupgradeneeded=()=>{r.result.createObjectStore('meta');r.result.createObjectStore('rows',{keyPath:'key'}).createIndex('vaultId','vaultId')};r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);r.onblocked=()=>reject(Error('Close other app windows before updating local storage.'))})}
@@ -22,3 +22,21 @@ export const browserRecordBackend:RecordBackend={
 export const recordDigest=async(raw:string)=>hex(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(raw))));
 export function browserRecordStore(vault:()=>BrowserVault|null,expectedCache:()=>string,onCache:(raw:string)=>void){return createRecordStateStorage({backend:browserRecordBackend,digest:recordDigest,seal:async plain=>{const key=vault();if(!key)throw Error('Unlock the private profile before saving.');return key.encrypt(plain)},open:async raw=>{const key=vault();if(!key)throw Error('Unlock the private profile before reading.');return key.decrypt(raw)},legacyRead:async()=>localStorage.getItem(PERSONAL_STATE_KEY),legacyWrite:async raw=>{if((localStorage.getItem(PERSONAL_STATE_KEY)||'')!==expectedCache())throw new StorageConflict();localStorage.setItem(PERSONAL_STATE_KEY,raw);if(localStorage.getItem(PERSONAL_STATE_KEY)!==raw)throw Error('Local index cache could not be verified.');onCache(raw)}})}
 export const originalRecordBundle=()=>encryptedRecordBundle(browserRecordBackend,async()=>localStorage.getItem(PERSONAL_STATE_KEY));
+
+/** Call only after a replacement vault and its cache projection are acknowledged.
+ * The root check and deletion share a transaction, so a newer writer or an abort
+ * cannot strand the current archive. Downloaded backups are separate copies. */
+export function retireBrowserVaultRecords(expectedRoot:string):Promise<number>{
+ const vaultId=readEnvelope(expectedRoot).vaultId;
+ return read(db=>new Promise((resolve,reject)=>{
+  const tx=db.transaction(['meta','rows'],'readwrite'),get=tx.objectStore('meta').get('root');let conflict=false,removed=0;
+  get.onsuccess=()=>{
+   if(get.result!==expectedRoot){conflict=true;tx.abort();return}
+   const cursor=tx.objectStore('rows').openCursor();
+   cursor.onsuccess=()=>{const row=cursor.result;if(row){if(row.value.vaultId!==vaultId){row.delete();removed++}row.continue()}};
+  };
+  tx.oncomplete=()=>resolve(removed);
+  tx.onabort=()=>reject(Error(conflict?'The profile changed after the passphrase update. Older encrypted records are kept; reopen and retry cleanup.':'The passphrase changed, but older encrypted records could not be removed. Keep the current passphrase and retry cleanup.'));
+  tx.onerror=()=>{};
+ }));
+}
