@@ -1,9 +1,9 @@
 # Android update candidate
 
 The `legacy-movefield` build targets the repository's October 9 test installer,
-`com.ghinz32.movefield`, with versionCode 7 (Movefield version 0.1.6; the previous published release used versionCode 6). It uses the existing Expo test
+`com.ghinz32.movefield`, with versionCode 8 (Movefield version 0.1.7; the previous published release used versionCode 7). It uses the existing Expo test
 certificate. The default Movefield and Grizzly prototype identities remain
-separate. This source configures Grizzly 0.1.5/code 6; a version declaration is not
+separate. This source configures Grizzly 0.1.6/code 7; a version declaration is not
 a compiled or published installer. Do not uninstall the earlier app to install this candidate.
 
 `EXPO_PUBLIC_NATIVE_LINEAGE=legacy-movefield` must be set for both Expo prebuild
@@ -33,8 +33,10 @@ OS boundaries. Successful prebuild or Hermes export does not prove an installed
 Android update. Acceptance still requires installing the exact new signed APK
 over the exact old APK, verifying synthetic history, active workout, setup and
 rest timing, restarting offline, and checking device notifications/erasure.
-The user's exact installed APK is still unconfirmed. Grizzly is a separate
-installation and does not import Movefield records.
+The owner confirmed that the previous Movefield 0.1.6 Pages download installed
+on a Samsung S24 Ultra and opened with saved workouts present. This does not
+qualify the redesigned 0.1.7 build, complete record integrity or other devices.
+Grizzly is a separate installation and does not import Movefield records.
 
 Settings can also preview version 1 Argon2id/XChaCha password-protected
 `movefield-transfer` files from the historical phone or website. Enter the

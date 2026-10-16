@@ -1,26 +1,26 @@
 {
   "format": "fitness-android-downloads-v1",
-  "workflowRun": 38936451848,
-  "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
-  "sourceTree": "2831460f6e90b3374ac7e5e5db629f7a51eca25c",
+  "workflowRun": 38949459698,
+  "sourceCommit": "f0130487760aa03d64b22f23002da5423da7ff4e",
+  "sourceTree": "9c322c9d1f465c5e9157b76b67e97c0b65dc2104",
   "signingCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
   "apps": [
     {
       "app": "movefield",
       "name": "Movefield",
       "filename": "movefield-arm64-current-test.apk",
-      "bytes": 39313208,
-      "sha256": "e0c31e216b5f56263d3d9c7dce858757bc4949fc489034236df089109f98d97f",
+      "bytes": 39335972,
+      "sha256": "1f3d387b5ff05b20a2e5f341bd515f6cf4a56b7d8293aa31a0eceb9dfc624759",
       "package": "com.ghinz32.movefield",
-      "versionCode": 7,
-      "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
-      "artifactId": 12061882388,
+      "versionCode": 8,
+      "sourceCommit": "f0130487760aa03d64b22f23002da5423da7ff4e",
+      "artifactId": 12068511444,
       "parts": [
         {
           "file": "native/movefield/part-0.bin",
           "bytes": 10485760,
-          "sha256": "dbd6696bef3eb5407a38a4808f91d0ac42bdacccd41a36aa17fad30fdc4b23b8",
-          "sha": "67f53d34eb748f3381e5b0e66b5bdc5dbceb9bf1"
+          "sha256": "04d7b95f821a199839a5b059342effec2aa4f86e6dfdcf2e48e892a30ff5a445",
+          "sha": "18ec36b01cf7ff8742051fe7a0c64d9d6c61344a"
         },
         {
           "file": "native/movefield/part-1.bin",
@@ -31,17 +31,17 @@
         {
           "file": "native/movefield/part-2.bin",
           "bytes": 10485760,
-          "sha256": "9fbcb09d77737350bd48f8109da843f6046bd61870f35e4dc97b3f8e406f4a9c",
-          "sha": "c9ea55c8271d54d073bd2e77b9d53fe65c2302c8"
+          "sha256": "ca07c425f05b3a54cfe692b195f66a5efc09ed804ad7318e8345fb60bbd87ed4",
+          "sha": "db034ab469d9cb165d11cae06cfaa8aa13a8861f"
         },
         {
           "file": "native/movefield/part-3.bin",
-          "bytes": 7855928,
-          "sha256": "37edaebfdcddc5cdc5ee9df90a0cc2ea4ae7c488620b5c24f95bd53273cee804",
-          "sha": "366170d6eac29f920986a1ec69c8189a4ca30bdd"
+          "bytes": 7878692,
+          "sha256": "037270f55c9a738736c1033115af9ca9b11661903fb3d8c3ff11ab5eb66ef6b5",
+          "sha": "581768d6b8038e52bea199cac46b441338a3615c"
         }
       ],
-      "versionName": "0.1.6",
+      "versionName": "0.1.7",
       "minimumSDK": 24,
       "architecture": "arm64-v8a"
     },
@@ -49,18 +49,18 @@
       "app": "grizzly",
       "name": "Grizzly Fitness",
       "filename": "grizzly-arm64-current-test.apk",
-      "bytes": 39464470,
-      "sha256": "e32a37ddb9b6087db625aac2b24ff9d5fde4515d77b96284eb83ab2ddc90d992",
+      "bytes": 39487234,
+      "sha256": "aafb36100ec149bacbeb4cd9d62921012c95e277e61c31f4dfa3777f255d159e",
       "package": "com.ghinz32.grizzlyfitness.prototype",
-      "versionCode": 6,
-      "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
-      "artifactId": 12061363475,
+      "versionCode": 7,
+      "sourceCommit": "f0130487760aa03d64b22f23002da5423da7ff4e",
+      "artifactId": 12069150619,
       "parts": [
         {
           "file": "native/grizzly/part-0.bin",
           "bytes": 10485760,
-          "sha256": "8c5393bcfc289ef97fcb1a6988974db4f2ebf9805e46f4a830ce28768f80ad5c",
-          "sha": "a63eb07fa29db085a15bad18276838f715fe9a9b"
+          "sha256": "f0bf3e23b1cc3efea72845b9896b6728e68a15ba31499fdec590d83fe3dc30ba",
+          "sha": "f672e556f2710e1c19260298cf13f76bfe575e67"
         },
         {
           "file": "native/grizzly/part-1.bin",
@@ -71,17 +71,17 @@
         {
           "file": "native/grizzly/part-2.bin",
           "bytes": 10485760,
-          "sha256": "31a99089137f2a19dca4ea4fa83314de09148cec274c4587ca3b6440e22964ec",
-          "sha": "893388c01564847b69e42962ce2dfd4123c4e49d"
+          "sha256": "04d8886a2e0b58f9f9150490a7bfbceb92df721f55f02fbf599b3e82202653ba",
+          "sha": "fbb065c6cb4250923bfdd5283e5315420e8044f0"
         },
         {
           "file": "native/grizzly/part-3.bin",
-          "bytes": 8007190,
-          "sha256": "466e4bd20fcb1af986ba1ac91c549ba3745d5851343b1004b57ca7b8f918bb79",
-          "sha": "ed31319eb5c171daac1c01d1a99a0ad56854f46e"
+          "bytes": 8029954,
+          "sha256": "3cce874fb9a5c14bd8dfa6f699827ff8d3585ee41eec021b1d9956fbcf5c9bac",
+          "sha": "075c70b3d7226914b2b63fa77e4d08115c756069"
         }
       ],
-      "versionName": "0.1.5",
+      "versionName": "0.1.6",
       "minimumSDK": 24,
       "architecture": "arm64-v8a"
     }
