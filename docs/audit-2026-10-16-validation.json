@@ -1,0 +1,244 @@
+{
+  "checkedAt": "2026-10-16T16:21:08.737588+00:00",
+  "status": "passed within the recorded audit and delivery scopes",
+  "scope": "Current shared Movefield/Grizzly websites and development-signed Android test downloads. Native component/Hermes export checks include both iOS flavors. No signed iPhone, physical-device, store, live-provider, full scientific/rights or six-prompt completion claim.",
+  "source": {
+    "branch": "codex/claude-routine-audit-2026-10-16",
+    "baselineCommit": "4db8f2ad2ecdf5a0116269dff79f8a46f6da356e",
+    "claudeProposalCommit": "ea9e4d5e450957d6304ef2fdba967660e8579ec9",
+    "nativeAndCoreCommit": "88cf9517898486b9f310918caf731604361feb40",
+    "publishedWebCommit": "e16c5611bd11fdceea13e50e52dd6fdd4e136ced",
+    "applicationSHA256": "13f63feac52aefad66f426dd7483e48342b9967eb6ff17afb64dc295ad220c0b",
+    "nativeSharedCodeUnchangedSinceCompiledCommit": true
+  },
+  "content": {
+    "proposedVariants": 125,
+    "acceptedVariants": 68,
+    "withheldVariants": 57,
+    "appProgramDefinitions": 213,
+    "canonicalExercises": 995,
+    "completeGuides": 995,
+    "structuralGuideFields": 14,
+    "decodedPhotos": 1726,
+    "exercisesWithoutPhotosOrDirectVideo": 126,
+    "completeExpertFormReviewOfEveryExercise": false
+  },
+  "validation": {
+    "coreGroupsPassed": 46,
+    "renderedWebAxeStates": 111,
+    "renderedWebAxeViolations": 0,
+    "postLoggerWorkerBrowserJourneys": 18,
+    "distinctClearedCacheHermesExports": 4,
+    "publisherGateCases": 113,
+    "fitnessMatrix": {
+      "scenarios": 7776,
+      "returnedPlans": 8478,
+      "assertions": 1687668,
+      "scenariosWithAtLeastOnePlan": 3351,
+      "scenariosWithoutAPlan": 4425
+    },
+    "scopeReceipts": [
+      "audit-2026-10-16/core-validation.json",
+      "audit-2026-10-16/final-checks.json",
+      "audit-2026-10-16/web-validation.json",
+      "audit-2026-10-16/native-validation.json"
+    ]
+  },
+  "android": {
+    "buildRun": 38925861537,
+    "publisherRun": 38929964160,
+    "releaseURL": "https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-88cf95178984",
+    "apps": [
+      {
+        "app": "movefield",
+        "artifactId": 12057359725,
+        "archiveSHA256": "ec591cf6d502fdb09728bc1ef42859a79c490dcbafaee015a83da2976ace4e9a",
+        "sourceCommit": "88cf9517898486b9f310918caf731604361feb40",
+        "sourceTree": "8861a5c00c327e563e802df392e545153ae110ee",
+        "apk": ".sites-runtime/audit-2026-10-16/native-installers/movefield/movefield-arm64-test.apk",
+        "bytes": 39274252,
+        "sha256": "3ee9065233a019aebaae15456d277e2fa92de7246d4a6fc6c769a1c05bb44108",
+        "directDownloadURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-88cf95178984/movefield-0.1.5-arm64.apk",
+        "package": "com.ghinz32.movefield",
+        "versionCode": 6,
+        "versionName": "0.1.5",
+        "minimumSDK": 24,
+        "architectures": [
+          "arm64-v8a"
+        ],
+        "applicationBundleSHA256": "6a6a5cf19349773d9e204cee6f101c8ac89849475c6de9cbacbf9930cabeee6f",
+        "nativeInspection": {
+          "passed": true,
+          "platform": "android",
+          "package": "com.ghinz32.movefield",
+          "permissions": [
+            "android.permission.ACCESS_NETWORK_STATE",
+            "android.permission.INTERNET",
+            "android.permission.POST_NOTIFICATIONS",
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            "android.permission.VIBRATE",
+            "com.ghinz32.movefield.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+          ],
+          "manifestSHA256": "e0c17e41b703fbe7a742d5c632076e4b63e31edb64c65a4c9fccc7689d1bf559",
+          "backupRulesLinked": true,
+          "backupDomainsExcluded": [
+            "database",
+            "device_database",
+            "device_file",
+            "device_root",
+            "device_sharedpref",
+            "external",
+            "file",
+            "root",
+            "sharedpref"
+          ],
+          "cloudBackupAndDeviceTransferExcluded": true,
+          "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+          "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+          "resourceTableSHA256": "b3e1448320575520f76b951b1605b98644507c5bebc1d641b73b1e0ec332b248",
+          "cleartextDenied": true,
+          "remoteSdkStartupDisabled": true,
+          "componentBoundariesChecked": true,
+          "localReminderDeclarationsChecked": true,
+          "reviewedStartupInitializers": [
+            "androidx.emoji2.text.EmojiCompatInitializer",
+            "androidx.lifecycle.ProcessLifecycleInitializer",
+            "androidx.profileinstaller.ProfileInstallerInitializer"
+          ],
+          "internalBrowserProxyChecked": true,
+          "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+          "signing": "uninspected; inspect the APK certificate separately",
+          "physicalDeviceTested": false,
+          "storeAccepted": false
+        },
+        "credentialPatternScan": {
+          "members": 1236,
+          "matches": 0,
+          "scope": "Finite recognized patterns; no security certification or absence-of-secrets guarantee."
+        },
+        "identityAndSignaturePassed": true
+      },
+      {
+        "app": "grizzly",
+        "artifactId": 12057566350,
+        "archiveSHA256": "9b324a0d82a7ed984266a690f6e877bad260ba573ed6a2d6531fb542bcfa0f1d",
+        "sourceCommit": "88cf9517898486b9f310918caf731604361feb40",
+        "sourceTree": "8861a5c00c327e563e802df392e545153ae110ee",
+        "apk": ".sites-runtime/audit-2026-10-16/native-installers/grizzly/grizzly-arm64-test.apk",
+        "bytes": 39425514,
+        "sha256": "d10a49cf46338e4c1128fd48ca9e762642504130cc0f3e464e5ee0346196076a",
+        "directDownloadURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-88cf95178984/grizzly-fitness-0.1.4-arm64.apk",
+        "package": "com.ghinz32.grizzlyfitness.prototype",
+        "versionCode": 5,
+        "versionName": "0.1.4",
+        "minimumSDK": 24,
+        "architectures": [
+          "arm64-v8a"
+        ],
+        "applicationBundleSHA256": "e6b1baf924025066a0c0e94c47a0a0b2c85041f8f1697d2aad4c555cf5d45a51",
+        "nativeInspection": {
+          "passed": true,
+          "platform": "android",
+          "package": "com.ghinz32.grizzlyfitness.prototype",
+          "permissions": [
+            "android.permission.ACCESS_NETWORK_STATE",
+            "android.permission.INTERNET",
+            "android.permission.POST_NOTIFICATIONS",
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            "android.permission.VIBRATE",
+            "com.ghinz32.grizzlyfitness.prototype.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+          ],
+          "manifestSHA256": "5950b0fc3c7aacbbb19b5de3089944333988bf9056262779aad31419a5cf737d",
+          "backupRulesLinked": true,
+          "backupDomainsExcluded": [
+            "database",
+            "device_database",
+            "device_file",
+            "device_root",
+            "device_sharedpref",
+            "external",
+            "file",
+            "root",
+            "sharedpref"
+          ],
+          "cloudBackupAndDeviceTransferExcluded": true,
+          "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+          "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+          "resourceTableSHA256": "3362335fc64b24c5f7d80b46e2a27f15ac96d9bab7fbff984542081558b7c62c",
+          "cleartextDenied": true,
+          "remoteSdkStartupDisabled": true,
+          "componentBoundariesChecked": true,
+          "localReminderDeclarationsChecked": true,
+          "reviewedStartupInitializers": [
+            "androidx.emoji2.text.EmojiCompatInitializer",
+            "androidx.lifecycle.ProcessLifecycleInitializer",
+            "androidx.profileinstaller.ProfileInstallerInitializer"
+          ],
+          "internalBrowserProxyChecked": true,
+          "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+          "signing": "uninspected; inspect the APK certificate separately",
+          "physicalDeviceTested": false,
+          "storeAccepted": false
+        },
+        "credentialPatternScan": {
+          "members": 1226,
+          "matches": 0,
+          "scope": "Finite recognized patterns; no security certification or absence-of-secrets guarantee."
+        },
+        "identityAndSignaturePassed": true
+      }
+    ],
+    "actualBundleContentReceipt": "audit-2026-10-16/android-bundle-contents.json",
+    "publicationReceipt": "audit-2026-10-16/android-publication.json",
+    "sourceArchives": [
+      {
+        "file": "movefield-native-current.zip",
+        "bytes": 8143208,
+        "sha256": "16c97df71d795cf6292453d5e0e927086c5c8c8a971d0d9f84891c264cf94929",
+        "manifestFiles": 255
+      },
+      {
+        "file": "grizzly-fitness-native-source.zip",
+        "bytes": 8143208,
+        "sha256": "ef5279eb86f0c9459fe84c3ae0c24d316f90920b8fdebee901fea469f3f9c8c6",
+        "manifestFiles": 255
+      }
+    ]
+  },
+  "pages": {
+    "pages_commit": "e757b42a8390cca84fc8d1665377f76d0a713fb0",
+    "base_pages_commit": "1d245e9383f9a2b421f3df02d3a25f0da17b6c58",
+    "source_commit": "e16c5611bd11fdceea13e50e52dd6fdd4e136ced",
+    "application_source_sha256": "13f63feac52aefad66f426dd7483e48342b9967eb6ff17afb64dc295ad220c0b",
+    "preserved_original_files": 63,
+    "verified_candidate_files": 3863,
+    "pushed": true,
+    "live_verified": true,
+    "deploymentRun": 38930736719,
+    "urls": {
+      "movefield": "https://ghinz32-cloud.github.io/movefield/review/",
+      "grizzly": "https://ghinz32-cloud.github.io/movefield/grizzly/"
+    },
+    "liveAssetFilesPassed": 349,
+    "originalRootFilesPassed": 63,
+    "downloadFilesPassed": 22,
+    "apkReconstructionsPassed": 4,
+    "actualBrowserAPKSaveFlowsPassed": 2,
+    "actualNewRoutineGuideLogReloadFlowsPassed": 2,
+    "liveUIReceipt": "audit-2026-10-16/live-ui.json"
+  },
+  "finiteCredentialScan": {
+    "files": 6119,
+    "zipMembers": 2262,
+    "matches": 0,
+    "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed."
+  },
+  "remaining": [
+    "Original legacy root remains separate and lacks the new shared routines; its two recorded accessibility findings remain.",
+    "No Apple signing/TestFlight setup or signed iPhone installers; no physical phone or store acceptance.",
+    "Two native upstream advisories affect 43 dependency-chain entries; no registry fix available.",
+    "57 proposed variants withheld; 126 exercises lack photos/direct video; full scientific, exact-form and media-rights review remain open.",
+    "No live Cloudflare/provider account/backup/coaching deployment or qualification.",
+    "Broader requirements remain in docs/master-prompts-task-register.json."
+  ]
+}

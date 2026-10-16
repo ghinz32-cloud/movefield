@@ -5,8 +5,8 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Reviewed starting-weight editor for reused blocks, both web/native brands; explicit first-exposure weights, matching actual-history references, machine contexts, capacity and stale-preview guards. Exact publication/build receipt is docs/block-starting-loads-publication-2026-10-13.json. Physical upgrade, individualized next-block volume/source resets and other canonical gates remain open.",
-  "completion_claim": "Verified bounded Android delivery and older-transfer compatibility milestone; no installed-device, store or full six-prompt completion claim.",
+  "active_checkpoint": "Claude routine-library integration and full platform audit, 16 October 2026: 68 qualified additions shared by both brands, 995 exercise guides, corrected equipment/substitution and small-screen/native UX. Exact checks and publication receipts are docs/audit-2026-10-16.md and docs/audit-2026-10-16-validation.json. Original root, physical devices, Apple distribution, upstream advisories, live providers and broader product gates remain open.",
+  "completion_claim": "Audited shared web/native checkpoint with bounded Android test delivery; no full six-prompt, exact-routine clinical, installed-device or store qualification claim.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
     "Saved environment network additions need activation for full-text research and repo.reactnative.dev Android artifact download. Current proxy denials are not bypassed.",
@@ -1928,11 +1928,11 @@
     ]
   },
   "latest_audit": {
-    "date": "2026-10-13",
-    "report": "docs/full-app-audit-2026-10-13.md",
-    "branch": "codex/full-app-audit-2026-10-13",
-    "validation": "docs/full-app-audit-validation-2026-10-13.json",
-    "publication": "docs/full-app-audit-publication-2026-10-13.json"
+    "date": "2026-10-16",
+    "report": "docs/audit-2026-10-16.md",
+    "branch": "codex/claude-routine-audit-2026-10-16",
+    "validation": "docs/audit-2026-10-16-validation.json",
+    "publication": "docs/audit-2026-10-16-validation.json"
   },
   "latest_ui_repair": {
     "branch": "codex/compact-ui-2026-10-13",

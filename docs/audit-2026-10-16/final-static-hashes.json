@@ -1,0 +1,83 @@
+{
+  "checkedAt": "2026-10-16T16:15:13.072Z",
+  "deliverySource": "e16c5611bd11fdceea13e50e52dd6fdd4e136ced",
+  "status": "Final download-only rebuild equals previously audited HTML, JavaScript, CSS and worker hashes",
+  "results": [
+    {
+      "brand": "review",
+      "revision": "93103ec0e00dc1d094fd",
+      "files": [
+        {
+          "file": "index.html",
+          "sha256": "50ff9ced75096a83ea57716b2910f9bbbe371e3f9dfa46d40da0fc2b893bebb4"
+        },
+        {
+          "file": "movefield-sw.js",
+          "sha256": "e44f9724c61904e92b02d17b142c452f81fade3364080b54b7012d632c06f145"
+        },
+        {
+          "file": "assets/argon2-CYp2YzQ3.js",
+          "sha256": "bb84ed9ccfe438904aefe6f0e3cd92d99a2e5ac9fa1b5015bfa3a4eb67f3b0ab"
+        },
+        {
+          "file": "assets/chacha-TjjJ4993.js",
+          "sha256": "81d821a3edcac4dfacee74c93d238bdb0426fa9b55129c97b2b56ba24c79a4e2"
+        },
+        {
+          "file": "assets/cloud-account-DclorfQz.js",
+          "sha256": "5735306a080c847c57dd5b8ac12eaf6ca09562491e64c674dffba3a749f78441"
+        },
+        {
+          "file": "assets/index-BLG-tRA0.css",
+          "sha256": "51d1a3b3d0393bf0f15bc6e8e488f3908e06ba388f962a92782fcf799e6cb4ea"
+        },
+        {
+          "file": "assets/index-WYktGQ8-.js",
+          "sha256": "8849ffcd79d1e70cadaa7ddf2870666e15a23f7514b5afb8927c750c5d7ee681"
+        },
+        {
+          "file": "assets/progress-dashboard-Rzb_KTM6.js",
+          "sha256": "c274891b3e1b1057a4c484f52919f3ed18ccd01a05ad4942da290f948f9a139a"
+        }
+      ]
+    },
+    {
+      "brand": "grizzly",
+      "revision": "74ce1d43e6524bfee66b",
+      "files": [
+        {
+          "file": "index.html",
+          "sha256": "a8ba13918ed8d28681af577cf117e46d750f399aa70275b6305d7cfcabed3655"
+        },
+        {
+          "file": "movefield-sw.js",
+          "sha256": "a28c0308beffaf790c995efc3cf91694d6ee69ebd5b45184ef14bdac806f277a"
+        },
+        {
+          "file": "assets/argon2-CYp2YzQ3.js",
+          "sha256": "bb84ed9ccfe438904aefe6f0e3cd92d99a2e5ac9fa1b5015bfa3a4eb67f3b0ab"
+        },
+        {
+          "file": "assets/chacha-TjjJ4993.js",
+          "sha256": "81d821a3edcac4dfacee74c93d238bdb0426fa9b55129c97b2b56ba24c79a4e2"
+        },
+        {
+          "file": "assets/cloud-account-Fni61yil.js",
+          "sha256": "4a1caffa10171fce030ee0797d02b203fa1d3f8e0a43b818b4142135aaafeeab"
+        },
+        {
+          "file": "assets/index-BSLWDkCi.js",
+          "sha256": "ca5b3141110b8fb8674cea254da5346a1fdd132af1ae09c651d73cc0e95ad80c"
+        },
+        {
+          "file": "assets/index-DlPKplP8.css",
+          "sha256": "6a65952441c54ebb0b0e84eae6e429137acd80b3f8a3a1ed8b0187aed3b5b6a1"
+        },
+        {
+          "file": "assets/progress-dashboard-BkO0cBZP.js",
+          "sha256": "d2f8b023935635a76696a2db419fdd563cd7808871f7a319a980ac84b494881f"
+        }
+      ]
+    }
+  ]
+}

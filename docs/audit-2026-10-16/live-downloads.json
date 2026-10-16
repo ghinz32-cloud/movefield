@@ -1,0 +1,175 @@
+{
+  "checkedAt": "2026-10-16T16:19:27.881004+00:00",
+  "pagesCommit": "e757b42a8390cca84fc8d1665377f76d0a713fb0",
+  "sourceCommit": "88cf9517898486b9f310918caf731604361feb40",
+  "passed": true,
+  "scope": "Exact live download-page/manifest/script/part bytes and reconstruction of both APKs from both served brand directories; no phone installation claim.",
+  "files": [
+    {
+      "path": "review/downloads/android-download.js",
+      "bytes": 4138,
+      "sha256": "2e31d302d5a4e35fb81646113ac8cc0b68805d71c994ba6554a4765f45db1933",
+      "passed": true
+    },
+    {
+      "path": "review/downloads/android-installers.json",
+      "bytes": 3310,
+      "sha256": "55fa3e63b99d2d28846fb52d28edac801210fd4479472922deab425762894fa8",
+      "passed": true
+    },
+    {
+      "path": "review/downloads/android.html",
+      "bytes": 4930,
+      "sha256": "dc1edcbb855fb6d14128163d0e0d22aeb47240f330a839a989a7b1d73d63ed1b",
+      "passed": true
+    },
+    {
+      "path": "review/downloads/native/grizzly/part-0.bin",
+      "bytes": 10485760,
+      "sha256": "14c11a464a013a3dd55f6aa0c4d8c984b8aae3341236b24e29290c0745e99b8e",
+      "passed": true
+    },
+    {
+      "path": "review/downloads/native/grizzly/part-1.bin",
+      "bytes": 10485760,
+      "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+      "passed": true
+    },
+    {
+      "path": "review/downloads/native/grizzly/part-2.bin",
+      "bytes": 10485760,
+      "sha256": "f4360a83283ba86659cc855a5029d17953552eb0c7ec37759dd08af409f37b5c",
+      "passed": true
+    },
+    {
+      "path": "review/downloads/native/grizzly/part-3.bin",
+      "bytes": 7968234,
+      "sha256": "7438617b264ba859388b78e89e54ce116e6722da52a6f8382671e1eede5daa41",
+      "passed": true
+    },
+    {
+      "path": "review/downloads/native/movefield/part-0.bin",
+      "bytes": 10485760,
+      "sha256": "4b7939a56607f3690ee786259f981f5e12596cf56a6d3ecdb7a8a0593e20e29b",
+      "passed": true
+    },
+    {
+      "path": "review/downloads/native/movefield/part-1.bin",
+      "bytes": 10485760,
+      "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+      "passed": true
+    },
+    {
+      "path": "review/downloads/native/movefield/part-2.bin",
+      "bytes": 10485760,
+      "sha256": "1b9e148ae6668c2a8a25a408c650640760e34d796347a86d59431c7d76b52be5",
+      "passed": true
+    },
+    {
+      "path": "review/downloads/native/movefield/part-3.bin",
+      "bytes": 7816972,
+      "sha256": "b59f078219d4774c1214d99c468360dd3f765dcd6d94acd0db64a07e4b95c2f8",
+      "passed": true
+    },
+    {
+      "path": "grizzly/downloads/android-download.js",
+      "bytes": 4138,
+      "sha256": "2e31d302d5a4e35fb81646113ac8cc0b68805d71c994ba6554a4765f45db1933",
+      "passed": true
+    },
+    {
+      "path": "grizzly/downloads/android-installers.json",
+      "bytes": 3310,
+      "sha256": "55fa3e63b99d2d28846fb52d28edac801210fd4479472922deab425762894fa8",
+      "passed": true
+    },
+    {
+      "path": "grizzly/downloads/android.html",
+      "bytes": 4930,
+      "sha256": "dc1edcbb855fb6d14128163d0e0d22aeb47240f330a839a989a7b1d73d63ed1b",
+      "passed": true
+    },
+    {
+      "path": "grizzly/downloads/native/grizzly/part-0.bin",
+      "bytes": 10485760,
+      "sha256": "14c11a464a013a3dd55f6aa0c4d8c984b8aae3341236b24e29290c0745e99b8e",
+      "passed": true
+    },
+    {
+      "path": "grizzly/downloads/native/grizzly/part-1.bin",
+      "bytes": 10485760,
+      "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+      "passed": true
+    },
+    {
+      "path": "grizzly/downloads/native/grizzly/part-2.bin",
+      "bytes": 10485760,
+      "sha256": "f4360a83283ba86659cc855a5029d17953552eb0c7ec37759dd08af409f37b5c",
+      "passed": true
+    },
+    {
+      "path": "grizzly/downloads/native/grizzly/part-3.bin",
+      "bytes": 7968234,
+      "sha256": "7438617b264ba859388b78e89e54ce116e6722da52a6f8382671e1eede5daa41",
+      "passed": true
+    },
+    {
+      "path": "grizzly/downloads/native/movefield/part-0.bin",
+      "bytes": 10485760,
+      "sha256": "4b7939a56607f3690ee786259f981f5e12596cf56a6d3ecdb7a8a0593e20e29b",
+      "passed": true
+    },
+    {
+      "path": "grizzly/downloads/native/movefield/part-1.bin",
+      "bytes": 10485760,
+      "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+      "passed": true
+    },
+    {
+      "path": "grizzly/downloads/native/movefield/part-2.bin",
+      "bytes": 10485760,
+      "sha256": "1b9e148ae6668c2a8a25a408c650640760e34d796347a86d59431c7d76b52be5",
+      "passed": true
+    },
+    {
+      "path": "grizzly/downloads/native/movefield/part-3.bin",
+      "bytes": 7816972,
+      "sha256": "b59f078219d4774c1214d99c468360dd3f765dcd6d94acd0db64a07e4b95c2f8",
+      "passed": true
+    }
+  ],
+  "reconstructedAPKs": [
+    {
+      "folder": "review",
+      "app": "movefield",
+      "version": "0.1.5",
+      "bytes": 39274252,
+      "sha256": "3ee9065233a019aebaae15456d277e2fa92de7246d4a6fc6c769a1c05bb44108",
+      "passed": true
+    },
+    {
+      "folder": "review",
+      "app": "grizzly",
+      "version": "0.1.4",
+      "bytes": 39425514,
+      "sha256": "d10a49cf46338e4c1128fd48ca9e762642504130cc0f3e464e5ee0346196076a",
+      "passed": true
+    },
+    {
+      "folder": "grizzly",
+      "app": "movefield",
+      "version": "0.1.5",
+      "bytes": 39274252,
+      "sha256": "3ee9065233a019aebaae15456d277e2fa92de7246d4a6fc6c769a1c05bb44108",
+      "passed": true
+    },
+    {
+      "folder": "grizzly",
+      "app": "grizzly",
+      "version": "0.1.4",
+      "bytes": 39425514,
+      "sha256": "d10a49cf46338e4c1128fd48ca9e762642504130cc0f3e464e5ee0346196076a",
+      "passed": true
+    }
+  ]
+}

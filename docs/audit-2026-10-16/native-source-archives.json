@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-16T16:19:40.188067+00:00",
+  "scope": "Re-read every archived file and verify its packaged SHA256 manifest, plus 68 added routines and 995 guide keys. Source delivery only; no native installation claim.",
+  "archives": [
+    {
+      "file": "movefield-native-current.zip",
+      "bytes": 8143208,
+      "sha256": "16c97df71d795cf6292453d5e0e927086c5c8c8a971d0d9f84891c264cf94929",
+      "manifestFilesVerified": 255,
+      "addedRoutines": 68,
+      "guideKeys": 995,
+      "passed": true
+    },
+    {
+      "file": "grizzly-fitness-native-source.zip",
+      "bytes": 8143208,
+      "sha256": "ef5279eb86f0c9459fe84c3ae0c24d316f90920b8fdebee901fea469f3f9c8c6",
+      "manifestFilesVerified": 255,
+      "addedRoutines": 68,
+      "guideKeys": 995,
+      "passed": true
+    }
+  ]
+}

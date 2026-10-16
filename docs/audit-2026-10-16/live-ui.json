@@ -1,0 +1,289 @@
+{
+  "checkedAt": "2026-10-16T16:20:41.196755+00:00",
+  "status": "passed",
+  "publication": {
+    "pagesWorkflowRun": 38930736719,
+    "pagesHead": "e757b42a8390cca84fc8d1665377f76d0a713fb0",
+    "webSource": "e16c5611bd11fdceea13e50e52dd6fdd4e136ced",
+    "nativeSource": "88cf9517898486b9f310918caf731604361feb40"
+  },
+  "scope": "Actual public GitHub Pages in sandboxed Chromium via the configured HTTPS proxy. Fresh disposable browser contexts; synthetic encrypted profiles only. Helpers permitted GET/HEAD requests and did not mutate remote applications or user records.",
+  "summary": [
+    "Both live brands served the expected source manifest and exact locally audited HTML, main JavaScript and CSS bytes, before and after reload.",
+    "Both brands accepted the new LIB-PL3-60 routine through real onboarding and generated nine planned sessions. Calendar browsing preserved accepted work.",
+    "Exact-name searches opened written pec deck, chest-supported dumbbell row and cable face pull guides with safe external form references.",
+    "A real first set saved with unknown load preserved; a second unfinished decimal draft of 1000.5 remained fully readable at 320px/130% and persisted through encrypted unlock/reload.",
+    "Both Settings pages exposed the correct brand Android download link and fit 320px/130% text.",
+    "At320px from initial navigation, both live Android download assemblers verified parts, exposed Save, completed actual browser file downloads and saved bytes matching the inspected manifest SHA256.",
+    "Movefield 0.1.5 versionCode 6 and Grizzly Fitness 0.1.4 versionCode 5 were the actual saved APKs."
+  ],
+  "liveRoutine": {
+    "checkedAt": "2026-10-16T16:20:00.017Z",
+    "completed": true,
+    "expectedWebSource": "e16c5611bd11fdceea13e50e52dd6fdd4e136ced",
+    "scope": "Live HTTPS static apps in sandboxed Chromium with disposable synthetic profiles; only GET/HEAD requests allowed. Exact loaded HTML/main JS/CSS checked against final local audit. Actual onboarding, new-routine acceptance, guide opening, logging and encrypted reload; no Safari, physical phone or external media playback claim.",
+    "results": [
+      {
+        "brand": "movefield",
+        "url": "https://ghinz32-cloud.github.io/movefield/review/",
+        "servedSource": "e16c5611bd11fdceea13e50e52dd6fdd4e136ced",
+        "checkedAssets": [
+          {
+            "file": "index.html",
+            "sha256": "50ff9ced75096a83ea57716b2910f9bbbe371e3f9dfa46d40da0fc2b893bebb4"
+          },
+          {
+            "file": "assets/index-BLG-tRA0.css",
+            "sha256": "51d1a3b3d0393bf0f15bc6e8e488f3908e06ba388f962a92782fcf799e6cb4ea"
+          },
+          {
+            "file": "assets/index-WYktGQ8-.js",
+            "sha256": "8849ffcd79d1e70cadaa7ddf2870666e15a23f7514b5afb8927c750c5d7ee681"
+          },
+          {
+            "file": "assets/cloud-account-DclorfQz.js",
+            "sha256": "5735306a080c847c57dd5b8ac12eaf6ca09562491e64c674dffba3a749f78441"
+          },
+          {
+            "file": "index.html",
+            "sha256": "50ff9ced75096a83ea57716b2910f9bbbe371e3f9dfa46d40da0fc2b893bebb4"
+          },
+          {
+            "file": "assets/index-BLG-tRA0.css",
+            "sha256": "51d1a3b3d0393bf0f15bc6e8e488f3908e06ba388f962a92782fcf799e6cb4ea"
+          },
+          {
+            "file": "assets/index-WYktGQ8-.js",
+            "sha256": "8849ffcd79d1e70cadaa7ddf2870666e15a23f7514b5afb8927c750c5d7ee681"
+          }
+        ],
+        "program": "LIB-PL3-60",
+        "name": "Powerlifting \u00b7 Low-Volume Lift Practice \u00b7 up to 60 min",
+        "plannedSessions": 9,
+        "guideCoverage": [
+          {
+            "id": "lib-stack-pec-deck",
+            "name": "Selectorized pec deck fly",
+            "reference": "https://www.precor.com/en-US/strength/selectorized/vitality"
+          },
+          {
+            "id": "lib-db-chest-supported-row",
+            "name": "Chest-supported dumbbell row",
+            "reference": "https://www.acefitness.org/resources/everyone/exercise-library/12/bent-over-row/"
+          },
+          {
+            "id": "lib-cable-face-pull",
+            "name": "Cable face pull",
+            "reference": "https://www.nasm.org/resource-center/exercise-library/face-pull"
+          }
+        ],
+        "calendarBrowsePreserved": true,
+        "unknownWeightPreserved": true,
+        "encryptedSetReload": true,
+        "settings130Reflow": true,
+        "androidLink": true,
+        "decimalLoadGeometry": {
+          "width": 117.40625,
+          "text": 63.883270263671875,
+          "available": 74.19999999999999
+        },
+        "visibleNarrowLabels": true
+      },
+      {
+        "brand": "grizzly",
+        "url": "https://ghinz32-cloud.github.io/movefield/grizzly/",
+        "servedSource": "e16c5611bd11fdceea13e50e52dd6fdd4e136ced",
+        "checkedAssets": [
+          {
+            "file": "index.html",
+            "sha256": "a8ba13918ed8d28681af577cf117e46d750f399aa70275b6305d7cfcabed3655"
+          },
+          {
+            "file": "assets/index-DlPKplP8.css",
+            "sha256": "6a65952441c54ebb0b0e84eae6e429137acd80b3f8a3a1ed8b0187aed3b5b6a1"
+          },
+          {
+            "file": "assets/index-BSLWDkCi.js",
+            "sha256": "ca5b3141110b8fb8674cea254da5346a1fdd132af1ae09c651d73cc0e95ad80c"
+          },
+          {
+            "file": "assets/cloud-account-Fni61yil.js",
+            "sha256": "4a1caffa10171fce030ee0797d02b203fa1d3f8e0a43b818b4142135aaafeeab"
+          },
+          {
+            "file": "index.html",
+            "sha256": "a8ba13918ed8d28681af577cf117e46d750f399aa70275b6305d7cfcabed3655"
+          },
+          {
+            "file": "assets/index-DlPKplP8.css",
+            "sha256": "6a65952441c54ebb0b0e84eae6e429137acd80b3f8a3a1ed8b0187aed3b5b6a1"
+          },
+          {
+            "file": "assets/index-BSLWDkCi.js",
+            "sha256": "ca5b3141110b8fb8674cea254da5346a1fdd132af1ae09c651d73cc0e95ad80c"
+          }
+        ],
+        "program": "LIB-PL3-60",
+        "name": "Powerlifting \u00b7 Low-Volume Lift Practice \u00b7 up to 60 min",
+        "plannedSessions": 9,
+        "guideCoverage": [
+          {
+            "id": "lib-stack-pec-deck",
+            "name": "Selectorized pec deck fly",
+            "reference": "https://www.precor.com/en-US/strength/selectorized/vitality"
+          },
+          {
+            "id": "lib-db-chest-supported-row",
+            "name": "Chest-supported dumbbell row",
+            "reference": "https://www.acefitness.org/resources/everyone/exercise-library/12/bent-over-row/"
+          },
+          {
+            "id": "lib-cable-face-pull",
+            "name": "Cable face pull",
+            "reference": "https://www.nasm.org/resource-center/exercise-library/face-pull"
+          }
+        ],
+        "calendarBrowsePreserved": true,
+        "unknownWeightPreserved": true,
+        "encryptedSetReload": true,
+        "settings130Reflow": true,
+        "androidLink": true,
+        "decimalLoadGeometry": {
+          "width": 117.40625,
+          "text": 63.883270263671875,
+          "available": 74.19999999999999
+        },
+        "visibleNarrowLabels": true
+      }
+    ]
+  },
+  "liveAndroidDownloads": {
+    "checkedAt": "2026-10-16T16:19:45.182Z",
+    "completed": true,
+    "expectedNativeSource": "88cf9517898486b9f310918caf731604361feb40",
+    "manifestSHA256": "55fa3e63b99d2d28846fb52d28edac801210fd4479472922deab425762894fa8",
+    "results": [
+      {
+        "app": "movefield",
+        "version": "0.1.5",
+        "versionCode": 6,
+        "sourceCommit": "88cf9517898486b9f310918caf731604361feb40",
+        "manifestSHA256": "55fa3e63b99d2d28846fb52d28edac801210fd4479472922deab425762894fa8",
+        "at320FromStart": true,
+        "bytes": 39274252,
+        "sha256": "3ee9065233a019aebaae15456d277e2fa92de7246d4a6fc6c769a1c05bb44108",
+        "savedFilename": "movefield-arm64-current-test.apk",
+        "passed": true,
+        "scope": "Live Pages in sandboxed Chromium: initial focus, verified part/APK preparation, actual completed browser Save and exact saved file hash, 320px layout; no Android installation claim."
+      },
+      {
+        "app": "grizzly",
+        "version": "0.1.4",
+        "versionCode": 5,
+        "sourceCommit": "88cf9517898486b9f310918caf731604361feb40",
+        "manifestSHA256": "55fa3e63b99d2d28846fb52d28edac801210fd4479472922deab425762894fa8",
+        "at320FromStart": true,
+        "bytes": 39425514,
+        "sha256": "d10a49cf46338e4c1128fd48ca9e762642504130cc0f3e464e5ee0346196076a",
+        "savedFilename": "grizzly-arm64-current-test.apk",
+        "passed": true,
+        "scope": "Live Pages in sandboxed Chromium: initial focus, verified part/APK preparation, actual completed browser Save and exact saved file hash, 320px layout; no Android installation claim."
+      }
+    ]
+  },
+  "localFinalBuildComparison": {
+    "checkedAt": "2026-10-16T16:15:13.072Z",
+    "deliverySource": "e16c5611bd11fdceea13e50e52dd6fdd4e136ced",
+    "status": "Final download-only rebuild equals previously audited HTML, JavaScript, CSS and worker hashes",
+    "results": [
+      {
+        "brand": "review",
+        "revision": "93103ec0e00dc1d094fd",
+        "files": [
+          {
+            "file": "index.html",
+            "sha256": "50ff9ced75096a83ea57716b2910f9bbbe371e3f9dfa46d40da0fc2b893bebb4"
+          },
+          {
+            "file": "movefield-sw.js",
+            "sha256": "e44f9724c61904e92b02d17b142c452f81fade3364080b54b7012d632c06f145"
+          },
+          {
+            "file": "assets/argon2-CYp2YzQ3.js",
+            "sha256": "bb84ed9ccfe438904aefe6f0e3cd92d99a2e5ac9fa1b5015bfa3a4eb67f3b0ab"
+          },
+          {
+            "file": "assets/chacha-TjjJ4993.js",
+            "sha256": "81d821a3edcac4dfacee74c93d238bdb0426fa9b55129c97b2b56ba24c79a4e2"
+          },
+          {
+            "file": "assets/cloud-account-DclorfQz.js",
+            "sha256": "5735306a080c847c57dd5b8ac12eaf6ca09562491e64c674dffba3a749f78441"
+          },
+          {
+            "file": "assets/index-BLG-tRA0.css",
+            "sha256": "51d1a3b3d0393bf0f15bc6e8e488f3908e06ba388f962a92782fcf799e6cb4ea"
+          },
+          {
+            "file": "assets/index-WYktGQ8-.js",
+            "sha256": "8849ffcd79d1e70cadaa7ddf2870666e15a23f7514b5afb8927c750c5d7ee681"
+          },
+          {
+            "file": "assets/progress-dashboard-Rzb_KTM6.js",
+            "sha256": "c274891b3e1b1057a4c484f52919f3ed18ccd01a05ad4942da290f948f9a139a"
+          }
+        ]
+      },
+      {
+        "brand": "grizzly",
+        "revision": "74ce1d43e6524bfee66b",
+        "files": [
+          {
+            "file": "index.html",
+            "sha256": "a8ba13918ed8d28681af577cf117e46d750f399aa70275b6305d7cfcabed3655"
+          },
+          {
+            "file": "movefield-sw.js",
+            "sha256": "a28c0308beffaf790c995efc3cf91694d6ee69ebd5b45184ef14bdac806f277a"
+          },
+          {
+            "file": "assets/argon2-CYp2YzQ3.js",
+            "sha256": "bb84ed9ccfe438904aefe6f0e3cd92d99a2e5ac9fa1b5015bfa3a4eb67f3b0ab"
+          },
+          {
+            "file": "assets/chacha-TjjJ4993.js",
+            "sha256": "81d821a3edcac4dfacee74c93d238bdb0426fa9b55129c97b2b56ba24c79a4e2"
+          },
+          {
+            "file": "assets/cloud-account-Fni61yil.js",
+            "sha256": "4a1caffa10171fce030ee0797d02b203fa1d3f8e0a43b818b4142135aaafeeab"
+          },
+          {
+            "file": "assets/index-BSLWDkCi.js",
+            "sha256": "ca5b3141110b8fb8674cea254da5346a1fdd132af1ae09c651d73cc0e95ad80c"
+          },
+          {
+            "file": "assets/index-DlPKplP8.css",
+            "sha256": "6a65952441c54ebb0b0e84eae6e429137acd80b3f8a3a1ed8b0187aed3b5b6a1"
+          },
+          {
+            "file": "assets/progress-dashboard-BkO0cBZP.js",
+            "sha256": "d2f8b023935635a76696a2db419fdd563cd7808871f7a319a980ac84b494881f"
+          }
+        ]
+      }
+    ]
+  },
+  "visualInspection": [
+    "Live Movefield completed installer Save page at 320px: readable content, usable actions and no horizontal overflow",
+    "Live Grizzly logger at 320px/130%: full 1000.5 input visible, labeled fields and usable action; saved optional detail label wraps"
+  ],
+  "limits": [
+    "The browser downloaded APKs but did not install them on physical Android phones.",
+    "No Apple signing, TestFlight or iPhone installation was performed.",
+    "Chromium phone viewport/touch emulation does not establish Safari or physical-device keyboard/touch performance.",
+    "External reference destinations and exercise demonstrations were not played during this UI check.",
+    "Broad public-file hashes, APK reconstruction, signature/identity and preserved original-root checks are recorded separately by release/native audits.",
+    "The 111 automated accessibility scans belong to the earlier documented local audit; these live journeys do not claim an additional complete accessibility matrix."
+  ]
+}
