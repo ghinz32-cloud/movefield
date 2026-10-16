@@ -3,8 +3,8 @@
   "base": "/movefield/grizzly/",
   "brand": "Grizzly Fitness",
   "profile_scope": "Separate brand profile, database, preferences and offline cache. Training code is shared.",
-  "application_source_sha256": "fd743c55eeab4fe07a9cf403aadae4c59e711475987258a5ddbf5b162570efb8",
-  "source_commit": "7a01f7e79c0bad7796ee4489150d61099bad3aa3",
+  "application_source_sha256": "ea7436b00723ea2d64fb33ff661f890c930c7fd2d55f61208c36d7de4db4a30e",
+  "source_commit": "df3dd721c29704f53bd4cfebacf3b7125058a9c1",
   "files": {
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "assets/argon2-CYp2YzQ3.js": "bb84ed9ccfe438904aefe6f0e3cd92d99a2e5ac9fa1b5015bfa3a4eb67f3b0ab",
@@ -87,7 +87,8 @@
     "brand/wilderness/grizzly-hero-v1.jpg": "eb45c5e512a5acd4ef9ce011c41b81aa02467914f215ef6ea0cc833865c237be",
     "downloads/android-download.js": "02b2076018ba3607a87f3b1619940ea4fc80b7f248f4e6c1bd73d4de801ad6d9",
     "downloads/android-installers.json": "21f22ece903ce6424ca660d6273a753457b701cacaa9d67393169d35afa1ffd7",
-    "downloads/android.html": "34eb830c5747c41c0419c91faf8d11baff017892a643bec7cbf6f971ab804aff",
+    "downloads/android.html": "cca5fbf8d25ed98486564c9e5d30b70cc367292284faa2ebc3c38b0b6f0a0ee6",
+    "downloads/grizzly-fitness-0.1.5-arm64.apk": "e32a37ddb9b6087db625aac2b24ff9d5fde4515d77b96284eb83ab2ddc90d992",
     "downloads/grizzly-fitness-native-source.zip": "3f67fc5112c5ecb921fb6fba465cc743aaee2d085878b99eb62df2539010c769",
     "downloads/movefield-mobile-r12.zip": "ebf317b2a538a8db4c32ce01a6a999d0825ec8e0089194e62576e20dcde2191e",
     "downloads/movefield-mobile-r13.zip": "432c728d4cb5cd51575681626c341bcd55fc0249f6ad897906a64ef6672d4304",
@@ -1977,6 +1978,15 @@
     "assets/progress-dashboard-dN_wwdU1.js",
     "assets/progress-dashboard-rD40_Ks8.js"
   ],
+  "android_download": {
+    "file": "downloads/grizzly-fitness-0.1.5-arm64.apk",
+    "app": "grizzly",
+    "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+    "version_name": "0.1.5",
+    "version_code": 6,
+    "bytes": 39464470,
+    "sha256": "e32a37ddb9b6087db625aac2b24ff9d5fde4515d77b96284eb83ab2ddc90d992"
+  },
   "official_logo_retrieved": false,
   "logo_supplied_by_user": true,
   "logo_source": "User-supplied JPEG, unchanged.",
