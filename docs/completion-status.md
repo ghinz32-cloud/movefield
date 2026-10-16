@@ -1,3 +1,17 @@
+# Current milestone · adaptive workout coaching and UI/compatibility audit
+
+Movefield and Grizzly now share optional local coaching before workouts and after successful saves. New calendars have no example day off; existing obligations remain intact. The engine uses recorded history and feedback, keeps comparisons and safety/ownership boundaries explicit, and cannot alter targets. Compact review buttons, collapsed explanations and automatic/on-request/off preferences address crowding. Responsive setup/Settings, visible notice contrast and native keyboard/calendar/modal behavior were improved.
+
+[Audit report](coaching-ux-audit-2026-10-16.md) and [exact validation/publication receipt](coaching-ux-audit-2026-10-16-validation.json) distinguish the tested source, browser builds, native exports, compiled Android installers and live deployment. The source candidate is `de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c`; Android run `38936451848` and publisher `38938205085` passed. Both actual public APKs were downloaded and independently inspected; Movefield 0.1.6/code 7 and Grizzly 0.1.5/code 6 are available in the [new preview release](https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-de6c7abf2438). Pages deployment and live verification are recorded separately.
+
+The finite audit passes 50 core groups, 82 automated web accessibility states, actual encrypted offline/save/retry/stale-context journeys, both-brand native App interactions through RN Web, four Hermes exports and source archive checks. Native iOS transition callbacks were exercised through an explicit platform branch, not UIKit. Lint retains 82 warnings with zero errors. Seven official CDC/NHS sources inform the original copy; phrase combinations are distinct from independently reviewed policies or measured efficacy.
+
+Future AI integration remains disabled behind a strict, unconnected selection boundary. Apple source/export preparation is complete for this change, but signed iPhone delivery requires Apple setup. Physical-device behavior, Safari/Firefox/WebKit, screen-reader usability, upstream native advisories, live services and the broader 72-section task register remain open. The original Pages root remains preserved as a separate older app. This milestone does not mark all six master prompts complete.
+
+Earlier sections below are historical and may describe artifacts or blockers that later checkpoints superseded.
+
+---
+
 # Current milestone · published catalog and maximal Grizzly wilderness
 
 The distinct research-informed catalog and maximal bear/forest UI milestones are complete and pushed. Grizzly source `f2c93404ff63979e920a93260db87519a07b356c` and Pages `e29b3a6907b2fc5177a5a43024a74a755792c605` are linked by both served manifests. All 161 selected HTTPS files and all 63 original-root files match the immutable published tree. Web/native types, targeted identity/preferences/file checks, both web builds, four distinct Hermes exports and 197-file native source archives passed.

@@ -1,0 +1,1828 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-16T17:12:21.714350+00:00",
+  "candidate": {
+    "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+    "sourceTree": "2831460f6e90b3374ac7e5e5db629f7a51eca25c",
+    "sourceFrozen": true,
+    "scope": "This candidate identifies reviewed application sources. Audit aggregation and later publication receipts can be committed separately without changing application code."
+  },
+  "status": {
+    "localVerification": "passed_with_documented_limits_and_lint_warnings",
+    "publication": "pending",
+    "compiledAndroidArtifacts": "passed_and_published",
+    "signedIosDistribution": "not_configured"
+  },
+  "shared": {
+    "core": {
+      "ran_at": "2026-10-16T16:55:56.893Z",
+      "scope": "Local synthetic domain/adapter and type checks; no device, connected provider or deployment qualification.",
+      "results": [
+        {
+          "name": "runtime module contracts",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 9938
+        },
+        {
+          "name": "production bundled training",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 3992
+        },
+        {
+          "name": "complete training lifecycles",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 14472
+        },
+        {
+          "name": "web workout and setup controls",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1588
+        },
+        {
+          "name": "native interaction callbacks",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 2210
+        },
+        {
+          "name": "native compact layout and focus",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 620
+        },
+        {
+          "name": "offline update lifecycle",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 544
+        },
+        {
+          "name": "Grizzly appearance and retired preset migration",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 2112
+        },
+        {
+          "name": "clickable web calendar",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 2222
+        },
+        {
+          "name": "Grizzly daily context and local day changes",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1784
+        },
+        {
+          "name": "preview ownership and retained assets",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 558
+        },
+        {
+          "name": "verified Android download preparation",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1023
+        },
+        {
+          "name": "Grizzly motion and licensed fonts",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 546
+        },
+        {
+          "name": "distinct goal families and flexible selection",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 2519
+        },
+        {
+          "name": "creator-source and set-effort refinements",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1252
+        },
+        {
+          "name": "public source rules and scientific accounting",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1199
+        },
+        {
+          "name": "Today facts and actions",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1020
+        },
+        {
+          "name": "transactional encrypted records",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 10720
+        },
+        {
+          "name": "activity progress and comparison context",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1184
+        },
+        {
+          "name": "evidence/duration/calendar zones",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 7614
+        },
+        {
+          "name": "calendar and reusable blocks",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1465
+        },
+        {
+          "name": "reusable block equipment guards",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1785
+        },
+        {
+          "name": "next-block starting weights",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 2235
+        },
+        {
+          "name": "starting-weight interface callbacks",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1793
+        },
+        {
+          "name": "Cloudflare account/storage/coaching",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 17772
+        },
+        {
+          "name": "portable cloud vault and retry",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 10601
+        },
+        {
+          "name": "native SDK cookie transport",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1579
+        },
+        {
+          "name": "plan import",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 2682
+        },
+        {
+          "name": "durability",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1893
+        },
+        {
+          "name": "vault and history",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 2289
+        },
+        {
+          "name": "historical native upgrade preservation",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 55556
+        },
+        {
+          "name": "older password-protected transfers",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 15643
+        },
+        {
+          "name": "compiled native component boundaries",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 106
+        },
+        {
+          "name": "native encrypted adapter",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 3007
+        },
+        {
+          "name": "native file transfer",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 487
+        },
+        {
+          "name": "security",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1860
+        },
+        {
+          "name": "data and calendar",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1212
+        },
+        {
+          "name": "web types",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 27917
+        },
+        {
+          "name": "native types",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 28791
+        },
+        {
+          "name": "native engine",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 15305
+        },
+        {
+          "name": "native decimal editing, callbacks and keyboard configuration",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1901
+        },
+        {
+          "name": "blank new obligations and saved setup preservation",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 2856
+        },
+        {
+          "name": "coaching and accessibility preferences",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1098
+        },
+        {
+          "name": "adaptive workout coaching and history boundaries",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 9235
+        },
+        {
+          "name": "future coaching selection contract",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1212
+        },
+        {
+          "name": "canonical and native snapshot byte parity",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 147
+        },
+        {
+          "name": "precached guide and font update versioning",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 456
+        },
+        {
+          "name": "reviewed routine-library generation and plan qualification",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 3817
+        },
+        {
+          "name": "library equipment and movement semantics",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 2400
+        },
+        {
+          "name": "substitution notes and source progression integrity",
+          "status": "passed",
+          "exit": 0,
+          "duration_ms": 1436
+        }
+      ]
+    },
+    "coachingEngine": {
+      "groups": 20,
+      "library": {
+        "policyFamilies": 22,
+        "feedbackDetailFamilies": 1,
+        "suggestionPhrases": 124,
+        "factFrames": 24,
+        "encouragementPhrasesPerBrand": 32,
+        "normalBeforeCombinationsPerBrand": 3072,
+        "normalAfterCombinationsPerBrand": 3072,
+        "counting": "Distinct editorial frame \u00d7 suggestion \u00d7 encouragement combinations, not independent coaching policies; personalized numbers and dates are not included in the count."
+      },
+      "diversity": {
+        "contextsPerPhase": 40000,
+        "before": 3072,
+        "after": 3072
+      },
+      "performance": [
+        {
+          "records": 1000,
+          "savedPlans": 10,
+          "beforeMs": 11.85,
+          "afterMs": 10.43
+        },
+        {
+          "records": 10000,
+          "savedPlans": 100,
+          "beforeMs": 171.76,
+          "afterMs": 170.34
+        }
+      ],
+      "scope": "Pure local coaching and factual matching; no model, network, prescription mutation or physical device claims. Performance is a single local Node measurement, not a device benchmark or latency guarantee."
+    },
+    "editorialReview": {
+      "document": "docs/coaching-copy-review-2026-10-16.md",
+      "counts": {
+        "suggestionFamilies": 23,
+        "suggestions": 124,
+        "factFrames": 24,
+        "movefieldEncouragement": 32,
+        "grizzlyEncouragement": 32,
+        "reviewEncouragement": 16,
+        "arraySlots": 228,
+        "uniqueEditorialStrings": 212,
+        "sharedBrandEncouragement": 16
+      },
+      "declaredStats": {
+        "policyFamilies": 22,
+        "feedbackDetailFamilies": 1,
+        "suggestionPhrases": 124,
+        "factFrames": 24,
+        "encouragementPhrasesPerBrand": 32,
+        "normalBeforeCombinationsPerBrand": 3072,
+        "normalAfterCombinationsPerBrand": 3072,
+        "counting": "Distinct editorial frame \u00d7 suggestion \u00d7 encouragement combinations, not independent coaching policies; personalized numbers and dates are not included in the count."
+      },
+      "actualVariationProbes": [
+        {
+          "phase": "before",
+          "brand": "movefield",
+          "syntheticContexts": 12000,
+          "distinctMessageTriples": 3019,
+          "factFramesSeen": 8,
+          "suggestionsSeen": 12,
+          "encouragementsSeen": 32,
+          "theoreticalBaseCombinations": 3072,
+          "elapsedMilliseconds": 810
+        },
+        {
+          "phase": "before",
+          "brand": "grizzly",
+          "syntheticContexts": 12000,
+          "distinctMessageTriples": 3019,
+          "factFramesSeen": 8,
+          "suggestionsSeen": 12,
+          "encouragementsSeen": 32,
+          "theoreticalBaseCombinations": 3072,
+          "elapsedMilliseconds": 736
+        },
+        {
+          "phase": "after",
+          "brand": "movefield",
+          "syntheticContexts": 12000,
+          "distinctMessageTriples": 3006,
+          "factFramesSeen": 8,
+          "suggestionsSeen": 12,
+          "encouragementsSeen": 32,
+          "theoreticalBaseCombinations": 3072,
+          "elapsedMilliseconds": 1548
+        },
+        {
+          "phase": "after",
+          "brand": "grizzly",
+          "syntheticContexts": 12000,
+          "distinctMessageTriples": 3007,
+          "factFramesSeen": 8,
+          "suggestionsSeen": 12,
+          "encouragementsSeen": 32,
+          "theoreticalBaseCombinations": 3072,
+          "elapsedMilliseconds": 664
+        }
+      ],
+      "sourceHashes": {
+        "lib/workout-coaching-library.ts": "2bc97bb8cd15e7aadc13dbca5a0b0182df4a228d030a11e2bcbddaf2779f4ba0",
+        "lib/workout-coaching.ts": "bc08251cdeb80de82f57d5641f639c15e60b75e0bc530ad9e4005dc5c960e857",
+        "docs/coaching-research-2026-10-16.md": "bd2e32104e45962276e296c0f689a6786773ec8e1c5f2c81807ed78ad5915484"
+      },
+      "saveParserRegressionCases": [
+        "extra completed rows versus planned rows",
+        "partial flag with every target row complete",
+        "equal aggregate repetitions with different per-set repetitions"
+      ],
+      "limits": [
+        "All current editorial array entries read; not every composed combination manually read.",
+        "Synthetic domain execution, not device usability or clinical efficacy testing.",
+        "Combinations are the Cartesian base bank. Required review policies, relative-record facts and logging milestones reduce or replace this pool in applicable contexts.",
+        "Distinct wording is not a distinct coaching policy or independent scientific finding."
+      ]
+    },
+    "research": {
+      "document": "docs/coaching-research-2026-10-16.md",
+      "substantivelyReviewedOfficialPages": 7,
+      "originalTrialsAppraised": 0,
+      "scope": "CDC/NHS communication guidance supports editorial principles, not clinical validation of this message bank. Proxy-denied and CAPTCHA-only sources were excluded."
+    }
+  },
+  "lint": {
+    "files": 380,
+    "errors": 0,
+    "fatalErrors": 0,
+    "warnings": 82,
+    "warningsByRule": {
+      "@typescript-eslint/no-unused-vars": 59,
+      "react-hooks/exhaustive-deps": 13,
+      "@next/next/no-img-element": 4,
+      "jsx-a11y/alt-text": 4,
+      "@typescript-eslint/no-unused-expressions": 2
+    },
+    "scope": "Repository ESLint receipt; warnings remain. Zero errors is not a claim that every lint warning or accessibility concern was resolved."
+  },
+  "web": {
+    "report": "docs/audit-2026-10-16/coaching-web.json",
+    "checkedAt": "2026-10-16T17:09:34.200248+00:00",
+    "scope": "Adaptive-coaching web checkpoint. Local synthetic browser profiles only. Prior general matrix and safety receipt retain their actual pre-Settings CSS hashes; final coaching, harder-effort and initial-focus receipts identify final CSS/JS assets. Last source change between those snapshots is scoped Settings layout/label CSS and Vite dependency hash regeneration, not training or persistence behavior.",
+    "counts": {
+      "successfulAxeStates": 82,
+      "generalMatrixGroups": 14,
+      "normalCoachingGroups": 10,
+      "harderEffortGroups": 2,
+      "initialFocusGroups": 2,
+      "safetyGroups": 8
+    },
+    "axeViolations": 0,
+    "finalBuilds": [
+      {
+        "brand": "movefield",
+        "htmlSha256": "7324f0f2868507c2ca1128a43d568c6ffb5c0ba82e451790ba56f53b8e065f70",
+        "assets": [
+          {
+            "url": "http://127.0.0.1:8836/movefield/review/assets/index-Cbvqaehl.js",
+            "bytes": 1843639,
+            "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+          },
+          {
+            "url": "http://127.0.0.1:8836/movefield/review/assets/index-DPAY41Tk.css",
+            "bytes": 221934,
+            "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+          }
+        ]
+      },
+      {
+        "brand": "grizzly",
+        "htmlSha256": "18a87be5a34d329fcf70bf259a538eaf6068a7b080e8ea50dae105a1ad7d7154",
+        "assets": [
+          {
+            "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-BlpAb5Is.js",
+            "bytes": 1846481,
+            "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+          },
+          {
+            "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-CJG9R_vC.css",
+            "bytes": 269458,
+            "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+          }
+        ]
+      }
+    ],
+    "runs": {
+      "generalMatrix": {
+        "checkedAt": "2026-10-16T16:57:18.920Z",
+        "scope": "Actual integrated local static apps in sandboxed Chromium with disposable synthetic data. 320/390/768/1280 CSS-pixel widths,100%/130% text, finite axe states, real encrypted storage writes and injected quota failure. No Firefox/WebKit/Safari, physical device or complete WCAG qualification.",
+        "functionalGroups": 14,
+        "passed": true,
+        "axeStates": 50,
+        "axeViolations": 0,
+        "builds": [
+          {
+            "brand": "movefield",
+            "htmlSha256": "31b78a92da3fdc85af75651a72023036a8bbb1bd11ba568a459cf6602408b9ef",
+            "assets": [
+              {
+                "url": "http://127.0.0.1:8836/movefield/review/assets/index-CqTZLyXv.js",
+                "bytes": 1843639,
+                "sha256": "b63ac7d4490d0dd9920c3e432c47e79285b984de3178af2247b16c55d2a4b0fd"
+              },
+              {
+                "url": "http://127.0.0.1:8836/movefield/review/assets/index-B8EADO5S.css",
+                "bytes": 221577,
+                "sha256": "701cc22592b5d2bed4c96898ae66edabfe2210362151077f9c177d68d5d678b3"
+              }
+            ]
+          },
+          {
+            "brand": "grizzly",
+            "htmlSha256": "6e29834803f07640fc5306175eabab2b3ade9d4b8d7a61ba75d74d84867d7ef1",
+            "assets": [
+              {
+                "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-DiUiygO1.js",
+                "bytes": 1846481,
+                "sha256": "c9122344a25a0a2cab93e445ae8e2056f9f96d4e21b8283bec0e5fac857a0b29"
+              },
+              {
+                "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-gG4BXXmI.css",
+                "bytes": 269101,
+                "sha256": "abe046ac7b15787c6f1cac38430cf6e8ae7f63a9d57bcccf63157ed04fffeada"
+              }
+            ]
+          }
+        ],
+        "results": [
+          {
+            "brand": "movefield",
+            "case": "sample matrix and blank saved setup",
+            "textSize": 100,
+            "widths": [
+              320,
+              390,
+              768,
+              1280
+            ],
+            "passed": true
+          },
+          {
+            "brand": "movefield",
+            "case": "sample matrix and blank saved setup",
+            "textSize": 130,
+            "widths": [
+              320,
+              390,
+              768,
+              1280
+            ],
+            "passed": true
+          },
+          {
+            "brand": "movefield",
+            "case": "real newly encrypted personal setup begins without commitments",
+            "passed": true
+          },
+          {
+            "brand": "movefield",
+            "case": "saved days off and draft retained; modal keyboard trap/return; calendar keyboard browsing preserves records",
+            "passed": true
+          },
+          {
+            "brand": "movefield",
+            "case": "explicit reduced-motion preference with no OS preference",
+            "passed": true
+          },
+          {
+            "brand": "movefield",
+            "case": "actual save quota failure and retry/reload",
+            "passed": true
+          },
+          {
+            "brand": "movefield",
+            "case": "real second-tab preference write prevents stale workout overwrite",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "case": "sample matrix and blank saved setup",
+            "textSize": 100,
+            "widths": [
+              320,
+              390,
+              768,
+              1280
+            ],
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "case": "sample matrix and blank saved setup",
+            "textSize": 130,
+            "widths": [
+              320,
+              390,
+              768,
+              1280
+            ],
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "case": "real newly encrypted personal setup begins without commitments",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "case": "saved days off and draft retained; modal keyboard trap/return; calendar keyboard browsing preserves records",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "case": "explicit reduced-motion preference with no OS preference",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "case": "actual save quota failure and retry/reload",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "case": "real second-tab preference write prevents stale workout overwrite",
+            "passed": true
+          }
+        ]
+      },
+      "normalCoaching": {
+        "checkedAt": "2026-10-16T17:07:36.183Z",
+        "scope": "Local integrated sandboxed Chromium UI. Synthetic encrypted profiles. Coaching popup and Settings320/390/768/1280px at130% text with axe and keyboard trapping; automatic/manual/off settings, actual complete/partial saves and offline service-worker reloads. Separate security helper owns stale coaching and failed finish.",
+        "functionalGroups": 10,
+        "passed": true,
+        "axeStates": 24,
+        "axeViolations": 0,
+        "builds": [
+          {
+            "brand": "movefield",
+            "htmlSha256": "7324f0f2868507c2ca1128a43d568c6ffb5c0ba82e451790ba56f53b8e065f70",
+            "assets": [
+              {
+                "url": "http://127.0.0.1:8836/movefield/review/assets/index-Cbvqaehl.js",
+                "bytes": 1843639,
+                "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+              },
+              {
+                "url": "http://127.0.0.1:8836/movefield/review/assets/index-DPAY41Tk.css",
+                "bytes": 221934,
+                "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+              }
+            ]
+          },
+          {
+            "brand": "grizzly",
+            "htmlSha256": "18a87be5a34d329fcf70bf259a538eaf6068a7b080e8ea50dae105a1ad7d7154",
+            "assets": [
+              {
+                "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-BlpAb5Is.js",
+                "bytes": 1846481,
+                "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+              },
+              {
+                "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-CJG9R_vC.css",
+                "bytes": 269458,
+                "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+              }
+            ]
+          }
+        ],
+        "results": [
+          {
+            "brand": "movefield",
+            "case": "automatic before cancel/start and read-only preview; partial save after dialog; summary consistency; targets unchanged and reload does not replay popup",
+            "passed": true
+          },
+          {
+            "brand": "movefield",
+            "case": "completed actual set logs save one after dialog and matching review without target changes",
+            "passed": true
+          },
+          {
+            "brand": "movefield",
+            "case": "manual coaching preference persists; no automatic before/after popup; review visibility matches preference",
+            "passed": true
+          },
+          {
+            "brand": "movefield",
+            "case": "off coaching preference persists; no automatic before/after popup; review visibility matches preference",
+            "passed": true
+          },
+          {
+            "brand": "movefield",
+            "case": "actual offline reload/unlock, local before coaching, start/log/save, after coaching and second offline reload",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "case": "automatic before cancel/start and read-only preview; partial save after dialog; summary consistency; targets unchanged and reload does not replay popup",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "case": "completed actual set logs save one after dialog and matching review without target changes",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "case": "manual coaching preference persists; no automatic before/after popup; review visibility matches preference",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "case": "off coaching preference persists; no automatic before/after popup; review visibility matches preference",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "case": "actual offline reload/unlock, local before coaching, start/log/save, after coaching and second offline reload",
+            "passed": true
+          }
+        ]
+      },
+      "harderEffort": {
+        "checkedAt": "2026-10-16T17:02:25.262Z",
+        "scope": "Local integrated sandboxed Chromium UI with synthetic encrypted profiles. Explicit Harder than expected effort selection on completed workout; persisted effort, unchanged proposals and accepted targets; after dialog and matching review. Dialog at320/390/768/1280px and130% text with axe, geometry and keyboard trapping. No offline or other preference scenarios run in this focused invocation.",
+        "functionalGroups": 2,
+        "passed": true,
+        "axeStates": 8,
+        "axeViolations": 0,
+        "builds": [
+          {
+            "brand": "movefield",
+            "htmlSha256": "7324f0f2868507c2ca1128a43d568c6ffb5c0ba82e451790ba56f53b8e065f70",
+            "assets": [
+              {
+                "url": "http://127.0.0.1:8836/movefield/review/assets/index-Cbvqaehl.js",
+                "bytes": 1843639,
+                "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+              },
+              {
+                "url": "http://127.0.0.1:8836/movefield/review/assets/index-DPAY41Tk.css",
+                "bytes": 221934,
+                "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+              }
+            ]
+          },
+          {
+            "brand": "grizzly",
+            "htmlSha256": "18a87be5a34d329fcf70bf259a538eaf6068a7b080e8ea50dae105a1ad7d7154",
+            "assets": [
+              {
+                "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-BlpAb5Is.js",
+                "bytes": 1846481,
+                "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+              },
+              {
+                "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-CJG9R_vC.css",
+                "bytes": 269458,
+                "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+              }
+            ]
+          }
+        ],
+        "results": [
+          {
+            "brand": "movefield",
+            "case": "actual harder-effort choice persists on completed save without automatic proposals or target changes",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "case": "actual harder-effort choice persists on completed save without automatic proposals or target changes",
+            "passed": true
+          }
+        ]
+      },
+      "initialFocus": {
+        "checkedAt": "2026-10-16T17:04:16.192Z",
+        "scope": "Initial popup at320px/130% text before keyboard traversal; title visibility, scroll position and initial focus only.",
+        "functionalGroups": 2,
+        "passed": true,
+        "axeStates": 0,
+        "axeViolations": 0,
+        "builds": [
+          {
+            "brand": "movefield",
+            "htmlSha256": "7324f0f2868507c2ca1128a43d568c6ffb5c0ba82e451790ba56f53b8e065f70",
+            "assets": [
+              {
+                "url": "http://127.0.0.1:8836/movefield/review/assets/index-Cbvqaehl.js",
+                "bytes": 1843639,
+                "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+              },
+              {
+                "url": "http://127.0.0.1:8836/movefield/review/assets/index-DPAY41Tk.css",
+                "bytes": 221934,
+                "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+              }
+            ]
+          },
+          {
+            "brand": "grizzly",
+            "htmlSha256": "18a87be5a34d329fcf70bf259a538eaf6068a7b080e8ea50dae105a1ad7d7154",
+            "assets": [
+              {
+                "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-BlpAb5Is.js",
+                "bytes": 1846481,
+                "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+              },
+              {
+                "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-CJG9R_vC.css",
+                "bytes": 269458,
+                "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+              }
+            ]
+          }
+        ],
+        "results": [
+          {
+            "brand": "movefield",
+            "case": "initial coaching popup at320/130 before any keyboard traversal",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "case": "initial coaching popup at320/130 before any keyboard traversal",
+            "passed": true
+          }
+        ]
+      },
+      "safety": {
+        "checkedAt": "2026-10-16T16:55:35.598Z",
+        "scope": "Actual current local static builds in sandboxed Chromium with disposable encrypted profiles. Retained real React callbacks model stale delayed invocation after normal UI state/profile changes; storage failure injected at the actual Storage write. No live services, personal records, Safari or physical phone claim.",
+        "functionalGroups": 8,
+        "passed": true,
+        "axeStates": 0,
+        "axeViolations": 0,
+        "builds": [
+          {
+            "brand": "movefield",
+            "files": [
+              {
+                "path": "/movefield/review/",
+                "sha256": "31b78a92da3fdc85af75651a72023036a8bbb1bd11ba568a459cf6602408b9ef"
+              },
+              {
+                "path": "/movefield/review/assets/index-CqTZLyXv.js",
+                "sha256": "b63ac7d4490d0dd9920c3e432c47e79285b984de3178af2247b16c55d2a4b0fd"
+              },
+              {
+                "path": "/movefield/review/assets/index-B8EADO5S.css",
+                "sha256": "701cc22592b5d2bed4c96898ae66edabfe2210362151077f9c177d68d5d678b3"
+              }
+            ]
+          },
+          {
+            "brand": "grizzly",
+            "files": [
+              {
+                "path": "/movefield/grizzly/",
+                "sha256": "6e29834803f07640fc5306175eabab2b3ade9d4b8d7a61ba75d74d84867d7ef1"
+              },
+              {
+                "path": "/movefield/grizzly/assets/index-DiUiygO1.js",
+                "sha256": "c9122344a25a0a2cab93e445ae8e2056f9f96d4e21b8283bec0e5fac857a0b29"
+              },
+              {
+                "path": "/movefield/grizzly/assets/index-gG4BXXmI.css",
+                "sha256": "abe046ac7b15787c6f1cac38430cf6e8ae7f63a9d57bcccf63157ed04fffeada"
+              }
+            ]
+          }
+        ],
+        "results": [
+          {
+            "brand": "movefield",
+            "check": "Retained actual before-dialog start callback rejects after a durably saved concern changes the current state",
+            "passed": true
+          },
+          {
+            "brand": "movefield",
+            "check": "Retained actual before-dialog callback rejects after real personal-to-sample profile switch; personal ciphertext unchanged",
+            "passed": true
+          },
+          {
+            "brand": "movefield",
+            "check": "Failed durable finish retains active work, keeps check-in open and never displays after-workout coaching",
+            "passed": true
+          },
+          {
+            "brand": "movefield",
+            "check": "Successful double-click retry saves one partial workout, opens one after dialog and survives encrypted reload without replaying the dialog",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "check": "Retained actual before-dialog start callback rejects after a durably saved concern changes the current state",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "check": "Retained actual before-dialog callback rejects after real personal-to-sample profile switch; personal ciphertext unchanged",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "check": "Failed durable finish retains active work, keeps check-in open and never displays after-workout coaching",
+            "passed": true
+          },
+          {
+            "brand": "grizzly",
+            "check": "Successful double-click retry saves one partial workout, opens one after dialog and survives encrypted reload without replaying the dialog",
+            "passed": true
+          }
+        ]
+      }
+    },
+    "restoreBehavior": {
+      "editorialContextMayRegenerate": true,
+      "reason": "Restored saved workout object has a different key order at state.history.0. Raw JSON context token changes; no serialized values are lost or changed.",
+      "verified": "Both brands: canonical full rendered state and decrypted saved state unchanged; counts1/12, unknown loaded set1, partial flag/policy, owner values, required guards, tone, AI eligibility and comparison remain identical. Actual UI wording independently matches the engine for each observed state.",
+      "sameSerializedContextDeterministic": true,
+      "limit": "Object-key ordering can change the context digest and editorial selection after normalization even when canonical state values and selected policy remain equal."
+    },
+    "fixes": [
+      {
+        "id": "fresh-commitments",
+        "severity": "requested behavior",
+        "status": "fixed",
+        "details": "New sample/fresh web/native future commitments are blank. Existing saved entries and setup drafts are retained, including old example identifiers. Sample34-workout history retained. Focused onboarding suite15checks passed."
+      },
+      {
+        "id": "setup-header-overflow",
+        "severity": "medium",
+        "status": "fixed",
+        "details": "320px/130% Save & exit overflow349px fixed by wrapping narrow setup header and keeping complete \u226544px action."
+      },
+      {
+        "id": "success-toast-contrast",
+        "severity": "medium / WCAG AA",
+        "status": "fixed",
+        "details": "Actual success notice improved from4.25:1 to6.36425152514846:1. Both brands verified with visible toasts; Sonner light theme is used even in current Grizzly dark UI. Other light semantic text roles darkened; dark toast roles unchanged."
+      },
+      {
+        "id": "tablet-settings-overflow",
+        "severity": "medium",
+        "status": "fixed",
+        "details": "768px/130% two-column settings beside sidebar overflowed to945px. Responsive18rem preferred-minimum columns, wrapped reminder buttons, and variable-height unclamped select values pass four widths in both brands."
+      }
+    ],
+    "browserCapability": [
+      {
+        "engine": "Chromium",
+        "version": "154.0.8037.57",
+        "availability": "launch verified",
+        "runtime": "/usr/bin/chromium",
+        "playwrightVersion": "1.61.1",
+        "sandbox": "Namespace, PID/network namespaces and Seccomp-BPF verified via chrome://sandbox; browser reports adequately sandboxed. Command escalation is needed because the outer command sandbox prevents browser user namespaces.",
+        "coverage": "Linux Chromium and emulated viewport/touch/reduced-motion checks; not Android Chrome device acceptance."
+      },
+      {
+        "engine": "Firefox",
+        "pinnedVersion": "151.0 / Playwright revision 1532",
+        "availability": "not installed; official download hosts denied by current proxy",
+        "coverage": "Not run. Stock Firefox is not a drop-in replacement for Playwright\u2019s instrumented Firefox."
+      },
+      {
+        "engine": "WebKit",
+        "pinnedVersion": "26.5 / Playwright revision 2311",
+        "availability": "not installed; official download hosts denied by current proxy",
+        "coverage": "Not run. A future Linux WebKit run would not establish actual Safari/iPhone behavior."
+      },
+      {
+        "engine": "Safari / physical iPhone",
+        "availability": "not available in this Linux environment",
+        "coverage": "No Apple membership/build/signing or TestFlight setup is available; no signed iOS app or real-device acceptance is claimed."
+      },
+      {
+        "engine": "Physical Android",
+        "availability": "no connected device qualified",
+        "coverage": "APK builds and browser emulation do not verify installation, historical upgrade, OS lifecycle, offline delivery or TalkBack."
+      }
+    ],
+    "limits": [
+      "Sandboxed Chromium154.0.8037.57; no Firefox/WebKit/Safari execution. Official browser downloads were blocked by the environment.",
+      "320/390/768/1280 CSS-pixel viewports and100%/130% text are desktop emulation, not physical Android/iPhone qualification.",
+      "Finite axe and keyboard checks are not complete WCAG, VoiceOver or TalkBack certification.",
+      "Default Movefield light/green and Grizzly dark/pine/wild appearance plus enlarged text/reduced motion are exercised; all font/palette combinations are not exhaustively rendered.",
+      "No native device, Apple compilation/signing, store acceptance, cloud account or live Pages execution is claimed by these local browser receipts."
+    ],
+    "frozenAuditedApplicationAssets": {
+      "recordedAt": "2026-10-16T17:12:25.737358+00:00",
+      "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+      "purpose": "Freeze final audited application asset bytes before installer-only website rebuild",
+      "brands": {
+        "movefield": {
+          "assets/argon2-CYp2YzQ3.js": "bb84ed9ccfe438904aefe6f0e3cd92d99a2e5ac9fa1b5015bfa3a4eb67f3b0ab",
+          "assets/chacha-TjjJ4993.js": "81d821a3edcac4dfacee74c93d238bdb0426fa9b55129c97b2b56ba24c79a4e2",
+          "assets/cloud-account-N2vPdCph.js": "ebb322372883c7aefaa189bea17fe237a59e2220ba8c704c7b7e509491325e12",
+          "assets/index-Cbvqaehl.js": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c",
+          "assets/index-DPAY41Tk.css": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4",
+          "assets/progress-dashboard-C_l3tP_n.js": "ed5a0ca59fd77fc269a26afa3e15b9137c2f13d30b028f84e970b6a4e4a5db55"
+        },
+        "grizzly": {
+          "assets/argon2-CYp2YzQ3.js": "bb84ed9ccfe438904aefe6f0e3cd92d99a2e5ac9fa1b5015bfa3a4eb67f3b0ab",
+          "assets/chacha-TjjJ4993.js": "81d821a3edcac4dfacee74c93d238bdb0426fa9b55129c97b2b56ba24c79a4e2",
+          "assets/cloud-account-DGVdGcwI.js": "f89d4f7fd4ccb8eb6105078e3473e47dc023f1e357683910fe91cac4a242a4fc",
+          "assets/index-BlpAb5Is.js": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61",
+          "assets/index-CJG9R_vC.css": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624",
+          "assets/progress-dashboard-CXYvIo3I.js": "7a7ee798c3b998e32ed976dc83ae087119ff1ea917f4d0cb5c2409c9dad5bea6"
+        }
+      }
+    },
+    "pageScope": {
+      "movefield": "/movefield/review/",
+      "grizzly": "/movefield/grizzly/",
+      "originalRoot": "/movefield/",
+      "originalRootStatus": "Preserved separate earlier app; this coaching audit does not claim it contains the new reviewed app changes."
+    },
+    "bundleComparison": {
+      "scope": "Primary minified JS and CSS byte comparison against previously published shared previews; transfer sizes are local gzip approximations, not measured network timing.",
+      "previousPagesCommit": "e757b42a8390cca84fc8d1665377f76d0a713fb0",
+      "candidateSource": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+      "brands": {
+        "movefield": {
+          ".js": {
+            "previousPath": "assets/index-WYktGQ8-.js",
+            "currentPath": "assets/index-Cbvqaehl.js",
+            "previousBytes": 1809090,
+            "currentBytes": 1843639,
+            "byteDelta": 34549,
+            "previousGzipBytes": 389109,
+            "currentGzipBytes": 400333,
+            "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+          },
+          ".css": {
+            "previousPath": "assets/index-BLG-tRA0.css",
+            "currentPath": "assets/index-DPAY41Tk.css",
+            "previousBytes": 220736,
+            "currentBytes": 221934,
+            "byteDelta": 1198,
+            "previousGzipBytes": 35491,
+            "currentGzipBytes": 35779,
+            "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+          }
+        },
+        "grizzly": {
+          ".js": {
+            "previousPath": "assets/index-BSLWDkCi.js",
+            "currentPath": "assets/index-BlpAb5Is.js",
+            "previousBytes": 1811992,
+            "currentBytes": 1846481,
+            "byteDelta": 34489,
+            "previousGzipBytes": 390232,
+            "currentGzipBytes": 401439,
+            "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+          },
+          ".css": {
+            "previousPath": "assets/index-DlPKplP8.css",
+            "currentPath": "assets/index-CJG9R_vC.css",
+            "previousBytes": 268260,
+            "currentBytes": 269458,
+            "byteDelta": 1198,
+            "previousGzipBytes": 44012,
+            "currentGzipBytes": 44291,
+            "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+          }
+        }
+      }
+    }
+  },
+  "independentBrowserSafety": {
+    "receipt": ".sites-runtime/coaching-safety/browser-results.json",
+    "checkedAt": "2026-10-16T16:55:35.598Z",
+    "scope": "Actual current local static builds in sandboxed Chromium with disposable encrypted profiles. Retained real React callbacks model stale delayed invocation after normal UI state/profile changes; storage failure injected at the actual Storage write. No live services, personal records, Safari or physical phone claim.",
+    "functionalChecks": 8,
+    "passed": true,
+    "results": [
+      {
+        "brand": "movefield",
+        "check": "Retained actual before-dialog start callback rejects after a durably saved concern changes the current state",
+        "passed": true
+      },
+      {
+        "brand": "movefield",
+        "check": "Retained actual before-dialog callback rejects after real personal-to-sample profile switch; personal ciphertext unchanged",
+        "passed": true
+      },
+      {
+        "brand": "movefield",
+        "check": "Failed durable finish retains active work, keeps check-in open and never displays after-workout coaching",
+        "passed": true
+      },
+      {
+        "brand": "movefield",
+        "check": "Successful double-click retry saves one partial workout, opens one after dialog and survives encrypted reload without replaying the dialog",
+        "passed": true
+      },
+      {
+        "brand": "grizzly",
+        "check": "Retained actual before-dialog start callback rejects after a durably saved concern changes the current state",
+        "passed": true
+      },
+      {
+        "brand": "grizzly",
+        "check": "Retained actual before-dialog callback rejects after real personal-to-sample profile switch; personal ciphertext unchanged",
+        "passed": true
+      },
+      {
+        "brand": "grizzly",
+        "check": "Failed durable finish retains active work, keeps check-in open and never displays after-workout coaching",
+        "passed": true
+      },
+      {
+        "brand": "grizzly",
+        "check": "Successful double-click retry saves one partial workout, opens one after dialog and survives encrypted reload without replaying the dialog",
+        "passed": true
+      }
+    ],
+    "counting": "These eight functional checks are included in web.runs.safety and web.counts.safetyGroups; do not add them twice. They are separate from the 82 axe states."
+  },
+  "native": {
+    "report": "docs/audit-2026-10-16/native-coaching-results.json",
+    "checkedAt": "2026-10-16T16:55:41.110493+00:00",
+    "passedWithinScope": true,
+    "scope": "Actual native App/components via RN Web in sandboxed Chromium with documented storage/font/file/notification/cloud mocks. The iOS callback run sets Platform.OS=ios; it does not simulate UIKit or OS keyboard behavior. No physical device, native OS compilation, signing or store-acceptance claim.",
+    "sourceSHA256": {
+      "mobile/App-runtime.js": "e4143d993f57a149523d06b99085faf18b3af28d397d07915ab6b4bde84efb4d",
+      "mobile/src/workout-coaching.tsx": "c4028ecf9d8210fbeefa23944d886dbd7fd8aed0e426a43942a6b6e75038b923",
+      "mobile/src/settings.tsx": "aa5baed1acc948ea6df881b3618c43176cbf23b7f4b81306a068d049d980b4ee",
+      "mobile/src/calendar.tsx": "fc83d93d83a3eefd525fb947245d6cd8bf42181a4fd0dff99fc63cbf61f6946a",
+      "mobile/app.config.js": "ad912fbad4c2a10192a408ee7eef250302a33bc1b7ee953ea3a628d3390ea3af",
+      "mobile/app.json": "c43eb2417a99229fdf19339b4b4cde7bca643f9893df97cdebe2f0a17a429088",
+      "mobile/src/shared/workout-coaching.ts": "bc08251cdeb80de82f57d5641f639c15e60b75e0bc530ad9e4005dc5c960e857",
+      "mobile/src/shared/workout-coaching-library.ts": "2bc97bb8cd15e7aadc13dbca5a0b0182df4a228d030a11e2bcbddaf2779f4ba0",
+      "mobile/src/shared/app-preferences.ts": "426305bdb61da2d4371d17743562745354acfac3e71593b3ea0de1635d287241",
+      "scripts/check-native-coaching-ui.mjs": "7e151a1f4a31ae944ede459c4daf4e4bd4387fba3c5f2eefdf0e4ea21af664bf"
+    },
+    "receiptSourceHashesMatchCandidate": {
+      "mobile/App-runtime.js": true,
+      "mobile/src/workout-coaching.tsx": true,
+      "mobile/src/settings.tsx": true,
+      "mobile/src/calendar.tsx": true,
+      "mobile/app.config.js": true,
+      "mobile/app.json": true,
+      "mobile/src/shared/workout-coaching.ts": true,
+      "mobile/src/shared/workout-coaching-library.ts": true,
+      "mobile/src/shared/app-preferences.ts": true,
+      "scripts/check-native-coaching-ui.mjs": true
+    },
+    "checks": [
+      {
+        "command": "node scripts/check-native-coaching-ui.mjs",
+        "result": "PASS both brands on final frozen shared snapshot; immediate previous-sheet dismissal fix included"
+      },
+      {
+        "command": "node scripts/check-native-coaching-ui.mjs --ios-transitions",
+        "result": "PASS both brands; iOS onDismiss callback branch; the later immediate non-iOS branch fix is exercised by the ordinary run"
+      },
+      {
+        "command": "npm run check",
+        "cwd": "mobile",
+        "result": "PASS"
+      },
+      {
+        "command": "npx eslint mobile/src/workout-coaching.tsx mobile/src/calendar.tsx mobile/src/settings.tsx",
+        "result": "PASS"
+      },
+      {
+        "command": "node scripts/check-native-interactions.cjs",
+        "result": "PASS"
+      },
+      {
+        "command": "node scripts/check-native-density.cjs",
+        "result": "PASS"
+      },
+      {
+        "command": "git diff --check -- <changed native sources, tests and docs>",
+        "result": "PASS"
+      }
+    ],
+    "runs": {
+      "coaching": {
+        "checkedAt": "2026-10-16T16:55:14.223Z",
+        "variants": [
+          {
+            "variant": "movefield",
+            "iosTransitionBranchEmulated": false,
+            "passed": [
+              "automatic Today/Calendar pre-start popup; close/cancel/reopen are read-only",
+              "failed start retains preview; successful reviewed start reuses current engine eligibility and targets",
+              "post popup only after durable workout save; failed-save preservation and retry",
+              "engine messages and collapsed explanation rendered unchanged",
+              "read-only Today/history reopen; auto/manual/off survives reload",
+              "320px layout at 130% app text",
+              "sample/personal workout isolation and stale popup dismissal",
+              "read failure exposes usable recovery fields and retry"
+            ],
+            "scope": "Actual native App runtime through React Native Web; synthetic per-profile JSON writes, file APIs, font loading, notifications and disabled cloud boundary mocked. No installed device, OS keyboard, secure-store or screen-reader claim."
+          },
+          {
+            "variant": "grizzly",
+            "iosTransitionBranchEmulated": false,
+            "passed": [
+              "automatic Today/Calendar pre-start popup; close/cancel/reopen are read-only",
+              "failed start retains preview; successful reviewed start reuses current engine eligibility and targets",
+              "post popup only after durable workout save; failed-save preservation and retry",
+              "engine messages and collapsed explanation rendered unchanged",
+              "read-only Today/history reopen; auto/manual/off survives reload",
+              "320px layout at 130% app text",
+              "sample/personal workout isolation and stale popup dismissal",
+              "read failure exposes usable recovery fields and retry"
+            ],
+            "scope": "Actual native App runtime through React Native Web; synthetic per-profile JSON writes, file APIs, font loading, notifications and disabled cloud boundary mocked. No installed device, OS keyboard, secure-store or screen-reader claim."
+          }
+        ]
+      },
+      "iosTransitionCallbacks": {
+        "checkedAt": "2026-10-16T16:53:53.638Z",
+        "variants": [
+          {
+            "variant": "movefield",
+            "iosTransitionBranchEmulated": true,
+            "passed": [
+              "automatic Today/Calendar pre-start popup; close/cancel/reopen are read-only",
+              "failed start retains preview; successful reviewed start reuses current engine eligibility and targets",
+              "post popup only after durable workout save; failed-save preservation and retry",
+              "engine messages and collapsed explanation rendered unchanged",
+              "read-only Today/history reopen; auto/manual/off survives reload",
+              "320px layout at 130% app text",
+              "sample/personal workout isolation and stale popup dismissal",
+              "read failure exposes usable recovery fields and retry"
+            ],
+            "scope": "Actual native App runtime through React Native Web with Platform.OS=ios only to exercise the onDismiss queue; UIKit is not simulated.; synthetic per-profile JSON writes, file APIs, font loading, notifications and disabled cloud boundary mocked. No installed device, OS keyboard, secure-store or screen-reader claim."
+          },
+          {
+            "variant": "grizzly",
+            "iosTransitionBranchEmulated": true,
+            "passed": [
+              "automatic Today/Calendar pre-start popup; close/cancel/reopen are read-only",
+              "failed start retains preview; successful reviewed start reuses current engine eligibility and targets",
+              "post popup only after durable workout save; failed-save preservation and retry",
+              "engine messages and collapsed explanation rendered unchanged",
+              "read-only Today/history reopen; auto/manual/off survives reload",
+              "320px layout at 130% app text",
+              "sample/personal workout isolation and stale popup dismissal",
+              "read failure exposes usable recovery fields and retry"
+            ],
+            "scope": "Actual native App runtime through React Native Web with Platform.OS=ios only to exercise the onDismiss queue; UIKit is not simulated.; synthetic per-profile JSON writes, file APIs, font loading, notifications and disabled cloud boundary mocked. No installed device, OS keyboard, secure-store or screen-reader claim."
+          }
+        ]
+      },
+      "existingActualApp": {
+        "checkedAt": "2026-10-16T16:47:20.855Z",
+        "variants": [
+          {
+            "variant": "movefield",
+            "passed": [
+              "actual app shell and five tabs at 320px",
+              "comma-decimal load entry, main logger failed-write preservation and retry",
+              "guide modal close and reachable Library at 130% app text",
+              "130% app text in settings and navigation",
+              "paginated samples, source-name search, empty recovery and six/seven-day filters",
+              "45-record history pages, scaled corrections and canceled draft preservation",
+              "read-only plan browsing preserves active workout and history"
+            ],
+            "scope": "Executed native App runtime rendered through RN Web; synthetic JSON writer, font loader, file IO, notifications and disabled cloud boundary mocked. Not an installed phone or OS keyboard test."
+          },
+          {
+            "variant": "grizzly",
+            "passed": [
+              "actual app shell and five tabs at 320px",
+              "comma-decimal load entry, main logger failed-write preservation and retry",
+              "guide modal close and reachable Library at 130% app text",
+              "130% app text in settings and navigation",
+              "paginated samples, source-name search, empty recovery and six/seven-day filters",
+              "45-record history pages, scaled corrections and canceled draft preservation",
+              "read-only plan browsing preserves active workout and history"
+            ],
+            "scope": "Executed native App runtime rendered through RN Web; synthetic JSON writer, font loader, file IO, notifications and disabled cloud boundary mocked. Not an installed phone or OS keyboard test."
+          }
+        ]
+      },
+      "movefieldFocusedWorkflows": {
+        "checkedAt": "2026-10-16T16:48:02.159Z",
+        "scope": "Real React Native components rendered via React Native Web in sandboxed Chromium. Synthetic durable JSON writer with injected failure; font loading and OS notification boundaries stubbed; no reminder action exercised. No native crypto, installed OS, TalkBack/VoiceOver or physical-device claim.",
+        "passed": [
+          "commitment range preview, failed-write preservation and durable retry",
+          "custom movement and addition preserve active workout and history",
+          "saved block full preview and accepted new unperformed sessions",
+          "320px region containment, app text scaling and 48px date targets",
+          "recorded progress period/exercise filtering",
+          "plan evidence disclosure and searchable research references",
+          "Today concern sample-only reset, future preview, active callback preservation and busy start guard"
+        ]
+      },
+      "grizzlyFocusedWorkflows": {
+        "checkedAt": "2026-10-16T16:51:18.019Z",
+        "scope": "Real React Native components rendered via React Native Web in sandboxed Chromium. Synthetic durable JSON writer with injected failure; font loading and OS notification boundaries stubbed; no reminder action exercised. No native crypto, installed OS, TalkBack/VoiceOver or physical-device claim.",
+        "passed": [
+          "commitment range preview, failed-write preservation and durable retry",
+          "custom movement and addition preserve active workout and history",
+          "saved block full preview and accepted new unperformed sessions",
+          "320px region containment, app text scaling and 48px date targets",
+          "recorded progress period/exercise filtering",
+          "plan evidence disclosure and searchable research references",
+          "Today concern sample-only reset, future preview, active callback preservation and busy start guard",
+          "native 35-font selection, outdoor palette and Clean preserve actual workout state at 320px"
+        ]
+      }
+    },
+    "configuration": {
+      "checkedAt": "2026-10-16T16:46:24.080Z",
+      "passed": true,
+      "scope": "Resolved source app configuration, not compiled packages or signing",
+      "records": [
+        {
+          "variant": "movefield",
+          "lineage": "prototype",
+          "version": "0.1.6",
+          "iosBuild": "7",
+          "androidCode": 7,
+          "iosBundle": "com.ghinz32.movefield.prototype",
+          "androidPackage": "com.ghinz32.movefield.prototype"
+        },
+        {
+          "variant": "movefield",
+          "lineage": "legacy-movefield",
+          "version": "0.1.6",
+          "iosBuild": "7",
+          "androidCode": 7,
+          "iosBundle": "com.ghinz32.movefield.prototype",
+          "androidPackage": "com.ghinz32.movefield"
+        },
+        {
+          "variant": "grizzly",
+          "lineage": "prototype",
+          "version": "0.1.5",
+          "iosBuild": "6",
+          "androidCode": 6,
+          "iosBundle": "com.ghinz32.grizzlyfitness.prototype",
+          "androidPackage": "com.ghinz32.grizzlyfitness.prototype"
+        }
+      ]
+    },
+    "additionalChecks": [
+      {
+        "command": "node scripts/check-native-interactions.cjs",
+        "result": "PASS native callback journeys: default/catalog/source setup, focused plan review, failed-save retry and profile preservation; calendar adjacent-month/date-seeded commitment/direct resume; reorder during target editing preserves identities; both brands permit only current foreground reminders. Hook and OS boundaries mocked; no device claim."
+      },
+      {
+        "command": "node scripts/check-native-density.cjs",
+        "result": "PASS native density structure: settings/account/backup share one scroll surface; Plan tools remain visible; touch targets preserved; focus scroll uses cached layout without moving during same-exercise edits. No rendered-device claim."
+      }
+    ],
+    "hermesExports": {
+      "checked_at": "2026-10-16T17:01:52.440788+00:00",
+      "scope": "Distinct cleared-cache Hermes exports, paired with native identity/module checks; no installed-device claim.",
+      "flavors": {
+        "movefield": {
+          "android": {
+            "path": "_expo/static/js/android/index-7e3a7406dc6daa14636c711a7e373502.hbc",
+            "bytes": 4844113,
+            "sha256": "4aee65d597c31555e5582cfb1b1ccebdadd5565610191d3c5bece7a7a6f57b99",
+            "coachingPolicyAndCopyPresent": true
+          },
+          "ios": {
+            "path": "_expo/static/js/ios/index-89260b712b6a485861555b4cd7aa93d8.hbc",
+            "bytes": 4831598,
+            "sha256": "9ae4e132aae7554b95af0c1dd9cbffaf4c1b83135fccaf8b1ce8388006dfd728",
+            "coachingPolicyAndCopyPresent": true
+          }
+        },
+        "grizzly": {
+          "android": {
+            "path": "_expo/static/js/android/index-d3c9aff2bfd807b2eaa5bfcb4c5635b1.hbc",
+            "bytes": 4844113,
+            "sha256": "3808426223b70a34a72ed92fee6bcd082179a73478edaa4789a1f05c261301dd",
+            "coachingPolicyAndCopyPresent": true
+          },
+          "ios": {
+            "path": "_expo/static/js/ios/index-23dba4dcf628bdd6165c8a59699594a2.hbc",
+            "bytes": 4831598,
+            "sha256": "a19b2151f759be9667de2a3d766573604906f6cba74d7714b305bff4c02f0c5c",
+            "coachingPolicyAndCopyPresent": true
+          }
+        }
+      },
+      "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c"
+    },
+    "sourceArchives": {
+      "checkedAt": "2026-10-16T17:02:14.070553+00:00",
+      "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+      "files": [
+        {
+          "file": "public/downloads/movefield-native-current.zip",
+          "bytes": 8161707,
+          "sha256": "af1d488e9ef14dedf2e25ce9512c5fbb307f5a1c790ba8226be31709a2ce3061",
+          "manifestVerifiedEntries": 259,
+          "matchesCurrentSource": true
+        },
+        {
+          "file": "public/downloads/grizzly-fitness-native-source.zip",
+          "bytes": 8161706,
+          "sha256": "3f67fc5112c5ecb921fb6fba465cc743aaee2d085878b99eb62df2539010c769",
+          "manifestVerifiedEntries": 259,
+          "matchesCurrentSource": true
+        }
+      ]
+    },
+    "androidBuild": {
+      "workflowRunId": 38936451848,
+      "publisherRunId": 38938205085,
+      "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+      "sourceTree": "2831460f6e90b3374ac7e5e5db629f7a51eca25c",
+      "status": "passed",
+      "compiledArtifactIdentityVerified": true,
+      "release": {
+        "id": 415199177,
+        "tag_name": "android-ux-preview-de6c7abf2438",
+        "html_url": "https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-de6c7abf2438",
+        "published_at": "2026-10-16T17:15:35Z",
+        "draft": false,
+        "prerelease": true
+      },
+      "artifacts": [
+        {
+          "app": "movefield",
+          "filename": "movefield-0.1.6-arm64.apk",
+          "artifactId": 12061882388,
+          "verifiedJobId": 117093058359,
+          "verifiedJobAttempt": 1,
+          "artifactCreatedAt": "2026-10-16T17:13:03Z",
+          "archiveSHA256": "6df90b4fe0e9d5dbd847f0f6cee7f144e9356de2d8c17e9046fff2ddbdf1a874",
+          "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "sourceTree": "2831460f6e90b3374ac7e5e5db629f7a51eca25c",
+          "package": "com.ghinz32.movefield",
+          "versionName": "0.1.6",
+          "versionCode": 7,
+          "bytes": 39313208,
+          "sha256": "e0c31e216b5f56263d3d9c7dce858757bc4949fc489034236df089109f98d97f",
+          "architecture": "arm64-v8a",
+          "applicationBundleSHA256": "3d82a7a77efbc0b3448b28b115bc705d12e97efd77bf7af2fa4c15b4f7dcfd83",
+          "signingCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+          "inspection": {
+            "passed": true,
+            "platform": "android",
+            "package": "com.ghinz32.movefield",
+            "permissions": [
+              "android.permission.ACCESS_NETWORK_STATE",
+              "android.permission.INTERNET",
+              "android.permission.POST_NOTIFICATIONS",
+              "android.permission.RECEIVE_BOOT_COMPLETED",
+              "android.permission.VIBRATE",
+              "com.ghinz32.movefield.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+            ],
+            "manifestSHA256": "330374119606795b990b590985ed17b4dc5fe2e9900ca8010bc10e1c3e05468a",
+            "backupRulesLinked": true,
+            "backupDomainsExcluded": [
+              "database",
+              "device_database",
+              "device_file",
+              "device_root",
+              "device_sharedpref",
+              "external",
+              "file",
+              "root",
+              "sharedpref"
+            ],
+            "cloudBackupAndDeviceTransferExcluded": true,
+            "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+            "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+            "resourceTableSHA256": "ccf6da58e977de65b5c606ce8af835f3a08d24409ce31bcc903cb4f33b7fc26c",
+            "cleartextDenied": true,
+            "remoteSdkStartupDisabled": true,
+            "componentBoundariesChecked": true,
+            "localReminderDeclarationsChecked": true,
+            "reviewedStartupInitializers": [
+              "androidx.emoji2.text.EmojiCompatInitializer",
+              "androidx.lifecycle.ProcessLifecycleInitializer",
+              "androidx.profileinstaller.ProfileInstallerInitializer"
+            ],
+            "internalBrowserProxyChecked": true,
+            "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+            "signing": "uninspected; inspect the APK certificate separately",
+            "physicalDeviceTested": false,
+            "storeAccepted": false
+          },
+          "apk": ".sites-runtime/coaching-2026-10-16/native-installers/movefield/movefield-arm64-test.apk",
+          "directDownloadURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-de6c7abf2438/movefield-0.1.6-arm64.apk",
+          "minimumSDK": 24,
+          "architectures": [
+            "arm64-v8a"
+          ],
+          "coachingBundleMarkers": [
+            "workout-coaching-v1",
+            "BEFORE YOUR WORKOUT",
+            "AFTER YOUR WORKOUT",
+            "Why this pre-workout guidance",
+            "Why this workout feedback",
+            "These messages are selected from local reviewed text and saved facts. They do not change targets, schedule or load."
+          ],
+          "nativeInspection": {
+            "passed": true,
+            "platform": "android",
+            "package": "com.ghinz32.movefield",
+            "permissions": [
+              "android.permission.ACCESS_NETWORK_STATE",
+              "android.permission.INTERNET",
+              "android.permission.POST_NOTIFICATIONS",
+              "android.permission.RECEIVE_BOOT_COMPLETED",
+              "android.permission.VIBRATE",
+              "com.ghinz32.movefield.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+            ],
+            "manifestSHA256": "c6c8865d2de4e49e8fdb6043506d15408424dec0063bac4494f926a22e3b674d",
+            "backupRulesLinked": true,
+            "backupDomainsExcluded": [
+              "database",
+              "device_database",
+              "device_file",
+              "device_root",
+              "device_sharedpref",
+              "external",
+              "file",
+              "root",
+              "sharedpref"
+            ],
+            "cloudBackupAndDeviceTransferExcluded": true,
+            "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+            "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+            "resourceTableSHA256": "ccf6da58e977de65b5c606ce8af835f3a08d24409ce31bcc903cb4f33b7fc26c",
+            "cleartextDenied": true,
+            "remoteSdkStartupDisabled": true,
+            "componentBoundariesChecked": true,
+            "localReminderDeclarationsChecked": true,
+            "reviewedStartupInitializers": [
+              "androidx.emoji2.text.EmojiCompatInitializer",
+              "androidx.lifecycle.ProcessLifecycleInitializer",
+              "androidx.profileinstaller.ProfileInstallerInitializer"
+            ],
+            "internalBrowserProxyChecked": true,
+            "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+            "signing": "uninspected; inspect the APK certificate separately",
+            "physicalDeviceTested": false,
+            "storeAccepted": false
+          },
+          "credentialPatternScan": {
+            "members": 1236,
+            "matches": 0,
+            "scope": "Finite recognized patterns; no security certification or absence-of-secrets guarantee."
+          },
+          "identityAndSignaturePassed": true
+        },
+        {
+          "app": "grizzly",
+          "filename": "grizzly-fitness-0.1.5-arm64.apk",
+          "artifactId": 12061363475,
+          "verifiedJobId": 117093058800,
+          "verifiedJobAttempt": 1,
+          "artifactCreatedAt": "2026-10-16T17:12:01Z",
+          "archiveSHA256": "064b8e0e4757b00dcd08239f8d2139693192c8d5c77f1c39c19e927740beb45f",
+          "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "sourceTree": "2831460f6e90b3374ac7e5e5db629f7a51eca25c",
+          "package": "com.ghinz32.grizzlyfitness.prototype",
+          "versionName": "0.1.5",
+          "versionCode": 6,
+          "bytes": 39464470,
+          "sha256": "e32a37ddb9b6087db625aac2b24ff9d5fde4515d77b96284eb83ab2ddc90d992",
+          "architecture": "arm64-v8a",
+          "applicationBundleSHA256": "3e4ddee5f021b99ba8ad89957aa8b1bf8ec4c3984db45e8cd9d63b2e80d19939",
+          "signingCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+          "inspection": {
+            "passed": true,
+            "platform": "android",
+            "package": "com.ghinz32.grizzlyfitness.prototype",
+            "permissions": [
+              "android.permission.ACCESS_NETWORK_STATE",
+              "android.permission.INTERNET",
+              "android.permission.POST_NOTIFICATIONS",
+              "android.permission.RECEIVE_BOOT_COMPLETED",
+              "android.permission.VIBRATE",
+              "com.ghinz32.grizzlyfitness.prototype.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+            ],
+            "manifestSHA256": "c6563203f4356c3ebb97f011df094679c49f8bd5f2a3897c39c02c6e3d17aa9c",
+            "backupRulesLinked": true,
+            "backupDomainsExcluded": [
+              "database",
+              "device_database",
+              "device_file",
+              "device_root",
+              "device_sharedpref",
+              "external",
+              "file",
+              "root",
+              "sharedpref"
+            ],
+            "cloudBackupAndDeviceTransferExcluded": true,
+            "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+            "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+            "resourceTableSHA256": "503c992656cf74de247adfd3f62bf96a63dd43cf3fdf88ea187da4ae28070f79",
+            "cleartextDenied": true,
+            "remoteSdkStartupDisabled": true,
+            "componentBoundariesChecked": true,
+            "localReminderDeclarationsChecked": true,
+            "reviewedStartupInitializers": [
+              "androidx.emoji2.text.EmojiCompatInitializer",
+              "androidx.lifecycle.ProcessLifecycleInitializer",
+              "androidx.profileinstaller.ProfileInstallerInitializer"
+            ],
+            "internalBrowserProxyChecked": true,
+            "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+            "signing": "uninspected; inspect the APK certificate separately",
+            "physicalDeviceTested": false,
+            "storeAccepted": false
+          },
+          "apk": ".sites-runtime/coaching-2026-10-16/native-installers/grizzly/grizzly-arm64-test.apk",
+          "directDownloadURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-de6c7abf2438/grizzly-fitness-0.1.5-arm64.apk",
+          "minimumSDK": 24,
+          "architectures": [
+            "arm64-v8a"
+          ],
+          "coachingBundleMarkers": [
+            "workout-coaching-v1",
+            "BEFORE YOUR WORKOUT",
+            "AFTER YOUR WORKOUT",
+            "Why this pre-workout guidance",
+            "Why this workout feedback",
+            "These messages are selected from local reviewed text and saved facts. They do not change targets, schedule or load."
+          ],
+          "nativeInspection": {
+            "passed": true,
+            "platform": "android",
+            "package": "com.ghinz32.grizzlyfitness.prototype",
+            "permissions": [
+              "android.permission.ACCESS_NETWORK_STATE",
+              "android.permission.INTERNET",
+              "android.permission.POST_NOTIFICATIONS",
+              "android.permission.RECEIVE_BOOT_COMPLETED",
+              "android.permission.VIBRATE",
+              "com.ghinz32.grizzlyfitness.prototype.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+            ],
+            "manifestSHA256": "8f85d6c41aff6bbf0241fa22a2388ff827936c212e32a4f1b54ba5d040b86b6e",
+            "backupRulesLinked": true,
+            "backupDomainsExcluded": [
+              "database",
+              "device_database",
+              "device_file",
+              "device_root",
+              "device_sharedpref",
+              "external",
+              "file",
+              "root",
+              "sharedpref"
+            ],
+            "cloudBackupAndDeviceTransferExcluded": true,
+            "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+            "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+            "resourceTableSHA256": "503c992656cf74de247adfd3f62bf96a63dd43cf3fdf88ea187da4ae28070f79",
+            "cleartextDenied": true,
+            "remoteSdkStartupDisabled": true,
+            "componentBoundariesChecked": true,
+            "localReminderDeclarationsChecked": true,
+            "reviewedStartupInitializers": [
+              "androidx.emoji2.text.EmojiCompatInitializer",
+              "androidx.lifecycle.ProcessLifecycleInitializer",
+              "androidx.profileinstaller.ProfileInstallerInitializer"
+            ],
+            "internalBrowserProxyChecked": true,
+            "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+            "signing": "uninspected; inspect the APK certificate separately",
+            "physicalDeviceTested": false,
+            "storeAccepted": false
+          },
+          "credentialPatternScan": {
+            "members": 1226,
+            "matches": 0,
+            "scope": "Finite recognized patterns; no security certification or absence-of-secrets guarantee."
+          },
+          "identityAndSignaturePassed": true
+        }
+      ],
+      "scope": "Independent downloaded APK inspections; no installed-phone, iOS or store qualification.",
+      "retries": 0,
+      "emptyDraftFallbackUsed": false,
+      "downloadPackaging": {
+        "appliedAt": "2026-10-16T17:18:06.168394+00:00",
+        "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+        "files": {
+          "android-installers.json": "21f22ece903ce6424ca660d6273a753457b701cacaa9d67393169d35afa1ffd7",
+          "android.html": "07ca3c3e6ba5fe91ef4f8b6bf90d1bf30421812be92bcd84cddc1a83eaaeac19",
+          "native/grizzly/part-0.bin": "8c5393bcfc289ef97fcb1a6988974db4f2ebf9805e46f4a830ce28768f80ad5c",
+          "native/grizzly/part-3.bin": "466e4bd20fcb1af986ba1ac91c549ba3745d5851343b1004b57ca7b8f918bb79",
+          "native/grizzly/part-2.bin": "31a99089137f2a19dca4ea4fa83314de09148cec274c4587ca3b6440e22964ec",
+          "native/grizzly/part-1.bin": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8",
+          "native/movefield/part-0.bin": "dbd6696bef3eb5407a38a4808f91d0ac42bdacccd41a36aa17fad30fdc4b23b8",
+          "native/movefield/part-3.bin": "37edaebfdcddc5cdc5ee9df90a0cc2ea4ae7c488620b5c24f95bd53273cee804",
+          "native/movefield/part-2.bin": "9fbcb09d77737350bd48f8109da843f6046bd61870f35e4dc97b3f8e406f4a9c",
+          "native/movefield/part-1.bin": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8"
+        },
+        "previousManifestSHA256": "55fa3e63b99d2d28846fb52d28edac801210fd4479472922deab425762894fa8",
+        "passed": true
+      },
+      "note": "Both actual public APKs downloaded and independently inspected; no installed-phone or store qualification."
+    },
+    "iosDistribution": {
+      "status": "not_configured",
+      "signedIpaAvailable": false,
+      "testFlightAvailable": false,
+      "qualification": "Unsigned Hermes exports verify bundled JavaScript preparation only; they are not Xcode builds, signed iPhone installers or physical-device checks."
+    },
+    "downloadPreparationCheck": {
+      "command": "node scripts/check-android-downloads.cjs",
+      "checkedAt": "2026-10-16T17:18:40.476657+00:00",
+      "passed": true,
+      "scope": "Exact reconstruction/hash, altered-data rejection, external-part URL rejection, cancellation and no profile read; live browser Save checked separately."
+    }
+  },
+  "publication": {
+    "status": "android_release_published_pages_pending",
+    "sourceBranch": "codex/adaptive-coaching-2026-10-16",
+    "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+    "pagesWorkflowRunId": null,
+    "pagesCommit": null,
+    "releaseUrl": "https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-de6c7abf2438",
+    "liveChecks": [],
+    "note": "Android public release independently verified. Final website delivery commit, Pages deployment and live checks are pending."
+  },
+  "limits": [
+    "No physical Android or iPhone, native OS keyboard, TalkBack or VoiceOver acceptance was performed.",
+    "The iOS callback branch was executed through React Native Web with Platform.OS=ios; UIKit was not simulated.",
+    "Firefox/WebKit download hosts were denied by the configured proxy; Safari was unavailable. No bypass was used.",
+    "Axe results cover finite tested Chromium states, not complete WCAG certification or every palette/font combination.",
+    "Node history timings are local measurements, not phone benchmarks or response-time guarantees.",
+    "Cloud/account/provider tests use local or mocked boundaries; no new cloud or AI service is enabled by this work.",
+    "No reviewed source establishes clinical efficacy or an optimal frequency for the coaching phrases."
+  ],
+  "receiptSources": [
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/engine-final-20.log",
+      "bytes": 2563,
+      "sha256": "bfa5d8f172682c8b9f6cf146384401143b057ef2096e6a0cd008e9d416ef78f4"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/core-receipt.json",
+      "bytes": 6776,
+      "sha256": "862fdb7aabda71d5ab3b7bd3a190f313f1f4d02ed322ecd57353ef6ccd7d6358"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/lint-final.json",
+      "bytes": 656579,
+      "sha256": "52222bec7510d6e87160a450d5dfb73df8f4e4c7e5884a8a53b013171f666b26"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/native-exports.json",
+      "bytes": 1375,
+      "sha256": "650686929779a74b37a045c28e22a07ae5182cfc731fab11fae331c8f57c6350"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/source-archives.json",
+      "bytes": 652,
+      "sha256": "749dac56ebe2b5f24fec1aa1db0ffba73566010e9eeedfee26d4e9bbcc479a34"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/native-callbacks-final.log",
+      "bytes": 342,
+      "sha256": "47c2d581df913f47d013da9e70e840964058fb6ceeea59f3d15c50dd7b59bcb5"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/native-density-final.log",
+      "bytes": 234,
+      "sha256": "b6bcebecfce4e653cc4163e190089d0e1a1592dc1937ca4a877b84b51e165dd4"
+    },
+    {
+      "path": ".sites-runtime/coaching-safety/browser-results.json",
+      "bytes": 3113,
+      "sha256": "11fa4e3ad5410f8f26d3632a19524bf287675177cba3bf67e0a67c94c21e663c"
+    },
+    {
+      "path": "docs/audit-2026-10-16/coaching-web.json",
+      "bytes": 67308,
+      "sha256": "115293c9adf07cd4c5dd8ad47c19c66e67a66e5fd793f769850cf2deba0b3a03"
+    },
+    {
+      "path": "docs/audit-2026-10-16/native-coaching-results.json",
+      "bytes": 11943,
+      "sha256": "204d18f1bea933fea9b9584d8a364b33cc0471626ac8b66df89056da35afb831"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/copy-review-validation.json",
+      "bytes": 5434,
+      "sha256": "67b47043ee356aa545936f5a39b57b20900e538e494dbf1a11ff37b6c4a5c580"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/evidence-receipt.json",
+      "bytes": 23364,
+      "sha256": "c96e2c89ecaefb6d8ab97a2295416a9cbd275396abd268ae8dbb36c08c99017a"
+    },
+    {
+      "path": ".sites-runtime/coaching-2026-10-16/audited-application-assets.json",
+      "bytes": 1554,
+      "sha256": "c1ecc4707c362da82b453ee6f618070a5b448b8cb1f14352673cda94974fbb5e"
+    }
+  ]
+}

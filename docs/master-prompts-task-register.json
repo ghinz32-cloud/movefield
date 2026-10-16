@@ -5,11 +5,11 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Claude routine-library integration and full platform audit, 16 October 2026: 68 qualified additions shared by both brands, 995 exercise guides, corrected equipment/substitution and small-screen/native UX. Exact checks and publication receipts are docs/audit-2026-10-16.md and docs/audit-2026-10-16-validation.json. Original root, physical devices, Apple distribution, upstream advisories, live providers and broader product gates remain open.",
-  "completion_claim": "Audited shared web/native checkpoint with bounded Android test delivery; no full six-prompt, exact-routine clinical, installed-device or store qualification claim.",
+  "active_checkpoint": "Adaptive local workout coaching and UI/compatibility audit, 16 October 2026: blank new calendars, preserved obligations, shared history-aware before/after coaching, Automatic/On request/Off preferences, native modal/keyboard/text scaling fixes and responsive web accessibility fixes. Candidate source de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c. Exact checks and publication status are docs/coaching-ux-audit-2026-10-16.md and docs/coaching-ux-audit-2026-10-16-validation.json. Physical devices, Apple signing, live AI/providers and broader product gates remain open.",
+  "completion_claim": "Audited shared web/native coaching milestone with separately verified website and Android preview delivery; no full six-prompt, clinical efficacy, installed-device or store qualification claim.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
-    "Saved environment network additions need activation for full-text research and repo.reactnative.dev Android artifact download. Current proxy denials are not bypassed.",
+    "Some full-text research and browser-runtime installation endpoints are denied by the configured proxy. Current Android compilation uses the existing verified CI/toolchain; browser/device coverage remains explicitly scoped.",
     "Mac/iOS toolchain, owner signing/update configuration and installed physical Android/iPhone device matrix; broad coverage target does not certify old/unpatched devices.",
     "Independent security/crypto/privacy/science/rights reviews and compatible native upstream advisory remediation. Remaining code is separately retained below.",
     "Data-preserving historical Android lineage and version 1 Argon2id transfer imports are implemented and tested with original-writer fixtures and SQLite/crypto adapters. Exact compiled manifest/signature checks and old/new APK physical upgrade acceptance remain distinct gates."
@@ -319,6 +319,12 @@
           "application_source_sha256": "d8822936086f9ff4afb40e22f416212e8a6efc42757b3d8d5da47f8d75afeaf5",
           "environment": "Actual SDK with mocked external transport, local D1/R2 and final built Worker with sandboxed Chromium; no live OAuth/provider or physical-device qualification.",
           "result": "12 core groups and six cloud browser checks passed. Queued ciphertext survives lost acknowledgement and device-key recovery; owner/CAS/consent/budget/deletion checks passed; local key replacement refuses to strand pending uploads; youth and known sample records reject cloud/AI use. See docs/cloudflare-implementation.md and docs/completion-status.md for limits."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Qualify real provider/privacy/free allowance and durable failure/retention operations; complete licensed-evidence/usefulness evaluations and broader coaching requirements. Fact selection is implemented; arbitrary model prose and on-device inference are not."
@@ -349,6 +355,12 @@
           "application_source_sha256": "d8822936086f9ff4afb40e22f416212e8a6efc42757b3d8d5da47f8d75afeaf5",
           "environment": "Actual SDK with mocked external transport, local D1/R2 and final built Worker with sandboxed Chromium; no live OAuth/provider or physical-device qualification.",
           "result": "12 core groups and six cloud browser checks passed. Queued ciphertext survives lost acknowledgement and device-key recovery; owner/CAS/consent/budget/deletion checks passed; local key replacement refuses to strand pending uploads; youth and known sample records reject cloud/AI use. See docs/cloudflare-implementation.md and docs/completion-status.md for limits."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Qualify real provider/privacy/free allowance and durable failure/retention operations; complete licensed-evidence/usefulness evaluations and broader coaching requirements. Fact selection is implemented; arbitrary model prose and on-device inference are not."
@@ -370,6 +382,12 @@
           "application_source_sha256": "d8822936086f9ff4afb40e22f416212e8a6efc42757b3d8d5da47f8d75afeaf5",
           "environment": "Actual SDK with mocked external transport, local D1/R2 and final built Worker with sandboxed Chromium; no live OAuth/provider or physical-device qualification.",
           "result": "12 core groups and six cloud browser checks passed. Queued ciphertext survives lost acknowledgement and device-key recovery; owner/CAS/consent/budget/deletion checks passed; local key replacement refuses to strand pending uploads; youth and known sample records reject cloud/AI use. See docs/cloudflare-implementation.md and docs/completion-status.md for limits."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Qualify real provider/privacy/free allowance and durable failure/retention operations; complete licensed-evidence/usefulness evaluations and broader coaching requirements. Fact selection is implemented; arbitrary model prose and on-device inference are not."
@@ -412,6 +430,12 @@
           "application_source_sha256": "d8822936086f9ff4afb40e22f416212e8a6efc42757b3d8d5da47f8d75afeaf5",
           "environment": "Actual SDK with mocked external transport, local D1/R2 and final built Worker with sandboxed Chromium; no live OAuth/provider or physical-device qualification.",
           "result": "12 core groups and six cloud browser checks passed. Queued ciphertext survives lost acknowledgement and device-key recovery; owner/CAS/consent/budget/deletion checks passed; local key replacement refuses to strand pending uploads; youth and known sample records reject cloud/AI use. See docs/cloudflare-implementation.md and docs/completion-status.md for limits."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Qualify real provider/privacy/free allowance and durable failure/retention operations; complete licensed-evidence/usefulness evaluations and broader coaching requirements. Fact selection is implemented; arbitrary model prose and on-device inference are not."
@@ -433,6 +457,12 @@
           "application_source_sha256": "d8822936086f9ff4afb40e22f416212e8a6efc42757b3d8d5da47f8d75afeaf5",
           "environment": "Actual SDK with mocked external transport, local D1/R2 and final built Worker with sandboxed Chromium; no live OAuth/provider or physical-device qualification.",
           "result": "12 core groups and six cloud browser checks passed. Queued ciphertext survives lost acknowledgement and device-key recovery; owner/CAS/consent/budget/deletion checks passed; local key replacement refuses to strand pending uploads; youth and known sample records reject cloud/AI use. See docs/cloudflare-implementation.md and docs/completion-status.md for limits."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Qualify real provider/privacy/free allowance and durable failure/retention operations; complete licensed-evidence/usefulness evaluations and broader coaching requirements. Fact selection is implemented; arbitrary model prose and on-device inference are not."
@@ -488,6 +518,12 @@
           "application_source_sha256": "d8822936086f9ff4afb40e22f416212e8a6efc42757b3d8d5da47f8d75afeaf5",
           "environment": "Actual SDK with mocked external transport, local D1/R2 and final built Worker with sandboxed Chromium; no live OAuth/provider or physical-device qualification.",
           "result": "12 core groups and six cloud browser checks passed. Queued ciphertext survives lost acknowledgement and device-key recovery; owner/CAS/consent/budget/deletion checks passed; local key replacement refuses to strand pending uploads; youth and known sample records reject cloud/AI use. See docs/cloudflare-implementation.md and docs/completion-status.md for limits."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Qualify real provider/privacy/free allowance and durable failure/retention operations; complete licensed-evidence/usefulness evaluations and broader coaching requirements. Fact selection is implemented; arbitrary model prose and on-device inference are not."
@@ -531,6 +567,12 @@
           "application_source_sha256": "84fea0bd95e94bf2185d4fe8ff54f72da4244784820301913e61d16eb84c1962",
           "environment": "Node24/pnpm11.25, local freshly built Worker and sandboxed Chromium; native JS export/adapter, no physical devices or connected providers",
           "result": "Progress charts moved to a deferred JS chunk. Three clean desktop local Worker contexts measured interactive gate at 502/578/592ms; sample Progress at 427ms, one new JS resource and chart keyboard traversal passed. 320px overview had no horizontal overflow. Current baseline only, no comparative speedup, native/field/memory or full WCAG claim."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Measure and fix remaining startup/delivery costs, rendered accessibility/reflow and field/native scenarios; avoid treating this limited baseline as full acceptance."
@@ -551,6 +593,12 @@
           "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
           "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
           "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Review the current production entrypoints before starting this requirement."
@@ -585,7 +633,13 @@
           "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
           "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
         },
-        "2026-10-12: shared Today actions preserve planned dates, active targets and concern holds; native resume scroll and sample-only reset. Phone primary row, first-install update fix, all 18 static workout/recovery journeys, 32 axe/reflow states, six preferences cases and same-origin original-storage/cache preservation through review migration/erase. Full physical/state acceptance remains pending."
+        "2026-10-12: shared Today actions preserve planned dates, active targets and concern holds; native resume scroll and sample-only reset. Phone primary row, first-install update fix, all 18 static workout/recovery journeys, 32 axe/reflow states, six preferences cases and same-origin original-storage/cache preservation through review migration/erase. Full physical/state acceptance remains pending.",
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
+        }
       ],
       "next_action": "Continue premium Today/history/navigation clarity and verify all state transitions; current native stable plan tabs/calendar and account refresh are implemented."
     },
@@ -648,6 +702,12 @@
           "application_source_sha256": "84fea0bd95e94bf2185d4fe8ff54f72da4244784820301913e61d16eb84c1962",
           "environment": "Node24/pnpm11.25, local freshly built Worker and sandboxed Chromium; native JS export/adapter, no physical devices or connected providers",
           "result": "Full credited plan imports implemented on web/native with preview, fresh IDs/dates, personal-profile preservation, scheduled-only sessions, active/stale/tamper checks, fixed-event/availability checks and preserved history. Domain and actual web flow passed. User-supplied tracking prescriptions are not scientifically certified."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Finish other external content and broader migration contracts; physically qualify native picker/share and complete lawful named-program/evidence work."
@@ -668,6 +728,12 @@
           "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
           "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
           "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Review the current production entrypoints before starting this requirement."
@@ -710,7 +776,13 @@
           "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
           "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
         },
-        "2026-10-12: shared Today actions preserve planned dates, active targets and concern holds; native resume scroll and sample-only reset. Phone primary row, first-install update fix, all 18 static workout/recovery journeys, 32 axe/reflow states, six preferences cases and same-origin original-storage/cache preservation through review migration/erase. Full physical/state acceptance remains pending."
+        "2026-10-12: shared Today actions preserve planned dates, active targets and concern holds; native resume scroll and sample-only reset. Phone primary row, first-install update fix, all 18 static workout/recovery journeys, 32 axe/reflow states, six preferences cases and same-origin original-storage/cache preservation through review migration/erase. Full physical/state acceptance remains pending.",
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
+        }
       ],
       "next_action": "Measure and fix remaining startup/delivery costs, rendered accessibility/reflow and field/native scenarios; avoid treating this limited baseline as full acceptance."
     },
@@ -731,7 +803,13 @@
           "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
           "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
         },
-        "2026-10-12: shared Today actions preserve planned dates, active targets and concern holds; native resume scroll and sample-only reset. Phone primary row, first-install update fix, all 18 static workout/recovery journeys, 32 axe/reflow states, six preferences cases and same-origin original-storage/cache preservation through review migration/erase. Full physical/state acceptance remains pending."
+        "2026-10-12: shared Today actions preserve planned dates, active targets and concern holds; native resume scroll and sample-only reset. Phone primary row, first-install update fix, all 18 static workout/recovery journeys, 32 axe/reflow states, six preferences cases and same-origin original-storage/cache preservation through review migration/erase. Full physical/state acceptance remains pending.",
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
+        }
       ],
       "next_action": "Review the current production entrypoints before starting this requirement."
     },
@@ -867,6 +945,12 @@
           "checked_at": "2026-10-11",
           "application_source_sha256": "850bbb67daf5e8002539e5b77430f2ed3baa521a010ac466224686fa6c875647",
           "result": "Final exact-preview binding, stale restore/key callback guards and invalid file selection recovery requalified: 10 core groups, 16 real production-browser journeys, web build/origin security and iOS/Android JS exports passed. Native installed-device behavior, connected services and full prompt completion remain unqualified."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Broaden remaining states/accessibility and native installed-device flow coverage; complete native parity and connected revision/outbox behavior."
@@ -909,6 +993,12 @@
           "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
           "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
           "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Physically qualify web/native portable recovery, device keychain/erasure and live storage retention; complete per-record/background synchronization, mixed-version migrations, cloud key rotation and independent crypto/privacy review."
@@ -976,7 +1066,13 @@
           "environment": "Node24/pnpm11.25, local freshly built Worker and sandboxed Chromium; native JS export/adapter, no physical devices or connected providers",
           "result": "Production byte-versioned service worker caches opt-in stateless shell, JS/CSS/fonts/guides only. Actual offline reload/unlock/save passed and private vault content absent from caches. Updates wait for old windows to close. Native release configuration/old-new update combinations remain unverified."
         },
-        "2026-10-11: Better Auth Google/Expo clients, db/schema.ts + Drizzle migrations, lib/server/{auth,cloud-api,coaching}.ts, portable cloud vault/outbox web/native and explicit settings UI. Local actual-SDK OAuth with mocked signed Google transport, owner/CSRF/replay/CAS/deletion/consent/output/budget tests, cross-platform crypto/retry tests and a real built-browser offline queue/conflict/restore test. See docs/cloudflare-implementation.md. No live account/provider/device qualification; manual snapshot sync and canonical fact selection only."
+        "2026-10-11: Better Auth Google/Expo clients, db/schema.ts + Drizzle migrations, lib/server/{auth,cloud-api,coaching}.ts, portable cloud vault/outbox web/native and explicit settings UI. Local actual-SDK OAuth with mocked signed Google transport, owner/CSRF/replay/CAS/deletion/consent/output/budget tests, cross-platform crypto/retry tests and a real built-browser offline queue/conflict/restore test. See docs/cloudflare-implementation.md. No live account/provider/device qualification; manual snapshot sync and canonical fact selection only.",
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
+        }
       ],
       "next_action": "Account APIs do not opt into offline cache and the shell has no private SSR. Qualify mixed-version/interrupted updates and physical native offline behavior; revisit caching if private server rendering is introduced."
     },
@@ -1000,6 +1096,12 @@
           "application_source_sha256": "84fea0bd95e94bf2185d4fe8ff54f72da4244784820301913e61d16eb84c1962",
           "environment": "Node24/pnpm11.25, local freshly built Worker and sandboxed Chromium; native JS export/adapter, no physical devices or connected providers",
           "result": "Repeatable verifier now runs 10 real core groups and fails on any failed group. Pinned manual-dispatch-only source/release-gate workflow added but not run externally. Frozen installs/builds passed; web audit zero, native audit remains failed from two upstream advisories."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Resolve/qualify upstream native advisory fixes, inspect owner CI/hosting controls and run approved external verification with known quota; keep audits failing until fixed."
@@ -1479,6 +1581,12 @@
           "application_source_sha256": "84fea0bd95e94bf2185d4fe8ff54f72da4244784820301913e61d16eb84c1962",
           "environment": "Node24/pnpm11.25, local freshly built Worker and sandboxed Chromium; native JS export/adapter, no physical devices or connected providers",
           "result": "Personal/sample storage now independent on both platforms; reset preserves personal active state/timer. Personal account simulations are disabled and youth plan acceptance gated pending privacy safeguards. Native confirmed erasure drains data/key writes and cleans owned temporary exports; web erasure checks current snapshot, removes draft/ciphertext and drops memory key. Adapter/browser tests passed. Exported copies remain under owner control."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Complete connected-account consent/revocation/tombstones/retention and legal/store applicability, native hardware erasure/restore and broader sample-state acceptance."
@@ -1513,7 +1621,13 @@
           "application_source_sha256": "850bbb67daf5e8002539e5b77430f2ed3baa521a010ac466224686fa6c875647",
           "result": "Final exact-preview binding, stale restore/key callback guards and invalid file selection recovery requalified: 10 core groups, 16 real production-browser journeys, web build/origin security and iOS/Android JS exports passed. Native installed-device behavior, connected services and full prompt completion remain unqualified."
         },
-        "2026-10-11: Better Auth Google/Expo clients, db/schema.ts + Drizzle migrations, lib/server/{auth,cloud-api,coaching}.ts, portable cloud vault/outbox web/native and explicit settings UI. Local actual-SDK OAuth with mocked signed Google transport, owner/CSRF/replay/CAS/deletion/consent/output/budget tests, cross-platform crypto/retry tests and a real built-browser offline queue/conflict/restore test. See docs/cloudflare-implementation.md. No live account/provider/device qualification; manual snapshot sync and canonical fact selection only."
+        "2026-10-11: Better Auth Google/Expo clients, db/schema.ts + Drizzle migrations, lib/server/{auth,cloud-api,coaching}.ts, portable cloud vault/outbox web/native and explicit settings UI. Local actual-SDK OAuth with mocked signed Google transport, owner/CSRF/replay/CAS/deletion/consent/output/budget tests, cross-platform crypto/retry tests and a real built-browser offline queue/conflict/restore test. See docs/cloudflare-implementation.md. No live account/provider/device qualification; manual snapshot sync and canonical fact selection only.",
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
+        }
       ],
       "next_action": "Finish remaining native/science/state/accessibility/security requirements and qualify live accounts, devices, hosting allowances and approved publication; local integration checks do not establish full acceptance."
     },
@@ -1557,7 +1671,13 @@
           "environment": "Node24/pnpm11.25, local freshly built Worker and sandboxed Chromium; native JS export/adapter, no physical devices or connected providers",
           "result": "History revisions and deterministic review context now reflect corrected actuals and plan versions. Existing deterministic summaries remain usable without a model. No connected model/authenticated packet/semantic-validator implementation is claimed."
         },
-        "2026-10-11: Better Auth Google/Expo clients, db/schema.ts + Drizzle migrations, lib/server/{auth,cloud-api,coaching}.ts, portable cloud vault/outbox web/native and explicit settings UI. Local actual-SDK OAuth with mocked signed Google transport, owner/CSRF/replay/CAS/deletion/consent/output/budget tests, cross-platform crypto/retry tests and a real built-browser offline queue/conflict/restore test. See docs/cloudflare-implementation.md. No live account/provider/device qualification; manual snapshot sync and canonical fact selection only."
+        "2026-10-11: Better Auth Google/Expo clients, db/schema.ts + Drizzle migrations, lib/server/{auth,cloud-api,coaching}.ts, portable cloud vault/outbox web/native and explicit settings UI. Local actual-SDK OAuth with mocked signed Google transport, owner/CSRF/replay/CAS/deletion/consent/output/budget tests, cross-platform crypto/retry tests and a real built-browser offline queue/conflict/restore test. See docs/cloudflare-implementation.md. No live account/provider/device qualification; manual snapshot sync and canonical fact selection only.",
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
+        }
       ],
       "next_action": "Qualify real provider/privacy/free allowance and durable failure/retention operations; complete licensed-evidence/usefulness evaluations and broader coaching requirements. Fact selection is implemented; arbitrary model prose and on-device inference are not."
     },
@@ -1579,6 +1699,12 @@
           "application_source_sha256": "84fea0bd95e94bf2185d4fe8ff54f72da4244784820301913e61d16eb84c1962",
           "environment": "Node24/pnpm11.25, local freshly built Worker and sandboxed Chromium; native JS export/adapter, no physical devices or connected providers",
           "result": "Progress charts moved to a deferred JS chunk. Three clean desktop local Worker contexts measured interactive gate at 502/578/592ms; sample Progress at 427ms, one new JS resource and chart keyboard traversal passed. 320px overview had no horizontal overflow. Current baseline only, no comparative speedup, native/field/memory or full WCAG claim."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Measure and fix remaining startup/delivery costs, rendered accessibility/reflow and field/native scenarios; avoid treating this limited baseline as full acceptance."
@@ -1604,7 +1730,13 @@
           "environment": "Node24/pnpm11.25, local freshly built Worker and sandboxed Chromium; native JS export/adapter, no physical devices or connected providers",
           "result": "Production byte-versioned service worker caches opt-in stateless shell, JS/CSS/fonts/guides only. Actual offline reload/unlock/save passed and private vault content absent from caches. Updates wait for old windows to close. Native release configuration/old-new update combinations remain unverified."
         },
-        "2026-10-11: Better Auth Google/Expo clients, db/schema.ts + Drizzle migrations, lib/server/{auth,cloud-api,coaching}.ts, portable cloud vault/outbox web/native and explicit settings UI. Local actual-SDK OAuth with mocked signed Google transport, owner/CSRF/replay/CAS/deletion/consent/output/budget tests, cross-platform crypto/retry tests and a real built-browser offline queue/conflict/restore test. See docs/cloudflare-implementation.md. No live account/provider/device qualification; manual snapshot sync and canonical fact selection only."
+        "2026-10-11: Better Auth Google/Expo clients, db/schema.ts + Drizzle migrations, lib/server/{auth,cloud-api,coaching}.ts, portable cloud vault/outbox web/native and explicit settings UI. Local actual-SDK OAuth with mocked signed Google transport, owner/CSRF/replay/CAS/deletion/consent/output/budget tests, cross-platform crypto/retry tests and a real built-browser offline queue/conflict/restore test. See docs/cloudflare-implementation.md. No live account/provider/device qualification; manual snapshot sync and canonical fact selection only.",
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
+        }
       ],
       "next_action": "Account APIs do not opt into offline cache and the shell has no private SSR. Qualify mixed-version/interrupted updates and physical native offline behavior; revisit caching if private server rendering is introduced."
     },
@@ -1661,6 +1793,12 @@
           "application_source_sha256": "9562fe083e998a5ea1958db61b22310989827220d1bb3bd33c645d8fa64072f6",
           "environment": "Node 24/pnpm 11.25; fresh built Worker and sandboxed Chromium, actual IndexedDB/Node SQLite, actual SDK with synthetic transport/native platform boundaries; no live account/device qualification.",
           "result": "17 core groups passed; 16 workout browser journeys, 32 rendered accessibility states, 6 real preference persistence/failure/multitab behaviors, cloud backup/account-switch/rate-limit UI, 5 native SDK adapter checks and RN Web workflow checks passed. Web/native types/build/Hermes exports and local workers.dev dry run passed. Lint zero errors, 75 warnings. Native audit remains failed."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Obtain authorized backend/hosting configuration and native toolchains/signing/devices; build/install/update actual artifacts and verify the deployed audience/artifact only after publication authorization."
@@ -1712,6 +1850,12 @@
           "checked_at": "2026-10-11",
           "application_source_sha256": "850bbb67daf5e8002539e5b77430f2ed3baa521a010ac466224686fa6c875647",
           "result": "Final exact-preview binding, stale restore/key callback guards and invalid file selection recovery requalified: 10 core groups, 16 real production-browser journeys, web build/origin security and iOS/Android JS exports passed. Native installed-device behavior, connected services and full prompt completion remain unqualified."
+        },
+        {
+          "checked_at": "2026-10-16",
+          "source_commit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+          "path": "docs/coaching-ux-audit-2026-10-16-validation.json",
+          "result": "Bounded local coaching, blank new calendars, state/ownership/save guards and web/native UI verification. See exact per-surface receipts; this milestone does not close whole-section acceptance or enable a live AI provider."
         }
       ],
       "next_action": "Continue remaining core code/evidence/rights/device/provider acceptance; do not label this checkpoint full six-prompt completion or production release."
@@ -1721,7 +1865,7 @@
   "master_runbook_sha256": "476856a3f881c6c2d5330b95dad914cc45f3b6eba2b7a0c705f842e658f87811",
   "remaining_core_code": [
     "Finish full evidence-to-rule/claim-to-code review, lawful named-program variants, modality-specific complete cycles, versioned progression/equipment/time/end-of-block acceptance. Current 15-source ledger inventories links only and qualifies zero new numerical rules.",
-    "Finish general bounded coaching/evidence retrieval/usefulness evaluations and on-device runtime/download/device qualification; current optional provider selects canonical fact IDs only and is disabled.",
+    "Local canonical before/after coaching is implemented with reviewed composable copy, ownership/history guards and an unconnected strict selection adapter. Provider/model usefulness evaluation, current-context consent and actual on-device runtime/download/device qualification remain; no new AI service is active.",
     "Stronger account factor enrollment/recovery, native callback/biometric/OS lifecycle protection, cloud key rotation, per-record/background merge and setup-draft synchronization; manual whole-profile snapshots remain explicit.",
     "Premium UI/state/disclosure work, broader native editors/integrations, full rendered themes/screen-reader/update/mixed-version and native/field performance qualification. Current calendar/reuse/customization/progress/science workflows are implemented; this does not close all parity requirements.",
     "Complete security-control applicability and MASTG/API/GenAI/NIST mappings, signed update/recovery/operational incident lifecycle, youth/guardian/privacy safeguards and infrastructure cost/retention/ownership qualification."
@@ -1929,10 +2073,11 @@
   },
   "latest_audit": {
     "date": "2026-10-16",
-    "report": "docs/audit-2026-10-16.md",
-    "branch": "codex/claude-routine-audit-2026-10-16",
-    "validation": "docs/audit-2026-10-16-validation.json",
-    "publication": "docs/audit-2026-10-16-validation.json"
+    "report": "docs/coaching-ux-audit-2026-10-16.md",
+    "branch": "codex/adaptive-coaching-2026-10-16",
+    "validation": "docs/coaching-ux-audit-2026-10-16-validation.json",
+    "publication": "docs/coaching-ux-audit-2026-10-16-validation.json",
+    "previous_report": "docs/audit-2026-10-16.md"
   },
   "latest_ui_repair": {
     "branch": "codex/compact-ui-2026-10-13",

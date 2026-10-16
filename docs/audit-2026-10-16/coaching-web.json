@@ -1,0 +1,2104 @@
+{
+  "checkedAt": "2026-10-16T17:09:34.200248+00:00",
+  "sourceCommit": "de6c7abf2438cbcb01d67c8f4e259efa9d4aac9c",
+  "completed": true,
+  "scope": "Adaptive-coaching web checkpoint. Local synthetic browser profiles only. Prior general matrix and safety receipt retain their actual pre-Settings CSS hashes; final coaching, harder-effort and initial-focus receipts identify final CSS/JS assets. Last source change between those snapshots is scoped Settings layout/label CSS and Vite dependency hash regeneration, not training or persistence behavior.",
+  "counts": {
+    "successfulAxeStates": 82,
+    "generalMatrixGroups": 14,
+    "normalCoachingGroups": 10,
+    "harderEffortGroups": 2,
+    "initialFocusGroups": 2,
+    "safetyGroups": 8
+  },
+  "finalBuilds": [
+    {
+      "brand": "movefield",
+      "htmlSha256": "7324f0f2868507c2ca1128a43d568c6ffb5c0ba82e451790ba56f53b8e065f70",
+      "assets": [
+        {
+          "url": "http://127.0.0.1:8836/movefield/review/assets/index-Cbvqaehl.js",
+          "bytes": 1843639,
+          "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+        },
+        {
+          "url": "http://127.0.0.1:8836/movefield/review/assets/index-DPAY41Tk.css",
+          "bytes": 221934,
+          "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+        }
+      ]
+    },
+    {
+      "brand": "grizzly",
+      "htmlSha256": "18a87be5a34d329fcf70bf259a538eaf6068a7b080e8ea50dae105a1ad7d7154",
+      "assets": [
+        {
+          "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-BlpAb5Is.js",
+          "bytes": 1846481,
+          "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+        },
+        {
+          "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-CJG9R_vC.css",
+          "bytes": 269458,
+          "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+        }
+      ]
+    }
+  ],
+  "fixes": [
+    {
+      "id": "fresh-commitments",
+      "severity": "requested behavior",
+      "status": "fixed",
+      "details": "New sample/fresh web/native future commitments are blank. Existing saved entries and setup drafts are retained, including old example identifiers. Sample34-workout history retained. Focused onboarding suite15checks passed."
+    },
+    {
+      "id": "setup-header-overflow",
+      "severity": "medium",
+      "status": "fixed",
+      "details": "320px/130% Save & exit overflow349px fixed by wrapping narrow setup header and keeping complete \u226544px action."
+    },
+    {
+      "id": "success-toast-contrast",
+      "severity": "medium / WCAG AA",
+      "status": "fixed",
+      "details": "Actual success notice improved from4.25:1 to6.36425152514846:1. Both brands verified with visible toasts; Sonner light theme is used even in current Grizzly dark UI. Other light semantic text roles darkened; dark toast roles unchanged."
+    },
+    {
+      "id": "tablet-settings-overflow",
+      "severity": "medium",
+      "status": "fixed",
+      "details": "768px/130% two-column settings beside sidebar overflowed to945px. Responsive18rem preferred-minimum columns, wrapped reminder buttons, and variable-height unclamped select values pass four widths in both brands."
+    }
+  ],
+  "restoreBehavior": {
+    "editorialContextMayRegenerate": true,
+    "reason": "Restored saved workout object has a different key order at state.history.0. Raw JSON context token changes; no serialized values are lost or changed.",
+    "verified": "Both brands: canonical full rendered state and decrypted saved state unchanged; counts1/12, unknown loaded set1, partial flag/policy, owner values, required guards, tone, AI eligibility and comparison remain identical. Actual UI wording independently matches the engine for each observed state."
+  },
+  "limits": [
+    "Sandboxed Chromium154.0.8037.57; no Firefox/WebKit/Safari execution. Official browser downloads were blocked by the environment.",
+    "320/390/768/1280 CSS-pixel viewports and100%/130% text are desktop emulation, not physical Android/iPhone qualification.",
+    "Finite axe and keyboard checks are not complete WCAG, VoiceOver or TalkBack certification.",
+    "Default Movefield light/green and Grizzly dark/pine/wild appearance plus enlarged text/reduced motion are exercised; all font/palette combinations are not exhaustively rendered.",
+    "No native device, Apple compilation/signing, store acceptance, cloud account or live Pages execution is claimed by these local browser receipts."
+  ],
+  "browserCapability": [
+    {
+      "engine": "Chromium",
+      "version": "154.0.8037.57",
+      "availability": "launch verified",
+      "runtime": "/usr/bin/chromium",
+      "playwrightVersion": "1.61.1",
+      "sandbox": "Namespace, PID/network namespaces and Seccomp-BPF verified via chrome://sandbox; browser reports adequately sandboxed. Command escalation is needed because the outer command sandbox prevents browser user namespaces.",
+      "coverage": "Linux Chromium and emulated viewport/touch/reduced-motion checks; not Android Chrome device acceptance."
+    },
+    {
+      "engine": "Firefox",
+      "pinnedVersion": "151.0 / Playwright revision 1532",
+      "availability": "not installed; official download hosts denied by current proxy",
+      "coverage": "Not run. Stock Firefox is not a drop-in replacement for Playwright\u2019s instrumented Firefox."
+    },
+    {
+      "engine": "WebKit",
+      "pinnedVersion": "26.5 / Playwright revision 2311",
+      "availability": "not installed; official download hosts denied by current proxy",
+      "coverage": "Not run. A future Linux WebKit run would not establish actual Safari/iPhone behavior."
+    },
+    {
+      "engine": "Safari / physical iPhone",
+      "availability": "not available in this Linux environment",
+      "coverage": "No Apple membership/build/signing or TestFlight setup is available; no signed iOS app or real-device acceptance is claimed."
+    },
+    {
+      "engine": "Physical Android",
+      "availability": "no connected device qualified",
+      "coverage": "APK builds and browser emulation do not verify installation, historical upgrade, OS lifecycle, offline delivery or TalkBack."
+    }
+  ],
+  "runs": {
+    "generalMatrix": {
+      "checkedAt": "2026-10-16T16:57:18.920Z",
+      "completed": true,
+      "scope": "Actual integrated local static apps in sandboxed Chromium with disposable synthetic data. 320/390/768/1280 CSS-pixel widths,100%/130% text, finite axe states, real encrypted storage writes and injected quota failure. No Firefox/WebKit/Safari, physical device or complete WCAG qualification.",
+      "builds": [
+        {
+          "brand": "movefield",
+          "htmlSha256": "31b78a92da3fdc85af75651a72023036a8bbb1bd11ba568a459cf6602408b9ef",
+          "assets": [
+            {
+              "url": "http://127.0.0.1:8836/movefield/review/assets/index-CqTZLyXv.js",
+              "bytes": 1843639,
+              "sha256": "b63ac7d4490d0dd9920c3e432c47e79285b984de3178af2247b16c55d2a4b0fd"
+            },
+            {
+              "url": "http://127.0.0.1:8836/movefield/review/assets/index-B8EADO5S.css",
+              "bytes": 221577,
+              "sha256": "701cc22592b5d2bed4c96898ae66edabfe2210362151077f9c177d68d5d678b3"
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "htmlSha256": "6e29834803f07640fc5306175eabab2b3ade9d4b8d7a61ba75d74d84867d7ef1",
+          "assets": [
+            {
+              "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-DiUiygO1.js",
+              "bytes": 1846481,
+              "sha256": "c9122344a25a0a2cab93e445ae8e2056f9f96d4e21b8283bec0e5fac857a0b29"
+            },
+            {
+              "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-gG4BXXmI.css",
+              "bytes": 269101,
+              "sha256": "abe046ac7b15787c6f1cac38430cf6e8ae7f63a9d57bcccf63157ed04fffeada"
+            }
+          ]
+        }
+      ],
+      "results": [
+        {
+          "brand": "movefield",
+          "case": "sample matrix and blank saved setup",
+          "textSize": 100,
+          "widths": [
+            320,
+            390,
+            768,
+            1280
+          ],
+          "passed": true
+        },
+        {
+          "brand": "movefield",
+          "case": "sample matrix and blank saved setup",
+          "textSize": 130,
+          "widths": [
+            320,
+            390,
+            768,
+            1280
+          ],
+          "passed": true
+        },
+        {
+          "brand": "movefield",
+          "case": "real newly encrypted personal setup begins without commitments",
+          "passed": true
+        },
+        {
+          "brand": "movefield",
+          "case": "saved days off and draft retained; modal keyboard trap/return; calendar keyboard browsing preserves records",
+          "passed": true
+        },
+        {
+          "brand": "movefield",
+          "case": "explicit reduced-motion preference with no OS preference",
+          "passed": true
+        },
+        {
+          "brand": "movefield",
+          "case": "actual save quota failure and retry/reload",
+          "passed": true
+        },
+        {
+          "brand": "movefield",
+          "case": "real second-tab preference write prevents stale workout overwrite",
+          "passed": true
+        },
+        {
+          "brand": "grizzly",
+          "case": "sample matrix and blank saved setup",
+          "textSize": 100,
+          "widths": [
+            320,
+            390,
+            768,
+            1280
+          ],
+          "passed": true
+        },
+        {
+          "brand": "grizzly",
+          "case": "sample matrix and blank saved setup",
+          "textSize": 130,
+          "widths": [
+            320,
+            390,
+            768,
+            1280
+          ],
+          "passed": true
+        },
+        {
+          "brand": "grizzly",
+          "case": "real newly encrypted personal setup begins without commitments",
+          "passed": true
+        },
+        {
+          "brand": "grizzly",
+          "case": "saved days off and draft retained; modal keyboard trap/return; calendar keyboard browsing preserves records",
+          "passed": true
+        },
+        {
+          "brand": "grizzly",
+          "case": "explicit reduced-motion preference with no OS preference",
+          "passed": true
+        },
+        {
+          "brand": "grizzly",
+          "case": "actual save quota failure and retry/reload",
+          "passed": true
+        },
+        {
+          "brand": "grizzly",
+          "case": "real second-tab preference write prevents stale workout overwrite",
+          "passed": true
+        }
+      ],
+      "scans": [
+        {
+          "brand": "movefield",
+          "name": "Today 320",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 320,
+            "outer": 320,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Today 390",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 390,
+            "outer": 390,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Today 768",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 768,
+            "outer": 768,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Today 1280",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 1280,
+            "outer": 1280,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Coaching 320",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 320,
+            "outer": 320,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Coaching 390",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 390,
+            "outer": 390,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Coaching 768",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 768,
+            "outer": 768,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Coaching 1280",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 1280,
+            "outer": 1280,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Blank sample commitments 320",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 320,
+            "outer": 320,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Blank sample commitments 390",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 390,
+            "outer": 390,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Blank sample commitments 768",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 768,
+            "outer": 768,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Blank sample commitments 1280",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 1280,
+            "outer": 1280,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Today 320",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 320,
+            "outer": 320,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Today 390",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 390,
+            "outer": 390,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Today 768",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 768,
+            "outer": 768,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Today 1280",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 1280,
+            "outer": 1280,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Coaching 320",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 320,
+            "outer": 320,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Coaching 390",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 390,
+            "outer": 390,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Coaching 768",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 768,
+            "outer": 768,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Coaching 1280",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 1280,
+            "outer": 1280,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Blank sample commitments 320",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 320,
+            "outer": 320,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Blank sample commitments 390",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 390,
+            "outer": 390,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Blank sample commitments 768",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 768,
+            "outer": 768,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "Blank sample commitments 1280",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 1280,
+            "outer": 1280,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "movefield",
+          "name": "History dialog 320",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 320,
+            "outer": 320,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Today 320",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 320,
+            "outer": 320,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Today 390",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 390,
+            "outer": 390,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Today 768",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 768,
+            "outer": 768,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Today 1280",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 1280,
+            "outer": 1280,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Coaching 320",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 320,
+            "outer": 320,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Coaching 390",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 390,
+            "outer": 390,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Coaching 768",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 768,
+            "outer": 768,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Coaching 1280",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 1280,
+            "outer": 1280,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Blank sample commitments 320",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 320,
+            "outer": 320,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Blank sample commitments 390",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 390,
+            "outer": 390,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Blank sample commitments 768",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 768,
+            "outer": 768,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Blank sample commitments 1280",
+          "textSize": 100,
+          "geometry": {
+            "viewport": 1280,
+            "outer": 1280,
+            "textSize": "100%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Today 320",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 320,
+            "outer": 320,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Today 390",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 390,
+            "outer": 390,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Today 768",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 768,
+            "outer": 768,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Today 1280",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 1280,
+            "outer": 1280,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Coaching 320",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 320,
+            "outer": 320,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Coaching 390",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 390,
+            "outer": 390,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Coaching 768",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 768,
+            "outer": 768,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Coaching 1280",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 1280,
+            "outer": 1280,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Blank sample commitments 320",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 320,
+            "outer": 320,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Blank sample commitments 390",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 390,
+            "outer": 390,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Blank sample commitments 768",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 768,
+            "outer": 768,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "Blank sample commitments 1280",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 1280,
+            "outer": 1280,
+            "textSize": "130%"
+          },
+          "violations": []
+        },
+        {
+          "brand": "grizzly",
+          "name": "History dialog 320",
+          "textSize": 130,
+          "geometry": {
+            "viewport": 320,
+            "outer": 320,
+            "textSize": "130%"
+          },
+          "violations": []
+        }
+      ],
+      "errors": []
+    },
+    "normalCoaching": {
+      "checkedAt": "2026-10-16T17:07:36.183Z",
+      "completed": true,
+      "scope": "Local integrated sandboxed Chromium UI. Synthetic encrypted profiles. Coaching popup and Settings320/390/768/1280px at130% text with axe and keyboard trapping; automatic/manual/off settings, actual complete/partial saves and offline service-worker reloads. Separate security helper owns stale coaching and failed finish.",
+      "builds": [
+        {
+          "brand": "movefield",
+          "htmlSha256": "7324f0f2868507c2ca1128a43d568c6ffb5c0ba82e451790ba56f53b8e065f70",
+          "assets": [
+            {
+              "url": "http://127.0.0.1:8836/movefield/review/assets/index-Cbvqaehl.js",
+              "bytes": 1843639,
+              "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+            },
+            {
+              "url": "http://127.0.0.1:8836/movefield/review/assets/index-DPAY41Tk.css",
+              "bytes": 221934,
+              "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "htmlSha256": "18a87be5a34d329fcf70bf259a538eaf6068a7b080e8ea50dae105a1ad7d7154",
+          "assets": [
+            {
+              "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-BlpAb5Is.js",
+              "bytes": 1846481,
+              "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+            },
+            {
+              "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-CJG9R_vC.css",
+              "bytes": 269458,
+              "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+            }
+          ]
+        }
+      ],
+      "results": [
+        {
+          "brand": "movefield",
+          "case": "automatic before cancel/start and read-only preview; partial save after dialog; summary consistency; targets unchanged and reload does not replay popup",
+          "passed": true,
+          "messages": [
+            "Recorded for this session: 1 of 12 targeted sets or activity entries.",
+            "A partial session still deserves an accurate record. Let the next workout follow a reviewed plan.",
+            "An honest check-in is useful information."
+          ]
+        },
+        {
+          "brand": "movefield",
+          "case": "completed actual set logs save one after dialog and matching review without target changes",
+          "passed": true,
+          "messages": [
+            "Your log contains 3 of 3 planned sets or activity entries.",
+            "A missing load limits comparison. Record it only if you know what was actually used.",
+            "You can get the context you need before deciding."
+          ],
+          "effort": "unsure",
+          "proposalCount": 0
+        },
+        {
+          "brand": "movefield",
+          "case": "manual coaching preference persists; no automatic before/after popup; review visibility matches preference",
+          "passed": true
+        },
+        {
+          "brand": "movefield",
+          "case": "off coaching preference persists; no automatic before/after popup; review visibility matches preference",
+          "passed": true
+        },
+        {
+          "brand": "movefield",
+          "case": "actual offline reload/unlock, local before coaching, start/log/save, after coaching and second offline reload",
+          "passed": true,
+          "before": [
+            "This workout has 12 sets or activity entries. A matching history entry is not available.",
+            "Review the movement instructions before starting. A new exercise does not inherit another exercise\u2019s weight.",
+            "Give yourself credit for keeping the record honest."
+          ],
+          "after": [
+            "This workout saved 1 of 12 planned sets or activity entries.",
+            "Some planned work is unfinished. Keep the actual log and review the next step without catch-up sets.",
+            "You can take time before deciding what comes next."
+          ],
+          "reopened": [
+            "The record now holds 1 of the 12 planned sets or activity entries.",
+            "Unfinished sets stay unfinished. The next decision can be a reviewed repeat or a different plan step.",
+            "The next decision is allowed to be small."
+          ],
+          "keyOrderChanges": [
+            "state.history.0"
+          ],
+          "canonicalStateSha256": "4da406f0980aa1c55476875ee38bc8f82e3de6709b9204fd9a55c5732c60184e",
+          "facts": {
+            "completedSets": 1,
+            "targetSets": 12,
+            "knownLoadSets": 0,
+            "unknownLoadSets": 1
+          },
+          "policyIds": [
+            "partial"
+          ],
+          "contexts": [
+            "workout-coaching-v1:adf6a1e969e679f9",
+            "workout-coaching-v1:8211a46503e57b9e"
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "case": "automatic before cancel/start and read-only preview; partial save after dialog; summary consistency; targets unchanged and reload does not replay popup",
+          "passed": true,
+          "messages": [
+            "Recorded for this session: 1 of 12 targeted sets or activity entries.",
+            "Some planned work is unfinished. Keep the actual log and review the next step without catch-up sets.",
+            "You can take time before deciding what comes next."
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "case": "completed actual set logs save one after dialog and matching review without target changes",
+          "passed": true,
+          "messages": [
+            "You recorded 3 of the 3 sets or activity entries in your targets.",
+            "A missing load limits comparison. Record it only if you know what was actually used.",
+            "There is room to make a different choice."
+          ],
+          "effort": "unsure",
+          "proposalCount": 0
+        },
+        {
+          "brand": "grizzly",
+          "case": "manual coaching preference persists; no automatic before/after popup; review visibility matches preference",
+          "passed": true
+        },
+        {
+          "brand": "grizzly",
+          "case": "off coaching preference persists; no automatic before/after popup; review visibility matches preference",
+          "passed": true
+        },
+        {
+          "brand": "grizzly",
+          "case": "actual offline reload/unlock, local before coaching, start/log/save, after coaching and second offline reload",
+          "passed": true,
+          "before": [
+            "You have 12 planned sets or activity entries, with no matching log to compare yet.",
+            "Review the movement instructions before starting. A new exercise does not inherit another exercise\u2019s weight.",
+            "Bring a clear head to your corner of the den."
+          ],
+          "after": [
+            "In this log: 1 completed sets or activity entries out of 12 planned.",
+            "A partial session still deserves an accurate record. Let the next workout follow a reviewed plan.",
+            "The next decision is allowed to be small."
+          ],
+          "reopened": [
+            "The record now holds 1 of the 12 planned sets or activity entries.",
+            "Keep the work you actually completed. An incomplete session does not measure lost fitness.",
+            "A thoughtful review belongs in the process."
+          ],
+          "keyOrderChanges": [
+            "state.history.0"
+          ],
+          "canonicalStateSha256": "68e27e7ecbd91e43c2a9ec2d0bf23a3716edd70a5a3de97ec5b823df7b76b587",
+          "facts": {
+            "completedSets": 1,
+            "targetSets": 12,
+            "knownLoadSets": 0,
+            "unknownLoadSets": 1
+          },
+          "policyIds": [
+            "partial"
+          ],
+          "contexts": [
+            "workout-coaching-v1:a5b0c70d505c6a0c",
+            "workout-coaching-v1:e39b888cb24de797"
+          ]
+        }
+      ],
+      "scans": [
+        {
+          "brand": "movefield",
+          "label": "before",
+          "width": 320,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": []
+        },
+        {
+          "brand": "movefield",
+          "label": "before",
+          "width": 390,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": []
+        },
+        {
+          "brand": "movefield",
+          "label": "before",
+          "width": 768,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": []
+        },
+        {
+          "brand": "movefield",
+          "label": "before",
+          "width": 1280,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": []
+        },
+        {
+          "brand": "movefield",
+          "label": "after-partial",
+          "width": 320,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        },
+        {
+          "brand": "movefield",
+          "label": "after-partial",
+          "width": 390,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        },
+        {
+          "brand": "movefield",
+          "label": "after-partial",
+          "width": 768,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        },
+        {
+          "brand": "movefield",
+          "label": "after-partial",
+          "width": 1280,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        },
+        {
+          "brand": "movefield",
+          "label": "coaching-settings",
+          "width": 320,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "choices": [
+            {
+              "label": "Text size",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Coaching messages",
+              "height": 79.25,
+              "contained": true
+            },
+            {
+              "label": "Preferred model",
+              "height": 51.015625,
+              "contained": true
+            }
+          ]
+        },
+        {
+          "brand": "movefield",
+          "label": "coaching-settings",
+          "width": 390,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "choices": [
+            {
+              "label": "Text size",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Coaching messages",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Preferred model",
+              "height": 51.015625,
+              "contained": true
+            }
+          ]
+        },
+        {
+          "brand": "movefield",
+          "label": "coaching-settings",
+          "width": 768,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "choices": [
+            {
+              "label": "Text size",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Coaching messages",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Preferred model",
+              "height": 51.015625,
+              "contained": true
+            }
+          ]
+        },
+        {
+          "brand": "movefield",
+          "label": "coaching-settings",
+          "width": 1280,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "choices": [
+            {
+              "label": "Text size",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Coaching messages",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Preferred model",
+              "height": 51.015625,
+              "contained": true
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "label": "before",
+          "width": 320,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": []
+        },
+        {
+          "brand": "grizzly",
+          "label": "before",
+          "width": 390,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": []
+        },
+        {
+          "brand": "grizzly",
+          "label": "before",
+          "width": 768,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": []
+        },
+        {
+          "brand": "grizzly",
+          "label": "before",
+          "width": 1280,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": []
+        },
+        {
+          "brand": "grizzly",
+          "label": "after-partial",
+          "width": 320,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "label": "after-partial",
+          "width": 390,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "label": "after-partial",
+          "width": 768,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "label": "after-partial",
+          "width": 1280,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "label": "coaching-settings",
+          "width": 320,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "choices": [
+            {
+              "label": "Heading font",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Color theme",
+              "height": 57.1875,
+              "contained": true
+            },
+            {
+              "label": "Text size",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Coaching messages",
+              "height": 79.25,
+              "contained": true
+            },
+            {
+              "label": "Preferred model",
+              "height": 51.015625,
+              "contained": true
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "label": "coaching-settings",
+          "width": 390,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "choices": [
+            {
+              "label": "Heading font",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Color theme",
+              "height": 57.1875,
+              "contained": true
+            },
+            {
+              "label": "Text size",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Coaching messages",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Preferred model",
+              "height": 51.015625,
+              "contained": true
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "label": "coaching-settings",
+          "width": 768,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "choices": [
+            {
+              "label": "Heading font",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Color theme",
+              "height": 57.1875,
+              "contained": true
+            },
+            {
+              "label": "Text size",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Coaching messages",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Preferred model",
+              "height": 51.015625,
+              "contained": true
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "label": "coaching-settings",
+          "width": 1280,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "choices": [
+            {
+              "label": "Heading font",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Color theme",
+              "height": 57.1875,
+              "contained": true
+            },
+            {
+              "label": "Text size",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Coaching messages",
+              "height": 51.015625,
+              "contained": true
+            },
+            {
+              "label": "Preferred model",
+              "height": 51.015625,
+              "contained": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "harderEffort": {
+      "checkedAt": "2026-10-16T17:02:25.262Z",
+      "completed": true,
+      "scope": "Local integrated sandboxed Chromium UI with synthetic encrypted profiles. Explicit Harder than expected effort selection on completed workout; persisted effort, unchanged proposals and accepted targets; after dialog and matching review. Dialog at320/390/768/1280px and130% text with axe, geometry and keyboard trapping. No offline or other preference scenarios run in this focused invocation.",
+      "builds": [
+        {
+          "brand": "movefield",
+          "htmlSha256": "7324f0f2868507c2ca1128a43d568c6ffb5c0ba82e451790ba56f53b8e065f70",
+          "assets": [
+            {
+              "url": "http://127.0.0.1:8836/movefield/review/assets/index-Cbvqaehl.js",
+              "bytes": 1843639,
+              "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+            },
+            {
+              "url": "http://127.0.0.1:8836/movefield/review/assets/index-DPAY41Tk.css",
+              "bytes": 221934,
+              "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "htmlSha256": "18a87be5a34d329fcf70bf259a538eaf6068a7b080e8ea50dae105a1ad7d7154",
+          "assets": [
+            {
+              "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-BlpAb5Is.js",
+              "bytes": 1846481,
+              "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+            },
+            {
+              "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-CJG9R_vC.css",
+              "bytes": 269458,
+              "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+            }
+          ]
+        }
+      ],
+      "results": [
+        {
+          "brand": "movefield",
+          "case": "actual harder-effort choice persists on completed save without automatic proposals or target changes",
+          "passed": true,
+          "messages": [
+            "Recorded for this session: 3 of 3 targeted sets or activity entries.",
+            "You marked the matching work harder than expected. Review a repeat or a manageable adjustment before progressing.",
+            "The next decision is allowed to be small."
+          ],
+          "effort": "harder",
+          "proposalCount": 0
+        },
+        {
+          "brand": "grizzly",
+          "case": "actual harder-effort choice persists on completed save without automatic proposals or target changes",
+          "passed": true,
+          "messages": [
+            "In this log: 3 completed sets or activity entries out of 3 planned.",
+            "Review what made the session harder. Repeating familiar targets is an available choice.",
+            "There is no deadline to prove anything here."
+          ],
+          "effort": "harder",
+          "proposalCount": 0
+        }
+      ],
+      "scans": [
+        {
+          "brand": "movefield",
+          "label": "after-harder-completed",
+          "width": 320,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        },
+        {
+          "brand": "movefield",
+          "label": "after-harder-completed",
+          "width": 390,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        },
+        {
+          "brand": "movefield",
+          "label": "after-harder-completed",
+          "width": 768,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        },
+        {
+          "brand": "movefield",
+          "label": "after-harder-completed",
+          "width": 1280,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "label": "after-harder-completed",
+          "width": 320,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "label": "after-harder-completed",
+          "width": 390,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "label": "after-harder-completed",
+          "width": 768,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "label": "after-harder-completed",
+          "width": 1280,
+          "textSize": 130,
+          "violations": [],
+          "overflow": false,
+          "toasts": [
+            {
+              "type": "success",
+              "text": "Workout saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            },
+            {
+              "type": "success",
+              "text": "Set saved on this device.",
+              "theme": "light",
+              "color": "rgb(0, 107, 36)",
+              "background": "rgb(236, 253, 243)",
+              "ratio": 6.36425152514846
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "initialFocus": {
+      "checkedAt": "2026-10-16T17:04:16.192Z",
+      "completed": true,
+      "scope": "Initial popup at320px/130% text before keyboard traversal; title visibility, scroll position and initial focus only.",
+      "builds": [
+        {
+          "brand": "movefield",
+          "htmlSha256": "7324f0f2868507c2ca1128a43d568c6ffb5c0ba82e451790ba56f53b8e065f70",
+          "assets": [
+            {
+              "url": "http://127.0.0.1:8836/movefield/review/assets/index-Cbvqaehl.js",
+              "bytes": 1843639,
+              "sha256": "bcc3342736ca1eb70a40fde9be36d81d66603cd2821db34f8dc941cbd980bb3c"
+            },
+            {
+              "url": "http://127.0.0.1:8836/movefield/review/assets/index-DPAY41Tk.css",
+              "bytes": 221934,
+              "sha256": "2bac517ccc4ec30cbc047a2362c6b52fa309ecdf85686d04a48f6169c830a0d4"
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "htmlSha256": "18a87be5a34d329fcf70bf259a538eaf6068a7b080e8ea50dae105a1ad7d7154",
+          "assets": [
+            {
+              "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-BlpAb5Is.js",
+              "bytes": 1846481,
+              "sha256": "3e100e0dfc790b0adc74b8034108d38023e0af2bdf237eb8c4f04d5817ed5e61"
+            },
+            {
+              "url": "http://127.0.0.1:8836/movefield/grizzly/assets/index-CJG9R_vC.css",
+              "bytes": 269458,
+              "sha256": "15bc4601e5e6bfdd677b07d47dc18cac6ccc54407fe311ce19f4e6ea370fc624"
+            }
+          ]
+        }
+      ],
+      "results": [
+        {
+          "brand": "movefield",
+          "case": "initial coaching popup at320/130 before any keyboard traversal",
+          "passed": true,
+          "geometry": {
+            "scrollTop": 0,
+            "dialog": {
+              "x": 20.8046875,
+              "y": 20.8046875,
+              "width": 278.390625,
+              "height": 698.390625,
+              "top": 20.8046875,
+              "right": 299.1953125,
+              "bottom": 719.1953125,
+              "left": 20.8046875
+            },
+            "title": {
+              "x": 52.9921875,
+              "y": 52.9921875,
+              "width": 214.015625,
+              "height": 102.71875,
+              "top": 52.9921875,
+              "right": 267.0078125,
+              "bottom": 155.7109375,
+              "left": 52.9921875
+            },
+            "visible": true,
+            "focus": "<summary>What this is based on</summary>"
+          }
+        },
+        {
+          "brand": "grizzly",
+          "case": "initial coaching popup at320/130 before any keyboard traversal",
+          "passed": true,
+          "geometry": {
+            "scrollTop": 0,
+            "dialog": {
+              "x": 20.8046875,
+              "y": 20.8046875,
+              "width": 278.390625,
+              "height": 698.390625,
+              "top": 20.8046875,
+              "right": 299.1953125,
+              "bottom": 719.1953125,
+              "left": 20.8046875
+            },
+            "title": {
+              "x": 52.9921875,
+              "y": 56.9921875,
+              "width": 214.015625,
+              "height": 113.578125,
+              "top": 56.9921875,
+              "right": 267.0078125,
+              "bottom": 170.5703125,
+              "left": 52.9921875
+            },
+            "visible": true,
+            "focus": "<summary>What this is based on</summary>"
+          }
+        }
+      ],
+      "scans": [],
+      "errors": []
+    },
+    "safety": {
+      "checkedAt": "2026-10-16T16:55:35.598Z",
+      "scope": "Actual current local static builds in sandboxed Chromium with disposable encrypted profiles. Retained real React callbacks model stale delayed invocation after normal UI state/profile changes; storage failure injected at the actual Storage write. No live services, personal records, Safari or physical phone claim.",
+      "builds": [
+        {
+          "brand": "movefield",
+          "files": [
+            {
+              "path": "/movefield/review/",
+              "sha256": "31b78a92da3fdc85af75651a72023036a8bbb1bd11ba568a459cf6602408b9ef"
+            },
+            {
+              "path": "/movefield/review/assets/index-CqTZLyXv.js",
+              "sha256": "b63ac7d4490d0dd9920c3e432c47e79285b984de3178af2247b16c55d2a4b0fd"
+            },
+            {
+              "path": "/movefield/review/assets/index-B8EADO5S.css",
+              "sha256": "701cc22592b5d2bed4c96898ae66edabfe2210362151077f9c177d68d5d678b3"
+            }
+          ]
+        },
+        {
+          "brand": "grizzly",
+          "files": [
+            {
+              "path": "/movefield/grizzly/",
+              "sha256": "6e29834803f07640fc5306175eabab2b3ade9d4b8d7a61ba75d74d84867d7ef1"
+            },
+            {
+              "path": "/movefield/grizzly/assets/index-DiUiygO1.js",
+              "sha256": "c9122344a25a0a2cab93e445ae8e2056f9f96d4e21b8283bec0e5fac857a0b29"
+            },
+            {
+              "path": "/movefield/grizzly/assets/index-gG4BXXmI.css",
+              "sha256": "abe046ac7b15787c6f1cac38430cf6e8ae7f63a9d57bcccf63157ed04fffeada"
+            }
+          ]
+        }
+      ],
+      "results": [
+        {
+          "brand": "movefield",
+          "check": "Retained actual before-dialog start callback rejects after a durably saved concern changes the current state",
+          "passed": true
+        },
+        {
+          "brand": "movefield",
+          "check": "Retained actual before-dialog callback rejects after real personal-to-sample profile switch; personal ciphertext unchanged",
+          "passed": true
+        },
+        {
+          "brand": "movefield",
+          "check": "Failed durable finish retains active work, keeps check-in open and never displays after-workout coaching",
+          "passed": true
+        },
+        {
+          "brand": "movefield",
+          "check": "Successful double-click retry saves one partial workout, opens one after dialog and survives encrypted reload without replaying the dialog",
+          "passed": true
+        },
+        {
+          "brand": "grizzly",
+          "check": "Retained actual before-dialog start callback rejects after a durably saved concern changes the current state",
+          "passed": true
+        },
+        {
+          "brand": "grizzly",
+          "check": "Retained actual before-dialog callback rejects after real personal-to-sample profile switch; personal ciphertext unchanged",
+          "passed": true
+        },
+        {
+          "brand": "grizzly",
+          "check": "Failed durable finish retains active work, keeps check-in open and never displays after-workout coaching",
+          "passed": true
+        },
+        {
+          "brand": "grizzly",
+          "check": "Successful double-click retry saves one partial workout, opens one after dialog and survives encrypted reload without replaying the dialog",
+          "passed": true
+        }
+      ]
+    }
+  }
+}
