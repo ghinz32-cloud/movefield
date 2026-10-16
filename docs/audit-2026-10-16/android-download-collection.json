@@ -1,0 +1,35 @@
+{
+  "collectedAt": "2026-10-16T16:12:45.726372+00:00",
+  "run": 38925861537,
+  "conclusion": "success",
+  "release": {
+    "id": 415145553,
+    "tag": "android-ux-preview-88cf95178984",
+    "url": "https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-88cf95178984",
+    "publisherRun": 38929964160
+  },
+  "artifacts": [
+    {
+      "app": "movefield",
+      "artifactId": 12057359725,
+      "archiveSHA256": "ec591cf6d502fdb09728bc1ef42859a79c490dcbafaee015a83da2976ace4e9a",
+      "sourceCommit": "88cf9517898486b9f310918caf731604361feb40",
+      "sourceTree": "8861a5c00c327e563e802df392e545153ae110ee",
+      "apk": ".sites-runtime/audit-2026-10-16/native-installers/movefield/movefield-arm64-test.apk",
+      "bytes": 39274252,
+      "sha256": "3ee9065233a019aebaae15456d277e2fa92de7246d4a6fc6c769a1c05bb44108",
+      "directDownloadURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-88cf95178984/movefield-0.1.5-arm64.apk"
+    },
+    {
+      "app": "grizzly",
+      "artifactId": 12057566350,
+      "archiveSHA256": "9b324a0d82a7ed984266a690f6e877bad260ba573ed6a2d6531fb542bcfa0f1d",
+      "sourceCommit": "88cf9517898486b9f310918caf731604361feb40",
+      "sourceTree": "8861a5c00c327e563e802df392e545153ae110ee",
+      "apk": ".sites-runtime/audit-2026-10-16/native-installers/grizzly/grizzly-arm64-test.apk",
+      "bytes": 39425514,
+      "sha256": "d10a49cf46338e4c1128fd48ca9e762642504130cc0f3e464e5ee0346196076a",
+      "directDownloadURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-88cf95178984/grizzly-fitness-0.1.4-arm64.apk"
+    }
+  ]
+}

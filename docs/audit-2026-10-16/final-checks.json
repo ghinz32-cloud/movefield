@@ -20,5 +20,6 @@
     "errors": 0,
     "warnings": 82
   },
-  "publisherGateCases": 78
+  "publisherGateCases": 113,
+  "publisherGateScope": "Job retries, unique artifacts, explicitly supplied empty draft/source/tag protection, and safe API failure classifications."
 }

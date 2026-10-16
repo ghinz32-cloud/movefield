@@ -1,0 +1,160 @@
+{
+  "format": "movefield-android-publication-audit-v1",
+  "checkedAt": "2026-10-16T16:12:41.924824+00:00",
+  "sourceCommit": "88cf9517898486b9f310918caf731604361feb40",
+  "sourceTree": "8861a5c00c327e563e802df392e545153ae110ee",
+  "build": {
+    "id": 38925861537,
+    "head_sha": "88cf9517898486b9f310918caf731604361feb40",
+    "run_attempt": 2,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38925861537"
+  },
+  "selectedJobOutcomes": [
+    {
+      "id": 117062926944,
+      "name": "android (movefield)",
+      "run_attempt": 2,
+      "head_sha": "88cf9517898486b9f310918caf731604361feb40",
+      "created_at": "2026-10-16T15:53:26Z",
+      "started_at": "2026-10-16T15:53:29Z",
+      "completed_at": "2026-10-16T16:01:10Z"
+    },
+    {
+      "id": 117062929987,
+      "name": "android (grizzly)",
+      "run_attempt": 2,
+      "head_sha": "88cf9517898486b9f310918caf731604361feb40",
+      "created_at": "2026-10-16T15:53:27Z",
+      "started_at": "2026-10-16T15:40:39Z",
+      "completed_at": "2026-10-16T15:51:28Z"
+    }
+  ],
+  "jobOutcomeScope": "GitHub carries the successful Grizzly execution forward into attempt 2. Selected attempt-2 job outcomes are not evidence of two new compilations. The Grizzly rows share original execution timestamps, runner ID and all step outputs; archive hashes and independent source/tree inspection bind the delivered bytes.",
+  "carriedForwardGrizzlyExecution": {
+    "originalJobId": 117057100393,
+    "originalRunAttempt": 1,
+    "verifiedOutcomeJobId": 117062929987,
+    "verifiedOutcomeAttempt": 2,
+    "startedAt": "2026-10-16T15:40:39Z",
+    "completedAt": "2026-10-16T15:51:28Z",
+    "sameStepsAndRunner": true
+  },
+  "buildArtifacts": [
+    {
+      "id": 12057359725,
+      "name": "movefield-arm64-current-test-only",
+      "created_at": "2026-10-16T16:01:04Z",
+      "digest": "sha256:ec591cf6d502fdb09728bc1ef42859a79c490dcbafaee015a83da2976ace4e9a"
+    },
+    {
+      "id": 12057566350,
+      "name": "grizzly-arm64-current-test-only",
+      "created_at": "2026-10-16T15:51:25Z",
+      "digest": "sha256:9b324a0d82a7ed984266a690f6e877bad260ba573ed6a2d6531fb542bcfa0f1d"
+    }
+  ],
+  "publisher": {
+    "id": 38929964160,
+    "head_sha": "c31864d8115a43dfb6f05c069f299d786aa2a566",
+    "run_attempt": 1,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/ghinz32-cloud/movefield/actions/runs/38929964160",
+    "jobId": 117071126963,
+    "explicitDraftReleaseId": 415145553,
+    "draftGate": "Exact ID, unpublished prerelease, exact tag and source, zero assets, and remote lightweight tag targeting the source were verified before uploading; existing assets/releases were not overwritten."
+  },
+  "failedAttempts": [
+    {
+      "kind": "build",
+      "run": 38925861537,
+      "attempt": 1,
+      "jobId": 117057100044,
+      "conclusion": "failure",
+      "stage": "Install Android toolchain",
+      "diagnosis": "Generic exit code 1; detailed log storage unavailable. The same SDK setup passed in Grizzly and in the successful Movefield retry; no application compiler failure was observed."
+    },
+    {
+      "kind": "publisher",
+      "run": 38928649862,
+      "attempt": 1,
+      "head": "31d72a44997a1231f6a21869be0683a28c3a5319",
+      "conclusion": "failure",
+      "diagnosis": "Initial generic exit code; subsequent diagnostic runs identified release creation failure."
+    },
+    {
+      "kind": "publisher",
+      "run": 38928985256,
+      "attempt": 1,
+      "head": "f18504d5aa628ad69c70419911542a6a863a3bbd",
+      "conclusion": "failure",
+      "diagnosis": "HTTPError in GitHub API request helper; diagnostic annotation retained."
+    },
+    {
+      "kind": "publisher",
+      "run": 38929206605,
+      "attempts": [
+        1,
+        2
+      ],
+      "head": "7018aa2bc4d879b84cb731f0d3c60a2c9dd06edd",
+      "conclusion": "failure",
+      "stage": "POST /releases",
+      "httpStatus": 403,
+      "diagnosis": "Release creation refused, including after the immutable tag was created. Both APK inspections preceded this API call. A separately authorized empty draft was supplied to the bounded successful publisher; no automatic overwrite or repeated unchanged retry."
+    }
+  ],
+  "release": {
+    "id": 415145553,
+    "tag_name": "android-ux-preview-88cf95178984",
+    "target_commitish": "88cf9517898486b9f310918caf731604361feb40",
+    "draft": false,
+    "prerelease": true,
+    "published_at": "2026-10-16T16:12:11Z",
+    "html_url": "https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-88cf95178984"
+  },
+  "assets": [
+    {
+      "id": 647864891,
+      "name": "grizzly-fitness-0.1.4-arm64.apk",
+      "size": 39425514,
+      "digest": "sha256:d10a49cf46338e4c1128fd48ca9e762642504130cc0f3e464e5ee0346196076a",
+      "created_at": "2026-10-16T16:12:07Z",
+      "browser_download_url": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-88cf95178984/grizzly-fitness-0.1.4-arm64.apk"
+    },
+    {
+      "id": 647864799,
+      "name": "movefield-0.1.5-arm64.apk",
+      "size": 39274252,
+      "digest": "sha256:3ee9065233a019aebaae15456d277e2fa92de7246d4a6fc6c769a1c05bb44108",
+      "created_at": "2026-10-16T16:12:04Z",
+      "browser_download_url": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-88cf95178984/movefield-0.1.5-arm64.apk"
+    },
+    {
+      "id": 647864954,
+      "name": "native-build-evidence.json",
+      "size": 7017,
+      "digest": "sha256:f62d6021f063ae0816cc8c2ac01f0f7a4a41c23e627763744f94969c8482bef7",
+      "created_at": "2026-10-16T16:12:09Z",
+      "browser_download_url": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-88cf95178984/native-build-evidence.json"
+    },
+    {
+      "id": 647864980,
+      "name": "SHA256SUMS",
+      "size": 190,
+      "digest": "sha256:2eb5bf6962c8a172b35f7e97b1c8861ef0e915c6172f103c61ddb59cb76ea5c0",
+      "created_at": "2026-10-16T16:12:10Z",
+      "browser_download_url": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-88cf95178984/SHA256SUMS"
+    }
+  ],
+  "verification": {
+    "publisherGateFixtureCasesPassed": 113,
+    "androidCompileLintAndUnitJobsPassed": true,
+    "publisherArchiveDigestSourceTreeIdentityCertificateTransportBackupChecksPassed": true,
+    "liveReleaseMetadataVerified": true,
+    "independentDownloadedBytesVerification": "Performed separately by the root audit; not asserted by this workflow receipt."
+  },
+  "scope": "Development-signed Android ARM64 test installers only. No physical-device installation/upgrade, Android store qualification, iPhone IPA/TestFlight/signing, or installed-device behavior is established by this receipt."
+}

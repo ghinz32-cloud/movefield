@@ -1,0 +1,157 @@
+{
+  "format": "fitness-native-release-v1",
+  "workflowRun": 38925861537,
+  "explicitDraftReleaseId": 415145553,
+  "workflowRunAttempt": 2,
+  "workflowHeadCommit": "88cf9517898486b9f310918caf731604361feb40",
+  "selectedJobOutcomes": [
+    {
+      "id": 117062926944,
+      "name": "android (movefield)",
+      "run_attempt": 2,
+      "head_sha": "88cf9517898486b9f310918caf731604361feb40",
+      "started_at": "2026-10-16T15:53:29Z",
+      "completed_at": "2026-10-16T16:01:10Z"
+    },
+    {
+      "id": 117062929987,
+      "name": "android (grizzly)",
+      "run_attempt": 2,
+      "head_sha": "88cf9517898486b9f310918caf731604361feb40",
+      "started_at": "2026-10-16T15:40:39Z",
+      "completed_at": "2026-10-16T15:51:28Z"
+    }
+  ],
+  "jobOutcomeScope": "GitHub may carry a successful execution into a later run attempt. Verified job attempts identify accepted API outcomes, not necessarily a new compilation. Artifact creation times, archive digests and independently checked source/tree IDs identify the delivered bytes.",
+  "sourceCommit": "88cf9517898486b9f310918caf731604361feb40",
+  "sourceTree": "8861a5c00c327e563e802df392e545153ae110ee",
+  "apps": [
+    {
+      "app": "movefield",
+      "filename": "movefield-0.1.5-arm64.apk",
+      "artifactId": 12057359725,
+      "verifiedJobId": 117062926944,
+      "verifiedJobAttempt": 2,
+      "artifactCreatedAt": "2026-10-16T16:01:04Z",
+      "archiveSHA256": "ec591cf6d502fdb09728bc1ef42859a79c490dcbafaee015a83da2976ace4e9a",
+      "sourceCommit": "88cf9517898486b9f310918caf731604361feb40",
+      "sourceTree": "8861a5c00c327e563e802df392e545153ae110ee",
+      "package": "com.ghinz32.movefield",
+      "versionName": "0.1.5",
+      "versionCode": 6,
+      "bytes": 39274252,
+      "sha256": "3ee9065233a019aebaae15456d277e2fa92de7246d4a6fc6c769a1c05bb44108",
+      "architecture": "arm64-v8a",
+      "applicationBundleSHA256": "6a6a5cf19349773d9e204cee6f101c8ac89849475c6de9cbacbf9930cabeee6f",
+      "signingCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+      "inspection": {
+        "passed": true,
+        "platform": "android",
+        "package": "com.ghinz32.movefield",
+        "permissions": [
+          "android.permission.ACCESS_NETWORK_STATE",
+          "android.permission.INTERNET",
+          "android.permission.POST_NOTIFICATIONS",
+          "android.permission.RECEIVE_BOOT_COMPLETED",
+          "android.permission.VIBRATE",
+          "com.ghinz32.movefield.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        ],
+        "manifestSHA256": "aa085c0b8f48f644b301cb83c8563c897de232b2ae3f345271a62082ca2a53f4",
+        "backupRulesLinked": true,
+        "backupDomainsExcluded": [
+          "database",
+          "device_database",
+          "device_file",
+          "device_root",
+          "device_sharedpref",
+          "external",
+          "file",
+          "root",
+          "sharedpref"
+        ],
+        "cloudBackupAndDeviceTransferExcluded": true,
+        "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+        "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+        "resourceTableSHA256": "b3e1448320575520f76b951b1605b98644507c5bebc1d641b73b1e0ec332b248",
+        "cleartextDenied": true,
+        "remoteSdkStartupDisabled": true,
+        "componentBoundariesChecked": true,
+        "localReminderDeclarationsChecked": true,
+        "reviewedStartupInitializers": [
+          "androidx.emoji2.text.EmojiCompatInitializer",
+          "androidx.lifecycle.ProcessLifecycleInitializer",
+          "androidx.profileinstaller.ProfileInstallerInitializer"
+        ],
+        "internalBrowserProxyChecked": true,
+        "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+        "signing": "uninspected; inspect the APK certificate separately",
+        "physicalDeviceTested": false,
+        "storeAccepted": false
+      }
+    },
+    {
+      "app": "grizzly",
+      "filename": "grizzly-fitness-0.1.4-arm64.apk",
+      "artifactId": 12057566350,
+      "verifiedJobId": 117062929987,
+      "verifiedJobAttempt": 2,
+      "artifactCreatedAt": "2026-10-16T15:51:25Z",
+      "archiveSHA256": "9b324a0d82a7ed984266a690f6e877bad260ba573ed6a2d6531fb542bcfa0f1d",
+      "sourceCommit": "88cf9517898486b9f310918caf731604361feb40",
+      "sourceTree": "8861a5c00c327e563e802df392e545153ae110ee",
+      "package": "com.ghinz32.grizzlyfitness.prototype",
+      "versionName": "0.1.4",
+      "versionCode": 5,
+      "bytes": 39425514,
+      "sha256": "d10a49cf46338e4c1128fd48ca9e762642504130cc0f3e464e5ee0346196076a",
+      "architecture": "arm64-v8a",
+      "applicationBundleSHA256": "e6b1baf924025066a0c0e94c47a0a0b2c85041f8f1697d2aad4c555cf5d45a51",
+      "signingCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+      "inspection": {
+        "passed": true,
+        "platform": "android",
+        "package": "com.ghinz32.grizzlyfitness.prototype",
+        "permissions": [
+          "android.permission.ACCESS_NETWORK_STATE",
+          "android.permission.INTERNET",
+          "android.permission.POST_NOTIFICATIONS",
+          "android.permission.RECEIVE_BOOT_COMPLETED",
+          "android.permission.VIBRATE",
+          "com.ghinz32.grizzlyfitness.prototype.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        ],
+        "manifestSHA256": "a9a4ce38f692d7890d5d6884a8812b318bd2575401677f9559aa97b1cf40102f",
+        "backupRulesLinked": true,
+        "backupDomainsExcluded": [
+          "database",
+          "device_database",
+          "device_file",
+          "device_root",
+          "device_sharedpref",
+          "external",
+          "file",
+          "root",
+          "sharedpref"
+        ],
+        "cloudBackupAndDeviceTransferExcluded": true,
+        "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+        "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+        "resourceTableSHA256": "3362335fc64b24c5f7d80b46e2a27f15ac96d9bab7fbff984542081558b7c62c",
+        "cleartextDenied": true,
+        "remoteSdkStartupDisabled": true,
+        "componentBoundariesChecked": true,
+        "localReminderDeclarationsChecked": true,
+        "reviewedStartupInitializers": [
+          "androidx.emoji2.text.EmojiCompatInitializer",
+          "androidx.lifecycle.ProcessLifecycleInitializer",
+          "androidx.profileinstaller.ProfileInstallerInitializer"
+        ],
+        "internalBrowserProxyChecked": true,
+        "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+        "signing": "uninspected; inspect the APK certificate separately",
+        "physicalDeviceTested": false,
+        "storeAccepted": false
+      }
+    }
+  ],
+  "scope": "Verified development-signed Android APK delivery; no iPhone/store/physical-device qualification."
+}
