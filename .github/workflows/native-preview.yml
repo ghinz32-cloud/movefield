@@ -31,6 +31,11 @@ on:
         type: string
         default: ''
         required: false
+      publish_draft:
+        description: Explicit reviewed empty draft release ID (optional, publication only)
+        type: string
+        default: ''
+        required: false
 permissions:
   contents: read
 env:
@@ -148,6 +153,7 @@ jobs:
           NATIVE_PUBLISH_TOKEN: ${{ github.token }}
           NATIVE_PUBLISH_RUN: ${{ inputs.publish_run }}
           NATIVE_PUBLISH_SOURCE: ${{ inputs.source_ref }}
+          NATIVE_PUBLISH_DRAFT: ${{ inputs.publish_draft }}
         run: |
           python3 scripts/check-native-preview-publisher.py
           python3 scripts/publish-native-previews.py

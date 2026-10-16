@@ -5,7 +5,7 @@ from pathlib import Path
 
 source = Path(__file__).with_name('publish-native-previews.py')
 tree = ast.parse(source.read_text(), filename=str(source))
-names = {'verify_android_build_jobs', 'verify_apk_artifacts'}
+names = {'verify_android_build_jobs', 'verify_apk_artifacts', 'verify_supplied_draft', 'classify_api_failure'}
 gates = [node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name in names]
 assert {gate.name for gate in gates} == names
 # Importing the publisher executes authenticated requests. Load only its actual
@@ -125,4 +125,49 @@ for index in range(2):
         changed = deepcopy(artifacts)
         changed[index]['expired'] = expired
         check_artifacts(changed, False)
-print('PASS ' + str(cases) + ' publisher job/artifact gate cases; no API, credentials or publication')
+draft = {'id': 81, 'draft': True, 'prerelease': True, 'published_at': None,
+         'tag_name': 'android-ux-preview-' + WORKFLOW_HEAD[:12],
+         'target_commitish': WORKFLOW_HEAD, 'assets': []}
+tag_ref = {'ref': 'refs/tags/' + draft['tag_name'], 'object': {'type': 'commit', 'sha': WORKFLOW_HEAD}}
+
+
+def check_draft(value, reference, accepts, supplied=81):
+    global cases
+    try:
+        selected = namespace['verify_supplied_draft'](value, supplied, draft['tag_name'], WORKFLOW_HEAD, reference)
+    except ValueError:
+        assert not accepts, 'The exact supplied empty draft was refused'
+    else:
+        assert accepts, 'An unsafe existing release or wrong remote tag was accepted'
+        assert selected is value
+    cases += 1
+
+
+check_draft(draft, tag_ref, True)
+for patch in [{'id': 82}, {'id': '81'}, {'id': True}, {'draft': False}, {'draft': 1},
+              {'prerelease': False}, {'prerelease': 1}, {'published_at': '2026-10-16T12:00:00Z'},
+              {'tag_name': 'other-tag'}, {'target_commitish': 'main'},
+              {'target_commitish': 'b' * 40}, {'assets': [{'name': 'existing.apk'}]},
+              {'assets': None}]:
+    check_draft({**draft, **patch}, tag_ref, False)
+for supplied in [None, 0, True, '81', 82]:
+    check_draft(draft, tag_ref, False, supplied=supplied)
+for key in ['id', 'draft', 'prerelease', 'tag_name', 'target_commitish', 'assets']:
+    missing = deepcopy(draft)
+    del missing[key]
+    check_draft(missing, tag_ref, False)
+for reference in [{}, {**tag_ref, 'ref': 'refs/tags/other-tag'},
+                  {**tag_ref, 'object': {'type': 'tag', 'sha': WORKFLOW_HEAD}},
+                  {**tag_ref, 'object': {'type': 'commit', 'sha': 'b' * 40}}]:
+    check_draft(draft, reference, False)
+for message, label in [
+    ('Resource not accessible by integration', 'integration permission denied'),
+    ('You have exceeded a secondary rate limit', 'provider rate limit'),
+    ('Bad credentials', 'authentication rejected'),
+    ('Repository rules prevent this operation', 'repository rule restriction'),
+    ('unexpected message with a sensitive-looking token', 'unclassified provider refusal'),
+    (None, 'unclassified provider refusal'),
+]:
+    assert namespace['classify_api_failure'](message) == label
+    cases += 1
+print('PASS ' + str(cases) + ' publisher job/artifact/draft gate cases; no API, credentials or publication')

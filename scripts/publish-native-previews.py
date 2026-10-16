@@ -33,8 +33,10 @@ API = 'https://api.github.com/repos/' + REPOSITORY
 SOURCE = os.environ['NATIVE_PUBLISH_SOURCE']
 RUN = os.environ['NATIVE_PUBLISH_RUN']
 TOKEN = os.environ['NATIVE_PUBLISH_TOKEN']
+DRAFT = os.environ.get('NATIVE_PUBLISH_DRAFT', '')
 assert re.fullmatch(r'[a-f0-9]{40}', SOURCE), 'Use an exact reviewed source commit'
 assert re.fullmatch(r'[0-9]+', RUN), 'Use a numeric successful workflow run'
+assert not DRAFT or re.fullmatch(r'[1-9][0-9]*', DRAFT), 'Use an explicit positive draft release ID'
 TAG = 'android-ux-preview-' + SOURCE[:12]
 CERTIFICATE = 'fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c'
 ROOT = Path.cwd()
@@ -47,6 +49,29 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
         return None
 
 
+def classify_api_failure(message):
+    """Return only known safe labels, never the provider's arbitrary message."""
+    text = message.lower() if isinstance(message, str) else ''
+    if 'resource not accessible by integration' in text:
+        return 'integration permission denied'
+    if 'rate limit' in text or 'abuse detection' in text:
+        return 'provider rate limit'
+    if 'bad credentials' in text or 'requires authentication' in text:
+        return 'authentication rejected'
+    if 'repository rule' in text or 'protected tag' in text:
+        return 'repository rule restriction'
+    return 'unclassified provider refusal'
+
+
+def report_api_failure(error, operation):
+    try:
+        message = json.loads(error.read(4096)).get('message')
+    except (ValueError, AttributeError):
+        message = None
+    print(f'::error::GitHub API {operation}: HTTP {error.code}; '
+          f'{classify_api_failure(message)}', flush=True)
+
+
 def request_json(endpoint, payload=None, method=None):
     request = urllib.request.Request(API + endpoint,
         data=None if payload is None else json.dumps(payload).encode(),
@@ -56,10 +81,10 @@ def request_json(endpoint, payload=None, method=None):
         with urllib.request.urlopen(request, timeout=60) as response:
             return json.load(response)
     except urllib.error.HTTPError as error:
-        # These are fixed GitHub API paths constructed by this script, with no
-        # signed storage URL or secret query. Do not print response bodies.
+        # Emit only our fixed API path, numeric status and a safe label. Never
+        # print provider bodies, request headers or signed storage URLs.
         if error.code != 404:
-            print(f'::error::GitHub API {method or "GET"} {endpoint}: HTTP {error.code}', flush=True)
+            report_api_failure(error, (method or 'GET') + ' ' + endpoint)
         raise
 
 
@@ -107,6 +132,22 @@ def verify_apk_artifacts(artifacts):
             raise ValueError('Expected exactly one available APK artifact for ' + app)
         selected[app] = matches[0]
     return selected
+
+
+def verify_supplied_draft(release, draft_id, tag, source, tag_ref):
+    """Resume only the explicitly supplied, empty draft at the immutable source."""
+    if type(draft_id) is not int or draft_id < 1 or type(release.get('id')) is not int or release['id'] != draft_id:
+        raise ValueError('The supplied draft release ID does not match')
+    if release.get('draft') is not True or release.get('prerelease') is not True or release.get('published_at') is not None:
+        raise ValueError('Only an unpublished prerelease draft may be supplied')
+    if release.get('tag_name') != tag or release.get('target_commitish') != source:
+        raise ValueError('The supplied draft has a different tag or source')
+    if release.get('assets') != []:
+        raise ValueError('The supplied draft must have no assets; nothing may be overwritten')
+    target = tag_ref.get('object', {})
+    if tag_ref.get('ref') != 'refs/tags/' + tag or target.get('type') != 'commit' or target.get('sha') != source:
+        raise ValueError('The remote lightweight tag must point at the exact reviewed source')
+    return release
 
 
 run = request_json('/actions/runs/' + RUN)
@@ -204,13 +245,18 @@ for app, package, version, code, filename in [
         'signingCertificateSHA256': CERTIFICATE,
         'inspection': json.loads((evidence / 'inspection.json').read_text())})
 
-# A new immutable-source tag only: existing releases/assets are never overwritten.
-try:
-    request_json('/releases/tags/' + TAG)
-except urllib.error.HTTPError as error:
-    assert error.code == 404
+# Existing releases/assets remain protected. An operator may explicitly supply
+# one reviewed empty draft when the workflow cannot create releases itself.
+if DRAFT:
+    release = verify_supplied_draft(request_json('/releases/' + DRAFT), int(DRAFT), TAG, SOURCE,
+                                    request_json('/git/ref/tags/' + TAG))
 else:
-    raise RuntimeError('Release already exists; inspect it instead of replacing files')
+    try:
+        request_json('/releases/tags/' + TAG)
+    except urllib.error.HTTPError as error:
+        assert error.code == 404
+    else:
+        raise RuntimeError('Release already exists; inspect it instead of replacing files')
 notes = ('Current audited Android test apps: Movefield 0.1.5 (6) and Grizzly Fitness 0.1.4 (5).\n\n'
     'Includes the reviewed routine library, equipment and exercise-substitution corrections, '
     'and current web/native interface fixes in the shared training code. '
@@ -220,10 +266,12 @@ notes = ('Current audited Android test apps: Movefield 0.1.5 (6) and Grizzly Fit
     'Exact compiled source: ' + SOURCE + '.\nBuild: ' + run['html_url'] + '.\n'
     'Both APK signatures, identities, transport and backup rules were rechecked before publication. '
     'Checksums and source evidence accompany the downloads.')
-release = request_json('/releases', {'tag_name': TAG, 'target_commitish': SOURCE,
-    'name': 'Movefield & Grizzly — current Android test apps', 'body': notes,
-    'draft': True, 'prerelease': True, 'make_latest': 'false'}, 'POST')
+if not DRAFT:
+    release = request_json('/releases', {'tag_name': TAG, 'target_commitish': SOURCE,
+        'name': 'Movefield & Grizzly — current Android test apps', 'body': notes,
+        'draft': True, 'prerelease': True, 'make_latest': 'false'}, 'POST')
 receipt = {'format': 'fitness-native-release-v1', 'workflowRun': int(RUN),
+    'explicitDraftReleaseId': int(DRAFT) if DRAFT else None,
     'workflowRunAttempt': run['run_attempt'],
     'workflowHeadCommit': run['head_sha'],
     'selectedJobOutcomes': [{key: job[key] for key in
@@ -241,8 +289,12 @@ for filename in [r['filename'] for r in records] + ['native-build-evidence.json'
     upload = 'https://uploads.github.com/repos/' + REPOSITORY + '/releases/' + str(release['id']) + '/assets?name=' + urllib.parse.quote(filename)
     request = urllib.request.Request(upload, data=data, method='POST',
         headers={'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/octet-stream'})
-    with urllib.request.urlopen(request, timeout=120) as response:
-        asset = json.load(response)
+    try:
+        with urllib.request.urlopen(request, timeout=120) as response:
+            asset = json.load(response)
+    except urllib.error.HTTPError as error:
+        report_api_failure(error, 'POST release asset ' + filename)
+        raise
     assert asset['size'] == len(data)
     assert asset['digest'] == 'sha256:' + hashlib.sha256(data).hexdigest()
 release = request_json('/releases/' + str(release['id']), {'draft': False}, 'PATCH')
