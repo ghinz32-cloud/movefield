@@ -71,7 +71,8 @@ test('Actual native Today clock resumes with the foreground and selects review c
   const render=s=>C.NativeTodayHero({state:s,sample:false,onStart:()=>{},onPreview:()=>{},onTargets:()=>{},onPlan:()=>{},onResume:()=>{},onCalendar:()=>{},onResetSampleHold:()=>{}});
   const texts=tree=>Array.isArray(tree)?tree.flatMap(texts):tree&&typeof tree==='object'?[...(tree.type==='Text'&&typeof tree.props.children==='string'?[tree.props.children]:[]),...texts(tree.props?.children)]:[];
   const assertMessage=(tree,context,date)=>{const message=M.getGrizzlyDailyMessage(context,date),content=texts(tree);assert.ok(content.includes(message.title));assert.ok(content.includes(message.body))};
-  let tree=render(state);assert.equal(tree.props.children[0],false,'active workout keeps the compact header');assertMessage(tree,'active','2026-10-12');assert.equal([...timers.values()][0].delay,125);
+  const nodes=tree=>Array.isArray(tree)?tree.flatMap(nodes):tree&&typeof tree==='object'?[tree,...nodes(tree.props?.children)]:[];
+  let tree=render(state);assert.equal(nodes(tree).filter(node=>node.type==='NativeDenHero').length,0,'Today keeps branding in one compact card without a second hero');assert.equal(nodes(tree).filter(node=>node.type==='Button').length,1,'Active Today offers one primary next action');assertMessage(tree,'active','2026-10-12');assert.equal([...timers.values()][0].delay,125);
   now+=125;[...timers.values()][0].callback();assert.equal(currentDay,'2026-10-13');
   tree=render({...state,hold:true});assertMessage(tree,'review','2026-10-13');
   appActive=false;render(state);assert.equal(timers.size,0);

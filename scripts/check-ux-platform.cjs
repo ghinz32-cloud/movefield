@@ -34,12 +34,17 @@ function keyboardJourney(){
  const modal=nodes.find(node=>ts.isFunctionDeclaration(node)&&node.name.text==='ModalFrame');
  const jsx=(type,props)=>({type,props});
  for(const os of ['ios','android']){
-  const frame=new Function('_reactNative','_reactJsxRuntime','_srcAppearance','_reactNativeSafeAreaContext','baseStyles','GrizzlyPressable','return ('+modal.getText(source)+')')(
+  const frame=new Function('_reactNative','_reactJsxRuntime','_srcAppearance','_reactNativeSafeAreaContext','baseStyles','GrizzlyPressable','h','return ('+modal.getText(source)+')')(
    {Modal:'Modal',View:'View',Text:'Text',ScrollView:'ScrollView',KeyboardAvoidingView:'KeyboardAvoidingView',Platform:{OS:os}},
-   {jsx,jsxs:jsx},{useThemedStyles:()=>({flex:{flex:1}}),useNativeAppearance:()=>({colors:{},reduceMotion:true})},{SafeAreaView:'SafeAreaView'},{},'Pressable');
-  const tree=frame({visible:true,close(){},title:'Edit workout',children:'form'}),header=tree.props.children.props.children,keyboard=header[1];
+   {jsx,jsxs:jsx},{useThemedStyles:()=>({flex:{flex:1}}),useNativeAppearance:()=>({colors:{},reduceMotion:true})},{SafeAreaView:'SafeAreaView'},{},'Pressable',(type,props,children)=>jsx(type,{...props,children}));
+  const tree=frame({visible:true,close(){},title:'Edit workout',children:'form'}),header=tree.props.children.props.children,keyboard=header.find(node=>node?.type==='KeyboardAvoidingView');
   assert.equal(keyboard.type,'KeyboardAvoidingView');assert.equal(keyboard.props.behavior,os==='ios'?'padding':undefined);
   assert.equal(keyboard.props.children.props.keyboardShouldPersistTaps,'handled');assert.equal(header[0].props.children[1].props.style.minHeight,48);
+  const focused=frame({visible:true,close(){},title:'Build my plan',scroll:false,children:'focused-screen'});
+  const focusedKeyboard=focused.props.children.props.children.find(node=>node?.type==='KeyboardAvoidingView');
+  assert.equal(focusedKeyboard.props.behavior,os==='ios'?'padding':undefined);
+  assert.equal(focusedKeyboard.props.children.type,'View','Focused screens own their bounded scroll body');
+  assert.equal(focusedKeyboard.props.children.props.children,'focused-screen');
  }
 }
 (async()=>{await numericJourney();await accountJourney();keyboardJourney();console.log('PASS native decimal/sign drafts, null/zero and bounds, both sign-in callbacks, and iOS modal keyboard configuration. Hook/OS boundaries mocked; no device claim.');})().catch(error=>{console.error(error);process.exitCode=1});

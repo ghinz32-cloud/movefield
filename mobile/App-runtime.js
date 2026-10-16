@@ -1,3 +1,6 @@
+import {NativeExerciseGuideScreen} from './src/exercise-guide-screen';
+import {NativeFlowScreen,NativeSettingsRow,NativeSection,NativeActionFooter} from './src/phone-ui';
+import {NativeWorkoutScreen} from './src/workout-screen';
 import {NativeTabBar} from './src/tab-bar';
 import {NativeProgramFilters,matchesProgram} from './src/program-filters';
 import {NativeWorkoutCoaching} from './src/workout-coaching';
@@ -6,7 +9,6 @@ import {GrizzlyPressable} from './src/wild-interactions';
 // Recovered executed implementation; typed public contract is in the adjacent declaration.
 import * as _srcSharedPairedSets from "./src/shared/paired-sets";
 import * as _srcSharedSourcePrograms from "./src/shared/source-programs";
-import * as _srcSetRir from "./src/set-rir";
 import * as _srcSharedTraining from "./src/shared/training";
 import * as _srcEquipmentSurvey from "./src/equipment-survey";
 import * as _srcTodayHero from "./src/today-hero";
@@ -22,7 +24,6 @@ import * as _srcAppearance from "./src/appearance";
 import * as _srcFileTransfer from "./src/file-transfer";
 import * as _srcPlanImport from "./src/plan-import";
 import * as _srcSharedPlanImport from "./src/shared/plan-import";
-import * as _srcSetMetrics from "./src/set-metrics";
 import * as _srcHistoryEditor from "./src/history-editor";
 import * as _srcSharedHistoryEdit from "./src/shared/history-edit";
 import * as _srcCloudAccount from "./src/cloud-account";
@@ -55,6 +56,7 @@ import * as _srcSharedLegacyTransfer from "./src/shared/legacy-transfer";
 import * as _reactJsxRuntime from "react/jsx-runtime";
 import * as __dependency49 from "./assets/grizzly-fitness-logo.jpg";
 import {NativeWildernessShell,NativeDenHero} from "./src/wilderness";
+var h = _react.createElement;
 var COLORS = {
     bg: '#F6F5EF',
     ink: '#19362D',
@@ -131,49 +133,6 @@ function Heading({ eyebrow, title, detail }) {
             })]
     });
 }
-function NumericField({ value, onChange, label, max, nullable = false, disabled = false }) {
-    var styles = (0, _srcAppearance.useThemedStyles)(baseStyles), { colors: COLORS, reduceMotion } = (0, _srcAppearance.useNativeAppearance)();
-    var [text, setText] = (0, _react.useState)(value === null || !nullable && value === 0 ? '' : String(Math.round(value * 100) / 100));
-    var [previous, setPrevious] = (0, _react.useState)({
-        value,
-        nullable
-    });
-    if (previous.value !== value || previous.nullable !== nullable) {
-        setPrevious({
-            value,
-            nullable
-        });
-        setText(value === null || !nullable && value === 0 ? '' : String(Math.round(value * 100) / 100));
-    }
-    return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.TextInput, {
-        editable: !disabled,
-        accessibilityLabel: label,
-        placeholder: nullable ? '—' : '0',
-        placeholderTextColor: COLORS.muted,
-        keyboardType: "decimal-pad",
-        selectTextOnFocus: true,
-        style: styles.numberInput,
-        value: text,
-        onChangeText: next => {
-            if (!/^\d{0,7}([.,]\d{0,2})?$/.test(next))
-                return;
-            var n = next === '' || next === '.' || next === ',' ? nullable ? null : 0 : Number(next.replace(',', '.'));
-            if (n !== null && (!Number.isFinite(n) || n > max))
-                return;
-            setText(next);
-            onChange(n);
-        }
-    });
-}
-function OptionalSetDetails({ name, set, onChange, disabled = false }) {
-    return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcSetMetrics.NativeSetMetrics, {
-        name: name,
-        set: set.set,
-        value: set.metrics,
-        onChange: onChange,
-        disabled: disabled
-    });
-}
 function RecordedMetrics({ metrics }) {
     var styles = (0, _srcAppearance.useThemedStyles)(baseStyles), { colors: COLORS, reduceMotion } = (0, _srcAppearance.useNativeAppearance)();
     if (!metrics)
@@ -194,12 +153,12 @@ function RecordedMetrics({ metrics }) {
             })]
     });
 }
-function ModalFrame({ visible, close, title, children, onDismiss }) {
+function ModalFrame({ visible, close, title, children, onDismiss, scroll = true, requestClose, error, closeLabel = "Close", closeDisabled = false }) {
     var styles = (0, _srcAppearance.useThemedStyles)(baseStyles), { colors: COLORS, reduceMotion } = (0, _srcAppearance.useNativeAppearance)();
     return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Modal, {
         visible: visible,
         animationType: reduceMotion ? "none" : "slide",
-        onRequestClose: close,
+        onRequestClose: closeDisabled ? () => {} : requestClose || close,
         onDismiss,
         presentationStyle: "pageSheet",
         children: /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNativeSafeAreaContext.SafeAreaView, {
@@ -207,23 +166,25 @@ function ModalFrame({ visible, close, title, children, onDismiss }) {
             children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
                     style: styles.modalHeader,
                     children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                            style: styles.modalTitle,
+                            style: scroll ? styles.modalTitle : styles.small,
                             accessibilityRole: 'header',
                             children: title
                         }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
                             accessibilityRole: "button",
                             accessibilityLabel: "Close " + title,
+                            accessibilityState: {disabled:closeDisabled},
+                            disabled: closeDisabled,
                             onPress: close,
                             style: { minWidth: 48, minHeight: 48, alignItems: 'center', justifyContent: 'center' },
                             children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.link,
-                                children: "Close"
+                                children: closeLabel
                             })
                         })]
-                }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.KeyboardAvoidingView, {
+                }), error && h(_reactNative.Text,{accessibilityRole:'alert',style:[styles.errorText,{padding:12}]},error), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.KeyboardAvoidingView, {
                     style: styles.flex,
                     behavior: _reactNative.Platform.OS === 'ios' ? 'padding' : undefined,
-                    children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.ScrollView, {
+                    children: !scroll ? h(_reactNative.View,{style:styles.flex},children) : /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.ScrollView, {
                         contentContainerStyle: styles.content,
                         keyboardShouldPersistTaps: "handled",
                         keyboardDismissMode: "on-drag",
@@ -359,13 +320,14 @@ function NativeEquipmentLimit({ state, exercise, onSave }) {
     });
 }
 function TrainingApp() {
-    var viewport = (0, _reactNative.useWindowDimensions)();
     var styles = (0, _srcAppearance.useThemedStyles)(baseStyles), appearance = (0, _srcAppearance.useNativeAppearance)(), COLORS = appearance.colors;
     var [state, setState] = (0, _react.useState)(null);
     var [readError, setReadError] = (0, _react.useState)(false);
     var [saveStatus, setSaveStatus] = (0, _react.useState)('Loading local data…');
     var [error, setError] = (0, _react.useState)('');
     var [tab, setTab] = (0, _react.useState)('Today');
+    var [phonePage,setPhonePage] = (0,_react.useState)('home');
+    var setupBack = (0,_react.useRef)(null), guideBack = (0,_react.useRef)(null);
     var [exercise, setExercise] = (0, _react.useState)(null);
     var [editingHistory, setEditingHistory] = (0, _react.useState)(false);
     var [historyItem, setHistoryItem] = (0, _react.useState)(null);
@@ -435,7 +397,7 @@ function TrainingApp() {
     var [planImportOpen, setPlanImportOpen] = (0, _react.useState)(false);
     var [personalSetup, setPersonalSetup] = (0, _react.useState)(false);
     var [sourceChoice, setSourceChoice] = (0, _react.useState)();
-    var [calendarOpen, setCalendarOpen] = (0, _react.useState)(false), [calendarDate, setCalendarDate] = (0, _react.useState)((0, _srcSharedTraining.day)()), [planSection, setPlanSection] = (0, _react.useState)('current'), [planSessionLimit, setPlanSessionLimit] = (0, _react.useState)(20), [previewAll, setPreviewAll] = (0, _react.useState)(false), [scienceOpen, setScienceOpen] = (0, _react.useState)(false);
+    var [calendarOpen, setCalendarOpen] = (0, _react.useState)(false), [calendarDate, setCalendarDate] = (0, _react.useState)((0, _srcSharedTraining.day)()), [planSection, setPlanSection] = (0, _react.useState)('home'), [planSessionLimit, setPlanSessionLimit] = (0, _react.useState)(20), [previewAll, setPreviewAll] = (0, _react.useState)(false), [scienceOpen, setScienceOpen] = (0, _react.useState)(false);
     var [trackingSession, setTrackingSession] = (0, _react.useState)(''), [customizeSession, setCustomizeSession] = (0, _react.useState)('');
     var [preview, setPreview] = (0, _react.useState)(null);
     var [planGoal, setPlanGoal] = (0, _react.useState)('powerlifting');
@@ -446,31 +408,14 @@ function TrainingApp() {
     var [search, setSearch] = (0, _react.useState)('');
     var [equipment, setEquipment] = (0, _react.useState)('All');
     var [now, setNow] = (0, _react.useState)(() => Date.now());
-    var todayScroll = (0, _react.useRef)(null), loggerPosition = (0, _react.useRef)(0);
     var storeRef = (0, _react.useRef)(null);
     var [savingAction, setSavingAction] = (0, _react.useState)(false);
     var [focusedExercise, renderFocus] = (0, _react.useState)(null);
-    var focusRef = (0, _react.useRef)(null), workoutScrollPending = (0, _react.useRef)(false), workoutSectionY = (0, _react.useRef)(0);
+    var focusRef = (0, _react.useRef)(null);
     var setFocusedExercise = id => {
-        if (focusRef.current !== id) workoutScrollPending.current = !!stateRef.current?.active;
         focusRef.current = id;
         renderFocus(id);
     };
-    var revealWorkoutSection = () => {
-        if (!workoutScrollPending.current) return;
-        workoutScrollPending.current = false;
-        todayScroll.current?.scrollTo({y:loggerPosition.current + workoutSectionY.current,animated:!appearance.reduceMotion});
-    };
-    var scrollToWorkoutSection = event => {
-        workoutSectionY.current = event.nativeEvent.layout.y;
-        if (workoutScrollPending.current) requestAnimationFrame(revealWorkoutSection);
-    };
-    (0, _react.useEffect)(() => {
-        if (!workoutScrollPending.current || !state?.active) return;
-        // Focus is the trigger, not a timer tick or set-field edit. Cached layout also covers equal-height cards.
-        var frame = requestAnimationFrame(revealWorkoutSection);
-        return () => cancelAnimationFrame(frame);
-    }, [focusedExercise, state?.active?.id]);
     var createStore = initial => (0, _srcSharedDurableState.createDurableState)({
         initial,
         validate: next => {
@@ -487,7 +432,9 @@ function TrainingApp() {
             return false;
         setSavingAction(true);
         try {
-            return await storeRef.current.commit(fn);
+            var saved = await storeRef.current.commit(fn);
+            if (saved) setError('');
+            return saved;
         }
         catch (e) {
             setError(e instanceof Error ? e.message : 'This action could not be saved.');
@@ -507,10 +454,22 @@ function TrainingApp() {
         if (!pending) return;
         var request = pending.request;
         if (request.store !== storeRef.current || request.base !== storeRef.current?.get() || request.sample !== sampleRef.current || request.day !== (0, _srcSharedTraining.day)()) return;
-        if (pending.kind === 'record') {
+        if (pending.kind === 'navigation') {
+            pending.action();
+        } else if (pending.kind === 'record') {
             var record = request.base.history.find(w => w.id === request.workoutId);
             if(record){setEditingHistory(false);setHistoryItem(record);}
         } else if (appearance.p.coaching !== 'off') setCoaching(request);
+    };
+    var navigateAfterModal = (dismiss, action) => {
+        if (_reactNative.Platform.OS === 'ios') {
+            var request = {store:storeRef.current,base:storeRef.current?.get(),sample:sampleRef.current,day:(0,_srcSharedTraining.day)()};
+            coachingTransition.current = {waiting:true,pending:{kind:'navigation',request,action}};
+            dismiss();
+        } else {
+            dismiss();
+            action();
+        }
     };
     var presentCoaching = request => {
         // UIKit must finish dismissing the current sheet before presenting another.
@@ -535,11 +494,11 @@ function TrainingApp() {
             return (0, _srcMobileEngine.startWorkout)(s, request.sessionId, request.sample);
         });
         if (saved) {
-            workoutScrollPending.current = true;
             setCoaching(null);
             setCalendarOpen(false);
             setTab('Today');
-            setFocusedExercise(null);
+            setPhonePage('workout');
+            setFocusedExercise(stateRef.current?.active?.targets?.[0]?.exerciseId ?? null);
         }
         return saved;
     };
@@ -662,8 +621,10 @@ function TrainingApp() {
                 proposals: [proposal, ...s.proposals]
             };
         });
-        if (saved)
-            setChangePreview(proposal);
+        if (saved) {
+            if (calendarOpen) navigateAfterModal(()=>setCalendarOpen(false),()=>setChangePreview(proposal));
+            else setChangePreview(proposal);
+        }
         return saved;
     };
     var openUrl = async (candidate) => {
@@ -728,6 +689,10 @@ function TrainingApp() {
                 storeRef.current = createStore(_initial);
                 commit(_initial);
             }
+            setPhonePage('home');
+            setPlanSection('home');
+            setupBack.current=null;
+            coachingTransition.current={waiting:false,pending:null};
             setSampleMode(sample);
             setRecoveryKey('');
             setRecoveryInput('');
@@ -776,6 +741,7 @@ function TrainingApp() {
             storeRef.current = createStore(initial);
             commit(initial);
             setSaveStatus('Sample restored on this device');
+            setPhonePage('home');
             setFocusedExercise(null);
             setError('');
             setTab('Today');
@@ -957,6 +923,7 @@ function TrainingApp() {
                 }).then(saved => {
                     if (saved) {
                         setFocusedExercise(null);
+                        setPhonePage('home');
                         if (finishingStore === storeRef.current && finishingSample === sampleRef.current && appearance.p.coaching === 'auto') reviewAfterWorkout(w.id);
                     }
                 });
@@ -966,7 +933,7 @@ function TrainingApp() {
     var saveSet = async (index, seconds, requestedAt) => {
         var w = stateRef.current?.active, log = w?.sets[index];
         if (!w || !log || log.done)
-            return;
+            return false;
         var saved = await persistChange(s => {
             if (s.active?.id !== w.id)
                 throw Error('This workout is no longer open.');
@@ -979,18 +946,28 @@ function TrainingApp() {
             setNow(requestedAt);
             _reactNative.AccessibilityInfo.announceForAccessibility('Set saved on this device.');
         }
+        return saved;
     };
-    var updateSet = (index, patch) => modify(s => (0, _srcSharedWorkoutLog.changeWorkoutSet)(s, index, patch));
-    var todayView = /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.ScrollView, {
-        ref: todayScroll,
-        keyboardShouldPersistTaps: "handled",
-        keyboardDismissMode: "on-drag",
-        contentContainerStyle: styles.content,
-        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Heading, {
-                eyebrow: (0, _srcSharedTraining.niceDate)((0, _srcSharedTraining.day)()).toUpperCase(),
-                title: "Today",
-                detail: undefined
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcTodayHero.NativeTodayHero, {
+    var todayView = phonePage === 'workout' && active ? h(NativeWorkoutScreen, {
+        state, focusedExercise, busy:savingAction, remaining, restMessage:restAlertMessage || alertMessage,
+        onExit:()=>setPhonePage('home'), onFocusExercise:setFocusedExercise,
+        onChangeSet:(index,patch)=>modify(s=>{if(s.active?.id!==active.id)throw Error('This workout changed. Reopen it before editing.');return (0,_srcSharedWorkoutLog.changeWorkoutSet)(s,index,patch);}),
+        onLogSet:(index,seconds)=>saveSet(index,seconds,Date.now()),
+        onChangeSetup:(exerciseId,text)=>{void persistChange(s=>{if(s.active?.id!==active.id)throw Error('This workout changed. Reopen it before editing.');return {...s,incrementKg:{...s.incrementKg,[exerciseId]:0},active:{...s.active,loadContext:{...s.active.loadContext,[exerciseId]:text}}};});},
+        onOpenGuide:setExercise, onSubstitute:id=>openSubstitute(active.sessionId,id),
+        onChangeFeedback:patch=>{void persistChange(s=>{if(s.active?.id!==active.id)throw Error('This workout changed. Reopen it before editing.');return {...s,hold:patch.symptom==='yes'||patch.symptom==='unsure'?true:s.hold,active:{...s.active,...patch}};});},
+        onPauseRest:()=>{void persistChange(s=>({...s,restTimer:s.restTimer?s.restTimer.pausedSeconds!==null?(0,_srcSharedRestTimer.resumeRest)(s.restTimer):(0,_srcSharedRestTimer.pauseRest)(s.restTimer):null}));},
+        onExtendRest:()=>{void persistChange(s=>({...s,restTimer:s.restTimer?(0,_srcSharedRestTimer.extendRest)(s.restTimer):null}));},
+        onEndRest:()=>{void persistChange(s=>({...s,restTimer:null}));},
+        onToggleRestAlerts:()=>{if(state.restAlerts){void persistChange(s=>({...s,restAlerts:false})).then(saved=>{if(saved)setAlertMessage('Rest alerts are off.');});}else void (0,_srcRestAlerts.enableRestAlerts)().then(async r=>{if(await persistChange(s=>({...s,restAlerts:r.enabled})))setAlertMessage(r.message);}).catch(e=>setError(e.message));},
+        onFinish:requestFinish,
+        onDiscard:()=>setConfirm({title:'Discard current workout?',message:'Active entries will be removed. Saved workouts are kept, and this session stays scheduled.',label:'Discard workout',action:()=>{var expected=(0,_srcSharedWorkoutFlow.workoutConfirmation)(active);void persistChange(s=>{(0,_srcSharedWorkoutFlow.assertWorkoutConfirmation)(s,expected);return {...s,active:null,restTimer:null};}).then(saved=>{if(saved){setFocusedExercise(null);setPhonePage('home');}});}})
+    }) : h(NativeFlowScreen, {
+        title:({home:'Today',options:'Workout options',session:'Workout exercises',warmup:'Warm-up & effort',schedule:'Change workout date',progression:'Review progression'})[phonePage] || 'Today',
+        subtitle:phonePage==='home'?(0,_srcSharedTraining.niceDate)((0,_srcSharedTraining.day)()):undefined,
+        onBack:phonePage==='home'?undefined:()=>setPhonePage(phonePage==='options'?'home':'options'),handleHardwareBack:phonePage!=='home',
+        footer:phonePage==='session'?next && !active && next.date === (0,_srcSharedTraining.day)() && !blocked ? h(NativeActionFooter,{primary:{label:'Prepare to start',disabled:savingAction,onPress:()=>{void reviewBeforeWorkout(next.id,true);}}}) : undefined:undefined,
+        children:phonePage==='home' || phonePage==='workout' ? [(0, _reactJsxRuntime.jsx)(_srcTodayHero.NativeTodayHero, {
                 state: state,
                 sample: sampleMode,
                 busy: savingAction,
@@ -1008,10 +985,7 @@ function TrainingApp() {
                         setPersonalSetup(true);
                     }
                 },
-                onResume: () => todayScroll.current?.scrollTo({
-                    y: loggerPosition.current,
-                    animated: !appearance.reduceMotion
-                }),
+                onResume: () => { setPhonePage('workout'); setFocusedExercise(state.active?.sets.find(x => !x.done)?.exerciseId ?? state.active?.targets?.[0]?.exerciseId ?? null); },
                 onCalendar: () => {
                     setCalendarDate((0, _srcSharedTraining.day)());
                     setCalendarOpen(true);
@@ -1035,82 +1009,14 @@ function TrainingApp() {
                         }
                     });
                 }
-            }), state.plan?.profile.mode === 'app' && !active && !state.hold && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.sectionTitle,
-                        children: "Review progression"
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.body,
-                        children: "Load changes need your approval. Enter available increments in an exercise guide. Equipment limits may offer a wider rep range for eligible muscle-focused work."
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                        secondary: true,
-                        label: "Preview a load or rep-range change",
-                        onPress: () => {
-                            var r = (0, _srcSharedTraining.makeLoadProposal)(stateRef.current);
-                            if (r.proposal)
-                                stageChange(r.proposal);
-                            else
-                                setError(r.error || 'No change is ready.');
-                        }
-                    })]
-            }), !state.plan && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
-                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                        dark: true,
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.darkEyebrow,
-                                children: "START HERE"
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.darkTitle,
-                                children: "Build your first plan."
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.darkBody,
-                                children: "Choose your goal, time and equipment. Review your own plan before starting."
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                                label: "Build my plan",
-                                onPress: () => {
-                                    setSourceChoice(undefined);
-                                    setPersonalSetup(true);
-                                },
-                                secondary: true
-                            })]
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.body,
-                        children: "Your training is saved on this device. Review private backup and optional account settings when you need them."
-                    })]
-            }), !active && appearance.p.coaching !== 'off' && (next || state.history.some(w => w.finishedAt)) && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                children: [next && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                    secondary: true,
-                    label: 'Review workout guidance',
-                    onPress: () => { void reviewBeforeWorkout(next.id); }
-                }), [...state.history].filter(w => w.finishedAt).sort((a,b) => (b.finishedAt || 0) - (a.finishedAt || 0)).slice(0,1).map(w => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                    secondary: true,
-                    label: 'Review last workout feedback',
-                    onPress: () => reviewAfterWorkout(w.id)
-                }, w.id))]
-            }), state.plan && !active && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
-                children: [blocked && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.sectionTitle,
-                                children: "Review before continuing"
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.body,
-                                children: blocked
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.small,
-                                children: "Review a shorter remaining block with the same dates. This does not provide medical return-to-training clearance."
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                                label: "Review a shorter return block",
-                                secondary: true,
-                                disabled: state.hold || state.plan.paused,
-                                onPress: () => {
-                                    var p = (0, _srcSharedTraining.makeProposal)(stateRef.current, 'return');
-                                    if (p)
-                                        stageChange(p);
-                                    else
-                                        setError('No recovery change is available.');
-                                }
-                            })]
-                    }), next && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+            }),
+h(NativeSettingsRow, {label:"Calendar", onPress:()=>{setCalendarDate((0,_srcSharedTraining.day)()); setCalendarOpen(true);}}),
+!!next && !active && h(NativeSettingsRow, {label:"Workout options", onPress:()=>{setPhonePage('options');}}),
+!active && next && appearance.p.coaching !== 'off' && h(NativeSettingsRow, {label:"Workout guidance", onPress:()=>{void reviewBeforeWorkout(next.id);}}),
+appearance.p.coaching !== 'off' && state.history.some(w=>w.finishedAt) && h(NativeSettingsRow, {label:"Last workout feedback", onPress:()=>{const latest=[...state.history].filter(w=>w.finishedAt).sort((a,b)=>(b.finishedAt||0)-(a.finishedAt||0))[0]; if(latest)reviewAfterWorkout(latest.id);}})] : phonePage==='options' ? [h(NativeSettingsRow, {label:"Workout exercises", onPress:()=>{setPhonePage('session');}}),
+h(NativeSettingsRow, {label:"Warm-up & effort", onPress:()=>{setPhonePage('warmup');}}),
+h(NativeSettingsRow, {label:"Change workout date", onPress:()=>{setPhonePage('schedule');}}),
+state.plan?.profile.mode === 'app' && h(NativeSettingsRow, {label:"Review progression", disabled:state.hold, value:state.hold?"Unavailable while a concern is recorded":undefined, onPress:()=>{setPhonePage('progression');}})] : phonePage==='schedule' ? [next && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.sectionTitle,
                                 children: "Change a workout date"
@@ -1136,7 +1042,7 @@ function TrainingApp() {
                                         setError(r.error || 'This move is unavailable.');
                                 }
                             })]
-                    }), next && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                    })] : phonePage==='warmup' ? [next && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.sectionTitle,
                                 children: "Warm-up, effort & finish"
@@ -1157,7 +1063,47 @@ function TrainingApp() {
                                 style: styles.small,
                                 children: (0, _srcSharedSessionGuide.sessionGuide)(state.plan, next).finish
                             })]
-                    }), next?.items.map(i => {
+                    })] : phonePage==='progression' ? [state.plan?.profile.mode === 'app' && !active && !state.hold && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                        style: styles.sectionTitle,
+                        children: "Review progression"
+                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                        style: styles.body,
+                        children: "Load changes need your approval. Enter available increments in an exercise guide. Equipment limits may offer a wider rep range for eligible muscle-focused work."
+                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                        secondary: true,
+                        label: "Preview a load or rep-range change",
+                        onPress: () => {
+                            var r = (0, _srcSharedTraining.makeLoadProposal)(stateRef.current);
+                            if (r.proposal)
+                                stageChange(r.proposal);
+                            else
+                                setError(r.error || 'No change is ready.');
+                        }
+                    })]
+            }),blocked && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                                style: styles.sectionTitle,
+                                children: "Review before continuing"
+                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                                style: styles.body,
+                                children: blocked
+                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                                style: styles.small,
+                                children: "Review a shorter remaining block with the same dates. This does not provide medical return-to-training clearance."
+                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                                label: "Review a shorter return block",
+                                secondary: true,
+                                disabled: state.hold || state.plan.paused,
+                                onPress: () => {
+                                    var p = (0, _srcSharedTraining.makeProposal)(stateRef.current, 'return');
+                                    if (p)
+                                        stageChange(p);
+                                    else
+                                        setError('No recovery change is available.');
+                                }
+                            })]
+                    })] : [next?.items.map(i => {
                         var e = (0, _srcSharedTraining.exFor)(i.exerciseId, state.custom);
                         return /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
                             children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
@@ -1183,11 +1129,7 @@ function TrainingApp() {
                                     onPress: () => openSubstitute(next.id, e.id)
                                 })]
                         }, i.exerciseId);
-                    }), !next && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                        label: "Choose another block",
-                        onPress: () => setTab('Plan')
-                    })]
-            }), next && state.plan?.profile.mode !== 'app' && !active && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                    }),next && state.plan?.profile.mode !== 'app' && !active && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
                 children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                         style: styles.sectionTitle,
                         children: "Your workout targets"
@@ -1198,361 +1140,35 @@ function TrainingApp() {
                         label: next.items.length ? 'Edit workout targets' : 'Add workout targets',
                         onPress: () => setTrackingSession(next.id)
                     })]
-            }), active && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                onLayout: event => {
-                    loggerPosition.current = event.nativeEvent.layout.y;
-                },
-                style: {
-                    gap: 14
-                },
-                children: [active && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.sectionTitle,
-                                children: remaining === null ? 'Rest timer' : remaining === 0 ? 'Rest is over. Start when ready.' : `Rest ${state.restTimer?.pausedSeconds !== null ? 'paused · ' : ''}${Math.floor(remaining / 60)}:${String(remaining % 60).padStart(2, '0')}`
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.small,
-                                children: "Tap Log set after you finish. Rest starts right away."
-                            }), state.restTimer && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                                style: [styles.row, {
-                                        flexWrap: 'wrap'
-                                    }],
-                                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                                        label: state.restTimer.pausedSeconds !== null ? 'Resume' : 'Pause',
-                                        secondary: true,
-                                        onPress: async () => await persistChange(s => ({
-                                            ...s,
-                                            restTimer: s.restTimer ? s.restTimer.pausedSeconds !== null ? (0, _srcSharedRestTimer.resumeRest)(s.restTimer) : (0, _srcSharedRestTimer.pauseRest)(s.restTimer) : null
-                                        }))
-                                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                                        label: "+30 sec",
-                                        secondary: true,
-                                        onPress: async () => await persistChange(s => ({
-                                            ...s,
-                                            restTimer: s.restTimer ? (0, _srcSharedRestTimer.extendRest)(s.restTimer) : null
-                                        }))
-                                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                                        label: "End rest",
-                                        secondary: true,
-                                        onPress: async () => await persistChange(s => ({
-                                            ...s,
-                                            restTimer: null
-                                        }))
-                                    })]
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                                label: state.restAlerts ? 'Turn off rest alerts' : 'Enable rest alerts',
-                                secondary: true,
-                                onPress: async () => {
-                                    if (state.restAlerts) {
-                                        await persistChange(s => ({
-                                            ...s,
-                                            restAlerts: false
-                                        }));
-                                        setAlertMessage('Rest alerts are off.');
-                                    }
-                                    else
-                                        void (0, _srcRestAlerts.enableRestAlerts)().then(async (r) => {
-                                            await persistChange(s => ({
-                                                ...s,
-                                                restAlerts: r.enabled
-                                            }));
-                                            setAlertMessage(r.message);
-                                        });
-                                }
-                            }), (restAlertMessage || alertMessage) && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                accessibilityLiveRegion: "polite",
-                                style: styles.small,
-                                children: restAlertMessage || alertMessage
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.small,
-                                children: "Phone settings may silence or delay alerts. You can take more rest."
-                            })]
-                    }), state.plan?.sessions.find(x => x.id === active.sessionId)?.runSteps && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.sectionTitle,
-                                children: "Run / walk sequence"
-                            }), state.plan.sessions.find(x => x.id === active.sessionId).runSteps.map((step, i) => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                style: styles.body,
-                                children: [i + 1, ". ", step.label, " \xB7 ", step.seconds / 60, " min"]
-                            }, i))]
-                    }), !focusedExercise && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                        onLayout: scrollToWorkoutSection,
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.sectionTitle,
-                                children: active.sets.every(x => x.done) ? 'Workout complete' : 'Exercises in this workout'
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.body,
-                                children: active.sets.every(x => x.done) ? 'All required sets are saved. Finish to add this workout to history.' : 'Choose an exercise to log. Unfinished work stays listed here.'
-                            }), (0, _srcSharedWorkoutFlow.workoutExercises)(state).map(({ target, done, total, complete }, index) => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                                secondary: true,
-                                label: `${index + 1}. ${(0, _srcSharedTraining.exFor)(target.exerciseId, state.custom).name} · ${target.sets} × ${(0, _srcSharedTraining.targetText)(target)} ${(0, _srcSharedTraining.exFor)(target.exerciseId, state.custom).metric} · ${done}/${total} saved${complete ? ' · Complete' : ''}`,
-                                onPress: () => setFocusedExercise(target.exerciseId)
-                            }, target.exerciseId))]
-                    }), focusedExercise && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                        secondary: true,
-                        label: "All exercises / remaining work",
-                        onPress: () => setFocusedExercise(null)
-                    }), (active.targets ?? state.plan?.sessions.find(x => x.id === active.sessionId)?.items ?? []).filter(target => target.exerciseId === focusedExercise).map(target => {
-                        var e = (0, _srcSharedTraining.exFor)(target.exerciseId, state.custom);
-                        var tracked = (0, _srcSharedTraining.isLoadTracked)(e);
-                        return /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                            onLayout: scrollToWorkoutSection,
-                            children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                                    style: styles.row,
-                                    children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                            style: [styles.sectionTitle, styles.flex],
-                                            children: e.name
-                                        }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
-                                            accessibilityRole: "button",
-                                            onPress: () => setExercise(e),
-                                            children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                                style: styles.link,
-                                                children: "Guide \u2192"
-                                            })
-                                        })]
-                                }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                    style: styles.body,
-                                    children: ["Target: ", target.sets, " \xD7 ", (0, _srcSharedTraining.targetText)(target), " ", e.metric, " \xB7 rest ", target.rest, "s"]
-                                }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                    style: styles.small,
-                                    children: e.loadConvention
-                                }), (0, _srcSharedTraining.isLoadTracked)(e) && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                    style: styles.small,
-                                    children: (() => {
-                                        var a = (0, _srcSharedTraining.loadSuggestion)({
-                                            ...state,
-                                            loadContext: {
-                                                ...state.loadContext,
-                                                ...active.loadContext
-                                            }
-                                        }, target);
-                                        return (a.kg === null ? 'Choose a manageable available load. ' : (0, _srcSharedTraining.displayLoad)(a.kg, state.profile.units) + ' · ') + a.reason;
-                                    })()
-                                }), e.requiresSetup && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.TextInput, {
-                                    style: styles.input,
-                                    placeholder: "Machine / attachment / seat setting",
-                                    placeholderTextColor: COLORS.muted,
-                                    accessibilityLabel: `${e.name} machine setup`,
-                                    value: active.loadContext?.[e.id] ?? '',
-                                    maxLength: 200,
-                                    editable: !active.sets.some(x => x.exerciseId === e.id && x.done),
-                                    onChangeText: async (text) => await persistChange(s => ({
-                                        ...s,
-                                        incrementKg: {
-                                            ...s.incrementKg,
-                                            [e.id]: 0
-                                        },
-                                        active: {
-                                            ...s.active,
-                                            loadContext: {
-                                                ...s.active.loadContext,
-                                                [e.id]: text
-                                            }
-                                        }
-                                    }))
-                                }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                                    style: styles.setHeader,
-                                    children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                            style: [styles.small, {
-                                                    width: 34
-                                                }],
-                                            children: "Set"
-                                        }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                            style: [styles.small, {
-                                                    flex: 1
-                                                }],
-                                            children: e.metric
-                                        }), tracked && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                            style: [styles.small, {
-                                                    flex: 1
-                                                }],
-                                            children: state.profile.units
-                                        })]
-                                }), active.sets.map((set, index) => set.exerciseId === e.id && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                                    style: styles.setBlock,
-                                    children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                                            style: styles.setRow,
-                                            children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                                    style: {
-                                                        width: 26,
-                                                        color: COLORS.ink,
-                                                        fontWeight: '700'
-                                                    },
-                                                    children: set.set
-                                                }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NumericField, {
-                                                    disabled: savingAction,
-                                                    label: `${e.name} set ${set.set} actual ${e.metric}`,
-                                                    value: set.reps,
-                                                    max: 9999,
-                                                    onChange: n => updateSet(index, {
-                                                        reps: n ?? 0,
-                                                        done: false
-                                                    })
-                                                }), tracked && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NumericField, {
-                                                    disabled: savingAction,
-                                                    label: `${e.name} set ${set.set} actual load ${state.profile.units}`,
-                                                    nullable: true,
-                                                    value: set.kg === null ? null : set.kg * (state.profile.units === 'lb' ? 2.2046226218 : 1),
-                                                    max: state.profile.units === 'lb' ? 3306 : 1500,
-                                                    onChange: n => updateSet(index, {
-                                                        kg: n === null ? null : (0, _srcSharedTraining.toKg)(n, state.profile.units),
-                                                        done: false
-                                                    })
-                                                })]
-                                        }), e.metric === 'reps' && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcSetRir.NativeSetRir, {
-                                            name: e.name,
-                                            set: set.set,
-                                            value: set.rir,
-                                            disabled: savingAction,
-                                            onChange: rir => updateSet(index, {
-                                                rir
-                                            })
-                                        }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
-                                            accessibilityRole: "button",
-                                            disabled: set.done || savingAction,
-                                            accessibilityState: {
-                                                disabled: set.done || savingAction
-                                            },
-                                            accessibilityLabel: `${set.done ? 'Saved' : 'Log'} ${e.name} set ${set.set}`,
-                                            onPress: () => {
-                                                if (set.done)
-                                                    return;
-                                                var error = (0, _srcSharedRestTimer.completedSetError)(set.reps, set.kg, e.metric);
-                                                if (error) {
-                                                    setError(error);
-                                                    return;
-                                                }
-                                                void saveSet(index, target.rest, Date.now());
-                                            },
-                                            style: [styles.check, {
-                                                    width: '100%'
-                                                }, set.done && styles.checkDone],
-                                            children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                                style: {
-                                                    color: set.done ? COLORS.onAccent : COLORS.green,
-                                                    fontSize: 14,
-                                                    fontWeight: '700'
-                                                },
-                                                children: set.done ? 'Saved' : 'Log set'
-                                            })
-                                        }), set.done && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                                            secondary: true,
-                                            label: `Undo saved set ${set.set}`,
-                                            onPress: () => updateSet(index, {
-                                                done: false
-                                            })
-                                        }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(OptionalSetDetails, {
-                                            disabled: savingAction,
-                                            set: set,
-                                            name: e.name,
-                                            metric: e.metric,
-                                            onChange: metrics => updateSet(index, {
-                                                metrics
-                                            })
-                                        })]
-                                }, `${active.id}-${index}`)), target.note && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                    style: styles.small,
-                                    children: (0, _srcSharedPresentation.trainingCopy)(target.note)
-                                }), e.metric === 'reps' && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                                    label: "Substitute exercise",
-                                    secondary: true,
-                                    onPress: () => openSubstitute(active.sessionId, e.id)
-                                })]
-                        }, target.exerciseId);
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.sectionTitle,
-                                children: "Quick check-in"
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.body,
-                                children: "How did this workout feel?"
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
-                                style: [styles.row, {
-                                        flexWrap: 'wrap'
-                                    }],
-                                children: [['unsure', 'Skip'], ['easier', 'Easier'], ['right', 'About right'], ['harder', 'Harder']].map(([value, label]) => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Pill, {
-                                    label: label,
-                                    selected: (active.effort || 'unsure') === value,
-                                    onPress: async () => await persistChange(s => ({
-                                        ...s,
-                                        active: {
-                                            ...s.active,
-                                            effort: value
-                                        }
-                                    }))
-                                }, value))
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.body,
-                                children: "Any pain or concern?"
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
-                                style: [styles.row, {
-                                        flexWrap: 'wrap'
-                                    }],
-                                children: [['skip', 'Skip'], ['no', 'No'], ['yes', 'Yes'], ['unsure', 'Unsure']].map(([value, label]) => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Pill, {
-                                    label: label,
-                                    selected: (active.symptom || 'skip') === value,
-                                    onPress: async () => await persistChange(s => ({
-                                        ...s,
-                                        hold: value === 'yes' || value === 'unsure' ? true : s.hold,
-                                        active: {
-                                            ...s.active,
-                                            symptom: value
-                                        }
-                                    }))
-                                }, value))
-                            }), state.profile.age < 18 && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                                secondary: true,
-                                label: active.supervisorConfirmed ? 'Supervision recorded' : 'Confirm qualified supervision today',
-                                onPress: async () => await persistChange(s => ({
-                                    ...s,
-                                    active: {
-                                        ...s.active,
-                                        supervisorConfirmed: !s.active.supervisorConfirmed
-                                    }
-                                }))
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.small,
-                                children: "A concern pauses automatic changes. You can save a partial workout."
-                            })]
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                        label: "Finish & save workout",
-                        disabled: savingAction,
-                        onPress: requestFinish
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                        label: "Discard this workout",
-                        secondary: true,
-                        onPress: () => setConfirm({
-                            title: 'Discard current workout?',
-                            message: 'The active set entries will be removed. Existing history is kept, and this session stays scheduled.',
-                            label: 'Discard workout',
-                            action: () => {
-                                var expected = (0, _srcSharedWorkoutFlow.workoutConfirmation)(active);
-                                void persistChange(s => {
-                                    (0, _srcSharedWorkoutFlow.assertWorkoutConfirmation)(s, expected);
-                                    return {
-                                        ...s,
-                                        active: null,
-                                        restTimer: null
-                                    };
-                                }).then(saved => {
-                                    if (saved)
-                                        setFocusedExercise(null);
-                                });
-                            }
-                        })
-                    })]
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                style: styles.footnote,
-                children: "Workouts save on this device. Optional account and encrypted manual backup are in Settings."
             })]
     });
-    var planView = tab === 'Plan' && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.ScrollView, {
-        contentContainerStyle: styles.content,
-        keyboardShouldPersistTaps: "handled",
-        keyboardDismissMode: "on-drag",
-        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Heading, {
-                eyebrow: "YOUR TRAINING",
-                title: "Plans",
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
+    var planView = tab === 'Plan' && h(NativeFlowScreen,{
+        title:({home:'Plans',current:'My plan',schedule:'Plan schedule',details:'Progression & sources',explore:'Find a plan',saved:'Saved & previous',tools:'Plan tools'})[planSection] || 'Plans',
+        onBack:planSection==='home'?undefined:()=>setPlanSection(['schedule','details'].includes(planSection)?'current':'home'),handleHardwareBack:planSection!=='home',
+        footer:planSection==='home'&&!state.plan?h(NativeActionFooter,{primary:{label:'Build my plan',disabled:!!active,onPress:()=>{setSourceChoice(undefined);setPersonalSetup(true);}}}):undefined,
+        children:planSection==='home'?[state.plan && h(NativeSection,{title:(0,_srcSharedPresentation.planName)(state.plan),description:state.plan.profile.days.map(x=>_srcSharedTraining.weekdays[x]).join(' · ')}),
+state.plan && h(NativeSettingsRow, {label:"My plan", onPress:()=>{setPlanSection('current');}}),
+h(NativeSettingsRow, {label:"Find a plan", onPress:()=>{setPlanSection('explore');}}),
+h(NativeSettingsRow, {label:"Saved & previous", onPress:()=>{setPlanSection('saved');}}),
+h(NativeSettingsRow, {label:"Plan tools", onPress:()=>{setPlanSection('tools');}})]:planSection==='current'?(state.plan?[state.plan && h(NativeSection,{title:(0,_srcSharedPresentation.planName)(state.plan),description:`${state.plan.sessions.length} planned workouts${state.plan.paused?' · Paused':''}`}),
+h(NativeSettingsRow, {label:"View schedule", onPress:()=>{setPlanSection('schedule');}}),
+h(NativeSettingsRow, {label:"Progression & sources", onPress:()=>{setPlanSection('details');}}),
+state.plan && h(NativeSettingsRow, {label:"Pause or resume plan", onPress:()=>{void persistChange(v=>(0,_srcSharedReusablePlan.setPlanPaused)(v,state.plan.id,state.plan.version,!state.plan.paused));},value:state.plan.paused?'Paused':'Active',disabled:!!active}),
+h(NativeSettingsRow, {label:"Save or reuse a block", onPress:()=>{setPlanSection('saved');}})]:[planSection === 'current' && !state.plan && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
+                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                        style: styles.body,
+                        children: "Choose or build a plan to see your complete block here."
+                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                        label: "Explore plans",
+                        onPress: () => setPlanSection('explore')
+                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                        label: "Build my plan",
+                        onPress: () => {
+                            setSourceChoice(undefined);
+                            setPersonalSetup(true);
+                        }
+                    })]
+            })]):planSection==='tools'?[(0, _reactJsxRuntime.jsxs)(_reactNative.View, {
                 style: styles.tools,
                 children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
                     secondary: true, label: "Build plan", disabled: !!active,
@@ -1567,16 +1183,7 @@ function TrainingApp() {
                         void (0, _srcFileTransfer.shareJsonFile)(JSON.stringify(snapshot.plan), 'plaintext-plan', () => !resettingRef.current && stateRef.current === snapshot).catch(e => setError(e.message));
                     }
                 })]
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
-                style: [styles.row, {
-                        flexWrap: 'wrap'
-                    }],
-                children: ['current', 'saved', 'explore'].map((section, i) => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Pill, {
-                    label: ['My plan', 'Saved & previous', 'Explore'][i],
-                    selected: planSection === section,
-                    onPress: () => setPlanSection(section)
-                }, section))
-            }), planSection === 'saved' && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcSavedPlans.NativeSavedPlans, {
+            })]:[planSection === 'saved' && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcSavedPlans.NativeSavedPlans, {
                 sample: sampleMode,
                 state: state,
                 onChange: persistChange,
@@ -1585,21 +1192,7 @@ function TrainingApp() {
                     var snapshot = stateRef.current;
                     await (0, _srcFileTransfer.shareJsonFile)(JSON.stringify(p), 'plaintext-plan', () => !resettingRef.current && stateRef.current === snapshot);
                 }
-            }), planSection === 'current' && !state.plan && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
-                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.body,
-                        children: "Choose or build a plan to see your complete block here."
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                        label: "Explore plans",
-                        onPress: () => setPlanSection('explore')
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                        label: "Build my plan",
-                        onPress: () => {
-                            setSourceChoice(undefined);
-                            setPersonalSetup(true);
-                        }
-                    })]
-            }), planSection === 'current' && state.plan && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+            }),planSection === 'details' && state.plan && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
                 children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                         style: styles.eyebrow,
                         children: "YOUR CURRENT BLOCK"
@@ -1624,7 +1217,7 @@ function TrainingApp() {
                         label: "Save or reuse a block",
                         onPress: () => setPlanSection('saved')
                     })]
-            }), planSection === 'current' && state.plan && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
+            }),planSection === 'schedule' && state.plan && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
                 children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                         style: styles.sectionTitle,
                         children: "Every session in this block"
@@ -1653,7 +1246,7 @@ function TrainingApp() {
                         label: "Show more planned sessions",
                         onPress: () => setPlanSessionLimit(v => v + 20)
                     })]
-            }), planSection === 'explore' && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
+            }),planSection === 'explore' && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
                 children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
                         label: "Build a plan for my goals",
                         onPress: () => {
@@ -1880,84 +1473,13 @@ function TrainingApp() {
                         })]
                 })
     });
-    var historyView = /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.ScrollView, {
-        contentContainerStyle: styles.content,
-        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Heading, {
-                eyebrow: "YOUR WORK, RECORDED",
-                title: "Look how far you\u2019ve come.",
-                detail: "Review the workouts and sets you have saved."
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                style: styles.row,
-                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Pill, {
-                        label: "History",
-                        selected: historySection === 'history',
-                        onPress: () => setHistorySection('history')
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Pill, {
-                        label: "Progress",
-                        selected: historySection === 'progress',
-                        onPress: () => setHistorySection('progress')
-                    })]
-            }), historySection === 'progress' && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcProgress.NativeProgress, {
-                state: state
-            }), " ", historySection === 'history' && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
-                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                        style: styles.stats,
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                                grow: true,
-                                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                        style: styles.statNumber,
-                                        children: state.history.length
-                                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                        style: styles.small,
-                                        children: "saved workouts"
-                                    })]
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                                grow: true,
-                                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                        style: styles.statNumber,
-                                        children: state.history.reduce((n, w) => n + w.sets.filter(x => x.done).length, 0)
-                                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                        style: styles.small,
-                                        children: "completed sets"
-                                    })]
-                            })]
-                    }), !state.history.length && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.sectionTitle,
-                                children: "Your story starts with one session."
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.body,
-                                children: "Choose a plan, enter what you actually do, and save your first workout."
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                                label: "Back to Today",
-                                onPress: () => setTab('Today')
-                            })]
-                    }), state.history.slice().reverse().slice(0, historyLimit).map(w => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
-                        accessibilityRole: "button",
-                        style: styles.exerciseRow,
-                        onPress: () => {
-                            setEditingHistory(false);
-                            setHistoryItem(w);
-                        },
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                                style: styles.flex,
-                                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                        style: styles.rowTitle,
-                                        children: (0, _srcSharedPresentation.workoutName)(w, state)
-                                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                        style: styles.small,
-                                        children: [(0, _srcSharedTraining.niceDate)(w.date), " \xB7 ", w.sets.filter(x => x.done).length, " sets \xB7 ", w.partial ? 'Partial' : 'Completed']
-                                    })]
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.link,
-                                children: "View \u2192"
-                            })]
-                    }, w.id)), state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                        label: 'Show more saved workouts', secondary: true, onPress: () => setHistoryLimit(value => value + 20)
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NativeEquipmentLimit, {
+    var profileView = h(_react.Fragment,null,
+h(NativeSettingsRow, {label:"Profile", onPress:()=>{void switchDataset(!sampleMode);},value:sampleMode?'Sample profile · synthetic':'My profile · encrypted',detail:sampleMode?'My profile':'Try sample'}),
+(0, _reactJsxRuntime.jsx)(NativeEquipmentLimit, {
                         state: state,
                         onSave: persistChange
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                    }),
+(0, _reactJsxRuntime.jsxs)(Card, {
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.sectionTitle,
                                 children: "Your device profile"
@@ -1992,16 +1514,73 @@ function TrainingApp() {
                                     }
                                 })
                             })]
-                    })]
-            })]
-    });
+                    }));
+    var historyView = h(NativeFlowScreen,{title:historySection==='progress'?'Progress':'History',onBack:historySection==='progress'?()=>setHistorySection('history'):undefined,handleHardwareBack:historySection==='progress',children:historySection==='progress'?h(_srcProgress.NativeProgress,{state}):[h(NativeSettingsRow, {label:"Progress", onPress:()=>{setHistorySection('progress');}}),
+(0, _reactJsxRuntime.jsxs)(_reactNative.View, {
+                        style: styles.stats,
+                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                                grow: true,
+                                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                                        style: styles.statNumber,
+                                        children: state.history.length
+                                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                                        style: styles.small,
+                                        children: "saved workouts"
+                                    })]
+                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                                grow: true,
+                                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                                        style: styles.statNumber,
+                                        children: state.history.reduce((n, w) => n + w.sets.filter(x => x.done).length, 0)
+                                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                                        style: styles.small,
+                                        children: "completed sets"
+                                    })]
+                            })]
+                    }),
+!state.history.length && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                                style: styles.sectionTitle,
+                                children: "Your story starts with one session."
+                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                                style: styles.body,
+                                children: "Choose a plan, enter what you actually do, and save your first workout."
+                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                                label: "Back to Today",
+                                onPress: () => setTab('Today')
+                            })]
+                    }),
+state.history.slice().reverse().slice(0, historyLimit).map(w => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
+                        accessibilityRole: "button",
+                        style: styles.exerciseRow,
+                        onPress: () => {
+                            setEditingHistory(false);
+                            setHistoryItem(w);
+                        },
+                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
+                                style: styles.flex,
+                                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                                        style: styles.rowTitle,
+                                        children: (0, _srcSharedPresentation.workoutName)(w, state)
+                                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
+                                        style: styles.small,
+                                        children: [(0, _srcSharedTraining.niceDate)(w.date), " \xB7 ", w.sets.filter(x => x.done).length, " sets \xB7 ", w.partial ? 'Partial' : 'Completed']
+                                    })]
+                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+                                style: styles.link,
+                                children: "View \u2192"
+                            })]
+                    }, w.id)),
+state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                        label: 'Show more saved workouts', secondary: true, onPress: () => setHistoryLimit(value => value + 20)
+                    })]});
     return /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNativeSafeAreaContext.SafeAreaView, {
         style: [styles.safe, _srcSharedBrand.isGrizzly && appearance.p.grizzlyStyle === 'wild' && !appearance.p.contrast && {backgroundColor: 'transparent'}],
         edges: ['top', 'bottom'],
         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_expoStatusBar.StatusBar, {
                 style: appearance.dark ? "light" : "dark"
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                style: styles.brandBar,
+                style: [styles.brandBar, tab === "Today" && phonePage === "workout" && {display:"none"}],
                 children: [_srcSharedBrand.isGrizzly && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
                         style: {
                             width: 40,
@@ -2031,11 +1610,8 @@ function TrainingApp() {
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.brand,
                                 children: _srcSharedBrand.brand.name
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.brandSub,
-                                children: _srcSharedBrand.brand.tagline
                             })]
-                    }), viewport.width >= 390 && appearance.p.textSize === 100 && viewport.fontScale <= 1.15 && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
+                    }),  /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
                         style: styles.demoBadge,
                         children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                             style: styles.demoText,
@@ -2053,17 +1629,7 @@ function TrainingApp() {
                         style: styles.small,
                         children: "Tap to dismiss"
                     })]
-            }) : null, /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                style: styles.profileBar,
-                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: [styles.small, styles.flex],
-                        children: sampleMode ? 'Sample profile · synthetic' : 'My profile · encrypted'
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                        secondary: true,
-                        label: sampleMode ? 'My profile' : 'Try sample',
-                        onPress: () => void switchDataset(!sampleMode)
-                    })]
-            }), resetting && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
+            }) : null, /*#__PURE__*/ null, resetting && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                 accessibilityLiveRegion: "polite",
                 style: styles.body,
                 children: "Resetting local data\u2026"
@@ -2072,6 +1638,7 @@ function TrainingApp() {
                 behavior: _reactNative.Platform.OS === 'ios' ? 'padding' : undefined,
                 children: tab === 'Today' ? todayView : tab === 'Plan' ? planView : tab === 'Library' ? libraryView : tab === 'Settings' ? /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcSettings.NativeSettings, {
                     reminderMessage: workoutReminderMessage,
+                    profile: profileView,
                     children: !sampleMode && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcCloudAccount.NativeCloudAccount, {
                                 state: state,
                                 onRestore: (next, expected) => persistChange(s => {
@@ -2227,11 +1794,11 @@ function TrainingApp() {
                 children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                     accessibilityLiveRegion: "polite",
                     style: styles.saveStatus,
-                    children: saveStatus
+                    children: sampleMode && !saveStatus.startsWith('Sample') ? 'Sample · ' + saveStatus : saveStatus
                 })
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NativeTabBar, {
                 selected: tab,
-                onSelect: label => { setTab(label); setError(''); }
+                onSelect: label => { setTab(label); setPhonePage('home'); setError(''); }
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(ModalFrame, {
                 visible: !!coachingCurrent,
                 onDismiss: completeCoachingTransition,
@@ -2277,22 +1844,20 @@ function TrainingApp() {
                         return saved;
                     },
                     onStart: id => reviewBeforeWorkout(id, true),
-                    onHistory: w => {
-                        setCalendarOpen(false);
+                    onHistory: w => navigateAfterModal(()=>setCalendarOpen(false),()=>{
                         setEditingHistory(false);
                         setHistoryItem(w);
-                    },
+                    }),
                     onResume: () => {
                         setCalendarOpen(false);
+                        setPhonePage('workout');
+                        setFocusedExercise(stateRef.current?.active?.sets.find(x=>!x.done)?.exerciseId ?? stateRef.current?.active?.targets?.[0]?.exerciseId ?? null);
                         setTab('Today');
                     },
-                    onEdit: id => {
-                        setCalendarOpen(false);
-                        if (state.plan?.profile.mode === 'app')
-                            setCustomizeSession(id);
-                        else
-                            setTrackingSession(id);
-                    }
+                    onEdit: id => navigateAfterModal(()=>setCalendarOpen(false),()=>{
+                        if (state.plan?.profile.mode === 'app') setCustomizeSession(id);
+                        else setTrackingSession(id);
+                    })
                 }, calendarDate)
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(ModalFrame, {
                 visible: !!customizeSession,
@@ -2344,15 +1909,22 @@ function TrainingApp() {
                 })
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(ModalFrame, {
                 visible: personalSetup,
+                scroll: false,
+                error: error,
+                closeLabel: "Save & close",
+                closeDisabled: savingAction,
+                requestClose: () => { if(setupBack.current?.())return; void (0,_srcStorage.flushLocalSetup)(sampleMode).then(()=>{setPersonalSetup(false);setSourceChoice(undefined);setError('');}).catch(e=>setError(e.message)); },
                 close: () => {
                     void (0, _srcStorage.flushLocalSetup)(sampleMode).then(() => {
                         setPersonalSetup(false);
                         setSourceChoice(undefined);
+                        setError('');
                     }).catch(e => setError(e.message));
                 },
                 title: "Your plan setup",
                 children: personalSetup && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcPlanSetup.PlanSetup, {
                     sourceChoice: sourceChoice,
+                    onRegisterBack: handler=>{setupBack.current=handler;},
                     sample: sampleMode,
                     state: state,
                     onAccept: async (profile, plan, events) => {
@@ -2364,125 +1936,26 @@ function TrainingApp() {
                         if (await persistChange(() => r.state)) {
                             setPersonalSetup(false);
                             setSourceChoice(undefined);
+                            setPhonePage('home');
                             setTab('Today');
                             return;
                         }
                         return 'This plan could not be saved. Check your entries.';
                     }
                 })
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(ModalFrame, {
-                visible: !!exercise,
-                close: () => setExercise(null),
-                title: "Exercise guide",
-                children: [linkError && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        accessibilityRole: "alert",
-                        style: styles.errorText,
-                        children: linkError
-                    }), exercise && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                style: styles.eyebrow,
-                                children: [exercise.equipment, " \xB7 ", exercise.pattern]
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.title,
-                                children: exercise.name
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.body,
-                                children: guide?.summary ?? 'A full guide is not available yet. These are the saved movement cues.'
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                        style: styles.sectionTitle,
-                                        children: guide ? 'Quick cues' : 'Movement cues'
-                                    }), (guide?.quickCues ?? exercise.cues).map((cue, i) => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                        style: styles.body,
-                                        children: ["\u2022 ", cue]
-                                    }, i))]
-                            }), exercise && (0, _srcSharedTraining.isLoadTracked)(exercise) && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NativeEquipmentLimit, {
-                                state: state,
-                                exercise: exercise,
-                                onSave: persistChange
-                            }), " ", guide && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
-                                children: [[['Equipment', guide.equipment], ['Set up', guide.setup], ['Perform the movement', guide.execution], ['Finish safely', guide.finish], ['Breathing', guide.breathing], ['Common errors & fixes', guide.commonErrors]].map(([title, lines]) => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                                style: styles.sectionTitle,
-                                                children: title
-                                            }), lines.map((line, i) => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                                style: styles.body,
-                                                children: [i + 1, ". ", line]
-                                            }, i))]
-                                    }, title)), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                                style: styles.sectionTitle,
-                                                children: "Make it easier"
-                                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                                style: styles.body,
-                                                children: guide.easierOption
-                                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                                style: styles.sectionTitle,
-                                                children: "Safety"
-                                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                                style: styles.body,
-                                                children: guide.safety
-                                            })]
-                                    }), !!guide.terms?.length && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                                style: styles.sectionTitle,
-                                                children: "Workout terms"
-                                            }), guide.terms.map(t => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                                style: styles.body,
-                                                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                                        style: {
-                                                            fontWeight: '700'
-                                                        },
-                                                        children: [t.term, ": "]
-                                                    }), t.meaning]
-                                            }, t.term))]
-                                    })]
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
-                                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                        style: styles.sectionTitle,
-                                        children: "How to log it"
-                                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                        style: styles.body,
-                                        children: guide?.loadConvention ?? exercise.loadConvention ?? 'Record the actual amount; no automatic load progression is configured.'
-                                    })]
-                            }), externalMedia?.referenceScope && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                style: styles.small,
-                                children: ["Reference: ", externalMedia.referenceScope, ". Follow this variation\u2019s written steps."]
-                            }), !externalMedia?.hasVideo && !!(0, _srcContent.safeWebUrl)(externalMedia?.sourceUrl || guide?.sourceURLs?.[0] || exercise.source || '') && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                                label: "Open form reference \u2197",
-                                secondary: true,
-                                onPress: () => {
-                                    void openUrl(externalMedia?.sourceUrl || guide?.sourceURLs?.[0] || exercise.source || '');
-                                }
-                            }), !!externalMedia?.hasVideo && !!(0, _srcContent.safeWebUrl)(externalMedia.videoUrl) && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
-                                label: "Open reference video \u2197",
-                                secondary: true,
-                                onPress: () => {
-                                    void openUrl(externalMedia.videoUrl);
-                                }
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.small,
-                                children: guide?.sourceNote ?? 'These cues have not been independently reviewed by a trainer.'
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.small,
-                                children: guide?.capability ?? 'Instruction only; the app cannot assess your form.'
-                            }), (guide?.sourceURLs ?? [externalMedia?.sourceUrl, exercise.source].filter(x => !!x)).filter(url => (0, _srcContent.safeWebUrl)(url)).map((url, i) => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
-                                accessibilityRole: "link",
-                                onPress: () => {
-                                    void openUrl(url);
-                                },
-                                style: styles.source,
-                                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                        style: styles.link,
-                                        children: ["Source ", i + 1, " \u2197"]
-                                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                        style: styles.small,
-                                        children: url
-                                    })]
-                            }, `${url}-${i}`))]
-                    })]
+            }), /*#__PURE__*/ h(ModalFrame, {
+                visible: !!exercise, scroll:false, close:()=>setExercise(null),
+                requestClose:()=>{if(!guideBack.current?.())setExercise(null);},
+                title:"Exercise guide",
+                children:exercise && h(NativeExerciseGuideScreen, {
+                    key:exercise.id, exercise, guide, media:externalMedia, linkError,
+                    onOpenUrl:url=>{void openUrl(url);},
+                    onRegisterBack:handler=>{guideBack.current=handler;},
+                    equipmentSettings:(0,_srcSharedTraining.isLoadTracked)(exercise)?h(NativeEquipmentLimit,{state,exercise,onSave:persistChange}):undefined
+                })
             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(ModalFrame, {
                 visible: !!preview,
+                onDismiss: completeCoachingTransition,
                 close: () => setPreview(null),
                 title: "Plan preview",
                 children: preview && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
@@ -2540,9 +2013,8 @@ function TrainingApp() {
                             label: sampleMode ? state.plan ? 'Use this sample plan · keep history' : 'Use this sample plan' : 'Build this plan for me',
                             onPress: async () => {
                                 if (!sampleMode) {
-                                    setSourceChoice({id:preview.profile.programId || '',goal:preview.profile.goal});
-                                    setPreview(null);
-                                    setPersonalSetup(true);
+                                    var choice={id:preview.profile.programId || '',goal:preview.profile.goal};
+                                    navigateAfterModal(()=>setPreview(null),()=>{setSourceChoice(choice);setPersonalSetup(true);});
                                     return;
                                 }
                                 if (await persistChange(s => (0, _srcMobileEngine.adoptPlan)(s, preview))) {

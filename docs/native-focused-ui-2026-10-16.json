@@ -1,0 +1,317 @@
+{
+  "updatedAt": "2026-10-16T18:28:16.424790+00:00",
+  "status": "source integration and focused component qualification; no new-build publication claim",
+  "publication": {
+    "newNativeBuildVerified": false,
+    "newPagesDeploymentVerified": false,
+    "finalApplicationFlowChecks": "separate parent-owned gate"
+  },
+  "componentRun": {
+    "checkedAt": "2026-10-16T18:22:14.995Z",
+    "sourceHashes": {
+      "mobile/src/phone-ui.tsx": "cb87c8d2ea28d20ee3a186c7db0653bb499f434a1eb23e68413e41a5396e9563",
+      "mobile/src/settings.tsx": "ad6355712af1935d84200fc3561d2f35ad003110c67111e7e22a862cb92bd0db",
+      "mobile/src/tab-bar.tsx": "be4a4bfcee4f813ba34d8c3ad512cd52785bdd89fb88baae7962b6b4370f6afa",
+      "mobile/src/today-hero.tsx": "463f66e22cd87836ad7a88c3f07220468bd56de4fc1381a6678213e4f50cdd28"
+    },
+    "scope": "Actual native Settings, shared flow/footer and tabs through RN Web with real appearance preference persistence. Font loader and OS notification permission mocked. No physical keyboard, screen-reader, safe-area or Android/iOS execution claim.",
+    "results": [
+      {
+        "variant": "movefield",
+        "passed": true,
+        "preferences": {
+          "mode": "dark",
+          "palette": "ocean",
+          "grizzlyStyle": "clean",
+          "headingFont": "barlow",
+          "headingFontVersion": 2,
+          "textSize": 130,
+          "contrast": true,
+          "reduceMotion": true,
+          "underlineLinks": false,
+          "reminders": true,
+          "reminderTime": "07:45",
+          "model": "1.7b",
+          "coaching": "manual"
+        },
+        "cases": [
+          "short hub and separate profile/account/backup surfaces",
+          "reminder draft navigation, time save and permission callback",
+          "all coaching/model/display/palette settings remain reachable",
+          "35 Grizzly fonts through filters/search when applicable",
+          "130% app text, contrast/reduced motion and persistence",
+          "sticky action above navigation and bounded scroll at 320px",
+          "full tab labels/hit areas and selected visibility at320/390/768px"
+        ]
+      },
+      {
+        "variant": "grizzly",
+        "passed": true,
+        "preferences": {
+          "mode": "dark",
+          "palette": "ocean",
+          "grizzlyStyle": "wild",
+          "headingFont": "metal",
+          "headingFontVersion": 2,
+          "textSize": 130,
+          "contrast": true,
+          "reduceMotion": true,
+          "underlineLinks": false,
+          "reminders": true,
+          "reminderTime": "07:45",
+          "model": "1.7b",
+          "coaching": "manual"
+        },
+        "cases": [
+          "short hub and separate profile/account/backup surfaces",
+          "reminder draft navigation, time save and permission callback",
+          "all coaching/model/display/palette settings remain reachable",
+          "35 Grizzly fonts through filters/search when applicable",
+          "130% app text, contrast/reduced motion and persistence",
+          "sticky action above navigation and bounded scroll at 320px",
+          "full tab labels/hit areas and selected visibility at320/390/768px"
+        ]
+      }
+    ],
+    "scans": [
+      {
+        "variant": "movefield",
+        "label": "Settings hub 320px",
+        "geometry": {
+          "width": 320,
+          "scrollWidth": 320,
+          "height": 568,
+          "scrollHeight": 568
+        },
+        "violations": []
+      },
+      {
+        "variant": "movefield",
+        "label": "Accessibility 320px 130%",
+        "geometry": {
+          "width": 320,
+          "scrollWidth": 320,
+          "height": 568,
+          "scrollHeight": 568
+        },
+        "violations": []
+      },
+      {
+        "variant": "movefield",
+        "label": "Reminder footer 320px 130%",
+        "geometry": {
+          "width": 320,
+          "scrollWidth": 320,
+          "height": 568,
+          "scrollHeight": 568
+        },
+        "violations": []
+      },
+      {
+        "variant": "movefield",
+        "label": "Hub 320px 130%",
+        "geometry": {
+          "width": 320,
+          "scrollWidth": 320,
+          "height": 568,
+          "scrollHeight": 568
+        },
+        "violations": []
+      },
+      {
+        "variant": "movefield",
+        "label": "Hub 390px 130%",
+        "geometry": {
+          "width": 390,
+          "scrollWidth": 390,
+          "height": 844,
+          "scrollHeight": 844
+        },
+        "violations": []
+      },
+      {
+        "variant": "movefield",
+        "label": "Hub 768px 130%",
+        "geometry": {
+          "width": 768,
+          "scrollWidth": 768,
+          "height": 1024,
+          "scrollHeight": 1024
+        },
+        "violations": []
+      },
+      {
+        "variant": "grizzly",
+        "label": "Settings hub 320px",
+        "geometry": {
+          "width": 320,
+          "scrollWidth": 320,
+          "height": 568,
+          "scrollHeight": 568
+        },
+        "violations": []
+      },
+      {
+        "variant": "grizzly",
+        "label": "Accessibility 320px 130%",
+        "geometry": {
+          "width": 320,
+          "scrollWidth": 320,
+          "height": 568,
+          "scrollHeight": 568
+        },
+        "violations": []
+      },
+      {
+        "variant": "grizzly",
+        "label": "Searchable font choice 320px 130%",
+        "geometry": {
+          "width": 320,
+          "scrollWidth": 320,
+          "height": 568,
+          "scrollHeight": 568
+        },
+        "violations": []
+      },
+      {
+        "variant": "grizzly",
+        "label": "Reminder footer 320px 130%",
+        "geometry": {
+          "width": 320,
+          "scrollWidth": 320,
+          "height": 568,
+          "scrollHeight": 568
+        },
+        "violations": []
+      },
+      {
+        "variant": "grizzly",
+        "label": "Hub 320px 130%",
+        "geometry": {
+          "width": 320,
+          "scrollWidth": 320,
+          "height": 568,
+          "scrollHeight": 568
+        },
+        "violations": []
+      },
+      {
+        "variant": "grizzly",
+        "label": "Hub 390px 130%",
+        "geometry": {
+          "width": 390,
+          "scrollWidth": 390,
+          "height": 844,
+          "scrollHeight": 844
+        },
+        "violations": []
+      },
+      {
+        "variant": "grizzly",
+        "label": "Hub 768px 130%",
+        "geometry": {
+          "width": 768,
+          "scrollWidth": 768,
+          "height": 1024,
+          "scrollHeight": 1024
+        },
+        "violations": []
+      }
+    ]
+  },
+  "currentSourceHashes": {
+    "mobile/src/phone-ui.tsx": "e14d988c639906e9c964c8dfb997028e44f9e0d56ed67a1f382179d4addf0bc0",
+    "mobile/src/settings.tsx": "ad6355712af1935d84200fc3561d2f35ad003110c67111e7e22a862cb92bd0db",
+    "mobile/src/tab-bar.tsx": "be4a4bfcee4f813ba34d8c3ad512cd52785bdd89fb88baae7962b6b4370f6afa",
+    "mobile/src/today-hero.tsx": "463f66e22cd87836ad7a88c3f07220468bd56de4fc1381a6678213e4f50cdd28",
+    "scripts/check-native-phone-settings.mjs": "ae35859eee4fcfe3bdb433378b05609020eb05db4be475166e4a5a14a7123b1e",
+    "scripts/check-native-density.cjs": "faacb55b745f1b2276676e7348906db2cc0e8acbec91fbf0a37f8489f4b3a69a",
+    "scripts/check-grizzly-messages.cjs": "45d0aaf8a5ad7660260c739eb7445179d348b4f03c37cc0f599090ced78159aa"
+  },
+  "sourceDeltaAfterComponentRun": {
+    "file": "mobile/src/phone-ui.tsx",
+    "changes": [
+      {
+        "change": "Added opt-in compactBack arrow-only presentation with full accessible back label and48-unit target; defaults unchanged.",
+        "validation": "Final application logger geometry/behavior check is parent-owned."
+      },
+      {
+        "change": "Added tabIndex=0 and focusable to the single ScrollView after a real long-read-only-guide scrollable-region-focusable axe finding; children remain separately accessible.",
+        "validation": "Passed targeted actual guide rerun:22 axe/geometry states, zero violations, and keyboard End scrolls long read-only content in both brands.",
+        "supportedProps": "Installed React Native0.86 ViewProps declares focusable:boolean and tabIndex:0|-1; ScrollView inherits ViewProps."
+      }
+    ]
+  },
+  "additionalChecks": {
+    "nativeTypeScript": "passed including compactBack and keyboard-focusable scroll body",
+    "ownedComponentLint": "all four owned components passed; shared primitive rerun passed after compactBack and scroll focusability",
+    "grizzlyMessageGroups": 6,
+    "density": "Dedicated screen/footer structure plus executed failed/successful/changed-focus set-save callbacks passed again after scroll focusability"
+  },
+  "visualReview": {
+    "inspected": [
+      "movefield/hub.png",
+      "grizzly/hub.png",
+      "movefield/hub-320-default.png",
+      "grizzly/reminders-320-large.png"
+    ],
+    "observations": [
+      "Five Settings categories visible before scrolling at320x568 normal text; all destinations remain in the scroll body.",
+      "130% reminder header wraps to two lines; supporting copy scrolls, Save remains above tabs.",
+      "Enlarged tab labels retain full names in a bounded horizontal surface with selected tab visible."
+    ],
+    "baseDirectory": ".sites-runtime/native-phone-settings"
+  },
+  "referenceAccess": {
+    "status": "initial official-reference pass blocked",
+    "initialDeniedRequests": 12,
+    "substantiveOfficialPagesReadInThatPass": 0,
+    "details": "docs/native-redesign-reference-2026-10-16.md"
+  },
+  "limits": [
+    "React Native Web in sandboxed Chromium, not an installed Android or iPhone run.",
+    "Font loader and notification permission mocked; appearance preference persistence real.",
+    "No physical keyboard, screen-reader, inset, performance or new upgrade acceptance claim.",
+    "Full application navigation, source freeze, compiled artifacts and publication separately qualified."
+  ],
+  "targetedGuideFollowup": {
+    "receipt": ".sites-runtime/native-exercise-guide/results.json",
+    "checkedAt": "2026-10-16T18:27:20.158Z",
+    "scope": "Actual guide and phone UI components through React Native Web in sandboxed Chromium. Font loading and external URL opening mocked; equipment draft is a synthetic injected control. No native OS, physical device, safe-area inset, screen-reader or form-science validation claim.",
+    "sourceSHA256": {
+      "mobile/src/exercise-guide-screen.tsx": "fa8f27529ac955d24c5fed8f6ae2b180fc8b793caf765e47dc7fdfca2aaaa0ec",
+      "mobile/src/phone-ui.tsx": "e14d988c639906e9c964c8dfb997028e44f9e0d56ed67a1f382179d4addf0bc0"
+    },
+    "keyboardCheck": "Both brands: long read-only Set up scrolling body accepts keyboard focus; End causes scrollTop > 0.",
+    "axeGeometryStates": 22,
+    "results": [
+      {
+        "variant": "movefield",
+        "passed": true,
+        "cases": [
+          "Original guide text and overview safety retained",
+          "One section at a time with sequential and registered Back navigation",
+          "Equipment/log convention and unsaved injected draft survive navigation",
+          "Source qualifications and exact terms retained",
+          "Credential-free HTTPS links only; failed-link alert retained",
+          "Missing-guide/custom fallback without invented instruction",
+          "Single bounded scrolling body and footer at320px/130% text"
+        ]
+      },
+      {
+        "variant": "grizzly",
+        "passed": true,
+        "cases": [
+          "Original guide text and overview safety retained",
+          "One section at a time with sequential and registered Back navigation",
+          "Equipment/log convention and unsaved injected draft survive navigation",
+          "Source qualifications and exact terms retained",
+          "Credential-free HTTPS links only; failed-link alert retained",
+          "Missing-guide/custom fallback without invented instruction",
+          "Single bounded scrolling body and footer at320px/130% text"
+        ]
+      }
+    ],
+    "violationCount": 0
+  }
+}

@@ -8,17 +8,18 @@ function harness(filename,props,extra={}){
  const changed=(a,b)=>!a||a.length!==b?.length||a.some((x,i)=>!Object.is(x,b[i]));
  const react={useState(initial){const n=cursor++;if(!(n in slots))slots[n]=typeof initial==='function'?initial():initial;return [slots[n],v=>{const next=typeof v==='function'?v(slots[n]):v;if(!Object.is(next,slots[n])){slots[n]=next;dirty=true}}]},useRef(initial){const n=cursor++;if(!(n in slots))slots[n]={current:initial};return slots[n]},useMemo(fn,deps){const n=cursor++;if(!slots[n]||changed(slots[n].deps,deps))slots[n]={value:fn(),deps};return slots[n].value},useEffect(fn,deps){const n=cursor++;if(!slots[n]||changed(slots[n].deps,deps)){slots[n]?.cleanup?.();slots[n]={deps};effects.push(()=>{slots[n].cleanup=fn()})}}};
  react.useLayoutEffect=(fn,deps)=>react.useEffect(fn,deps);
+ react.createElement=(type,props,...children)=>({type,props:{...props,children:children.length===1?children[0]:children},key:props?.key});
  const jsx=(type,props,key)=>({type,props:props||{},key});
- const rn={View:'View',Text:'Text',TextInput:'TextInput',ScrollView:'ScrollView',StyleSheet:{create:x=>x},useWindowDimensions:()=>({width:390,height:844,fontScale:1}),Alert:{alert(){}}};
+ const rn={View:'View',Text:'Text',TextInput:'TextInput',ScrollView:'ScrollView',StyleSheet:{create:x=>x},useWindowDimensions:()=>({width:390,height:844,fontScale:1}),Alert:{alert(){}},Keyboard:{dismiss(){}}};
  const mocks={'react':{...react,default:react,__esModule:true},'react/jsx-runtime':{jsx,jsxs:jsx,Fragment:'Fragment'},'react-native':rn,
   './wild-interactions':{GrizzlyPressable:'Pressable',NativeWildReveal:'Reveal'},'./appearance':{useThemedStyles:x=>x,useNativeAppearance:()=>({p:{textSize:100},colors:{ink:'#111',green:'#070',line:'#aaa',onAccent:'#fff',white:'#fff',danger:'#900'}})},
-  './equipment-survey':{NativeEquipmentSurvey:'EquipmentSurvey'},'./science':{NativePlanEvidence:'Evidence'},...extra};
+  './phone-ui':{NativeFlowScreen:'FlowScreen',NativeActionFooter:'ActionFooter'},'./equipment-survey':{NativeEquipmentSurvey:'EquipmentSurvey'},'./science':{NativePlanEvidence:'Evidence'},...extra};
  const module={exports:{}};
  const code=ts.transpileModule(fs.readFileSync(filename,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true}}).outputText;
  new Function('require','module','exports',code)(name=>mocks[name]||domain.load(path.resolve(path.dirname(filename),name)+(path.extname(name)?'':'.ts')),module,module.exports);
  const component=Object.values(module.exports).find(x=>typeof x==='function');
  function render(){cursor=0;dirty=false;tree=component(props);for(const effect of effects.splice(0))effect();return tree}
- function nodes(value=tree,result=[]){if(Array.isArray(value)){for(const x of value)if(x!==undefined)nodes(x,result)}else if(value&&typeof value==='object'){result.push(value);if(value.props?.children!==undefined)nodes(value.props.children,result)}return result}
+ function nodes(value=tree,result=[]){if(Array.isArray(value)){for(const x of value)if(x!==undefined)nodes(x,result)}else if(value&&typeof value==='object'){result.push(value);if(value.props?.children!==undefined)nodes(value.props.children,result);if(value.props?.footer)nodes(value.props.footer,result);if(value.props?.primary)nodes({type:'Primary',props:value.props.primary},result);if(value.props?.onBack)nodes({type:'Back',props:{label:'Back',onPress:value.props.onBack}},result)}return result}
  async function flush(){for(let i=0;i<20;i++){if(dirty)render();await Promise.resolve();await Promise.resolve()}return tree}
  return {render,flush,nodes,find:predicate=>nodes().find(predicate),all:predicate=>nodes().filter(predicate),text:()=>nodes().flatMap(x=>typeof x.props?.children==='string'?[x.props.children]:[]).join('\n'),async press(label){const node=nodes().find(x=>x.props.label===label||x.props.accessibilityRole==='button'&&nodes(x).some(y=>y.props.children===label));assert.ok(node,'Missing action: '+label);assert.ok(!node.props.disabled,'Disabled action: '+label);await node.props.onPress();await flush()}};
 }
@@ -26,10 +27,10 @@ async function setupJourney(sourceChoice){
  const state={...domain.load('mobile/src/mobile-engine.ts').emptyDemo(),profile:{...T.blankProfile,name:'Synthetic profile',age:28,start:T.day(),days:[0,1,2,3,4,5,6],trainingDays:2,minutes:120,equipment:'Full gym',experience:'Experienced',establishedTraining:true,runBase:true,runDays:5,runMinutes:150,jumpReady:true,inventory:{...E.defaultInventory(),confirmed:true}}};
  let accepted=0,acceptedProfile,fail=true,draft;
  const component=harness('mobile/src/plan-setup-runtime.js',{state,sourceChoice,onAccept:async(profile,plan)=>{accepted++;acceptedProfile=profile;if(fail)return 'Synthetic disk failure';assert.ok(plan.sessions.length);return undefined}}, {'./storage':{readLocalSetup:async()=>null,saveLocalSetup:async v=>{draft=v},clearLocalSetup:async()=>{draft=null}}});
- await component.flush();assert.match(component.text(),/Your goal/);assert.equal(accepted,0);
- await component.press('Continue');await component.press('Continue');await component.press('See my plans');
+ await component.flush();assert.equal(component.find(x=>x.type==='FlowScreen').props.title,'About you');assert.equal(accepted,0);
+ for(let i=0;i<24&&!component.find(x=>x.props.label==='Review this plan');i++){const action=component.find(x=>x.type==='Primary');assert.ok(action,'wizard primary action');await component.press(action.props.label)}
  const choices=component.all(x=>x.props.label==='Review this plan');assert.ok(choices.length>0,'actual setup offers compatible plans');
- await component.press('Review this plan');assert.equal(component.all(x=>x.props.label==='Review this plan').length,0,'review focuses on one choice');
+ await component.press('Review this plan');assert.equal(component.find(x=>x.type==='FlowScreen').props.title,'Review your plan','review focuses on one choice');
  await component.press('Choose another plan');assert.ok(component.all(x=>x.props.label==='Review this plan').length>0);
  await component.press('Review this plan');await component.press('Start this plan');assert.match(component.text(),/Synthetic disk failure/);assert.ok(draft,'failed acceptance retains setup');
  fail=false;await component.press('Start this plan');assert.equal(accepted,2);assert.equal(draft,null);assert.equal(acceptedProfile.name,'Synthetic profile');assert.equal(acceptedProfile.age,28);

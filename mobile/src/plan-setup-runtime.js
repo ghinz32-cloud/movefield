@@ -1,514 +1,143 @@
-import {GrizzlyPressable,NativeWildReveal} from './wild-interactions';
+import React,{useEffect,useMemo,useRef,useState} from 'react';
+import {Alert,Keyboard,StyleSheet,Text,TextInput,View} from 'react-native';
+import {GrizzlyPressable} from './wild-interactions';
+import {NativeFlowScreen,NativeActionFooter} from './phone-ui';
+import {NativeEquipmentSurvey} from './equipment-survey';
+import {useThemedStyles,useNativeAppearance} from './appearance';
 import {programCatalog} from './shared/program-catalog';
-// Recovered executed implementation; typed public contract is in the adjacent declaration.
-import * as _sharedPlanFit from "./shared/plan-fit";
-import * as _equipmentSurvey from "./equipment-survey";
-import * as _sharedSourcePrograms from "./shared/source-programs";
-import * as _sharedEquipment from "./shared/equipment";
-import * as _science from "./science";
-import * as _sharedSessionDuration from "./shared/session-duration";
-import * as _sharedSessionGuide from "./shared/session-guide";
-import * as _appearance from "./appearance";
-import * as _sharedPresentation from "./shared/presentation";
-import * as _react from "react";
-import * as _reactNative from "react-native";
-import * as _sharedTraining from "./shared/training";
-import * as _sharedOnboarding from "./shared/onboarding";
-import * as _storage from "./storage";
-import * as _sharedTrainingFocus from "./shared/training-focus";
-import * as _reactJsxRuntime from "react/jsx-runtime";
-var c = {
-    ink: '#19362D',
-    green: '#214D3A',
-    line: '#DCE1D7'
-};
-var baseStyles = _reactNative.StyleSheet.create({
-    body: {
-        fontSize: 16,
-        lineHeight: 24,
-        color: c.ink
-    },
-    title: {
-        fontSize: 22,
-        fontWeight: '700',
-        color: c.ink
-    },
-    row: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        gap: 8
-    },
-    input: {
-        fontSize: 16,
-        minHeight: 48,
-        borderWidth: 1,
-        borderColor: c.line,
-        borderRadius: 8,
-        padding: 12
-    },
-    button: {
-        minHeight: 48,
-        padding: 12,
-        borderWidth: 1,
-        borderColor: c.green,
-        borderRadius: 8,
-        justifyContent: 'center'
-    },
-    card: {
-        borderWidth: 1,
-        borderColor: c.line,
-        borderRadius: 12,
-        padding: 12,
-        gap: 8
-    }
+import {sourceProgram} from './shared/source-programs';
+import {defaultInventory,inventoryErrors} from './shared/equipment';
+import {hydrateSetupProfile,planOptions,setupErrors} from './shared/onboarding';
+import {day,validDay,goals,weekdays,niceDate,exFor,targetText,toKg} from './shared/training';
+import {focusChoices} from './shared/training-focus';
+import {planName,sessionName,trainingCopy} from './shared/presentation';
+import {durationText} from './shared/session-duration';
+import {sessionGuide} from './shared/session-guide';
+import {planFit} from './shared/plan-fit';
+import {NativePlanEvidence} from './science';
+import {readLocalSetup,saveLocalSetup,clearLocalSetup} from './storage';
+
+// Keep the public contract in plan-setup-runtime.d.ts. Persisted draft positions
+// remain the original four coarse sections; screen IDs are presentation only.
+const baseStyles=StyleSheet.create({
+ body:{fontSize:16,lineHeight:24,color:'#19362D'},
+ heading:{fontSize:20,lineHeight:28,fontWeight:'700',color:'#19362D'},
+ row:{flexDirection:'row',flexWrap:'wrap',gap:10},
+ stack:{gap:14},
+ input:{fontSize:16,minHeight:52,borderWidth:1,borderColor:'#DCE1D7',borderRadius:12,padding:14},
+ button:{minHeight:52,padding:14,borderWidth:1,borderColor:'#214D3A',borderRadius:12,justifyContent:'center'},
+ card:{borderWidth:1,borderColor:'#DCE1D7',borderRadius:16,padding:16,gap:14}
 });
-function Choice({ label, selected, onPress, disabled = false }) {
-    var styles = (0, _appearance.useThemedStyles)(baseStyles), { colors: c } = (0, _appearance.useNativeAppearance)();
-    return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(GrizzlyPressable, {
-        accessibilityRole: "button",
-        accessibilityState: {
-            selected,
-            disabled
-        },
-        disabled,
-        onPress: onPress,
-        style: [styles.button, selected && {
-                backgroundColor: c.green
-            }],
-        children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-            style: [styles.body, selected && {
-                    color: c.onAccent
-                }],
-            children: label
-        })
-    });
+function Choice({label,selected,onPress,disabled=false,expanded}){
+ const styles=useThemedStyles(baseStyles),{colors:c}=useNativeAppearance();
+ return React.createElement(GrizzlyPressable,{accessibilityRole:'button',accessibilityState:{selected,disabled,...(expanded===undefined?{}:{expanded})},disabled,onPress,style:[styles.button,selected&&{backgroundColor:c.green}]},React.createElement(Text,{style:[styles.body,selected&&{color:c.onAccent}]},label));
 }
-function Field({ label, value, onChange, numeric = false }) {
-    var styles = (0, _appearance.useThemedStyles)(baseStyles), { colors: c } = (0, _appearance.useNativeAppearance)();
-    return /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-        style: {
-            gap: 6
-        },
-        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                style: styles.body,
-                children: label
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.TextInput, {
-                accessibilityLabel: label,
-                value: value,
-                onChangeText: onChange,
-                maxLength: 100,
-                keyboardType: numeric ? 'decimal-pad' : 'default',
-                style: styles.input
-            })]
-    });
+function Field({label,value,onChange,numeric=false}){
+ const styles=useThemedStyles(baseStyles);
+ return React.createElement(View,{style:{gap:8}},React.createElement(Text,{style:styles.body},label),React.createElement(TextInput,{accessibilityLabel:label,value,onChangeText:onChange,maxLength:100,keyboardType:numeric?'decimal-pad':'default',style:styles.input}));
 }
-function PlanSetup({ state, onAccept, sample = false, sourceChoice }) {
-    var styles = (0, _appearance.useThemedStyles)(baseStyles), { colors: c } = (0, _appearance.useNativeAppearance)();
-    var [p, setP] = (0, _react.useState)({
-        ...state.profile,
-        start: (0, _sharedTraining.day)(),
-        programId: undefined,
-        inventory: (0, _sharedOnboarding.hydrateSetupProfile)(state.profile).inventory,
-        name: state.profile.name === 'Local demo' ? '' : state.profile.name,
-        ...(sourceChoice ? {
-            goal: sourceChoice.goal,
-            mode: 'app',
-            programId: sourceChoice.id || undefined,
-            trainingDays: (0, _sharedSourcePrograms.sourceProgram)(sourceChoice.id)?.days ?? programCatalog.find(x => x.id === sourceChoice.id)?.days
-        } : {})
-    }), [step, setStep] = (0, _react.useState)(0), [selected, setSelected] = (0, _react.useState)(null), [error, setError] = (0, _react.useState)(''), [showAll, setShowAll] = (0, _react.useState)(false);
-    var [loaded, setLoaded] = (0, _react.useState)(false), [saveNote, setSaveNote] = (0, _react.useState)('Opening saved setup…'), [draftBlocked, setDraftBlocked] = (0, _react.useState)(false);
-    var accepted = (0, _react.useRef)(false), write = (0, _react.useRef)(0), accepting = (0, _react.useRef)(false);
-    var [saving, setSaving] = (0, _react.useState)(false);
-    (0, _react.useEffect)(() => {
-        var live = true;
-        (0, _storage.readLocalSetup)(sample).then(d => {
-            if (!live)
-                return;
-            if (d && d.basePlanId === (state.plan?.id || null)) {
-                setP({
-                    ...(0, _sharedOnboarding.hydrateSetupProfile)(d.profile),
-                    ...(sourceChoice ? {
-                        goal: sourceChoice.goal,
-                        mode: 'app',
-                        programId: sourceChoice.id || undefined,
-                        trainingDays: (0, _sharedSourcePrograms.sourceProgram)(sourceChoice.id)?.days ?? programCatalog.find(x => x.id === sourceChoice.id)?.days
-                    } : {})
-                });
-                setStep(sourceChoice ? 0 : d.profile.mode === 'app' && !d.profile.inventory ? Math.min(2, d.step) : d.baseEvents === JSON.stringify(state.events) ? Math.min(3, d.step) : 1);
-                setSaveNote('Your saved setup is ready. Review your choices before accepting.');
-            }
-            else
-                setSaveNote('Your setup will be saved on this device.');
-        }).catch(() => {
-            if (live)
-                setDraftBlocked(true);
-            if (live)
-                setSaveNote('The previous setup could not be opened. Your accepted plan and workouts are unchanged.');
-        }).finally(() => {
-            if (live)
-                setLoaded(true);
-        });
-        return () => {
-            live = false;
-        };
-    }, []);
-    (0, _react.useEffect)(() => {
-        if (!loaded || accepted.current || draftBlocked)
-            return;
-        var version = ++write.current;
-        var live = true;
-        Promise.resolve().then(() => (0, _storage.saveLocalSetup)({
-            schema: 1,
-            basePlanId: state.plan?.id || null,
-            baseEvents: JSON.stringify(state.events),
-            profile: p,
-            events: state.events,
-            step
-        }, sample)).then(() => {
-            if (live && version === write.current)
-                setSaveNote('Setup saved on this device. You can close and continue later.');
-        }).catch(() => {
-            if (live && version === write.current)
-                setSaveNote('Setup could not be saved. Keep it open to finish, or try again.');
-        });
-        return () => {
-            live = false;
-        };
-    }, [p, step, loaded, state.plan?.id, state.events, draftBlocked]);
-    var options = (0, _react.useMemo)(() => step === 3 ? (0, _sharedOnboarding.planOptions)(p, state.events).sort((a, b) => Number(!!sourceChoice && b.id === sourceChoice.id && p.goal === sourceChoice.goal) - Number(!!sourceChoice && a.id === sourceChoice.id && p.goal === sourceChoice.goal)) : [], [step, p, state.events, sourceChoice]);
-    var set = (key, value) => {
-        setP(v => ({
-            ...v,
-            [key]: value,
-            programId: undefined
-        }));
-        setSelected(null);
-        setError('');
-    };
-    var next = () => {
-        var errors = (step === 0 ? [0] : step === 1 ? [3] : [2, 4]).flatMap(i => (0, _sharedOnboarding.setupErrors)(p, i));
-        if (errors.length) {
-            setError(errors.join(' '));
-            return;
-        }
-        setError('');
-        setStep(step + 1);
-    };
-    if (!loaded)
-        return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-            style: styles.body,
-            children: "Opening saved setup\u2026"
-        });
-    return /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(NativeWildReveal, {
-        sceneKey: `setup-${step}-${selected?.id || 'choices'}`,
-        style: {
-            gap: 10
-        },
-        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                style: styles.title,
-                children: ['Your goal', 'Your schedule', 'Equipment and coaching', 'Choose your plan'][step]
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                style: styles.body,
-                children: ["Step ", step + 1, " of 4"]
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                accessibilityLiveRegion: "polite",
-                style: styles.body,
-                children: saveNote
-            }), step === 0 && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
-                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Field, {
-                        label: "Profile name",
-                        value: p.name,
-                        onChange: v => set('name', v)
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Field, {
-                        label: "Age",
-                        numeric: true,
-                        value: String(p.age || ''),
-                        onChange: v => set('age', Number(v))
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.body,
-                        children: "Main goal"
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
-                        style: styles.row,
-                        children: _sharedTraining.goals.map(([id, label]) => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                            label: label,
-                            selected: p.goal === id,
-                            onPress: () => set('goal', id)
-                        }, id))
-                    }), p.goal === 'sport' && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Field, {
-                                label: "Sport",
-                                value: p.sport,
-                                onChange: v => set('sport', v)
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Field, {
-                                label: "Position or event",
-                                value: p.position,
-                                onChange: v => set('position', v)
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.body,
-                                children: "Available sport plans develop general foundations. They do not yet provide position-specific training."
-                            })]
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.body,
-                        children: "Experience"
-                    }), ['First time', 'Some experience', 'Experienced'].map(x => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                        label: x,
-                        selected: p.experience === x,
-                        onPress: () => set('experience', x)
-                    }, x)), p.experience === 'Experienced' && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                        label: "I have at least 8 recent weeks of steady training",
-                        selected: !!p.establishedTraining,
-                        onPress: () => set('establishedTraining', !p.establishedTraining)
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
-                        style: styles.row,
-                        children: ['lb', 'kg'].map(x => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                            label: x,
-                            selected: p.units === x,
-                            onPress: () => set('units', x)
-                        }, x))
-                    })]
-            }), step === 1 && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
-                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Field, {
-                        label: "Start date \xB7 YYYY-MM-DD",
-                        value: p.start,
-                        onChange: v => set('start', v)
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Field, {
-                        label: "Training weeks \xB7 2\u201312",
-                        numeric: true,
-                        value: String(p.weeks || ''),
-                        onChange: v => set('weeks', Number(v))
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Field, {
-                        label: "Minutes per session \xB7 15\u2013120",
-                        numeric: true,
-                        value: String(p.minutes || ''),
-                        onChange: v => set('minutes', Number(v))
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.body,
-                        children: "Days you can train"
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
-                        style: styles.row,
-                        children: _sharedTraining.weekdays.map((label, i) => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                            label: label,
-                            selected: p.days.includes(i),
-                            onPress: () => set('days', p.days.includes(i) ? p.days.filter(d => d !== i) : [...p.days, i].sort())
-                        }, label))
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.body,
-                        children: "Training days per week"
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                        style: styles.row,
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                                label: "Recommend a frequency",
-                                selected: p.trainingDays === undefined,
-                                onPress: () => set('trainingDays', undefined)
-                            }), [2, 3, 4, 5, 6, 7].map(n => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                                label: `${n} days`,
-                                selected: p.trainingDays === n,
-                                onPress: () => set('trainingDays', n)
-                            }, n))]
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.body,
-                        children: "Availability and desired frequency are separate. Seven-day options include an easy activity day."
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.body,
-                        children: "Your saved commitments are included. Review every date before starting."
-                    })]
-            }), step === 2 && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
-                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.body,
-                        children: "Available equipment"
-                    }), ['Full gym', 'Dumbbells', 'Bodyweight + band', 'No equipment'].map(x => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                        label: x,
-                        selected: p.equipment === x,
-                        onPress: () => {
-                            set('equipment', x);
-                            set('inventory', (0, _sharedEquipment.defaultInventory)(x));
-                        }
-                    }, x)), ['Full gym', 'Dumbbells'].includes(p.equipment) && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Field, {
-                        label: `Heaviest ONE dumbbell (${p.units}) · optional`,
-                        numeric: true,
-                        value: p.dumbbellMaxKg === undefined ? '' : String(Math.round(p.dumbbellMaxKg * (p.units === 'lb' ? 2.2046226218 : 1) * 100) / 100),
-                        onChange: v => set('dumbbellMaxKg', v === '' ? undefined : (0, _sharedTraining.toKg)(Number(v), p.units))
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_equipmentSurvey.NativeEquipmentSurvey, {
-                        profile: p,
-                        onChange: v => set('inventory', v)
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                        label: "Standing or seated exercises only",
-                        selected: !!p.noFloor,
-                        onPress: () => set('noFloor', !p.noFloor)
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.body,
-                        children: "Who leads training?"
-                    }), [['app', 'Guide me with a plan'], ['coach', 'Track my coach’s plan'], ['manual', 'Write my own plan']].map(([id, label]) => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                        label: label,
-                        selected: p.mode === id,
-                        onPress: () => set('mode', id)
-                    }, id)), (p.age < 18 || p.focuses?.includes('jumping')) && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                        label: "Qualified supervision is available",
-                        selected: p.supervision,
-                        onPress: () => set('supervision', !p.supervision)
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.body,
-                        children: "Optional extra work"
-                    }), _sharedTrainingFocus.focusChoices.map(f => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                                label: f.title,
-                                selected: p.focuses?.includes(f.id),
-                                onPress: () => set('focuses', p.focuses?.includes(f.id) ? p.focuses.filter(x => x !== f.id) : [...(p.focuses || []), f.id])
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.body,
-                                children: f.description
-                            })]
-                    }, f.id)), (p.focuses?.includes('jumping') || p.goal === 'sport') && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                        label: "Clear landing area and comfortable landing skill",
-                        selected: p.jumpReady,
-                        onPress: () => set('jumpReady', !p.jumpReady)
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.body,
-                        children: "The preview checks whether this extra work fits your time, equipment and recovery needs. Age and supervision requirements also apply."
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                        style: styles.body,
-                        children: "Season"
-                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.View, {
-                        style: styles.row,
-                        children: ['Off-season', 'Preseason', 'In-season', 'Transition / recovery'].map(x => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                            label: x,
-                            selected: p.season === x,
-                            onPress: () => set('season', x)
-                        }, x))
-                    }), ['running', 'hybrid'].includes(p.goal) && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                                label: "I already run 30 minutes comfortably",
-                                selected: !!p.runBase,
-                                onPress: () => set('runBase', !p.runBase)
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Field, {
-                                label: "Recent running days each week",
-                                numeric: true,
-                                value: String(p.runDays ?? 0),
-                                onChange: v => set('runDays', Number(v))
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Field, {
-                                label: "Recent easy running minutes each week",
-                                numeric: true,
-                                value: String(p.runMinutes ?? 0),
-                                onChange: v => set('runMinutes', Number(v))
-                            })]
-                    })]
-            }), step === 3 && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
-                children: [!options.some(o => o.plan && o.profile.mode === p.mode && o.profile.goal === p.goal) && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.body,
-                                children: "No plan in your selected mode fits these choices. Go back to adjust time, days or equipment, or use your own tracking schedule."
-                            }), [...new Set(options.filter(o => !o.plan && o.profile.mode === p.mode && o.profile.goal === p.goal).flatMap(o => o.errors))].slice(0, 5).map(e => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.body,
-                                children: e
-                            }, e))]
-                    }), options.filter(o => o.plan && (!selected || selected.id === o.id)).map(o => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                        style: styles.card,
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.title,
-                                children: o.plan ? (0, _sharedPresentation.planName)(o.plan) : o.title
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.body,
-                                children: o.description
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                style: styles.body,
-                                children: [o.plan.sessions.length, " sessions \xB7 ends ", (0, _sharedTraining.niceDate)(o.plan.sessions.at(-1).date)]
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                                label: selected?.id === o.id ? 'Choose another plan' : 'Review this plan',
-                                selected: selected?.id === o.id,
-                                onPress: () => {
-                                    setSelected(current => current?.id === o.id ? null : o);
-                                    setError('');
-                                    setShowAll(false);
-                                }
-                            })]
-                    }, o.id)), selected?.plan && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                        style: styles.card,
-                        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                style: styles.title,
-                                children: ["Review ", (0, _sharedPresentation.planName)(selected.plan)]
-                            }), selected.plan.sessions.filter(x => showAll || x.week === 1).map(x => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                                children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                        style: [styles.body, {
-                                                fontWeight: '700'
-                                            }],
-                                        children: [(0, _sharedTraining.niceDate)(x.date), " \xB7 ", (0, _sharedPresentation.sessionName)(x, selected.plan), " \xB7 ", (0, _sharedSessionDuration.durationText)(x, state.custom)]
-                                    }), x.items.map(i => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                        style: styles.body,
-                                        children: [(0, _sharedTraining.exFor)(i.exerciseId).name, " \xB7 ", i.sets, " \xD7 ", (0, _sharedTraining.targetText)(i), " \xB7 ", i.rest, "s rest"]
-                                    }, i.exerciseId))]
-                            }, x.id)), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                                label: "Workout instructions and progression",
-                                onPress: () => {
-                                    var x = selected.plan.sessions[0], guide = (0, _sharedSessionGuide.sessionGuide)(selected.plan, x);
-                                    _reactNative.Alert.alert((0, _sharedPresentation.sessionName)(x, selected.plan), [...guide.warmup, guide.effort, ...guide.order, ...guide.progression, guide.finish].join('\n\n'));
-                                }
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                                label: showAll ? 'Show first week' : 'Show all workouts',
-                                onPress: () => setShowAll(!showAll)
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                                style: styles.body,
-                                children: ["Week ", (0, _sharedPlanFit.planFit)(selected.plan).week, ": ", (0, _sharedPlanFit.planFit)(selected.plan).strengthDays, " strength days, ", (0, _sharedPlanFit.planFit)(selected.plan).runningDays, " running days, ", (0, _sharedPlanFit.planFit)(selected.plan).easyDays, " easy activity days \xB7 ", (0, _sharedPlanFit.planFit)(selected.plan).weeklyWorkSets, " strength work sets. Combined sessions count in both categories."]
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                                label: "Show regional work counts",
-                                onPress: () => _reactNative.Alert.alert('Planned weekly work', (0, _sharedPlanFit.planFit)(selected.plan).regions.map(r => `${r.name}: ${r.sets} sets involving this region across ${r.days} days`).join('\n') + '\nCompound work can appear in multiple regions. These are planned counts, not equivalent isolation sets or guaranteed results.')
-                            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_science.NativePlanEvidence, {
-                                plan: selected.plan
-                            }, selected.plan.id), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.body,
-                                children: (0, _sharedPresentation.trainingCopy)(selected.plan.progression)
-                            }), selected.plan.notes.filter(n => n.startsWith('[Focus]')).map(n => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.body,
-                                children: n
-                            }, n)), selected.plan.notes.filter(n => n.startsWith('Days off') || n.startsWith('Competition')).map(n => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.body,
-                                children: n
-                            }, n)), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                                label: saving ? "Saving plan…" : "Start this plan",
-                                disabled: saving,
-                                onPress: async () => {
-                                    if (accepting.current || accepted.current) return;
-                                    if (draftBlocked) {
-                                        setError('Resolve the preserved setup draft first.');
-                                        return;
-                                    }
-                                    accepting.current = true;
-                                    setSaving(true);
-                                    try {
-                                        var message = await onAccept(selected.profile, selected.plan, state.events);
-                                        if (message) setError(message);
-                                        else {
-                                            accepted.current = true;
-                                            await (0, _storage.clearLocalSetup)(sample);
-                                        }
-                                    } catch (e) {
-                                        setError(accepted.current ? 'Your plan is saved, but its setup draft could not be cleared. Your accepted workouts are kept.' : e instanceof Error ? e.message : 'This plan could not be saved. Your setup is kept for retry.');
-                                    } finally {
-                                        accepting.current = false;
-                                        setSaving(false);
-                                    }
-                                }
-                            })]
-                    })]
-            }), !!error && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                accessibilityRole: "alert",
-                style: [styles.body, {
-                        color: c.danger
-                    }],
-                children: error
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                style: styles.row,
-                children: [step > 0 && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                        label: "Back",
-                        onPress: () => {
-                            setStep(step - 1);
-                            setError('');
-                        }
-                    }), step < 3 && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Choice, {
-                        label: step === 2 ? 'See my plans' : 'Continue',
-                        onPress: next
-                    })]
-            })]
-    });
+function Details({label,children}){
+ const [open,setOpen]=useState(false);
+ return React.createElement(View,{style:{gap:12}},React.createElement(Choice,{label,expanded:open,onPress:()=>setOpen(!open)}),open&&children);
 }
-export { PlanSetup };
+function sourcePatch(sourceChoice){return sourceChoice?{goal:sourceChoice.goal,mode:'app',programId:sourceChoice.id||undefined,trainingDays:sourceProgram(sourceChoice.id)?.days??programCatalog.find(x=>x.id===sourceChoice.id)?.days}:{}}
+function PlanSetup({state,onAccept,sample=false,sourceChoice,onRegisterBack}){
+ const styles=useThemedStyles(baseStyles),{colors:c}=useNativeAppearance();
+ const [origin]=useState(()=>({sample,sourceChoice,basePlanId:state.plan?.id||null,baseEvents:JSON.stringify(state.events)}));
+ const [p,setP]=useState(()=>({...state.profile,start:day(),programId:undefined,inventory:hydrateSetupProfile(state.profile).inventory,name:state.profile.name==='Local demo'?'':state.profile.name,...sourcePatch(sourceChoice)}));
+ const [screen,setScreen]=useState('about'),[selected,setSelected]=useState(null),[candidate,setCandidate]=useState(0),[error,setError]=useState('');
+ const [loaded,setLoaded]=useState(false),[saveNote,setSaveNote]=useState('Opening saved setup…'),[draftBlocked,setDraftBlocked]=useState(false),[readAttempt,setReadAttempt]=useState(0),[saving,setSaving]=useState(false);
+ const accepted=useRef(false),accepting=useRef(false),write=useRef(0);
+ const steps=[['about','About you',0],['goal','Your goal',0],...(p.goal==='sport'?[['sport','Your sport',0]]:[]),['experience','Training experience',0],['authority','Who leads training?',0],['days','Your available days',1],['frequency','Days per week',1],['time','Time per workout',1],['dates','Your training block',1],['location','Your training space',2],['dumbbells','Your dumbbells',2],['inventory','Your equipment',2],['access','Movement preferences',2],['extras','Optional extra work',2],...(p.age<18||p.goal==='sport'||p.focuses?.includes('jumping')?[['readiness','Training readiness',2]]:[]),...(['running','hybrid'].includes(p.goal)?[['running','Your running base',2]]:[]),['choose','Choose your plan',3],['review','Review your plan',3]];
+ const index=Math.max(0,steps.findIndex(x=>x[0]===screen)),current=steps[index],coarse=current[2];
+ useEffect(()=>{
+  let live=true;
+  readLocalSetup(origin.sample).then(d=>{
+   if(!live)return;
+   if(d&&d.basePlanId===origin.basePlanId){
+    setP({...hydrateSetupProfile(d.profile),...sourcePatch(origin.sourceChoice)});
+    const position=origin.sourceChoice?0:d.profile.mode==='app'&&!d.profile.inventory?Math.min(2,d.step):d.baseEvents===origin.baseEvents?Math.min(3,d.step):1;
+    setScreen(['about','days','location','choose'][position]);
+    setSaveNote('Saved choices restored.');
+   }else setSaveNote('Saved on this device.');
+   setDraftBlocked(false);
+  }).catch(()=>{if(live){setDraftBlocked(true);setSaveNote('Your saved setup could not be opened. Retry before continuing.');}}).finally(()=>{if(live)setLoaded(true)});
+  return()=>{live=false};
+ },[readAttempt,origin]);
+ useEffect(()=>{
+  if(!loaded||accepted.current||draftBlocked)return;
+  const version=++write.current;let live=true;
+  Promise.resolve().then(()=>saveLocalSetup({schema:1,basePlanId:state.plan?.id||null,baseEvents:JSON.stringify(state.events),profile:p,events:state.events,step:coarse},sample)).then(()=>{if(live&&version===write.current)setSaveNote('Saved on this device.')}).catch(()=>{if(live&&version===write.current)setSaveNote('Setup could not be saved. Keep it open and retry.');});
+  return()=>{live=false};
+ },[p,coarse,loaded,state.plan?.id,state.events,draftBlocked,sample]);
+ const planStep=screen==='choose'||screen==='review';
+ const options=useMemo(()=>planStep?planOptions(p,state.events).sort((a,b)=>Number(!!sourceChoice&&b.id===sourceChoice.id&&p.goal===sourceChoice.goal)-Number(!!sourceChoice&&a.id===sourceChoice.id&&p.goal===sourceChoice.goal)):[],[planStep,p,state.events,sourceChoice]);
+ const available=options.filter(o=>o.plan),option=available[Math.min(candidate,Math.max(0,available.length-1))];
+ const update=(key,value)=>{setP(v=>({...v,[key]:value,programId:undefined}));setSelected(null);setCandidate(0);setError('')};
+ const go=(id)=>{Keyboard.dismiss();setError('');setScreen(id)};
+ const back=()=>{if(saving||accepting.current)return true;if(index===0)return false;go(steps[index-1][0]);return true};
+ useEffect(()=>{onRegisterBack?.(back);return()=>onRegisterBack?.(null)});
+ const allErrors=()=>[0,2,3,4].flatMap(n=>setupErrors(p,n));
+ const stepErrors=()=>{
+  if(screen==='about')return setupErrors(p,0);
+  if(screen==='days')return p.days.length?[]:['Choose at least one available day.'];
+  if(screen==='frequency')return p.trainingDays!==undefined&&(!Number.isInteger(p.trainingDays)||p.trainingDays<2||p.trainingDays>7||p.trainingDays>p.days.length)?['Choose 2–7 training days within your available weekdays.']:[];
+  if(screen==='time')return Number.isInteger(p.minutes)&&p.minutes>=15&&p.minutes<=120?[]:['Choose 15–120 minutes per session.'];
+  if(screen==='dates')return [...(!validDay(p.start)||p.start<day()?['Choose today or a future start date.']:[]),...(!Number.isInteger(p.weeks)||p.weeks<2||p.weeks>12?['Choose 2–12 weeks.']:[])];
+  if(screen==='dumbbells')return p.dumbbellMaxKg!==undefined&&(!Number.isFinite(p.dumbbellMaxKg)||p.dumbbellMaxKg<0||p.dumbbellMaxKg>500)?['Enter a valid weight for one dumbbell, or leave it blank.']:[];
+  if(screen==='inventory')return inventoryErrors(p);
+  if(screen==='running')return (!Number.isInteger(p.runDays??0)||(p.runDays??0)<0||(p.runDays??0)>7||!Number.isFinite(p.runMinutes??0)||(p.runMinutes??0)<0||(p.runMinutes??0)>1500)?['Use 0–7 running days and 0–1500 weekly minutes.']:[];
+  return [];
+ };
+ const next=()=>{
+  const nextScreen=steps[index+1]?.[0],errors=[...stepErrors(),...(nextScreen==='choose'?allErrors():[])];
+  if(errors.length){setError(errors[0]);return}
+  if(nextScreen)go(nextScreen);
+ };
+ const start=async()=>{
+  if(accepting.current||accepted.current||!selected?.plan)return;
+  if(draftBlocked){setError('Retry opening your saved setup first.');return}
+  const errors=allErrors();if(errors.length){setError(errors[0]);return}
+  accepting.current=true;setSaving(true);
+  try{
+   const message=await onAccept(selected.profile,selected.plan,state.events);
+   if(message)setError(message);else{accepted.current=true;await clearLocalSetup(sample)}
+  }catch(e){setError(accepted.current?'Your plan is saved, but its setup draft could not be cleared. Your workouts are kept.':e instanceof Error?e.message:'This plan could not be saved. Your setup is kept for retry.')}
+  finally{accepting.current=false;setSaving(false)}
+ };
+ const text=(value,key=value)=>React.createElement(Text,{key,style:styles.body},value);
+ const field=(label,key,numeric=false)=>React.createElement(Field,{key,label,value:String(p[key]??''),numeric,onChange:v=>update(key,numeric?Number(v):v)});
+ const choice=(label,selected,onPress,key=label)=>React.createElement(Choice,{key,label,selected,onPress});
+ const choices=(values,key)=>values.map(v=>choice(v,p[key]===v,()=>update(key,v)));
+ let body;
+ switch(screen){
+  case 'about':body=[field('Profile name','name'),field('Age','age',true),text('Weight units'),React.createElement(View,{key:'units',style:styles.row},choices(['lb','kg'],'units'))];break;
+  case 'goal':body=goals.map(([id,label])=>choice(label,p.goal===id,()=>update('goal',id)));break;
+  case 'sport':body=[field('Sport','sport'),field('Position or event','position'),text('Sport plans build general foundations; they are not position-specific.')];break;
+  case 'experience':body=[...choices(['First time','Some experience','Experienced'],'experience'),p.experience==='Experienced'&&choice('I have at least 8 recent weeks of steady training',!!p.establishedTraining,()=>update('establishedTraining',!p.establishedTraining))];break;
+  case 'authority':body=[...([['app','Guide me with a plan'],['coach','Track my coach’s plan'],['manual','Write my own plan']].map(([id,label])=>choice(label,p.mode===id,()=>update('mode',id)))),text(p.mode==='app'?'Review a plan matched to your choices.':'You or your coach chooses exercises and targets. The app records them.')];break;
+  case 'days':body=[text('Select every day you could train.'),React.createElement(View,{key:'days',style:styles.row},weekdays.map((label,i)=>choice(label,p.days.includes(i),()=>update('days',p.days.includes(i)?p.days.filter(d=>d!==i):[...p.days,i].sort()))))];break;
+  case 'frequency':body=[choice('Recommend a frequency',p.trainingDays===undefined,()=>update('trainingDays',undefined)),React.createElement(View,{key:'frequency',style:styles.row},[2,3,4,5,6,7].map(n=>choice(`${n} days`,p.trainingDays===n,()=>update('trainingDays',n)))),text(`${p.days.length} available days. Seven-day plans include an easy activity day.`)];break;
+  case 'time':body=[field('Minutes per session · 15–120','minutes',true),React.createElement(View,{key:'time',style:styles.row},[20,30,45,60,90].map(n=>choice(`${n} min`,p.minutes===n,()=>update('minutes',n)))),text('Include warm-up, rest and any extra work.')];break;
+  case 'dates':body=[field('Start date · YYYY-MM-DD','start'),field('Training weeks · 2–12','weeks',true),text(state.events.length?'Your saved commitments will be included in the preview.':'You can add time off later in Calendar.')];break;
+  case 'location':body=[text('Choose a starting equipment list. You’ll check the exact items next.'),...['Full gym','Dumbbells','Bodyweight + band','No equipment'].map(x=>choice(x,p.equipment===x,()=>{update('equipment',x);update('inventory',defaultInventory(x))}))];break;
+  case 'dumbbells':body=[React.createElement(NativeEquipmentSurvey,{key:'dumbbells',profile:p,section:'dumbbells',onChange:v=>update('inventory',v)}),p.inventory?.dumbbells!=='none'&&React.createElement(Field,{key:'max',label:`Heaviest ONE dumbbell (${p.units}) · optional`,numeric:true,value:p.dumbbellMaxKg===undefined?'':String(Math.round(p.dumbbellMaxKg*(p.units==='lb'?2.2046226218:1)*100)/100),onChange:v=>update('dumbbellMaxKg',v===''?undefined:toKg(Number(v),p.units))})];break;
+  case 'inventory':body=React.createElement(NativeEquipmentSurvey,{profile:p,section:'equipment',onChange:v=>update('inventory',v)});break;
+  case 'access':body=[choice('Standing or seated exercises only',!!p.noFloor,()=>update('noFloor',!p.noFloor)),text('Leave this off if floor exercises are comfortable for you.')];break;
+  case 'extras':body=[text('Optional. You can continue without adding anything.'),...focusChoices.map(f=>choice(f.title,!!p.focuses?.includes(f.id),()=>update('focuses',p.focuses?.includes(f.id)?p.focuses.filter(x=>x!==f.id):[...(p.focuses||[]),f.id]))),React.createElement(Details,{key:'focus-help',label:'What do these add?'},focusChoices.map(f=>text(`${f.title}: ${f.description}`,f.id)))];break;
+  case 'readiness':body=[(p.age<18||p.focuses?.includes('jumping'))&&choice('Qualified supervision is available',!!p.supervision,()=>update('supervision',!p.supervision)),(p.focuses?.includes('jumping')||p.goal==='sport')&&choice('Clear landing area and comfortable landing skill',!!p.jumpReady,()=>update('jumpReady',!p.jumpReady)),p.goal==='sport'&&text('Your season'),p.goal==='sport'&&choices(['Off-season','Preseason','In-season','Transition / recovery'],'season'),text('Plan matching checks age, supervision and recovery needs.')];break;
+  case 'running':body=[choice('I already run 30 minutes comfortably',!!p.runBase,()=>update('runBase',!p.runBase)),field('Recent running days each week','runDays',true),field('Recent easy running minutes each week','runMinutes',true)];break;
+  case 'choose':body=[!options.some(o=>o.plan&&o.profile.mode===p.mode&&o.profile.goal===p.goal)&&React.createElement(View,{key:'no-match',style:styles.stack},text('No guided plan fits all these choices. Go back to adjust them, or review the tracking option.'),[...new Set(options.filter(o=>!o.plan&&o.profile.mode===p.mode&&o.profile.goal===p.goal).flatMap(o=>o.errors))].slice(0,3).map(e=>text(e,e))),option&&React.createElement(View,{key:option.id,style:styles.card},text(`Option ${Math.min(candidate+1,available.length)} of ${available.length}${option.recommended?' · Recommended':''}`),React.createElement(Text,{style:styles.heading},planName(option.plan)),text(`${option.plan.sessions.length} workouts · ends ${niceDate(option.plan.sessions.at(-1).date)}`),React.createElement(Details,{label:'About this plan'},text(option.description))),available.length>1&&React.createElement(View,{key:'browse',style:styles.row},React.createElement(Choice,{label:'Previous plan',disabled:candidate===0,onPress:()=>setCandidate(candidate-1)}),React.createElement(Choice,{label:'Next plan',disabled:candidate>=available.length-1,onPress:()=>setCandidate(candidate+1)}))];break;
+  case 'review':{
+   if(!selected?.plan){body=text('Choose a plan to review.');break}
+   const plan=selected.plan,fit=planFit(plan);
+   const sessions=list=>list.map(x=>React.createElement(View,{key:x.id,style:styles.stack},React.createElement(Text,{style:[styles.body,{fontWeight:'700'}]},`${niceDate(x.date)} · ${sessionName(x,plan)} · ${durationText(x,state.custom)}`),...x.items.map(i=>text(`${exFor(i.exerciseId).name} · ${i.sets} × ${targetText(i)} · ${i.rest}s rest`,`${x.id}-${i.exerciseId}`))));
+   body=[React.createElement(Text,{key:'name',style:styles.heading},planName(plan)),text(`${plan.sessions.length} workouts · ${niceDate(plan.sessions[0].date)} to ${niceDate(plan.sessions.at(-1).date)}`),text(`${fit.strengthDays} strength days · ${fit.runningDays} running days · ${fit.easyDays} easy days in week ${fit.week}. Combined workouts count in both categories.`),React.createElement(Details,{key:'week',label:'View first week'},sessions(plan.sessions.filter(x=>x.week===1))),React.createElement(Details,{key:'all',label:'View all workouts'},sessions(plan.sessions)),React.createElement(Details,{key:'notes',label:'Instructions, notes and evidence'},React.createElement(Choice,{label:'Workout instructions and progression',onPress:()=>{const x=plan.sessions[0],guide=sessionGuide(plan,x);Alert.alert(sessionName(x,plan),[...guide.warmup,guide.effort,...guide.order,...guide.progression,guide.finish].join('\n\n'))}}),text(trainingCopy(plan.progression)),...plan.notes.filter(n=>n.startsWith('[Focus]')||n.startsWith('Days off')||n.startsWith('Competition')).map(n=>text(n,n)),React.createElement(Choice,{label:'Show regional work counts',onPress:()=>Alert.alert('Planned weekly work',fit.regions.map(r=>`${r.name}: ${r.sets} sets involving this region across ${r.days} days`).join('\n')+'\nCompound work can appear in multiple regions. These are planned counts, not equivalent isolation sets or guaranteed results.')}),React.createElement(NativePlanEvidence,{plan,key:plan.id})),React.createElement(Choice,{key:'another',label:'Choose another plan',onPress:()=>go('choose')})];break;
+  }
+ }
+ if(!loaded)return React.createElement(Text,{style:styles.body},'Opening saved setup…');
+ const nextNames={goal:'goal',sport:'sport',experience:'experience',authority:'guidance',days:'availability',frequency:'frequency',time:'workout time',dates:'training dates',location:'equipment',dumbbells:'dumbbells',inventory:'equipment list',access:'movement',extras:'extras',readiness:'readiness',running:'running base'};
+ const primary=screen==='review'?{label:saving?'Saving plan…':'Start this plan',onPress:start,disabled:saving||draftBlocked||!selected}:screen==='choose'?{label:'Review this plan',disabled:!option||draftBlocked,onPress:()=>{const errors=allErrors();if(errors.length){setError(errors[0]);return}setSelected(option);go('review')}}:{label:steps[index+1]?.[0]==='choose'?'See my plans':`Continue to ${nextNames[steps[index+1]?.[0]]}`,onPress:next,disabled:draftBlocked};
+ return React.createElement(NativeFlowScreen,{title:current[1],subtitle:`Step ${index+1} of ${steps.length}`,onBack:index>0?back:undefined,footer:React.createElement(NativeActionFooter,{primary},!!error&&React.createElement(Text,{accessibilityRole:'alert',style:[styles.body,{color:c.danger}]},error))},draftBlocked?React.createElement(View,{style:styles.stack},text(saveNote),React.createElement(Choice,{label:'Retry saved setup',onPress:()=>{setLoaded(false);setReadAttempt(readAttempt+1)}})):React.createElement(View,{style:styles.stack},body,(error||planStep)&&React.createElement(Details,{label:'Edit setup choices'},steps.filter(s=>s[2]<3).map(([id,label])=>React.createElement(Choice,{key:id,label,onPress:()=>go(id)})))),React.createElement(Text,{accessibilityLiveRegion:'polite',style:[styles.body,{color:c.muted}]},saveNote));
+}
+export {PlanSetup};
