@@ -6,6 +6,8 @@ Movefield and Grizzly now share optional local coaching before workouts and afte
 
 The finite audit passes 50 core groups, 82 automated web accessibility states, actual encrypted offline/save/retry/stale-context journeys, both-brand native App interactions through RN Web, four Hermes exports and source archive checks. Native iOS transition callbacks were exercised through an explicit platform branch, not UIKit. Lint retains 82 warnings with zero errors. Seven official CDC/NHS sources inform the original copy; phrase combinations are distinct from independently reviewed policies or measured efficacy.
 
+The Android download follow-up replaces browser assembly as the default with direct current APK links, keeps the checked method optional and rejects stale release links in regression tests. It addresses a reported freeze in an in-app browser; phone-side retest and installation remain unverified. See [the follow-up report](android-download-repair-2026-10-16.md).
+
 Future AI integration remains disabled behind a strict, unconnected selection boundary. Apple source/export preparation is complete for this change, but signed iPhone delivery requires Apple setup. Physical-device behavior, Safari/Firefox/WebKit, screen-reader usability, upstream native advisories, live services and the broader 72-section task register remain open. The original Pages root remains preserved as a separate older app. This milestone does not mark all six master prompts complete.
 
 Earlier sections below are historical and may describe artifacts or blockers that later checkpoints superseded.

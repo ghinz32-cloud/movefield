@@ -1,0 +1,397 @@
+{
+  "checkedAt": "2026-10-16T17:25:30.604045+00:00",
+  "passed": true,
+  "reportedFailureStage": "Owner clarified the freeze happens while the webpage prepares/saves the download, before Android installation or app launch.",
+  "reportedPhone": "Samsung Galaxy S24 Ultra; exact Android version was not independently read. Its ARM64 architecture fits these artifacts.",
+  "finding": "No APK corruption, signature/known-lineage mismatch, standalone split requirement, ZIP/ELF 16KB alignment defect or incompatible declared ABI/API floor was found in these actual retained files. The clarified browser-download failure is handled in the web download flow; no native rebuild is justified by these checks.",
+  "tools": {
+    "sdkBuildTools": "36.0.0",
+    "apkSignatureVerifier": "apksigner verify --verbose --print-certs",
+    "zipAlignment": "zipalign -c -P 16 4",
+    "elfInspection": "Every ELF64 PT_LOAD p_align >=16384 and fileOffset/virtualAddress congruent modulo16384; every stored SO ZIP data offset modulo16384=0"
+  },
+  "physicalDeviceTested": false,
+  "emulatorRun": false,
+  "noNativeSourceChange": true,
+  "scope": "Read-only inspection of actual retained APK bytes. Confirms archive integrity/signing/alignment and declared compatibility; cannot determine the owner phone ABI, downloaded bytes, installer policy, free storage or runtime behavior. ELF checks establish static 16KB layout, not actual 16KB device execution.",
+  "artifacts": [
+    {
+      "generation": "current",
+      "app": "movefield",
+      "bytes": 39313208,
+      "sha256": "e0c31e216b5f56263d3d9c7dce858757bc4949fc489034236df089109f98d97f",
+      "manifest": {
+        "package": "com.ghinz32.movefield",
+        "versionName": "0.1.6",
+        "versionCode": 7,
+        "minSDK": 24,
+        "targetSDK": 36,
+        "extractNativeLibs": "false",
+        "splitName": null,
+        "splitRequired": null,
+        "usesSplits": [],
+        "debuggable": "false",
+        "testOnly": "false",
+        "requiredFeatures": []
+      },
+      "signature": {
+        "exitCode": 0,
+        "v2Verified": true,
+        "signers": 1,
+        "certificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+      },
+      "zipalign16KB": {
+        "exitCode": 0,
+        "output": ""
+      },
+      "zipCRCValid": true,
+      "memberCount": 1236,
+      "uncompressedBytes": 60974483,
+      "architectures": [
+        "arm64-v8a"
+      ],
+      "nativeLibraryCount": 17,
+      "allNative16KBCompatibleStatic": true,
+      "staticPackagingPassed": true,
+      "dex": [
+        {
+          "path": "classes.dex",
+          "bytes": 8920352,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        },
+        {
+          "path": "classes2.dex",
+          "bytes": 9960152,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        },
+        {
+          "path": "classes3.dex",
+          "bytes": 5356624,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        }
+      ],
+      "nativeLoadAlignments": [
+        16384
+      ],
+      "allNativeLibrariesStoredAndZip16KBAligned": true
+    },
+    {
+      "generation": "current",
+      "app": "grizzly",
+      "bytes": 39464470,
+      "sha256": "e32a37ddb9b6087db625aac2b24ff9d5fde4515d77b96284eb83ab2ddc90d992",
+      "manifest": {
+        "package": "com.ghinz32.grizzlyfitness.prototype",
+        "versionName": "0.1.5",
+        "versionCode": 6,
+        "minSDK": 24,
+        "targetSDK": 36,
+        "extractNativeLibs": "false",
+        "splitName": null,
+        "splitRequired": null,
+        "usesSplits": [],
+        "debuggable": "false",
+        "testOnly": "false",
+        "requiredFeatures": []
+      },
+      "signature": {
+        "exitCode": 0,
+        "v2Verified": true,
+        "signers": 1,
+        "certificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+      },
+      "zipalign16KB": {
+        "exitCode": 0,
+        "output": ""
+      },
+      "zipCRCValid": true,
+      "memberCount": 1226,
+      "uncompressedBytes": 61126896,
+      "architectures": [
+        "arm64-v8a"
+      ],
+      "nativeLibraryCount": 17,
+      "allNative16KBCompatibleStatic": true,
+      "staticPackagingPassed": true,
+      "dex": [
+        {
+          "path": "classes.dex",
+          "bytes": 8920352,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        },
+        {
+          "path": "classes2.dex",
+          "bytes": 9960336,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        },
+        {
+          "path": "classes3.dex",
+          "bytes": 5356624,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        }
+      ],
+      "nativeLoadAlignments": [
+        16384
+      ],
+      "allNativeLibrariesStoredAndZip16KBAligned": true
+    },
+    {
+      "generation": "previous",
+      "app": "movefield",
+      "bytes": 39274252,
+      "sha256": "3ee9065233a019aebaae15456d277e2fa92de7246d4a6fc6c769a1c05bb44108",
+      "manifest": {
+        "package": "com.ghinz32.movefield",
+        "versionName": "0.1.5",
+        "versionCode": 6,
+        "minSDK": 24,
+        "targetSDK": 36,
+        "extractNativeLibs": "false",
+        "splitName": null,
+        "splitRequired": null,
+        "usesSplits": [],
+        "debuggable": "false",
+        "testOnly": "false",
+        "requiredFeatures": []
+      },
+      "signature": {
+        "exitCode": 0,
+        "v2Verified": true,
+        "signers": 1,
+        "certificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+      },
+      "zipalign16KB": {
+        "exitCode": 0,
+        "output": ""
+      },
+      "zipCRCValid": true,
+      "memberCount": 1236,
+      "uncompressedBytes": 60935518,
+      "architectures": [
+        "arm64-v8a"
+      ],
+      "nativeLibraryCount": 17,
+      "allNative16KBCompatibleStatic": true,
+      "staticPackagingPassed": true,
+      "dex": [
+        {
+          "path": "classes.dex",
+          "bytes": 8920352,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        },
+        {
+          "path": "classes2.dex",
+          "bytes": 9960152,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        },
+        {
+          "path": "classes3.dex",
+          "bytes": 5356624,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        }
+      ],
+      "nativeLoadAlignments": [
+        16384
+      ],
+      "allNativeLibrariesStoredAndZip16KBAligned": true
+    },
+    {
+      "generation": "previous",
+      "app": "grizzly",
+      "bytes": 39425514,
+      "sha256": "d10a49cf46338e4c1128fd48ca9e762642504130cc0f3e464e5ee0346196076a",
+      "manifest": {
+        "package": "com.ghinz32.grizzlyfitness.prototype",
+        "versionName": "0.1.4",
+        "versionCode": 5,
+        "minSDK": 24,
+        "targetSDK": 36,
+        "extractNativeLibs": "false",
+        "splitName": null,
+        "splitRequired": null,
+        "usesSplits": [],
+        "debuggable": "false",
+        "testOnly": "false",
+        "requiredFeatures": []
+      },
+      "signature": {
+        "exitCode": 0,
+        "v2Verified": true,
+        "signers": 1,
+        "certificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+      },
+      "zipalign16KB": {
+        "exitCode": 0,
+        "output": ""
+      },
+      "zipCRCValid": true,
+      "memberCount": 1226,
+      "uncompressedBytes": 61087931,
+      "architectures": [
+        "arm64-v8a"
+      ],
+      "nativeLibraryCount": 17,
+      "allNative16KBCompatibleStatic": true,
+      "staticPackagingPassed": true,
+      "dex": [
+        {
+          "path": "classes.dex",
+          "bytes": 8920352,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        },
+        {
+          "path": "classes2.dex",
+          "bytes": 9960336,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        },
+        {
+          "path": "classes3.dex",
+          "bytes": 5356624,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        }
+      ],
+      "nativeLoadAlignments": [
+        16384
+      ],
+      "allNativeLibrariesStoredAndZip16KBAligned": true
+    },
+    {
+      "generation": "earlier",
+      "app": "movefield",
+      "bytes": 39211712,
+      "sha256": "158660c17f56812ffa01b06d229ce78abcfbcc4ae1c836bfe3ec8e3f32c7e700",
+      "manifest": {
+        "package": "com.ghinz32.movefield",
+        "versionName": "0.1.4",
+        "versionCode": 5,
+        "minSDK": 24,
+        "targetSDK": 36,
+        "extractNativeLibs": "false",
+        "splitName": null,
+        "splitRequired": null,
+        "usesSplits": [],
+        "debuggable": "false",
+        "testOnly": "false",
+        "requiredFeatures": []
+      },
+      "signature": {
+        "exitCode": 0,
+        "v2Verified": true,
+        "signers": 1,
+        "certificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+      },
+      "zipalign16KB": {
+        "exitCode": 0,
+        "output": ""
+      },
+      "zipCRCValid": true,
+      "memberCount": 1236,
+      "uncompressedBytes": 60872978,
+      "architectures": [
+        "arm64-v8a"
+      ],
+      "nativeLibraryCount": 17,
+      "allNative16KBCompatibleStatic": true,
+      "staticPackagingPassed": true,
+      "dex": [
+        {
+          "path": "classes.dex",
+          "bytes": 8920352,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        },
+        {
+          "path": "classes2.dex",
+          "bytes": 9960152,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        },
+        {
+          "path": "classes3.dex",
+          "bytes": 5356624,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        }
+      ],
+      "nativeLoadAlignments": [
+        16384
+      ],
+      "allNativeLibrariesStoredAndZip16KBAligned": true
+    },
+    {
+      "generation": "earlier",
+      "app": "grizzly",
+      "bytes": 39362970,
+      "sha256": "77caf459179345b564517949fd640432b84240c426c3332c30c8d128c6244709",
+      "manifest": {
+        "package": "com.ghinz32.grizzlyfitness.prototype",
+        "versionName": "0.1.3",
+        "versionCode": 4,
+        "minSDK": 24,
+        "targetSDK": 36,
+        "extractNativeLibs": "false",
+        "splitName": null,
+        "splitRequired": null,
+        "usesSplits": [],
+        "debuggable": "false",
+        "testOnly": "false",
+        "requiredFeatures": []
+      },
+      "signature": {
+        "exitCode": 0,
+        "v2Verified": true,
+        "signers": 1,
+        "certificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+      },
+      "zipalign16KB": {
+        "exitCode": 0,
+        "output": ""
+      },
+      "zipCRCValid": true,
+      "memberCount": 1226,
+      "uncompressedBytes": 61025393,
+      "architectures": [
+        "arm64-v8a"
+      ],
+      "nativeLibraryCount": 17,
+      "allNative16KBCompatibleStatic": true,
+      "staticPackagingPassed": true,
+      "dex": [
+        {
+          "path": "classes.dex",
+          "bytes": 8920352,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        },
+        {
+          "path": "classes2.dex",
+          "bytes": 9960336,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        },
+        {
+          "path": "classes3.dex",
+          "bytes": 5356624,
+          "magic": "dex\n037\u0000",
+          "compressionMethod": 8
+        }
+      ],
+      "nativeLoadAlignments": [
+        16384
+      ],
+      "allNativeLibrariesStoredAndZip16KBAligned": true
+    }
+  ]
+}

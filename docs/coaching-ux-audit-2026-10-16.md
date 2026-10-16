@@ -68,3 +68,7 @@ Firefox/WebKit installation endpoints were denied by the configured network poli
 | Signed iPhone distribution | Not configured; Apple build/signing and physical-device qualification remain required. |
 
 The release owner will fill these publication fields and the matching JSON section after exact release/live receipts are available. Local passing checks and export files alone do not establish that the public site or downloaded installers contain this candidate.
+
+## Android download follow-up
+
+A reported S24 Ultra freeze occurred in the webpage preparation/save step. The page now offers ordinary current APK links as its primary action, with checked browser assembly optional. The audit also corrected stale fallback URLs that pointed to older releases. The APK bytes and native code are unchanged. [The follow-up report](android-download-repair-2026-10-16.md) distinguishes the confirmed link defect from the unconfirmed freeze cause and records the outstanding phone retest.
