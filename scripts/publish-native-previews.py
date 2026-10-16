@@ -52,8 +52,15 @@ def request_json(endpoint, payload=None, method=None):
         data=None if payload is None else json.dumps(payload).encode(),
         headers={'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json',
                  'Accept': 'application/vnd.github+json'}, method=method)
-    with urllib.request.urlopen(request, timeout=60) as response:
-        return json.load(response)
+    try:
+        with urllib.request.urlopen(request, timeout=60) as response:
+            return json.load(response)
+    except urllib.error.HTTPError as error:
+        # These are fixed GitHub API paths constructed by this script, with no
+        # signed storage URL or secret query. Do not print response bodies.
+        if error.code != 404:
+            print(f'::error::GitHub API {method or "GET"} {endpoint}: HTTP {error.code}', flush=True)
+        raise
 
 
 def verify_android_build_jobs(jobs, run_id, workflow_head, run_attempt):
