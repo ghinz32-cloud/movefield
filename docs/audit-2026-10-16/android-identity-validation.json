@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-10-16T15:31:53.641218+00:00",
+  "passed": true,
+  "legacy_upgrade_groups": 45,
+  "configuration_identity_groups": 4,
+  "compiled_identity_fixture_cases": 16,
+  "configuration_checker_publisher_consistency": true,
+  "apps": [
+    {
+      "app": "movefield",
+      "versionName": "0.1.5",
+      "versionCode": 6,
+      "package": "com.ghinz32.movefield",
+      "previousVersionCode": 5
+    },
+    {
+      "app": "grizzly",
+      "versionName": "0.1.4",
+      "versionCode": 5,
+      "package": "com.ghinz32.grizzlyfitness.prototype",
+      "previousVersionCode": 4
+    }
+  ],
+  "signingCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+  "scope": "Configuration and existing source/storage/identity-gate regression tests; synthetic manifest/signature fixtures. No compilation, signing, installation or publication."
+}

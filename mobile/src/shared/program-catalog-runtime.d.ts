@@ -21,6 +21,8 @@ export type ProgramDefinition = {
     wave?: boolean;
     noFloor?: boolean;
     brief?: boolean;
+    /** Keep an explicitly selected variant’s work fixed when availability increases. */
+    fixedDose?: boolean;
     distributed?: boolean;
     youth?: boolean;
     equipment: 'gym' | 'dumbbells' | 'bodyweight-band' | 'flexible' | 'none';

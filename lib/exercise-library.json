@@ -1636,7 +1636,8 @@
     ],
     "instructionStatus": "draft",
     "custom": false,
-    "progressionEnabled": true
+    "progressionEnabled": true,
+    "source": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Seated_Bent-Over_Rear_Delt_Raise.json"
   },
   {
     "id": "lib-db-hammer-curl",
@@ -1728,7 +1729,8 @@
     ],
     "instructionStatus": "draft",
     "custom": false,
-    "progressionEnabled": true
+    "progressionEnabled": true,
+    "source": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Split_Squat_with_Dumbbells.json"
   },
   {
     "id": "lib-db-goblet-step-up",
@@ -22297,7 +22299,7 @@
       "Stand by pressing through your feet without changing the foot positions.",
       "Finish the listed count and switch the front leg. Complete the same count on both sides."
     ],
-    "source": "https://www.acefitness.org/resources/pros/expert-articles/5269/how-to-get-started-with-kettlebells/",
+    "source": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Split_Squat_with_Dumbbells.json",
     "loadConvention": "One dumbbell total; repetitions per side. Do both sides before Done; enter the single weight and per-side rep count once.",
     "loadMultiplier": 2,
     "loadTracked": true,

@@ -62,7 +62,36 @@ function environment({state=oldState,setup=draft,split=true,secret=oldKey,asyncO
  {const e=environment();const storage=e.fresh();await storage.readLocalState();e.deletionFailure(true);await assert.rejects(storage.erasePrivateProfile());assert.ok(e.secrets.has(oldKeyName));assert.deepEqual(await storage.readLocalState(),expected);e.deletionFailure(false);await storage.erasePrivateProfile();assert.equal(e.oldExists(),false);assert.equal(e.secrets.size,0);assert.equal(await e.fresh().readLocalState(),null);groups++}
  // Capacity parity: split history exceeds the old replacement's 5 MB parser.
  {const big=structuredClone(oldState);big.history=Array.from({length:1100},(_,n)=>({...big.history[0],id:'synthetic-large-'+n,details:{squat:{notes:'x'.repeat(5000)}}}));assert.ok(JSON.stringify(big).length>5_000_000);const e=environment({state:big,setup:null});assert.deepEqual(await e.fresh().readLocalState(),JSON.parse(JSON.stringify({...big,schema:3})));e.preserve();groups++}
- const configure=require('../mobile/app.config.js');const config=require('../mobile/app.json').expo;process.env.EXPO_PUBLIC_APP_VARIANT='';process.env.EXPO_PUBLIC_NATIVE_LINEAGE='legacy-movefield';const upgrade=configure({config});assert.equal(upgrade.android.package,'com.ghinz32.movefield');assert.equal(upgrade.android.versionCode,5);assert.equal(upgrade.version,'0.1.4');assert.equal(upgrade.ios.bundleIdentifier,config.ios.bundleIdentifier);process.env.EXPO_PUBLIC_APP_VARIANT='grizzly';assert.throws(()=>configure({config}),/separate app identity/);groups++;
- fs.mkdirSync('.sites-runtime',{recursive:true});fs.writeFileSync('.sites-runtime/legacy-native-upgrade-checks.json',JSON.stringify({checkedAt:new Date().toISOString(),groups,passed:true,scope:'Historical XChaCha20-Poly1305 envelopes and actual adapter/storage code with real SQLite/AES-GCM; OS secure store and filesystem mocked. No old/new APK installation claim.'},null,2)+'\n');
+ const configure=require('../mobile/app.config.js'),config=require('../mobile/app.json').expo;
+ // Last delivered source 08c6844: Movefield code 5 and Grizzly code 4. New
+ // previews must retain their identities and advance beyond those installers.
+ const releasedCodes={movefield:5,grizzly:4};
+ process.env.EXPO_PUBLIC_APP_VARIANT='';process.env.EXPO_PUBLIC_NATIVE_LINEAGE='legacy-movefield';
+ const upgrade=configure({config});assert.equal(upgrade.android.package,'com.ghinz32.movefield');assert.equal(upgrade.android.versionCode,6);assert.ok(upgrade.android.versionCode>releasedCodes.movefield);assert.equal(upgrade.version,'0.1.5');assert.equal(upgrade.ios.bundleIdentifier,config.ios.bundleIdentifier);assert.equal(upgrade.scheme,'movefield');groups++;
+ process.env.EXPO_PUBLIC_APP_VARIANT='grizzly';assert.throws(()=>configure({config}),/separate app identity/);groups++;
+ process.env.EXPO_PUBLIC_NATIVE_LINEAGE='';const grizzly=configure({config});assert.equal(grizzly.android.package,'com.ghinz32.grizzlyfitness.prototype');assert.equal(grizzly.android.versionCode,5);assert.ok(grizzly.android.versionCode>releasedCodes.grizzly);assert.equal(grizzly.version,'0.1.4');assert.equal(grizzly.ios.bundleIdentifier,'com.ghinz32.grizzlyfitness.prototype');assert.equal(grizzly.scheme,'grizzlyfitness');assert.equal(grizzly.name,'Grizzly Fitness');groups++;
+ process.env.EXPO_PUBLIC_APP_VARIANT='';assert.deepEqual(configure({config}),config,'The unselected prototype keeps its separate identity');groups++;
+ // Exercise the actual compiled-APK gate with synthetic analyzer output. These
+ // checks do not claim an APK was built, signed or installed.
+ fs.mkdirSync('.sites-runtime',{recursive:true});
+ const fixtureDir=fs.mkdtempSync(path.resolve('.sites-runtime/native-identity-')),manifest=path.join(fixtureDir,'manifest.xml'),signing=path.join(fixtureDir,'signing.txt');
+ const certificate='fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c';
+ function identityCheck({app,packageName=app.android.package,code=app.android.versionCode,name=app.version,certificates=[certificate]},passes){
+  fs.writeFileSync(manifest,`<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="${packageName}" android:versionCode="${code}" android:versionName="${name}"/>`);
+  fs.writeFileSync(signing,certificates.map(c=>'Signer #1 certificate SHA-256 digest: '+c).join('\n')+'\n');
+  const result=require('node:child_process').spawnSync('python3',['scripts/check-native-preview-identity.py',manifest,signing],{encoding:'utf8',env:{...process.env,NATIVE_EXPECTED_PACKAGE:app.android.package}});
+  assert.equal(result.status===0,passes,result.stderr||result.stdout);groups++;
+ }
+ try{for(const [app,oldCode] of [[upgrade,releasedCodes.movefield],[grizzly,releasedCodes.grizzly]]){
+  identityCheck({app},true);
+  identityCheck({app,code:oldCode},false);
+  identityCheck({app,code:app.android.versionCode+1},false);
+  identityCheck({app,name:'0.0.1'},false);
+  identityCheck({app,packageName:app===upgrade?grizzly.android.package:upgrade.android.package},false);
+  identityCheck({app,certificates:['aa'.repeat(32)]},false);
+  identityCheck({app,certificates:[]},false);
+  identityCheck({app,certificates:[certificate,certificate]},false);
+ }}finally{fs.rmSync(fixtureDir,{recursive:true,force:true})}
+ fs.mkdirSync('.sites-runtime',{recursive:true});fs.writeFileSync('.sites-runtime/legacy-native-upgrade-checks.json',JSON.stringify({checkedAt:new Date().toISOString(),groups,passed:true,configurationIdentityGroups:4,compiledIdentityFixtureCases:16,scope:'Historical XChaCha20-Poly1305 envelopes and actual adapter/storage code with real SQLite/AES-GCM; OS secure store and filesystem mocked. Compiled identity checks use synthetic analyzer output. No old/new APK installation claim.'},null,2)+'\n');
  console.log('PASS '+groups+' legacy native upgrade groups: historical XChaCha whole/split state, timestamps/notes/supersets/unknown loads/RIR, active workout/rest/setup, encrypted staging, five interruption points and retry, AsyncStorage-only source, missing/wrong keys, corrupt/missing/plaintext records, tombstones, future-field refusal, source-change/profile-conflict guards, brand/prototype isolation, restore key rings, explicit erasure and >5 MB history. Native OS and old-APK installation remain unverified.');
 })().catch(e=>{console.error(e);process.exitCode=1}).finally(()=>{delete process.env.EXPO_PUBLIC_NATIVE_LINEAGE;delete process.env.EXPO_PUBLIC_APP_VARIANT});

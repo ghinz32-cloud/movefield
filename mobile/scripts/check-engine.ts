@@ -16,6 +16,12 @@ for (const id of choices) for (let offset = 0; offset < 7; offset++) {
   assert.ok(result.plan, `${id}: ${result.errors.join(' ')}`);
   assert.ok(result.plan!.sessions.length > 0);
   assert.equal(result.plan!.sessions[0].date, start, `${id}: first session must be available today`);
+  const definition = programCatalog.find(choice => choice.id === id);
+  if (definition?.fixedDose) {
+    assert.equal(result.plan!.profile.trainingDays, definition.days, `${id}: sample preserves the requested training frequency`);
+    for (let week = 1; week <= 4; week++) assert.equal(result.plan!.sessions.filter(session => session.week === week).length, definition.days, `${id}: available days must not become extra workouts`);
+    assert.ok(result.plan!.sessions.every(session => session.minutes <= definition.minutes), `${id}: sample keeps the selected variant's duration ceiling`);
+  }
   readSavedState(JSON.stringify(adoptPlan(emptyDemo(), result.plan!)));
 }
 for (const id of choices) {

@@ -11,9 +11,13 @@ export function emptyDemo(): State {
 export function previewPlan(id: string, start = day()): {plan: Plan | null; errors: string[]} {
   const choice = programCatalog.find(x => x.id === id);
   if(!choice&&![FOUNDATION,RUN_WALK,SPORT_FOUNDATION].includes(id))return {plan:null,errors:['This program is unavailable. Choose a program from the selected training style.']};
-  const offsets = !choice ? (id===RUN_WALK?[0,2,4]:[0,3]) : choice.days===2 ? [0,3] : choice.id==='RNBASE4'?[0,2,4,6]:choice.days>=6?Array.from({length:choice.days},(_,i)=>i):choice.days === 5 ? [0, 1, 3, 4, 6] : choice?.days === 4 ? [0, 1, 3, 4] : [0, 2, 4];
+  // A sample has no owner availability constraints. New fixed-dose splits use
+  // the actual scheduler to choose their valid weekdays instead of guessing a
+  // single arrangement for every program with the same number of training days.
+  const offsets = choice?.fixedDose ? [0,1,2,3,4,5,6] : !choice ? (id===RUN_WALK?[0,2,4]:[0,3]) : choice.days===2 ? [0,3] : choice.id==='RNBASE4'?[0,2,4,6]:choice.days>=6?Array.from({length:choice.days},(_,i)=>i):choice.days === 5 ? [0, 1, 3, 4, 6] : choice?.days === 4 ? [0, 1, 3, 4] : [0, 2, 4];
   const profile: Profile = { ...blankProfile, age: 28, name: '', start, weeks: 4,
     goal: choice?.goal ?? (id===RUN_WALK?'running':id===SPORT_FOUNDATION?'sport':'general'), programId: choice?.id, experience: choice?.experience === 'advanced'?'Experienced':choice?.experience === 'some' ? 'Some experience' : 'First time',
+    ...(choice?.fixedDose ? {trainingDays: choice.days} : {}),
     minutes: 120, equipment: choice ? programEquipment(choice) : 'Dumbbells',
     days: offsets.map(n => (new Date(start + 'T12:00:00').getDay() + n) % 7).sort(), runBase: choice?.runBase ?? false,
     // Samples explicitly model the catalog prerequisites; personal acceptance goes through setup.

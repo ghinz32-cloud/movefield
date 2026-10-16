@@ -69,6 +69,10 @@ var allocation = {
         primary: ['Chest'],
         secondary: []
     },
+    'face-pull': {
+        primary: ['Shoulders', 'Back'],
+        secondary: []
+    },
     'rear-shoulder': {
         primary: ['Shoulders', 'Back'],
         secondary: []

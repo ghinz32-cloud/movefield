@@ -1,4 +1,5 @@
 import {NativeTabBar} from './src/tab-bar';
+import {NativeProgramFilters,matchesProgram} from './src/program-filters';
 import {GrizzlyPressable} from './src/wild-interactions';
 // Recovered executed implementation; typed public contract is in the adjacent declaration.
 import * as _srcSharedPairedSets from "./src/shared/paired-sets";
@@ -153,9 +154,9 @@ function NumericField({ value, onChange, label, max, nullable = false, disabled 
         style: styles.numberInput,
         value: text,
         onChangeText: next => {
-            if (!/^\d{0,7}(\.\d{0,2})?$/.test(next))
+            if (!/^\d{0,7}([.,]\d{0,2})?$/.test(next))
                 return;
-            var n = next === '' || next === '.' ? nullable ? null : 0 : Number(next);
+            var n = next === '' || next === '.' || next === ',' ? nullable ? null : 0 : Number(next.replace(',', '.'));
             if (n !== null && (!Number.isFinite(n) || n > max))
                 return;
             setText(next);
@@ -367,6 +368,7 @@ function TrainingApp() {
     var [editingHistory, setEditingHistory] = (0, _react.useState)(false);
     var [historyItem, setHistoryItem] = (0, _react.useState)(null);
     var [historySection, setHistorySection] = (0, _react.useState)('history');
+    var [historyLimit, setHistoryLimit] = (0, _react.useState)(20);
     var [confirm, setConfirm] = (0, _react.useState)(null);
     var [changePreview, setChangePreview] = (0, _react.useState)(null);
     var [moveDate, setMoveDate] = (0, _react.useState)((0, _srcSharedTraining.day)());
@@ -433,6 +435,7 @@ function TrainingApp() {
     var [trackingSession, setTrackingSession] = (0, _react.useState)(''), [customizeSession, setCustomizeSession] = (0, _react.useState)('');
     var [preview, setPreview] = (0, _react.useState)(null);
     var [planGoal, setPlanGoal] = (0, _react.useState)('powerlifting');
+    var [planSearch, setPlanSearch] = (0, _react.useState)(''), [planDays, setPlanDays] = (0, _react.useState)(0), [catalogLimit, setCatalogLimit] = (0, _react.useState)(8);
     var [substitution, setSubstitution] = (0, _react.useState)(null);
     var [subEquipment, setSubEquipment] = (0, _react.useState)('All');
     var [showSubInventory, setShowSubInventory] = (0, _react.useState)(false);
@@ -535,9 +538,17 @@ function TrainingApp() {
         return () => clearTimeout(timer);
     }, [appearance.active]);
     var catalogDay = (0, _srcSharedTraining.day)(new Date(now));
-    var visibleCatalog = (0, _react.useMemo)(() => tab === 'Plan' && planSection === 'explore'
-        ? _srcSharedProgramCatalog.programCatalog.filter(p => p.goal === planGoal).map(p => ({definition:p,preview:(0, _srcMobileEngine.previewPlan)(p.id,catalogDay)}))
-        : [], [tab, planSection, planGoal, catalogDay]);
+    var catalogMatches = (0, _react.useMemo)(() => {
+        if (tab !== 'Plan' || planSection !== 'explore') return {app:[],sources:[],references:[]};
+        var fits = p => (planGoal === 'all' || (p.goals ? p.goals.includes(planGoal) : p.goal === planGoal)) && matchesProgram(p, planSearch, planDays);
+        return {
+            app: _srcSharedProgramCatalog.programCatalog.filter(fits),
+            sources: _srcSharedSourcePrograms.sourcePrograms.filter(fits),
+            references: _srcSharedProgramCatalog.programReferences.filter(p => fits(p) && !_srcSharedSourcePrograms.sourcePrograms.some(s => s.url === p.url))
+        };
+    }, [tab, planSection, planGoal, planSearch, planDays]);
+    var visibleCatalog = (0, _react.useMemo)(() => catalogMatches.app.slice(0, catalogLimit).map(p => ({definition:p,preview:(0, _srcMobileEngine.previewPlan)(p.id,catalogDay)})), [catalogMatches.app, catalogLimit, catalogDay]);
+    var catalogTotal = Object.values(catalogMatches).reduce((total, rows) => total + rows.length, 0), catalogShown = Object.values(catalogMatches).reduce((total, rows) => total + Math.min(rows.length, catalogLimit), 0);
     var workoutReminderMessage = (0, _srcWorkoutNotifications.useNativeWorkoutReminders)(sampleMode ? null : state, appearance.p, appearance.ready);
     var restAlertMessage = (0, _srcRestAlerts.useNativeRestAlerts)(state?.restTimer, state?.active?.id, !!state?.restAlerts, !!state && !sampleMode);
     var [alertMessage, setAlertMessage] = (0, _react.useState)('');
@@ -1589,16 +1600,22 @@ function TrainingApp() {
                         horizontal: true,
                         showsHorizontalScrollIndicator: false,
                         contentContainerStyle: styles.pills,
-                        children: _srcSharedTraining.goals.map(([id, label]) => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Pill, {
+                        children: [['all', 'All styles'], ..._srcSharedTraining.goals].map(([id, label]) => /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Pill, {
                             label: label,
                             selected: planGoal === id,
                             onPress: () => {
                                 setPlanGoal(id);
+                                setCatalogLimit(8);
                                 setPreview(null);
                                 setError('');
                             }
                         }, id))
-                    }), planGoal === 'running' && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NativeProgramFilters, {
+                        query: planSearch, days: planDays, shown: catalogShown, total: catalogTotal,
+                        onQuery: value => {setPlanSearch(value);setCatalogLimit(8);},
+                        onDays: value => {setPlanDays(value);setCatalogLimit(8);},
+                        onClear: () => {setPlanSearch('');setPlanDays(0);setCatalogLimit(8);}
+                    }), planGoal === 'running' && !planSearch && !planDays && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.sectionTitle,
                                 children: "NHS Couch to 5K \xB7 run/walk plan"
@@ -1610,7 +1627,7 @@ function TrainingApp() {
                                 secondary: true,
                                 onPress: () => openPreview(_srcMobileEngine.RUN_WALK)
                             })]
-                    }), planGoal === 'sport' && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                    }), planGoal === 'sport' && !planSearch && !planDays && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.sectionTitle,
                                 children: "Sport \xB7 General strength foundation"
@@ -1646,7 +1663,7 @@ function TrainingApp() {
                                 secondary: true,
                                 onPress: () => openPreview(p.id)
                             })]
-                    }, p.id)), _srcSharedSourcePrograms.sourcePrograms.filter(p => p.goals.includes(planGoal)).map(p => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                    }, p.id)), catalogMatches.sources.slice(0, catalogLimit).map(p => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.eyebrow,
                                 children: "PRELOADED PUBLIC ROUTINE"
@@ -1664,7 +1681,7 @@ function TrainingApp() {
                                 onPress: () => {
                                     setSourceChoice({
                                         id: p.id,
-                                        goal: planGoal
+                                        goal: planGoal === 'all' ? p.goals[0] : planGoal
                                     });
                                     setPersonalSetup(true);
                                 }
@@ -1673,14 +1690,14 @@ function TrainingApp() {
                                 secondary: true,
                                 onPress: () => void openUrl(p.url)
                             })]
-                    }, p.id)), _srcSharedProgramCatalog.programReferences.some(p => p.goal === planGoal) && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
+                    }, p.id)), catalogMatches.references.length > 0 && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactJsxRuntime.Fragment, {
                         children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.sectionTitle,
                                 children: "Established programs from their authors"
                             }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                 style: styles.body,
                                 children: "These additional full versions are not preloaded here. Source links let you review the original. Use Build a plan to choose manual or coach tracking and enter the author\u2019s targets."
-                            }), _srcSharedProgramCatalog.programReferences.filter(p => p.goal === planGoal && !_srcSharedSourcePrograms.sourcePrograms.some(s => s.url === p.url)).map(p => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
+                            }), catalogMatches.references.slice(0, catalogLimit).map(p => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
                                 children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                         style: styles.sectionTitle,
                                         children: p.name
@@ -1701,6 +1718,8 @@ function TrainingApp() {
                                         }
                                     })]
                             }, p.id))]
+                    }), catalogShown < catalogTotal && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                        label: 'Show more matching plans', secondary: true, onPress: () => setCatalogLimit(value => value + 8)
                     }), linkError && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                         accessibilityRole: "alert",
                         style: styles.errorText,
@@ -1708,12 +1727,10 @@ function TrainingApp() {
                     })]
             })]
     });
-    var libraryView = /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
+    var libraryView = /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.FlatList, {
         style: styles.flex,
-        children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
-                style: [styles.content, {
-                        paddingBottom: 0
-                    }],
+        ListHeaderComponent: /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.View, {
+                style: {gap: 12, paddingBottom: 8},
                 children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Heading, {
                         eyebrow: "EXERCISE LIBRARY",
                         title: "Exercise library.",
@@ -1739,9 +1756,9 @@ function TrainingApp() {
                         }, e))
                     }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
                         style: styles.small,
-                        children: [filtered.length, " of ", _srcSharedTraining.exercises.length, " exercises \xB7 ", Object.keys(_srcContent.guides).length, " detailed guides"]
+                        children: [filtered.length, " of ", _srcSharedTraining.exercises.length + state.custom.length, " exercises \xB7 ", Object.keys(_srcContent.guides).length, " detailed guides"]
                     })]
-            }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.FlatList, {
+            }),
                 data: filtered,
                 keyExtractor: x => x.id,
                 contentContainerStyle: [styles.content, {
@@ -1787,7 +1804,6 @@ function TrainingApp() {
                             children: "\u2197"
                         })]
                 })
-            })]
     });
     var historyView = /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.ScrollView, {
         contentContainerStyle: styles.content,
@@ -1841,7 +1857,7 @@ function TrainingApp() {
                                 label: "Back to Today",
                                 onPress: () => setTab('Today')
                             })]
-                    }), state.history.slice().reverse().map(w => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
+                    }), state.history.slice().reverse().slice(0, historyLimit).map(w => /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(GrizzlyPressable, {
                         accessibilityRole: "button",
                         style: styles.exerciseRow,
                         onPress: () => {
@@ -1861,7 +1877,9 @@ function TrainingApp() {
                                 style: styles.link,
                                 children: "View \u2192"
                             })]
-                    }, w.id)), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NativeEquipmentLimit, {
+                    }, w.id)), state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(Button, {
+                        label: 'Show more saved workouts', secondary: true, onPress: () => setHistoryLimit(value => value + 20)
+                    }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NativeEquipmentLimit, {
                         state: state,
                         onSave: persistChange
                     }), /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {

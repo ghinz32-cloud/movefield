@@ -6,7 +6,8 @@ export type EquipmentInventory = {
     dumbbells: 'none' | 'single' | 'pair';
     dumbbellLoading: 'fixed' | 'adjustable';
 };
-export type MovementRole = 'horizontal-press' | 'incline-press' | 'vertical-press' | 'horizontal-pull' | 'vertical-pull' | 'squat' | 'split-squat' | 'hinge' | 'hip-extension' | 'knee-flexion' | 'knee-extension' | 'calf' | 'elbow-flexion' | 'elbow-extension' | 'lateral-raise' | 'anti-extension' | 'anti-rotation' | 'opposite-limb-control' | 'jump-landing';
+export type MovementRole = 'horizontal-press' | 'incline-press' | 'vertical-press' | 'horizontal-pull' | 'vertical-pull' | 'squat' | 'split-squat' | 'hinge' | 'hip-extension' | 'knee-flexion' | 'knee-extension' | 'calf' | 'elbow-flexion' | 'elbow-extension' | 'lateral-raise' | 'chest-fly' | 'rear-shoulder' | 'face-pull' | 'anti-extension' | 'anti-rotation' | 'opposite-limb-control' | 'jump-landing';
+export type Movement = { role: MovementRole; needs: EquipmentKey[]; muscles: string[]; dumbbells?: 1 | 2; floor?: boolean; difference?: string };
 declare let equipmentChoices: string[][];
 declare let emptyInventory: () => EquipmentInventory;
 /** Setup presets are editable suggestions; confirmation is still the owner's choice. */

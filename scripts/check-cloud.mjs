@@ -5,7 +5,9 @@ import {createHmac,generateKeyPairSync,sign,randomBytes,createHash} from 'node:c
 const require=createRequire(import.meta.resolve('wrangler'));
 const {build}=require('esbuild'),{Miniflare,createFetchMock}=require('miniflare');
 await mkdir('.sites-runtime/cloud-check',{recursive:true});
-await build({stdin:{contents:"import {cloudApi,reconcileCloud} from './lib/server/cloud-api'; export default {fetch:async(r,e)=>await cloudApi(r,e)||new Response('Not found',{status:404}),scheduled:async(_c,e)=>await reconcileCloud(e)};",resolveDir:process.cwd(),sourcefile:'cloud-test-entry.ts'},bundle:true,format:'esm',platform:'browser',external:['node:*'],define:{'process.env.NODE_ENV':'"production"'},outfile:'.sites-runtime/cloud-check/worker.mjs',logLevel:'warning',plugins:[{name:'synthetic-test-diagnostics',setup(b){b.onLoad({filter:/server\/cloud-api\.ts$/},async args=>({loader:'ts',contents:(await readFile(args.path,'utf8')).replace('catch(e){return json','catch(e){if(!(e instanceof ApiError))console.error(e.message);return json')}))}}]});
+// Match the deployed Worker condition: browser-only resolution selects the SDK's
+// single-context fallback instead of the runtime's real async request isolation.
+await build({stdin:{contents:"import {cloudApi,reconcileCloud} from './lib/server/cloud-api'; export default {fetch:async(r,e)=>await cloudApi(r,e)||new Response('Not found',{status:404}),scheduled:async(_c,e)=>await reconcileCloud(e)};",resolveDir:process.cwd(),sourcefile:'cloud-test-entry.ts'},bundle:true,format:'esm',platform:'browser',conditions:['workerd'],external:['node:*'],define:{'process.env.NODE_ENV':'"production"'},outfile:'.sites-runtime/cloud-check/worker.mjs',logLevel:'warning',plugins:[{name:'synthetic-test-diagnostics',setup(b){b.onLoad({filter:/server\/cloud-api\.ts$/},async args=>({loader:'ts',contents:(await readFile(args.path,'utf8')).replace('catch(e){return json','catch(e){if(!(e instanceof ApiError))console.error(e.message);return json')}))}}]});
 const secret=randomBytes(48).toString('hex'),origin='http://127.0.0.1',mock=createFetchMock();mock.disableNetConnect();
 const keys=generateKeyPairSync('rsa',{modulusLength:2048}),publicJwk={...keys.publicKey.export({format:'jwk'}),kid:'synthetic-key',alg:'RS256',use:'sig'};
 let tokenMode='valid',lastTokenForm=null,providerEmail='alice@example.test',providerSubject='synthetic-google-subject-a';
@@ -82,6 +84,15 @@ try{
   assert.equal((await call('/api/cloud/profile','POST',{...operation,ciphertext:JSON.stringify({...portable,iv:'e'.repeat(24)})},aliceCookie)).status,409);
   const own=await (await call('/api/cloud/profile','GET',undefined,aliceCookie)).json();assert.equal(own.ciphertext,operation.ciphertext);
   const other=await (await call('/api/cloud/profile','GET',undefined,bobCookie)).json();assert.equal(other.revision,0);assert.equal(other.ciphertext,null);assert.equal(other.ownerId,bobId);
+ })();
+ await check('concurrent account reads keep independent request state and owner data',async()=>{
+  for(let round=0;round<10;round++){
+   const responses=await Promise.all([aliceCookie,bobCookie].map(cookie=>call('/api/cloud/profile','GET',undefined,cookie)));
+   assert.deepEqual(responses.map(response=>response.status),[200,200]);
+   const [alice,bob]=await Promise.all(responses.map(response=>response.json()));
+   assert.equal(alice.ownerId,aliceId);assert.equal(alice.revision,1);assert.equal(alice.ciphertext,operation.ciphertext);
+   assert.equal(bob.ownerId,bobId);assert.equal(bob.revision,0);assert.equal(bob.ciphertext,null);
+  }
  })();
  await check('simultaneous writes preserve exactly one head and remove the losing object',async()=>{
   const writes=[0,1].map(i=>({...operation,expectedRevision:1,operationId:crypto.randomUUID(),ciphertext:JSON.stringify({...portable,iv:(i?'e':'f').repeat(24)})}));const responses=await Promise.all(writes.map(x=>call('/api/cloud/profile','POST',x,aliceCookie)));assert.deepEqual(responses.map(x=>x.status).sort(),[200,409]);

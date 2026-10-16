@@ -1,0 +1,5973 @@
+{
+  "submittedCommit": "ea9e4d5e450957d6304ef2fdba967660e8579ec9",
+  "submittedCount": 125,
+  "offeredCount": 68,
+  "withheldCount": 57,
+  "scope": "Actual current-engine schedule, time, exercise, source and movement qualification. No clinical or exact-routine efficacy certification.",
+  "dependencies": {
+    "lib/routine-library-families.ts": "783343bf15b3466987386ac0bfe27177fb987573fdc6aad56d10f20aa10d5033",
+    "lib/training-runtime.js": "a64688d281671fbd9a21324bf6f87ebeed72f56900d145c8a81c077ebc099c89",
+    "lib/equipment-runtime.js": "eb948db4ee40c7d8fff4395eff56870d5821178520e42e52dffac267a85445d0",
+    "lib/exercise-library.json": "0f351ffb238574b17136d1ea345aeadc5e16fc1ace86a00dbd46de93b0ad1add",
+    "lib/session-duration-runtime.js": "771407825df852f838cc6174ef3762b05f8c5b6c59b26ba0779d21c2013e0db8",
+    "lib/muscle-work-runtime.js": "524d7bbffd248a2dede6cd38c7b437a2e3146b90695b7fc0c13ee0e308bbd6b6",
+    "scripts/generate-routine-library.cjs": "fd3ef6ae1654eba21c1735a22e11b3200ec2056d7c0bc3eccdfb755603fc780a"
+  },
+  "variants": [
+    {
+      "id": "LIB-PL1-30",
+      "offered": false,
+      "reasons": [
+        "Squat and bench · A: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-PL1-45",
+      "offered": false,
+      "reasons": [
+        "Squat and bench · A: cannot retain all listed movements and main work within 45 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-PL1-60",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 59,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 10,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 11,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 1,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 1,
+          "secondarySets": 7,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 1,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 1,
+          "secondarySets": 11,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL1-90",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 67,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 12,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 10,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 11,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 2,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 11,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL1-120",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 67,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 12,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 10,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 11,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 2,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 11,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL2-30",
+      "offered": false,
+      "reasons": [
+        "Lower · heavy squat: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-PL2-45",
+      "offered": true,
+      "days": 4,
+      "maximumMinutes": 43,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 1,
+          "secondarySets": 10,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 1,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 1,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 1,
+          "secondarySets": 7,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 1,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL2-60",
+      "offered": true,
+      "days": 4,
+      "maximumMinutes": 60,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 15,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 12,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 1,
+          "secondarySets": 8,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 2,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 12,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL2-90",
+      "offered": true,
+      "days": 4,
+      "maximumMinutes": 62,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 15,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 12,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 8,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 2,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 12,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL2-120",
+      "offered": true,
+      "days": 4,
+      "maximumMinutes": 62,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 15,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 12,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 8,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 2,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 12,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL3-30",
+      "offered": false,
+      "reasons": [
+        "Squat and bench · A: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-PL3-45",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 45,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 5,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 1,
+          "secondarySets": 3,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 6,
+          "primaryDays": 0,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 1,
+          "secondarySets": 7,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL3-60",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 51,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 6,
+          "primaryDays": 0,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 8,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL3-90",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 51,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 6,
+          "primaryDays": 0,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 8,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL3-120",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 51,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 6,
+          "primaryDays": 0,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 8,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL4-45",
+      "offered": false,
+      "reasons": [
+        "Heavy day: cannot retain all listed movements and main work within 45 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-PL4-60",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 60,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 10,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 15,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 0,
+          "secondarySets": 0,
+          "primaryDays": 0,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 1,
+          "secondarySets": 2,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 1,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 1,
+          "secondarySets": 15,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL4-90",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 71,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 12,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 16,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 0,
+          "secondarySets": 0,
+          "primaryDays": 0,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 2,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 16,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL4-120",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 71,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 12,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 16,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 0,
+          "secondarySets": 0,
+          "primaryDays": 0,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 2,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 16,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL5-30",
+      "offered": false,
+      "reasons": [
+        "Squat heavy: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-PL5-45",
+      "offered": true,
+      "days": 5,
+      "maximumMinutes": 44,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 10,
+          "primaryDays": 3,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 13,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 1,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 1,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 1,
+          "secondarySets": 8,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 1,
+          "secondarySets": 13,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL5-60",
+      "offered": true,
+      "days": 5,
+      "maximumMinutes": 60,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 10,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 11,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 7,
+          "secondarySets": 16,
+          "primaryDays": 3,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 16,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 19,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 1,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 3,
+          "secondarySets": 13,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 19,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL5-90",
+      "offered": true,
+      "days": 5,
+      "maximumMinutes": 63,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 10,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 11,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 8,
+          "secondarySets": 16,
+          "primaryDays": 3,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 16,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 19,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 3,
+          "secondarySets": 13,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 19,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-PL5-120",
+      "offered": true,
+      "days": 5,
+      "maximumMinutes": 63,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 10,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 11,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 8,
+          "secondarySets": 16,
+          "primaryDays": 3,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 16,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 19,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 3,
+          "secondarySets": 13,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 19,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "These are development blocks. Meet peaking, attempt selection and automatic maximum tests are outside their scope. Autoregulation research does not validate this app’s exact increase trigger."
+      ]
+    },
+    {
+      "id": "LIB-HY1-30",
+      "offered": false,
+      "reasons": [
+        "Full body · A: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-HY1-90",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 80,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 11,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 8,
+          "secondarySets": 15,
+          "primaryDays": 3,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 10,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 0,
+          "secondarySets": 0,
+          "primaryDays": 0,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 4,
+          "secondarySets": 9,
+          "primaryDays": 2,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 4,
+          "secondarySets": 11,
+          "primaryDays": 2,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 0,
+          "secondarySets": 9,
+          "primaryDays": 0,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "This is a lower-volume muscle starting block, not a maximum-volume growth prescription.",
+        "More days, advanced techniques or more total sets do not establish a personal optimum. The reviewed evidence does not certify this exact bodybuilding recipe."
+      ]
+    },
+    {
+      "id": "LIB-HY1-120",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 80,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 11,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 8,
+          "secondarySets": 15,
+          "primaryDays": 3,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 10,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 0,
+          "secondarySets": 0,
+          "primaryDays": 0,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 4,
+          "secondarySets": 9,
+          "primaryDays": 2,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 4,
+          "secondarySets": 11,
+          "primaryDays": 2,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 0,
+          "secondarySets": 9,
+          "primaryDays": 0,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "This is a lower-volume muscle starting block, not a maximum-volume growth prescription.",
+        "More days, advanced techniques or more total sets do not establish a personal optimum. The reviewed evidence does not certify this exact bodybuilding recipe."
+      ]
+    },
+    {
+      "id": "LIB-HY2-30",
+      "offered": false,
+      "reasons": [
+        "Upper · A: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-HY2-90",
+      "offered": true,
+      "days": 4,
+      "maximumMinutes": 72,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 13,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 8,
+          "secondarySets": 11,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 13,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 14,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 3,
+          "secondarySets": 11,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 4,
+          "secondarySets": 8,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 0,
+          "secondarySets": 11,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "This is a lower-volume muscle starting block, not a maximum-volume growth prescription.",
+        "More days, advanced techniques or more total sets do not establish a personal optimum. The reviewed evidence does not certify this exact bodybuilding recipe."
+      ]
+    },
+    {
+      "id": "LIB-HY2-120",
+      "offered": true,
+      "days": 4,
+      "maximumMinutes": 72,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 13,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 8,
+          "secondarySets": 11,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 13,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 14,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 3,
+          "secondarySets": 11,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 4,
+          "secondarySets": 8,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 0,
+          "secondarySets": 11,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "This is a lower-volume muscle starting block, not a maximum-volume growth prescription.",
+        "More days, advanced techniques or more total sets do not establish a personal optimum. The reviewed evidence does not certify this exact bodybuilding recipe."
+      ]
+    },
+    {
+      "id": "LIB-HY3-30",
+      "offered": false,
+      "reasons": [
+        "Push · A: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-HY3-60",
+      "offered": true,
+      "days": 6,
+      "maximumMinutes": 60,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 15,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 16,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 11,
+          "secondarySets": 18,
+          "primaryDays": 4,
+          "secondaryDays": 4
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 11,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 12,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 5,
+          "secondarySets": 12,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 3,
+          "secondarySets": 15,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 0,
+          "secondarySets": 9,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "This is a lower-volume muscle starting block, not a maximum-volume growth prescription.",
+        "More days, advanced techniques or more total sets do not establish a personal optimum. The reviewed evidence does not certify this exact bodybuilding recipe."
+      ]
+    },
+    {
+      "id": "LIB-HY3-90",
+      "offered": true,
+      "days": 6,
+      "maximumMinutes": 69,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 15,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 16,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 13,
+          "secondarySets": 18,
+          "primaryDays": 4,
+          "secondaryDays": 4
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 11,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 12,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 5,
+          "secondarySets": 12,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 5,
+          "secondarySets": 15,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 0,
+          "secondarySets": 9,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "This is a lower-volume muscle starting block, not a maximum-volume growth prescription.",
+        "More days, advanced techniques or more total sets do not establish a personal optimum. The reviewed evidence does not certify this exact bodybuilding recipe."
+      ]
+    },
+    {
+      "id": "LIB-HY3-120",
+      "offered": true,
+      "days": 6,
+      "maximumMinutes": 69,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 15,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 16,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 13,
+          "secondarySets": 18,
+          "primaryDays": 4,
+          "secondaryDays": 4
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 11,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 12,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 5,
+          "secondarySets": 12,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 5,
+          "secondarySets": 15,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 0,
+          "secondarySets": 9,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "This is a lower-volume muscle starting block, not a maximum-volume growth prescription.",
+        "More days, advanced techniques or more total sets do not establish a personal optimum. The reviewed evidence does not certify this exact bodybuilding recipe."
+      ]
+    },
+    {
+      "id": "LIB-HY4-30",
+      "offered": false,
+      "reasons": [
+        "Chest and back · A: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-HY4-60",
+      "offered": false,
+      "reasons": [
+        "These days cannot fit this split with separated repeated muscle-group or running sessions. Add other available days or review commitments."
+      ]
+    },
+    {
+      "id": "LIB-HY4-90",
+      "offered": false,
+      "reasons": [
+        "These days cannot fit this split with separated repeated muscle-group or running sessions. Add other available days or review commitments."
+      ]
+    },
+    {
+      "id": "LIB-HY4-120",
+      "offered": false,
+      "reasons": [
+        "These days cannot fit this split with separated repeated muscle-group or running sessions. Add other available days or review commitments."
+      ]
+    },
+    {
+      "id": "LIB-HY5-30",
+      "offered": false,
+      "reasons": [
+        "Low load · A: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-PB1-30",
+      "offered": false,
+      "reasons": [
+        "Lower · strength: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-PB2-30",
+      "offered": false,
+      "reasons": [
+        "Squat heavy: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-PB3-30",
+      "offered": false,
+      "reasons": [
+        "Heavy · squat and bench: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-PB3-90",
+      "offered": false,
+      "reasons": [
+        "These days cannot fit this split with separated repeated muscle-group or running sessions. Add other available days or review commitments."
+      ]
+    },
+    {
+      "id": "LIB-PB3-120",
+      "offered": false,
+      "reasons": [
+        "These days cannot fit this split with separated repeated muscle-group or running sessions. Add other available days or review commitments."
+      ]
+    },
+    {
+      "id": "LIB-PB4-30",
+      "offered": false,
+      "reasons": [
+        "Squat heavy: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-PB4-90",
+      "offered": false,
+      "reasons": [
+        "These days cannot fit this split with separated repeated muscle-group or running sessions. Add other available days or review commitments."
+      ]
+    },
+    {
+      "id": "LIB-PB4-120",
+      "offered": false,
+      "reasons": [
+        "These days cannot fit this split with separated repeated muscle-group or running sessions. Add other available days or review commitments."
+      ]
+    },
+    {
+      "id": "LIB-PB5-30",
+      "offered": false,
+      "reasons": [
+        "Lower · squat strength: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-HB1-30",
+      "offered": false,
+      "reasons": [
+        "Run/walk · A needs about 33 minutes including warm-up, rest and setup. Increase the time window; no defining work was dropped."
+      ]
+    },
+    {
+      "id": "LIB-HB1-45",
+      "offered": true,
+      "days": 4,
+      "maximumMinutes": 45,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 1,
+          "secondarySets": 5,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 0,
+          "secondarySets": 0,
+          "primaryDays": 0,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 1,
+          "secondarySets": 3,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 3,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        }
+      ],
+      "limitations": [
+        "Chest, Back, Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB1-60",
+      "offered": true,
+      "days": 4,
+      "maximumMinutes": 48,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 5,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 0,
+          "secondarySets": 0,
+          "primaryDays": 0,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 3,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        }
+      ],
+      "limitations": [
+        "Chest, Back, Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB1-90",
+      "offered": true,
+      "days": 4,
+      "maximumMinutes": 48,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 5,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 0,
+          "secondarySets": 0,
+          "primaryDays": 0,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 3,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        }
+      ],
+      "limitations": [
+        "Chest, Back, Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB1-120",
+      "offered": true,
+      "days": 4,
+      "maximumMinutes": 48,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 5,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 0,
+          "secondarySets": 0,
+          "primaryDays": 0,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 3,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        }
+      ],
+      "limitations": [
+        "Chest, Back, Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB2-30",
+      "offered": false,
+      "reasons": [
+        "Strength · A: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-HB2-45",
+      "offered": true,
+      "days": 5,
+      "maximumMinutes": 43,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 7,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 0,
+          "secondarySets": 0,
+          "primaryDays": 0,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 1,
+          "secondarySets": 3,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 8,
+          "primaryDays": 0,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 1,
+          "secondarySets": 7,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB2-60",
+      "offered": true,
+      "days": 5,
+      "maximumMinutes": 51,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 11,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 0,
+          "secondarySets": 0,
+          "primaryDays": 0,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 7,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 9,
+          "primaryDays": 0,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 7,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB2-90",
+      "offered": true,
+      "days": 5,
+      "maximumMinutes": 51,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 11,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 0,
+          "secondarySets": 0,
+          "primaryDays": 0,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 7,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 9,
+          "primaryDays": 0,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 7,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB2-120",
+      "offered": true,
+      "days": 5,
+      "maximumMinutes": 51,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 11,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 0,
+          "secondarySets": 0,
+          "primaryDays": 0,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 7,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 9,
+          "primaryDays": 0,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 7,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB3-30",
+      "offered": false,
+      "reasons": [
+        "Strength · A: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-HB3-45",
+      "offered": true,
+      "days": 6,
+      "maximumMinutes": 45,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 4,
+          "secondarySets": 6,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 1,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 3,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 8,
+          "primaryDays": 0,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 1,
+          "secondarySets": 8,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB3-60",
+      "offered": true,
+      "days": 6,
+      "maximumMinutes": 59,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 6,
+          "secondarySets": 9,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 10,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 6,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 9,
+          "primaryDays": 0,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 1,
+          "secondarySets": 10,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB3-90",
+      "offered": true,
+      "days": 6,
+      "maximumMinutes": 62,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 6,
+          "secondarySets": 9,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 10,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 6,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 9,
+          "primaryDays": 0,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 10,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB3-120",
+      "offered": true,
+      "days": 6,
+      "maximumMinutes": 62,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 6,
+          "secondarySets": 9,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 10,
+          "secondarySets": 0,
+          "primaryDays": 3,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 6,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 9,
+          "primaryDays": 0,
+          "secondaryDays": 3
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 10,
+          "primaryDays": 1,
+          "secondaryDays": 3
+        }
+      ],
+      "limitations": [
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB4-30",
+      "offered": false,
+      "reasons": [
+        "Strength · upper: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-HB4-45",
+      "offered": true,
+      "days": 6,
+      "maximumMinutes": 45,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 8,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 1,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 1,
+          "secondarySets": 5,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 1,
+          "secondarySets": 7,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 1,
+          "secondarySets": 9,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB4-60",
+      "offered": true,
+      "days": 6,
+      "maximumMinutes": 56,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 5,
+          "secondarySets": 9,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 11,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 2,
+          "secondarySets": 8,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 11,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB4-90",
+      "offered": true,
+      "days": 6,
+      "maximumMinutes": 56,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 5,
+          "secondarySets": 9,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 11,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 2,
+          "secondarySets": 8,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 11,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB4-120",
+      "offered": true,
+      "days": 6,
+      "maximumMinutes": 56,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 5,
+          "secondarySets": 9,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 9,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 7,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 11,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 2,
+          "secondarySets": 8,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 11,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "No single lifting-to-running ratio removes all interference for every user. Strength, hypertrophy, explosive performance and running outcomes can respond differently."
+      ]
+    },
+    {
+      "id": "LIB-HB5-30",
+      "offered": false,
+      "reasons": [
+        "Sprint/change-of-direction prescriptions lack the current readiness, effort, dose and progression policy; existing guarded hybrid plans remain available."
+      ]
+    },
+    {
+      "id": "LIB-HB5-45",
+      "offered": false,
+      "reasons": [
+        "Sprint/change-of-direction prescriptions lack the current readiness, effort, dose and progression policy; existing guarded hybrid plans remain available."
+      ]
+    },
+    {
+      "id": "LIB-HB5-60",
+      "offered": false,
+      "reasons": [
+        "Sprint/change-of-direction prescriptions lack the current readiness, effort, dose and progression policy; existing guarded hybrid plans remain available."
+      ]
+    },
+    {
+      "id": "LIB-HB5-90",
+      "offered": false,
+      "reasons": [
+        "Sprint/change-of-direction prescriptions lack the current readiness, effort, dose and progression policy; existing guarded hybrid plans remain available."
+      ]
+    },
+    {
+      "id": "LIB-HB5-120",
+      "offered": false,
+      "reasons": [
+        "Sprint/change-of-direction prescriptions lack the current readiness, effort, dose and progression policy; existing guarded hybrid plans remain available."
+      ]
+    },
+    {
+      "id": "LIB-SP1-30",
+      "offered": false,
+      "reasons": [
+        "The proposed in-season plan includes unguarded jump work and has no season-specific total-load qualification; existing sport foundations remain available."
+      ]
+    },
+    {
+      "id": "LIB-SP1-45",
+      "offered": false,
+      "reasons": [
+        "The proposed in-season plan includes unguarded jump work and has no season-specific total-load qualification; existing sport foundations remain available."
+      ]
+    },
+    {
+      "id": "LIB-SP1-60",
+      "offered": false,
+      "reasons": [
+        "The proposed in-season plan includes unguarded jump work and has no season-specific total-load qualification; existing sport foundations remain available."
+      ]
+    },
+    {
+      "id": "LIB-SP1-90",
+      "offered": false,
+      "reasons": [
+        "The proposed in-season plan includes unguarded jump work and has no season-specific total-load qualification; existing sport foundations remain available."
+      ]
+    },
+    {
+      "id": "LIB-SP1-120",
+      "offered": false,
+      "reasons": [
+        "The proposed in-season plan includes unguarded jump work and has no season-specific total-load qualification; existing sport foundations remain available."
+      ]
+    },
+    {
+      "id": "LIB-SP2-30",
+      "offered": false,
+      "reasons": [
+        "Jump variants do not implement the current fixed landing-practice readiness and non-progression boundary."
+      ]
+    },
+    {
+      "id": "LIB-SP2-45",
+      "offered": false,
+      "reasons": [
+        "Jump variants do not implement the current fixed landing-practice readiness and non-progression boundary."
+      ]
+    },
+    {
+      "id": "LIB-SP2-60",
+      "offered": false,
+      "reasons": [
+        "Jump variants do not implement the current fixed landing-practice readiness and non-progression boundary."
+      ]
+    },
+    {
+      "id": "LIB-SP2-90",
+      "offered": false,
+      "reasons": [
+        "Jump variants do not implement the current fixed landing-practice readiness and non-progression boundary."
+      ]
+    },
+    {
+      "id": "LIB-SP2-120",
+      "offered": false,
+      "reasons": [
+        "Jump variants do not implement the current fixed landing-practice readiness and non-progression boundary."
+      ]
+    },
+    {
+      "id": "LIB-SP3-15",
+      "offered": false,
+      "reasons": [
+        "Jump variants do not implement the current fixed landing-practice readiness and non-progression boundary."
+      ]
+    },
+    {
+      "id": "LIB-SP3-30",
+      "offered": false,
+      "reasons": [
+        "Jump variants do not implement the current fixed landing-practice readiness and non-progression boundary."
+      ]
+    },
+    {
+      "id": "LIB-SP3-45",
+      "offered": false,
+      "reasons": [
+        "Jump variants do not implement the current fixed landing-practice readiness and non-progression boundary."
+      ]
+    },
+    {
+      "id": "LIB-SP3-60",
+      "offered": false,
+      "reasons": [
+        "Jump variants do not implement the current fixed landing-practice readiness and non-progression boundary."
+      ]
+    },
+    {
+      "id": "LIB-SP3-90",
+      "offered": false,
+      "reasons": [
+        "Jump variants do not implement the current fixed landing-practice readiness and non-progression boundary."
+      ]
+    },
+    {
+      "id": "LIB-SP3-120",
+      "offered": false,
+      "reasons": [
+        "Jump variants do not implement the current fixed landing-practice readiness and non-progression boundary."
+      ]
+    },
+    {
+      "id": "LIB-SP4-30",
+      "offered": false,
+      "reasons": [
+        "Sprint/change-of-direction variants lack readiness, effort, dose and progression qualification."
+      ]
+    },
+    {
+      "id": "LIB-SP4-45",
+      "offered": false,
+      "reasons": [
+        "Sprint/change-of-direction variants lack readiness, effort, dose and progression qualification."
+      ]
+    },
+    {
+      "id": "LIB-SP4-60",
+      "offered": false,
+      "reasons": [
+        "Sprint/change-of-direction variants lack readiness, effort, dose and progression qualification."
+      ]
+    },
+    {
+      "id": "LIB-SP4-90",
+      "offered": false,
+      "reasons": [
+        "Sprint/change-of-direction variants lack readiness, effort, dose and progression qualification."
+      ]
+    },
+    {
+      "id": "LIB-SP4-120",
+      "offered": false,
+      "reasons": [
+        "Sprint/change-of-direction variants lack readiness, effort, dose and progression qualification."
+      ]
+    },
+    {
+      "id": "LIB-SP5-30",
+      "offered": false,
+      "reasons": [
+        "Lower: cannot retain all listed movements and main work within 30 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-SP5-45",
+      "offered": true,
+      "days": 2,
+      "maximumMinutes": 43,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 5,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 1,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 2,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 6,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 1,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        }
+      ],
+      "limitations": [
+        "Chest, Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "This is general strength preparation, not a validated position-specific sport program.",
+        "General preparation does not establish position-specific sprint, cutting, throwing or injury-prevention outcomes. Outside sport practice and season demands need separate review."
+      ]
+    },
+    {
+      "id": "LIB-SP5-60",
+      "offered": true,
+      "days": 2,
+      "maximumMinutes": 60,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 8,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 5,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 6,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        }
+      ],
+      "limitations": [
+        "Chest, Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "This is general strength preparation, not a validated position-specific sport program.",
+        "General preparation does not establish position-specific sprint, cutting, throwing or injury-prevention outcomes. Outside sport practice and season demands need separate review."
+      ]
+    },
+    {
+      "id": "LIB-SP5-90",
+      "offered": true,
+      "days": 2,
+      "maximumMinutes": 60,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 8,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 5,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 6,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        }
+      ],
+      "limitations": [
+        "Chest, Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "This is general strength preparation, not a validated position-specific sport program.",
+        "General preparation does not establish position-specific sprint, cutting, throwing or injury-prevention outcomes. Outside sport practice and season demands need separate review."
+      ]
+    },
+    {
+      "id": "LIB-SP5-120",
+      "offered": true,
+      "days": 2,
+      "maximumMinutes": 60,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 3,
+          "secondarySets": 8,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 5,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 6,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        }
+      ],
+      "limitations": [
+        "Chest, Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "This is general strength preparation, not a validated position-specific sport program.",
+        "General preparation does not establish position-specific sprint, cutting, throwing or injury-prevention outcomes. Outside sport practice and season demands need separate review."
+      ]
+    },
+    {
+      "id": "LIB-GF1-15",
+      "offered": false,
+      "reasons": [
+        "Full body · A: cannot retain all listed movements and main work within 15 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-GF1-30",
+      "offered": true,
+      "days": 2,
+      "maximumMinutes": 29,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 0,
+          "secondarySets": 8,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 1,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF1-45",
+      "offered": true,
+      "days": 2,
+      "maximumMinutes": 44,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 0,
+          "secondarySets": 8,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 1,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF1-60",
+      "offered": true,
+      "days": 2,
+      "maximumMinutes": 47,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 0,
+          "secondarySets": 8,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF1-90",
+      "offered": true,
+      "days": 2,
+      "maximumMinutes": 47,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 0,
+          "secondarySets": 8,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF1-120",
+      "offered": true,
+      "days": 2,
+      "maximumMinutes": 47,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 0,
+          "secondarySets": 8,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF2-45",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 45,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 1,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 2,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 1,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Chest, Back, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF2-60",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 50,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 2,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Chest, Back, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF2-90",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 50,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 2,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Chest, Back, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF2-120",
+      "offered": true,
+      "days": 3,
+      "maximumMinutes": 50,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 2,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Chest, Back, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF3-30",
+      "offered": true,
+      "days": 4,
+      "maximumMinutes": 29,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 9,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 12,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 1,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 0,
+          "secondarySets": 9,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF3-45",
+      "offered": true,
+      "days": 4,
+      "maximumMinutes": 45,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 5,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 11,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 14,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 3,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 1,
+          "secondarySets": 5,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 2,
+          "secondarySets": 7,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 0,
+          "secondarySets": 11,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF3-60",
+      "offered": true,
+      "days": 4,
+      "maximumMinutes": 54,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 4,
+          "secondarySets": 12,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 15,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 4,
+          "secondarySets": 8,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 0,
+          "secondarySets": 12,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF3-90",
+      "offered": true,
+      "days": 4,
+      "maximumMinutes": 54,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 4,
+          "secondarySets": 12,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 15,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 4,
+          "secondarySets": 8,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 0,
+          "secondarySets": 12,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF3-120",
+      "offered": true,
+      "days": 4,
+      "maximumMinutes": 54,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 4,
+          "secondarySets": 12,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 8,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 15,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 2,
+          "secondarySets": 6,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 4,
+          "secondarySets": 8,
+          "primaryDays": 2,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 0,
+          "secondarySets": 12,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF4-30",
+      "offered": false,
+      "reasons": [
+        "Run/walk · A needs about 33 minutes including warm-up, rest and setup. Increase the time window; no defining work was dropped."
+      ]
+    },
+    {
+      "id": "LIB-GF4-45",
+      "offered": true,
+      "days": 5,
+      "maximumMinutes": 43,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 2,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Chest, Back, Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF4-60",
+      "offered": true,
+      "days": 5,
+      "maximumMinutes": 43,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 2,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Chest, Back, Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF4-90",
+      "offered": true,
+      "days": 5,
+      "maximumMinutes": 43,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 2,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Chest, Back, Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF4-120",
+      "offered": true,
+      "days": 5,
+      "maximumMinutes": 43,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 6,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 2,
+          "primaryDays": 0,
+          "secondaryDays": 1
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Chest, Back, Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF5-15",
+      "offered": false,
+      "reasons": [
+        "Bodyweight and band · A: cannot retain all listed movements and main work within 15 minutes using the current preparation/rest/per-side estimate."
+      ]
+    },
+    {
+      "id": "LIB-GF5-30",
+      "offered": true,
+      "days": 2,
+      "maximumMinutes": 26,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 0,
+          "secondarySets": 8,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF5-45",
+      "offered": true,
+      "days": 2,
+      "maximumMinutes": 26,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 0,
+          "secondarySets": 8,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF5-60",
+      "offered": true,
+      "days": 2,
+      "maximumMinutes": 26,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 0,
+          "secondarySets": 8,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF5-90",
+      "offered": true,
+      "days": 2,
+      "maximumMinutes": 26,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 0,
+          "secondarySets": 8,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    },
+    {
+      "id": "LIB-GF5-120",
+      "offered": true,
+      "days": 2,
+      "maximumMinutes": 26,
+      "weeklyWork": [
+        {
+          "name": "Chest",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Back",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Shoulders",
+          "primarySets": 0,
+          "secondarySets": 8,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Quadriceps",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Hamstrings",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Glutes",
+          "primarySets": 4,
+          "secondarySets": 0,
+          "primaryDays": 2,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Calves",
+          "primarySets": 2,
+          "secondarySets": 0,
+          "primaryDays": 1,
+          "secondaryDays": 0
+        },
+        {
+          "name": "Biceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Triceps",
+          "primarySets": 0,
+          "secondarySets": 4,
+          "primaryDays": 0,
+          "secondaryDays": 2
+        },
+        {
+          "name": "Trunk",
+          "primarySets": 2,
+          "secondarySets": 4,
+          "primaryDays": 1,
+          "secondaryDays": 2
+        }
+      ],
+      "limitations": [
+        "Quadriceps, Hamstrings receive primary work less than twice per sampled week. Review this against the routine’s scope; secondary work is not counted as equal direct work.",
+        "A brief strength plan alone may not supply complete weekly aerobic and muscle-strengthening recommendations. No guaranteed weight loss, rehabilitation or disease treatment is claimed."
+      ]
+    }
+  ]
+}

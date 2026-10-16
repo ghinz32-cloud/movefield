@@ -9705,13 +9705,23 @@
     "referenceScope": "parent movement or general technique; exact variation video not verified"
   },
   "lib-single-db-split-squat": {
-    "sourceUrl": "https://www.acefitness.org/resources/pros/expert-articles/5269/how-to-get-started-with-kettlebells/",
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Split_Squat_with_Dumbbells.json",
     "hasVideo": false,
-    "referenceScope": "parent movement or general technique; exact variation video not verified"
+    "referenceScope": "Related rear-foot-elevated split squat with two dumbbells; this variation uses one dumbbell and keeps the rear toes on the floor"
   },
   "lib-band-curl": {
     "sourceUrl": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/biceps-curl/vid-20084675",
     "hasVideo": false,
     "referenceScope": "parent movement or general technique; exact variation video not verified"
+  },
+  "lib-db-split-squat": {
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Split_Squat_with_Dumbbells.json",
+    "hasVideo": false,
+    "referenceScope": "Related rear-foot-elevated split squat with two dumbbells; this variation keeps the rear toes on the floor"
+  },
+  "lib-db-reverse-fly": {
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/blob/main/exercises/Seated_Bent-Over_Rear_Delt_Raise.json",
+    "hasVideo": false,
+    "referenceScope": "Related seated bent-over rear-delt raise; this variation uses a standing hip hinge"
   }
 }

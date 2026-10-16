@@ -4,7 +4,7 @@
     {
       "source": "lib/training-runtime.js",
       "target": "src/shared/training-runtime.js",
-      "sha256": "f627c0deea2e33bf21b2c9c49d1ec38f2e6f3ab78e7c680ce681594bc139d901"
+      "sha256": "a64688d281671fbd9a21324bf6f87ebeed72f56900d145c8a81c077ebc099c89"
     },
     {
       "source": "lib/training-runtime.d.ts",
@@ -14,22 +14,22 @@
     {
       "source": "lib/equipment-runtime.js",
       "target": "src/shared/equipment-runtime.js",
-      "sha256": "d9f21f585437700d46cd89bcdee83025fd8aa7052c186c9b17c7b124f3e953ff"
+      "sha256": "eb948db4ee40c7d8fff4395eff56870d5821178520e42e52dffac267a85445d0"
     },
     {
       "source": "lib/equipment-runtime.d.ts",
       "target": "src/shared/equipment-runtime.d.ts",
-      "sha256": "e8d754c512281075dc87ba620ec0c8b425be073695751f2727f230c9e6e417e3"
+      "sha256": "397df86dc82585d735f2535210b407d03bac7f1a5f8c896c08a905008303f634"
     },
     {
       "source": "lib/program-catalog-runtime.js",
       "target": "src/shared/program-catalog-runtime.js",
-      "sha256": "31ea955b211a497a3d1027611dbfa5f7b00fe12ef2b4b6a08a246ed895dd0ad5"
+      "sha256": "2c28ab3c2d38a1ecb4354fe20e2bf28e5f833ce4db0ef71e0373c8b52a2c32ce"
     },
     {
       "source": "lib/program-catalog-runtime.d.ts",
       "target": "src/shared/program-catalog-runtime.d.ts",
-      "sha256": "e22a78e288a400c283d9a0b4c2920a2e43aa5fce1df25827f5f7fec9a63517bd"
+      "sha256": "07d2c87a9bae914366d95ddd14365645bf4c7dacd87170cb05f20dda223fcf10"
     },
     {
       "source": "lib/onboarding-runtime.js",
@@ -144,7 +144,7 @@
     {
       "source": "lib/source-programs-runtime.js",
       "target": "src/shared/source-programs-runtime.js",
-      "sha256": "a4b33c334dcdcd35a8e76353fb10163db427218f40ec87a0a48c7f2b0767d69a"
+      "sha256": "d3157310ca635fed5010c161e35f22e7aa8f6eed06449e62a662048f15cca521"
     },
     {
       "source": "lib/source-programs-runtime.d.ts",
@@ -154,7 +154,7 @@
     {
       "source": "lib/muscle-work-runtime.js",
       "target": "src/shared/muscle-work-runtime.js",
-      "sha256": "4b7c6d700887b3b256b14bde85cfc1533ae810f4966b92ba1fd3a5494cd6c450"
+      "sha256": "524d7bbffd248a2dede6cd38c7b437a2e3146b90695b7fc0c13ee0e308bbd6b6"
     },
     {
       "source": "lib/muscle-work-runtime.d.ts",
@@ -394,7 +394,7 @@
     {
       "source": "lib/substitutions.ts",
       "target": "src/shared/substitutions.ts",
-      "sha256": "6e6d226d772b621073f540d3daf55a00626c3417c97498ae33d33182939ccd14"
+      "sha256": "9db701b4f5279d8ccbba7c6e5a16511ee1fb84c889b35ddcaa6ad98cdbe2b317"
     },
     {
       "source": "lib/session-guide.ts",
@@ -419,7 +419,7 @@
     {
       "source": "lib/exercise-library.json",
       "target": "src/shared/exercise-library.json",
-      "sha256": "2fea2af8c5a0bff9a3ff3ce0af6cb907b9671823344b3119fca4958e484211a7"
+      "sha256": "0f351ffb238574b17136d1ea345aeadc5e16fc1ace86a00dbd46de93b0ad1add"
     },
     {
       "source": "lib/recipes.json",
@@ -449,12 +449,12 @@
     {
       "source": "public/exercise-guides.json",
       "target": "assets/content/exercise-guides.json",
-      "sha256": "db8db5147f52812961098086a887867d0ff958b514154e71cc78ea64dc868fbb"
+      "sha256": "005e15b8ada060238fe4e3f388fc9c110b257c6920c521261fb73112cfdff7b5"
     },
     {
       "source": "public/exercise-content.json",
       "target": "assets/content/exercise-content.json",
-      "sha256": "999a040100f84df75326c7bff31a91f27c72fd76f908a00baca88ee5f0a6c620"
+      "sha256": "4e500f0b8393c2651f8f92ff8085e11ab8bc742dde202e909f1f75c23597ed1a"
     },
     {
       "source": "docs/exercise-library-LICENSE.txt",
@@ -475,6 +475,11 @@
       "source": "docs/exercise-library-completion.json",
       "target": "docs/exercise-library-completion.json",
       "sha256": "aface77b991eda9cb28e84fb48dc00627b9958b2b852c5a940d00271e64c44e1"
+    },
+    {
+      "source": "lib/routine-library.json",
+      "target": "src/shared/routine-library.json",
+      "sha256": "ccc8099c5a316317567b5d99b782625c26b89928c13bbb3cd532ce4c1832ba2e"
     },
     {
       "source": "lib/block-starting-loads.ts",

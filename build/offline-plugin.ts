@@ -1,14 +1,18 @@
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import type {Plugin} from 'vite';
-/** Version the offline cache by final client bytes, not a clock or source guess. */
+/** Version every precached resource so guide-only corrections reach returning users. */
 export function offlineShell(base='/',staticReview=false,cachePrefix=staticReview?'movefield-review-shell-':'movefield-shell-',brandAssets:string[]=[]):Plugin {
  return {name:'movefield-offline-shell',apply:'build',applyToEnvironment:env=>env.name==='client',generateBundle(_,bundle){
   const entries=Object.entries(bundle).filter(([name])=>/\.(?:js|css)$/.test(name)),hash=createHash('sha256');
   for(const [name,file] of entries.sort(([a],[b])=>a.localeCompare(b)))hash.update(name).update(file.type==='chunk'?file.code:typeof file.source==='string'?file.source:Buffer.from(file.source));
-  // A replacement logo also updates installed offline shells when code is unchanged.
-  for(const name of [...brandAssets].sort())hash.update(name).update(readFileSync(new URL('../public/'+name,import.meta.url)));
-  const source=readFileSync(new URL('../public/movefield-sw.js',import.meta.url),'utf8')
+  const workerTemplate=readFileSync(new URL('../public/movefield-sw.js',import.meta.url),'utf8');
+  hash.update(workerTemplate);
+  // Keep this list aligned with the worker's STATIC public resources. Guides and
+  // photos metadata are cache-first, so their bytes must also identify a release.
+  const publicAssets=[...new Set(['exercise-guides.json','exercise-content.json','fonts/inter-variable.ttf','fonts/barlow-condensed-semibold.ttf',...brandAssets])];
+  for(const name of publicAssets.sort())hash.update(name).update(readFileSync(new URL('../public/'+name,import.meta.url)));
+  const source=workerTemplate
    .replace("'DEVELOPMENT_DISABLED'",JSON.stringify(hash.digest('hex').slice(0,20)))
    .replace("const BASE = '/';",'const BASE = '+JSON.stringify(base)+';')
    .replace('const STATIC_REVIEW = false;','const STATIC_REVIEW = '+JSON.stringify(staticReview)+';')

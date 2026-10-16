@@ -317,12 +317,12 @@ function buildSourcePlan(p, events) {
 }
 function sourceLoadSuggestion(s, i) {
     var rule = i.sourceRule;
+    // Earlier substitutions could retain the original lift's rule. Keep those
+    // saved targets intact, but only apply automatic rules to a source movement.
+    var definition = sourceProgram(s.plan?.template);
+    if (rule && !definition?.slots.some(slot => slot.items.some(item => item.exerciseId === i.exerciseId && item.sourceRule?.kind === rule.kind)))
+        rule = undefined;
     var creatorGzcl = i.loadRole?.endsWith('/creator-2016-v2');
-    if (!rule)
-        return {
-            kg: null,
-            reason: 'This published target has no configured source progression.'
-        };
     if (s.hold || s.plan?.paused || s.profile.age < 18 || s.profile.mode !== 'app')
         return {
             kg: null,
@@ -341,6 +341,11 @@ function sourceLoadSuggestion(s, i) {
             reason: 'This equipment is marked unavailable. Review equipment or the routine before selecting a load.'
         };
     if (i.kg !== null) {
+        if (!e.loadTracked || e.metric !== 'reps' || !Number.isFinite(i.kg) || i.kg < 0 || i.kg > 1500)
+            return {
+                kg: null,
+                reason: 'Review a valid starting weight for this exercise.'
+            };
         if (limit !== undefined && i.kg > limit)
             return {
                 kg: null,
@@ -353,9 +358,14 @@ function sourceLoadSuggestion(s, i) {
             };
         return {
             kg: i.kg,
-            reason: 'Reviewed source load for this session. Reassess during the warm-up.'
+            reason: rule ? 'Reviewed source load for this session. Reassess during the warm-up.' : 'Starting weight reviewed for this substitute. You choose its progression; automatic source increases are disabled.'
         };
     }
+    if (!rule)
+        return {
+            kg: null,
+            reason: 'Choose your own starting weight and progression for this substitute; automatic source increases and stage changes are disabled.'
+        };
     var records = s.history.filter(w => w.finishedAt && w.targets?.some(t => t.exerciseId === i.exerciseId && t.loadRole === i.loadRole && t.sourceRule?.kind === rule.kind) && (!machine || !!context && w.loadContext?.[i.exerciseId] === context)).sort((a, b) => b.date.localeCompare(a.date) || (b.finishedAt || 0) - (a.finishedAt || 0));
     var w = records[0], t = w?.targets?.find(t => t.exerciseId === i.exerciseId);
     if (!w || !t)

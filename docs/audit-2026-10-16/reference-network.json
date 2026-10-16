@@ -1,0 +1,672 @@
+{
+  "checkedAt": "2026-10-16T15:31:20Z",
+  "scope": "All unique non-GitHub guide references; canonical FreeExerciseDB source IDs verified from live upstream JSON separately. A denied host is not retried under alternate paths. HTTP200/title alone does not verify claim or technique.",
+  "totals": {
+    "urls": 109,
+    "http200": 69,
+    "http404": 0,
+    "http403": 0,
+    "proxyConnectDenied": 22,
+    "skippedDeniedHost": 18
+  },
+  "results": [
+    {
+      "url": "https://assets.crossfit.com/pdfs/seminars/SMERefs/Gymnastics/GymnasticsCourse_SeminarGuide.pdf",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://catalystathletics.com/exercise/58/Snatch/",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://dxpprod.nsca.com/contentassets/24dd7222ed1b4caeb8a0a46b81bd11f3/ptq-4.4.9-the-undervalued-lunge.pdf",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://kb.cybexintl.com/Owners_Manuals/Strength/Hammer_Strength_Plate_Loaded_Owners_Manual.pdf",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://library.crossfit.com/free/pdf/CFJ_English_Level1_TrainingGuide.pdf",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://orthoinfo.aaos.org/globalassets/pdfs/2024-rotator-cuff-and-shoulder-conditioning-program.pdf",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://repfitness.com/blogs/training/how-to-do-split-squats",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://shop.lifefitness.com/products/hammer-strength-select-abdominal-crunch",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://shop.lifefitness.com/products/hammer-strength-select-seated-leg-curl",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "shop.lifefitness.com"
+    },
+    {
+      "url": "https://shop.lifefitness.com/products/signature-series-leg-raise",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "shop.lifefitness.com"
+    },
+    {
+      "url": "https://static.precor.com/sell-sheet/all/VSL/VSL005BP-Leg-Extension-NA.pdf",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://support.lifefitness.com/hc/en-us/articles/360036926694-Hammer-Strength-Plate-Loaded-Owner-s-Manual",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://support.lifefitness.com/hc/en-us/articles/38587673062295-Life-Fitness-SSM-Signature-Smith-Machine-Owner-s-Manual",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "support.lifefitness.com"
+    },
+    {
+      "url": "https://support.lifefitness.com/hc/en-us/articles/42814055083031-Life-Fitness-Atmos-Treadmill-How-to-Use-the-Emergency-Stop-and-Prevent-Child-Use",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "support.lifefitness.com"
+    },
+    {
+      "url": "https://support.lifefitness.com/hc/en-us/articles/42862231037335-How-to-Adjust-the-Seat-on-Your-Life-Fitness-Atmos-Upright-Bike",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "support.lifefitness.com"
+    },
+    {
+      "url": "https://support.lifefitness.com/hc/en-us/articles/42862239184279-How-to-Adjust-the-Seat-on-Your-Life-Fitness-Atmos-Recumbent-Bike",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "support.lifefitness.com"
+    },
+    {
+      "url": "https://usavolleyball.org/resources-for-coaches/lesson-plans/",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.acefitness.org/continuing-education/certified/july-2025/8897/the-ace-workout-builder-for-resistance-band-workouts/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/continuing-education/certified/july-2025/8897/the-ace-workout-builder-for-resistance-band-workouts/",
+      "title": "ACE - Certified&trade;: July 2025 - The ACE Workout Builder for Resistance Band Workouts"
+    },
+    {
+      "url": "https://www.acefitness.org/continuing-education/certified/may-2025/8865/the-ace-do-it-better-series-the-romanian-deadlift/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/continuing-education/certified/may-2025/8865/the-ace-do-it-better-series-the-romanian-deadlift/",
+      "title": "ACE - Certified&trade;: May 2025 - The ACE Do it Better Series: The Romanian Deadlift",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.acefitness.org/continuing-education/certified/november-2019/7403/understanding-the-barbell-hip-thrust/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/continuing-education/certified/november-2019/7403/understanding-the-barbell-hip-thrust/",
+      "title": "ACE - Certified&trade;: November 2019 - Understanding the Barbell Hip Thrust"
+    },
+    {
+      "url": "https://www.acefitness.org/continuing-education/prosource/research-special-issue-2015/5320/dynamite-delts-ace-research-identifies-top-shoulder-exercises/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/continuing-education/prosource/research-special-issue-2015/5320/dynamite-delts-ace-research-identifies-top-shoulder-exercises/",
+      "title": "ACE - ProSource&trade;: Research Special Issue 2015 - Dynamite Delts: ACE Research Identifies Top Shoulder Exercises",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.acefitness.org/getfit/studies/bestworstabexercises.pdf",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/getfit/studies/bestworstabexercises.pdf",
+      "title": null
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/10/hammer-curl/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/10/hammer-curl/",
+      "title": "Hammer Curl Exercise Guide for Stronger Arms | Exercise Library | ACE",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/100/side-plank-modified/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/100/side-plank-modified/",
+      "title": "Ab Exercises | Side Plank - modified"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/11/back-squat/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/11/back-squat/",
+      "title": "Back Squat Exercise Guide | Exercise Library | ACE",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/12/bent-over-row/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/12/bent-over-row/",
+      "title": "Bent-Over Row | Exercise Library | ACE"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/135/bodyweight-squat/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/135/bodyweight-squat/",
+      "title": "Bodyweight Squat | Exercise Library | ACE",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/14/bird-dog/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/14/bird-dog/",
+      "title": "Bird Dog | Exercise Library | ACE"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/158/seated-lat-pulldown/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/158/seated-lat-pulldown/",
+      "title": "Seated Lat Pulldown | Exercise Library | ACE"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/163/standing-incline-cable-flyes/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/163/standing-incline-cable-flyes/",
+      "title": "Incline Cable Flyes | Exercise Library | ACE"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/185/triceps-pushdowns/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/185/triceps-pushdowns/",
+      "title": "Arm Exercises | Triceps Pushdowns",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/188/seated-chest-press/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/188/seated-chest-press/",
+      "title": "Seated Chest Press Exercise Guide | Exercise Library | ACE",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/19/chest-press/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/19/chest-press/",
+      "title": "How To Do a Chest Press | Exercise Library | ACE",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/236/barbell-jammers/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/236/barbell-jammers/",
+      "title": "Ab Exercises | Barbell Jammers"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/25/incline-chest-press/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/25/incline-chest-press/",
+      "title": "Chest Exercises | Incline Chest Press",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/26/lateral-raise/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/26/lateral-raise/",
+      "title": "Shoulder Exercises | Lateral Raise",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/28/step-up/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/28/step-up/",
+      "title": "Step-Up | Exercise Library | ACE"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/3/triceps-pressdown/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/3/triceps-pressdown/",
+      "title": "Arm Exercises | Triceps Pressdown"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/309/roll-out/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/309/roll-out/",
+      "title": "Ab Exercises | Roll Out"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/322/standing-bicep-curl/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/322/standing-bicep-curl/",
+      "title": "How To Do a Standing Bicep Curl | Exercise Library | ACE"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/332/standing-anti-rotation-press/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/332/standing-anti-rotation-press/",
+      "title": "Standing Anti-Rotation Press | Exercise Library | ACE"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/354/single-arm-lateral-raise/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/354/single-arm-lateral-raise/",
+      "title": "Shoulder Exercises | Single-arm Lateral Raise"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/359/farmer-s-carry/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/359/farmer-s-carry/",
+      "title": "Full Body/Integrated Exercises | Farmer's Carry"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/394/halo/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/394/halo/",
+      "title": "Back Exercises | Halo"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/41/push-up/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/41/push-up/",
+      "title": "Push-Ups | Exercise Library | ACE"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/44/seated-biceps-curl/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/44/seated-biceps-curl/",
+      "title": "Seated Biceps Curl | Exercise Library | ACE"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/45/seated-overhead-press/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/45/seated-overhead-press/",
+      "title": "Seated Overhead Press | Exercise Library | ACE"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/48/seated-row/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/48/seated-row/",
+      "title": "Seated Row | Exercise Library | ACE",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/52/crunch/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/52/crunch/",
+      "title": "Crunch | Exercise Library | ACE"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/54/front-raise/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/54/front-raise/",
+      "title": "Shoulder Exercises | Front Raise"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/74/triceps-extension/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/74/triceps-extension/",
+      "title": "Arm Exercises | Triceps Extension",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/76/reverse-crunch/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/everyone/exercise-library/76/reverse-crunch/",
+      "title": "How To Do a Reverse Ab Crunch | Exercise Library | ACE"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/pros/expert-articles/5172/20-minute-at-home-bodyweight-circuit/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/pros/expert-articles/5172/20-minute-at-home-bodyweight-circuit/",
+      "title": "Quick 20-Minute Bodyweight Circuit to Do At Home | ACE Blog"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/pros/expert-articles/5269/how-to-get-started-with-kettlebells/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/pros/expert-articles/5269/how-to-get-started-with-kettlebells/",
+      "title": "How to Get Started With Kettlebells",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.acefitness.org/resources/pros/expert-articles/5386/advanced-kettlebell-workout-for-increased-strength-and-conditioning/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/pros/expert-articles/5386/advanced-kettlebell-workout-for-increased-strength-and-conditioning/",
+      "title": "Advanced Kettlebell Workout for Increased Strength and Conditioning"
+    },
+    {
+      "url": "https://www.acefitness.org/resources/pros/expert-articles/5389/5-exercises-trainers-should-never-do/",
+      "status": 200,
+      "finalUrl": "https://www.acefitness.org/resources/pros/expert-articles/5389/5-exercises-trainers-should-never-do/",
+      "title": "5 Exercises Trainers Should Never Do"
+    },
+    {
+      "url": "https://www.catalystathletics.com/exercise/59/Clean/",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.catalystathletics.com/exercise/87/Push-Press/",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "www.catalystathletics.com"
+    },
+    {
+      "url": "https://www.concept2.com/training/rowing-technique",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.cuh.nhs.uk/patient-information/neck-exercises-and-advice/",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.lifefitness.com.au/commercial/adominal-oblique-crunch-plab",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.lifefitness.com.au/sb-assets/292045577297161/x/c0b513725c/gs4-wall-chart.pdf",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "www.lifefitness.com.au"
+    },
+    {
+      "url": "https://www.lifefitness.com.au/wp-content/uploads/2015/02/Fit_1_2_213_1404174351.pdf",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "www.lifefitness.com.au"
+    },
+    {
+      "url": "https://www.lifefitness.com/en-us/catalog/strength-training/plate-loaded/hammer-strength-plate-loaded-glute-drive",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/fitness/basics/stretching-and-flexibility/hlv-20049447",
+      "status": 200,
+      "finalUrl": "https://www.mayoclinic.org/healthy-lifestyle/fitness/basics/stretching-and-flexibility/hlv-20049447",
+      "title": "Fitness Stretching and flexibility - Mayo Clinic"
+    },
+    {
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/stretching/art-20047931",
+      "status": 200,
+      "finalUrl": "https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/stretching/art-20047931",
+      "title": "Stretching: Focus on flexibility - Mayo Clinic"
+    },
+    {
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/walking/art-20046261",
+      "status": 200,
+      "finalUrl": "https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/walking/art-20046261",
+      "title": "Walking: Trim your waistline, improve your health - Mayo Clinic"
+    },
+    {
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842",
+      "status": 200,
+      "finalUrl": "https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842",
+      "title": "Weight training: Do&#x27;s and don&#x27;ts of proper technique - Mayo Clinic"
+    },
+    {
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/bent-over-row/vid-20084680",
+      "status": 200,
+      "finalUrl": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/bent-over-row/vid-20084680",
+      "title": "Video: Bent-over row with dumbbell - Mayo Clinic",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/biceps-curl/vid-20084675",
+      "status": 200,
+      "finalUrl": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/biceps-curl/vid-20084675",
+      "title": "Video: Biceps curl with dumbbell - Mayo Clinic",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/calf-raise/vid-20084681",
+      "status": 200,
+      "finalUrl": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/calf-raise/vid-20084681",
+      "title": "Video: Calf raise with dumbbell - Mayo Clinic",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/knee-extension/vid-20084686",
+      "status": 200,
+      "finalUrl": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/knee-extension/vid-20084686",
+      "title": "Video: Knee extension with weight machine - Mayo Clinic",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/lat-pull-down/vid-20084683",
+      "status": 200,
+      "finalUrl": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/lat-pull-down/vid-20084683",
+      "title": "Video: Lat pull-down with weight machine - Mayo Clinic",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/lying-hamstring-curl/vid-20084689",
+      "status": 200,
+      "finalUrl": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/lying-hamstring-curl/vid-20084689",
+      "title": "Video: Lying hamstring curl with weight machine - Mayo Clinic",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/blog/recovery/foam-rolling-and-self-myofascial-release-the-trainer-application-guide",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/blog/recovery/foam-rolling-and-self-myofascial-release-the-trainer-application-guide",
+      "title": "Foam Rolling and Self-Myofascial Release: The Trainer's Application Guide"
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/blog/training/best-abs-exercises",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/blog/training/best-abs-exercises",
+      "title": "Best Abs Exercises: Science-Based Core Training That Delivers Results"
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/blog/training/the-biomechanics-of-the-lat-pulldown-muscles-grip-and-form",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/blog/training/the-biomechanics-of-the-lat-pulldown-muscles-grip-and-form",
+      "title": "The Biomechanics of the Lat Pulldown: Muscles, Grips, and Form"
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/exercise-library/barbell-bench-press",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/exercise-library/barbell-bench-press",
+      "title": "Barbell Bench Press",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/exercise-library/barbell-deadlift",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/exercise-library/barbell-deadlift",
+      "title": "Barbell Deadlift",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/exercise-library/dead-bug",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/exercise-library/dead-bug",
+      "title": "Dead Bug",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/exercise-library/dumbbell-romanian-deadlift",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/exercise-library/dumbbell-romanian-deadlift",
+      "title": "Dumbbell Romanian Deadlift",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/exercise-library/face-pull",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/exercise-library/face-pull",
+      "title": "Face Pull"
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/exercise-library/floor-bridge",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/exercise-library/floor-bridge",
+      "title": "Floor Bridge"
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/exercise-library/goblet-squat",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/exercise-library/goblet-squat",
+      "title": "Goblet Squat",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/exercise-library/good-mornings",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/exercise-library/good-mornings",
+      "title": "Good Mornings"
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/exercise-library/incline-push-up",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/exercise-library/incline-push-up",
+      "title": "Incline Push-Up",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/exercise-library/kettlebell-front-squat",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/exercise-library/kettlebell-front-squat",
+      "title": "Kettlebell Front Squat"
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/exercise-library/plank",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/exercise-library/plank",
+      "title": "Plank"
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/exercise-library/side-plank",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/exercise-library/side-plank",
+      "title": "Side Plank"
+    },
+    {
+      "url": "https://www.nasm.org/resource-center/exercise-library/straight-arm-plank",
+      "status": 200,
+      "finalUrl": "https://www.nasm.org/resource-center/exercise-library/straight-arm-plank",
+      "title": "Straight-Arm Plank"
+    },
+    {
+      "url": "https://www.nhs.uk/better-health/get-active/get-running-with-couch-to-5k/couch-to-5k-running-plan/",
+      "status": 200,
+      "finalUrl": "https://www.nhs.uk/better-health/get-active/get-running-with-couch-to-5k/couch-to-5k-running-plan/",
+      "title": "Couch to 5K running plan - Better Health - NHS"
+    },
+    {
+      "url": "https://www.nhtsa.gov/road-safety/bicycle-safety",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.nsca.com/education/articles/kinetic-select/agility-and-quickness-test-box-step-off-landing-assessment/",
+      "status": 200,
+      "finalUrl": "https://www.nsca.com/education/articles/kinetic-select/agility-and-quickness-test-box-step-off-landing-assessment/",
+      "title": "Agility and Quickness Test: Box Step-Off Landing Assessment"
+    },
+    {
+      "url": "https://www.nsca.com/education/articles/kinetic-select/plyometric-exercises/",
+      "status": 200,
+      "finalUrl": "https://www.nsca.com/education/articles/kinetic-select/plyometric-exercises/",
+      "title": "Plyometric Exercises",
+      "proxyDenial": false
+    },
+    {
+      "url": "https://www.nsca.com/globalassets/about/position-statements/position_stand_youth_resistance_training---2009.pdf",
+      "status": 200,
+      "finalUrl": "https://www.nsca.com/globalassets/about/position-statements/position_stand_youth_resistance_training---2009.pdf",
+      "title": null
+    },
+    {
+      "url": "https://www.orthoinfo.org/recovery/spine-conditioning-program/",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.precor.com/en-US/products/RSL0606",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "www.precor.com"
+    },
+    {
+      "url": "https://www.precor.com/en-US/strength/selectorized/vitality",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.roguefitness.com/gb/theindex/gear-how-tos/how-to-use-a-rogue-rack-safely-effectively",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.roguefitness.com/landmines",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "www.roguefitness.com"
+    },
+    {
+      "url": "https://www.roguefitness.com/theindex/gear-how-tos/back-squat-vs-front-squat-key-differences",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "www.roguefitness.com"
+    },
+    {
+      "url": "https://www.roguefitness.com/theindex/movement/how-to-lift-an-atlas-stone",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "www.roguefitness.com"
+    },
+    {
+      "url": "https://www.roguefitness.com/theindex/video/how-to-train-farmers-carry",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "www.roguefitness.com"
+    },
+    {
+      "url": "https://www.strongfirst.com/3-cleans-relationship-form-function/",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.strongfirst.com/go-ballistic-the-jerk-for-barbell-and-kettlebell/",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "www.strongfirst.com"
+    },
+    {
+      "url": "https://www.strongfirst.com/taming-the-arc-in-kettlebell-lifts/",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "www.strongfirst.com"
+    },
+    {
+      "url": "https://www.strongfirst.com/the-bottoms-up-experiment/",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "www.strongfirst.com"
+    },
+    {
+      "url": "https://www.trxtraining.com/blogs/news/7-basic-movements",
+      "status": null,
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.trxtraining.com/pages/product-safety",
+      "status": null,
+      "result": "not-requested-after-explicit-proxy-denial",
+      "host": "www.trxtraining.com"
+    }
+  ]
+}

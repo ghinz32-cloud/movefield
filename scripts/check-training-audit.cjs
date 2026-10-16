@@ -140,7 +140,11 @@ if (!baseline) test('Every original, public-source and NHS plan completes its fu
     assert.equal(state.history.length, plan.sessions.length);
     plans++;
   }
-  assert.equal(plans, 154);
+  const addedIds = new Set(JSON.parse(fs.readFileSync('lib/routine-library.json', 'utf8')).map(d => d.id));
+  assert.equal(addedIds.size, 68, 'Reviewed new routine count changed; update the full audit deliberately');
+  assert.equal(choices.filter(c => !addedIds.has(c.id)).length, 154, 'All prior original, source and NHS plans remain covered');
+  assert.equal(choices.filter(c => addedIds.has(c.id)).length, addedIds.size, 'Every new routine joins the complete lifecycle');
+  assert.equal(plans, 154 + addedIds.size);
 });
 const report = {baseline, scope: 'Synthetic actual native workout actions with canonical shared engine; no rendered UI or physical device claim.',
   plans, sessions, sets, roundTrips, results, passed: results.every(r => r.status === 'pass')};

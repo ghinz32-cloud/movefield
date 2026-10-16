@@ -1,0 +1,76 @@
+{
+  "scope": "Native UI and component workflows rendered through sandboxed Chromium and React Native Web; actual OS, phone crypto, keyboard, notification and file boundaries are not established. Final canonical shared snapshot synchronized by parent before these runs.",
+  "types": "npm run check passed",
+  "density": "node scripts/check-native-density.cjs passed",
+  "checks": [
+    {
+      "file": ".sites-runtime/ux-native-app-results.json",
+      "receipt": {
+        "checkedAt": "2026-10-16T15:27:57.702Z",
+        "results": [
+          {
+            "variant": "movefield",
+            "passed": [
+              "actual app shell and five tabs at 320px",
+              "comma-decimal load entry, main logger failed-write preservation and retry",
+              "guide modal close and reachable Library at 130% app text",
+              "130% app text in settings and navigation",
+              "paginated samples, source-name search, empty recovery and six/seven-day filters",
+              "45-record history pages, scaled corrections and canceled draft preservation",
+              "read-only plan browsing preserves active workout and history"
+            ],
+            "scope": "Executed native App runtime rendered through RN Web; synthetic JSON writer, font loader, file IO, notifications and disabled cloud boundary mocked. Not an installed phone or OS keyboard test."
+          },
+          {
+            "variant": "grizzly",
+            "passed": [
+              "actual app shell and five tabs at 320px",
+              "comma-decimal load entry, main logger failed-write preservation and retry",
+              "guide modal close and reachable Library at 130% app text",
+              "130% app text in settings and navigation",
+              "paginated samples, source-name search, empty recovery and six/seven-day filters",
+              "45-record history pages, scaled corrections and canceled draft preservation",
+              "read-only plan browsing preserves active workout and history"
+            ],
+            "scope": "Executed native App runtime rendered through RN Web; synthetic JSON writer, font loader, file IO, notifications and disabled cloud boundary mocked. Not an installed phone or OS keyboard test."
+          }
+        ]
+      }
+    },
+    {
+      "file": ".sites-runtime/native-workflows/results.json",
+      "receipt": {
+        "checkedAt": "2026-10-16T15:27:28.112Z",
+        "grizzly": false,
+        "scope": "Real React Native components rendered via React Native Web in sandboxed Chromium. Synthetic durable JSON writer with injected failure; font loading and OS notification boundaries stubbed; no reminder action exercised. No native crypto, installed OS, TalkBack/VoiceOver or physical-device claim.",
+        "passed": [
+          "commitment range preview, failed-write preservation and durable retry",
+          "custom movement and addition preserve active workout and history",
+          "saved block full preview and accepted new unperformed sessions",
+          "320px region containment, app text scaling and 48px date targets",
+          "recorded progress period/exercise filtering",
+          "plan evidence disclosure and searchable research references",
+          "Today concern sample-only reset, future preview, active callback preservation and busy start guard"
+        ]
+      }
+    },
+    {
+      "file": ".sites-runtime/native-workflows-grizzly/results.json",
+      "receipt": {
+        "checkedAt": "2026-10-16T15:27:36.017Z",
+        "grizzly": true,
+        "scope": "Real React Native components rendered via React Native Web in sandboxed Chromium. Synthetic durable JSON writer with injected failure; font loading and OS notification boundaries stubbed; no reminder action exercised. No native crypto, installed OS, TalkBack/VoiceOver or physical-device claim.",
+        "passed": [
+          "commitment range preview, failed-write preservation and durable retry",
+          "custom movement and addition preserve active workout and history",
+          "saved block full preview and accepted new unperformed sessions",
+          "320px region containment, app text scaling and 48px date targets",
+          "recorded progress period/exercise filtering",
+          "plan evidence disclosure and searchable research references",
+          "Today concern sample-only reset, future preview, active callback preservation and busy start guard",
+          "native 35-font selection, outdoor palette and Clean preserve actual workout state at 320px"
+        ]
+      }
+    }
+  ]
+}

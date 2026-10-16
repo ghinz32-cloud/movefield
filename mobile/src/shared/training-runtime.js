@@ -287,7 +287,7 @@ function matchesExercise(e, query) {
     };
     var normalize = s => s.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
     var text = normalize(`${e.name} ${e.pattern} ${e.equipment} ${(e.primaryMuscles || []).join(' ')} ${/abdom|trunk/i.test(e.pattern + ' ' + e.primaryMuscles?.join(' ')) ? 'core' : ''}`);
-    return normalize(query).split(/\s+/).filter(Boolean).every(t => text.includes(aliases[t] || t));
+    return normalize(query).split(/\s+/).filter(Boolean).every(t => text.includes(t) || text.includes(aliases[t] || t));
 }
 var sports = ['Football', 'Flag football', 'Basketball', 'Baseball', 'Softball', 'Soccer', 'Volleyball', 'Track and field', 'Cross country', 'Swimming', 'Diving', 'Wrestling', 'Lacrosse', 'Field hockey', 'Ice hockey', 'Tennis', 'Golf', 'Cheer', 'Dance', 'Gymnastics', 'Bowling', 'Other sport'];
 var goals = [['strength', 'Strength'], ['hypertrophy', 'Build muscle'], ['powerbuilding', 'Powerbuilding'], ['hybrid', 'Hybrid · strength + running'], ['running', 'Running'], ['sport', 'Sport performance'], ['general', 'General fitness'], ['calisthenics', 'Calisthenics'], ['powerlifting', 'Powerlifting']];
@@ -2112,7 +2112,7 @@ function buildCatalogPlan(p, events) {
                     exerciseId: map[i.exerciseId] || i.exerciseId
                 };
             });
-        if (def.brief && !def.distributed && p.minutes >= 20 && !spec.kind) {
+        if (def.brief && !def.distributed && !def.fixedDose && p.minutes >= 20 && !spec.kind) {
             var expanded = items.map(i => ({
                 ...i,
                 sets: p.age < 18 || deload ? 1 : 2

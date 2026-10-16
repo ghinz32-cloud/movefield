@@ -49,8 +49,8 @@ artifacts = request_json('/actions/runs/' + RUN + '/artifacts')['artifacts']
 sdk = Path(os.environ['ANDROID_HOME'])
 records = []
 for app, package, version, code, filename in [
-    ('movefield', 'com.ghinz32.movefield', '0.1.4', 5, 'movefield-0.1.4-arm64.apk'),
-    ('grizzly', 'com.ghinz32.grizzlyfitness.prototype', '0.1.3', 4, 'grizzly-fitness-0.1.3-arm64.apk'),
+    ('movefield', 'com.ghinz32.movefield', '0.1.5', 6, 'movefield-0.1.5-arm64.apk'),
+    ('grizzly', 'com.ghinz32.grizzlyfitness.prototype', '0.1.4', 5, 'grizzly-fitness-0.1.4-arm64.apk'),
 ]:
     artifact = next(a for a in artifacts if a['name'] == app + '-arm64-current-test-only')
     assert not artifact['expired']
@@ -134,8 +134,9 @@ except urllib.error.HTTPError as error:
     assert error.code == 404
 else:
     raise RuntimeError('Release already exists; inspect it instead of replacing files')
-notes = ('Current audited Android test apps: Movefield 0.1.4 (5) and Grizzly Fitness 0.1.3 (4).\n\n'
-    'Includes the latest native UI/callback/keyboard/numeric-entry/large-text fixes and shared training. '
+notes = ('Current audited Android test apps: Movefield 0.1.5 (6) and Grizzly Fitness 0.1.4 (5).\n\n'
+    'Includes the reviewed routine library, equipment and exercise-substitution corrections, '
+    'and current web/native interface fixes in the shared training code. '
     'ARM64 phones, Android 7.0+. Development-signed; physical-device acceptance and store release remain pending. '
     'Back up records and update over the existing app.\n\n'
     'No signed iPhone installer is included; Apple signing/build access is still required.\n\n'
