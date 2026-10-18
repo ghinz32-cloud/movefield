@@ -12,6 +12,7 @@ files.push(['docs/transfer-compatibility-2026-10-13.md', 'docs/transfer-compatib
 const records = [];
 files.push(['lib/routine-library.json','src/shared/routine-library.json']);
 files.push(['lib/block-starting-loads.ts','src/shared/block-starting-loads.ts']);
+files.push(['lib/interface-theme.ts','src/shared/interface-theme.ts']);
 for (const [from, to] of files) {
   const source = resolve(site, from), target = resolve(root, to);
   await mkdir(dirname(target), { recursive: true });

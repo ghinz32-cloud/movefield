@@ -8,6 +8,22 @@ import {nativeWindowLayout} from './adaptive-layout';
 
 export type NativePhoneAction={label:string;accessibilityLabel?:string;onPress:()=>void;disabled?:boolean};
 
+export function NativeButton({label,accessibilityLabel,onPress,disabled=false,variant='primary',compact=false}:NativePhoneAction&{variant?:'primary'|'outline'|'subtle'|'danger';compact?:boolean}){
+ const {colors:c,p,fonts,dark}=useNativeAppearance(),filled=variant==='primary'||variant==='danger';
+ const color=variant==='danger'?c.danger:c.green;
+ return <Pressable accessibilityRole="button" accessibilityLabel={accessibilityLabel||label} accessibilityState={{disabled}} disabled={disabled} onPress={onPress} style={({pressed})=>({minHeight:48,paddingHorizontal:compact?12:16,paddingVertical:12,justifyContent:'center',alignItems:'center',borderRadius:10,borderWidth:1,borderColor:variant==='subtle'?'transparent':filled?color:c.inputBorder,backgroundColor:filled?color:variant==='subtle'?c.soft:c.white,opacity:disabled?.5:pressed?.78:1})}><Text style={{color:filled?variant==='danger'?(dark?'#132325':'#ffffff'):c.onAccent:c.ink,fontFamily:fonts?'Inter':undefined,fontSize:16*p.textSize/100,lineHeight:23*p.textSize/100,fontWeight:'600',textAlign:'center'}}>{label}</Text></Pressable>;
+}
+
+export function NativeChoiceButton({label,detail,selected,onPress,disabled=false,expanded,compact=false,multiple=false}:{label:string;detail?:string;selected?:boolean;onPress:()=>void;disabled?:boolean;expanded?:boolean;compact?:boolean;multiple?:boolean}){
+ const {colors:c,p,fonts}=useNativeAppearance();
+ const state={disabled,...(selected===undefined?{}:{checked:selected}),...(expanded===undefined?{}:{expanded})};
+ return <Pressable accessibilityRole={selected===undefined?'button':multiple?'checkbox':'radio'} accessibilityLabel={[label,detail].filter(Boolean).join('. ')} accessibilityState={state} aria-checked={selected} aria-expanded={expanded} disabled={disabled} onPress={onPress} style={({pressed})=>({minHeight:48,paddingVertical:compact?10:14,paddingHorizontal:compact?12:16,borderWidth:selected?2:1,borderColor:selected?c.green:c.inputBorder,borderRadius:10,backgroundColor:selected?c.soft:c.white,flexDirection:'row',alignItems:'center',gap:12,opacity:disabled?.5:pressed?.78:1})}>
+  {selected!==undefined&&!compact&&<View accessible={false} style={{width:22,height:22,borderRadius:multiple?5:12,borderWidth:1.5,borderColor:selected?c.green:c.inputBorder,backgroundColor:selected?c.green:'transparent',alignItems:'center',justifyContent:'center'}}>{selected&&<Text style={{color:c.onAccent,fontSize:15,lineHeight:18}}>✓</Text>}</View>}
+  <View style={{flexShrink:1,gap:4,...(!compact?{flex:1}:{})}}><Text style={{color:c.ink,fontFamily:fonts?'Inter':undefined,fontSize:16*p.textSize/100,lineHeight:23*p.textSize/100,fontWeight:selected?'600':'500'}}>{compact&&selected?'✓ ':''}{label}</Text>{!!detail&&<Text style={{color:c.muted,fontFamily:fonts?'Inter':undefined,fontSize:14*p.textSize/100,lineHeight:21*p.textSize/100}}>{detail}</Text>}</View>
+  {selected===undefined&&<Text accessible={false} style={{color:c.muted,fontSize:22,lineHeight:26}}>{expanded===undefined?'›':expanded?'⌃':'⌄'}</Text>}
+ </Pressable>;
+}
+
 /** One screen, one scrolling body. The app owns safe areas and keyboard movement
  * unless a standalone caller explicitly opts in. Footer actions never overlap it. */
 export function NativeFlowScreen({title,compactTitle,compact,subtitle,scrollResetKey,onBack,backLabel='Back',compactBack=false,trailing,children,footer,sidePanel,sidePanelLabel='Workout exercises',onAvailableHeight,contentStyle,keyboardAvoiding=false,insetBottom=false,handleHardwareBack=false}:{
@@ -17,6 +33,7 @@ export function NativeFlowScreen({title,compactTitle,compact,subtitle,scrollRese
  const [available,setAvailable]=useState({width:window.width,height:window.height});
  const dimensions=nativeWindowLayout(available.width,window.height,p.textSize,window.fontScale),layout={...dimensions,compactHeight:compact??dimensions.compactHeight},expanded=!!sidePanel&&layout.expanded&&available.height>=480;
  const arrowOnly=compactBack||layout.compactHeight;
+ const pageHeader=!onBack&&!compactTitle&&!trailing&&!layout.compactHeight;
  const scroll=useRef<ScrollView>(null),heading=useRef<Text>(null),back=useRef(onBack),previousTitle=useRef<string|null>(null),hasBack=!!onBack;
  useEffect(()=>{back.current=onBack},[onBack]);
  useEffect(()=>{if(!hasBack||!handleHardwareBack)return;const listener=BackHandler.addEventListener('hardwareBackPress',()=>{back.current?.();return true});return()=>listener.remove()},[hasBack,handleHardwareBack]);
@@ -29,10 +46,10 @@ export function NativeFlowScreen({title,compactTitle,compact,subtitle,scrollRese
  },[title,scrollResetKey]);
  const text={color:c.ink,fontFamily:fonts?'Inter':undefined,fontSize:16*p.textSize/100,lineHeight:23*p.textSize/100};
  return <KeyboardAvoidingView testID="native-flow-screen" onLayout={event=>{const {width,height}=event.nativeEvent.layout;if(width>0&&height>0){setAvailable(previous=>previous.width===width&&previous.height===height?previous:{width,height});onAvailableHeight?.(height)}}} style={{flex:1,minHeight:0,backgroundColor:c.bg,paddingBottom:insetBottom?insets.bottom:0}} enabled={keyboardAvoiding} behavior={Platform.OS==='ios'?'padding':undefined}>
-  <View style={{borderBottomWidth:1,borderBottomColor:c.line,backgroundColor:c.white}}><View style={{width:'100%',maxWidth:expanded?1280:layout.readingWidth,alignSelf:'center',paddingHorizontal:18,paddingVertical:layout.compactHeight?4:10,gap:5}}>
+  <View style={{borderBottomWidth:pageHeader?0:1,borderBottomColor:c.line,backgroundColor:pageHeader?c.bg:c.white}}><View style={{width:'100%',maxWidth:expanded?1280:layout.readingWidth,alignSelf:'center',paddingHorizontal:20,paddingTop:layout.compactHeight?4:pageHeader?22:10,paddingBottom:layout.compactHeight?4:pageHeader?8:10,gap:5}}>
    <View style={{flexDirection:'row',alignItems:'center',gap:12}}>
     {onBack&&<Pressable accessibilityRole="button" accessibilityLabel={backLabel} onPress={onBack} style={{minHeight:48,minWidth:48,width:arrowOnly?48:undefined,justifyContent:'center',alignItems:arrowOnly?'center':undefined,paddingRight:arrowOnly?0:4}}><Text accessible={false} style={[text,{color:c.green,fontWeight:'700'},arrowOnly?{fontSize:28,lineHeight:34}:undefined]}>{arrowOnly?'‹':'‹ '+backLabel}</Text></Pressable>}
-    <Text ref={heading} accessibilityRole="header" accessibilityLabel={title} style={{flex:1,flexShrink:1,color:c.ink,fontFamily:fonts?headingFamily:undefined,fontWeight:isGrizzly?'400':'700',fontSize:25*p.textSize/100,lineHeight:32*p.textSize/100}}>{layout.compactHeight&&compactTitle?compactTitle:title}</Text>
+    <Text ref={heading} accessibilityRole="header" accessibilityLabel={title} style={{flex:1,flexShrink:1,color:c.ink,fontFamily:fonts?headingFamily:undefined,fontWeight:isGrizzly?'400':'700',fontSize:(pageHeader?32:25)*p.textSize/100,lineHeight:(pageHeader?40:32)*p.textSize/100,letterSpacing:isGrizzly?0:-.5}}>{layout.compactHeight&&compactTitle?compactTitle:title}</Text>
     {trailing}
    </View>
    {!!subtitle&&<Text style={[text,{color:c.muted}]}>{subtitle}</Text>}
@@ -40,7 +57,7 @@ export function NativeFlowScreen({title,compactTitle,compact,subtitle,scrollRese
   <View style={{flex:1,minHeight:0,width:'100%',maxWidth:expanded?1280:layout.readingWidth,alignSelf:'center',flexDirection:'row'}}>
    <ScrollView key="context" accessibilityLabel={sidePanelLabel} accessibilityElementsHidden={!expanded} importantForAccessibility={expanded?'auto':'no-hide-descendants'} style={{display:expanded?'flex':'none',width:layout.listWidth,flexGrow:0,borderRightWidth:1,borderRightColor:c.line}} contentContainerStyle={{padding:16,gap:10}} keyboardShouldPersistTaps="handled">{sidePanel}</ScrollView>
    <View key="primary" style={{flex:1,minWidth:0,minHeight:0}}>
-    <ScrollView ref={scroll} testID="native-flow-body" tabIndex={0} focusable style={{flex:1,minHeight:0}} keyboardShouldPersistTaps="handled" keyboardDismissMode={Platform.OS==='web'?'none':'on-drag'} contentContainerStyle={[{padding:18,paddingBottom:24,gap:16},contentStyle]}>{children}</ScrollView>
+    <ScrollView ref={scroll} testID="native-flow-body" tabIndex={0} focusable style={{flex:1,minHeight:0}} keyboardShouldPersistTaps="handled" keyboardDismissMode={Platform.OS==='web'?'none':'on-drag'} contentContainerStyle={[{padding:20,paddingBottom:24,gap:18},contentStyle]}>{children}</ScrollView>
     {footer}
    </View>
   </View>
@@ -48,8 +65,8 @@ export function NativeFlowScreen({title,compactTitle,compact,subtitle,scrollRese
 }
 
 export function NativeSection({title,description,children}:{title?:string;description?:string;children?:React.ReactNode}){
- const {colors:c,p,fonts}=useNativeAppearance();
- return <View style={{padding:16,gap:12,borderWidth:1,borderColor:c.line,borderRadius:16,backgroundColor:c.white}}>
+ const {colors:c,p,fonts}=useNativeAppearance(),wild=isGrizzly&&p.grizzlyStyle==='wild'&&!p.contrast;
+ return <View style={{padding:18,gap:12,borderWidth:1,borderColor:c.line,borderRadius:16,backgroundColor:c.white,...(wild?{borderTopWidth:3,borderTopColor:c.effect,borderTopLeftRadius:2,borderTopRightRadius:22,borderBottomRightRadius:3,borderBottomLeftRadius:8}:{})}}>
   {!!title&&<Text accessibilityRole="header" style={{color:c.ink,fontFamily:fonts?'Inter':undefined,fontSize:17*p.textSize/100,lineHeight:24*p.textSize/100,fontWeight:'700'}}>{title}</Text>}
   {!!description&&<Text style={{color:c.muted,fontFamily:fonts?'Inter':undefined,fontSize:15*p.textSize/100,lineHeight:22*p.textSize/100}}>{description}</Text>}
   {children}
@@ -58,14 +75,14 @@ export function NativeSection({title,description,children}:{title?:string;descri
 
 export function NativeSettingsRow({label,value,detail,onPress,selected,disabled=false,danger=false}:{label:string;value?:string;detail?:string;onPress:()=>void;selected?:boolean;disabled?:boolean;danger?:boolean}){
  const {colors:c,p,fonts}=useNativeAppearance(),color=danger?c.danger:c.ink;
- return <Pressable accessibilityRole="button" accessibilityLabel={[label,value,detail].filter(Boolean).join('. ')} accessibilityState={{selected,disabled}} disabled={disabled} onPress={onPress} style={{minHeight:60,flexDirection:'row',alignItems:'center',gap:14,padding:14,borderWidth:1,borderColor:selected?c.green:c.line,borderRadius:12,backgroundColor:selected?c.pale:c.white,opacity:disabled?.5:1}}>
+ return <Pressable accessibilityRole="button" accessibilityLabel={[label,value,detail].filter(Boolean).join('. ')} accessibilityState={{selected,disabled}} {...(Platform.OS==='web'&&selected!==undefined?{'aria-pressed':selected}:{})} disabled={disabled} onPress={onPress} style={{minHeight:56,flexDirection:'row',alignItems:'center',gap:14,padding:14,borderWidth:1,borderColor:selected?c.green:c.line,borderRadius:12,backgroundColor:selected?c.soft:c.white,opacity:disabled?.5:1}}>
   <View style={{flex:1,gap:3}}><Text style={{color,fontFamily:fonts?'Inter':undefined,fontSize:16*p.textSize/100,lineHeight:23*p.textSize/100,fontWeight:'600'}}>{label}</Text>{!!value&&<Text style={{color:c.muted,fontFamily:fonts?'Inter':undefined,fontSize:14*p.textSize/100,lineHeight:21*p.textSize/100}}>{value}</Text>}{!!detail&&<Text style={{color:c.muted,fontFamily:fonts?'Inter':undefined,fontSize:14*p.textSize/100,lineHeight:21*p.textSize/100}}>{detail}</Text>}</View>
   <Text accessible={false} style={{color:selected?c.green:c.muted,fontSize:22}}>{selected===undefined?'›':selected?'✓':'○'}</Text>
  </Pressable>;
 }
 
 export function NativeActionFooter({primary,secondary,children,insetBottom=false,compact}:{primary:NativePhoneAction;secondary?:NativePhoneAction;children?:React.ReactNode;insetBottom?:boolean;compact?:boolean}){
- const {colors:c,p,fonts}=useNativeAppearance(),insets=useSafeAreaInsets(),window=useWindowDimensions(),dimensions=nativeWindowLayout(window.width,window.height,p.textSize,window.fontScale),layout={...dimensions,compactHeight:compact??dimensions.compactHeight};
- const action=(item:NativePhoneAction,main:boolean)=><Pressable key={main?'primary':'secondary'} accessibilityRole="button" accessibilityLabel={item.accessibilityLabel||item.label} accessibilityState={{disabled:!!item.disabled}} disabled={item.disabled} onPress={item.onPress} style={{minHeight:50,paddingHorizontal:16,paddingVertical:13,justifyContent:'center',alignItems:'center',borderRadius:12,borderWidth:1,borderColor:main?c.green:c.line,backgroundColor:main?c.green:c.white,opacity:item.disabled?0.5:1}}><Text style={{color:main?c.onAccent:c.ink,fontFamily:fonts?'Inter':undefined,fontSize:16*p.textSize/100,lineHeight:23*p.textSize/100,fontWeight:'700',textAlign:'center'}}>{item.label}</Text></Pressable>;
+ const {colors:c,p}=useNativeAppearance(),insets=useSafeAreaInsets(),window=useWindowDimensions(),dimensions=nativeWindowLayout(window.width,window.height,p.textSize,window.fontScale),layout={...dimensions,compactHeight:compact??dimensions.compactHeight};
+ const action=(item:NativePhoneAction,main:boolean)=><NativeButton key={main?'primary':'secondary'} {...item} variant={main?'primary':'outline'}/>;
  return <View style={{borderTopWidth:1,borderTopColor:c.line,backgroundColor:c.white}}><View style={{width:'100%',maxWidth:layout.readingWidth,alignSelf:'center',paddingHorizontal:18,paddingTop:layout.compactHeight?6:12,paddingBottom:Math.max(layout.compactHeight?6:12,insetBottom?insets.bottom:0),gap:10}}>{children}{action(primary,true)}{secondary&&action(secondary,false)}</View></View>;
 }

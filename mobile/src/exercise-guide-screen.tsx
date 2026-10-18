@@ -90,7 +90,7 @@ function ExerciseGuidePages({exercise,guide,media,equipmentSettings,onOpenUrl,li
    {!!guide?.reviewedAt&&<Text style={small}>Recorded review date: {guide.reviewedAt}</Text>}
    {!!guide?.terms?.length&&<NativeSettingsRow label="Workout terms" onPress={()=>setPage('terms')}/>}
    {links.map(link=><Pressable key={link.url} accessibilityRole="link" accessibilityLabel={`${link.label}. ${link.url}`} onPress={()=>open(link.url)} style={{minHeight:48,padding:14,gap:6,borderWidth:1,borderColor:c.line,borderRadius:12,backgroundColor:c.white}}>
-    <Text style={[text,{color:c.green,fontWeight:'600'}]}>{link.label} ↗</Text>
+    <Text style={[text,{color:c.green,fontWeight:'600',textDecorationLine:p.underlineLinks?'underline':'none'}]}>{link.label} ↗</Text>
     <Text style={[small,{flexShrink:1}]}>{link.url}</Text>
    </Pressable>)}
    {!links.length&&<Text style={small}>No web reference is available for this exercise.</Text>}

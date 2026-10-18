@@ -7,6 +7,7 @@ import * as _sharedProgramScience from "./shared/program-science";
 import * as _sharedProgramCatalog from "./shared/program-catalog";
 import * as _reactJsxRuntime from "react/jsx-runtime";
 var baseStyles = _reactNative.StyleSheet.create({
+    link: { color: '#214D3A', fontSize: 16, lineHeight: 24, fontWeight: '600' },
     body: {
         fontSize: 16,
         lineHeight: 24,
@@ -52,7 +53,7 @@ function References({ ids }) {
                             style: styles.button,
                             onPress: () => void _reactNative.Linking.openURL(source.url).catch(() => setError('The reference could not be opened. Your workout is kept.')),
                             children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
-                                style: styles.body,
+                                style: styles.link,
                                 children: source.name
                             })
                         }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
@@ -196,7 +197,7 @@ function NativeScienceLibrary() {
                         style: styles.button,
                         onPress: () => void _reactNative.Linking.openURL(p.url).catch(() => setError('The program source could not be opened. Your workout is kept.')),
                         children: /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(_reactNative.Text, {
-                            style: styles.body,
+                            style: styles.link,
                             children: ["Open ", p.author, "\u2019s program source"]
                         })
                     })]

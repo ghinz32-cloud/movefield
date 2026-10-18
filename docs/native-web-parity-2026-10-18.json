@@ -1,0 +1,588 @@
+{
+  "schema": 1,
+  "status": "local_qualification_complete_android_delivery_pending",
+  "preparedAt": "2026-10-18T05:28:49.460346+00:00",
+  "goal": {
+    "brands": [
+      "movefield",
+      "grizzly"
+    ],
+    "areas": [
+      "overall phone layout and navigation",
+      "workout logging",
+      "setup and settings"
+    ],
+    "reference": "Existing phone web apps and user preference; preserve native state/authority and platform-specific capabilities."
+  },
+  "branch": "codex/native-web-parity-2026-10-18",
+  "baseCommit": "11478854880faf7158f0ee89c8e24b3ca715e90c",
+  "sourceSnapshot": {
+    "capturedAt": "2026-10-18T05:33:56.794210+00:00",
+    "frozen": true,
+    "sourceCommit": null,
+    "tree": null,
+    "qualification": "All267 native files stayed unchanged across clean exports;16UI/theme sources match the final parity and adaptive checks.",
+    "sha256": {
+      "mobile/src/adaptive-layout.ts": "479aaeaf0ab034a8fd315526233dc4d85917307b91bf7644a203e30b1091be70",
+      "mobile/src/plan-setup-runtime.js": "845a7da7679942b8b1d6753bf2e8d3538022e426e881c7ac12c150a97f68e5e6",
+      "mobile/src/today-hero.tsx": "07d0fa5acf34598155adc14ddee41dd4ea80587d747bfb68285e47ef6f51f97f",
+      "mobile/App-runtime.js": "9be894163a310a3dd06c93da8121bfd008a10d2f389563e379a842f984c03bdf",
+      "mobile/src/workout-screen.tsx": "f89f54de89bf3adab236d8c646b0373e0c612b976bac6efe0cccccf793540fc7",
+      "mobile/src/exercise-guide-screen.tsx": "5ae73213da2c7c9b3eb4a10ff96940e073de4609b0bd43490cadee19f46b2ba9",
+      "mobile/src/phone-ui.tsx": "6ad94807003bcbf4d0cc7e0324594496ffce84cf62a3eb50678f7e06f5ab3c31",
+      "mobile/src/settings.tsx": "63e34e474e8a8fd56b868692d92112edadaa707434939cd5d0a30ded9b93f270",
+      "mobile/src/tab-bar.tsx": "be4a4bfcee4f813ba34d8c3ad512cd52785bdd89fb88baae7962b6b4370f6afa",
+      "mobile/src/workspace-navigation.tsx": "a51671c82acfb600725eff59caa82f2b908be86dce7accf1af9eda657e209a5a",
+      "mobile/src/appearance.tsx": "bc284110dd1ae696eca22e6f1f028ec98fc43ab796cc6246e7aecf2e60e5bc7c",
+      "lib/interface-theme.ts": "b691f2af5912b7ddb8c8637c4bfe5b9f0b72db9b3c9cd3c005c7ec56c3205668",
+      "mobile/src/shared/interface-theme.ts": "b691f2af5912b7ddb8c8637c4bfe5b9f0b72db9b3c9cd3c005c7ec56c3205668",
+      "mobile/src/science-runtime.js": "c0155d6a812f747b31db1146a88df1f82fe7ba933339c015f089870a28abe750",
+      "mobile/src/set-metrics.tsx": "0c9b5a032312d77ab130ecf63bcd0a1a0998afd3e3a30b47e4108d931fd61792",
+      "mobile/src/set-rir.tsx": "d410ac5a084dc5e408896e026a2aecaeb5a8c9c01ad34af1750859b0a7bc3e1d"
+    },
+    "nativeFreezeReceipt": ".sites-runtime/native-web-parity-2026-10-18/local-export-freeze.json"
+  },
+  "previousRelease": {
+    "report": "docs/comprehensive-app-audit-2026-10-16.md",
+    "nativeSource": "81f66fe49e5a9f5c1f04fae799bd491cac1c5aca",
+    "deliverySource": "c99abf9b3d1bb62cca0776dd3d02bb17871e8122",
+    "pagesCommit": "174bd04f5892cd76052bd98419ae8e708ea8cd89",
+    "apps": [
+      {
+        "app": "movefield",
+        "package": "com.ghinz32.movefield",
+        "versionName": "0.1.8",
+        "versionCode": 9,
+        "sha256": "ea2b9fbe5aae91d5c8d70ea3f3c6db2bba7e163647d623123183c7b273ee01c9",
+        "bytes": 39346124
+      },
+      {
+        "app": "grizzly",
+        "package": "com.ghinz32.grizzlyfitness.prototype",
+        "versionName": "0.1.7",
+        "versionCode": 8,
+        "sha256": "d4fcd4f30fe2803c8eb545e13570e432503e868c3a776430f871b6c2fa5e8058",
+        "bytes": 39497386
+      }
+    ]
+  },
+  "plannedRelease": {
+    "status": "four_clean_exports_and_source_archives_verified_android_ci_pending",
+    "apps": {
+      "movefield": {
+        "package": "com.ghinz32.movefield",
+        "versionName": "0.1.9",
+        "versionCode": 10,
+        "iosBuildNumber": "10",
+        "iosBundleIdentifier": "com.ghinz32.movefield.prototype",
+        "filename": "movefield-0.1.9-arm64.apk"
+      },
+      "grizzly": {
+        "package": "com.ghinz32.grizzlyfitness.prototype",
+        "versionName": "0.1.8",
+        "versionCode": 9,
+        "iosBuildNumber": "9",
+        "iosBundleIdentifier": "com.ghinz32.grizzlyfitness.prototype",
+        "filename": "grizzly-fitness-0.1.8-arm64.apk"
+      }
+    },
+    "frozenSource": null,
+    "signedApks": null,
+    "sourceArchives": [
+      {
+        "app": "movefield",
+        "file": ".sites-runtime/native-web-parity-2026-10-18/source-archives/movefield-native-current.zip",
+        "files": 266,
+        "bytes": 8188734,
+        "sha256": "9a790ab975232e57bea88549629ac0d2e40d1a5d4dbb95909af306f943089b9d",
+        "manifestMatchedCurrentSource": true,
+        "passed": true
+      },
+      {
+        "app": "grizzly",
+        "file": ".sites-runtime/native-web-parity-2026-10-18/source-archives/grizzly-fitness-native-source.zip",
+        "files": 266,
+        "bytes": 8188732,
+        "sha256": "27c2fddca0cd6a76d18112e9c2d45005ec2e8570880dcda246ec76d0f7a76fab",
+        "manifestMatchedCurrentSource": true,
+        "passed": true
+      }
+    ],
+    "pagesCommit": null,
+    "liveDownloadsVerified": false,
+    "iosInstallableAvailable": false
+  },
+  "checks": [
+    {
+      "id": "setup_callbacks",
+      "status": "passed_final_callbacks",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/setup-callbacks.json",
+      "receiptSHA256": "75117c6354c93abef9edde7ed59527df5f58df94945b76b5715f9d79f3e247c3",
+      "checkedAt": "2026-10-18T05:31:17.261Z",
+      "result": {
+        "groups": 6
+      },
+      "scope": "Actual native setup JSX callbacks, canonical saved-draft validation and plan options; hook/storage boundaries mocked. No rendered, installed-device, physical keyboard or screen-reader claim.",
+      "sourceHashes": {
+        "mobile/src/plan-setup-runtime.js": "845a7da7679942b8b1d6753bf2e8d3538022e426e881c7ac12c150a97f68e5e6",
+        "mobile/src/phone-ui.tsx": "6ad94807003bcbf4d0cc7e0324594496ffce84cf62a3eb50678f7e06f5ab3c31",
+        "scripts/check-native-setup-web-parity.cjs": "944125d405e79e91aba91e4186ab632038c91eda10036352f1b3111a51b63c5d"
+      }
+    },
+    {
+      "id": "settings_callbacks",
+      "status": "passed_final_callbacks",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/settings-callbacks.json",
+      "receiptSHA256": "a7c52c230a285891ae06d24061cef38f3b65492b57421179dfa50586205c1526",
+      "checkedAt": "2026-10-18T05:31:17.445Z",
+      "result": {
+        "groups": 4,
+        "contrastPairs": 1840
+      },
+      "scope": "Actual Settings JSX callbacks with mocked native preferences and permission boundary; canonical palette/reading contrast checks. No device, OS permission delivery, rendered-layout or cross-client sync qualification.",
+      "sourceHashes": {
+        "lib/interface-theme.ts": "b691f2af5912b7ddb8c8637c4bfe5b9f0b72db9b3c9cd3c005c7ec56c3205668",
+        "mobile/src/appearance.tsx": "bc284110dd1ae696eca22e6f1f028ec98fc43ab796cc6246e7aecf2e60e5bc7c",
+        "mobile/src/phone-ui.tsx": "6ad94807003bcbf4d0cc7e0324594496ffce84cf62a3eb50678f7e06f5ab3c31",
+        "mobile/src/settings.tsx": "63e34e474e8a8fd56b868692d92112edadaa707434939cd5d0a30ded9b93f270",
+        "mobile/src/exercise-guide-screen.tsx": "5ae73213da2c7c9b3eb4a10ff96940e073de4609b0bd43490cadee19f46b2ba9",
+        "mobile/src/science-runtime.js": "c0155d6a812f747b31db1146a88df1f82fe7ba933339c015f089870a28abe750",
+        "scripts/check-native-settings-web-parity.cjs": "4d4f7a37af84338638780bc2e8ad8339eaa1b5bdbd49a6d731114a982f341aa0"
+      }
+    },
+    {
+      "id": "logger_browser",
+      "status": "passed_scoped_checkpoint",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/logger-current/results.json",
+      "receiptSHA256": "2c1781f0716197d113ca21179d9d6b649c93b98ece9a808e53a21486ff64d003",
+      "checkedAt": "2026-10-18T05:22:37.338Z",
+      "result": {
+        "brands": 2,
+        "captures": 10,
+        "pageErrors": 0,
+        "overflowFindings": 0,
+        "failureRetry": true
+      },
+      "scope": "Real App through RNWeb, bundled Inter/Barlow/Frijole,100% app text; four Today viewport captures and one360x780 logger per brand. Direct tools, inline input identity, notes and failed save/retry; synthetic storage/OS boundaries. Final full-source rerun remains separate.",
+      "sourceHashes": {
+        "mobile/src/adaptive-layout.ts": "479aaeaf0ab034a8fd315526233dc4d85917307b91bf7644a203e30b1091be70",
+        "mobile/src/plan-setup-runtime.js": "cd0764faa0cb5f5a546f412b1745a9929b08b5169c4ffcd6c9e781bc8a3b626b",
+        "mobile/src/today-hero.tsx": "6620708c00e4cf55ffc748f71f5185e3b88855ad2246d717331bf4dc0c918fde",
+        "mobile/App-runtime.js": "9be894163a310a3dd06c93da8121bfd008a10d2f389563e379a842f984c03bdf",
+        "mobile/src/workout-screen.tsx": "76370c436fd47031bc52af12242eaaae4e386e6cfb9539c911b3121dad81fbee",
+        "mobile/src/set-metrics.tsx": "39e5ddc585eaadadfa64f93c3c8d370eb7fe4cd6f779352c387befec1e442ef8",
+        "mobile/src/exercise-guide-screen.tsx": "5ae73213da2c7c9b3eb4a10ff96940e073de4609b0bd43490cadee19f46b2ba9",
+        "mobile/src/phone-ui.tsx": "f6700682efc2e8ced0eef96c8d79b6fe3bb3f6a9d72aba350410c09017c33bd0",
+        "mobile/src/settings.tsx": "5d40a58dae574937f9db95e5b94a020f90416e1f2dcde41985c0d94c672a1536",
+        "mobile/src/tab-bar.tsx": "be4a4bfcee4f813ba34d8c3ad512cd52785bdd89fb88baae7962b6b4370f6afa"
+      }
+    },
+    {
+      "id": "legacy_app",
+      "status": "passed_scoped_checkpoint",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/app-ui-final.json",
+      "receiptSHA256": "5f0fe0f400bb44b0969cd7e4e84e9761eaf1b0aa9864c40c58d6f7b88174cfe2",
+      "checkedAt": "2026-10-18T05:22:55.527Z",
+      "result": {
+        "brands": 2,
+        "assertionCategoriesPerBrand": 11,
+        "screenshots": 20
+      },
+      "scope": "Actual App through RNWeb with mocked font/OS/file/account boundaries;320/390/412 logger and130% routes. Predates final ARIA/font corrections.",
+      "sourceHashes": {
+        "mobile/App-runtime.js": "9be894163a310a3dd06c93da8121bfd008a10d2f389563e379a842f984c03bdf",
+        "mobile/src/workout-screen.tsx": "76370c436fd47031bc52af12242eaaae4e386e6cfb9539c911b3121dad81fbee",
+        "mobile/src/exercise-guide-screen.tsx": "5ae73213da2c7c9b3eb4a10ff96940e073de4609b0bd43490cadee19f46b2ba9",
+        "mobile/src/phone-ui.tsx": "f6700682efc2e8ced0eef96c8d79b6fe3bb3f6a9d72aba350410c09017c33bd0",
+        "mobile/src/settings.tsx": "5d40a58dae574937f9db95e5b94a020f90416e1f2dcde41985c0d94c672a1536",
+        "mobile/src/workspace-navigation.tsx": "9db4826832ac94b4d6f839c339fcb837b715cbdc4147772e9804f80392e608e8",
+        "mobile/src/today-hero.tsx": "07d0fa5acf34598155adc14ddee41dd4ea80587d747bfb68285e47ef6f51f97f",
+        "mobile/src/appearance.tsx": "0dc245ec94e6cf765b9de1a92c9b0697a2187415d2d071d3985333bd0e2111f4"
+      }
+    },
+    {
+      "id": "menu_state",
+      "status": "passed_scoped_checkpoint",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/security/results-pre-final-aria-font.json",
+      "receiptSHA256": "72a8c7f3590d97818481d335be971f749b9e9938687f32385202657cf9e44e51",
+      "checkedAt": "2026-10-18T05:23:17.956Z",
+      "result": {
+        "brands": 2,
+        "checksPerBrand": 9,
+        "pageErrors": 0,
+        "visibleModalCounts": [
+          0,
+          1
+        ]
+      },
+      "scope": "Actual App with controlled iOS dismissal callbacks, full state/write counts and dataset isolation; not UIKit/native crypto. Final exact-source rerun pending.",
+      "sourceHashes": {
+        "mobile/App-runtime.js": "9be894163a310a3dd06c93da8121bfd008a10d2f389563e379a842f984c03bdf",
+        "mobile/src/workspace-navigation.tsx": "9db4826832ac94b4d6f839c339fcb837b715cbdc4147772e9804f80392e608e8",
+        "mobile/src/workout-screen.tsx": "76370c436fd47031bc52af12242eaaae4e386e6cfb9539c911b3121dad81fbee",
+        "mobile/src/phone-ui.tsx": "f6700682efc2e8ced0eef96c8d79b6fe3bb3f6a9d72aba350410c09017c33bd0",
+        "mobile/src/plan-setup-runtime.js": "cd0764faa0cb5f5a546f412b1745a9929b08b5169c4ffcd6c9e781bc8a3b626b",
+        "mobile/src/settings.tsx": "5d40a58dae574937f9db95e5b94a020f90416e1f2dcde41985c0d94c672a1536",
+        "mobile/src/appearance.tsx": "0dc245ec94e6cf765b9de1a92c9b0697a2187415d2d071d3985333bd0e2111f4",
+        "mobile/src/exercise-guide-screen.tsx": "5ae73213da2c7c9b3eb4a10ff96940e073de4609b0bd43490cadee19f46b2ba9"
+      }
+    },
+    {
+      "id": "nonbrowser_regressions",
+      "status": "passed_scoped_checkpoint",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/nonbrowser-native-results.json",
+      "receiptSHA256": "40ff71572db2c229f825b37aff8486654e97ff8f392f1d7503dbf42a2cab8ef8",
+      "checkedAt": "2026-10-18T05:27:06.445472+00:00",
+      "result": {
+        "scripts": 5,
+        "exitCodes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "scope": "Density, native interactions, audit fixes, setup wizard and shared snapshot. Source hashes captured after execution; no whole-worktree freeze claimed.",
+      "sourceHashes": {
+        "mobile/App-runtime.js": "9be894163a310a3dd06c93da8121bfd008a10d2f389563e379a842f984c03bdf",
+        "mobile/src/phone-ui.tsx": "f6700682efc2e8ced0eef96c8d79b6fe3bb3f6a9d72aba350410c09017c33bd0",
+        "mobile/src/settings.tsx": "5d40a58dae574937f9db95e5b94a020f90416e1f2dcde41985c0d94c672a1536",
+        "mobile/src/workout-screen.tsx": "76370c436fd47031bc52af12242eaaae4e386e6cfb9539c911b3121dad81fbee",
+        "mobile/src/plan-setup-runtime.js": "cd0764faa0cb5f5a546f412b1745a9929b08b5169c4ffcd6c9e781bc8a3b626b",
+        "mobile/src/equipment-survey.tsx": "7571132fe7d93d21320ee142a2666998845ef98fd6b2044fd406a13878fa2ab4",
+        "mobile/src/calendar.tsx": "7aaf543152499e08c8e19d19a2f8cafab5e7013cffca150b5fe706d2da7f7a95",
+        "mobile/src/session-instructions.tsx": "06f2cf6998a6bd521cb1849d38503fd05682b75fdc6eee016b3aa6f1c48d7c75",
+        "mobile/src/session-editor.tsx": "e89c06d79882137aaf5e178b8a55270938680f8599dddf727bd584f436effc6a",
+        "mobile/src/history-editor.tsx": "b2d71c07a5c8b81c50cbcad4d90176e83a8331438c857ec68121d607744bb593",
+        "mobile/src/set-rir.tsx": "9fac56da49caac220714090f6392701857829482eefc3d237402dc98b1813ed9",
+        "mobile/src/workout-notifications.ts": "b1e1978beacb6afc294868ce3346bea91b4048b969be548e761adb2c69973709",
+        "mobile/src/rest-alerts.ts": "046f34f70ad81bd5402f9ebc935a93a09559d4f2aeda31b886129714c7b51698"
+      }
+    },
+    {
+      "id": "metadata",
+      "status": "passed_metadata_only",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/metadata-checks.json",
+      "receiptSHA256": "47cab10e642555446757ea13a1b4f4ac850dca4b6bc4eb013927fdb8aae7f8cb",
+      "checkedAt": "2026-10-18T05:14:19.889Z",
+      "result": {
+        "groups": 20,
+        "compiledIdentityFixtures": 16
+      },
+      "scope": "Advancing version/package/orientation checks and synthetic identity fixtures; no new compiled installer implied.",
+      "sourceHashes": {}
+    },
+    {
+      "id": "preflight_accessibility",
+      "status": "failed_pending_correction_qualification",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/preflight-ui-3/results.json",
+      "receiptSHA256": "19775392f5bd88e826fd98a51fe18dbf04451b87e4dd9b6a3160df245d37c11b",
+      "checkedAt": "2026-10-18T05:26:34.170Z",
+      "result": {
+        "captures": 64,
+        "behaviorChecksPassed": 10,
+        "pageErrors": 0,
+        "violationEntries": 28
+      },
+      "scope": "Finite real-font RNWeb scans. Existing source-bound preflight failed missing ARIA checked/selected/expanded forwarding and keyboard-focusable horizontal setup progress. Corrective work/final retest is pending in this draft; do not relabel these scans passed.",
+      "sourceHashes": {
+        "mobile/src/adaptive-layout.ts": "479aaeaf0ab034a8fd315526233dc4d85917307b91bf7644a203e30b1091be70",
+        "mobile/src/plan-setup-runtime.js": "cd0764faa0cb5f5a546f412b1745a9929b08b5169c4ffcd6c9e781bc8a3b626b",
+        "mobile/src/today-hero.tsx": "07d0fa5acf34598155adc14ddee41dd4ea80587d747bfb68285e47ef6f51f97f",
+        "mobile/App-runtime.js": "9be894163a310a3dd06c93da8121bfd008a10d2f389563e379a842f984c03bdf",
+        "mobile/src/workout-screen.tsx": "76370c436fd47031bc52af12242eaaae4e386e6cfb9539c911b3121dad81fbee",
+        "mobile/src/exercise-guide-screen.tsx": "5ae73213da2c7c9b3eb4a10ff96940e073de4609b0bd43490cadee19f46b2ba9",
+        "mobile/src/phone-ui.tsx": "f6700682efc2e8ced0eef96c8d79b6fe3bb3f6a9d72aba350410c09017c33bd0",
+        "mobile/src/settings.tsx": "5d40a58dae574937f9db95e5b94a020f90416e1f2dcde41985c0d94c672a1536",
+        "mobile/src/tab-bar.tsx": "be4a4bfcee4f813ba34d8c3ad512cd52785bdd89fb88baae7962b6b4370f6afa",
+        "mobile/src/workspace-navigation.tsx": "9db4826832ac94b4d6f839c339fcb837b715cbdc4147772e9804f80392e608e8",
+        "mobile/src/appearance.tsx": "0dc245ec94e6cf765b9de1a92c9b0697a2187415d2d071d3985333bd0e2111f4",
+        "lib/interface-theme.ts": "b691f2af5912b7ddb8c8637c4bfe5b9f0b72db9b3c9cd3c005c7ec56c3205668",
+        "mobile/src/shared/interface-theme.ts": "b691f2af5912b7ddb8c8637c4bfe5b9f0b72db9b3c9cd3c005c7ec56c3205668",
+        "mobile/src/science-runtime.js": "c0155d6a812f747b31db1146a88df1f82fe7ba933339c015f089870a28abe750"
+      }
+    },
+    {
+      "id": "logger_callbacks",
+      "status": "passed_scoped_checkpoint",
+      "command": "node scripts/check-native-focused-workout.cjs",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/final-gates/check-native-focused-workout.log",
+      "receiptSHA256": "5c91c9804c6f6cfbf8d4db92e1301fe8ea801ddd58dbb736ba13c2bdff1531bf",
+      "result": {
+        "groups": 15
+      },
+      "sourceHashes": {
+        "mobile/src/workout-screen.tsx": "76370c436fd47031bc52af12242eaaae4e386e6cfb9539c911b3121dad81fbee",
+        "mobile/src/set-metrics.tsx": "39e5ddc585eaadadfa64f93c3c8d370eb7fe4cd6f779352c387befec1e442ef8",
+        "scripts/check-native-focused-workout.cjs": "b0c8e267f473ebdbd4c3611e397fafccfdec7c0f7f04db0fd6c8143ce8f65aea"
+      },
+      "scope": "15 groups passed on frozen source in final composite batch; native primitives/hooks mocked.",
+      "sourceBinding": "SHA-256 values captured after this 15-group pass and before root final ARIA aliases; final source may differ."
+    },
+    {
+      "id": "final_parity",
+      "status": "passed",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/preflight-ui-4/results.json",
+      "receiptSHA256": "c8f3172abe326a0d802ab1102defa4ae7cdff4a241ac15ecc56acf048224c74e",
+      "checkedAt": "2026-10-18T05:30:21.995Z",
+      "result": {
+        "behaviorGroups": 10,
+        "captures": 64,
+        "axeScans": 32,
+        "axeViolations": 0,
+        "pageErrors": 0
+      },
+      "scope": "Actual native App via source-matched RNWeb adaptive artifacts; real bundled fonts, synthetic memory storage and mocked OS/account boundaries.360/390px100/130%apptext. Automated finite-state axe scans and contextual callbacks, not physical phone/TalkBack/UIKit certification.",
+      "sourceHashes": {
+        "mobile/src/adaptive-layout.ts": "479aaeaf0ab034a8fd315526233dc4d85917307b91bf7644a203e30b1091be70",
+        "mobile/src/plan-setup-runtime.js": "845a7da7679942b8b1d6753bf2e8d3538022e426e881c7ac12c150a97f68e5e6",
+        "mobile/src/today-hero.tsx": "07d0fa5acf34598155adc14ddee41dd4ea80587d747bfb68285e47ef6f51f97f",
+        "mobile/App-runtime.js": "9be894163a310a3dd06c93da8121bfd008a10d2f389563e379a842f984c03bdf",
+        "mobile/src/workout-screen.tsx": "f89f54de89bf3adab236d8c646b0373e0c612b976bac6efe0cccccf793540fc7",
+        "mobile/src/exercise-guide-screen.tsx": "5ae73213da2c7c9b3eb4a10ff96940e073de4609b0bd43490cadee19f46b2ba9",
+        "mobile/src/phone-ui.tsx": "6ad94807003bcbf4d0cc7e0324594496ffce84cf62a3eb50678f7e06f5ab3c31",
+        "mobile/src/settings.tsx": "63e34e474e8a8fd56b868692d92112edadaa707434939cd5d0a30ded9b93f270",
+        "mobile/src/tab-bar.tsx": "be4a4bfcee4f813ba34d8c3ad512cd52785bdd89fb88baae7962b6b4370f6afa",
+        "mobile/src/workspace-navigation.tsx": "a51671c82acfb600725eff59caa82f2b908be86dce7accf1af9eda657e209a5a",
+        "mobile/src/appearance.tsx": "bc284110dd1ae696eca22e6f1f028ec98fc43ab796cc6246e7aecf2e60e5bc7c",
+        "lib/interface-theme.ts": "b691f2af5912b7ddb8c8637c4bfe5b9f0b72db9b3c9cd3c005c7ec56c3205668",
+        "mobile/src/shared/interface-theme.ts": "b691f2af5912b7ddb8c8637c4bfe5b9f0b72db9b3c9cd3c005c7ec56c3205668",
+        "mobile/src/science-runtime.js": "c0155d6a812f747b31db1146a88df1f82fe7ba933339c015f089870a28abe750",
+        "mobile/src/set-metrics.tsx": "0c9b5a032312d77ab130ecf63bcd0a1a0998afd3e3a30b47e4108d931fd61792",
+        "mobile/src/set-rir.tsx": "d410ac5a084dc5e408896e026a2aecaeb5a8c9c01ad34af1750859b0a7bc3e1d"
+      }
+    },
+    {
+      "id": "final_adaptive",
+      "status": "passed",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/adaptive/results.json",
+      "receiptSHA256": "973a626416c6d9e28aae95a5f7f000809fef7487ba84c7f466b2b9929df56140",
+      "checkedAt": "2026-10-18T05:31:53.809Z",
+      "result": {
+        "states": 180,
+        "ancestorClippingChecks": 240,
+        "findings": 0,
+        "brands": 2,
+        "offeredAppTextSizes": [
+          100,
+          130
+        ],
+        "additionalTestOnlyMultiplier": 200
+      },
+      "scope": "Actual native App through RNWeb; real CSS bundled fonts; synthetic JSON storage and OS boundaries.100/130 are real app choices.200 is an explicit test-only appearance-context text multiplier beyond offered preferences, not OS font scaling. Resizing verifies stable input identity, state/rest continuity, callback routing, fixed CTA and actual ancestor clipping; not physical hinges, OS activity recreation, safe area changes, IME or UIKit.",
+      "sourceHashes": {
+        "mobile/src/adaptive-layout.ts": "479aaeaf0ab034a8fd315526233dc4d85917307b91bf7644a203e30b1091be70",
+        "mobile/src/plan-setup-runtime.js": "845a7da7679942b8b1d6753bf2e8d3538022e426e881c7ac12c150a97f68e5e6",
+        "mobile/src/today-hero.tsx": "07d0fa5acf34598155adc14ddee41dd4ea80587d747bfb68285e47ef6f51f97f",
+        "mobile/App-runtime.js": "9be894163a310a3dd06c93da8121bfd008a10d2f389563e379a842f984c03bdf",
+        "mobile/src/workout-screen.tsx": "f89f54de89bf3adab236d8c646b0373e0c612b976bac6efe0cccccf793540fc7",
+        "mobile/src/exercise-guide-screen.tsx": "5ae73213da2c7c9b3eb4a10ff96940e073de4609b0bd43490cadee19f46b2ba9",
+        "mobile/src/phone-ui.tsx": "6ad94807003bcbf4d0cc7e0324594496ffce84cf62a3eb50678f7e06f5ab3c31",
+        "mobile/src/settings.tsx": "63e34e474e8a8fd56b868692d92112edadaa707434939cd5d0a30ded9b93f270",
+        "mobile/src/tab-bar.tsx": "be4a4bfcee4f813ba34d8c3ad512cd52785bdd89fb88baae7962b6b4370f6afa",
+        "mobile/src/workspace-navigation.tsx": "a51671c82acfb600725eff59caa82f2b908be86dce7accf1af9eda657e209a5a",
+        "mobile/src/appearance.tsx": "bc284110dd1ae696eca22e6f1f028ec98fc43ab796cc6246e7aecf2e60e5bc7c",
+        "lib/interface-theme.ts": "b691f2af5912b7ddb8c8637c4bfe5b9f0b72db9b3c9cd3c005c7ec56c3205668",
+        "mobile/src/shared/interface-theme.ts": "b691f2af5912b7ddb8c8637c4bfe5b9f0b72db9b3c9cd3c005c7ec56c3205668",
+        "mobile/src/science-runtime.js": "c0155d6a812f747b31db1146a88df1f82fe7ba933339c015f089870a28abe750",
+        "mobile/src/set-metrics.tsx": "0c9b5a032312d77ab130ecf63bcd0a1a0998afd3e3a30b47e4108d931fd61792",
+        "mobile/src/set-rir.tsx": "d410ac5a084dc5e408896e026a2aecaeb5a8c9c01ad34af1750859b0a7bc3e1d"
+      }
+    },
+    {
+      "id": "final_menu_safety",
+      "status": "passed",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/security/results.json",
+      "receiptSHA256": "e144dd1377b25f85d53599d20d1f7a286a7d8645c3bea509ab79586210bd3a9e",
+      "checkedAt": "2026-10-18T05:29:34.104Z",
+      "result": {
+        "checksPerBrand": 9,
+        "brands": 2,
+        "pageErrors": 0,
+        "maximumVisibleModals": 1
+      },
+      "scope": "Actual native App callbacks through RNWeb, Platform.OS=ios with delayed Modal.onDismiss. Synthetic persistent storage plus real saved-data/durable-state validation; crypto/file/notification/font/service boundaries mocked. No UIKit, native OS, physical-device or installed-update claim.",
+      "sourceHashes": {
+        "mobile/App-runtime.js": "9be894163a310a3dd06c93da8121bfd008a10d2f389563e379a842f984c03bdf",
+        "mobile/src/workspace-navigation.tsx": "a51671c82acfb600725eff59caa82f2b908be86dce7accf1af9eda657e209a5a",
+        "mobile/src/workout-screen.tsx": "f89f54de89bf3adab236d8c646b0373e0c612b976bac6efe0cccccf793540fc7",
+        "mobile/src/phone-ui.tsx": "6ad94807003bcbf4d0cc7e0324594496ffce84cf62a3eb50678f7e06f5ab3c31",
+        "mobile/src/plan-setup-runtime.js": "845a7da7679942b8b1d6753bf2e8d3538022e426e881c7ac12c150a97f68e5e6",
+        "mobile/src/settings.tsx": "63e34e474e8a8fd56b868692d92112edadaa707434939cd5d0a30ded9b93f270",
+        "mobile/src/appearance.tsx": "bc284110dd1ae696eca22e6f1f028ec98fc43ab796cc6246e7aecf2e60e5bc7c",
+        "mobile/src/exercise-guide-screen.tsx": "5ae73213da2c7c9b3eb4a10ff96940e073de4609b0bd43490cadee19f46b2ba9",
+        "lib/interface-theme.ts": "b691f2af5912b7ddb8c8637c4bfe5b9f0b72db9b3c9cd3c005c7ec56c3205668",
+        "mobile/src/shared/interface-theme.ts": "b691f2af5912b7ddb8c8637c4bfe5b9f0b72db9b3c9cd3c005c7ec56c3205668",
+        "mobile/src/set-metrics.tsx": "0c9b5a032312d77ab130ecf63bcd0a1a0998afd3e3a30b47e4108d931fd61792",
+        "mobile/src/set-rir.tsx": "d410ac5a084dc5e408896e026a2aecaeb5a8c9c01ad34af1750859b0a7bc3e1d"
+      }
+    },
+    {
+      "id": "final_composite",
+      "status": "passed",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/final-gates/results.json",
+      "receiptSHA256": "8b2642c657621f7af16e2c5b16217ab98874d32c468c470815d12b65007bd02c",
+      "checkedAt": "2026-10-18T05:31:44.868033+00:00",
+      "result": {
+        "gates": 12,
+        "errors": 0,
+        "lintWarnings": 13,
+        "sharedSnapshotFiles": 101,
+        "setupDraftConcurrencyGroups": 8
+      },
+      "scope": "Root/mobile TypeScript, scoped ESLint, actual native callback/source regressions with mocked React/storage/OS boundaries, canonical/native snapshot equality. No browser rendering, native font/OS integration, installed APK or physical-device qualification.",
+      "sourceHashes": {
+        "lib/app-preferences.ts": "426305bdb61da2d4371d17743562745354acfac3e71593b3ea0de1635d287241",
+        "lib/interface-theme.ts": "b691f2af5912b7ddb8c8637c4bfe5b9f0b72db9b3c9cd3c005c7ec56c3205668",
+        "mobile/App-runtime.js": "9be894163a310a3dd06c93da8121bfd008a10d2f389563e379a842f984c03bdf",
+        "mobile/docs/shared-snapshot.json": "8452eaa53ef456930528149530ff3002a96ca5fd445f6e739801314627fc501c",
+        "mobile/package.json": "02d08be4c8769040d9a7aac255bb0452e652b2eb59f74895fc3553e4a1c08777",
+        "mobile/src/appearance.tsx": "bc284110dd1ae696eca22e6f1f028ec98fc43ab796cc6246e7aecf2e60e5bc7c",
+        "mobile/src/exercise-guide-screen.tsx": "5ae73213da2c7c9b3eb4a10ff96940e073de4609b0bd43490cadee19f46b2ba9",
+        "mobile/src/phone-ui.tsx": "6ad94807003bcbf4d0cc7e0324594496ffce84cf62a3eb50678f7e06f5ab3c31",
+        "mobile/src/plan-setup-runtime.js": "845a7da7679942b8b1d6753bf2e8d3538022e426e881c7ac12c150a97f68e5e6",
+        "mobile/src/science-runtime.js": "c0155d6a812f747b31db1146a88df1f82fe7ba933339c015f089870a28abe750",
+        "mobile/src/set-metrics.tsx": "0c9b5a032312d77ab130ecf63bcd0a1a0998afd3e3a30b47e4108d931fd61792",
+        "mobile/src/set-rir.tsx": "d410ac5a084dc5e408896e026a2aecaeb5a8c9c01ad34af1750859b0a7bc3e1d",
+        "mobile/src/settings.tsx": "63e34e474e8a8fd56b868692d92112edadaa707434939cd5d0a30ded9b93f270",
+        "mobile/src/shared/interface-theme.ts": "b691f2af5912b7ddb8c8637c4bfe5b9f0b72db9b3c9cd3c005c7ec56c3205668",
+        "mobile/src/today-hero.tsx": "07d0fa5acf34598155adc14ddee41dd4ea80587d747bfb68285e47ef6f51f97f",
+        "mobile/src/workout-screen.tsx": "f89f54de89bf3adab236d8c646b0373e0c612b976bac6efe0cccccf793540fc7",
+        "mobile/src/workspace-navigation.tsx": "a51671c82acfb600725eff59caa82f2b908be86dce7accf1af9eda657e209a5a",
+        "mobile/tsconfig.json": "b6d63fc2582c0485c0c5f973234cd31e0ea283b14d9306f417500ea35858c6a1",
+        "package.json": "9c3d7646e5eb9a68b7c68f2de957da4f71a5e3acadad1226fa6c0d272c47d86d",
+        "scripts/check-native-adaptive-ui.mjs": "ebe167bb4805d6dacbb6d982dd77a9099bfeaecb61f6febf07b76d6cb597e076",
+        "scripts/check-native-app-ui.mjs": "11f5e3e70f1e5b9a09ed107d1f243520ab91aba9ce102308ef4a920d06085684",
+        "scripts/check-native-audit-fixes.cjs": "0c430f98fe311d29f7468cb15c56e902f65aa60c486a41ac4c49e8924bb52e67",
+        "scripts/check-native-density.cjs": "f6220b546c44abfb5e31a114b253000936ec52e71f4f3a609ff8618b8ba517e6",
+        "scripts/check-native-focused-workout.cjs": "3519fb4912508adc1add49a8ad3f432e73c23f498f52792d5da38a583a06368a",
+        "scripts/check-native-interactions.cjs": "9338ad5669dfd8cd959b8d1c21d9fe2a540dc538e64c80a629c4321c9f2a2e9f",
+        "scripts/check-native-settings-web-parity.cjs": "4d4f7a37af84338638780bc2e8ad8339eaa1b5bdbd49a6d731114a982f341aa0",
+        "scripts/check-native-setup-web-parity.cjs": "944125d405e79e91aba91e4186ab632038c91eda10036352f1b3111a51b63c5d",
+        "scripts/check-native-setup-wizard.cjs": "5e981ef673fc27a06dd5053b132ca90a7ddc29d2510583ef6e0ad4180dd1884b",
+        "scripts/check-native-web-parity-security.mjs": "0f62857d9866ad4b8e561a272b72d8643c181a3098af273e2a9ffa870e0d1e50",
+        "scripts/check-native-web-parity-ui.mjs": "a7b4256e0f6e1b3cd1e2e9aca9c27d627152c0dfefa56ef7766fadf95f110a3e",
+        "scripts/check-shared-snapshot.mjs": "5a39e46344ee020a7485a78c06a69c25a707428049e991ed4fc9e1680a383dde",
+        "tsconfig.json": "14b4f947854728773bde527881b30008f92137ac361340464f84ee9a8e4d3d3c"
+      }
+    },
+    {
+      "id": "four_exports_and_source_archives",
+      "status": "passed",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/native-export-preparation.json",
+      "receiptSHA256": "f59e01a0a3f015bb13880ce29febb88ffcc568b9e62f557e8ccb51dcb62b68c6",
+      "checkedAt": "2026-10-18T05:32:49.029700+00:00",
+      "result": {
+        "exports": 4,
+        "sourceArchives": 2,
+        "nativeSourceFiles": 267,
+        "archiveSourceMembers": 266,
+        "sourceUnchanged": true,
+        "publicOutputsUnchanged": true
+      },
+      "scope": "Local cleared-cache Hermes exports and ignored ZIP candidates. No native compile/signing/install, workflow dispatch or publication.",
+      "sourceHashes": {}
+    },
+    {
+      "id": "all_export_bundle_markers",
+      "status": "passed",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/local-export-validation.json",
+      "receiptSHA256": "3419f345125f04cef4d129680ed57ef4dc1348c9ba9f4b5d3e5ca63057233638",
+      "checkedAt": "2026-10-18T05:33:02.503859+00:00",
+      "result": {
+        "markersPerExport": 26,
+        "exports": 4
+      },
+      "scope": "Four actual local clean Hermes bundles and internally verified source ZIP candidates; not Android APK compilation, signed iPhone output, installation or publication.",
+      "sourceHashes": {}
+    },
+    {
+      "id": "historical_upgrade",
+      "status": "passed",
+      "command": "node scripts/check-legacy-native-upgrade.cjs",
+      "result": {
+        "groups": 45
+      },
+      "scope": "Original-writer encrypted/SQLite transfer and interruption fixtures; not physical upgrade installation."
+    }
+  ],
+  "pendingGates": [
+    {
+      "id": "final_source_freeze",
+      "status": "passed_scoped",
+      "receipt": null,
+      "note": "See final source-bound check receipts; dedicated earlier11-group App regression retains its earlier scope, while final parity/adaptive/safety exercise the complete current App."
+    },
+    {
+      "id": "final_180_adaptive_states",
+      "status": "passed_scoped",
+      "expectedReceipt": ".sites-runtime/native-adaptive-ui/results.json",
+      "requirement": "Must be a new exact-source receipt, not the previous adaptive release result.",
+      "note": "See final source-bound check receipts; dedicated earlier11-group App regression retains its earlier scope, while final parity/adaptive/safety exercise the complete current App."
+    },
+    {
+      "id": "final_parity_axe",
+      "status": "passed_scoped",
+      "expectedReceipt": null,
+      "requirement": "Both brands100/130%, real fonts, disclosure/selection semantics, setup progress keyboard reachability, actual targets/data guards.",
+      "note": "See final source-bound check receipts; dedicated earlier11-group App regression retains its earlier scope, while final parity/adaptive/safety exercise the complete current App."
+    },
+    {
+      "id": "final_app_and_safety_reruns",
+      "status": "passed_scoped",
+      "expectedReceipts": [
+        ".sites-runtime/native-web-parity-2026-10-18/app-ui-final.json",
+        ".sites-runtime/native-web-parity-2026-10-18/security/results.json"
+      ],
+      "note": "See final source-bound check receipts; dedicated earlier11-group App regression retains its earlier scope, while final parity/adaptive/safety exercise the complete current App."
+    },
+    {
+      "id": "final_types_lint_core",
+      "status": "passed_scoped",
+      "requirement": "Scoped TypeScript/lint passed during work; attach final run on frozen source.",
+      "note": "See final source-bound check receipts; dedicated earlier11-group App regression retains its earlier scope, while final parity/adaptive/safety exercise the complete current App."
+    },
+    {
+      "id": "four_clean_native_exports_and_source_archives",
+      "status": "passed_scoped",
+      "receipt": null,
+      "note": "See final source-bound check receipts; dedicated earlier11-group App regression retains its earlier scope, while final parity/adaptive/safety exercise the complete current App."
+    },
+    {
+      "id": "android_ci_signatures_identity_alignment",
+      "status": "pending",
+      "receipt": null
+    },
+    {
+      "id": "pages_deploy_and_complete_download_hashes",
+      "status": "pending",
+      "receipt": null
+    },
+    {
+      "id": "installed_android_acceptance",
+      "status": "not_performed",
+      "receipt": null
+    },
+    {
+      "id": "signed_ios_delivery",
+      "status": "unavailable_apple_setup_not_supplied",
+      "receipt": null
+    }
+  ],
+  "limits": [
+    "No new training prescription, workout-history schema or encrypted storage migration is implied by this presentation work.",
+    "RNWeb checks use actual native components with synthetic storage/platform boundaries; they do not establish Android/iOS screen-reader, IME, safe-area, process-recreation, reminder or performance behavior.",
+    "200% appearance stress in the planned adaptive helper is a test-only multiplier beyond offered100/115/130% app choices; it is not physical OS text scaling.",
+    "Rotation/width-adaptive behavior is not physical hinge/posture qualification.",
+    "Native sharing/recovery key and web download/vault passphrase remain different platform flows; no automatic cross-client synchronization is introduced.",
+    "Previous live downloads and the owner\u2019s historical S24Ultra Movefield0.1.6 confirmation are not acceptance of the planned0.1.9/0.1.8 builds."
+  ],
+  "updatedAt": "2026-10-18T05:33:56.794210+00:00",
+  "webApplicationAssets": {
+    "status": "reused_identical_previously_verified_assets",
+    "receipt": ".sites-runtime/native-web-parity-2026-10-18/static-app-baseline.json",
+    "filesPerBrand": 1825,
+    "previousPagesCommit": "174bd04f5892cd76052bd98419ae8e708ea8cd89"
+  }
+}

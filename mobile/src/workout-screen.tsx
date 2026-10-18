@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Text,TextInput,View,useWindowDimensions,type LayoutChangeEvent} from 'react-native';
+import {Text,TextInput,View,Platform,useWindowDimensions,type LayoutChangeEvent} from 'react-native';
 import {GrizzlyPressable as Pressable} from './wild-interactions';
 import {useNativeAppearance} from './appearance';
 import {NativeNumericInput} from './numeric-input';
@@ -12,6 +12,7 @@ import {trainingCopy} from './shared/presentation';
 import {sessionGuide} from './shared/session-guide';
 import {NativeActionFooter,NativeFlowScreen,NativeSettingsRow} from './phone-ui';
 import {nativeWindowLayout} from './adaptive-layout';
+import {isGrizzly} from './shared/brand';
 
 export type NativeWorkoutScreenProps={
  state:State;
@@ -46,28 +47,33 @@ type Route='set'|'list'|'options'|'sets'|'details'|'timer'|'instructions'|'guida
 
 /** Presentation only: durable logging, paired-set routing and confirmations stay in App. */
 export function NativeWorkoutScreen(props:NativeWorkoutScreenProps){
- const {state,focusedExercise,busy,remaining}=props,{colors:c,p}=useNativeAppearance(),window=useWindowDimensions();
+ const {state,focusedExercise,busy,remaining}=props,{colors:c,p,fonts,headingFamily}=useNativeAppearance(),window=useWindowDimensions();
  const [route,setRoute]=useState<Route>(focusedExercise?'set':'list'),[selectedSet,setSelectedSet]=useState<number|null>(null),[pending,setPending]=useState(false),[error,setError]=useState('');
+ const [detailReturn,setDetailReturn]=useState<Route>('options'),[rirOpen,setRirOpen]=useState(false);
  const active=state.active;
  const [viewIdentity,setViewIdentity]=useState({workoutId:active?.id,exerciseId:focusedExercise});
  if(viewIdentity.workoutId!==active?.id||viewIdentity.exerciseId!==focusedExercise){
   setViewIdentity({workoutId:active?.id,exerciseId:focusedExercise});
-  setRoute(focusedExercise?'set':'list');setSelectedSet(null);setError('');
+  setRoute(focusedExercise?'set':'list');setSelectedSet(null);setError('');setDetailReturn('options');setRirOpen(false);
  }
  if(!active)return null;
  const disabled=busy||pending,rows=workoutExercises(state),done=active.sets.filter(x=>x.done).length,total=active.sets.length;
+ const savedCount=(count:number,planned:number,entries:number)=>entries===planned?`${count}/${planned} saved`:`${count} saved · ${entries} entries · ${planned} planned`;
  const target=rows.find(row=>row.target.exerciseId===focusedExercise)?.target,exercise=target?exFor(target.exerciseId,state.custom):undefined;
  const sets=active.sets.map((set,index)=>({set,index})).filter(row=>row.set.exerciseId===focusedExercise);
  const current=sets.find(row=>row.index===selectedSet)??sets.find(row=>!row.set.done)??sets[sets.length-1];
  const session=state.plan?.sessions.find(s=>s.id===active.sessionId),scale=p.textSize/100;
  const dimensions=nativeWindowLayout(window.width,window.height,p.textSize,window.fontScale),layout={...dimensions,compactHeight:props.compact??dimensions.compactHeight};
- const text={fontSize:16*scale,lineHeight:23*scale,color:c.ink},small={fontSize:14*scale,lineHeight:20*scale,color:c.muted};
- const stacked=window.width<300||scale>1.25||window.fontScale>1.25;
- const button=(label:string,onPress:()=>void,selected?:boolean)=><Pressable accessibilityRole="button" accessibilityState={{disabled,selected}} disabled={disabled} onPress={onPress} style={{minHeight:48,padding:12,borderRadius:12,borderWidth:1,borderColor:c.line,backgroundColor:selected?c.green:c.white,justifyContent:'center'}}><Text style={{...text,color:selected?c.onAccent:c.ink}}>{label}</Text></Pressable>;
+ const text={fontFamily:fonts?'Inter':undefined,fontSize:16*scale,lineHeight:23*scale,color:c.ink},small={fontFamily:fonts?'Inter':undefined,fontSize:14*scale,lineHeight:20*scale,color:c.muted};
+ const card={padding:14,gap:10,borderWidth:1,borderColor:c.line,borderRadius:12,backgroundColor:c.white};
+ const stacked=window.width<320||scale>1.25||window.fontScale>1.25;
+ const button=(label:string,onPress:()=>void,selected?:boolean)=><Pressable accessibilityRole="button" accessibilityState={{disabled,selected}} {...(Platform.OS==='web'&&selected!==undefined?{'aria-pressed':selected}:{})} disabled={disabled} onPress={onPress} style={{minHeight:48,padding:12,borderRadius:12,borderWidth:1,borderColor:c.line,backgroundColor:selected?c.green:c.white,justifyContent:'center'}}><Text style={{...text,color:selected?c.onAccent:c.ink}}>{label}</Text></Pressable>;
  const choice=(label:string,onPress:()=>void,selected?:boolean)=><NativeSettingsRow label={label} disabled={disabled} selected={selected} onPress={onPress}/>;
  const focus=(id:string|null)=>{setSelectedSet(null);setError('');setRoute(id?'set':'list');props.onFocusExercise(id)};
  const go=(next:Route)=>{setRoute(next);setError('')};
- const optionsButton=layout.compactHeight?<Pressable accessibilityRole="button" accessibilityLabel="Options" accessibilityState={{disabled}} disabled={disabled} onPress={()=>go('options')} style={{width:48,minHeight:48,alignItems:'center',justifyContent:'center',borderWidth:1,borderColor:c.line,borderRadius:12}}><Text accessible={false} style={{fontSize:28,lineHeight:34,color:c.ink}}>⋯</Text></Pressable>:button('Options',()=>go('options'));
+ const openDetail=(next:Route)=>{setDetailReturn(route==='options'?'options':target?'set':'list');go(next)};
+ const quick=(label:string,onPress:()=>void)=><Pressable accessibilityRole="button" accessibilityState={{disabled}} disabled={disabled} onPress={onPress} style={{minHeight:44,paddingHorizontal:12,paddingVertical:10,flexGrow:1,flexShrink:1,borderWidth:1,borderColor:c.inputBorder,borderRadius:8,justifyContent:'center',alignItems:'center',backgroundColor:c.white}}><Text style={{...small,color:c.ink,textAlign:'center',fontWeight:'600'}}>{label}</Text></Pressable>;
+ const optionsButton=layout.compactHeight||window.width<400?<Pressable accessibilityRole="button" accessibilityLabel="Options" accessibilityState={{disabled}} disabled={disabled} onPress={()=>go('options')} style={{width:48,minHeight:48,alignItems:'center',justifyContent:'center',borderWidth:1,borderColor:c.line,borderRadius:12}}><Text accessible={false} style={{fontSize:28,lineHeight:34,color:c.ink}}>⋯</Text></Pressable>:button('Options',()=>go('options'));
  const back=()=>{
   if(disabled)return;
   if(route==='list'){props.onExit();return}
@@ -76,16 +82,18 @@ export function NativeWorkoutScreen(props:NativeWorkoutScreenProps){
   if(route==='concern'){go('effort');return}
   if(route==='effort'){go(target?'set':'list');return}
   if(route==='options'){go(target?'set':'list');return}
-  go('options');
+  go(detailReturn);
  };
  const restLabel=remaining===null?'':remaining===0?'Rest complete · continue when ready':`Rest ${state.restTimer?.pausedSeconds!==null?'paused · ':''}${Math.floor(remaining/60)}:${String(remaining%60).padStart(2,'0')}`;
  const concern=state.hold||['yes','unsure'].includes(active.symptom||'');
  const notice=concern?<Text accessibilityRole="alert" style={{...small,color:c.danger}}>A concern is recorded. Stop the affected activity; recording and partial save remain available.</Text>:null;
  const footer=(label:string,onPress:()=>void,blocked=false,accessibilityLabel?:string)=><NativeActionFooter compact={layout.compactHeight} primary={{label,onPress,disabled:disabled||blocked,...(accessibilityLabel?{accessibilityLabel}:{})}}>{!!restLabel&&!layout.compactHeight&&<Text style={small}>{restLabel}</Text>}</NativeActionFooter>;
- const exerciseList=<><Text accessibilityRole="header" style={{...text,fontWeight:'700'}}>Workout exercises</Text><Text style={small}>{done} of {total} entries logged</Text>{rows.map(({target:row,done:count,total:expected,complete},index)=><NativeSettingsRow key={row.exerciseId} label={`${index+1}. ${exFor(row.exerciseId,state.custom).name}`} value={`${count}/${expected} logged${complete?' · Complete':''}`} selected={row.exerciseId===focusedExercise} onPress={()=>focus(row.exerciseId)} disabled={disabled}/>)}</>;
- const screen=(title:string,children:React.ReactNode,action:React.ReactNode,options:{subtitle?:string;trailing?:React.ReactNode;backLabel?:string;compactBack?:boolean;compactTitle?:string}={})=><NativeFlowScreen title={title} compactTitle={options.compactTitle} compact={layout.compactHeight} onAvailableHeight={props.onAvailableHeight} subtitle={[layout.compactHeight&&props.sampleMode?'Sample workout':undefined,options.subtitle].filter(Boolean).join(' · ')||undefined} onBack={back} backLabel={options.backLabel??'Back'} compactBack={options.compactBack} trailing={options.trailing} handleHardwareBack footer={action} sidePanel={route==='set'&&target?exerciseList:undefined}><View onLayout={props.onLayout} style={{gap:16}}>
+ const exerciseRow=({target:row,done:count,total:expected,complete}:typeof rows[number],index:number,selected=false)=>{const movement=exFor(row.exerciseId,state.custom);return <NativeSettingsRow key={row.exerciseId} label={`${index+1}. ${movement.name}`} value={`Target ${row.sets} × ${targetText(row)} ${movement.metric}`} detail={`${savedCount(count,expected,active.sets.filter(set=>set.exerciseId===row.exerciseId).length)}${complete?' · Complete':''}`} selected={selected?row.exerciseId===focusedExercise:undefined} onPress={()=>focus(row.exerciseId)} disabled={disabled}/>};
+ const exerciseList=<><Text accessibilityRole="header" style={{...text,fontWeight:'700'}}>Workout exercises</Text><Text style={small}>{done} of {total} entries saved</Text>{rows.map((row,index)=>exerciseRow(row,index,true))}</>;
+ const screen=(title:string,children:React.ReactNode,action:React.ReactNode,options:{subtitle?:string;trailing?:React.ReactNode;backLabel?:string;compactBack?:boolean;compactTitle?:string}={})=><NativeFlowScreen title={title} compactTitle={options.compactTitle} compact={layout.compactHeight} scrollResetKey={error||props.saveError||undefined} onAvailableHeight={props.onAvailableHeight} subtitle={[layout.compactHeight&&props.sampleMode?'Sample workout':undefined,options.subtitle].filter(Boolean).join(' · ')||undefined} onBack={back} backLabel={options.backLabel??'Back'} compactBack={options.compactBack} trailing={options.trailing} handleHardwareBack footer={action} sidePanel={route==='set'&&target?exerciseList:undefined}><View onLayout={props.onLayout} style={{gap:16}}>
   {layout.compactHeight&&!!props.saveError&&<Text accessibilityRole="alert" style={{...text,color:c.danger}}>{props.saveError}</Text>}
   {layout.compactHeight&&props.saveStatus?.startsWith('Save failed')&&<>{<Text accessibilityRole="alert" style={{...small,color:c.danger}}>{props.saveStatus}</Text>}{props.onRetrySave&&button('Retry saving on this device',props.onRetrySave)}</>}
+  {error&&<Text accessibilityRole="alert" style={{...text,color:c.danger}}>{error}</Text>}
   {children}
  </View></NativeFlowScreen>;
  const feedback=(patch:Partial<Pick<Workout,'effort'|'symptom'|'supervisorConfirmed'>>)=>props.onChangeFeedback(patch);
@@ -117,9 +125,9 @@ export function NativeWorkoutScreen(props:NativeWorkoutScreenProps){
  </>,footer('Finish & save workout',props.onFinish));
 
  if(route==='options')return screen('Workout options',<>
-  {target&&exercise&&<><NativeSettingsRow label="Exercise guide" onPress={()=>props.onOpenGuide(exercise)} disabled={disabled}/>{exercise.metric==='reps'&&<NativeSettingsRow label="Substitute exercise" onPress={()=>props.onSubstitute(exercise.id)} disabled={disabled}/>}<NativeSettingsRow label="Set details" detail="Reps left, measurements and notes" onPress={()=>go('details')} disabled={disabled}/><NativeSettingsRow label="Sets / edit previous" onPress={()=>go('sets')} disabled={disabled}/><NativeSettingsRow label="Plan instructions" onPress={()=>go('instructions')} disabled={disabled}/></>}
-  <NativeSettingsRow label="Workout guidance" detail="Warm-up, effort, order and progression" onPress={()=>go('guidance')} disabled={disabled}/>
-  <NativeSettingsRow label="Rest timer and alerts" value={restLabel||'No rest running'} onPress={()=>go('timer')} disabled={disabled}/>
+  {target&&exercise&&<><NativeSettingsRow label="Exercise guide" onPress={()=>props.onOpenGuide(exercise)} disabled={disabled}/>{exercise.metric==='reps'&&<NativeSettingsRow label="Substitute exercise" onPress={()=>props.onSubstitute(exercise.id)} disabled={disabled}/>}<NativeSettingsRow label="Set details" detail="Reps left, measurements and notes" onPress={()=>openDetail('details')} disabled={disabled}/><NativeSettingsRow label="Sets / edit previous" onPress={()=>openDetail('sets')} disabled={disabled}/><NativeSettingsRow label="Plan instructions" onPress={()=>openDetail('instructions')} disabled={disabled}/></>}
+  <NativeSettingsRow label="Workout guidance" detail="Warm-up, effort, order and progression" onPress={()=>openDetail('guidance')} disabled={disabled}/>
+  <NativeSettingsRow label="Rest timer and alerts" value={restLabel||'No rest running'} onPress={()=>openDetail('timer')} disabled={disabled}/>
   <NativeSettingsRow label="Discard this workout" danger onPress={props.onDiscard} disabled={disabled}/>
  </>,footer('Review finish',()=>go('effort')));
 
@@ -144,14 +152,15 @@ export function NativeWorkoutScreen(props:NativeWorkoutScreenProps){
  </>,footer('Back to workout',()=>go(target?'set':'list')));
 
  if(!target||!exercise||route==='list')return screen('Your workout',<>
-  <Text style={small}>{done} of {total} sets or activity entries logged</Text>
-  {rows.map(({target:row,done:count,total:expected,complete},index)=><NativeSettingsRow key={row.exerciseId} label={`${index+1}. ${exFor(row.exerciseId,state.custom).name}`} value={`${count}/${expected} logged${complete?' · Complete':''}`} onPress={()=>focus(row.exerciseId)} disabled={disabled}/>)}
+  <View style={card}><Text accessibilityRole="header" style={{...text,fontSize:22*scale,lineHeight:29*scale,fontWeight:'700'}}>{done===total?'All entries saved':'Exercises in this workout'}</Text><Text style={small}>{done} of {total} sets or activity entries saved</Text><Text style={small}>{done===total?'Review and finish to add this workout to history.':'Choose an exercise. Unfinished work stays listed here.'}</Text></View>
+  {rows.map((row,index)=>exerciseRow(row,index))}
+  <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>{quick('Workout guidance',()=>openDetail('guidance'))}{quick('Rest timer',()=>openDetail('timer'))}{quick('Finish workout',()=>go('effort'))}</View>
  </>,done===total?footer('Review finish',()=>go('effort')):footer('Continue next exercise',()=>{const next=rows.find(row=>!row.complete);if(next)focus(next.target.exerciseId)},!rows.some(row=>!row.complete)),{backLabel:'Today',trailing:optionsButton});
 
  const tracked=isLoadTracked(exercise);
  if(route==='sets')return screen('Sets / edit previous',<>
   <Text style={text}>{exercise.name}</Text>
-  {sets.map(({set,index})=><NativeSettingsRow key={index} label={`Set ${set.set}`} value={set.done?'Saved':'Not logged'} selected={current?.index===index} onPress={()=>{setSelectedSet(index);go('set')}} disabled={disabled}/>)}
+  {sets.map(({set,index})=><NativeSettingsRow key={index} label={`Set ${set.set}`} value={set.done?'Saved':'Not logged'} detail={`${set.reps} ${exercise.metric}${tracked?` · ${set.kg===null?'Load unknown':displayLoad(set.kg,state.profile.units)}`:''}${exercise.metric==='reps'?` · Reps left: ${set.rir==null?'not recorded':set.rir===5?'5+':set.rir}`:''}`} selected={current?.index===index} onPress={()=>{setSelectedSet(index);go('set')}} disabled={disabled}/>)}
  </>,footer('Back to current set',()=>{setSelectedSet(null);go('set')}));
 
  if(route==='details')return screen('Set details',current?<>
@@ -180,17 +189,25 @@ export function NativeWorkoutScreen(props:NativeWorkoutScreenProps){
   try{if(await props.onLogSet(current.index,target.rest))setSelectedSet(null);else setError('This set could not be saved. Your entries are kept; try again.')}catch(cause){setError(cause instanceof Error?cause.message:'This set could not be saved. Try again.')}finally{setPending(false)}
  };
  return screen(current?`Set ${current.set.set} of ${sets.length}`:'Workout set',<>
-  <View style={{gap:6}}><Text style={small}>Exercise {rows.findIndex(row=>row.target.exerciseId===focusedExercise)+1} of {rows.length}</Text><Text accessibilityRole="header" style={{...text,fontSize:25*scale,lineHeight:31*scale,fontWeight:'700'}}>{exercise.name}</Text><Text style={text}>{targetText(target)} {exercise.metric} · {target.rest}s rest</Text></View>
-  {layout.compactHeight&&!!restLabel&&<Text accessibilityLiveRegion="none" style={small}>{restLabel} · controls in Options</Text>}
+  <View style={card}>
+  <View style={{gap:4}}><Text style={small}>Exercise {rows.findIndex(row=>row.target.exerciseId===focusedExercise)+1} of {rows.length} · {exercise.pattern}</Text><Text accessibilityRole="header" style={{...text,fontFamily:fonts?headingFamily:undefined,fontSize:25*scale,lineHeight:31*scale,fontWeight:isGrizzly?'400':'700'}}>{exercise.name}</Text><Text style={text}>Target {target.sets} × {targetText(target)} {exercise.metric}</Text><View style={{flexDirection:'row',flexWrap:'wrap',justifyContent:'space-between',gap:6}}><Text style={small}>{savedCount(sets.filter(row=>row.set.done).length,target.sets,sets.length)}</Text><Text style={small}>Rest {target.rest}s</Text></View></View>
+  <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>{quick('Guide',()=>props.onOpenGuide(exercise))}{exercise.metric==='reps'&&quick('Substitute exercise',()=>props.onSubstitute(exercise.id))}</View>
   {notice}
-  {exercise.requiresSetup&&<View style={{gap:6}}><Text style={small}>Machine / attachment / seat setting</Text><TextInput style={{...text,minHeight:48,padding:12,borderWidth:1,borderColor:c.line,borderRadius:10}} accessibilityLabel={`${exercise.name} machine setup`} placeholder="Your machine setup" placeholderTextColor={c.muted} value={active.loadContext?.[exercise.id]??''} maxLength={200} editable={!disabled&&!active.sets.some(x=>x.exerciseId===exercise.id&&x.done)} onChangeText={value=>props.onChangeSetup(exercise.id,value)}/></View>}
+  {exercise.requiresSetup&&<View style={{gap:6}}><Text style={small}>Machine / attachment / seat setting</Text><TextInput style={{...text,minHeight:48,padding:12,borderWidth:1,borderColor:c.inputBorder,borderRadius:8,backgroundColor:c.white}} accessibilityLabel={`${exercise.name} machine setup`} placeholder="Your machine setup" placeholderTextColor={c.muted} value={active.loadContext?.[exercise.id]??''} maxLength={200} editable={!disabled&&!active.sets.some(x=>x.exerciseId===exercise.id&&x.done)} onChangeText={value=>props.onChangeSetup(exercise.id,value)}/></View>}
   {current?<View key={active.id+':'+current.index} style={{gap:12}}>
-   <View style={{flexDirection:stacked?'column':'row',gap:12}}><View style={{flex:1,gap:6}}><Text style={small}>Actual {exercise.metric}</Text><NativeNumericInput style={{...text,fontSize:24*scale,lineHeight:30*scale,minHeight:58,padding:12,borderWidth:1,borderColor:c.line,borderRadius:10}} accessibilityLabel={`${exercise.name} set ${current.set.set} actual ${exercise.metric}`} value={current.set.reps} nullable={false} max={9999} editable={!disabled} selectTextOnFocus onValueChange={value=>props.onChangeSet(current.index,{reps:value??0,done:false})}/></View>{tracked&&<View style={{flex:1,gap:6}}><Text style={small}>Load ({state.profile.units})</Text><NativeNumericInput style={{...text,fontSize:24*scale,lineHeight:30*scale,minHeight:58,padding:12,borderWidth:1,borderColor:c.line,borderRadius:10}} accessibilityLabel={`${exercise.name} set ${current.set.set} actual load ${state.profile.units}`} value={current.set.kg===null?null:Math.round(current.set.kg*(state.profile.units==='lb'?2.2046226218:1)*100)/100} nullable max={state.profile.units==='lb'?3306:1500} editable={!disabled} placeholder="Unknown" placeholderTextColor={c.muted} selectTextOnFocus onValueChange={value=>props.onChangeSet(current.index,{kg:value===null?null:toKg(value,state.profile.units),done:false})}/></View>}</View>
+   <View style={{backgroundColor:c.soft,borderRadius:8,padding:12,gap:10}}><View style={{flexDirection:'row',flexWrap:'wrap',justifyContent:'space-between',gap:6}}><Text style={{...small,color:c.ink,fontWeight:'700'}}>Set {current.set.set}</Text><Text style={small}>{current.set.done?'Saved':'Enter what you complete'}</Text></View>
+   <View style={{flexDirection:stacked?'column':'row',gap:12}}><View style={{flex:1,minWidth:0,gap:6}}><Text style={small}>Actual {exercise.metric}</Text><NativeNumericInput style={{...text,fontSize:24*scale,lineHeight:30*scale,minHeight:58,padding:12,borderWidth:1,borderColor:c.inputBorder,borderRadius:8,backgroundColor:c.white}} accessibilityLabel={`${exercise.name} set ${current.set.set} actual ${exercise.metric}`} value={current.set.reps} nullable={false} max={9999} editable={!disabled} selectTextOnFocus onValueChange={value=>props.onChangeSet(current.index,{reps:value??0,done:false})}/></View>{tracked&&<View style={{flex:1,minWidth:0,gap:6}}><Text style={small}>Load ({state.profile.units})</Text><NativeNumericInput style={{...text,fontSize:24*scale,lineHeight:30*scale,minHeight:58,padding:12,borderWidth:1,borderColor:c.inputBorder,borderRadius:8,backgroundColor:c.white}} accessibilityLabel={`${exercise.name} set ${current.set.set} actual load ${state.profile.units}`} value={current.set.kg===null?null:Math.round(current.set.kg*(state.profile.units==='lb'?2.2046226218:1)*100)/100} nullable max={state.profile.units==='lb'?3306:1500} editable={!disabled} placeholder="Unknown" placeholderTextColor={c.muted} selectTextOnFocus onValueChange={value=>props.onChangeSet(current.index,{kg:value===null?null:toKg(value,state.profile.units),done:false})}/></View>}</View>
+   </View>
    {tracked&&<Text style={small}>{exercise.loadConvention||'Use this exercise’s load convention.'} Blank means unknown.</Text>}
-   {exercise.metric==='reps'&&button(`Reps left: ${current.set.rir==null?'not recorded':current.set.rir===5?'5+':current.set.rir}`,()=>go('details'))}
+   {exercise.metric==='reps'&&<View style={{gap:8}}><Pressable accessibilityRole="button" accessibilityLabel={`Reps left: ${current.set.rir==null?'not recorded':current.set.rir===5?'5+':current.set.rir}`} accessibilityState={{expanded:rirOpen,disabled}} aria-expanded={rirOpen} disabled={disabled} onPress={()=>setRirOpen(!rirOpen)} style={{minHeight:44,flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:12,paddingVertical:8}}><Text style={{...small,color:c.ink,flex:1}}>Reps left: {current.set.rir==null?'not recorded':current.set.rir===5?'5+':current.set.rir}</Text><Text accessible={false} style={{...text,color:c.muted}}>{rirOpen?'−':'+'}</Text></Pressable>{rirOpen&&<NativeSetRir name={exercise.name} set={current.set.set} value={current.set.rir} disabled={disabled} onChange={rir=>props.onChangeSet(current.index,{rir})}/>}</View>}
+   <NativeSetMetrics compactLabel name={exercise.name} set={current.set.set} value={current.set.metrics} disabled={disabled} onChange={metrics=>props.onChangeSet(current.index,{metrics})}/>
    {current.set.done&&button(`Undo saved set ${current.set.set}`,()=>props.onChangeSet(current.index,{done:false}))}
   </View>:<Text style={text}>No set entries are available. Review the remaining workout.</Text>}
-  {error&&<Text accessibilityRole="alert" style={{...text,color:c.danger}}>{error}</Text>}
+  <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>{quick('Previous sets',()=>openDetail('sets'))}{quick('Rest timer',()=>openDetail('timer'))}</View>
+  <Pressable accessibilityRole="button" accessibilityState={{disabled}} disabled={disabled} onPress={()=>openDetail('instructions')} style={{minHeight:44,paddingVertical:8,justifyContent:'center'}}><Text style={{...small,color:c.ink,fontWeight:'600'}}>Plan instructions & starting load ›</Text></Pressable>
+  </View>
+  {layout.compactHeight&&!!restLabel&&<Text accessibilityLiveRegion="none" style={small}>{restLabel}</Text>}
+  {quick('Finish workout',()=>go('effort'))}
  </>,footer(current?.set.done?'Saved':pending?'Saving…':'Log set',()=>{void log()},!current||!!current.set.done,current?`${current.set.done?'Saved':'Log'} ${exercise.name} set ${current.set.set}`:undefined),{backLabel:'Workout',compactBack:true,compactTitle:current?`Set ${current.set.set}`:undefined,trailing:optionsButton});
 }
 

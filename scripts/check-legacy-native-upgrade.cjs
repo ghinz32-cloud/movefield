@@ -63,13 +63,13 @@ function environment({state=oldState,setup=draft,split=true,secret=oldKey,asyncO
  // Capacity parity: split history exceeds the old replacement's 5 MB parser.
  {const big=structuredClone(oldState);big.history=Array.from({length:1100},(_,n)=>({...big.history[0],id:'synthetic-large-'+n,details:{squat:{notes:'x'.repeat(5000)}}}));assert.ok(JSON.stringify(big).length>5_000_000);const e=environment({state:big,setup:null});assert.deepEqual(await e.fresh().readLocalState(),JSON.parse(JSON.stringify({...big,schema:3})));e.preserve();groups++}
  const configure=require('../mobile/app.config.js'),config=require('../mobile/app.json').expo;
- // Last delivered Android previews: Movefield code 8 and Grizzly code 7. New
+ // Last delivered Android previews: Movefield code 9 and Grizzly code 8. New
  // previews must retain their identities and advance beyond those installers.
- const releasedCodes={movefield:8,grizzly:7};
+ const releasedCodes={movefield:9,grizzly:8};
  process.env.EXPO_PUBLIC_APP_VARIANT='';process.env.EXPO_PUBLIC_NATIVE_LINEAGE='legacy-movefield';
- const upgrade=configure({config});assert.equal(upgrade.android.package,'com.ghinz32.movefield');assert.equal(upgrade.android.versionCode,9);assert.ok(upgrade.android.versionCode>releasedCodes.movefield);assert.equal(upgrade.version,'0.1.8');assert.equal(upgrade.ios.bundleIdentifier,config.ios.bundleIdentifier);assert.equal(upgrade.ios.buildNumber,'9');assert.equal(upgrade.scheme,'movefield');groups++;
+ const upgrade=configure({config});assert.equal(upgrade.android.package,'com.ghinz32.movefield');assert.equal(upgrade.android.versionCode,10);assert.ok(upgrade.android.versionCode>releasedCodes.movefield);assert.equal(upgrade.version,'0.1.9');assert.equal(upgrade.ios.bundleIdentifier,config.ios.bundleIdentifier);assert.equal(upgrade.ios.buildNumber,'10');assert.equal(upgrade.scheme,'movefield');groups++;
  process.env.EXPO_PUBLIC_APP_VARIANT='grizzly';assert.throws(()=>configure({config}),/separate app identity/);groups++;
- process.env.EXPO_PUBLIC_NATIVE_LINEAGE='';const grizzly=configure({config});assert.equal(grizzly.android.package,'com.ghinz32.grizzlyfitness.prototype');assert.equal(grizzly.android.versionCode,8);assert.ok(grizzly.android.versionCode>releasedCodes.grizzly);assert.equal(grizzly.version,'0.1.7');assert.equal(grizzly.ios.bundleIdentifier,'com.ghinz32.grizzlyfitness.prototype');assert.equal(grizzly.ios.buildNumber,'8');assert.equal(grizzly.scheme,'grizzlyfitness');assert.equal(grizzly.name,'Grizzly Fitness');groups++;
+ process.env.EXPO_PUBLIC_NATIVE_LINEAGE='';const grizzly=configure({config});assert.equal(grizzly.android.package,'com.ghinz32.grizzlyfitness.prototype');assert.equal(grizzly.android.versionCode,9);assert.ok(grizzly.android.versionCode>releasedCodes.grizzly);assert.equal(grizzly.version,'0.1.8');assert.equal(grizzly.ios.bundleIdentifier,'com.ghinz32.grizzlyfitness.prototype');assert.equal(grizzly.ios.buildNumber,'9');assert.equal(grizzly.scheme,'grizzlyfitness');assert.equal(grizzly.name,'Grizzly Fitness');groups++;
  process.env.EXPO_PUBLIC_APP_VARIANT='';assert.deepEqual(configure({config}),config,'The unselected prototype keeps its separate identity');groups++;
  // Exercise the actual compiled-APK gate with synthetic analyzer output. These
  // checks do not claim an APK was built, signed or installed.

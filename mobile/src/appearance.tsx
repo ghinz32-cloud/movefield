@@ -5,7 +5,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useFonts,loadAsync} from 'expo-font';
 import {grizzlyFontAssets} from './grizzly-font-assets';
 import {AppState} from 'react-native';
-import {defaultPreferences,palettes,headingFonts,preferenceKey,readPreferences,type AppPreferences} from './shared/app-preferences';
+import {defaultPreferences,headingFonts,preferenceKey,readPreferences,type AppPreferences} from './shared/app-preferences';
+import {interfaceColors} from './shared/interface-theme';
 const Context=createContext({p:defaultPreferences,ready:false,update:(_patch:Partial<AppPreferences>)=>{},error:'',dark:false,reduceMotion:false,fonts:false,active:true,loadedHeading:''});
 export function NativeAppearanceProvider({children}:{children:React.ReactNode}){
  const [p,setP]=useState(defaultPreferences),[ready,setReady]=useState(false),[error,setError]=useState(''),[systemReduce,setSystemReduce]=useState(false);
@@ -24,10 +25,8 @@ export function NativeAppearanceProvider({children}:{children:React.ReactNode}){
 }
 export function useNativeAppearance(){
  const context=useContext(Context),{dark,p}=context;
- const palette=palettes.find(x=>x.id===p.palette)!;
- const colors={bg:isGrizzly?(dark?'#171a16':'#f6f3ec'):(dark?'#10191d':'#f4f6f7'),ink:dark?'#edf3f5':'#192b30',muted:p.contrast?(dark?'#e4eef3':'#253b44'):(dark?'#b4c7cf':'#4c616a'),green:(dark?palette.from:palette.strong) as string,line:p.contrast?(dark?'#a4bbc6':'#637982'):(dark?'#7d949e':'#71858e'),pale:dark?'#293c44':'#e8edef',white:isGrizzly?(dark?'#232820':'#fffefa'):(dark?'#19262c':'#ffffff'),danger:dark?'#ffadb6':'#b62d3b',onAccent:dark?'#132325':'#ffffff',from:palette.from as string,to:palette.to as string,effect:'#d6b77c'};
- if(isGrizzly&&p.grizzlyStyle==='wild'){colors.bg=dark?'#07130e':'#f6f0e3';colors.white=dark?'#132219':'#fffaf0';colors.pale=dark?'#293a2b':'#e6e9d5';colors.ink=dark?'#f5f1e3':'#263626';colors.muted=p.contrast?(dark?'#f5f1e3':'#243122'):(dark?'#c0cbb7':'#4d6049');colors.line=p.contrast?(dark?'#d4d9bc':'#56603b'):(dark?'#9e956c':'#82724c');}
- return {...context,colors,headingFamily:isGrizzly&&context.loadedHeading===headingFonts.find(x=>x.id===p.headingFont)!.family?context.loadedHeading:'Barlow Condensed'};
+ const colors=interfaceColors(p,dark);
+ return {...context,colors,headingFamily:!isGrizzly?'Barlow Condensed':context.loadedHeading===headingFonts.find(x=>x.id===p.headingFont)!.family?context.loadedHeading:'Barlow Condensed'};
 }
 export function useThemedStyles<T extends Record<string,ViewStyle|TextStyle|ImageStyle>>(base:T):T{
  const {p,dark,fonts,colors:c,headingFamily}=useNativeAppearance();
@@ -46,8 +45,10 @@ export function useThemedStyles<T extends Record<string,ViewStyle|TextStyle|Imag
    if(isGrizzly&&key==='brand'){style.fontSize=16*(p.textSize/100);style.letterSpacing=0;style.fontWeight='400';}
    if(style.lineHeight)style.lineHeight*=p.textSize/100;
    if(key==='input'&&!style.color)style.color=c.ink;
+   if(['input','numberInput'].includes(key)){style.borderColor=c.inputBorder;style.backgroundColor=c.white;}
+   if(key==='link'&&p.underlineLinks)style.textDecorationLine='underline';
    result[key]=style;
   }
   return result as T;
- },[base,p.textSize,p.palette,p.contrast,p.grizzlyStyle,p.headingFont,dark,fonts,headingFamily]);
+ },[base,p.textSize,p.palette,p.contrast,p.grizzlyStyle,p.headingFont,p.underlineLinks,dark,fonts,headingFamily,c.bg,c.danger,c.green,c.ink,c.inputBorder,c.line,c.muted,c.onAccent,c.pale,c.white]);
 }

@@ -500,6 +500,11 @@
       "source": "lib/block-starting-loads.ts",
       "target": "src/shared/block-starting-loads.ts",
       "sha256": "d9e1c084931ebde5975a426066581dfbe0eb55817b58739481956a7cb98b15df"
+    },
+    {
+      "source": "lib/interface-theme.ts",
+      "target": "src/shared/interface-theme.ts",
+      "sha256": "b691f2af5912b7ddb8c8637c4bfe5b9f0b72db9b3c9cd3c005c7ec56c3205668"
     }
   ]
 }

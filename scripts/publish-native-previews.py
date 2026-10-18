@@ -165,8 +165,8 @@ artifacts = verify_apk_artifacts(artifact_list['artifacts'])
 sdk = Path(os.environ['ANDROID_HOME'])
 records = []
 for app, package, version, code, filename in [
-    ('movefield', 'com.ghinz32.movefield', '0.1.8', 9, 'movefield-0.1.8-arm64.apk'),
-    ('grizzly', 'com.ghinz32.grizzlyfitness.prototype', '0.1.7', 8, 'grizzly-fitness-0.1.7-arm64.apk'),
+    ('movefield', 'com.ghinz32.movefield', '0.1.9', 10, 'movefield-0.1.9-arm64.apk'),
+    ('grizzly', 'com.ghinz32.grizzlyfitness.prototype', '0.1.8', 9, 'grizzly-fitness-0.1.8-arm64.apk'),
 ]:
     artifact = artifacts[app]
     build_job = next(job for job in selected_jobs if job['name'] == 'android (' + app + ')')
@@ -257,7 +257,7 @@ else:
         assert error.code == 404
     else:
         raise RuntimeError('Release already exists; inspect it instead of replacing files')
-notes = ('Current audited Android test apps: Movefield 0.1.8 (9) and Grizzly Fitness 0.1.7 (8).\n\n'
+notes = ('Current audited Android test apps: Movefield 0.1.9 (10) and Grizzly Fitness 0.1.8 (9).\n\n'
     'Includes the reviewed routine library, equipment and exercise-substitution corrections, '
     'and current web/native interface fixes in the shared training code. '
     'ARM64 phones, Android 7.0+. Development-signed; physical-device acceptance and store release remain pending. '

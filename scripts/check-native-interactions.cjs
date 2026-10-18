@@ -8,9 +8,10 @@ function harness(filename,props,extra={}){
  const changed=(a,b)=>!a||a.length!==b?.length||a.some((x,i)=>!Object.is(x,b[i]));
  const react={useState(initial){const n=cursor++;if(!(n in slots))slots[n]=typeof initial==='function'?initial():initial;return [slots[n],v=>{const next=typeof v==='function'?v(slots[n]):v;if(!Object.is(next,slots[n])){slots[n]=next;dirty=true}}]},useRef(initial){const n=cursor++;if(!(n in slots))slots[n]={current:initial};return slots[n]},useMemo(fn,deps){const n=cursor++;if(!slots[n]||changed(slots[n].deps,deps))slots[n]={value:fn(),deps};return slots[n].value},useEffect(fn,deps){const n=cursor++;if(!slots[n]||changed(slots[n].deps,deps)){slots[n]?.cleanup?.();slots[n]={deps};effects.push(()=>{slots[n].cleanup=fn()})}}};
  react.useLayoutEffect=(fn,deps)=>react.useEffect(fn,deps);
+ react.useCallback=(fn,deps)=>react.useMemo(()=>fn,deps);
  react.createElement=(type,props,...children)=>({type,props:{...props,children:children.length===1?children[0]:children},key:props?.key});
  const jsx=(type,props,key)=>({type,props:props||{},key});
- const rn={View:'View',Text:'Text',TextInput:'TextInput',ScrollView:'ScrollView',StyleSheet:{create:x=>x},useWindowDimensions:()=>({width:390,height:844,fontScale:1}),Alert:{alert(){}},Keyboard:{dismiss(){}}};
+ const rn={View:'View',Text:'Text',TextInput:'TextInput',ScrollView:'ScrollView',Platform:{OS:'android'},StyleSheet:{create:x=>x},useWindowDimensions:()=>({width:390,height:844,fontScale:1}),Alert:{alert(){}},Keyboard:{dismiss(){}}};
  const mocks={'react':{...react,default:react,__esModule:true},'react/jsx-runtime':{jsx,jsxs:jsx,Fragment:'Fragment'},'react-native':rn,
   './wild-interactions':{GrizzlyPressable:'Pressable',NativeWildReveal:'Reveal'},'./appearance':{useThemedStyles:x=>x,useNativeAppearance:()=>({p:{textSize:100},colors:{ink:'#111',green:'#070',line:'#aaa',onAccent:'#fff',white:'#fff',danger:'#900'}})},
   './phone-ui':{NativeFlowScreen:'FlowScreen',NativeActionFooter:'ActionFooter'},'./equipment-survey':{NativeEquipmentSurvey:'EquipmentSurvey'},'./numeric-input':{NativeNumericInput:'NumericInput'},'./session-instructions':{NativeSessionInstructions:'SessionInstructions'},'./science':{NativePlanEvidence:'Evidence'},...extra};

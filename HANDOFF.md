@@ -1,3 +1,15 @@
+# Current native phone/web parity checkpoint · 18 October 2026
+
+Continue on `codex/native-web-parity-2026-10-18`. The user wants all three native areas—layout/navigation, workout logging, and setup/settings—to feel closer to the phone website. Read [the parity report](docs/native-web-parity-2026-10-18.md) and [its receipt](docs/native-web-parity-2026-10-18.json). Both brands now have the named workspace menu, branded Today card, direct exercise tools, sectioned setup with bounded plan alternatives, and grouped Settings. Canonical `lib/interface-theme.ts` is copied through the normal101-file snapshot. Native prescriptions, records, IDs, crypto formats and authority rules are unchanged.
+
+The final rendered parity gate passed10 behavior groups,64 captures and32 finite axe scans with no violations/page errors; prior radio-state/keyboard-reachability failures remain retained. Full180-state adaptive qualification with240 clipping checks and all12 final composite gates passed. Four clean Hermes exports and both266-member source archives pass against an unchanged267-file native snapshot. Android CI/publishing still awaits the exact reviewed source commit/push. Authorized next metadata is Movefield0.1.9/code10 and Grizzly0.1.8/code9, preserving update identities and certificate. These metadata are not delivered binaries yet. Existing verified downloads remain Movefield0.1.8 and Grizzly0.1.7 from the16October release.
+
+Do not edit frozen mobile files during export/qualification. Never read, stage or export owner `.openai/`. Preserve all63originalPagesrootfiles, old served chunks and all namespaces/update/transfer compatibility. Ordinary reviewed source/Pages pushes and Android test delivery remain authorized. No paid services, store submission or live AI is activated. No signed iPhone release exists; physical Android/iPhone, screen-reader, IME, lifecycle and hinge/posture behavior remain separate gates. Keep all72 master requirements' prior status until their full acceptance is established.
+
+Earlier sections below are historical where this checkpoint differs.
+
+---
+
 # Current comprehensive audit — delivered and verified · 16 October 2026
 
 Continue on `codex/native-focused-screens-2026-10-16`. Read [the comprehensive audit](docs/comprehensive-app-audit-2026-10-16.md) and its JSON receipt. Audited native/application source `81f66fe49e5a9f5c1f04fae799bd491cac1c5aca`, tree `d440eb77b94fac179d3109e3c3278e4dc69e4235`, is frozen. Build `38956403750` and publisher `38957941934` passed first attempt. Movefield **0.1.8/code9** and Grizzly **0.1.7/code8** are published and independently checked for identity, historical certificate, source/security,20 bundle markers, default window policy and16KiB ZIP/ELF alignment. Native sources and archives remain unchanged after export qualification. No installation of these new versions is claimed.
