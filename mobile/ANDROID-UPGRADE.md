@@ -1,11 +1,11 @@
 # Android update candidate
 
 The `legacy-movefield` build targets the repository's October 9 test installer,
-`com.ghinz32.movefield`, with versionCode 9 (Movefield version 0.1.8; the previous published release used versionCode 8). It uses the existing Expo test
-certificate. The default Movefield and Grizzly prototype identities remain
-separate. This source configures Grizzly 0.1.7/code 8; the preceding release used
-0.1.6/code 7. A source version declaration does not establish compilation or
-publication. Use the currently
+`com.ghinz32.movefield`. It uses the existing Expo test certificate. The default
+Movefield and Grizzly prototype identities remain separate. `app.json` and
+`app.config.js` declare the source versions and build numbers; each delivered
+update must advance its installed app's versionCode. A source declaration does
+not establish compilation or publication. Use the currently
 verified files on the [Android download page](https://ghinz32-cloud.github.io/movefield/review/downloads/android.html).
 Do not uninstall the earlier app to install this candidate.
 
@@ -38,7 +38,7 @@ over the exact old APK, verifying synthetic history, active workout, setup and
 rest timing, restarting offline, and checking device notifications/erasure.
 The owner confirmed that the previous Movefield 0.1.6 Pages download installed
 on a Samsung S24 Ultra and opened with saved workouts present. This does not
-qualify Movefield 0.1.7 or 0.1.8, complete record integrity or other devices.
+qualify later builds, complete record integrity or other devices.
 Grizzly is a separate installation and does not import Movefield records.
 
 This source enables rotation and adapts to available window space.

@@ -2146,7 +2146,7 @@
     "liveVerified": true
   },
   "native_web_parity_2026_10_18": {
-    "status": "implementation_verified_in_finite_parity_checks_release_pending",
+    "status": "native_builds_and_inspections_passed_pages_pending",
     "report": "docs/native-web-parity-2026-10-18.md",
     "receipt": "docs/native-web-parity-2026-10-18.json",
     "branch": "codex/native-web-parity-2026-10-18",
@@ -2156,6 +2156,11 @@
       "setup and settings"
     ],
     "previousRequirementStatusesPreserved": true,
-    "noFullSixPromptCompletionClaim": true
+    "noFullSixPromptCompletionClaim": true,
+    "nativeSource": "cd2621c13f94235e2806d9f821318d5dfa7d0f16",
+    "nativeTree": "b3a1a58f7cfd9275ca58a7466f7cb0f700e62291",
+    "buildRun": 39101034995,
+    "publisherRun": 39101655284,
+    "applicationSourceSHA256": "b1d15959ee7b11be8403dabd18ae2008af7d6afe74595e79b94fb58ab1e55833"
   }
 }

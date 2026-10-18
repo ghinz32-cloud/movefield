@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "local_qualification_complete_android_delivery_pending",
+  "status": "android_and_source_download_candidate_ready_pages_pending",
   "preparedAt": "2026-10-18T05:28:49.460346+00:00",
   "goal": {
     "brands": [
@@ -19,8 +19,8 @@
   "sourceSnapshot": {
     "capturedAt": "2026-10-18T05:33:56.794210+00:00",
     "frozen": true,
-    "sourceCommit": null,
-    "tree": null,
+    "sourceCommit": "cd2621c13f94235e2806d9f821318d5dfa7d0f16",
+    "tree": "b3a1a58f7cfd9275ca58a7466f7cb0f700e62291",
     "qualification": "All267 native files stayed unchanged across clean exports;16UI/theme sources match the final parity and adaptive checks.",
     "sha256": {
       "mobile/src/adaptive-layout.ts": "479aaeaf0ab034a8fd315526233dc4d85917307b91bf7644a203e30b1091be70",
@@ -40,7 +40,15 @@
       "mobile/src/set-metrics.tsx": "0c9b5a032312d77ab130ecf63bcd0a1a0998afd3e3a30b47e4108d931fd61792",
       "mobile/src/set-rir.tsx": "d410ac5a084dc5e408896e026a2aecaeb5a8c9c01ad34af1750859b0a7bc3e1d"
     },
-    "nativeFreezeReceipt": ".sites-runtime/native-web-parity-2026-10-18/local-export-freeze.json"
+    "nativeFreezeReceipt": ".sites-runtime/native-web-parity-2026-10-18/local-export-freeze.json",
+    "postCompileDocumentationChanges": {
+      "mobile/ANDROID-UPGRADE.md": {
+        "compiledSHA256": "0fc656d0c873c0a3423224a1c432b410d36eb2cd07814b81c0da18096d67338b",
+        "currentSHA256": "36d31fce094822be60b182690b880818255f9e5ae8e8bc447cfe2ea028798f00"
+      }
+    },
+    "allNativeExecutableAssetsAndConfigurationsMatchCompiledSource": true,
+    "workingMobileTreeIdenticalToCompiledTree": false
   },
   "previousRelease": {
     "report": "docs/comprehensive-app-audit-2026-10-16.md",
@@ -67,7 +75,7 @@
     ]
   },
   "plannedRelease": {
-    "status": "four_clean_exports_and_source_archives_verified_android_ci_pending",
+    "status": "android_published_inspected_pages_pending",
     "apps": {
       "movefield": {
         "package": "com.ghinz32.movefield",
@@ -86,31 +94,382 @@
         "filename": "grizzly-fitness-0.1.8-arm64.apk"
       }
     },
-    "frozenSource": null,
-    "signedApks": null,
+    "frozenSource": "cd2621c13f94235e2806d9f821318d5dfa7d0f16",
+    "signedApks": [
+      {
+        "app": "movefield",
+        "filename": "movefield-0.1.9-arm64.apk",
+        "versionName": "0.1.9",
+        "versionCode": 10,
+        "package": "com.ghinz32.movefield",
+        "bytes": 39376196,
+        "sha256": "ea58bc4cb7f9bd5051ac159c97a4331eec8852e5235737812c50b51e43896546",
+        "applicationBundleSHA256": "cac1225686df78b52e23719cb6f38eac0a0d2ed6bb3a2956c0813c44250029cf",
+        "sourceCommit": "cd2621c13f94235e2806d9f821318d5dfa7d0f16",
+        "sourceTree": "b3a1a58f7cfd9275ca58a7466f7cb0f700e62291",
+        "artifactId": 12127115676,
+        "archiveSHA256": "bc59e897c2864db2b928259bd0c9fd164a2eca90eec76a2f5be563ccb6b4b673",
+        "directDownloadURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-cd2621c13f94/movefield-0.1.9-arm64.apk",
+        "signingCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+        "minimumSDK": 24,
+        "architectures": [
+          "arm64-v8a"
+        ],
+        "identityAndSignaturePassed": true,
+        "nativeInspection": {
+          "passed": true,
+          "platform": "android",
+          "package": "com.ghinz32.movefield",
+          "permissions": [
+            "android.permission.ACCESS_NETWORK_STATE",
+            "android.permission.INTERNET",
+            "android.permission.POST_NOTIFICATIONS",
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            "android.permission.VIBRATE",
+            "com.ghinz32.movefield.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+          ],
+          "manifestSHA256": "c47dadcbc6ee75bcac0de543f8ee839d0456dbbd16d366177a010ce9f486eb20",
+          "backupRulesLinked": true,
+          "backupDomainsExcluded": [
+            "database",
+            "device_database",
+            "device_file",
+            "device_root",
+            "device_sharedpref",
+            "external",
+            "file",
+            "root",
+            "sharedpref"
+          ],
+          "cloudBackupAndDeviceTransferExcluded": true,
+          "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+          "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+          "resourceTableSHA256": "071f2bd29f6fdf3c48929ff846e2b396d4d49bbc73ae803d57bef078bca0d34f",
+          "cleartextDenied": true,
+          "remoteSdkStartupDisabled": true,
+          "componentBoundariesChecked": true,
+          "localReminderDeclarationsChecked": true,
+          "reviewedStartupInitializers": [
+            "androidx.emoji2.text.EmojiCompatInitializer",
+            "androidx.lifecycle.ProcessLifecycleInitializer",
+            "androidx.profileinstaller.ProfileInstallerInitializer"
+          ],
+          "internalBrowserProxyChecked": true,
+          "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+          "signing": "uninspected; inspect the APK certificate separately",
+          "physicalDeviceTested": false,
+          "storeAccepted": false
+        },
+        "coachingBundleMarkers": [
+          "workout-coaching-v1",
+          "BEFORE YOUR WORKOUT",
+          "AFTER YOUR WORKOUT",
+          "Why this pre-workout guidance",
+          "Why this workout feedback",
+          "These messages are selected from local reviewed text and saved facts. They do not change targets, schedule or load."
+        ],
+        "focusedUiBundleMarkers": [
+          "Continue next exercise",
+          "Review finish",
+          "Finish & save workout",
+          "Profile & equipment",
+          "Learn the movement",
+          "Workout guidance",
+          "Warm-up, effort, order and progression",
+          "This saved workout is not linked to a current plan session. Follow the guidance from your own plan or coach."
+        ],
+        "adaptiveSessionBundleMarkers": [
+          "Workout exercises",
+          "Plan instructions & starting load \u203a",
+          "Workout instructions: ",
+          "Hide workout instructions",
+          "Planned run / walk sequence",
+          "These are planned steps. Log only the time and work you actually perform."
+        ],
+        "parityUiBundleMarkers": [
+          "Open navigation menu",
+          "Session details",
+          "Measurements & notes",
+          "Show other plans",
+          "Profile & data",
+          "Explore a sample plan"
+        ],
+        "bundleMarkerCount": 26,
+        "bundleMarkerEncodings": {
+          "workout-coaching-v1": "utf-8",
+          "BEFORE YOUR WORKOUT": "utf-8",
+          "AFTER YOUR WORKOUT": "utf-8",
+          "Why this pre-workout guidance": "utf-8",
+          "Why this workout feedback": "utf-8",
+          "These messages are selected from local reviewed text and saved facts. They do not change targets, schedule or load.": "utf-8",
+          "Continue next exercise": "utf-8",
+          "Review finish": "utf-8",
+          "Finish & save workout": "utf-8",
+          "Profile & equipment": "utf-8",
+          "Learn the movement": "utf-8",
+          "Workout guidance": "utf-8",
+          "Warm-up, effort, order and progression": "utf-8",
+          "This saved workout is not linked to a current plan session. Follow the guidance from your own plan or coach.": "utf-8",
+          "Workout exercises": "utf-8",
+          "Plan instructions & starting load \u203a": "utf-16-le",
+          "Workout instructions: ": "utf-8",
+          "Hide workout instructions": "utf-8",
+          "Planned run / walk sequence": "utf-8",
+          "These are planned steps. Log only the time and work you actually perform.": "utf-8",
+          "Open navigation menu": "utf-8",
+          "Session details": "utf-8",
+          "Measurements & notes": "utf-8",
+          "Show other plans": "utf-16-le",
+          "Profile & data": "utf-8",
+          "Explore a sample plan": "utf-8"
+        },
+        "credentialPatternScan": {
+          "members": 1236,
+          "matches": 0,
+          "scope": "Finite recognized patterns; no security certification or absence-of-secrets guarantee."
+        },
+        "pageAlignment16KiB": {
+          "zipalignExitCode": 0,
+          "zipAlignedFor16KiB": true,
+          "nativeLibraryCount": 17,
+          "allNativeElfLoadSegmentsAlignedFor16KiB": true
+        },
+        "compiledActivityWindowPolicy": {
+          "app": "movefield",
+          "apkSHA256": "ea58bc4cb7f9bd5051ac159c97a4331eec8852e5235737812c50b51e43896546",
+          "activity": "com.ghinz32.movefield.MainActivity",
+          "screenOrientation": "-1",
+          "activityResizeableActivity": null,
+          "applicationResizeableActivity": null,
+          "targetSDK": 36,
+          "minimumSDK": 24,
+          "configChanges": "0x80000fb0",
+          "doesNotForceOrientation": true,
+          "manifestResizeableActivityEffective": true,
+          "resizePolicyBasis": "Android target SDK >=24 default true",
+          "scope": "Static compiled manifest declarations and documented target-SDK resizing default. Android-version/window-manager policies can override declarations; no rotation, multiwindow, hinge, posture or physical-device behavior was executed."
+        },
+        "actualHermesBytecode": {
+          "app": "movefield",
+          "apkSHA256": "ea58bc4cb7f9bd5051ac159c97a4331eec8852e5235737812c50b51e43896546",
+          "applicationBundleSHA256": "cac1225686df78b52e23719cb6f38eac0a0d2ed6bb3a2956c0813c44250029cf",
+          "hermesMagicHex": "c61fbc03c103191f",
+          "bytes": 4323332,
+          "passed": true
+        }
+      },
+      {
+        "app": "grizzly",
+        "filename": "grizzly-fitness-0.1.8-arm64.apk",
+        "versionName": "0.1.8",
+        "versionCode": 9,
+        "package": "com.ghinz32.grizzlyfitness.prototype",
+        "bytes": 39527454,
+        "sha256": "2adea65fe7218f5d6dc1f2fafa3e1167008e5c4a2107090e6807c0ffa68aaaee",
+        "applicationBundleSHA256": "b15228c482231d3777d8eaa6f02b663c18e395a867d54e2b2516ee9046befe96",
+        "sourceCommit": "cd2621c13f94235e2806d9f821318d5dfa7d0f16",
+        "sourceTree": "b3a1a58f7cfd9275ca58a7466f7cb0f700e62291",
+        "artifactId": 12126950568,
+        "archiveSHA256": "0c4aee28b6164b741c79aafa5fe9a04f505e7112bb419e0ab92e6dfa638a35eb",
+        "directDownloadURL": "https://github.com/ghinz32-cloud/movefield/releases/download/android-ux-preview-cd2621c13f94/grizzly-fitness-0.1.8-arm64.apk",
+        "signingCertificateSHA256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+        "minimumSDK": 24,
+        "architectures": [
+          "arm64-v8a"
+        ],
+        "identityAndSignaturePassed": true,
+        "nativeInspection": {
+          "passed": true,
+          "platform": "android",
+          "package": "com.ghinz32.grizzlyfitness.prototype",
+          "permissions": [
+            "android.permission.ACCESS_NETWORK_STATE",
+            "android.permission.INTERNET",
+            "android.permission.POST_NOTIFICATIONS",
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            "android.permission.VIBRATE",
+            "com.ghinz32.grizzlyfitness.prototype.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+          ],
+          "manifestSHA256": "e693c1f391cb870036bdc5611eb5597f914300c49b26e273c5166b531929613e",
+          "backupRulesLinked": true,
+          "backupDomainsExcluded": [
+            "database",
+            "device_database",
+            "device_file",
+            "device_root",
+            "device_sharedpref",
+            "external",
+            "file",
+            "root",
+            "sharedpref"
+          ],
+          "cloudBackupAndDeviceTransferExcluded": true,
+          "backupRulesSHA256": "4d7c79acb6045b86b7aa2c04ccb35663d3ed45154b2b2dea01ca69a477eb07ff",
+          "extractionRulesSHA256": "60fcfa7ac685d16e5a307e1107e68eeaaf6f56a61253470973191eea6e67b032",
+          "resourceTableSHA256": "40f7fd280ef273c3654d9ccb3b53f7e18627d9b40aef4ebe4ec58476637fb16f",
+          "cleartextDenied": true,
+          "remoteSdkStartupDisabled": true,
+          "componentBoundariesChecked": true,
+          "localReminderDeclarationsChecked": true,
+          "reviewedStartupInitializers": [
+            "androidx.emoji2.text.EmojiCompatInitializer",
+            "androidx.lifecycle.ProcessLifecycleInitializer",
+            "androidx.profileinstaller.ProfileInstallerInitializer"
+          ],
+          "internalBrowserProxyChecked": true,
+          "reminderInspectionScope": "manifest components/intent topology/permissions; native delivery and lifecycle not verified",
+          "signing": "uninspected; inspect the APK certificate separately",
+          "physicalDeviceTested": false,
+          "storeAccepted": false
+        },
+        "coachingBundleMarkers": [
+          "workout-coaching-v1",
+          "BEFORE YOUR WORKOUT",
+          "AFTER YOUR WORKOUT",
+          "Why this pre-workout guidance",
+          "Why this workout feedback",
+          "These messages are selected from local reviewed text and saved facts. They do not change targets, schedule or load."
+        ],
+        "focusedUiBundleMarkers": [
+          "Continue next exercise",
+          "Review finish",
+          "Finish & save workout",
+          "Profile & equipment",
+          "Learn the movement",
+          "Workout guidance",
+          "Warm-up, effort, order and progression",
+          "This saved workout is not linked to a current plan session. Follow the guidance from your own plan or coach."
+        ],
+        "adaptiveSessionBundleMarkers": [
+          "Workout exercises",
+          "Plan instructions & starting load \u203a",
+          "Workout instructions: ",
+          "Hide workout instructions",
+          "Planned run / walk sequence",
+          "These are planned steps. Log only the time and work you actually perform."
+        ],
+        "parityUiBundleMarkers": [
+          "Open navigation menu",
+          "Session details",
+          "Measurements & notes",
+          "Show other plans",
+          "Profile & data",
+          "Explore a sample plan"
+        ],
+        "bundleMarkerCount": 26,
+        "bundleMarkerEncodings": {
+          "workout-coaching-v1": "utf-8",
+          "BEFORE YOUR WORKOUT": "utf-8",
+          "AFTER YOUR WORKOUT": "utf-8",
+          "Why this pre-workout guidance": "utf-8",
+          "Why this workout feedback": "utf-8",
+          "These messages are selected from local reviewed text and saved facts. They do not change targets, schedule or load.": "utf-8",
+          "Continue next exercise": "utf-8",
+          "Review finish": "utf-8",
+          "Finish & save workout": "utf-8",
+          "Profile & equipment": "utf-8",
+          "Learn the movement": "utf-8",
+          "Workout guidance": "utf-8",
+          "Warm-up, effort, order and progression": "utf-8",
+          "This saved workout is not linked to a current plan session. Follow the guidance from your own plan or coach.": "utf-8",
+          "Workout exercises": "utf-8",
+          "Plan instructions & starting load \u203a": "utf-16-le",
+          "Workout instructions: ": "utf-8",
+          "Hide workout instructions": "utf-8",
+          "Planned run / walk sequence": "utf-8",
+          "These are planned steps. Log only the time and work you actually perform.": "utf-8",
+          "Open navigation menu": "utf-8",
+          "Session details": "utf-8",
+          "Measurements & notes": "utf-8",
+          "Show other plans": "utf-16-le",
+          "Profile & data": "utf-8",
+          "Explore a sample plan": "utf-8"
+        },
+        "credentialPatternScan": {
+          "members": 1226,
+          "matches": 0,
+          "scope": "Finite recognized patterns; no security certification or absence-of-secrets guarantee."
+        },
+        "pageAlignment16KiB": {
+          "zipalignExitCode": 0,
+          "zipAlignedFor16KiB": true,
+          "nativeLibraryCount": 17,
+          "allNativeElfLoadSegmentsAlignedFor16KiB": true
+        },
+        "compiledActivityWindowPolicy": {
+          "app": "grizzly",
+          "apkSHA256": "2adea65fe7218f5d6dc1f2fafa3e1167008e5c4a2107090e6807c0ffa68aaaee",
+          "activity": "com.ghinz32.grizzlyfitness.prototype.MainActivity",
+          "screenOrientation": "-1",
+          "activityResizeableActivity": null,
+          "applicationResizeableActivity": null,
+          "targetSDK": 36,
+          "minimumSDK": 24,
+          "configChanges": "0x80000fb0",
+          "doesNotForceOrientation": true,
+          "manifestResizeableActivityEffective": true,
+          "resizePolicyBasis": "Android target SDK >=24 default true",
+          "scope": "Static compiled manifest declarations and documented target-SDK resizing default. Android-version/window-manager policies can override declarations; no rotation, multiwindow, hinge, posture or physical-device behavior was executed."
+        },
+        "actualHermesBytecode": {
+          "app": "grizzly",
+          "apkSHA256": "2adea65fe7218f5d6dc1f2fafa3e1167008e5c4a2107090e6807c0ffa68aaaee",
+          "applicationBundleSHA256": "b15228c482231d3777d8eaa6f02b663c18e395a867d54e2b2516ee9046befe96",
+          "hermesMagicHex": "c61fbc03c103191f",
+          "bytes": 4323332,
+          "passed": true
+        }
+      }
+    ],
     "sourceArchives": [
       {
         "app": "movefield",
-        "file": ".sites-runtime/native-web-parity-2026-10-18/source-archives/movefield-native-current.zip",
-        "files": 266,
-        "bytes": 8188734,
-        "sha256": "9a790ab975232e57bea88549629ac0d2e40d1a5d4dbb95909af306f943089b9d",
+        "file": ".sites-runtime/native-web-parity-2026-10-18/source-archives-final/movefield-native-current.zip",
+        "files": 267,
+        "bytes": 8189534,
+        "sha256": "b75aaae24822ba953cdd602db9fbf19155cc2a3f8636d5d3e8dc549ea700ad3b",
         "manifestMatchedCurrentSource": true,
+        "licenseIncluded": true,
+        "executableSourceMatchesCompiledCommit": true,
         "passed": true
       },
       {
         "app": "grizzly",
-        "file": ".sites-runtime/native-web-parity-2026-10-18/source-archives/grizzly-fitness-native-source.zip",
-        "files": 266,
-        "bytes": 8188732,
-        "sha256": "27c2fddca0cd6a76d18112e9c2d45005ec2e8570880dcda246ec76d0f7a76fab",
+        "file": ".sites-runtime/native-web-parity-2026-10-18/source-archives-final/grizzly-fitness-native-source.zip",
+        "files": 267,
+        "bytes": 8189535,
+        "sha256": "5454ce25ea18032c1e9233b30f51356ce1bb58be0167c30c252a25705284d765",
         "manifestMatchedCurrentSource": true,
+        "licenseIncluded": true,
+        "executableSourceMatchesCompiledCommit": true,
         "passed": true
       }
     ],
     "pagesCommit": null,
     "liveDownloadsVerified": false,
-    "iosInstallableAvailable": false
+    "iosInstallableAvailable": false,
+    "build": {
+      "id": 39101034995,
+      "head_sha": "cd2621c13f94235e2806d9f821318d5dfa7d0f16",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/ghinz32-cloud/movefield/actions/runs/39101034995"
+    },
+    "publisher": {
+      "id": 39101655284,
+      "head_sha": "cd2621c13f94235e2806d9f821318d5dfa7d0f16",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/ghinz32-cloud/movefield/actions/runs/39101655284"
+    },
+    "release": {
+      "id": 416261042,
+      "tag": "android-ux-preview-cd2621c13f94",
+      "url": "https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-cd2621c13f94",
+      "publisherRun": 39101655284
+    }
   },
   "checks": [
     {
@@ -505,6 +864,70 @@
         "groups": 45
       },
       "scope": "Original-writer encrypted/SQLite transfer and interruption fixtures; not physical upgrade installation."
+    },
+    {
+      "id": "corrected_source_archives",
+      "status": "passed",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/source-archives-license.json",
+      "receiptSHA256": "e6dafaeb7f8e8d1d3b3d602521d4ba9afcb32b1fa9a9c96b57441c9e8733dd2f",
+      "scope": "Source archive packaging-only correction includes existing extensionless MIT LICENSE. All267native source files are unchanged and match the compiled source/four Hermes exports; old266-member archives retained. No Hermes rebuild needed.",
+      "result": {
+        "sourceMembersPerArchive": 267,
+        "licenseIncluded": true,
+        "sourceCommit": "cd2621c13f94235e2806d9f821318d5dfa7d0f16"
+      }
+    },
+    {
+      "id": "independent_source_archives",
+      "status": "passed",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/security/source-archives-independent.json",
+      "receiptSHA256": "68de89bb14184631dbef47c698c6c7fd775f7ea75c6f8b7cdfefff388b9448a0",
+      "scope": "Independent read-only manifest, ZIP member, frozen-map and compiled-source comparison. 267 source files plus one manifest per archive. Existing MIT license included byte-for-byte. Finite forbidden-path checks; no owner .openai contents read, no broad credential/content scan or legal-rights assurance, no publication or installed-app claim.",
+      "result": {
+        "sourceMembersPerArchive": 267,
+        "licenseIncluded": true,
+        "sourceCommit": "cd2621c13f94235e2806d9f821318d5dfa7d0f16"
+      }
+    },
+    {
+      "id": "final_source_archives",
+      "status": "passed",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/source-archives-final.json",
+      "receiptSHA256": "4a4d3687b3ec6f9ff4f3ce1ee75e21cfaa646d66d82d180920337952b9606951",
+      "scope": "Only mobile/ANDROID-UPGRADE.md changes after frozen exports/compilation: remove stale release numbers and keep historical physical acceptance scoped to earlier build. All executable native files/assets/configs remain identical to the compiled source. LICENSE is included. Earlier archive attempts retained.",
+      "result": {
+        "sourceCommit": "cd2621c13f94235e2806d9f821318d5dfa7d0f16",
+        "nativeCodeUnchanged": true,
+        "licenseIncluded": true
+      }
+    },
+    {
+      "id": "final_source_archives_independent",
+      "status": "passed",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/security/source-archives-final-independent.json",
+      "receiptSHA256": "6c6ed590e1918d445893dfe67f288630aaf1b75e08c9ed94145d4983cad5df25",
+      "scope": "Independent read-only manifest, ZIP member, current/frozen-map and compiled-source comparison. 267 source files plus one manifest per archive. Exactly one documentation-only difference from compiled source: mobile/ANDROID-UPGRADE.md. All other 266 members, including executable native code, assets, configurations and existing MIT license, are unchanged. No Hermes/CI rerun performed or implied. Finite forbidden-path checks; no owner .openai contents read, no broad credential/content scan or legal-rights assurance, no publication or installed-app claim.",
+      "result": {
+        "sourceCommit": "cd2621c13f94235e2806d9f821318d5dfa7d0f16",
+        "nativeCodeUnchanged": true,
+        "licenseIncluded": true
+      }
+    },
+    {
+      "id": "android_publication",
+      "status": "passed",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/native-publication.json",
+      "receiptSHA256": "04a380ee02fea21e14033a163cdbffeea5f4f50bb9baea2120ba9fd87ca5bf7c",
+      "scope": "Verified development-signed Android ARM64 release bytes and actual APK ZIP/ELF/source/identity/security inspections. No installation/upgrade of these new versions on a physical phone, native OS lifecycle, store acceptance, signed iPhone build or TestFlight qualification.",
+      "result": {
+        "build": 39101034995,
+        "publisher": 39101655284,
+        "firstAttempt": true,
+        "apps": 2,
+        "markersPerApp": 26,
+        "nativeLibrariesPerApp": 17,
+        "signatureIdentityWindowSecurityAnd16KiB": true
+      }
     }
   ],
   "pendingGates": [
@@ -551,8 +974,8 @@
     },
     {
       "id": "android_ci_signatures_identity_alignment",
-      "status": "pending",
-      "receipt": null
+      "status": "passed",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/native-publication.json"
     },
     {
       "id": "pages_deploy_and_complete_download_hashes",
@@ -578,11 +1001,193 @@
     "Native sharing/recovery key and web download/vault passphrase remain different platform flows; no automatic cross-client synchronization is introduced.",
     "Previous live downloads and the owner\u2019s historical S24Ultra Movefield0.1.6 confirmation are not acceptance of the planned0.1.9/0.1.8 builds."
   ],
-  "updatedAt": "2026-10-18T05:33:56.794210+00:00",
+  "updatedAt": "2026-10-18T05:50:42.873711+00:00",
   "webApplicationAssets": {
     "status": "reused_identical_previously_verified_assets",
     "receipt": ".sites-runtime/native-web-parity-2026-10-18/static-app-baseline.json",
     "filesPerBrand": 1825,
     "previousPagesCommit": "174bd04f5892cd76052bd98419ae8e708ea8cd89"
+  },
+  "sourceArchiveCorrection": "Source packaging now includes existing extensionless mobile/LICENSE. Initial266-member archives are retained as superseded local attempts. Corrected267-member archives match the exact same native source and four successful Hermes exports; no app-source change or Hermes rebuild occurred. Final source archives additionally update one upgrade-guide Markdown file after compilation. All266other members and every executable/config/asset match the compiled source; current267-member manifests are independently verified. No rebuild or requalification of unchanged binaries is implied.",
+  "artifactIdentity": {
+    "application_source_sha256": "b1d15959ee7b11be8403dabd18ae2008af7d6afe74595e79b94fb58ab1e55833",
+    "artifact_sha256": {
+      "public/downloads/movefield-native-current.zip": "b75aaae24822ba953cdd602db9fbf19155cc2a3f8636d5d3e8dc549ea700ad3b",
+      "public/downloads/grizzly-fitness-native-source.zip": "5454ce25ea18032c1e9233b30f51356ce1bb58be0167c30c252a25705284d765",
+      "mobile/dist-mobile/_expo/static/js/android/index-367f033e459db735105fc68308288494.hbc": "998fe96d9ede01f688c85082994760304fb0e14d2c5469406d3208212924f52e",
+      "mobile/dist-mobile/_expo/static/js/ios/index-cc50bd490a2a9a6fbac8daa874a14fd2.hbc": "1d84db700ea8874f18e92f5053313efa41ac121c449d9016ada7033c72319a1e",
+      "mobile/dist-grizzly/_expo/static/js/android/index-3d10f9f14df1fc708cd7babddee77f4d.hbc": "31562cb425d66a8648a1ceb3814ebe08788bdf724ad55f1d0208e8d64c78bcd3",
+      "mobile/dist-grizzly/_expo/static/js/ios/index-6a00d88103da4c2fb252dd810641b485.hbc": "4c950e743185927e3bf6fe79de8beae0aafae3d290ee494050a91bce7f75d19d"
+    },
+    "web_artifact_tree_sha256": "717a1999a804a0d940e9df7f527b2a1f1953c2b36d078488bc3da81e0188f1ce",
+    "hash_method": "SHA256 of sorted relative path + NUL + content SHA256 + newline; application code/tests/config/static/native assets and ZIP. Documentation outside the ZIP and ignored runtime/credentials excluded.",
+    "web_scope": "Current static Movefield and Grizzly previews only; older production server output excluded."
+  },
+  "finiteCredentialScan": {
+    "ran_at": "2026-10-18T05:50:03.362531+00:00",
+    "scope": "Finite recognizable credential patterns in selected source, built artifacts and ZIP members; excludes ignored runtime/cache/configuration and is not an absence-of-secrets guarantee. No matched contents are printed.",
+    "files": 6165,
+    "zip_members": 2334,
+    "matches": []
+  },
+  "deliveryApplication": {
+    "appliedAt": "2026-10-18T05:49:05.212485+00:00",
+    "sourceCommit": "cd2621c13f94235e2806d9f821318d5dfa7d0f16",
+    "filesPerDirectory": 12,
+    "targets": [
+      {
+        "path": "public/downloads/android-installers.json",
+        "sha256": "39d56e3189cc6058587348308d572d053339fe4ff1bd7a65229be3f672049928"
+      },
+      {
+        "path": "public/downloads/android.html",
+        "sha256": "b41ac26623782efd32e6be27cbdfc498d1bbd770090530758be18ef2187f0e91"
+      },
+      {
+        "path": "public/downloads/native/grizzly/part-0.bin",
+        "sha256": "a2a465119e0b52965be38493b963cf43f1959d253e98c87bd75e9adbbf6a1148"
+      },
+      {
+        "path": "public/downloads/native/grizzly/part-3.bin",
+        "sha256": "c7ae990a92210ed6b73d936f97233673fe63b2824808acf64108f9c140b10d0f"
+      },
+      {
+        "path": "public/downloads/native/grizzly/part-2.bin",
+        "sha256": "cf7cd8ee03ec667af76f7ceabceab4ff4f04f2a6d9f810b8324ead91dea0808b"
+      },
+      {
+        "path": "public/downloads/native/grizzly/part-1.bin",
+        "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8"
+      },
+      {
+        "path": "public/downloads/native/movefield/part-0.bin",
+        "sha256": "c37264731190f07a8bc136f50526079a118659fe89ad6ab370573373199bbd02"
+      },
+      {
+        "path": "public/downloads/native/movefield/part-3.bin",
+        "sha256": "ec9c08d338427210079ee13dc0d12be8d85912eff5071aeca6264b9edd882c96"
+      },
+      {
+        "path": "public/downloads/native/movefield/part-2.bin",
+        "sha256": "8cbf315a37b3b31a1079aab6e2b9b2a428e835011404debdae217ff75e1d3a15"
+      },
+      {
+        "path": "public/downloads/native/movefield/part-1.bin",
+        "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8"
+      },
+      {
+        "path": "public/downloads/movefield-native-current.zip",
+        "sha256": "b75aaae24822ba953cdd602db9fbf19155cc2a3f8636d5d3e8dc549ea700ad3b"
+      },
+      {
+        "path": "public/downloads/grizzly-fitness-native-source.zip",
+        "sha256": "5454ce25ea18032c1e9233b30f51356ce1bb58be0167c30c252a25705284d765"
+      },
+      {
+        "path": ".sites-runtime/github-pages-review/downloads/android-installers.json",
+        "sha256": "39d56e3189cc6058587348308d572d053339fe4ff1bd7a65229be3f672049928"
+      },
+      {
+        "path": ".sites-runtime/github-pages-review/downloads/android.html",
+        "sha256": "b41ac26623782efd32e6be27cbdfc498d1bbd770090530758be18ef2187f0e91"
+      },
+      {
+        "path": ".sites-runtime/github-pages-review/downloads/native/grizzly/part-0.bin",
+        "sha256": "a2a465119e0b52965be38493b963cf43f1959d253e98c87bd75e9adbbf6a1148"
+      },
+      {
+        "path": ".sites-runtime/github-pages-review/downloads/native/grizzly/part-3.bin",
+        "sha256": "c7ae990a92210ed6b73d936f97233673fe63b2824808acf64108f9c140b10d0f"
+      },
+      {
+        "path": ".sites-runtime/github-pages-review/downloads/native/grizzly/part-2.bin",
+        "sha256": "cf7cd8ee03ec667af76f7ceabceab4ff4f04f2a6d9f810b8324ead91dea0808b"
+      },
+      {
+        "path": ".sites-runtime/github-pages-review/downloads/native/grizzly/part-1.bin",
+        "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8"
+      },
+      {
+        "path": ".sites-runtime/github-pages-review/downloads/native/movefield/part-0.bin",
+        "sha256": "c37264731190f07a8bc136f50526079a118659fe89ad6ab370573373199bbd02"
+      },
+      {
+        "path": ".sites-runtime/github-pages-review/downloads/native/movefield/part-3.bin",
+        "sha256": "ec9c08d338427210079ee13dc0d12be8d85912eff5071aeca6264b9edd882c96"
+      },
+      {
+        "path": ".sites-runtime/github-pages-review/downloads/native/movefield/part-2.bin",
+        "sha256": "8cbf315a37b3b31a1079aab6e2b9b2a428e835011404debdae217ff75e1d3a15"
+      },
+      {
+        "path": ".sites-runtime/github-pages-review/downloads/native/movefield/part-1.bin",
+        "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8"
+      },
+      {
+        "path": ".sites-runtime/github-pages-review/downloads/movefield-native-current.zip",
+        "sha256": "b75aaae24822ba953cdd602db9fbf19155cc2a3f8636d5d3e8dc549ea700ad3b"
+      },
+      {
+        "path": ".sites-runtime/github-pages-review/downloads/grizzly-fitness-native-source.zip",
+        "sha256": "5454ce25ea18032c1e9233b30f51356ce1bb58be0167c30c252a25705284d765"
+      },
+      {
+        "path": ".sites-runtime/github-pages-grizzly/downloads/android-installers.json",
+        "sha256": "39d56e3189cc6058587348308d572d053339fe4ff1bd7a65229be3f672049928"
+      },
+      {
+        "path": ".sites-runtime/github-pages-grizzly/downloads/android.html",
+        "sha256": "b41ac26623782efd32e6be27cbdfc498d1bbd770090530758be18ef2187f0e91"
+      },
+      {
+        "path": ".sites-runtime/github-pages-grizzly/downloads/native/grizzly/part-0.bin",
+        "sha256": "a2a465119e0b52965be38493b963cf43f1959d253e98c87bd75e9adbbf6a1148"
+      },
+      {
+        "path": ".sites-runtime/github-pages-grizzly/downloads/native/grizzly/part-3.bin",
+        "sha256": "c7ae990a92210ed6b73d936f97233673fe63b2824808acf64108f9c140b10d0f"
+      },
+      {
+        "path": ".sites-runtime/github-pages-grizzly/downloads/native/grizzly/part-2.bin",
+        "sha256": "cf7cd8ee03ec667af76f7ceabceab4ff4f04f2a6d9f810b8324ead91dea0808b"
+      },
+      {
+        "path": ".sites-runtime/github-pages-grizzly/downloads/native/grizzly/part-1.bin",
+        "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8"
+      },
+      {
+        "path": ".sites-runtime/github-pages-grizzly/downloads/native/movefield/part-0.bin",
+        "sha256": "c37264731190f07a8bc136f50526079a118659fe89ad6ab370573373199bbd02"
+      },
+      {
+        "path": ".sites-runtime/github-pages-grizzly/downloads/native/movefield/part-3.bin",
+        "sha256": "ec9c08d338427210079ee13dc0d12be8d85912eff5071aeca6264b9edd882c96"
+      },
+      {
+        "path": ".sites-runtime/github-pages-grizzly/downloads/native/movefield/part-2.bin",
+        "sha256": "8cbf315a37b3b31a1079aab6e2b9b2a428e835011404debdae217ff75e1d3a15"
+      },
+      {
+        "path": ".sites-runtime/github-pages-grizzly/downloads/native/movefield/part-1.bin",
+        "sha256": "ea604d874e96fcf0560df6805ea134cb582aba5075b38b0563384151e75b6dd8"
+      },
+      {
+        "path": ".sites-runtime/github-pages-grizzly/downloads/movefield-native-current.zip",
+        "sha256": "b75aaae24822ba953cdd602db9fbf19155cc2a3f8636d5d3e8dc549ea700ad3b"
+      },
+      {
+        "path": ".sites-runtime/github-pages-grizzly/downloads/grizzly-fitness-native-source.zip",
+        "sha256": "5454ce25ea18032c1e9233b30f51356ce1bb58be0167c30c252a25705284d765"
+      }
+    ],
+    "publicFullApks": 0,
+    "nativeExecutableSourceUnchanged": true,
+    "postCompileDocumentationDelta": {
+      "mobile/ANDROID-UPGRADE.md": {
+        "compiledSHA256": "0fc656d0c873c0a3423224a1c432b410d36eb2cd07814b81c0da18096d67338b",
+        "currentSHA256": "36d31fce094822be60b182690b880818255f9e5ae8e8bc447cfe2ea028798f00"
+      }
+    },
+    "scope": "Local reviewed delivery application only; not a commit, push or live deployment."
   }
 }
