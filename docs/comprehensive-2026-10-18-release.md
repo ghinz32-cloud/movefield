@@ -1,5 +1,7 @@
 # Distribution, supply-chain and platform audit — 18 October 2026
 
+The baseline and local-preparation sections below are retained as scoped snapshots. **The completed native release section at the end controls the latest installer status.**
+
 Baseline: `ca96011ac53b7d544856281a175cfee0859ca844`, continued on `codex/comprehensive-audit-2026-10-18`. This workstream inspected the delivered release without rebuilding, publishing, changing dependencies or reading owner `.openai/` or credentials. It reused the fresh full-tree registry audits captured by the parent and independently ran the root production-only audit. New source changes made by other audit workstreams are not included in the delivered APKs described here.
 
 ## Release provenance and delivery
@@ -58,9 +60,9 @@ The generated release build intentionally uses Expo's **development/test signing
 
 ## Open acceptance scope
 
-Current releases remain development-signed Android previews. Earlier owner acceptance on a Samsung S24 Ultra applied to Movefield 0.1.6 download/update/opening with visible saved workouts, not this newer release or Grizzly and not a complete record-integrity audit. Current physical Android upgrades, older-API devices, background/lifecycle/reminder behavior, screen readers, foldables, signed iPhone/TestFlight/store acceptance and production key custody remain open. No new store enrollment, paid service, native APK/IPA build or publication was performed here.
+Current releases remain development-signed Android previews. Earlier owner acceptance on a Samsung S24 Ultra applied to Movefield 0.1.6 download/update/opening with visible saved workouts, not this newer release or Grizzly and not a complete record-integrity audit. Current physical Android upgrades, older-API devices, background/lifecycle/reminder behavior, screen readers, foldables, signed iPhone/TestFlight/store acceptance and production key custody remain open. At the baseline audit checkpoint, no new store enrollment, paid service, native APK/IPA build or publication had been performed. The subsequently authorized preview release is recorded below.
 
-## Prepared next release
+## Prepared next release — historical local checkpoint
 
 The parent authorized source metadata for Movefield 0.1.10 / Android code 11 / iOS build 11 and Grizzly 0.1.9 / code 10 / iOS build 10. Package identifiers, historical certificate requirements and default adaptive orientation remain unchanged. The actual metadata block passes 20 groups, including 16 synthetic compiled-identity cases and version advancement from the delivered 10/9 codes. These metadata changes do not update the currently published installers.
 
@@ -69,3 +71,23 @@ After explicit local-source freeze, four cleared-cache Hermes exports passed wit
 The new ignored release helpers live directly under `.sites-runtime/comprehensive-audit-2026-10-18/`, with remote execution disabled until the parent supplies the exact committed/pushed source and tree. They preserve prior receipts, require actual Hermes and source-bound unit-task evidence, independently inspect the existing APK security/window/16KiB gates, and guard delivery application against source/archive/old-manifest drift. The 32-marker parser passes 71 synthetic cases; the window parser passes 10. Exact committed-source archive binding, CI compilation, publisher verification, independent APK inspection, delivery application and live download verification are still pending for this next release.
 
 Receipts: `.sites-runtime/comprehensive-audit-2026-10-18/release/{dependency-checks.json,root-production.json,patched-package-versions.json,node-forge-versions.json,native-forge-paths.json,native-braces-paths.json,braces-local-reachability.json,distribution-platform.json}`. The fresh parent audit inputs are `root-dependencies.json` and `native-dependencies.json` in the enclosing directory. Historical exact release/download evidence remains under `.sites-runtime/native-web-parity-2026-10-18/` and is identified as historical evidence above.
+
+
+## Completed native release and local delivery application
+
+Exact compiled source `9a5c2d87a66af62d3bfca2886e6800b8edf02263`, tree `6f5b0cc91412227ee661425fbffdfe7ad31974d1`, passed build [39139277751](https://github.com/ghinz32-cloud/movefield/actions/runs/39139277751) and publisher [39140160944](https://github.com/ghinz32-cloud/movefield/actions/runs/39140160944), both on attempt 1. The standard publisher created immutable prerelease [android-ux-preview-9a5c2d87a66a](https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-9a5c2d87a66a), ID `416524241`. No draft fallback, artifact-transport retry, existing asset replacement or extra build was used.
+
+| New Android preview | Version/code | Bytes | SHA256 |
+| --- | --- | ---: | --- |
+| Movefield | 0.1.10 / 11 | 39,394,664 | `e491255bbca357ea91fbdb1d299477e471a01e52242a75db9d83d5316771f77f` |
+| Grizzly Fitness | 0.1.9 / 10 | 39,545,922 | `aedcd80afd98f252858ff5dcf875b91b9e6956b91bceaf202a76b8fc8c420917` |
+
+The publisher independently verified the exact archives, source/tree, actual APK identities/signatures/security and raw Gradle/XML evidence before uploading. Both public APKs were then independently downloaded and matched against the GitHub asset digests and source/artifact records. Local checks passed the existing package IDs/historical certificate, version advancement, ARM64/API24/target36, backup/transport/component declarations, actual Hermes magic, all 32 reviewed markers, default orientation/resizing policy, `zipalign -c -P 16 4`, and all 17 native libraries' ELF LOAD alignment per app. A finite recognized credential-pattern scan found zero matches; that is not a security certification.
+
+**Actual app Gradle unit-task outcome: `NO-SOURCE` for both brands, zero JUnit XML files and zero tests/failures/errors/skipped cases. No native JUnit tests executed.** The retained public `nativeTestEvidence` records make that scope explicit. The Actions publisher recomputed raw log/XML facts; local collection independently checked the digest-verified public records' app/source binding and count/outcome consistency. Raw CI artifacts were not downloaded through the previously denied transport. Local public-record validation also passed 19 synthetic consistency/provenance fixtures.
+
+Independent source-archive verification bound every one of the 270 members to both the frozen working snapshot and exact compiled commit, with LICENSE and **zero post-compile documentation/code/configuration delta**. The two archive digests are the qualified local hashes recorded above. Guarded application copied 12 verified files into each of `public/downloads`, the Movefield standard static downloads directory and the Grizzly standard static downloads directory. Two unchanged middle APK parts remain byte-identical, so Git records only 10 changed download files. Both qualified default native export directories were applied after bundle/metadata/platform/source checks; their previous directories are preserved under the new ignored workstream. All 270 native source hashes remain unchanged.
+
+The current download regression passes exact same-origin primary filenames, GitHub fallbacks, stale/foreign URL rejection, focus without automatic downloading, full APK reconstruction/SHA256, tampered-parts rejection and cancellation. Full APKs are still excluded from public/Worker assets. **Final Pages publication and live Saves are pending this workstream's handoff to the parent**; the new public GitHub prerelease is verified independently. No installation or update of these versions on a physical phone, iOS native compilation/signing, TestFlight or store qualification is claimed.
+
+Current receipts: `.sites-runtime/comprehensive-audit-2026-10-18/{native-dispatch.json,native-publish.json,native-publication.json,source-archives-independent.json,delivery-application.json,default-export-application.json}` and `native-installers/{inspection.json,hermes-bytecode.json,window-policy.json,page-alignment.json,public-unit-evidence-check.json}`. Prior release receipts remain unchanged.

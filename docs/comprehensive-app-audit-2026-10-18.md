@@ -69,6 +69,7 @@ The media inventory is 995 guides, 885 canonical media records, 863 with local p
 | Payload | Both native flavors package the full roughly 12 MB uncompressed heading-font gallery. | Separate optional flavor/gallery assets without breaking offline fonts or saved appearance choices. |
 | Capacity/recovery | Supported limits remain 5,000 history records, 1,500 custom exercises and bounded archives. | Clear owner-facing capacity guidance and real-device recovery at the ceiling; never silently delete workouts. |
 | Old oversized original bundles | Prospective rollback cleanup does not rewrite already downloaded >10,000-row files. | Preserve originals; separately review recovery conversion if such a file actually exists. |
+| Malformed modern root | Injected invalid JSON prevents original-file export; rows, cache, keys and legacy files remain intact. No ordinary supported writer was found producing this condition. | Explicit raw-store/legacy recovery needs separate review; current correction covers parseable envelopes, not arbitrary corruption. |
 | Legacy root accessibility | The preserved original Pages root retains two known Plans contrast violations. | Separately remediate that legacy UI if authorized; its 63 original files are protected during shared-site delivery. |
 
 The master register still has 72 requirements: 61 in progress and 11 not started. This audit does not mark them complete. Shared account merging, broader sports/seasons, body/photo features, team/parent sharing, integrations, complete evidence/rights review and real distribution remain visible wider work.
@@ -105,6 +106,17 @@ The integrated local gate passed **65/65 groups**, including web/native types an
 
 The broad web baseline separately covered 108 finite shared accessibility states and 12 legacy-root states. The latter retains two known contrast violations. Those baseline bytes and the newly rebuilt targeted runs are recorded separately; the whole baseline matrix was not silently relabeled as a final rebuild run.
 
-The native source is frozen at 270 files, snapshot `10333df266f6ea55fc4c025ee170d95e7384f9fa25b484c29599ebf8840996f1`. Android compilation, independent public APK inspection and live Pages verification are the remaining delivery gates. No new installation or signed iPhone acceptance is claimed. Chromium is the exercised browser engine; physical Chrome/Samsung Internet, Firefox and Safari/WebKit acceptance remains separate.
+The native source is frozen at 270 files, snapshot `10333df266f6ea55fc4c025ee170d95e7384f9fa25b484c29599ebf8840996f1`. Android build `39139277751` and publisher `39140160944` passed on their first attempts. Both published APKs independently pass signature, identity, security, all 32 compiled markers, default window policy and 16 KiB ZIP/ELF checks. Each has 17 aligned native libraries. Both exact Gradle unit tasks report `NO-SOURCE`: zero XML files and zero JUnit cases; no native unit suite executed. Live Pages publication and postdeployment verification remain pending. No new installation or signed iPhone acceptance is claimed. Chromium is the exercised browser engine; physical Chrome/Samsung Internet, Firefox and Safari/WebKit acceptance remains separate.
 
 Ignored evidence lives under `.sites-runtime/comprehensive-audit-2026-10-18/`. Tracked reports and regression programs preserve the scope for future work. Owner `.openai/` content was not read, staged or exported, and no real workout/profile or credentials were used as fixtures.
+
+### Compiled Android preview identity
+
+Both APKs compile source `9a5c2d87a66af62d3bfca2886e6800b8edf02263`, tree `6f5b0cc91412227ee661425fbffdfe7ad31974d1`. [Immutable release](https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-9a5c2d87a66a). Source archives match all 270 frozen files without a documentation delta.
+
+| App | Version/code | Bytes | SHA256 |
+| --- | --- | ---: | --- |
+| movefield | 0.1.10 / 11 | 39,394,664 | `e491255bbca357ea91fbdb1d299477e471a01e52242a75db9d83d5316771f77f` |
+| grizzly | 0.1.9 / 10 | 39,545,922 | `aedcd80afd98f252858ff5dcf875b91b9e6956b91bceaf202a76b8fc8c420917` |
+
+The final delivery Worker was rebuilt after download assets changed and freshly passed the same 19 browser journeys. All 1,925 built files and 381 selected source files stayed exact. The static application's 20 compiled/index files remained identical to the final web-validation artifacts; only verified download assets were applied. The final finite credential-pattern scan found zero matches across 8,104 selected files and 3,136 ZIP members; this is not an absence-of-secrets guarantee. Application fingerprint: `5b6d3279ec1bfe9c0cd94d748f455eb120de49c3adea872089b50c771d8c0660`.

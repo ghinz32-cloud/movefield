@@ -1,7 +1,7 @@
 {
   "format": "movefield-comprehensive-app-audit-v1",
-  "checkedAt": "2026-10-18T15:07:41.629135+00:00",
-  "status": "local_qualification_passed_delivery_pending",
+  "checkedAt": "2026-10-18T15:27:14.958632+00:00",
+  "status": "compiled_previews_verified_pages_pending",
   "baselineCommit": "ca96011ac53b7d544856281a175cfee0859ca844",
   "branch": "codex/comprehensive-audit-2026-10-18",
   "brands": [
@@ -67,7 +67,110 @@
     "notStarted": 11,
     "noCompletionStatusChanged": true
   },
-  "nativeSource": null,
+  "nativeSource": {
+    "commit": "9a5c2d87a66af62d3bfca2886e6800b8edf02263",
+    "tree": "6f5b0cc91412227ee661425fbffdfe7ad31974d1",
+    "buildRun": 39139277751,
+    "publisherRun": 39140160944,
+    "firstAttemptsPassed": true,
+    "release": {
+      "id": 416524241,
+      "tag": "android-ux-preview-9a5c2d87a66a",
+      "url": "https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-9a5c2d87a66a",
+      "publisherRun": 39140160944
+    },
+    "apps": [
+      {
+        "app": "movefield",
+        "versionName": "0.1.10",
+        "versionCode": 11,
+        "bytes": 39394664,
+        "sha256": "e491255bbca357ea91fbdb1d299477e471a01e52242a75db9d83d5316771f77f",
+        "filename": "movefield-0.1.10-arm64.apk",
+        "nativeTestEvidence": {
+          "format": "native-unit-task-evidence-v1",
+          "task": ":app:testReleaseUnitTest",
+          "gradleExitCode": 0,
+          "plainLogPresent": true,
+          "plainLogSHA256": "c10111bdb84835ba79628a6604c378db4101a99c0aa4ae17d0e50b6e5dc0523c",
+          "taskLogObservations": [
+            {
+              "line": 649,
+              "statusToken": "NO-SOURCE"
+            }
+          ],
+          "taskOutcome": "NO-SOURCE",
+          "outcomeBasis": "explicit Gradle status token",
+          "junit": {
+            "directoryPresent": true,
+            "fileCount": 0,
+            "parsedFileCount": 0,
+            "noFiles": true,
+            "countsFromActualTestcaseElements": {
+              "tests": 0,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            },
+            "files": []
+          },
+          "executionClaim": "no_tests_executed",
+          "evidenceValid": true,
+          "problems": [],
+          "scope": "Exact app Gradle unit-task log and actual JUnit XML counts. No Android instrumentation, installed-device or iOS test claim. Zero files/cases are never a passing test suite.",
+          "app": "movefield",
+          "sourceCommit": "9a5c2d87a66af62d3bfca2886e6800b8edf02263",
+          "sourceTree": "6f5b0cc91412227ee661425fbffdfe7ad31974d1"
+        }
+      },
+      {
+        "app": "grizzly",
+        "versionName": "0.1.9",
+        "versionCode": 10,
+        "bytes": 39545922,
+        "sha256": "aedcd80afd98f252858ff5dcf875b91b9e6956b91bceaf202a76b8fc8c420917",
+        "filename": "grizzly-fitness-0.1.9-arm64.apk",
+        "nativeTestEvidence": {
+          "format": "native-unit-task-evidence-v1",
+          "task": ":app:testReleaseUnitTest",
+          "gradleExitCode": 0,
+          "plainLogPresent": true,
+          "plainLogSHA256": "257795867d87b2e2f482a39681dad41c3e2084afc3c0ab732d89e5c2fcd3e798",
+          "taskLogObservations": [
+            {
+              "line": 645,
+              "statusToken": "NO-SOURCE"
+            }
+          ],
+          "taskOutcome": "NO-SOURCE",
+          "outcomeBasis": "explicit Gradle status token",
+          "junit": {
+            "directoryPresent": true,
+            "fileCount": 0,
+            "parsedFileCount": 0,
+            "noFiles": true,
+            "countsFromActualTestcaseElements": {
+              "tests": 0,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            },
+            "files": []
+          },
+          "executionClaim": "no_tests_executed",
+          "evidenceValid": true,
+          "problems": [],
+          "scope": "Exact app Gradle unit-task log and actual JUnit XML counts. No Android instrumentation, installed-device or iOS test claim. Zero files/cases are never a passing test suite.",
+          "app": "grizzly",
+          "sourceCommit": "9a5c2d87a66af62d3bfca2886e6800b8edf02263",
+          "sourceTree": "6f5b0cc91412227ee661425fbffdfe7ad31974d1"
+        }
+      }
+    ],
+    "all32MarkersAndSignatureSecurityWindow16KiBChecksPassed": true,
+    "nativeUnitTestsExecuted": false,
+    "sourceArchiveFileDelta": {}
+  },
   "delivery": null,
   "notQualified": [
     "Physical Android upgrades/process death/IME/notifications/screen readers",
@@ -77,7 +180,8 @@
     "Production signing custody and store acceptance",
     "Independent clinical/full-text/form/media-rights completion",
     "Existing oversized original-bundle recovery conversion",
-    "Compatible upstream braces/node-forge advisory remediation"
+    "Compatible upstream braces/node-forge advisory remediation",
+    "Arbitrary malformed-root raw-store recovery export"
   ],
   "knownProductGaps": [
     "Native coach/manual custom-movement creation route",
@@ -91,5 +195,84 @@
     "newRecoveryConsentChanges": "No actionable blocker found; source-hash review receipt training/independent-recovery-review.json",
     "progressOptimization": "No actionable blocker found; original oracle/helpers and semantics verified in training/independent-progress-review.json",
     "notIndependentCertification": true
+  },
+  "findings": [
+    {
+      "id": "S-01",
+      "status": "repaired_and_compiled",
+      "area": "failed replacement ciphertext cleanup"
+    },
+    {
+      "id": "S-02",
+      "status": "repaired_and_compiled",
+      "area": "consent before optional provider dispatch"
+    },
+    {
+      "id": "S-03",
+      "status": "repaired_and_compiled",
+      "area": "post-upgrade current recovery export"
+    },
+    {
+      "id": "PROD18-01",
+      "status": "repaired_and_compiled",
+      "area": "supported-history index performance"
+    },
+    {
+      "id": "N18-01",
+      "status": "repaired_and_compiled",
+      "area": "preference hydration and reminder preservation"
+    },
+    {
+      "id": "N18-02",
+      "status": "repaired_and_compiled",
+      "area": "conservative reduced motion"
+    },
+    {
+      "id": "WEB18-01",
+      "status": "repaired_and_compiled",
+      "area": "scoped lazy-section recovery"
+    },
+    {
+      "id": "PROD18-04-work",
+      "status": "repaired_and_compiled",
+      "area": "period-first progress and memoization"
+    },
+    {
+      "id": "N18-03",
+      "status": "repaired_and_compiled",
+      "area": "explicit notification settings recovery"
+    },
+    {
+      "id": "N18-04",
+      "status": "repaired_and_compiled",
+      "area": "render recovery and pending-operation barrier"
+    },
+    {
+      "id": "REL18-01",
+      "status": "repaired_and_compiled",
+      "area": "honest native unit-task evidence"
+    }
+  ],
+  "applicationSourceSHA256": "5b6d3279ec1bfe9c0cd94d748f455eb120de49c3adea872089b50c771d8c0660",
+  "webArtifactTreeSHA256": "e3894eb3c2545a867143127db81b589d655ac1c9171e4a7f90cf49246e92f26c",
+  "finiteCredentialScan": {
+    "files": 8104,
+    "zipMembers": 3136,
+    "matches": 0,
+    "notAnAbsenceGuarantee": true
+  },
+  "finalDeliveryWorker": {
+    "journeys": 19,
+    "builtFilesUnchanged": 1925,
+    "sourceFilesUnchanged": 381,
+    "loadedResponsesMatched": 544,
+    "pageErrors": 0,
+    "externalOrMutatingRequests": 0,
+    "capabilities": {
+      "accounts": false,
+      "backups": false,
+      "coaching": false
+    },
+    "receipt": ".sites-runtime/comprehensive-audit-2026-10-18/security/delivery-worker/result.json"
   }
 }

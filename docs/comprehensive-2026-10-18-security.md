@@ -44,6 +44,12 @@ Original evidence: `security/legacy-export-result.json`, using actual historical
 
 **Verification:** three new groups in `scripts/check-legacy-native-upgrade.cjs` check unmigrated fallback; exact post-upgrade workout/profile inclusion; and preservation of the current ciphertext plus index cache when the root ciphertext is damaged and the current device key is absent. They also assert that historical files remain byte-identical and read-only. The stable full historical-upgrade suite passed **48 groups** at `2026-10-18T14:55:38.657Z` (including these three); see `security/legacy-upgrade-final.log` and `security/focused-verification-pre-sync.json`. The receipt separately marks the final shared synchronization/native portable-restore regression still pending at its capture time. The first run reached these assertions successfully but encountered a concurrent release-version edit in the existing synthetic identity gate; that failure log is retained and is not counted as a passing suite.
 
+### Additional frozen-source corruption limit
+
+Original-file recovery still requires a parseable modern root envelope. A final source-hashed probe injected malformed root JSON after a real legacy upgrade: export failed without deleting the root, history rows, cache, keys or retained legacy files. The automatic legacy fallback is not used after a modern root exists. The S-03 correction covers current post-upgrade history and parseable damaged-ciphertext/missing-key preservation; it does not promise arbitrary root-corruption recovery. No normal supported writer/import was found that creates malformed root JSON. A future explicit raw-store/legacy recovery export needs separate format, bounds and review. Evidence: `security/frozen-edge-review.{md,json}` under this audit runtime. No frozen application source changed.
+
+The same probe actually restored one native backup twice and a portable transfer, verifying distinct freshly sealed roots with exact state; key-only recovery left the existing root unchanged. The inspected web/native/cloud restore callers also write validated state through the sealing writer. Ordinary restore does not deliberately adopt a backup's raw root; expected-root rollback and no-write key recovery are the bounded exceptions.
+
 ## Focused verification status
 
 | Check | Fresh result | Exact scope |
