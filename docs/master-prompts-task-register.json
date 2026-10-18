@@ -5,7 +5,7 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Comprehensive audited preview update delivered: native81f66fe49e5a9f5c1f04fae799bd491cac1c5aca; deliveryc99abf9b3d1bb62cca0776dd3d02bb17871e8122; Pages174bd04f5892cd76052bd98419ae8e708ea8cd89; deployment38958889193. Movefield0.1.8/code9, Grizzly0.1.7/code8. Both APK Saves/hashes/ranges,367 selected served files including63 original-root files, and both live encrypted app/coaching flows passed.",
+  "active_checkpoint": "Native phone/web parity delivered: nativecd2621c13f94235e2806d9f821318d5dfa7d0f16; delivery69f8b5954b9e5e8ac22b339f615ab3a7558c2ba8; Pagesf9abe5381202fff76b29cdb8510f4a7b0a782bf0; deployment39102034066. Movefield0.1.9/code10 and Grizzly0.1.8/code9. All180 adaptive states,32 finite axe scans, exact downloaded APK hashes/ranges,367selectedservedfiles/63originalrootfiles and both live app save/coaching flows pass. Physical/native-store/live-provider/full-master gates remain open.",
   "completion_claim": "Completed comprehensive bounded audit, repairs and verified preview publication. Physical-device, signed iPhone, clinical/media-rights, live-service and full master-prompt gates remain open.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
@@ -2146,7 +2146,7 @@
     "liveVerified": true
   },
   "native_web_parity_2026_10_18": {
-    "status": "native_builds_and_inspections_passed_pages_pending",
+    "status": "delivered_and_live_verified",
     "report": "docs/native-web-parity-2026-10-18.md",
     "receipt": "docs/native-web-parity-2026-10-18.json",
     "branch": "codex/native-web-parity-2026-10-18",
@@ -2161,6 +2161,16 @@
     "nativeTree": "b3a1a58f7cfd9275ca58a7466f7cb0f700e62291",
     "buildRun": 39101034995,
     "publisherRun": 39101655284,
-    "applicationSourceSHA256": "b1d15959ee7b11be8403dabd18ae2008af7d6afe74595e79b94fb58ab1e55833"
+    "applicationSourceSHA256": "b1d15959ee7b11be8403dabd18ae2008af7d6afe74595e79b94fb58ab1e55833",
+    "deliverySource": "69f8b5954b9e5e8ac22b339f615ab3a7558c2ba8",
+    "pagesCommit": "f9abe5381202fff76b29cdb8510f4a7b0a782bf0",
+    "pagesRun": 39102034066,
+    "servedFilesVerified": 367,
+    "originalRootPreservedFiles": 63,
+    "bothCompleteBrowserSavesVerified": true,
+    "physicalPhoneAcceptance": false,
+    "signedIosAvailable": false,
+    "downloadFilesVerified": 22,
+    "downloadReconstructionsVerified": 4
   }
 }

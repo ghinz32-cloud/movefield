@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "android_and_source_download_candidate_ready_pages_pending",
+  "status": "native_web_parity_delivered_and_live_verified",
   "preparedAt": "2026-10-18T05:28:49.460346+00:00",
   "goal": {
     "brands": [
@@ -75,7 +75,7 @@
     ]
   },
   "plannedRelease": {
-    "status": "android_published_inspected_pages_pending",
+    "status": "android_source_downloads_and_pages_verified",
     "apps": {
       "movefield": {
         "package": "com.ghinz32.movefield",
@@ -445,8 +445,8 @@
         "passed": true
       }
     ],
-    "pagesCommit": null,
-    "liveDownloadsVerified": false,
+    "pagesCommit": "f9abe5381202fff76b29cdb8510f4a7b0a782bf0",
+    "liveDownloadsVerified": true,
     "iosInstallableAvailable": false,
     "build": {
       "id": 39101034995,
@@ -469,7 +469,9 @@
       "tag": "android-ux-preview-cd2621c13f94",
       "url": "https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-cd2621c13f94",
       "publisherRun": 39101655284
-    }
+    },
+    "pagesRun": 39102034066,
+    "deliverySource": "69f8b5954b9e5e8ac22b339f615ab3a7558c2ba8"
   },
   "checks": [
     {
@@ -979,8 +981,10 @@
     },
     {
       "id": "pages_deploy_and_complete_download_hashes",
-      "status": "pending",
-      "receipt": null
+      "status": "passed",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/live-download-summary.json",
+      "pagesCommit": "f9abe5381202fff76b29cdb8510f4a7b0a782bf0",
+      "pagesRun": 39102034066
     },
     {
       "id": "installed_android_acceptance",
@@ -1001,7 +1005,7 @@
     "Native sharing/recovery key and web download/vault passphrase remain different platform flows; no automatic cross-client synchronization is introduced.",
     "Previous live downloads and the owner\u2019s historical S24Ultra Movefield0.1.6 confirmation are not acceptance of the planned0.1.9/0.1.8 builds."
   ],
-  "updatedAt": "2026-10-18T05:50:42.873711+00:00",
+  "updatedAt": "2026-10-18T05:56:41.547845+00:00",
   "webApplicationAssets": {
     "status": "reused_identical_previously_verified_assets",
     "receipt": ".sites-runtime/native-web-parity-2026-10-18/static-app-baseline.json",
@@ -1189,5 +1193,216 @@
       }
     },
     "scope": "Local reviewed delivery application only; not a commit, push or live deployment."
-  }
+  },
+  "deliverySource": "69f8b5954b9e5e8ac22b339f615ab3a7558c2ba8",
+  "deliveryTree": "a706e5a4cafe500aca5a4a18e9211e6f253debe1",
+  "pagesPublication": {
+    "pagesCommit": "f9abe5381202fff76b29cdb8510f4a7b0a782bf0",
+    "run": 39102034066,
+    "firstAttempt": true,
+    "conclusion": "success",
+    "deliverySource": "69f8b5954b9e5e8ac22b339f615ab3a7558c2ba8",
+    "previousPagesCommit": "174bd04f5892cd76052bd98419ae8e708ea8cd89",
+    "preservedOriginalRootFiles": 63,
+    "candidateFiles": 3883,
+    "candidateBytes": 614170283,
+    "webApplicationBytesUnchanged": true,
+    "previousAssetsPreserved": [
+      {
+        "folder": "review",
+        "previousNondownloadFilesPreserved": 1892
+      },
+      {
+        "folder": "grizzly",
+        "previousNondownloadFilesPreserved": 1890
+      }
+    ]
+  },
+  "liveVerification": {
+    "selectedFiles": {
+      "passed": true,
+      "count": 367,
+      "originalRoot": 63,
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/live-files.json",
+      "receiptSHA256": "cc96d59f9e1f017eb82f546659f09fc30e87efee82a083b6dfc6d67558472721"
+    },
+    "apkDownloads": {
+      "checkedAt": "2026-10-18T05:54:38.566609+00:00",
+      "pagesCommit": "f9abe5381202fff76b29cdb8510f4a7b0a782bf0",
+      "pagesRun": 39102034066,
+      "deliverySource": "69f8b5954b9e5e8ac22b339f615ab3a7558c2ba8",
+      "expectedNativeSource": "cd2621c13f94235e2806d9f821318d5dfa7d0f16",
+      "manifestSHA256": "39d56e3189cc6058587348308d572d053339fe4ff1bd7a65229be3f672049928",
+      "passed": true,
+      "firstAttemptPassed": true,
+      "browserOwnSandbox": true,
+      "configuredProxyUsed": true,
+      "apps": [
+        {
+          "app": "movefield",
+          "versionName": "0.1.9",
+          "versionCode": 10,
+          "bytes": 39376196,
+          "sha256": "ea58bc4cb7f9bd5051ac159c97a4331eec8852e5235737812c50b51e43896546",
+          "url": "https://ghinz32-cloud.github.io/movefield/review/downloads/movefield-0.1.9-arm64.apk",
+          "head": {
+            "status": 200,
+            "contentType": "application/vnd.android.package-archive",
+            "contentLength": 39376196,
+            "contentDisposition": null,
+            "acceptRanges": "bytes",
+            "noRedirect": true
+          },
+          "ranges": [
+            {
+              "segment": "first",
+              "requestRange": "bytes=0-4095",
+              "status": 206,
+              "contentRange": "bytes 0-4095/39376196",
+              "contentLength": 4096,
+              "verifiedBytes": 4096,
+              "sha256": "ec6e9f39a164b770a7abe66eb03e8bb4f43e54e3a36ff47d5465529724e95af7"
+            },
+            {
+              "segment": "last",
+              "requestRange": "bytes=39372100-39376195",
+              "status": 206,
+              "contentRange": "bytes 39372100-39376195/39376196",
+              "contentLength": 4096,
+              "verifiedBytes": 4096,
+              "sha256": "6458e959e60df05ecf363e126590a0f7e792026373fc3237b298f25bee6cebe3"
+            }
+          ],
+          "actualBrowserSavePassed": true,
+          "savedFilename": "movefield-0.1.9-arm64.apk",
+          "savedFile": ".sites-runtime/native-web-parity-2026-10-18/live-pages-download/movefield-0.1.9-arm64.apk",
+          "at320FromStart": true,
+          "passed": true
+        },
+        {
+          "app": "grizzly",
+          "versionName": "0.1.8",
+          "versionCode": 9,
+          "bytes": 39527454,
+          "sha256": "2adea65fe7218f5d6dc1f2fafa3e1167008e5c4a2107090e6807c0ffa68aaaee",
+          "url": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/grizzly-fitness-0.1.8-arm64.apk",
+          "head": {
+            "status": 200,
+            "contentType": "application/vnd.android.package-archive",
+            "contentLength": 39527454,
+            "contentDisposition": null,
+            "acceptRanges": "bytes",
+            "noRedirect": true
+          },
+          "ranges": [
+            {
+              "segment": "first",
+              "requestRange": "bytes=0-4095",
+              "status": 206,
+              "contentRange": "bytes 0-4095/39527454",
+              "contentLength": 4096,
+              "verifiedBytes": 4096,
+              "sha256": "8db0995b0f7e5a82976cb15922b93c5319b22644e7b3f65bf9887aa771e8ad32"
+            },
+            {
+              "segment": "last",
+              "requestRange": "bytes=39523358-39527453",
+              "status": 206,
+              "contentRange": "bytes 39523358-39527453/39527454",
+              "contentLength": 4096,
+              "verifiedBytes": 4096,
+              "sha256": "b1b6016cf82c40575b3799401945f5b6536402ab7f170a86f1948acdb010c742"
+            }
+          ],
+          "actualBrowserSavePassed": true,
+          "savedFilename": "grizzly-fitness-0.1.8-arm64.apk",
+          "savedFile": ".sites-runtime/native-web-parity-2026-10-18/live-pages-download/grizzly-fitness-0.1.8-arm64.apk",
+          "at320FromStart": true,
+          "passed": true
+        }
+      ],
+      "receipts": {
+        "headers": ".sites-runtime/native-web-parity-2026-10-18/live-pages-download/headers.json",
+        "browser": ".sites-runtime/native-web-parity-2026-10-18/live-pages-download/results.json",
+        "headerAttempt": ".sites-runtime/native-web-parity-2026-10-18/live-pages-download/headers-attempt-1.json",
+        "browserAttempt": ".sites-runtime/native-web-parity-2026-10-18/live-pages-download/browser-attempt-1.json"
+      },
+      "scope": "Both actual live same-origin Pages APK downloads completed in sandboxed desktop Chromium configured with320px touch/mobile emulation; complete saved bytes matched independently inspected APK hashes. HEAD and first/last byte-range checks passed. No physical phone installation/update, Samsung browser, native lifecycle, iOS or store qualification;367-file/root preservation and live App flows belong to separate checks."
+    },
+    "browserAppFlows": {
+      "status": "passed",
+      "attempts": 1,
+      "exitCode": 0,
+      "checkedAt": "2026-10-18T05:53:57.323Z",
+      "finishedAt": "2026-10-18T05:54:12.730Z",
+      "nativeSourceCommit": "cd2621c13f94235e2806d9f821318d5dfa7d0f16",
+      "deliverySourceCommit": "69f8b5954b9e5e8ac22b339f615ab3a7558c2ba8",
+      "pagesCommit": "f9abe5381202fff76b29cdb8510f4a7b0a782bf0",
+      "pagesRun": "39102034066",
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/live-app/live-results.json",
+      "receiptSHA256": "13d7c20294938debfde6cea8935c1c2ca8d954a7538758c85b95fa5f0b491231",
+      "log": ".sites-runtime/native-web-parity-2026-10-18/live-app-smoke.log",
+      "groups": 4,
+      "brands": [
+        "movefield",
+        "grizzly"
+      ],
+      "networkScope": "Read-only same-origin GET/HEAD static requests; no backend/account activation or remote mutation. Configured proxy retained for Node fetch and Chromium.",
+      "browserScope": "Actual served pages in sandboxed Chromium; disposable local encrypted profiles; no installed-device qualification.",
+      "verified": [
+        "Exact served source manifests and local/manifest/loaded HTML/JS/CSS identity",
+        "Fresh encrypted profiles have no fabricated events, plan, or history",
+        "Before coaching cancellation leaves state unchanged; start creates actual workout",
+        "Actual set saves an unknown load without converting it to zero",
+        "Harder partial finish creates one record and one after dialog without changing plan targets or proposals",
+        "Encrypted reload preserves complete state and does not replay coaching; manual review facts/policy match current engine"
+      ],
+      "propagationFailures": [],
+      "results": [
+        {
+          "brand": "movefield",
+          "check": "Fresh encrypted personal profile starts with no fabricated events, plan or workout history",
+          "requests": 7,
+          "blocked": [],
+          "loadedAssets": 4
+        },
+        {
+          "brand": "movefield",
+          "check": "Before cancel/start; actual unknown-load set; harder partial save once; after dialog; encrypted reload without replay and manual reopening",
+          "requests": 21,
+          "blocked": [],
+          "loadedAssets": 4
+        },
+        {
+          "brand": "grizzly",
+          "check": "Fresh encrypted personal profile starts with no fabricated events, plan or workout history",
+          "requests": 10,
+          "blocked": [],
+          "loadedAssets": 4
+        },
+        {
+          "brand": "grizzly",
+          "check": "Before cancel/start; actual unknown-load set; harder partial save once; after dialog; encrypted reload without replay and manual reopening",
+          "requests": 32,
+          "blocked": [],
+          "loadedAssets": 4
+        }
+      ]
+    },
+    "localOptionalAssembler": {
+      "command": "node scripts/check-android-downloads.cjs",
+      "exitCode": 0,
+      "result": "Exact primary/fallback URLs, file names, both APK reconstructions, corruption/foreign-part rejection, cancellation and no profile/account storage reads passed."
+    },
+    "optionalAssemblerFileDelivery": {
+      "passed": true,
+      "files": 22,
+      "reconstructions": 4,
+      "firstAttempt": true,
+      "receipt": ".sites-runtime/native-web-parity-2026-10-18/security/live-download-parts/20261018T055544Z/receipt.json",
+      "receiptSHA256": "730f9afe29c8eac4484c8cc90a7ad4780b4b5d0ba3b89e812568eff7f0cb9f93",
+      "scope": "Both installer manifests match frozen compiled source; HTML/JS/parts match Pages candidate. Both apps reconstruct from each brand folder to independently inspected APK hashes. GET only; this is byte delivery, not browser assembly or installation."
+    }
+  },
+  "completionBoundary": "Requested native UI parity and Android/source/Pages delivery are verified in the stated automated scopes. No physical installation of these versions, full six-master-prompt completion, signed iPhone/store release or live-provider qualification is claimed."
 }
