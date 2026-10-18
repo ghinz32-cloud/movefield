@@ -11,10 +11,10 @@ export const browserRecordBackend:RecordBackend={
  rows:keys=>read(db=>{const store=db.transaction('rows').objectStore('rows');return Promise.all(keys.map(k=>request<CipherRow|undefined>(store.get(k)).then(r=>r||null)))}),
  list:vaultId=>read(db=>request(db.transaction('rows').objectStore('rows').index('vaultId').getAll(vaultId))),
  snapshot:()=>read(db=>new Promise((resolve,reject)=>{const tx=db.transaction(['meta','rows']),get=tx.objectStore('meta').get('root');let root:string|null=null,rows:CipherRow[]=[];get.onsuccess=()=>{root=get.result??null;if(root){const id=JSON.parse(root).vaultId;if(id){const query=tx.objectStore('rows').index('vaultId').getAll(id);query.onsuccess=()=>{rows=query.result}}}};tx.oncomplete=()=>resolve({root,rows});tx.onabort=()=>reject(tx.error)})),
- commit:(expected,root,rows)=>read(db=>new Promise<void>((resolve,reject)=>{
-  const tx=db.transaction(['meta','rows'],'readwrite'),meta=tx.objectStore('meta'),store=tx.objectStore('rows'),get=meta.get('root');let conflict=false;
-  get.onsuccess=()=>{if((get.result??null)!==expected){conflict=true;tx.abort();return}for(const row of rows)store.put(row);if(root===null)meta.delete('root');else meta.put(root,'root')};
-  tx.oncomplete=()=>resolve();tx.onabort=()=>reject(conflict?new StorageConflict():tx.error||Error('Local record transaction was aborted.'));tx.onerror=()=>{};
+ commit:(expected,root,rows,discardKeys=[])=>read(db=>new Promise<{introduced:string[]}>((resolve,reject)=>{
+  const tx=db.transaction(['meta','rows'],'readwrite'),meta=tx.objectStore('meta'),store=tx.objectStore('rows'),get=meta.get('root'),introduced=new Set<string>();let conflict=false;
+  get.onsuccess=()=>{if((get.result??null)!==expected){conflict=true;tx.abort();return}for(const row of rows){const before=store.get(row.key);before.onsuccess=()=>{if(before.result===undefined)introduced.add(row.key)};store.put(row)}for(const key of discardKeys)store.delete(key);if(root===null)meta.delete('root');else meta.put(root,'root')};
+  tx.oncomplete=()=>resolve({introduced:[...introduced]});tx.onabort=()=>reject(conflict?new StorageConflict():tx.error||Error('Local record transaction was aborted.'));tx.onerror=()=>{};
  })),
  prune:(vaultId,keys,expectedRoot)=>read(db=>new Promise<void>((resolve,reject)=>{const tx=db.transaction(['meta','rows'],'readwrite'),store=tx.objectStore('rows'),get=tx.objectStore('meta').get('root'),keep=new Set(keys);get.onsuccess=()=>{if(get.result!==expectedRoot)return;const cursor=store.index('vaultId').openCursor(vaultId);cursor.onsuccess=()=>{const c=cursor.result;if(c){if(!keep.has(c.value.key))c.delete();c.continue()}}};tx.oncomplete=()=>resolve();tx.onabort=()=>reject(tx.error)})),
  clear:()=>read(db=>new Promise<void>((resolve,reject)=>{const tx=db.transaction(['meta','rows'],'readwrite');tx.objectStore('meta').clear();tx.objectStore('rows').clear();tx.oncomplete=()=>resolve();tx.onabort=()=>reject(tx.error)})),

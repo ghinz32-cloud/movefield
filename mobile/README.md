@@ -9,7 +9,7 @@ Installable Android **test** apps are available from the current download pages:
 
 Use the version and verification details on those pages. Open the link in Chrome or Samsung Internet if an in-app browser stalls during download. Preserve an existing installation and its records; read [Android upgrades](./ANDROID-UPGRADE.md) before updating. The owner confirmed Movefield **0.1.6** installed and opened with saved workouts on a Samsung S24 Ultra. That confirmation does not qualify later builds, every record or Grizzly.
 
-This source targets Movefield **0.1.9/code 10** and Grizzly **0.1.8/code 9**. A source version alone does not establish a published installer; the download pages list the verified binaries. There is no signed IPA or TestFlight release. [iPhone distribution](./IOS-DISTRIBUTION.md) explains the prepared source and remaining build/signing/device steps.
+This source targets Movefield **0.1.10/code 11** and Grizzly **0.1.9/code 10**. A source version alone does not establish a published installer; the download pages list the verified binaries. There is no signed IPA or TestFlight release. [iPhone distribution](./IOS-DISTRIBUTION.md) explains the prepared source and remaining build/signing/device steps.
 
 The phone interface follows the shared website's workspace menu, branded Today card and direct exercise tools. Setup keeps one focused step at a time, with four named sections and three plan alternatives per page. Settings groups Appearance, Training and Profile & data. Workout actions stay anchored while the content scrolls when the screen, keyboard or larger text requires it. Native encrypted recovery and OS reminders have their own platform-specific steps.
 

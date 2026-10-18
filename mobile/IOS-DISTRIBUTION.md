@@ -14,8 +14,8 @@ The current provisional bundle identifiers are `com.ghinz32.movefield.prototype`
 
 | App | Bundle identifier | Version | Build number |
 | --- | --- | --- | --- |
-| Movefield | `com.ghinz32.movefield.prototype` | 0.1.9 | 10 |
-| Grizzly Fitness | `com.ghinz32.grizzlyfitness.prototype` | 0.1.8 | 9 |
+| Movefield | `com.ghinz32.movefield.prototype` | 0.1.10 | 11 |
+| Grizzly Fitness | `com.ghinz32.grizzlyfitness.prototype` | 0.1.9 | 10 |
 
 `app.config.js` and `app.json` set these values explicitly. A source version alone does not establish build qualification or publication. The iOS deployment floor is 16.4; a compatible Xcode and SDK are required. Keep both registered identities separate and increase the build number for each uploaded build. These are prepared source settings, not evidence of an uploaded or installable Apple release.
 

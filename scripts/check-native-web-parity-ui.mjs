@@ -15,7 +15,8 @@ const artifactReceipt=resolve(process.env.NATIVE_PARITY_ARTIFACT_RECEIPT||resolv
 const matrix=JSON.parse(await readFile(artifactReceipt,'utf8'));
 const hash=value=>createHash('sha256').update(value).digest('hex');
 async function sourcesUnchanged(){for(const [file,expected] of Object.entries(matrix.sourceHashes))assert.equal(hash(await readFile(file)),expected,'Adaptive artifact source no longer current: '+file)}
-await sourcesUnchanged();await mkdir(output,{recursive:true});
+async function artifactsUnchanged(){assert.equal(matrix.artifacts?.length,2,'Use a fresh two-brand adaptive receipt with actual artifact hashes');for(const artifact of matrix.artifacts)for(const {file,SHA256} of artifact.files)assert.equal(hash(await readFile(resolve(input,artifact.variant,file))),SHA256,'Source-bound App artifact changed: '+artifact.variant+'/'+file)}
+await sourcesUnchanged();await artifactsUnchanged();await mkdir(output,{recursive:true});
 const results=[],captures=[],errors=[],servers=[];let completed=false;
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',chromiumSandbox:true,args:['--disable-setuid-sandbox'],env:{...process.env,XDG_CONFIG_HOME:resolve('.sites-runtime/config'),XDG_CACHE_HOME:resolve('.sites-runtime/cache')}});
 const button=(page,name)=>page.getByRole('button',{name,exact:true});
@@ -98,8 +99,8 @@ try{
    }catch(error){await page.screenshot({path:resolve(output,`${brand}-${scale}-failure.png`)});await writeFile(resolve(output,`${brand}-${scale}-failure.json`),JSON.stringify({error:String(error),text:await page.locator('body').innerText()},null,2));throw error}finally{await context.close()}
   }
  }
- await sourcesUnchanged();assert.deepEqual(errors,[]);const violations=captures.filter(c=>c.violations.length);assert.deepEqual(violations,[],'No automated WCAG-tag violations in captured finite states');completed=true;
+ await sourcesUnchanged();await artifactsUnchanged();assert.deepEqual(errors,[]);const violations=captures.filter(c=>c.violations.length);assert.deepEqual(violations,[],'No automated WCAG-tag violations in captured finite states');completed=true;
 }finally{
- await writeFile(resolve(output,'results.json'),JSON.stringify({status:completed?'passed':'failed',checkedAt:new Date().toISOString(),sourceHashes:matrix.sourceHashes,artifactReceipt,artifactReceiptKind:matrix.kind,scope:'Actual native App via source-matched RNWeb adaptive artifacts; real bundled fonts, synthetic memory storage and mocked OS/account boundaries.360/390px100/130%apptext. Automated finite-state axe scans and contextual callbacks, not physical phone/TalkBack/UIKit certification.',results,captures,errors},null,2)+'\n');await browser.close();for(const server of servers)await new Promise(done=>server.close(done));
+ await writeFile(resolve(output,'results.json'),JSON.stringify({status:completed?'passed':'failed',checkedAt:new Date().toISOString(),sourceHashes:matrix.sourceHashes,artifacts:matrix.artifacts,artifactReceipt,artifactReceiptKind:matrix.kind,scope:'Actual native App via source-matched and byte-verified RNWeb adaptive artifacts; real bundled fonts, synthetic memory storage and mocked OS/account boundaries.360/390px100/130%apptext. Automated finite-state axe scans and contextual callbacks, not physical phone/TalkBack/UIKit certification.',results,captures,errors},null,2)+'\n');await browser.close();for(const server of servers)await new Promise(done=>server.close(done));
 }
 console.log('PASS native web parity contextual journeys and visual states');

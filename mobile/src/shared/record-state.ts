@@ -9,7 +9,9 @@ export interface RecordBackend{
  rows(keys:string[]):Promise<(CipherRow|null)[]>;
  list(vaultId:string):Promise<CipherRow[]>;
  snapshot():Promise<{root:string|null;rows:CipherRow[]}>;
- commit(expected:string|null,root:string|null,rows:CipherRow[]):Promise<void>;
+ // Return only keys first introduced by this successful transaction. Optional
+ // cleanup runs in the same expected-root transaction as a rollback.
+ commit(expected:string|null,root:string|null,rows:CipherRow[],discardKeys?:string[]):Promise<{introduced:string[]}|void>;
  prune(vaultId:string,keys:string[],expectedRoot:string):Promise<void>;
  clear():Promise<void>;
 }
@@ -80,11 +82,12 @@ export function createRecordStateStorage(options:CryptoIO&{backend:RecordBackend
   const plain=JSON.stringify({format:'movefield-state-index',version:1,state:{...state,history:[]},history:refs}),root=await options.seal(plain),header=readEnvelope(root);
   if(vaultId&&vaultId!==header.vaultId||cacheVault&&cacheVault!==header.vaultId&&refs.some(r=>!changed.some(row=>row.key===r.key)))throw Error('Reopen the writer after changing the device key.');
   if(await options.open(root)!==plain)throw Error('Encrypted index verification failed.');
-  await options.backend.commit(source,root,changed);
+  const committed=await options.backend.commit(source,root,changed);
   try{await options.legacyWrite(root)}catch(e){
-   // Keep the old binary's cache coherent too. A failure restores the previous
-   // complete database root; rows are retained until a verified successful save.
-   await options.backend.commit(root,source,[]);throw e;
+   // Remove only this failed transaction's newly introduced ciphertext while
+   // restoring its previous root. A newer writer makes the whole rollback fail,
+   // preserving its rows; preexisting records are never rollback cleanup targets.
+   await options.backend.commit(root,source,[],committed?.introduced);throw e;
   }
   const needsPrune=changed.length>0||refs.length!==cache.size;
   expected=root;cacheVault=header.vaultId;cache=new Map(state.history.map((w,n)=>[w.id,{plain:stable(w),ref:refs[n]}]));

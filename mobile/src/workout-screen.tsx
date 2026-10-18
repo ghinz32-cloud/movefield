@@ -20,6 +20,7 @@ export type NativeWorkoutScreenProps={
  busy:boolean;
  remaining:number|null;
  restMessage?:string;
+ notificationSettings?:React.ReactNode;
  compact?:boolean;
  onAvailableHeight?:(height:number)=>void;
  sampleMode?:boolean;
@@ -149,6 +150,7 @@ export function NativeWorkoutScreen(props:NativeWorkoutScreenProps){
   {choice(state.restAlerts?'Turn off rest alerts':'Enable rest alerts',props.onToggleRestAlerts)}
   <Text style={small}>Take more rest when needed. Phone settings may delay alerts.</Text>
   {!!props.restMessage&&<Text accessibilityLiveRegion="polite" style={small}>{props.restMessage}</Text>}
+  {props.notificationSettings}
  </>,footer('Back to workout',()=>go(target?'set':'list')));
 
  if(!target||!exercise||route==='list')return screen('Your workout',<>

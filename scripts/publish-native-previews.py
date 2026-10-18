@@ -1,5 +1,6 @@
 """Publish verified existing Android test APKs; never compile or publish iOS/store apps."""
 import hashlib
+import importlib.util
 import io
 import json
 import os
@@ -42,6 +43,9 @@ CERTIFICATE = 'fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c'
 ROOT = Path.cwd()
 DESTINATION = ROOT / '.sites-runtime/native-release'
 DESTINATION.mkdir(parents=True, exist_ok=True)
+test_evidence_spec = importlib.util.spec_from_file_location('native_test_evidence', Path(__file__).with_name('record-native-test-evidence.py'))
+test_evidence = importlib.util.module_from_spec(test_evidence_spec)
+test_evidence_spec.loader.exec_module(test_evidence)
 
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -165,8 +169,8 @@ artifacts = verify_apk_artifacts(artifact_list['artifacts'])
 sdk = Path(os.environ['ANDROID_HOME'])
 records = []
 for app, package, version, code, filename in [
-    ('movefield', 'com.ghinz32.movefield', '0.1.9', 10, 'movefield-0.1.9-arm64.apk'),
-    ('grizzly', 'com.ghinz32.grizzlyfitness.prototype', '0.1.8', 9, 'grizzly-fitness-0.1.8-arm64.apk'),
+    ('movefield', 'com.ghinz32.movefield', '0.1.10', 11, 'movefield-0.1.10-arm64.apk'),
+    ('grizzly', 'com.ghinz32.grizzlyfitness.prototype', '0.1.9', 10, 'grizzly-fitness-0.1.9-arm64.apk'),
 ]:
     artifact = artifacts[app]
     build_job = next(job for job in selected_jobs if job['name'] == 'android (' + app + ')')
@@ -204,6 +208,13 @@ for app, package, version, code, filename in [
     source = (directory / 'evidence/source.txt').read_text().splitlines()
     assert source[0] == SOURCE and len(source) == 2
     assert source[1] == request_json('/git/commits/' + SOURCE)['tree']['sha']
+    # This publisher's new-version contract requires structured task evidence.
+    # Older public release JSON remains unchanged and may lack this field.
+    unit_record = json.loads((directory / 'evidence/native-test-evidence.json').read_text())
+    unit_observed = test_evidence.collect(directory / 'evidence/gradle-release.log',
+                                         directory / 'evidence/unit-test-results', 0)
+    unit_evidence = test_evidence.validate_bound_evidence(unit_record, unit_observed, app, SOURCE, source[1])
+    assert (directory / 'evidence/gradle-release-exit-code.txt').read_text().strip() == '0'
     original = directory / (app + '-arm64-test.apk')
     apk_sha = hashlib.sha256(original.read_bytes()).hexdigest()
     assert (directory / 'SHA256SUMS').read_text().split() == [apk_sha, original.name]
@@ -243,6 +254,7 @@ for app, package, version, code, filename in [
         'bytes': published.stat().st_size, 'sha256': apk_sha, 'architecture': 'arm64-v8a',
         'applicationBundleSHA256': bundle_sha,
         'signingCertificateSHA256': CERTIFICATE,
+        'nativeTestEvidence': unit_evidence,
         'inspection': json.loads((evidence / 'inspection.json').read_text())})
 
 # Existing releases/assets remain protected. An operator may explicitly supply
@@ -257,7 +269,7 @@ else:
         assert error.code == 404
     else:
         raise RuntimeError('Release already exists; inspect it instead of replacing files')
-notes = ('Current audited Android test apps: Movefield 0.1.9 (10) and Grizzly Fitness 0.1.8 (9).\n\n'
+notes = ('Current audited Android test apps: Movefield 0.1.10 (11) and Grizzly Fitness 0.1.9 (10).\n\n'
     'Includes the reviewed routine library, equipment and exercise-substitution corrections, '
     'and current web/native interface fixes in the shared training code. '
     'ARM64 phones, Android 7.0+. Development-signed; physical-device acceptance and store release remain pending. '

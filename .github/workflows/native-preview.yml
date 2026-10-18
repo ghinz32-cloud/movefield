@@ -8,6 +8,9 @@ on:
       - 'lib/**'
       - 'scripts/check-legacy-native-upgrade.cjs'
       - 'scripts/check-native-preview-identity.py'
+      - 'scripts/check-native-test-evidence.py'
+      - 'scripts/record-native-test-evidence.py'
+      - 'scripts/run-native-release-checks.sh'
       - 'scripts/extract-apk-rules.py'
       - 'scripts/inspect-native-artifacts.py'
       - 'scripts/check-native-inspection.py'
@@ -87,6 +90,7 @@ jobs:
           node scripts/check-block-starting-loads.cjs
           node scripts/check-block-starting-loads-ui.cjs
           python3 scripts/check-native-inspection.py
+          python3 scripts/check-native-test-evidence.py
           cd mobile
           npm run check
       - name: Record exact installer source
@@ -100,7 +104,7 @@ jobs:
         run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-36" "build-tools;36.0.0" "ndk;27.1.12297006" "cmake;3.30.5" "cmake;3.31.5"'
       - name: Compile and lint release-variant test APK
         working-directory: mobile/android
-        run: ./gradlew :app:assembleRelease :app:lintRelease :app:testReleaseUnitTest --no-daemon -PreactNativeArchitectures=arm64-v8a -Porg.gradle.jvmargs="-Xmx5g -XX:MaxMetaspaceSize=1g"
+        run: bash ../../scripts/run-native-release-checks.sh
       - name: Inspect actual APK identity, transport, backup rules and signature
         run: |
           apk=mobile/android/app/build/outputs/apk/release/app-release.apk
@@ -133,6 +137,7 @@ jobs:
           path: |
             native-preview/evidence
             mobile/android/app/build/reports
+            mobile/android/app/build/test-results/testReleaseUnitTest
           if-no-files-found: warn
   publish_android:
     if: ${{ inputs.publish_run }}
@@ -159,4 +164,5 @@ jobs:
           NATIVE_PUBLISH_DRAFT: ${{ inputs.publish_draft }}
         run: |
           python3 scripts/check-native-preview-publisher.py
+          python3 scripts/check-native-test-evidence.py
           python3 scripts/publish-native-previews.py

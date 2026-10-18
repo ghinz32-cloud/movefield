@@ -1,3 +1,6 @@
+import {NativeAppBoundary} from './src/app-boundary';
+import {createNativeRecoveryGate} from './src/native-recovery';
+import {NativeNotificationSettings} from './src/notification-settings';
 import {NativeExerciseGuideScreen} from './src/exercise-guide-screen';
 import {NativeFlowScreen,NativeSettingsRow,NativeSection,NativeActionFooter,NativeButton} from './src/phone-ui';
 import {NativeWorkoutScreen} from './src/workout-screen';
@@ -319,9 +322,10 @@ function NativeEquipmentLimit({ state, exercise, onSave }) {
             })]
     });
 }
-function TrainingApp() {
+function TrainingApp({onRegisterRecovery}) {
     var styles = (0, _srcAppearance.useThemedStyles)(baseStyles), appearance = (0, _srcAppearance.useNativeAppearance)(), COLORS = appearance.colors;
     var viewport = (0, _reactNative.useWindowDimensions)();
+    var [recoveryGate] = (0,_react.useState)(createNativeRecoveryGate);
     var [state, setState] = (0, _react.useState)(null);
     var [readError, setReadError] = (0, _react.useState)(false);
     var [saveStatus, setSaveStatus] = (0, _react.useState)('Loading local data…');
@@ -365,7 +369,7 @@ function TrainingApp() {
             if (transferBackup && !expected)
                 throw Error('Reopen or recover your saved profile before importing an older transfer file. Original records are kept.');
             var _next = transferBackup ? await (0, _srcSharedLegacyTransfer.openLegacyTransfer)(raw, key) : await (0, _srcStorage.previewLocalBackup)(raw, key);
-            if (token === backupGeneration.current && !resettingRef.current && !sampleRef.current)
+            if (token === backupGeneration.current && recoveryGate.isOpen() && !resettingRef.current && !sampleRef.current)
                 setBackupPreview({
                     state: _next,
                     raw,
@@ -384,7 +388,7 @@ function TrainingApp() {
         setBackupPreview(null);
         try {
             var raw = await (0, _srcFileTransfer.pickJsonFile)(_srcSharedLegacyTransfer.LEGACY_TRANSFER_MAX_BYTES);
-            if (raw !== null && token === backupGeneration.current && !resettingRef.current && !sampleRef.current)
+            if (raw !== null && token === backupGeneration.current && recoveryGate.isOpen() && !resettingRef.current && !sampleRef.current)
                 changeBackupInput(raw);
         }
         catch (e) {
@@ -393,6 +397,7 @@ function TrainingApp() {
         }
     };
     var commit = next => {
+        if (!recoveryGate.isOpen()) return;
         var checked = (0, _srcSharedWorkoutLog.normalizeWorkoutRest)(next);
         (0, _srcSharedSavedData.readSavedState)(JSON.stringify(checked));
         stateRef.current = checked;
@@ -420,6 +425,15 @@ function TrainingApp() {
         focusRef.current = id;
         renderFocus(id);
     };
+    (0,_react.useEffect)(()=>{
+        recoveryGate.reopen();
+        var invalidate=()=>{recoveryGate.close();resettingRef.current=true;backupGeneration.current++;coachingTransition.current={waiting:false,pending:null};};
+        onRegisterRecovery?.(async()=>{
+            await recoveryGate.settle();
+            await Promise.allSettled([storeRef.current?.flush(),(0,_srcStorage.flushLocalSetup)(sampleRef.current)]);
+        },invalidate);
+        return invalidate;
+    },[onRegisterRecovery,recoveryGate]);
     var createStore = initial => (0, _srcSharedDurableState.createDurableState)({
         initial,
         validate: next => {
@@ -432,11 +446,11 @@ function TrainingApp() {
         status: status => setSaveStatus(status === 'saving' ? 'Saving on this device…' : status === 'saved' ? 'Saved on this device' : 'Save failed · keep the app open and retry')
     });
     var persistChange = async (fn) => {
-        if (resettingRef.current || !storeRef.current || storeRef.current.busy())
+        if (!recoveryGate.isOpen() || resettingRef.current || !storeRef.current || storeRef.current.busy())
             return false;
         setSavingAction(true);
         try {
-            var saved = await storeRef.current.commit(fn);
+            var saved = await recoveryGate.run(()=>storeRef.current.commit(fn));
             if (saved) setError('');
             return saved;
         }
@@ -550,7 +564,7 @@ function TrainingApp() {
     (0, _react.useEffect)(() => {
         var mounted = true;
         void (0, _srcFileTransfer.cleanExportFiles)().catch(() => setError('Expired export files could not be cleaned up. Your profile is kept; retry on this device.'));
-        (0, _srcStorage.readLocalState)().then(s => {
+        recoveryGate.run(()=>(0, _srcStorage.readLocalState)()).then(s => {
             if (mounted) {
                 var initial = s ?? (0, _srcMobileEngine.emptyDemo)();
                 storeRef.current = createStore(initial);
@@ -609,7 +623,7 @@ function TrainingApp() {
     var equipmentOptions = (0, _react.useMemo)(() => ['All', ...Array.from(new Set(_srcSharedTraining.exercises.map(x => x.equipment))).sort()], []);
     var filtered = (0, _react.useMemo)(() => [..._srcSharedTraining.exercises, ...(state?.custom || [])].filter(x => (equipment === 'All' || x.equipment === equipment) && (0, _srcSharedTraining.matchesExercise)(x, search)), [search, equipment, state?.custom]);
     var modify = fn => {
-        if (resettingRef.current || !storeRef.current)
+        if (!recoveryGate.isOpen() || resettingRef.current || !storeRef.current)
             return false;
         try {
             var accepted = storeRef.current.stage(fn);
@@ -687,6 +701,8 @@ function TrainingApp() {
             setError(result.errors.join(' '));
     };
     var switchDataset = async (sample) => {
+        if (!recoveryGate.isOpen()) return;
+        return recoveryGate.run(async()=>{
         if (resettingRef.current || storeRef.current?.busy())
             return;
         resettingRef.current = true;
@@ -742,8 +758,11 @@ function TrainingApp() {
         finally {
             resettingRef.current = false;
         }
+            });
     };
     var reset = async () => {
+        if (!recoveryGate.isOpen()) return;
+        return recoveryGate.run(async()=>{
         if (!sampleRef.current) {
             setError('Personal data is preserved. Only the sample profile can be reset.');
             return;
@@ -772,6 +791,7 @@ function TrainingApp() {
             resettingRef.current = false;
             setResetting(false);
         }
+            });
     };
     if (!state)
         return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNativeSafeAreaContext.SafeAreaView, {
@@ -800,7 +820,7 @@ function TrainingApp() {
                                 onPress: () => {
                                     if (resettingRef.current) return;
                                     resettingRef.current = true;
-                                    void (0, _srcStorage.readLocalState)().then(saved => {
+                                    void recoveryGate.run(()=>(0, _srcStorage.readLocalState)()).then(saved => {
                                         const initial = saved ?? (0, _srcMobileEngine.emptyDemo)();
                                         storeRef.current = createStore(initial);
                                         commit(initial);
@@ -823,7 +843,7 @@ function TrainingApp() {
                                         return;
                                     resettingRef.current = true;
                                     backupGeneration.current++;
-                                    void (0, _srcStorage.restoreDeviceKey)(recoveryInput).then(async () => {
+                                    void recoveryGate.run(()=>(0, _srcStorage.restoreDeviceKey)(recoveryInput).then(async () => {
                                         var initial = await (0, _srcStorage.readLocalState)();
                                         if (initial) {
                                             storeRef.current = createStore(initial);
@@ -832,7 +852,7 @@ function TrainingApp() {
                                             setRecoveryInput('');
                                             setBackupPreview(null);
                                         }
-                                    }).catch(e => setError(e instanceof Error ? e.message : 'Recovery failed.')).finally(() => {
+                                    })).catch(e => setError(e instanceof Error ? e.message : 'Recovery failed.')).finally(() => {
                                         resettingRef.current = false;
                                     });
                                 }
@@ -871,7 +891,7 @@ function TrainingApp() {
                                                 return;
                                             resettingRef.current = true;
                                             backupGeneration.current++;
-                                            void (0, _srcStorage.restoreLocalBackup)(backupPreview.raw, backupPreview.key).then(initial => {
+                                            void recoveryGate.run(()=>(0, _srcStorage.restoreLocalBackup)(backupPreview.raw, backupPreview.key)).then(initial => {
                                                 storeRef.current = createStore(initial);
                                                 commit(initial);
                                                 setReadError(false);
@@ -969,6 +989,7 @@ function TrainingApp() {
     };
     var todayView = phonePage === 'workout' && active ? h(NativeWorkoutScreen, {
         state, focusedExercise, busy:savingAction, remaining, restMessage:restAlertMessage || alertMessage,
+        notificationSettings:h(NativeNotificationSettings),
         sampleMode,saveStatus,saveError:error,compact:compactWorkout,onAvailableHeight:height=>setConstrainedWorkout(previous=>height<320?true:height>560?false:previous),onRetrySave:()=>{void persistChange(s=>({...s}));},
         onExit:()=>setPhonePage('home'), onFocusExercise:setFocusedExercise,
         onChangeSet:(index,patch)=>modify(s=>{if(s.active?.id!==active.id)throw Error('This workout changed. Reopen it before editing.');return (0,_srcSharedWorkoutLog.changeWorkoutSet)(s,index,patch);}),
@@ -1196,7 +1217,7 @@ state.plan?.profile.mode === 'app' && h(NativeSettingsRow, {label:"Review progre
             state.plan&&h(_reactNative.View,{style:{flexDirection:'row',flexWrap:'wrap',gap:10}},
                 h(NativeButton,{label:'Progression & sources',variant:'outline',onPress:()=>setPlanSection('details')}),
                 h(NativeButton,{label:state.plan.paused?'Resume this plan':'Pause future training',variant:'outline',disabled:!!active,onPress:()=>{void persistChange(v=>(0,_srcSharedReusablePlan.setPlanPaused)(v,state.plan.id,state.plan.version,!state.plan.paused));}}),
-                h(NativeButton,{label:'Export plan',variant:'outline',onPress:()=>{var snapshot=stateRef.current;void(0,_srcFileTransfer.shareJsonFile)(JSON.stringify(snapshot.plan),'plaintext-plan',()=>!resettingRef.current&&stateRef.current===snapshot).catch(e=>setError(e.message));}}))
+                h(NativeButton,{label:'Export plan',variant:'outline',onPress:()=>{var snapshot=stateRef.current;void(0,_srcFileTransfer.shareJsonFile)(JSON.stringify(snapshot.plan),'plaintext-plan',()=>recoveryGate.isOpen()&&!resettingRef.current&&stateRef.current===snapshot).catch(e=>setError(e.message));}}))
         ]:planSection==='current'?(state.plan?[state.plan && h(NativeSection,{title:(0,_srcSharedPresentation.planName)(state.plan),description:`${state.plan.sessions.length} planned workouts${state.plan.paused?' · Paused':''}`}),
 h(NativeSettingsRow, {label:"View schedule", onPress:()=>{setPlanSection('schedule');}}),
 h(NativeSettingsRow, {label:"Progression & sources", onPress:()=>{setPlanSection('details');}}),
@@ -1227,7 +1248,7 @@ h(NativeSettingsRow, {label:"Save or reuse a block", onPress:()=>{setPlanSection
                     secondary: true, label: "Export plan",
                     onPress: () => {
                         var snapshot = stateRef.current;
-                        void (0, _srcFileTransfer.shareJsonFile)(JSON.stringify(snapshot.plan), 'plaintext-plan', () => !resettingRef.current && stateRef.current === snapshot).catch(e => setError(e.message));
+                        void (0, _srcFileTransfer.shareJsonFile)(JSON.stringify(snapshot.plan), 'plaintext-plan', () => recoveryGate.isOpen() && !resettingRef.current && stateRef.current === snapshot).catch(e => setError(e.message));
                     }
                 })]
             })]:[planSection === 'saved' && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcSavedPlans.NativeSavedPlans, {
@@ -1237,7 +1258,7 @@ h(NativeSettingsRow, {label:"Save or reuse a block", onPress:()=>{setPlanSection
                 onAccepted: () => setTab('Today'),
                 onExport: async (p) => {
                     var snapshot = stateRef.current;
-                    await (0, _srcFileTransfer.shareJsonFile)(JSON.stringify(p), 'plaintext-plan', () => !resettingRef.current && stateRef.current === snapshot);
+                    await (0, _srcFileTransfer.shareJsonFile)(JSON.stringify(p), 'plaintext-plan', () => recoveryGate.isOpen() && !resettingRef.current && stateRef.current === snapshot);
                 }
             }),planSection === 'details' && state.plan && /*#__PURE__*/ (0, _reactJsxRuntime.jsxs)(Card, {
                 children: [/*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
@@ -1650,6 +1671,7 @@ state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(B
                 testID: 'native-primary-content',
                 children: tab === 'Today' ? todayView : tab === 'Plan' ? planView : tab === 'Library' ? libraryView : tab === 'Coaching' ? coachingView : tab === 'Settings' ? /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcSettings.NativeSettings, {
                     reminderMessage: workoutReminderMessage,
+                    notificationSettings:h(NativeNotificationSettings),
                     profile: profileView,
                     children: !sampleMode && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcCloudAccount.NativeCloudAccount, {
                                 state: state,
@@ -1678,7 +1700,7 @@ state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(B
                                                 return;
                                             resettingRef.current = true;
                                             backupGeneration.current++;
-                                            void (0, _srcFileTransfer.cleanExportFiles)(true).then(() => (0, _srcStorage.erasePrivateProfile)()).then(() => {
+                                            void recoveryGate.run(()=>(0, _srcFileTransfer.cleanExportFiles)(true).then(() => (0, _srcStorage.erasePrivateProfile)())).then(() => {
                                                 var initial = (0, _srcMobileEngine.emptyDemo)();
                                                 storeRef.current = createStore(initial);
                                                 commit(initial);
@@ -1702,7 +1724,7 @@ state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(B
                                     onPress: () => {
                                         var snapshot = stateRef.current;
                                         void (0, _srcStorage.localRecoveryKey)().then(key => {
-                                            if (!resettingRef.current && !sampleRef.current && stateRef.current === snapshot)
+                                            if (recoveryGate.isOpen() && !resettingRef.current && !sampleRef.current && stateRef.current === snapshot)
                                                 setRecoveryKey(key);
                                         }).catch(e => setError(e.message));
                                     }
@@ -1721,7 +1743,7 @@ state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(B
                                     label: "Export encrypted backup",
                                     onPress: () => {
                                         var snapshot = stateRef.current;
-                                        void (0, _srcStorage.encryptedStateBackup)(snapshot).then(raw => (0, _srcFileTransfer.shareJsonFile)(raw, 'encrypted-backup', () => !resettingRef.current && stateRef.current === snapshot)).catch(e => setError(e.message));
+                                        void (0, _srcStorage.encryptedStateBackup)(snapshot).then(raw => (0, _srcFileTransfer.shareJsonFile)(raw, 'encrypted-backup', () => recoveryGate.isOpen() && !resettingRef.current && stateRef.current === snapshot)).catch(e => setError(e.message));
                                     }
                                 }), /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNative.Text, {
                                     style: styles.sectionTitle,
@@ -1774,7 +1796,7 @@ state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(B
                                                     return;
                                                 resettingRef.current = true;
                                                 backupGeneration.current++;
-                                                void storeRef.current?.flush().then(() => backupPreview.transfer ? (0, _srcStorage.restorePasswordTransfer)(backupPreview.state, backupPreview.expected) : (0, _srcStorage.restoreLocalBackup)(backupPreview.raw, backupPreview.key)).then(initial => {
+                                                void recoveryGate.run(()=>storeRef.current?.flush().then(() => backupPreview.transfer ? (0, _srcStorage.restorePasswordTransfer)(backupPreview.state, backupPreview.expected) : (0, _srcStorage.restoreLocalBackup)(backupPreview.raw, backupPreview.key))).then(initial => {
                                                     if (initial) {
                                                         storeRef.current = createStore(initial);
                                                         commit(initial);
@@ -1948,6 +1970,7 @@ state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(B
                         if (r.error)
                             return r.error;
                         if (await persistChange(() => r.state)) {
+                            if (!recoveryGate.isOpen()) return 'The plan was saved. Reopen the saved app to continue.';
                             setPersonalSetup(false);
                             setSourceChoice(undefined);
                             setPhonePage('home');
@@ -2320,11 +2343,16 @@ state.history.length > historyLimit && /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(B
     });
 }
 function App() {
-    return /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_reactNativeSafeAreaContext.SafeAreaProvider, {
-        children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(_srcAppearance.NativeAppearanceProvider, {
-            children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(NativeWildernessShell, {children: /*#__PURE__*/ (0, _reactJsxRuntime.jsx)(TrainingApp, {})})
-        })
-    });
+    var recoveries=(0,_react.useRef)({});
+    var registerTraining=(0,_react.useCallback)((flush,invalidate)=>{recoveries.current.training={flush,invalidate};},[]);
+    var registerPreferences=(0,_react.useCallback)((flush,invalidate)=>{recoveries.current.preferences={flush,invalidate};},[]);
+    return h(_reactNativeSafeAreaContext.SafeAreaProvider,null,
+        h(NativeAppBoundary,{onFailure:()=>{Object.values(recoveries.current).forEach(handler=>handler.invalidate());},beforeReopen:()=>Promise.allSettled(Object.values(recoveries.current).map(handler=>Promise.resolve().then(handler.flush)))},
+            h(_srcAppearance.NativeAppearanceProvider,{onRegisterRecovery:registerPreferences},
+                h(NativeWildernessShell,null,h(TrainingApp,{onRegisterRecovery:registerTraining}))
+            )
+        )
+    );
 }
 var baseStyles = _reactNative.StyleSheet.create({
     safe: {

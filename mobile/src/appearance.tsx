@@ -7,10 +7,12 @@ import {grizzlyFontAssets} from './grizzly-font-assets';
 import {AppState} from 'react-native';
 import {defaultPreferences,headingFonts,preferenceKey,readPreferences,type AppPreferences} from './shared/app-preferences';
 import {interfaceColors} from './shared/interface-theme';
-const Context=createContext({p:defaultPreferences,ready:false,update:(_patch:Partial<AppPreferences>)=>{},error:'',dark:false,reduceMotion:false,fonts:false,active:true,loadedHeading:''});
-export function NativeAppearanceProvider({children}:{children:React.ReactNode}){
- const [p,setP]=useState(defaultPreferences),[ready,setReady]=useState(false),[error,setError]=useState(''),[systemReduce,setSystemReduce]=useState(false);
+const Context=createContext({p:defaultPreferences,ready:false,update:(_patch:Partial<AppPreferences>)=>{},error:'',preferencesError:'',retryPreferences:()=>{},dark:false,reduceMotion:true,fonts:false,active:true,loadedHeading:''});
+export function NativeAppearanceProvider({children,onRegisterRecovery}:{children:React.ReactNode;onRegisterRecovery?:(flush:()=>Promise<unknown>,invalidate:()=>void)=>void}){
+ const [p,setP]=useState(defaultPreferences),[ready,setReady]=useState(false),[error,setError]=useState(''),[preferencesError,setPreferencesError]=useState(''),[readAttempt,setReadAttempt]=useState(0),[systemReduce,setSystemReduce]=useState(true);
  const current=useRef(p),writes=useRef(Promise.resolve()),scheme=useColorScheme();
+ const live=useRef(true),hydrated=useRef(false);
+ useEffect(()=>{live.current=true;const invalidate=()=>{live.current=false};onRegisterRecovery?.(()=>writes.current,invalidate);return invalidate},[onRegisterRecovery]);
  const [active,setActive]=useState(AppState.currentState!=='background'&&AppState.currentState!=='inactive');
  useEffect(()=>{const listener=AppState.addEventListener('change',state=>setActive(state==='active'));return()=>listener.remove()},[]);
  const [fonts]=useFonts({Inter:grizzlyFontAssets.Inter,'Barlow Condensed':grizzlyFontAssets['Barlow Condensed']});
@@ -19,9 +21,11 @@ export function NativeAppearanceProvider({children}:{children:React.ReactNode}){
   loadAsync({[family]:grizzlyFontAssets[family as keyof typeof grizzlyFontAssets]}).then(()=>{if(live){setLoadedHeading(family);setFontError('')}}).catch(()=>{if(live)setFontError('The heading font could not be opened. Clear lettering stays available. Choose another font or reopen the app.')});
   return()=>{live=false};
  },[p.headingFont]);
- useEffect(()=>{let live=true;AsyncStorage.getItem(preferenceKey).then(raw=>{if(live){current.current=readPreferences(raw);setP(current.current)}}).catch(()=>{if(live)setError('Your preferences could not be opened. Try reopening the app.')}).finally(()=>{if(live)setReady(true)});AccessibilityInfo.isReduceMotionEnabled().then(v=>{if(live)setSystemReduce(v)});const listener=AccessibilityInfo.addEventListener('reduceMotionChanged',setSystemReduce);return()=>{live=false;listener.remove()}},[]);
- const update=(patch:Partial<AppPreferences>)=>{const next=readPreferences(JSON.stringify({...current.current,...patch}));current.current=next;setP(next);writes.current=writes.current.catch(()=>{}).then(()=>AsyncStorage.setItem(preferenceKey,JSON.stringify(next))).then(()=>setError('')).catch(()=>setError('Preferences apply now but could not be saved.'))};
- return <Context.Provider value={{p,ready,error:fontError||error,update,dark:p.mode==='dark'||p.mode==='system'&&scheme==='dark',reduceMotion:p.reduceMotion||systemReduce,fonts,active,loadedHeading}}>{children}</Context.Provider>;
+ useEffect(()=>{let reading=true;void AsyncStorage.getItem(preferenceKey).then(raw=>{if(reading&&live.current){current.current=readPreferences(raw);hydrated.current=true;setP(current.current);setPreferencesError('');setReady(true)}}).catch(()=>{if(reading&&live.current)setPreferencesError('Your preferences could not be opened. Saved choices are kept; retry before changing them.')});return()=>{reading=false}},[readAttempt]);
+ useEffect(()=>{let listening=true,observedChange=false;void AccessibilityInfo.isReduceMotionEnabled().then(value=>{if(listening&&!observedChange)setSystemReduce(value)}).catch(()=>{/* Unknown OS preference keeps motion reduced. */});const listener=AccessibilityInfo.addEventListener('reduceMotionChanged',value=>{observedChange=true;if(listening)setSystemReduce(value)});return()=>{listening=false;listener.remove()}},[]);
+ const retryPreferences=()=>{if(!live.current||hydrated.current)return;setPreferencesError('');setReadAttempt(value=>value+1)};
+ const update=(patch:Partial<AppPreferences>)=>{if(!live.current||!hydrated.current)return;const next=readPreferences(JSON.stringify({...current.current,...patch}));current.current=next;setP(next);writes.current=writes.current.catch(()=>{}).then(()=>AsyncStorage.setItem(preferenceKey,JSON.stringify(next))).then(()=>{if(live.current)setError('')}).catch(()=>{if(live.current)setError('Preferences apply now but could not be saved.')})};
+ return <Context.Provider value={{p,ready,preferencesError,retryPreferences,error:fontError||preferencesError||error,update,dark:p.mode==='dark'||p.mode==='system'&&scheme==='dark',reduceMotion:p.reduceMotion||systemReduce,fonts,active,loadedHeading}}>{children}</Context.Provider>;
 }
 export function useNativeAppearance(){
  const context=useContext(Context),{dark,p}=context;

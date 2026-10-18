@@ -124,7 +124,7 @@
     {
       "source": "lib/progress-runtime.js",
       "target": "src/shared/progress-runtime.js",
-      "sha256": "3ecb758d9f03d6e013b42e7ba781a7a314ee3839e77ae816e70994ce3f30b70d"
+      "sha256": "096bec25d0415c12d62926c4b6579118dc3316ac916d89da91f96387c90d9335"
     },
     {
       "source": "lib/progress-runtime.d.ts",
@@ -229,12 +229,12 @@
     {
       "source": "lib/record-state.ts",
       "target": "src/shared/record-state.ts",
-      "sha256": "35ad2a7086e57441469904ff82d7c101fb9ae88c33a43364dfaa0d82d56183b2"
+      "sha256": "510181998a6f2bd7330c19c62bdc34882573f6acb9fbc9a04a6213ffca5e60ac"
     },
     {
       "source": "lib/sql-records.ts",
       "target": "src/shared/sql-records.ts",
-      "sha256": "0b9bc90abf13b7fc633c9ee74f93f4657dbd8928d57d5363fefa59636766d95f"
+      "sha256": "1dc952010ae45b5b4d2d37d28bf016e705715417b4390a9419b374a7957f6a1e"
     },
     {
       "source": "lib/activity-progress.ts",

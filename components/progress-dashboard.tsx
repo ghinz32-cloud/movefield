@@ -1,11 +1,11 @@
 "use client";
-import {planName,sessionName,workoutName} from '@/lib/presentation';
+import {workoutName} from '@/lib/presentation';
 
-import {useState} from 'react';
+import {useMemo,useState} from 'react';
 import {LineChart,Line,BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,ReferenceLine} from 'recharts';
 import {ChartContainer} from '@/components/ui/chart';
 import {Button} from '@/components/ui/button';
-import {type State,exFor,requiresSetup,isLoadTracked,loadConvention} from '@/lib/training';
+import {type State,day,exFor,requiresSetup,isLoadTracked,loadConvention} from '@/lib/training';
 import {exerciseSeries,strengthIndex,volume} from '@/lib/progress';
 const config={value:{label:'Recorded',color:'var(--chart-1)'},index:{label:'Strength index',color:'var(--chart-1)'},volume:{label:'Volume',color:'var(--chart-1)'}};
 function DataTable({title,headers,rows}:{title:string;headers:string[];rows:(string|number)[][]}){return <details className="chart-data"><summary>{title}</summary><table><caption>{title}</caption><thead><tr>{headers.map(h=><th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{rows.map((r,i)=><tr key={i}>{r.map((c,j)=><td key={j}>{c}</td>)}</tr>)}</tbody></table>{!rows.length&&<p>No recorded values yet.</p>}</details>}
@@ -17,7 +17,9 @@ export function ProgressDashboard({state:s,onExercise,onSample}:{state:State;onE
  const actualMetric=!isLoadTracked(ex)?'amount':metric==='estimated'&&(s.profile.age<18||!ex.progressionEnabled||ex.metric!=='reps')?'load':metric;
  const data=exerciseSeries(s,id,currentSetup).map(p=>({...p,value:actualMetric==='amount'?p.amount:actualMetric==='estimated'?(p.estimated===null?null:Math.round(p.estimated*factor*10)/10):(p.load===null?null:Math.round(p.load*factor*10)/10)}));
  const sessions=logged.map(w=>{const v=volume(s,w);return{id:w.id,label:new Date(w.date+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'}),volume:v.count?Math.round(v.kg*factor):null,excluded:v.excluded,partial:w.partial,title:workoutName(w,s),date:w.date}});
- const index=strengthIndex(s),last=data.filter(p=>p.value!==null).at(-1),first=data.find(p=>p.value!==null);
+ const currentDay=day();
+ // Local control changes do not change the index; a new state or local day does.
+ const index=useMemo(()=>({asOf:currentDay,...strengthIndex(s)}),[s,currentDay]),last=data.filter(p=>p.value!==null).at(-1),first=data.find(p=>p.value!==null);
  return <><div className="progress-cards"><section className="card"><p className="eyebrow">SESSIONS RECORDED</p><strong className="big-number">{logged.length}</strong><p className="muted">{logged.filter(w=>w.partial).length} partial workouts</p></section><section className="card"><p className="eyebrow">PERSONAL STRENGTH INDEX</p><strong className="big-number">{index.current??'—'}</strong><p className="muted">{index.current?`${index.current-100>=0?'+':''}${index.current-100}% from your starting baseline`:s.profile.age<18?'Available for ages 18 and over':index.basket.length===3?'Recent comparable data needed':'Log two qualifying sessions for each of three lifts'}</p></section><section className="card"><p className="eyebrow">RECORDED SETS / TASKS</p><strong className="big-number">{logged.reduce((n,w)=>n+w.sets.filter(x=>x.done).length,0)}</strong><p className="muted">Sets you marked complete</p></section></div>
  {!logged.length&&<section className="card"><h3>See what a few months can look like.</h3><p className="muted">View a sample training history with a lighter week and a plateau.</p><Button onClick={onSample}>View 12-week example</Button></section>}
  <section className="card chart-card"><div className="split"><div><p className="eyebrow">EXERCISE PROGRESS</p><h2>{ex.name}</h2></div>{last&&<div className="chart-value"><strong>{last.value}</strong><span>{actualMetric==='amount'?ex.metric:s.profile.units}{first&&last.value!==null&&first.value!==null?` · ${last.value-first.value>=0?'+':''}${Math.round((last.value-first.value)*10)/10} since first`:''}</span></div>}</div><div className="chart-controls"><label>Exercise<select aria-label="Chart exercise" value={id} onChange={e=>{setSelected(e.target.value);setSetup('')}}>{ids.length?ids.map(i=><option value={i} key={i}>{exFor(i,s.custom).name}</option>):<option value="bench">No saved exercise yet</option>}</select></label>{isLoadTracked(ex)&&<label>Measurement<select aria-label="Chart measurement" value={actualMetric} onChange={e=>setMetric(e.target.value)}><option value="load">Heaviest recorded set</option><option value="amount">Best set · {ex.metric}</option>{s.profile.age>=18&&ex.progressionEnabled&&ex.metric==='reps'&&<option value="estimated">Estimated 1RM · eligible sets</option>}</select></label>}{requiresSetup(ex)&&<label>Machine / setup<select aria-label="Chart machine setup" value={currentSetup} onChange={e=>setSetup(e.target.value)}>{setups.map(x=><option key={x} value={x}>{x||'Setup not recorded · cannot compare'}</option>)}</select></label>}</div>

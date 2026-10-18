@@ -99,6 +99,10 @@ export async function localRecoveryKey(){return JSON.stringify(await keyRecord()
 export async function encryptedLocalBackup(){await flushPersonal().catch(()=>undefined);return encryptedRecordBundle(await nativeRecordBackend(),()=>AsyncStorage.getItem(KEY))}
 /** Owner-requested original recovery copy; never includes platform keys. */
 export async function originalSavedFile(){
+ await flushPersonal().catch(()=>undefined);
+ // Retained pre-upgrade files are historical recovery material. Once a modern
+ // root exists, export its current ciphertext even when its key cannot open it.
+ if(await (await nativeRecordBackend()).root()!==null)return encryptedLocalBackup();
  if(legacyLineage){const source=await (await import('./legacy-upgrade-native')).readLegacySource();if(source)return JSON.stringify({format:'movefield-native-recovery-records-v2',revision:source.snapshot.revision,records:source.snapshot.records})}
  return encryptedLocalBackup();
 }
@@ -122,9 +126,9 @@ export async function restoreDeviceKey(recovery:string){const existing=await enc
 export async function restorePasswordTransfer(incoming:State,expected:State):Promise<State>{
  await ensureLegacyUpgrade();await flushPersonal();await setup.flush();await cloudWrites;
  const generation=storageGeneration,state=readPreservedState(JSON.stringify(incoming)),backend=await nativeRecordBackend();
- const writer=createRecordStateStorage({backend:{...backend,commit:async(before,root,rows)=>{
+ const writer=createRecordStateStorage({backend:{...backend,commit:async(before,root,rows,discardKeys)=>{
   if(generation!==storageGeneration||storageErased)throw Error('The private profile changed during restore. Current records are kept.');
-  await backend.commit(before,root,rows);
+  return backend.commit(before,root,rows,discardKeys);
  }},digest:cloudDigest,seal:raw=>encrypt(raw,'state'),open:raw=>decrypt(raw,'state'),legacyRead:()=>AsyncStorage.getItem(KEY),legacyWrite:raw=>AsyncStorage.setItem(KEY,raw)});
  const current=await writer.read();
  if(!current||JSON.stringify(current)!==JSON.stringify(expected))throw Error('Your records changed after this preview. Review the backup again.');

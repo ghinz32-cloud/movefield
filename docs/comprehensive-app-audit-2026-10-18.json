@@ -1,0 +1,95 @@
+{
+  "format": "movefield-comprehensive-app-audit-v1",
+  "checkedAt": "2026-10-18T15:07:41.629135+00:00",
+  "status": "local_qualification_passed_delivery_pending",
+  "baselineCommit": "ca96011ac53b7d544856281a175cfee0859ca844",
+  "branch": "codex/comprehensive-audit-2026-10-18",
+  "brands": [
+    "Movefield",
+    "Grizzly Fitness"
+  ],
+  "reports": {
+    "training": "docs/comprehensive-2026-10-18-training.md",
+    "product": "docs/comprehensive-2026-10-18-product.md",
+    "web": "docs/comprehensive-2026-10-18-web.md",
+    "native": "docs/comprehensive-2026-10-18-native.md",
+    "security": "docs/comprehensive-2026-10-18-security.md",
+    "release": "docs/comprehensive-2026-10-18-release.md"
+  },
+  "core": {
+    "groups": 65,
+    "passed": 65,
+    "applicationSourceUnchanged": true,
+    "entireCheckoutUnchanged": false,
+    "qualificationReceipt": ".sites-runtime/comprehensive-audit-2026-10-18/core-final-qualified.json"
+  },
+  "finalLocal": {
+    "workerJourneys": 19,
+    "nativeAdaptiveStates": 180,
+    "nativeClippingChecks": 240,
+    "nativeParityGroups": 10,
+    "nativeParityCaptures": 64,
+    "nativeParityAxeStates": 32,
+    "nativeRenderRecoveryScenarios": 8,
+    "webLazyGroups": 4,
+    "webLazyAxeStates": 6,
+    "webDraftConflictGroups": 2,
+    "webRotationGroups": 2,
+    "webSaveSafetyGroups": 8,
+    "recordRollbackGroups": 16,
+    "coachingDispatchCases": 5,
+    "strengthIndexReferenceCases": 144,
+    "supportedHistoryRecords": 5000,
+    "cleanHermesExports": 4,
+    "compiledMarkers": 32,
+    "nativeFrozenFiles": 270,
+    "nativeSnapshotSHA256": "10333df266f6ea55fc4c025ee170d95e7384f9fa25b484c29599ebf8840996f1",
+    "nativeFallbackAxeStates": 2
+  },
+  "baselineWeb": {
+    "sharedAxeStates": 108,
+    "legacyStates": 12,
+    "legacyKnownContrastFailures": 2,
+    "notRelabeledAsFinalRebuild": true
+  },
+  "training": {
+    "scenarios": 7776,
+    "plans": 8478,
+    "assertions": 1687668,
+    "scenariosWithOptions": 3351,
+    "correctlyUnsupportedScenarios": 4425,
+    "guideStructures": 995,
+    "notClinicalOrRightsCertification": true
+  },
+  "masterRequirements": {
+    "total": 72,
+    "inProgress": 61,
+    "notStarted": 11,
+    "noCompletionStatusChanged": true
+  },
+  "nativeSource": null,
+  "delivery": null,
+  "notQualified": [
+    "Physical Android upgrades/process death/IME/notifications/screen readers",
+    "Physical foldable hinges/posture/activity recreation",
+    "Signed iPhone IPA/TestFlight and Safari/WebKit",
+    "Live Cloudflare/OAuth/accounts/provider and production cost/privacy operations",
+    "Production signing custody and store acceptance",
+    "Independent clinical/full-text/form/media-rights completion",
+    "Existing oversized original-bundle recovery conversion",
+    "Compatible upstream braces/node-forge advisory remediation"
+  ],
+  "knownProductGaps": [
+    "Native coach/manual custom-movement creation route",
+    "Native setup direct new-commitment entry",
+    "Native estimated1RM/strength-index chart parity",
+    "Large-history rendered-chart device performance",
+    "Review-banner enlarged-text density and optional font payload"
+  ],
+  "evidenceRoot": ".sites-runtime/comprehensive-audit-2026-10-18/",
+  "independentReviews": {
+    "newRecoveryConsentChanges": "No actionable blocker found; source-hash review receipt training/independent-recovery-review.json",
+    "progressOptimization": "No actionable blocker found; original oracle/helpers and semantics verified in training/independent-progress-review.json",
+    "notIndependentCertification": true
+  }
+}

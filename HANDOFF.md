@@ -1,3 +1,15 @@
+# Current comprehensive application audit · 18 October 2026
+
+Continue on `codex/comprehensive-audit-2026-10-18`. Read [the comprehensive report](docs/comprehensive-app-audit-2026-10-18.md), [machine receipt](docs/comprehensive-app-audit-2026-10-18.json) and six linked workstreams. Baseline `ca96011` is the preceding delivered checkpoint. New recovery/consent/performance/preference/reduced-motion/lazy-section failures are repaired. All65 integrated portable groups,19 fresh actual Worker journeys,180 native adaptive states/240 clipping checks and10 native parity groups/64 captures/32 finite axe scans pass. New rebuilt web loading/data-safety checks pass. The 108-state shared web baseline and12 legacy states (two known contrast failures) remain separately scoped.
+
+All270 mobile source files are frozen, snapshot `10333df266f6ea55fc4c025ee170d95e7384f9fa25b484c29599ebf8840996f1`; four clean Hermes exports and both exact270-file source ZIPs including LICENSE pass all32markers. No mobile edits after export. Planned/authorized versions: Movefield0.1.10/code11/iOS11 and Grizzly0.1.9/code10/iOS10, preserving packages/certificate/default orientation. New Android CI/public APK inspection/Pages delivery remain pending. Guarded helpers and exact receipts are under `.sites-runtime/comprehensive-audit-2026-10-18/`; source authorization must name the exact pushed commit/tree before dispatch. Never re-enable a completed older release plan.
+
+Preserve all63 original Pages root files, retained old chunks, all brand/storage IDs, signing lineage and old transfer compatibility. Never read, stage or export owner `.openai/`. Ordinary reviewed code/Pages pushes and Android preview delivery remain authorized; no paid/store/live-provider operation. No signed iPhone download exists without Apple setup. Keep all72 master statuses unchanged until full acceptance. Native manual/coach custom movement entry, setup commitment shortcut, full Progress chart parity, physical device/foldable/OS acceptance, live services, production signing and compatible upstream advisory fixes remain open.
+
+Earlier sections below are historical where this checkpoint differs.
+
+---
+
 # Current native phone/web parity checkpoint · 18 October 2026
 
 Continue on `codex/native-web-parity-2026-10-18`. The user wants all three native areas—layout/navigation, workout logging, and setup/settings—to feel closer to the phone website. Read [the parity report](docs/native-web-parity-2026-10-18.md) and [its receipt](docs/native-web-parity-2026-10-18.json). Both brands now have the named workspace menu, branded Today card, direct exercise tools, sectioned setup with bounded plan alternatives, and grouped Settings. Canonical `lib/interface-theme.ts` is copied through the normal101-file snapshot. Native prescriptions, records, IDs, crypto formats and authority rules are unchanged.

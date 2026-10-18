@@ -7,14 +7,14 @@ import {palettes,modelChoices,headingFonts} from './shared/app-preferences';
 import {brand,isGrizzly} from './shared/brand';
 import {loadGrizzlyFontGallery} from './grizzly-font-assets';
 import {enableWorkoutReminders} from './workout-notifications';
-import {NativeChoiceButton,NativeFlowScreen,NativeSection,NativeSettingsRow,NativeActionFooter} from './phone-ui';
+import {NativeButton,NativeChoiceButton,NativeFlowScreen,NativeSection,NativeSettingsRow,NativeActionFooter} from './phone-ui';
 
 type Page='home'|'profile'|'appearance'|'style'|'palette'|'fonts'|'display'|'accessibility'|'reminders'|'coaching'|'assistant'|'account'|'backup';
 const titles:Record<Page,string>={home:'Settings',profile:'Profile & equipment',appearance:'Appearance',style:'Bear style',palette:'Color palette',fonts:'Heading font',display:'Display mode',accessibility:'Accessibility',reminders:'Workout reminders',coaching:'Workout coaching',assistant:'On-device assistant',account:'Account',backup:'Backup & data'};
 const appearancePages=new Set<Page>(['style','palette','fonts','display']);
 
-export function NativeSettings({reminderMessage,children,footer,profile,onBack}:{reminderMessage:string;children?:React.ReactNode;footer?:React.ReactNode;profile?:React.ReactNode;onBack?:()=>void}){
- const {p,update,colors:c,error,fonts,ready,headingFamily}=useNativeAppearance();
+export function NativeSettings({reminderMessage,children,footer,profile,onBack,notificationSettings}:{reminderMessage:string;children?:React.ReactNode;footer?:React.ReactNode;profile?:React.ReactNode;onBack?:()=>void;notificationSettings?:React.ReactNode}){
+ const {p,update,colors:c,error,fonts,ready,headingFamily,preferencesError,retryPreferences}=useNativeAppearance();
  const [page,setPage]=useState<Page>('home'),[message,setMessage]=useState(''),[busy,setBusy]=useState(false),[time,setTime]=useState(p.reminderTime);
  const [section,setSection]=useState<'appearance'|'training'|'profile'>('appearance');
  const [galleryReady,setGalleryReady]=useState(false),[galleryError,setGalleryError]=useState(''),[fontSearch,setFontSearch]=useState('');
@@ -63,7 +63,11 @@ export function NativeSettings({reminderMessage,children,footer,profile,onBack}:
   {option('Open coaching when I choose',p.coaching==='manual',()=>update({coaching:'manual'}))}
   {option('Workout coaching off',p.coaching==='off',()=>update({coaching:'off'}))}
  </>;
- if(!ready)return <NativeFlowScreen title="Settings" onBack={onBack}><Text style={text}>Opening your preferences…</Text></NativeFlowScreen>;
+ if(!ready)return <NativeFlowScreen title={page==='home'?'Settings':titles[page]} onBack={back} handleHardwareBack={page!=='home'}>
+  {preferencesError?<><Text accessibilityRole="alert" style={text}>{preferencesError}</Text><NativeButton label="Retry opening preferences" onPress={retryPreferences}/></>:<Text style={text}>Opening your preferences…</Text>}
+  {page==='home'&&preferencesError&&<NativeSection title="Your saved data">{!!profile&&row('profile')}{!!children&&row('account')}{!!footer&&row('backup')}</NativeSection>}
+  {page==='profile'&&profile}{page==='account'&&children}{page==='backup'&&footer}
+ </NativeFlowScreen>;
  return <NativeFlowScreen title={titles[page]} onBack={back} handleHardwareBack={page!=='home'} footer={page==='reminders'?<NativeActionFooter primary={{label:'Save reminder time',onPress:saveTime}}/>:appearancePages.has(page)?<NativeActionFooter primary={{label:'Done',onPress:back!}}/>:undefined}>
   {page==='home'&&<>
    <ScrollView horizontal showsHorizontalScrollIndicator keyboardShouldPersistTaps="handled" style={{flexGrow:0}} contentContainerStyle={{gap:8,paddingBottom:4}}><View accessibilityRole="tablist" accessibilityLabel="Settings sections" style={{flexDirection:'row',gap:8}}>{([['appearance','Appearance'],['training','Training'],['profile','Profile & data']] as const).map(([key,label])=><Pressable key={key} accessibilityRole="tab" accessibilityLabel={label} accessibilityState={{selected:section===key}} aria-selected={section===key} onPress={()=>setSection(key)} style={{minHeight:48,paddingHorizontal:14,paddingVertical:12,borderRadius:10,borderWidth:1,borderColor:section===key?c.green:c.line,backgroundColor:section===key?c.soft:c.white,justifyContent:'center'}}><Text style={[text,{fontWeight:section===key?'700':'500'}]}>{label}</Text></Pressable>)}</View></ScrollView>
@@ -107,6 +111,7 @@ export function NativeSettings({reminderMessage,children,footer,profile,onBack}:
    <Text style={muted}>One alert per workout day. The next 30 workout days refresh when you open the app. Phone settings may delay or silence alerts.</Text>
    {!!reminderMessage&&<Text accessibilityLiveRegion="polite" style={muted}>{reminderMessage}</Text>}
    {!!message&&<Text accessibilityLiveRegion="polite" style={text}>{message}</Text>}
+   {notificationSettings}
   </>}
   {page==='coaching'&&coaching}
   {page==='assistant'&&<>
