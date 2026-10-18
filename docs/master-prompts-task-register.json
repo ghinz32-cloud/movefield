@@ -5,8 +5,8 @@
   "route": "PROTOTYPE_FIRST",
   "new_service_spending_authorized_usd": 0,
   "initial_source": "80e6ea26437f0aeaa1d8f816ace464da81fe0a81",
-  "active_checkpoint": "Comprehensive 18 October audit: 65 core groups, 19 final delivery Worker journeys, 180 native adaptive states, 34 native UI axe scans, and targeted final web failure/data checks pass. Android source 9a5c2d87a66af62d3bfca2886e6800b8edf02263 passed build39139277751 and publisher39140160944; Movefield 0.1.10/code11 and Grizzly 0.1.9/code10 independently inspected. Pages publication/live checks pending. All 72 requirement statuses unchanged.",
-  "completion_claim": "Comprehensive bounded audit, source repairs and inspected Android preview publication complete. Final Pages/live verification pending; physical devices, signed iPhone, live services, upstream tooling advisories and full master requirements remain open.",
+  "active_checkpoint": "Comprehensive 18 October audit and preview delivery complete within documented scopes. Native source 9a5c2d87a66af62d3bfca2886e6800b8edf02263; delivery db23b0731a327a1fd0bb550a470c1e413790bfe7; Pages 30b49ea63460ec9526e3db339edbe1d38d7fac73; successful deployment39141028496. Movefield 0.1.10/code11 and Grizzly 0.1.9/code10. All65 core groups,19 final Worker journeys,180 adaptive states,34 native UI axe scans,375 served files/63 original root files,24 download files/four reconstructions, both complete APK Saves/HEAD/ranges and four live app groups pass. Physical/store/live-provider/full-master and documented product/advisory/corruption gates remain open.",
+  "completion_claim": "Comprehensive bounded audit, source repairs, inspected Android previews and live-verified Pages delivery complete. Physical-device, signed iPhone, production signing, live services, upstream advisories, clinical/rights and full-master gates remain open.",
   "external_gates": [
     "Usable Cloudflare connected tools or securely bound management token; actual Workers subdomain/plan/R2 allowance/overage eligibility, Google OAuth application/runtime secrets and live backend qualification. Account ID supplied; ignored local config and secure requirements prepared.",
     "Some full-text research and browser-runtime installation endpoints are denied by the configured proxy. Current Android compilation uses the existing verified CI/toolchain; browser/device coverage remains explicitly scoped.",
@@ -1943,31 +1943,28 @@
     "mobile/dist-grizzly/_expo/static/js/android/index-e9086774a8a187a23dd342752d6b370c.hbc": "4005bf72eab04816e0d3e79d7833086b12fc58140a104348fb150762efa3311f",
     "mobile/dist-grizzly/_expo/static/js/ios/index-936b09e83e943b2a56d8429334680e0d.hbc": "94b3ea40aa66838b9161e58f2b8c556113c443bfba24cb52760a985fb3a42400"
   },
-  "checkpoint_result": "passed_scoped_coaching_and_ui_audit_with_verified_web_and_android_publication_and_one_owner_reported_movefield_phone_update; broader_master_prompt_and_platform_gates_open",
+  "checkpoint_result": "Comprehensive 18 October audit and preview delivery complete within documented scopes. Native source 9a5c2d87a66af62d3bfca2886e6800b8edf02263; delivery db23b0731a327a1fd0bb550a470c1e413790bfe7; Pages 30b49ea63460ec9526e3db339edbe1d38d7fac73; successful deployment39141028496. Movefield 0.1.10/code11 and Grizzly 0.1.9/code10. All65 core groups,19 final Worker journeys,180 adaptive states,34 native UI axe scans,375 served files/63 original root files,24 download files/four reconstructions, both complete APK Saves/HEAD/ranges and four live app groups pass. Physical/store/live-provider/full-master and documented product/advisory/corruption gates remain open.",
   "web_artifact_tree_sha256": "e3894eb3c2545a867143127db81b589d655ac1c9171e4a7f90cf49246e92f26c",
   "latest_validation": {
-    "checked_at": "2026-10-18T15:30:39.158579+00:00",
+    "checked_at": "2026-10-18T15:41:44.692784+00:00",
     "report": "docs/comprehensive-app-audit-2026-10-18.md",
     "receipt": "docs/comprehensive-app-audit-2026-10-18.json",
-    "scope": "Comprehensive 18 October audit: 65 core groups, 19 final delivery Worker journeys, 180 native adaptive states, 34 native UI axe scans, and targeted final web failure/data checks pass. Android source 9a5c2d87a66af62d3bfca2886e6800b8edf02263 passed build39139277751 and publisher39140160944; Movefield 0.1.10/code11 and Grizzly 0.1.9/code10 independently inspected. Pages publication/live checks pending. All 72 requirement statuses unchanged."
+    "scope": "Comprehensive 18 October audit and preview delivery complete within documented scopes. Native source 9a5c2d87a66af62d3bfca2886e6800b8edf02263; delivery db23b0731a327a1fd0bb550a470c1e413790bfe7; Pages 30b49ea63460ec9526e3db339edbe1d38d7fac73; successful deployment39141028496. Movefield 0.1.10/code11 and Grizzly 0.1.9/code10. All65 core groups,19 final Worker journeys,180 adaptive states,34 native UI axe scans,375 served files/63 original root files,24 download files/four reconstructions, both complete APK Saves/HEAD/ranges and four live app groups pass. Physical/store/live-provider/full-master and documented product/advisory/corruption gates remain open."
   },
   "backend_decision": "Cloudflare remains the optional backend choice. The owner clarified GitHub Pages for immediate web review updates. Preserve the existing Pages app and publish a separately stored linked review; no Cloudflare credential is required for the repository push.",
   "github_pages_publication": {
-    "pages_commit": "f577d1401ccacac6fad6ce5caea61a92f0f44d46",
-    "base_pages_commit": "56e5569c00fb2fec98707088bae6a5e93cf636d7",
-    "source_commit": "df3dd721c29704f53bd4cfebacf3b7125058a9c1",
-    "application_source_sha256": "ea7436b00723ea2d64fb33ff661f890c930c7fd2d55f61208c36d7de4db4a30e",
-    "preserved_original_files": 63,
-    "verified_candidate_files": 3873,
-    "pushed": true,
-    "live_verified": true,
-    "remote_head": "f577d1401ccacac6fad6ce5caea61a92f0f44d46",
-    "source_remote_head_at_publication": "df3dd721c29704f53bd4cfebacf3b7125058a9c1",
-    "pages_workflow_run_id": 38942872482,
-    "verified_at": "2026-10-16T17:58:38.803349+00:00",
-    "review_url": "https://ghinz32-cloud.github.io/movefield/review/",
-    "grizzly_url": "https://ghinz32-cloud.github.io/movefield/grizzly/",
-    "live_check_status": "357 selected HTTPS files including all 63 root files, 22 download files, four APK reconstructions, both complete Pages browser Saves/hashes, HEAD/first+last range checks and final loaded app identity passed. Movefield download/update/opening/workout preservation separately owner-confirmed on S24 Ultra."
+    "source_commit": "db23b0731a327a1fd0bb550a470c1e413790bfe7",
+    "pages_commit": "30b49ea63460ec9526e3db339edbe1d38d7fac73",
+    "deployment_run": 39141028496,
+    "verified_at": "2026-10-18T15:41:44.692784+00:00",
+    "shared_apps_verified": true,
+    "original_files_preserved": 63,
+    "selected_served_files": 375,
+    "download_support_files": 24,
+    "apk_reconstructions": 4,
+    "browser_apk_saves": 2,
+    "live_app_groups": 4,
+    "scope": "Finite HTTPS/browser verification; no physical-device, cloud-provider or signed iPhone claim."
   },
   "public_program_science_checkpoint": {
     "status": "implemented, recovered and locally tested; publication blocked",
@@ -2099,7 +2096,7 @@
   },
   "latest_audit": {
     "checked_at": "2026-10-18T15:08:12.809427+00:00",
-    "status": "android_verified_pages_pending",
+    "status": "delivered_and_live_verified",
     "report": "docs/comprehensive-app-audit-2026-10-18.md",
     "receipt": "docs/comprehensive-app-audit-2026-10-18.json",
     "core_groups": 65,
@@ -2109,7 +2106,12 @@
     "native_source": "9a5c2d87a66af62d3bfca2886e6800b8edf02263",
     "build_run": 39139277751,
     "publisher_run": 39140160944,
-    "application_source_sha256": "5b6d3279ec1bfe9c0cd94d748f455eb120de49c3adea872089b50c771d8c0660"
+    "application_source_sha256": "5b6d3279ec1bfe9c0cd94d748f455eb120de49c3adea872089b50c771d8c0660",
+    "finished_at": "2026-10-18T15:41:44.692784+00:00",
+    "delivery_source": "db23b0731a327a1fd0bb550a470c1e413790bfe7",
+    "pages_commit": "30b49ea63460ec9526e3db339edbe1d38d7fac73",
+    "pages_run": 39141028496,
+    "live_verification_passed": true
   },
   "latest_ui_repair": {
     "branch": "codex/compact-ui-2026-10-13",
@@ -2173,7 +2175,7 @@
   },
   "comprehensive_audit_2026_10_18": {
     "checked_at": "2026-10-18T15:08:12.809427+00:00",
-    "status": "android_verified_pages_pending",
+    "status": "delivered_and_live_verified",
     "report": "docs/comprehensive-app-audit-2026-10-18.md",
     "receipt": "docs/comprehensive-app-audit-2026-10-18.json",
     "core_groups": 65,
@@ -2183,6 +2185,11 @@
     "native_source": "9a5c2d87a66af62d3bfca2886e6800b8edf02263",
     "build_run": 39139277751,
     "publisher_run": 39140160944,
-    "application_source_sha256": "5b6d3279ec1bfe9c0cd94d748f455eb120de49c3adea872089b50c771d8c0660"
+    "application_source_sha256": "5b6d3279ec1bfe9c0cd94d748f455eb120de49c3adea872089b50c771d8c0660",
+    "finished_at": "2026-10-18T15:41:44.692784+00:00",
+    "delivery_source": "db23b0731a327a1fd0bb550a470c1e413790bfe7",
+    "pages_commit": "30b49ea63460ec9526e3db339edbe1d38d7fac73",
+    "pages_run": 39141028496,
+    "live_verification_passed": true
   }
 }

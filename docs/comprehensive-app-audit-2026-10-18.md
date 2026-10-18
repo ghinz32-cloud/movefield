@@ -2,7 +2,7 @@
 
 The audit found and repaired important recovery, consent, performance and loading failures in the shared application. Both products remain development previews. A passing local suite does not establish physical Android/iPhone behavior, production signing, live cloud operations, clinical validation or completion of all six master prompts.
 
-Baseline: `ca96011ac53b7d544856281a175cfee0859ca844`. Work branch: `codex/comprehensive-audit-2026-10-18`. The compiled source, delivery commits and final qualification results are recorded below when their gates finish; the preceding release is identified separately in the distribution report.
+Baseline: `ca96011ac53b7d544856281a175cfee0859ca844`. Work branch: `codex/comprehensive-audit-2026-10-18`. The compiled source, delivery commits and final qualification results are recorded below; the preceding release is identified separately in the distribution report.
 
 ## Coverage
 
@@ -80,7 +80,7 @@ Android previews target ARM64, minimum API24 and target SDK36, with stable packa
 
 iOS configuration has distinct brand identifiers/build numbers and a consistent 16.4 deployment floor. The owner has no Apple signing setup. A Mac/Xcode build, Apple membership/signing, real device/TestFlight and aggregated privacy checks are prerequisites for a downloadable signed iPhone app.
 
-Before public production use, test both brands on real existing-install Android upgrades, the S24 Ultra, an older supported device, at least one real foldable/tablet and iPhones when signing is available. Cover lock/background/process termination while saving/resting, reminders/timezone/DST/channel changes, denied/regranted permissions, file pickers/share sheets, recovery keys, offline restart/update, screen readers, enlarged OS text, reduced motion and modal focus. The earlier owner report that Movefield0.1.6 installed with saved workouts is historical acceptance for that build only.
+Before public production use, test both brands on real existing-install Android upgrades, the S24 Ultra, an older supported device, at least one real foldable/tablet and iPhones when signing is available. Cover lock/background/process termination while saving/resting, reminders/timezone/DST/channel changes, denied/regranted permissions, file pickers/share sheets, recovery keys, offline restart/update, screen readers, enlarged OS text, reduced motion and modal focus. The earlier owner report that Movefield 0.1.6 installed with saved workouts is historical acceptance for that build only.
 
 Optional cloud/accounts/provider features remain disabled until the actual domain, bindings, OAuth callbacks, session expiry, owner isolation, backup restore, deletion, quotas, cost controls and retention/consent terms are qualified. An account ID or prepared configuration alone does not activate or verify a service. No paid operation, store enrollment or live provider was performed for this audit.
 
@@ -106,7 +106,7 @@ The integrated local gate passed **65/65 groups**, including web/native types an
 
 The broad web baseline separately covered 108 finite shared accessibility states and 12 legacy-root states. The latter retains two known contrast violations. Those baseline bytes and the newly rebuilt targeted runs are recorded separately; the whole baseline matrix was not silently relabeled as a final rebuild run.
 
-The native source is frozen at 270 files, snapshot `10333df266f6ea55fc4c025ee170d95e7384f9fa25b484c29599ebf8840996f1`. Android build `39139277751` and publisher `39140160944` passed on their first attempts. Both published APKs independently pass signature, identity, security, all 32 compiled markers, default window policy and 16 KiB ZIP/ELF checks. Each has 17 aligned native libraries. Both exact Gradle unit tasks report `NO-SOURCE`: zero XML files and zero JUnit cases; no native unit suite executed. Live Pages publication and postdeployment verification remain pending. No new installation or signed iPhone acceptance is claimed. Chromium is the exercised browser engine; physical Chrome/Samsung Internet, Firefox and Safari/WebKit acceptance remains separate.
+The native source is frozen at 270 files, snapshot `10333df266f6ea55fc4c025ee170d95e7384f9fa25b484c29599ebf8840996f1`. Android build `39139277751` and publisher `39140160944` passed on their first attempts. Both published APKs independently pass signature, identity, security, all 32 compiled markers, default window policy and 16 KiB ZIP/ELF checks. Each has 17 aligned native libraries. Both exact Gradle unit tasks report `NO-SOURCE`: zero XML files and zero JUnit cases; no native unit suite executed. Live Pages publication and postdeployment verification passed; the final results follow. No new installation or signed iPhone acceptance is claimed. Chromium is the exercised browser engine; physical Chrome/Samsung Internet, Firefox and Safari/WebKit acceptance remains separate.
 
 Ignored evidence lives under `.sites-runtime/comprehensive-audit-2026-10-18/`. Tracked reports and regression programs preserve the scope for future work. Owner `.openai/` content was not read, staged or exported, and no real workout/profile or credentials were used as fixtures.
 
@@ -120,3 +120,18 @@ Both APKs compile source `9a5c2d87a66af62d3bfca2886e6800b8edf02263`, tree `6f5b0
 | grizzly | 0.1.9 / 10 | 39,545,922 | `aedcd80afd98f252858ff5dcf875b91b9e6956b91bceaf202a76b8fc8c420917` |
 
 The final delivery Worker was rebuilt after download assets changed and freshly passed the same 19 browser journeys. All 1,925 built files and 381 selected source files stayed exact. The static application's 20 compiled/index files remained identical to the final web-validation artifacts; only verified download assets were applied. The final finite credential-pattern scan found zero matches across 8,104 selected files and 3,136 ZIP members; this is not an absence-of-secrets guarantee. Application fingerprint: `5b6d3279ec1bfe9c0cd94d748f455eb120de49c3adea872089b50c771d8c0660`.
+
+### Final publication and live verification — complete
+
+Delivery source `db23b0731a327a1fd0bb550a470c1e413790bfe7` produced Pages commit `30b49ea63460ec9526e3db339edbe1d38d7fac73`. [Deployment 39141028496](https://github.com/ghinz32-cloud/movefield/actions/runs/39141028496) and all three expected jobs passed on their first attempts. The candidate contains 3,891 files / 619,358,173 bytes. All 63 original root files and 142 prior compiled paths are preserved; each brand has one current full APK in its final Pages directory.
+
+- [Movefield web](https://ghinz32-cloud.github.io/movefield/review/) · [Movefield 0.1.10 Android APK](https://ghinz32-cloud.github.io/movefield/review/downloads/movefield-0.1.10-arm64.apk)
+- [Grizzly web](https://ghinz32-cloud.github.io/movefield/grizzly/) · [Grizzly 0.1.9 Android APK](https://ghinz32-cloud.github.io/movefield/grizzly/downloads/grizzly-fitness-0.1.9-arm64.apk)
+
+All 375 selected served files match the candidate, including every original-root file. All 24 download support/source files across both directories match, and all four assembled APKs have the expected size/hash. Both complete same-origin Chromium Saves match the independently inspected APKs and exact filenames. Both HEAD responses have the correct APK MIME/full length; all four first/last 4096-byte ranges return exact HTTP206 bytes. The first browser process was blocked before navigation by the outer executor sandbox; the authorized outer retry retained Chromium's own sandbox and normal proxy/TLS. That preserved launch failure is not a site or Android installation failure.
+
+The actual live apps passed four groups on the first attempt: new encrypted profiles with blank obligations/history; cancel/start coaching; actual unknown-load logging; one harder partial save; after-workout review; exact encrypted reload without automatic replay; and manual review with stable facts/policies/authority. Fetched and actually loaded application bytes match the served manifests and locally qualified artifacts. All changes used disposable synthetic local browser records, with zero page errors, blocked requests, account/provider activation or remote profile writes.
+
+Both source archives contain exactly 270 frozen mobile files plus their manifest, including LICENSE. Movefield ZIP SHA256: `4c085d7e60ee4f7588d6caa6db433dafb26ef7abf4c736a0af1b4d616f5a7cd0`; Grizzly ZIP: `732d39f03c5edbb6a3badf5e68e345e9e8dc692cd3251d5ee5c10afca4f795a1`. Current default Android/iOS Hermes export directories are refreshed; previous outputs were preserved. Source, executable files, native assets/configuration and mobile documentation still match the compiled source exactly.
+
+The audit and verified preview delivery are complete within the scopes above. The remaining product, physical-device, signed-iPhone, production-signing, upstream-advisory, live-service, arbitrary-corruption and full-master gates remain open. Use Chrome or Samsung Internet for the Android downloads; the earlier owner-confirmed installation applies only to Movefield0.1.6, not these versions. No real-device acceptance is inferred from the new browser Saves.

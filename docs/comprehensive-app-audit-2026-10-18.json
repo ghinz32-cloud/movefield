@@ -1,7 +1,7 @@
 {
   "format": "movefield-comprehensive-app-audit-v1",
   "checkedAt": "2026-10-18T15:27:14.958632+00:00",
-  "status": "compiled_previews_verified_pages_pending",
+  "status": "delivered_and_live_verified",
   "baselineCommit": "ca96011ac53b7d544856281a175cfee0859ca844",
   "branch": "codex/comprehensive-audit-2026-10-18",
   "brands": [
@@ -171,7 +171,30 @@
     "nativeUnitTestsExecuted": false,
     "sourceArchiveFileDelta": {}
   },
-  "delivery": null,
+  "delivery": {
+    "sourceCommit": "db23b0731a327a1fd0bb550a470c1e413790bfe7",
+    "sourceTree": "e659034463ef602fff429a69db856a2637e68517",
+    "pagesCommit": "30b49ea63460ec9526e3db339edbe1d38d7fac73",
+    "pagesTree": "27abc0d104500c3fd18115318d6e5b55cee7a63c",
+    "pagesRun": 39141028496,
+    "pagesFirstAttemptPassed": true,
+    "candidateFiles": 3891,
+    "candidateBytes": 619358173,
+    "selectedServedFiles": 375,
+    "preservedOriginalRootFiles": 63,
+    "preservedOldCompiledFiles": 142,
+    "downloadSupportFilesVerified": 24,
+    "apkReconstructions": 4,
+    "completeBrowserSaves": 2,
+    "headChecks": 2,
+    "range206Checks": 4,
+    "liveAppGroups": 4,
+    "liveAppAttempts": 1,
+    "browserLaunchAttempts": 2,
+    "browserInitialFailure": "Outer executor namespace restriction blocked sandboxed Chromium before navigation. Failure log preserved; authorized outer escalation retained Chromium own sandbox and configured proxy/TLS.",
+    "chromiumOwnSandbox": true,
+    "physicalInstallAcceptance": false
+  },
   "notQualified": [
     "Physical Android upgrades/process death/IME/notifications/screen readers",
     "Physical foldable hinges/posture/activity recreation",
@@ -199,57 +222,57 @@
   "findings": [
     {
       "id": "S-01",
-      "status": "repaired_and_compiled",
+      "status": "repaired_delivered_with_scoped_verification",
       "area": "failed replacement ciphertext cleanup"
     },
     {
       "id": "S-02",
-      "status": "repaired_and_compiled",
+      "status": "repaired_delivered_with_scoped_verification",
       "area": "consent before optional provider dispatch"
     },
     {
       "id": "S-03",
-      "status": "repaired_and_compiled",
+      "status": "repaired_delivered_with_scoped_verification",
       "area": "post-upgrade current recovery export"
     },
     {
       "id": "PROD18-01",
-      "status": "repaired_and_compiled",
+      "status": "repaired_delivered_with_scoped_verification",
       "area": "supported-history index performance"
     },
     {
       "id": "N18-01",
-      "status": "repaired_and_compiled",
+      "status": "repaired_delivered_with_scoped_verification",
       "area": "preference hydration and reminder preservation"
     },
     {
       "id": "N18-02",
-      "status": "repaired_and_compiled",
+      "status": "repaired_delivered_with_scoped_verification",
       "area": "conservative reduced motion"
     },
     {
       "id": "WEB18-01",
-      "status": "repaired_and_compiled",
+      "status": "repaired_delivered_with_scoped_verification",
       "area": "scoped lazy-section recovery"
     },
     {
       "id": "PROD18-04-work",
-      "status": "repaired_and_compiled",
+      "status": "repaired_delivered_with_scoped_verification",
       "area": "period-first progress and memoization"
     },
     {
       "id": "N18-03",
-      "status": "repaired_and_compiled",
+      "status": "repaired_delivered_with_scoped_verification",
       "area": "explicit notification settings recovery"
     },
     {
       "id": "N18-04",
-      "status": "repaired_and_compiled",
+      "status": "repaired_delivered_with_scoped_verification",
       "area": "render recovery and pending-operation barrier"
     },
     {
       "id": "REL18-01",
-      "status": "repaired_and_compiled",
+      "status": "repaired_delivered_with_scoped_verification",
       "area": "honest native unit-task evidence"
     }
   ],
@@ -274,5 +297,14 @@
       "coaching": false
     },
     "receipt": ".sites-runtime/comprehensive-audit-2026-10-18/security/delivery-worker/result.json"
-  }
+  },
+  "finishedAt": "2026-10-18T15:41:44.692784+00:00",
+  "links": {
+    "movefieldWeb": "https://ghinz32-cloud.github.io/movefield/review/",
+    "grizzlyWeb": "https://ghinz32-cloud.github.io/movefield/grizzly/",
+    "movefieldAPK": "https://ghinz32-cloud.github.io/movefield/review/downloads/movefield-0.1.10-arm64.apk",
+    "grizzlyAPK": "https://ghinz32-cloud.github.io/movefield/grizzly/downloads/grizzly-fitness-0.1.9-arm64.apk",
+    "nativeRelease": "https://github.com/ghinz32-cloud/movefield/releases/tag/android-ux-preview-9a5c2d87a66a"
+  },
+  "remainingRequirementsUnchanged": true
 }

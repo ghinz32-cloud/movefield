@@ -88,3 +88,7 @@ No newly confirmed cross-owner disclosure, passphrase disclosure, sample-to-pers
 5. Resolve or explicitly accept applicable production dependency advisories and maintain patch/rotation/deletion procedures; see the current release audit for exact reachability and fix availability rather than a blanket zero-vulnerability claim.
 
 All fixture names, profile records, keys and provider captures in this workstream are synthetic. Owner `.openai/` files were not read or exported.
+
+## Final integration outcome
+
+The parent completed 65 integrated groups after shared synchronization and 19 actual final-delivery Worker journeys with all 1,925 build files and 381 selected sources unchanged. Both public brands also pass the four source-bound live encrypted/coaching groups described in [the final audit](comprehensive-app-audit-2026-10-18.md). These completed integration gates do not convert the platform/provider/corruption limits above into acceptance claims.
